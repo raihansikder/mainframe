@@ -11,8 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::middleware(['auth'])->prefix('mainframe/modules')->group(function () {
+    Route::get('/test', function () {
+        return 'test';
+    });
 });
-
-include_once('mainframe/modules.php');
