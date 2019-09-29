@@ -1,0 +1,13 @@
+{
+    "name": "Mainframe",
+    "alias": "mainframe",
+    "description": "",
+    "keywords": [],
+    "order": 0,
+    "providers": [
+        "Modules\\Mainframe\\Providers\\MainframeServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}
