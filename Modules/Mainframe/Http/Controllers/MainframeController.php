@@ -4,12 +4,13 @@ namespace Modules\Mainframe\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Illuminate\Routing\Controller;
+use Module\Mainframe\Module\Http\Controllers\Controller;
 
 class MainframeController extends Controller
 {
     /**
      * Display a listing of the resource.
+     *
      * @return Response
      */
     public function index()
@@ -19,6 +20,7 @@ class MainframeController extends Controller
 
     /**
      * Show the form for creating a new resource.
+     *
      * @return Response
      */
     public function create()
@@ -28,7 +30,8 @@ class MainframeController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     * @param Request $request
+     *
+     * @param  Request  $request
      * @return Response
      */
     public function store(Request $request)
@@ -38,7 +41,8 @@ class MainframeController extends Controller
 
     /**
      * Show the specified resource.
-     * @param int $id
+     *
+     * @param  int  $id
      * @return Response
      */
     public function show($id)
@@ -48,7 +52,8 @@ class MainframeController extends Controller
 
     /**
      * Show the form for editing the specified resource.
-     * @param int $id
+     *
+     * @param  int  $id
      * @return Response
      */
     public function edit($id)
@@ -58,8 +63,9 @@ class MainframeController extends Controller
 
     /**
      * Update the specified resource in storage.
-     * @param Request $request
-     * @param int $id
+     *
+     * @param  Request  $request
+     * @param  int  $id
      * @return Response
      */
     public function update(Request $request, $id)
@@ -69,7 +75,8 @@ class MainframeController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     * @param int $id
+     *
+     * @param  int  $id
      * @return Response
      */
     public function destroy($id)

@@ -1,5 +1,6 @@
 <?php
 
 return [
-    'name' => 'Mainframe'
+    'name' => 'Mainframe',
+    'route_prefix' => 'mainframe'
 ];
