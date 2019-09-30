@@ -15,4 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-include_once('mainframe/modules.php');
+Auth::routes(['verify' => true]);
+Route::get('/home', 'HomeController@index')->name('home');
+
