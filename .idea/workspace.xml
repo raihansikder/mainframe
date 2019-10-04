@@ -2,91 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="84ce1b6d-95ac-4845-9ea7-b51da602c4d2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Modules/Mainframe/Resources/assets/mainframe/plugins/validator/js/languages/jquery.validationEngine-zh_TW.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Mainframe/Resources/assets/mainframe/plugins/validator/js/libs/jquery-1.7.1.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Mainframe/Resources/assets/mainframe/plugins/validator/js/libs/marked.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Mainframe/Resources/assets/mainframe/plugins/validator/js/libs/modernizr-2.0.6.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Mainframe/Resources/assets/mainframe/plugins/validator/js/releasenotes.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Mainframe/Resources/assets/mainframe/plugins/validator/js/script.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Mainframe/Resources/assets/mainframe/plugins/validator/less/validationEngine.jquery.less" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Mainframe/Resources/assets/mainframe/plugins/validator/releases.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Mainframe/Resources/assets/mainframe/plugins/validator/runDemo.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Mainframe/Resources/assets/mainframe/plugins/validator/runDemo.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Mainframe/Resources/assets/mainframe/plugins/validator/test/AjaxTestServer$AjaxValidationFieldResponse.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Mainframe/Resources/assets/mainframe/plugins/validator/test/AjaxTestServer$AjaxValidationFormResponse.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Mainframe/Resources/assets/mainframe/plugins/validator/test/AjaxTestServer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Mainframe/Resources/assets/mainframe/plugins/validator/test/AjaxTestServer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Mainframe/Resources/assets/mainframe/plugins/validator/test/NanoHTTPD$HTTPSession.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Mainframe/Resources/assets/mainframe/plugins/validator/test/NanoHTTPD$Response.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Mainframe/Resources/assets/mainframe/plugins/validator/test/NanoHTTPD.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Mainframe/Resources/assets/mainframe/plugins/validator/test/NanoHTTPD.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Mainframe/Resources/assets/mainframe/plugins/validator/tests/issue430.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Mainframe/Resources/assets/mainframe/plugins/validator/tests/issue451.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Mainframe/Resources/assets/mainframe/plugins/validator/tests/issue480.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Mainframe/Resources/assets/mainframe/plugins/validator/tests/issue493.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Mainframe/Resources/assets/mainframe/plugins/validator/tests/issue498.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Mainframe/Resources/assets/mainframe/plugins/validator/tests/issue507.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Mainframe/Resources/assets/mainframe/plugins/validator/tests/issue524.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Mainframe/Resources/assets/mainframe/plugins/validator/tests/placeholders.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Mainframe/Resources/assets/mainframe/plugins/validator/validationengine.jquery.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Mainframe/Resources/assets/mainframe/starter.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Mainframe/Resources/views/auth/login.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Mainframe/Resources/views/template/app-frame.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Mainframe/Resources/views/template/auth-frame.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Mainframe/Resources/views/template/blank.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Mainframe/Resources/views/template/css.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Mainframe/Resources/views/template/include/breadcrumb.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Mainframe/Resources/views/template/include/messages-top.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Mainframe/Resources/views/template/include/modal-delete.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Mainframe/Resources/views/template/include/modal-messages.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Mainframe/Resources/views/template/include/top-menu/message-menu.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Mainframe/Resources/views/template/include/top-menu/notification-menu.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Mainframe/Resources/views/template/include/top-menu/task-menu.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Mainframe/Resources/views/template/js.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Mainframe/Resources/views/template/report.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Modules/Mainframe/Routes/auth.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/cors.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/permission.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/jquery-ui-1.10.3.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/jquery-ui-1.10.3.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/jquery.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/datatables.1.10.2/jquery.dataTables.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/datatables.1.10.2/jquery.dataTables.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/datatables.1.10.2/jquery.dataTables.rowGrouping.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/datatables.1.10.2/jquery.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/datatables.1.9.4/dataTables.bootstrap.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/datatables.1.9.4/jquery.dataTables.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/datatables.1.9.4/jquery.dataTables.rowGrouping.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/ExampleComponent.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/sass/_variables.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/auth/passwords/email.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/auth/passwords/reset.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/auth/verify.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Modules/Mainframe/Routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Mainframe/Routes/web.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Modules/Mainframe/Components/Modular/BaseModule.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Modules/Mainframe/Components/Modular/Traits/Validable.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Modules/Mainframe/Entities/User.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Modules/Mainframe/Resources/lang/auth.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Modules/Mainframe/Resources/lang/pagination.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Modules/Mainframe/Resources/lang/passwords.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Modules/Mainframe/Resources/lang/validation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Modules/Mainframe/Config/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Mainframe/Config/config.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Modules/Mainframe/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Mainframe/Http/Controllers/Auth/LoginController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Modules/Mainframe/Http/Controllers/MainframeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Mainframe/Http/Controllers/MainframeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Modules/Mainframe/Resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Mainframe/Resources/views/auth/login.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Modules/Mainframe/Resources/views/template/auth-frame.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Mainframe/Resources/views/template/auth-frame.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/mainframe/config.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/mainframe/modules.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/bootstrap.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/sass/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/app.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/mainframe/api.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/mainframe/auth.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/mainframe/modules.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webpack.mix.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.mix.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -239,7 +169,7 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/mainframe" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Modules/Mainframe/Resources/lang" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="yarn" />
@@ -254,11 +184,11 @@
       <recent name="E:\MAMP\htdocs\mainframe\public" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\MAMP\htdocs\mainframe\Modules\Mainframe\Resources\lang" />
       <recent name="E:\MAMP\htdocs\mainframe\public\mainframe" />
       <recent name="E:\MAMP\htdocs\mainframe\Modules\Mainframe\Http\Controllers" />
       <recent name="E:\MAMP\htdocs\mainframe\Modules\Mainframe\Resources\views" />
       <recent name="E:\MAMP\htdocs\mainframe\Modules\Mainframe\Resources\assets" />
-      <recent name="E:\MAMP\htdocs\mainframe\Modules\Mainframe\Config" />
     </key>
   </component>
   <component name="RunDashboard">

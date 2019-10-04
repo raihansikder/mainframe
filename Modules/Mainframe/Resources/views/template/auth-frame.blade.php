@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>{{config('app.name')}}</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     @section('head')
         {{-- head section --}}
@@ -16,8 +15,9 @@
 <div class="login-box shadow">
     <div class="login-logo">
         <a href="{{route('home')}}">
-            <img style="width: 300px; padding-top: 20px;" src="{{asset("letsbab/images/logo-updated.PNG")}}"
-                 alt="{{config('app.name')}}" title="{{config('app.name')}}"/>
+            {{--            <img style="width: 300px; padding-top: 20px;" src="{{asset("letsbab/images/logo-updated.PNG")}}"--}}
+            {{--                 alt="{{config('app.name')}}" title="{{config('app.name')}}"/>--}}
+            {{config('app.name')}}
         </a>
     </div>
     <div class="login-box-body">
