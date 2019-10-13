@@ -19,7 +19,6 @@
         "laravel/telescope": "^2.1",
         "laravel/tinker": "^1.0",
         "laravelcollective/html": "^6.0",
-        "nwidart/laravel-modules": "^6.0",
         "phpoffice/phpspreadsheet": "^1.9",
         "ramsey/uuid": "^3.8",
         "spatie/laravel-permission": "^3.0",
