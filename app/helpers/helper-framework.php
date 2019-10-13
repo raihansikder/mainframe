@@ -3,6 +3,7 @@
 use App\Module;
 use App\Report;
 use App\Setting;
+use Illuminate\Support\Str;
 
 /**
  * create uuid
@@ -98,7 +99,7 @@ function fillModel($element, $except = [])
  */
 function moduleName($class)
 {
-    return str_plural(lcfirst(class_basename($class)));
+    return Str::plural(lcfirst(class_basename($class)));
 }
 
 /**
@@ -109,7 +110,7 @@ function moduleName($class)
  */
 function model($module)
 {
-    return "\\App\\" . str_singular(ucfirst($module));
+    return "\\App\\" . Str::singular(ucfirst($module));
 }
 
 /**

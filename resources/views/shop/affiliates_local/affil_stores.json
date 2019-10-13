@@ -1,0 +1,749 @@
+{
+    "stores": [
+        {
+            "spider_process": false,
+            "live_url_root": "https://prf.hn/click/camref:1011l7My9/destination:https%3A%2F%2Fwww.farfetch.com%2F",
+            "storeName": "farfetch",
+            "storeLogo": "farfetch.png",
+            "cssSelectorsForProduct": [
+                {
+                    "selectorProperty": "href",
+                    "selectorFieldName": "url",
+                    "selector": "a"
+                },
+                {
+                    "selectorProperty": "innerText",
+                    "selectorFieldName": "name",
+                    "selector": "p[itemprop=\"name\"]"
+                },
+                {
+                    "selectorProperty": "attribute_content",
+                    "selectorFieldName": "image",
+                    "selector": "meta[itemprop=\"image\"]"
+                },
+                {
+                    "selectorProperty": "attribute_content",
+                    "selectorFieldName": "price",
+                    "selector": "meta[itemprop=\"price\"]"
+                },
+                {
+                    "selectorProperty": "attribute_content",
+                    "selectorFieldName": "currency",
+                    "selector": "meta[itemprop=\"priceCurrency\"]"
+                },
+                {
+                    "selectorProperty": "innerText",
+                    "selectorFieldName": "additional_text",
+                    "selector": "h3"
+                }
+            ],
+            "cssSelectorAllProducts": "[data-test=\"productCard\"]",
+            "storeUrl": "farfetch.com",
+            "storeCategories": [
+                {
+                    "category": "Women",
+                    "order": 0,
+                    "categoryUrl": "",
+                    "categoryChildren": [
+                        {
+                            "order": 0,
+                            "category": "New In",
+                            "categoryUrl": "https://www.farfetch.com/uk/sets/women/new-in-this-week-eu-women.aspx"
+                        },
+                        {
+                            "order": 10,
+                            "category": "Clothing",
+                            "categoryUrl": "https://www.farfetch.com/uk/shopping/women/clothing-1/items.aspx"
+                        },
+                        {
+                            "order": 20,
+                            "category": "Activewear",
+                            "categoryUrl": "https://www.farfetch.com/uk/shopping/women/activewear-1/items.aspx"
+                        },
+                        {
+                            "order": 30,
+                            "category": "Shoes",
+                            "categoryUrl": "https://www.farfetch.com/uk/shopping/women/shoes-1/items.aspx"
+                        },
+                        {
+                            "order": 40,
+                            "category": "Bags",
+                            "categoryUrl": "https://www.farfetch.com/uk/shopping/women/bags-purses-1/items.aspx"
+                        },
+                        {
+                            "order": 50,
+                            "category": "Accessories",
+                            "categoryUrl": "https://www.farfetch.com/uk/shopping/women/accessories-all-1/items.aspx"
+                        },
+                        {
+                            "order": 60,
+                            "category": "Homeware",
+                            "categoryUrl": "https://www.farfetch.com/uk/shopping/women/lifestyle-1/items.aspx"
+                        },
+                        {
+                            "order": 70,
+                            "category": "Fashion Jwellery",
+                            "categoryUrl": "https://www.farfetch.com/uk/shopping/women/jewellery-1/items.aspx"
+                        },
+                        {
+                            "order": 80,
+                            "category": "Fine Jwellery",
+                            "categoryUrl": "https://www.farfetch.com/uk/shopping/women/fine-jewellery-6/items.aspx"
+                        },
+                        {
+                            "order": 90,
+                            "category": "Pre-Owned",
+                            "categoryUrl": "https://www.farfetch.com/uk/shopping/women/pre-owned-1/items.aspx"
+                        }
+                    ]
+                },
+                {
+                    "order": 10,
+                    "category": "Men",
+                    "categoryUrl": "",
+                    "categoryChildren": [
+                        {
+                            "order": 0,
+                            "category": "New In",
+                            "categoryUrl": "https://www.farfetch.com/uk/sets/men/new-in-this-week-eu-men.aspx"
+                        },
+                        {
+                            "order": 10,
+                            "category": "Clothes",
+                            "categoryUrl": "https://www.farfetch.com/uk/shopping/men/clothing-2/items.aspx"
+                        },
+                        {
+                            "order": 20,
+                            "category": "Activewear",
+                            "categoryUrl": "https://www.farfetch.com/uk/shopping/men/activewear-2/items.aspx"
+                        },
+                        {
+                            "order": 30,
+                            "category": "Shoes",
+                            "categoryUrl": "https://www.farfetch.com/uk/shopping/men/shoes-2/items.aspx"
+                        },
+                        {
+                            "order": 40,
+                            "category": "Trainers",
+                            "categoryUrl": "https://www.farfetch.com/uk/shopping/men/trainers-2/items.aspx"
+                        },
+                        {
+                            "order": 50,
+                            "category": "Bags",
+                            "categoryUrl": "https://www.farfetch.com/uk/shopping/men/bags-purses-2/items.aspx"
+                        },
+                        {
+                            "order": 60,
+                            "category": "Accessories",
+                            "categoryUrl": "https://www.farfetch.com/uk/shopping/men/accessories-all-2/items.aspx"
+                        },
+                        {
+                            "order": 70,
+                            "category": "Watches",
+                            "categoryUrl": "https://www.farfetch.com/uk/shopping/men/fine-watches-4/items.aspx"
+                        }
+                    ]
+                },
+                {
+                    "order": 20,
+                    "category": "Kids",
+                    "categoryUrl": "",
+                    "categoryChildren": [
+                        {
+                            "order": 0,
+                            "category": "Baby Girl Clothing",
+                            "categoryUrl": "https://www.farfetch.com/uk/shopping/kids/baby-girl-clothing-6/items.aspx"
+                        },
+                        {
+                            "order": 10,
+                            "category": "Baby Boy Clothing",
+                            "categoryUrl": "https://www.farfetch.com/uk/shopping/kids/baby-boy-clothing-5/items.aspx"
+                        },
+                        {
+                            "order": 20,
+                            "category": "Girls (2-12 Years)",
+                            "categoryUrl": "https://www.farfetch.com/uk/shopping/kids/girls-clothing-4/items.aspx"
+                        },
+                        {
+                            "order": 30,
+                            "category": "Girls (13-16 Years)",
+                            "categoryUrl": "https://www.farfetch.com/uk/shopping/kids/teen-girl-clothing-7/items.aspx"
+                        },
+                        {
+                            "order": 40,
+                            "category": "Boys (2-12 Years)",
+                            "categoryUrl": "https://www.farfetch.com/uk/shopping/kids/boys-clothing-3/items.aspx"
+                        },
+                        {
+                            "order": 50,
+                            "category": "Boys (13-16 Years)",
+                            "categoryUrl": "https://www.farfetch.com/uk/shopping/kids/teen-boy-clothing-8/items.aspx"
+                        },
+                        {
+                            "order": 60,
+                            "category": "Shoes - Baby Girls",
+                            "categoryUrl": "https://www.farfetch.com/uk/shopping/kids/baby-girl-shoes-6/items.aspx"
+                        },
+                        {
+                            "order": 70,
+                            "category": "Shoes - Baby Boys",
+                            "categoryUrl": "https://www.farfetch.com/uk/shopping/kids/baby-boy-shoes-5/items.aspx"
+                        },
+                        {
+                            "order": 80,
+                            "category": "Shoes - Girls",
+                            "categoryUrl": "https://www.farfetch.com/uk/shopping/kids/girls-shoes-4/items.aspx"
+                        },
+                        {
+                            "order": 90,
+                            "category": "Shoes - Boys",
+                            "categoryUrl": "https://www.farfetch.com/uk/shopping/kids/boys-shoes-3/items.aspx"
+                        },
+                        {
+                            "order": 100,
+                            "category": "Shoes - Teen Girls",
+                            "categoryUrl": "https://www.farfetch.com/uk/shopping/kids/teen-girl-shoes-1/items.aspx"
+                        },
+                        {
+                            "order": 110,
+                            "category": "Shoes - Teen Boys",
+                            "categoryUrl": "https://www.farfetch.com/uk/shopping/kids/teen-boy-shoes-1/items.aspx"
+                        },
+                        {
+                            "order": 120,
+                            "category": "Nursery - Baby Girls",
+                            "categoryUrl": "https://www.farfetch.com/uk/shopping/kids/baby-girl-nursery-6/items.aspx?"
+                        },
+                        {
+                            "order": 130,
+                            "category": "Nursery - Baby Girls",
+                            "categoryUrl": "https://www.farfetch.com/uk/shopping/kids/baby-boy-nursery-5/items.aspx?"
+                        }
+                    ]
+                }
+            ],
+            "defaultCurrency": ""
+        },
+        {
+            "spider_process": false,
+            "live_url_root": "https://www.awin1.com/cread.php?s=2350366&v=2319&q=145623&r=568195",
+            "storeName": "boohoo",
+            "storeLogo": "boohoo-140.png",
+            "cssSelectorsForProduct": [
+                {
+                    "selectorProperty": "href",
+                    "selectorFieldName": "url",
+                    "selector": ".name-link"
+                },
+                {
+                    "selectorProperty": "innerText",
+                    "selectorFieldName": "name",
+                    "selector": ".name-link"
+                },
+                {
+                    "selectorProperty": "value",
+                    "selectorFieldName": "image",
+                    "selector": ".js-primary-image-default-url"
+                },
+                {
+                    "selectorProperty": "attribute_content",
+                    "selectorFieldName": "price",
+                    "selector": "meta[itemprop=\"price\"]"
+                },
+                {
+                    "selectorProperty": "attribute_content",
+                    "selectorFieldName": "currency",
+                    "selector": "meta[itemprop=\"priceCurrency\"]"
+                }
+            ],
+            "cssSelectorAllProducts": ".tiles-container li.grid-tile",
+            "storeUrl": "boohoo.com",
+            "storeCategories": [
+                {
+                    "category": "Women",
+                    "order": 0,
+                    "categoryUrl": "",
+                    "categoryChildren": [
+                        {
+                            "order": 10,
+                            "category": "Clothing",
+                            "categoryUrl": "https://www.boohoo.com/womens/new-in"
+                        },
+                        {
+                            "order": 20,
+                            "category": "Dresses",
+                            "categoryUrl": "https://www.boohoo.com/womens/dresses"
+                        },
+                        {
+                            "order": 30,
+                            "category": "Tops",
+                            "categoryUrl": "https://www.boohoo.com/womens/tops"
+                        },
+                        {
+                            "order": 40,
+                            "category": "Shoes",
+                            "categoryUrl": "https://www.boohoo.com/womens/shoes"
+                        },
+                        {
+                            "order": 50,
+                            "category": "Accessories",
+                            "categoryUrl": "https://www.boohoo.com/womens/accessories"
+                        },
+                        {
+                            "order": 60,
+                            "category": "Beauty",
+                            "categoryUrl": "https://www.boohoo.com/womens/accessories/beauty"
+                        }
+                    ]
+                },
+                {
+                    "order": 10,
+                    "category": "Men",
+                    "categoryUrl": "",
+                    "categoryChildren": [
+                        {
+                            "order": 0,
+                            "category": "Clothing",
+                            "categoryUrl": "https://www.boohoo.com/mens/new-in"
+                        },
+                        {
+                            "order": 10,
+                            "category": "Tops",
+                            "categoryUrl": "https://www.boohoo.com/mens/tops"
+                        },
+                        {
+                            "order": 20,
+                            "category": "Shoes",
+                            "categoryUrl": "https://www.boohoo.com/mens/shoes"
+                        },
+                        {
+                            "order": 30,
+                            "category": "Accessories",
+                            "categoryUrl": "https://www.boohoo.com/mens/accessories"
+                        },
+                        {
+                            "order": 40,
+                            "category": "Big & Tall",
+                            "categoryUrl": "https://www.boohoo.com/mens/big-tall"
+                        },
+                        {
+                            "order": 50,
+                            "category": "Nights",
+                            "categoryUrl": "https://www.boohoo.com/mens/partywear"
+                        }
+                    ]
+                }
+            ],
+            "defaultCurrency": ""
+        },
+        {
+            "spider_process": false,
+            "live_url_root": "https://www.awin1.com/cread.php?s=683965&v=7009&q=293133&r=568195",
+            "storeName": "boohooman",
+            "storeLogo": "boohooman-140.png",
+            "cssSelectorsForProduct": [
+                {
+                    "selectorProperty": "href",
+                    "selectorFieldName": "url",
+                    "selector": ".name-link"
+                },
+                {
+                    "selectorProperty": "innerText",
+                    "selectorFieldName": "name",
+                    "selector": ".name-link"
+                },
+                {
+                    "selectorProperty": "value",
+                    "selectorFieldName": "image",
+                    "selector": ".js-primary-image-default-url"
+                },
+                {
+                    "selectorProperty": "attribute_content",
+                    "selectorFieldName": "price",
+                    "selector": "meta[itemprop=\"price\"]"
+                },
+                {
+                    "selectorProperty": "attribute_content",
+                    "selectorFieldName": "currency",
+                    "selector": "meta[itemprop=\"priceCurrency\"]"
+                }
+            ],
+            "cssSelectorAllProducts": ".tiles-container li.grid-tile",
+            "storeUrl": "boohooman.com",
+            "storeCategories": [
+                {
+                    "category": "New In",
+                    "order": 0,
+                    "categoryUrl": "",
+                    "categoryChildren": [
+                        {
+                            "order": 10,
+                            "category": "New In View All",
+                            "categoryUrl": "https://www.boohooman.com/mens/new-in"
+                        },
+                        {
+                            "order": 20,
+                            "category": "Clothing",
+                            "categoryUrl": "https://www.boohooman.com/mens/new-in"
+                        },
+                        {
+                            "order": 30,
+                            "category": "Shoes",
+                            "categoryUrl": "https://www.boohooman.com/mens/shoes"
+                        },
+                        {
+                            "order": 40,
+                            "category": "Accessories",
+                            "categoryUrl": "https://www.boohooman.com/mens/accessories"
+                        },
+                        {
+                            "order": 50,
+                            "category": "Big & Tall New In",
+                            "categoryUrl": "https://www.boohooman.com/mens/big-tall/big-tall-newin"
+                        },
+                        {
+                            "order": 60,
+                            "category": "MAN New In",
+                            "categoryUrl": "https://www.boohooman.com/mens/collections/the-man-collection/new-in"
+                        }
+                    ]
+                },
+                {
+                    "order": 10,
+                    "category": "Clothing",
+                    "categoryUrl": "",
+                    "categoryChildren": [
+                        {
+                            "order": 0,
+                            "category": "T-Shirts & Vests",
+                            "categoryUrl": "https://www.boohooman.com/mens/t-shirts-vests"
+                        },
+                        {
+                            "order": 10,
+                            "category": "Tracksuits",
+                            "categoryUrl": "https://www.boohooman.com/mens/tracksuits"
+                        },
+                        {
+                            "order": 20,
+                            "category": "Coats & Jackets",
+                            "categoryUrl": "https://www.boohooman.com/mens/coats-jackets"
+                        },
+                        {
+                            "order": 30,
+                            "category": "MAN",
+                            "categoryUrl": "https://www.boohooman.com/mens/collections/the-man-collection"
+                        },
+                        {
+                            "order": 40,
+                            "category": "Big & Tall",
+                            "categoryUrl": "https://www.boohooman.com/mens/big-tall"
+                        },
+                        {
+                            "order": 50,
+                            "category": "Shoes",
+                            "categoryUrl": "https://www.boohooman.com/mens/shoes"
+                        },
+                        {
+                            "order": 50,
+                            "category": "Accessories",
+                            "categoryUrl": "https://www.boohooman.com/mens/accessories"
+                        }
+                    ]
+                }
+            ],
+            "defaultCurrency": ""
+        },
+        {
+            "spider_process": false,
+            "live_url_root": "https://www.awin1.com/cread.php?s=2284057&v=7533&q=351187&r=568195",
+            "storeName": "prettylittlething",
+            "storeLogo": "pretty-little-thing-140.png",
+            "cssSelectorsForProduct": [
+                {
+                    "selectorProperty": "href",
+                    "selectorFieldName": "url",
+                    "selector": ".product-url"
+                },
+                {
+                    "selectorProperty": "innerText",
+                    "selectorFieldName": "name",
+                    "selector": ".product-title"
+                },
+                {
+                    "selectorProperty": "attribute_data-src",
+                    "selectorFieldName": "image",
+                    "selector": "img[data-src]"
+                },
+                {
+                    "selectorProperty": "innerText",
+                    "selectorFieldName": "price",
+                    "selector": "p:last-child span.price"
+                }
+            ],
+            "cssSelectorAllProducts": ".category-product",
+            "storeUrl": "prettylittlething.com",
+            "storeCategories": [
+                {
+                    "category": "Categories",
+                    "order": 0,
+                    "categoryUrl": "",
+                    "categoryChildren": [
+                        {
+                            "order": 10,
+                            "category": "New In",
+                            "categoryUrl": "https://www.prettylittlething.com/new-in.html?navigation-newin-viewall"
+                        },
+                        {
+                            "order": 20,
+                            "category": "Clothing",
+                            "categoryUrl": "https://www.prettylittlething.com/clothing/view-all-clothing.html?navigation-clothing-viewall"
+                        },
+                        {
+                            "order": 30,
+                            "category": "Shoes",
+                            "categoryUrl": "https://www.prettylittlething.com/shoes.html?navigation-shoes-viewall"
+                        },
+                        {
+                            "order": 40,
+                            "category": "Accessories",
+                            "categoryUrl": "https://www.prettylittlething.com/accessories.html?navigation-accessories-top"
+                        },
+                        {
+                            "order": 50,
+                            "category": "Beauty",
+                            "categoryUrl": "https://www.prettylittlething.com/beauty/view-all.html?navigation-beauty-viewall"
+                        },
+                        {
+                            "order": 60,
+                            "category": "Sale",
+                            "categoryUrl": "https://www.prettylittlething.com/sale/view-all-sale.html?navigation-sale-viewall"
+                        }
+                    ]
+                }
+            ],
+            "defaultCurrency": ""
+        },
+        {
+            "spider_process": false,
+            "live_url_root": "https://click.linksynergy.com/fs-bin/click?id=UoEVnMz9Ix4&offerid=504179.137&subid=0&type=4",
+            "storeName": "shopbop",
+            "storeLogo": "shopbop-140.png",
+            "cssSelectorsForProduct": [
+                {
+                    "selectorProperty": "href",
+                    "selectorFieldName": "url",
+                    "selector": "a:first-child"
+                },
+                {
+                    "selectorProperty": "innerText",
+                    "selectorFieldName": "name",
+                    "selector": "div.title"
+                },
+                {
+                    "selectorProperty": "src",
+                    "selectorFieldName": "image",
+                    "selector": "img.thumbnail"
+                },
+                {
+                    "selectorProperty": "innerText",
+                    "selectorFieldName": "price",
+                    "selector": "span.sale-price-low"
+                },
+                {
+                    "selectorProperty": "innerText",
+                    "selectorFieldName": "additional_text",
+                    "selector": "div.brand"
+                }
+            ],
+            "cssSelectorAllProducts": ".product-list .product",
+            "storeUrl": "shopbop.com",
+            "storeCategories": [
+                {
+                    "category": "Categories",
+                    "order": 0,
+                    "categoryUrl": "",
+                    "categoryChildren": [
+                        {
+                            "order": 10,
+                            "category": "Clothing",
+                            "categoryUrl": "https://www.shopbop.com/whats-new-clothing/br/v=1/13243.htm"
+                        },
+                        {
+                            "order": 20,
+                            "category": "Shoes",
+                            "categoryUrl": "https://www.shopbop.com/shoes/br/v=1/13438.htm"
+                        },
+                        {
+                            "order": 40,
+                            "category": "Accessories",
+                            "categoryUrl": "https://www.shopbop.com/jewelry-accessories/br/v=1/13539.htm"
+                        },
+                        {
+                            "order": 60,
+                            "category": "Sale",
+                            "categoryUrl": "https://www.shopbop.com/sale/br/v=1/13594.htm"
+                        }
+                    ]
+                }
+            ],
+            "defaultCurrency": ""
+        },
+        {
+            "spider_process": false,
+            "live_url_root": "https://www.awin1.com/cread.php?s=231188&v=2872&q=114376&r=568195",
+            "storeName": "missguided",
+            "storeLogo": "misguided-140.png",
+            "cssSelectorsForProduct": [
+                {
+                    "selectorProperty": "href",
+                    "selectorFieldName": "url",
+                    "selector": "a:first-child"
+                },
+                {
+                    "selectorProperty": "innerText",
+                    "selectorFieldName": "name",
+                    "selector": "a.product-name"
+                },
+                {
+                    "selectorProperty": "src",
+                    "selectorFieldName": "image",
+                    "selector": ".product-image img"
+                },
+                {
+                    "selectorProperty": "innerText",
+                    "selectorFieldName": "price",
+                    "selector": ".price-box span.price"
+                }
+            ],
+            "cssSelectorAllProducts": ".products-grid li",
+            "storeUrl": "missguided.co.uk",
+            "storeCategories": [
+                {
+                    "category": "Categories",
+                    "order": 0,
+                    "categoryUrl": "",
+                    "categoryChildren": [
+                        {
+                            "order": 10,
+                            "category": "Dresses",
+                            "categoryUrl": "https://www.missguided.co.uk/dresses/"
+                        },
+                        {
+                            "order": 20,
+                            "category": "Tops",
+                            "categoryUrl": "https://www.missguided.co.uk/clothing/tops/"
+                        }
+                    ]
+                }
+            ],
+            "defaultCurrency": ""
+        },
+        {
+            "spider_process": false,
+            "live_url_root": "https://www.awin1.com/cread.php?s=2320866&v=7899&q=315901&r=568195",
+            "storeName": "thebodyshop",
+            "storeLogo": "the-body-shop-140.png",
+            "cssSelectorsForProduct": [
+                {
+                    "selectorProperty": "href",
+                    "selectorFieldName": "url",
+                    "selector": "a:first-child"
+                },
+                {
+                    "selectorProperty": "innerText",
+                    "selectorFieldName": "name",
+                    "selector": "h3.product-title"
+                },
+                {
+                    "selectorProperty": "attribute_data-src",
+                    "selectorFieldName": "image",
+                    "selector": ".product-title-link img"
+                },
+                {
+                    "selectorProperty": "innerText",
+                    "selectorFieldName": "price",
+                    "selector": "span[data-ng-show=\"!product.wasPrice\"]"
+                }
+            ],
+            "cssSelectorAllProducts": ".product-grid li",
+            "storeUrl": "thebodyshop.com",
+            "storeCategories": [
+                {
+                    "category": "Categories",
+                    "order": 0,
+                    "categoryUrl": "",
+                    "categoryChildren": [
+                        {
+                            "order": 10,
+                            "category": "Bestsellers",
+                            "categoryUrl": "https://www.thebodyshop.com/en-gb/trending/bestsellers/c/c02007"
+                        },
+                        {
+                            "order": 20,
+                            "category": "View All Body",
+                            "categoryUrl": "https://www.thebodyshop.com/en-gb/body/view-all/c/c00236"
+                        }
+                    ]
+                }
+            ],
+            "defaultCurrency": ""
+        },
+        {
+            "spider_process": false,
+            "live_url_root": "https://www.awin1.com/cread.php?s=2013371&v=6533&q=318679&r=568195",
+            "storeName": "newbalance",
+            "storeLogo": "new-balance-140.png",
+            "cssSelectorsForProduct": [
+                {
+                    "selectorProperty": "href",
+                    "selectorFieldName": "url",
+                    "selector": "a.product-image"
+                },
+                {
+                    "selectorProperty": "innerText",
+                    "selectorFieldName": "name",
+                    "selector": ".product-info p"
+                },
+                {
+                    "selectorProperty": "attribute_data-original",
+                    "selectorFieldName": "image",
+                    "selector": ".product-image img"
+                },
+                {
+                    "selectorProperty": "innerText",
+                    "selectorFieldName": "price",
+                    "selector": ".product-pricing"
+                }
+            ],
+            "cssSelectorAllProducts": ".product-list li",
+            "storeUrl": "newbalance.co.uk",
+            "storeCategories": [
+                {
+                    "category": "Men",
+                    "order": 0,
+                    "categoryUrl": "",
+                    "categoryChildren": [
+                        {
+                            "order": 10,
+                            "category": "All Shoes",
+                            "categoryUrl": "https://www.newbalance.co.uk/men/shoes/?srule=New_Arrivals"
+                        }
+                    ]
+                },
+                {
+                    "category": "Women",
+                    "order": 0,
+                    "categoryUrl": "",
+                    "categoryChildren": [
+                        {
+                            "order": 10,
+                            "category": "All Shoes",
+                            "categoryUrl": "https://www.newbalance.co.uk/women/shoes/?srule=New_Arrivals"
+                        }
+                    ]
+                }
+            ],
+            "defaultCurrency": ""
+        }
+    ]
+}
