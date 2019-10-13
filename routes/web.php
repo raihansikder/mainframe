@@ -11,8 +11,10 @@
 |
 */
 
+Auth::routes(['verify' => true]);
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-include_once('mainframe/modules.php');
+// include_once('mainframe/modules.php'); // Later when we move routes to a different directory
