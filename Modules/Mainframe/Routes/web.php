@@ -11,8 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::prefix('mainframe')->group(function() {
+    Route::get('/', 'MainframeController@index');
 });
-
-include_once('mainframe/modules.php');

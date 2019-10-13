@@ -2,9 +2,11 @@
 
 namespace App;
 
-use Modules\Mainframe\Entities\User as MainframeUser;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends MainframeUser
+class User extends \App\Mainframe\Core\User
 {
 
 }
