@@ -372,10 +372,10 @@ class Upload extends Basemodule
     public function extIconPath()
     {
         $ext = strtolower($this->ext); // get full lower case extension
-        $icon_path = 'file_type_icons/'.$ext.'.png';
+        $icon_path = 'mainframe/images/file_type_icons/'.$ext.'.png';
 
         if (! \File::exists($icon_path)) {
-            $icon_path = 'file_type_icons/noimage.png';
+            $icon_path = 'mainframe/images/file_type_icons/noimage.png';
         }
         return asset($icon_path);
     }

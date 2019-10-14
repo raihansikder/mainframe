@@ -1,1 +1,0 @@
-@extends('modules.base.report.results-print')

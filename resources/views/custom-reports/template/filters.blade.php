@@ -14,7 +14,7 @@
             <li><a href="#tab_basic" data-toggle="tab">Filters</a></li>
             <li><a href="#tab_advanced" data-toggle="tab">Fields</a></li>
             <li class="pull-right">
-                @include('modules.base.report.cta')
+                @include('mainframe.modules.base.report.cta')
             </li>
         </ul>
         <div class="tab-content">
@@ -27,7 +27,7 @@
 
             </div>
             <div class="tab-pane" id="tab_advanced">
-                @include('modules.base.report.advanced')
+                @include('mainframe.modules.base.report.advanced')
             </div>
         </div>
         <div class="clearfix"></div>
