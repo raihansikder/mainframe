@@ -2,7 +2,8 @@
 
 namespace App;
 
-use App\Traits\IsoModule;
+use Str;
+use App\Mainframe\BaseModule;
 use App\Observers\ChangeObserver;
 
 /**
@@ -63,8 +64,10 @@ use App\Observers\ChangeObserver;
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Change[] $changes
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Upload[] $uploads
  * @property-read \App\Upload $latestUpload
+ * @property-read int|null $changes_count
+ * @property-read int|null $uploads_count
  */
-class Change extends Basemodule
+class Change extends BaseModule
 {
     // use IsoModule;
     /**
@@ -107,13 +110,21 @@ class Change extends Basemodule
      * @var array
      */
     // protected $dates = ['created_at', 'updated_at', 'deleted_at'];
+    /**
+     * Custom validation messages.
+     *
+     * @var array
+     */
+    public static $custom_validation_messages = [
+        //'name.required' => 'Custom message.',
+    ];
 
     /**
      * Validation rules. For regular expression validation use array instead of pipe
      * Example: 'name' => ['required', 'Regex:/^[A-Za-z0-9\-! ,\'\"\/@\.:\(\)]+$/']
      *
      * @param       $element
-     * @param array $merge
+     * @param  array  $merge
      * @return array
      */
     public static function rules($element, $merge = [])
@@ -126,17 +137,9 @@ class Change extends Basemodule
             // 'updated_by' => 'exists:users,id,is_active,1',
 
         ];
+
         return array_merge($rules, $merge);
     }
-
-    /**
-     * Custom validation messages.
-     *
-     * @var array
-     */
-    public static $custom_validation_messages = [
-        //'name.required' => 'Custom message.',
-    ];
 
     /**
      * Automatic eager load relation by default (can be expensive)
@@ -191,6 +194,7 @@ class Change extends Basemodule
             /************************************************************/
             // fill common fields, null-fill, trim blanks from input
             $element->is_active = 1;
+
             return $valid;
         });
 
@@ -230,7 +234,7 @@ class Change extends Basemodule
     ############################################################################################
 
     /**
-     * @param bool|false $setMsgSession setting it false will not store the message in session
+     * @param  bool|false  $setMsgSession  setting it false will not store the message in session
      * @return bool
      */
     //    public function isSomethingDoable($setMsgSession = false)
@@ -266,7 +270,7 @@ class Change extends Basemodule
     /**
      * Get changes of a model and store in session.
      *
-     * @param \App\Basemodule $element
+     * @param  \App\Basemodule  $element
      */
     public static function keepChangesInSession($element)
     {
@@ -276,13 +280,13 @@ class Change extends Basemodule
     /**
      * Get the changes in an array
      *
-     * @param \App\Basemodule $filled_element
-     * @param array $except
+     * @param  \App\Basemodule  $filled_element
+     * @param  array  $except
      * @return array
      */
     public static function getDifferences($filled_element, $except = ['updated_at'])
     {
-        /** @var Basemodule $Model */
+        /** @var BaseModule $Model */
 
         $changes = [];
         if (isset($filled_element->id)) {
@@ -293,7 +297,7 @@ class Change extends Basemodule
 
             $i = 0;
             foreach ($new_values as $attribute => $value) {
-                if (!in_array($attribute, $except) && $original->$attribute != $value) {
+                if (! in_array($attribute, $except) && $original->$attribute != $value) {
 
                     $old_value = $original->$attribute;
                     if (is_array($old_value)) {
@@ -313,6 +317,7 @@ class Change extends Basemodule
                     $i++;
                 }
             }
+
             return $changes;
         }
     }
@@ -320,9 +325,9 @@ class Change extends Basemodule
     /**
      * Fetch changes that are stored in session and save in database.
      *
-     * @param string $change_name
-     * @param \App\Basemodule $element
-     * @param string $desc
+     * @param  string  $change_name
+     * @param  \App\Basemodule  $element
+     * @param  string  $desc
      */
     public static function storeChangesFromSession($change_name = "", $element, $desc = "")
     {
@@ -332,16 +337,16 @@ class Change extends Basemodule
     }
 
     /**
-     * @param string $change_name : assign a meaningful name of the change
-     * @param \App\Basemodule $element
-     * @param array $changes
-     * @param string $desc
+     * @param  string  $change_name  : assign a meaningful name of the change
+     * @param  \App\Basemodule  $element
+     * @param  array  $changes
+     * @param  string  $desc
      * @internal param array $change_items
      */
     public static function storeChanges($change_name = '', $element, $changes = [], $desc = "")
     {
         if (isset($element->id) && count($changes)) {
-            $changeset = str_random(8);
+            $changeset = Str::random(8);
             if ($module = Module::whereName(moduleName(get_class($element)))->first()) {
                 foreach ($changes as $change) {
                     if (is_array($change['new'])) {
@@ -373,8 +378,8 @@ class Change extends Basemodule
     /**
      * Store a log entry when a new element is created
      *
-     * @param \App\Basemodule $element
-     * @param string $details
+     * @param  \App\Basemodule  $element
+     * @param  string  $details
      */
     public static function storeCreateLog($element, $details = "")
     {
@@ -382,7 +387,7 @@ class Change extends Basemodule
             $changeset = str_random(8);
             if ($module = Module::whereName(moduleName(get_class($element)))->remember(cacheTime('long'))->first()) {
                 $change = Change::create([
-                    "name" => "Create new " . get_class($element),
+                    "name" => "Create new ".get_class($element),
                     "changeset" => $changeset,
                     "module_id" => $module->id,
                     "module_name" => $module->name,
@@ -413,7 +418,7 @@ class Change extends Basemodule
      * whether this should be allowed or not. The logic can be further
      * extend to implement more conditions.
      *
-     * @param null $user_id
+     * @param  null  $user_id
      * @return bool
      */
     //    public function isViewable($user_id = null)
@@ -431,7 +436,7 @@ class Change extends Basemodule
      * whether this should be allowed or not. The logic can be further
      * extend to implement more conditions.
      *
-     * @param null $user_id
+     * @param  null  $user_id
      * @return bool
      */
     //    public function isEditable($user_id = null)
@@ -449,7 +454,7 @@ class Change extends Basemodule
      * whether this should be allowed or not. The logic can be further
      * extend to implement more conditions.
      *
-     * @param null $user_id
+     * @param  null  $user_id
      * @return bool
      */
     //    public function isDeletable($user_id = null)
@@ -467,7 +472,7 @@ class Change extends Basemodule
      * whether this should be allowed or not. The logic can be further
      * extend to implement more conditions.
      *
-     * @param null $user_id
+     * @param  null  $user_id
      * @return bool
      */
     //    public function isRestorable($user_id = null)
@@ -522,7 +527,7 @@ class Change extends Basemodule
      */
     ############################################################################################
 
-    # Default relationships already available in base Class 'Basemodule'
+    # Default relationships already available in base Class 'BaseModule'
     //public function updater() { return $this->belongsTo('User', 'updated_by'); }
     //public function creator() { return $this->belongsTo('User', 'created_by'); }
 

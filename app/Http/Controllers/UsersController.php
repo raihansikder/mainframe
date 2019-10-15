@@ -15,6 +15,7 @@ use App\Invoice;
 use App\Purchase;
 use Illuminate\Support\Str;
 use App\Classes\Reports\UsersReport;
+use App\Http\Mainframe\Controllers\ModulebaseController;
 
 class UsersController extends ModulebaseController
 {

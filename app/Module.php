@@ -2,8 +2,8 @@
 
 namespace App;
 
+use App\Mainframe\BaseModule;
 use App\Observers\ModuleObserver;
-use App\Traits\IsoModule;
 
 /**
  * Class Module
@@ -62,8 +62,10 @@ use App\Traits\IsoModule;
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Change[] $changes
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Upload[] $uploads
  * @property-read \App\Upload $latestUpload
+ * @property-read int|null $changes_count
+ * @property-read int|null $uploads_count
  */
-class Module extends Basemodule
+class Module extends BaseModule
 {
     // use IsoModule;
 
@@ -72,7 +74,10 @@ class Module extends Basemodule
      *
      * @var array
      */
-    protected $fillable = ['name', 'title', 'description', 'parent_id', 'modulegroup_id', 'level', 'order', 'color_css', 'icon_css', 'default_route', 'is_active', 'created_by', 'updated_by', 'deleted_by'];
+    protected $fillable = [
+        'name', 'title', 'description', 'parent_id', 'modulegroup_id', 'level', 'order', 'color_css', 'icon_css', 'default_route', 'is_active', 'created_by',
+        'updated_by', 'deleted_by'
+    ];
 
     /**
      * Disallow from mass assignment. (Black-listed fields)
@@ -95,27 +100,6 @@ class Module extends Basemodule
      * @var array
      */
     // protected $dates = ['created_at', 'updated_at', 'deleted_at'];
-
-    /**
-     * Validation rules. For regular expression validation use array instead of pipe
-     * Example: 'name' => ['required', 'Regex:/^[A-Za-z0-9\-! ,\'\"\/@\.:\(\)]+$/']
-     *
-     * @param       $element
-     * @param array $merge
-     * @return array
-     */
-    public static function rules($element, $merge = [])
-    {
-        $rules = [
-            'name' => 'required|between:1,255|unique:modules,name,' . (isset($element->id) ? "$element->id" : 'null') . ',id,deleted_at,NULL',
-            'title' => 'required|between:1,255|unique:modules,title,' . (isset($element->id) ? "$element->id" : 'null') . ',id,deleted_at,NULL',
-            // 'created_by' => 'exists:users,id,is_active,1',
-            // 'updated_by' => 'exists:users,id,is_active,1',
-            'is_active' => 'required|in:1,0',
-        ];
-        return array_merge($rules, $merge);
-    }
-
     /**
      * Custom validation messages.
      *
@@ -124,6 +108,27 @@ class Module extends Basemodule
     public static $custom_validation_messages = [
         //'name.required' => 'Custom message.',
     ];
+
+    /**
+     * Validation rules. For regular expression validation use array instead of pipe
+     * Example: 'name' => ['required', 'Regex:/^[A-Za-z0-9\-! ,\'\"\/@\.:\(\)]+$/']
+     *
+     * @param       $element
+     * @param  array  $merge
+     * @return array
+     */
+    public static function rules($element, $merge = [])
+    {
+        $rules = [
+            'name' => 'required|between:1,255|unique:modules,name,'.(isset($element->id) ? "$element->id" : 'null').',id,deleted_at,NULL',
+            'title' => 'required|between:1,255|unique:modules,title,'.(isset($element->id) ? "$element->id" : 'null').',id,deleted_at,NULL',
+            // 'created_by' => 'exists:users,id,is_active,1',
+            // 'updated_by' => 'exists:users,id,is_active,1',
+            'is_active' => 'required|in:1,0',
+        ];
+
+        return array_merge($rules, $merge);
+    }
 
     /**
      * Automatic eager load relation by default (can be expensive)
@@ -136,6 +141,7 @@ class Module extends Basemodule
     # Model events
     ############################################################################################
 
+
     public static function boot()
     {
         /**
@@ -144,7 +150,7 @@ class Module extends Basemodule
          * make the parent (Eloquent) boot method run.
          */
         parent::boot();
-        //Basemodule::registerObserver(get_class()); // register observer
+        //BaseModule::registerObserver(get_class()); // register observer
         Module::observe(ModuleObserver::class);
 
         /************************************************************/
@@ -186,13 +192,13 @@ class Module extends Basemodule
 
             if ($valid) {
                 // Fill default values
-                $element->parent_id = (!$element->parent_id) ? 0 : $element->parent_id;
-                $element->modulegroup_id = (!$element->modulegroup_id) ? 0 : $element->modulegroup_id;
-                $element->level = (!$element->level) ? 0 : $element->level;
-                $element->order = (!$element->order) ? 0 : $element->order;
-                $element->default_route = (!$element->default_route) ? $element->name . '.index' : $element->default_route;
-                $element->color_css = (!$element->color_css) ? 'aqua' : $element->color_css;
-                $element->icon_css = (!$element->icon_css) ? 'fa fa-plus' : $element->icon_css;
+                $element->parent_id = (! $element->parent_id) ? 0 : $element->parent_id;
+                $element->modulegroup_id = (! $element->modulegroup_id) ? 0 : $element->modulegroup_id;
+                $element->level = (! $element->level) ? 0 : $element->level;
+                $element->order = (! $element->order) ? 0 : $element->order;
+                $element->default_route = (! $element->default_route) ? $element->name.'.index' : $element->default_route;
+                $element->color_css = (! $element->color_css) ? 'aqua' : $element->color_css;
+                $element->icon_css = (! $element->icon_css) ? 'fa fa-plus' : $element->icon_css;
             }
 
             return $valid;
@@ -234,7 +240,7 @@ class Module extends Basemodule
     ############################################################################################
 
     /**
-     * @param bool|false $setMsgSession setting it false will not store the message in session
+     * @param  bool|false  $setMsgSession  setting it false will not store the message in session
      * @return bool
      */
     //    public function isSomethingDoable($setMsgSession = false)
@@ -279,7 +285,7 @@ class Module extends Basemodule
     /**
      * Get module names as one-dimentional array, by default get only the active ones
      *
-     * @param bool|true $only_active
+     * @param  bool|true  $only_active
      * @return array
      */
     public static function names($only_active = true)
@@ -290,6 +296,7 @@ class Module extends Basemodule
         }
         $results = $q->remember(cacheTime('long'))->get()->toArray();
         $modules = array_column($results, 'name');
+
         return $modules;
     }
 
@@ -303,7 +310,9 @@ class Module extends Basemodule
     {
         $stack = [$this];
         for ($i = $this->parent_id; ;) {
-            if (!$i) break;
+            if (! $i) {
+                break;
+            }
 
             if ($predecessor = Module::find($i)) {
                 array_push($stack, $predecessor);
@@ -327,13 +336,16 @@ class Module extends Basemodule
     {
         $stack = [$this];
         for ($i = $this->modulegroup_id; ;) {
-            if (!$i) break;
+            if (! $i) {
+                break;
+            }
             if ($predecessor = Modulegroup::remember(60)->find($i)) {
                 array_push($stack, $predecessor);
                 $i = $predecessor->parent_id;
             }
         }
         $stack = array_reverse($stack);
+
         return $stack;
     }
 
@@ -354,7 +366,7 @@ class Module extends Basemodule
      * whether this should be allowed or not. The logic can be further
      * extend to implement more conditions.
      *
-     * @param null $user_id
+     * @param  null  $user_id
      * @return bool
      */
     //    public function isViewable($user_id = null)
@@ -372,7 +384,7 @@ class Module extends Basemodule
      * whether this should be allowed or not. The logic can be further
      * extend to implement more conditions.
      *
-     * @param null $user_id
+     * @param  null  $user_id
      * @return bool
      */
     //    public function isEditable($user_id = null)
@@ -390,7 +402,7 @@ class Module extends Basemodule
      * whether this should be allowed or not. The logic can be further
      * extend to implement more conditions.
      *
-     * @param null $user_id
+     * @param  null  $user_id
      * @return bool
      */
     //    public function isDeletable($user_id = null)
@@ -408,7 +420,7 @@ class Module extends Basemodule
      * whether this should be allowed or not. The logic can be further
      * extend to implement more conditions.
      *
-     * @param null $user_id
+     * @param  null  $user_id
      * @return bool
      */
     //    public function isRestorable($user_id = null)
@@ -463,7 +475,7 @@ class Module extends Basemodule
      */
     ############################################################################################
 
-    # Default relationships already available in base Class 'Basemodule'
+    # Default relationships already available in base Class 'BaseModule'
     //public function updater() { return $this->belongsTo('User', 'updated_by'); }
     //public function creator() { return $this->belongsTo('User', 'created_by'); }
 

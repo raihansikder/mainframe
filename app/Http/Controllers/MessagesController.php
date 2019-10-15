@@ -9,6 +9,7 @@ use Request;
 use Response;
 use Validator;
 use View;
+use App\Http\Mainframe\Controllers\ModulebaseController;
 
 class MessagesController extends ModulebaseController
 {

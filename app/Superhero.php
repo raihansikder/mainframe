@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Mainframe\BaseModule;
 use App\Observers\SuperheroObserver;
 
 /**
@@ -30,7 +31,7 @@ use App\Observers\SuperheroObserver;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Superhero newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Superhero query()
  */
-class Superhero extends Basemodule
+class Superhero extends BaseModule
 {
     // use IsoModule;
     /**
@@ -333,7 +334,7 @@ class Superhero extends Basemodule
      */
     ############################################################################################
 
-    # Default relationships already available in base Class 'Basemodule'
+    # Default relationships already available in base Class 'BaseModule'
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

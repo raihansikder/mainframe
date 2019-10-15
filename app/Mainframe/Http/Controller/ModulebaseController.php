@@ -1,11 +1,11 @@
-<?php /** @noinspection PhpUndefinedClassInspection */
+<?php
+/** @noinspection PhpUndefinedClassInspection */
 /** @noinspection NotOptimalIfConditionsInspection */
 /** @noinspection PhpParamsInspection */
 /** @noinspection PhpUnusedLocalVariableInspection */
-
 /** @noinspection PhpUndefinedMethodInspection */
 
-namespace App\Http\Controllers;
+namespace App\Http\Mainframe\Controllers;
 
 use DB;
 use View;
@@ -16,9 +16,9 @@ use Exception;
 use Validator;
 use App\Module;
 use App\Upload;
-use App\Traits\IsoOutput;
 use Illuminate\Support\Str;
-use App\Traits\IsoGridDatatable;
+use App\Mainframe\Traits\IsoOutput;
+use App\Mainframe\Traits\IsoGridDatatable;
 use App\Classes\Reports\DefaultModuleReport;
 
 /**
@@ -63,6 +63,7 @@ class ModulebaseController extends Controller
      * Index/List page to show grid
      * This controller method is responsible for rendering the view that has the default
      * spyr module grid.
+     *
      * @return \App\Http\Controllers\ModulebaseController|\Illuminate\Contracts\View\View|\Illuminate\Http\JsonResponse|\Illuminate\View\View
      */
     public function index()
@@ -75,6 +76,7 @@ class ModulebaseController extends Controller
             if (View::exists('modules.'.$this->module_name.'.grid')) {
                 $view = 'modules.'.$this->module_name.'.grid';
             }
+
             return view($view)->with('grid_columns', $this->gridColumns());
         }
         abort(403);
@@ -85,6 +87,7 @@ class ModulebaseController extends Controller
 
     /**
      * Shows an element create form.
+     *
      * @return \Illuminate\Contracts\View\View|\View
      * @throws \Exception
      */
@@ -93,6 +96,7 @@ class ModulebaseController extends Controller
 
         if (hasModulePermission($this->module_name, 'create')) {
             $uuid = Request::old('uuid') ?: uuid();
+
             return View::make('modules.base.form')->with('uuid', $uuid)->with('element_editable', true);
         }
 
@@ -106,6 +110,7 @@ class ModulebaseController extends Controller
     /**
      * Store an spyr element. Returns json response if ret=json is sent as url parameter. Otherwise redirects
      * based on the url set in redirect_success|redirect_fail
+     *
      * @return $this|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      * @var \App\Basemodule $element
      * @var \App\Superhero $Model
@@ -161,6 +166,7 @@ class ModulebaseController extends Controller
     /**
      * Shows an spyr element. Store an spyr element. Returns json response if ret=json is sent as url parameter.
      * Otherwise redirects to edit page where details is visible as filled up edit form.
+     *
      * @param $id
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
@@ -202,6 +208,7 @@ class ModulebaseController extends Controller
 
     /**
      * Show spyr element edit form
+     *
      * @param $id
      * @return $this|\Illuminate\Http\RedirectResponse
      */
@@ -242,6 +249,7 @@ class ModulebaseController extends Controller
 
     /**
      * Update handler for spyr element.
+     *
      * @param $id
      * @return $this|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      * @var \App\Basemodule $element
@@ -302,6 +310,7 @@ class ModulebaseController extends Controller
 
     /**
      * Delete spyr element.
+     *
      * @param $id
      * @return $this|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      * @throws \Exception
@@ -349,11 +358,13 @@ class ModulebaseController extends Controller
                     ->with('body', 'The item that you are trying to access does not exist or has been deleted');
             }
         }
+
         return $redirect;
     }
 
     /**
      * Restore a soft-deleted.
+     *
      * @param  null  $id
      * @return $this
      */
@@ -367,6 +378,7 @@ class ModulebaseController extends Controller
 
     /**
      * Returns a collection of objects as Json
+     *
      * @return \Illuminate\Http\JsonResponse
      * @var \Illuminate\Database\Eloquent\Builder $q
      * @var \App\Basemodule $Model
@@ -374,11 +386,13 @@ class ModulebaseController extends Controller
     public function list()
     {
         $ret = ret('success', "{$this->module_name} list", $this->listData());
+
         return Response::json(fillRet($ret));
     }
 
     /**
      * Obtain data
+     *
      * @return array
      */
     public function listData()
@@ -447,6 +461,7 @@ class ModulebaseController extends Controller
 
     /**
      * Json return query constructor
+     *
      * @param $q \Illuminate\Database\Query\Builder
      * @return \App\Basemodule
      */
@@ -519,6 +534,7 @@ class ModulebaseController extends Controller
 
     /**
      * Show all the changes/change logs of an item
+     *
      * @param $id
      * @return \Illuminate\Http\JsonResponse|ModulebaseController
      */
@@ -559,6 +575,7 @@ class ModulebaseController extends Controller
         }
 
         // Update successful. Redirect to success path(url)
+
         /** @var array $changes */
         return View::make('modules.base.changes')
             ->with('changes', $changes);
@@ -566,6 +583,7 @@ class ModulebaseController extends Controller
 
     /**
      * Get data source of report
+     *
      * @return null|string
      */
     public function reportDataSource()
@@ -575,6 +593,7 @@ class ModulebaseController extends Controller
 
     /**
      * Get base directory of blade views
+     *
      * @return string
      */
     public function reportViewBaseDir()
@@ -586,6 +605,7 @@ class ModulebaseController extends Controller
         if (View::exists('modules.'.$this->module_name.'.report.results')) {
             $base_dir = 'modules.'.$this->module_name.'.report';
         }
+
         return $base_dir;
     }
 
@@ -598,6 +618,7 @@ class ModulebaseController extends Controller
             $report = new DefaultModuleReport();
             $report->data_source = $this->reportDataSource();
             $report->base_dir = $this->reportViewBaseDir();
+
             return $report->show();
         }
 
@@ -607,6 +628,7 @@ class ModulebaseController extends Controller
 
     /**
      * Transforms inputs to a Model compatible format.
+     *
      * @param  array  $inputs
      * @return array
      */

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Traits;
+namespace App\Mainframe\Traits;
 
 use Request;
 use Redirect;

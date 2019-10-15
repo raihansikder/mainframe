@@ -10,6 +10,7 @@ use Request;
 use Response;
 use Validator;
 use View;
+use App\Http\Mainframe\Controllers\ModulebaseController;
 
 class SettingsController extends ModulebaseController
 {

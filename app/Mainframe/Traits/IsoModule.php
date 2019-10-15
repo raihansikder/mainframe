@@ -6,7 +6,7 @@
 /** @noinspection PhpUndefinedMethodInspection */
 /** @noinspection PhpUnusedParameterInspection */
 
-namespace App\Traits;
+namespace App\Mainframe\Traits;
 
 use App\User;
 use Validator;
@@ -97,12 +97,12 @@ trait IsoModule
         /*
         if (!isset($this->id)) {
             if (!$this->isCreatable()) {
-                $valid = setError("Can not save new " . $this->module()->title . " Error: Basemodule validate()");
+                $valid = setError("Can not save new " . $this->module()->title . " Error: BaseModule validate()");
             }
 
         } else {
             if (!$this->isEditable()) {
-                $valid = setError("Can not update " . mlink($this->module()->name, $this->id) . " Error: Basemodule isEditable()");
+                $valid = setError("Can not update " . mlink($this->module()->name, $this->id) . " Error: BaseModule isEditable()");
             }
         }
         */

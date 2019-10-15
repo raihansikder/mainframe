@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 
+use App\Http\Mainframe\Controllers\ModulebaseController;
+
 class TenantsController extends ModulebaseController
 {
 

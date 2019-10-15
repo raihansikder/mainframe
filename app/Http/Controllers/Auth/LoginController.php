@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use Auth;
 use App\User;
-use App\Traits\IsoOutput;
+use App\Mainframe\Traits\IsoOutput;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Validation\ValidationException;

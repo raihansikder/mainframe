@@ -4,6 +4,7 @@ namespace App;
 
 use Mail;
 use Config;
+use App\Mainframe\BaseModule;
 use App\Mail\FileUploadedByBrand;
 use App\Observers\UploadObserver;
 use App\Mail\FileUploadedByCharity;
@@ -68,8 +69,10 @@ use App\Mail\FileUploadedByCharity;
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Change[] $changes
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Upload[] $uploads
  * @property-read \App\Upload $latestUpload
+ * @property-read int|null $changes_count
+ * @property-read int|null $uploads_count
  */
-class Upload extends Basemodule
+class Upload extends BaseModule
 {
     // use IsoModule;
     /**
@@ -529,7 +532,7 @@ class Upload extends Basemodule
      */
     ############################################################################################
 
-    # Default relationships already available in base Class 'Basemodule'
+    # Default relationships already available in base Class 'BaseModule'
     //public function updater() { return $this->belongsTo('User', 'updated_by'); }
     //public function creator() { return $this->belongsTo('User', 'created_by'); }
 

@@ -1,13 +1,13 @@
 <?php
 
-namespace App;
+namespace App\Mainframe;
 
-use App\Traits\IsoModule;
+use App\Mainframe\Traits\IsoModule;
 use Illuminate\Database\Eloquent\Model;
 use Validator;
 
 /**
- * Class Basemodule
+ * Class BaseModule
  * @package App
  * @property int $id
  * @property string|null $uuid
@@ -21,19 +21,8 @@ use Validator;
  * @property string|null $deleted_at
  * @property int|null $deleted_by
  * @method static bool|null forceDelete()
- * @method static \Illuminate\Database\Query\Builder|\App\Basemodule onlyTrashed()
- * @method static bool|null restore()
- * @method static \Illuminate\Database\Query\Builder|\App\Basemodule withTrashed()
- * @method static \Illuminate\Database\Query\Builder|\App\Basemodule withoutTrashed()
- * @mixin \Eloquent
- * @property-read \App\User $creator
- * @property-read \App\User $updater
- * @property string path
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Basemodule newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Basemodule newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Basemodule query()
  */
-class Basemodule extends Model
+class BaseModule extends Model
 {
     // use SoftDeletes;
     // use Rememberable;
@@ -164,12 +153,12 @@ class Basemodule extends Model
         /*
         if (!isset($this->id)) {
             if (!$this->isCreatable()) {
-                $valid = setError("Can not save new " . $this->module()->title . " Error: Basemodule validate()");
+                $valid = setError("Can not save new " . $this->module()->title . " Error: BaseModule validate()");
             }
 
         } else {
             if (!$this->isEditable()) {
-                $valid = setError("Can not update " . mlink($this->module()->name, $this->id) . " Error: Basemodule isEditable()");
+                $valid = setError("Can not update " . mlink($this->module()->name, $this->id) . " Error: BaseModule isEditable()");
             }
         }
         */

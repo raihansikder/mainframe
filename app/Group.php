@@ -3,7 +3,7 @@
 namespace App;
 
 use Request;
-use App\Traits\IsoModule;
+use App\Mainframe\BaseModule;
 use App\Observers\GroupObserver;
 
 /**
@@ -50,8 +50,11 @@ use App\Observers\GroupObserver;
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Change[] $changes
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Upload[] $uploads
  * @property-read \App\Upload $latestUpload
+ * @property-read int|null $changes_count
+ * @property-read int|null $uploads_count
+ * @property-read int|null $users_count
  */
-class Group extends Basemodule
+class Group extends BaseModule
 {
     // use IsoModule;
     /**
@@ -74,27 +77,6 @@ class Group extends Basemodule
      * @var array
      */
     // protected $dates = ['created_at', 'updated_at', 'deleted_at'];
-
-    /**
-     * Validation rules. For regular expression validation use array instead of pipe
-     * Example: 'name' => ['required', 'Regex:/^[A-Za-z0-9\-! ,\'\"\/@\.:\(\)]+$/']
-     *
-     * @param       $element
-     * @param array $merge
-     * @return array
-     */
-    public static function rules($element, $merge = []) {
-        $rules = [
-            'name' => 'required|between:1,255|unique:groups,name,' . (isset($element->id) ? "$element->id" : 'null') . ',id,deleted_at,NULL',
-            'is_active' => 'required|in:1,0',
-            // 'tenant_id'  => 'required|tenants,id,is_active,1',
-            // 'created_by' => 'exists:users,id,is_active,1', // Optimistic validation for created_by,updated_by
-            // 'updated_by' => 'exists:users,id,is_active,1',
-
-        ];
-        return array_merge($rules, $merge);
-    }
-
     /**
      * Custom validation messages.
      *
@@ -103,6 +85,15 @@ class Group extends Basemodule
     public static $custom_validation_messages = [
         //'name.required' => 'Custom message.',
     ];
+    /**
+     * Allowed permissions values.
+     * Possible options:
+     *    0 => Remove.
+     *    1 => Add.
+     *
+     * @var array
+     */
+    protected $allowedPermissionsValues = [0, 1];
 
     /**
      * Automatic eager load relation by default (can be expensive)
@@ -112,21 +103,33 @@ class Group extends Basemodule
     // protected $with = ['relation1', 'relation2'];
 
     /**
-     * Allowed permissions values.
+     * Validation rules. For regular expression validation use array instead of pipe
+     * Example: 'name' => ['required', 'Regex:/^[A-Za-z0-9\-! ,\'\"\/@\.:\(\)]+$/']
      *
-     * Possible options:
-     *    0 => Remove.
-     *    1 => Add.
-     *
-     * @var array
+     * @param       $element
+     * @param  array  $merge
+     * @return array
      */
-    protected $allowedPermissionsValues = [0, 1];
+    public static function rules($element, $merge = [])
+    {
+        $rules = [
+            'name' => 'required|between:1,255|unique:groups,name,'.(isset($element->id) ? "$element->id" : 'null').',id,deleted_at,NULL',
+            'is_active' => 'required|in:1,0',
+            // 'tenant_id'  => 'required|tenants,id,is_active,1',
+            // 'created_by' => 'exists:users,id,is_active,1', // Optimistic validation for created_by,updated_by
+            // 'updated_by' => 'exists:users,id,is_active,1',
+
+        ];
+
+        return array_merge($rules, $merge);
+    }
 
     ############################################################################################
     # Model events
     ############################################################################################
 
-    public static function boot() {
+    public static function boot()
+    {
         parent::boot();
         Group::observe(GroupObserver::class);
 
@@ -182,6 +185,7 @@ class Group extends Basemodule
             }
 
             $element->permissions = $permissions;
+
             return $valid;
         });
 
@@ -221,7 +225,7 @@ class Group extends Basemodule
     ############################################################################################
 
     /**
-     * @param bool|false $setMsgSession setting it false will not store the message in session
+     * @param  bool|false  $setMsgSession  setting it false will not store the message in session
      * @return bool
      */
     //    public function isSomethingDoable($setMsgSession = false)
@@ -263,7 +267,8 @@ class Group extends Basemodule
      *
      * @return array
      */
-    public static function superadminGroupIds() {
+    public static function superadminGroupIds()
+    {
         return [1];
     }
 
@@ -272,7 +277,8 @@ class Group extends Basemodule
      *
      * @return array
      */
-    public static function partnerGroupIds() {
+    public static function partnerGroupIds()
+    {
         return [2, 3, 4];
     }
 
@@ -281,7 +287,8 @@ class Group extends Basemodule
      *
      * @return array
      */
-    public static function charityGroupIds() {
+    public static function charityGroupIds()
+    {
         return [5, 6, 7];
     }
 
@@ -290,7 +297,8 @@ class Group extends Basemodule
      *
      * @return array
      */
-    public static function recommenderGroupIds() {
+    public static function recommenderGroupIds()
+    {
         return [8];
     }
 
@@ -299,35 +307,40 @@ class Group extends Basemodule
      *
      * @return array
      */
-    public static function firstlinesupportGroupIds() {
+    public static function firstlinesupportGroupIds()
+    {
         return [12];
     }
 
     /**
      * @return array
      */
-    public static function lbAccountsGroupIds() {
+    public static function lbAccountsGroupIds()
+    {
         return [13];
     }
 
     /**
      * @return array
      */
-    public static function lbReadOnlyUser() {
+    public static function lbReadOnlyUser()
+    {
         return [14];
     }
 
     /**
      * @return array
      */
-    public static function lbAdminUser() {
+    public static function lbAdminUser()
+    {
         return [11];
     }
 
     /**
      * @return array
      */
-    public static function lbDailyTaskUser() {
+    public static function lbDailyTaskUser()
+    {
         return [15];
     }
 
@@ -340,25 +353,26 @@ class Group extends Basemodule
      *
      * @return array
      */
-    public function getPermissions() {
+    public function getPermissions()
+    {
         return $this->permissions;
     }
 
     /**
      * See if a group has access to the passed permission(s).
-     *
      * If multiple permissions are passed, the group must
      * have access to all permissions passed through, unless the
      * "all" flag is set to false.
      *
-     * @param  string|array $permissions
-     * @param  bool $all
+     * @param  string|array  $permissions
+     * @param  bool  $all
      * @return bool
      */
-    public function hasAccess($permissions, $all = true) {
+    public function hasAccess($permissions, $all = true)
+    {
         $groupPermissions = $this->getPermissions();
 
-        foreach ((array)$permissions as $permission) {
+        foreach ((array) $permissions as $permission) {
             // We will set a flag now for whether this permission was
             // matched at all.
             $matched = true;
@@ -385,44 +399,48 @@ class Group extends Basemodule
             // Now, let's check if the permission starts in a wildcard "*" symbol.
             // If it does, we'll check through all the merged permissions to see
             // if a permission exists which matches the wildcard.
-            else if ((strlen($permission) > 1) and starts_with($permission, '*')) {
-                $matched = false;
+            else {
+                if ((strlen($permission) > 1) and starts_with($permission, '*')) {
+                    $matched = false;
 
-                foreach ($groupPermissions as $groupPermission => $value) {
-                    // Strip the '*' off the start of the permission.
-                    $checkPermission = substr($permission, 1);
-
-                    // We will make sure that the merged permission does not
-                    // exactly match our permission, but ends with it.
-                    if ($checkPermission != $groupPermission and ends_with($groupPermission, $checkPermission) and $value == 1) {
-                        $matched = true;
-                        break;
-                    }
-                }
-            } else {
-                $matched = false;
-
-                foreach ($groupPermissions as $groupPermission => $value) {
-                    // This time check if the groupPermission ends in wildcard "*" symbol.
-                    if ((strlen($groupPermission) > 1) and ends_with($groupPermission, '*')) {
-                        $matched = false;
-
-                        // Strip the '*' off the end of the permission.
-                        $checkGroupPermission = substr($groupPermission, 0, -1);
+                    foreach ($groupPermissions as $groupPermission => $value) {
+                        // Strip the '*' off the start of the permission.
+                        $checkPermission = substr($permission, 1);
 
                         // We will make sure that the merged permission does not
-                        // exactly match our permission, but starts wtih it.
-                        if ($checkGroupPermission != $permission and starts_with($permission, $checkGroupPermission) and $value == 1) {
+                        // exactly match our permission, but ends with it.
+                        if ($checkPermission != $groupPermission and ends_with($groupPermission, $checkPermission) and $value == 1) {
                             $matched = true;
                             break;
                         }
                     }
+                } else {
+                    $matched = false;
 
-                    // Otherwise, we'll fallback to standard permissions checking where
-                    // we match that permissions explicitly exist.
-                    else if ($permission == $groupPermission and $groupPermissions[$permission] == 1) {
-                        $matched = true;
-                        break;
+                    foreach ($groupPermissions as $groupPermission => $value) {
+                        // This time check if the groupPermission ends in wildcard "*" symbol.
+                        if ((strlen($groupPermission) > 1) and ends_with($groupPermission, '*')) {
+                            $matched = false;
+
+                            // Strip the '*' off the end of the permission.
+                            $checkGroupPermission = substr($groupPermission, 0, -1);
+
+                            // We will make sure that the merged permission does not
+                            // exactly match our permission, but starts wtih it.
+                            if ($checkGroupPermission != $permission and starts_with($permission, $checkGroupPermission) and $value == 1) {
+                                $matched = true;
+                                break;
+                            }
+                        }
+
+                        // Otherwise, we'll fallback to standard permissions checking where
+                        // we match that permissions explicitly exist.
+                        else {
+                            if ($permission == $groupPermission and $groupPermissions[$permission] == 1) {
+                                $matched = true;
+                                break;
+                            }
+                        }
                     }
                 }
             }
@@ -432,8 +450,10 @@ class Group extends Basemodule
             // accordingly.
             if ($all === true and $matched === false) {
                 return false;
-            } else if ($all === false and $matched === true) {
-                return true;
+            } else {
+                if ($all === false and $matched === true) {
+                    return true;
+                }
             }
         }
 
@@ -445,10 +465,11 @@ class Group extends Basemodule
      * Returns if the user has access to any of the
      * given permissions.
      *
-     * @param  array $permissions
+     * @param  array  $permissions
      * @return bool
      */
-    public function hasAnyAccess(array $permissions) {
+    public function hasAnyAccess(array $permissions)
+    {
         return $this->hasAccess($permissions, false);
     }
 
@@ -470,7 +491,7 @@ class Group extends Basemodule
      * whether this should be allowed or not. The logic can be further
      * extend to implement more conditions.
      *
-     * @param null $user_id
+     * @param  null  $user_id
      * @return bool
      */
     //    public function isViewable($user_id = null)
@@ -488,7 +509,7 @@ class Group extends Basemodule
      * whether this should be allowed or not. The logic can be further
      * extend to implement more conditions.
      *
-     * @param null $user_id
+     * @param  null  $user_id
      * @return bool
      */
     //    public function isEditable($user_id = null)
@@ -506,7 +527,7 @@ class Group extends Basemodule
      * whether this should be allowed or not. The logic can be further
      * extend to implement more conditions.
      *
-     * @param null $user_id
+     * @param  null  $user_id
      * @return bool
      */
     //    public function isDeletable($user_id = null)
@@ -524,7 +545,7 @@ class Group extends Basemodule
      * whether this should be allowed or not. The logic can be further
      * extend to implement more conditions.
      *
-     * @param null $user_id
+     * @param  null  $user_id
      * @return bool
      */
     //    public function isRestorable($user_id = null)
@@ -579,7 +600,7 @@ class Group extends Basemodule
      */
     ############################################################################################
 
-    # Default relationships already available in base Class 'Basemodule'
+    # Default relationships already available in base Class 'BaseModule'
     //public function updater() { return $this->belongsTo('User', 'updated_by'); }
     //public function creator() { return $this->belongsTo('User', 'created_by'); }
 
@@ -607,12 +628,13 @@ class Group extends Basemodule
     /**
      * Accessor for giving permissions.
      *
-     * @param  mixed $permissions
+     * @param  mixed  $permissions
      * @return array
      * @throws \InvalidArgumentException
      */
-    public function getPermissionsAttribute($permissions) {
-        if (!$permissions) {
+    public function getPermissionsAttribute($permissions)
+    {
+        if (! $permissions) {
             return [];
         }
 
@@ -620,7 +642,7 @@ class Group extends Basemodule
             return $permissions;
         }
 
-        if (!$_permissions = json_decode($permissions, true)) {
+        if (! $_permissions = json_decode($permissions, true)) {
             throw new \InvalidArgumentException("Cannot JSON decode permissions [$permissions].");
         }
 
@@ -630,18 +652,19 @@ class Group extends Basemodule
     /**
      * Mutator for taking permissions.
      *
-     * @param  array $permissions
+     * @param  array  $permissions
      * @return void
      * @throws \InvalidArgumentException
      */
-    public function setPermissionsAttribute(array $permissions) {
+    public function setPermissionsAttribute(array $permissions)
+    {
         // Merge permissions
         $permissions = array_merge($this->getPermissions(), $permissions);
 
         // Loop through and adjust permissions as needed
         foreach ($permissions as $permission => &$value) {
             // Lets make sure their is a valid permission value
-            if (!in_array($value = (int)$value, $this->allowedPermissionsValues)) {
+            if (! in_array($value = (int) $value, $this->allowedPermissionsValues)) {
                 throw new \InvalidArgumentException("Invalid value [$value] for permission [$permission] given.");
             }
 
@@ -651,7 +674,7 @@ class Group extends Basemodule
             }
         }
 
-        $this->attributes['permissions'] = (!empty($permissions)) ? json_encode($permissions) : '';
+        $this->attributes['permissions'] = (! empty($permissions)) ? json_encode($permissions) : '';
     }
     ############################################################################################
 

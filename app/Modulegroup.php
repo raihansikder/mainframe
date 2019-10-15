@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Mainframe\BaseModule;
 use App\Observers\ModulegroupObserver;
 
 /**
@@ -59,8 +60,10 @@ use App\Observers\ModulegroupObserver;
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Change[] $changes
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Upload[] $uploads
  * @property-read \App\Upload $latestUpload
+ * @property-read int|null $changes_count
+ * @property-read int|null $uploads_count
  */
-class Modulegroup extends Basemodule
+class Modulegroup extends BaseModule
 {
     /**
      * Custom validation messages.
@@ -131,7 +134,7 @@ class Modulegroup extends Basemodule
          * make the parent (Eloquent) boot method run.
          */
         parent::boot();
-        //Basemodule::registerObserver(get_class()); // register observer
+        //BaseModule::registerObserver(get_class()); // register observer
         Modulegroup::observe(ModulegroupObserver::class);
 
         /************************************************************/
@@ -469,7 +472,7 @@ class Modulegroup extends Basemodule
      */
     ############################################################################################
 
-    # Default relationships already available in base Class 'Basemodule'
+    # Default relationships already available in base Class 'BaseModule'
     //public function updater() { return $this->belongsTo('User', 'updated_by'); }
     //public function creator() { return $this->belongsTo('User', 'created_by'); }
 

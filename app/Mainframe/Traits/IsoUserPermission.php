@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Traits;
+namespace App\Mainframe\Traits;
 
 use Illuminate\Support\Str;
 
@@ -35,6 +35,7 @@ trait IsoUserPermission
      */
     public function groupIds()
     {
+        /** @var \App\User $this */
         return json_decode($this->group_ids);
         //return explode(',', trim($this->group_ids_csv, ", "));
     }

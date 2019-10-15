@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Mainframe\BaseModule;
 use App\Observers\ReportObserver;
 
 /**
@@ -62,8 +63,10 @@ use App\Observers\ReportObserver;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Report whereUpdatedBy($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Report whereUuid($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Report whereVersion($value)
+ * @property-read int|null $changes_count
+ * @property-read int|null $uploads_count
  */
-class Report extends Basemodule
+class Report extends BaseModule
 {
     // use IsoModule;
     /**
@@ -426,7 +429,7 @@ class Report extends Basemodule
      */
     ############################################################################################
 
-    # Default relationships already available in base Class 'Basemodule'
+    # Default relationships already available in base Class 'BaseModule'
     //public function updater() { return $this->belongsTo('User', 'updated_by'); }
     //public function creator() { return $this->belongsTo('User', 'created_by'); }
 
