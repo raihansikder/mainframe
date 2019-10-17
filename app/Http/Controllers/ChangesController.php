@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Mainframe\Controllers\ModulebaseController;
+use App\Http\Mainframe\Controllers\ModuleBaseController;
 
-class ChangesController extends ModulebaseController
+class ChangesController extends ModuleBaseController
 {
 
     /*********************************************************************
@@ -21,15 +21,15 @@ class ChangesController extends ModulebaseController
     {
         return [
             //['table.id', 'id', 'ID'], // translates to => table.id as id and the last one ID is grid colum header
-            ["{$this->module_name}.id", "id", "ID"],
-            ["{$this->module_name}.name", "name", "Name"],
-            ["{$this->module_name}.module_name", "module_name", "Module"],
-            // ["{$this->module_name}.field", "field", "Field"],
-            // ["{$this->module_name}.old", "old", "Old value"],
-            // ["{$this->module_name}.new", "new", "New value"],
+            ["{$this->moduleName}.id", "id", "ID"],
+            ["{$this->moduleName}.name", "name", "Name"],
+            ["{$this->moduleName}.moduleName", "moduleName", "Module"],
+            // ["{$this->moduleName}.field", "field", "Field"],
+            // ["{$this->moduleName}.old", "old", "Old value"],
+            // ["{$this->moduleName}.new", "new", "New value"],
             ["updater.name", "user_name", "Updater"],
-            ["{$this->module_name}.updated_at", "updated_at", "Updated at"],
-            ["{$this->module_name}.is_active", "is_active", "Active"]
+            ["{$this->moduleName}.updated_at", "updated_at", "Updated at"],
+            ["{$this->moduleName}.is_active", "is_active", "Active"]
         ];
     }
 
@@ -54,8 +54,8 @@ class ChangesController extends ModulebaseController
      */
     // public function sourceTables()
     // {
-    //     return DB::table($this->module_name)
-    //         ->leftJoin('users as updater', $this->module_name . '.updated_by', 'updater.id');
+    //     return DB::table($this->moduleName)
+    //         ->leftJoin('users as updater', $this->moduleName . '.updated_by', 'updater.id');
     // }
 
     /**
@@ -68,12 +68,12 @@ class ChangesController extends ModulebaseController
     //     $query = $this->sourceTables()->select($this->selectColumns());
     //
     //     // Inject tenant context in grid query
-    //     if ($tenant_id = inTenantContext($this->module_name)) {
-    //         $query = injectTenantIdInModelQuery($this->module_name, $query);
+    //     if ($tenant_id = inTenantContext($this->moduleName)) {
+    //         $query = injectTenantIdInModelQuery($this->moduleName, $query);
     //     }
     //
     //     // Exclude deleted rows
-    //     $query = $query->whereNull($this->module_name . '.deleted_at'); // Skip deleted rows
+    //     $query = $query->whereNull($this->moduleName . '.deleted_at'); // Skip deleted rows
     //
     //     return $query;
     // }
@@ -90,8 +90,8 @@ class ChangesController extends ModulebaseController
     //     $dt = $dt->rawColumns(['id', 'name', 'is_active']); // HTML can be printed for raw columns
     //
     //     // Next modify each column content
-    //     $dt = $dt->editColumn('name', '<a href="{{ route(\'' . $this->module_name . '.edit\', $id) }}">{{$name}}</a>');
-    //     $dt = $dt->editColumn('id', '<a href="{{ route(\'' . $this->module_name . '.edit\', $id) }}">{{$id}}</a>');
+    //     $dt = $dt->editColumn('name', '<a href="{{ route(\'' . $this->moduleName . '.edit\', $id) }}">{{$name}}</a>');
+    //     $dt = $dt->editColumn('id', '<a href="{{ route(\'' . $this->moduleName . '.edit\', $id) }}">{{$id}}</a>');
     //     $dt = $dt->editColumn('is_active', '@if($is_active)  Yes @else <span class="text-red">No</span> @endif');
     //
     //     return $dt;

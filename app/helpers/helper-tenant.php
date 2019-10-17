@@ -57,26 +57,26 @@ function elementTenantId($element)
 /**
  * Checks if a module has tenant context.
  *
- * @param $module_name
+ * @param $moduleName
  * @return bool
  */
-function moduleHasTenantContext($module_name)
+function moduleHasTenantContext($moduleName)
 {
     $tenant_idf = tenantIdField();
-    return tableHasColumn($module_name, $tenant_idf);
+    return tableHasColumn($moduleName, $tenant_idf);
 }
 
 /**
  * Check if a logged in user is currently in a tenant context, If the user belongs to a tenant
  * and the module has tenant context then it returns the user id.
  *
- * @param      $module_name
+ * @param      $moduleName
  * @param null $user_id
  * @return bool|mixed|null
  */
-function inTenantContext($module_name, $user_id = null)
+function inTenantContext($moduleName, $user_id = null)
 {
-    if (userTenantId($user_id) && moduleHasTenantContext($module_name)) {
+    if (userTenantId($user_id) && moduleHasTenantContext($moduleName)) {
         return userTenantId();
     }
     return null;
@@ -128,15 +128,15 @@ function tenantInput()
 }
 
 /**
- * @param      $module_name
+ * @param      $moduleName
  * @param \Illuminate\Database\Query\Builder $q
  * @param null $user_id
  * @return mixed
  */
-function injectTenantIdInModelQuery($module_name, $q, $user_id = null)
+function injectTenantIdInModelQuery($moduleName, $q, $user_id = null)
 {
-    if ($tenant_id = inTenantContext($module_name, $user_id)) {
-        $q = $q->where($module_name . '.' . tenantIdField(), $tenant_id);
+    if ($tenant_id = inTenantContext($moduleName, $user_id)) {
+        $q = $q->where($moduleName . '.' . tenantIdField(), $tenant_id);
     }
     return $q;
 }
@@ -144,15 +144,15 @@ function injectTenantIdInModelQuery($module_name, $q, $user_id = null)
 /**
  * Injects tenant id match in SQL query
  *
- * @param      $module_name
+ * @param      $moduleName
  * @param      $sql
  * @param null $user_id
  * @return string
  */
-function injectTenantIdInSqlQuery($module_name, $sql, $user_id = null)
+function injectTenantIdInSqlQuery($moduleName, $sql, $user_id = null)
 {
-    if ($tenant_id = inTenantContext($module_name, $user_id)) {
-        $sql = $sql . " AND " . dbTable($module_name) . "." . tenantIdField() . "= $tenant_id";
+    if ($tenant_id = inTenantContext($moduleName, $user_id)) {
+        $sql = $sql . " AND " . dbTable($moduleName) . "." . tenantIdField() . "= $tenant_id";
     }
     return $sql;
 }

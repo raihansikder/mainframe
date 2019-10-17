@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Mainframe\Controllers\ModulebaseController;
+use App\Http\Mainframe\Controllers\ModuleBaseController;
 
-class GroupsController extends ModulebaseController
+class GroupsController extends ModuleBaseController
 {
 
     /*********************************************************************
@@ -19,12 +19,12 @@ class GroupsController extends ModulebaseController
     public function gridColumns() {
         return [
             //['table.id', 'id', 'ID'], // translates to => table.id as id and the last one ID is grid colum header
-            ["{$this->module_name}.id", "id", "ID"],
-            ["{$this->module_name}.title", "title", "Title"],
-            ["{$this->module_name}.name", "name", "System name"],
+            ["{$this->moduleName}.id", "id", "ID"],
+            ["{$this->moduleName}.title", "title", "Title"],
+            ["{$this->moduleName}.name", "name", "System name"],
             ["updater.name", "user_name", "Updater"],
-            ["{$this->module_name}.updated_at", "updated_at", "Updated at"],
-            ["{$this->module_name}.is_active", "is_active", "Active"]
+            ["{$this->moduleName}.updated_at", "updated_at", "Updated at"],
+            ["{$this->moduleName}.is_active", "is_active", "Active"]
         ];
     }
 
@@ -47,8 +47,8 @@ class GroupsController extends ModulebaseController
      */
     // public function sourceTables()
     // {
-    //     return DB::table($this->module_name)
-    //         ->leftJoin('users as updater', $this->module_name . '.updated_by', 'updater.id');
+    //     return DB::table($this->moduleName)
+    //         ->leftJoin('users as updater', $this->moduleName . '.updated_by', 'updater.id');
     // }
 
     /**
@@ -60,12 +60,12 @@ class GroupsController extends ModulebaseController
     //     $query = $this->sourceTables()->select($this->selectColumns());
     //
     //     // Inject tenant context in grid query
-    //     if ($tenant_id = inTenantContext($this->module_name)) {
-    //         $query = injectTenantIdInModelQuery($this->module_name, $query);
+    //     if ($tenant_id = inTenantContext($this->moduleName)) {
+    //         $query = injectTenantIdInModelQuery($this->moduleName, $query);
     //     }
     //
     //     // Exclude deleted rows
-    //     $query = $query->whereNull($this->module_name . '.deleted_at'); // Skip deleted rows
+    //     $query = $query->whereNull($this->moduleName . '.deleted_at'); // Skip deleted rows
     //
     //     return $query;
     // }
@@ -81,8 +81,8 @@ class GroupsController extends ModulebaseController
         $dt = $dt->rawColumns(['id', 'title', 'is_active']); // HTML can be printed for raw columns
 
         // Next modify each column content
-        $dt = $dt->editColumn('title', '<a href="{{ route(\'' . $this->module_name . '.edit\', $id) }}">{{$title}}</a>');
-        $dt = $dt->editColumn('id', '<a href="{{ route(\'' . $this->module_name . '.edit\', $id) }}">{{$id}}</a>');
+        $dt = $dt->editColumn('title', '<a href="{{ route(\'' . $this->moduleName . '.edit\', $id) }}">{{$title}}</a>');
+        $dt = $dt->editColumn('id', '<a href="{{ route(\'' . $this->moduleName . '.edit\', $id) }}">{{$id}}</a>');
         $dt = $dt->editColumn('is_active', '@if($is_active)  Yes @else <span class="text-red">No</span> @endif');
 
         return $dt;

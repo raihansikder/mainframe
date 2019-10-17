@@ -4,11 +4,11 @@
  * parent template \app\views\spyr\modules\groups\form.blade.php
  *
  * Variables used in this view file.
- * @var $module_name           string 'modules'
- * @var $mod                   Module
+ * @var $moduleName           string 'modules'
+ * @var $currentModule                   Module
  * @var $module                Module Object that is being edited
  * @var $element               string 'module'
- * @var $element_editable      boolean
+ * @var $elementIsEditable      boolean
  * @var $uuid                  string '1709c091-8114-4ba4-8fd8-91f0ba0b63e8'
  */
 ?>
@@ -18,7 +18,7 @@
 @include('form.input-text',['var'=>['name'=>'name','label'=>'Name (table name)', 'container_class'=>'col-sm-3','editable'=>false]])
 @include('form.input-text',['var'=>['name'=>'title','label'=>'Title', 'container_class'=>'col-sm-3']])
 @include('form.select-model',['var'=>['name'=>'parent_id','label'=>'Parent module', 'table'=>'modules', 'container_class'=>'col-sm-3']])
-@include('form.select-model',['var'=>['name'=>'modulegroup_id','label'=>'Module group', 'table'=>'modulegroups', 'container_class'=>'col-sm-3']])
+@include('form.select-model',['var'=>['name'=>'module_group_id','label'=>'Module group', 'table'=>'module_groups', 'container_class'=>'col-sm-3']])
 @include('form.input-text',['var'=>['name'=>'level','label'=>'Level', 'container_class'=>'col-sm-3']])
 @include('form.input-text',['var'=>['name'=>'order','label'=>'Order', 'container_class'=>'col-sm-3']])
 @include('form.input-text',['var'=>['name'=>'color_css','label'=>'Color CSS class', 'container_class'=>'col-sm-3']])
@@ -84,7 +84,7 @@
         // 1. assign validation classes/rules
         addValidationRulesForSaving();
         // 2. instantiate validation function
-        enableValidation('{{$module_name}}');
+        enableValidation('{{$moduleName}}');
         /*******************************************************************/
 
         /*******************************************************************/

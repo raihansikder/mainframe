@@ -20,12 +20,7 @@ class HomeController extends Controller
     public function index()
     {
         /** @var \App\User $user */
-        $user = \Auth::user();
-
-        if ($user->isSuperUser()) {
-            return view("dashboards.admin.index");
-        }
-
+        // $user = \Auth::user();
         return view("dashboards.default.index");
     }
 

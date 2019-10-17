@@ -4,11 +4,11 @@
  * parent template \app\views\spyr\modules\groups\form.blade.php
  *
  * Variables used in this view file.
- * @var $module_name           string 'groups'
- * @var $mod                   Module
+ * @var $moduleName           string 'groups'
+ * @var $currentModule                   Module
  * @var $group                 Group Object that is being edited
  * @var $element               string 'group'
- * @var $element_editable      boolean
+ * @var $elementIsEditable      boolean
  * @var $uuid                  string '1709c091-8114-4ba4-8fd8-91f0ba0b63e8'
  */
 ?>
@@ -29,7 +29,7 @@
                     <b>Super user</b>
                 </label>
             </li>
-            <li>{{renderModulePermissionTree(\App\Modulegroup::tree()) }}</li>
+            <li>{{renderModulePermissionTree(\App\ModuleGroup::tree()) }}</li>
             @include('mainframe.modules.groups.permission-blocks')
         </ul>
     </div>
@@ -87,7 +87,7 @@
         // frontend and Ajax hybrid validation
         /*******************************************************************/
         addValidationRulesForSaving(); // Assign validation classes/rules
-        enableValidation('{{$module_name}}'); // Instantiate validation function
+        enableValidation('{{$moduleName}}'); // Instantiate validation function
 
         /*******************************************************************/
         // List of functions

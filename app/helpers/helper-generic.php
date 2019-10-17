@@ -1,5 +1,6 @@
 <?php
 
+use \Illuminate\Support\Arr;
 /**
  * Generic helper functions to be used by the framework
  *
@@ -49,11 +50,11 @@ function result($sql, $timeout = 0)
 
     if ($timeout <= 0) {
         return DB::select(DB::raw($sql));
-    } else {
-        return Cache::remember(md5($sql), $timeout, function () use ($sql) {
-            return DB::select(DB::raw($sql));
-        });
     }
+
+    return Cache::remember(md5($sql), $timeout, function () use ($sql) {
+        return DB::select(DB::raw($sql));
+    });
 
 }
 
@@ -169,7 +170,7 @@ function echoBr($string)
  */
 function keyAsArray($array = [])
 {
-    list($keys, $values) = array_divide($array);
+    list($keys, $values) = \Illuminate\Support\Arr::divide($array);
     if (is_array($keys)) {
         return $keys;
     }

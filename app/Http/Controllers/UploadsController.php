@@ -7,9 +7,9 @@ use Redirect;
 use Response;
 use App\Upload;
 use Storage;
-use App\Http\Mainframe\Controllers\ModulebaseController;
+use App\Http\Mainframe\Controllers\ModuleBaseController;
 
-class UploadsController extends ModulebaseController
+class UploadsController extends ModuleBaseController
 {
 
     /*********************************************************************
@@ -25,11 +25,11 @@ class UploadsController extends ModulebaseController
     // {
     //     return [
     //         //['table.id', 'id', 'ID'], // translates to => table.id as id and the last one ID is grid colum header
-    //         ["{$this->module_name}.id", "id", "ID"],
-    //         ["{$this->module_name}.name", "name", "Name"],
+    //         ["{$this->moduleName}.id", "id", "ID"],
+    //         ["{$this->moduleName}.name", "name", "Name"],
     //         ["updater.name", "user_name", "Updater"],
-    //         ["{$this->module_name}.updated_at", "updated_at", "Updated at"],
-    //         ["{$this->module_name}.is_active", "is_active", "Active"]
+    //         ["{$this->moduleName}.updated_at", "updated_at", "Updated at"],
+    //         ["{$this->moduleName}.is_active", "is_active", "Active"]
     //     ];
     // }
 
@@ -52,8 +52,8 @@ class UploadsController extends ModulebaseController
      */
     // public function sourceTables()
     // {
-    //     return DB::table($this->module_name)
-    //         ->leftJoin('users as updater', $this->module_name . '.updated_by', 'updater.id');
+    //     return DB::table($this->moduleName)
+    //         ->leftJoin('users as updater', $this->moduleName . '.updated_by', 'updater.id');
     // }
 
     /**
@@ -65,12 +65,12 @@ class UploadsController extends ModulebaseController
     //     $query = $this->sourceTables()->select($this->selectColumns());
     //
     //     // Inject tenant context in grid query
-    //     if ($tenant_id = inTenantContext($this->module_name)) {
-    //         $query = injectTenantIdInModelQuery($this->module_name, $query);
+    //     if ($tenant_id = inTenantContext($this->moduleName)) {
+    //         $query = injectTenantIdInModelQuery($this->moduleName, $query);
     //     }
     //
     //     // Exclude deleted rows
-    //     $query = $query->whereNull($this->module_name . '.deleted_at'); // Skip deleted rows
+    //     $query = $query->whereNull($this->moduleName . '.deleted_at'); // Skip deleted rows
     //
     //     return $query;
     // }
@@ -86,8 +86,8 @@ class UploadsController extends ModulebaseController
     //     $dt = $dt->rawColumns(['id', 'name', 'is_active']); // HTML can be printed for raw columns
     //
     //     // Next modify each column content
-    //     $dt = $dt->editColumn('name', '<a href="{{ route(\'' . $this->module_name . '.edit\', $id) }}">{{$name}}</a>');
-    //     $dt = $dt->editColumn('id', '<a href="{{ route(\'' . $this->module_name . '.edit\', $id) }}">{{$id}}</a>');
+    //     $dt = $dt->editColumn('name', '<a href="{{ route(\'' . $this->moduleName . '.edit\', $id) }}">{{$name}}</a>');
+    //     $dt = $dt->editColumn('id', '<a href="{{ route(\'' . $this->moduleName . '.edit\', $id) }}">{{$id}}</a>');
     //     $dt = $dt->editColumn('is_active', '@if($is_active)  Yes @else <span class="text-red">No</span> @endif');
     //
     //     return $dt;
@@ -124,17 +124,17 @@ class UploadsController extends ModulebaseController
         /** @var \App\Basemodule $Model */
         /** @var \App\Basemodule $element */
         // init local variables
-        $module_name = $this->module_name;
-        $Model       = model($this->module_name);
+        $moduleName = $this->moduleName;
+        $Model       = model($this->moduleName);
 
         // $ret = ret();
         # --------------------------------------------------------
         # Process store while creation
         # --------------------------------------------------------
-        if (hasModulePermission($this->module_name, 'create')) { // check module permission
+        if (hasModulePermission($this->moduleName, 'create')) { // check module permission
             $element = new $Model(Request::all());
             // validate
-            $validator = \Validator::make(Request::all(), $Model::rules($element), $Model::$custom_validation_messages);
+            $validator = \Validator::make(Request::all(), $Model::rules($element), $Model::$customValidationMessages);
 
             if ($validator->fails()) {
                 $ret = ret('fail', "Validation error(s) on creating {$this->module->title}.",
@@ -229,7 +229,7 @@ class UploadsController extends ModulebaseController
         if (Request::get('ret') == 'json') {
             $ret = fillRet($ret); // fill with session values(messages, errors, success etc) and redirect
             if ($ret['status'] == 'success' && (isset($ret['redirect']) && $ret['redirect'] == '#new')) {
-                $ret['redirect'] = route("$module_name.edit", $$element->id);
+                $ret['redirect'] = route("$moduleName.edit", $$element->id);
             }
             return Response::json($ret);
         }
@@ -241,7 +241,7 @@ class UploadsController extends ModulebaseController
             }
         } else {
             if (Request::get('redirect_success') == '#new') {
-                $redirect = Redirect::route("$module_name.edit", $$element->id);
+                $redirect = Redirect::route("$moduleName.edit", $$element->id);
             } else {
                 $redirect = Redirect::to(Request::get('redirect_success'));
             }
@@ -264,8 +264,8 @@ class UploadsController extends ModulebaseController
     }
 
     // public function destroy($id){
-    //     $module_name = $this->module_name;
-    //     $Model = model($this->module_name);
+    //     $moduleName = $this->moduleName;
+    //     $Model = model($this->moduleName);
     //     $element = new $Model(Request::all());
     //     $user = Request::get('users');
     //     if(isset($user->uploads[0]['id'])){

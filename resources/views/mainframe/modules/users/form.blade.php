@@ -4,13 +4,13 @@
  * parent template \app\views\spyr\modules\groups\form.blade.php
  *
  * Variables used in this view file.
- * @var $module_name           string 'users'
- * @var $mod                   Module
+ * @var $moduleName           string 'users'
+ * @var $currentModule                   Module
  * @var $user                  User Object that is being edited
  * @var $element               string 'user'
  * @var \App\User $$element
  * @var \App\User $user
- * @var $element_editable      boolean
+ * @var $elementIsEditable      boolean
  * @var $uuid                  string '1709c091-8114-4ba4-8fd8-91f0ba0b63e8'
  */
 ?>
@@ -40,7 +40,7 @@
 @include('form.input-text',['var'=>['name'=>'email','label'=>'Email', 'container_class'=>'col-sm-3']])
 
 {{-- show password only for editable--}}
-@if($element_editable)
+@if($elementIsEditable)
     <div class="clearfix"></div>
     <h4>Reset password</h4>
     @include('form.input-text',['var'=>['name'=>'password','type'=>'password','label'=>'New password', 'container_class'=>'col-sm-3','value'=>'']])
@@ -359,7 +359,7 @@
         // frontend and Ajax hybrid validation
         /*******************************************************************/
         addValidationRulesForSaving(); // Assign validation classes/rules
-        //enableValidation('{{$module_name}}'); // Instantiate validation function
+        //enableValidation('{{$moduleName}}'); // Instantiate validation function
 
         /*******************************************************************/
         // List of functions

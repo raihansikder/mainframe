@@ -1,8 +1,8 @@
 <ol class="breadcrumb">
 
     <li><a href="{{route('home')}}"></i> Home</a></li>
-    @if(isset($mod))
-        @foreach(breadcrumb($mod) as $k=>$v)
+    @if(isset($currentModule))
+        @foreach(breadcrumb($currentModule) as $k=>$v)
             <li><a href="{{$v['url']}}">{{$v['title']}}</a></li>
         @endforeach
     @endif

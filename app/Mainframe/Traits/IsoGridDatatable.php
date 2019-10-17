@@ -3,11 +3,12 @@
 namespace App\Mainframe\Traits;
 
 use DB;
+use App\Http\Mainframe\Controllers\ModuleBaseController;
 
 /**
  * Trait IsoGrid
  *
- * @var $this \App\Http\Controllers\ModulebaseController
+ * @var $this ModuleBaseController
  * @package App\Traits
  */
 trait IsoGridDatatable
@@ -20,13 +21,13 @@ trait IsoGridDatatable
      */
     public function gridColumns()
     {
+        /** @var ModuleBaseController $this */
         return [
-            //['table.id', 'id', 'ID'], // translates to => table.id as id and the last one ID is grid colum header
-            ["{$this->module_name}.id", "id", "ID"],
-            ["{$this->module_name}.name", "name", "Name"],
+            ["{$this->moduleName}.id", "id", "ID"],
+            ["{$this->moduleName}.name", "name", "Name"],
             ["updater.name", "user_name", "Updater"],
-            ["{$this->module_name}.updated_at", "updated_at", "Updated at"],
-            ["{$this->module_name}.is_active", "is_active", "Active"]
+            ["{$this->moduleName}.updated_at", "updated_at", "Updated at"],
+            ["{$this->moduleName}.is_active", "is_active", "Active"]
         ];
     }
 
@@ -38,8 +39,9 @@ trait IsoGridDatatable
     public function selectColumns()
     {
         $select_cols = [];
-        foreach ($this->gridColumns() as $col)
-            $select_cols[] = $col[0] . ' as ' . $col[1];
+        foreach ($this->gridColumns() as $col) {
+            $select_cols[] = $col[0].' as '.$col[1];
+        }
 
         return $select_cols;
     }
@@ -51,8 +53,8 @@ trait IsoGridDatatable
      */
     public function sourceTables()
     {
-        return DB::table($this->module_name)
-            ->leftJoin('users as updater', $this->module_name . '.updated_by', 'updater.id');
+        return DB::table($this->moduleName)
+            ->leftJoin('users as updater', $this->moduleName.'.updated_by', 'updater.id');
     }
 
     /**
@@ -65,12 +67,12 @@ trait IsoGridDatatable
         $query = $this->sourceTables()->select($this->selectColumns());
 
         // Inject tenant context in grid query
-        if ($tenant_id = inTenantContext($this->module_name)) {
-            $query = injectTenantIdInModelQuery($this->module_name, $query);
+        if ($tenant_id = inTenantContext($this->moduleName)) {
+            $query = injectTenantIdInModelQuery($this->moduleName, $query);
         }
 
         // Exclude deleted rows
-        $query = $query->whereNull($this->module_name . '.deleted_at'); // Skip deleted rows
+        $query = $query->whereNull($this->moduleName.'.deleted_at'); // Skip deleted rows
 
         return $query;
     }
@@ -78,8 +80,8 @@ trait IsoGridDatatable
     /**
      * Modify datatable values
      *
-     * @var $dt \Yajra\DataTables\DataTableAbstract
      * @return mixed
+     * @var $dt \Yajra\DataTables\DataTableAbstract
      */
     public function datatableModify($dt)
     {
@@ -88,8 +90,10 @@ trait IsoGridDatatable
 
         // Next modify each column content
         /*  @var $dt \Yajra\DataTables\DataTableAbstract */
-        $dt = $dt->editColumn('name', '<a href="{{ route(\'' . $this->module_name . '.edit\', $id) }}">{{$name}}</a>');
-        $dt = $dt->editColumn('id', '<a href="{{ route(\'' . $this->module_name . '.edit\', $id) }}">{{$id}}</a>');
+
+        /** @var \App\Http\Mainframe\Controllers\ModuleBaseController $this */
+        $dt = $dt->editColumn('name', '<a href="{{ route(\''.$this->moduleName.'.edit\', $id) }}">{{$name}}</a>');
+        $dt = $dt->editColumn('id', '<a href="{{ route(\''.$this->moduleName.'.edit\', $id) }}">{{$id}}</a>');
         $dt = $dt->editColumn('is_active', '@if($is_active)  Yes @else <span class="text-red">No</span> @endif');
 
         return $dt;
@@ -99,8 +103,8 @@ trait IsoGridDatatable
      * Returns datatable json for the module index page
      * A route is automatically created for all modules to access this controller function
      *
-     * @var \Yajra\DataTables\DataTables $dt
      * @return \Illuminate\Http\JsonResponse
+     * @var \Yajra\DataTables\DataTables $dt
      */
     public function grid()
     {
@@ -108,6 +112,7 @@ trait IsoGridDatatable
         /** @var \Yajra\DataTables\DataTableAbstract $dt */
         $dt = datatables($this->gridQuery());
         $dt = $this->datatableModify($dt);
+
         return $dt->toJson();
     }
 

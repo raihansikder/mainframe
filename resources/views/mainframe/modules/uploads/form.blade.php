@@ -4,11 +4,11 @@
  * parent template \app\views\spyr\modules\groups\form.blade.php
  *
  * Variables used in this view file.
- * @var $module_name      string 'uploads'
- * @var $mod              Module
+ * @var $moduleName      string 'uploads'
+ * @var $currentModule              Module
  * @var $upload           Upload Object that is being edited
  * @var $element          string 'upload'
- * @var $element_editable boolean
+ * @var $elementIsEditable boolean
  * @var $uuid             string '1709c091-8114-4ba4-8fd8-91f0ba0b63e8'
  */
 ?>
@@ -102,7 +102,7 @@
         // frontend and Ajax hybrid validation
         /*******************************************************************/
         addValidationRulesForSaving(); // Assign validation classes/rules
-        enableValidation('{{$module_name}}'); // Instantiate validation function
+        enableValidation('{{$moduleName}}'); // Instantiate validation function
 
         /*******************************************************************/
         // List of functions

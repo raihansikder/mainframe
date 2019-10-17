@@ -10,15 +10,15 @@
  * @param        $column
  * @param        $row
  * @param        $value
- * @param string $module_name
+ * @param string $moduleName
  * @return string
  */
-function transformRow($column, $row, $value, $module_name = '') {
+function transformRow($column, $row, $value, $moduleName = '') {
     //linked to facility details page
     $new_value = $value;
     if (in_array($column, ['id', 'name'])) {
         if (isset($row->id)) {
-            $new_value = "<a href='".route($module_name.'.edit',$row->id)."'>".$value."</a>";
+            $new_value = "<a href='".route($moduleName.'.edit',$row->id)."'>".$value."</a>";
         }
     }
     return $new_value;

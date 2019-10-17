@@ -13,17 +13,13 @@ use Validator;
 use App\Upload;
 use App\Change;
 use App\Module;
-use Watson\Rememberable\Rememberable;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 trait IsoModule
 {
-    use SoftDeletes;
-    use Rememberable;
-    use IsoTenant;
 
     /**
      * Fields for full text search i.e. LIKE '%substr%'
+     *
      * @var array
      */
     public static $text_fields = ['name', 'name_ext'];
@@ -82,35 +78,19 @@ trait IsoModule
     /**
      * This function validates a model based on the validation rule.
      * Also checks if it isCreatable/isEditable
+     *
      * @return \Illuminate\Validation\Validator
      */
     public function validateModel()
     {
-        $validator = Validator::make($this->attributes, static::rules($this), static::$custom_validation_messages);
-        return $validator;
-        /*if (!$validator->passes()) {
-            $valid = setError("Validation failed " . $this->module()->title);
-            foreach ($validator->messages()->all() as $e) {
-                Session::push('error', $e);
-            }
-        }*/
-        /*
-        if (!isset($this->id)) {
-            if (!$this->isCreatable()) {
-                $valid = setError("Can not save new " . $this->module()->title . " Error: BaseModule validate()");
-            }
-
-        } else {
-            if (!$this->isEditable()) {
-                $valid = setError("Can not update " . mlink($this->module()->name, $this->id) . " Error: BaseModule isEditable()");
-            }
-        }
-        */
-        //return $valid;
+        return Validator::make($this->attributes,
+            static::rules($this),
+            static::$customValidationMessages);
     }
 
     /**
      * Get fields that are restricted for update.
+     *
      * @return array
      */
     // public function restrictedUpdates() {
@@ -130,6 +110,7 @@ trait IsoModule
     /**
      * Static functions needs to be called using Model::function($id)
      * Inside static function you may need to query and get the element
+     *
      * @internal param $id
      */
     // public static function someOtherAction($id) { }
@@ -137,6 +118,7 @@ trait IsoModule
     /**
      * Returns array of user ids including creator and updater user ids.
      * This can be overridden in different modules as per business.
+     *
      * @return array
      */
     public function relatedUsers()
@@ -150,12 +132,14 @@ trait IsoModule
         if (isset($this->updater->id, $this->creator->id) && $this->creator->id !== $this->updater->id) {
             $user_ids[] = $this->updater->id;
         } //get the updater
+
         return $user_ids;
     }
 
     /**
      * Get the module object that an element belongs to. If the element is $tenant then the function
      * returns the row from modules table that has module name 'tenants'.
+     *
      * @return \Illuminate\Database\Eloquent\Model|null|static
      */
     public function module()
@@ -166,6 +150,7 @@ trait IsoModule
 
     /**
      * Get uploads of specific types
+     *
      * @param  array  $uploadtype_ids
      * @return mixed
      */
@@ -189,6 +174,7 @@ trait IsoModule
      * spyrElementViewable() is the primary default checker based on permission
      * whether this should be allowed or not. The logic can be further
      * extend to implement more conditions.
+     *
      * @param  null  $user_id
      * @param  bool  $set_msg
      * @return bool
@@ -196,11 +182,12 @@ trait IsoModule
     public function isCreatable($user_id = null, $set_msg = false)
     {
         /** @var \App\User $user */
-        $user  = user($user_id);
+        $user = user($user_id);
         $valid = true;
         if ($valid = spyrElementCreatable($this, $user_id, $set_msg)) {
             // Write new validation logic for this operation in this block.
         }
+
         return $valid;
     }
 
@@ -209,6 +196,7 @@ trait IsoModule
      * spyrElementViewable() is the primary default checker based on permission
      * whether this should be allowed or not. The logic can be further
      * extend to implement more conditions.
+     *
      * @param  null  $user_id
      * @param  bool  $set_msg
      * @return bool
@@ -216,7 +204,7 @@ trait IsoModule
     public function isViewable($user_id = null, $set_msg = false)
     {
         /** @var \App\User $user */
-        $user  = user($user_id);
+        $user = user($user_id);
         $valid = true;
         if ($valid = spyrElementViewable($this, $user_id, $set_msg)) {
             /*
@@ -226,6 +214,7 @@ trait IsoModule
             */
             //$valid = $this->isCreatable($user_id, $set_msg);
         }
+
         return $valid;
     }
 
@@ -234,6 +223,7 @@ trait IsoModule
      * spyrElementEditable() is the primary default checker based on permission
      * whether this should be allowed or not. The logic can be further
      * extend to implement more conditions.
+     *
      * @param  null  $user_id
      * @param  bool  $set_msg
      * @return bool
@@ -242,7 +232,7 @@ trait IsoModule
     {
 
         /** @var \App\User $user */
-        $user  = user($user_id);
+        $user = user($user_id);
         $valid = true;
         if ($valid = spyrElementEditable($this, $user_id, $set_msg)) {
 
@@ -252,6 +242,7 @@ trait IsoModule
 
             // $valid = $this->isViewable($user_id, $set_msg);
         }
+
         return $valid;
     }
 
@@ -260,6 +251,7 @@ trait IsoModule
      * spyrElementDeletable() is the primary default checker based on permission
      * whether this should be allowed or not. The logic can be further
      * extend to implement more conditions.
+     *
      * @param  null  $user_id
      * @param  bool  $set_msg
      * @return bool
@@ -267,7 +259,7 @@ trait IsoModule
     public function isDeletable($user_id = null, $set_msg = false)
     {
         /** @var \App\User $user */
-        $user  = user($user_id);
+        $user = user($user_id);
         $valid = true;
         if ($valid = spyrElementDeletable($this, $user_id, $set_msg)) {
 
@@ -277,6 +269,7 @@ trait IsoModule
 
             $valid = $this->isEditable($user_id, $set_msg);
         }
+
         return $valid;
     }
 
@@ -285,6 +278,7 @@ trait IsoModule
      * spyrElementRestorable() is the primary default checker based on permission
      * whether this should be allowed or not. The logic can be further
      * extend to implement more conditions.
+     *
      * @param  null  $user_id
      * @param  bool  $set_msg
      * @return bool
@@ -292,7 +286,7 @@ trait IsoModule
     public function isRestorable($user_id = null, $set_msg = false)
     {
         /** @var \App\User $user */
-        $user  = user($user_id);
+        $user = user($user_id);
         $valid = true;
         // if ($valid = spyrElementRestorable($this, $user_id, $set_msg)) {
         //     /*
@@ -307,6 +301,7 @@ trait IsoModule
 
     /**
      * Function checks whether an element can be assigned to an user.
+     *
      * @param  null  $user_id
      * @param  bool  $set_msg
      * @return bool
@@ -356,6 +351,7 @@ trait IsoModule
     /**
      * Function to return an appended attribute in a Model. The attribute name
      * should be added in $append array.
+     *
      * @return bool
      */
     /*public function getSomeNewFieldAttribute() {
@@ -373,6 +369,7 @@ trait IsoModule
     ############################################################################################
     /**
      * Get the user who has created the element
+     *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function creator()
@@ -382,6 +379,7 @@ trait IsoModule
 
     /**
      * Get the user who has last updated the element
+     *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function updater()
@@ -392,6 +390,7 @@ trait IsoModule
 
     /**
      * Get a list of uploads under an element.
+     *
      * @return mixed
      */
     public function uploads()
@@ -403,6 +402,7 @@ trait IsoModule
 
     /**
      * Get a list of uploads under an element.
+     *
      * @return mixed
      */
     public function latestUpload()
@@ -414,6 +414,7 @@ trait IsoModule
 
     /**
      * Get a list of changes that happened to an element
+     *
      * @return mixed
      */
     public function changes()
@@ -426,6 +427,7 @@ trait IsoModule
     /**
      * Some modules like uploads, messages etc have a parent element under which that upload was made.
      * We call this linked element
+     *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     // public function linkedElement()
@@ -435,6 +437,7 @@ trait IsoModule
 
     /**
      * List of statusupdates
+     *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     // public function statusupdates() {
@@ -443,6 +446,7 @@ trait IsoModule
 
     /**
      * Get the last updated status
+     *
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
     // public function lastStatusupdate() {

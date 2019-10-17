@@ -56,7 +56,7 @@ function oldInputValue($name = '', $value = null)
  */
 function fillModel($element, $except = [])
 {
-    $module_name = moduleName(get_class($element));
+    $moduleName = moduleName(get_class($element));
     // uuid
     if (!isset($element->uuid)) {
         $element->uuid = Webpatser\Uuid\Uuid::generate(4); // 4 = truly random, uncomment this when you have uuid field added
@@ -79,7 +79,7 @@ function fillModel($element, $except = [])
     $element->updated_at = now();
 
     // fill with null if not array
-    $fields = array_diff(columns($module_name), ['id']);
+    $fields = array_diff(columns($moduleName), ['id']);
     foreach ($fields as $field) {
         if (isset($element->$field) && !in_array($field, $except) && !is_array($element->$field)) {
             $element->$field = trim($element->$field); // trim white space
@@ -87,7 +87,7 @@ function fillModel($element, $except = [])
         }
     }
     // inject tenant context
-    if (inTenantContext($module_name)) $element = fillTenantId($element);
+    if (inTenantContext($moduleName)) $element = fillTenantId($element);
 
     return $element;
 }
@@ -266,7 +266,7 @@ function fillFromSession($ret)
 
 /**
  * Fill the $ret variable with redirect and session information.
- * This function is used ModulebaseController to build the return JSON
+ * This function is used ModuleBaseController to build the return JSON
  * @param $ret
  * @return mixed
  */
@@ -405,7 +405,7 @@ function renderMenuTree($tree, $current_module_name = '', $breadcrumbs = [])
 
                 // set url of the item
                 $url = '#';
-                if (in_array($leaf['type'], ['module', 'modulegroup'])) {
+                if (in_array($leaf['type'], ['module', 'module_group'])) {
                     $route = $leaf['item']->name . ".index";
                     $url   = route($route);
                 }
@@ -438,7 +438,7 @@ function renderMenuTree($tree, $current_module_name = '', $breadcrumbs = [])
 }
 
 /**
- * Returns an array with module/modulegroup name as key
+ * Returns an array with module/module_group name as key
  * @param Module|null $module
  * @return array
  */
@@ -505,23 +505,23 @@ function showGenericErrorPage($body = '')
  * with link to module details page related to the error.
  * Example:
  * <a href="http://{root}/public/moveinrequests/1/edit" target="_blank">Move in request[#1]</a>
- * @param module|string $module_name module name
+ * @param module|string $moduleName module name
  * @param null $id
  * @param               $link_text
  * @return string
  */
-function mlink($module_name = '', $id = null, $link_text = null)
+function mlink($moduleName = '', $id = null, $link_text = null)
 {
 
-    //$model = model($module_name);
-    if ($module = Module::remember(cacheTime('very-long'))->whereName($module_name)->first()) {
+    //$model = model($moduleName);
+    if ($module = Module::remember(cacheTime('very-long'))->whereName($moduleName)->first()) {
         if ($id) {
             $link_text = $link_text ? $link_text . "[#$id]" : $module->title . "[#$id]";
-            return "<a href='" . route($module_name . '.edit', $id) . "' target='_blank' >$link_text</a> ";
+            return "<a href='" . route($moduleName . '.edit', $id) . "' target='_blank' >$link_text</a> ";
         }
 
         $link_text = $link_text ? $link_text : $module->title;
-        return "<a href='" . route($module_name . '.index') . "' target='_blank' >$link_text</a> ";
+        return "<a href='" . route($moduleName . '.index') . "' target='_blank' >$link_text</a> ";
     }
 }
 

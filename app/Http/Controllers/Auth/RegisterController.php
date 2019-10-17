@@ -53,7 +53,7 @@ class RegisterController extends Controller
 
         $user = new User($request->all());
         // Custom validation error message for specific fields.
-        $custom_validation_messages = [
+        $customValidationMessages = [
             'password.regex' => "The password field should be mix of letters and numbers.",
         ];
 
@@ -61,7 +61,7 @@ class RegisterController extends Controller
             'password' => 'required|confirmed|min:6|regex:/[a-zA-Z]/|regex:/[0-9]/',
             'password_confirmation' => 'required | same:password',
             'group_id' => 'required',
-        ]), $custom_validation_messages);
+        ]), $customValidationMessages);
 
         if ($validator->fails()) {
             $ret = ret('fail', "Validation error(s)", ['validation_errors' => json_decode($validator->messages(), true)]);

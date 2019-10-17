@@ -67,7 +67,7 @@ class Superhero extends BaseModule
      * Custom validation messages.
      * @var array
      */
-    // public static $custom_validation_messages = [
+    // public static $customValidationMessages = [
     //     //'name.required' => 'Custom message.',
     // ];
 

@@ -3,8 +3,8 @@
 <?php
 /**
  * Variables used in this view file.
- * @var $module_name string 'superheroes'
- * @var $mod         \App\Module
+ * @var $moduleName string 'superheroes'
+ * @var $currentModule         \App\Module
  * @var $uuid        string '1709c091-8114-4ba4-8fd8-91f0ba0b63e8'
  * @var $invoice     \App\Invoice
  * @var $user        \App\User

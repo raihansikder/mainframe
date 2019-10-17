@@ -3,11 +3,14 @@
 namespace App;
 
 use Request;
-use App\Mainframe\Traits\IsoModule;
 use InvalidArgumentException;
 use App\Observers\UserObserver;
-use App\Mainframe\Traits\IsoUserPermission;
+use App\Mainframe\Traits\IsoModule;
+use App\Mainframe\Traits\IsoTenant;
+use Watson\Rememberable\Rememberable;
 use Illuminate\Notifications\Notifiable;
+use App\Mainframe\Traits\IsoUserPermission;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -141,9 +144,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  */
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use Notifiable;
-    use IsoModule;
-    use IsoUserPermission;
+    use Notifiable, IsoUserPermission, IsoModule, SoftDeletes, Rememberable, IsoTenant;
 
     /**
      * The attributes that are mass assignable.
@@ -219,18 +220,18 @@ class User extends Authenticatable implements MustVerifyEmail
     public static function rules($element, $merge = [])
     {
         $rules = [
-            'email' => 'required|email|unique:users,email'.(isset($element->id) ? ",$element->id" : ''),
+            'email'      => 'required|email|unique:users,email'.(isset($element->id) ? ",$element->id" : ''),
             'first_name' => 'required|between:0,128',
-            'last_name' => 'required|between:0,128',
+            'last_name'  => 'required|between:0,128',
             'partner_id' => 'required_if:group_id,2',
             'charity_id' => 'required_if:group_id,5',
-            'address1' => 'between:0,512',
-            'address2' => 'between:0,512',
-            'city' => 'between:0,64',
-            'county' => 'between:0,64',
-            'zip_code' => 'between:0,20',
-            'phone' => 'between:0,20',
-            'mobile' => 'between:0,20',
+            'address1'   => 'between:0,512',
+            'address2'   => 'between:0,512',
+            'city'       => 'between:0,64',
+            'county'     => 'between:0,64',
+            'zip_code'   => 'between:0,20',
+            'phone'      => 'between:0,20',
+            'mobile'     => 'between:0,20',
             'country_id' => 'required',
         ];
 
@@ -301,7 +302,7 @@ class User extends Authenticatable implements MustVerifyEmail
         /************************************************************/
         static::saving(function (User $element) {
 
-            $valid = true;
+            $valid   = true;
             $element = $element->resolveName();
 
             /**************************************************
@@ -311,7 +312,7 @@ class User extends Authenticatable implements MustVerifyEmail
              */
 
             if (is_array($element->group_ids)) {
-                $group_ids = $element->group_ids;
+                $group_ids          = $element->group_ids;
                 $element->group_ids = json_encode($element->group_ids);
             } else {
                 $group_ids = json_decode($element->group_ids);
@@ -323,7 +324,7 @@ class User extends Authenticatable implements MustVerifyEmail
                 $valid = setError("You can assign only {$max_groups} group.");
             }
             if (is_array($group_ids) && count($group_ids)) {
-                $element->group_ids_csv = implode(',', Group::whereIn('id', $group_ids)->pluck('id')->toArray());
+                $element->group_ids_csv    = implode(',', Group::whereIn('id', $group_ids)->pluck('id')->toArray());
                 $element->group_titles_csv = implode(',', Group::whereIn('id', $group_ids)->pluck('title')->toArray());
             }
             /**************************************************/
@@ -345,7 +346,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
                 //filling last_active_time,last_login_time,last_logout_time fields ;default will be updated_at value
                 $element->last_active_time = (! $element->last_active_time) ? $element->updated_at : $element->last_active_time;
-                $element->last_login_time = (! $element->last_login_time) ? $element->updated_at : $element->last_login_time;
+                $element->last_login_time  = (! $element->last_login_time) ? $element->updated_at : $element->last_login_time;
                 $element->last_logout_time = (! $element->last_logout_time) ? $element->updated_at : $element->last_logout_time;
             }
 

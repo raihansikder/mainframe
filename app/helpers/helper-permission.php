@@ -4,8 +4,8 @@ use App\User;
 
 /**
  * Renders a multi-dimentional array of permissions in hiararchical order for assigning permission
- * The $tree can be generated from Modulegroup::tree()
- * @param $tree  : Modulegroup::tree()
+ * The $tree can be generated from ModuleGroup::tree()
+ * @param $tree  : ModuleGroup::tree()
  */
 function renderModulePermissionTree($tree)
 {
@@ -181,15 +181,15 @@ function hasPermission($permission, $user_id = false)
 
 /**
  * Short hand function to check module specific permissions
- * @param            $module_name
+ * @param            $moduleName
  * @param            $permission
  * @param  bool|false  $user_id
  * @return bool
  */
-function hasModulePermission($module_name, $permission, $user_id = false)
+function hasModulePermission($moduleName, $permission, $user_id = false)
 {
 
-    return hasAccess("perm-module-$module_name-$permission", $user_id);
+    return hasAccess("perm-module-$moduleName-$permission", $user_id);
 }
 
 /**
@@ -202,17 +202,17 @@ function hasModulePermission($module_name, $permission, $user_id = false)
 function spyrElementCreatable($element, $user_id = null, $set_msg = false)
 {
     $valid = true;
-    $module_name = elementModule($element);
+    $moduleName = elementModule($element);
     $user = user($user_id); // get the currently logged in user
 
     // First check sentry permission
-    if (! hasModulePermission($module_name, 'create', $user->id)) {
-        $valid = setError("User[".$user->name."] does not have create permission on module: $module_name [".$element->id."]", $set_msg);
+    if (! hasModulePermission($moduleName, 'create', $user->id)) {
+        $valid = setError("User[".$user->name."] does not have create permission on module: $moduleName [".$element->id."]", $set_msg);
     }
 
     // Check for valid tenant context
-    if ($valid && (inTenantContext($module_name) && ! elementBelongsToSameTenant($element))) {
-        $valid = setError("User[".$user->name."] does not create permission on module: $module_name [".$element->id."] because the element does not belong to same user",
+    if ($valid && (inTenantContext($moduleName) && ! elementBelongsToSameTenant($element))) {
+        $valid = setError("User[".$user->name."] does not create permission on module: $moduleName [".$element->id."] because the element does not belong to same user",
             $set_msg);
     }
 
@@ -229,17 +229,17 @@ function spyrElementCreatable($element, $user_id = null, $set_msg = false)
 function spyrElementViewable($element, $user_id = null, $set_msg = false)
 {
     $valid = true;
-    $module_name = elementModule($element);
+    $moduleName = elementModule($element);
     $user = user($user_id); // get the currently logged in user
 
     // First check sentry permission
-    if (! hasModulePermission($module_name, 'view-details', $user->id)) {
-        $valid = setError("User[".$user->name."] does not have view permission on module: $module_name [".$element->id."]", $set_msg);
+    if (! hasModulePermission($moduleName, 'view-details', $user->id)) {
+        $valid = setError("User[".$user->name."] does not have view permission on module: $moduleName [".$element->id."]", $set_msg);
     }
 
     // Check for valid tenant context
-    if ($valid && (inTenantContext($module_name) && ! elementBelongsToSameTenant($element))) {
-        $valid = setError("User[".$user->name."] does not have view permission on module: $module_name [".$element->id."] because the element does not belong to same user",
+    if ($valid && (inTenantContext($moduleName) && ! elementBelongsToSameTenant($element))) {
+        $valid = setError("User[".$user->name."] does not have view permission on module: $moduleName [".$element->id."] because the element does not belong to same user",
             $set_msg);
     }
 
@@ -256,12 +256,12 @@ function spyrElementViewable($element, $user_id = null, $set_msg = false)
 function spyrElementEditable($element, $user_id = null, $set_msg = false)
 {
     $valid = true;
-    $module_name = elementModule($element);
+    $moduleName = elementModule($element);
     $user = user($user_id); // get the currently logged in user
 
     // First check sentry permission
-    if ($valid && ! hasModulePermission($module_name, 'edit', $user->id)) {
-        $valid = setError("User[".$user->name."] does not have edit permission on module: $module_name [".$element->id."]", $set_msg);
+    if ($valid && ! hasModulePermission($moduleName, 'edit', $user->id)) {
+        $valid = setError("User[".$user->name."] does not have edit permission on module: $moduleName [".$element->id."]", $set_msg);
     }
     // Check for valid tenant context
     if ($valid) {
@@ -281,12 +281,12 @@ function spyrElementEditable($element, $user_id = null, $set_msg = false)
 function spyrElementDeletable($element, $user_id = null, $set_msg = false)
 {
     $valid = true;
-    $module_name = elementModule($element);
+    $moduleName = elementModule($element);
     $user = user($user_id); // get the currently logged in user
 
     // First check sentry permission
-    if ($valid && ! hasModulePermission($module_name, 'delete', $user->id)) {
-        $valid = setError("User[".$user->name."] does not have delete permission on module: $module_name [".$element->id."]", $set_msg);
+    if ($valid && ! hasModulePermission($moduleName, 'delete', $user->id)) {
+        $valid = setError("User[".$user->name."] does not have delete permission on module: $moduleName [".$element->id."]", $set_msg);
     }
 
     // Check for valid tenant context
@@ -307,12 +307,12 @@ function spyrElementDeletable($element, $user_id = null, $set_msg = false)
 function spyrElementRestorable($element, $user_id = null, $set_msg = false)
 {
     $valid = true;
-    $module_name = elementModule($element);
+    $moduleName = elementModule($element);
     $user = user($user_id); // get the currently logged in user
 
     // First check sentry permission
-    if ($valid && ! hasModulePermission($module_name, 'restore', $user->id)) {
-        $valid = setError("User[".$user->name."] does not have restore permission on module: $module_name [".$element->id."]", $set_msg);
+    if ($valid && ! hasModulePermission($moduleName, 'restore', $user->id)) {
+        $valid = setError("User[".$user->name."] does not have restore permission on module: $moduleName [".$element->id."]", $set_msg);
     }
     // Check for valid tenant context
     if ($valid) {
@@ -348,12 +348,12 @@ function editableByTenant($element, $set_msg = false)
 function editableInTenantContext($element, $user_id = null, $set_msg = false)
 {
     $user = user($user_id); // get the currently logged in user
-    $module_name = elementModule($element);
+    $moduleName = elementModule($element);
     $valid = true;
 
-    if (inTenantContext($module_name, $user->id)) {
+    if (inTenantContext($moduleName, $user->id)) {
         if (! elementBelongsToSameTenant($element, $user->id)) {
-            $valid = setError("User[".$user->name."] can not edit : $module_name [".$element->id."] because it does not belong to this user", $set_msg);
+            $valid = setError("User[".$user->name."] can not edit : $moduleName [".$element->id."] because it does not belong to this user", $set_msg);
         } else {
             $valid = editableByTenant($element, $set_msg);
         }

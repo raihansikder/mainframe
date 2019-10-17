@@ -13,7 +13,7 @@ trait IsoTenant
      * Checks if a user has tenant context
      *
      * @return bool
-     * @internal param $module_name
+     * @internal param $moduleName
      */
     public function hasTenantContext()
     {

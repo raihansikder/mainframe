@@ -29,7 +29,7 @@ use App\Observers\ChangeObserver;
  * @mixin \Eloquent
  * @property string|null $changeset
  * @property int|null $module_id
- * @property string|null $module_name
+ * @property string|null $moduleName
  * @property int|null $element_id
  * @property string|null $element_uuid
  * @property string|null $field
@@ -81,7 +81,7 @@ class Change extends BaseModule
         'name',
         'changeset',
         'module_id',
-        'module_name',
+        'moduleName',
         'element_id',
         'element_uuid',
         'field',
@@ -115,7 +115,7 @@ class Change extends BaseModule
      *
      * @var array
      */
-    public static $custom_validation_messages = [
+    public static $customValidationMessages = [
         //'name.required' => 'Custom message.',
     ];
 
@@ -360,7 +360,7 @@ class Change extends BaseModule
                         "name" => $change_name,
                         "changeset" => $changeset,
                         "module_id" => $module->id,
-                        "module_name" => $module->name,
+                        "moduleName" => $module->name,
                         "element_id" => $element->id,
                         "element_uuid" => $element->uuid,
                         "field" => $change['field'],
@@ -390,7 +390,7 @@ class Change extends BaseModule
                     "name" => "Create new ".get_class($element),
                     "changeset" => $changeset,
                     "module_id" => $module->id,
-                    "module_name" => $module->name,
+                    "moduleName" => $module->name,
                     "element_id" => $element->id,
                     "element_uuid" => $element->uuid,
                     //"event" => "Create",

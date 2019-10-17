@@ -29,7 +29,7 @@ use App\Observers\ModuleObserver;
  * @property string|null $title
  * @property string|null $description
  * @property int|null $parent_id
- * @property int|null $modulegroup_id
+ * @property int|null $moduleGroup_id
  * @property int|null $level
  * @property int|null $order
  * @property string|null $default_route
@@ -75,8 +75,8 @@ class Module extends BaseModule
      * @var array
      */
     protected $fillable = [
-        'name', 'title', 'description', 'parent_id', 'modulegroup_id', 'level', 'order', 'color_css', 'icon_css', 'default_route', 'is_active', 'created_by',
-        'updated_by', 'deleted_by'
+        'name', 'title', 'description', 'parent_id', 'module_group_id', 'level', 'order', 'color_css', 'icon_css', 'default_route', 'is_active', 'created_by',
+        'updated_by', 'deleted_by', 'model', 'view', 'controller'
     ];
 
     /**
@@ -105,7 +105,7 @@ class Module extends BaseModule
      *
      * @var array
      */
-    public static $custom_validation_messages = [
+    public static $customValidationMessages = [
         //'name.required' => 'Custom message.',
     ];
 
@@ -120,8 +120,8 @@ class Module extends BaseModule
     public static function rules($element, $merge = [])
     {
         $rules = [
-            'name' => 'required|between:1,255|unique:modules,name,'.(isset($element->id) ? "$element->id" : 'null').',id,deleted_at,NULL',
-            'title' => 'required|between:1,255|unique:modules,title,'.(isset($element->id) ? "$element->id" : 'null').',id,deleted_at,NULL',
+            'name'      => 'required|between:1,255|unique:modules,name,'.(isset($element->id) ? "$element->id" : 'null').',id,deleted_at,NULL',
+            'title'     => 'required|between:1,255|unique:modules,title,'.(isset($element->id) ? "$element->id" : 'null').',id,deleted_at,NULL',
             // 'created_by' => 'exists:users,id,is_active,1',
             // 'updated_by' => 'exists:users,id,is_active,1',
             'is_active' => 'required|in:1,0',
@@ -140,7 +140,6 @@ class Module extends BaseModule
     ############################################################################################
     # Model events
     ############################################################################################
-
 
     public static function boot()
     {
@@ -192,13 +191,13 @@ class Module extends BaseModule
 
             if ($valid) {
                 // Fill default values
-                $element->parent_id = (! $element->parent_id) ? 0 : $element->parent_id;
-                $element->modulegroup_id = (! $element->modulegroup_id) ? 0 : $element->modulegroup_id;
-                $element->level = (! $element->level) ? 0 : $element->level;
-                $element->order = (! $element->order) ? 0 : $element->order;
-                $element->default_route = (! $element->default_route) ? $element->name.'.index' : $element->default_route;
-                $element->color_css = (! $element->color_css) ? 'aqua' : $element->color_css;
-                $element->icon_css = (! $element->icon_css) ? 'fa fa-plus' : $element->icon_css;
+                $element->parent_id       = (! $element->parent_id) ? 0 : $element->parent_id;
+                $element->module_group_id = (! $element->module_group_id) ? 0 : $element->module_group_id;
+                $element->level           = (! $element->level) ? 0 : $element->level;
+                $element->order           = (! $element->order) ? 0 : $element->order;
+                $element->default_route   = (! $element->default_route) ? $element->name.'.index' : $element->default_route;
+                $element->color_css       = (! $element->color_css) ? 'aqua' : $element->color_css;
+                $element->icon_css        = (! $element->icon_css) ? 'fa fa-plus' : $element->icon_css;
             }
 
             return $valid;
@@ -315,8 +314,8 @@ class Module extends BaseModule
             }
 
             if ($predecessor = Module::find($i)) {
-                array_push($stack, $predecessor);
-                $i = $predecessor->parent_id;
+                $stack[] = $predecessor;
+                $i       = $predecessor->parent_id;
             }
         }
 
@@ -326,22 +325,22 @@ class Module extends BaseModule
     }
 
     /**
-     * Returns a multi dimentional array with hiararchically stored modulegroups and modules.
+     * Returns a multi dimentional array with hiararchically stored module_groups and modules.
      * Unlike previous moduletree() function, this one check the parent relationship with
-     * modulegroup instead of module.
+     * module_group instead of module.
      *
      * @return array
      */
     public function modulegroupTree()
     {
         $stack = [$this];
-        for ($i = $this->modulegroup_id; ;) {
+        for ($i = $this->module_group_id; ;) {
             if (! $i) {
                 break;
             }
-            if ($predecessor = Modulegroup::remember(60)->find($i)) {
-                array_push($stack, $predecessor);
-                $i = $predecessor->parent_id;
+            if ($predecessor = ModuleGroup::remember(60)->find($i)) {
+                $stack[] = $predecessor;
+                $i       = $predecessor->parent_id;
             }
         }
         $stack = array_reverse($stack);
