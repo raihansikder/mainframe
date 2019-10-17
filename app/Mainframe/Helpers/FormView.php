@@ -4,7 +4,7 @@ namespace App\Mainframe\Helpers;
 
 use App\User;
 
-class FormViewResolver
+class FormView
 {
 
     /**

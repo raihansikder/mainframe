@@ -2,143 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ee34113f-6433-40ce-8481-cf6a87088dde" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/ConfirmPasswordController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/FormViewResolver.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/GridViewResolver.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Mf.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Http/Controller/ModuleBaseController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/dashboard/layout.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/default/includes/navigation/left-menu/menu-items.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/default/includes/navigation/top-menu/top-right-menu.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/module/form/includes/action-buttons.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/module/form/includes/features/uploads/uploads.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/module/form/includes/js.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/module/form/includes/title.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/_base/form.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/_base/include/datatable.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/_base/include/uploads-list-default.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/settings/form/default.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/settings/form/js.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/settings/grid/default.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/.editorconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/raihan.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/raihan.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Change.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Change.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Group.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Group.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ChangesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ChangesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/GroupsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/GroupsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MessagesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MessagesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ModulegroupsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ModuleGroupsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ModulesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ModulesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ReportsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ReportsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SettingsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SettingsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SuperheroesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SuperheroesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TenantsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TenantsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UploadsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UploadsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UsersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UsersController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/BaseModule.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/BaseModule.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Http/Controller/ModulebaseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Http/Controller/MainframeBaseController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Traits/IsoGridDatatable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Traits/IsoGridDatatable.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Traits/IsoModule.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Traits/IsoModule.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Traits/IsoTenant.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Traits/IsoTenant.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Module.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Module.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Modulegroup.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/ModuleGroup.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Report.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Report.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Setting.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Setting.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Superhero.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Superhero.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Upload.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Upload.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/helpers/helper-framework.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/helpers/helper-framework.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/helpers/helper-generic.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/helpers/helper-generic.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/helpers/helper-permission.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/helpers/helper-permission.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/helpers/helper-tenant.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/helpers/helper-tenant.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/custom-reports/template/init-functions.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/custom-reports/template/init-functions.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/custom/change-email-success.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/custom/change-email.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboards/admin/index.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboards/admin/widgets/count-cards-non-split.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboards/admin/widgets/count-cards-split.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboards/admin/widgets/count-cards.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboards/admin/widgets/most-recommended-brand-categories-bar-chart.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboards/admin/widgets/most-selected-charities-bar-chart.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboards/admin/widgets/no-recommend-purchase-in-last-ten-days.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboards/admin/widgets/recommend-vs-purchase.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboards/admin/widgets/top-brands-bar-chart.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboards/admin/widgets/top-charities-bar-chart.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboards/charity/index.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboards/charity/widgets/count-cards.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboards/charity/widgets/top-brands-advocate.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboards/daterange-picker.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboards/lb-accounts/index.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboards/lb-accounts/widgets/count-cards.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboards/lb-accounts/widgets/list-current-invoices.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboards/partner/index.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboards/partner/widgets/count-cards.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboards/partner/widgets/latest-purchases.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboards/partner/widgets/most-selected-charities-graph.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboards/partner/widgets/most-selected-charities.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboards/partner/widgets/top-purchases-cumulative.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboards/partner/widgets/top-purchases.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboards/partner/widgets/top-recommends-cumulative.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboards/partner/widgets/top-recommends-graph.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboards/partner/widgets/top-recommends.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboards/template/index.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboards/template/widgets/chart-area-donut.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboards/template/widgets/count-cards.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboards/template/widgets/google-bar-chart.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboards/user/index.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/form-elements/input-checkbox.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/form-elements/checkbox/checkbox.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/form-elements/input-hidden.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/form-elements/text/input-hidden.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/form-elements/input-text.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/form-elements/text/input-text.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/form-elements/is_active.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/form-elements/custom/is_active.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/form-elements/plain-text.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/form-elements/text/plain-text.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/form-elements/select-ajax.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/form-elements/select/select-ajax.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/form-elements/select-array-multiple.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/form-elements/select/select-array-multiple.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/form-elements/select-array.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/form-elements/select/select-array.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/form-elements/select-model-multiple.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/form-elements/select/select-model-multiple.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/form-elements/select-model.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/form-elements/select/select-model.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/form-elements/select-tenant.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/form-elements/custom/select-tenant.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/form-elements/textarea.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/form-elements/text/textarea.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/layouts/default/includes/modals/modal-delete.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/default/includes/modals/delete.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/layouts/default/includes/navigation/breadcrumb/breadcrumb.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/default/includes/navigation/breadcrumb/breadcrumb.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/layouts/default/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/default/layout.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/layouts/module/form/includes/modals/modal-messages.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/default/includes/modals/messages.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/layouts/module/form/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/module/form/layout.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/layouts/module/grid/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/module/grid/layout.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/base/changes.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/_base/changes.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/base/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboards/default/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/base/grid.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/_base/grid.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/base/include/datatable.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/module/grid/includes/datatable.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/base/include/sidebar-left.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/_base/include/sidebar-left.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/base/include/sidebar-left.dummy.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/_base/include/sidebar-left.dummy.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/base/include/uploads-list-default.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/module/form/includes/features/uploads/uploads-list-default.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/base/include/uploads.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/_base/include/uploads.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/base/messages.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/_base/messages.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/base/report/advanced.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/_base/report/advanced.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/base/report/cta.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/_base/report/cta.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/base/report/filters.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/_base/report/filters.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/base/report/init-functions.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/_base/report/init-functions.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/base/report/results-print.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/_base/report/results-print.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/base/report/results.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/_base/report/results.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/changes/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/changes/form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/groups/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/groups/form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/messages/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/messages/form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/modulegroups/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/modulegroups/form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/modules/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/modules/form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/reports/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/reports/form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/reports/grid.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/reports/grid.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/settings/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/settings/form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/superheroes/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/superheroes/form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/tenants/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/tenants/form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/uploads/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/uploads/form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/uploads/update_uploads.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/uploads/update_uploads.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/users/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/users/form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/users/invoices.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/users/invoices.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/users/report/init-functions.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/users/report/init-functions.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/template/include/breadcrumb.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/template/include/breadcrumb.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Helpers/FormView.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/FormView.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Helpers/GridView.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/GridView.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Helpers/Mf.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Mf.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Http/Controller/ModuleBaseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Http/Controller/ModuleBaseController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -289,7 +157,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.appearance" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
     <property name="typescript.add.unambiguous.imports.on.the.fly" value="true" />
   </component>
   <component name="RecentsManager">

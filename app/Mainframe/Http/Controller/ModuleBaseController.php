@@ -16,7 +16,7 @@ use Validator;
 use App\Module;
 use App\Upload;
 use Illuminate\Support\Str;
-use App\Mainframe\Helpers\FormViewResolver;
+use App\Mainframe\Helpers\FormView;
 
 /**
  * Class ModuleBaseController
@@ -76,7 +76,7 @@ class ModuleBaseController extends MainframeBaseController
         }
         abort(403);
     }
-
+    
     /**
      * Shows an element create form.
      *
@@ -86,10 +86,9 @@ class ModuleBaseController extends MainframeBaseController
     public function create()
     {
         if (hasModulePermission($this->moduleName, 'create')) {
+
             $uuid = Request::old('uuid') ?: uuid();
-
-            $view = FormViewResolver::resolve($this->moduleName, 'create', user());
-
+            $view = FormView::resolve($this->moduleName, 'create', user());
             $formConfig = [
                 'route' => $this->moduleName.'.store',
                 'class' => $this->moduleName."-form module-base-form create-form",
@@ -225,7 +224,7 @@ class ModuleBaseController extends MainframeBaseController
         if ($element = $Model::find($id)) { // Check if the element you are trying to edit exists
 
             if ($element->isViewable()) { // Check if the element is viewable
-                $view = FormViewResolver::resolve($this->moduleName, 'edit', user());
+                $view = FormView::resolve($this->moduleName, 'edit', user());
 
                 $formConfig = [
                     'route'  => [$moduleName.'.update', $element->id],

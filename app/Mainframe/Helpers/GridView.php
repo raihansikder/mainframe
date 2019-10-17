@@ -4,21 +4,16 @@ namespace App\Mainframe\Helpers;
 
 use App\User;
 
-class GridViewResolver
+class GridView
 {
     /**
      * @param $moduleName
-     * @param  string  $state
      * @param  \App\User|null  $user
      * @return string
      */
-    public static function resolve($moduleName, $state = 'create', User $user = null)
+    public static function resolve($moduleName, User $user = null)
     {
-        if ($state == 'create') {
-            return 'mainframe.modules.'.$moduleName.'.form.default';
-        }
-
-        return 'mainframe.modules.'.$moduleName.'.form.default';
+        return 'mainframe.modules.'.$moduleName.'.grid.default';
     }
 
 }
