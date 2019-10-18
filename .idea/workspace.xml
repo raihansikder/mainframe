@@ -1,7 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ee34113f-6433-40ce-8481-cf6a87088dde" name="Default Changelist" comment="" />
+    <list default="true" id="ee34113f-6433-40ce-8481-cf6a87088dde" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Mainframe/Traits/ModuleBase/ChangesViewable.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Mainframe/Traits/ModuleBase/InputsTransformable.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Mainframe/Traits/ModuleBase/Listable.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Mainframe/Traits/ModuleBase/Reportable.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/module/changes/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/module/grid/includes/title.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Change.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Change.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SettingsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SettingsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Http/Controller/MainframeBaseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Http/Controller/MainframeBaseController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Http/Controller/ModuleBaseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Http/Controller/ModuleBaseController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/layouts/module/form/includes/features/uploads/uploads.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/module/form/includes/features/uploads/uploads.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/layouts/module/grid/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/module/grid/layout.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/_base/changes.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/_base/changes.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/settings/grid/default.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/settings/grid/default.blade.php" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -146,27 +162,27 @@
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/mainframe/layouts/module/form/includes/features/uploads" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/mainframe/layouts/module" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.folding" />
     <property name="typescript.add.unambiguous.imports.on.the.fly" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\MAMP\htdocs\mainframe\resources\views\mainframe\layouts\module\form\includes\features\uploads" />
-      <recent name="E:\MAMP\htdocs\mainframe\resources\views\mainframe\form-elements" />
-      <recent name="E:\MAMP\htdocs\mainframe\resources\views\mainframe\layouts\module\form\includes" />
-      <recent name="E:\MAMP\htdocs\mainframe\resources\views\mainframe\layouts\module\form" />
-      <recent name="E:\MAMP\htdocs\mainframe\resources\views\mainframe\modules\settings\grid" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\MAMP\htdocs\mainframe\resources\views\mainframe\layouts\default\includes\modals" />
       <recent name="E:\MAMP\htdocs\mainframe\resources\views\mainframe\form-elements\custom" />
       <recent name="E:\MAMP\htdocs\mainframe\resources\views\mainframe\form-elements\select" />
       <recent name="E:\MAMP\htdocs\mainframe\resources\views\mainframe\form-elements\text" />
       <recent name="E:\MAMP\htdocs\mainframe\resources\views\mainframe\form-elements\checkbox" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\MAMP\htdocs\mainframe\resources\views\mainframe\layouts\module" />
+      <recent name="E:\MAMP\htdocs\mainframe\resources\views\mainframe\layouts\module\grid\includes" />
+      <recent name="E:\MAMP\htdocs\mainframe\resources\views\mainframe\layouts\module\form\includes\features\uploads" />
+      <recent name="E:\MAMP\htdocs\mainframe\resources\views\mainframe\form-elements" />
+      <recent name="E:\MAMP\htdocs\mainframe\resources\views\mainframe\layouts\module\form\includes" />
     </key>
   </component>
   <component name="RunDashboard">

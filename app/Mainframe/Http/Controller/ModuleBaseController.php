@@ -17,12 +17,19 @@ use App\Module;
 use App\Upload;
 use Illuminate\Support\Str;
 use App\Mainframe\Helpers\FormView;
+use App\Mainframe\Helpers\GridView;
+use App\Mainframe\Traits\ModuleBase\Listable;
+use App\Mainframe\Traits\ModuleBase\Reportable;
+use App\Mainframe\Traits\ModuleBase\ChangesViewable;
+use App\Mainframe\Traits\ModuleBase\InputsTransformable;
 
 /**
  * Class ModuleBaseController
  */
 class ModuleBaseController extends MainframeBaseController
 {
+    use Listable, ChangesViewable, Reportable, InputsTransformable;
+
     protected $moduleName;        // Stores module name with lowercase and plural i.e. 'superheros'.
     protected $module;            // Stores module name with lowercase and plural i.e. 'superheros'.
     protected $query;             // Stores default DB query to create the grid. Used in grid() function.
@@ -67,16 +74,13 @@ class ModuleBaseController extends MainframeBaseController
             if (Request::get('ret') === 'json') {
                 return $this->list();
             }
-            $view = 'mainframe.layouts.module.grid.layout';
-            if (View::exists('mainframe.modules.'.$this->moduleName.'.grid')) {
-                $view = 'modules.'.$this->moduleName.'.grid';
-            }
+            $view = GridView::resolve($this->moduleName);
 
             return view($view)->with('grid_columns', $this->gridColumns());
         }
         abort(403);
     }
-    
+
     /**
      * Shows an element create form.
      *
@@ -88,7 +92,8 @@ class ModuleBaseController extends MainframeBaseController
         if (hasModulePermission($this->moduleName, 'create')) {
 
             $uuid = Request::old('uuid') ?: uuid();
-            $view = FormView::resolve($this->moduleName, 'create', user());
+            $view = FormView::resolve($this->moduleName, 'create');
+
             $formConfig = [
                 'route' => $this->moduleName.'.store',
                 'class' => $this->moduleName."-form module-base-form create-form",

@@ -36,7 +36,7 @@
             @foreach($changes as $change)
                 <tr>
                     <td>{{$change->id}}</td>
-                    <td>{{$change->changeset}}</td>
+                    <td>{{$change->change_set}}</td>
                     <td>{{$change->name}}</td>
                     <td>{{$change->field}}</td>
                     <td>{{$change->old}}</td>

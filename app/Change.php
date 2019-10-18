@@ -27,7 +27,7 @@ use App\Observers\ChangeObserver;
  * @method static \Illuminate\Database\Query\Builder|\App\Change withTrashed()
  * @method static \Illuminate\Database\Query\Builder|\App\Change withoutTrashed()
  * @mixin \Eloquent
- * @property string|null $changeset
+ * @property string|null $change_set
  * @property int|null $module_id
  * @property string|null $moduleName
  * @property int|null $element_id
@@ -79,7 +79,7 @@ class Change extends BaseModule
         'uuid',
         'tenant_id',
         'name',
-        'changeset',
+        'change_set',
         'module_id',
         'moduleName',
         'element_id',
@@ -346,7 +346,7 @@ class Change extends BaseModule
     public static function storeChanges($change_name = '', $element, $changes = [], $desc = "")
     {
         if (isset($element->id) && count($changes)) {
-            $changeset = Str::random(8);
+            $change_set = Str::random(8);
             if ($module = Module::whereName(moduleName(get_class($element)))->first()) {
                 foreach ($changes as $change) {
                     if (is_array($change['new'])) {
@@ -358,9 +358,9 @@ class Change extends BaseModule
 
                     $change = Change::create([
                         "name" => $change_name,
-                        "changeset" => $changeset,
+                        "change_set" => $change_set,
                         "module_id" => $module->id,
-                        "moduleName" => $module->name,
+                        "module_name" => $module->name,
                         "element_id" => $element->id,
                         "element_uuid" => $element->uuid,
                         "field" => $change['field'],
@@ -384,11 +384,11 @@ class Change extends BaseModule
     public static function storeCreateLog($element, $details = "")
     {
         if (isset($element->id)) {
-            $changeset = str_random(8);
+            $change_set = str_random(8);
             if ($module = Module::whereName(moduleName(get_class($element)))->remember(cacheTime('long'))->first()) {
                 $change = Change::create([
                     "name" => "Create new ".get_class($element),
-                    "changeset" => $changeset,
+                    "change_set" => $change_set,
                     "module_id" => $module->id,
                     "moduleName" => $module->name,
                     "element_id" => $element->id,

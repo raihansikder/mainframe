@@ -69,7 +69,7 @@ if ((isset($element, $$element))) {
         <div class="clearfix">
             {{-- uploaded file list --}}
             @if(count($uploads))
-                @include('mainframe.modules.base.include.uploads-list-default',$uploads)
+                @include('mainframe.layouts.module.form.includes.features.uploads.uploads-list-default',$uploads)
             @endif
         </div>
     @endif
