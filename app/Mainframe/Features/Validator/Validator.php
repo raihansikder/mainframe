@@ -1,20 +1,24 @@
 <?php
 
-namespace App\Mainframe\Modules\Modules\Validators;
+namespace App\Mainframe\Features\Validator;
 
 use App\Mainframe\Modules\Modules\Module;
-use App\Mainframe\Features\Validator\Validator as MainframeModelValidator;
 
-class ModuleValidator extends MainframeModelValidator
+class Validator
 {
     public $element;
-    public $module_original;
+    public $element_original;
     public $valid = true;
 
-    public function __construct(Module $module)
+    /**
+     * Validator constructor.
+     *
+     * @param  \App\Mainframe\BaseModule  $element
+     */
+    public function __construct($element)
     {
-        $this->element         = $module;
-        $this->module_original = $module->getOriginal();
+        $this->element          = $element;
+        $this->element_original = $element->getOriginal();
     }
 
     /**
@@ -25,7 +29,7 @@ class ModuleValidator extends MainframeModelValidator
      * @param  array  $merge
      * @return array
      */
-    public static function rules(Module $element, $merge = [])
+    public static function rules($element, $merge = [])
     {
         $rules = [
             'name'      => 'required|between:1,255|unique:modules,name,'.(isset($element->id) ? "$element->id" : 'null').',id,deleted_at,NULL',
@@ -36,19 +40,29 @@ class ModuleValidator extends MainframeModelValidator
         return array_merge($rules, $merge);
     }
 
+    /**
+     * Run all rule checkers
+     * @return \App\Mainframe\BaseModule|bool
+     */
     public function run()
     {
         $this->nameShouldNotHaveSpecialCharacters();
-
         return $this->result();
 
     }
 
+    /**
+     * Get results
+     * @return \App\Mainframe\BaseModule|bool
+     */
     public function result()
     {
         return $this->valid ? $this->element : false;
     }
 
+    /**
+     * Rule : Name should not have some character.
+     */
     public function nameShouldNotHaveSpecialCharacters()
     {
         if (! strlen($this->element->name)) {
