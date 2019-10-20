@@ -2,7 +2,9 @@
 
 namespace App\Observers;
 
-class UploadObserver extends BasemoduleObserver
+use App\Mainframe\Observers\BaseModuleObserver;
+
+class UploadObserver extends BaseModuleObserver
 {
 
 }

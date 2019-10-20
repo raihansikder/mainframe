@@ -7,14 +7,9 @@
 
 namespace App\Http\Mainframe\Controllers;
 
-use DB;
-use View;
-use Request;
-use Response;
 use App\Mainframe\Traits\IsoOutput;
 use App\Http\Controllers\Controller;
-use App\Mainframe\Traits\IsoGridDatatable;
-use App\Classes\Reports\DefaultModuleReport;
+use App\Mainframe\Traits\GridDatatable;
 
 /**
  * Class ModuleBaseController
@@ -22,13 +17,10 @@ use App\Classes\Reports\DefaultModuleReport;
 class MainframeBaseController extends Controller
 {
     use IsoOutput;
-    use IsoGridDatatable;
 
     public function __construct()
     {
 
     }
-
-
 
 }

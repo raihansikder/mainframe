@@ -160,7 +160,7 @@ class UsersController extends ModuleBaseController
         return $inputs;
     }
 
-    // ****************** transformInputs functions end ***********************
+    // ****************** transform functions end ***********************
 
     /**
      * Shows an spyr element. Store an spyr element. Returns json response if ret=json is sent as url parameter.
@@ -219,8 +219,8 @@ class UsersController extends ModuleBaseController
      */
     public function edit($id)
     {
-        /** @var \App\Basemodule $Model */
-        /** @var \App\Basemodule $element */
+        /** @var \App\Mainframe\Basemodule $Model */
+        /** @var \App\Mainframe\Basemodule $element */
         // init local variables
         $moduleName = $this->moduleName;
         $Model = model($this->moduleName);
@@ -403,7 +403,7 @@ class UsersController extends ModuleBaseController
 
     public function list()
     {
-        /** @var \App\Basemodule $Model */
+        /** @var \App\Mainframe\Basemodule $Model */
         /** @var \Illuminate\Database\Eloquent\Builder $q */
         $Model = model($this->moduleName);
 
@@ -508,7 +508,7 @@ class UsersController extends ModuleBaseController
                 ->with('purchases_not_invoiced', $purchases_not_invoiced)
                 ->with('invoices', $invoices)
                 ->with('user', $user)
-                ->with('grid_columns', $this->gridColumns());
+                ->with('gridColumns', $this->gridColumns());
         }
         return 'Permission denied';
     }

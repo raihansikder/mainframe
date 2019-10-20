@@ -2,7 +2,9 @@
 
 namespace App\Observers;
 
-class SuperheroObserver extends BasemoduleObserver
+use App\Mainframe\Observers\BaseModuleObserver;
+
+class SuperheroObserver extends BaseModuleObserver
 {
 
 }

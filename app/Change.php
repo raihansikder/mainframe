@@ -66,6 +66,8 @@ use App\Observers\ChangeObserver;
  * @property-read \App\Upload $latestUpload
  * @property-read int|null $changes_count
  * @property-read int|null $uploads_count
+ * @property string|null $module_name TRIAL
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Change whereChangeSet($value)
  */
 class Change extends BaseModule
 {
@@ -270,7 +272,7 @@ class Change extends BaseModule
     /**
      * Get changes of a model and store in session.
      *
-     * @param  \App\Basemodule  $element
+     * @param  \App\Mainframe\Basemodule  $element
      */
     public static function keepChangesInSession($element)
     {
@@ -280,7 +282,7 @@ class Change extends BaseModule
     /**
      * Get the changes in an array
      *
-     * @param  \App\Basemodule  $filled_element
+     * @param  \App\Mainframe\Basemodule  $filled_element
      * @param  array  $except
      * @return array
      */
@@ -326,7 +328,7 @@ class Change extends BaseModule
      * Fetch changes that are stored in session and save in database.
      *
      * @param  string  $change_name
-     * @param  \App\Basemodule  $element
+     * @param  \App\Mainframe\Basemodule  $element
      * @param  string  $desc
      */
     public static function storeChangesFromSession($change_name = "", $element, $desc = "")
@@ -338,7 +340,7 @@ class Change extends BaseModule
 
     /**
      * @param  string  $change_name  : assign a meaningful name of the change
-     * @param  \App\Basemodule  $element
+     * @param  \App\Mainframe\Basemodule  $element
      * @param  array  $changes
      * @param  string  $desc
      * @internal param array $change_items
@@ -378,7 +380,7 @@ class Change extends BaseModule
     /**
      * Store a log entry when a new element is created
      *
-     * @param  \App\Basemodule  $element
+     * @param  \App\Mainframe\Basemodule  $element
      * @param  string  $details
      */
     public static function storeCreateLog($element, $details = "")

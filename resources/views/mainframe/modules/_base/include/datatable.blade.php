@@ -6,7 +6,7 @@
  * @var $element               string 'superhero'
  * @var $elementIsEditable      boolean
  * @var $uuid                  string '1709c091-8114-4ba4-8fd8-91f0ba0b63e8'
- * @var $grid_columns          array
+ * @var $gridColumns          array
  */
 ?>
 
@@ -15,7 +15,7 @@
         <thead>
         <tr>
             {{-- print the headers/columns --}}
-            @foreach($grid_columns as $c)
+            @foreach($gridColumns as $c)
                 <th>{!! $c[2] !!}</th>
             @endforeach
         </tr>
@@ -29,7 +29,7 @@
 
     <?php
     $columns_json = '';
-    foreach ($grid_columns as $column) {
+    foreach ($gridColumns as $column) {
         $columns_json .= "{ data: '".$column[1]."', name: '".$column[0]."' },";
     }
     ?>

@@ -2,21 +2,69 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ee34113f-6433-40ce-8481-cf6a87088dde" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Traits/ModuleBase/ChangesViewable.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Traits/ModuleBase/InputsTransformable.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Traits/ModuleBase/Listable.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Traits/ModuleBase/Reportable.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/module/changes/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/module/grid/includes/title.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Modules/SettingsController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Mainframe/Features/Datatable/Datatable.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Modules/Module.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Modules/Observers/ModuleObserver.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Modules/Traits/Accessors.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Modules/Traits/Helpers.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Modules/Traits/Mutators.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Modules/Traits/Relations.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Modules/Traits/Scopes.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Modules/Traits/Validator.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Settings/Datatables/DefaultDatatable.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Settings/Setting.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Mainframe/Policies/BaseModulePolicy.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Mainframe/Traits/BaseModule/Validable.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Mainframe/Traits/ModuleBaseController/GridDatatable.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Policies/SettingPolicy.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Change.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Change.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SettingsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SettingsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Group.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Group.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ChangesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Modules/ChangesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/GroupsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Modules/GroupsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MessagesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Modules/MessagesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ModuleGroupsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Modules/ModuleGroupsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ModulesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Modules/ModulesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ReportsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Modules/ReportsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SettingsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Settings/Http/Controllers/SettingsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SuperheroesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Modules/SuperheroesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TenantsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Modules/TenantsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UploadsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Modules/UploadsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UsersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Modules/UsersController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/BaseModule.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/BaseModule.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Helpers/Mf.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Mf.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Mainframe/Http/Controller/MainframeBaseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Http/Controller/MainframeBaseController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Mainframe/Http/Controller/ModuleBaseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Http/Controller/ModuleBaseController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/layouts/module/form/includes/features/uploads/uploads.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/module/form/includes/features/uploads/uploads.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/layouts/module/grid/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/module/grid/layout.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/_base/changes.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/_base/changes.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/settings/grid/default.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/settings/grid/default.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Traits/IsoGridDatatable.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Traits/IsoModule.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Traits/IsoModule.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Traits/IsoOutput.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Traits/IsoOutput.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Traits/ModuleBase/ChangesViewable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Traits/ModuleBaseController/ChangesViewable.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Traits/ModuleBase/InputsTransformable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Traits/ModuleBaseController/RequestTransformable.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Traits/ModuleBase/Listable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Traits/ModuleBaseController/Listable.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Traits/ModuleBase/Reportable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Traits/ModuleBaseController/Reportable.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Module.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Module.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Observers/BasemoduleObserver.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Observers/BaseModuleObserver.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Observers/ChangeObserver.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Observers/ChangeObserver.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Observers/GroupObserver.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Observers/GroupObserver.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Observers/MessageObserver.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Observers/MessageObserver.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Observers/ModuleObserver.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Observers/ModuleObserver.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Observers/ModulegroupObserver.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Observers/ModulegroupObserver.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Observers/ReportObserver.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Observers/ReportObserver.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Observers/SettingObserver.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Observers/SettingObserver.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Observers/SuperheroObserver.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Observers/SuperheroObserver.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Observers/UploadObserver.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Observers/UploadObserver.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Observers/UserObserver.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Observers/UserObserver.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Report.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Report.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Setting.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Setting.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Upload.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Upload.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/helpers/helper-framework.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/helpers/helper-framework.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/layouts/module/grid/includes/datatable.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/module/grid/includes/datatable.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/_base/include/datatable.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/_base/include/datatable.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/settings/form/js.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/settings/form/js.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -161,28 +209,29 @@
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/mainframe/layouts/module" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Mainframe/Modules/Modules/Traits" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.folding" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="typescript.add.unambiguous.imports.on.the.fly" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\MAMP\htdocs\mainframe\resources\views\mainframe\layouts\default\includes\modals" />
-      <recent name="E:\MAMP\htdocs\mainframe\resources\views\mainframe\form-elements\custom" />
-      <recent name="E:\MAMP\htdocs\mainframe\resources\views\mainframe\form-elements\select" />
-      <recent name="E:\MAMP\htdocs\mainframe\resources\views\mainframe\form-elements\text" />
-      <recent name="E:\MAMP\htdocs\mainframe\resources\views\mainframe\form-elements\checkbox" />
+      <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Traits\ModuleBaseController" />
+      <recent name="E:\MAMP\htdocs\mainframe\app\Http\Controllers\Modules" />
+      <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Modules\Settings" />
+      <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Modules" />
+      <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Modules\Settings\Http\Controllers" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Modules\Modules\Traits" />
+      <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Policies" />
       <recent name="E:\MAMP\htdocs\mainframe\resources\views\mainframe\layouts\module" />
       <recent name="E:\MAMP\htdocs\mainframe\resources\views\mainframe\layouts\module\grid\includes" />
       <recent name="E:\MAMP\htdocs\mainframe\resources\views\mainframe\layouts\module\form\includes\features\uploads" />
-      <recent name="E:\MAMP\htdocs\mainframe\resources\views\mainframe\form-elements" />
-      <recent name="E:\MAMP\htdocs\mainframe\resources\views\mainframe\layouts\module\form\includes" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -228,5 +277,8 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>

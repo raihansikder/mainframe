@@ -2,7 +2,9 @@
 
 namespace App\Observers;
 
-class MessageObserver extends BasemoduleObserver
+use App\Mainframe\Observers\BaseModuleObserver;
+
+class MessageObserver extends BaseModuleObserver
 {
 
 }

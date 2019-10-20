@@ -18,23 +18,30 @@ use App\Upload;
 use Illuminate\Support\Str;
 use App\Mainframe\Helpers\FormView;
 use App\Mainframe\Helpers\GridView;
-use App\Mainframe\Traits\ModuleBase\Listable;
-use App\Mainframe\Traits\ModuleBase\Reportable;
-use App\Mainframe\Traits\ModuleBase\ChangesViewable;
-use App\Mainframe\Traits\ModuleBase\InputsTransformable;
+use App\Mainframe\Traits\ModuleBaseController\Listable;
+use App\Mainframe\Traits\ModuleBaseController\Reportable;
+use App\Mainframe\Traits\ModuleBaseController\GridDatatable;
+use App\Mainframe\Traits\ModuleBaseController\ChangesViewable;
+use App\Mainframe\Traits\ModuleBaseController\RequestTransformable;
 
 /**
  * Class ModuleBaseController
  */
 class ModuleBaseController extends MainframeBaseController
 {
-    use Listable, ChangesViewable, Reportable, InputsTransformable;
+    use Listable, ChangesViewable, Reportable, RequestTransformable, GridDatatable;
 
-    protected $moduleName;        // Stores module name with lowercase and plural i.e. 'superheros'.
+    public    $moduleName;        // Stores module name with lowercase and plural i.e. 'superheros'.
     protected $module;            // Stores module name with lowercase and plural i.e. 'superheros'.
     protected $query;             // Stores default DB query to create the grid. Used in grid() function.
-    protected $grid_columns;      // Columns to show, this array is set form modules individual controller.
+    protected $gridColumns;       // Columns to show, this array is set form modules individual controller.
     protected $reportDataSource;  // loads the model name
+
+    protected $element;    // loads the model name
+    protected $validator;  // loads the model name
+
+    /** @var \App\Mainframe\Features\Datatable\Datatable */
+    protected $datatable;  // loads the model name
 
     /**
      * Constructor for this class is very important as it boots up necessary features of
@@ -50,6 +57,7 @@ class ModuleBaseController extends MainframeBaseController
 
         $this->moduleName = controllerModule(get_class($this));
         $this->module     = Module::where('name', $this->moduleName)->remember(cacheTime('long'))->first();
+        $this->datatable  = $this->resolveDatatableClass();
 
         if ($tenantId = inTenantContext($this->moduleName)) {
             Request::merge([tenantIdField() => $tenantId]);
@@ -57,7 +65,7 @@ class ModuleBaseController extends MainframeBaseController
 
         View::share([
             'moduleName'    => $this->moduleName,
-            'currentModule' => $this->module
+            'currentModule' => $this->module,
         ]);
     }
 
@@ -76,7 +84,7 @@ class ModuleBaseController extends MainframeBaseController
             }
             $view = GridView::resolve($this->moduleName);
 
-            return view($view)->with('grid_columns', $this->gridColumns());
+            return view($view)->with('gridColumns', $this->datatable->columns());
         }
         abort(403);
     }
@@ -101,10 +109,11 @@ class ModuleBaseController extends MainframeBaseController
                 'files' => true
             ];
 
+            $elementIsEditable = true;
+            $formState         = 'create';
+
             return View::make($view)
-                ->with(compact('formConfig', 'uuid'))
-                ->with('elementIsEditable', true)
-                ->with('formState', 'create');
+                ->with(compact('formConfig', 'uuid', 'elementIsEditable', 'formState'));
         }
         abort(403);
     }
@@ -114,7 +123,7 @@ class ModuleBaseController extends MainframeBaseController
      * based on the url set in redirect_success|redirect_fail
      *
      * @return $this|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
-     * @var \App\Basemodule $element
+     * @var \App\Mainframe\Basemodule $element
      * @var \App\Superhero $Model
      */
     public function store()
@@ -123,7 +132,7 @@ class ModuleBaseController extends MainframeBaseController
         $moduleName = $this->moduleName;
         $Model      = model($this->moduleName);
         $validator  = null;
-        $element    = new $Model($this->transformInputs(Request::all()));
+        $element    = new $Model($this->transform(Request::all()));
 
         if (hasModulePermission($this->moduleName, 'create')) {
 
@@ -174,8 +183,8 @@ class ModuleBaseController extends MainframeBaseController
      */
     public function show($id)
     {
-        /** @var \App\Basemodule $Model */
-        /** @var \App\Basemodule $element */
+        /** @var \App\Mainframe\Basemodule $Model */
+        /** @var \App\Mainframe\Basemodule $element */
         $moduleName = $this->moduleName;
         $Model      = model($this->moduleName);
         //$elementName = str_singular($moduleName);
@@ -217,8 +226,8 @@ class ModuleBaseController extends MainframeBaseController
     public function edit($id)
     {
 
-        /** @var \App\Basemodule $Model */
-        /** @var \App\Basemodule $element */
+        /** @var \App\Mainframe\Basemodule $Model */
+        /** @var \App\Mainframe\Basemodule $element */
         // init local variables
         $moduleName  = $this->moduleName;
         $Model       = model($this->moduleName);
@@ -240,12 +249,13 @@ class ModuleBaseController extends MainframeBaseController
                     'id'     => $moduleName.'Form'
                 ];
 
+                $elementIsEditable = $element->isEditable();
+                $formState         = 'edit';
+
                 return View::make($view)
                     ->with('element', $elementName)     //loads the singular module name in variable called $element = 'user'
                     ->with($elementName, $element)      //loads the object into a variable with module name $user = (user object)
-                    ->with('formConfig', $formConfig)   //loads the object into a variable with module name $user = (user object)
-                    ->with('formState', 'edit')
-                    ->with('elementIsEditable', $element->isEditable());
+                    ->with(compact('formConfig', 'formState', 'elementIsEditable'));
             }
 
             // Not viewable by the user. Set error message and return value.
@@ -269,14 +279,14 @@ class ModuleBaseController extends MainframeBaseController
      *
      * @param $id
      * @return $this|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
-     * @var \App\Basemodule $element
-     * @var \App\Basemodule $Model
+     * @var \App\Mainframe\Basemodule $element
+     * @var \App\Mainframe\Basemodule $Model
      */
     public function update($id)
     {
 
-        /** @var \App\Basemodule $Model */
-        /** @var \App\Basemodule $element */
+        /** @var \App\Mainframe\Basemodule $Model */
+        /** @var \App\Mainframe\Basemodule $element */
         // init local variables
         $Model = model($this->moduleName);
         $ret   = ret(); // load default return values
@@ -285,9 +295,9 @@ class ModuleBaseController extends MainframeBaseController
         # --------------------------------------------------------
         $validator = null;
         if ($element = $Model::find($id)) { // Check if element exists.
-            if ($element->isEditable()) { // Check if the element is editable.
+            if (user()->can('update', $element)) { // Check if the element is editable.
 
-                $element->fill($this->transformInputs(Request::all()));
+                $element->fill($this->transform(Request::all()));
                 $validator = $element->validateModel();
 
                 if ($validator->fails()) {
@@ -334,8 +344,8 @@ class ModuleBaseController extends MainframeBaseController
      */
     public function destroy($id)
     {
-        /** @var \App\Basemodule $Model */
-        /** @var \App\Basemodule $element */
+        /** @var \App\Mainframe\Basemodule $Model */
+        /** @var \App\Mainframe\Basemodule $element */
         // init local variables
         // $moduleName = $this->moduleName;
         $Model = model($this->moduleName);

@@ -25,6 +25,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string|null $deleted_at
  * @property int|null $deleted_by
  * @method static bool|null forceDelete()
+ * @method static Model|\Illuminate\Database\Query\Builder remember()
+ *
  */
 class BaseModule extends Model
 {

@@ -48,7 +48,7 @@ function oldInputValue($name = '', $value = null)
  * inputs and set the empty strings to null. Also for all cases we need to set the creator/updater/deleter
  * with timestamp of that event.
  * This function is generally used in Model saving() event
- * @param \App\Basemodule $element Eloquent model object
+ * @param \App\Mainframe\Basemodule $element Eloquent model object
  * @param array $except If any field should be ignored from auto filling then should be
  *                                                     defined in this array
  * @return mixed : Eloquent model object with filled and cleaned values
@@ -135,7 +135,7 @@ function controllerModule($controller_class)
 
 /**
  * Derive module name from an eloquent model element
- * @param $element \App\Basemodule
+ * @param $element \App\Mainframe\Basemodule
  * @return string
  * @internal param $element_object
  */
@@ -446,7 +446,7 @@ function breadcrumb(\App\Module $module = null)
 {
     $breadcrumbs = [];
     if ($module) {
-        $items = $module->modulegroupTree();
+        $items = $module->moduleGroupTree();
         foreach ($items as $item) {
             $breadcrumbs[$item->name] = [
                 'name'  => $item->name,

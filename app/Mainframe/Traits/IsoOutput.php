@@ -12,7 +12,7 @@ trait IsoOutput
     /**
      * Returns JSON or Redirects to another route based on Request parameters.
      * @param $ret
-     * @param  \App\Basemodule|null  $element
+     * @param  \App\Mainframe\Basemodule|null  $element
      * @param  \Validator  $validator
      * @return $this|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */

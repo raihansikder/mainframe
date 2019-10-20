@@ -25,7 +25,7 @@ class Mf
             $var = $module->name;
 
             Route:: get($moduleName."/{".Str::singular($moduleName)."}/restore", $controller."@restore")->name($moduleName.'.restore');
-            Route:: get($moduleName."/grid", $controller."@grid")->name($moduleName.'.grid');
+            Route:: get($moduleName."/datatable/json", $controller."@datatableJson")->name($moduleName.'.datatable-json');
             Route:: get($moduleName."/list/json", $controller."@list")->name($moduleName.'.list-json');
             Route:: get($moduleName."/report", $controller."@report")->name($moduleName.'.report');
             Route:: get($moduleName."/{".Str::singular($moduleName)."}/changes", $controller."@changes")->name($moduleName.'.changes');

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Mainframe\Traits\ModuleBase;
+namespace App\Mainframe\Traits\ModuleBaseController;
 
 use Request;
 use Response;
@@ -13,7 +13,7 @@ trait Listable
      *
      * @return \Illuminate\Http\JsonResponse
      * @var \Illuminate\Database\Eloquent\Builder $q
-     * @var \App\Basemodule $Model
+     * @var \App\Mainframe\Basemodule $Model
      */
     public function list()
     {
@@ -30,7 +30,7 @@ trait Listable
      */
     public function listData()
     {
-        /** @var \App\Basemodule $Model */
+        /** @var \App\Mainframe\Basemodule $Model */
         /** @var \Illuminate\Database\Eloquent\Builder $q */
         /** @var \App\Http\Mainframe\Controllers\ModuleBaseController $this */
         $Model = model($this->moduleName);
@@ -98,7 +98,7 @@ trait Listable
      * Json return query constructor
      *
      * @param $q \Illuminate\Database\Query\Builder
-     * @return \App\Basemodule
+     * @return \App\Mainframe\Basemodule
      */
     public function filterQueryConstructor($q)
     {
@@ -106,8 +106,8 @@ trait Listable
         $text_fields = $Model::$text_fields;
         //$module_sys_name = $this->moduleName;
 
-        /** @var \App\Basemodule $q */
-        /** @var \App\Basemodule $Model */
+        /** @var \App\Mainframe\Basemodule $q */
+        /** @var \App\Mainframe\Basemodule $Model */
         // $q = $q->where('is_active', 1);
 
         if (inTenantContext($this->moduleName)) {

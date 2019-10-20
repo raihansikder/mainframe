@@ -119,7 +119,7 @@ class SuperheroesController extends ModuleBaseController
      * @param array $inputs
      * @return array
      */
-    // public function transformInputs($inputs = [])
+    // public function transform($inputs = [])
     // {
     //     /*
     //      * Convert an array input to csv
@@ -154,5 +154,5 @@ class SuperheroesController extends ModuleBaseController
     //
     //     return $inputs;
     // }
-    // ****************** transformInputs functions end ***********************
+    // ****************** transform functions end ***********************
 }

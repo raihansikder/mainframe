@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Mainframe\Traits\ModuleBase;
+namespace App\Mainframe\Traits\ModuleBaseController;
 
 use View;
 use App\Classes\Reports\DefaultModuleReport;

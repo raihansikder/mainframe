@@ -2,7 +2,9 @@
 
 namespace App\Observers;
 
-class GroupObserver extends BasemoduleObserver
+use App\Mainframe\Observers\BaseModuleObserver;
+
+class GroupObserver extends BaseModuleObserver
 {
 
 }

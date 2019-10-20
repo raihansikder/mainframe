@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Mainframe\Traits\ModuleBase;
+namespace App\Mainframe\Traits\ModuleBaseController;
 
 use Request;
 use Response;
@@ -16,12 +16,12 @@ trait ChangesViewable
      */
     public function changes($id)
     {
-        /** @var \App\Basemodule $Model */
-        /** @var \App\Basemodule $element */
+        /** @var \App\Mainframe\Basemodule $Model */
+        /** @var \App\Mainframe\Basemodule $element */
         // init local variables
 
-        /** @var \App\Basemodule $Model */
-        /** @var \App\Basemodule $element */
+        /** @var \App\Mainframe\Basemodule $Model */
+        /** @var \App\Mainframe\Basemodule $element */
         $Model = model($this->moduleName);
         //$ret = ret(); // load default return values
         # --------------------------------------------------------

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Mainframe\Traits\ModuleBase;
+namespace App\Mainframe\Traits\ModuleBaseController;
 
-trait InputsTransformable
+trait RequestTransformable
 {
     /**
      * Transforms inputs to a Model compatible format.
@@ -10,7 +10,7 @@ trait InputsTransformable
      * @param  array  $inputs
      * @return array
      */
-    public function transformInputs($inputs = [])
+    public function transform($inputs = [])
     {
         /*
          * Convert an array input to csv

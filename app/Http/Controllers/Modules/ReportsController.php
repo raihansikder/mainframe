@@ -98,7 +98,7 @@ class ReportsController extends ModuleBaseController
        target="_blank"> Run </a>';
         });
 
-        // $this->grid_columns = array_merge($this->grid_columns, [['action', 'action', 'Action']]);
+        // $this->gridColumns = array_merge($this->gridColumns, [['action', 'action', 'Action']]);
 
         return $dt;
     }

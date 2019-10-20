@@ -2,7 +2,9 @@
 
 namespace App\Observers;
 
-class ChangeObserver extends BasemoduleObserver
+use App\Mainframe\Observers\BaseModuleObserver;
+
+class ChangeObserver extends BaseModuleObserver
 {
     public function created($element)
     {
@@ -11,7 +13,7 @@ class ChangeObserver extends BasemoduleObserver
     /**
      * This function is executed during a model's saving() phase
      *
-     * @param $element \App\Basemodule
+     * @param $element \App\Mainframe\Basemodule
      * @return bool
      */
     public function saving($element)
@@ -22,7 +24,7 @@ class ChangeObserver extends BasemoduleObserver
     /**
      * This function is executed during a model's saved() phase
      *
-     * @param $element \App\Basemodule
+     * @param $element \App\Mainframe\Basemodule
      * @return bool|void
      */
 
