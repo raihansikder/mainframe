@@ -6,5 +6,4 @@ use App\Http\Mainframe\Controllers\ModuleBaseController;
 
 class SettingsController extends ModuleBaseController
 {
-
 }

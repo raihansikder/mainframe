@@ -46,4 +46,6 @@ class Mf
         Route::get('download/{uuid}', 'UploadsController@download')->name('get.download');
 
     }
+
+
 }

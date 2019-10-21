@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpUndefinedMethodInspection */
 
 namespace App\Mainframe\Modules\Modules\Traits;
 
@@ -10,7 +10,14 @@ trait Helpers
 
     public static function byName($name)
     {
-        return Module::where('name', $name)->remember(cacheTime('long'))->first();
+        return Module::where('name', $name)
+            ->remember(cacheTime('long'))
+            ->first();
+    }
+
+    public static function fromController($classPath)
+    {
+        return lcfirst(str_replace('Controller', '', class_basename($classPath)));
     }
 
     /**
@@ -25,7 +32,10 @@ trait Helpers
         if ($only_active) {
             $q = $q->where('is_active', 1);
         }
-        $results = $q->remember(cacheTime('long'))->get()->toArray();
+        $results = $q->remember(cacheTime('long'))
+            ->get()
+            ->toArray();
+
         $modules = array_column($results, 'name');
 
         return $modules;
@@ -70,7 +80,7 @@ trait Helpers
             if (! $i) {
                 break;
             }
-            if ($predecessor = ModuleGroup::remember(60)->find($i)) {
+            if ($predecessor = ModuleGroup::remember(cacheTime('long'))->find($i)) {
                 $stack[] = $predecessor;
                 $i       = $predecessor->parent_id;
             }

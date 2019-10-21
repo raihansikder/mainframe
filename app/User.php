@@ -394,7 +394,7 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     ############################################################################################
-    # Validator functions
+    # MainframeModelValidator functions
     ############################################################################################
 
     /**

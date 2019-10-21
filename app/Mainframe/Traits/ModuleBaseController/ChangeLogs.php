@@ -6,7 +6,7 @@ use Request;
 use Response;
 use App\Http\Mainframe\Controllers\ModuleBaseController;
 
-trait ChangesViewable
+trait ChangeLogs
 {
     /**
      * Show all the changes/change logs of an item

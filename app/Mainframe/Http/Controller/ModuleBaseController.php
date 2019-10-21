@@ -15,33 +15,58 @@ use Exception;
 use Validator;
 use App\Module;
 use App\Upload;
-use Illuminate\Support\Str;
 use App\Mainframe\Helpers\FormView;
 use App\Mainframe\Helpers\GridView;
+use App\Mainframe\Helpers\ControllerResponseBuilder;
 use App\Mainframe\Traits\ModuleBaseController\Listable;
 use App\Mainframe\Traits\ModuleBaseController\Reportable;
+use App\Mainframe\Traits\ModuleBaseController\ChangeLogs;
 use App\Mainframe\Traits\ModuleBaseController\GridDatatable;
-use App\Mainframe\Traits\ModuleBaseController\ChangesViewable;
-use App\Mainframe\Traits\ModuleBaseController\RequestTransformable;
+use App\Mainframe\Traits\ModuleBaseController\Transformable;
+use App\Mainframe\Traits\ModuleBaseController\ResponseGenerator;
 
 /**
  * Class ModuleBaseController
  */
 class ModuleBaseController extends MainframeBaseController
 {
-    use Listable, ChangesViewable, Reportable, RequestTransformable, GridDatatable;
+    use Listable, ChangeLogs, Reportable, Transformable, GridDatatable, ResponseGenerator;
 
-    public    $moduleName;        // Stores module name with lowercase and plural i.e. 'superheros'.
-    protected $module;            // Stores module name with lowercase and plural i.e. 'superheros'.
-    protected $query;             // Stores default DB query to create the grid. Used in grid() function.
-    protected $gridColumns;       // Columns to show, this array is set form modules individual controller.
-    protected $reportDataSource;  // loads the model name
+    /** @var string */
+    public $moduleName;        // Stores module name with lowercase and plural i.e. 'superheros'.
 
-    protected $element;    // loads the model name
-    protected $validator;  // loads the model name
+    /** @var Module */
+    public $module;            // Stores module name with lowercase and plural i.e. 'superheros'.
 
-    /** @var \App\Mainframe\Features\Datatable\Datatable */
-    protected $datatable;  // loads the model name
+    /** @var \Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder */
+    public $query;             // Stores default DB query to create the grid. Used in grid() function. // todo: don't know the usage
+
+    /** @var \Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder */
+    public $reportDataSource;  // loads the model name
+
+    /** @var \Eloquent */
+    public $element;
+
+    /** @var \App\Mainframe\Features\Validator\MainframeModelValidator */
+    public $validator;  // loads the model name
+
+    /** @var \App\Mainframe\Features\Datatable\MainframeDatatable */
+    public $datatable;
+
+    /** @var \Illuminate\Database\Eloquent\Builder */
+    public $model;
+
+    /** @var \Illuminate\Http\Request */
+    public $request;
+
+    /** @var string */
+    public $responseStatus;
+
+    /** @var mixed */
+    public $responsePayload;
+
+    /** @var \App\Mainframe\Helpers\ControllerResponseBuilder|self */
+    public $responder;
 
     /**
      * Constructor for this class is very important as it boots up necessary features of
@@ -55,13 +80,14 @@ class ModuleBaseController extends MainframeBaseController
     {
         parent::__construct();
 
-        $this->moduleName = controllerModule(get_class($this));
-        $this->module     = Module::where('name', $this->moduleName)->remember(cacheTime('long'))->first();
+        $this->moduleName = Module::fromController(get_class($this));
+        $this->module     = Module::byName($this->moduleName);
+        $this->model      = $this->module->modelInstance();
         $this->datatable  = $this->resolveDatatableClass();
+        $this->request    = Request::capture();
 
-        if ($tenantId = inTenantContext($this->moduleName)) {
-            Request::merge([tenantIdField() => $tenantId]);
-        }
+        $this->responder  = new ControllerResponseBuilder($this);
+
 
         View::share([
             'moduleName'    => $this->moduleName,
@@ -183,38 +209,21 @@ class ModuleBaseController extends MainframeBaseController
      */
     public function show($id)
     {
-        /** @var \App\Mainframe\Basemodule $Model */
-        /** @var \App\Mainframe\Basemodule $element */
-        $moduleName = $this->moduleName;
-        $Model      = model($this->moduleName);
-        //$elementName = str_singular($moduleName);
-        //$ret = ret(); // load default return values
-        # --------------------------------------------------------
-        # Process show
-        # --------------------------------------------------------
-        if ($element = $Model::find($id)) { // Check if the element exists
-            if ($element->isViewable()) { // Check if the element is viewable
-                //$ret = ret('success', "$Model " . $element->id . " found", ['data' => $element]);
-                $ret = ret('success', '', ['data' => $element]);
-            } else { // not viewable
-                $ret = ret('fail', "{$this->module->title} is not viewable.");
-            }
-        } else { // The element was not found or has been deleted.
-            $ret = ret('fail', "{$this->module->title} could not be found. The element is either unavailable or deleted.");
-        }
-        # --------------------------------------------------------
-        # Process return/redirect
-        # --------------------------------------------------------
-        if (Request::get('ret') === 'json') {
-            return Response::json(fillRet($ret));
+
+
+
+        $this->element = $this->model->find($id);
+
+        if (! $this->element) {
+            return $this->elementNotFound();
         }
 
-        if ($ret['status'] === 'fail') { // Show failed. Redirect to fail path(url)
-            return Redirect::route('home');
+        if (! $this->element->isViewable()) {
+            return $this->permissionDenied();
         }
 
-        // Redirect to edit path
-        return Redirect::route("$moduleName.edit", $id);
+        return $this->elementFound();
+
     }
 
     /**
@@ -226,27 +235,21 @@ class ModuleBaseController extends MainframeBaseController
     public function edit($id)
     {
 
-        /** @var \App\Mainframe\Basemodule $Model */
-        /** @var \App\Mainframe\Basemodule $element */
-        // init local variables
-        $moduleName  = $this->moduleName;
-        $Model       = model($this->moduleName);
-        $elementName = Str::singular($moduleName);
-        # --------------------------------------------------------
-        # Process return/redirect
-        # --------------------------------------------------------
-        if ($element = $Model::find($id)) { // Check if the element you are trying to edit exists
+        $elementName = $this->module->elementName();
+        $element     = $this->model->find($id);
+
+        if ($element) { // Check if the element you are trying to edit exists
 
             if ($element->isViewable()) { // Check if the element is viewable
                 $view = FormView::resolve($this->moduleName, 'edit', user());
 
                 $formConfig = [
-                    'route'  => [$moduleName.'.update', $element->id],
-                    'class'  => $moduleName."-form module-base-form edit-form",
-                    'name'   => $moduleName,
+                    'route'  => [$this->moduleName.'.update', $element->id],
+                    'class'  => $this->moduleName.'-form module-base-form edit-form',
+                    'name'   => $this->moduleName,
                     'files'  => true,
                     'method' => 'patch',
-                    'id'     => $moduleName.'Form'
+                    'id'     => $this->moduleName.'Form'
                 ];
 
                 $elementIsEditable = $element->isEditable();
@@ -257,21 +260,9 @@ class ModuleBaseController extends MainframeBaseController
                     ->with($elementName, $element)      //loads the object into a variable with module name $user = (user object)
                     ->with(compact('formConfig', 'formState', 'elementIsEditable'));
             }
-
-            // Not viewable by the user. Set error message and return value.
-            //return showPermissionErrorPage("The element is not view-able by current user.");
-
-            abort(403);
-            // return View::make('template.blank')
-            //     ->with('title', 'Permission denied!')
-            //     ->with('body', 'The element is not view-able by current user. [ Error :: isViewable()]');
         }
 
-        // The element does not exist. Set error and return values
-        //return showGenericErrorPage("The item that you are trying to access does not exist or has been deleted");
-        return View::make('template.blank')
-            ->with('title', 'Not found!')
-            ->with('body', 'The item that you are trying to access does not exist or has been deleted');
+        return abort(403);
     }
 
     /**
@@ -282,7 +273,7 @@ class ModuleBaseController extends MainframeBaseController
      * @var \App\Mainframe\Basemodule $element
      * @var \App\Mainframe\Basemodule $Model
      */
-    public function update($id)
+    public function updateOld($id)
     {
 
         /** @var \App\Mainframe\Basemodule $Model */
@@ -327,6 +318,68 @@ class ModuleBaseController extends MainframeBaseController
         } else {
 
             $ret = ret('fail', "{$this->module->title} could not be found. The element is either unavailable or deleted.");
+
+        }
+        # --------------------------------------------------------
+        # Process return/redirect
+        # --------------------------------------------------------
+        return $this->jsonOrRedirect($ret, $validator, $element);
+    }
+
+    /**
+     * Update handler for spyr element.
+     *
+     * @param $id
+     * @return $this|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
+     * @var \App\Mainframe\Basemodule $element
+     * @var \App\Mainframe\Basemodule $Model
+     */
+    public function update($id)
+    {
+
+        /** @var \App\Mainframe\Basemodule $Model */
+        /** @var \App\Mainframe\Basemodule $element */
+        // init local variables
+        $Model = model($this->moduleName);
+        $ret   = ret(); // load default return values
+        # --------------------------------------------------------
+        # Process update
+        # --------------------------------------------------------
+        $element = $this->element;
+
+        if (! $element) {
+            $ret = ret('fail', "{$this->module->title} could not be found.");
+        }
+
+        if ($element = $Model::find($id)) { // Check if element exists.
+            if (user()->can('update', $element)) { // Check if the element is editable.
+
+                $element->fill($this->transform(Request::all()));
+                $validator = $element->validateModel();
+
+                if ($validator->fails()) {
+                    $ret = ret('fail',
+                        "Validation error(s) on updating {$this->module->title}.",
+                        ['validation_errors' => json_decode($validator->messages(), true)]
+                    );
+
+                } else {
+                    if ($element->save()) {
+
+                        $ret = ret('success', "{$this->module->title} has been updated", ['data' => $element]);
+
+                    } else {
+
+                        $ret = ret('fail', "{$this->module->title} update failed.");
+
+                    }
+                }
+
+            } else {
+
+                $ret = ret('fail', "{$this->module->title} is not editable by user.");
+
+            }
 
         }
         # --------------------------------------------------------

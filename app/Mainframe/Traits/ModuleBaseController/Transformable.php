@@ -2,7 +2,7 @@
 
 namespace App\Mainframe\Traits\ModuleBaseController;
 
-trait RequestTransformable
+trait Transformable
 {
     /**
      * Transforms inputs to a Model compatible format.

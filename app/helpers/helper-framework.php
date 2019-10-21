@@ -442,7 +442,7 @@ function renderMenuTree($tree, $current_module_name = '', $breadcrumbs = [])
  * @param Module|null $module
  * @return array
  */
-function breadcrumb(\App\Module $module = null)
+function breadcrumb($module = null)
 {
     $breadcrumbs = [];
     if ($module) {

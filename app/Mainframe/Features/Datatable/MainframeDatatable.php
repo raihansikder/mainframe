@@ -5,7 +5,7 @@ namespace App\Mainframe\Features\Datatable;
 use DB;
 use App\Module;
 
-class Datatable
+class MainframeDatatable
 {
 
     public $moduleName;        // Stores module name with lowercase and plural i.e. 'superheros'.
@@ -90,7 +90,6 @@ class Datatable
         // Next modify each column content
         /*  @var $dt \Yajra\DataTables\DataTableAbstract */
 
-        /** @var \App\Http\Mainframe\Controllers\ModuleBaseController $this */
         $dt = $dt->editColumn('name', '<a href="{{ route(\''.$this->moduleName.'.edit\', $id) }}">{{$name}}</a>');
         $dt = $dt->editColumn('id', '<a href="{{ route(\''.$this->moduleName.'.edit\', $id) }}">{{$id}}</a>');
         $dt = $dt->editColumn('is_active', '@if($is_active)  Yes @else <span class="text-red">No</span> @endif');

@@ -2,7 +2,7 @@
 
 namespace App\Mainframe\Traits\ModuleBaseController;
 
-use App\Mainframe\Features\Datatable\Datatable;
+use App\Mainframe\Features\Datatable\MainframeDatatable;
 use App\Http\Mainframe\Controllers\ModuleBaseController;
 
 /**
@@ -15,15 +15,15 @@ trait GridDatatable
 {
 
     /**
-     * Resolve which Datatable class to use.
+     * Resolve which MainframeDatatable class to use.
      *
      * @param  null  $class
-     * @return \App\Mainframe\Features\Datatable\Datatable
+     * @return \App\Mainframe\Features\Datatable\MainframeDatatable
      */
     public function resolveDatatableClass($class = null)
     {
         /** @var ModuleBaseController $this */
-        return $class ?? new Datatable($this->moduleName);
+        return $class ?? new MainframeDatatable($this->moduleName);
     }
 
     /**

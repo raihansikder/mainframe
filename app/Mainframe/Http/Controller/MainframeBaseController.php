@@ -7,6 +7,7 @@
 
 namespace App\Http\Mainframe\Controllers;
 
+use Illuminate\Support\MessageBag;
 use App\Mainframe\Traits\IsoOutput;
 use App\Http\Controllers\Controller;
 use App\Mainframe\Traits\GridDatatable;
@@ -18,9 +19,12 @@ class MainframeBaseController extends Controller
 {
     use IsoOutput;
 
+    protected $messageBag;
+
     public function __construct()
     {
 
+        $this->messageBag = new MessageBag();
     }
 
 }

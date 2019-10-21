@@ -13621,7 +13621,7 @@ namespace Illuminate\Support\Facades {
     class Validator {
         
         /**
-         * Create a new Validator instance.
+         * Create a new MainframeModelValidator instance.
          *
          * @param array $data
          * @param array $rules
@@ -13713,7 +13713,7 @@ namespace Illuminate\Support\Facades {
         }
         
         /**
-         * Set the Validator instance resolver.
+         * Set the MainframeModelValidator instance resolver.
          *
          * @param \Closure $resolver
          * @return void 

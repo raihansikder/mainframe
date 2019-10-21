@@ -57,7 +57,7 @@ trait IsoModule
     // }
 
     ############################################################################################
-    # Validator functions
+    # MainframeModelValidator functions
     ############################################################################################
     /**
      * @param  bool|false  $setMsgSession  setting it false will not store the message in session

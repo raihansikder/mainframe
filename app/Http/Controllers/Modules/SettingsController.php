@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Modules;
 
-use App\Mainframe\Features\Datatable\Datatable;
-use App\Mainframe\Modules\Settings\Datatables\DefaultDatatable;
+use App\Mainframe\Features\Datatable\MainframeDatatable;
+use App\Mainframe\Modules\Settings\Datatables\DefaultMainframeDatatable;
 
 class SettingsController extends \App\Modules\Settings\Http\Controllers\SettingsController
 {
@@ -11,11 +11,11 @@ class SettingsController extends \App\Modules\Settings\Http\Controllers\Settings
 
 
     /**
-     * @return \App\Mainframe\Features\Datatable\Datatable
+     * @return \App\Mainframe\Features\Datatable\MainframeDatatable
      */
     public function resolveDatatableClass($class = null)
     {
-        return $class ?? new DefaultDatatable($this->moduleName);
+        return $class ?? new DefaultMainframeDatatable($this->moduleName);
     }
 
 }
