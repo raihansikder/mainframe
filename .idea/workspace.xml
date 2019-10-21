@@ -2,16 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ee34113f-6433-40ce-8481-cf6a87088dde" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Traits/ModuleBaseController/ResponseGeneratorTrait.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/BaseModule.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/BaseModule.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Validator/MainframeModelValidator.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Features/Validator/MainframeModelValidator.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Mainframe/Helpers/ControllerResponseBuilder.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/ControllerResponseBuilder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Helpers/ResponseBuilder.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/ResponseBuilder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Http/Controller/ModuleBaseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Http/Controller/ModuleBaseController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Modules/Traits/Mainframe.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Modules/Traits/Mainframe.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Traits/ModuleBaseController/Listable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Traits/ModuleBaseController/Listable.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Traits/ModuleBaseController/ResponseGenerator.php" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

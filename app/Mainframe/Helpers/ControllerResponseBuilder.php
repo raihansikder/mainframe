@@ -76,16 +76,27 @@ class ControllerResponseBuilder extends ResponseBuilder
      */
     public function redirect()
     {
-        $to       = $this->getRedirectTo();
-        $redirect = Redirect::to($to);
+        $to        = $this->getRedirectTo();
+        $redirect  = Redirect::to($to);
+        $validator = $this->moduleValidator->validator;
 
         if ($this->isFail()) {
             $redirect = $redirect->withInput();
 
-            if ($this->moduleValidator->validator) {
-                $redirect = $redirect->withInput();
+            if ($validator) {
+                $redirect = $redirect->withErrors($validator);
             }
         }
+
+        if ($this->isSuccess()) {
+            $redirect = $redirect->withInput();
+
+            if ($validator) {
+                $redirect = $redirect->withErrors($validator);
+            }
+        }
+
+        return $redirect;
 
     }
 

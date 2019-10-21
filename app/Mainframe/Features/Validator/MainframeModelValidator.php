@@ -10,6 +10,7 @@ class MainframeModelValidator
     public $element;
     public $elementOriginal;
     public $valid;
+    /** @var \Illuminate\Validation\Validator */
     public $validator;
     public $validationErrors;
     public $errors;
