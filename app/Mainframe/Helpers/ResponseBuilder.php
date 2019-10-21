@@ -2,6 +2,8 @@
 
 namespace App\Mainframe\Helpers;
 
+use Request;
+
 class ResponseBuilder
 {
     /** @var string */
@@ -13,6 +15,22 @@ class ResponseBuilder
     public function __construct()
     {
         $this->status = 'success';
+    }
+
+    /**
+     * @return bool
+     */
+    public function expectsJson()
+    {
+        if (Request::expectsJson()) {
+            return true;
+        }
+
+        if (Request::get('ret') === 'json') {
+            return true;
+        }
+
+        return false;
     }
 
     /**
@@ -54,6 +72,16 @@ class ResponseBuilder
         }
 
         return $this;
+    }
+
+    public function isSuccess()
+    {
+        return $this->status === 'success';
+    }
+
+    public function isFail()
+    {
+        return ! $this->$this->isSuccess();
     }
 
 }

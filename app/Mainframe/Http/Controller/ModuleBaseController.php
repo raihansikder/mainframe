@@ -23,14 +23,14 @@ use App\Mainframe\Traits\ModuleBaseController\Reportable;
 use App\Mainframe\Traits\ModuleBaseController\ChangeLogs;
 use App\Mainframe\Traits\ModuleBaseController\GridDatatable;
 use App\Mainframe\Traits\ModuleBaseController\Transformable;
-use App\Mainframe\Traits\ModuleBaseController\ResponseGenerator;
+use App\Mainframe\Traits\ModuleBaseController\ResponseGeneratorTrait;
 
 /**
  * Class ModuleBaseController
  */
 class ModuleBaseController extends MainframeBaseController
 {
-    use Listable, ChangeLogs, Reportable, Transformable, GridDatatable, ResponseGenerator;
+    use Listable, ChangeLogs, Reportable, Transformable, GridDatatable, ResponseGeneratorTrait;
 
     /** @var string */
     public $moduleName;        // Stores module name with lowercase and plural i.e. 'superheros'.
@@ -48,7 +48,7 @@ class ModuleBaseController extends MainframeBaseController
     public $element;
 
     /** @var \App\Mainframe\Features\Validator\MainframeModelValidator */
-    public $validator;  // loads the model name
+    public $moduleValidator;  // loads the model name
 
     /** @var \App\Mainframe\Features\Datatable\MainframeDatatable */
     public $datatable;
@@ -86,8 +86,7 @@ class ModuleBaseController extends MainframeBaseController
         $this->datatable  = $this->resolveDatatableClass();
         $this->request    = Request::capture();
 
-        $this->responder  = new ControllerResponseBuilder($this);
-
+        $this->responder = new ControllerResponseBuilder($this);
 
         View::share([
             'moduleName'    => $this->moduleName,
@@ -104,44 +103,49 @@ class ModuleBaseController extends MainframeBaseController
      */
     public function index()
     {
-        if (hasModulePermission($this->moduleName, 'view-list')) {
-            if (Request::get('ret') === 'json') {
-                return $this->list();
-            }
-            $view = GridView::resolve($this->moduleName);
-
-            return view($view)->with('gridColumns', $this->datatable->columns());
+        if (! hasModulePermission($this->moduleName, 'view-list')) {
+            return $this->permissionDenied();
         }
-        abort(403);
+
+        if ($this->responder->expectsJson()) {
+            $this->responder->payload = $this->listData();
+
+            return $this->responder->success('List found')->response();
+        }
+
+        $view = GridView::resolve($this->moduleName);
+
+        return view($view)->with('gridColumns', $this->datatable->columns());
+
     }
 
     /**
      * Shows an element create form.
      *
-     * @return \Illuminate\Contracts\View\View|\View
+     * @return \Illuminate\Contracts\View\View|\Illuminate\Http\JsonResponse|\View|void
      * @throws \Exception
      */
     public function create()
     {
-        if (hasModulePermission($this->moduleName, 'create')) {
-
-            $uuid = Request::old('uuid') ?: uuid();
-            $view = FormView::resolve($this->moduleName, 'create');
-
-            $formConfig = [
-                'route' => $this->moduleName.'.store',
-                'class' => $this->moduleName."-form module-base-form create-form",
-                'name'  => $this->moduleName,
-                'files' => true
-            ];
-
-            $elementIsEditable = true;
-            $formState         = 'create';
-
-            return View::make($view)
-                ->with(compact('formConfig', 'uuid', 'elementIsEditable', 'formState'));
+        if (! hasModulePermission($this->moduleName, 'create')) {
+            return $this->permissionDenied();
         }
-        abort(403);
+
+        $formState = 'create';
+        $uuid      = Request::old('uuid') ?: uuid();
+        $view      = FormView::resolve($this->moduleName, 'create');
+
+        $formConfig = [
+            'route' => $this->moduleName.'.store',
+            'class' => $this->moduleName.'-form module-base-form create-form',
+            'name'  => $this->moduleName,
+            'files' => true
+        ];
+
+        $elementIsEditable = true;
+
+        return View::make($view)
+            ->with(compact('formConfig', 'uuid', 'elementIsEditable', 'formState'));
     }
 
     /**
@@ -209,8 +213,6 @@ class ModuleBaseController extends MainframeBaseController
      */
     public function show($id)
     {
-
-
 
         $this->element = $this->model->find($id);
 
@@ -337,51 +339,46 @@ class ModuleBaseController extends MainframeBaseController
     public function update($id)
     {
 
-        /** @var \App\Mainframe\Basemodule $Model */
-        /** @var \App\Mainframe\Basemodule $element */
-        // init local variables
-        $Model = model($this->moduleName);
-        $ret   = ret(); // load default return values
-        # --------------------------------------------------------
-        # Process update
-        # --------------------------------------------------------
-        $element = $this->element;
+        $this->element = $this->model->find($id);
 
-        if (! $element) {
-            $ret = ret('fail', "{$this->module->title} could not be found.");
+        if (! $this->element) {
+            return $this->elementNotFound();
         }
 
-        if ($element = $Model::find($id)) { // Check if element exists.
-            if (user()->can('update', $element)) { // Check if the element is editable.
+        if (user()->can('update', $this->element)) {
 
-                $element->fill($this->transform(Request::all()));
-                $validator = $element->validateModel();
+            $this->element->fill($this->transform(Request::all()));
+            $this->moduleValidator            = $this->module->validatorInstance($this->element);
+            $this->responder->moduleValidator = $this->moduleValidator;
 
-                if ($validator->fails()) {
-                    $ret = ret('fail',
-                        "Validation error(s) on updating {$this->module->title}.",
-                        ['validation_errors' => json_decode($validator->messages(), true)]
-                    );
+            if ($this->moduleValidator->fails()) {
 
-                } else {
-                    if ($element->save()) {
+               $this->validationFailed();
 
-                        $ret = ret('success', "{$this->module->title} has been updated", ['data' => $element]);
 
-                    } else {
-
-                        $ret = ret('fail', "{$this->module->title} update failed.");
-
-                    }
-                }
+                $ret = ret('fail',
+                    "Validation error(s) on updating {$this->module->title}.",
+                    ['validation_errors' => json_decode($validator->messages(), true)]
+                );
 
             } else {
+                if ($element->save()) {
 
-                $ret = ret('fail', "{$this->module->title} is not editable by user.");
+                    $ret = ret('success', "{$this->module->title} has been updated", ['data' => $element]);
 
+                } else {
+
+                    $ret = ret('fail', "{$this->module->title} update failed.");
+
+                }
             }
 
+        } else {
+
+            $ret = ret('fail', "{$this->module->title} is not editable by user.");
+
         }
+
         # --------------------------------------------------------
         # Process return/redirect
         # --------------------------------------------------------

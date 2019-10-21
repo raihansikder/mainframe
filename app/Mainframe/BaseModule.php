@@ -158,25 +158,7 @@ class BaseModule extends Model
         );
 
         return $validator;
-        /*if (!$validator->passes()) {
-            $valid = setError("Validation failed " . $this->module()->title);
-            foreach ($validator->messages()->all() as $e) {
-                Session::push('error', $e);
-            }
-        }*/
-        /*
-        if (!isset($this->id)) {
-            if (!$this->isCreatable()) {
-                $valid = setError("Can not save new " . $this->module()->title . " Error: BaseModule validate()");
-            }
 
-        } else {
-            if (!$this->isEditable()) {
-                $valid = setError("Can not update " . mlink($this->module()->name, $this->id) . " Error: BaseModule isEditable()");
-            }
-        }
-        */
-        //return $valid;
     }
 
     /**

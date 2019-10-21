@@ -39,6 +39,11 @@ trait Mainframe
         return 'App\Mainframe\Modules\\'.Str::plural($this->modelClassName());
     }
 
+    public function validatorClassPath()
+    {
+        return $this->moduleNameSpace().'\\Validators\\'.$this->modelClassName().'\\Validator';
+    }
+
     /**
      * Returns full qualified calls path
      *
@@ -77,7 +82,17 @@ trait Mainframe
         return new $classPath;
     }
 
+    /**
+     * Create instance of a model.
+     *
+     * @return mixed
+     */
+    public function validatorInstance($element)
+    {
+        $classPath = $this->modelClassPath();
 
+        return new $classPath($element);
+    }
 
     /**
      * Get the class name Superhero

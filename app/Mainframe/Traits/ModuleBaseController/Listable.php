@@ -87,12 +87,11 @@ trait Listable
 
         /*********** Query construction ends ********************/
 
-        // $data = $q->remember(cacheTime('none'))->get();
-        $data = $q->get();
+        // $items = $q->remember(cacheTime('none'))->get();
+        $items = $q->get();
 
-        return compact('data', 'total', 'offset', 'limit');
+        return compact('items', 'total', 'offset', 'limit');
     }
-
 
     /**
      * Json return query constructor
@@ -102,7 +101,7 @@ trait Listable
      */
     public function filterQueryConstructor($q)
     {
-        $Model = model($this->moduleName);
+        $Model       = model($this->moduleName);
         $text_fields = $Model::$text_fields;
         //$module_sys_name = $this->moduleName;
 
@@ -123,9 +122,9 @@ trait Listable
         }
 
         if (Request::has('fieldName') && Request::has('fieldValue')) {
-            $fieldName = Request::get('fieldName');
+            $fieldName  = Request::get('fieldName');
             $fieldValue = Request::get('fieldValue');
-            $q = $q->where($fieldName, $fieldValue);
+            $q          = $q->where($fieldName, $fieldValue);
         }
 
         $q_fields = columns($this->moduleName); // Get all table field names
@@ -160,6 +159,5 @@ trait Listable
         return $q;
 
     }
-
 
 }

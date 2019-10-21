@@ -2,8 +2,8 @@
 
 namespace App\Mainframe\Helpers;
 
-use Request;
 use Response;
+use Redirect;
 
 class ControllerResponseBuilder extends ResponseBuilder
 {
@@ -14,7 +14,7 @@ class ControllerResponseBuilder extends ResponseBuilder
     /**
      * @var \App\Mainframe\Features\Validator\MainframeModelValidator
      */
-    public $validator;
+    public $moduleValidator;
     /**
      * @var \Illuminate\Http\Request
      */
@@ -31,25 +31,9 @@ class ControllerResponseBuilder extends ResponseBuilder
     {
         parent::__construct();
 
-        $this->controller = $controller;
-        $this->validator  = $controller->validator;
-        $this->request    = $controller->request;
-    }
-
-    /**
-     * @return bool
-     */
-    public function expectsJson()
-    {
-        if (Request::expectsJson()) {
-            return true;
-        }
-
-        if (Request::get('ret') === 'json') {
-            return true;
-        }
-
-        return false;
+        $this->controller      = $controller;
+        $this->moduleValidator = $controller->moduleValidator;
+        $this->request         = $controller->request;
     }
 
     /**
@@ -58,7 +42,7 @@ class ControllerResponseBuilder extends ResponseBuilder
     public function response()
     {
         if ($this->expectsJson()) {
-            return $this->sendJson($this->prepareJson(), $this->code);
+            return Response::json($this->prepareJson(), $this->code);
         }
 
         return $this->redirect();
@@ -76,21 +60,15 @@ class ControllerResponseBuilder extends ResponseBuilder
         if ($this->payload) {
             $response['data'] = $this->payload;
         }
-        if ($this->redirectTo()) {
-            $response['redirect'] = $this->redirectTo();
+
+        if ($this->moduleValidator->validationErrors) {
+            $response['validation_errors'] = $this->moduleValidator->validationErrors;
+        }
+        if ($this->getRedirectTo()) {
+            $response['redirect'] = $this->getRedirectTo();
         }
 
         return $response;
-    }
-
-    /**
-     * @param $response
-     * @param $code
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function sendJson($response, $code)
-    {
-        return Response::json($response, $code);
     }
 
     /**
@@ -98,13 +76,23 @@ class ControllerResponseBuilder extends ResponseBuilder
      */
     public function redirect()
     {
-        return $this->redirectTo();
+        $to       = $this->getRedirectTo();
+        $redirect = Redirect::to($to);
+
+        if ($this->isFail()) {
+            $redirect = $redirect->withInput();
+
+            if ($this->moduleValidator->validator) {
+                $redirect = $redirect->withInput();
+            }
+        }
+
     }
 
     /**
      * @return null|mixed
      */
-    public function redirectTo()
+    public function getRedirectTo()
     {
 
         if ($this->redirectTo) {
@@ -115,11 +103,11 @@ class ControllerResponseBuilder extends ResponseBuilder
             return $this->request->get('redirect');
         }
 
-        if ($this->status === 'success') {
+        if ($this->isSuccess()) {
             return $this->request->get('redirect_success', null);
         }
 
-        if ($this->status === 'fail') {
+        if ($this->isFail()) {
             return $this->request->get('redirect_fail', null);
         }
 

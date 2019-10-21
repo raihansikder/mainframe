@@ -7,13 +7,13 @@ use Validator;
 
 class MainframeModelValidator
 {
-    protected $element;
-    protected $element_original;
-    protected $valid             = true;
-    protected $validator;
-    protected $validation_errors = [];
-    protected $errors            = [];
-    protected $message           = '';
+    public $element;
+    public $elementOriginal;
+    public $valid;
+    public $validator;
+    public $validationErrors;
+    public $errors;
+    public $message;
 
     /**
      * MainframeModelValidator constructor.
@@ -22,8 +22,9 @@ class MainframeModelValidator
      */
     public function __construct($element)
     {
+        $this->valid            = true;
         $this->element          = $element;
-        $this->element_original = $element->getOriginal();
+        $this->elementOriginal = $element->getOriginal();
     }
 
     /**
@@ -43,6 +44,10 @@ class MainframeModelValidator
         return array_merge($rules, $merge);
     }
 
+    /**
+     * @param  array  $merge
+     * @return array
+     */
     public static function customErrorMessages($merge = [])
     {
         $messages = [];
@@ -62,7 +67,7 @@ class MainframeModelValidator
             $this->valid = false;
         }
 
-        $this->validation_errors = json_decode($this->validator->messages(), true);
+        $this->validationErrors = json_decode($this->validator->messages(), true);
 
         return $this->validator;
 
@@ -72,7 +77,6 @@ class MainframeModelValidator
     {
         return Request::all();
     }
-
 
     public function saving()
     {
@@ -107,6 +111,11 @@ class MainframeModelValidator
     public function result()
     {
         return $this->valid ? $this->element : false;
+    }
+
+    public function fails()
+    {
+        return $this->valid ? false : true;
     }
 
     /**
