@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 6.2.0 on 2019-10-13 18:42:55.
+ * Generated for Laravel 6.3.0 on 2019-10-22 16:59:25.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -13621,7 +13621,7 @@ namespace Illuminate\Support\Facades {
     class Validator {
         
         /**
-         * Create a new MainframeModelValidator instance.
+         * Create a new Validator instance.
          *
          * @param array $data
          * @param array $rules
@@ -13713,7 +13713,7 @@ namespace Illuminate\Support\Facades {
         }
         
         /**
-         * Set the MainframeModelValidator instance resolver.
+         * Set the Validator instance resolver.
          *
          * @param \Closure $resolver
          * @return void 
@@ -19835,7 +19835,7 @@ namespace  {
 
     class URL extends \Illuminate\Support\Facades\URL {}
 
-    class Validator extends \Illuminate\Support\Facades\Validator {}
+    class MainframeModelValidator extends \Illuminate\Support\Facades\Validator {}
 
     class View extends \Illuminate\Support\Facades\View {}
 

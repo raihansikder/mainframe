@@ -2,10 +2,11 @@
 
 namespace App\Mainframe\Traits\ModuleBaseController;
 
+use DB;
 use View;
 use App\Classes\Reports\DefaultModuleReport;
 
-trait Reportable
+trait ViewReportTrait
 {
 
 

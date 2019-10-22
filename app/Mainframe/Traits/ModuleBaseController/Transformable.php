@@ -10,8 +10,11 @@ trait Transformable
      * @param  array  $inputs
      * @return array
      */
-    public function transform($inputs = [])
+    public function transform()
     {
+        /** @var \App\Http\Mainframe\Controllers\ModuleBaseController $this */
+        //$this->request->merge(['name'=>'test']) ;
+
         /*
          * Convert an array input to csv
          ************************************************/
@@ -43,6 +46,7 @@ trait Transformable
         //     }
         // }
 
-        return $inputs;
+
+        return $this->request->all();
     }
 }

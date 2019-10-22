@@ -2,9 +2,32 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ee34113f-6433-40ce-8481-cf6a87088dde" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Settings/Validation/SettingValidator.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Mainframe/Traits/ModuleBaseController/PermissionsTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/mainframe.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/mainframe.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Validator/MainframeModelValidator.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Features/Validator/MainframeModelValidator.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Helpers/ControllerResponseBuilder.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/ControllerResponseBuilder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_ide_helper.php" beforeDir="false" afterPath="$PROJECT_DIR$/_ide_helper.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/BaseModule.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/BaseModule.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Datatable/MainframeDatatable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Features/Datatable/MainframeDatatable.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Validator/MainframeModelValidator.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Features/Validator/ModelValidator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Helpers/ControllerResponseBuilder.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Helpers/ResponseBuilder.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Responder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Http/Controller/MainframeBaseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Http/Controller/MainframeBaseController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Http/Controller/ModuleBaseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Http/Controller/ModuleBaseController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Modules/Module.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Modules/Module.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Modules/Traits/Mainframe.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Modules/Traits/Mainframe.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Modules/Validators/ModuleValidator.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Modules/Validators/ModuleValidator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Traits/IsoModule.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Traits/IsoModule.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Traits/ModuleBaseController/ChangeLogs.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Traits/ModuleBaseController/ShowChangesTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Traits/ModuleBaseController/GridDatatable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Traits/ModuleBaseController/DatatableTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Traits/ModuleBaseController/Listable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Traits/ModuleBaseController/ListTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Traits/ModuleBaseController/Reportable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Traits/ModuleBaseController/ViewReportTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Traits/ModuleBaseController/ResponseGeneratorTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Traits/ModuleBaseController/ResponseTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Traits/ModuleBaseController/Transformable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Traits/ModuleBaseController/Transformable.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -135,7 +158,6 @@
       <path value="$PROJECT_DIR$/vendor/guzzlehttp/promises" />
       <path value="$PROJECT_DIR$/vendor/guzzlehttp/psr7" />
       <path value="$PROJECT_DIR$/vendor/psy/psysh" />
-      <path value="$PROJECT_DIR$/vendor/laravel/ui" />
       <path value="$PROJECT_DIR$/vendor/symfony/finder" />
       <path value="$PROJECT_DIR$/vendor/symfony/var-dumper" />
       <path value="$PROJECT_DIR$/vendor/symfony/http-kernel" />
@@ -151,27 +173,27 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Mainframe/Helpers" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Mainframe/Modules/Settings/Validators" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="Errors" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.appearance" />
     <property name="typescript.add.unambiguous.imports.on.the.fly" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Modules\Settings\Validators" />
+      <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Helpers" />
+      <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Modules\Modules\Traits" />
+      <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Policies" />
+      <recent name="E:\MAMP\htdocs\mainframe\resources\views\mainframe\layouts\module" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Features" />
       <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Modules\Modules\Validators" />
       <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Traits\ModuleBaseController" />
       <recent name="E:\MAMP\htdocs\mainframe\app\Http\Controllers\Modules" />
       <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Modules\Settings" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Helpers" />
-      <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Modules\Modules\Traits" />
-      <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Policies" />
-      <recent name="E:\MAMP\htdocs\mainframe\resources\views\mainframe\layouts\module" />
-      <recent name="E:\MAMP\htdocs\mainframe\resources\views\mainframe\layouts\module\grid\includes" />
     </key>
   </component>
   <component name="RunDashboard">

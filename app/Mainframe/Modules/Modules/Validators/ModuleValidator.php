@@ -3,9 +3,9 @@
 namespace App\Mainframe\Modules\Modules\Validators;
 
 use App\Mainframe\Modules\Modules\Module;
-use App\Mainframe\Features\Validator\MainframeModelValidator;
+use App\Mainframe\Features\Validator\ModelValidator;
 
-class ModuleValidator extends MainframeModelValidator
+class ModuleValidator extends ModelValidator
 {
     public $element;
     public $element_original;

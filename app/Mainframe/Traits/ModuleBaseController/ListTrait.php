@@ -5,7 +5,7 @@ namespace App\Mainframe\Traits\ModuleBaseController;
 use Request;
 use Response;
 
-trait Listable
+trait ListTrait
 {
 
     /**

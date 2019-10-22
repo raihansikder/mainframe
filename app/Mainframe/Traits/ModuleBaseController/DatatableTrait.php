@@ -11,7 +11,7 @@ use App\Http\Mainframe\Controllers\ModuleBaseController;
  * @var $this ModuleBaseController
  * @package App\Traits
  */
-trait GridDatatable
+trait DatatableTrait
 {
 
     /**
@@ -36,7 +36,8 @@ trait GridDatatable
     public function datatableJson()
     {
         /** @var ModuleBaseController $this */
-        return $this->datatable->json();
+
+        return ($this->resolveDatatableClass())->json();
     }
 
 }

@@ -140,7 +140,7 @@ trait IsoModule
      * Get the module object that an element belongs to. If the element is $tenant then the function
      * returns the row from modules table that has module name 'tenants'.
      *
-     * @return \Illuminate\Database\Eloquent\Model|null|static
+     * @return Module
      */
     public function module()
     {

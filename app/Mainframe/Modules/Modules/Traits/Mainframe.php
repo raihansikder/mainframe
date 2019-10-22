@@ -41,7 +41,7 @@ trait Mainframe
 
     public function validatorClassPath()
     {
-        return $this->moduleNameSpace().'\\Validators\\'.$this->modelClassName().'\\Validator';
+        return $this->moduleNameSpace().'\\Validation\\'.$this->modelClassName().'Validator';
     }
 
     /**
@@ -85,11 +85,12 @@ trait Mainframe
     /**
      * Create instance of a model.
      *
+     * @param $element
      * @return mixed
      */
     public function validatorInstance($element)
     {
-        $classPath = $this->modelClassPath();
+        $classPath = $this->validatorClassPath();
 
         return new $classPath($element);
     }

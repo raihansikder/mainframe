@@ -496,4 +496,10 @@ class BaseModule extends Model
     ############################################################################################
 
     // Write accessors and mutators here.
+
+    public function validator()
+    {
+
+        return $this->module()->validatorInstance($this);
+    }
 }

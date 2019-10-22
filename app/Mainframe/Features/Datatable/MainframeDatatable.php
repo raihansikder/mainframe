@@ -25,7 +25,7 @@ class MainframeDatatable
     {
 
         $this->moduleName = $moduleName;
-        $this->module     = Module::byName($moduleName);
+        $this->module = Module::byName($moduleName);
 
     }
 
@@ -48,11 +48,11 @@ class MainframeDatatable
     public function columns()
     {
         return [
-            ["{$this->moduleName}.id", "id", "ID"],
-            ["{$this->moduleName}.name", "name", "Name"],
-            ["updater.name", "user_name", "Updater"],
-            ["{$this->moduleName}.updated_at", "updated_at", "Updated at"],
-            ["{$this->moduleName}.is_active", "is_active", "Active"]
+            ["{$this->moduleName}.id", 'id', 'ID'],
+            ["{$this->moduleName}.name", 'name', 'Name'],
+            ['updater.name', 'user_name', 'Updater'],
+            ["{$this->moduleName}.updated_at", 'updated_at', 'Updated at'],
+            ["{$this->moduleName}.is_active", 'is_active', 'Active']
         ];
     }
 

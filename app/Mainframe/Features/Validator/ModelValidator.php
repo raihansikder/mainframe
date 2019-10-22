@@ -2,10 +2,9 @@
 
 namespace App\Mainframe\Features\Validator;
 
-use Request;
-use Validator;
+use Illuminate\Support\Facades\Validator;
 
-class MainframeModelValidator
+class ModelValidator
 {
     public $element;
     public $elementOriginal;
@@ -23,8 +22,9 @@ class MainframeModelValidator
      */
     public function __construct($element)
     {
-        $this->valid            = true;
-        $this->element          = $element;
+
+        $this->valid = true;
+        $this->element = $element;
         $this->elementOriginal = $element->getOriginal();
     }
 
@@ -38,7 +38,7 @@ class MainframeModelValidator
     public static function rules($element, $merge = [])
     {
         $rules = [
-            'name'      => 'required|between:1,255|unique:modules,name,'.(isset($element->id) ? "$element->id" : 'null').',id,deleted_at,NULL',
+            'name' => 'required|between:1,255|unique:modules,name,'.(isset($element->id) ? "$element->id" : 'null').',id,deleted_at,NULL',
             'is_active' => 'required|in:1,0',
         ];
 
@@ -58,50 +58,21 @@ class MainframeModelValidator
 
     public function validateRules()
     {
-        $this->validator = Validator::make(
-            $this->requests(),
+        $validator = Validator::make(
+            $this->element->getAttributes(),
             self::rules($this->element),
             self::customErrorMessages()
         );
 
-        if ($this->validator->fails()) {
+        if ($validator->fails()) {
             $this->valid = false;
         }
 
+        $this->validator = $validator;
         $this->validationErrors = json_decode($this->validator->messages(), true);
 
         return $this->validator;
 
-    }
-
-    public function requests()
-    {
-        return Request::all();
-    }
-
-    public function saving()
-    {
-        $this->validateRules();
-    }
-
-    public function creating()
-    {
-        $this->saving();
-    }
-
-    public function updating()
-    {
-        $this->saving();
-    }
-
-    public function deleting()
-    {
-
-    }
-
-    public function restoring()
-    {
-        $this->saving();
     }
 
     /**
@@ -119,13 +90,59 @@ class MainframeModelValidator
         return $this->valid ? false : true;
     }
 
-    /**
-     * Rule : Name should not have some character.
-     */
-    // public function nameShouldNotHaveSpecialCharacters()
-    // {
-    //     if (! strlen($this->element->name)) {
-    //         $this->valid = setError('Something');
-    //     }
-    // }
+    public function passes()
+    {
+        return ! $this->fails();
+    }
+
+    public function fill($element)
+    {
+
+        return $this;
+    }
+
+    public function validate()
+    {
+        $this->fill($this->element);
+        $this->validateRules();
+
+        return $this;
+    }
+
+    public function saving()
+    {
+        $this->fill($this->element);
+        $this->validateRules();
+
+        return $this;
+    }
+
+    public function creating()
+    {
+        $this->saving();
+
+        return $this;
+    }
+
+    public function updating()
+    {
+        $this->fill($this->element);
+        $this->saving();
+
+        return $this;
+    }
+
+    public function deleting()
+    {
+        return $this;
+
+    }
+
+    public function restoring()
+    {
+        $this->saving();
+
+        return $this;
+    }
+
 }
