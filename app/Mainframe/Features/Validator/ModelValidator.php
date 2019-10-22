@@ -14,6 +14,8 @@ class ModelValidator
     public $validationErrors;
     public $errors;
     public $message;
+    /** @var \Illuminate\Support\MessageBag */
+    public $messageBag;
 
     /**
      * MainframeModelValidator constructor.
@@ -97,7 +99,6 @@ class ModelValidator
 
     public function fill($element)
     {
-
         return $this;
     }
 

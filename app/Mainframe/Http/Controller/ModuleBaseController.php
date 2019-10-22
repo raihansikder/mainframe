@@ -268,6 +268,7 @@ class ModuleBaseController extends MainframeBaseController
         $this->modelValidator = $element
             ->fill($this->transform())
             ->validator();
+        $this->modelValidator->messageBag = $this->messageBag;
 
         if ($this->modelValidator->updating()->fails()) {
             $this->fail('Validation failed', 400);
