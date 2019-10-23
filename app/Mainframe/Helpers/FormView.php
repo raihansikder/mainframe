@@ -15,10 +15,11 @@ class FormView
      */
     public static function resolve($moduleName, $state = 'create', User $user = null)
     {
-        if ($state == 'create') {
-            return 'mainframe.modules.'.$moduleName.'.form.default';
+        $default = 'mainframe.modules.'.$moduleName.'.form.default';
+        if ($state === 'create') {
+            return $default;
         }
 
-        return 'mainframe.modules.'.$moduleName.'.form.default';
+        return $default;
     }
 }

@@ -13,7 +13,7 @@
             $current_module_name = '';
             $breadcrumbs = [];
             if (isset($currentModule)) {
-                $current_module_name = $currentModule->name;
+                $current_module_name = $module->name;
                 $breadcrumbs         = breadcrumb($currentModule);
             }
             renderMenuTree(\App\ModuleGroup::tree(), $current_module_name, $breadcrumbs);

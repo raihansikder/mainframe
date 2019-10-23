@@ -15,9 +15,9 @@ use Exception;
 use Validator;
 use App\Module;
 use App\Upload;
-use App\Mainframe\Helpers\FormView;
 use App\Mainframe\Helpers\GridView;
 use App\Mainframe\Traits\ModuleBaseController\ListTrait;
+use App\Mainframe\Traits\ModuleBaseController\Resolvable;
 use App\Mainframe\Traits\ModuleBaseController\DatatableTrait;
 use App\Mainframe\Traits\ModuleBaseController\ViewReportTrait;
 use App\Mainframe\Traits\ModuleBaseController\ShowChangesTrait;
@@ -28,7 +28,7 @@ use App\Mainframe\Traits\ModuleBaseController\ModelOperationsTrait;
  */
 class ModuleBaseController extends MainframeBaseController
 {
-    use ModelOperationsTrait, ListTrait, ShowChangesTrait, ViewReportTrait, DatatableTrait;
+    use ModelOperationsTrait, ListTrait, ShowChangesTrait, ViewReportTrait, DatatableTrait, Resolvable;
 
     /** @var string */
     protected $moduleName;
@@ -94,24 +94,19 @@ class ModuleBaseController extends MainframeBaseController
      */
     public function create()
     {
-        if (! hasModulePermission($this->moduleName, 'create')) {
+        $this->element = $this->module->modelInstance();
+
+        if (! user()->cannot('create')) {
             return $this->permissionDenied();
         }
 
+        $uuid = $this->request->old('uuid') ?: uuid();
         $formState = 'create';
-        $uuid = Request::old('uuid') ?: uuid();
-        $view = FormView::resolve($this->moduleName, 'create');
-
-        $formConfig = [
-            'route' => $this->moduleName.'.store',
-            'class' => $this->moduleName.'-form module-base-form create-form',
-            'name' => $this->moduleName,
-            'files' => true
-        ];
-
+        $formConfig = $this->createFromConfig();
         $elementIsEditable = true;
 
-        return View::make($view)
+        return View::make($this->createFormView())
+            ->with('element', $this->element)
             ->with(compact('formConfig', 'uuid', 'elementIsEditable', 'formState'));
     }
 
@@ -126,6 +121,11 @@ class ModuleBaseController extends MainframeBaseController
     public function store()
     {
 
+        if (! user()->cannot('create')) {
+            return $this->permissionDenied();
+        }
+
+        /******************/
         $moduleName = $this->moduleName;
         $Model = model($this->moduleName);
         $validator = null;
@@ -203,38 +203,29 @@ class ModuleBaseController extends MainframeBaseController
      * Show spyr element edit form
      *
      * @param $id
-     * @return \Illuminate\Contracts\View\View
+     * @return \Illuminate\Contracts\View\View|\Illuminate\Http\JsonResponse|void
      */
     public function edit($id)
     {
 
-        $elementName = $this->module->elementName();
-        $element = $this->model->find($id);
+        $this->element = $this->model->find($id);
 
-        if ($element) { // Check if the element you are trying to edit exists
-
-            if ($element->isViewable()) { // Check if the element is viewable
-                $view = FormView::resolve($this->moduleName, 'edit', user());
-
-                $formConfig = [
-                    'route' => [$this->moduleName.'.update', $element->id],
-                    'class' => $this->moduleName.'-form module-base-form edit-form',
-                    'name' => $this->moduleName,
-                    'files' => true,
-                    'method' => 'patch',
-                    'id' => $this->moduleName.'Form'
-                ];
-
-                $elementIsEditable = $element->isEditable();
-                $formState = 'edit';
-
-                return View::make($view)
-                    ->with('element', $element)     //loads the singular module name in variable called $element = 'user'
-                    ->with(compact('formConfig', 'formState', 'elementIsEditable'));
-            }
+        if (! $this->element) {
+            return $this->notFound();
         }
 
-        return abort(403);
+        if (! $this->element->isViewable()) {
+            return $this->permissionDenied();
+        }
+
+        $formState = 'edit';
+        $formConfig = $this->editFromConfig();
+        $elementIsEditable = $this->element->isEditable();
+
+        return View::make($this->editFormView())
+            ->with('element', $this->element)     //loads the singular module name in variable called $element = 'user'
+            ->with(compact('formConfig', 'formState', 'elementIsEditable'));
+
     }
 
     /**
@@ -255,7 +246,6 @@ class ModuleBaseController extends MainframeBaseController
 
         if (user()->cannot('update', $this->element)) {
             return $this->permissionDenied();
-
         }
 
         $this->attemptUpdate();

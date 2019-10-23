@@ -38,10 +38,10 @@ class MainframeBaseController extends Controller
 
         $this->messageBag = new MessageBag();
         $this->request = Request::capture();
-        View::share([
-            'request' => $this->request,
-            'messageBag' => $this->messageBag,
-        ]);
+        // View::share([
+        //     'request' => $this->request,
+        //     'messageBag' => $this->messageBag,
+        // ]);
 
     }
 

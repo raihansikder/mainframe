@@ -12,7 +12,7 @@ $var['upload_container_id'] = "img_container_" . $rand;
 ?>
 {{-- upload div + form --}}
 <div class="{{$var['container_class']}}">
-    @if(hasModulePermission($currentModule->name,'create') || hasModulePermission($currentModule->name,'edit'))
+    @if(hasModulePermission($module->name,'create') || hasModulePermission($module->name,'edit'))
         {{-- A form where values are stored that are later posted with attached file --}}
         {{-- initUploader gets these values and post to upload route  --}}
         <div id="{{$var['upload_container_id']}}" class="uploads_container">
@@ -27,7 +27,7 @@ $var['upload_container_id'] = "img_container_" . $rand;
 {{-- js --}}
 @section('js')
     @parent
-    @if(hasModulePermission($currentModule->name,'create') || hasModulePermission($currentModule->name,'edit'))
+    @if(hasModulePermission($module->name,'create') || hasModulePermission($module->name,'edit'))
         <script>
             initUploader("{{$var['upload_container_id']}}", "{{ route('uploads.update_last_upload')}}"); // init initially
         </script>

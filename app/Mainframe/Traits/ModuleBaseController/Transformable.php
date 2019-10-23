@@ -7,7 +7,6 @@ trait Transformable
     /**
      * Transforms inputs to a Model compatible format.
      *
-     * @param  array  $inputs
      * @return array
      */
     public function transform()
@@ -46,8 +45,6 @@ trait Transformable
         //         $inputs[$i] = null;
         //     }
         // }
-
-
 
     }
 }

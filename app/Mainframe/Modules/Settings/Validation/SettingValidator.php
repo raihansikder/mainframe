@@ -35,7 +35,7 @@ class SettingValidator extends ModelValidator
 
     private function checkSomethingElse()
     {
-        $this->valid = false;
-        $this->validator->messages()->add('test12', 'test12312312');
+        // $this->valid = false;
+        // $this->validator->messages()->add('test12', 'test12312312');
     }
 }

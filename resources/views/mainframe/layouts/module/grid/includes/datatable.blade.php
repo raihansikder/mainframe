@@ -11,7 +11,7 @@
 ?>
 
 <div class="table-responsive">
-    <table id="{{$moduleName}}Grid" class="table module-grid table table-bordered table-striped dataTable " width="100%">
+    <table id="{{$module->name}}Grid" class="table module-grid table table-bordered table-striped dataTable " width="100%">
         <thead>
         <tr>
             {{-- print the headers/columns --}}
@@ -38,7 +38,7 @@
         var table = $('.module-grid').dataTable({
             processing: true,
             serverSide: true,
-            ajax: "{{ route($moduleName . '.datatable-json')}}?{{parse_url(URL::full(), PHP_URL_QUERY)}}",
+            ajax: "{{ route($module->name . '.datatable-json')}}?{{parse_url(URL::full(), PHP_URL_QUERY)}}",
             columns: [
                 {!! $columns_json !!}
                 //                { data: 'id', name: 'id' },

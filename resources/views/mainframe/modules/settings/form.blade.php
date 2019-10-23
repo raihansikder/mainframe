@@ -49,7 +49,7 @@
             $("input[name=name]").addClass('validate[required]');
         }
     </script>
-    @if(!isset($$element))
+    @if(!isset($element))
         <script type="text/javascript">
             /*******************************************************************/
             // Creating :

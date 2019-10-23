@@ -27,7 +27,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property int|null $deleted_by
  * @method static bool|null forceDelete()
  * @method static Model|\Illuminate\Database\Query\Builder remember()
- *
  */
 class BaseModule extends Model
 {
@@ -501,6 +500,16 @@ class BaseModule extends Model
     public function validator(MessageBag $messageBag = null)
     {
 
-        return $this->module()->validatorInstance($this,$messageBag);
+        return $this->module()->validatorInstance($this, $messageBag);
+    }
+
+    public function isCreating()
+    {
+        return ! $this->isUpdating();
+    }
+
+    public function isUpdating()
+    {
+        return isset($this->id);
     }
 }

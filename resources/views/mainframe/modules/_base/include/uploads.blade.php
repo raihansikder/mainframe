@@ -6,8 +6,8 @@
 $rand = randomString();
 
 /** View parameters */
-$var['module_id'] = isset($var['module_id']) ? $var['module_id'] : $currentModule->id;
-$var['moduleName'] = isset($var['moduleName']) ? $var['moduleName'] : $currentModule->name;
+$var['module_id'] = isset($var['module_id']) ? $var['module_id'] : $module->id;
+$var['moduleName'] = isset($var['moduleName']) ? $var['moduleName'] : $module->name;
 $var['element_id'] = isset($var['element_id']) ? $var['element_id'] : null;
 $var['element_uuid'] = isset($var['element_uuid']) ? $var['element_uuid'] : null;
 $var['type'] = isset($var['type']) ? $var['type'] : null;
@@ -36,7 +36,7 @@ if ((isset($element) && isset($$element))) {
 
 {{-- upload div + form --}}
 <div class="{{$var['container_class']}}">
-    @if(hasModulePermission($currentModule->name,'create') || hasModulePermission($currentModule->name,'edit'))
+    @if(hasModulePermission($module->name,'create') || hasModulePermission($module->name,'edit'))
         {{-- A form where values are stored that are later posted with attached file --}}
         {{-- initUploader gets these values and post to upload route  --}}
         <div id="{{$var['upload_container_id']}}" class="uploads_container">
@@ -77,7 +77,7 @@ if ((isset($element) && isset($$element))) {
 {{-- js --}}
 @section('js')
     @parent
-    @if(hasModulePermission($currentModule->name,'create') || hasModulePermission($currentModule->name,'edit'))
+    @if(hasModulePermission($module->name,'create') || hasModulePermission($module->name,'edit'))
         <script>
             initUploader("{{$var['upload_container_id']}}", "{{ route('uploads.store')}}"); // init initially
         </script>

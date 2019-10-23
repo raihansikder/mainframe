@@ -1,6 +1,6 @@
 <?php
-$var['module_id'] = isset($var['module_id']) ? $var['module_id'] : $currentModule->id;
-$var['moduleName'] = isset($var['moduleName']) ? $var['moduleName'] : $currentModule->name;
+$var['module_id'] = isset($var['module_id']) ? $var['module_id'] : $module->id;
+$var['moduleName'] = isset($var['moduleName']) ? $var['moduleName'] : $module->name;
 $var['element_id'] = isset($var['element_id']) ? $var['element_id'] : null;
 $var['tenantId'] = tenantUser() ? userTenantId() : null;
 if ((isset($element) && isset($$element))) {

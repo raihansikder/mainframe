@@ -14,7 +14,7 @@
             <?php
             $report_save_url = route('reports.create');
             $report_save_url .= '?title=' . Request::get('report_name');
-            $report_save_url .= '&module_id=' . $currentModule->id;
+            $report_save_url .= '&module_id=' . $module->id;
             $report_save_url .= '&parameters=' . urlencode(str_replace(route('home'), '', URL::full()));
             ?>
             <a target="_blank" class="btn btn-default" href="{{$report_save_url}}">
