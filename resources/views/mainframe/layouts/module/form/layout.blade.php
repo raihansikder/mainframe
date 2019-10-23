@@ -9,7 +9,7 @@
         @if(($formState === 'create'))
             {{ Form::open($formConfig) }} <input name="uuid" type="hidden" value="{{$uuid}}"/>
         @elseif($formState === 'edit')
-            {{ Form::model($$element, $formConfig)}}
+            {{ Form::model($element, $formConfig)}}
         @endif
 
         @yield('form-fields')

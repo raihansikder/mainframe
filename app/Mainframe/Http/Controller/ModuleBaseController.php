@@ -57,8 +57,7 @@ class ModuleBaseController extends MainframeBaseController
         $this->model = $this->module->modelInstance();
 
         View::share([
-            'moduleName' => $this->moduleName,
-            'currentModule' => $this->module,
+            'module' => $this->module,
         ]);
     }
 
@@ -230,8 +229,7 @@ class ModuleBaseController extends MainframeBaseController
                 $formState = 'edit';
 
                 return View::make($view)
-                    ->with('element', $elementName)     //loads the singular module name in variable called $element = 'user'
-                    ->with($elementName, $element)      //loads the object into a variable with module name $user = (user object)
+                    ->with('element', $element)     //loads the singular module name in variable called $element = 'user'
                     ->with(compact('formConfig', 'formState', 'elementIsEditable'));
             }
         }
@@ -257,6 +255,7 @@ class ModuleBaseController extends MainframeBaseController
 
         if (user()->cannot('update', $this->element)) {
             return $this->permissionDenied();
+
         }
 
         $this->attemptUpdate();

@@ -1,14 +1,14 @@
 <?php
 /**
- * @var $currentModule Module
+ * @var $module \App\Module
  * @var $var array
  * @var \App\Superhero $element
  */
 $rand = randomString();
 
 /** View parameters */
-$var['module_id'] = $var['module_id'] ?? $currentModule->id;
-$var['moduleName'] = $var['moduleName'] ?? $currentModule->name;
+$var['module_id'] = $var['module_id'] ?? $module->id;
+$var['moduleName'] = $var['moduleName'] ?? $module->name;
 $var['element_id'] = $var['element_id'] ?? null;
 $var['element_uuid'] = $var['element_uuid'] ?? null;
 $var['type'] = $var['type'] ?? null;
@@ -23,7 +23,7 @@ $var['upload_container_id'] = "img_container_".$rand;
 // If an $element is present (normally during edit) in the context then set tenantId and element
 // fields based on that element.
 if ((isset($element, $$element))) {
-    $var['element_id']   = $var['element_id'] ? $var['element_id'] : $$element->id;
+    $var['element_id'] = $var['element_id'] ? $var['element_id'] : $$element->id;
     $var['element_uuid'] = $var['element_uuid'] ? $var['element_uuid'] : $$element->uuid;
     // If still there is no tenantId resolved from user, attempt to resolve from $element.
     $var['tenantId'] = (! $var['tenantId'] && isset($$element->tenantId)) ? $$element->tenantId : $var['tenantId'];
@@ -37,7 +37,7 @@ if ((isset($element, $$element))) {
 
 {{-- upload div + form --}}
 <div class="{{$var['container_class']}}">
-    @if(hasModulePermission($currentModule->name,'create') || hasModulePermission($currentModule->name,'edit'))
+    @if(hasModulePermission($module->name,'create') || hasModulePermission($module->name,'edit'))
         {{-- A form where values are stored that are later posted with attached file --}}
         {{-- initUploader gets these values and post to upload route  --}}
         <div id="{{$var['upload_container_id']}}" class="uploads_container">
@@ -78,7 +78,7 @@ if ((isset($element, $$element))) {
 {{-- js --}}
 @section('js')
     @parent
-    @if(hasModulePermission($currentModule->name,'create') || hasModulePermission($currentModule->name,'edit'))
+    @if(hasModulePermission($module->name,'create') || hasModulePermission($module->name,'edit'))
         <script>
             initUploader("{{$var['upload_container_id']}}", "{{ route('uploads.store')}}"); // init initially
         </script>

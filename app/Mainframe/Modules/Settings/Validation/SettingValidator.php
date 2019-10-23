@@ -7,7 +7,6 @@ use App\Mainframe\Features\Validator\ModelValidator;
 class SettingValidator extends ModelValidator
 {
 
-
     /**
      * Validation rules. For regular expression validation use array instead of pipe
      *
@@ -25,19 +24,18 @@ class SettingValidator extends ModelValidator
         return array_merge($rules, $merge);
     }
 
-
-
-
-
-    /**
-     * Rule : Name should not have some character.
-     */
-    public function nameShouldNotHaveSpecialCharacters()
+    public function saving()
     {
-        if (! strlen($this->element->name)) {
-            $this->valid = setError('Something');
-        }
+        parent::saving();
+        $this->checkSomethingElse();
 
         return $this;
+    }
+
+
+    private function checkSomethingElse()
+    {
+        $this->valid = false;
+        $this->validator->messages()->add('test12', 'test12312312');
     }
 }

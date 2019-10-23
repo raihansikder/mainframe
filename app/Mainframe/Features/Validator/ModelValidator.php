@@ -15,13 +15,8 @@ class ModelValidator
     public $valid;
     /** @var \Illuminate\Validation\Validator */
     public $validator;
-    /** @var mixed */
-    public $validationErrors;
 
-    public $errors;
-
-    public $message;
-    /** @var \Illuminate\Support\MessageBag */
+    /** @var MessageBag */
     public $messageBag;
 
     /**
@@ -81,7 +76,6 @@ class ModelValidator
         }
 
         $this->validator = $validator;
-        $this->validationErrors = json_decode($this->validator->messages(), true);
 
         return $this->validator;
 

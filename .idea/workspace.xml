@@ -2,22 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ee34113f-6433-40ce-8481-cf6a87088dde" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Policies/SettingPolicy.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Traits/ModuleBaseController/ModelOperationsTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/default/includes/global.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/default/includes/alerts/messages-top-old.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/BaseModule.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/BaseModule.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Validator/ModelValidator.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Features/Validator/ModelValidator.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Http/Controller/MainframeBaseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Http/Controller/MainframeBaseController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Mainframe/Http/Controller/ModuleBaseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Http/Controller/ModuleBaseController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Modules/Module.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Modules/Module.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Modules/Traits/Mainframe.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Modules/Traits/MainframeModuleTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Settings/Validation/SettingValidator.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Settings/Validation/SettingValidator.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Mainframe/Policies/BaseModulePolicy.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Policies/BaseModulePolicy.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Policies/SettingPolicy.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Traits/ModuleBaseController/ModelOperationsTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Traits/ModuleBaseController/ModelOperationsTrait.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Mainframe/Traits/ModuleBaseController/ResponseTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Traits/ModuleBaseController/ResponseTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Traits/ModuleBaseController/Transformable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Traits/ModuleBaseController/Transformable.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Policies/SettingPolicy.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Policies/SettingPolicy.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/mainframe/js/mainframe-validation.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/mainframe/js/mainframe-validation.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/mainframe/layouts/default/includes/alerts/messages-top.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/default/includes/alerts/messages-top.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/layouts/default/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/default/layout.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/layouts/default/includes/global.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/default/includes/global.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/layouts/module/form/includes/action-buttons.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/module/form/includes/action-buttons.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/layouts/module/form/includes/features/uploads/uploads.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/module/form/includes/features/uploads/uploads.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/layouts/module/form/includes/js.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/module/form/includes/js.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/mainframe/layouts/module/form/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/module/form/layout.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/settings/form/default.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/settings/form/default.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/settings/form/js.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/settings/form/js.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -163,20 +167,20 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Mainframe/Policies" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/mainframe/layouts/default/includes/alerts" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.tabs" />
     <property name="typescript.add.unambiguous.imports.on.the.fly" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\MAMP\htdocs\mainframe\resources\views\mainframe\layouts\default\includes\alerts" />
       <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Policies" />
       <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Modules\Settings\Validators" />
       <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Helpers" />
       <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Modules\Modules\Traits" />
-      <recent name="E:\MAMP\htdocs\mainframe\resources\views\mainframe\layouts\module" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Features" />

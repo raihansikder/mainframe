@@ -58,6 +58,6 @@
     /*******************************************************************/
     // frontend and Ajax hybrid validation
     /*******************************************************************/
-    addValidationRulesForSaving(); // Assign validation classes/rules
-    {{--enableValidation('{{$moduleName}}'); // Instantiate validation function--}}
+    // addValidationRulesForSaving(); // Assign validation classes/rules
+    //enableValidation('{{$moduleName}}'); // Instantiate validation function
 </script>

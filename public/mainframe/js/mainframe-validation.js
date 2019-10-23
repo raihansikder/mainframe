@@ -34,9 +34,7 @@ function enableValidation(form_name, handler = false) {
                 url: $('form[name=' + form_name + ']').attr('action'),
                 data: $('form[name=' + form_name + ']').serialize()
             }).done(function (ret) {
-
                 ret = parseJson(ret); // Convert the response into a valid json object.
-
                 /*****************************************/
                 // Reflect validation result
                 /*****************************************/

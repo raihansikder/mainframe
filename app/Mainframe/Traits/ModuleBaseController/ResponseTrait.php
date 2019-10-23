@@ -132,8 +132,9 @@ trait ResponseTrait
             $response['data'] = $this->payload;
         }
 
-        if (isset($this->validator, $this->validator->validationErrors)) {
-            $response['validation_errors'] = $this->validator->validationErrors;
+        if (isset($this->modelValidator, $this->modelValidator->validator)) {
+            $response['validation_errors'] = json_decode($this->modelValidator->validator->messages(), true);
+
         }
         if ($this->redirectTo) {
             $response['redirect'] = $this->redirectTo;
@@ -150,6 +151,7 @@ trait ResponseTrait
         $to = $this->getRedirectTo();
 
         $redirect = $to ? Redirect::to($to) : Redirect::back();
+        /** @var \App\Http\Mainframe\Controllers\ModuleBaseController|self $this */
         $validator = $this->modelValidator->validator;
 
         if ($this->isFail()) {
@@ -161,9 +163,17 @@ trait ResponseTrait
         }
 
         /** @var \App\Http\Mainframe\Controllers\ModuleBaseController $this */
-        $this->messageBag->add('errors','test1');
-        $this->messageBag->add('errors','test2');
-        return $redirect->with('messageBag',$this->messageBag);
+        $this->messageBag->add('message', $this->message);
+
+        // return $redirect->with('status', $this->status)
+        //     ->with('message', $this->message)
+        //     ->with('messageBag', $this->messageBag);
+
+        return $redirect->with([
+            'status' => $this->status,
+            'message' => $this->message,
+            'messageBag' => $this->messageBag
+        ]);
 
     }
 
