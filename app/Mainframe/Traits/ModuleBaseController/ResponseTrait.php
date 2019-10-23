@@ -160,7 +160,10 @@ trait ResponseTrait
             }
         }
 
-        return $redirect;
+        /** @var \App\Http\Mainframe\Controllers\ModuleBaseController $this */
+        $this->messageBag->add('errors','test1');
+        $this->messageBag->add('errors','test2');
+        return $redirect->with('messageBag',$this->messageBag);
 
     }
 

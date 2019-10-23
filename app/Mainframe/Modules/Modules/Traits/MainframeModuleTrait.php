@@ -3,9 +3,10 @@
 namespace App\Mainframe\Modules\Modules\Traits;
 
 use Illuminate\Support\Str;
+use Illuminate\Support\MessageBag;
 
 /** @var \App\Mainframe\Modules\Modules\Module $this */
-trait Mainframe
+trait MainframeModuleTrait
 {
     /**
      * returns super-heroes -> superHero
@@ -86,13 +87,14 @@ trait Mainframe
      * Create instance of a model.
      *
      * @param $element
+     * @param  \Illuminate\Support\MessageBag|null  $messageBag
      * @return mixed
      */
-    public function validatorInstance($element)
+    public function validatorInstance($element, MessageBag $messageBag = null)
     {
         $classPath = $this->validatorClassPath();
 
-        return new $classPath($element);
+        return new $classPath($element, $messageBag);
     }
 
     /**

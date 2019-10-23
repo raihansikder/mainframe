@@ -1,13 +1,9 @@
 <?php
-/** @var $errors \Illuminate\Support\MessageBag */
+$messageBag = session('messageBag') ?? new \Illuminate\Support\MessageBag();
+myprint_r($messageBag->get('errors'));
 ?>
 
 <div id="systemMessages" class="systemMessages">
-    {{--@if (session('status'))--}}
-    {{--<div class="alert alert-success" role="alert">--}}
-    {{--{{ session('status') }}--}}
-    {{--</div>--}}
-    {{--@endif--}}
     @if ($errors->any() || Session::has('error'))
         <div class="callout callout-danger ajaxMsg errorDiv" id="errorDiv">
             <p>

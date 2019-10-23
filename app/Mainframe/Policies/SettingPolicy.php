@@ -7,10 +7,11 @@
 namespace App\Mainframe\Policies;
 
 use App\User;
+use App\Setting;
 use App\Mainframe\BaseModule;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class BaseModulePolicy
+class SettingPolicy extends BaseModulePolicy
 {
     use HandlesAuthorization;
 
@@ -32,7 +33,7 @@ class BaseModulePolicy
      * @param  \App\Mainframe\BaseModule  $setting
      * @return mixed
      */
-    public function view(User $user, BaseModule $setting)
+    public function view(User $user, Setting $setting)
     {
         //
     }
@@ -55,9 +56,9 @@ class BaseModulePolicy
      * @param  \App\Mainframe\BaseModule  $element
      * @return mixed
      */
-    public function update(User $user, BaseModule $element)
+    public function update(User $user, Setting $setting)
     {
-        return true;
+        return false;
 
     }
 
@@ -69,7 +70,7 @@ class BaseModulePolicy
      * @param  \App\Mainframe\BaseModule  $element
      * @return mixed
      */
-    public function delete(User $user, BaseModule $element)
+    public function delete(User $user, Setting $setting)
     {
         //
     }
@@ -81,7 +82,7 @@ class BaseModulePolicy
      * @param  \App\Mainframe\BaseModule  $element
      * @return mixed
      */
-    public function restore(User $user, BaseModule $element)
+    public function restore(User $user, Setting $setting)
     {
         //
     }
@@ -93,20 +94,10 @@ class BaseModulePolicy
      * @param  \App\Mainframe\BaseModule  $element
      * @return mixed
      */
-    public function forceDelete(User $user, BaseModule $element)
+    public function forceDelete(User $user, Setting $setting)
     {
         //
     }
 
-    /**
-     * @param $user User
-     * @param $ability
-     * @return bool
-     */
-    public function before(User $user, $ability)
-    {
-        if ($user->isSuperUser()) {
-            // return true;
-        }
-    }
+
 }

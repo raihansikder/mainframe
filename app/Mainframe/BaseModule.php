@@ -3,6 +3,7 @@
 namespace App\Mainframe;
 
 use Validator;
+use Illuminate\Support\MessageBag;
 use App\Mainframe\Traits\IsoTenant;
 use App\Mainframe\Traits\IsoModule;
 use Watson\Rememberable\Rememberable;
@@ -497,9 +498,9 @@ class BaseModule extends Model
 
     // Write accessors and mutators here.
 
-    public function validator()
+    public function validator(MessageBag $messageBag = null)
     {
 
-        return $this->module()->validatorInstance($this);
+        return $this->module()->validatorInstance($this,$messageBag);
     }
 }

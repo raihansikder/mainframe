@@ -6,9 +6,9 @@
 
 @section('content')
     <div class="col-md-12 no-padding">
-        @if(($formState == 'create'))
+        @if(($formState === 'create'))
             {{ Form::open($formConfig) }} <input name="uuid" type="hidden" value="{{$uuid}}"/>
-        @elseif($formState == 'edit')
+        @elseif($formState === 'edit')
             {{ Form::model($$element, $formConfig)}}
         @endif
 

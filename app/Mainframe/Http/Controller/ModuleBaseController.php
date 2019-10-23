@@ -18,19 +18,17 @@ use App\Upload;
 use App\Mainframe\Helpers\FormView;
 use App\Mainframe\Helpers\GridView;
 use App\Mainframe\Traits\ModuleBaseController\ListTrait;
-use App\Mainframe\Traits\ModuleBaseController\Transformable;
-use App\Mainframe\Traits\ModuleBaseController\ResponseTrait;
 use App\Mainframe\Traits\ModuleBaseController\DatatableTrait;
 use App\Mainframe\Traits\ModuleBaseController\ViewReportTrait;
 use App\Mainframe\Traits\ModuleBaseController\ShowChangesTrait;
-use App\Mainframe\Traits\ModuleBaseController\PermissionsTrait;
+use App\Mainframe\Traits\ModuleBaseController\ModelOperationsTrait;
 
 /**
  * Class ModuleBaseController
  */
 class ModuleBaseController extends MainframeBaseController
 {
-    use ListTrait, ShowChangesTrait, ViewReportTrait, Transformable, DatatableTrait, ResponseTrait, PermissionsTrait;
+    use ModelOperationsTrait, ListTrait, ShowChangesTrait, ViewReportTrait, DatatableTrait;
 
     /** @var string */
     protected $moduleName;
@@ -57,9 +55,6 @@ class ModuleBaseController extends MainframeBaseController
         $this->moduleName = $moduleName ?? Module::fromController(get_class($this));
         $this->module = Module::byName($this->moduleName);
         $this->model = $this->module->modelInstance();
-
-        // $this->datatable = $this->resolveDatatableClass();
-        // $this->request = Request::capture();
 
         View::share([
             'moduleName' => $this->moduleName,
@@ -254,31 +249,21 @@ class ModuleBaseController extends MainframeBaseController
      */
     public function update($id)
     {
+        $this->element = $this->model->find($id);
 
-        $element = $this->element = $this->model->find($id);
-
-        if (! $element) {
+        if (! $this->element) {
             return $this->notFound();
         }
 
-        if (user()->cannot('update', $element)) {
+        if (user()->cannot('update', $this->element)) {
             return $this->permissionDenied();
         }
 
-        $this->modelValidator = $element
-            ->fill($this->transform())
-            ->validator();
-        $this->modelValidator->messageBag = $this->messageBag;
+        $this->attemptUpdate();
 
-        if ($this->modelValidator->updating()->fails()) {
-            $this->fail('Validation failed', 400);
-
-            if ($this->expectsJson()) {
-                return $this->json();
-            }
+        if ($this->expectsJson()) {
+            return $this->json();
         }
-
-        $element->save();
 
         return $this->redirect();
     }
@@ -345,6 +330,7 @@ class ModuleBaseController extends MainframeBaseController
      */
     public function restore($id = null)
     {
-        abort(403);
+        return abort(403);
     }
+
 }

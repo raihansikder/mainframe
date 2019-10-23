@@ -2,17 +2,24 @@
 
 namespace App\Mainframe\Features\Validator;
 
+use Illuminate\Support\MessageBag;
 use Illuminate\Support\Facades\Validator;
 
 class ModelValidator
 {
+    /** @var \App\Mainframe\BaseModule */
     public $element;
+    /** @var array|mixed */
     public $elementOriginal;
+    /** @var bool */
     public $valid;
     /** @var \Illuminate\Validation\Validator */
     public $validator;
+    /** @var mixed */
     public $validationErrors;
+
     public $errors;
+
     public $message;
     /** @var \Illuminate\Support\MessageBag */
     public $messageBag;
@@ -21,13 +28,16 @@ class ModelValidator
      * MainframeModelValidator constructor.
      *
      * @param  \App\Mainframe\BaseModule  $element
+     * @param  \Illuminate\Support\MessageBag  $messageBag
      */
-    public function __construct($element)
+    public function __construct($element, MessageBag $messageBag = null)
     {
-
         $this->valid = true;
         $this->element = $element;
         $this->elementOriginal = $element->getOriginal();
+        if (! $messageBag) {
+            $this->messageBag = new MessageBag();
+        }
     }
 
     /**

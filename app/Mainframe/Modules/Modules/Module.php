@@ -8,14 +8,14 @@ use App\Mainframe\Modules\Modules\Traits\Helpers;
 use App\Mainframe\Modules\Modules\Traits\Mutators;
 use App\Mainframe\Modules\Modules\Traits\Accessors;
 use App\Mainframe\Modules\Modules\Traits\Relations;
-use App\Mainframe\Modules\Modules\Traits\Mainframe;
+use App\Mainframe\Modules\Modules\Traits\MainframeModuleTrait;
 use App\Mainframe\Modules\Modules\Observers\ModuleObserver;
 
 
 class Module extends BaseModule
 {
 
-    use Helpers, Relations, Accessors, Mutators, Scopes, Mainframe;
+    use Helpers, Relations, Accessors, Mutators, Scopes, MainframeModuleTrait;
 
     protected $fillable = [
         'name', 'title', 'description', 'parent_id', 'module_group_id', 'level', 'order', 'color_css', 'icon_css', 'default_route', 'is_active', 'created_by',

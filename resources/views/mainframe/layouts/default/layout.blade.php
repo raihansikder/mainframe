@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+@include('mainframe.layouts.default.includes.global')
+
+        <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
@@ -8,7 +10,7 @@
     @section('head')
     @show
 
-    @include('template.css')
+    @include('mainframe.layouts.default.includes.css')
 </head>
 <body class="hold-transition skin-blue-light sidebar-mini fixed">
 

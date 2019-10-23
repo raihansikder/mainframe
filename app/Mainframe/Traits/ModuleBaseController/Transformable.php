@@ -13,6 +13,7 @@ trait Transformable
     public function transform()
     {
         /** @var \App\Http\Mainframe\Controllers\ModuleBaseController $this */
+        return $this->request->all();
         //$this->request->merge(['name'=>'test']) ;
 
         /*
@@ -47,6 +48,6 @@ trait Transformable
         // }
 
 
-        return $this->request->all();
+
     }
 }
