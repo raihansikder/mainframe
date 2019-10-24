@@ -162,17 +162,9 @@ trait ResponseTrait
             }
         }
 
-        /** @var \App\Http\Mainframe\Controllers\ModuleBaseController $this */
-        $this->messageBag->add('message', $this->message);
-
-        // return $redirect->with('status', $this->status)
-        //     ->with('message', $this->message)
-        //     ->with('messageBag', $this->messageBag);
-
         return $redirect->with([
             'status' => $this->status,
             'message' => $this->message,
-            'messageBag' => $this->messageBag
         ]);
 
     }

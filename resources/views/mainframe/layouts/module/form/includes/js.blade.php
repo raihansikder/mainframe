@@ -3,7 +3,8 @@
 // during update this value indicates that user is redirect back to same item after successful update
 
 $redirectSuccessUrl = '#new';
-if (isset($element)) {
+/** @var \App\Mainframe\BaseModule $element */
+if ($element->isUpdating()) {
     $redirectSuccessUrl = URL::full();
 }
 if (Request::has('redirect_success')) {

@@ -12,10 +12,9 @@ class ModelValidator
     /** @var array|mixed */
     public $elementOriginal;
     /** @var bool */
-    public $valid;
+    private $valid;
     /** @var \Illuminate\Validation\Validator */
     public $validator;
-
     /** @var MessageBag */
     public $messageBag;
 
@@ -23,16 +22,14 @@ class ModelValidator
      * MainframeModelValidator constructor.
      *
      * @param  \App\Mainframe\BaseModule  $element
-     * @param  \Illuminate\Support\MessageBag  $messageBag
      */
-    public function __construct($element, MessageBag $messageBag = null)
+    public function __construct($element)
     {
+        $this->messageBag = app('messageBag');
         $this->valid = true;
         $this->element = $element;
         $this->elementOriginal = $element->getOriginal();
-        if (! $messageBag) {
-            $this->messageBag = new MessageBag();
-        }
+
     }
 
     /**
@@ -72,7 +69,7 @@ class ModelValidator
         );
 
         if ($validator->fails()) {
-            $this->valid = false;
+            $this->invalidate();
         }
 
         $this->validator = $validator;
@@ -88,7 +85,7 @@ class ModelValidator
      */
     public function result()
     {
-        return $this->valid ? $this->element : false;
+        return $this->passes() ? $this->element : false;
     }
 
     public function fails()
@@ -99,6 +96,13 @@ class ModelValidator
     public function passes()
     {
         return ! $this->fails();
+    }
+
+    public function invalidate()
+    {
+        $this->valid = false;
+
+        return $this;
     }
 
     public function fill($element)
@@ -148,6 +152,12 @@ class ModelValidator
         $this->saving();
 
         return $this;
+    }
+
+    public function addError($key = null, $message = null)
+    {
+        $this->validator->messages()->add($key, $message);
+        $this->invalidate();
     }
 
 }

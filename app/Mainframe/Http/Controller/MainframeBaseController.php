@@ -7,9 +7,7 @@
 
 namespace App\Http\Mainframe\Controllers;
 
-use View;
 use Request;
-use Illuminate\Support\MessageBag;
 use App\Mainframe\Traits\IsoOutput;
 use App\Http\Controllers\Controller;
 use App\Mainframe\Traits\GridDatatable;
@@ -36,12 +34,8 @@ class MainframeBaseController extends Controller
     public function __construct()
     {
 
-        $this->messageBag = new MessageBag();
+        $this->messageBag = app('messageBag');
         $this->request = Request::capture();
-        // View::share([
-        //     'request' => $this->request,
-        //     'messageBag' => $this->messageBag,
-        // ]);
 
     }
 

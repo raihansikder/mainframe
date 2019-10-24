@@ -497,10 +497,10 @@ class BaseModule extends Model
 
     // Write accessors and mutators here.
 
-    public function validator(MessageBag $messageBag = null)
+    public function validator()
     {
 
-        return $this->module()->validatorInstance($this, $messageBag);
+        return $this->module()->validatorInstance($this);
     }
 
     public function isCreating()

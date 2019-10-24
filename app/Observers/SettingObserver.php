@@ -8,12 +8,11 @@ class SettingObserver extends BaseModuleObserver
 {
     /**
      * @param $element \App\Mainframe\Basemodule
+     * @throws \Exception
      */
     public function saving($element)
     {
-
         setMessage('Work too!');
         parent::saving($element);
-
     }
 }

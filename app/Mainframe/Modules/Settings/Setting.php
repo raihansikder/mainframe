@@ -67,9 +67,9 @@ class Setting extends BaseModule
      */
     public static $types = [
         'boolean' => 'Boolean',
-        'string'  => 'String',
-        'array'   => 'Array',
-        'file'    => 'File',
+        'string' => 'String',
+        'array' => 'Array',
+        'file' => 'File',
     ];
 
     /**
@@ -122,10 +122,10 @@ class Setting extends BaseModule
             //     Rule::unique('settings')->where(function ($query) {
             //         return $query->whereNull('deleted_at');
             //     })],
-            'name'      => 'required|between:1,255',
-            'title'     => 'required|between:1,255',
-            'type'      => 'required|'.'in:'.implode(',', array_keys(self::$types)),
-            'desc'      => 'between:1,2048',
+            'name' => 'required|between:1,255',
+            'title' => 'required|between:1,255',
+            'type' => 'required|'.'in:'.implode(',', array_keys(self::$types)),
+            'desc' => 'between:1,2048',
             'is_active' => 'in:1,0',
         ];
 
@@ -146,31 +146,30 @@ class Setting extends BaseModule
     public static function boot()
     {
         parent::boot();
-        Setting::observe(SettingObserver::class);
+        self::observe(SettingObserver::class);
 
         static::saving(function (Setting $element) {
             $valid = true;
-
-            // type should be valid
-            if ($valid && ! in_array($element->type, keyAsArray(Setting::$types))) {
-                $valid = setError("Type must be on the the following: ".csvFromArray(keyAsArray(Setting::$types)));
-            }
-            // for type=boolean only allow true/false as value
-            if ($valid && $element->type == 'boolean' && ! in_array($element->value, ['true', 'false'])) {
-                $valid = setError("If boolean type is selected, value must be 'true' or 'false'");
-            }
-            // for type=array only allow JSON string as value
-            if ($valid && $element->type == 'array' && ! json_decode($element->value)) {
-                $valid = setError("If array/json type is selected, value must be a valid json string");
-            }
-            // for type=array only allow JSON string as value
-            if ($valid && $element->type == 'file' && strlen(trim($element->value))) {
-                $valid = setError("If the setting type is file leave the 'value' field empty.");
-            }
+            //
+            // // type should be valid
+            // if ($valid && ! in_array($element->type, keyAsArray(Setting::$types))) {
+            //     $valid = setError("Type must be on the the following: ".csvFromArray(keyAsArray(Setting::$types)));
+            // }
+            // // for type=boolean only allow true/false as value
+            // if ($valid && $element->type == 'boolean' && ! in_array($element->value, ['true', 'false'])) {
+            //     $valid = setError("If boolean type is selected, value must be 'true' or 'false'");
+            // }
+            // // for type=array only allow JSON string as value
+            // if ($valid && $element->type == 'array' && ! json_decode($element->value)) {
+            //     $valid = setError("If array/json type is selected, value must be a valid json string");
+            // }
+            // // for type=array only allow JSON string as value
+            // if ($valid && $element->type == 'file' && strlen(trim($element->value))) {
+            //     $valid = setError("If the setting type is file leave the 'value' field empty.");
+            // }
 
             return $valid;
         });
-
 
     }
 

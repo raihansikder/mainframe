@@ -87,14 +87,13 @@ trait MainframeModuleTrait
      * Create instance of a model.
      *
      * @param $element
-     * @param  \Illuminate\Support\MessageBag|null  $messageBag
      * @return mixed
      */
-    public function validatorInstance($element, MessageBag $messageBag = null)
+    public function validatorInstance($element)
     {
         $classPath = $this->validatorClassPath();
 
-        return new $classPath($element, $messageBag);
+        return new $classPath($element);
     }
 
     /**

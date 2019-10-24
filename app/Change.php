@@ -386,13 +386,13 @@ class Change extends BaseModule
     public static function storeCreateLog($element, $details = "")
     {
         if (isset($element->id)) {
-            $change_set = str_random(8);
+            $change_set = Str::random(8);
             if ($module = Module::whereName(moduleName(get_class($element)))->remember(cacheTime('long'))->first()) {
                 $change = Change::create([
                     "name" => "Create new ".get_class($element),
                     "change_set" => $change_set,
                     "module_id" => $module->id,
-                    "moduleName" => $module->name,
+                    "module_name" => $module->name,
                     "element_id" => $element->id,
                     "element_uuid" => $element->uuid,
                     //"event" => "Create",

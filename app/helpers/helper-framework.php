@@ -157,6 +157,7 @@ function setError($str = '', $set_msg = true, $ret = false)
         if (!in_array($str, Session::get('error', []))) {
             Session::push('error', $str);
         }
+        app('messageBag')->add('message',$str);
     }
     return $ret;
 }

@@ -11,10 +11,8 @@ use View;
 use Request;
 use Redirect;
 use Response;
-use Exception;
 use Validator;
 use App\Module;
-use App\Upload;
 use App\Mainframe\Helpers\GridView;
 use App\Mainframe\Traits\ModuleBaseController\ListTrait;
 use App\Mainframe\Traits\ModuleBaseController\Resolvable;
@@ -28,7 +26,8 @@ use App\Mainframe\Traits\ModuleBaseController\ModelOperationsTrait;
  */
 class ModuleBaseController extends MainframeBaseController
 {
-    use ModelOperationsTrait, ListTrait, ShowChangesTrait, ViewReportTrait, DatatableTrait, Resolvable;
+    use ModelOperationsTrait, ListTrait, ShowChangesTrait,
+        ViewReportTrait, DatatableTrait, Resolvable;
 
     /** @var string */
     protected $moduleName;
@@ -39,7 +38,7 @@ class ModuleBaseController extends MainframeBaseController
     /** @var \Illuminate\Database\Eloquent\Builder */
     protected $model;
 
-    /** @var \App\Mainframe\Traits\BaseModule\ */
+    /** @var \App\Mainframe\BaseModule */
     protected $element;
 
     /** @var \App\Mainframe\Features\Validator\ModelValidator */
@@ -79,10 +78,8 @@ class ModuleBaseController extends MainframeBaseController
             return $this->success()->payload($this->listData())->json();
         }
 
-        $view = GridView::resolve($this->moduleName);
-        $datatable = $this->resolveDatatableClass();
-
-        return view($view)->with('gridColumns', $datatable->columns());
+        return view(GridView::resolve($this->moduleName))
+            ->with('gridColumns', $this->resolveDatatableClass()->columns());
 
     }
 
@@ -107,7 +104,8 @@ class ModuleBaseController extends MainframeBaseController
 
         return View::make($this->createFormView())
             ->with('element', $this->element)
-            ->with(compact('formConfig', 'uuid', 'elementIsEditable', 'formState'));
+            ->with(compact('formConfig', 'uuid',
+                'elementIsEditable', 'formState'));
     }
 
     /**
@@ -121,54 +119,19 @@ class ModuleBaseController extends MainframeBaseController
     public function store()
     {
 
+        $this->element = $this->model;
+
         if (! user()->cannot('create')) {
             return $this->permissionDenied();
         }
 
-        /******************/
-        $moduleName = $this->moduleName;
-        $Model = model($this->moduleName);
-        $validator = null;
-        $element = new $Model($this->transform(Request::all()));
+        $this->attemptCreate();
 
-        if (hasModulePermission($this->moduleName, 'create')) {
-
-            $validator = Validator::make(
-                Request::all(),
-                $Model::rules($element),
-                $Model::$customValidationMessages
-            );
-
-            if ($validator->fails()) {
-
-                $ret = ret('fail',
-                    "Validation error(s) on creating {$this->module->title}.",
-                    ['validation_errors' => json_decode($validator->messages(), true)]
-                );
-
-            } else {
-                if ($element->isCreatable()) {
-                    try {
-                        if ($element->save()) {
-                            $ret = ret('success', "{$this->module->title} has been added", ['data' => $Model::find($element->id)]);
-                            Upload::linkTemporaryUploads($element->id, $element->uuid);
-                        } else {
-                            $ret = ret('fail', "{$this->module->title} create failed.");
-                        }
-                    } catch (Exception $e) {
-                        $ret = ret('fail', $e->getMessage());
-                    }
-                } else {
-                    $ret = ret('fail', "{$this->module->title} could not be saved. (error: isCreatable())");
-                }
-            }
-        } else {
-            $ret = ret('fail', "User does not have create permission for {$this->module->title} ");
+        if ($this->expectsJson()) {
+            return $this->json();
         }
-        # --------------------------------------------------------
-        # Process return/redirect
-        # --------------------------------------------------------
-        return $this->jsonOrRedirect($ret, $validator, $element);
+
+        return $this->redirect();
     }
 
     /**

@@ -320,13 +320,13 @@ class Upload extends BaseModule
      * During creation of a module entry there is no id but still files can be uploaded.
      * At this time system creates an uuid and stores files against that uuid.
      * Once the creation is successful
-     * @param $element_id
-     * @param $element_uuid
+     *
+     * @param $element BaseModule
      */
-    public static function linkTemporaryUploads($element_id, $element_uuid)
+    public static function linkTemporaryUploads($element)
     {
-        Upload::where('element_uuid', $element_uuid)->update([
-            'element_id' => $element_id,
+        Upload::where('element_uuid', $element->uuid)->update([
+            'element_id' => $element->id,
         ]);
     }
 
