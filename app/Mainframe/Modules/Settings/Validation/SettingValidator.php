@@ -2,6 +2,7 @@
 
 namespace App\Mainframe\Modules\Settings\Validation;
 
+use App\Mainframe\Modules\Settings\Setting;
 use App\Mainframe\Features\Validator\ModelValidator;
 
 class SettingValidator extends ModelValidator
@@ -18,7 +19,10 @@ class SettingValidator extends ModelValidator
     {
         $rules = [
             'name' => 'required|between:1,255|unique:modules,name,'.(isset($element->id) ? "$element->id" : 'null').',id,deleted_at,NULL',
-            'is_active' => 'required|in:1,0',
+            'title' => 'required|between:1,255',
+            'type' => 'required|'.'in:'.implode(',', array_keys(Setting::$types)),
+            'desc' => 'between:1,2048',
+            'is_active' => 'in:1,0',
         ];
 
         return array_merge($rules, $merge);
@@ -27,16 +31,27 @@ class SettingValidator extends ModelValidator
     public function saving()
     {
         parent::saving();
-        $this->checkSomethingElse();
+        $this->matchTypeValue();
 
         return $this;
     }
 
-
-    private function checkSomethingElse()
+    private function matchTypeValue()
     {
 
-        $this->element->name = 'Changed name';
+        $setting = $this->element;
+
+        if ($setting->type === 'boolean') {
+            if (! in_array($setting->value, ['true', 'false'])) {
+                $this->addError('value', "If boolean type is selected, value must be 'true' or 'false'");
+            }
+        }
+
+        if ($setting->type === 'array') {
+            if (! json_decode($setting->value)) {
+                $this->addError('value', "If array/json type is selected, value must be a valid json string");
+            }
+        }
 
     }
 }

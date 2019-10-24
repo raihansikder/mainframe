@@ -147,29 +147,7 @@ class Setting extends BaseModule
     {
         parent::boot();
         self::observe(SettingObserver::class);
-
-        static::saving(function (Setting $element) {
-            $valid = true;
-            //
-            // // type should be valid
-            // if ($valid && ! in_array($element->type, keyAsArray(Setting::$types))) {
-            //     $valid = setError("Type must be on the the following: ".csvFromArray(keyAsArray(Setting::$types)));
-            // }
-            // // for type=boolean only allow true/false as value
-            // if ($valid && $element->type == 'boolean' && ! in_array($element->value, ['true', 'false'])) {
-            //     $valid = setError("If boolean type is selected, value must be 'true' or 'false'");
-            // }
-            // // for type=array only allow JSON string as value
-            // if ($valid && $element->type == 'array' && ! json_decode($element->value)) {
-            //     $valid = setError("If array/json type is selected, value must be a valid json string");
-            // }
-            // // for type=array only allow JSON string as value
-            // if ($valid && $element->type == 'file' && strlen(trim($element->value))) {
-            //     $valid = setError("If the setting type is file leave the 'value' field empty.");
-            // }
-
-            return $valid;
-        });
+        static::saving(function (Setting $element) { });
 
     }
 
@@ -235,7 +213,7 @@ class Setting extends BaseModule
         $val = $this->value;
         switch ($this->type) {
             case 'boolean':
-                $val = $this->value == 'true' ? true : false;
+                $val = $this->value === 'true' ? true : false;
                 break;
             case 'string':
                 $val = $this->value;
