@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Mainframe\Traits\ModuleBaseController;
+namespace App\Http\Mainframe\Helpers\Modular\BaseController;
 
 use DB;
 use View;
@@ -8,7 +8,6 @@ use App\Classes\Reports\DefaultModuleReport;
 
 trait ViewReportTrait
 {
-
 
     /**
      * Get data source of report
@@ -44,9 +43,9 @@ trait ViewReportTrait
     public function report()
     {
         if (hasModulePermission($this->moduleName, 'report')) {
-            $report              = new DefaultModuleReport();
+            $report = new DefaultModuleReport();
             $report->data_source = $this->reportDataSource();
-            $report->base_dir    = $this->reportViewBaseDir();
+            $report->base_dir = $this->reportViewBaseDir();
 
             return $report->show();
         }

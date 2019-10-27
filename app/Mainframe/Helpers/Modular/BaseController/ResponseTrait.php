@@ -1,6 +1,6 @@
 <?php /** @noinspection DuplicatedCode */
 
-namespace App\Mainframe\Traits\ModuleBaseController;
+namespace App\Http\Mainframe\Helpers\Modular\BaseController;
 
 use Response;
 use Redirect;

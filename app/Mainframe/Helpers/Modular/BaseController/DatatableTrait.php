@@ -1,9 +1,9 @@
 <?php /** @noinspection PhpUnused */
 
-namespace App\Mainframe\Traits\ModuleBaseController;
+namespace App\Http\Mainframe\Helpers\Modular\BaseController;
 
 use App\Mainframe\Features\Datatable\MainframeDatatable;
-use App\Http\Mainframe\Controllers\ModuleBaseController;
+use App\Http\Mainframe\Helpers\Modular\BaseController\ModuleBaseController;
 
 /**
  * Trait GridDatatable

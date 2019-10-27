@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Mainframe\Traits\ModuleBaseController;
+namespace App\Http\Mainframe\Helpers\Modular\BaseController;
 
 use Request;
 use Response;
-use App\Http\Mainframe\Controllers\ModuleBaseController;
+use App\Http\Mainframe\Helpers\Modular\BaseController\ModuleBaseController;
 
 trait ShowChangesTrait
 {
@@ -30,7 +30,7 @@ trait ShowChangesTrait
         if ($element = $Model::find($id)) { // Check if the element you are trying to edit exists
             if ($element->isViewable()) { // Check if the element is viewable
                 $changes = $element->changes;
-                $ret     = ret('success', '', ['data' => $changes]);
+                $ret = ret('success', '', ['data' => $changes]);
             } else { // Not viewable by the user. Set error message and return value.
                 $ret = ret('fail', 'The element is not view-able by current user.');
                 //return showPermissionErrorPage("The element is not view-able by current user.");

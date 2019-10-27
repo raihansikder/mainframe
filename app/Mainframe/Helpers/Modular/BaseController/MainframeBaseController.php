@@ -5,15 +5,12 @@
 /** @noinspection PhpUnusedLocalVariableInspection */
 /** @noinspection PhpUndefinedMethodInspection */
 
-namespace App\Http\Mainframe\Controllers;
+namespace App\Http\Mainframe\Helpers\Modular\BaseController;
 
 use Request;
 use App\Mainframe\Traits\IsoOutput;
 use App\Http\Controllers\Controller;
 use App\Mainframe\Traits\GridDatatable;
-use App\Mainframe\Traits\ModuleBaseController\Transformable;
-use App\Mainframe\Traits\ModuleBaseController\ResponseTrait;
-use App\Mainframe\Traits\ModuleBaseController\PermissionsTrait;
 
 /**
  * Class ModuleBaseController

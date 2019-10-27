@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Mainframe\Traits\ModuleBaseController;
+namespace App\Http\Mainframe\Helpers\Modular\BaseController;
 
 use Request;
 use Response;
@@ -44,7 +44,7 @@ trait ListTrait
         // Eager load
         if (Request::has('with')) {
             $with = Request::get('with');
-            $q    = $q->with(explode(',', $with));
+            $q = $q->with(explode(',', $with));
         }
         // Force is_active = 1
         $q->where('is_active', 1);
@@ -71,7 +71,7 @@ trait ListTrait
         $offset = 0;
         if (Request::has('offset')) {
             $offset = Request::get('offset');
-            $q      = $q->skip($offset);
+            $q = $q->skip($offset);
         }
 
         //set limit
@@ -101,7 +101,7 @@ trait ListTrait
      */
     public function filterQueryConstructor($q)
     {
-        $Model       = model($this->moduleName);
+        $Model = model($this->moduleName);
         $text_fields = $Model::$text_fields;
         //$module_sys_name = $this->moduleName;
 
@@ -122,9 +122,9 @@ trait ListTrait
         }
 
         if (Request::has('fieldName') && Request::has('fieldValue')) {
-            $fieldName  = Request::get('fieldName');
+            $fieldName = Request::get('fieldName');
             $fieldValue = Request::get('fieldValue');
-            $q          = $q->where($fieldName, $fieldValue);
+            $q = $q->where($fieldName, $fieldValue);
         }
 
         $q_fields = columns($this->moduleName); // Get all table field names

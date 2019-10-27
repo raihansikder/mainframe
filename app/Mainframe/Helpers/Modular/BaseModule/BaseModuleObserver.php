@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Mainframe\Observers;
+namespace App\Mainframe\Helpers\Modular\BaseModule;
 
 use App\Change;
 

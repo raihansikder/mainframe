@@ -4,7 +4,7 @@
 
 /** @noinspection PhpUnused */
 
-namespace App\Mainframe\Policies;
+namespace App\Mainframe\Helpers\Modular\BaseModule;
 
 use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;

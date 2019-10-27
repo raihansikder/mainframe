@@ -7,7 +7,7 @@ use Redirect;
 use Response;
 use App\Upload;
 use Storage;
-use App\Http\Mainframe\Controllers\ModuleBaseController;
+use App\Http\Mainframe\Helpers\Modular\BaseController\ModuleBaseController;
 
 class UploadsController extends ModuleBaseController
 {

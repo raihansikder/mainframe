@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Mainframe\Traits\ModuleBaseController;
+namespace App\Http\Mainframe\Helpers\Modular\BaseController;
 
-use App\Mainframe\Helpers\FormView;
+use App\Mainframe\Helpers\Modular\Resolvers\FormView;
 
 trait Resolvable
 {

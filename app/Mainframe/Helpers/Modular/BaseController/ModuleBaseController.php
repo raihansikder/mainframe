@@ -5,7 +5,7 @@
 /** @noinspection PhpUnusedLocalVariableInspection */
 /** @noinspection PhpUndefinedMethodInspection */
 
-namespace App\Http\Mainframe\Controllers;
+namespace App\Http\Mainframe\Helpers\Modular\BaseController;
 
 use View;
 use Request;
@@ -13,13 +13,7 @@ use Redirect;
 use Response;
 use Validator;
 use App\Module;
-use App\Mainframe\Helpers\GridView;
-use App\Mainframe\Traits\ModuleBaseController\ListTrait;
-use App\Mainframe\Traits\ModuleBaseController\Resolvable;
-use App\Mainframe\Traits\ModuleBaseController\DatatableTrait;
-use App\Mainframe\Traits\ModuleBaseController\ViewReportTrait;
-use App\Mainframe\Traits\ModuleBaseController\ShowChangesTrait;
-use App\Mainframe\Traits\ModuleBaseController\ModelOperationsTrait;
+use App\Mainframe\Helpers\Modular\Resolvers\GridView;
 
 /**
  * Class ModuleBaseController

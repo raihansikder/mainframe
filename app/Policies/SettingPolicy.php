@@ -8,7 +8,7 @@ namespace App\Policies;
 
 use App\User;
 use App\Setting;
-use App\Mainframe\Policies\BaseModulePolicy;
+use App\Mainframe\Helpers\Modular\BaseModule\BaseModulePolicy;
 
 class SettingPolicy extends BaseModulePolicy
 {

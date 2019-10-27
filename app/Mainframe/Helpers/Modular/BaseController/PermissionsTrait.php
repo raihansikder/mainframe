@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Mainframe\Traits\ModuleBaseController;
+namespace App\Http\Mainframe\Helpers\Modular\BaseController;
+
 
 trait PermissionsTrait
 {

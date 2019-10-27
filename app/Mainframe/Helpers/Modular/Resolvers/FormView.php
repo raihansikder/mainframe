@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Mainframe\Helpers;
+namespace App\Mainframe\Helpers\Modular\Resolvers;
 
 use App\User;
 

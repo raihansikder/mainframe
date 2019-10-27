@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Report;
-use App\Http\Mainframe\Controllers\ModuleBaseController;
+use App\Http\Mainframe\Helpers\Modular\BaseController\ModuleBaseController;
 
 class ReportsController extends ModuleBaseController
 {
