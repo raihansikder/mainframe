@@ -8,6 +8,12 @@ use App\Module;
 use App\ModuleGroup;
 use App\Mainframe\Helpers\Modular\BaseModule\BaseModulePolicy;
 
+/**
+ * Class Mf
+ *
+ * @package App\Mainframe\Helpers
+ */
+
 class Mf
 {
 

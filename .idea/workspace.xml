@@ -2,36 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ee34113f-6433-40ce-8481-cf6a87088dde" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Modules/ModuleController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Modules/ModuleDatatable.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Modules/ModulePolicy.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Settings/SettingObserver.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_ide_helper_models.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Change.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Change.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Modules/SettingController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Datatable/MainframeDatatable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Datatable/Datatable.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Validator/ModelValidator.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/Validator/ModelValidator.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Mainframe/Helpers/Mf.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Mf.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/BaseController/DatatableTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/BaseController/DatatableTrait.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Modules/Module.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Modules/Module.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Modules/Observers/ModuleObserver.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Modules/ModuleObserver.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Modules/Traits/Accessors.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Modules/Traits/Helpers.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Modules/Traits/MainframeModuleTrait.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Modules/Traits/Mutators.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Modules/Traits/Relations.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Modules/Traits/Scopes.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Modules/Validators/ModuleValidator.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Modules/ModuleValidator.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Settings/Datatables/DatatableDefault.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Settings/SettingDatatable.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Settings/Http/Controllers/SettingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Settings/SettingController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Settings/Setting.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Settings/Setting.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Settings/Validation/SettingValidator.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Settings/SettingValidator.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/ModuleGroup.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/ModuleGroup.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Policies/SettingPolicy.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Settings/SettingPolicy.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Module.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Module.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Setting.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Setting.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/mainframe/form-elements/text/input-text.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/form-elements/text/input-text.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/settings/form/default.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/settings/form/default.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

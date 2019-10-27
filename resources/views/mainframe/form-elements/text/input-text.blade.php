@@ -9,22 +9,20 @@
 $var['container_class'] = $var['container_class'] ?? 'col-md-3'; // container_class: main wrapper div class.
 $var['name'] = $var['name'] ?? 'NO_NAME';    // name: Form file input name, this name will be posted when the form is submitted.
 $var['params'] = $var['params'] ?? [];     // params: Array of parameters to be passed to Form::select(). Usually this contains all the additional HTML attributes for the HTML input tag. i.e. ]class=>'my_class', id=>'my_id']
-$var['params']['class'] = isset($var['params']['class']) ? $var['params']['class'] . ' form-control ' : ' form-control '; // ['params']['class']: Enforce a class 'form-control' for the input/select HTML element. 'form-control' is a native class of UI framework.
+$var['params']['class'] = isset($var['params']['class']) ? $var['params']['class'].' form-control ' : ' form-control '; // ['params']['class']: Enforce a class 'form-control' for the input/select HTML element. 'form-control' is a native class of UI framework.
 //$var['params']['id'] = isset($var['params']['id']) ? $var['params']['id'] : $var['name']; // ['params']['class']: Enforce a class 'form-control' for the input/select HTML element. 'form-control' is a native class of UI framework.
 $var['value'] = $var['value'] ?? '';        // value: Set the value of the form field. This will override all other values passed or derived from form-model binding or old input values.
 $var['label'] = $var['label'] ?? '';        // label: Label of the form field
 $var['label_class'] = $var['label_class'] ?? ''; //label_class: class of the label
-$var['old_input'] = oldInputValue($var['name'], $var['value']);   // old_input: stores the existing value by computing using oldInputValue() function is the $var['value'] is not given.
-if (!isset($var['editable'])) { // Check if the form input/select is editable based on the value of $elementIsEditable. The variable is set in the controller ModuleBaseController and passed to the form view(form.blade.php) while rendering.
-    $var['editable'] = !(isset($elementIsEditable) && $elementIsEditable == false);
+$var['old_input'] = oldInputValue($var['name'],
+    $var['value']);   // old_input: stores the existing value by computing using oldInputValue() function is the $var['value'] is not given.
+if (! isset($var['editable'])) { // Check if the form input/select is editable based on the value of $elementIsEditable. The variable is set in the controller ModuleBaseController and passed to the form view(form.blade.php) while rendering.
+    $var['editable'] = ! (isset($elementIsEditable) && $elementIsEditable == false);
 }
 
 /** Custom parameters */
 $var['type'] = $var['type'] ?? 'text';       // type: Defines what type of input it is for text type input. type can be 'text' or 'password'.
-
-// myprint_r($var);
 ?>
-
 
 
 <div class="form-group {{$errors->first($var['name'], ' has-error')}} {{$var['container_class']}}">
