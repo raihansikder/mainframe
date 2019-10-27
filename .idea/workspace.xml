@@ -158,19 +158,19 @@
     <property name="typescript.add.unambiguous.imports.on.the.fly" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\MAMP\htdocs\mainframe\resources\views\mainframe\layouts\default\includes\alerts" />
-      <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Policies" />
-      <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Modules\Settings\Validators" />
-      <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Helpers" />
-      <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Modules\Modules\Traits" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Features" />
       <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Modules\Modules\Validators" />
       <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Traits\ModuleBaseController" />
       <recent name="E:\MAMP\htdocs\mainframe\app\Http\Controllers\Modules" />
       <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Modules\Settings" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\MAMP\htdocs\mainframe\resources\views\mainframe\layouts\default\includes\alerts" />
+      <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Policies" />
+      <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Modules\Settings\Validators" />
+      <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Helpers" />
+      <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Modules\Modules\Traits" />
     </key>
   </component>
   <component name="RunDashboard">
