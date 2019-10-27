@@ -4,7 +4,7 @@ namespace App;
 
 use Mail;
 use Config;
-use App\Mainframe\BaseModule;
+use App\Mainframe\Helpers\Modular\BaseModule\BaseModule;
 use App\Mail\FileUploadedByBrand;
 use App\Observers\UploadObserver;
 use App\Mail\FileUploadedByCharity;

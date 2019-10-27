@@ -2,7 +2,7 @@
 
 namespace App;
 
-use App\Mainframe\BaseModule;
+use App\Mainframe\Helpers\Modular\BaseModule\BaseModule;
 use App\Observers\ReportObserver;
 
 /**
@@ -147,7 +147,7 @@ class Report extends BaseModule
     public static function boot()
     {
         parent::boot();
-        Report::observe(ReportObserver::class);
+        // Report::observe(ReportObserver::class);
 
         /************************************************************/
         // Following code block executes - when an element is in process

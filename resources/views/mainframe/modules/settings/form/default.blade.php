@@ -1,5 +1,10 @@
 @extends('mainframe.layouts.module.form.layout')
 
+<?php
+use App\Mainframe\Modules\Settings\Setting;
+$types = Setting::$types;
+?>
+
 @section('content')
     <div class="col-md-12 no-padding">
 
@@ -16,7 +21,7 @@
         @include('mainframe.form-elements.text.input-text',['var'=>['name'=>'title','label'=>'Title','container_class'=>'col-sm-3']])
         <div class="clearfix"></div>
 
-        @include('mainframe.form-elements.select.select-array',['var'=>['name'=>'type','label'=>'type', 'options'=>\App\Setting::$types,'container_class'=>'col-sm-3']])
+        @include('mainframe.form-elements.select.select-array',['var'=>['name'=>'type','label'=>'type', 'options'=>$types,'container_class'=>'col-sm-3']])
         <div class="clearfix"></div>
 
         @include('mainframe.form-elements.text.textarea',['var'=>['name'=>'value','label'=>'Value', 'container_class'=>'col-sm-6']])
