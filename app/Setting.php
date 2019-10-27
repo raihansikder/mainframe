@@ -54,7 +54,7 @@ class Setting extends SettingModel
     {
         parent::boot();
 
-        self::observe(SettingObserver::class);
+        // self::observe(SettingObserver::class);
     }
 
 }

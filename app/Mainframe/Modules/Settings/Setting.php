@@ -2,9 +2,8 @@
 
 namespace App\Mainframe\Modules\Settings;
 
-use App\Mainframe\Helpers\Modular\BaseModule\BaseModule;
 use App\Observers\SettingObserver;
-use Illuminate\Database\Eloquent\Builder;
+use App\Mainframe\Helpers\Modular\BaseModule\BaseModule;
 
 /**
  * Class Setting
@@ -146,7 +145,7 @@ class Setting extends BaseModule
     public static function boot()
     {
         parent::boot();
-        self::observe(SettingObserver::class);
+        // self::observe(SettingObserver::class);
         static::saving(function (Setting $element) { });
 
     }

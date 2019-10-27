@@ -131,7 +131,7 @@ class Group extends BaseModule
     public static function boot()
     {
         parent::boot();
-        Group::observe(GroupObserver::class);
+        // Group::observe(GroupObserver::class);
 
         /************************************************************/
         // Following code block executes - when an element is in process

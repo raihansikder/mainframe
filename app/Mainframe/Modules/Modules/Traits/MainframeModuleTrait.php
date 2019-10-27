@@ -3,7 +3,6 @@
 namespace App\Mainframe\Modules\Modules\Traits;
 
 use Illuminate\Support\Str;
-use Illuminate\Support\MessageBag;
 
 /** @var \App\Mainframe\Modules\Modules\Module $this */
 trait MainframeModuleTrait

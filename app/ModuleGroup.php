@@ -135,7 +135,7 @@ class ModuleGroup extends BaseModule
          */
         parent::boot();
         //BaseModule::registerObserver(get_class()); // register observer
-        ModuleGroup::observe(ModulegroupObserver::class);
+        // ModuleGroup::observe(ModulegroupObserver::class);
 
         /************************************************************/
         // Following code block executes - when an element is in process

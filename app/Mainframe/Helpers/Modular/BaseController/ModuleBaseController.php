@@ -24,7 +24,7 @@ class ModuleBaseController extends MainframeBaseController
         ViewReportTrait, DatatableTrait, Resolvable;
 
     /** @var string */
-    protected $moduleName;
+    public $moduleName;
 
     /** @var Module */
     protected $module;
@@ -43,11 +43,13 @@ class ModuleBaseController extends MainframeBaseController
      */
     public function __construct($moduleName = null)
     {
-        parent::__construct();
 
+        parent::__construct();
         $this->moduleName = $moduleName ?? Module::fromController(get_class($this));
         $this->module = Module::byName($this->moduleName);
+
         $this->model = $this->module->modelInstance();
+
 
         View::share([
             'module' => $this->module,
