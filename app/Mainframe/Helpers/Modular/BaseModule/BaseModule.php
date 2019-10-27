@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Mainframe;
+namespace App\Mainframe\Helpers\Modular\BaseModule;
 
 use Validator;
 use Illuminate\Support\MessageBag;

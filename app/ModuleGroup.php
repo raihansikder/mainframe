@@ -2,7 +2,7 @@
 
 namespace App;
 
-use App\Mainframe\BaseModule;
+use App\Mainframe\Helpers\Modular\BaseModule\BaseModule;
 use App\Observers\ModulegroupObserver;
 
 /**

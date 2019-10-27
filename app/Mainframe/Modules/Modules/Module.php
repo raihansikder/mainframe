@@ -2,7 +2,7 @@
 
 namespace App\Mainframe\Modules\Modules;
 
-use App\Mainframe\BaseModule;
+use App\Mainframe\Helpers\Modular\BaseModule\BaseModule;
 use App\Mainframe\Modules\Modules\Traits\Scopes;
 use App\Mainframe\Modules\Modules\Traits\Helpers;
 use App\Mainframe\Modules\Modules\Traits\Mutators;

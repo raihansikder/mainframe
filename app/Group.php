@@ -3,7 +3,7 @@
 namespace App;
 
 use Request;
-use App\Mainframe\BaseModule;
+use App\Mainframe\Helpers\Modular\BaseModule\BaseModule;
 use App\Observers\GroupObserver;
 
 /**

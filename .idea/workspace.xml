@@ -3,8 +3,16 @@
   <component name="ChangeListManager">
     <list default="true" id="ee34113f-6433-40ce-8481-cf6a87088dde" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Change.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Change.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Group.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Group.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/BaseModule.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/BaseModule/BaseModule.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Modules/Module.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Modules/Module.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Settings/Setting.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Settings/Setting.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Settings/Validation/SettingValidator.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Settings/Validation/SettingValidator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Traits/BaseModule/Validable.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/ModuleGroup.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/ModuleGroup.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Report.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Report.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Superhero.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Superhero.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Upload.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Upload.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -159,11 +167,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Helpers\Modular\BaseModule" />
       <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Features" />
       <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Modules\Modules\Validators" />
       <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Traits\ModuleBaseController" />
       <recent name="E:\MAMP\htdocs\mainframe\app\Http\Controllers\Modules" />
-      <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Modules\Settings" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\MAMP\htdocs\mainframe\resources\views\mainframe\layouts\default\includes\alerts" />

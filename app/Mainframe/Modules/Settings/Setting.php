@@ -2,7 +2,7 @@
 
 namespace App\Mainframe\Modules\Settings;
 
-use App\Mainframe\BaseModule;
+use App\Mainframe\Helpers\Modular\BaseModule\BaseModule;
 use App\Observers\SettingObserver;
 use Illuminate\Database\Eloquent\Builder;
 
