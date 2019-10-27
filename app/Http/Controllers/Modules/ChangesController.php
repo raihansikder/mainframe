@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Mainframe\Controllers\ModuleBaseController;
+use App\Http\Mainframe\Helpers\Modular\BaseController\ModuleBaseController;
 
 class ChangesController extends ModuleBaseController
 {

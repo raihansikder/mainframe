@@ -2,8 +2,7 @@
 
 namespace App;
 
-use App\Observers\SettingObserver;
-use App\Mainframe\Modules\Settings\Setting as SettingModel;
+use App\Mainframe\Modules\Settings\Setting as SettingModule;
 
 /**
  * App\Setting
@@ -48,13 +47,7 @@ use App\Mainframe\Modules\Settings\Setting as SettingModel;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Setting whereValue($value)
  * @mixin \Eloquent
  */
-class Setting extends SettingModel
+class Setting extends SettingModule
 {
-    public static function boot()
-    {
-        parent::boot();
-
-        self::observe(SettingObserver::class);
-    }
 
 }

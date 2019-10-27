@@ -270,7 +270,7 @@ class User extends Authenticatable implements MustVerifyEmail
          * make the parent (Eloquent) boot method run.
          */
         parent::boot();
-        User::observe(UserObserver::class);
+        // User::observe(UserObserver::class);
 
         /************************************************************/
         // Following code block executes - when an element is in process
