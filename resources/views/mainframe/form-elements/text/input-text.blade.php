@@ -35,7 +35,7 @@ $var['type'] = $var['type'] ?? 'text';       // type: Defines what type of input
     @endif
 
     @if($var['editable'])
-        @if($var['type'] == 'password')
+        @if($var['type'] === 'password')
             {{ Form::password($var['name'], $var['params']) }}
         @else
             {{ Form::text($var['name'], $var['old_input'], $var['params']) }}

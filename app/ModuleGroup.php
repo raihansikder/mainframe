@@ -1,9 +1,9 @@
-<?php
+<?php /** @noinspection DuplicatedCode */
 
 namespace App;
 
-use App\Mainframe\Helpers\Modular\BaseModule\BaseModule;
 use App\Observers\ModulegroupObserver;
+use App\Mainframe\Helpers\Modular\BaseModule\BaseModule;
 
 /**
  * Class ModuleGroup
@@ -92,27 +92,33 @@ class ModuleGroup extends BaseModule
      *
      * @var array
      */
-    protected $fillable = ['name', 'title', 'description', 'parent_id', 'level', 'order',
-        'color_css', 'icon_css', 'default_route', 'is_active', 'created_by', 'updated_by', 'deleted_by'];
+    protected $fillable = [
+        'name', 'title', 'description', 'parent_id', 'level', 'order',
+        'color_css', 'icon_css', 'default_route', 'is_active', 'created_by', 'updated_by', 'deleted_by'
+    ];
 
     /**
      * Validation rules. For regular expression validation use array instead of pipe
      * Example: 'name' => ['required', 'Regex:/^[A-Za-z0-9\-! ,\'\"\/@\.:\(\)]+$/']
      *
      * @param       $element
-     * @param array $merge
+     * @param  array  $merge
      * @return array
      */
     public static function rules($element, $merge = [])
     {
         $rules = [
-            'name' => ['required', 'between:1,255', 'unique:module_groups,name,' . (isset($element->id) ? "$element->id" : 'null') . ',id,deleted_at,NULL', 'Regex:/^[a-z\-]+$/'],
-            'title' => 'required|between:1,255|unique:module_groups,title,' . (isset($element->id) ? "$element->id" : 'null') . ',id,deleted_at,NULL',
+            'name' => [
+                'required', 'between:1,255', 'unique:module_groups,name,'.(isset($element->id) ? "$element->id" : 'null').',id,deleted_at,NULL',
+                'Regex:/^[a-z\-]+$/'
+            ],
+            'title' => 'required|between:1,255|unique:module_groups,title,'.(isset($element->id) ? "$element->id" : 'null').',id,deleted_at,NULL',
             //'parent_id' => 'integer|between:1,255|unique:module_groups,parent' . (isset($element->id) ? ",$element->id" : ''),
             // 'created_by' => 'integer|exists:users,id,is_active,1',
             // 'updated_by' => 'integer|exists:users,id,is_active,1',
             'is_active' => 'required|in:0,1',
         ];
+
         return array_merge($rules, $merge);
     }
     /**
@@ -174,13 +180,14 @@ class ModuleGroup extends BaseModule
             /************************************************************/
             if ($valid) {
                 // Fill default values
-                $element->parent_id = (!$element->parent_id) ? 0 : $element->parent_id;
-                $element->level = (!$element->level) ? 0 : $element->level;
-                $element->order = (!$element->order) ? 0 : $element->order;
-                $element->default_route = (!$element->default_route) ? $element->name . '.index' : $element->default_route;
-                $element->color_css = (!$element->color_css) ? 'aqua' : $element->color_css;
-                $element->icon_css = (!$element->icon_css) ? 'fa fa-plus' : $element->icon_css;
+                $element->parent_id = (! $element->parent_id) ? 0 : $element->parent_id;
+                $element->level = (! $element->level) ? 0 : $element->level;
+                $element->order = (! $element->order) ? 0 : $element->order;
+                $element->default_route = (! $element->default_route) ? $element->name.'.index' : $element->default_route;
+                $element->color_css = (! $element->color_css) ? 'aqua' : $element->color_css;
+                $element->icon_css = (! $element->icon_css) ? 'fa fa-plus' : $element->icon_css;
             }
+
             return $valid;
         });
 
@@ -220,7 +227,7 @@ class ModuleGroup extends BaseModule
     ############################################################################################
 
     /**
-     * @param bool|false $setMsgSession setting it false will not store the message in session
+     * @param  bool|false  $setMsgSession  setting it false will not store the message in session
      * @return bool
      */
     //    public function isSomethingDoable($setMsgSession = false)
@@ -264,10 +271,11 @@ class ModuleGroup extends BaseModule
         $moduleGroups = ModuleGroup::whereIsActive(1)->whereParentId(0)->orderBy('order')->remember(cacheTime('long'))->get();
         $list = [];
         foreach ($moduleGroups as $moduleGroup) {
-            if (count($moduleGroup->children()))
+            if (count($moduleGroup->children())) {
                 $list[] = ['type' => 'module_group', 'item' => $moduleGroup, 'children' => $moduleGroup->children()];
-            else
+            } else {
                 $list[] = ['type' => 'module_group', 'item' => $moduleGroup, 'children' => []];
+            }
         }
         $modules = Module::whereModuleGroupId(0)->whereIsActive(1)->orderBy('order')->remember(cacheTime('long'))->get();
         if (count($modules)) {
@@ -275,6 +283,7 @@ class ModuleGroup extends BaseModule
                 $list[] = ['type' => 'module', 'item' => $module];
             }
         }
+
         return $list;
     }
 
@@ -291,10 +300,11 @@ class ModuleGroup extends BaseModule
         if (count($moduleGroups)) {
             foreach ($moduleGroups as $moduleGroup) {
 
-                if (count($moduleGroup->children()))
+                if (count($moduleGroup->children())) {
                     array_push($list, ['type' => 'module_group', 'item' => $moduleGroup, 'children' => $moduleGroup->children()]);
-                else
+                } else {
                     array_push($list, ['type' => 'module_group', 'item' => $moduleGroup, 'children' => []]);
+                }
             }
         }
         $modules = Module::whereModuleGroupId($this->id)->whereIsActive(1)->orderBy('order')->remember(cacheTime('long'))->get();
@@ -303,13 +313,14 @@ class ModuleGroup extends BaseModule
                 array_push($list, ['type' => 'module', 'item' => $module]);
             }
         }
+
         return $list;
     }
 
     /**
      * Get module_group names as one-dimentional array
      *
-     * @param bool|true $only_active
+     * @param  bool|true  $only_active
      * @return array
      */
     public static function names($only_active = true)
@@ -320,6 +331,7 @@ class ModuleGroup extends BaseModule
         }
         $results = $q->get()->toArray();
         $modules = array_column($results, 'name');
+
         return $modules;
     }
 
@@ -343,6 +355,7 @@ class ModuleGroup extends BaseModule
                 array_push($list, ['type' => 'module', 'item' => $module]);
             }
         }
+
         return $list;
     }
 
@@ -363,7 +376,7 @@ class ModuleGroup extends BaseModule
      * whether this should be allowed or not. The logic can be further
      * extend to implement more conditions.
      *
-     * @param null $user_id
+     * @param  null  $user_id
      * @return bool
      */
     //    public function isViewable($user_id = null)
@@ -381,7 +394,7 @@ class ModuleGroup extends BaseModule
      * whether this should be allowed or not. The logic can be further
      * extend to implement more conditions.
      *
-     * @param null $user_id
+     * @param  null  $user_id
      * @return bool
      */
     //    public function isEditable($user_id = null)
@@ -399,7 +412,7 @@ class ModuleGroup extends BaseModule
      * whether this should be allowed or not. The logic can be further
      * extend to implement more conditions.
      *
-     * @param null $user_id
+     * @param  null  $user_id
      * @return bool
      */
     //    public function isDeletable($user_id = null)
@@ -417,7 +430,7 @@ class ModuleGroup extends BaseModule
      * whether this should be allowed or not. The logic can be further
      * extend to implement more conditions.
      *
-     * @param null $user_id
+     * @param  null  $user_id
      * @return bool
      */
     //    public function isRestorable($user_id = null)

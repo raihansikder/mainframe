@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Mainframe\Modules\Settings\Validation;
+namespace App\Mainframe\Modules\Settings;
 
-use App\Mainframe\Modules\Settings\Setting;
-use App\Mainframe\Features\Validator\ModelValidator;
+use App\Mainframe\Helpers\Modular\Validator\ModelValidator;
 
 class SettingValidator extends ModelValidator
 {

@@ -1,13 +1,13 @@
 <?php /** @noinspection SelfClassReferencingInspection */
 
-namespace App\Mainframe\Features\Validator;
+namespace App\Mainframe\Helpers\Modular\Validator;
 
 use Illuminate\Support\MessageBag;
 use Illuminate\Support\Facades\Validator;
 
 class ModelValidator
 {
-    /** @var \App\Mainframe\BaseModule */
+    /** @var \App\Mainframe\Helpers\Modular\BaseModule\BaseModule */
     public $element;
     /** @var array|mixed */
     public $elementOriginal;
@@ -21,7 +21,7 @@ class ModelValidator
     /**
      * MainframeModelValidator constructor.
      *
-     * @param  \App\Mainframe\BaseModule  $element
+     * @param  \App\Mainframe\Helpers\Modular\BaseModule\BaseModule  $element
      */
     public function __construct($element)
     {
@@ -42,7 +42,9 @@ class ModelValidator
     public static function rules($element, $merge = [])
     {
         $rules = [
-            'name' => 'required|between:1,255|unique:modules,name,'.(isset($element->id) ? "$element->id" : 'null').',id,deleted_at,NULL',
+            'name' => 'required|between:1,255|unique:modules,name,'
+                .(isset($element->id) ? (string) $element->id : 'null')
+                .',id,deleted_at,NULL',
             'is_active' => 'required|in:1,0',
         ];
 
@@ -81,51 +83,102 @@ class ModelValidator
     /**
      * Get results
      *
-     * @return \App\Mainframe\BaseModule|bool
+     * @return \App\Mainframe\Helpers\Modular\BaseModule\BaseModule|bool
      */
     public function result()
     {
         return $this->passes() ? $this->element : false;
     }
 
+    /**
+     * Check if valid flag is set to false
+     *
+     * @return bool
+     */
     public function fails()
     {
         return $this->valid ? false : true;
     }
 
+    /**
+     * Check if the valid flag is set to true
+     *
+     * @return bool
+     */
     public function passes()
     {
         return ! $this->fails();
     }
 
-    public function invalidate()
+    /**
+     * Invalidate with a key and error message
+     *
+     * @param  null  $key
+     * @param  null  $message
+     * @return $this
+     */
+    public function invalidate($key = null, $message = null)
     {
+        $this->addError($key, $message);
         $this->valid = false;
 
         return $this;
     }
 
-    public function fill($element)
+    /**
+     * Add an error message to a key-value pair
+     *
+     * @param  null  $key
+     * @param  null  $message
+     */
+    public function addError($key = null, $message = null)
     {
+        $this->validator->messages()->add($key, $message);
+
+    }
+
+    /**
+     * Fill the model with values
+     *
+     * @return $this
+     */
+    public function fill()
+    {
+        // $element->some_val = $new_val
         return $this;
     }
 
+    /**
+     * Based on existence of id field decide to check creating()/updating()
+     *
+     * @return $this
+     */
     public function validate()
     {
-        $this->fill($this->element);
-        $this->validateRules();
+        if (isset($this->element->id)) {
+            return $this->updating();
+        }
 
-        return $this;
+        return $this->saving();
     }
 
+    /**
+     * Run validations for saving. This should be common for both creating and updating.
+     *
+     * @return $this
+     */
     public function saving()
     {
-        $this->fill($this->element);
-        $this->validateRules();
+        $this->fill()->validateRules();
 
         return $this;
     }
 
+    /**
+     * Run validations for creating.
+     *
+     * @return $this]
+     */
     public function creating()
     {
         $this->saving();
@@ -133,31 +186,39 @@ class ModelValidator
         return $this;
     }
 
+    /**
+     * Run validations for updating.
+     *
+     * @return $this
+     */
     public function updating()
     {
-        $this->fill($this->element);
-        $this->saving();
+        $this->fill()->saving();
 
         return $this;
     }
 
+    /**
+     * Run validations for deleting.
+     *
+     * @return $this
+     */
     public function deleting()
     {
         return $this;
 
     }
 
+    /**
+     * Run validations for restoring.
+     *
+     * @return $this
+     */
     public function restoring()
     {
         $this->saving();
 
         return $this;
-    }
-
-    public function addError($key = null, $message = null)
-    {
-        $this->validator->messages()->add($key, $message);
-        $this->invalidate();
     }
 
 }

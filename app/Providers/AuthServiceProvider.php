@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use Gate;
+use App\Mainframe\Helpers\Mf;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -26,5 +28,9 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         //
+
+        Gate::guessPolicyNamesUsing(function ($modelClass) {
+            return Mf::resolvePolicy($modelClass); // Custom policy discovery
+        });
     }
 }

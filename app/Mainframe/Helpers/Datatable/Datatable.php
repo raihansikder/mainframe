@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Mainframe\Features\Datatable;
+namespace App\Mainframe\Helpers\Datatable;
 
 use DB;
 use App\Module;
 
-class MainframeDatatable
+class Datatable
 {
 
     public $moduleName;        // Stores module name with lowercase and plural i.e. 'superheros'.

@@ -4,7 +4,6 @@ namespace App;
 
 use Str;
 use App\Mainframe\Helpers\Modular\BaseModule\BaseModule;
-use App\Observers\ChangeObserver;
 
 /**
  * Class Change
@@ -67,7 +66,6 @@ use App\Observers\ChangeObserver;
  * @property-read int|null $changes_count
  * @property-read int|null $uploads_count
  * @property string|null $module_name TRIAL
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Change whereChangeSet($value)
  */
 class Change extends BaseModule
 {
@@ -157,7 +155,7 @@ class Change extends BaseModule
     public static function boot()
     {
         parent::boot();
-        Change::observe(ChangeObserver::class);
+        // Change::observe(ChangeObserver::class);
 
         /************************************************************/
         // Following code block executes - when an element is in process

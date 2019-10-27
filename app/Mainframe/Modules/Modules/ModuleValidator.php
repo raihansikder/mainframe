@@ -1,16 +1,15 @@
 <?php
 
-namespace App\Mainframe\Modules\Modules\Validators;
+namespace App\Mainframe\Modules\Modules;
 
-use App\Mainframe\Modules\Modules\Module;
-use App\Mainframe\Features\Validator\ModelValidator;
+
+use App\Mainframe\Helpers\Modular\Validator\ModelValidator;
 
 class ModuleValidator extends ModelValidator
 {
     public $element;
     public $element_original;
     public $valid = true;
-
 
     /**
      * Validation rules. For regular expression validation use array instead of pipe
@@ -22,7 +21,7 @@ class ModuleValidator extends ModelValidator
     public static function rules($element, $merge = [])
     {
         $rules = [
-            'name'      => 'required|between:1,255|unique:modules,name,'.(isset($element->id) ? "$element->id" : 'null').',id,deleted_at,NULL',
+            'name' => 'required|between:1,255|unique:modules,name,'.(isset($element->id) ? "$element->id" : 'null').',id,deleted_at,NULL',
             'is_active' => 'required|in:1,0',
         ];
 
@@ -41,7 +40,6 @@ class ModuleValidator extends ModelValidator
         return $this->result();
 
     }
-
 
     /**
      * Get results

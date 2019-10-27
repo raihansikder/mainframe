@@ -6,6 +6,7 @@ use Str;
 use Route;
 use App\Module;
 use App\ModuleGroup;
+use App\Mainframe\Helpers\Modular\BaseModule\BaseModulePolicy;
 
 class Mf
 {
@@ -15,14 +16,13 @@ class Mf
      */
     public static function webRoutes()
     {
-        $modules      = dbTableExists('modules') ? Module::all() : []; // dbTableExists() was causing issue.
+        $modules = dbTableExists('modules') ? Module::all() : []; // dbTableExists() was causing issue.
         $moduleGroups = dbTableExists('module_groups') ? ModuleGroup::all() : [];
 
         # default routes for all modules
         foreach ($modules as $module) {
             $controller = $module->controller;
             $moduleName = $module->name;
-            $var = $module->name;
 
             Route:: get($moduleName."/{".Str::singular($moduleName)."}/restore", $controller."@restore")->name($moduleName.'.restore');
             Route:: get($moduleName."/datatable/json", $controller."@datatableJson")->name($moduleName.'.datatable-json');
@@ -47,5 +47,27 @@ class Mf
 
     }
 
+    /**
+     * This function is used in app/Providers/AuthServiceProvider.php
+     *
+     * @param $modelClass
+     * @return string
+     */
+    public static function resolvePolicy($modelClass)
+    {
+        $modelName = class_basename($modelClass);
+
+        if (class_exists('\\App\\Policies\\'.$modelName.'Policy')) {
+            $policy = '\\App\\Policies\\'.$modelName.'Policy';
+        } elseif (class_exists('App\\Mainframe\\Modules\\'.Str::plural($modelName).'\\'.$modelName.'Policy')) {
+            $policy = 'App\\Mainframe\\Modules\\'.Str::plural($modelName).'\\'.$modelName.'Policy';
+        } elseif (class_exists($modelClass.'Policy')) {
+            $policy = $modelClass.'Policy';
+        } else {
+            $policy = BaseModulePolicy::class;
+        }
+
+        return $policy;
+    }
 
 }

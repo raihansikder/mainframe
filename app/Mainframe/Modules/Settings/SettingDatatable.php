@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Mainframe\Modules\Settings\Datatables;
+namespace App\Mainframe\Modules\Settings;
 
-use App\Mainframe\Features\Datatable\MainframeDatatable;
+use App\Mainframe\Helpers\Datatable\Datatable;
 use App\Http\Mainframe\Helpers\Modular\BaseController\ModuleBaseController;
 
-class DatatableDefault extends MainframeDatatable
+class SettingDatatable extends Datatable
 {
     /**
      * Define grid SELECT statement and HTML column name.
@@ -16,7 +16,7 @@ class DatatableDefault extends MainframeDatatable
     {
         /** @var ModuleBaseController $this */
         return [
-            ["{$this->moduleName}.id", "id", "test"],
+            ["{$this->moduleName}.id", "id", "Setting ID"],
             ["{$this->moduleName}.name", "name", "Name"],
             ["updater.name", "user_name", "Updater"],
             ["{$this->moduleName}.updated_at", "updated_at", "Updated at"],

@@ -1,7 +1,6 @@
 <?php
 
-namespace App\Mainframe\Modules\Modules\Observers;
-
+namespace App\Mainframe\Modules\Modules;
 
 use App\Mainframe\Helpers\Modular\BaseModule\BaseModuleObserver;
 
