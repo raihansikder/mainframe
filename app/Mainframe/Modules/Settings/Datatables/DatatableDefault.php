@@ -5,7 +5,7 @@ namespace App\Mainframe\Modules\Settings\Datatables;
 use App\Mainframe\Features\Datatable\MainframeDatatable;
 use App\Http\Mainframe\Helpers\Modular\BaseController\ModuleBaseController;
 
-class DefaultDatatable extends MainframeDatatable
+class DatatableDefault extends MainframeDatatable
 {
     /**
      * Define grid SELECT statement and HTML column name.
