@@ -1,7 +1,14 @@
-<script type="text/javascript">
-    /*******************************************************************/
-    // List of functions
-    /*******************************************************************/
+<script>
+
+    /*
+    |--------------------------------------------------------------------------
+    | List of functions
+    |--------------------------------------------------------------------------
+    |
+    | Register the observer in the boot method. You can also make use of
+    | model events like saving, creating, updating etc to further
+    | manipulate the model
+    */
 
     // Assigns validation rules during saving (both creating and updating)
     function addValidationRulesForSaving() {
@@ -10,16 +17,16 @@
 </script>
 
 @if($element->isCreating())
-    <script type="text/javascript">
+    <script>
         // Execute these codes when a module is being created.
     </script>
 @elseif($element->isUpdating())
-    <script type="text/javascript">
+    <script>
         // Execute these codes when the form is opened for update.
     </script>
 @endif
 
-<script type="text/javascript">
+<script>
     /*******************************************************************/
     // Saving (Common )
     /*******************************************************************/
