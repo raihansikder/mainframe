@@ -1,5 +1,5 @@
 <?php
-$permissions = conf('permissions');
+$permissions = conf('mainframe.permissions');
 ?>
 @foreach($permissions as $block_title=>$entries)
     <div class="clearfix"></div>

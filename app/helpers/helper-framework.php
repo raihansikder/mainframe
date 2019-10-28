@@ -348,7 +348,7 @@ function conf($key = '')
 function cacheTime($key)
 {
     if (env('QUERY_CACHE_ENABLED') == true && Request::get('no_cache') !== 'true') {
-        return Config::get('query-cache-times.' . $key);
+        return Config::get('mainframe.query-cache-times.' . $key);
     }
 }
 
