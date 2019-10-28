@@ -3,6 +3,7 @@
 namespace App\Mainframe\Helpers\Modular\BaseController\Traits;
 
 use App\Mainframe\Helpers\Datatable\Datatable;
+use App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController;
 
 /**
  * Trait GridDatatable

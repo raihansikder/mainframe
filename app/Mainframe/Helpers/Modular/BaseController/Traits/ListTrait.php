@@ -145,12 +145,10 @@ trait ListTrait
                 } elseif (strlen($val)) {
                     if ($val === 'null') { // Check if value is null
                         $q = $q->whereNull($name);
+                    } elseif (in_array($name, $text_fields)) {
+                        $q = $q->where($name, 'LIKE', "%$val%"); // For select2
                     } else {
-                        if (in_array($name, $text_fields)) {
-                            $q = $q->where($name, 'LIKE', "%$val%"); // For select2
-                        } else {
-                            $q = $q->where($name, $val); // Before select2
-                        }
+                        $q = $q->where($name, $val); // Before select2
                     }
                 }
             }

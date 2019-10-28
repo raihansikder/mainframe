@@ -11,24 +11,24 @@ use Redirect;
 trait ResponseTrait
 {
 
-    /** @var int */
+    /** @var int Success/Error codes 200.400 etc */
     public $code;
-    /** @var string */
+
+    /** @var string success|fail */
     public $status;
-    /** @var string */
+
+    /** @var string Single line of message */
     public $message;
-    /** @var mixed */
+
+    /** @var mixed API payload, usually it is a list of a model */
     public $payload;
-    /** @var string */
-    public $view;
+
     /** @var string */
     public $redirectTo;
 
     /**
-     * @return bool
-     */
-
-    /**
+     * Checks if the response expects JSON
+     *
      * @return bool
      */
     public function expectsJson()
@@ -43,6 +43,8 @@ trait ResponseTrait
     }
 
     /**
+     * Abort on permission denial
+     *
      * @param  string  $message
      * @param  int  $code
      * @return \Illuminate\Http\JsonResponse|void
@@ -60,6 +62,8 @@ trait ResponseTrait
     }
 
     /**
+     * Abort on resource not found
+     *
      * @param  string  $message
      * @param  int  $code
      * @return \Illuminate\Http\JsonResponse|void
@@ -76,6 +80,13 @@ trait ResponseTrait
         return abort($code, $message);
     }
 
+    /**
+     * Set response as success
+     *
+     * @param  string  $message
+     * @param  int  $code
+     * @return $this
+     */
     public function success($message = 'Request is successful', $code = 200)
     {
         if ($this->status !== 'fail') {
@@ -87,6 +98,13 @@ trait ResponseTrait
         return $this;
     }
 
+    /**
+     * Set response as fail
+     *
+     * @param  string  $message
+     * @param  int  $code
+     * @return $this
+     */
     public function fail($message = 'Operation failed', $code = 404)
     {
         if ($this->status !== 'fail') {
@@ -98,16 +116,32 @@ trait ResponseTrait
         return $this;
     }
 
+    /**
+     * Check if response is success
+     *
+     * @return bool
+     */
     public function isSuccess()
     {
         return $this->status === 'success';
     }
 
+    /**
+     * Check if response is fail
+     *
+     * @return bool
+     */
     public function isFail()
     {
         return ! $this->isSuccess();
     }
 
+    /**
+     * Load a payload to be sent with the response
+     *
+     * @param  null  $payload
+     * @return $this
+     */
     public function payload($payload = null)
     {
         $this->payload = $payload;
@@ -115,16 +149,26 @@ trait ResponseTrait
         return $this;
     }
 
+    /**
+     * Send Json response
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function json()
     {
         return Response::json($this->prepareJson(), $this->code);
     }
 
     /**
+     * Prepare the array for JSON response.
+     *
      * @return array
      */
     public function prepareJson()
     {
+        /** @var \App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController $controller */
+        $controller = $this;
+
         $response = [
             'code' => $this->code,
             'status' => $this->status,
@@ -134,10 +178,15 @@ trait ResponseTrait
             $response['data'] = $this->payload;
         }
 
-        if (isset($this->modelValidator, $this->modelValidator->validator)) {
-            $response['validation_errors'] = json_decode($this->modelValidator->validator->messages(), true);
+        /** @Var ModuleBaseController|this $this */
+        if (isset($controller->modelValidator, $controller->modelValidator->validator)
+            && $controller->modelValidator->validator->fails()) {
+            $response['validation_errors'] = json_decode($controller->modelValidator->validator->messages(), true);
         }
-        $response['redirect'] = $this->getRedirectTo();
+
+        if ($controller->getRedirectTo()) {
+            $response['redirect'] = $controller->getRedirectTo();
+        }
 
         return $response;
     }
