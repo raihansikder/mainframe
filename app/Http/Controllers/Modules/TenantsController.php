@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 
-use App\Http\Mainframe\Helpers\Modular\BaseController\ModuleBaseController;
+use App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController;
 
 class TenantsController extends ModuleBaseController
 {

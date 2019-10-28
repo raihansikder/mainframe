@@ -5,7 +5,7 @@
 /** @noinspection PhpUnusedLocalVariableInspection */
 /** @noinspection PhpUndefinedMethodInspection */
 
-namespace App\Http\Mainframe\Helpers\Modular\BaseController;
+namespace App\Mainframe\Helpers\Modular\BaseController;
 
 use Request;
 use App\Mainframe\Traits\IsoOutput;
@@ -30,10 +30,8 @@ class MainframeBaseController extends Controller
      */
     public function __construct()
     {
-
         $this->messageBag = app('messageBag');
         $this->request = Request::capture();
-
     }
 
 }

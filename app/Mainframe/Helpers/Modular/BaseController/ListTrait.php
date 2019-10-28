@@ -1,6 +1,10 @@
-<?php
+<?php /** @noinspection PhpUndefinedMethodInspection */
+/** @noinspection UnknownInspectionInspection */
 
-namespace App\Http\Mainframe\Helpers\Modular\BaseController;
+/** @noinspection DuplicatedCode */
+
+namespace App\Mainframe\Helpers\Modular\
+BaseController;
 
 use Request;
 use Response;
@@ -13,11 +17,11 @@ trait ListTrait
      *
      * @return \Illuminate\Http\JsonResponse
      * @var \Illuminate\Database\Eloquent\Builder $q
-     * @var \App\Mainframe\Basemodule $Model
      */
     public function list()
     {
-        /** @var \App\Http\Mainframe\Controllers\ModuleBaseController $this */
+        /** @var \App\Mainframe\Helpers\Modular\
+BaseController\ModuleBaseController $this */
         $ret = ret('success', "{$this->moduleName} list", $this->listData());
 
         return Response::json(fillRet($ret));
@@ -30,12 +34,14 @@ trait ListTrait
      */
     public function listData()
     {
-        /** @var \App\Mainframe\Basemodule $Model */
+        /** @var \Illuminate\Database\Eloquent\Model $Model */
         /** @var \Illuminate\Database\Eloquent\Builder $q */
-        /** @var \App\Http\Mainframe\Controllers\ModuleBaseController $this */
+        /** @var \App\Mainframe\Helpers\Modular\
+BaseController\ModuleBaseController $this */
         $Model = model($this->moduleName);
 
         if (Request::has('columns')) {
+
             $q = $Model::select(explode(',', Request::get('columns')));
         } else {
             $q = new $Model;
@@ -97,7 +103,7 @@ trait ListTrait
      * Json return query constructor
      *
      * @param $q \Illuminate\Database\Query\Builder
-     * @return \App\Mainframe\Basemodule
+     * @return \App\Mainframe\Helpers\Modular\BaseModule\BaseModule
      */
     public function filterQueryConstructor($q)
     {
@@ -105,8 +111,8 @@ trait ListTrait
         $text_fields = $Model::$text_fields;
         //$module_sys_name = $this->moduleName;
 
-        /** @var \App\Mainframe\Basemodule $q */
-        /** @var \App\Mainframe\Basemodule $Model */
+        /** @var \App\Mainframe\Helpers\Modular\BaseModule\BaseModule $q */
+        /** @var \App\Mainframe\Helpers\Modular\BaseModule\BaseModule $Model */
         // $q = $q->where('is_active', 1);
 
         if (inTenantContext($this->moduleName)) {

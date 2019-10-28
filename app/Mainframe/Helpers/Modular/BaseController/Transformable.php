@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Mainframe\Helpers\Modular\BaseController;
+namespace App\Mainframe\Helpers\Modular\BaseController;
 
 trait Transformable
 {
@@ -11,7 +11,7 @@ trait Transformable
      */
     public function transform()
     {
-        /** @var \App\Http\Mainframe\Controllers\ModuleBaseController $this */
+        /** @var \App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController $this */
         return $this->request->all();
         //$this->request->merge(['name'=>'test']) ;
 

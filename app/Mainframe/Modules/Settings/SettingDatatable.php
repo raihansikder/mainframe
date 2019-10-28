@@ -3,7 +3,6 @@
 namespace App\Mainframe\Modules\Settings;
 
 use App\Mainframe\Helpers\Datatable\Datatable;
-use App\Http\Mainframe\Helpers\Modular\BaseController\ModuleBaseController;
 
 class SettingDatatable extends Datatable
 {
@@ -14,7 +13,7 @@ class SettingDatatable extends Datatable
      */
     public function columns()
     {
-        /** @var ModuleBaseController $this */
+        /** @var \App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController $this */
         return [
             ["{$this->moduleName}.id", "id", "Setting ID"],
             ["{$this->moduleName}.name", "name", "Name"],

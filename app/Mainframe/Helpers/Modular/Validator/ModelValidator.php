@@ -29,7 +29,6 @@ class ModelValidator
         $this->valid = true;
         $this->element = $element;
         $this->elementOriginal = $element->getOriginal();
-
     }
 
     /**
@@ -77,7 +76,6 @@ class ModelValidator
         $this->validator = $validator;
 
         return $this->validator;
-
     }
 
     /**
@@ -134,7 +132,6 @@ class ModelValidator
     public function addError($key = null, $message = null)
     {
         $this->validator->messages()->add($key, $message);
-
     }
 
     /**
@@ -175,7 +172,7 @@ class ModelValidator
     }
 
     /**
-     * Run validations for creating.
+     * Run validations for creating. This should always call the saving().
      *
      * @return $this]
      */
@@ -187,7 +184,7 @@ class ModelValidator
     }
 
     /**
-     * Run validations for updating.
+     * Run validations for updating. This should always call the saving().
      *
      * @return $this
      */
@@ -206,7 +203,6 @@ class ModelValidator
     public function deleting()
     {
         return $this;
-
     }
 
     /**

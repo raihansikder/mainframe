@@ -3,7 +3,7 @@
 namespace App\Mainframe\Modules\Modules;
 
 use App\Mainframe\Helpers\Datatable\Datatable;
-use App\Http\Mainframe\Helpers\Modular\BaseController\ModuleBaseController;
+use App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController;
 
 class ModuleDatatable extends Datatable
 {

@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Http\Mainframe\Helpers\Modular\BaseController;
+namespace App\Mainframe\Helpers\Modular\
+BaseController;
 
 use DB;
 use View;

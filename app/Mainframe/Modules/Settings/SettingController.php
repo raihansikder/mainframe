@@ -2,7 +2,7 @@
 
 namespace App\Mainframe\Modules\Settings;
 
-use App\Http\Mainframe\Helpers\Modular\BaseController\ModuleBaseController;
+use App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController;
 
 class SettingController extends ModuleBaseController
 {
@@ -14,7 +14,7 @@ class SettingController extends ModuleBaseController
 
     /**
      * @param  null  $class
-     * @return \App\Mainframe\Modules\Settings\SettingDatatable
+     * @return SettingDatatable
      */
     public function resolveDatatableClass($class = null)
     {

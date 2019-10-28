@@ -1,6 +1,7 @@
 <?php /** @noinspection PhpUnused */
 
-namespace App\Http\Mainframe\Helpers\Modular\BaseController;
+namespace App\Mainframe\Helpers\Modular\
+BaseController;
 
 use App\Mainframe\Helpers\Datatable\Datatable;
 

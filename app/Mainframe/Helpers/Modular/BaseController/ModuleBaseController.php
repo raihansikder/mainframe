@@ -5,7 +5,7 @@
 /** @noinspection PhpUnusedLocalVariableInspection */
 /** @noinspection PhpUndefinedMethodInspection */
 
-namespace App\Http\Mainframe\Helpers\Modular\BaseController;
+namespace App\Mainframe\Helpers\Modular\BaseController;
 
 use View;
 use Request;

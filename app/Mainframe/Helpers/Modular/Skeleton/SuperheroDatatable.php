@@ -1,35 +1,15 @@
 <?php
 /** @noinspection UnknownInspectionInspection */
-
 /** @noinspection DuplicatedCode */
+/** @noinspection SenselessMethodDuplicationInspection */
 
-namespace App\Mainframe\Helpers\Datatable;
+namespace App\Mainframe\Modules\Superheros;
 
 use DB;
-use App\Module;
+use App\Mainframe\Helpers\Datatable\Datatable;
 
-class Datatable
+class SuperheroDatatable extends Datatable
 {
-
-    public $moduleName;
-    public $module;
-
-    /**
-     * Constructor for this class is very important as it boots up necessary features of
-     * Spyr module. First of all, it load module related meta information, then based
-     * on context check(tenant context) it loads the tenant id. The it constructs the default
-     * grid query and also add tenant context to grid query if applicable. Finally it
-     * globally shares a couple of variables $moduleName, $currentModule to all views rendered
-     * from this controller
-     *
-     * @param $moduleName
-     */
-    public function __construct($moduleName)
-    {
-        $this->moduleName = $moduleName;
-        $this->module = Module::byName($moduleName);
-    }
-
     /**
      * Define Query for generating results for grid
      *
@@ -58,7 +38,7 @@ class Datatable
     }
 
     /**
-     * Construct SELECT statement (field1 AS f1, field2 as f2...)
+     * Construct SELECT statement based
      *
      * @return array
      */
@@ -110,19 +90,6 @@ class Datatable
         $dt = $dt->editColumn('is_active', '@if($is_active)  Yes @else <span class="text-red">No</span> @endif');
 
         return $dt;
-    }
-
-    /**
-     * Returns datatable json for the module index page
-     * A route is automatically created for all modules to access this controller function
-     *
-     * @return \Illuminate\Http\JsonResponse
-     * @var \Yajra\DataTables\DataTables $dt
-     */
-    public function json()
-    {
-        /** @var \Yajra\DataTables\DataTableAbstract $dt */
-        return ($this->modify(datatables($this->query())))->toJson();
     }
 
 }

@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Mainframe\Helpers\Modular\BaseController;
+namespace App\Mainframe\Helpers\Modular\
+BaseController;
 
 use Request;
 use Response;
-use App\Http\Mainframe\Helpers\Modular\BaseController\ModuleBaseController;
+use App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController;
 
 trait ShowChangesTrait
 {
