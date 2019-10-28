@@ -1,4 +1,6 @@
 <?php
+/** @noinspection UnknownInspectionInspection */
+/** @noinspection DuplicatedCode */
 
 use App\Module;
 use Illuminate\Database\Schema\Blueprint;

@@ -32,10 +32,10 @@ class ModuleBaseController extends MainframeBaseController
     /** @var \Illuminate\Database\Eloquent\Builder */
     protected $model;
 
-    /** @var \App\Mainframe\BaseModule */
+    /** @var \App\Mainframe\Helpers\Modular\BaseModule\BaseModule */
     protected $element;
 
-    /** @var \App\Mainframe\Features\Validator\ModelValidator */
+    /** @var \App\Mainframe\Helpers\Modular\Validator\ModelValidator */
     protected $modelValidator;
 
     /**
@@ -109,7 +109,7 @@ class ModuleBaseController extends MainframeBaseController
      * based on the url set in redirect_success|redirect_fail
      *
      * @return $this|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
-     * @var \App\Mainframe\Basemodule $element
+     * @var \App\Mainframe\Helpers\Modular\BaseModule\BaseModule $element
      * @var \App\Superhero $Model
      */
     public function store()
@@ -182,7 +182,7 @@ class ModuleBaseController extends MainframeBaseController
         $elementIsEditable = $this->element->isEditable();
 
         return View::make($this->editFormView())
-            ->with('element', $this->element)     //loads the singular module name in variable called $element = 'user'
+            ->with('element', $this->element)
             ->with(compact('formConfig', 'formState', 'elementIsEditable'));
 
     }
@@ -192,8 +192,6 @@ class ModuleBaseController extends MainframeBaseController
      *
      * @param $id
      * @return $this|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
-     * @var \App\Mainframe\Basemodule $element
-     * @var \App\Mainframe\Basemodule $Model
      */
     public function update($id)
     {

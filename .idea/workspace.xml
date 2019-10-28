@@ -2,13 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ee34113f-6433-40ce-8481-cf6a87088dde" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/Skeleton/views/form/default.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/Skeleton/views/form/js.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/Skeleton/views/grid/default.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/GoodBoys/GoodBoy.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/GoodBoys/GoodBoyController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/GoodBoys/GoodBoyDatatable.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/GoodBoys/GoodBoyHelper.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/GoodBoys/GoodBoyObserver.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/GoodBoys/GoodBoyPolicy.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/GoodBoys/GoodBoyValidator.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2019_10_28_104452_create_good_boys_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/good-boys/form/default.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/good-boys/form/js.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/good-boys/grid/default.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Console/Commands/MakeMainframeModule.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Commands/MakeMainframeModule.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/Skeleton/SuperHero.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/Skeleton/SuperHero.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/Skeleton/SuperHeroController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/Skeleton/SuperHeroController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/Skeleton/SuperHeroPolicy.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/Skeleton/SuperHeroPolicy.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/Skeleton/SuperHeroValidator.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/Skeleton/SuperHeroValidator.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Modules/Module.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Modules/Module.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/Skeleton/migration.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/Skeleton/migration.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
