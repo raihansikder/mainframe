@@ -63,6 +63,7 @@ use App\Mainframe\Helpers\Modular\BaseModule\BaseModule;
  * @method static Builder|Module whereUuid($value)
  * @method static Builder|Module whereView($value)
  * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Helpers\Modular\BaseModule\BaseModule active()
  */
 class Module extends BaseModule
 {

@@ -47,6 +47,7 @@ use App\Mainframe\Helpers\Modular\BaseModule\BaseModule;
  * @method static Builder|Setting whereUuid($value)
  * @method static Builder|Setting whereValue($value)
  * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Helpers\Modular\BaseModule\BaseModule active()
  */
 class Setting extends BaseModule
 {

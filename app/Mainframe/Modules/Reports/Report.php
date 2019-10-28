@@ -4,6 +4,62 @@ namespace App\Mainframe\Modules\Reports;
 
 use App\Mainframe\Helpers\Modular\BaseModule\BaseModule;
 
+/**
+ * App\Mainframe\Modules\Reports\Report
+ *
+ * @property int $id TRIAL
+ * @property string|null $uuid TRIAL
+ * @property int|null $tenant_id TRIAL
+ * @property string|null $name TRIAL
+ * @property string|null $code TRIAL
+ * @property string|null $title TRIAL
+ * @property string|null $description TRIAL
+ * @property string|null $parameters TRIAL
+ * @property string|null $type TRIAL
+ * @property string|null $version TRIAL
+ * @property int|null $module_id TRIAL
+ * @property int|null $is_module_default TRIAL
+ * @property string|null $tags TRIAL
+ * @property int|null $is_active TRIAL
+ * @property int|null $created_by TRIAL
+ * @property int|null $updated_by TRIAL
+ * @property \Illuminate\Support\Carbon|null $created_at TRIAL
+ * @property \Illuminate\Support\Carbon|null $updated_at TRIAL
+ * @property \Illuminate\Support\Carbon|null $deleted_at TRIAL
+ * @property int|null $deleted_by TRIAL
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Changes\Change[] $changes
+ * @property-read int|null $changes_count
+ * @property-read \App\Mainframe\Modules\Users\User|null $creator
+ * @property-read \App\Mainframe\Modules\Uploads\Upload $latestUpload
+ * @property-read \App\Mainframe\Modules\Users\User|null $updater
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Uploads\Upload[] $uploads
+ * @property-read int|null $uploads_count
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Helpers\Modular\BaseModule\BaseModule active()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Reports\Report newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Reports\Report newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Reports\Report query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Reports\Report whereCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Reports\Report whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Reports\Report whereCreatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Reports\Report whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Reports\Report whereDeletedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Reports\Report whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Reports\Report whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Reports\Report whereIsActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Reports\Report whereIsModuleDefault($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Reports\Report whereModuleId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Reports\Report whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Reports\Report whereParameters($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Reports\Report whereTags($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Reports\Report whereTenantId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Reports\Report whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Reports\Report whereType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Reports\Report whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Reports\Report whereUpdatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Reports\Report whereUuid($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Reports\Report whereVersion($value)
+ * @mixin \Eloquent
+ */
 class Report extends BaseModule
 {
     use ReportHelper;

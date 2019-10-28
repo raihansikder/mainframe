@@ -4,6 +4,62 @@ namespace App\Mainframe\Modules\Changes;
 
 use App\Mainframe\Helpers\Modular\BaseModule\BaseModule;
 
+/**
+ * App\Mainframe\Modules\Changes\Change
+ *
+ * @property int $id TRIAL
+ * @property string|null $uuid TRIAL
+ * @property int|null $tenant_id TRIAL
+ * @property string|null $name TRIAL
+ * @property string|null $change_set TRIAL
+ * @property int|null $module_id TRIAL
+ * @property string|null $module_name TRIAL
+ * @property int|null $element_id TRIAL
+ * @property string|null $element_uuid TRIAL
+ * @property string|null $field TRIAL
+ * @property string|null $old TRIAL
+ * @property string|null $new TRIAL
+ * @property string|null $description TRIAL
+ * @property int|null $is_active TRIAL
+ * @property int|null $created_by TRIAL
+ * @property int|null $updated_by TRIAL
+ * @property \Illuminate\Support\Carbon|null $created_at TRIAL
+ * @property \Illuminate\Support\Carbon|null $updated_at TRIAL
+ * @property \Illuminate\Support\Carbon|null $deleted_at TRIAL
+ * @property int|null $deleted_by TRIAL
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Changes\Change[] $changes
+ * @property-read int|null $changes_count
+ * @property-read \App\Mainframe\Modules\Users\User|null $creator
+ * @property-read \App\Mainframe\Modules\Uploads\Upload $latestUpload
+ * @property-read \App\Mainframe\Modules\Users\User|null $updater
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Uploads\Upload[] $uploads
+ * @property-read int|null $uploads_count
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Helpers\Modular\BaseModule\BaseModule active()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Changes\Change newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Changes\Change newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Changes\Change query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Changes\Change whereChangeSet($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Changes\Change whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Changes\Change whereCreatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Changes\Change whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Changes\Change whereDeletedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Changes\Change whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Changes\Change whereElementId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Changes\Change whereElementUuid($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Changes\Change whereField($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Changes\Change whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Changes\Change whereIsActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Changes\Change whereModuleId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Changes\Change whereModuleName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Changes\Change whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Changes\Change whereNew($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Changes\Change whereOld($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Changes\Change whereTenantId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Changes\Change whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Changes\Change whereUpdatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Changes\Change whereUuid($value)
+ * @mixin \Eloquent
+ */
 class Change extends BaseModule
 {
     use ChangeHelper;
