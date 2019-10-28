@@ -213,6 +213,16 @@ class Module extends BaseModule
         return Str::ucfirst($this->elementName());
     }
 
+    /**
+     * Get the class name Superhero
+     *
+     * @return string
+     */
+    public function modelClassNamePlural()
+    {
+        return Str::plural($this->modelClassName());
+    }
+
     public static function byName($name)
     {
         return self::where('name', $name)

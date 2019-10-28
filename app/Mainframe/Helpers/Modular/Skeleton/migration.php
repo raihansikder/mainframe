@@ -4,7 +4,7 @@ use App\Module;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSuperheroesTable extends Migration
+class CreateSuperHeroesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateSuperheroesTable extends Migration
      */
     public function up()
     {
-        Schema::create('superheroes', function (Blueprint $table) {
+        Schema::create('super_heroes', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('uuid', 64)->nullable()->default(null);
             $table->unsignedInteger('tenant_id')->nullable()->default(null);
@@ -32,14 +32,13 @@ class CreateSuperheroesTable extends Migration
             $table->unsignedInteger('deleted_by')->nullable()->default(null);
         });
 
-        $name = 'superheroes';
+        $name = 'super-heroes';
         if (Module::where('name', $name)->doesntExist()) {
-            Module::create([
-                'name' => $name,
-                'title' => ucfirst(Str::singular($name)),
-                'module_group_id' => 1,
-                'description' => 'Manage '.Str::singular($name),
-            ]);
+            $module = new Module(['name' => $name]);
+            $module->title = str_replace('-', ' ', ucfirst(Str::singular($name)));
+            $module->module_group_id = 1;
+            $module->description = 'Manage '.str_replace('-', ' ', Str::singular($name));
+            $module->save();
         }
     }
 
@@ -50,6 +49,6 @@ class CreateSuperheroesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('superheroes');
+        Schema::dropIfExists('super_heroes');
     }
 }

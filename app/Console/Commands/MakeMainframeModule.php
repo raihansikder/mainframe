@@ -3,9 +3,11 @@
 namespace App\Console\Commands;
 
 use File;
+use Illuminate\Support\Str;
 use Illuminate\Console\Command;
 use Illuminate\Support\Collection;
 use App\Mainframe\Modules\Modules\Module;
+use function Illuminate\Support\Str;
 
 class MakeMainframeModule extends Command
 {
@@ -24,11 +26,20 @@ class MakeMainframeModule extends Command
     protected $description = 'Create a mainframe module';
 
     /**
+     * @var string template base name.
+     */
+    protected $template = 'superheroes';
+
+    /**
      * @var string
      */
     protected $moduleName;
 
+    /** @var \App\Mainframe\Modules\Modules\Module */
     protected $module;
+
+    /** @var \App\Mainframe\Modules\Modules\Module */
+    protected $templateModule;
 
     /**
      * Execute the console command.
@@ -40,6 +51,7 @@ class MakeMainframeModule extends Command
     {
         $this->moduleName = $this->argument('module');
         $this->module = new Module(['name' => $this->moduleName]);
+        $this->templateModule = new Module(['name' => $this->template]);
 
         $this->info($this->module->elementNamePlural().' creation ..');
         $this->createMigration();
@@ -59,10 +71,10 @@ class MakeMainframeModule extends Command
         $module = $this->argument('module'); // Get module name from console
 
         // Get template code and replace 
-        $code = $this->replace(File::get("Mainframe/Helpers/Modular/Skeleton/migration.php"));
+        $code = $this->replace(File::get("app/Mainframe/Helpers/Modular/Skeleton/migration.php"));
 
         // Create a new laravel migration
-        $this->call('make:migration', ['name' => "create_{$module}_table"]);
+        $this->call('make:migration', ['name' => "create_{$this->module->tableName()}_table"]);
 
         // Find the newly created migration file and put the updated code.
         $migration = Collection::make(File::files('database/migrations'))->last();
@@ -103,10 +115,10 @@ class MakeMainframeModule extends Command
         $module = $this->argument('module');
 
         // Get template code and replace
-        $code = $this->replace(File::get("app/".ucfirst(str_singular($this->template)).".php"));
+        $code = $this->replace(File::get("app/".ucfirst(Str::singular($this->template)).".php"));
 
         // write on new file
-        File::put('app/'.ucfirst(str_singular($module)).'.php', $code);
+        File::put('app/'.ucfirst(Str::singular($module)).'.php', $code);
 
         // Console output
         $this->info('Model Created');
@@ -119,10 +131,10 @@ class MakeMainframeModule extends Command
     {
         $module = $this->argument('module');
 
-        $code = $this->replace(File::get("app/Observers/".ucfirst(str_singular($this->template))."Observer.php"));
+        $code = $this->replace(File::get("app/Observers/".ucfirst(Str::singular($this->template))."Observer.php"));
 
         // write on new file
-        File::put('app/Observers/'.ucfirst(str_singular($module)).'Observer.php', $code);
+        File::put('app/Observers/'.ucfirst(Str::singular($module)).'Observer.php', $code);
 
         // Console output
         $this->info('Observer Created');
@@ -153,12 +165,15 @@ class MakeMainframeModule extends Command
     public function replace($code)
     {
         // replace maps
-        $module = $this->argument('module');
+
         $replaces = [
-            $this->template => $module, //'superheroes' -> 'goodboys'
-            ucfirst($this->template) => ucfirst($module), //'Superheroes' -> 'Goodboys'
-            ucfirst(str_singular($this->template)) => ucfirst(str_singular($module)), //'Superhero' -> 'Goodboy'
-            str_singular($this->template) => str_singular($module), //'superhero' -> 'goodboy'
+            $this->templateModule->elementNamePlural() => $this->module->elementNamePlural(), //'superheroes' -> 'goodBoys'
+            $this->templateModule->modelClassName() => $this->module->modelClassName(), //'Superhero' -> 'GoodBoy'
+            $this->templateModule->elementName() => $this->module->elementName(), //'Superhero' -> 'GoodBoy'
+
+            // ucfirst($this->template) => ucfirst($module), //'Superheroes' -> 'Goodboys'
+            //ucfirst(Str::singular($this->template)) => ucfirst(Str::singular($module)), //'Superhero' -> 'Goodboy'
+            //Str::singular($this->template) => Str::singular($module), //'superhero' -> 'goodboy'
         ];
 
         // run replace across the template code
