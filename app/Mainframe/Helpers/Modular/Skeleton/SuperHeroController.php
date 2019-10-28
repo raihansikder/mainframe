@@ -9,7 +9,6 @@ class SuperHeroController extends ModuleBaseController
 
     /**
      * Init with module name
-     * SuperheroController constructor.
      */
     public function __construct()
     {

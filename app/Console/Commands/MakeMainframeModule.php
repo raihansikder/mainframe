@@ -28,7 +28,7 @@ class MakeMainframeModule extends Command
     /**
      * @var string template base name.
      */
-    protected $template = 'superheroes';
+    protected $template = 'super-heroes';
 
     /**
      * @var string
@@ -54,7 +54,7 @@ class MakeMainframeModule extends Command
         $this->templateModule = new Module(['name' => $this->template]);
 
         $this->info($this->module->elementNamePlural().' creation ..');
-        $this->createMigration();
+        // $this->createMigration();
         $this->createClasses();
         // $this->createViewFiles();
         // $this->createModel();
@@ -87,9 +87,20 @@ class MakeMainframeModule extends Command
 
     public function createClasses()
     {
+        $source_root = 'app/Mainframe/Helpers/Modular/Skeleton/';
+        $destination_root = 'app/Mainframe/Modules/'.$this->module->modelClassNamePlural().'/';
         $maps = [
-            'app/Mainframe/Helpers/Modular/Skeleton/SuperHero.php' => 'app/Mainframe/Modules/'.$this->module->modelClassNamePlural().'/'.$this->module->modelClassName().'.php'
+            $source_root.'SuperHero.php' => $destination_root.$this->module->modelClassName().'.php',
+            $source_root.'SuperHeroController.php' => $destination_root.$this->module->modelClassName().'Controller.php',
+            $source_root.'SuperHeroDatatable.php' => $destination_root.$this->module->modelClassName().'Datatable.php',
+            $source_root.'SuperHeroHelper.php' => $destination_root.$this->module->modelClassName().'Helper.php',
+            $source_root.'SuperHeroObserver.php' => $destination_root.$this->module->modelClassName().'Observer.php',
+            $source_root.'SuperHeroPolicy.php' => $destination_root.$this->module->modelClassName().'Policy.php',
+            $source_root.'SuperHeroValidator.php' => $destination_root.$this->module->modelClassName().'Validator.php',
+            // 'app/Mainframe/Helpers/Modular/Skeleton/SuperHero.php' => 'app/Mainframe/'.$this->module->modelClassName().'.php'
         ];
+
+        File::makeDirectory($this->module->moduleNameSpace());
 
         foreach ($maps as $from => $to) {
             $code = $this->replace(File::get($from));

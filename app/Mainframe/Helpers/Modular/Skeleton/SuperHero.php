@@ -93,7 +93,7 @@ class SuperHero extends BaseModule
     {
         parent::boot();
         self::observe(SuperHeroObserver::class);
-        // static::saving(function (Superhero $element) { });
+        // static::saving(function (SuperHero $element) { });
     }
 
     /*
@@ -156,7 +156,7 @@ class SuperHero extends BaseModule
    |--------------------------------------------------------------------------
    | Todo: Helper functions
    |--------------------------------------------------------------------------
-   | Todo: Write Helper functions in the SuperheroHelper trait.
+   | Todo: Write Helper functions in the SuperHeroHelper trait.
    */
 
 }

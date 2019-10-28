@@ -148,7 +148,17 @@ class Module extends BaseModule
      */
     public function moduleNameSpace()
     {
-        return 'App\Mainframe\Modules\\'.Str::plural($this->modelClassName());
+        return 'App\Mainframe\Modules\\'.$this->modelClassNamePlural();
+    }
+
+    /**
+     * Mainframe Module Namespace
+     *
+     * @return string
+     */
+    public function moduleClassDir()
+    {
+        return 'app/Mainframe/Modules/'.$this->modelClassNamePlural();
     }
 
     public function validatorClassPath()

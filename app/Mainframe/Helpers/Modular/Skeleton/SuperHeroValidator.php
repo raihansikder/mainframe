@@ -104,11 +104,11 @@ class SuperHeroValidator extends ModelValidator
      *
      * @return $this
      */
-    private function superHeroNameShouldNotbeJoker()
+    private function superHeroNameShouldNotBeJoker()
     {
-        $superhero = $this->element;
+        $superHero = $this->element;
 
-        if ($superhero->name === 'Joker') {
+        if ($superHero->name === 'Joker') {
             $this->invalidate('name', "Name can not be Joker");
         }
 
