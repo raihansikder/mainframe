@@ -20,7 +20,7 @@ trait ModuleGroupHelper
      */
     public static function tree()
     {
-        /** @var \App\ModuleGroup $moduleGroups */
+        /** @var \App\Mainframe\Modules\Modules\ModuleGroup $moduleGroups */
         $moduleGroups = ModuleGroup::ofParentId(0);
         $list = [];
         foreach ($moduleGroups as $moduleGroup) {

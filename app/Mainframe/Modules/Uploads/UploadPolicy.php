@@ -6,7 +6,7 @@
 
 namespace App\Mainframe\Modules\Uploads;
 
-use App\User;
+use App\Mainframe\Modules\Users\User;
 use App\Mainframe\Helpers\Modular\BaseModule\BaseModulePolicy;
 
 class UploadPolicy extends BaseModulePolicy
@@ -15,7 +15,7 @@ class UploadPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can view any uploads.
      *
-     * @param  \App\User  $user
+     * @param  \App\Mainframe\Modules\Users\User  $user
      * @return mixed
      */
     public function viewAny(User $user) { }
@@ -23,7 +23,7 @@ class UploadPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can view the upload.
      *
-     * @param  \App\User  $user
+     * @param  \App\Mainframe\Modules\Users\User  $user
      * @param  Upload  $upload
      * @return mixed
      */
@@ -32,7 +32,7 @@ class UploadPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can create uploads.
      *
-     * @param  \App\User  $user
+     * @param  \App\Mainframe\Modules\Users\User  $user
      * @return mixed
      */
     // public function create(User $user) { }
@@ -40,7 +40,7 @@ class UploadPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can update the upload.
      *
-     * @param  \App\User  $user
+     * @param  \App\Mainframe\Modules\Users\User  $user
      * @param  Upload  $upload
      * @return mixed
      */
@@ -49,7 +49,7 @@ class UploadPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can delete the upload.
      *
-     * @param  \App\User  $user
+     * @param  \App\Mainframe\Modules\Users\User  $user
      * @param  Upload  $upload
      * @return mixed
      */
@@ -58,7 +58,7 @@ class UploadPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can restore the upload.
      *
-     * @param  \App\User  $user
+     * @param  \App\Mainframe\Modules\Users\User  $user
      * @param  Upload  $upload
      * @return mixed
      */
@@ -67,7 +67,7 @@ class UploadPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can permanently delete the upload.
      *
-     * @param  \App\User  $user
+     * @param  \App\Mainframe\Modules\Users\User  $user
      * @param  Upload  $upload
      * @return mixed
      */

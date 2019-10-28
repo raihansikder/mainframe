@@ -17,6 +17,15 @@ class Report extends BaseModule
     protected $fillable = [
         'uuid',
         'name',
+        'tenant_id',
+        'title',
+        'description',
+        'parameters',
+        'type',
+        'version',
+        'module_id',
+        'is_module_default',
+        'tags',
         'is_active',
     ];
 
@@ -77,8 +86,10 @@ class Report extends BaseModule
     | The possible options for some field. Variable name should be
     |
     */
-    // public static $types = [];
-    // public static $statuses = [];
+    /** @var array Report types */
+    public static $types = [
+        'Module Generic Report' => 'Module Generic Report',
+    ];
 
     /*
     |--------------------------------------------------------------------------
@@ -93,7 +104,9 @@ class Report extends BaseModule
     {
         parent::boot();
         self::observe(ReportObserver::class);
-        // static::saving(function (Report $element) { });
+        static::saving(function (Report $element) {
+            $element->name = $element->title;
+        });
     }
 
     /*
@@ -145,12 +158,12 @@ class Report extends BaseModule
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    // public function updater() { return $this->belongsTo(\App\User::class, 'updated_by'); }
+    // public function updater() { return $this->belongsTo(\App\Mainframe\Modules\Users\User::class, 'updated_by'); }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    // public function creator() { return $this->belongsTo(\App\User::class, 'created_by'); }
+    // public function creator() { return $this->belongsTo(\App\Mainframe\Modules\Users\User::class, 'created_by'); }
 
     /*
    |--------------------------------------------------------------------------

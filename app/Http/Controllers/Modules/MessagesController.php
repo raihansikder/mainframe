@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Module;
+use App\Mainframe\Modules\Modules\Module;
 use DB;
 use Redirect;
 use Request;

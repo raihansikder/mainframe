@@ -2,13 +2,13 @@
 
 namespace App\Mainframe\Helpers\Modular\Resolvers;
 
-use App\User;
+use App\Mainframe\Modules\Users\User;
 
 class GridView
 {
     /**
      * @param $moduleName
-     * @param  \App\User|null  $user
+     * @param  \App\Mainframe\Modules\Users\User|null  $user
      * @return string
      */
     public static function resolve($moduleName, User $user = null)

@@ -16,7 +16,7 @@
                 $current_module_name = $module->name;
                 $breadcrumbs         = breadcrumb($currentModule);
             }
-            renderMenuTree(\App\ModuleGroup::tree(), $current_module_name, $breadcrumbs);
+            renderMenuTree(\App\Mainframe\Modules\Modules\ModuleGroup::tree(), $current_module_name, $breadcrumbs);
             ?>
             <li>
                 <a href="{{route('invoices.report-bankline-export')}}?submit=Run&report_name=Bank%20Line%20Export&rows_per_page=10&invoice_currency=GBP&beneficiary_type=charity&is_test=0">
@@ -47,8 +47,8 @@
 
                 @foreach($moduleNames as $name)
                     <?php
-                    /** @var \App\Module $module */
-                    $module = \App\Module::where('name', $name)->remember(cacheTime('long'))->first()?>
+                    /** @var \App\Mainframe\Modules\Modules\Module $module */
+                    $module = \App\Mainframe\Modules\Modules\Module::where('name', $name)->remember(cacheTime('long'))->first()?>
                     <li><a href="{{route("{$module->name}.index")}}"><i
                                     class="{{$module->icon_css}}"></i>{{$module->title}}</a></li>
                 @endforeach
@@ -66,8 +66,8 @@
 
                 @foreach($moduleNames as $name)
                     <?php
-                    /** @var \App\Module $module */
-                    $module = \App\Module::where('name', $name)->remember(cacheTime('long'))->first()?>
+                    /** @var \App\Mainframe\Modules\Modules\Module $module */
+                    $module = \App\Mainframe\Modules\Modules\Module::where('name', $name)->remember(cacheTime('long'))->first()?>
                     <li><a href="{{route("{$module->name}.index")}}"><i
                                     class="{{$module->icon_css}}"></i>{{$module->title}}</a></li>
                 @endforeach
@@ -88,8 +88,8 @@
 
                 @foreach($moduleNames as $name)
                     <?php
-                    /** @var \App\Module $module */
-                    $module = \App\Module::where('name', $name)->remember(cacheTime('long'))->first()?>
+                    /** @var \App\Mainframe\Modules\Modules\Module $module */
+                    $module = \App\Mainframe\Modules\Modules\Module::where('name', $name)->remember(cacheTime('long'))->first()?>
                     <li><a href="{{route("{$module->name}.index")}}"><i
                                     class="{{$module->icon_css}}"></i>{{$module->title}}</a></li>
                 @endforeach
@@ -109,8 +109,8 @@
 
                 @foreach($moduleNames as $name)
                     <?php
-                    /** @var \App\Module $module */
-                    $module = \App\Module::where('name', $name)->remember(cacheTime('long'))->first()?>
+                    /** @var \App\Mainframe\Modules\Modules\Module $module */
+                    $module = \App\Mainframe\Modules\Modules\Module::where('name', $name)->remember(cacheTime('long'))->first()?>
                     <li><a href="{{route("{$module->name}.index")}}"><i
                                     class="{{$module->icon_css}}"></i>{{$module->title}}</a></li>
                 @endforeach
@@ -131,8 +131,8 @@
 
                 @foreach($moduleNames as $name)
                     <?php
-                    /** @var \App\Module $module */
-                    $module = \App\Module::where('name', $name)->remember(cacheTime('long'))->first()?>
+                    /** @var \App\Mainframe\Modules\Modules\Module $module */
+                    $module = \App\Mainframe\Modules\Modules\Module::where('name', $name)->remember(cacheTime('long'))->first()?>
                     <li><a href="{{route("{$module->name}.index")}}"><i
                                     class="{{$module->icon_css}}"></i>{{$module->title}}</a></li>
                 @endforeach
@@ -153,8 +153,8 @@
 
                 @foreach($moduleNames as $name)
                     <?php
-                    /** @var \App\Module $module */
-                    $module = \App\Module::where('name', $name)->remember(cacheTime('long'))->first()?>
+                    /** @var \App\Mainframe\Modules\Modules\Module $module */
+                    $module = \App\Mainframe\Modules\Modules\Module::where('name', $name)->remember(cacheTime('long'))->first()?>
                     <li><a href="{{route("{$module->name}.index")}}"><i
                                     class="{{$module->icon_css}}"></i>{{$module->title}}</a></li>
                 @endforeach
@@ -179,8 +179,8 @@
 
                 @foreach($moduleNames as $name)
                     <?php
-                    /** @var \App\Module $module */
-                    $module = \App\Module::where('name', $name)->remember(cacheTime('long'))->first()?>
+                    /** @var \App\Mainframe\Modules\Modules\Module $module */
+                    $module = \App\Mainframe\Modules\Modules\Module::where('name', $name)->remember(cacheTime('long'))->first()?>
                     <li><a href="{{route("{$module->name}.index")}}"><i
                                     class="{{$module->icon_css}}"></i>{{$module->title}}</a></li>
                 @endforeach

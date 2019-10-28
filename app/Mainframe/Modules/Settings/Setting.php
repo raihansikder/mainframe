@@ -22,12 +22,12 @@ use App\Mainframe\Helpers\Modular\BaseModule\BaseModule;
  * @property \Illuminate\Support\Carbon|null $updated_at TRIAL
  * @property \Illuminate\Support\Carbon|null $deleted_at TRIAL
  * @property int|null $deleted_by TRIAL
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Change[] $changes
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Changes\Change[] $changes
  * @property-read int|null $changes_count
- * @property-read \App\User|null $creator
- * @property-read \App\Upload $latestUpload
- * @property-read \App\User|null $updater
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Upload[] $uploads
+ * @property-read \App\Mainframe\Modules\Users\User|null $creator
+ * @property-read \App\Mainframe\Modules\Uploads\Upload $latestUpload
+ * @property-read \App\Mainframe\Modules\Users\User|null $updater
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Uploads\Upload[] $uploads
  * @property-read int|null $uploads_count
  * @method static Builder|Setting newModelQuery()
  * @method static Builder|Setting newQuery()
@@ -207,12 +207,12 @@ class Setting extends BaseModule
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    // public function updater() { return $this->belongsTo(\App\User::class, 'updated_by'); }
+    // public function updater() { return $this->belongsTo(\App\Mainframe\Modules\Users\User::class, 'updated_by'); }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    // public function creator() { return $this->belongsTo(\App\User::class, 'created_by'); }
+    // public function creator() { return $this->belongsTo(\App\Mainframe\Modules\Users\User::class, 'created_by'); }
 
     /*
    |--------------------------------------------------------------------------

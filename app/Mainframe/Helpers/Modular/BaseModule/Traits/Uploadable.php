@@ -2,7 +2,7 @@
 
 namespace App\Mainframe\Helpers\Modular\BaseModule\Traits;
 
-use App\Upload;
+use App\Mainframe\Modules\Uploads\Upload;
 
 trait Uploadable
 {

@@ -4,8 +4,8 @@ namespace App\Mainframe\Helpers;
 
 use Str;
 use Route;
-use App\Module;
-use App\ModuleGroup;
+use App\Mainframe\Modules\Modules\Module;
+use App\Mainframe\Modules\ModuleGroups\ModuleGroup;
 use App\Mainframe\Helpers\Modular\BaseModule\BaseModulePolicy;
 
 /**

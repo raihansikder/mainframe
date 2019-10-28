@@ -1,6 +1,6 @@
 <?php
 
-use App\User;
+use App\Mainframe\Modules\Users\User;
 
 /**
  * Renders a multi-dimentional array of permissions in hiararchical order for assigning permission
@@ -99,7 +99,7 @@ function renderModulePermissionTree($tree)
  * returns sentry object of currently logged in user
  *
  * @param  bool|false  $user_id
- * @return \Illuminate\Contracts\Auth\Authenticatable|\App\User
+ * @return \Illuminate\Contracts\Auth\Authenticatable|\App\Mainframe\Modules\Users\User
  */
 function user($user_id = false)
 {

@@ -10,7 +10,7 @@ namespace App\Mainframe\Helpers\Modular\BaseController;
 use View;
 use Redirect;
 use Validator;
-use App\Module;
+use App\Mainframe\Modules\Modules\Module;
 use App\Mainframe\Helpers\Modular\Resolvers\GridView;
 use App\Mainframe\Helpers\Modular\BaseController\Traits\ListTrait;
 use App\Mainframe\Helpers\Modular\BaseController\Traits\Resolvable;

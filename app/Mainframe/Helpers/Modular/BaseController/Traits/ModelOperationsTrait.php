@@ -2,7 +2,7 @@
 
 namespace App\Mainframe\Helpers\Modular\BaseController\Traits;
 
-use App\Upload;
+use App\Mainframe\Modules\Uploads\Upload;
 
 trait ModelOperationsTrait
 {

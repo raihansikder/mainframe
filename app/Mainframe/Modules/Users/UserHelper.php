@@ -2,7 +2,7 @@
 
 namespace App\Mainframe\Modules\Users;
 
-use App\Group;
+use App\Mainframe\Modules\Groups\Group;
 
 trait UserHelper
 {
@@ -33,7 +33,7 @@ trait UserHelper
     public static function ofBearer($bearer_token)
     {
         if ($bearer_token) {
-            return \App\User::where('auth_token', $bearer_token)->first();
+            return \App\Mainframe\Modules\Users\User::where('auth_token', $bearer_token)->first();
         }
 
         return null;

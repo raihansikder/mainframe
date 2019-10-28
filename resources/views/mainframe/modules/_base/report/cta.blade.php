@@ -1,6 +1,6 @@
 <?php
 /**
- * @var $currentModule \App\Module
+ * @var $currentModule \App\Mainframe\Modules\Modules\Module
  */
 ?>
 <div class="btn-group pull-left ">

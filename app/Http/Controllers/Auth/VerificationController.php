@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
+use App\Mainframe\Modules\Users\User;
 use App\Mail\Registered;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;

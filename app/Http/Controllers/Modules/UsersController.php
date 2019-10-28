@@ -6,11 +6,11 @@ use Hash;
 use View;
 use Request;
 use Session;
-use App\User;
+use App\Mainframe\Modules\Users\User;
 use Response;
 use Redirect;
 use Validator;
-use App\Upload;
+use App\Mainframe\Modules\Uploads\Upload;
 use App\Invoice;
 use App\Purchase;
 use Illuminate\Support\Str;
@@ -170,8 +170,8 @@ class UsersController extends ModuleBaseController
      */
     public function show($id)
     {
-        /** @var \App\User $Model */
-        /** @var \App\User $element */
+        /** @var \App\Mainframe\Modules\Users\User $Model */
+        /** @var \App\Mainframe\Modules\Users\User $element */
         $moduleName = $this->moduleName;
         $Model = model($this->moduleName);
         //$elementName = str_singular($moduleName);
@@ -264,8 +264,8 @@ class UsersController extends ModuleBaseController
      */
     public function store()
     {
-        /** @var \App\User $Model */
-        /** @var \App\User $element */
+        /** @var \App\Mainframe\Modules\Users\User $Model */
+        /** @var \App\Mainframe\Modules\Users\User $element */
         // init local variables
         // $moduleName = $this->moduleName;
         $Model = model($this->moduleName);
@@ -331,8 +331,8 @@ class UsersController extends ModuleBaseController
     public function update($id)
     {
         /**
-         * @var \App\User $Model
-         * @var \App\User $element
+         * @var \App\Mainframe\Modules\Users\User $Model
+         * @var \App\Mainframe\Modules\Users\User $element
          */
         $Model = model($this->moduleName);
         /** @noinspection PhpUnusedLocalVariableInspection */
@@ -479,7 +479,7 @@ class UsersController extends ModuleBaseController
     }
 
     /**
-     * @param  \App\User  $user
+     * @param  \App\Mainframe\Modules\Users\User  $user
      * @return string
      */
     public function invoices(User $user)
@@ -516,7 +516,7 @@ class UsersController extends ModuleBaseController
     /**
      * Transferwise account creation
      * @param $user User
-     * @return \App\User|bool
+     * @return \App\Mainframe\Modules\Users\User|bool
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function createTransferwiseAccount(User $user)
@@ -535,7 +535,7 @@ class UsersController extends ModuleBaseController
 
     /**
      * Create a Sendbird account for user.
-     * @param  \App\User  $user
+     * @param  \App\Mainframe\Modules\Users\User  $user
      * @return \Illuminate\Http\RedirectResponse
      */
     public function createSendbirdAccount(User $user)

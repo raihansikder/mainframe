@@ -19,7 +19,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        /** @var \App\User $user */
+        /** @var \App\Mainframe\Modules\Users\User $user */
         // $user = \Auth::user();
         return view("dashboards.default.index");
     }

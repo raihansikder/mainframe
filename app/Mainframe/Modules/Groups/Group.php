@@ -3,7 +3,7 @@
 namespace App\Mainframe\Modules\Groups;
 
 use Request;
-use App\User;
+use App\Mainframe\Modules\Users\User;
 use App\Mainframe\Helpers\Modular\BaseModule\BaseModule;
 use App\Mainframe\Modules\Groups\Traits\GroupDefinitionsTrait;
 

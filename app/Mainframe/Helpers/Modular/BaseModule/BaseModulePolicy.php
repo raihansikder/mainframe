@@ -6,7 +6,7 @@
 
 namespace App\Mainframe\Helpers\Modular\BaseModule;
 
-use App\User;
+use App\Mainframe\Modules\Users\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class BaseModulePolicy
@@ -16,7 +16,7 @@ class BaseModulePolicy
     /**
      * Determine whether the user can view any settings.
      *
-     * @param  \App\User  $user
+     * @param  \App\Mainframe\Modules\Users\User  $user
      * @return mixed
      */
     public function viewAny(User $user)
@@ -27,7 +27,7 @@ class BaseModulePolicy
     /**
      * Determine whether the user can view the setting.
      *
-     * @param  \App\User  $user
+     * @param  \App\Mainframe\Modules\Users\User  $user
      * @param  \App\Mainframe\Helpers\Modular\BaseModule\BaseModule  $element
      * @return mixed
      */
@@ -39,7 +39,7 @@ class BaseModulePolicy
     /**
      * Determine whether the user can create settings.
      *
-     * @param  \App\User  $user
+     * @param  \App\Mainframe\Modules\Users\User  $user
      * @return mixed
      */
     public function create(User $user)
@@ -50,7 +50,7 @@ class BaseModulePolicy
     /**
      * Determine whether the user can update the setting.
      *
-     * @param  \App\User  $user
+     * @param  \App\Mainframe\Modules\Users\User  $user
      * @param  \App\Mainframe\Helpers\Modular\BaseModule\BaseModule  $element
      * @return mixed
      */
@@ -62,7 +62,7 @@ class BaseModulePolicy
     /**
      * Determine whether the user can delete the setting.
      *
-     * @param  \App\User  $user
+     * @param  \App\Mainframe\Modules\Users\User  $user
      * @param  \App\Mainframe\Helpers\Modular\BaseModule\BaseModule  $element
      * @return mixed
      */
@@ -74,7 +74,7 @@ class BaseModulePolicy
     /**
      * Determine whether the user can restore the setting.
      *
-     * @param  \App\User  $user
+     * @param  \App\Mainframe\Modules\Users\User  $user
      * @param  \App\Mainframe\Helpers\Modular\BaseModule\BaseModule  $element
      * @return mixed
      */
@@ -86,7 +86,7 @@ class BaseModulePolicy
     /**
      * Determine whether the user can permanently delete the setting.
      *
-     * @param  \App\User  $user
+     * @param  \App\Mainframe\Modules\Users\User  $user
      * @param  \App\Mainframe\Helpers\Modular\BaseModule\BaseModule  $element
      * @return mixed
      */

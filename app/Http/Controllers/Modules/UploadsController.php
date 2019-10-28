@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Request;
 use Redirect;
 use Response;
-use App\Upload;
+use App\Mainframe\Modules\Uploads\Upload;
 use Storage;
 use App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController;
 

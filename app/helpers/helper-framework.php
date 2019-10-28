@@ -1,8 +1,8 @@
 <?php
 
-use App\Module;
+use App\Mainframe\Modules\Modules\Module;
 use App\Report;
-use App\Setting;
+use App\Mainframe\Modules\Settings\Setting;
 use Illuminate\Support\Str;
 
 /**

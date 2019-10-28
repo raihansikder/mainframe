@@ -1,6 +1,6 @@
 <?php
 /**
- * @var $module \App\Module
+ * @var $module \App\Mainframe\Modules\Modules\Module
  * @var $var array
  * @var \App\Superhero $element
  */

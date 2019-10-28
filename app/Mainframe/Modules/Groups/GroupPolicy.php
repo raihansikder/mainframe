@@ -6,7 +6,7 @@
 
 namespace App\Mainframe\Modules\Groups;
 
-use App\User;
+use App\Mainframe\Modules\Users\User;
 use App\Mainframe\Helpers\Modular\BaseModule\BaseModulePolicy;
 
 class GroupPolicy extends BaseModulePolicy
@@ -15,7 +15,7 @@ class GroupPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can view any groups.
      *
-     * @param  \App\User  $user
+     * @param  \App\Mainframe\Modules\Users\User  $user
      * @return mixed
      */
     public function viewAny(User $user) { }
@@ -23,7 +23,7 @@ class GroupPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can view the group.
      *
-     * @param  \App\User  $user
+     * @param  \App\Mainframe\Modules\Users\User  $user
      * @param  Group  $group
      * @return mixed
      */
@@ -32,7 +32,7 @@ class GroupPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can create groups.
      *
-     * @param  \App\User  $user
+     * @param  \App\Mainframe\Modules\Users\User  $user
      * @return mixed
      */
     // public function create(User $user) { }
@@ -40,7 +40,7 @@ class GroupPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can update the group.
      *
-     * @param  \App\User  $user
+     * @param  \App\Mainframe\Modules\Users\User  $user
      * @param  Group  $group
      * @return mixed
      */
@@ -49,7 +49,7 @@ class GroupPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can delete the group.
      *
-     * @param  \App\User  $user
+     * @param  \App\Mainframe\Modules\Users\User  $user
      * @param  Group  $group
      * @return mixed
      */
@@ -58,7 +58,7 @@ class GroupPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can restore the group.
      *
-     * @param  \App\User  $user
+     * @param  \App\Mainframe\Modules\Users\User  $user
      * @param  Group  $group
      * @return mixed
      */
@@ -67,7 +67,7 @@ class GroupPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can permanently delete the group.
      *
-     * @param  \App\User  $user
+     * @param  \App\Mainframe\Modules\Users\User  $user
      * @param  Group  $group
      * @return mixed
      */

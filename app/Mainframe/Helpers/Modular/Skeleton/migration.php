@@ -2,7 +2,7 @@
 /** @noinspection UnknownInspectionInspection */
 /** @noinspection DuplicatedCode */
 
-use App\Module;
+use App\Mainframe\Modules\Modules\Module;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 

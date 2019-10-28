@@ -6,7 +6,7 @@
 
 namespace App\Mainframe\Modules\Changes;
 
-use App\User;
+use App\Mainframe\Modules\Users\User;
 use App\Mainframe\Helpers\Modular\BaseModule\BaseModulePolicy;
 
 class ChangePolicy extends BaseModulePolicy
@@ -15,7 +15,7 @@ class ChangePolicy extends BaseModulePolicy
     /**
      * Determine whether the user can view any changes.
      *
-     * @param  \App\User  $user
+     * @param  \App\Mainframe\Modules\Users\User  $user
      * @return mixed
      */
     public function viewAny(User $user) { }
@@ -23,7 +23,7 @@ class ChangePolicy extends BaseModulePolicy
     /**
      * Determine whether the user can view the change.
      *
-     * @param  \App\User  $user
+     * @param  \App\Mainframe\Modules\Users\User  $user
      * @param  Change  $change
      * @return mixed
      */
@@ -32,7 +32,7 @@ class ChangePolicy extends BaseModulePolicy
     /**
      * Determine whether the user can create changes.
      *
-     * @param  \App\User  $user
+     * @param  \App\Mainframe\Modules\Users\User  $user
      * @return mixed
      */
     // public function create(User $user) { }
@@ -40,7 +40,7 @@ class ChangePolicy extends BaseModulePolicy
     /**
      * Determine whether the user can update the change.
      *
-     * @param  \App\User  $user
+     * @param  \App\Mainframe\Modules\Users\User  $user
      * @param  Change  $change
      * @return mixed
      */
@@ -49,7 +49,7 @@ class ChangePolicy extends BaseModulePolicy
     /**
      * Determine whether the user can delete the change.
      *
-     * @param  \App\User  $user
+     * @param  \App\Mainframe\Modules\Users\User  $user
      * @param  Change  $change
      * @return mixed
      */
@@ -58,7 +58,7 @@ class ChangePolicy extends BaseModulePolicy
     /**
      * Determine whether the user can restore the change.
      *
-     * @param  \App\User  $user
+     * @param  \App\Mainframe\Modules\Users\User  $user
      * @param  Change  $change
      * @return mixed
      */
@@ -67,7 +67,7 @@ class ChangePolicy extends BaseModulePolicy
     /**
      * Determine whether the user can permanently delete the change.
      *
-     * @param  \App\User  $user
+     * @param  \App\Mainframe\Modules\Users\User  $user
      * @param  Change  $change
      * @return mixed
      */

@@ -2,8 +2,8 @@
 
 namespace App\Mainframe\Modules\Changes;
 
-use App\Change;
-use App\Module;
+use App\Mainframe\Modules\Changes\Change;
+use App\Mainframe\Modules\Modules\Module;
 use Illuminate\Support\Str;
 use App\Mainframe\Helpers\Modular\BaseModule\BaseModule;
 

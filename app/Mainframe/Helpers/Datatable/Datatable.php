@@ -6,7 +6,7 @@
 namespace App\Mainframe\Helpers\Datatable;
 
 use DB;
-use App\Module;
+use App\Mainframe\Modules\Modules\Module;
 
 class Datatable
 {

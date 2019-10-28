@@ -12,7 +12,7 @@ trait SettingHelper
      */
     public static function read($name)
     {
-        /** @var \App\Setting $setting */
+        /** @var \App\Mainframe\Modules\Settings\Setting $setting */
         /** @noinspection PhpUndefinedMethodInspection */
         if ($setting = self::where('name', $name)->remember(cacheTime('short'))->first()) {
             return $setting->settingValue();

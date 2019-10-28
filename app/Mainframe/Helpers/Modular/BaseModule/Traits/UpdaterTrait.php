@@ -2,7 +2,7 @@
 
 namespace App\Mainframe\Helpers\Modular\BaseModule\Traits;
 
-use App\User;
+use App\Mainframe\Modules\Users\User;
 
 trait UpdaterTrait
 {

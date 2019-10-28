@@ -2,8 +2,8 @@
 
 namespace App\Mainframe\Helpers\Modular\BaseModule\Traits;
 
-use App\Upload;
-use App\Change;
+use App\Mainframe\Modules\Uploads\Upload;
+use App\Mainframe\Modules\Changes\Change;
 
 trait Changable
 {

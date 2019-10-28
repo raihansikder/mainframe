@@ -2,7 +2,7 @@
 
 namespace App\Mainframe\Modules\Modules;
 
-use App\ModuleGroup;
+use App\Mainframe\Modules\Modules\ModuleGroup;
 use Illuminate\Support\Str;
 
 trait ModuleHelper

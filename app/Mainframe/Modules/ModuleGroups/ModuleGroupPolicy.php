@@ -6,7 +6,7 @@
 
 namespace App\Mainframe\Modules\ModuleGroups;
 
-use App\User;
+use App\Mainframe\Modules\Users\User;
 use App\Mainframe\Helpers\Modular\BaseModule\BaseModulePolicy;
 
 class ModuleGroupPolicy extends BaseModulePolicy
@@ -15,7 +15,7 @@ class ModuleGroupPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can view any moduleGroups.
      *
-     * @param  \App\User  $user
+     * @param  \App\Mainframe\Modules\Users\User  $user
      * @return mixed
      */
     public function viewAny(User $user) { }
@@ -23,7 +23,7 @@ class ModuleGroupPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can view the moduleGroup.
      *
-     * @param  \App\User  $user
+     * @param  \App\Mainframe\Modules\Users\User  $user
      * @param  ModuleGroup  $moduleGroup
      * @return mixed
      */
@@ -32,7 +32,7 @@ class ModuleGroupPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can create moduleGroups.
      *
-     * @param  \App\User  $user
+     * @param  \App\Mainframe\Modules\Users\User  $user
      * @return mixed
      */
     // public function create(User $user) { }
@@ -40,7 +40,7 @@ class ModuleGroupPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can update the moduleGroup.
      *
-     * @param  \App\User  $user
+     * @param  \App\Mainframe\Modules\Users\User  $user
      * @param  ModuleGroup  $moduleGroup
      * @return mixed
      */
@@ -49,7 +49,7 @@ class ModuleGroupPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can delete the moduleGroup.
      *
-     * @param  \App\User  $user
+     * @param  \App\Mainframe\Modules\Users\User  $user
      * @param  ModuleGroup  $moduleGroup
      * @return mixed
      */
@@ -58,7 +58,7 @@ class ModuleGroupPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can restore the moduleGroup.
      *
-     * @param  \App\User  $user
+     * @param  \App\Mainframe\Modules\Users\User  $user
      * @param  ModuleGroup  $moduleGroup
      * @return mixed
      */
@@ -67,7 +67,7 @@ class ModuleGroupPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can permanently delete the moduleGroup.
      *
-     * @param  \App\User  $user
+     * @param  \App\Mainframe\Modules\Users\User  $user
      * @param  ModuleGroup  $moduleGroup
      * @return mixed
      */

@@ -25,7 +25,7 @@
                             <b>Super user</b>
                         </label>
                     </li>
-                    <li>{{renderModulePermissionTree(\App\ModuleGroup::tree()) }}</li>
+                    <li>{{renderModulePermissionTree(\App\Mainframe\Modules\Modules\ModuleGroup::tree()) }}</li>
                     @include('mainframe.modules.groups.form.permission-blocks')
                 </ul>
             </div>

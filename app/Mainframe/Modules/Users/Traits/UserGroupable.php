@@ -35,7 +35,7 @@ trait UserGroupable
      */
     public function groupIds()
     {
-        /** @var \App\User $this */
+        /** @var \App\Mainframe\Modules\Users\User $this */
         return json_decode($this->group_ids);
         //return explode(',', trim($this->group_ids_csv, ", "));
     }

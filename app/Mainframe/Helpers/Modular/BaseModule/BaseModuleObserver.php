@@ -2,7 +2,7 @@
 
 namespace App\Mainframe\Helpers\Modular\BaseModule;
 
-use App\Change;
+use App\Mainframe\Modules\Changes\Change;
 
 class BaseModuleObserver
 {
