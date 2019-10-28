@@ -99,6 +99,7 @@ function fillModel($element, $except = [])
  */
 function moduleName($class)
 {
+
     return Str::plural(lcfirst(class_basename($class)));
 }
 

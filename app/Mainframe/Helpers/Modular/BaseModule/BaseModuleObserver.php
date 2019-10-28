@@ -13,6 +13,8 @@ class BaseModuleObserver
      */
     public function saving($element)
     {
+
+
         $element = fillModel($element);         // This line should be placed just before return
 
         Change::keepChangesInSession($element); // store change log

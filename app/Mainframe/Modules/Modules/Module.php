@@ -1,9 +1,8 @@
-<?php
+<?php /** @noinspection DuplicatedCode */
 
 namespace App\Mainframe\Modules\Modules;
 
-use App\ModuleGroup;
-use Illuminate\Support\Str;
+use Illuminate\Database\Eloquent\Builder;
 use App\Mainframe\Helpers\Modular\BaseModule\BaseModule;
 
 /**
@@ -38,280 +37,197 @@ use App\Mainframe\Helpers\Modular\BaseModule\BaseModule;
  * @property-read \App\User|null $updater
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Upload[] $uploads
  * @property-read int|null $uploads_count
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Modules\Module newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Modules\Module newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Modules\Module query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Modules\Module whereColorCss($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Modules\Module whereController($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Modules\Module whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Modules\Module whereCreatedBy($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Modules\Module whereDefaultRoute($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Modules\Module whereDeletedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Modules\Module whereDeletedBy($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Modules\Module whereDescription($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Modules\Module whereIconCss($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Modules\Module whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Modules\Module whereIsActive($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Modules\Module whereLevel($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Modules\Module whereModel($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Modules\Module whereModuleGroupId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Modules\Module whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Modules\Module whereOrder($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Modules\Module whereParentId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Modules\Module whereTitle($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Modules\Module whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Modules\Module whereUpdatedBy($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Modules\Module whereUuid($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Modules\Module whereView($value)
+ * @method static Builder|Module newModelQuery()
+ * @method static Builder|Module newQuery()
+ * @method static Builder|Module query()
+ * @method static Builder|Module whereColorCss($value)
+ * @method static Builder|Module whereController($value)
+ * @method static Builder|Module whereCreatedAt($value)
+ * @method static Builder|Module whereCreatedBy($value)
+ * @method static Builder|Module whereDefaultRoute($value)
+ * @method static Builder|Module whereDeletedAt($value)
+ * @method static Builder|Module whereDeletedBy($value)
+ * @method static Builder|Module whereDescription($value)
+ * @method static Builder|Module whereIconCss($value)
+ * @method static Builder|Module whereId($value)
+ * @method static Builder|Module whereIsActive($value)
+ * @method static Builder|Module whereLevel($value)
+ * @method static Builder|Module whereModel($value)
+ * @method static Builder|Module whereModuleGroupId($value)
+ * @method static Builder|Module whereName($value)
+ * @method static Builder|Module whereOrder($value)
+ * @method static Builder|Module whereParentId($value)
+ * @method static Builder|Module whereTitle($value)
+ * @method static Builder|Module whereUpdatedAt($value)
+ * @method static Builder|Module whereUpdatedBy($value)
+ * @method static Builder|Module whereUuid($value)
+ * @method static Builder|Module whereView($value)
  * @mixin \Eloquent
  */
 class Module extends BaseModule
 {
+    use ModuleHelper;
 
+    /*
+    |--------------------------------------------------------------------------
+    | Fillable attributes
+    |--------------------------------------------------------------------------
+    |
+    | These attributes can be mass assigned
+    */
     protected $fillable = [
         'name', 'title', 'description', 'parent_id', 'module_group_id', 'level',
         'order', 'color_css', 'icon_css', 'default_route', 'is_active', 'created_by',
         'updated_by', 'deleted_by', 'model', 'view', 'controller'
     ];
 
-    /**
-     * Automatic eager load relation by default (can be expensive)
-     *
-     * @var array
-     */
-    // protected $with = ['relation1', 'relation2'];
+    /*
+    |--------------------------------------------------------------------------
+    | Guarded attributes
+    |--------------------------------------------------------------------------
+    |
+    | The attributes can not be mass assigned.
+    */
+    // protected $guarded = [];
 
-    ############################################################################################
-    # Model events
-    ############################################################################################
+    /*
+    |--------------------------------------------------------------------------
+    | Type cast dates
+    |--------------------------------------------------------------------------
+    |
+    | Type cast attributes as date. This allows to create a Carbon object.
+    | Of the dates
+   */
+    // protected $dates = [];
 
+    /*
+    |--------------------------------------------------------------------------
+    | Type cast attributes
+    |--------------------------------------------------------------------------
+    |
+    | Type cast attributes (helpful for JSON)
+    */
+    // protected $casts = [];
+
+    /*
+    |--------------------------------------------------------------------------
+    | Automatic eager load
+    |--------------------------------------------------------------------------
+    |
+    | Auto load these relations whenever the model is retrieved.
+    */
+    // protected $with = [];
+
+    /*
+    |--------------------------------------------------------------------------
+    | Append new attributes to the model
+    |--------------------------------------------------------------------------
+    |
+    | If you want to append a new attribute that doesn't exists in the table
+    | you should first create and accessor getNewFieldAttribute and then
+    | add the attribute name in the array
+    */
+    // protected $appends = [];
+
+    /*
+    |--------------------------------------------------------------------------
+    | Options
+    |--------------------------------------------------------------------------
+    |
+    | Your model can have one or more public static variables that stores
+    | The possible options for some field. Variable name should be
+    |
+    */
+    // public static $types = [];
+    // public static $statuses = [];
+
+    /*
+    |--------------------------------------------------------------------------
+    | Boot method and model events.
+    |--------------------------------------------------------------------------
+    |
+    | Register the observer in the boot method. You can also make use of
+    | model events like saving, creating, updating etc to further
+    | manipulate the model
+    */
     public static function boot()
     {
         parent::boot();
         self::observe(ModuleObserver::class);
 
         static::saving(function (Module $element) {
-            $valid = true;
-
-            if ($valid) {
-                // Fill default values
-                $element->parent_id = (! $element->parent_id) ? 0 : $element->parent_id;
-                $element->module_group_id = (! $element->module_group_id) ? 0 : $element->module_group_id;
-                $element->level = (! $element->level) ? 0 : $element->level;
-                $element->order = (! $element->order) ? 0 : $element->order;
-                $element->default_route = (! $element->default_route) ? $element->name.'.index' : $element->default_route;
-                $element->color_css = (! $element->color_css) ? 'aqua' : $element->color_css;
-                $element->icon_css = (! $element->icon_css) ? 'fa fa-plus' : $element->icon_css;
-            }
-
-            return $valid;
+            // Fill default values
+            $element->parent_id = (! $element->parent_id) ? 0 : $element->parent_id;
+            $element->module_group_id = (! $element->module_group_id) ? 0 : $element->module_group_id;
+            $element->level = (! $element->level) ? 0 : $element->level;
+            $element->order = (! $element->order) ? 0 : $element->order;
+            $element->default_route = (! $element->default_route) ? $element->name.'.index' : $element->default_route;
+            $element->color_css = (! $element->color_css) ? 'aqua' : $element->color_css;
+            $element->icon_css = (! $element->icon_css) ? 'fa fa-plus' : $element->icon_css;
         });
     }
 
-    /**
-     * returns super-heroes -> superHero
-     *
-     * @return string
-     */
-    public function elementName()
-    {
-        /** @var \App\Mainframe\Modules\Modules\Module|self $this */
-        return Str::singular(Str::camel($this->name));
-    }
+    /*
+    |--------------------------------------------------------------------------
+    | Query scopes + Dynamic scopes
+    |--------------------------------------------------------------------------
+    |
+    | Scopes allow you to easily re-use query logic in your models. To define
+    | a scope, simply prefix a model method with scope:
+    */
+    //public function scopePopular($query) { return $query->where('votes', '>', 100); }
+    //public function scopeWomen($query) { return $query->whereGender('W'); }
+    /*
+    Usage: $users = User::popular()->women()->orderBy('created_at')->get();
+    */
 
-    /**
-     * returns super-heroes -> superHero
-     *
-     * @return string
-     */
-    public function elementNamePlural()
-    {
-        /** @var \App\Mainframe\Modules\Modules\Module|self $this */
-        return Str::plural($this->elementName());
-    }
+    //public function scopeOfType($query, $type) { return $query->whereType($type); }
+    /*
+    Usage:  $users = User::ofType('member')->get();
+    */
 
-    /**
-     * super-heroes -> super_heroes
-     *
-     * @return string
-     */
-    public function tableName()
-    {
-        /** @var \App\Mainframe\Modules\Modules\Module $this */
-        return Str::snake(Str::camel($this->name));
-    }
+    /*
+    |--------------------------------------------------------------------------
+    | Accessors
+    |--------------------------------------------------------------------------
+    |
+    | Eloquent provides a convenient way to transform your model attributes when
+    | getting or setting them. Get a transformed value of an attribute
+    */
+    // public function getFirstNameAttribute($value) { return ucfirst($value); }
 
-    /**
-     * Mainframe Module Namespace
-     *
-     * @return string
-     */
-    public function moduleNameSpace()
-    {
-        return 'App\Mainframe\Modules\\'.$this->modelClassNamePlural();
-    }
+    /*
+    |--------------------------------------------------------------------------
+    | Mutators
+    |--------------------------------------------------------------------------
+    |
+    | Eloquent provides a convenient way to transform your model attributes when
+    | getting or setting them. Get a transformed value of an attribute
+    */
+    // public function setFirstNameAttribute($value) { $this->attributes['first_name'] = strtolower($value); }
 
+    /*
+    |--------------------------------------------------------------------------
+    | Relations
+    |--------------------------------------------------------------------------
+    |
+    | Write model relations (belongsTo,hasMany etc) at the bottom the file
+    */
     /**
-     * Mainframe Module Namespace
-     *
-     * @return string
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function moduleClassDir()
-    {
-        return 'app/Mainframe/Modules/'.$this->modelClassNamePlural();
-    }
-
-    public function validatorClassPath()
-    {
-        return $this->moduleNameSpace().'\\'.$this->modelClassName().'Validator';
-    }
+    // public function updater() { return $this->belongsTo(\App\User::class, 'updated_by'); }
 
     /**
-     * Returns full qualified calls path
-     *
-     * @return bool|mixed
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function modelClassPath()
-    {
-        $paths = [
-            $this->model,
-            'App\\'.$this->modelClassName(),
-            $this->moduleNameSpace().'\\'.$this->modelClassName(),
-        ];
+    // public function creator() { return $this->belongsTo(\App\User::class, 'created_by'); }
 
-        foreach ($paths as $path) {
-            if (class_exists($path)) {
-                return $path;
-            }
-        }
+    /*
+   |--------------------------------------------------------------------------
+   | Todo: Helper functions
+   |--------------------------------------------------------------------------
+   | Todo: Write Helper functions in the SuperHeroHelper trait.
+   */
 
-        return false;
-    }
-
-    /**
-     * Create instance of a model.
-     *
-     * @return mixed
-     */
-    public function modelInstance()
-    {
-        $classPath = $this->modelClassPath();
-
-        return new $classPath;
-    }
-
-    /**
-     * Create instance of a model.
-     *
-     * @param $element
-     * @return mixed
-     */
-    public function validatorInstance($element)
-    {
-        $classPath = $this->validatorClassPath();
-
-        return new $classPath($element);
-    }
-
-    /**
-     * Get the class name Superhero
-     *
-     * @return string
-     */
-    public function modelClassName()
-    {
-        return Str::ucfirst($this->elementName());
-    }
-
-    /**
-     * Get the class name Superhero
-     *
-     * @return string
-     */
-    public function modelClassNamePlural()
-    {
-        return Str::plural($this->modelClassName());
-    }
-
-    public static function byName($name)
-    {
-        return self::where('name', $name)
-            ->remember(cacheTime('long'))
-            ->first();
-    }
-
-    public static function fromController($classPath)
-    {
-        return lcfirst(str_replace('Controller', '', class_basename($classPath)));
-    }
-
-    /**
-     * Get module names as one-dimentional array, by default get only the active ones
-     *
-     * @param  bool|true  $only_active
-     * @return array
-     */
-    public static function names($only_active = true)
-    {
-        $q = self::select('name');
-        if ($only_active) {
-            $q = $q->where('is_active', 1);
-        }
-        $results = $q->remember(cacheTime('long'))
-            ->get()
-            ->toArray();
-
-        $modules = array_column($results, 'name');
-
-        return $modules;
-    }
-
-    /**
-     * Function returns an array of predecessor module objects of a specific module.
-     * This function is helpful to generate breadcrumb or menu.
-     *
-     * @return array
-     */
-    public function moduleTree()
-    {
-        $stack = [$this];
-        for ($i = $this->parent_id; ;) {
-            if (! $i) {
-                break;
-            }
-
-            if ($predecessor = self::find($i)) {
-                $stack[] = $predecessor;
-                $i = $predecessor->parent_id;
-            }
-        }
-
-        $stack = array_reverse($stack);
-
-        return $stack;
-    }
-
-    /**
-     * Returns a multi dimentional array with hiararchically stored module_groups and modules.
-     * Unlike previous moduleTree() function, this one check the parent relationship with
-     * module_group instead of module.
-     *
-     * @return array
-     */
-    public function moduleGroupTree()
-    {
-        $stack = [$this];
-        for ($i = $this->module_group_id; ;) {
-            if (! $i) {
-                break;
-            }
-            if ($predecessor = ModuleGroup::remember(cacheTime('long'))->find($i)) {
-                $stack[] = $predecessor;
-                $i = $predecessor->parent_id;
-            }
-        }
-        $stack = array_reverse($stack);
-
-        return $stack;
-    }
 }

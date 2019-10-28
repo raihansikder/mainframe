@@ -11,7 +11,7 @@
 
         {{--    Form inputs: starts    --}}
         {{--   --------------------    --}}
-        @include('mainframe.form-elements.text.input-text',['var'=>['name'=>'name','label'=>'Name','container_class'=>'col-sm-3']])
+        @include('mainframe.form-elements.text.input-text',['var'=>['name'=>'name','label'=>'Name']])
         @include('mainframe.form-elements.custom.is_active')
         {{--    Form inputs: ends    --}}
 

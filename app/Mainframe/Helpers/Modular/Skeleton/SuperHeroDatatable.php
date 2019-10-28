@@ -17,8 +17,8 @@ class SuperHeroDatatable extends Datatable
      */
     public function source()
     {
-        return DB::table($this->moduleName)
-            ->leftJoin('users as updater', $this->moduleName.'.updated_by', 'updater.id');
+        return DB::table($this->table)
+            ->leftJoin('users as updater', $this->table.'.updated_by', 'updater.id');
     }
 
     /**
@@ -29,11 +29,11 @@ class SuperHeroDatatable extends Datatable
     public function columns()
     {
         return [
-            [$this->moduleName.".id", 'id', 'ID'],
-            [$this->moduleName.".name", 'name', 'Name'],
+            [$this->table.".id", 'id', 'ID'],
+            [$this->table.".name", 'name', 'Name'],
             ['updater.name', 'user_name', 'Updater'],
-            [$this->moduleName.".updated_at", 'updated_at', 'Updated at'],
-            [$this->moduleName.".is_active", 'is_active', 'Active']
+            [$this->table.".updated_at", 'updated_at', 'Updated at'],
+            [$this->table.".is_active", 'is_active', 'Active']
         ];
     }
 
@@ -62,12 +62,12 @@ class SuperHeroDatatable extends Datatable
         $query = $this->source()->select($this->selects());
 
         // Inject tenant context in grid query
-        if ($tenant_id = inTenantContext($this->moduleName)) {
-            $query = injectTenantIdInModelQuery($this->moduleName, $query);
+        if ($tenant_id = inTenantContext($this->table)) {
+            $query = injectTenantIdInModelQuery($this->table, $query);
         }
 
         // Exclude deleted rows
-        $query = $query->whereNull($this->moduleName.'.deleted_at'); // Skip deleted rows
+        $query = $query->whereNull($this->table.'.deleted_at'); // Skip deleted rows
 
         return $query;
     }

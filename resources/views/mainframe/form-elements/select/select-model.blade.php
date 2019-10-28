@@ -1,4 +1,6 @@
 <?php
+
+use Illuminate\Support\Arr;
 /**
  * @var array $var A temporary variable, that is set only to render the view partial. Usually this view
  *                 file is included inside a form.
@@ -10,7 +12,7 @@
 $var['container_class'] = $var['container_class'] ?? 'col-md-3';
 $var['name'] = $var['name'] ?? 'NO_NAME';
 $var['params'] = $var['params'] ?? [];
-$var['params']['class'] = (isset($var['params']['class'])) ? $var['params']['class'] . " form-control " : ' form-control ';
+$var['params']['class'] = (isset($var['params']['class'])) ? $var['params']['class']." form-control " : ' form-control ';
 $var['value'] = $var['value'] ?? '';
 $var['label'] = $var['label'] ?? '';
 $var['label_class'] = $var['label_class'] ?? '';
@@ -18,8 +20,8 @@ $var['blank_select'] = $var['blank_select'] ?? 'Select';
 $var['old_input'] = oldInputValue($var['name'], $var['value']);
 $var['cache_time'] = $var['cache_time'] ?? 'short';
 
-if (!isset($var['editable'])) {
-    $var['editable'] = !(isset($elementIsEditable) && $elementIsEditable == false);
+if (! isset($var['editable'])) {
+    $var['editable'] = ! (isset($elementIsEditable) && $elementIsEditable == false);
 }
 if ($var['editable'] == false) $var['params']['disabled'] = true;
 
@@ -42,8 +44,8 @@ if (userTenantId() && tableHasColumn($var['table'], tenantIdField())) {
 $options = $query->pluck($var['name_field'], $var['value_field'])->toArray();
 
 # Push an empty select option on top
-if (!$var['multiple']) {
-  $options = array_prepend($options, $var['blank_select'], 0 );
+if (! $var['multiple']) {
+    $options = Arr::prepend($options, $var['blank_select'], 0);
 }
 /*************************************************/
 ?>
@@ -55,7 +57,7 @@ if (!$var['multiple']) {
                for="{{$var['name']}}">{!! $var['label'] !!}
         </label>
     @endif
-    <?php $var['select_name'] = ($var['multiple']) ? $var['name'] . "[]" : $var['name']; ?>
+    <?php $var['select_name'] = ($var['multiple']) ? $var['name']."[]" : $var['name']; ?>
     {{ Form::select($var['select_name'], $options, $var['old_input'], $var['params']) }}
     {!! $errors->first($var['name'], '<span class="help-block">:message</span>')  !!}
 

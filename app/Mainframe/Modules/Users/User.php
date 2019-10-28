@@ -1,0 +1,296 @@
+<?php /** @noinspection PhpUndefinedMethodInspection */
+
+namespace App\Mainframe\Modules\Users;
+
+use App\Group;
+use InvalidArgumentException;
+use Watson\Rememberable\Rememberable;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Mainframe\Modules\Users\Traits\UserGroupable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Mainframe\Helpers\Modular\BaseModule\Traits\Validable;
+use App\Mainframe\Helpers\Modular\BaseModule\Traits\Changable;
+use App\Mainframe\Helpers\Modular\BaseModule\Traits\Uploadable;
+use App\Mainframe\Helpers\Modular\BaseModule\Traits\UpdaterTrait;
+use App\Mainframe\Helpers\Modular\BaseModule\Traits\ModularTrait;
+use App\Mainframe\Helpers\Modular\BaseModule\Traits\EventIdentifiable;
+use App\Mainframe\Helpers\Modular\BaseModule\Traits\RelatedUsersTrait;
+use App\Mainframe\Helpers\Modular\BaseModule\Traits\TenantContextTrait;
+
+class User extends Authenticatable implements MustVerifyEmail
+{
+    use UserHelper, UserGroupable;
+    use SoftDeletes, Rememberable, Validable, EventIdentifiable,
+        RelatedUsersTrait, TenantContextTrait, UpdaterTrait,
+        Uploadable, Changable, ModularTrait;
+    /*
+    |--------------------------------------------------------------------------
+    | Fillable attributes
+    |--------------------------------------------------------------------------
+    |
+    | These attributes can be mass assigned
+    */
+    protected $fillable = [
+        'id', 'uuid', 'tenant_id', 'name', 'email', 'password', 'remember_token', 'access_token', 'access_token_generated_at', 'api_token',
+        'api_token_generated_at', 'tenant_editable', 'permissions', 'group_ids_csv', 'group_titles_csv', 'is_active', 'created_by', 'updated_by', 'created_at',
+        'updated_at', 'deleted_at', 'deleted_by', 'name_initial', 'first_name', 'last_name', 'full_name', 'gender', 'device_token', 'address1', 'address2',
+        'city', 'county', 'country_id', 'country_name', 'zip_code', 'phone', 'mobile', 'first_login_at', 'last_login_at', 'auth_token', 'email_verified_at',
+        'last_active_time', 'last_login_time', 'last_logout_time', 'partner_uuid', 'currency', 'social_account_id', 'social_account_type', 'dob', 'group_ids',
+        'is_test',
+    ];
+
+    /*
+    |--------------------------------------------------------------------------
+    | Guarded attributes
+    |--------------------------------------------------------------------------
+    |
+    | The attributes can not be mass assigned.
+    */
+    // protected $guarded = [];
+    protected $hidden = ['password', 'remember_token',];
+
+    /*
+    |--------------------------------------------------------------------------
+    | Type cast dates
+    |--------------------------------------------------------------------------
+    |
+    | Type cast attributes as date. This allows to create a Carbon object.
+    | Of the dates
+   */
+    protected $dates = ['created_at', 'updated_at', 'deleted_at', 'first_login_at', 'last_login_at',];
+
+    /*
+    |--------------------------------------------------------------------------
+    | Type cast attributes
+    |--------------------------------------------------------------------------
+    |
+    | Type cast attributes (helpful for JSON)
+    */
+    // protected $casts = [];
+
+    /*
+    |--------------------------------------------------------------------------
+    | Automatic eager load
+    |--------------------------------------------------------------------------
+    |
+    | Auto load these relations whenever the model is retrieved.
+    */
+    protected $with = ['groups'];
+
+    /*
+    |--------------------------------------------------------------------------
+    | Append new attributes to the model
+    |--------------------------------------------------------------------------
+    |
+    | If you want to append a new attribute that doesn't exists in the table
+    | you should first create and accessor getNewFieldAttribute and then
+    | add the attribute name in the array
+    */
+    // protected $appends = [];
+
+    /*
+    |--------------------------------------------------------------------------
+    | Options
+    |--------------------------------------------------------------------------
+    |
+    | Your model can have one or more public static variables that stores
+    | The possible options for some field. Variable name should be
+    |
+    */
+    // public static $types = [];
+    // public static $statuses = [];
+    /**
+     * Allowed permissions values.
+     * Possible options:
+     *   -1 => Deny (adds to array, but denies regardless of user's group).
+     *    0 => Remove.
+     *    1 => Add.
+     *
+     * @var array
+     */
+    protected $allowedPermissionsValues = [-1, 0, 1];
+
+    /*
+    |--------------------------------------------------------------------------
+    | Boot method and model events.
+    |--------------------------------------------------------------------------
+    |
+    | Register the observer in the boot method. You can also make use of
+    | model events like saving, creating, updating etc to further
+    | manipulate the model
+    */
+    public static function boot()
+    {
+        parent::boot();
+        self::observe(UserObserver::class);
+        static::saving(function (User $element) {
+            $valid = true;
+            if (! isset($element->is_test)) {
+                $element->is_test = 0;
+            }
+            $element = $element->resolveName();
+
+            /**************************************************
+             * Resolve group_id
+             * If $user->group_id is set as an array somehow then convert it to json
+             * Store a groups in a temporary array var $groups.
+             */
+
+            if (is_array($element->group_ids)) {
+                $group_ids = $element->group_ids;
+                $element->group_ids = json_encode($element->group_ids);
+            } else {
+                $group_ids = json_decode($element->group_ids);
+            }
+
+            // Set group selection limit
+            $max_groups = 1;
+            if (is_array($group_ids) && (count($group_ids) > $max_groups)) {
+                $valid = setError("You can assign only {$max_groups} group.");
+            }
+            if (is_array($group_ids) && count($group_ids)) {
+                $element->group_ids_csv = implode(',', Group::whereIn('id', $group_ids)->pluck('id')->toArray());
+                $element->group_titles_csv = implode(',', Group::whereIn('id', $group_ids)->pluck('title')->toArray());
+            }
+            /**************************************************/
+
+            // fill common fields, null-fill, trim blanks from Request
+            if ($valid) {
+                /**
+                 * If email is confirmed then
+                 */
+
+                if (! isset($element->is_active)) {
+                    $element->is_active = ($element->email_confirmed == 1) ? 1 : 0;
+                }
+
+                $element->email_confirmed = (! $element->email_confirmed) ? 0 : 1;
+                if ($element->email_confirmed && $element->email_verified_at === null) {
+                    $element->email_verified_at = now();
+                }
+
+                //filling last_active_time,last_login_time,last_logout_time fields ;default will be updated_at value
+                $element->last_active_time = (! $element->last_active_time) ? $element->updated_at : $element->last_active_time;
+                $element->last_login_time = (! $element->last_login_time) ? $element->updated_at : $element->last_login_time;
+                $element->last_logout_time = (! $element->last_logout_time) ? $element->updated_at : $element->last_logout_time;
+            }
+
+            return $valid;
+        });
+        static::saved(function (\App\User $element) {
+            // Sync partner_category table
+            $element->groups()->sync(json_decode($element->group_ids));
+        });
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Query scopes + Dynamic scopes
+    |--------------------------------------------------------------------------
+    |
+    | Scopes allow you to easily re-use query logic in your models. To define
+    | a scope, simply prefix a model method with scope:
+    */
+    //public function scopePopular($query) { return $query->where('votes', '>', 100); }
+    //public function scopeWomen($query) { return $query->whereGender('W'); }
+    /*
+    Usage: $users = User::popular()->women()->orderBy('created_at')->get();
+    */
+
+    //public function scopeOfType($query, $type) { return $query->whereType($type); }
+    /*
+    Usage:  $users = User::ofType('member')->get();
+    */
+
+    /*
+    |--------------------------------------------------------------------------
+    | Accessors
+    |--------------------------------------------------------------------------
+    |
+    | Eloquent provides a convenient way to transform your model attributes when
+    | getting or setting them. Get a transformed value of an attribute
+    */
+    // public function getFirstNameAttribute($value) { return ucfirst($value); }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Mutators
+    |--------------------------------------------------------------------------
+    |
+    | Eloquent provides a convenient way to transform your model attributes when
+    | getting or setting them. Get a transformed value of an attribute
+    */
+    // public function setFirstNameAttribute($value) { $this->attributes['first_name'] = strtolower($value); }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Relations
+    |--------------------------------------------------------------------------
+    |
+    | Write model relations (belongsTo,hasMany etc) at the bottom the file
+    */
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function groups() { return $this->belongsToMany(Group::class, 'user_group'); }
+
+    /*
+   |--------------------------------------------------------------------------
+   | Todo: Helper functions
+   |--------------------------------------------------------------------------
+   | Todo: Write Helper functions in the UserHelper trait.
+   */
+
+    /**
+     * Mutator for taking permissions.
+     *
+     * @param  array  $permissions
+     * @return string
+     */
+    public function setPermissionsAttribute(array $permissions)
+    {
+        // Merge permissions
+        /** @noinspection PhpParamsInspection */
+        $permissions = array_merge($this->permissions, $permissions);
+
+        // Loop through and adjust permissions as needed
+        foreach ($permissions as $permission => &$value) {
+            // Lets make sure there is a valid permission value
+            if (! in_array($value = (int) $value, $this->allowedPermissionsValues)) {
+                throw new InvalidArgumentException("Invalid value [$value] for permission [$permission] given.");
+            }
+
+            // If the value is 0, delete it
+            if ($value === 0) {
+                unset($permissions[$permission]);
+            }
+        }
+
+        $this->attributes['permissions'] = (! empty($permissions)) ? json_encode($permissions) : '';
+    }
+
+    /**
+     * Mutator for giving permissions.
+     *
+     * @param  mixed  $permissions
+     * @return array  $_permissions
+     */
+    public function getPermissionsAttribute($permissions)
+    {
+        if (! $permissions) {
+            return [];
+        }
+
+        if (is_array($permissions)) {
+            return $permissions;
+        }
+
+        if (! $_permissions = json_decode($permissions, true)) {
+            throw new InvalidArgumentException("Cannot JSON decode permissions [$permissions].");
+        }
+
+        return $_permissions;
+    }
+
+}

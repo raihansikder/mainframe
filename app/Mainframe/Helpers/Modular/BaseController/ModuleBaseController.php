@@ -12,6 +12,12 @@ use Redirect;
 use Validator;
 use App\Module;
 use App\Mainframe\Helpers\Modular\Resolvers\GridView;
+use App\Mainframe\Helpers\Modular\BaseController\Traits\ListTrait;
+use App\Mainframe\Helpers\Modular\BaseController\Traits\Resolvable;
+use App\Mainframe\Helpers\Modular\BaseController\Traits\DatatableTrait;
+use App\Mainframe\Helpers\Modular\BaseController\Traits\ViewReportTrait;
+use App\Mainframe\Helpers\Modular\BaseController\Traits\ShowChangesTrait;
+use App\Mainframe\Helpers\Modular\BaseController\Traits\ModelOperationsTrait;
 
 /**
  * Class ModuleBaseController
@@ -61,7 +67,7 @@ class ModuleBaseController extends MainframeBaseController
      */
     public function index()
     {
-        if (! $this->can('view-list')) {
+        if (! user()->can('viewAny', get_class($this->model))) {
             return $this->permissionDenied();
         }
 
@@ -138,7 +144,7 @@ class ModuleBaseController extends MainframeBaseController
             return $this->notFound();
         }
 
-        if (! $this->element->isViewable()) {
+        if (! user()->can('view', $this->element)) {
             return $this->permissionDenied();
         }
 
@@ -163,13 +169,13 @@ class ModuleBaseController extends MainframeBaseController
             return $this->notFound();
         }
 
-        if (! $this->element->isViewable()) {
+        if (! user()->can('view', $this->element)) {
             return $this->permissionDenied();
         }
 
         $formState = 'edit';
         $formConfig = $this->editFromConfig();
-        $elementIsEditable = $this->element->isEditable();
+        $elementIsEditable = user()->can('update', $this->element);
 
         return View::make($this->editFormView())
             ->with('element', $this->element)
@@ -197,7 +203,7 @@ class ModuleBaseController extends MainframeBaseController
         $this->attemptUpdate();
 
         if ($this->expectsJson()) {
-            return $this->json();
+            return $this->payload($this->element)->json();
         }
 
         return $this->redirect();

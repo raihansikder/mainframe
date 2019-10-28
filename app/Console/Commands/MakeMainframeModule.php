@@ -51,7 +51,7 @@ class MakeMainframeModule extends Command
         $this->templateModule = new Module(['name' => $this->templateModuleName]);
 
         $this->info($this->module->elementNamePlural().'Creating ..');
-        $this->createMigration();
+        // $this->createMigration();
         $this->createClasses();
         $this->createViewFiles();
         $this->info($this->module->elementNamePlural().'... Done');
