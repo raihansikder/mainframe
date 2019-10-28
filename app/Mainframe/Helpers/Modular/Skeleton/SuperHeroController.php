@@ -1,10 +1,10 @@
 <?php /** @noinspection PhpUndefinedMethodInspection */
 
-namespace App\Mainframe\Modules\Superheroes;
+namespace App\Mainframe\Modules\SuperHeroes;
 
 use App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController;
 
-class SuperheroController extends ModuleBaseController
+class SuperHeroController extends ModuleBaseController
 {
 
     /**
@@ -13,15 +13,15 @@ class SuperheroController extends ModuleBaseController
      */
     public function __construct()
     {
-        parent::__construct('superheroes');
+        parent::__construct('super-heroes');
     }
 
     /**
      * @param  null  $class
-     * @return SuperheroDatatable
+     * @return SuperHeroDatatable
      */
     public function resolveDatatableClass($class = null)
     {
-        return $class ?? new SuperheroDatatable($this->moduleName);
+        return $class ?? new SuperHeroDatatable($this->moduleName);
     }
 }

@@ -3,12 +3,12 @@
 /** @noinspection DuplicatedCode */
 /** @noinspection SenselessMethodDuplicationInspection */
 
-namespace App\Mainframe\Modules\Superheroes;
+namespace App\Mainframe\Modules\SuperHeroes;
 
 use DB;
 use App\Mainframe\Helpers\Datatable\Datatable;
 
-class SuperheroDatatable extends Datatable
+class SuperHeroDatatable extends Datatable
 {
     /**
      * Define Query for generating results for grid

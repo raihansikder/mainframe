@@ -1,12 +1,12 @@
 <?php /** @noinspection PhpUndefinedMethodInspection */
 
-namespace App\Mainframe\Modules\Superheroes;
+namespace App\Mainframe\Modules\SuperHeroes;
 
 use App\Mainframe\Helpers\Modular\BaseModule\BaseModule;
 
-class Superhero extends BaseModule
+class SuperHero extends BaseModule
 {
-    use SuperheroHelper;
+    use SuperHeroHelper;
     /*
     |--------------------------------------------------------------------------
     | Fillable attributes
@@ -92,7 +92,7 @@ class Superhero extends BaseModule
     public static function boot()
     {
         parent::boot();
-        self::observe(SuperheroObserver::class);
+        self::observe(SuperHeroObserver::class);
         // static::saving(function (Superhero $element) { });
     }
 

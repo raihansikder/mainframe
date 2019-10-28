@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpUnhandledExceptionInspection */
 
 namespace App\Console\Commands;
 
@@ -55,6 +55,7 @@ class MakeMainframeModule extends Command
 
         $this->info($this->module->elementNamePlural().' creation ..');
         $this->createMigration();
+        $this->createClasses();
         // $this->createViewFiles();
         // $this->createModel();
         // $this->createObserver();
@@ -82,6 +83,18 @@ class MakeMainframeModule extends Command
 
         // Console output
         $this->info('Migration Created');
+    }
+
+    public function createClasses()
+    {
+        $maps = [
+            'app/Mainframe/Helpers/Modular/Skeleton/SuperHero.php' => 'app/Mainframe/Modules/'.$this->module->modelClassNamePlural().'/'.$this->module->modelClassName().'.php'
+        ];
+
+        foreach ($maps as $from => $to) {
+            $code = $this->replace(File::get($from));
+            File::put($to, $code);
+        }
     }
 
     /**
@@ -167,9 +180,12 @@ class MakeMainframeModule extends Command
         // replace maps
 
         $replaces = [
-            $this->templateModule->elementNamePlural() => $this->module->elementNamePlural(), //'superheroes' -> 'goodBoys'
-            $this->templateModule->modelClassName() => $this->module->modelClassName(), //'Superhero' -> 'GoodBoy'
-            $this->templateModule->elementName() => $this->module->elementName(), //'Superhero' -> 'GoodBoy'
+            $this->templateModule->tableName() => $this->module->tableName(), //'super_heroes' -> 'good_boys'
+            $this->templateModule->modelClassNamePlural() => $this->module->modelClassNamePlural(), //'SuperHeroes' -> 'GoodBoys'
+            $this->templateModule->elementNamePlural() => $this->module->elementNamePlural(), //'superHeroes' -> 'goodBoys'
+            $this->templateModule->modelClassName() => $this->module->modelClassName(), //'SuperHero' -> 'GoodBoy'
+            $this->templateModule->elementName() => $this->module->elementName(), //'superHero' -> 'goodBoy'
+            $this->templateModule->name => $this->module->name, //'superHero' -> 'goodBoy'
 
             // ucfirst($this->template) => ucfirst($module), //'Superheroes' -> 'Goodboys'
             //ucfirst(Str::singular($this->template)) => ucfirst(Str::singular($module)), //'Superhero' -> 'Goodboy'

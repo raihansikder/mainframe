@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Mainframe\Modules\Superheroes;
+namespace App\Mainframe\Modules\SuperHeroes;
 
 use App\Mainframe\Helpers\Modular\Validator\ModelValidator;
 
-class SuperheroValidator extends ModelValidator
+class SuperHeroValidator extends ModelValidator
 {
 
     /*
