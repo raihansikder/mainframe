@@ -5,7 +5,7 @@
  *
  * Variables used in this view file.
  * @var $moduleName           string 'messages'
- * @var $currentModule                   \App\Module
+ * @var $currentModule                   \App\Mainframe\Modules\Modules\Module
  * @var $message               \App\Message Object that is being edited
  * @var $element               string 'message'
  * @var $elementIsEditable      boolean

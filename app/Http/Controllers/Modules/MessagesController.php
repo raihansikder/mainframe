@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Module;
+use App\Mainframe\Modules\Modules\Module;
 use DB;
 use Redirect;
 use Request;
 use Response;
 use Validator;
 use View;
-use App\Http\Mainframe\Helpers\Modular\BaseController\ModuleBaseController;
+use App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController;
 
 class MessagesController extends ModuleBaseController
 {

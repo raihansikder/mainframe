@@ -2,17 +2,19 @@
 
 namespace App\Mainframe\Helpers\Modular\BaseModule;
 
-use App\Change;
+use App\Mainframe\Modules\Changes\Change;
 
 class BaseModuleObserver
 {
 
     /**
-     * @param $element \App\Mainframe\BaseModule
+     * @param $element \App\Mainframe\Helpers\Modular\BaseModule\BaseModule
      * @throws \Exception
      */
     public function saving($element)
     {
+
+
         $element = fillModel($element);         // This line should be placed just before return
 
         Change::keepChangesInSession($element); // store change log
@@ -28,7 +30,7 @@ class BaseModuleObserver
     /**
      * This function is executed during a model's saving() phase
      *
-     * @param $element \App\Mainframe\Basemodule
+     * @param $element \App\Mainframe\Helpers\Modular\BaseModule\BaseModule
      * @return bool
      */
     public function saved($element)
@@ -37,7 +39,7 @@ class BaseModuleObserver
     }
 
     /**
-     * @param $element \App\Mainframe\Basemodule
+     * @param $element \App\Mainframe\Helpers\Modular\BaseModule\BaseModule
      * @return bool
      */
     public function updating($element)
@@ -53,7 +55,7 @@ class BaseModuleObserver
     }
 
     /**
-     * @param $element \App\Mainframe\Basemodule
+     * @param $element \App\Mainframe\Helpers\Modular\BaseModule\BaseModule
      */
     public function created($element)
     {
@@ -61,7 +63,7 @@ class BaseModuleObserver
     }
 
     /**
-     * @param $element \App\Mainframe\Basemodule
+     * @param $element \App\Mainframe\Helpers\Modular\BaseModule\BaseModule
      * @return bool
      */
     public function deleting($element)
@@ -75,7 +77,7 @@ class BaseModuleObserver
     /**
      * Handle the base module "deleted" event.
      *
-     * @param  $element \App\Mainframe\Basemodule
+     * @param  $element \App\Mainframe\Helpers\Modular\BaseModule\BaseModule
      * @return void
      */
     public function deleted($element)

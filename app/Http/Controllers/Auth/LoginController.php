@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use Auth;
-use App\User;
+use App\Mainframe\Modules\Users\User;
 use App\Mainframe\Traits\IsoOutput;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -148,7 +148,7 @@ class LoginController extends Controller
     /**
      * The user has been authenticated.
      * @param  \Illuminate\Http\Request $request
-     * @param  \App\User $user
+     * @param  \App\Mainframe\Modules\Users\User $user
      * @return \Illuminate\Http\JsonResponse
      */
     protected function authenticated(Request $request, $user) {

@@ -2,7 +2,7 @@
 
 namespace App\Mainframe\Modules\Modules;
 
-use App\Http\Mainframe\Helpers\Modular\BaseController\ModuleBaseController;
+use App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController;
 
 class ModuleController extends ModuleBaseController
 {

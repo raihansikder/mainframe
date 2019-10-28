@@ -2,7 +2,7 @@
 
 namespace App\Mainframe\Traits;
 
-use App\User;
+use App\Mainframe\Modules\Users\User;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Watson\Rememberable\Rememberable;
 

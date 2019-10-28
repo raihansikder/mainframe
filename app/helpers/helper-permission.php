@@ -1,10 +1,11 @@
 <?php
 
-use App\User;
+use App\Mainframe\Modules\Users\User;
 
 /**
  * Renders a multi-dimentional array of permissions in hiararchical order for assigning permission
  * The $tree can be generated from ModuleGroup::tree()
+ *
  * @param $tree  : ModuleGroup::tree()
  */
 function renderModulePermissionTree($tree)
@@ -12,8 +13,8 @@ function renderModulePermissionTree($tree)
     if (is_array($tree)) {
         echo "<ul>";
         foreach ($tree as $leaf) {
-
-            $perm = 'perm-'.$leaf['type'].'-'.$leaf['item']->name;
+            // $perm = 'perm-'.$leaf['type'].'-'.$leaf['item']->name;
+            $perm = $leaf['item']->name;
             $val = $perm;
 
             echo "<div class='clearfix'></div><li class='pull-left'>".
@@ -21,7 +22,7 @@ function renderModulePermissionTree($tree)
 				v-on:click='clicked'/>".
                 "<label><b>".$leaf['item']->title."</b> - <small>".$leaf['item']->desc."</small></label> <div class='clearfix'></div>";
 
-            if ($leaf['type'] == 'module') {
+            if ($leaf['type'] === 'module') {
                 $module_default_permissions_suffixes = [
                     'view-list' => 'View grid',
                     'view-details' => 'View details',
@@ -42,7 +43,6 @@ function renderModulePermissionTree($tree)
                         "</li>";
                 }
                 echo "</ul>";
-
                 /*
                 if ($leaf['item']->has_uploads) {
                     $file_permission_suffixes = [
@@ -97,8 +97,9 @@ function renderModulePermissionTree($tree)
 
 /**
  * returns sentry object of currently logged in user
+ *
  * @param  bool|false  $user_id
- * @return \Illuminate\Contracts\Auth\Authenticatable|\App\User
+ * @return \Illuminate\Contracts\Auth\Authenticatable|\App\Mainframe\Modules\Users\User
  */
 function user($user_id = false)
 {
@@ -136,13 +137,13 @@ function user($user_id = false)
 
 /**
  * This is a similar function to sentry's hasAccess. checks if current user has access to a certain permission
+ *
  * @param           $permission
  * @param  bool|null  $user_id
  * @return bool
  */
 function hasAccess($permission, $user_id = false)
 {
-
     //return true;
     $allowed = false;
     $user = user($user_id);
@@ -170,6 +171,7 @@ function hasAccess($permission, $user_id = false)
 
 /**
  * Same as has access
+ *
  * @param            $permission
  * @param  bool|false  $user_id
  * @return bool
@@ -181,6 +183,7 @@ function hasPermission($permission, $user_id = false)
 
 /**
  * Short hand function to check module specific permissions
+ *
  * @param            $moduleName
  * @param            $permission
  * @param  bool|false  $user_id
@@ -188,12 +191,12 @@ function hasPermission($permission, $user_id = false)
  */
 function hasModulePermission($moduleName, $permission, $user_id = false)
 {
-
     return hasAccess("perm-module-$moduleName-$permission", $user_id);
 }
 
 /**
  * Checks if an spyr element(model) is creatable by a user
+ *
  * @param      $element
  * @param  null  $user_id
  * @param  bool  $set_msg
@@ -221,6 +224,7 @@ function spyrElementCreatable($element, $user_id = null, $set_msg = false)
 
 /**
  * Checks if an spyr element(model) is viewable by a user
+ *
  * @param      $element
  * @param  null  $user_id
  * @param  bool  $set_msg
@@ -248,6 +252,7 @@ function spyrElementViewable($element, $user_id = null, $set_msg = false)
 
 /**
  * Checks if an spyr element(model) is editable by a user
+ *
  * @param      $element
  * @param  null  $user_id
  * @param  bool  $set_msg
@@ -273,6 +278,7 @@ function spyrElementEditable($element, $user_id = null, $set_msg = false)
 
 /**
  * Checks if an spyr element(model) is deletable by a user
+ *
  * @param      $element
  * @param  null  $user_id
  * @param  bool  $set_msg
@@ -299,6 +305,7 @@ function spyrElementDeletable($element, $user_id = null, $set_msg = false)
 
 /**
  * Checks if an spyr element(model) is deletable by a user
+ *
  * @param      $element
  * @param  null  $user_id
  * @param  bool  $set_msg
@@ -324,6 +331,7 @@ function spyrElementRestorable($element, $user_id = null, $set_msg = false)
 
 /**
  * Some elements are system enforced and not allowed to be editable by tenant.
+ *
  * @param      $element
  * @param  bool  $set_msg
  * @return bool
@@ -334,12 +342,14 @@ function editableByTenant($element, $set_msg = false)
     if (isset($element->is_editable_by_tenant) && $element->is_editable_by_tenant == 0) {
         $valid = setError("This is a system entry and not editable by tenant user ", $set_msg);
     }
+
     return $valid;
 }
 
 /**
  * This function checks if a user has correct tenant context of an element and the elemnet
  * is not a system reserved element.
+ *
  * @param      $element
  * @param  null  $user_id
  * @param  bool  $set_msg
@@ -358,6 +368,7 @@ function editableInTenantContext($element, $user_id = null, $set_msg = false)
             $valid = editableByTenant($element, $set_msg);
         }
     }
+
     return $valid;
 }
 

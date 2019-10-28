@@ -22,12 +22,12 @@ use App\Mainframe\Helpers\Modular\BaseModule\BaseModule;
  * @property \Illuminate\Support\Carbon|null $updated_at TRIAL
  * @property \Illuminate\Support\Carbon|null $deleted_at TRIAL
  * @property int|null $deleted_by TRIAL
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Change[] $changes
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Changes\Change[] $changes
  * @property-read int|null $changes_count
- * @property-read \App\User|null $creator
- * @property-read \App\Upload $latestUpload
- * @property-read \App\User|null $updater
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Upload[] $uploads
+ * @property-read \App\Mainframe\Modules\Users\User|null $creator
+ * @property-read \App\Mainframe\Modules\Uploads\Upload $latestUpload
+ * @property-read \App\Mainframe\Modules\Users\User|null $updater
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Uploads\Upload[] $uploads
  * @property-read int|null $uploads_count
  * @method static Builder|Setting newModelQuery()
  * @method static Builder|Setting newQuery()
@@ -50,6 +50,15 @@ use App\Mainframe\Helpers\Modular\BaseModule\BaseModule;
  */
 class Setting extends BaseModule
 {
+    use SettingHelper;
+
+    /*
+    |--------------------------------------------------------------------------
+    | Fillable attributes
+    |--------------------------------------------------------------------------
+    |
+    | These attributes can be mass assigned
+    */
     protected $fillable = [
         'uuid',
         'name',
@@ -58,14 +67,64 @@ class Setting extends BaseModule
         'description',
         'value',
         'is_active',
-        'created_by',
-        'updated_by',
-        'created_at',
-        'updated_at',
-        'deleted_at',
-        'deleted_by',
     ];
+    /*
+    |--------------------------------------------------------------------------
+    | Guarded attributes
+    |--------------------------------------------------------------------------
+    |
+    | The attributes can not be mass assigned.
+    */
+    // protected $guarded = [];
 
+    /*
+    |--------------------------------------------------------------------------
+    | Type cast dates
+    |--------------------------------------------------------------------------
+    |
+    | Type cast attributes as date. This allows to create a Carbon object.
+    | Of the dates
+   */
+    // protected $dates = [];
+
+    /*
+    |--------------------------------------------------------------------------
+    | Type cast attributes
+    |--------------------------------------------------------------------------
+    |
+    | Type cast attributes (helpful for JSON)
+    */
+    // protected $casts = [];
+
+    /*
+    |--------------------------------------------------------------------------
+    | Automatic eager load
+    |--------------------------------------------------------------------------
+    |
+    | Auto load these relations whenever the model is retrieved.
+    */
+    // protected $with = [];
+
+    /*
+    |--------------------------------------------------------------------------
+    | Append new attributes to the model
+    |--------------------------------------------------------------------------
+    |
+    | If you want to append a new attribute that doesn't exists in the table
+    | you should first create and accessor getNewFieldAttribute and then
+    | add the attribute name in the array
+    */
+    // protected $appends = [];
+
+    /*
+    |--------------------------------------------------------------------------
+    | Options
+    |--------------------------------------------------------------------------
+    |
+    | Your model can have one or more public static variables that stores
+    | The possible options for some field. Variable name should be
+    |
+    */
     /**
      * @var array Options for setting type
      */
@@ -83,10 +142,15 @@ class Setting extends BaseModule
      */
     // protected $with = ['relation1', 'relation2'];
 
-    ############################################################################################
-    # Boot function & Model events
-    ############################################################################################
-
+    /*
+    |--------------------------------------------------------------------------
+    | Boot method and model events.
+    |--------------------------------------------------------------------------
+    |
+    | Register the observer in the boot method. You can also make use of
+    | model events like saving, creating, updating etc to further
+    | manipulate the model
+    */
     public static function boot()
     {
         parent::boot();
@@ -94,54 +158,67 @@ class Setting extends BaseModule
     }
 
 
-    ############################################################################################
-    # Helper functions
-    ############################################################################################
+    /*
+     |--------------------------------------------------------------------------
+     | Query scopes + Dynamic scopes
+     |--------------------------------------------------------------------------
+     |
+     | Scopes allow you to easily re-use query logic in your models. To define
+     | a scope, simply prefix a model method with scope:
+     */
+    //public function scopePopular($query) { return $query->where('votes', '>', 100); }
+    //public function scopeWomen($query) { return $query->whereGender('W'); }
+    /*
+    Usage: $users = User::popular()->women()->orderBy('created_at')->get();
+    */
+
+    //public function scopeOfType($query, $type) { return $query->whereType($type); }
+    /*
+    Usage:  $users = User::ofType('member')->get();
+    */
+
+    /*
+    |--------------------------------------------------------------------------
+    | Accessors
+    |--------------------------------------------------------------------------
+    |
+    | Eloquent provides a convenient way to transform your model attributes when
+    | getting or setting them. Get a transformed value of an attribute
+    */
+    // public function getFirstNameAttribute($value) { return ucfirst($value); }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Mutators
+    |--------------------------------------------------------------------------
+    |
+    | Eloquent provides a convenient way to transform your model attributes when
+    | getting or setting them. Get a transformed value of an attribute
+    */
+    // public function setFirstNameAttribute($value) { $this->attributes['first_name'] = strtolower($value); }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Relations
+    |--------------------------------------------------------------------------
+    |
+    | Write model relations (belongsTo,hasMany etc) at the bottom the file
+    */
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    // public function updater() { return $this->belongsTo(\App\Mainframe\Modules\Users\User::class, 'updated_by'); }
 
     /**
-     * Get setting
-     *
-     * @param $name
-     * @return array|bool|mixed|null|string
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public static function read($name)
-    {
-        /** @var \App\Setting $setting */
-        if ($setting = self::where('name', $name)->remember(cacheTime('short'))->first()) {
-            return $setting->settingValue();
-        }
+    // public function creator() { return $this->belongsTo(\App\Mainframe\Modules\Users\User::class, 'created_by'); }
 
-        return null;
-    }
-
-    /**
-     * Function to get the setting value. The value can be boolean, string, array(json) or files
-     */
-    public function settingValue()
-    {
-        $val = $this->value;
-        switch ($this->type) {
-            case 'boolean':
-                $val = $this->value === 'true';
-                break;
-            case 'string':
-                $val = $this->value;
-                break;
-            case 'array':
-                $val = json_decode($this->value, true);
-                break;
-            case 'file':
-                $files = [];
-                if ($this->uploads()->exists()) {
-                    foreach ($this->uploads as $upload) {
-                        $files[] = $upload->url;
-                    }
-                }
-                $val = $files;
-                break;
-        }
-
-        return $val;
-    }
+    /*
+   |--------------------------------------------------------------------------
+   | Todo: Helper functions
+   |--------------------------------------------------------------------------
+   | Todo: Write Helper functions in the SettingHelper trait.
+   */
 
 }

@@ -4,7 +4,7 @@
  *                 file is included inside a form.
  * @var $errors                     \Illuminate\Support\MessageBag
  * @var $moduleName                string 'aiddeclarations'
- * @var $currentModule                        \App\Module
+ * @var $currentModule                        \App\Mainframe\Modules\Modules\Module
  * @var $aiddeclaration             \App\Aiddeclaration Object that is being edited
  * @var $element                    string 'aiddeclaration'
  * @var $elementIsEditable           boolean

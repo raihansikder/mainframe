@@ -5,7 +5,7 @@
  *
  * Variables used in this view file.
  * @var $moduleName           string 'superheroes'
- * @var $currentModule                   \App\Module
+ * @var $currentModule                   \App\Mainframe\Modules\Modules\Module
  * @var $superhero             \App\Superhero Object that is being edited
  * @var $element               string 'superhero'
  * @var $elementIsEditable      boolean

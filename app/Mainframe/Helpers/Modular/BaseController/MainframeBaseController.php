@@ -5,19 +5,21 @@
 /** @noinspection PhpUnusedLocalVariableInspection */
 /** @noinspection PhpUndefinedMethodInspection */
 
-namespace App\Http\Mainframe\Helpers\Modular\BaseController;
+namespace App\Mainframe\Helpers\Modular\BaseController;
 
 use Request;
 use App\Mainframe\Traits\IsoOutput;
 use App\Http\Controllers\Controller;
 use App\Mainframe\Traits\GridDatatable;
+use App\Mainframe\Helpers\Modular\BaseController\Traits\ResponseTrait;
+use App\Mainframe\Helpers\Modular\BaseController\Traits\Transformable;
 
 /**
  * Class ModuleBaseController
  */
 class MainframeBaseController extends Controller
 {
-    use IsoOutput, Transformable, ResponseTrait, PermissionsTrait;
+    use IsoOutput, Transformable, ResponseTrait;
 
     /** @var \Illuminate\Http\Request */
     public $request;
@@ -30,10 +32,8 @@ class MainframeBaseController extends Controller
      */
     public function __construct()
     {
-
         $this->messageBag = app('messageBag');
         $this->request = Request::capture();
-
     }
 
 }

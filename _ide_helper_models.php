@@ -36,7 +36,7 @@ namespace App\Mainframe\Modules\Modules{
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
  * @property int|null $deleted_by
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Change[] $changes
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Changes\Change[] $changes
  * @property-read int|null $changes_count
  * @property-read \App\User|null $creator
  * @property-read \App\Upload $latestUpload
@@ -90,7 +90,7 @@ namespace App\Mainframe\Modules\Settings{
  * @property \Illuminate\Support\Carbon|null $updated_at TRIAL
  * @property \Illuminate\Support\Carbon|null $deleted_at TRIAL
  * @property int|null $deleted_by TRIAL
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Change[] $changes
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Changes\Change[] $changes
  * @property-read int|null $changes_count
  * @property-read \App\User|null $creator
  * @property-read \App\Upload $latestUpload
@@ -120,7 +120,7 @@ namespace App\Mainframe\Modules\Settings{
 
 namespace App{
 /**
- * App\Module
+ * App\Mainframe\Modules\Modules\Module
  *
  * @property int $id
  * @property string|null $uuid
@@ -144,38 +144,38 @@ namespace App{
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
  * @property int|null $deleted_by
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Change[] $changes
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Changes\Change[] $changes
  * @property-read int|null $changes_count
  * @property-read \App\User|null $creator
  * @property-read \App\Upload $latestUpload
  * @property-read \App\User|null $updater
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Upload[] $uploads
  * @property-read int|null $uploads_count
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Module newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Module newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Module query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Module whereColorCss($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Module whereController($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Module whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Module whereCreatedBy($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Module whereDefaultRoute($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Module whereDeletedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Module whereDeletedBy($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Module whereDescription($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Module whereIconCss($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Module whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Module whereIsActive($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Module whereLevel($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Module whereModel($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Module whereModuleGroupId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Module whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Module whereOrder($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Module whereParentId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Module whereTitle($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Module whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Module whereUpdatedBy($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Module whereUuid($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Module whereView($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Modules\Module newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Modules\Module newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Modules\Module query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Modules\Module whereColorCss($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Modules\Module whereController($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Modules\Module whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Modules\Module whereCreatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Modules\Module whereDefaultRoute($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Modules\Module whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Modules\Module whereDeletedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Modules\Module whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Modules\Module whereIconCss($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Modules\Module whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Modules\Module whereIsActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Modules\Module whereLevel($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Modules\Module whereModel($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Modules\Module whereModuleGroupId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Modules\Module whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Modules\Module whereOrder($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Modules\Module whereParentId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Modules\Module whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Modules\Module whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Modules\Module whereUpdatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Modules\Module whereUuid($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Modules\Module whereView($value)
  * @mixin \Eloquent
  */
 	class Module extends \Eloquent {}
@@ -183,7 +183,7 @@ namespace App{
 
 namespace App{
 /**
- * App\Setting
+ * App\Mainframe\Modules\Settings\Setting
  *
  * @property int $id TRIAL
  * @property string|null $uuid TRIAL
@@ -199,30 +199,30 @@ namespace App{
  * @property \Illuminate\Support\Carbon|null $updated_at TRIAL
  * @property \Illuminate\Support\Carbon|null $deleted_at TRIAL
  * @property int|null $deleted_by TRIAL
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Change[] $changes
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Changes\Change[] $changes
  * @property-read int|null $changes_count
  * @property-read \App\User|null $creator
  * @property-read \App\Upload $latestUpload
  * @property-read \App\User|null $updater
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Upload[] $uploads
  * @property-read int|null $uploads_count
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Setting newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Setting newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Setting query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Setting whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Setting whereCreatedBy($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Setting whereDeletedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Setting whereDeletedBy($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Setting whereDescription($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Setting whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Setting whereIsActive($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Setting whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Setting whereTitle($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Setting whereType($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Setting whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Setting whereUpdatedBy($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Setting whereUuid($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Setting whereValue($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Settings\Setting newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Settings\Setting newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Settings\Setting query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Settings\Setting whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Settings\Setting whereCreatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Settings\Setting whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Settings\Setting whereDeletedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Settings\Setting whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Settings\Setting whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Settings\Setting whereIsActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Settings\Setting whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Settings\Setting whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Settings\Setting whereType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Settings\Setting whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Settings\Setting whereUpdatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Settings\Setting whereUuid($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Settings\Setting whereValue($value)
  */
 	class Setting extends \Eloquent {}
 }
@@ -285,11 +285,11 @@ namespace App{
  * @property string|null $dob
  * @property string|null $group_ids
  * @property int|null $is_test
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Change[] $changes
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Changes\Change[] $changes
  * @property-read int|null $changes_count
  * @property-read \App\User|null $creator
  * @property-read null|string $avatar
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Group[] $groups
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Groups\Group[] $groups
  * @property-read int|null $groups_count
  * @property-read \App\Upload $latestUpload
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications

@@ -79,7 +79,7 @@ function loadNotificationContents(Notificationtemplate $template, $subject_repla
 /**
  * Send email notification to user when registers.
  *
- * @param $user \App\User
+ * @param $user \App\Mainframe\Modules\Users\User
  */
 function userRegistrationWithVerificationNotification($user) {
     // Data to be used on the email
@@ -109,7 +109,7 @@ function userRegistrationWithVerificationNotification($user) {
 /**
  * Send email notification to partner admin user when registers.
  *
- * @param $user \App\User
+ * @param $user \App\Mainframe\Modules\Users\User
  */
 function partnerUserRegistrationEmailWithVerification($user) {
     // Data to be used on the email
@@ -130,7 +130,7 @@ function partnerUserRegistrationEmailWithVerification($user) {
 /**
  * Send email notification to user when he logs in for the first time.
  *
- * @param $user \App\User
+ * @param $user \App\Mainframe\Modules\Users\User
  */
 function userFirstLoginNotification($user) {
     // Data to be used on the email
@@ -156,7 +156,7 @@ function userFirstLoginNotification($user) {
 /**
  * Send email notification to user when he logs in for the first time.
  *
- * @param $user \App\User
+ * @param $user \App\Mainframe\Modules\Users\User
  */
 function userChangedPasswordNotification($user) {
     // Data to be used on the email
@@ -175,7 +175,7 @@ function userChangedPasswordNotification($user) {
 /**
  * Send email notification to user with a password reset link.
  *
- * @param $user \App\User
+ * @param $user \App\Mainframe\Modules\Users\User
  * @param $token
  */
 function resetPasswordNotification($user, $token) {
@@ -196,7 +196,7 @@ function resetPasswordNotification($user, $token) {
 /**
  * Send email notification to user with a password reset link.
  *
- * @param $user \App\User
+ * @param $user \App\Mainframe\Modules\Users\User
  */
 function emailVerificationNotification($user) {
     // Data to be used on the email

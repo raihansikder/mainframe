@@ -1,0 +1,113 @@
+<?php
+
+namespace App\Mainframe\Modules\ModuleGroups;
+
+use App\Mainframe\Modules\Modules\Module;
+
+trait ModuleGroupHelper
+{
+    public static function ofParentId($id = 0)
+    {
+        return ModuleGroup::active()->where('parent_id', $id)
+            ->orderBy('order')
+            ->remember(cacheTime('long'))->get();
+    }
+
+    /**
+     * An array of menu
+     *
+     * @return array
+     */
+    public static function tree()
+    {
+        /** @var \App\Mainframe\Modules\Modules\ModuleGroup $moduleGroups */
+        $moduleGroups = ModuleGroup::ofParentId(0);
+        $list = [];
+        foreach ($moduleGroups as $moduleGroup) {
+            if (count($moduleGroup->children())) {
+                $list[] = ['type' => 'module_group', 'item' => $moduleGroup, 'children' => $moduleGroup->children()];
+            } else {
+                $list[] = ['type' => 'module_group', 'item' => $moduleGroup, 'children' => []];
+            }
+        }
+        $modules = Module::ofGroupId(0);
+        if (count($modules)) {
+            foreach ($modules as $module) {
+                $list[] = ['type' => 'module', 'item' => $module];
+            }
+        }
+
+        return $list;
+    }
+
+    /**
+     * Get children modules and module_groups
+     *
+     * @return array
+     */
+    public function children()
+    {
+        $list = [];
+
+        $moduleGroups = ModuleGroup::ofParentId($this->id);
+        if (count($moduleGroups)) {
+            foreach ($moduleGroups as $moduleGroup) {
+                if (count($moduleGroup->children())) {
+                    $list[] = ['type' => 'module_group', 'item' => $moduleGroup, 'children' => $moduleGroup->children()];
+                } else {
+                    $list[] = ['type' => 'module_group', 'item' => $moduleGroup, 'children' => []];
+                }
+            }
+        }
+        $modules = Module::ofGroupId($this->id);
+        if (count($modules)) {
+            foreach ($modules as $module) {
+                $list[] = ['type' => 'module', 'item' => $module];
+            }
+        }
+
+        return $list;
+    }
+
+    /**
+     * Get module_group names as one-dimentional array
+     *
+     * @param  bool|true  $only_active
+     * @return array
+     */
+    public static function names($only_active = true)
+    {
+        $q = ModuleGroup::select('name');
+        if ($only_active) {
+            $q = $q->remember(cacheTime('very-long'))->where('is_active', 1);
+        }
+        $results = $q->get()->toArray();
+        $modules = array_column($results, 'name');
+
+        return $modules;
+    }
+
+    /**
+     * get first level children of a module group
+     *
+     * @return array
+     */
+    public function firstLevelChildren()
+    {
+        $list = [];
+        $moduleGroups = ModuleGroup::whereParentId($this->id)->whereIsActive(1)->orderBy('order')->remember(cacheTime('very-long'))->get();
+        if (count($moduleGroups)) {
+            foreach ($moduleGroups as $moduleGroup) {
+                array_push($list, ['type' => 'module_group', 'item' => $moduleGroup]);
+            }
+        }
+        $modules = Module::whereModuleGroupId($this->id)->whereIsActive(1)->orderBy('order')->remember(cacheTime('very-long'))->get();
+        if (count($modules)) {
+            foreach ($modules as $module) {
+                array_push($list, ['type' => 'module', 'item' => $module]);
+            }
+        }
+
+        return $list;
+    }
+}

@@ -1,8 +1,8 @@
 <?php
 
-use App\Module;
+use App\Mainframe\Modules\Modules\Module;
 use App\Report;
-use App\Setting;
+use App\Mainframe\Modules\Settings\Setting;
 use Illuminate\Support\Str;
 
 /**
@@ -48,7 +48,7 @@ function oldInputValue($name = '', $value = null)
  * inputs and set the empty strings to null. Also for all cases we need to set the creator/updater/deleter
  * with timestamp of that event.
  * This function is generally used in Model saving() event
- * @param \App\Mainframe\Basemodule $element Eloquent model object
+ * @param \App\Mainframe\Helpers\Modular\BaseModule\BaseModule $element Eloquent model object
  * @param array $except If any field should be ignored from auto filling then should be
  *                                                     defined in this array
  * @return mixed : Eloquent model object with filled and cleaned values
@@ -99,6 +99,7 @@ function fillModel($element, $except = [])
  */
 function moduleName($class)
 {
+
     return Str::plural(lcfirst(class_basename($class)));
 }
 
@@ -135,7 +136,7 @@ function controllerModule($controller_class)
 
 /**
  * Derive module name from an eloquent model element
- * @param $element \App\Mainframe\Basemodule
+ * @param $element \App\Http\Mainframe\Helpers\Modular\BaseModule\BaseModule
  * @return string
  * @internal param $element_object
  */
@@ -347,7 +348,7 @@ function conf($key = '')
 function cacheTime($key)
 {
     if (env('QUERY_CACHE_ENABLED') == true && Request::get('no_cache') !== 'true') {
-        return Config::get('query-cache-times.' . $key);
+        return Config::get('mainframe.query-cache-times.' . $key);
     }
 }
 

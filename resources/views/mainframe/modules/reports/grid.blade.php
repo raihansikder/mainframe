@@ -4,7 +4,7 @@
 /**
  * Variables used in this view file.
  * @var $moduleName string 'superheroes'
- * @var $currentModule         \App\Module
+ * @var $currentModule         \App\Mainframe\Modules\Modules\Module
  * @var $uuid        string '1709c091-8114-4ba4-8fd8-91f0ba0b63e8'
  */
 ?>

@@ -5,7 +5,7 @@
  *
  * Variables used in this view file.
  * @var $moduleName           string 'reports'
- * @var $currentModule                   \App\Module
+ * @var $currentModule                   \App\Mainframe\Modules\Modules\Module
  * @var $report                \App\Report Object that is being edited
  * @var $element               string 'report'
  * @var $elementIsEditable      boolean

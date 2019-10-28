@@ -57,7 +57,7 @@
                     'name' => 'group_ids',
                     'label' => 'Group',
                     'value' => Request::get('group_ids') ?? [],
-                    'query' => new \App\Group,
+                    'query' => new \App\Mainframe\Modules\Groups\Group,
                     'name_field' => 'title',
                     'params' => ['multiple', 'id' => 'groups'],
                     'container_class' => 'col-sm-3'

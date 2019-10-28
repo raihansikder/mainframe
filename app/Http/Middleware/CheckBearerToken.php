@@ -2,7 +2,7 @@
 
 namespace App\Http\Middleware;
 
-use App\User;
+use App\Mainframe\Modules\Users\User;
 use Closure;
 
 class CheckBearerToken

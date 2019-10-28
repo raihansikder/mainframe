@@ -1,15 +1,22 @@
 <?php
+/** @noinspection UnknownInspectionInspection */
+
+/** @noinspection DuplicatedCode */
 
 namespace App\Mainframe\Helpers\Datatable;
 
 use DB;
-use App\Module;
+use App\Mainframe\Modules\Modules\Module;
 
 class Datatable
 {
 
-    public $moduleName;        // Stores module name with lowercase and plural i.e. 'superheros'.
-    public $module;            // Stores module name with lowercase and plural i.e. 'superheros'.
+    /** @var string */
+    public $moduleName;
+    /** @var \App\Mainframe\Modules\Modules\Module */
+    public $module;
+    /** @var string */
+    public $table;
 
     /**
      * Constructor for this class is very important as it boots up necessary features of
@@ -23,10 +30,9 @@ class Datatable
      */
     public function __construct($moduleName)
     {
-
         $this->moduleName = $moduleName;
         $this->module = Module::byName($moduleName);
-
+        $this->table = $this->module->tableName();
     }
 
     /**
@@ -36,8 +42,8 @@ class Datatable
      */
     public function source()
     {
-        return DB::table($this->moduleName)
-            ->leftJoin('users as updater', $this->moduleName.'.updated_by', 'updater.id');
+        return DB::table($this->table)
+            ->leftJoin('users as updater', $this->table.'.updated_by', 'updater.id');
     }
 
     /**
@@ -48,12 +54,27 @@ class Datatable
     public function columns()
     {
         return [
-            ["{$this->moduleName}.id", 'id', 'ID'],
-            ["{$this->moduleName}.name", 'name', 'Name'],
+            [$this->table.".id", 'id', 'ID'],
+            [$this->table.".name", 'name', 'Name'],
             ['updater.name', 'user_name', 'Updater'],
-            ["{$this->moduleName}.updated_at", 'updated_at', 'Updated at'],
-            ["{$this->moduleName}.is_active", 'is_active', 'Active']
+            [$this->table.".updated_at", 'updated_at', 'Updated at'],
+            [$this->table.".is_active", 'is_active', 'Active']
         ];
+    }
+
+    /**
+     * Construct SELECT statement (field1 AS f1, field2 as f2...)
+     *
+     * @return array
+     */
+    public function selects()
+    {
+        $cols = [];
+        foreach ($this->columns() as $col) {
+            $cols[] = $col[0].' as '.$col[1];
+        }
+
+        return $cols;
     }
 
     /**
@@ -66,12 +87,12 @@ class Datatable
         $query = $this->source()->select($this->selects());
 
         // Inject tenant context in grid query
-        if ($tenant_id = inTenantContext($this->moduleName)) {
-            $query = injectTenantIdInModelQuery($this->moduleName, $query);
+        if ($tenant_id = inTenantContext($this->table)) {
+            $query = injectTenantIdInModelQuery($this->table, $query);
         }
 
         // Exclude deleted rows
-        $query = $query->whereNull($this->moduleName.'.deleted_at'); // Skip deleted rows
+        $query = $query->whereNull($this->table.'.deleted_at'); // Skip deleted rows
 
         return $query;
     }
@@ -84,32 +105,16 @@ class Datatable
      */
     public function modify($dt)
     {
-        // First set columns for  HTML rendering
-        $dt = $dt->rawColumns(['id', 'name', 'is_active']); // HTML can be printed for raw columns
+        // Set columns for HTML output.
+        $dt = $dt->rawColumns(['id', 'name', 'is_active']);
 
         // Next modify each column content
         /*  @var $dt \Yajra\DataTables\DataTableAbstract */
-
         $dt = $dt->editColumn('name', '<a href="{{ route(\''.$this->moduleName.'.edit\', $id) }}">{{$name}}</a>');
         $dt = $dt->editColumn('id', '<a href="{{ route(\''.$this->moduleName.'.edit\', $id) }}">{{$id}}</a>');
         $dt = $dt->editColumn('is_active', '@if($is_active)  Yes @else <span class="text-red">No</span> @endif');
 
         return $dt;
-    }
-
-    /**
-     * Construct SELECT statement based
-     *
-     * @return array
-     */
-    public function selects()
-    {
-        $cols = [];
-        foreach ($this->columns() as $col) {
-            $cols[] = $col[0].' as '.$col[1];
-        }
-
-        return $cols;
     }
 
     /**

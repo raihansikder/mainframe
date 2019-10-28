@@ -6,7 +6,7 @@
 
 
 @if(hasModulePermission($module->name,"report"))
-    <a href="{{\App\Report::defaultForModule($module->id)}}" class="btn btn-default btn-xs"
+    <a href="{{\App\Mainframe\Modules\Reports\Report::defaultForModule($module->id)}}" class="btn btn-default btn-xs"
        title="View advanced report with filters, excel export etc."
        target="_blank">
         <i class="fa fa-file-excel-o"></i> &nbsp;VIEW ADVANCED REPORT

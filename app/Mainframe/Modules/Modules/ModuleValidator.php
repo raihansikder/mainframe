@@ -31,7 +31,7 @@ class ModuleValidator extends ModelValidator
     /**
      * Run all rule checkers
      *
-     * @return \App\Mainframe\BaseModule|bool
+     * @return \App\Http\Mainframe\Helpers\Modular\BaseModule\BaseModule|bool
      */
     public function run()
     {
@@ -44,7 +44,7 @@ class ModuleValidator extends ModelValidator
     /**
      * Get results
      *
-     * @return \App\Mainframe\BaseModule|bool
+     * @return \App\Http\Mainframe\Helpers\Modular\BaseModule\BaseModule|bool
      */
     public function result()
     {
