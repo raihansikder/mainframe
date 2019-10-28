@@ -12,13 +12,13 @@
     @endif
 
     {{-- Delete modal --}}
-    @if(isset($$element) && $$element->isDeletable())
+    @if(isset($element->id) && $element->isDeletable())
         <div class="pull-right delete-cta no-padding">
-            {!! deleteBtn(route($module->name.".destroy",$$element->id),route($module->name.".index")) !!}
+            {!! deleteBtn(route($module->name.".destroy",$element->id),route($module->name.".index")) !!}
         </div>
     @endif
-    @if(isset($$element))
+    @if(isset($element->id))
         <a target="_blank" class="btn btn-default pull-right"
-           href="{{route("$module->name.changes",$$element->id)}}">Change log</a>
+           href="{{route("$module->name.changes",$element->id)}}">Change log</a>
     @endif
 </div>
