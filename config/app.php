@@ -178,8 +178,6 @@ return [
         //Barryvdh\Debugbar\ServiceProvider::class,
         Yajra\DataTables\DataTablesServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
-        Spatie\Permission\PermissionServiceProvider::class,
-
     ],
 
     /*

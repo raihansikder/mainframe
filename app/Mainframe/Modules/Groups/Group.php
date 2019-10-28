@@ -7,6 +7,48 @@ use App\Mainframe\Modules\Users\User;
 use App\Mainframe\Helpers\Modular\BaseModule\BaseModule;
 use App\Mainframe\Modules\Groups\Traits\GroupDefinitionsTrait;
 
+/**
+ * App\Mainframe\Modules\Groups\Group
+ *
+ * @property int $id TRIAL
+ * @property string|null $uuid TRIAL
+ * @property string|null $name TRIAL
+ * @property string|null $title TRIAL
+ * @property array $permissions TRIAL
+ * @property int|null $is_active TRIAL
+ * @property int|null $created_by TRIAL
+ * @property int|null $updated_by TRIAL
+ * @property \Illuminate\Support\Carbon|null $created_at TRIAL
+ * @property \Illuminate\Support\Carbon|null $updated_at TRIAL
+ * @property \Illuminate\Support\Carbon|null $deleted_at TRIAL
+ * @property int|null $deleted_by TRIAL
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Changes\Change[] $changes
+ * @property-read int|null $changes_count
+ * @property-read \App\Mainframe\Modules\Users\User|null $creator
+ * @property-read \App\Mainframe\Modules\Uploads\Upload $latestUpload
+ * @property-read \App\Mainframe\Modules\Users\User|null $updater
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Uploads\Upload[] $uploads
+ * @property-read int|null $uploads_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Users\User[] $users
+ * @property-read int|null $users_count
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Helpers\Modular\BaseModule\BaseModule active()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Groups\Group newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Groups\Group newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Groups\Group query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Groups\Group whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Groups\Group whereCreatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Groups\Group whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Groups\Group whereDeletedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Groups\Group whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Groups\Group whereIsActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Groups\Group whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Groups\Group wherePermissions($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Groups\Group whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Groups\Group whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Groups\Group whereUpdatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Groups\Group whereUuid($value)
+ * @mixin \Eloquent
+ */
 class Group extends BaseModule
 {
     use GroupHelper, GroupDefinitionsTrait;

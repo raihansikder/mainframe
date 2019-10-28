@@ -51,6 +51,7 @@ use App\Mainframe\Modules\Groups\Group as GroupModel;
  * @property-read int|null $changes_count
  * @property-read int|null $uploads_count
  * @property-read int|null $users_count
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Helpers\Modular\BaseModule\BaseModule active()
  */
 class Group extends GroupModel
 {

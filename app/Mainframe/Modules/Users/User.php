@@ -18,6 +18,136 @@ use App\Mainframe\Helpers\Modular\BaseModule\Traits\EventIdentifiable;
 use App\Mainframe\Helpers\Modular\BaseModule\Traits\RelatedUsersTrait;
 use App\Mainframe\Helpers\Modular\BaseModule\Traits\TenantContextTrait;
 
+/**
+ * App\Mainframe\Modules\Users\User
+ *
+ * @property int $id
+ * @property string|null $uuid
+ * @property int|null $tenant_id
+ * @property string|null $name
+ * @property string $email
+ * @property string $password
+ * @property string|null $remember_token
+ * @property int $email_confirmed
+ * @property string|null $email_confirmed_at
+ * @property string|null $email_confirmation_code
+ * @property string|null $access_token
+ * @property string|null $access_token_generated_at
+ * @property string|null $api_token
+ * @property string|null $api_token_generated_at
+ * @property int $tenant_editable
+ * @property array $permissions
+ * @property string|null $group_ids_csv
+ * @property string|null $group_titles_csv
+ * @property int|null $is_active
+ * @property int|null $created_by
+ * @property int|null $updated_by
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @property int|null $deleted_by
+ * @property string|null $name_initial
+ * @property string|null $first_name
+ * @property string|null $last_name
+ * @property string|null $full_name
+ * @property string|null $gender
+ * @property string|null $device_token
+ * @property string|null $address1
+ * @property string|null $address2
+ * @property string|null $city
+ * @property string|null $county
+ * @property int|null $country_id
+ * @property string|null $country_name
+ * @property string|null $zip_code
+ * @property string|null $phone
+ * @property string|null $mobile
+ * @property \Illuminate\Support\Carbon|null $first_login_at
+ * @property \Illuminate\Support\Carbon|null $last_login_at
+ * @property string|null $auth_token
+ * @property string|null $email_verified_at
+ * @property string|null $last_active_time
+ * @property string|null $last_login_time
+ * @property string|null $last_logout_time
+ * @property string|null $partner_uuid
+ * @property string|null $currency
+ * @property string|null $social_account_id
+ * @property string|null $social_account_type
+ * @property string|null $dob
+ * @property string|null $group_ids
+ * @property int|null $is_test
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Changes\Change[] $changes
+ * @property-read int|null $changes_count
+ * @property-read \App\Mainframe\Modules\Users\User|null $creator
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Group[] $groups
+ * @property-read int|null $groups_count
+ * @property-read \App\Mainframe\Modules\Uploads\Upload $latestUpload
+ * @property-read \App\Mainframe\Modules\Users\User|null $updater
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Uploads\Upload[] $uploads
+ * @property-read int|null $uploads_count
+ * @method static bool|null forceDelete()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User newQuery()
+ * @method static \Illuminate\Database\Query\Builder|\App\Mainframe\Modules\Users\User onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User query()
+ * @method static bool|null restore()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereAccessToken($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereAccessTokenGeneratedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereAddress1($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereAddress2($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereApiToken($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereApiTokenGeneratedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereAuthToken($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereCity($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereCountryId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereCountryName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereCounty($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereCreatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereCurrency($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereDeletedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereDeviceToken($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereDob($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereEmailConfirmationCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereEmailConfirmed($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereEmailConfirmedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereEmailVerifiedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereFirstLoginAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereFirstName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereFullName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereGender($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereGroupIds($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereGroupIdsCsv($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereGroupTitlesCsv($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereIsActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereIsTest($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereLastActiveTime($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereLastLoginAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereLastLoginTime($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereLastLogoutTime($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereLastName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereMobile($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereNameInitial($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User wherePartnerUuid($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User wherePassword($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User wherePermissions($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User wherePhone($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereRememberToken($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereSocialAccountId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereSocialAccountType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereTenantEditable($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereTenantId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereUpdatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereUuid($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereZipCode($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Mainframe\Modules\Users\User withTrashed()
+ * @method static \Illuminate\Database\Query\Builder|\App\Mainframe\Modules\Users\User withoutTrashed()
+ * @mixin \Eloquent
+ */
 class User extends Authenticatable implements MustVerifyEmail
 {
     use UserHelper, UserGroupable;
