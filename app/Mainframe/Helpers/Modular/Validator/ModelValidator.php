@@ -25,7 +25,7 @@ class ModelValidator
      */
     public function __construct($element)
     {
-        $this->messageBag = app('messageBag');
+        $this->messageBag = app(MessageBag::class);
         $this->valid = true;
         $this->element = $element;
         $this->elementOriginal = $element->getOriginal();

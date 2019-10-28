@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\MessageBag;
 use App\Mainframe\Modules\Modules\Module;
 use App\Report;
 use App\Mainframe\Modules\Settings\Setting;
@@ -158,7 +159,7 @@ function setError($str = '', $set_msg = true, $ret = false)
         if (!in_array($str, Session::get('error', []))) {
             Session::push('error', $str);
         }
-        app('messageBag')->add('message',$str);
+        app(MessageBag::class)->add('message',$str);
     }
     return $ret;
 }

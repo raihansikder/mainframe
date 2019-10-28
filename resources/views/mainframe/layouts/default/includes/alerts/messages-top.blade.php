@@ -1,7 +1,10 @@
 <?php
+
+use Illuminate\Support\MessageBag;
+
 $responseStatus = $responseStatus ?? session('status');
 $responseMessage = $responseMessage ?? session('message');
-$messageBag = app('messageBag');
+$messageBag = app(MessageBag::class);
 
 $css = "callout-danger";
 if ($responseStatus === 'success') {
