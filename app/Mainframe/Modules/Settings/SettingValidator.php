@@ -41,7 +41,6 @@ class SettingValidator extends ModelValidator
     |
     | Check validations on saving, creating, updating, deleting and restoring
     */
-
     /**
      * Run validations for saving. This should be common for both creating and updating.
      *
@@ -103,9 +102,10 @@ class SettingValidator extends ModelValidator
     | All validation must be checked through some function. All validation
     | functions are listed below.
     */
-
     /**
      * Check if type matches with value
+     *
+     * @return $this
      */
     private function validateTypeWithValue()
     {

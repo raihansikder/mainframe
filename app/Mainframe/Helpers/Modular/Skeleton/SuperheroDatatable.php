@@ -3,7 +3,7 @@
 /** @noinspection DuplicatedCode */
 /** @noinspection SenselessMethodDuplicationInspection */
 
-namespace App\Mainframe\Modules\Superheros;
+namespace App\Mainframe\Modules\Superheroes;
 
 use DB;
 use App\Mainframe\Helpers\Datatable\Datatable;

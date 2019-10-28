@@ -106,7 +106,6 @@ class Module extends BaseModule
 
             return $valid;
         });
-
     }
 
     /**
@@ -118,6 +117,17 @@ class Module extends BaseModule
     {
         /** @var \App\Mainframe\Modules\Modules\Module|self $this */
         return Str::singular(Str::camel($this->name));
+    }
+
+    /**
+     * returns super-heroes -> superHero
+     *
+     * @return string
+     */
+    public function elementNamePlural()
+    {
+        /** @var \App\Mainframe\Modules\Modules\Module|self $this */
+        return Str::plural($this->elementName());
     }
 
     /**
@@ -153,7 +163,6 @@ class Module extends BaseModule
      */
     public function modelClassPath()
     {
-
         $paths = [
             $this->model,
             'App\\'.$this->modelClassName(),
@@ -167,7 +176,6 @@ class Module extends BaseModule
         }
 
         return false;
-
     }
 
     /**

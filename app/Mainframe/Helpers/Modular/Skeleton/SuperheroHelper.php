@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Mainframe\Modules\Superheros;
+namespace App\Mainframe\Modules\Superheroes;
 
 trait SuperheroHelper
 {
