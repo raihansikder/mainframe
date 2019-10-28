@@ -17,12 +17,12 @@ trait ShowChangesTrait
      */
     public function changes($id)
     {
-        /** @var \App\Mainframe\Basemodule $Model */
-        /** @var \App\Mainframe\Basemodule $element */
+        /** @var \App\Http\Mainframe\Helpers\Modular\BaseModule\BaseModule $Model */
+        /** @var \App\Http\Mainframe\Helpers\Modular\BaseModule\BaseModule $element */
         // init local variables
 
-        /** @var \App\Mainframe\Basemodule $Model */
-        /** @var \App\Mainframe\Basemodule $element */
+        /** @var \App\Http\Mainframe\Helpers\Modular\BaseModule\BaseModule $Model */
+        /** @var \App\Http\Mainframe\Helpers\Modular\BaseModule\BaseModule $element */
         $Model = model($this->moduleName);
         //$ret = ret(); // load default return values
         # --------------------------------------------------------

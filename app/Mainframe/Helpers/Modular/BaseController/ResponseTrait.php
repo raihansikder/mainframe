@@ -32,12 +32,12 @@ trait ResponseTrait
     public function expectsJson()
     {
 
-        /** @var $this \App\Http\Mainframe\Controllers\ModuleBaseController */
+        /** @var $this \App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController */
         if ($this->request->expectsJson()) {
             return true;
         }
 
-        /** @var $this \App\Http\Mainframe\Controllers\ModuleBaseController */
+        /** @var $this \App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController */
         return $this->request->get('ret') === 'json';
     }
 
@@ -48,10 +48,10 @@ trait ResponseTrait
      */
     public function permissionDenied($message = 'Permission denied', $code = 403)
     {
-        /** @var \App\Http\Mainframe\Controllers\ModuleBaseController|self $this */
+        /** @var \App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController|self $this */
         $this->fail($message, $code);
         if ($this->expectsJson()) {
-            /** @var \App\Http\Mainframe\Controllers\ModuleBaseController|self $this */
+            /** @var \App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController|self $this */
             return $this->json();
         }
 
@@ -65,10 +65,10 @@ trait ResponseTrait
      */
     public function notFound($message = 'Item not found', $code = 403)
     {
-        /** @var \App\Http\Mainframe\Controllers\ModuleBaseController|self $this */
+        /** @var \App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController|self $this */
         $this->fail($message, $code);
         if ($this->expectsJson()) {
-            /** @var \App\Http\Mainframe\Controllers\ModuleBaseController|self $this */
+            /** @var \App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController|self $this */
             return $this->json();
         }
 
@@ -152,7 +152,7 @@ trait ResponseTrait
         $to = $this->getRedirectTo();
 
         $redirect = $to ? Redirect::to($to) : Redirect::back();
-        /** @var \App\Http\Mainframe\Controllers\ModuleBaseController|self $this */
+        /** @var \App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController|self $this */
         $validator = $this->modelValidator->validator;
 
         if ($this->isFail()) {
@@ -177,7 +177,7 @@ trait ResponseTrait
     {
 
         if ($this->isSuccess()) {
-            /** @var $this \App\Http\Mainframe\Controllers\ModuleBaseController */
+            /** @var $this \App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController */
             $this->redirectTo = $this->request->get('redirect_success');
 
             if ($this->redirectTo === '#new' && $this->element) {
@@ -187,7 +187,7 @@ trait ResponseTrait
         }
 
         if ($this->isFail()) {
-            /** @var $this \App\Http\Mainframe\Controllers\ModuleBaseController */
+            /** @var $this \App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController */
             $this->redirectTo = $this->request->get('redirect_fail');
 
             if ($this->redirectTo === '#new' && $this->element) {

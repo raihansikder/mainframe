@@ -3,32 +3,38 @@
 namespace App\Mainframe\Helpers\Modular\
 BaseController;
 
-
 use App\Upload;
 
 trait ModelOperationsTrait
 {
     /**
-     * @return mixed|\App\Mainframe\BaseModule
+     * Prepare the model, First transform the input and then fill
+     *
+     * @return mixed|\App\Mainframe\Helpers\Modular\BaseModule\BaseModule
      */
-    public function model()
+    public function modelReady()
     {
-        /** @var \App\Http\Mainframe\Controllers\ModuleBaseController|self $this ->element */
+        /** @var \App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController|self $this ->element */
         $this->element->fill($this->transform());
 
         return $this->element;
     }
 
-    public function attemptCreate()
+    /**
+     * Validate and create
+     *
+     * @return mixed
+     */
+    public function attemptStore()
     {
-        /** @var \App\Http\Mainframe\Controllers\ModuleBaseController $this */
-        $this->modelValidator = $this->model()
+        /** @var \App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController $this */
+        $this->modelValidator = $this->modelReady()
             ->validator();
-        /** @var \App\Http\Mainframe\Controllers\ModuleBaseController $this */
+        /** @var \App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController $this */
         if ($this->modelValidator->creating()->fails()) {
             return $this->fail('Validation failed', 200);
         }
-        /** @var \App\Http\Mainframe\Controllers\ModuleBaseController $this */
+        /** @var \App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController $this */
         $this->element = $this->modelValidator->element; // Get the updated element
         if (! $this->element->save()) {
             return $this->fail('Can not save for some reason', 200);
@@ -39,25 +45,57 @@ trait ModelOperationsTrait
         return $this->success('Successfully saved.', 200);
     }
 
+    /**
+     * Validate and update
+     *
+     * @return \App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController
+     */
     public function attemptUpdate()
     {
-        /** @var \App\Http\Mainframe\Controllers\ModuleBaseController $this */
-        $this->modelValidator = $this->model()->validator();
+        /** @var \App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController $this */
+        $this->modelValidator = $this->modelReady()->validator();
 
-        /** @var \App\Http\Mainframe\Controllers\ModuleBaseController $this */
+        /** @var \App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController $this */
         if ($this->modelValidator->updating()->fails()) {
             return $this->fail('Validation failed', 200);
         }
 
         $this->element = $this->modelValidator->element; // Get the updated element.
 
-        /** @var \App\Http\Mainframe\Controllers\ModuleBaseController $this */
+        /** @var \App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController $this */
         if (! $this->element->save()) {
-            /** @var \App\Http\Mainframe\Controllers\ModuleBaseController $this */
+            /** @var \App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController $this */
             return $this->fail('Can not save for some reason', 200);
         }
 
         return $this->success('Successfully saved.', 200);
+    }
+
+    /**
+     * Validate and delete
+     *
+     * @return \App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController
+     * @throws \Exception
+     */
+    public function attemptDestroy()
+    {
+        /** @var \App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController $this */
+        $this->modelValidator = $this->modelReady()->validator();
+
+        /** @var \App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController $this */
+        if ($this->modelValidator->deleting()->fails()) {
+            return $this->fail('Validation failed', 200);
+        }
+
+        $this->element = $this->modelValidator->element; // Get the updated element.
+
+        /** @var \App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController $this */
+        if (! $this->element->delete()) {
+            /** @var \App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController $this */
+            return $this->fail('Can not delete for some reason', 200);
+        }
+
+        return $this->success('Successfully deleted.', 200);
     }
 
 }

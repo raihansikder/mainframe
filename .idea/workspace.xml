@@ -3,7 +3,20 @@
   <component name="ChangeListManager">
     <list default="true" id="ee34113f-6433-40ce-8481-cf6a87088dde" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Change.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Change.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Modules/UploadsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Modules/UploadsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Modules/UsersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Modules/UsersController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/BaseController/ModelOperationsTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/BaseController/ModelOperationsTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/BaseController/ModuleBaseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/BaseController/ModuleBaseController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/BaseController/PermissionsTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/BaseController/PermissionsTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/BaseController/ResponseTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/BaseController/ResponseTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/BaseController/ShowChangesTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/BaseController/ShowChangesTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Modules/ModuleValidator.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Modules/ModuleValidator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Settings/SettingPolicy.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Settings/SettingPolicy.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Traits/IsoOutput.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Traits/IsoOutput.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/helpers/helper-framework.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/helpers/helper-framework.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/mainframe/layouts/module/form/includes/action-buttons.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/module/form/includes/action-buttons.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/layouts/module/form/includes/js.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/module/form/includes/js.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

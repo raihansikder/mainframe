@@ -135,7 +135,7 @@ function controllerModule($controller_class)
 
 /**
  * Derive module name from an eloquent model element
- * @param $element \App\Mainframe\Basemodule
+ * @param $element \App\Http\Mainframe\Helpers\Modular\BaseModule\BaseModule
  * @return string
  * @internal param $element_object
  */

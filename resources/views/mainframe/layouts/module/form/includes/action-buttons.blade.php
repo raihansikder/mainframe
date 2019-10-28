@@ -12,7 +12,7 @@
     @endif
 
     {{-- Delete modal --}}
-    @if(isset($element->id) && $element->isDeletable())
+    @if(isset($element->id) && user()->can('delete',$element))
         <div class="pull-right delete-cta no-padding">
             {!! deleteBtn(route($module->name.".destroy",$element->id),route($module->name.".index")) !!}
         </div>

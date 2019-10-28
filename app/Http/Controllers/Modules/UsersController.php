@@ -219,8 +219,8 @@ class UsersController extends ModuleBaseController
      */
     public function edit($id)
     {
-        /** @var \App\Mainframe\Basemodule $Model */
-        /** @var \App\Mainframe\Basemodule $element */
+        /** @var \App\Http\Mainframe\Helpers\Modular\BaseModule\BaseModule $Model */
+        /** @var \App\Http\Mainframe\Helpers\Modular\BaseModule\BaseModule $element */
         // init local variables
         $moduleName = $this->moduleName;
         $Model = model($this->moduleName);
@@ -403,7 +403,7 @@ class UsersController extends ModuleBaseController
 
     public function list()
     {
-        /** @var \App\Mainframe\Basemodule $Model */
+        /** @var \App\Http\Mainframe\Helpers\Modular\BaseModule\BaseModule $Model */
         /** @var \Illuminate\Database\Eloquent\Builder $q */
         $Model = model($this->moduleName);
 

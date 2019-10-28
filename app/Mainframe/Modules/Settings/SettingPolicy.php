@@ -6,6 +6,7 @@
 
 namespace App\Mainframe\Modules\Settings;
 
+use App\User;
 use App\Mainframe\Helpers\Modular\BaseModule\BaseModulePolicy;
 
 class SettingPolicy extends BaseModulePolicy
@@ -17,10 +18,10 @@ class SettingPolicy extends BaseModulePolicy
      * @param  \App\User  $user
      * @return mixed
      */
-    // public function viewAny(User $user)
-    // {
-    //     //
-    // }
+    public function viewAny(User $user)
+    {
+        //
+    }
 
     /**
      * Determine whether the user can view the setting.

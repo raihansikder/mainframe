@@ -121,8 +121,8 @@ class UploadsController extends ModuleBaseController
 
         $input_name = Request::has('input_name') ? Request::get('input_name') : $input_name;
 
-        /** @var \App\Mainframe\Basemodule $Model */
-        /** @var \App\Mainframe\Basemodule $element */
+        /** @var \App\Http\Mainframe\Helpers\Modular\BaseModule\BaseModule $Model */
+        /** @var \App\Http\Mainframe\Helpers\Modular\BaseModule\BaseModule $element */
         // init local variables
         $moduleName = $this->moduleName;
         $Model       = model($this->moduleName);

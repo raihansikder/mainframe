@@ -3,7 +3,6 @@
 namespace App\Mainframe\Helpers\Modular\
 BaseController;
 
-
 trait PermissionsTrait
 {
 
@@ -13,7 +12,7 @@ trait PermissionsTrait
      */
     public function can($permission)
     {
-        /** @var  \App\Http\Mainframe\Controllers\ModuleBaseController|$this|self $this */
+        /** @var  \App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController|$this|self $this */
         return hasModulePermission($this->moduleName, $permission);
     }
 }
