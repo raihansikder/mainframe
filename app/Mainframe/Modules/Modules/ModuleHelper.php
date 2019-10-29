@@ -2,136 +2,11 @@
 
 namespace App\Mainframe\Modules\Modules;
 
-use App\Mainframe\Modules\Modules\ModuleGroup;
 use Illuminate\Support\Str;
+use App\Mainframe\Modules\Modules\ModuleGroup;
 
 trait ModuleHelper
 {
-    /**
-     * returns super-heroes -> superHero
-     *
-     * @return string
-     */
-    public function elementName()
-    {
-        /** @var \App\Mainframe\Modules\Modules\Module|self $this */
-        return Str::singular(Str::camel($this->name));
-    }
-
-    /**
-     * returns super-heroes -> superHero
-     *
-     * @return string
-     */
-    public function elementNamePlural()
-    {
-        /** @var \App\Mainframe\Modules\Modules\Module|self $this */
-        return Str::plural($this->elementName());
-    }
-
-    /**
-     * super-heroes -> super_heroes
-     *
-     * @return string
-     */
-    public function tableName()
-    {
-        /** @var \App\Mainframe\Modules\Modules\Module $this */
-        return Str::snake(Str::camel($this->name));
-    }
-
-    /**
-     * Mainframe Module Namespace
-     *
-     * @return string
-     */
-    public function moduleNameSpace()
-    {
-        return 'App\Mainframe\Modules\\'.$this->modelClassNamePlural();
-    }
-
-    /**
-     * Mainframe Module Namespace
-     *
-     * @return string
-     */
-    public function moduleClassDir()
-    {
-        return 'app/Mainframe/Modules/'.$this->modelClassNamePlural();
-    }
-
-    public function validatorClassPath()
-    {
-        return $this->moduleNameSpace().'\\'.$this->modelClassName().'Validator';
-    }
-
-    /**
-     * Returns full qualified calls path
-     *
-     * @return bool|mixed
-     */
-    public function modelClassPath()
-    {
-        $paths = [
-            $this->model,                       // 1. Check for DB value
-            'App\\'.$this->modelClassName(),    // 2. Check in Laravel App\
-            $this->moduleNameSpace().'\\'.$this->modelClassName(), // Check in App\Mainframe\Modules
-        ];
-
-        foreach ($paths as $path) {
-            if (class_exists($path)) {
-                return $path;
-            }
-        }
-
-        return false;
-    }
-
-    /**
-     * Create instance of a model.
-     *
-     * @return mixed
-     */
-    public function modelInstance()
-    {
-        $classPath = $this->modelClassPath();
-
-        return new $classPath;
-    }
-
-    /**
-     * Create instance of a model.
-     *
-     * @param $element
-     * @return mixed
-     */
-    public function validatorInstance($element)
-    {
-        $classPath = $this->validatorClassPath();
-
-        return new $classPath($element);
-    }
-
-    /**
-     * Get the class name Superhero
-     *
-     * @return string
-     */
-    public function modelClassName()
-    {
-        return Str::ucfirst($this->elementName());
-    }
-
-    /**
-     * Get the class name Superhero
-     *
-     * @return string
-     */
-    public function modelClassNamePlural()
-    {
-        return Str::plural($this->modelClassName());
-    }
-
     public static function byName($name)
     {
         /** @noinspection PhpUndefinedMethodInspection */
@@ -220,4 +95,174 @@ trait ModuleHelper
             ->remember(cacheTime('long'))
             ->get();
     }
+
+    /**
+     * returns super-heroes -> superHero
+     *
+     * @return string
+     */
+    public function elementName()
+    {
+        /** @var \App\Mainframe\Modules\Modules\Module|self $this */
+        return Str::singular(Str::camel($this->name));
+    }
+
+    /**
+     * returns super-heroes -> superHero
+     *
+     * @return string
+     */
+    public function elementNamePlural()
+    {
+        /** @var \App\Mainframe\Modules\Modules\Module|self $this */
+        return Str::plural($this->elementName());
+    }
+
+    /**
+     * super-heroes -> super_heroes
+     *
+     * @return string
+     */
+    public function tableName()
+    {
+        /** @var \App\Mainframe\Modules\Modules\Module $this */
+        return Str::snake(Str::camel($this->name));
+    }
+
+    /**
+     * Mainframe Module Namespace
+     *
+     * @return string
+     */
+    public function moduleClassDir()
+    {
+        return 'app/Mainframe/Modules/'.$this->modelClassNamePlural();
+    }
+
+    /**
+     * Mainframe Module Namespace
+     *
+     * @return string
+     */
+    public function moduleNameSpace()
+    {
+        return '\App\Mainframe\Modules\\'.$this->modelClassNamePlural();
+    }
+
+    /**
+     * Get the class name Superhero
+     *
+     * @return string
+     */
+    public function modelClassName()
+    {
+        return Str::ucfirst($this->elementName());
+    }
+
+    /**
+     * Get the class name Superhero
+     *
+     * @return string
+     */
+    public function modelClassNamePlural()
+    {
+        return Str::plural($this->modelClassName());
+    }
+
+    /**
+     * Returns full qualified calls path
+     *
+     * @return bool|mixed
+     */
+    public function modelClassPath()
+    {
+        $paths = [
+            $this->model,                       // 1. Check for DB value
+            '\App\\'.$this->modelClassName(),    // 2. Check in Laravel App\
+            $this->moduleNameSpace().'\\'.$this->modelClassName(), // Check in App\Mainframe\Modules
+        ];
+
+        foreach ($paths as $path) {
+            if (class_exists($path)) {
+                return $path;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Create instance of a model.
+     *
+     * @return mixed
+     */
+    public function modelInstance()
+    {
+        $classPath = $this->modelClassPath();
+
+        return new $classPath;
+    }
+
+    public function validatorClassPath()
+    {
+        return $this->moduleNameSpace().'\\'.$this->modelClassName().'Validator';
+    }
+
+    /**
+     * Create instance of a model.
+     *
+     * @param $element
+     * @return mixed
+     */
+    public function validatorInstance($element)
+    {
+        $classPath = $this->validatorClassPath();
+
+        return new $classPath($element);
+    }
+
+    /**
+     * Get the class name Superhero
+     *
+     * @return string
+     */
+    public function controllerClassName()
+    {
+        return $this->modelClassName().'Controller';
+    }
+
+    /**
+     * Returns full qualified calls path
+     *
+     * @return bool|mixed
+     */
+    public function controllerClassPath()
+    {
+        $paths = [
+            $this->controller,                  // 1. Check for DB value
+            '\App\Http\Controllers\Modules\\'.$this->controllerClassName(),    // 2. Check in Laravel App\
+            $this->moduleNameSpace().'\\'.$this->controllerClassName(), // Check in App\Mainframe\Modules
+        ];
+
+        foreach ($paths as $path) {
+            if (class_exists($path)) {
+                return $path;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Create instance of a model.
+     *
+     * @return mixed
+     */
+    public function controllerInstance()
+    {
+        $classPath = $this->controllerClassPath();
+
+        return new $classPath;
+    }
+
 }

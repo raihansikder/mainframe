@@ -158,7 +158,7 @@ class Change extends BaseModule
     public static function boot()
     {
         parent::boot();
-        self::observe(ChangeObserver::class);
+        // self::observe(ChangeObserver::class); //Todo: Do not call this as it creates endless loop.
         static::saving(function (Change $element) {
             $element->is_active = true;
         });

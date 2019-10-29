@@ -1,5 +1,6 @@
 <?php
 /** @noinspection UnknownInspectionInspection */
+
 /** @noinspection DuplicatedCode */
 
 use App\Mainframe\Modules\Modules\Module;
@@ -37,9 +38,15 @@ class CreateSuperHeroesTable extends Migration
         $name = 'super-heroes';
         if (Module::where('name', $name)->doesntExist()) {
             $module = new Module(['name' => $name]);
+
+            $classPath = '\App\Mainframe\Modules\\'.$module->modelClassNamePlural();
+
             $module->title = str_replace('-', ' ', ucfirst(Str::singular($name)));
             $module->module_group_id = 1;
             $module->description = 'Manage '.str_replace('-', ' ', Str::singular($name));
+            $module->model = $classPath.'\\'.$module->modelClassName();
+            $module->controller = $classPath.'\\'.$module->controllerClassName();
+
             $module->save();
         }
     }
