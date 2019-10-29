@@ -292,7 +292,7 @@ class User extends Authenticatable implements MustVerifyEmail
                  */
 
                 if (! isset($element->is_active)) {
-                    $element->is_active = ($element->email_confirmed == 1) ? 1 : 0;
+                    $element->is_active = ($element->email_confirmed === 1) ? 1 : 0;
                 }
 
                 $element->email_confirmed = (! $element->email_confirmed) ? 0 : 1;

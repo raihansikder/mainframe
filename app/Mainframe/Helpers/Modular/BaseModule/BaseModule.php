@@ -3,6 +3,7 @@
 namespace App\Mainframe\Helpers\Modular\BaseModule;
 
 use Watson\Rememberable\Rememberable;
+use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Mainframe\Helpers\Modular\BaseModule\Traits\Changable;
@@ -30,7 +31,7 @@ use App\Mainframe\Helpers\Modular\BaseModule\Traits\TenantContextTrait;
  * @property string|null $deleted_at
  * @property int|null $deleted_by
  * @method static bool|null forceDelete()
- * @method static Model|\Illuminate\Database\Query\Builder remember()
+ * @method static Model|Builder remember()
  */
 class BaseModule extends Model
 {
