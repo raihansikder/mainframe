@@ -3,10 +3,14 @@
 namespace App\Mainframe\Modules\Modules;
 
 use Illuminate\Support\Str;
-use App\Mainframe\Modules\Modules\ModuleGroup;
+use App\Mainframe\Modules\ModuleGroups\ModuleGroup;
 
 trait ModuleHelper
 {
+    /**
+     * @param $name
+     * @return mixed|\App\Mainframe\Modules\Modules\Module
+     */
     public static function byName($name)
     {
         /** @noinspection PhpUndefinedMethodInspection */

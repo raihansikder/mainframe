@@ -179,9 +179,9 @@ trait ResponseTrait
         }
 
         /** @Var ModuleBaseController|this $this */
-        if (isset($controller->modelValidator, $controller->modelValidator->validator)
-            && $controller->modelValidator->validator->fails()) {
-            $response['validation_errors'] = json_decode($controller->modelValidator->validator->messages(), true);
+        if (isset($controller->validator, $controller->validator->validator)
+            && $controller->validator->validator->fails()) {
+            $response['validation_errors'] = json_decode($controller->validator->validator->messages(), true);
         }
 
         if ($controller->getRedirectTo()) {
@@ -200,7 +200,7 @@ trait ResponseTrait
 
         $redirect = $to ? Redirect::to($to) : Redirect::back();
         /** @var \App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController|self $this */
-        $validator = $this->modelValidator->validator;
+        $validator = $this->validator->validator;
 
         if ($this->isFail()) {
             $redirect = $redirect->withInput();

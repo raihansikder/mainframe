@@ -12,6 +12,9 @@ trait Transformable
     public function transform()
     {
         /** @var \App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController $this */
+
+        // $this->request->merge(['name' => 'aaa']);
+
         return $this->request->all();
         //$this->request->merge(['name'=>'test']) ;
 

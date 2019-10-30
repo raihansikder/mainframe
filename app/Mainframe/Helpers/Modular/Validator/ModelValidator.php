@@ -7,14 +7,18 @@ use Illuminate\Support\Facades\Validator;
 
 class ModelValidator
 {
-    /** @var \App\Mainframe\Helpers\Modular\BaseModule\BaseModule */
-    public $element;
-    /** @var array|mixed */
-    public $elementOriginal;
     /** @var bool */
     private $valid;
+
+    /** @var \App\Mainframe\Helpers\Modular\BaseModule\BaseModule */
+    public $element;
+
+    /** @var array|mixed */
+    public $elementOriginal;
+
     /** @var \Illuminate\Validation\Validator */
     public $validator;
+
     /** @var MessageBag */
     public $messageBag;
 
@@ -25,7 +29,7 @@ class ModelValidator
      */
     public function __construct($element)
     {
-        $this->messageBag = app(MessageBag::class);
+        $this->messageBag = resolve(MessageBag::class);
         $this->valid = true;
         $this->element = $element;
         $this->elementOriginal = $element->getOriginal();

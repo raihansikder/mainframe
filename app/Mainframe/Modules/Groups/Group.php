@@ -150,6 +150,7 @@ class Group extends BaseModule
         parent::boot();
         self::observe(GroupObserver::class);
         static::saving(function (Group $element) {
+
             $permissions = [];
             // revoke existing group permissions
             $existing_permissions = $element->getPermissions();
@@ -198,6 +199,7 @@ class Group extends BaseModule
     | getting or setting them. Get a transformed value of an attribute
     */
     // public function getFirstNameAttribute($value) { return ucfirst($value); }
+
     /**
      * Accessor for giving permissions.
      *

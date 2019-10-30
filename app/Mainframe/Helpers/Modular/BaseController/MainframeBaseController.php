@@ -7,7 +7,6 @@
 
 namespace App\Mainframe\Helpers\Modular\BaseController;
 
-use Request;
 use Illuminate\Support\MessageBag;
 use App\Mainframe\Traits\IsoOutput;
 use App\Http\Controllers\Controller;
@@ -33,8 +32,8 @@ class MainframeBaseController extends Controller
      */
     public function __construct()
     {
-        $this->messageBag = app(MessageBag::class);
-        $this->request = Request::capture();
+        $this->messageBag = resolve(MessageBag::class);
+        $this->request = request();
     }
 
 }

@@ -5,16 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ee34113f-6433-40ce-8481-cf6a87088dde" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Group.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Group.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/Skeleton/views/form/js.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/Skeleton/views/form/js.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_ide_helper.php" beforeDir="false" afterPath="$PROJECT_DIR$/_ide_helper.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/BaseController/MainframeBaseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/BaseController/MainframeBaseController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/BaseController/ModuleBaseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/BaseController/ModuleBaseController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/BaseController/Traits/ModelOperationsTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/BaseController/Traits/ModelOperationsTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/BaseController/Traits/ResponseTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/BaseController/Traits/ResponseTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/BaseController/Traits/Transformable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/BaseController/Traits/Transformable.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/Validator/ModelValidator.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/Validator/ModelValidator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Changes/Change.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Changes/Change.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Groups/Group.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Groups/Group.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Groups/GroupHelper.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Groups/GroupHelper.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Modules/Module.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Modules/Module.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Modules/ModuleHelper.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Modules/ModuleHelper.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Users/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Users/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/helpers/helper-permission.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/helpers/helper-permission.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/groups/form/default.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/groups/form/default.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/groups/form/js.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/groups/form/js.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/groups/form/permission-blocks.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/groups/form/permission-blocks.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/settings/form/js.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/settings/form/js.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -212,6 +217,9 @@
     </configuration>
   </component>
   <component name="SpellCheckerSettings" BundledDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="StructureViewFactory">
+    <option name="ACTIVE_ACTIONS" value=",Show Private Members,Show Protected Members,Show Constants,Show Fields" />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="ee34113f-6433-40ce-8481-cf6a87088dde" name="Default Changelist" comment="" />

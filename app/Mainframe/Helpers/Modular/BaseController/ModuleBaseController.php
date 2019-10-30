@@ -9,7 +9,7 @@ namespace App\Mainframe\Helpers\Modular\BaseController;
 
 use View;
 use Redirect;
-use Validator;
+use Illuminate\Http\Request;
 use App\Mainframe\Modules\Modules\Module;
 use App\Mainframe\Helpers\Modular\Resolvers\GridView;
 use App\Mainframe\Helpers\Modular\BaseController\Traits\ListTrait;
@@ -40,7 +40,7 @@ class ModuleBaseController extends MainframeBaseController
     protected $element;
 
     /** @var \App\Mainframe\Helpers\Modular\Validator\ModelValidator */
-    protected $modelValidator;
+    protected $validator;
 
     /**
      * @param  null  $moduleName
@@ -50,7 +50,6 @@ class ModuleBaseController extends MainframeBaseController
         parent::__construct();
         $this->moduleName = $moduleName ?? Module::fromController(get_class($this));
         $this->module = Module::byName($this->moduleName);
-
         $this->model = $this->module->modelInstance();
 
         View::share([
@@ -112,13 +111,13 @@ class ModuleBaseController extends MainframeBaseController
      * @var \App\Mainframe\Helpers\Modular\BaseModule\BaseModule $element
      * @var \App\Superhero $Model
      */
-    public function store()
+    public function store(Request $request)
     {
-        $this->element = $this->model;
-
         if (! user()->cannot('create')) {
             return $this->permissionDenied();
         }
+
+        $this->element = $this->model; // Create an empty model to be stored.
 
         $this->attemptStore();
 
@@ -185,10 +184,11 @@ class ModuleBaseController extends MainframeBaseController
     /**
      * Update handler for spyr element.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @param $id
      * @return $this|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
-    public function update($id)
+    public function update(Request $request, $id)
     {
         $this->element = $this->model->find($id);
 
