@@ -1,34 +1,65 @@
-<?php
-$permissions = conf('mainframe.permissions');
-?>
-@foreach($permissions as $block_title=>$entries)
-    <div class="clearfix"></div>
-    <li class="pull-left">
-        <input name="permission[]" type="checkbox" value="{{$block_title}}" v-model='permission' v-on:click='clicked'>
-        <label> {{$block_title}} </label>
+<!--suppress XmlUnboundNsPrefix, ES6ConvertVarToLetConst -->
+<h4>Permissions</h4>
+<div id="vue_root_permission" class="permissions-tree">
+    <ul>
 
-        <div class="clearfix"></div>
-        <ul class="pull-left">
-            @foreach($entries as $entry)
-                <li>
-                    <input name="permission[]" type="checkbox" value="{{$entry['permission']}}" v-model='permission'>
-                    <label>{{$entry['label']}}<code>
-                            <small>{{$entry['permission']}}</small>
-                        </code>
-                    </label>
-                </li>
-            @endforeach
-        </ul>
-    </li>
-@endforeach
+        {{--Super user permission--}}
+        <li class="superuser">
+            <label>
+                <input name='permission[]' type='checkbox' v-model='permission' value='superuser'
+                       data-toggle="tooltip" title="Assign super admin permission"/>
+                <b>Super user</b>
+            </label>
+        </li>
+
+
+        {{-- Module view, create, edit permissions--}}
+        <li class="module-permissions">
+            {!!  renderModulePermissionTree(\App\Mainframe\Modules\ModuleGroups\ModuleGroup::tree()) !!}
+        </li>
+
+
+        {{--Additional permission options defined in config/mainframe/permissions--}}
+        <?php
+        $permissions = conf('mainframe.permissions');
+        ?>
+        @foreach($permissions as $block_title=>$entries)
+            <div class="clearfix"></div>
+            <li class="pull-left">
+                <label>
+                    <input name="permission[]" type="checkbox" value="{{$block_title}}" v-model='permission' v-on:click='clicked'>
+                    {{$block_title}}
+                </label>
+
+                <div class="clearfix"></div>
+                <ul class="pull-left">
+                    @foreach($entries as $entry)
+                        <li>
+                            <label>
+                                <input name="permission[]" type="checkbox" value="{{$entry['permission']}}" v-model='permission'>
+                                {{$entry['label']}}<code>
+                                    <small>{{$entry['permission']}}</small>
+                                </code>
+                            </label>
+                        </li>
+                    @endforeach
+                </ul>
+            </li>
+        @endforeach
+    </ul>
+</div>
 
 
 @section('js')
     @parent
+    <!--suppress JSUnusedLocalSymbols -->
     <script>
         enableCascadingSelectionOfPermission();
 
-        // Function to enable cascading selection/de-selction of child elements in a permission hiararchy
+        /**
+         * Function to enable cascading selection/de-selection of child
+         * elements in a permission hierarchy
+         */
         function enableCascadingSelectionOfPermission() {
             var v = new Vue({
                 el: '#vue_root_permission',

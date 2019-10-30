@@ -3,7 +3,9 @@
 namespace App\Mainframe\Modules\Groups;
 
 use Request;
+use InvalidArgumentException;
 use App\Mainframe\Modules\Users\User;
+use Illuminate\Database\Eloquent\Builder;
 use App\Mainframe\Helpers\Modular\BaseModule\BaseModule;
 use App\Mainframe\Modules\Groups\Traits\GroupDefinitionsTrait;
 
@@ -31,22 +33,22 @@ use App\Mainframe\Modules\Groups\Traits\GroupDefinitionsTrait;
  * @property-read int|null $uploads_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Users\User[] $users
  * @property-read int|null $users_count
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Helpers\Modular\BaseModule\BaseModule active()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Groups\Group newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Groups\Group newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Groups\Group query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Groups\Group whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Groups\Group whereCreatedBy($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Groups\Group whereDeletedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Groups\Group whereDeletedBy($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Groups\Group whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Groups\Group whereIsActive($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Groups\Group whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Groups\Group wherePermissions($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Groups\Group whereTitle($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Groups\Group whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Groups\Group whereUpdatedBy($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Groups\Group whereUuid($value)
+ * @method static Builder|BaseModule active()
+ * @method static Builder|Group newModelQuery()
+ * @method static Builder|Group newQuery()
+ * @method static Builder|Group query()
+ * @method static Builder|Group whereCreatedAt($value)
+ * @method static Builder|Group whereCreatedBy($value)
+ * @method static Builder|Group whereDeletedAt($value)
+ * @method static Builder|Group whereDeletedBy($value)
+ * @method static Builder|Group whereId($value)
+ * @method static Builder|Group whereIsActive($value)
+ * @method static Builder|Group whereName($value)
+ * @method static Builder|Group wherePermissions($value)
+ * @method static Builder|Group whereTitle($value)
+ * @method static Builder|Group whereUpdatedAt($value)
+ * @method static Builder|Group whereUpdatedBy($value)
+ * @method static Builder|Group whereUuid($value)
  * @mixin \Eloquent
  */
 class Group extends BaseModule
@@ -214,7 +216,7 @@ class Group extends BaseModule
         }
 
         if (! $_permissions = json_decode($permissions, true)) {
-            throw new \InvalidArgumentException("Cannot JSON decode permissions [$permissions].");
+            throw new InvalidArgumentException("Cannot JSON decode permissions [$permissions].");
         }
 
         return $_permissions;
@@ -246,7 +248,7 @@ class Group extends BaseModule
         foreach ($permissions as $permission => &$value) {
             // Lets make sure their is a valid permission value
             if (! in_array($value = (int) $value, $this->allowedPermissionsValues)) {
-                throw new \InvalidArgumentException("Invalid value [$value] for permission [$permission] given.");
+                throw new InvalidArgumentException("Invalid value [$value] for permission [$permission] given.");
             }
 
             // If the value is 0, delete it

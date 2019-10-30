@@ -2,7 +2,9 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Builder;
 use App\Mainframe\Modules\Groups\Group as GroupModel;
+use App\Mainframe\Helpers\Modular\BaseModule\BaseModule;
 
 /**
  * Class Group
@@ -20,38 +22,38 @@ use App\Mainframe\Modules\Groups\Group as GroupModel;
  * @property string|null $deleted_at
  * @property int|null $deleted_by
  * @method static bool|null forceDelete()
- * @method static \Illuminate\Database\Query\Builder|\App\Group onlyTrashed()
+ * @method static \Illuminate\Database\Query\Builder|Group onlyTrashed()
  * @method static bool|null restore()
- * @method static \Illuminate\Database\Query\Builder|\App\Group withTrashed()
- * @method static \Illuminate\Database\Query\Builder|\App\Group withoutTrashed()
+ * @method static \Illuminate\Database\Query\Builder|Group withTrashed()
+ * @method static \Illuminate\Database\Query\Builder|Group withoutTrashed()
  * @mixin \Eloquent
  * @property string|null $title
  * @property array $permissions
  * @property-read \App\User|null $creator
  * @property-read \App\User|null $updater
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\User[] $users
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Group newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Group newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Group query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Group whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Group whereCreatedBy($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Group whereDeletedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Group whereDeletedBy($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Group whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Group whereIsActive($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Group whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Group wherePermissions($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Group whereTitle($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Group whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Group whereUpdatedBy($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Group whereUuid($value)
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Change[] $changes
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Upload[] $uploads
- * @property-read \App\Upload $latestUpload
+ * @method static Builder|Group newModelQuery()
+ * @method static Builder|Group newQuery()
+ * @method static Builder|Group query()
+ * @method static Builder|Group whereCreatedAt($value)
+ * @method static Builder|Group whereCreatedBy($value)
+ * @method static Builder|Group whereDeletedAt($value)
+ * @method static Builder|Group whereDeletedBy($value)
+ * @method static Builder|Group whereId($value)
+ * @method static Builder|Group whereIsActive($value)
+ * @method static Builder|Group whereName($value)
+ * @method static Builder|Group wherePermissions($value)
+ * @method static Builder|Group whereTitle($value)
+ * @method static Builder|Group whereUpdatedAt($value)
+ * @method static Builder|Group whereUpdatedBy($value)
+ * @method static Builder|Group whereUuid($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Changes\Change[] $changes
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Uploads\Upload[] $uploads
+ * @property-read \App\Mainframe\Modules\Uploads\Upload $latestUpload
  * @property-read int|null $changes_count
  * @property-read int|null $uploads_count
  * @property-read int|null $users_count
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Helpers\Modular\BaseModule\BaseModule active()
+ * @method static Builder|BaseModule active()
  */
 class Group extends GroupModel
 {

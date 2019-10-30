@@ -228,8 +228,6 @@ class User extends Authenticatable implements MustVerifyEmail
     | The possible options for some field. Variable name should be
     |
     */
-    // public static $types = [];
-    // public static $statuses = [];
     /**
      * Allowed permissions values.
      * Possible options:
