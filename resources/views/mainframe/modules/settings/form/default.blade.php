@@ -43,6 +43,7 @@ $types = Setting::$types;
     <div class="col-md-6 no-padding-l">
         <h5>File upload</h5>
         <small>Upload one or more files</small>
+
         @include('mainframe.layouts.module.form.includes.features.uploads.uploads',['var'=>['limit'=>99]])
     </div>
 @endsection

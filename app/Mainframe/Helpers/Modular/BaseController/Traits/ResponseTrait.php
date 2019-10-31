@@ -41,7 +41,7 @@ trait ResponseTrait
         return $this->request->get('ret') === 'json';
     }
 
-    public function failAndRespond($message = 'Operation failed', $code = 400)
+    public function responseFail($message = 'Operation failed', $code = 400)
     {
         $this->fail($message, $code);
 
@@ -59,9 +59,9 @@ trait ResponseTrait
      * @param  int  $code
      * @return \Illuminate\Http\JsonResponse|void
      */
-    public function permissionDenied($message = 'Permission denied', $code = 403)
+    public function responsePermissionDenied($message = 'Permission denied', $code = 403)
     {
-        return $this->failAndRespond($message, $code);
+        return $this->responseFail($message, $code);
     }
 
     /**
@@ -71,9 +71,9 @@ trait ResponseTrait
      * @param  int  $code
      * @return \Illuminate\Http\JsonResponse|void
      */
-    public function notFound($message = 'Item not found', $code = 404)
+    public function responseNotFound($message = 'Item not found', $code = 404)
     {
-        return $this->failAndRespond($message, $code);
+        return $this->responseFail($message, $code);
     }
 
     /**

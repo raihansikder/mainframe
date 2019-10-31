@@ -11,17 +11,11 @@
       <change beforePath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/BaseController/ModuleBaseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/BaseController/ModuleBaseController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/BaseController/Traits/ModelOperationsTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/BaseController/Traits/ModelOperationsTrait.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/BaseController/Traits/ResponseTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/BaseController/Traits/ResponseTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/BaseController/Traits/Transformable.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/BaseModule/BaseModuleObserver.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/BaseModule/BaseModuleObserver.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/BaseModule/Traits/Validable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/BaseModule/Traits/Validable.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/Skeleton/SuperHero.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/Skeleton/SuperHero.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/Validator/ModelValidator.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/Validator/ModelValidator.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Groups/Group.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Groups/Group.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Uploads/Upload.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Uploads/Upload.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Uploads/UploadController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Uploads/UploadController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Uploads/UploadHelper.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Uploads/UploadHelper.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Uploads/UploadValidator.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Uploads/UploadValidator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/mainframe/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/mainframe/config.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/mainframe/layouts/module/form/includes/features/uploads/uploads.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/module/form/includes/features/uploads/uploads.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/settings/form/default.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/settings/form/default.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -181,23 +175,23 @@
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="typescript.add.unambiguous.imports.on.the.fly" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\MAMP\htdocs\mainframe\resources\views\mainframe\modules\modules" />
-      <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Helpers\Modular\BaseModule" />
-      <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Helpers\Modular\Skeleton" />
-      <recent name="E:\MAMP\htdocs\mainframe\app\Console\Commands" />
-      <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Modules\Modules" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\MAMP\htdocs\mainframe\config\mainframe" />
       <recent name="E:\MAMP\htdocs\mainframe\resources\views\mainframe\modules\groups\form" />
       <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Helpers\Modular\BaseModule\Traits" />
       <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Helpers\Modular\BaseController\Traits" />
       <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Helpers\Modular\Skeleton" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\MAMP\htdocs\mainframe\resources\views\mainframe\modules\modules" />
+      <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Helpers\Modular\BaseModule" />
+      <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Helpers\Modular\Skeleton" />
+      <recent name="E:\MAMP\htdocs\mainframe\app\Console\Commands" />
+      <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Modules\Modules" />
     </key>
   </component>
   <component name="RunDashboard">

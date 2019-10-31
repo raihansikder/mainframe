@@ -1,4 +1,5 @@
-<?php /** @noinspection PhpUnusedParameterInspection */
+<?php /** @noinspection SenselessMethodDuplicationInspection */
+/** @noinspection PhpUnusedParameterInspection */
 /** @noinspection PhpUndefinedClassInspection */
 /** @noinspection NotOptimalIfConditionsInspection */
 /** @noinspection PhpParamsInspection */
@@ -67,7 +68,7 @@ class ModuleBaseController extends MainframeBaseController
     public function index()
     {
         if (! user()->can('viewAny', $this->model)) {
-            return $this->permissionDenied();
+            return $this->responsePermissionDenied();
         }
 
         if ($this->expectsJson()) {
@@ -89,7 +90,7 @@ class ModuleBaseController extends MainframeBaseController
         $this->element = $this->module->modelInstance();
 
         if (! user()->can('create', $this->model)) {
-            return $this->permissionDenied();
+            return $this->responsePermissionDenied();
         }
 
         $uuid = $this->request->old('uuid') ?: uuid();
@@ -112,8 +113,8 @@ class ModuleBaseController extends MainframeBaseController
      */
     public function store(Request $request)
     {
-        if (! user()->cannot('create')) {
-            return $this->permissionDenied();
+        if (! user()->can('create', $this->model)) {
+            return $this->responsePermissionDenied();
         }
 
         $this->element = $this->model; // Create an empty model to be stored.
@@ -137,18 +138,18 @@ class ModuleBaseController extends MainframeBaseController
     public function show($id)
     {
         if (! $this->element = $this->model->find($id)) {
-            return $this->notFound();
+            return $this->responseNotFound();
         }
 
         if (! user()->can('view', $this->element)) {
-            return $this->permissionDenied();
+            return $this->responsePermissionDenied();
         }
 
         if ($this->expectsJson()) {
             return $this->success()->payload($this->element)->json();
         }
 
-        return Redirect::route("$this->moduleName.edit", $id);
+        return Redirect::route($this->moduleName.".edit", $id);
     }
 
     /**
@@ -160,11 +161,11 @@ class ModuleBaseController extends MainframeBaseController
     public function edit($id)
     {
         if (! $this->element = $this->model->find($id)) {
-            return $this->notFound();
+            return $this->responseNotFound();
         }
 
         if (! user()->can('view', $this->element)) {
-            return $this->permissionDenied();
+            return $this->responsePermissionDenied();
         }
 
         $formState = 'edit';
@@ -186,11 +187,11 @@ class ModuleBaseController extends MainframeBaseController
     public function update(Request $request, $id)
     {
         if (! $this->element = $this->model->find($id)) {
-            return $this->notFound();
+            return $this->responseNotFound();
         }
 
         if (user()->cannot('update', $this->element)) {
-            return $this->permissionDenied();
+            return $this->responsePermissionDenied();
         }
 
         $this->attemptUpdate();
@@ -212,11 +213,11 @@ class ModuleBaseController extends MainframeBaseController
     public function destroy($id)
     {
         if (! $this->element = $this->model->find($id)) {
-            return $this->notFound();
+            return $this->responseNotFound();
         }
 
         if (user()->cannot('delete', $this->element)) {
-            return $this->permissionDenied();
+            return $this->responsePermissionDenied();
         }
 
         $this->attemptDestroy();

@@ -2,7 +2,6 @@
 
 namespace App\Mainframe\Helpers\Modular\BaseController\Traits;
 
-use App\Mainframe\Modules\Uploads\Upload;
 use App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController;
 
 /**
@@ -94,8 +93,9 @@ trait ModelOperationsTrait
             return $this->fail('Validation failed', 200);
         }
 
-        $this->element = $validator->element->save(); // Save the model once before deleting. .
+        $this->element = $validator->element; // Save the model once before deleting. .
 
+        $this->element->save();
         if (! $this->element->delete()) {
             return $this->fail('Can not delete for some reason', 200);
         }

@@ -14,7 +14,7 @@ use App\Mainframe\Traits\GridDatatable;
 use App\Mainframe\Helpers\Modular\BaseController\Traits\ResponseTrait;
 
 /**
- * Class ModuleBaseController
+ * Class MainframeBaseController
  */
 class MainframeBaseController extends Controller
 {

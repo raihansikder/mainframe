@@ -24,17 +24,17 @@ $var['upload_container_id'] = "img_container_".$rand;
 
 // If an $element is present (normally during edit) in the context then set tenantId and element
 // fields based on that element.
-if ((isset($element))) {
+if (($element->isCreating())) {
+    $var['element_uuid'] = (! $var['element_uuid'] && isset($uuid)) ? $uuid : $var['element_uuid'];
+} else {
     $var['element_id'] = $var['element_id'] ? $var['element_id'] : $element->id;
     $var['element_uuid'] = $var['element_uuid'] ? $var['element_uuid'] : $element->uuid;
     // If still there is no tenantId resolved from user, attempt to resolve from $element.
     $var['tenantId'] = (! $var['tenantId'] && isset($element->tenantId)) ? $element->tenantId : $var['tenantId'];
-} else {
-    // During creation when element is not ready but $uuid is generated.
-    $var['element_uuid'] = (! $var['element_uuid'] && isset($uuid)) ? $uuid : $var['element_uuid'];
 }
 
 ?>
+
 {{-- upload div + form --}}
 <div class="{{$var['container_class']}}">
     @if(hasModulePermission($module->name,'create') || hasModulePermission($module->name,'edit'))

@@ -2,7 +2,9 @@
 
 namespace App\Mainframe\Modules\Uploads;
 
+use Storage;
 use Response;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController;
 
@@ -26,17 +28,34 @@ class UploadController extends ModuleBaseController
         return $class ?? new UploadDatatable($this->moduleName);
     }
 
+    /**
+     * @param  \Illuminate\Http\Request  $request
+     * @return \App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|void
+     */
     public function store(Request $request)
     {
-        if (! user()->cannot('create')) {
-            return $this->permissionDenied();
+        if (! user()->can('create', $this->model)) {
+            return $this->responsePermissionDenied();
         }
 
         $this->element = $this->model; // Create an empty model to be stored.
 
-        if ($this->attemptStore()->isSuccess()) {
-            $this->handleUpload();
+        if (! $file = $this->getFile()) {
+            return $this->responseFail('No file in http request');
         }
+
+        // if($dimensions = $this->getImageDimension($file)){
+        //     $this->element->width = $dimensions['width'];
+        //     $this->element->height = $dimensions['height'];
+        // }
+
+        if (! $uploadPath = $this->handleUpload($file)) {
+            return $this->responseFail('Can not move file to destination from tmp');
+        }
+
+        $this->element->name = $file->getClientOriginalName();
+        $this->element->path = $uploadPath;
+        $this->attemptStore();
 
         if ($this->expectsJson()) {
             return $this->json();
@@ -45,16 +64,71 @@ class UploadController extends ModuleBaseController
         return $this->redirect();
     }
 
-    public function handleUpload()
+    /**
+     * Get the uploaded file from request
+     *
+     * @return null|array|bool|\Illuminate\Http\UploadedFile|\Illuminate\Http\UploadedFile[]
+     */
+    public function getFile()
     {
         $request = $this->request;
         $fileField = $request->get('file_field', 'file');
 
         if (! $request->hasFile($fileField)) {
-            $this->fail('No file in http request field:'.$fileField);
+            return false;
         }
 
+        return $request->file($fileField);
+    }
 
+    /**
+     * Physically move the file to a location.
+     *
+     * @param $file
+     * @return bool|string
+     */
+    public function handleUpload($file)
+    {
+        $path = conf('mainframe.config.upload_root');
+
+        // todo: resolve tenant file root location
+
+        //$dimensions = $this->getImageDimension($file);
+
+        $uniqueFileName = Str::random(8)."_".$file->getClientOriginalName();
+        // Upload to local
+        if (env('APP_ENV') === 'local') {
+            $relativePath = $path.$uniqueFileName;
+            if ($file->move(public_path().$path, $relativePath)) {
+                return $relativePath;
+            }
+        }
+
+        // Upload to AWS
+        if ($awsPath = Storage::disk('s3')->putFile(env('APP_ENV'), $file, 'public')) {
+            return Storage::disk('s3')->url($awsPath);
+        }
+
+        return false;
+    }
+
+    /** @noinspection PhpUnused */
+
+    /**
+     * Get dimension of image
+     *
+     * @param $file
+     * @return array|bool
+     */
+    public function getImageDimension($file)
+    {
+        if (isImageExtension($file->getClientOriginalExtension())) {
+            [$width, $height] = getimagesize($file->getPathname());
+
+            return ['width' => $width, 'height' => $height];
+        }
+
+        return false;
     }
 
     /**
@@ -65,11 +139,12 @@ class UploadController extends ModuleBaseController
      */
     public function download($uuid)
     {
-        if ($upload = Upload::whereUuid($uuid)->first()) {
+        if ($upload = Upload::where('uuid', $uuid)
+            ->remember(cacheTime('long'))->first()) {
             return Response::download(public_path().$upload->path);
         }
 
-        return $this->notFound();
+        return $this->responseNotFound();
     }
 
 }

@@ -3,32 +3,31 @@
 namespace App\Http\Controllers;
 
 use Request;
-use Redirect;
-use Response;
-use App\Mainframe\Modules\Uploads\Upload;
 use Storage;
+use Response;
+use Redirect;
+use App\Mainframe\Modules\Uploads\Upload;
 use App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController;
 
 class UploadsController extends ModuleBaseController
 {
 
-
     /**
      * Stores the image file in server
+     *
      * @param  string  $input_name  file field name
      * @return $this|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      * @throws \Exception
      */
     public function store($input_name = 'file')
     {
-
         $input_name = Request::has('input_name') ? Request::get('input_name') : $input_name;
 
         /** @var \App\Http\Mainframe\Helpers\Modular\BaseModule\BaseModule $Model */
         /** @var \App\Http\Mainframe\Helpers\Modular\BaseModule\BaseModule $element */
         // init local variables
         $moduleName = $this->moduleName;
-        $Model       = model($this->moduleName);
+        $Model = model($this->moduleName);
 
         // $ret = ret();
         # --------------------------------------------------------
@@ -43,13 +42,12 @@ class UploadsController extends ModuleBaseController
                 $ret = ret('fail', "Validation error(s) on creating {$this->module->title}.",
                     ['validation_errors' => json_decode($validator->messages(), true)]);
             } else {
-
                 if (Request::hasFile($input_name)) {
                     $uuid = uuid();
                     $file = Request::file($input_name);
                     // $unique_name = $uuid . "." . $file->getClientOriginalExtension();
                     $unique_name = 'test_'.randomString()."_".$file->getClientOriginalName();
-                    $path        = conf('var.file-upload-root');
+                    $path = conf('var.file-upload-root');
 
                     // Resolve tenant directory
                     $tenant_id = null;
@@ -86,8 +84,7 @@ class UploadsController extends ModuleBaseController
                             $aws_url = Storage::disk('s3')->url($aws_path);
                             $element->path = $aws_url;
                         }
-
-                    }else {
+                    } else {
                         /**********************************************
                          * Store in local directory
                          **********************************************/
@@ -110,7 +107,7 @@ class UploadsController extends ModuleBaseController
                                 "width" => $width,                 // required for croppic image cropper
                                 "height" => $height                 // required for croppic image cropper
                             ];
-                            $ret     = ret('success', "File has been uploaded", $payload);
+                            $ret = ret('success', "File has been uploaded", $payload);
                         } else {
                             setError("File could not be uploaded for some reason.");
                             $ret = ret('fail', "File could not be uploaded for some reason.");
@@ -121,7 +118,6 @@ class UploadsController extends ModuleBaseController
                 } else {
                     $ret = ret('fail', "No file selected.");
                 }
-
             }
         } else {
             $ret = ret('fail', "User does not have create permission for module: {$this->module->title} ");
@@ -134,6 +130,7 @@ class UploadsController extends ModuleBaseController
             if ($ret['status'] == 'success' && (isset($ret['redirect']) && $ret['redirect'] == '#new')) {
                 $ret['redirect'] = route("$moduleName.edit", $$element->id);
             }
+
             return Response::json($ret);
         }
 
@@ -149,11 +146,13 @@ class UploadsController extends ModuleBaseController
                 $redirect = Redirect::to(Request::get('redirect_success'));
             }
         }
+
         return $redirect;
     }
 
     /**
      * Downloads the file with HTTP response to hide the file url
+     *
      * @param $uuid
      * @return \Symfony\Component\HttpFoundation\BinaryFileResponse
      */
@@ -161,6 +160,7 @@ class UploadsController extends ModuleBaseController
     {
         if ($upload = Upload::whereUuid($uuid)->first()) {
             $response = Response::download(public_path().$upload->path);
+
             //ob_end_clean();
             return $response;
         }
