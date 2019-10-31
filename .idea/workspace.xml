@@ -6,20 +6,22 @@
   <component name="ChangeListManager">
     <list default="true" id="ee34113f-6433-40ce-8481-cf6a87088dde" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_ide_helper.php" beforeDir="false" afterPath="$PROJECT_DIR$/_ide_helper.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Modules/UploadsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Modules/UploadsController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/BaseController/MainframeBaseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/BaseController/MainframeBaseController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/BaseController/ModuleBaseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/BaseController/ModuleBaseController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/BaseController/Traits/ModelOperationsTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/BaseController/Traits/ModelOperationsTrait.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/BaseController/Traits/ResponseTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/BaseController/Traits/ResponseTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/BaseController/Traits/Transformable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/BaseController/Traits/Transformable.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/BaseController/Traits/Transformable.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/BaseModule/BaseModuleObserver.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/BaseModule/BaseModuleObserver.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/BaseModule/Traits/Validable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/BaseModule/Traits/Validable.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/Skeleton/SuperHero.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/Skeleton/SuperHero.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/Validator/ModelValidator.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/Validator/ModelValidator.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Changes/Change.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Changes/Change.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Groups/Group.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Groups/Group.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Groups/GroupHelper.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Groups/GroupHelper.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Modules/Module.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Modules/Module.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Modules/ModuleHelper.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Modules/ModuleHelper.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Users/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Users/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/settings/form/js.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/settings/form/js.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Uploads/Upload.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Uploads/Upload.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Uploads/UploadController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Uploads/UploadController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Uploads/UploadHelper.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Uploads/UploadHelper.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Uploads/UploadValidator.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Uploads/UploadValidator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/layouts/module/form/includes/features/uploads/uploads.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/module/form/includes/features/uploads/uploads.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

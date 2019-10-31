@@ -12,18 +12,18 @@ use App\Mainframe\Modules\Groups\Traits\GroupDefinitionsTrait;
 /**
  * App\Mainframe\Modules\Groups\Group
  *
- * @property int $id TRIAL
- * @property string|null $uuid TRIAL
- * @property string|null $name TRIAL
- * @property string|null $title TRIAL
- * @property array $permissions TRIAL
- * @property int|null $is_active TRIAL
- * @property int|null $created_by TRIAL
- * @property int|null $updated_by TRIAL
- * @property \Illuminate\Support\Carbon|null $created_at TRIAL
- * @property \Illuminate\Support\Carbon|null $updated_at TRIAL
- * @property \Illuminate\Support\Carbon|null $deleted_at TRIAL
- * @property int|null $deleted_by TRIAL
+ * @property int $id
+ * @property string|null $uuid
+ * @property string|null $name
+ * @property string|null $title
+ * @property array $permissions
+ * @property int|null $is_active
+ * @property int|null $created_by
+ * @property int|null $updated_by
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @property int|null $deleted_by
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Changes\Change[] $changes
  * @property-read int|null $changes_count
  * @property-read \App\Mainframe\Modules\Users\User|null $creator
@@ -150,7 +150,6 @@ class Group extends BaseModule
         parent::boot();
         self::observe(GroupObserver::class);
         static::saving(function (Group $element) {
-
             $permissions = [];
             // revoke existing group permissions
             $existing_permissions = $element->getPermissions();

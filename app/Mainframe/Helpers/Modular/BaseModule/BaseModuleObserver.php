@@ -3,6 +3,7 @@
 namespace App\Mainframe\Helpers\Modular\BaseModule;
 
 use App\Mainframe\Modules\Changes\Change;
+use App\Mainframe\Modules\Uploads\Upload;
 
 class BaseModuleObserver
 {
@@ -13,8 +14,6 @@ class BaseModuleObserver
      */
     public function saving($element)
     {
-
-
         $element = fillModel($element);         // This line should be placed just before return
 
         Change::keepChangesInSession($element); // store change log
@@ -35,6 +34,7 @@ class BaseModuleObserver
      */
     public function saved($element)
     {
+        Upload::linkTemporaryUploads($element);            //
         Change::storeChangesFromSession("", $element, ""); // Take changes from session and store in changes table
     }
 
@@ -68,7 +68,6 @@ class BaseModuleObserver
      */
     public function deleting($element)
     {
-
         // if (!validForeignReferenceForDelete(get_class($element), $element->id)) {
         //     return setError('Error validForeignReferenceForDelete');
         // }

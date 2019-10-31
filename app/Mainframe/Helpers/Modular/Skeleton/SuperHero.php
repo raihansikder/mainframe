@@ -137,6 +137,16 @@ class SuperHero extends BaseModule
 
     /*
     |--------------------------------------------------------------------------
+    | Attributes
+    |--------------------------------------------------------------------------
+    |
+    | If you want to add extra fields(that doesn't exist in database) to you model
+    | you can use the getSomeAttribute() feature of eloquent.
+    */
+    // public function getUrlAttribute(){return asset($this->path); }
+
+    /*
+    |--------------------------------------------------------------------------
     | Relations
     |--------------------------------------------------------------------------
     |

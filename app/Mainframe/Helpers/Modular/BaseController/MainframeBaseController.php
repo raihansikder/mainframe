@@ -12,14 +12,13 @@ use App\Mainframe\Traits\IsoOutput;
 use App\Http\Controllers\Controller;
 use App\Mainframe\Traits\GridDatatable;
 use App\Mainframe\Helpers\Modular\BaseController\Traits\ResponseTrait;
-use App\Mainframe\Helpers\Modular\BaseController\Traits\Transformable;
 
 /**
  * Class ModuleBaseController
  */
 class MainframeBaseController extends Controller
 {
-    use IsoOutput, Transformable, ResponseTrait;
+    use IsoOutput, ResponseTrait;
 
     /** @var \Illuminate\Http\Request */
     public $request;

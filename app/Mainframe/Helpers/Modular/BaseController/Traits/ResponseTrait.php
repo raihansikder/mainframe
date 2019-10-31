@@ -8,6 +8,7 @@ namespace App\Mainframe\Helpers\Modular\BaseController\Traits;
 use Response;
 use Redirect;
 
+/** @mixin \App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController */
 trait ResponseTrait
 {
 
@@ -33,13 +34,22 @@ trait ResponseTrait
      */
     public function expectsJson()
     {
-        /** @var $this \App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController */
         if ($this->request->expectsJson()) {
             return true;
         }
 
-        /** @var $this \App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController */
         return $this->request->get('ret') === 'json';
+    }
+
+    public function failAndRespond($message = 'Operation failed', $code = 400)
+    {
+        $this->fail($message, $code);
+
+        if ($this->expectsJson()) {
+            return $this->json();
+        }
+
+        return abort($code, $message);
     }
 
     /**
@@ -51,14 +61,7 @@ trait ResponseTrait
      */
     public function permissionDenied($message = 'Permission denied', $code = 403)
     {
-        /** @var \App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController|self $this */
-        $this->fail($message, $code);
-        if ($this->expectsJson()) {
-            /** @var \App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController|self $this */
-            return $this->json();
-        }
-
-        return abort($code, $message);
+        return $this->failAndRespond($message, $code);
     }
 
     /**
@@ -68,16 +71,9 @@ trait ResponseTrait
      * @param  int  $code
      * @return \Illuminate\Http\JsonResponse|void
      */
-    public function notFound($message = 'Item not found', $code = 403)
+    public function notFound($message = 'Item not found', $code = 404)
     {
-        /** @var \App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController|self $this */
-        $this->fail($message, $code);
-        if ($this->expectsJson()) {
-            /** @var \App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController|self $this */
-            return $this->json();
-        }
-
-        return abort($code, $message);
+        return $this->failAndRespond($message, $code);
     }
 
     /**
@@ -199,7 +195,7 @@ trait ResponseTrait
         $to = $this->getRedirectTo();
 
         $redirect = $to ? Redirect::to($to) : Redirect::back();
-        /** @var \App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController|self $this */
+
         $validator = $this->validator->validator;
 
         if ($this->isFail()) {
@@ -222,7 +218,6 @@ trait ResponseTrait
     public function getRedirectTo()
     {
         if ($this->isSuccess()) {
-            /** @var $this \App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController */
             $this->redirectTo = $this->request->get('redirect_success');
 
             if ($this->redirectTo === '#new' && $this->element) {
@@ -231,7 +226,6 @@ trait ResponseTrait
         }
 
         if ($this->isFail()) {
-            /** @var $this \App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController */
             $this->redirectTo = $this->request->get('redirect_fail');
 
             if ($this->redirectTo === '#new' && $this->element) {

@@ -65,19 +65,24 @@ class ModelValidator
         return array_merge($messages, $merge);
     }
 
+    /**
+     * Run a validation only on the defined rules.
+     *
+     * @return \Illuminate\Contracts\Validation\Validator|\Illuminate\Validation\Validator
+     */
     public function validateRules()
     {
         $validator = Validator::make(
             $this->element->getAttributes(),
-            self::rules($this->element),
-            self::customErrorMessages()
+            $this::rules($this->element),
+            $this::customErrorMessages()
         );
+
+        $this->validator = $validator;
 
         if ($validator->fails()) {
             $this->invalidate();
         }
-
-        $this->validator = $validator;
 
         return $this->validator;
     }

@@ -160,7 +160,7 @@ class Upload extends BaseModule
         parent::boot();
         self::observe(UploadObserver::class);
         static::saving(function (Upload $element) {
-            $element->is_active = 1; // Always set as 'Yes'
+            $element->is_active = 1;                    // Always set as 'Yes'
             $element->ext = extFrmPath($element->path); // Store file extension separately
         });
     }
@@ -203,6 +203,18 @@ class Upload extends BaseModule
     | getting or setting them. Get a transformed value of an attribute
     */
     // public function setFirstNameAttribute($value) { $this->attributes['first_name'] = strtolower($value); }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Attributes
+    |--------------------------------------------------------------------------
+    |
+    | If you want to add extra fields(that doesn't exist in database) to you model
+    | you can use the getSomeAttribute() feature of eloquent.
+    */
+    public function getUrlAttribute() { return asset($this->path); }
+
+    public function getDirAttribute() { return public_path().$this->path; }
 
     /*
     |--------------------------------------------------------------------------

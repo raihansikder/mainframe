@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpUnusedParameterInspection */
 /** @noinspection PhpUndefinedClassInspection */
 /** @noinspection NotOptimalIfConditionsInspection */
 /** @noinspection PhpParamsInspection */
@@ -66,7 +66,7 @@ class ModuleBaseController extends MainframeBaseController
      */
     public function index()
     {
-        if (! user()->can('viewAny', get_class($this->model))) {
+        if (! user()->can('viewAny', $this->model)) {
             return $this->permissionDenied();
         }
 
@@ -88,7 +88,7 @@ class ModuleBaseController extends MainframeBaseController
     {
         $this->element = $this->module->modelInstance();
 
-        if (! user()->cannot('create')) {
+        if (! user()->can('create', $this->model)) {
             return $this->permissionDenied();
         }
 
@@ -107,9 +107,8 @@ class ModuleBaseController extends MainframeBaseController
      * Store an spyr element. Returns json response if ret=json is sent as url parameter. Otherwise redirects
      * based on the url set in redirect_success|redirect_fail
      *
+     * @param  \Illuminate\Http\Request  $request
      * @return $this|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
-     * @var \App\Mainframe\Helpers\Modular\BaseModule\BaseModule $element
-     * @var \App\Superhero $Model
      */
     public function store(Request $request)
     {
@@ -137,9 +136,7 @@ class ModuleBaseController extends MainframeBaseController
      */
     public function show($id)
     {
-        $this->element = $this->model->find($id);
-
-        if (! $this->element) {
+        if (! $this->element = $this->model->find($id)) {
             return $this->notFound();
         }
 
@@ -162,9 +159,7 @@ class ModuleBaseController extends MainframeBaseController
      */
     public function edit($id)
     {
-        $this->element = $this->model->find($id);
-
-        if (! $this->element) {
+        if (! $this->element = $this->model->find($id)) {
             return $this->notFound();
         }
 
@@ -190,9 +185,7 @@ class ModuleBaseController extends MainframeBaseController
      */
     public function update(Request $request, $id)
     {
-        $this->element = $this->model->find($id);
-
-        if (! $this->element) {
+        if (! $this->element = $this->model->find($id)) {
             return $this->notFound();
         }
 
@@ -218,9 +211,7 @@ class ModuleBaseController extends MainframeBaseController
      */
     public function destroy($id)
     {
-        $this->element = $this->model->find($id);
-
-        if (! $this->element) {
+        if (! $this->element = $this->model->find($id)) {
             return $this->notFound();
         }
 
