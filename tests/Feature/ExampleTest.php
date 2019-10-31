@@ -2,8 +2,8 @@
 
 namespace Tests\Feature;
 
+use App\User;
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ExampleTest extends TestCase
 {
@@ -19,15 +19,19 @@ class ExampleTest extends TestCase
         $response->assertStatus(200);
     }
 
-    /**
-     * A basic test example.
-     *
-     * @return void
-     */
-    public function testBasicTestTwo()
+    public function testLoggedInUser()
     {
-        $response = $this->get('/');
+        $user = User::find(5);
 
-        $response->assertStatus(200);
+        $response = $this->actingAs($user)
+            ->withSession(['foo' => 'bar'])
+            ->get('/')->assertSee('raihan');
     }
+
+    public function testUserCanLogin()
+    {
+        $this->post('/login', ['email' => 'raihan@yantrait.com', 'password' => '8eyesnlegs'])->assertRedirect('/home');
+        $this->get('/')->assertSee('raihan@yantrait.com');
+    }
+
 }

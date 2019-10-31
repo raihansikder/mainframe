@@ -8,7 +8,6 @@
 namespace App\Mainframe\Helpers\Modular\BaseController;
 
 use Illuminate\Support\MessageBag;
-use App\Mainframe\Traits\IsoOutput;
 use App\Http\Controllers\Controller;
 use App\Mainframe\Traits\GridDatatable;
 use App\Mainframe\Helpers\Modular\BaseController\Traits\ResponseTrait;
@@ -18,7 +17,7 @@ use App\Mainframe\Helpers\Modular\BaseController\Traits\ResponseTrait;
  */
 class MainframeBaseController extends Controller
 {
-    use IsoOutput, ResponseTrait;
+    use  ResponseTrait;
 
     /** @var \Illuminate\Http\Request */
     public $request;
