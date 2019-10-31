@@ -6,6 +6,7 @@ use Storage;
 use Response;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
 use App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController;
 
 class UploadController extends ModuleBaseController
@@ -87,7 +88,7 @@ class UploadController extends ModuleBaseController
      * @param $file
      * @return bool|string
      */
-    public function handleUpload($file)
+    public function handleUpload(UploadedFile $file)
     {
         $path = conf('mainframe.config.upload_root');
 
@@ -120,7 +121,7 @@ class UploadController extends ModuleBaseController
      * @param $file
      * @return array|bool
      */
-    public function getImageDimension($file)
+    public function getImageDimension(UploadedFile $file)
     {
         if (isImageExtension($file->getClientOriginalExtension())) {
             [$width, $height] = getimagesize($file->getPathname());
