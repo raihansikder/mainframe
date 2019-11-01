@@ -47,7 +47,7 @@ use App\Mainframe\Helpers\Modular\BaseModule\BaseModule;
  * @method static Builder|Setting whereUuid($value)
  * @method static Builder|Setting whereValue($value)
  * @mixin \Eloquent
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Helpers\Modular\BaseModule\BaseModule active()
+ * @method static Builder|BaseModule active()
  */
 class Setting extends BaseModule
 {
@@ -160,13 +160,13 @@ class Setting extends BaseModule
 
 
     /*
-     |--------------------------------------------------------------------------
-     | Query scopes + Dynamic scopes
-     |--------------------------------------------------------------------------
-     |
-     | Scopes allow you to easily re-use query logic in your models. To define
-     | a scope, simply prefix a model method with scope:
-     */
+    |--------------------------------------------------------------------------
+    | Query scopes + Dynamic scopes
+    |--------------------------------------------------------------------------
+    |
+    | Scopes allow you to easily re-use query logic in your models. To define
+    | a scope, simply prefix a model method with scope:
+    */
     //public function scopePopular($query) { return $query->where('votes', '>', 100); }
     //public function scopeWomen($query) { return $query->whereGender('W'); }
     /*
