@@ -16,7 +16,7 @@ trait ModelOperationsTrait
      */
     public function fillElement()
     {
-        $inputs = $this->request->all();
+        $inputs = request()->all();
 
         // Transform $inputs here
 
@@ -28,11 +28,11 @@ trait ModelOperationsTrait
      *
      * @return mixed|\App\Mainframe\Helpers\Modular\Validator\ModelValidator
      */
-    public function initModelValidator()
+    public function modelValidator()
     {
-        $this->validator = $this->fillElement()->validator();
+        $this->modelValidator = $this->fillElement()->validator();
 
-        return $this->validator;
+        return $this->modelValidator;
     }
 
     /**
@@ -42,7 +42,7 @@ trait ModelOperationsTrait
      */
     public function attemptStore()
     {
-        $validator = $this->initModelValidator();
+        $validator = $this->modelValidator();
 
         if ($validator->creating()->fails()) {
             return $this->fail('Validation failed', 200);
@@ -64,19 +64,19 @@ trait ModelOperationsTrait
      */
     public function attemptUpdate()
     {
-        $validator = $this->initModelValidator();
+        $validator = $this->modelValidator();
 
         if ($validator->updating()->fails()) {
-            return $this->fail('Validation failed', 200);
+            return $this->response()->fail('Validation failed', 200);
         }
 
         $this->element = $validator->element; // Get the updated valid element.
 
         if (! $this->element->save()) {
-            return $this->fail('Can not update for some reason', 200);
+            return $this->response()->fail('Can not update for some reason', 200);
         }
 
-        return $this->success('Successfully saved.', 200);
+        return $this->response()->success('Successfully saved.', 200);
     }
 
     /**
@@ -87,7 +87,7 @@ trait ModelOperationsTrait
      */
     public function attemptDestroy()
     {
-        $validator = $this->initModelValidator();
+        $validator = $this->modelValidator();
 
         if ($validator->deleting()->fails()) {
             return $this->fail('Validation failed', 200);

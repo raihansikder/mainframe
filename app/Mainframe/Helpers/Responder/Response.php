@@ -3,7 +3,6 @@
 namespace App\Mainframe\Helpers\Responder;
 
 use Redirect;
-use App\Mainframe\Helpers\Modular\BaseController\MainframeBaseController;
 
 class Response
 {
@@ -16,22 +15,12 @@ class Response
     public $message;
     /** @var mixed API payload, usually it is a list of a model */
     public $payload;
+    /** @var \App\Mainframe\Helpers\Modular\BaseModule\BaseModule */
+    public $element;
     /** @var string */
     public $redirectTo;
-    /**
-     * @var array|\Illuminate\Http\Request|string
-     */
-    private $request;
-    /**
-     * @var \App\Mainframe\Helpers\Modular\BaseController\MainframeBaseController
-     */
-    public $controller;
-
-    public function __construct(MainframeBaseController $controller)
-    {
-        $this->controller = $controller;
-        $this->request = $this->controller->request;
-    }
+    /** @var \App\Mainframe\Helpers\Modular\Validator\ModelValidator */
+    public $modelValidator;
 
     /**
      * Checks if the response expects JSON
@@ -40,14 +29,21 @@ class Response
      */
     public function expectsJson()
     {
-        if ($this->request->expectsJson()) {
+        if (request()->expectsJson()) {
             return true;
         }
 
-        return $this->request->get('ret') === 'json';
+        return request()->get('ret') === 'json';
     }
 
-    public function responseFail($message = null, $code = null)
+    /**
+     * Abort on fail.
+     *
+     * @param  null  $message
+     * @param  null  $code
+     * @return \Illuminate\Http\JsonResponse|void
+     */
+    public function failed($message = null, $code = null)
     {
         $message = $message ?: 'Operation failed';
         $code = $code ?: 400;
@@ -68,12 +64,12 @@ class Response
      * @param  int  $code
      * @return \Illuminate\Http\JsonResponse|void
      */
-    public function responsePermissionDenied($message = null, $code = null)
+    public function permissionDenied($message = null, $code = null)
     {
         $message = $message ?: 'Permission denied';
         $code = $code ?: 403;
 
-        return $this->responseFail($message, $code);
+        return $this->failed($message, $code);
     }
 
     /**
@@ -83,9 +79,9 @@ class Response
      * @param  int  $code
      * @return \Illuminate\Http\JsonResponse|void
      */
-    public function responseNotFound($message = 'Item not found', $code = 404)
+    public function notFound($message = 'Item not found', $code = 404)
     {
-        return $this->responseFail($message, $code);
+        return $this->failed($message, $code);
     }
 
     /**
@@ -188,8 +184,8 @@ class Response
 
         /** @Var ModuleBaseController|this $this */
         if (isset($this->controller->validator, $this->controller->validator->validator)
-            && $this->controller->validator->validator->fails()) {
-            $response['validation_errors'] = json_decode($controller->validator->validator->messages(), true);
+            && $this->modelValidator->validator->fails()) {
+            $response['validation_errors'] = json_decode($controller->modelValidator->validator->messages(), true);
         }
 
         if ($controller->getRedirectTo()) {
@@ -200,20 +196,20 @@ class Response
     }
 
     /**
+     * Redirect to a route
      *
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function redirect()
     {
-        $to = $this->getRedirectTo();
-
-        $redirect = $to ? Redirect::to($to) : Redirect::back();
-
-        $validator = $this->validator->validator;
+        $redirect = $this->redirectTo
+            ? Redirect::to($this->redirectTo)
+            : Redirect::back();
 
         if ($this->isFail()) {
             $redirect = $redirect->withInput();
 
-            if ($validator) {
+            if ($validator = $this->modelValidator->validator) {
                 $redirect = $redirect->withErrors($validator);
             }
         }
@@ -222,30 +218,6 @@ class Response
             'status' => $this->status,
             'message' => $this->message,
         ]);
-    }
-
-    /**
-     * @return null|mixed
-     */
-    public function getRedirectTo()
-    {
-        if ($this->isSuccess()) {
-            $this->redirectTo = $this->request->get('redirect_success');
-
-            if ($this->redirectTo === '#new' && $this->element) {
-                return route($this->moduleName.".edit", $this->element->id);
-            }
-        }
-
-        if ($this->isFail()) {
-            $this->redirectTo = $this->request->get('redirect_fail');
-
-            if ($this->redirectTo === '#new' && $this->element) {
-                return route($this->moduleName.".edit", $this->element->id);
-            }
-        }
-
-        return $this->redirectTo;
     }
 
 }

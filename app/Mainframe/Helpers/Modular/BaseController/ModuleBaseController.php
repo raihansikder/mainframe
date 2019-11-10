@@ -12,6 +12,7 @@ use View;
 use Redirect;
 use Illuminate\Http\Request;
 use App\Mainframe\Modules\Modules\Module;
+use App\Mainframe\Helpers\Responder\Response;
 use App\Mainframe\Helpers\Modular\Resolvers\GridView;
 use App\Mainframe\Helpers\Modular\BaseController\Traits\ListTrait;
 use App\Mainframe\Helpers\Modular\BaseController\Traits\Resolvable;
@@ -30,18 +31,14 @@ class ModuleBaseController extends MainframeBaseController
 
     /** @var string */
     public $moduleName;
-
     /** @var Module */
     protected $module;
-
     /** @var \Illuminate\Database\Eloquent\Builder */
     protected $model;
-
     /** @var \App\Mainframe\Helpers\Modular\BaseModule\BaseModule */
     protected $element;
-
     /** @var \App\Mainframe\Helpers\Modular\Validator\ModelValidator */
-    public $validator;
+    public $modelValidator;
 
     /**
      * @param  null  $moduleName
@@ -55,6 +52,7 @@ class ModuleBaseController extends MainframeBaseController
 
         View::share([
             'module' => $this->module,
+            'user' => user(),
         ]);
     }
 
@@ -72,7 +70,7 @@ class ModuleBaseController extends MainframeBaseController
         }
 
         if ($this->expectsJson()) {
-            return $this->success()->payload($this->listData())->json();
+            return $this->success()->load($this->listData())->json();
         }
 
         return view(GridView::resolve($this->moduleName))
@@ -93,7 +91,7 @@ class ModuleBaseController extends MainframeBaseController
             return $this->permissionDenied();
         }
 
-        $uuid = $this->request->old('uuid') ?: uuid();
+        $uuid = request()->old('uuid') ?: uuid();
         $formState = 'create';
         $formConfig = $this->createFromConfig();
         $elementIsEditable = true;
@@ -121,7 +119,7 @@ class ModuleBaseController extends MainframeBaseController
         }
 
         if ($this->expectsJson()) {
-            return $this->success()->payload($this->element)->json();
+            return $this->success()->load($this->element)->json();
         }
 
         return Redirect::route($this->moduleName.".edit", $id);
@@ -162,20 +160,19 @@ class ModuleBaseController extends MainframeBaseController
     public function store(Request $request)
     {
         if (! user()->can('create', $this->model)) {
-            return $this->permissionDenied();
+            return $this->response->permissionDenied();
         }
 
         $this->element = $this->model; // Create an empty model to be stored.
 
         $this->attemptStore();
 
-        if ($this->expectsJson()) {
-            return $this->json();
+        if ($this->response->expectsJson()) {
+            return $this->response->payload($this->element)->json();
         }
 
         return $this->redirect();
     }
-
 
     /**
      * Update handler for spyr element.
@@ -187,20 +184,20 @@ class ModuleBaseController extends MainframeBaseController
     public function update(Request $request, $id)
     {
         if (! $this->element = $this->model->find($id)) {
-            return $this->notFound();
+            return $this->response()->notFound();
         }
 
         if (user()->cannot('update', $this->element)) {
-            return $this->permissionDenied();
+            return $this->response()->permissionDenied();
         }
 
         $this->attemptUpdate();
 
-        if ($this->expectsJson()) {
-            return $this->payload($this->element)->json();
+        if ($this->response()->expectsJson()) {
+            return $this->response()->payload($this->element)->json();
         }
 
-        return $this->redirect();
+        return $this->response()->redirect();
     }
 
     /**
@@ -240,4 +237,16 @@ class ModuleBaseController extends MainframeBaseController
         return abort(403, $id.'- Restore restricted');
     }
 
+    /**
+     * @return mixed|Response
+     */
+    public function response()
+    {
+        $response = parent::response();
+
+        $response->modelValidator = $response->modelValidator ?: $this->modelValidator;
+        $response->element = $response->element ?: $this->element;
+
+        return $response;
+    }
 }

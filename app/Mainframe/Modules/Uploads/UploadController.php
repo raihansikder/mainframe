@@ -42,7 +42,7 @@ class UploadController extends ModuleBaseController
         $this->element = $this->model; // Create an empty model to be stored.
 
         if (! $file = $this->getFile()) {
-            return $this->responseFail('No file in http request');
+            return $this->failed('No file in http request');
         }
 
         // if($dimensions = $this->getImageDimension($file)){
@@ -51,7 +51,7 @@ class UploadController extends ModuleBaseController
         // }
 
         if (! $uploadPath = $this->handleUpload($file)) {
-            return $this->responseFail('Can not move file to destination from tmp');
+            return $this->failed('Can not move file to destination from tmp');
         }
 
         $this->element->name = $file->getClientOriginalName();
