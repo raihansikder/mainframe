@@ -1,31 +1,37 @@
 <?php
-/** @noinspection UnknownInspectionInspection */
-/** @noinspection PhpUndefinedFieldInspection */
-/** @noinspection DuplicatedCode */
 
-namespace App\Mainframe\Helpers\Modular\BaseController\Traits;
+namespace App\Mainframe\Helpers\Responder;
 
-use Response;
 use Redirect;
+use App\Mainframe\Helpers\Modular\BaseController\MainframeBaseController;
 
-/** @mixin \App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController */
-trait ResponseTrait
+class Response
 {
 
     /** @var int Success/Error codes 200.400 etc */
     public $code;
-
     /** @var string success|fail */
     public $status;
-
     /** @var string Single line of message */
     public $message;
-
     /** @var mixed API payload, usually it is a list of a model */
     public $payload;
-
     /** @var string */
     public $redirectTo;
+    /**
+     * @var array|\Illuminate\Http\Request|string
+     */
+    private $request;
+    /**
+     * @var \App\Mainframe\Helpers\Modular\BaseController\MainframeBaseController
+     */
+    public $controller;
+
+    public function __construct(MainframeBaseController $controller)
+    {
+        $this->controller = $controller;
+        $this->request = $this->controller->request;
+    }
 
     /**
      * Checks if the response expects JSON
@@ -62,7 +68,7 @@ trait ResponseTrait
      * @param  int  $code
      * @return \Illuminate\Http\JsonResponse|void
      */
-    public function permissionDenied($message = null, $code = null)
+    public function responsePermissionDenied($message = null, $code = null)
     {
         $message = $message ?: 'Permission denied';
         $code = $code ?: 403;
@@ -77,7 +83,7 @@ trait ResponseTrait
      * @param  int  $code
      * @return \Illuminate\Http\JsonResponse|void
      */
-    public function notFound($message = 'Item not found', $code = 404)
+    public function responseNotFound($message = 'Item not found', $code = 404)
     {
         return $this->responseFail($message, $code);
     }
@@ -158,7 +164,7 @@ trait ResponseTrait
      */
     public function json()
     {
-        return Response::json($this->prepareJson(), $this->code);
+        return \Response::json($this->prepareJson(), $this->code);
     }
 
     /**
@@ -181,8 +187,8 @@ trait ResponseTrait
         }
 
         /** @Var ModuleBaseController|this $this */
-        if (isset($controller->validator, $controller->validator->validator)
-            && $controller->validator->validator->fails()) {
+        if (isset($this->controller->validator, $this->controller->validator->validator)
+            && $this->controller->validator->validator->fails()) {
             $response['validation_errors'] = json_decode($controller->validator->validator->messages(), true);
         }
 

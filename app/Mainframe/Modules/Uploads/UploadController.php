@@ -36,7 +36,7 @@ class UploadController extends ModuleBaseController
     public function store(Request $request)
     {
         if (! user()->can('create', $this->model)) {
-            return $this->responsePermissionDenied();
+            return $this->permissionDenied();
         }
 
         $this->element = $this->model; // Create an empty model to be stored.
@@ -145,7 +145,7 @@ class UploadController extends ModuleBaseController
             return Response::download(public_path().$upload->path);
         }
 
-        return $this->responseNotFound();
+        return $this->notFound();
     }
 
 }

@@ -41,7 +41,7 @@ class ModuleBaseController extends MainframeBaseController
     protected $element;
 
     /** @var \App\Mainframe\Helpers\Modular\Validator\ModelValidator */
-    protected $validator;
+    public $validator;
 
     /**
      * @param  null  $moduleName
@@ -68,7 +68,7 @@ class ModuleBaseController extends MainframeBaseController
     public function index()
     {
         if (! user()->can('viewAny', $this->model)) {
-            return $this->responsePermissionDenied();
+            return $this->permissionDenied();
         }
 
         if ($this->expectsJson()) {
@@ -90,7 +90,7 @@ class ModuleBaseController extends MainframeBaseController
         $this->element = $this->module->modelInstance();
 
         if (! user()->can('create', $this->model)) {
-            return $this->responsePermissionDenied();
+            return $this->permissionDenied();
         }
 
         $uuid = $this->request->old('uuid') ?: uuid();
@@ -100,37 +100,12 @@ class ModuleBaseController extends MainframeBaseController
 
         return View::make($this->createFormView())
             ->with('element', $this->element)
-            ->with(compact('formConfig', 'uuid',
-                'elementIsEditable', 'formState'));
+            ->with(compact('formConfig', 'uuid', 'elementIsEditable', 'formState'));
     }
 
     /**
-     * Store an spyr element. Returns json response if ret=json is sent as url parameter. Otherwise redirects
-     * based on the url set in redirect_success|redirect_fail
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return $this|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
-     */
-    public function store(Request $request)
-    {
-        if (! user()->can('create', $this->model)) {
-            return $this->responsePermissionDenied();
-        }
-
-        $this->element = $this->model; // Create an empty model to be stored.
-
-        $this->attemptStore();
-
-        if ($this->expectsJson()) {
-            return $this->json();
-        }
-
-        return $this->redirect();
-    }
-
-    /**
-     * Shows an spyr element. Store an spyr element. Returns json response if ret=json is sent as url parameter.
-     * Otherwise redirects to edit page where details is visible as filled up edit form.
+     * Shows an spyr element. Store an spyr element. Returns json response if ret=json is
+     * sent as url parameter.Otherwise redirects to edit page where details is visible as filled up edit form.
      *
      * @param $id
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
@@ -138,11 +113,11 @@ class ModuleBaseController extends MainframeBaseController
     public function show($id)
     {
         if (! $this->element = $this->model->find($id)) {
-            return $this->responseNotFound();
+            return $this->notFound();
         }
 
         if (! user()->can('view', $this->element)) {
-            return $this->responsePermissionDenied();
+            return $this->permissionDenied();
         }
 
         if ($this->expectsJson()) {
@@ -161,11 +136,11 @@ class ModuleBaseController extends MainframeBaseController
     public function edit($id)
     {
         if (! $this->element = $this->model->find($id)) {
-            return $this->responseNotFound();
+            return $this->notFound();
         }
 
         if (! user()->can('view', $this->element)) {
-            return $this->responsePermissionDenied();
+            return $this->permissionDenied();
         }
 
         $formState = 'edit';
@@ -178,6 +153,31 @@ class ModuleBaseController extends MainframeBaseController
     }
 
     /**
+     * Store an spyr element. Returns json response if ret=json is sent as url parameter.
+     * Otherwise redirects based on the url set in redirect_success|redirect_fail
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return $this|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
+     */
+    public function store(Request $request)
+    {
+        if (! user()->can('create', $this->model)) {
+            return $this->permissionDenied();
+        }
+
+        $this->element = $this->model; // Create an empty model to be stored.
+
+        $this->attemptStore();
+
+        if ($this->expectsJson()) {
+            return $this->json();
+        }
+
+        return $this->redirect();
+    }
+
+
+    /**
      * Update handler for spyr element.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -187,11 +187,11 @@ class ModuleBaseController extends MainframeBaseController
     public function update(Request $request, $id)
     {
         if (! $this->element = $this->model->find($id)) {
-            return $this->responseNotFound();
+            return $this->notFound();
         }
 
         if (user()->cannot('update', $this->element)) {
-            return $this->responsePermissionDenied();
+            return $this->permissionDenied();
         }
 
         $this->attemptUpdate();
@@ -213,11 +213,11 @@ class ModuleBaseController extends MainframeBaseController
     public function destroy($id)
     {
         if (! $this->element = $this->model->find($id)) {
-            return $this->responseNotFound();
+            return $this->notFound();
         }
 
         if (user()->cannot('delete', $this->element)) {
-            return $this->responsePermissionDenied();
+            return $this->permissionDenied();
         }
 
         $this->attemptDestroy();
