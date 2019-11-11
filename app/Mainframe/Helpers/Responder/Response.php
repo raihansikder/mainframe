@@ -146,7 +146,7 @@ class Response
      * @param  null  $payload
      * @return $this
      */
-    public function payload($payload = null)
+    public function load($payload = null)
     {
         $this->payload = $payload;
 

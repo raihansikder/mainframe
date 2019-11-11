@@ -69,8 +69,8 @@ class ModuleBaseController extends MainframeBaseController
             return $this->permissionDenied();
         }
 
-        if ($this->expectsJson()) {
-            return $this->success()->load($this->listData())->json();
+        if ($this->response()->expectsJson()) {
+            return $this->response()->success()->load($this->listData())->json();
         }
 
         return view(GridView::resolve($this->moduleName))
@@ -168,7 +168,7 @@ class ModuleBaseController extends MainframeBaseController
         $this->attemptStore();
 
         if ($this->response->expectsJson()) {
-            return $this->response->payload($this->element)->json();
+            return $this->response->load($this->element)->json();
         }
 
         return $this->redirect();
@@ -194,7 +194,7 @@ class ModuleBaseController extends MainframeBaseController
         $this->attemptUpdate();
 
         if ($this->response()->expectsJson()) {
-            return $this->response()->payload($this->element)->json();
+            return $this->response()->load($this->element)->json();
         }
 
         return $this->response()->redirect();

@@ -18,7 +18,7 @@ use App\Mainframe\Helpers\Modular\BaseController\Traits\ResponseTrait;
  */
 class MainframeBaseController extends Controller
 {
-    use  ResponseTrait;
+    // use  ResponseTrait;
 
     /** @var \Illuminate\Http\Request */
     // public $request;
@@ -44,11 +44,11 @@ class MainframeBaseController extends Controller
         /** @noinspection UnknownInspectionInspection */
         /** @noinspection DuplicatedCode */
         $response = resolve(Response::class);
-        $response->code = $response->code ?: $this->code;
-        $response->status = $response->status ?: $this->status;
-        $response->message = $response->message ?: $this->message;
-        $response->payload = $response->payload ?: $this->payload;
-        $response->redirectTo = $response->redirectTo ?: $this->redirectTo;
+        // $response->code = $response->code ?: $this->code;
+        // $response->status = $response->status ?: $this->status;
+        // $response->message = $response->message ?: $this->message;
+        // $response->payload = $response->payload ?: $this->payload;
+        // $response->redirectTo = $response->redirectTo ?: $this->redirectTo;
 
         return $response;
     }
