@@ -23,12 +23,7 @@ $script_paths = [
     /**
      * Custom CSS files
      */
-    'mainframe/templates/admin/css/custom.css',
-
-    /**
-     * Project Specific CSS
-     */
-    'projects/letsbab/css/letsbab.css',
+    'mainframe/css/mainframe.css',
 ]
 ?>
 

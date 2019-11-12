@@ -42,19 +42,19 @@ trait ModelOperationsTrait
      */
     public function attemptStore()
     {
-        $validator = $this->modelValidator();
+        $modelValidator = $this->modelValidator();
 
-        if ($validator->creating()->fails()) {
-            return $this->fail('Validation failed', 200);
+        if ($modelValidator->creating()->fails()) {
+            return $this->response()->fail('Validation failed', 200);
         }
 
-        $this->element = $validator->element; // Get the updated element
+        $this->element = $modelValidator->element; // Get the updated element
 
         if (! $this->element->save()) {
-            return $this->fail('Can not save for some reason', 200);
+            return $this->response()->fail('Can not save for some reason', 200);
         }
 
-        return $this->success('Successfully saved.', 200);
+        return $this->response()->success('Successfully saved.', 200);
     }
 
     /**
@@ -64,13 +64,13 @@ trait ModelOperationsTrait
      */
     public function attemptUpdate()
     {
-        $validator = $this->modelValidator();
+        $modelValidator = $this->modelValidator();
 
-        if ($validator->updating()->fails()) {
+        if ($modelValidator->updating()->fails()) {
             return $this->response()->fail('Validation failed', 200);
         }
 
-        $this->element = $validator->element; // Get the updated valid element.
+        $this->element = $modelValidator->element; // Get the updated valid element.
 
         if (! $this->element->save()) {
             return $this->response()->fail('Can not update for some reason', 200);
@@ -87,20 +87,20 @@ trait ModelOperationsTrait
      */
     public function attemptDestroy()
     {
-        $validator = $this->modelValidator();
+        $modelValidator = $this->modelValidator();
 
-        if ($validator->deleting()->fails()) {
-            return $this->fail('Validation failed', 200);
+        if ($modelValidator->deleting()->fails()) {
+            return $this->response()->fail('Validation failed', 200);
         }
 
-        $this->element = $validator->element; // Save the model once before deleting. .
+        $this->element = $modelValidator->element; // Save the model once before deleting. .
 
         $this->element->save();
         if (! $this->element->delete()) {
-            return $this->fail('Can not delete for some reason', 200);
+            return $this->response()->fail('Can not delete for some reason', 200);
         }
 
-        return $this->success('Successfully deleted.', 200);
+        return $this->response()->success('Successfully deleted.', 200);
     }
 
 }

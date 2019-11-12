@@ -21,6 +21,8 @@ class Response
     public $redirectTo;
     /** @var \App\Mainframe\Helpers\Modular\Validator\ModelValidator */
     public $modelValidator;
+    /** @var \Illuminate\Validation\Validator */
+    public $validator;
 
     /**
      * Checks if the response expects JSON
@@ -33,7 +35,7 @@ class Response
             return true;
         }
 
-        return request()->get('ret') === 'json';
+        return request('ret') === 'json';
     }
 
     /**
@@ -170,26 +172,31 @@ class Response
      */
     public function prepareJson()
     {
-        /** @var \App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController $controller */
-        $controller = $this;
-
+        // Generic response
         $response = [
             'code' => $this->code,
             'status' => $this->status,
             'message' => $this->message
         ];
+        // Add payload
         if ($this->payload) {
             $response['data'] = $this->payload;
         }
 
-        /** @Var ModuleBaseController|this $this */
-        if (isset($this->controller->validator, $this->controller->validator->validator)
-            && $this->modelValidator->validator->fails()) {
-            $response['validation_errors'] = json_decode($controller->modelValidator->validator->messages(), true);
+        // Add validation error messages
+        if ($this->modelValidator) {
+            $validator = $this->modelValidator->validator;
+        }
+        if ($this->validator) {
+            $validator = $this->validator;
+        }
+        if (isset($validator) && $validator->messages()) {
+            $response['validation_errors'] = json_decode($validator->messages(), true);
         }
 
-        if ($controller->getRedirectTo()) {
-            $response['redirect'] = $controller->getRedirectTo();
+        // Add redirect to
+        if ($this->redirectTo()) {
+            $response['redirect'] = $this->redirectTo();
         }
 
         return $response;
@@ -198,13 +205,14 @@ class Response
     /**
      * Redirect to a route
      *
+     * @param  null  $to
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function redirect()
+    public function redirect($to = null)
     {
-        $redirect = $this->redirectTo
-            ? Redirect::to($this->redirectTo)
-            : Redirect::back();
+        $to = $to ?: $this->redirectTo();
+
+        $redirect = $to ? Redirect::to($to) : Redirect::back();
 
         if ($this->isFail()) {
             $redirect = $redirect->withInput();
@@ -218,6 +226,45 @@ class Response
             'status' => $this->status,
             'message' => $this->message,
         ]);
+    }
+
+    /**
+     * Try to figure out where to redirect
+     *
+     * @return null|array|\Illuminate\Http\Request|string
+     */
+    public function redirectTo()
+    {
+        if ($this->redirectTo) {
+            return $this->redirectTo;
+        }
+
+        if ($this->isSuccess() && request('redirect_success')) {
+            if ($this->element && request('redirect_success') === '#new') {
+                return route($this->element->module()->name.".edit", $this->element->id);
+            }
+
+            return request('redirect_success');
+        }
+
+        if ($this->isFail() && request('redirect_fail')) {
+            return request('redirect_fail');
+        }
+
+        return null;
+    }
+
+    /**
+     * Setter fro $redirectTo
+     *
+     * @param $redirectTo
+     * @return $this
+     */
+    public function setRedirectTo($redirectTo)
+    {
+        $this->redirectTo = $redirectTo;
+
+        return $this;
     }
 
 }

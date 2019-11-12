@@ -5,6 +5,7 @@ namespace App\Mainframe\Modules\Modules;
 use Illuminate\Support\Str;
 use App\Mainframe\Modules\ModuleGroups\ModuleGroup;
 
+/** @mixin $this|self Module */
 trait ModuleHelper
 {
     /**
@@ -32,7 +33,7 @@ trait ModuleHelper
      */
     public static function names($only_active = true)
     {
-        $q = self::select('name');
+        $q = Module::select('name');
         if ($only_active) {
             $q = $q->where('is_active', 1);
         }
@@ -94,8 +95,8 @@ trait ModuleHelper
 
     public static function ofGroupId($id = 0)
     {
-        return Module::whereModuleGroupId($id)
-            ->active(1)->orderBy('order')
+        return Module::where('module_group_id', $id)
+            ->where('is_active',1)->orderBy('order')
             ->remember(cacheTime('long'))
             ->get();
     }

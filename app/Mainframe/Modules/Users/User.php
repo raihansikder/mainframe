@@ -10,7 +10,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Mainframe\Modules\Users\Traits\UserGroupable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Mainframe\Helpers\Modular\BaseModule\Traits\Validable;
-use App\Mainframe\Helpers\Modular\BaseModule\Traits\Changable;
+use App\Mainframe\Helpers\Modular\BaseModule\Traits\Changeable;
 use App\Mainframe\Helpers\Modular\BaseModule\Traits\Uploadable;
 use App\Mainframe\Helpers\Modular\BaseModule\Traits\UpdaterTrait;
 use App\Mainframe\Helpers\Modular\BaseModule\Traits\ModularTrait;
@@ -153,7 +153,7 @@ class User extends Authenticatable implements MustVerifyEmail
     use UserHelper, UserGroupable;
     use SoftDeletes, Rememberable, Validable, EventIdentifiable,
         RelatedUsersTrait, TenantContextTrait, UpdaterTrait,
-        Uploadable, Changable, ModularTrait;
+        Uploadable, Changeable, ModularTrait;
     /*
     |--------------------------------------------------------------------------
     | Fillable attributes
@@ -277,10 +277,7 @@ class User extends Authenticatable implements MustVerifyEmail
             if (is_array($group_ids) && (count($group_ids) > $max_groups)) {
                 $valid = setError("You can assign only {$max_groups} group.");
             }
-            if (is_array($group_ids) && count($group_ids)) {
-                $element->group_ids_csv = implode(',', Group::whereIn('id', $group_ids)->pluck('id')->toArray());
-                $element->group_titles_csv = implode(',', Group::whereIn('id', $group_ids)->pluck('title')->toArray());
-            }
+
             /**************************************************/
 
             // fill common fields, null-fill, trim blanks from Request
@@ -288,20 +285,9 @@ class User extends Authenticatable implements MustVerifyEmail
                 /**
                  * If email is confirmed then
                  */
-
                 if (! isset($element->is_active)) {
                     $element->is_active = ($element->email_confirmed === 1) ? 1 : 0;
                 }
-
-                $element->email_confirmed = (! $element->email_confirmed) ? 0 : 1;
-                if ($element->email_confirmed && $element->email_verified_at === null) {
-                    $element->email_verified_at = now();
-                }
-
-                //filling last_active_time,last_login_time,last_logout_time fields ;default will be updated_at value
-                $element->last_active_time = (! $element->last_active_time) ? $element->updated_at : $element->last_active_time;
-                $element->last_login_time = (! $element->last_login_time) ? $element->updated_at : $element->last_login_time;
-                $element->last_logout_time = (! $element->last_logout_time) ? $element->updated_at : $element->last_logout_time;
             }
 
             return $valid;

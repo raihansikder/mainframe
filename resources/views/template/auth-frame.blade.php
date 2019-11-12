@@ -12,12 +12,13 @@
     @show
     @include('template.css')
 </head>
-<body class="hold-transition login-page lb-bg">
+<body class="hold-transition login-page">
 <div class="login-box shadow">
     <div class="login-logo">
         <a href="{{route('home')}}">
-            <img style="width: 300px; padding-top: 20px;" src="{{asset("letsbab/images/logo-updated.PNG")}}"
-                 alt="{{setting('app-name')}}" title="{{setting('app-name')}}"/>
+{{--            <img style="width: 300px; padding-top: 20px;" src="{{asset("letsbab/images/logo-updated.PNG")}}"--}}
+{{--                 alt="{{setting('app-name')}}" title="{{setting('app-name')}}"/>--}}
+            Mainframe
         </a>
     </div>
     <div class="login-box-body">

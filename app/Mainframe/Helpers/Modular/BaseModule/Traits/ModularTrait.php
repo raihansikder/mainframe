@@ -5,6 +5,7 @@ namespace App\Mainframe\Helpers\Modular\BaseModule\Traits;
 use Illuminate\Support\Str;
 use App\Mainframe\Modules\Modules\Module;
 
+/** @mixin $this BaseModule */
 trait ModularTrait
 {
     /**
