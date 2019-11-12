@@ -381,6 +381,12 @@ label {
     border-right: 0;
 }
 
+.formError .formErrorArrow .line3, .formError .formErrorArrow .line2, .formError .formErrorArrow .line1 {
+    border-left: 0;
+    border-right: 0;
+    background-color: red;
+}
+
 /* Make module CTA block semi-transparent*/
 .cta-block {
     -webkit-mask-image: -webkit-gradient(linear, left 20%,
