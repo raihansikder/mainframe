@@ -8,19 +8,32 @@
 
 body, html, .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6,
 .content-header h4,
-.main-header .logo, .logo-mini, .logo-lg {
-    font-family: 'Roboto', 'Arial', sans-serif;
+.main-header {
+    font-family: 'Karla', 'Roboto', 'Arial', sans-serif;
 !important;
+    color: #666;
+    font-weight: normal;
+
 }
 
-body, html,
-.sidebar-menu .treeview-menu > li > a {
-    font-size: 14px;
-    /*color: #666;*/
+
+.main-header .logo, .logo, .logo-mini, .logo-lg, .h1, h1, .h2, h2 {
+    font-family: 'Montserrat', 'Roboto', 'Arial', sans-serif;
+!important;
+    font-weight: 100;
+}
+
+.h2, h2 {
+    font-size: 20px;
+}
+
+.sidebar-menu {
+    margin-top: 10px;
 }
 
 .sidebar-menu .treeview-menu {
-    padding-left: 15px;
+    padding-left: 10px;
+    padding-bottom: 10px;
     border-left: 4px solid rgb(126, 87, 223);
 }
 
@@ -28,6 +41,13 @@ body, html,
 .btn,
 table, tr, th, td, thead, tbody {
     font-size: inherit
+}
+
+.main-header {
+    background-image: url('../images/top-strip-1.png');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-color: black;
 }
 
 /* remove some borders from the top menu*/
@@ -64,7 +84,7 @@ table, tr, th, td, thead, tbody {
 }
 
 /* reduced margin for module titles to align with breadcrumb*/
-.content-header h4 {
+.content-header h2 {
     margin-top: 0;
 }
 
@@ -72,6 +92,10 @@ table, tr, th, td, thead, tbody {
 table.dataTable {
     border-collapse: collapse;
     width: 100%;
+}
+
+table.dataTable thead > tr > th {
+    font-weight: normal;
 }
 
 /* make textarea same size of ckeditor */
@@ -82,6 +106,7 @@ textarea {
 /* made label font weight bold*/
 label {
     font-weight: normal;
+    font-size: 0.8em;
 }
 
 /* style for permissions tree in group details form*/
@@ -100,6 +125,7 @@ label {
 
 /* add padding at the bottom of the app-frame so that CTA does not overlap with page econtent*/
 .content {
+    padding-top: 0;
     padding-bottom: 50px;
     min-height: 600px;
     background-color: #FFFFFF;
@@ -144,7 +170,7 @@ label {
 }
 
 /* Make button smaller beside the tile. usually these are create (plus button) or list button*/
-h4 .btn-xs {
+h2 .btn-xs {
     font-size: 12px;
 }
 
@@ -269,17 +295,16 @@ div.form-group span.readonly {
     border: 1px solid #e3e3e3;
 }
 
-.select2-container .select2-choice {
-    line-height: auto;
-    padding-left: 12px;
-}
-
 #tab_advanced .select2-container-multi .select2-choices .select2-search-choice {
     width: 100%;
 }
 
 .main-header {
     z-index: 1000;
+}
+
+.skin-blue-light .treeview-menu > li > a {
+    color: #444444;
 }
 
 .logo, .skin-blue-light .main-header .navbar, .navbar > a, .navbar a:hover {
@@ -292,9 +317,29 @@ div.form-group span.readonly {
     border-left: 0;
 }
 
-.login-box {
+.skin-blue-light .sidebar-menu > li > a {
+    font-weight: normal;
+    color: #333;
+}
+
+
+.login-logo, .register-logo {
+    font-family: 'Montserrat', sans-serif;
+    padding-top: 20px;
+    margin-bottom: 5px;
+    font-weight: 100;
+}
+
+.login-box, .login-box-body, .register-box-body {
     background-color: white;
 }
+
+
+.btn {
+    transition: all ease-in-out .25s;
+    border: 0;
+}
+
 
 .login-page {
     background-image: url('../images/login-bg1.jpg');
@@ -316,6 +361,19 @@ div.form-group span.readonly {
 /* form validation error with no border*/
 .formError .formErrorContent {
     border: 0;
+}
+
+select, .form-control {
+    border-color: #f0f0f0;
+    padding-left: 0;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+
+}
+
+label {
+    margin-bottom: 0;
 }
 
 .formError .formErrorArrow div {
@@ -378,4 +436,22 @@ pre.sf-dump, pre.sf-dump .sf-dump-default {
 
 .modal-open .modal {
     z-index: 1000000;
+}
+
+.pagination > li > a, .pagination > li > span {
+    border: 0px;
+}
+
+
+.callout h4 {
+    font-weight: normal;
+    color: inherit;
+}
+
+.modal-header {
+    border-bottom: 0;
+}
+
+a i {
+    color: inherit;
 }
