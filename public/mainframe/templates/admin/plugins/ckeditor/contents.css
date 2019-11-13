@@ -2,11 +2,11 @@
 Copyright (c) 2003-2016, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.md or http://ckeditor.com/license
 */
-/*@import url('https://fonts.googleapis.com/css?family=Ubuntu');*/
+@import url('https://fonts.googleapis.com/css?family=Karla');
 
 body {
     /* Font */
-    font-family: sans-serif, Arial, Verdana, "Trebuchet MS";
+    font-family: 'Karla', sans-serif, Arial, Verdana, "Trebuchet MS";
     font-size: 12px;
 
     /* Text color */
@@ -15,11 +15,11 @@ body {
     /* Remove the background color to make it transparent */
     background-color: #fff;
 
-    margin: 20px;
+    margin: 10px;
 }
 
 .cke_editable {
-    font-family: sans-serif, Arial, Verdana, "Trebuchet MS";
+    font-family: 'Karla', sans-serif, Arial, Verdana, "Trebuchet MS";
     font-size: 12px;
     line-height: 1.6;
 }
