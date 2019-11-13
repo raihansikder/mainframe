@@ -10,20 +10,22 @@ namespace App\Mainframe\Helpers\Modular\BaseController;
 use Illuminate\Support\MessageBag;
 use App\Http\Controllers\Controller;
 use App\Mainframe\Traits\GridDatatable;
-use App\Mainframe\Helpers\Modular\BaseController\Traits\ResponseTrait;
+use App\Mainframe\Helpers\Responder\Response;
 
 /**
  * Class MainframeBaseController
  */
 class MainframeBaseController extends Controller
 {
-    use  ResponseTrait;
-
-    /** @var \Illuminate\Http\Request */
-    public $request;
-
+    // public $request;
     /** @var \Illuminate\Support\MessageBag */
     public $messageBag;
+    /**
+     * @var \App\Mainframe\Helpers\Responder\Response
+     */
+    public $response;
+    /** @var \Illuminate\Validation\Validator */
+    public $validator;
 
     /**
      * MainframeBaseController constructor.
@@ -31,7 +33,23 @@ class MainframeBaseController extends Controller
     public function __construct()
     {
         $this->messageBag = resolve(MessageBag::class);
-        $this->request = request();
+        // $this->request = request();
+        // $this->response = new Response();
+    }
+
+    public function response()
+    {
+        /** @noinspection UnknownInspectionInspection */
+        /** @noinspection DuplicatedCode */
+        $response = resolve(Response::class);
+        $response->validator = $this->validator;
+        // $response->code = $response->code ?: $this->code;
+        // $response->status = $response->status ?: $this->status;
+        // $response->message = $response->message ?: $this->message;
+        // $response->payload = $response->payload ?: $this->payload;
+        // $response->redirectTo = $response->redirectTo ?: $this->redirectTo;
+
+        return $response;
     }
 
 }

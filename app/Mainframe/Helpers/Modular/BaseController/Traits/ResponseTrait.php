@@ -34,14 +34,14 @@ trait ResponseTrait
      */
     public function expectsJson()
     {
-        if ($this->request->expectsJson()) {
+        if (request()->expectsJson()) {
             return true;
         }
 
-        return $this->request->get('ret') === 'json';
+        return request()->get('ret') === 'json';
     }
 
-    public function responseFail($message = null, $code = null)
+    public function failed($message = null, $code = null)
     {
         $message = $message ?: 'Operation failed';
         $code = $code ?: 400;
@@ -67,7 +67,7 @@ trait ResponseTrait
         $message = $message ?: 'Permission denied';
         $code = $code ?: 403;
 
-        return $this->responseFail($message, $code);
+        return $this->failed($message, $code);
     }
 
     /**
@@ -79,7 +79,7 @@ trait ResponseTrait
      */
     public function notFound($message = 'Item not found', $code = 404)
     {
-        return $this->responseFail($message, $code);
+        return $this->failed($message, $code);
     }
 
     /**
@@ -144,7 +144,7 @@ trait ResponseTrait
      * @param  null  $payload
      * @return $this
      */
-    public function payload($payload = null)
+    public function load($payload = null)
     {
         $this->payload = $payload;
 
@@ -181,9 +181,9 @@ trait ResponseTrait
         }
 
         /** @Var ModuleBaseController|this $this */
-        if (isset($controller->validator, $controller->validator->validator)
-            && $controller->validator->validator->fails()) {
-            $response['validation_errors'] = json_decode($controller->validator->validator->messages(), true);
+        if (isset($controller->modelValidator, $controller->modelValidator->validator)
+            && $controller->modelValidator->validator->fails()) {
+            $response['validation_errors'] = json_decode($controller->modelValidator->validator->messages(), true);
         }
 
         if ($controller->getRedirectTo()) {
@@ -202,7 +202,7 @@ trait ResponseTrait
 
         $redirect = $to ? Redirect::to($to) : Redirect::back();
 
-        $validator = $this->validator->validator;
+        $validator = $this->modelValidator->validator;
 
         if ($this->isFail()) {
             $redirect = $redirect->withInput();
@@ -224,7 +224,7 @@ trait ResponseTrait
     public function getRedirectTo()
     {
         if ($this->isSuccess()) {
-            $this->redirectTo = $this->request->get('redirect_success');
+            $this->redirectTo = request()->get('redirect_success');
 
             if ($this->redirectTo === '#new' && $this->element) {
                 return route($this->moduleName.".edit", $this->element->id);
@@ -232,7 +232,7 @@ trait ResponseTrait
         }
 
         if ($this->isFail()) {
-            $this->redirectTo = $this->request->get('redirect_fail');
+            $this->redirectTo = request()->get('redirect_fail');
 
             if ($this->redirectTo === '#new' && $this->element) {
                 return route($this->moduleName.".edit", $this->element->id);

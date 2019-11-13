@@ -3,22 +3,25 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>{{setting('app-name')}}</title>
+    <title>
+        @section('head-title')
+            {{conf('app.name')}}
+        @show
+    </title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     @section('head')
     @show
-
     @include('mainframe.layouts.default.includes.css')
 </head>
 <body class="hold-transition skin-blue-light sidebar-mini fixed">
 
 <div id="root" class="wrapper">
-    <header class="main-header lb-bg">
+    <header class="main-header">
         <!-- Logo -->
         <a href="{{route('home')}}" class="logo">
-            <span class="logo-mini"><img style="width: 65%" src="{{asset("letsbab/images/mini-logo.png")}}" alt="{{setting('app-name')}}"/></span>
-            <span class="lb-font logo-lg"><img style="width: 50%" src="{{asset("letsbab/images/letsbab-logo-white.png")}}"
-                                               alt="{{setting('app-name')}}"/></span>
+            {{--            <span class="logo-mini"><img style="width: 65%" src="{{asset("letsbab/images/mini-logo.png")}}" alt="{{setting('app-name')}}"/></span>--}}
+            {{--            <span class="lb-font logo-lg"><img style="width: 50%" src="{{asset("letsbab/images/letsbab-logo-white.png")}}"--}}
+            {{--                                               alt="{{setting('app-name')}}"/></span>--}}
 
             {{--<!-- mini logo for sidebar mini 50x50 pixels -->--}}
             {{--<img style="height: 60%" src="{{asset("letsbab/images/logo.png")}}" alt="{{setting('app-name')}}"--}}
@@ -26,6 +29,7 @@
             {{--<span class="logo-mini">{{setting('app-name')}}</span>--}}
             {{--<!-- logo for regular state and mobile devices -->--}}
             {{--<span class="logo-lg">{{setting('app-name')}}</span>--}}
+            {{ conf('app.name') }}
         </a>
 
         <nav class="navbar navbar-static-top">
@@ -56,10 +60,10 @@
 
     <div class="content-wrapper">
         <section class="content-header">
-            <h4>
+            <h2>
                 @section('title')
                 @show
-            </h4>
+            </h2>
             @section('breadcrumb')
             @show
         </section>

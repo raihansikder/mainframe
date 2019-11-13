@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Mainframe\Helpers\Modular\BaseModule\Traits;
-
+/** @mixin $this BaseModule */
 trait TenantContextTrait
 {
     /**

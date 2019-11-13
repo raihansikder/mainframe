@@ -3,7 +3,6 @@
 namespace App\Mainframe\Helpers\Responder;
 
 use Redirect;
-use App\Mainframe\Helpers\Modular\BaseController\MainframeBaseController;
 
 class Response
 {
@@ -16,22 +15,14 @@ class Response
     public $message;
     /** @var mixed API payload, usually it is a list of a model */
     public $payload;
+    /** @var \App\Mainframe\Helpers\Modular\BaseModule\BaseModule */
+    public $element;
     /** @var string */
     public $redirectTo;
-    /**
-     * @var array|\Illuminate\Http\Request|string
-     */
-    private $request;
-    /**
-     * @var \App\Mainframe\Helpers\Modular\BaseController\MainframeBaseController
-     */
-    public $controller;
-
-    public function __construct(MainframeBaseController $controller)
-    {
-        $this->controller = $controller;
-        $this->request = $this->controller->request;
-    }
+    /** @var \App\Mainframe\Helpers\Modular\Validator\ModelValidator */
+    public $modelValidator;
+    /** @var \Illuminate\Validation\Validator */
+    public $validator;
 
     /**
      * Checks if the response expects JSON
@@ -40,14 +31,21 @@ class Response
      */
     public function expectsJson()
     {
-        if ($this->request->expectsJson()) {
+        if (request()->expectsJson()) {
             return true;
         }
 
-        return $this->request->get('ret') === 'json';
+        return request('ret') === 'json';
     }
 
-    public function responseFail($message = null, $code = null)
+    /**
+     * Abort on fail.
+     *
+     * @param  null  $message
+     * @param  null  $code
+     * @return \Illuminate\Http\JsonResponse|void
+     */
+    public function failed($message = null, $code = null)
     {
         $message = $message ?: 'Operation failed';
         $code = $code ?: 400;
@@ -68,12 +66,12 @@ class Response
      * @param  int  $code
      * @return \Illuminate\Http\JsonResponse|void
      */
-    public function responsePermissionDenied($message = null, $code = null)
+    public function permissionDenied($message = null, $code = null)
     {
         $message = $message ?: 'Permission denied';
         $code = $code ?: 403;
 
-        return $this->responseFail($message, $code);
+        return $this->failed($message, $code);
     }
 
     /**
@@ -83,9 +81,9 @@ class Response
      * @param  int  $code
      * @return \Illuminate\Http\JsonResponse|void
      */
-    public function responseNotFound($message = 'Item not found', $code = 404)
+    public function notFound($message = 'Item not found', $code = 404)
     {
-        return $this->responseFail($message, $code);
+        return $this->failed($message, $code);
     }
 
     /**
@@ -150,7 +148,7 @@ class Response
      * @param  null  $payload
      * @return $this
      */
-    public function payload($payload = null)
+    public function load($payload = null)
     {
         $this->payload = $payload;
 
@@ -174,46 +172,52 @@ class Response
      */
     public function prepareJson()
     {
-        /** @var \App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController $controller */
-        $controller = $this;
-
+        // Generic response
         $response = [
             'code' => $this->code,
             'status' => $this->status,
             'message' => $this->message
         ];
+        // Add payload
         if ($this->payload) {
             $response['data'] = $this->payload;
         }
 
-        /** @Var ModuleBaseController|this $this */
-        if (isset($this->controller->validator, $this->controller->validator->validator)
-            && $this->controller->validator->validator->fails()) {
-            $response['validation_errors'] = json_decode($controller->validator->validator->messages(), true);
+        // Add validation error messages
+        if ($this->modelValidator) {
+            $validator = $this->modelValidator->validator;
+        }
+        if ($this->validator) {
+            $validator = $this->validator;
+        }
+        if (isset($validator) && $validator->messages()) {
+            $response['validation_errors'] = json_decode($validator->messages(), true);
         }
 
-        if ($controller->getRedirectTo()) {
-            $response['redirect'] = $controller->getRedirectTo();
+        // Add redirect to
+        if ($this->redirectTo()) {
+            $response['redirect'] = $this->redirectTo();
         }
 
         return $response;
     }
 
     /**
+     * Redirect to a route
      *
+     * @param  null  $to
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function redirect()
+    public function redirect($to = null)
     {
-        $to = $this->getRedirectTo();
+        $to = $to ?: $this->redirectTo();
 
         $redirect = $to ? Redirect::to($to) : Redirect::back();
-
-        $validator = $this->validator->validator;
 
         if ($this->isFail()) {
             $redirect = $redirect->withInput();
 
-            if ($validator) {
+            if ($validator = $this->modelValidator->validator) {
                 $redirect = $redirect->withErrors($validator);
             }
         }
@@ -225,27 +229,42 @@ class Response
     }
 
     /**
-     * @return null|mixed
+     * Try to figure out where to redirect
+     *
+     * @return null|array|\Illuminate\Http\Request|string
      */
-    public function getRedirectTo()
+    public function redirectTo()
     {
-        if ($this->isSuccess()) {
-            $this->redirectTo = $this->request->get('redirect_success');
-
-            if ($this->redirectTo === '#new' && $this->element) {
-                return route($this->moduleName.".edit", $this->element->id);
-            }
+        if ($this->redirectTo) {
+            return $this->redirectTo;
         }
 
-        if ($this->isFail()) {
-            $this->redirectTo = $this->request->get('redirect_fail');
-
-            if ($this->redirectTo === '#new' && $this->element) {
-                return route($this->moduleName.".edit", $this->element->id);
+        if ($this->isSuccess() && request('redirect_success')) {
+            if ($this->element && request('redirect_success') === '#new') {
+                return route($this->element->module()->name.".edit", $this->element->id);
             }
+
+            return request('redirect_success');
         }
 
-        return $this->redirectTo;
+        if ($this->isFail() && request('redirect_fail')) {
+            return request('redirect_fail');
+        }
+
+        return null;
+    }
+
+    /**
+     * Setter fro $redirectTo
+     *
+     * @param $redirectTo
+     * @return $this
+     */
+    public function setRedirectTo($redirectTo)
+    {
+        $this->redirectTo = $redirectTo;
+
+        return $this;
     }
 
 }

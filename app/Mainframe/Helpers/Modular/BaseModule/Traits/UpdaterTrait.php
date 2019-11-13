@@ -3,7 +3,7 @@
 namespace App\Mainframe\Helpers\Modular\BaseModule\Traits;
 
 use App\Mainframe\Modules\Users\User;
-
+/** @mixin $this BaseModule */
 trait UpdaterTrait
 {
     /**

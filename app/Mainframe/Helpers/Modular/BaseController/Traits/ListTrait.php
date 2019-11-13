@@ -39,12 +39,12 @@ trait ListTrait
         /** @var \Illuminate\Database\Eloquent\Model $Model */
         /** @var \Illuminate\Database\Eloquent\Builder $q */
         /** @var \App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController $this */
-        $Model = model($this->moduleName);
+        $model = $this->model;
 
         if (Request::has('columns')) {
-            $q = $Model::select(explode(',', Request::get('columns')));
+            $q = $model->select(explode(',', Request::get('columns')));
         } else {
-            $q = new $Model;
+            $q = new $model;
         }
 
         // Eager load
@@ -106,12 +106,12 @@ trait ListTrait
      */
     public function filterQueryConstructor($q)
     {
-        $Model = model($this->moduleName);
-        $text_fields = $Model::$text_fields;
+        $model = $this->model;
+        $text_fields = $model::$text_fields ?? [];
         //$module_sys_name = $this->moduleName;
 
         /** @var \App\Mainframe\Helpers\Modular\BaseModule\BaseModule $q */
-        /** @var \App\Mainframe\Helpers\Modular\BaseModule\BaseModule $Model */
+        /** @var \App\Mainframe\Helpers\Modular\BaseModule\BaseModule $model */
         // $q = $q->where('is_active', 1);
 
         if (inTenantContext($this->moduleName)) {

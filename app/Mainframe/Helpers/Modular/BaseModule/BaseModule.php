@@ -6,7 +6,7 @@ use Watson\Rememberable\Rememberable;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use App\Mainframe\Helpers\Modular\BaseModule\Traits\Changable;
+use App\Mainframe\Helpers\Modular\BaseModule\Traits\Changeable;
 use App\Mainframe\Helpers\Modular\BaseModule\Traits\Validable;
 use App\Mainframe\Helpers\Modular\BaseModule\Traits\Uploadable;
 use App\Mainframe\Helpers\Modular\BaseModule\Traits\ModularTrait;
@@ -37,7 +37,7 @@ class BaseModule extends Model
 {
     use SoftDeletes, Rememberable, Validable, EventIdentifiable,
         RelatedUsersTrait, TenantContextTrait, UpdaterTrait,
-        Uploadable, Changable, ModularTrait;
+        Uploadable, Changeable, ModularTrait;
 
     protected $dates = ['created_at', 'updated_at', 'deleted_at'];
 
@@ -52,7 +52,7 @@ class BaseModule extends Model
     */
     public static function boot()
     {
-        parent::boot(); // This line is required as uncommented to boot SoftDeletingTrait
+        parent::boot();
     }
 
     /*

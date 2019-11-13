@@ -1,4 +1,4 @@
-@extends('template.auth-frame')
+@extends('mainframe.layouts.centered.layout')
 
 @section('content')
     <div class="card-body">
@@ -35,7 +35,7 @@
 
             <div class="form-group row mb-0">
                 <div class="col-md-12 offset-md-4">
-                    <button type="submit" class="btn btn-primary btn-block lb-bg">
+                    <button type="submit" class="btn btn-success btn-block lb-bg">
                         {{ __('Login') }}
                     </button>
                     <div class="col-md-12 text-center" style="margin: 15px 0">
@@ -44,12 +44,8 @@
                         </a>
                     </div>
                     <div class="clearfix"></div>
-                    {{--<a href="{{ route('login') }}">{{ __('Login') }}</a>--}}
-
                     <a class="btn btn-default btn-block" target="_blank"
-                       href="https://www.letsbab.com/register-partner/">{{ __('Register your enthusiam') }}</a>
-                    <a class="btn btn-default btn-block" target="_blank"
-                       href="https://www.letsbab.com/register-charity/">{{ __('Register your interest') }}</a>
+                       href="https://www.letsbab.com/register-partner/">{{ __('Register') }}</a>
                 </div>
             </div>
         </form>
