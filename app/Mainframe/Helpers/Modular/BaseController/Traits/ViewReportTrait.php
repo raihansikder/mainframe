@@ -4,10 +4,14 @@ namespace App\Mainframe\Helpers\Modular\BaseController\Traits;
 
 use DB;
 use View;
-use App\Classes\Reports\DefaultModuleReport;
+use App\Mainframe\Helpers\Report\ModuleReportBuilder;
 
+/** @mixin \App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController $this */
 trait ViewReportTrait
 {
+
+    /** @var */
+    public $reportDataSource;
 
     /**
      * Get data source of report
@@ -16,7 +20,7 @@ trait ViewReportTrait
      */
     public function reportDataSource()
     {
-        return $this->reportDataSource ?? DB::getTablePrefix().$this->moduleName;
+        return $this->reportDataSource ?: DB::getTablePrefix().$this->module->tableName();
     }
 
     /**
@@ -27,11 +31,11 @@ trait ViewReportTrait
     public function reportViewBaseDir()
     {
         /** @var  $base_dir  string Define path to results view */
-        $base_dir = 'modules.base.report';
+        $base_dir = 'mainframe.layouts.report';
 
         // Override default if a module specific report blade exists in location  "{moduleName}.report.result"
-        if (View::exists('modules.'.$this->moduleName.'.report.results')) {
-            $base_dir = 'modules.'.$this->moduleName.'.report';
+        if (View::exists('mainframe.modules.'.$this->moduleName.'.report.results')) {
+            $base_dir = 'mainframe.modules.'.$this->moduleName.'.report';
         }
 
         return $base_dir;
@@ -43,7 +47,7 @@ trait ViewReportTrait
     public function report()
     {
         if (hasModulePermission($this->moduleName, 'report')) {
-            $report = new DefaultModuleReport();
+            $report = new ModuleReportBuilder();
             $report->data_source = $this->reportDataSource();
             $report->base_dir = $this->reportViewBaseDir();
 

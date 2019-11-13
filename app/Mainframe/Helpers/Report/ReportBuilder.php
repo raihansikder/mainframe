@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Classes\Reports;
+namespace App\Mainframe\Helpers\Report;
 
 use DB;
 use View;
@@ -17,7 +17,7 @@ use PhpOffice\PhpSpreadsheet\Writer\Exception;
 /**
  * @property string data_source
  */
-class IsoReportBuilder
+class ReportBuilder
 {
     /** @var  \Illuminate\Http\Request Input from form */
     public $request;
