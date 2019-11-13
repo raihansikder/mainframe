@@ -118,7 +118,7 @@ class ModuleBaseController extends MainframeBaseController
             return $this->response()->permissionDenied();
         }
 
-        if ($this->expectsJson()) {
+        if ($this->response()->expectsJson()) {
             return $this->response()->success()->load($this->element)->json();
         }
 
@@ -138,7 +138,7 @@ class ModuleBaseController extends MainframeBaseController
         }
 
         if (! user()->can('view', $this->element)) {
-            return $this->permissionDenied();
+            return $this->response()->permissionDenied();
         }
 
         $formState = 'edit';
