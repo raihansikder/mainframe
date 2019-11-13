@@ -39,15 +39,14 @@
 
 @section('js')
     @parent
-    {{-- Write your JS --}}
     <script type="text/javascript">
         $("textarea[name=select_columns_csv]").select2({
-            tags: [{!!   "'". implode("','",$data_source_columns). "'" !!}],
+            tags: [{!!   "'". implode("','",$dataSourceColumns). "'" !!}],
             tokenSeparators: [',']
         });
 
         $("textarea[name=show_columns_csv]").select2({
-            tags: [{!!   "'". implode("','",$show_columns_options). "'" !!}],
+            tags: [{!!   "'". implode("','",$showColumnsOptions). "'" !!}],
             tokenSeparators: [',']
         });
         $("textarea[name=alias_columns_csv]").select2({
@@ -80,6 +79,4 @@
             }
         });
     </script>
-
-
 @endsection

@@ -5,17 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ee34113f-6433-40ce-8481-cf6a87088dde" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/report/includes/advanced.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/report/includes/cta.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/report/includes/filters.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/report/includes/init-functions.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/report/results-print.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/report/results.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Classes/Reports/DefaultModuleReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Report/ModuleReportBuilder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Classes/Reports/IsoReportBuilder.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Report/ReportBuilder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/BaseController/Traits/ViewReportTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/BaseController/Traits/ViewReportTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/layouts/report/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/report/layout.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Helpers/Report/ReportBuilder.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Report/ReportBuilder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/layouts/report/includes/advanced.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/report/includes/advanced.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/layouts/report/includes/filters.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/report/includes/filters.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/layouts/report/results.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/report/results.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
