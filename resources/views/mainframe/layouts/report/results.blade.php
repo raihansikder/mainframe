@@ -1,10 +1,10 @@
 @extends('mainframe.layouts.report.layout')
 <?php
 /**
- * @var $data_source  string Table/DB view name (i.e. v_users, users)
+ * @var $dataSource  string Table/DB view name (i.e. v_users, users)
  * @var $results      \Illuminate\Pagination\LengthAwarePaginator
  * @var $total        integer Total number of rows returned
- * @var $base_dir     string
+ * @var $baseDir     string
  */
 ?>
 
@@ -17,10 +17,10 @@
     </style>
 @endsection
 
-@include($base_dir.'.includes.init-functions')
+@include($baseDir.'.includes.init-functions')
 
 @section('content')
-    @include($base_dir.'.includes.filters')
+    @include($baseDir.'.includes.filters')
     @if(Request::get('submit')==='Run')
 
         Total {{$total}} items found.
@@ -30,7 +30,7 @@
                 <table class="table table-condensed" id="report-table">
                     <thead>
                     <tr>
-                        @foreach ($alias_columns as $col)
+                        @foreach ($aliasColumns as $col)
                             <th>{{$col}}</th>
                         @endforeach
                     </tr>
@@ -38,10 +38,10 @@
                     <tbody>
                     @foreach ($results as $result)
                         <tr>
-                            @foreach ($show_columns as $col)
+                            @foreach ($showColumns as $col)
                                 <td>
                                     @if(isset($result->$col))
-                                        {!! transformRow($col, $result, $result->$col, $data_source) !!}
+                                        {!! transformRow($col, $result, $result->$col, $dataSource) !!}
                                     @endif
                                 </td>
                             @endforeach

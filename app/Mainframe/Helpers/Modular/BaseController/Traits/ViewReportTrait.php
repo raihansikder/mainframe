@@ -30,15 +30,15 @@ trait ViewReportTrait
      */
     public function reportViewBaseDir()
     {
-        /** @var  $base_dir  string Define path to results view */
-        $base_dir = 'mainframe.layouts.report';
+        /** @var  $baseDir  string Define path to results view */
+        $baseDir = 'mainframe.layouts.report';
 
         // Override default if a module specific report blade exists in location  "{moduleName}.report.result"
         if (View::exists('mainframe.modules.'.$this->moduleName.'.report.results')) {
-            $base_dir = 'mainframe.modules.'.$this->moduleName.'.report';
+            $baseDir = 'mainframe.modules.'.$this->moduleName.'.report';
         }
 
-        return $base_dir;
+        return $baseDir;
     }
 
     /**
@@ -48,8 +48,8 @@ trait ViewReportTrait
     {
         if (hasModulePermission($this->moduleName, 'report')) {
             $report = new ModuleReportBuilder();
-            $report->data_source = $this->reportDataSource();
-            $report->base_dir = $this->reportViewBaseDir();
+            $report->dataSource = $this->reportDataSource();
+            $report->baseDir = $this->reportViewBaseDir();
 
             return $report->show();
         }
