@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Classes\Reports;
+namespace App\Mainframe\Helpers\Report;
 
-class DefaultModuleReport extends IsoReportBuilder
+class ModuleReportBuilder extends ReportBuilder
 {
     /**
      * @param $query   \Illuminate\Database\Query\Builder

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Classes\Reports;
+namespace App\Mainframe\Helpers\Report;
 
 use DB;
 use View;
@@ -14,31 +14,28 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Exception;
 
-/**
- * @property string data_source
- */
-class IsoReportBuilder
+class ReportBuilder
 {
     /** @var  \Illuminate\Http\Request Input from form */
     public $request;
 
     /** @var  string DB Table/View names */
-    public $data_source = null;
+    public $dataSource = null;
 
     /** @var  string Directory location of the report blade templates */
-    public $base_dir;
+    public $baseDir;
 
     /** @var  string Directory location of the default report blade templates */
-    public $default_base_dir = 'modules.base.report';
+    public $defaultBaseDir = 'modules.base.report';
 
     /** @var int Cache time */
     public $cache;
 
     /** @var array */
-    public $data_source_columns;
+    public $dataSourceColumns;
 
     /** @var array */
-    public $show_columns_options;
+    public $showColumnsOptions;
 
     /** @var  Builder */
     public $query;
@@ -51,37 +48,40 @@ class IsoReportBuilder
 
     /**
      * ReportBuilder constructor.
-     * @param  string  $data_source
-     * @param  string  $base_dir
+     *
+     * @param  string  $dataSource
+     * @param  string  $baseDir
      * @param  int  $cache
      */
-    public function __construct($data_source = null, $base_dir = null, $cache = 0)
+    public function __construct($dataSource = null, $baseDir = null, $cache = 0)
     {
         $this->request = Request::all();
-        $this->data_source = $data_source;
-        $this->base_dir = $base_dir ?? 'modules.base.report';
+        $this->dataSource = $dataSource;
+        $this->baseDir = $baseDir ?? 'mainframe.layouts.report';
         $this->cache = $cache;
-        $this->data_source_columns = $this->dataSourceColumns();
-        $this->show_columns_options = $this->showColumnsOptions();
+        $this->dataSourceColumns = $this->dataSourceColumns();
+        $this->showColumnsOptions = $this->showColumnsOptions();
 
         // Share the variables across all views accessed by this controller
         // View::share([
-        //     'base_dir' => $this->base_dir,
-        //     'data_source' => $this->data_source,
-        //     'data_source_columns' => $this->data_source_columns,
-        //     'show_columns_options' => $this->show_columns_options,
+        //     'baseDir' => $this->baseDir,
+        //     'dataSource' => $this->dataSource,
+        //     'dataSourceColumns' => $this->dataSourceColumns,
+        //     'showColumnsOptions' => $this->showColumnsOptions,
         // ]);
     }
 
     /**
      * Get the data source field|columns names
+     *
      * @return mixed|null
      */
     public function dataSourceColumns()
     {
-        if ($this->data_source) {
-            return $this->tableColumns($this->data_source);
+        if ($this->dataSource) {
+            return $this->tableColumns($this->dataSource);
         }
+
         return null;
     }
 
@@ -98,13 +98,14 @@ class IsoReportBuilder
 
     public function showColumnsOptions()
     {
-        return array_merge($this->tableColumns($this->data_source), $this->ghostSelectColumns());
+        return array_merge($this->tableColumns($this->dataSource), $this->ghostSelectColumns());
     }
 
     /**
      * Some times we need to pass column names that do not exists in the model/table.
      * This should not be considered in query building. Rather we want this to be
      * post processed in mutation function.
+     *
      * @return array
      */
     public function ghostSelectColumns()
@@ -117,17 +118,16 @@ class IsoReportBuilder
      */
     public function show()
     {
-
-        $base_dir = $this->base_dir;
-        $data_source = $this->data_source;
-        $data_source_columns = $this->dataSourceColumns();
-        $show_columns_options = $this->showColumnsOptions();
+        $baseDir = $this->baseDir;
+        $dataSource = $this->dataSource;
+        $dataSourceColumns = $this->dataSourceColumns();
+        $showColumnsOptions = $this->showColumnsOptions();
 
         if (isset($this->request['submit']) && $this->request['submit'] === 'Run') {
             //$this->run();
 
-            $show_columns = $this->mutateShowColumns($this->showColumns());
-            $alias_columns = $this->mutateAliasColumns($this->aliasColumns());
+            $showColumns = $this->mutateShowColumns($this->showColumns());
+            $aliasColumns = $this->mutateAliasColumns($this->aliasColumns());
             $results = $this->mutateResults($this->results());
             $total = $this->total();
 
@@ -136,10 +136,9 @@ class IsoReportBuilder
             }
 
             if ($this->output() === 'excel') {
-
                 try {
                     /** @noinspection PhpVoidFunctionResultUsedInspection */
-                    return $this->dumpExcel($show_columns, $alias_columns, $results);
+                    return $this->dumpExcel($showColumns, $aliasColumns, $results);
                 } catch (Exception $e) {
                     return setError($e->getMessage());
                 } catch (\PhpOffice\PhpSpreadsheet\Exception $e) {
@@ -149,27 +148,28 @@ class IsoReportBuilder
 
             if ($this->output() === 'print') {
                 return view($this->resultsPrintPath())
-                    ->with(compact('show_columns', 'alias_columns', 'total', 'results', 'base_dir', 'data_source',
-                        'data_source_columns', 'show_columns_options'));
+                    ->with(compact('showColumns', 'aliasColumns', 'total', 'results', 'baseDir', 'dataSource',
+                        'dataSourceColumns', 'showColumnsOptions'));
             }
 
             return view($this->resultsViewPath())
-                ->with(compact('show_columns', 'alias_columns', 'total', 'results', 'base_dir', 'data_source',
-                    'data_source_columns', 'show_columns_options'));
+                ->with(compact('showColumns', 'aliasColumns', 'total', 'results', 'baseDir', 'dataSource',
+                    'dataSourceColumns', 'showColumnsOptions'));
         }
 
         return view($this->resultsViewPath())
-            ->with(compact('base_dir', 'data_source', 'data_source_columns', 'show_columns_options'));
+            ->with(compact('baseDir', 'dataSource', 'dataSourceColumns', 'showColumnsOptions'));
     }
 
     /**
-     * This function gives and option to modify $show_columns array for output.
-     * $show_columns array has the initial column names from the SQL query results.
+     * This function gives and option to modify $showColumns array for output.
+     * $showColumns array has the initial column names from the SQL query results.
      * These columns are finally printed in report out put.
-     * @param $show_columns
+     *
+     * @param $showColumns
      * @return array
      */
-    public function mutateShowColumns($show_columns)
+    public function mutateShowColumns($showColumns)
     {
         $merge = [];
 
@@ -177,11 +177,12 @@ class IsoReportBuilder
             $merge = array_merge($merge, $this->additionalShowColumnsDueToGroupBy());
         }
 
-        return array_merge($show_columns, $merge);
+        return array_merge($showColumns, $merge);
     }
 
     /**
      * Convert input csv to array
+     *
      * @return array
      */
     public function showColumns()
@@ -197,6 +198,7 @@ class IsoReportBuilder
 
     /**
      * Convert input csv to array
+     *
      * @return mixed
      */
     public function showColumnsCsv()
@@ -206,6 +208,7 @@ class IsoReportBuilder
 
     /**
      * cleans a string and returns as csv
+     *
      * @param $csv
      * @return string
      */
@@ -213,11 +216,13 @@ class IsoReportBuilder
     {
         // $clearChars = array("\n", " ", "\r");
         $clearChars = ["\n", "\r"];
+
         return str_replace($clearChars, '', trim($csv, ', '));
     }
 
     /**
      * Remove empty values and arrays values from an array.
+     *
      * @param  array  $array
      * @return array
      */
@@ -231,15 +236,17 @@ class IsoReportBuilder
                 }
             }
         }
+
         return $temp;
     }
 
     /**
      * Change alias column array for output
-     * @param $alias_columns
+     *
+     * @param $aliasColumns
      * @return array
      */
-    public function mutateAliasColumns($alias_columns)
+    public function mutateAliasColumns($aliasColumns)
     {
         $merge = [];
 
@@ -247,13 +254,14 @@ class IsoReportBuilder
             $merge = array_merge($merge, $this->additionalAliasColumnsDueToGroupBy());
         }
 
-        return array_merge($alias_columns, $merge);
+        return array_merge($aliasColumns, $merge);
     }
 
     /**
      * This function returns an array of Titles/Column aliases that are mapped with
-     * each $show_columns. This usually comes from the inputs as CSV.
-     * If no input found then this arrays is constructed based on $show_columns.
+     * each $showColumns. This usually comes from the inputs as CSV.
+     * If no input found then this arrays is constructed based on $showColumns.
+     *
      * @return array
      */
     public function aliasColumns()
@@ -277,17 +285,16 @@ class IsoReportBuilder
 
     /**
      * Get column as csv and clean
+     *
      * @return mixed
      */
     public function aliasColumnsCsv()
     {
-
         return $this->cleanCsv($this->request['alias_columns_csv'] ?? null);
     }
 
     public function fillAliasColumns($keys)
     {
-
         $sliced = array_slice($this->showColumns(), count($keys));
 
         $keys = array_merge($keys, $sliced);
@@ -298,11 +305,11 @@ class IsoReportBuilder
         }
 
         return $temp;
-
     }
 
     /**
-     * Function changes results, show_column, alias_columns for the final output
+     * Function changes results, show_column, aliasColumns for the final output
+     *
      * @param $results
      * @return mixed
      */
@@ -328,6 +335,7 @@ class IsoReportBuilder
         if ($this->rowsPerPage()) {
             return $query->paginate($this->rowsPerPage());
         }
+
         return $query->get();
     }
 
@@ -344,11 +352,13 @@ class IsoReportBuilder
         $query = $this->filters($query);
         $query = $this->groupBy($query);
         $query = $this->orderBy($query);
+
         return $query;
     }
 
     /**
      * Query select table
+     *
      * @return \Illuminate\Database\Query\Builder||\Illuminate\Database\Eloquent\Builder
      */
     public function selectDataSource()
@@ -358,15 +368,17 @@ class IsoReportBuilder
 
     /**
      * Generate the data source name that can be used in query string.
+     *
      * @return string
      */
     public function dataSource()
     {
-        return $this->data_source;
+        return $this->dataSource;
     }
 
     /**
      * Convert input csv to array
+     *
      * @return array
      */
     public function selectColumns()
@@ -392,6 +404,7 @@ class IsoReportBuilder
 
     /**
      * Get the direct user input CSV
+     *
      * @return mixed
      */
     public function selectColumnsCsv()
@@ -399,11 +412,13 @@ class IsoReportBuilder
         if (isset($this->request['select_columns_csv'])) {
             return $this->cleanCsv($this->request['select_columns_csv'] ?? null);
         }
+
         return null;
     }
 
     /**
      * Add the columns that should be always selected.
+     *
      * @param  array  $keys
      * @return array
      */
@@ -411,11 +426,12 @@ class IsoReportBuilder
     {
         foreach ($this->alwaysSelectColumns() as $col) {
             if (! in_array($col, $keys)) {
-                if (in_array($col, $this->data_source_columns)) {
+                if (in_array($col, $this->dataSourceColumns)) {
                     $keys[] = $col;
                 }
             }
         }
+
         return $keys;
     }
 
@@ -423,6 +439,7 @@ class IsoReportBuilder
      * Columns that should be always included in the select column query.
      * Usually this is id field. This is useful to generate a url
      * to the linked element.
+     *
      * @return array
      */
     public function alwaysSelectColumns()
@@ -432,6 +449,7 @@ class IsoReportBuilder
 
     /**
      * Remove ghost columns from the array of select columns.
+     *
      * @param  array  $keys
      * @return array
      */
@@ -443,6 +461,7 @@ class IsoReportBuilder
                 $temp[] = $key;
             }
         }
+
         return $temp;
     }
 
@@ -459,7 +478,6 @@ class IsoReportBuilder
             if (in_array($name, $escape_fields)) {
                 $query = $this->customFilterOnEscapedFields($query, $name, $val);
             } else {
-
                 $query = $this->defaultFilter($query, $name, $val);
             }
         }
@@ -478,6 +496,7 @@ class IsoReportBuilder
     /**
      * Some filters needs to escaped from default handling and used for custom query
      * generation.
+     *
      * @return array
      */
     public function defaultFilterEscapeFields()
@@ -487,6 +506,7 @@ class IsoReportBuilder
 
     /**
      * Custom query for escaped filter fields.
+     *
      * @param $query \Illuminate\Database\Query\Builder
      * @param $name
      * @param $val
@@ -502,6 +522,7 @@ class IsoReportBuilder
 
     /**
      * Default query builder from input.
+     *
      * @param $query \Illuminate\Database\Query\Builder
      * @param $name
      * @param $val
@@ -511,21 +532,17 @@ class IsoReportBuilder
     {
         // The input field name matches a data source field name.
         if ($this->columnInDataSource($name)) {
-
             // Input is array
             if ($this->paramIsArray($val)) {
-
                 if ($this->possibleJson($name)) { // Data stored in table is possibly json
                     // $query = $query->whereJsonContains($name, $val); // Does't work for older maria db
                 } else { // Not json. A single value.
                     $query = $query->whereIn($name, $this->cleanArray($val));
                 }
-
             } else {
                 if ($this->paramIsCsv($val)) { // Input is CSV
 
                     $query = $query->whereIn($name, $this->csvToArray($val));
-
                 } else {
                     if ($this->paramIsString($val) && strlen(trim($val))) { // Input is string
 
@@ -538,7 +555,6 @@ class IsoReportBuilder
                                 $query = $query->where($name, trim($val));
                             }
                         }
-
                     }
                 }
             }
@@ -565,6 +581,7 @@ class IsoReportBuilder
 
     /**
      * Checks if a column exists in data source.
+     *
      * @param $name
      * @return bool
      */
@@ -575,6 +592,7 @@ class IsoReportBuilder
 
     /**
      * Check if a filter parameter has array value
+     *
      * @param $input
      * @return bool|int
      */
@@ -583,6 +601,7 @@ class IsoReportBuilder
         if (is_array($input) && count($input)) {
             return count($this->cleanArray($input));
         }
+
         return false;
     }
 
@@ -591,11 +610,13 @@ class IsoReportBuilder
         if (Str::contains($name, ['_ids', '_json'])) {
             return true;
         }
+
         return false;
     }
 
     /**
      * Check if param is csv
+     *
      * @param $input
      * @return bool|int
      */
@@ -604,6 +625,7 @@ class IsoReportBuilder
         if (strlen($input) && strpos($input, ',') !== false) {
             return strlen($this->cleanCsv($input));
         }
+
         return false;
     }
 
@@ -617,6 +639,7 @@ class IsoReportBuilder
 
     /**
      * Check if param is string.
+     *
      * @param $input
      * @return string
      */
@@ -627,17 +650,20 @@ class IsoReportBuilder
 
     /**
      * Check if a column is for full text search. These will be processed with %LIKE%
+     *
      * @param $column
      * @return bool
      */
     public function columnIsFullText($column)
     {
         $full_text_columns = ['name'];
+
         return in_array($column, $full_text_columns);
     }
 
     /**
      * From the name of the input try to assume if it is some data-from field
+     *
      * @param $name
      * @return bool
      */
@@ -646,12 +672,13 @@ class IsoReportBuilder
         if (Str::contains($name, ['_from', '_start', '_starts', '_min'])) {
             return true;
         }
-        return false;
 
+        return false;
     }
 
     /**
      * From the name of the input try to assume if it is some data-to field
+     *
      * @param $name
      * @return bool
      */
@@ -660,12 +687,13 @@ class IsoReportBuilder
         if (Str::contains($name, ['_to', '_till', '_end', '_ends', '_max'])) {
             return true;
         }
-        return false;
 
+        return false;
     }
 
     /**
      * Get the actual date field
+     *
      * @param $name
      * @return string
      */
@@ -680,12 +708,13 @@ class IsoReportBuilder
         foreach ($replaces as $replace) {
             $actual = Str::replaceLast($replace, '', $actual);
         }
-        return $actual;
 
+        return $actual;
     }
 
     /**
      * Additional filters
+     *
      * @return mixed
      */
     public function additionalFilterConditions()
@@ -710,6 +739,7 @@ class IsoReportBuilder
     /**
      * Determine the group by field field names. Usually this is input
      * from the report generator form.
+     *
      * @return array
      */
     public function groupByFields()
@@ -719,21 +749,23 @@ class IsoReportBuilder
 
     /**
      * Add groupBy clause to the query builder.
+     *
      * @param $query Builder
      * @return \Illuminate\Database\Query\Builder
      */
     public function groupBy($query)
     {
-
         $group_bys = $this->groupByFields();
         if ($group_bys) {
             $query = $query->groupBy($group_bys);
         }
+
         return $query;
     }
 
     /**
      * Output type
+     *
      * @return mixed
      */
     public function output()
@@ -743,11 +775,11 @@ class IsoReportBuilder
 
     /**
      * Rows per page. If grouped then show all rows.
+     *
      * @return mixed
      */
     public function rowsPerPage()
     {
-
         // For groupBy query show all in one page
         if ($this->groupByFields()) {
             return $this->total();
@@ -758,6 +790,7 @@ class IsoReportBuilder
 
     /**
      * Get total number of rows
+     *
      * @return int
      */
     public function total()
@@ -769,33 +802,33 @@ class IsoReportBuilder
     {
         $query = $this->selectDataSource();
         $query = $this->filters($query);
+
         return $query;
     }
 
     /**
-     * @param $show_columns
-     * @param $alias_columns
+     * @param $showColumns
+     * @param $aliasColumns
      * @param $results
      * @param  bool  $csv
      * @throws \PhpOffice\PhpSpreadsheet\Exception
      * @throws \PhpOffice\PhpSpreadsheet\Writer\Exception
      */
-    public function dumpExcel($show_columns, $alias_columns, $results, $csv = false)
+    public function dumpExcel($showColumns, $aliasColumns, $results, $csv = false)
     {
-
         // Debugbar::disable();
 
         $ext = $csv ? '.csv' : '.xlsx';
 
         $spreadsheet = new Spreadsheet();
         $sheet = $spreadsheet->getActiveSheet();
-        $ranges = $this->excelColumnRange(count($show_columns));
+        $ranges = $this->excelColumnRange(count($showColumns));
 
         /**
          * First column with title
          */
         $i = 0;
-        foreach ($alias_columns as $column) {
+        foreach ($aliasColumns as $column) {
             $sheet->setCellValue($ranges[$i++]. 1, $column);
         }
 
@@ -804,7 +837,7 @@ class IsoReportBuilder
         $j = 2;
         foreach ($results as $row) {
             $k = 0;
-            foreach ($show_columns as $column) {
+            foreach ($showColumns as $column) {
                 $sheet->setCellValue($ranges[$k++].$j, $row->$column);
             }
             $j++;
@@ -829,6 +862,7 @@ class IsoReportBuilder
 
     /**
      * Create column range for Excel
+     *
      * @param $no_of_columns
      * @return array // ['A','B', ... 'AA', 'ZZ']
      */
@@ -846,18 +880,20 @@ class IsoReportBuilder
                 }
             }
         }
+
         return $range;
     }
 
     /**
      * Get result view path.
+     *
      * @return string
      */
     public function resultsPrintPath()
     {
-        $print_path = $this->base_dir.'.results-print';
+        $print_path = $this->baseDir.'.results-print';
         if (! View::exists($print_path)) {
-            $print_path = $this->default_base_dir.'.results-print';
+            $print_path = $this->defaultBaseDir.'.results-print';
         }
 
         return $print_path;
@@ -865,15 +901,17 @@ class IsoReportBuilder
 
     /**
      * Get result view path.
+     *
      * @return string
      */
     public function resultsViewPath()
     {
-        return $this->base_dir.'.results';
+        return $this->baseDir.'.results';
     }
 
     /**
      * Checks if the input field is date format
+     *
      * @param $name
      * @return bool
      */
@@ -882,8 +920,8 @@ class IsoReportBuilder
         if (Str::contains($name, ['_at', 'on', 'date'])) {
             return true;
         }
-        return false;
 
+        return false;
     }
 
     /**
@@ -898,17 +936,19 @@ class IsoReportBuilder
 
     /**
      * Check if a column exist in data source
+     *
      * @param $column
      * @return bool
      */
     protected function columnIsInDataSource($column)
     {
-        return in_array($column, $this->data_source_columns);
+        return in_array($column, $this->dataSourceColumns);
     }
 
     /**
      * removes new line tabs etc( '\n','\t') from a string
      * remove-extra-spaces-tabs-and-line-feeds-from-a-sentence-and-substitute
+     *
      * @param $str
      * @return mixed
      */
@@ -923,21 +963,23 @@ class IsoReportBuilder
 
     /**
      * Adds the custom COUNT/SUM column in SQL SELECT.
+     *
      * @param  array  $keys
      * @return array
      */
     public function addGroupBySelect($keys = [])
     {
-
         if ($this->groupByFields()) {
             $keys[] = DB::raw('count(*) as total');
         }
+
         return $keys;
     }
 
     /**
      * Due to existence of a group by clause some additional column
      * needs to be shown. This function returns the array of those additional columns.
+     *
      * @return array
      */
     public function additionalShowColumnsDueToGroupBy()

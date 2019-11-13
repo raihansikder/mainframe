@@ -1,6 +1,5 @@
-@extends('template.app-frame')
+@extends('mainframe.layouts.default.layout')
 {{-- Master view file for report --}}
-
 
 @section('head')
     @parent
@@ -12,11 +11,7 @@
 @endsection
 
 @section('title')
-
-
-
 @endsection
-
 
 
 @section('js')
