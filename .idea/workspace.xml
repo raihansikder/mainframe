@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="ee34113f-6433-40ce-8481-cf6a87088dde" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Uploads/UploadController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Uploads/UploadController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/mainframe/css/mainframe.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/mainframe/css/mainframe.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/mainframe/templates/admin/plugins/ckeditor/contents.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/mainframe/templates/admin/plugins/ckeditor/contents.css" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />

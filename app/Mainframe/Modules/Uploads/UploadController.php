@@ -36,13 +36,13 @@ class UploadController extends ModuleBaseController
     public function store(Request $request)
     {
         if (! user()->can('create', $this->model)) {
-            return $this->permissionDenied();
+            return $this->response()->permissionDenied();
         }
 
         $this->element = $this->model; // Create an empty model to be stored.
 
         if (! $file = $this->getFile()) {
-            return $this->failed('No file in http request');
+            return $this->response()->failed('No file in http request');
         }
 
         // if($dimensions = $this->getImageDimension($file)){
@@ -51,18 +51,18 @@ class UploadController extends ModuleBaseController
         // }
 
         if (! $uploadPath = $this->handleUpload($file)) {
-            return $this->failed('Can not move file to destination from tmp');
+            return $this->response()->failed('Can not move file to destination from tmp');
         }
 
         $this->element->name = $file->getClientOriginalName();
         $this->element->path = $uploadPath;
         $this->attemptStore();
 
-        if ($this->expectsJson()) {
-            return $this->json();
+        if ($this->response()->expectsJson()) {
+            return $this->response()->json();
         }
 
-        return $this->redirect();
+        return $this->response()->redirect();
     }
 
     /**
@@ -72,14 +72,13 @@ class UploadController extends ModuleBaseController
      */
     public function getFile()
     {
-        $request = $this->request;
-        $fileField = $request->get('file_field', 'file');
+        $fileField = request()->get('file_field', 'file');
 
-        if (! $request->hasFile($fileField)) {
+        if (! request()->hasFile($fileField)) {
             return false;
         }
 
-        return $request->file($fileField);
+        return request()->file($fileField);
     }
 
     /**
@@ -145,7 +144,7 @@ class UploadController extends ModuleBaseController
             return Response::download(public_path().$upload->path);
         }
 
-        return $this->notFound();
+        return $this->response()->notFound();
     }
 
 }

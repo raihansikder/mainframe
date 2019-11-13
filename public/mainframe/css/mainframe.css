@@ -444,10 +444,13 @@ pre.sf-dump, pre.sf-dump .sf-dump-default {
     z-index: 1000000;
 }
 
-.pagination > li > a, .pagination > li > span {
-    border: 0px;
+.pagination {
+    margin: 0;
 }
 
+.pagination > li > a, .pagination > li > span {
+    border: 0;
+}
 
 .callout h4 {
     font-weight: normal;
