@@ -14,8 +14,7 @@ $var['params']['class'] = isset($var['params']['class']) ? $var['params']['class
 $var['value'] = $var['value'] ?? '';        // value: Set the value of the form field. This will override all other values passed or derived from form-model binding or old input values.
 $var['label'] = $var['label'] ?? '';        // label: Label of the form field
 $var['label_class'] = $var['label_class'] ?? ''; //label_class: class of the label
-$var['old_input'] = oldInputValue($var['name'],
-    $var['value']);   // old_input: stores the existing value by computing using oldInputValue() function is the $var['value'] is not given.
+$var['old_input'] = oldInputValue($var['name'], $var['value']);   // old_input: stores the existing value by computing using oldInputValue() function is the $var['value'] is not given.
 if (! isset($var['editable'])) { // Check if the form input/select is editable based on the value of $elementIsEditable. The variable is set in the controller ModuleBaseController and passed to the form view(form.blade.php) while rendering.
     $var['editable'] = ! (isset($elementIsEditable) && $elementIsEditable == false);
 }

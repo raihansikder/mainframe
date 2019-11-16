@@ -6,9 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="ee34113f-6433-40ce-8481-cf6a87088dde" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Uploads/UploadController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Uploads/UploadController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/mainframe/css/mainframe.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/mainframe/css/mainframe.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/mainframe/templates/admin/plugins/ckeditor/contents.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/mainframe/templates/admin/plugins/ckeditor/contents.css" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -163,28 +160,28 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="PHP" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/mainframe/layouts/report/includes" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/mainframe/form-elements/text" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.General" />
     <property name="typescript.add.unambiguous.imports.on.the.fly" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\MAMP\htdocs\mainframe\resources\views\mainframe\layouts\report\includes" />
-      <recent name="E:\MAMP\htdocs\mainframe\resources\views\mainframe\modules\modules" />
-      <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Helpers\Modular\BaseModule" />
-      <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Helpers\Modular\Skeleton" />
-      <recent name="E:\MAMP\htdocs\mainframe\app\Console\Commands" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Helpers" />
       <recent name="E:\MAMP\htdocs\mainframe\resources\views\mainframe\layouts\report" />
       <recent name="E:\MAMP\htdocs\mainframe\config\mainframe" />
       <recent name="E:\MAMP\htdocs\mainframe\resources\views\mainframe\modules\groups\form" />
       <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Helpers\Modular\BaseModule\Traits" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\MAMP\htdocs\mainframe\resources\views\mainframe\form-elements\text" />
+      <recent name="E:\MAMP\htdocs\mainframe\resources\views\mainframe\layouts\report\includes" />
+      <recent name="E:\MAMP\htdocs\mainframe\resources\views\mainframe\modules\modules" />
+      <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Helpers\Modular\BaseModule" />
+      <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Helpers\Modular\Skeleton" />
     </key>
   </component>
   <component name="RunDashboard">
