@@ -47,7 +47,6 @@ $input = new SelectAjax($var, $element ?? null);
 @section('js')
     @parent
 
-    <!--suppress UnterminatedStatementJS -->
     <script type="text/javascript">
 
         var divId = '{{$rand}}';
@@ -82,10 +81,7 @@ $input = new SelectAjax($var, $element ?? null);
                     url: url,
                     quietMillis: 1000,
                     data: function (term, page) {
-                        return { {{$input->nameField}}:
-                        term
-                    }
-                        ;
+                        return {'{{$input->nameField}}': term};
                     },
                     results: function (response) {
                         return {
