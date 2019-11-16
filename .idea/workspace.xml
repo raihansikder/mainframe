@@ -160,7 +160,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="PHP" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/mainframe/form-elements/text" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Mainframe/Helpers/Form/Select" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -170,18 +170,18 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Helpers\Form\Text" />
       <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Helpers" />
       <recent name="E:\MAMP\htdocs\mainframe\resources\views\mainframe\layouts\report" />
       <recent name="E:\MAMP\htdocs\mainframe\config\mainframe" />
       <recent name="E:\MAMP\htdocs\mainframe\resources\views\mainframe\modules\groups\form" />
-      <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Helpers\Modular\BaseModule\Traits" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Helpers\Form\Select" />
+      <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Helpers\Form" />
       <recent name="E:\MAMP\htdocs\mainframe\resources\views\mainframe\form-elements\text" />
       <recent name="E:\MAMP\htdocs\mainframe\resources\views\mainframe\layouts\report\includes" />
       <recent name="E:\MAMP\htdocs\mainframe\resources\views\mainframe\modules\modules" />
-      <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Helpers\Modular\BaseModule" />
-      <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Helpers\Modular\Skeleton" />
     </key>
   </component>
   <component name="RunDashboard">

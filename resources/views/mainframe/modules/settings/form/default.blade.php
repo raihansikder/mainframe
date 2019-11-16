@@ -13,27 +13,24 @@ $types = Setting::$types;
         @elseif($formState === 'edit')
             {{ Form::model($element, $formConfig)}}
         @endif
-
         {{--    Form inputs: starts    --}}
         {{--   --------------------    --}}
 
-        @include('mainframe.form-elements.text.input-text-new',['var'=>['name'=>'name','label'=>'Name']])
-        @include('mainframe.form-elements.text.input-text',['var'=>['name'=>'title','label'=>'Title','container_class'=>'col-sm-3']])
+        @include('mainframe.form-elements.text.input-text',['var'=>['name'=>'name','label'=>'Name']])
+        @include('mainframe.form-elements.text.input-text',['var'=>['name'=>'title','label'=>'Title']])
         <div class="clearfix"></div>
 
         @include('mainframe.form-elements.select.select-array',['var'=>['name'=>'type','label'=>'type', 'options'=>$types,'container_class'=>'col-sm-3']])
         <div class="clearfix"></div>
 
-        @include('mainframe.form-elements.text.textarea',['var'=>['name'=>'value','label'=>'Value', 'container_class'=>'col-sm-6']])
+        @include('mainframe.form-elements.text.textarea',['var'=>['name'=>'value','label'=>'Value']])
         <div class="clearfix"></div>
 
-        @include('mainframe.form-elements.text.textarea',['var'=>['name'=>'description','label'=>'Description', 'container_class'=>'col-sm-6','params'=>['class'=>'ckeditor']]])
+        @include('mainframe.form-elements.text.textarea',['var'=>['name'=>'description','label'=>'Description', 'params'=>['class'=>'ckeditor']]])
         @include('mainframe.form-elements.custom.is_active')
 
         {{--    Form inputs: ends    --}}
-
         @include('mainframe.layouts.module.form.includes.action-buttons')
-
         {{ Form::close() }}
     </div>
 @endsection

@@ -107,7 +107,7 @@ trait ListTrait
     public function filterQueryConstructor($q)
     {
         $model = $this->model;
-        $text_fields = $model::$text_fields ?? [];
+        $text_fields = $model::$text_fields ?? ['name'];
         //$module_sys_name = $this->moduleName;
 
         /** @var \App\Mainframe\Helpers\Modular\BaseModule\BaseModule $q */

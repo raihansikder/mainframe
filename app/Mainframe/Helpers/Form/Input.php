@@ -6,7 +6,6 @@ use Illuminate\Support\Str;
 
 class Input extends Form
 {
-    public $element;
     public $containerClass;
     public $label;
     public $labelClass;
@@ -23,11 +22,10 @@ class Input extends Form
      * @param  \App\Mainframe\Helpers\Modular\BaseModule\BaseModule  $element
      * @param  array  $conf
      */
-    public function __construct($element = null, $conf = [])
+    public function __construct($conf = [], $element = null)
     {
-        parent::__construct();
+        parent::__construct($element);
 
-        $this->element = $element ?: $this->element;
         $this->containerClass = $conf['container_class'] ?? 'col-md-3';
         $this->label = $conf['label'] ?? null;
         $this->labelClass = $conf['label_class'] ?? null;
@@ -41,6 +39,9 @@ class Input extends Form
         // Force add form-control class
         $this->params['class'] = $this->params['class'] ?? '';
         $this->params['class'] .= ' form-control ';
+
+        // Force add form-control class
+        $this->params['id'] = $this->params['id'] ?? $this->name;
     }
 
     /**
@@ -60,6 +61,16 @@ class Input extends Form
         return request()->old($this->name);
     }
 
+    public function value()
+    {
+        if ($this->old()) {
+            return $this->old();
+        }
+        if ($this->element && isset($this->element->{$this->name})) {
+            return $this->element->{$this->name};
+        }
+    }
+
     /**
      * Show value for the readonly
      *
@@ -67,11 +78,7 @@ class Input extends Form
      */
     public function readOnlyValue()
     {
-        if ($this->element) {
-            return $this->element->name;
-        }
-
-        return null;
+        return $this->value();
     }
 
 }

@@ -270,7 +270,8 @@ div.form-group span.readonly {
 }
 
 .select2-search input {
-    margin: 5px 0
+    margin: 5px 0;
+    font-family: inherit;
 }
 
 .select2-container.select2-drop-above .select2-choice {

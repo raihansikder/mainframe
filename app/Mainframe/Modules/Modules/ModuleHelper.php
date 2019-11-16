@@ -5,7 +5,7 @@ namespace App\Mainframe\Modules\Modules;
 use Illuminate\Support\Str;
 use App\Mainframe\Modules\ModuleGroups\ModuleGroup;
 
-/** @mixin $this|self Module */
+/** @mixin Module $this */
 trait ModuleHelper
 {
     /**
@@ -96,7 +96,7 @@ trait ModuleHelper
     public static function ofGroupId($id = 0)
     {
         return Module::where('module_group_id', $id)
-            ->where('is_active',1)->orderBy('order')
+            ->where('is_active', 1)->orderBy('order')
             ->remember(cacheTime('long'))
             ->get();
     }
@@ -132,6 +132,18 @@ trait ModuleHelper
     {
         /** @var \App\Mainframe\Modules\Modules\Module $this */
         return Str::snake(Str::camel($this->name));
+    }
+
+    public static function nameFromTable($table)
+    {
+        return str_replace('_', '-', $table);
+    }
+
+    public static function fromTable($table)
+    {
+        return Module::where('name', Module::nameFromTable($table))
+            ->remember(cacheTime('long'))
+            ->first();
     }
 
     /**

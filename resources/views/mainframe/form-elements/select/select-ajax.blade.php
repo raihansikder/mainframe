@@ -1,71 +1,44 @@
 <?php
-/**
- * @var array $var                  A temporary variable, that is set only to render the view partial. Usually this view
- *                 file is included inside a form.
- * @var $errors                     \Illuminate\Support\MessageBag
- * @var $moduleName                string 'aiddeclarations'
- * @var $currentModule                        \App\Mainframe\Modules\Modules\Module
- * @var $aiddeclaration             \App\Aiddeclaration Object that is being edited
- * @var $element                    string 'aiddeclaration'
- * @var $elementIsEditable           boolean
- * @var $uuid                       string '1709c091-8114-4ba4-8fd8-91f0ba0b63e8'
- */
+use App\Mainframe\Helpers\Form\Select\SelectAjax;
 
-/** Common view parameters for form elements */
-$rand = randomString();
-$var['container_class'] = $var['container_class'] ?? ''; // container_class: main wrapper div class.
-$var['name'] = $var['name'] ?? 'NO_NAME';    // name: Form file input name, this name will be posted when the form is submitted.
-$var['params'] = $var['params'] ?? [];     // params: Array of parameters to be passed to Form::select(). Usually this contains all the additional HTML attributes for the HTML input tag. i.e. ]class=>'my_class', id=>'my_id']
-$var['params']['class'] = isset($var['params']['class']) ? $var['params']['class'] . ' form-control ajax' : ' form-control ajax'; // ['params']['class']: Enforce a class 'form-control' for the input/select HTML element. 'form-control' is a native class of UI framework.
-$var['params']['id'] = $var['params']['id'] ?? $var['name']; // ['params']['class']: Enforce a class 'form-control' for the input/select HTML element. 'form-control' is a native class of UI framework.
-$var['value'] = $var['value'] ?? null;        // value: Set the value of the form field. This will override all other values passed or derived from form-model binding or old input values.
-$var['label'] = $var['label'] ?? '';        // label: Label of the form field
-$var['label_class'] = $var['label_class'] ?? ''; //label_class: class of the label
-$var['old_input'] = oldInputValue($var['name'], $var['value']);   // old_input: stores the existing value by computing using oldInputValue() function is the $var['value'] is not given.
-if (!isset($var['editable'])) { // Check if the form input/select is editable based on the value of $elementIsEditable. The variable is set in the controller ModuleBaseController and passed to the form view(form.blade.php) while rendering.
-    $var['editable'] = !(isset($elementIsEditable) && $elementIsEditable === false);
-}
+$rand = \Illuminate\Support\Str::random(8);
+$input = new SelectAjax($var, $element ?? null);
 
-//$var['table'];
-$var['name_field'] = $var['name_field'] ?? 'name'; // name_field: Column of the table that will be shown as the readable name of the option for user. Usually this field is a text field. i.e. name, name_ext. Default is 'name'.
-$name_field = $var['name_field'];
-$var['value_field'] = $var['value_field'] ?? 'id'; // value_field: Column of the table that will be used for the value that will be actually posted. Usually this field is an id field. Default is 'id'.
-$value_field = $var['value_field'];
-
-$var['url'] = $var['url'] ?? route($var['table'] . '.list-json'); // URL to get Ajax data as search result
-
-$id = $preload = null;
-if ($var['old_input']) {
-    $var['value'] = $var['old_input'];
-} else if (isset($$element)) {
-    $var['value'] = $$element->user_id;
-}
-if ($var['value']) {
-    $item = DB::table($var['table'])->select([$value_field, $name_field])->where($value_field, $var['value'])->first();
-    if ($item) $preload = $item->$name_field;
-}
 ?>
 
+<div id="{{$rand}}"
+     class="form-group {{$input->containerClass}} {{$errors->first($input->name, ' has-error')}}">
 
-<!--suppress ALL -->
-<div id="{{$rand}}" class="form-group {{$errors->first($var['name'], ' has-error')}} {{$var['container_class']}}">
-    @if(strlen(trim($var['label'])))
-        <label id="label_{{$var['name']}}" class="control-label {{$var['label_class']}}" for="{{$var['name']}}">
-            {!! $var['label'] !!}
+    @if($input->label)
+        <label id="label_{{$input->name}}"
+               class="control-label {{$input->labelClass}}"
+               for="{{$input->name}}">
+            {!! $input->label !!}
         </label>
     @endif
-    @if($var['editable'])
-        <input name="preload" type="hidden" value="{{$preload}}"/>
-        {{ Form::text($var['name'], $var['old_input'], $var['params']) }}
+
+    @if($input->isEditable)
+        <div class="clearfix"></div>
+        <div class="col-md-9 no-padding">
+            <input name="preload" type="hidden" value="{{$input->preload}}"/>
+
+
+            {{ Form::text($input->name, $input->old(), $input->params) }}
+        </div>
+        <div class="col-md-3 no-padding">
+
+            <a id="clear_{{$input->name}}" class="btn  bg-white selectClearBtn" href="#">Clear</a>
+        </div>
     @else
-            <?php $tmp_name = $var['name']?>
-            <span class="{{$var['params']['class']}} readonly">
-            @if(isset($$element))
-                    {{$$element->$tmp_name}}
-                @endif
+        <span class="{{$input->params['class']}} readonly">
+            @if(isset($input->element))
+                {{$input->readOnlyValue()}}
+            @endif
         </span>
     @endif
+
     {!! $errors->first($var['name'], '<span class="help-block">:message</span>') !!}
+
 </div>
 
 {{-- Unset the local variable used in this view. --}}
@@ -74,26 +47,33 @@ if ($var['value']) {
 @section('js')
     @parent
 
+    <!--suppress UnterminatedStatementJS -->
     <script type="text/javascript">
-        var div_id = '{{$rand}}';
-        var url = '{{$var['url']}}';
-        var input_name = '{{$var['name']}}';
-        initAjaxSelect(div_id, url, input_name);
+
+        var divId = '{{$rand}}';
+        var url = '{{$input->url}}';
+        var inputName = '{{$input->name}}';
+
+        initAjaxSelect(divId, url, inputName);
+
+        // clear button
+        $("#" + divId + " .selectClearBtn").click(function () {
+            $("#" + divId + " input.ajax").select2("val", "");
+        });
 
         /**
          * Function to instantiate the ajax based selector.
-         * @param div_id
+         * @param divId
          * @param url
-         * @param input_name
+         * @param inputName
          */
-        function initAjaxSelect(div_id, url, input_name) {
+        function initAjaxSelect(divId, url, inputName) {
 
-
-            var select2 = $("#" + div_id + " input.ajax").select2({
+            var select2 = $("#" + divId + " input.ajax").select2({
                 minimumInputLength: 2,
                 initSelection: function (element, callback) {
                     var id = element.val();
-                    var text = $("#" + div_id + ' input[name=preload]').val();
+                    var text = $("#" + divId + ' input[name=preload]').val();
                     var data = {id: id, text: text};
                     callback(data);
                 },
@@ -102,18 +82,16 @@ if ($var['value']) {
                     url: url,
                     quietMillis: 1000,
                     data: function (term, page) {
-                        return {
-                        {{$name_field}}:
+                        return { {{$input->nameField}}:
                         term
                     }
                         ;
                     },
                     results: function (response) {
                         return {
-                            results: $.map(response.data, function (item) {
+                            results: $.map(response.items, function (item) {
                                 return {
-                                    //text: item.id + '. ' + item.{{$name_field}},
-                                    text: item.{{$name_field}},
+                                    text: item.{{$input->nameField}},
                                     id: item.id
                                 }
                             })
@@ -128,4 +106,4 @@ if ($var['value']) {
     </script>
 @endsection
 
-<?php unset($var, $rand, $name_field, $value_field) ?>
+<?php unset($input) ?>

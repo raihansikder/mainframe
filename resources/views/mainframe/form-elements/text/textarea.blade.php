@@ -1,57 +1,47 @@
 <?php
-/**
- * @var array $var A temporary variable, that is set only to render the view partial. Usually this view
- *                 file is included inside a form.
- * @var $errors    \Illuminate\Support\MessageBag
- */
+/** @var \App\Mainframe\Helpers\Modular\BaseModule\BaseModule $element */
+use App\Mainframe\Helpers\Form\Text\TextArea;
 
-/** Common view parameters for form elements */
-$var['container_class'] = (isset($var['container_class'])) ? $var['container_class'] : 'col-md-6';
-$var['name'] = (isset($var['name'])) ? $var['name'] : 'NO_NAME';
-$var['params'] = (isset($var['params'])) ? $var['params'] : [];
-$var['params']['class'] = (isset($var['params']['class'])) ? $var['params']['class'] . " form-control " : ' form-control ';
-$var['value'] = (isset($var['value'])) ? $var['value'] : '';
-$var['label'] = (isset($var['label'])) ? $var['label'] : '';
-$var['label_class'] = (isset($var['label_class'])) ? $var['label_class'] : '';
-$var['old_input'] = oldInputValue($var['name'], $var['value']);
-if (!isset($var['editable'])) {
-    $var['editable'] = (isset($elementIsEditable) && $elementIsEditable == false) ? false : true;
-}
 
-/** Custom parameters */
-$var['params']['id'] = (isset($var['params']['id'])) ? $var['params']['id'] : $var['name'];
+$var['type'] = $var['type'] ?? 'text';
+// $input = new InputText($var, $element ?? null);
+$input = new TextArea($var, $element ?? null);
 ?>
 {{-- HTML for the input/select block --}}
-<div class="form-group {{$errors->first($var['name'], ' has-error')}} {{$var['container_class']}}">
-    @if(strlen(trim($var['label'])))
-        <label id="label_{{$var['name']}}" class="control-label {{$var['label_class']}}" for="{{$var['name']}}">
-            {!! $var['label'] !!}
+<div class="form-group {{$input->containerClass}} {{$errors->first($input->name, ' has-error')}}">
+
+    @if($input->label)
+        <label id="label_{{$input->name}}"
+               class="control-label {{$input->labelClass}}"
+               for="{{$input->name}}">
+            {!! $input->label !!}
         </label>
     @endif
-    @if($var['editable'])
-        {{ Form::textarea($var['name'], $var['old_input'], $var['params']) }}
-        {!!  $errors->first($var['name'], '<span class="help-block">:message</span>') !!}
-    @else
 
-        <?php $tmp_name = $var['name']?>
-        <span class="{{$var['params']['class']}} readonly">
-            @if(isset($$element))
-                {{$$element->$tmp_name}}
+    @if($input->isEditable)
+        {{ Form::textarea($input->name, $input->old(), $input->params) }}
+    @else
+        <span class="{{$input->params['class']}} readonly">
+            @if(isset($input->element))
+                {{$input->readOnlyValue()}}
             @endif
         </span>
     @endif
+
+    {!!  $errors->first($input->name, '<span class="help-block">:message</span>') !!}
+
 </div>
 
 {{-- js --}}
 @section('js')
     @parent
     {{-- Instantiate the ckeditor if the class 'ckeditor' is added in textarea--}}
-    @if(strpos($var['params']['class'], 'ckeditor')  !== false)
+    @if(strpos( $input->params['class'], 'ckeditor')  !== false)
         <script>
-            initEditor('{{$var['params']['id']}}', editor_config_basic);
+            initEditor('{{ $input->params['id']}}', editor_config_basic);
         </script>
     @endif
 @endsection
 
 {{-- Unset the local variable used in this view. --}}
-<?php unset($var) ?>
+<?php unset($input) ?>
