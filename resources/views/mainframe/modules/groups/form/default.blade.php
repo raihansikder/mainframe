@@ -11,8 +11,8 @@
 
         {{--    Form inputs: starts    --}}
         {{--   --------------------    --}}
-        @include('mainframe.form-elements.text.input-text',['var'=>['name'=>'name','label'=>'Name']])
-        @include('mainframe.form-elements.custom.is_active')
+        @include('mainframe.form.input.text',['var'=>['name'=>'name','label'=>'Name']])
+        @include('mainframe.form.custom.is_active')
         {{--    Form inputs: ends    --}}
         <div class="clearfix"></div>
         @if($formState === 'edit')

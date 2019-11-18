@@ -11,8 +11,35 @@
 
         {{--    Form inputs: starts    --}}
         {{--   --------------------    --}}
-        @include('mainframe.form-elements.text.input-text',['var'=>['name'=>'name','label'=>'Name','container_class'=>'col-sm-3']])
-        @include('mainframe.form-elements.custom.is_active')
+        @include('mainframe.form.input.text',['var'=>['name'=>'email','label'=>'Email']])
+        {{-- show password only for editable--}}
+        @if($elementIsEditable)
+            <div class="clearfix"></div>
+            <h3>Reset password</h3>
+{{--            @include('mainframe.form.input.text',['var'=>['name'=>'password','type'=>'password','label'=>'New password','value'=>'']])--}}
+{{--            @include('mainframe.form.input.text',['var'=>['name'=>'password_confirmation','type'=>'password','label'=>'Confirm new password']])--}}
+        @endif
+
+        <div class="clearfix"></div>
+        @include('mainframe.form.input.text',['var'=>['name'=>'email_verified_at','label'=>'Email verified at', 'container_class'=>'col-sm-3','editable'=>false]])
+        @include('mainframe.form.select.select-array',['var'=>['name'=>'is_active','label'=>'Active', 'options'=>['1'=>'Yes','0'=>'No']]])
+
+        <div class="clearfix"></div>
+        <?php
+                myprint_r($element->group_ids);
+        $var = [
+            'name' => 'group_ids',
+            'label' => 'Group',
+            'value' => (isset($user)) ? $element->group_ids : [],
+            'query' => new \App\Group,
+            'name_field' => 'title',
+            'params' => ['multiple', 'id' => 'groups'],
+            'container_class' => 'col-sm-3'
+        ];
+        ?>
+        @include('mainframe.form.select.select-model-multiple', compact('var'))
+
+        @include('mainframe.form.custom.is_active')
         {{--    Form inputs: ends    --}}
 
         @include('mainframe.layouts.module.form.includes.action-buttons')

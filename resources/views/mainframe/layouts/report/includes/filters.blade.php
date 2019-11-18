@@ -19,13 +19,13 @@
         </ul>
         <div class="tab-content">
             <div class="tab-pane active " id="tab_minimize">
-                @include('mainframe.form-elements.text.input-text',['var'=>['name'=>'report_name','label'=>'Report name', 'container_class'=>'col-sm-10']])
-                @include('mainframe.form-elements.select.select-array',['var'=>['name'=>'rows_per_page','label'=>'Rows per page','options'=>kv([10,25,50,100]),'container_class'=>'pull-right col-md-2']])
+                @include('mainframe.form.input.text',['var'=>['name'=>'report_name','label'=>'Report name', 'container_class'=>'col-sm-10']])
+                @include('mainframe.form.select.select-array',['var'=>['name'=>'rows_per_page','label'=>'Rows per page','options'=>kv([10,25,50,100]),'container_class'=>'pull-right col-md-2']])
 
             </div>
             <div class="tab-pane" id="tab_basic">
-                @include('mainframe.form-elements.text.input-text',['var'=>['name'=>'created_at_from','label'=>'Created(from)', 'container_class'=>'col-md-3','params'=>['class'=>'datepicker'] ]])
-                @include('mainframe.form-elements.text.input-text',['var'=>['name'=>'created_at_till','label'=>'Created(till)', 'container_class'=>'col-md-3','params'=>['class'=>'datepicker'] ]])
+                @include('mainframe.form.input.text',['var'=>['name'=>'created_at_from','label'=>'Created(from)', 'container_class'=>'col-md-3','params'=>['class'=>'datepicker'] ]])
+                @include('mainframe.form.input.text',['var'=>['name'=>'created_at_till','label'=>'Created(till)', 'container_class'=>'col-md-3','params'=>['class'=>'datepicker'] ]])
             </div>
             <div class="tab-pane" id="tab_advanced">
                 @include($baseDir.'.includes.advanced')

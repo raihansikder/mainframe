@@ -56,6 +56,11 @@ class UserValidator extends ModelValidator
         return array_merge($rules, $merge);
     }
 
+    public function fill()
+    {
+        return $this;
+    }
+
     /*
    |--------------------------------------------------------------------------
    | Execute validation on module events
@@ -66,12 +71,13 @@ class UserValidator extends ModelValidator
     /**
      * Run validations for saving. This should be common for both creating and updating.
      *
+     * @param \App\Mainframe\Modules\Users\User $user
      * @return $this
      */
-    public function saving()
+    public function saving($user)
     {
-        parent::saving();
-        $this->userNameShouldNotbeJoker();
+        parent::saving($user);
+        $this->userNameShouldNotbeJoker($user);
 
         return $this;
     }

@@ -6,7 +6,8 @@ use App\Mainframe\Helpers\Modular\Validator\ModelValidator;
 
 class SuperHeroValidator extends ModelValidator
 {
-
+    /** @var \App\Mainframe\Modules\SuperHeroes\SuperHero */
+    public $element;
     /*
     |--------------------------------------------------------------------------
     | Rules.

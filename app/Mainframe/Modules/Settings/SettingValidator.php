@@ -6,6 +6,8 @@ use App\Mainframe\Helpers\Modular\Validator\ModelValidator;
 
 class SettingValidator extends ModelValidator
 {
+    /** @var \App\Mainframe\Modules\Settings\Setting */
+    public $element;
     /*
     |--------------------------------------------------------------------------
     | Rules.

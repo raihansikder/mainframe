@@ -16,10 +16,10 @@ $input = new PlainText($var, $element ?? null);
         </label>
     @endif
 
-
     <span class="{{$input->params['class']}} readonly">
         {{$input->readOnlyValue()}}
     </span>
+
 </div>
 
 <?php unset($input) ?>

@@ -1,4 +1,6 @@
-<?php /** @noinspection SelfClassReferencingInspection */
+<?php /** @noinspection PhpUnusedParameterInspection */
+
+/** @noinspection SelfClassReferencingInspection */
 
 namespace App\Mainframe\Helpers\Modular\Validator;
 
@@ -162,20 +164,35 @@ class ModelValidator
     public function validate()
     {
         if (isset($this->element->id)) {
-            return $this->updating();
+            return $this->update();
         }
 
-        return $this->saving();
+        return $this->create();
+    }
+
+    public function save()
+    {
+        $this->fill()->validateRules();
+        $this->saving($this->element);
+
+        return $this;
     }
 
     /**
      * Run validations for saving. This should be common for both creating and updating.
      *
+     * @param $element
      * @return $this
      */
-    public function saving()
+    public function saving($element)
     {
-        $this->fill()->validateRules();
+        return $this;
+    }
+
+    public function create()
+    {
+        $this->save();
+        $this->creating($this->element);
 
         return $this;
     }
@@ -183,11 +200,18 @@ class ModelValidator
     /**
      * Run validations for creating. This should always call the saving().
      *
+     * @param $element
      * @return $this]
      */
-    public function creating()
+    public function creating($element)
     {
-        $this->saving();
+        return $this;
+    }
+
+    public function update()
+    {
+        $this->save();
+        $this->updating($this->element);
 
         return $this;
     }
@@ -195,11 +219,17 @@ class ModelValidator
     /**
      * Run validations for updating. This should always call the saving().
      *
+     * @param $element
      * @return $this
      */
-    public function updating()
+    public function updating($element)
     {
-        $this->fill()->saving();
+        return $this;
+    }
+
+    public function delete()
+    {
+        $this->deleting($this->element);
 
         return $this;
     }
@@ -207,22 +237,30 @@ class ModelValidator
     /**
      * Run validations for deleting.
      *
+     * @param $element
      * @return $this
      */
-    public function deleting()
+    public function deleting($element)
     {
+        return $this;
+    }
+
+    public function restore()
+    {
+        $this->save();
+        $this->restoring($this->element);
+
         return $this;
     }
 
     /**
      * Run validations for restoring.
      *
+     * @param $element
      * @return $this
      */
-    public function restoring()
+    public function restoring($element)
     {
-        $this->saving();
-
         return $this;
     }
 

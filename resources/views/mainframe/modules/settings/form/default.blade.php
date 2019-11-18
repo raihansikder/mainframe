@@ -15,19 +15,18 @@ $types = Setting::$types;
         @endif
         {{--    Form inputs: starts    --}}
         {{--   --------------------    --}}
-
-        @include('mainframe.form-elements.text.input-text',['var'=>['name'=>'name','label'=>'Name']])
-        @include('mainframe.form-elements.text.input-text',['var'=>['name'=>'title','label'=>'Title']])
+        @include('mainframe.form.input.text',['var'=>['name'=>'name','label'=>'Name']])
+        @include('mainframe.form.input.text',['var'=>['name'=>'title','label'=>'Title']])
         <div class="clearfix"></div>
 
-        @include('mainframe.form-elements.select.select-array',['var'=>['name'=>'type','label'=>'type', 'options'=>$types,'container_class'=>'col-sm-3']])
+        @include('mainframe.form.select.select-array',['var'=>['name'=>'type','label'=>'type', 'options'=>$types,'container_class'=>'col-sm-3']])
         <div class="clearfix"></div>
 
-        @include('mainframe.form-elements.text.textarea',['var'=>['name'=>'value','label'=>'Value']])
+        @include('mainframe.form.input.textarea',['var'=>['name'=>'value','label'=>'Value']])
         <div class="clearfix"></div>
 
-        @include('mainframe.form-elements.text.textarea',['var'=>['name'=>'description','label'=>'Description', 'params'=>['class'=>'ckeditor']]])
-        @include('mainframe.form-elements.custom.is_active')
+        @include('mainframe.form.input.textarea',['var'=>['name'=>'description','label'=>'Description', 'params'=>['class'=>'ckeditor']]])
+        @include('mainframe.form.custom.is_active')
 
         {{--    Form inputs: ends    --}}
         @include('mainframe.layouts.module.form.includes.action-buttons')
