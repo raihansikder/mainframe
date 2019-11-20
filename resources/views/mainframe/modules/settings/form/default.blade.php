@@ -6,7 +6,7 @@ $types = Setting::$types;
 ?>
 
 @section('content')
-    <div class="col-md-12 no-padding">
+    <div class="col-md-12 col-lg-10 no-padding">
 
         @if(($formState === 'create'))
             {{ Form::open($formConfig) }} <input name="uuid" type="hidden" value="{{$uuid}}"/>
@@ -19,7 +19,7 @@ $types = Setting::$types;
         @include('mainframe.form.input.text',['var'=>['name'=>'title','label'=>'Title']])
         <div class="clearfix"></div>
 
-        @include('mainframe.form.select.select-array',['var'=>['name'=>'type','label'=>'type', 'options'=>$types,'container_class'=>'col-sm-3']])
+        @include('mainframe.form.select.select-array',['var'=>['name'=>'type','label'=>'type', 'options'=>$types]])
         <div class="clearfix"></div>
 
         @include('mainframe.form.input.textarea',['var'=>['name'=>'value','label'=>'Value']])

@@ -21,8 +21,6 @@ $input = new SelectAjax($var, $element ?? null);
         <div class="clearfix"></div>
         <div class="col-md-9 no-padding">
             <input name="preload" type="hidden" value="{{$input->preload}}"/>
-
-
             {{ Form::text($input->name, $input->old(), $input->params) }}
         </div>
         <div class="col-md-3 no-padding">
@@ -31,9 +29,7 @@ $input = new SelectAjax($var, $element ?? null);
         </div>
     @else
         <span class="{{$input->params['class']}} readonly">
-            @if(isset($input->element))
-                {{$input->readOnlyValue()}}
-            @endif
+            {{$input->readOnlyValue()}}
         </span>
     @endif
 

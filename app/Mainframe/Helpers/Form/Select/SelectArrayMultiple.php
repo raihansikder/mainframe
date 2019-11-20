@@ -12,7 +12,7 @@ class SelectArrayMultiple extends SelectArray
         $this->params['multiple'] = 'multiple';
         $this->dataParent = $this->name.'_data_parent';
 
-        $this->name .= '[]';
+        // $this->name .= '[]';
     }
 
 }
