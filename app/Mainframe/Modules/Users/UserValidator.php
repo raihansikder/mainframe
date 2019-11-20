@@ -7,6 +7,30 @@ use App\Mainframe\Helpers\Modular\Validator\ModelValidator;
 
 class UserValidator extends ModelValidator
 {
+    /*
+    |--------------------------------------------------------------------------
+    | Fill model .
+    |--------------------------------------------------------------------------
+    |
+    | Sometimes you need to automatically fill some fields of a model based
+    | on known logic. For example: if you can take first_name and last_name
+    | of an user and auto fill full_name.
+    */
+    /** @noinspection SenselessMethodDuplicationInspection */
+    /**
+     * Fill the model with values
+     *
+     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @return $this
+     */
+    public function fill($user)
+    {
+        parent::fill($user);
+
+        //$setting->name = 'Lorem Ipsum';
+
+        return $this;
+    }
 
     /*
     |--------------------------------------------------------------------------
@@ -28,8 +52,6 @@ class UserValidator extends ModelValidator
             'email' => 'required|email|unique:users,email'.(isset($element->id) ? ",$element->id" : ''),
             'first_name' => 'required|between:0,128',
             'last_name' => 'required|between:0,128',
-            'partner_id' => 'required_if:group_id,2',
-            'charity_id' => 'required_if:group_id,5',
             'address1' => 'between:0,512',
             'address2' => 'between:0,512',
             'city' => 'between:0,64',
@@ -37,7 +59,6 @@ class UserValidator extends ModelValidator
             'zip_code' => 'between:0,20',
             'phone' => 'between:0,20',
             'mobile' => 'between:0,20',
-            'country_id' => 'required',
         ];
 
         // While creation/registration of user password and password_confirm both should be available
@@ -56,10 +77,7 @@ class UserValidator extends ModelValidator
         return array_merge($rules, $merge);
     }
 
-    public function fill()
-    {
-        return $this;
-    }
+
 
     /*
    |--------------------------------------------------------------------------
@@ -71,7 +89,7 @@ class UserValidator extends ModelValidator
     /**
      * Run validations for saving. This should be common for both creating and updating.
      *
-     * @param \App\Mainframe\Modules\Users\User $user
+     * @param  \App\Mainframe\Modules\Users\User  $user
      * @return $this
      */
     public function saving($user)

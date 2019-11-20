@@ -4,10 +4,34 @@ namespace App\Mainframe\Modules\Settings;
 
 use App\Mainframe\Helpers\Modular\Validator\ModelValidator;
 
+/** @mixin \App\Mainframe\Modules\Settings\Setting $this->element */
 class SettingValidator extends ModelValidator
 {
-    /** @var \App\Mainframe\Modules\Settings\Setting */
-    public $element;
+    /*
+    |--------------------------------------------------------------------------
+    | Fill model .
+    |--------------------------------------------------------------------------
+    |
+    | Sometimes you need to automatically fill some fields of a model based
+    | on known logic. For example: if you can take first_name and last_name
+    | of an user and auto fill full_name.
+    */
+
+    /**
+     * Fill the model with values
+     *
+     * @param  \App\Mainframe\Modules\Settings\Setting  $setting
+     * @return $this
+     */
+    public function fill($setting)
+    {
+        parent::fill($setting);
+
+        //$setting->name = 'Lorem Ipsum';
+
+        return $this;
+    }
+
     /*
     |--------------------------------------------------------------------------
     | Rules.
@@ -15,17 +39,18 @@ class SettingValidator extends ModelValidator
     |
     | Write the laravel validation rules
     */
+
     /**
      * Validation rules. For regular expression validation use array instead of pipe
      *
-     * @param       $element
+     * @param  \App\Mainframe\Modules\Settings\Setting  $setting
      * @param  array  $merge
      * @return array
      */
-    public static function rules($element, $merge = [])
+    public static function rules($setting, $merge = [])
     {
         $rules = [
-            'name' => 'required|between:1,255|unique:settings,name,'.(isset($element->id) ? (string) $element->id : 'null').',id,deleted_at,NULL',
+            'name' => 'required|between:1,255|unique:settings,name,'.(isset($setting->id) ? (string) $setting->id : 'null').',id,deleted_at,NULL',
             'title' => 'required|between:1,255',
             'type' => 'required|'.'in:'.implode(',', array_keys(Setting::$types)),
             'desc' => 'between:1,2048',
@@ -35,7 +60,6 @@ class SettingValidator extends ModelValidator
         return array_merge($rules, $merge);
     }
 
-
     /*
     |--------------------------------------------------------------------------
     | Execute validation on module events
@@ -43,15 +67,24 @@ class SettingValidator extends ModelValidator
     |
     | Check validations on saving, creating, updating, deleting and restoring
     */
+
     /**
      * Run validations for saving. This should be common for both creating and updating.
      *
+     * @param $setting \App\Mainframe\Modules\Settings\Setting
      * @return $this
      */
-    public function saving()
+    public function saving($setting)
     {
-        parent::saving();
-        $this->validateTypeWithValue();
+        parent::saving($setting);
+        /*
+        |--------------------------------------------------------------------------
+        | Call validation functions one by one.
+        |--------------------------------------------------------------------------
+        |
+        | A list of functions that will be called sequentially to validate the model
+        */
+        $this->valueCompatibleWithType($setting);
 
         return $this;
     }
@@ -104,15 +137,15 @@ class SettingValidator extends ModelValidator
     | All validation must be checked through some function. All validation
     | functions are listed below.
     */
+
     /**
      * Check if type matches with value
      *
+     * @param $setting
      * @return $this
      */
-    private function validateTypeWithValue()
+    private function valueCompatibleWithType($setting)
     {
-        $setting = $this->element;
-
         if (($setting->type === 'boolean') && ! in_array($setting->value, ['true', 'false'])) {
             $this->invalidate('value', "If boolean type is selected, value must be 'true' or 'false'");
         }
@@ -124,5 +157,4 @@ class SettingValidator extends ModelValidator
 
         return $this;
     }
-
 }

@@ -1,4 +1,5 @@
-<?php /** @noinspection PhpUnusedParameterInspection */
+<?php
+/** @noinspection PhpUnusedParameterInspection */
 
 /** @noinspection SelfClassReferencingInspection */
 
@@ -148,11 +149,11 @@ class ModelValidator
     /**
      * Fill the model with values
      *
+     * @param $element \App\Mainframe\Helpers\Modular\BaseModule\BaseModule|mixed
      * @return $this
      */
-    public function fill()
+    public function fill($element)
     {
-        // $element->some_val = $new_val
         return $this;
     }
 
@@ -170,10 +171,11 @@ class ModelValidator
         return $this->create();
     }
 
-    public function save()
+    public function save($element = null)
     {
-        $this->fill()->validateRules();
-        $this->saving($this->element);
+        $element = $element ?: $this->element;
+        $this->fill($element)->validateRules();
+        $this->saving($element);
 
         return $this;
     }
@@ -189,10 +191,11 @@ class ModelValidator
         return $this;
     }
 
-    public function create()
+    public function create($element = null)
     {
+        $element = $element ?: $this->element;
         $this->save();
-        $this->creating($this->element);
+        $this->creating($element);
 
         return $this;
     }
@@ -208,10 +211,11 @@ class ModelValidator
         return $this;
     }
 
-    public function update()
+    public function update($element = null)
     {
+        $element = $element ?: $this->element;
         $this->save();
-        $this->updating($this->element);
+        $this->updating($element);
 
         return $this;
     }
@@ -227,9 +231,10 @@ class ModelValidator
         return $this;
     }
 
-    public function delete()
+    public function delete($element = null)
     {
-        $this->deleting($this->element);
+        $element = $element ?: $this->element;
+        $this->deleting($element);
 
         return $this;
     }
@@ -245,10 +250,11 @@ class ModelValidator
         return $this;
     }
 
-    public function restore()
+    public function restore($element = null)
     {
+        $element = $element ?: $this->element;
         $this->save();
-        $this->restoring($this->element);
+        $this->restoring($element);
 
         return $this;
     }
