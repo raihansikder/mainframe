@@ -17,6 +17,15 @@ class LoremIpsum extends BaseModule
     protected $fillable = [
         'uuid',
         'name',
+        'hidden',
+        'textarea',
+        'text',
+        'select_array',
+        'select_array_multiple',
+        'dolor_sit_id',
+        'dolor_sit_ids',
+        'parent_id',
+        'checkbox',
         'is_active',
     ];
 
@@ -46,7 +55,10 @@ class LoremIpsum extends BaseModule
     |
     | Type cast attributes (helpful for JSON)
     */
-    // protected $casts = [];
+    protected $casts = [
+        'select_array_multiple' => 'array',
+        'dolor_sit_ids' => 'array',
+    ];
 
     /*
     |--------------------------------------------------------------------------

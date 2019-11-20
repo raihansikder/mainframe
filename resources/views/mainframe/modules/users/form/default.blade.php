@@ -26,7 +26,7 @@
 
         <div class="clearfix"></div>
         <?php
-                myprint_r($element->group_ids);
+                // myprint_r($element->group_ids);
         $var = [
             'name' => 'group_ids',
             'label' => 'Group',

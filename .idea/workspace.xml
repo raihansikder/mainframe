@@ -5,19 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ee34113f-6433-40ce-8481-cf6a87088dde" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/LoremIpsums/LoremIpsum.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/LoremIpsums/LoremIpsumController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/LoremIpsums/LoremIpsumDatatable.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/LoremIpsums/LoremIpsumHelper.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/LoremIpsums/LoremIpsumObserver.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/LoremIpsums/LoremIpsumPolicy.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/LoremIpsums/LoremIpsumValidator.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2019_11_20_140017_create_lorem_ipsums_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/lorem-ipsums/form/default.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/lorem-ipsums/form/js.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/lorem-ipsums/grid/default.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Console/Commands/MakeMainframeModule.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Commands/MakeMainframeModule.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/BaseModule/BaseModule.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/BaseModule/BaseModule.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/LoremIpsums/LoremIpsum.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/LoremIpsums/LoremIpsum.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/form/select/select-array-multiple.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/form/select/select-array-multiple.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/form/select/select-model-multiple.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/form/select/select-model-multiple.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/lorem-ipsums/form/default.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/lorem-ipsums/form/default.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/settings/form/default.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/settings/form/default.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/users/form/default.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/users/form/default.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

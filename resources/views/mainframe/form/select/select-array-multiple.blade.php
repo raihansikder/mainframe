@@ -26,7 +26,7 @@ $input = new SelectArrayMultiple($var, $element ?? null);
     does not post. As a result the model fills with old value. To avoid this, when
     there is no selection, a blank html input is enabled.
     --}}
-    <input type="hidden" name="{{$input->name}}" class="ghost" value="0" disabled/>
+    <input type="hidden" name="{{$input->name}}" class="ghost" value="" disabled/>
 
 </div>
 
