@@ -22,7 +22,8 @@ $input = new Tags($var, $element ?? null);
         {{ Form::textarea($input->name, $input->old(), $input->params) }}
     @else
         <span class="{{$input->params['class']}} readonly">
-            {{$input->readOnlyValue()}}
+            {{ $input->readOnlyValue() }}
+            {{ Form::hidden($input->name, $input->old()) }}
         </span>
     @endif
 

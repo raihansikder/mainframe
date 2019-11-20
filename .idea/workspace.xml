@@ -5,30 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ee34113f-6433-40ce-8481-cf6a87088dde" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Form/Text/Tags.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/mainframe/form/input/tags.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Helpers/Form/Select/SelectArrayMultiple.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Form/Select/SelectArrayMultiple.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Helpers/Form/Select/SelectModelMultiple.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Form/Select/SelectModelMultiple.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Helpers/Form/Text/InputHidden.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Form/Text/InputHidden.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Helpers/Form/Text/TextArea.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Form/Text/TextArea.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/BaseController/Traits/ModelOperationsTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/BaseController/Traits/ModelOperationsTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/LoremIpsums/LoremIpsum.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/LoremIpsums/LoremIpsum.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/LoremIpsums/LoremIpsumValidator.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/LoremIpsums/LoremIpsumValidator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Helpers/Form/Select/SelectAjax.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Form/Select/SelectAjax.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/form/input/tags.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/form/input/tags.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/form/input/text.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/form/input/text.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/mainframe/form/input/textarea.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/form/input/textarea.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/form/select/select-array-multiple.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/form/select/select-array-multiple.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/form/select/select-model-multiple.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/form/select/select-model-multiple.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/layouts/module/form/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/module/form/layout.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/changes/form/default.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/changes/form/default.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/dolor-sits/form/default.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/dolor-sits/form/default.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/groups/form/default.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/groups/form/default.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/lorem-ipsums/form/default.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/lorem-ipsums/form/default.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/module-groups/form/default.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/module-groups/form/default.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/modules/form/default.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/modules/form/default.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/reports/form/default.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/reports/form/default.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/settings/form/default.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/settings/form/default.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/uploads/form/default.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/uploads/form/default.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/users/form/default.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/users/form/default.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/form/select/select-ajax.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/form/select/select-ajax.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

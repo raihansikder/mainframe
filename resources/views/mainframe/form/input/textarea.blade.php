@@ -4,7 +4,6 @@ use App\Mainframe\Helpers\Form\Text\TextArea;
 
 
 $var['type'] = $var['type'] ?? 'text';
-// $input = new InputText($var, $element ?? null);
 $input = new TextArea($var, $element ?? null);
 ?>
 {{-- HTML for the input/select block --}}
@@ -22,7 +21,8 @@ $input = new TextArea($var, $element ?? null);
         {{ Form::textarea($input->name, $input->old(), $input->params) }}
     @else
         <span class="{{$input->params['class']}} readonly">
-            {{$input->readOnlyValue()}}
+            {{ $input->readOnlyValue() }}
+            {{ Form::hidden($input->name, $input->old()) }}
         </span>
     @endif
 

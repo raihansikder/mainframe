@@ -24,7 +24,8 @@ $input = new InputText($var, $element ?? null);
         @endif
     @else
         <span class="{{$input->params['class']}} readonly">
-            {{$input->readOnlyValue()}}
+            {{ $input->readOnlyValue() }}
+            {{ Form::hidden($input->name, $input->old()) }}
         </span>
     @endif
 
