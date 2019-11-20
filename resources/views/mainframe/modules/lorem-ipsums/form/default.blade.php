@@ -1,7 +1,7 @@
 @extends('mainframe.layouts.module.form.layout')
 
 @section('content')
-    <div class="col-md-12 no-padding">
+    <div class="col-md-12 col-lg-10 no-padding">
 
         @if(($formState === 'create'))
             {{ Form::open($formConfig) }} <input name="uuid" type="hidden" value="{{$uuid}}"/>
@@ -11,33 +11,41 @@
 
         {{--    Form inputs: starts    --}}
         {{--   --------------------    --}}
-        @include('mainframe.form.input.text',['var'=>['name'=>'name','label'=>'input.text']])
 
-
+        <h3>Text Inputs</h3>
         @include('mainframe.form.input.hidden',['var'=>['name'=>'hidden']])
-
-
-        @include('mainframe.form.input.textarea',['var'=>['name'=>'textarea','label'=>'input.textarea']])
-
-
+        @include('mainframe.form.input.text',['var'=>['name'=>'name','label'=>'input.text']])
         @include('mainframe.form.text',['var'=>['name'=>'text','label'=>'Plain text','value'=>'Static value']])
 
+        <?php
+        $tags = ['Country', 'Roads', 'Take', 'Me', 'Home'];
+        ?>
+        @include('mainframe.form.input.tags',['var'=>['name'=>'tags','label'=>'input.tags','tags'=>$tags]])
 
-        <?php $types = [0 => 'Zero', 1 => 'One', 2 => 'Two']; ?>
+        <div class="clearfix"></div>
+        @include('mainframe.form.input.textarea',['var'=>['name'=>'textarea','label'=>'input.textarea']])
+        @include('mainframe.form.input.textarea',['var'=>['name'=>'textarea_ckeditor','label'=>'input.textarea', 'params'=>['class'=>'ckeditor']]])
+
+        <div class="clearfix"></div>
+        <h3>Select from array</h3>
+
+        <?php $types = [null => 'Select', 0 => 'Zero', 1 => 'One', 2 => 'Two']; ?>
         @include('mainframe.form.select.select-array',['var'=>['name'=>'select_array','label'=>'select-array', 'options'=>$types]])
 
-
+        <?php
+        /** @noinspection SuspiciousAssignmentsInspection */
+        $types = [0 => 'Zero', 1 => 'One', 2 => 'Two'];
+        ?>
         @include('mainframe.form.select.select-array-multiple',['var'=>['name'=>'select_array_multiple','label'=>'select-array-multiple', 'options'=>$types]])
 
-
+        <div class="clearfix"></div>
+        <h3>Select from a table/module</h3>
         @include('mainframe.form.select.select-model',['var'=>['name'=>'dolor_sit_id','label'=>'Dolor sit(select-model)', 'table'=>'dolor_sits']])
-
 
         <?php
         $var = [
             'name' => 'dolor_sit_ids',
             'label' => 'Dolor sits (select-model-multiple)',
-            // 'value' => $element->group_ids ?? [],
             'query' => new \App\Mainframe\Modules\DolorSits\DolorSit(),
         ];
         ?>
@@ -47,6 +55,8 @@
         @include('mainframe.form.select.select-ajax',['var'=>['label' => 'Parent(select-ajax)', 'name' => 'parent_id', 'table' => 'lorem_ipsums']])
 
 
+        <div class="clearfix"></div>
+        <h3>Checkbox</h3>
         @include('mainframe.form.checkbox.checkbox',['var'=>['name'=>'checkbox','label'=>'checkbox']])
 
 

@@ -51,6 +51,8 @@ class LoremIpsumValidator extends ModelValidator
         $rules = [
             'name' => 'required|between:1,255|unique:lorem_ipsums,name,'.(isset($loremIpsum->id) ? (string) $loremIpsum->id : 'null').',id,deleted_at,NULL',
             'is_active' => 'in:1,0',
+            // 'select_array' => 'required',
+            // 'select_array_multiple' => 'required',
         ];
 
         return array_merge($rules, $merge);

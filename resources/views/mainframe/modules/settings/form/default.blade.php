@@ -6,7 +6,7 @@ $types = Setting::$types;
 ?>
 
 @section('content')
-    <div class="col-md-12 no-padding">
+    <div class="col-md-12 col-lg-10 no-padding">
 
         @if(($formState === 'create'))
             {{ Form::open($formConfig) }} <input name="uuid" type="hidden" value="{{$uuid}}"/>

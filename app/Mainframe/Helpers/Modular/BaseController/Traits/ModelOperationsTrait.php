@@ -16,8 +16,7 @@ trait ModelOperationsTrait
      */
     public function fill()
     {
-
-        // dd( request()->all());
+        // dd(request()->all());
         $inputs = request()->all();
 
         // Transform $inputs here

@@ -5,13 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ee34113f-6433-40ce-8481-cf6a87088dde" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Form/Text/Tags.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/mainframe/form/input/tags.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/BaseModule/BaseModule.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/BaseModule/BaseModule.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Helpers/Form/Select/SelectArrayMultiple.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Form/Select/SelectArrayMultiple.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Helpers/Form/Select/SelectModelMultiple.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Form/Select/SelectModelMultiple.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Helpers/Form/Text/InputHidden.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Form/Text/InputHidden.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Helpers/Form/Text/TextArea.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Form/Text/TextArea.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/BaseController/Traits/ModelOperationsTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/BaseController/Traits/ModelOperationsTrait.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/LoremIpsums/LoremIpsum.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/LoremIpsums/LoremIpsum.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/LoremIpsums/LoremIpsumValidator.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/LoremIpsums/LoremIpsumValidator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/form/input/textarea.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/form/input/textarea.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/mainframe/form/select/select-array-multiple.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/form/select/select-array-multiple.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/mainframe/form/select/select-model-multiple.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/form/select/select-model-multiple.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/layouts/module/form/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/module/form/layout.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/changes/form/default.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/changes/form/default.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/dolor-sits/form/default.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/dolor-sits/form/default.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/groups/form/default.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/groups/form/default.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/lorem-ipsums/form/default.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/lorem-ipsums/form/default.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/module-groups/form/default.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/module-groups/form/default.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/modules/form/default.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/modules/form/default.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/reports/form/default.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/reports/form/default.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/settings/form/default.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/settings/form/default.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/uploads/form/default.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/uploads/form/default.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/users/form/default.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/users/form/default.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -167,7 +183,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="PHP" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Mainframe/Helpers/Form/Select" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/mainframe" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -176,19 +192,19 @@
     <property name="typescript.add.unambiguous.imports.on.the.fly" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\MAMP\htdocs\mainframe\resources\views\mainframe\form\input" />
+      <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Helpers\Form\Text" />
+      <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Helpers\Form\Select" />
+      <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Helpers\Form" />
+      <recent name="E:\MAMP\htdocs\mainframe\resources\views\mainframe\form-elements\text" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\MAMP\htdocs\mainframe\resources\views\mainframe\form" />
       <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Helpers\Form\Text" />
       <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Helpers" />
       <recent name="E:\MAMP\htdocs\mainframe\resources\views\mainframe\layouts\report" />
       <recent name="E:\MAMP\htdocs\mainframe\config\mainframe" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Helpers\Form\Select" />
-      <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Helpers\Form" />
-      <recent name="E:\MAMP\htdocs\mainframe\resources\views\mainframe\form-elements\text" />
-      <recent name="E:\MAMP\htdocs\mainframe\resources\views\mainframe\layouts\report\includes" />
-      <recent name="E:\MAMP\htdocs\mainframe\resources\views\mainframe\modules\modules" />
     </key>
   </component>
   <component name="RunDashboard">
