@@ -16,6 +16,7 @@ class UserValidator extends ModelValidator
     | on known logic. For example: if you can take first_name and last_name
     | of an user and auto fill full_name.
     */
+
     /** @noinspection SenselessMethodDuplicationInspection */
     /**
      * Fill the model with values
@@ -39,6 +40,7 @@ class UserValidator extends ModelValidator
     |
     | Write the laravel validation rules
     */
+
     /**
      * Validation rules. For regular expression validation use array instead of pipe
      *
@@ -77,8 +79,6 @@ class UserValidator extends ModelValidator
         return array_merge($rules, $merge);
     }
 
-
-
     /*
    |--------------------------------------------------------------------------
    | Execute validation on module events
@@ -86,6 +86,7 @@ class UserValidator extends ModelValidator
    |
    | Check validations on saving, creating, updating, deleting and restoring
    */
+
     /**
      * Run validations for saving. This should be common for both creating and updating.
      *
@@ -95,6 +96,13 @@ class UserValidator extends ModelValidator
     public function saving($user)
     {
         parent::saving($user);
+        /*
+        |--------------------------------------------------------------------------
+        | Call validation functions one by one.
+        |--------------------------------------------------------------------------
+        |
+        | A list of functions that will be called sequentially to validate the model
+        */
         $this->userNameShouldNotbeJoker($user);
 
         return $this;
@@ -151,12 +159,11 @@ class UserValidator extends ModelValidator
     /**
      * Validate the name. Name should not be 'Joker'
      *
+     * @param  \App\Mainframe\Modules\Users\User  $user
      * @return $this
      */
-    private function userNameShouldNotBeJoker()
+    private function userNameShouldNotBeJoker($user)
     {
-        $user = $this->element;
-
         if ($user->name === 'Joker') {
             $this->invalidate('name', "Name can not be Joker");
         }

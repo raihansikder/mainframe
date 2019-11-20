@@ -44,7 +44,7 @@ trait ModelOperationsTrait
     {
         $modelValidator = $this->modelValidator();
 
-        if ($modelValidator->create()->fails()) {
+        if ($modelValidator->create()->failed()) {
             return $this->response()->fail('Validation failed', 200);
         }
 
@@ -66,7 +66,7 @@ trait ModelOperationsTrait
     {
         $modelValidator = $this->modelValidator();
 
-        if ($modelValidator->update()->fails()) {
+        if ($modelValidator->update()->failed()) {
             return $this->response()->fail('Validation failed', 200);
         }
 
@@ -89,7 +89,7 @@ trait ModelOperationsTrait
     {
         $modelValidator = $this->modelValidator();
 
-        if ($modelValidator->delete()->fails()) {
+        if ($modelValidator->delete()->failed()) {
             return $this->response()->fail('Validation failed', 200);
         }
 

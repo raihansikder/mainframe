@@ -40,7 +40,7 @@ class SuperHeroValidator extends ModelValidator
     */
 
     /**
-     * Validation rules. For regular expression validation use array instead of pipe
+     * Validation rules.
      *
      * @param  \App\Mainframe\Modules\SuperHeroes\SuperHero  $superHero
      * @param  array  $merge
@@ -54,6 +54,19 @@ class SuperHeroValidator extends ModelValidator
         ];
 
         return array_merge($rules, $merge);
+    }
+
+    /**
+     * Custom error messages.
+     *
+     * @param  array  $merge
+     * @return array
+     */
+    public static function customErrorMessages($merge = [])
+    {
+        $messages = [];
+
+        return array_merge($messages, $merge);
     }
 
     /*
@@ -89,7 +102,7 @@ class SuperHeroValidator extends ModelValidator
     }
 
     // /**
-    //  * Run validations for creating. This should always call the saving().
+    //  * Creating validation
     //  *
     //  * @param $superHero \App\Mainframe\Modules\Superheroes\SuperHero
     //  * @return \App\Mainframe\Helpers\Modular\Validator\ModelValidator|\App\Mainframe\Modules\Settings\SettingValidator
@@ -100,7 +113,7 @@ class SuperHeroValidator extends ModelValidator
     // }
     //
     // /**
-    //  * Run validations for updating. This should always call the saving().
+    //  * Updating validation
     //  *
     //  * @param $superHero \App\Mainframe\Modules\Superheroes\SuperHero
     //  * @return \App\Mainframe\Helpers\Modular\Validator\ModelValidator|\App\Mainframe\Modules\Settings\SettingValidator
@@ -111,7 +124,7 @@ class SuperHeroValidator extends ModelValidator
     // }
     //
     // /**
-    //  * Run validations for deleting.
+    //  *  Deleting validation
     //  *
     //  * @param $superHero \App\Mainframe\Modules\Superheroes\SuperHero
     //  * @return \App\Mainframe\Helpers\Modular\Validator\ModelValidator|\App\Mainframe\Modules\Settings\SettingValidator
@@ -122,7 +135,7 @@ class SuperHeroValidator extends ModelValidator
     // }
     //
     // /**
-    //  * Run validations for restoring. This should always call the saving().
+    //  * Restoring validation
     //  *
     //  * @param $superHero \App\Mainframe\Modules\Superheroes\SuperHero
     //  * @return \App\Mainframe\Helpers\Modular\Validator\ModelValidator|\App\Mainframe\Modules\Settings\SettingValidator

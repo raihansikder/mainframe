@@ -39,9 +39,20 @@ class ModelValidator
     }
 
     /**
-     * Validation rules. For regular expression validation use array instead of pipe
+     * Fill the model with values
      *
-     * @param       $element
+     * @param $element \App\Mainframe\Helpers\Modular\BaseModule\BaseModule|mixed
+     * @return $this
+     */
+    public function fill($element)
+    {
+        return $this;
+    }
+
+    /**
+     * Validation rules.
+     *
+     * @param  mixed  $element
      * @param  array  $merge
      * @return array
      */
@@ -58,6 +69,8 @@ class ModelValidator
     }
 
     /**
+     * Custom error messages.
+     *
      * @param  array  $merge
      * @return array
      */
@@ -69,7 +82,7 @@ class ModelValidator
     }
 
     /**
-     * Run a validation only on the defined rules.
+     * Validate based on rules
      *
      * @return \Illuminate\Contracts\Validation\Validator|\Illuminate\Validation\Validator
      */
@@ -91,33 +104,33 @@ class ModelValidator
     }
 
     /**
-     * Get results
+     * Get result
      *
      * @return \App\Mainframe\Helpers\Modular\BaseModule\BaseModule|bool
      */
     public function result()
     {
-        return $this->passes() ? $this->element : false;
+        return $this->passed() ? $this->element : false;
     }
 
     /**
-     * Check if valid flag is set to false
+     * Check if failed
      *
      * @return bool
      */
-    public function fails()
+    public function failed()
     {
         return $this->valid ? false : true;
     }
 
     /**
-     * Check if the valid flag is set to true
+     * Check if passed
      *
      * @return bool
      */
-    public function passes()
+    public function passed()
     {
-        return ! $this->fails();
+        return ! $this->failed();
     }
 
     /**
@@ -147,17 +160,7 @@ class ModelValidator
     }
 
     /**
-     * Fill the model with values
-     *
-     * @param $element \App\Mainframe\Helpers\Modular\BaseModule\BaseModule|mixed
-     * @return $this
-     */
-    public function fill($element)
-    {
-        return $this;
-    }
-
-    /**
+     * Run validation logic on model.
      * Based on existence of id field decide to check creating()/updating()
      *
      * @return $this
@@ -171,6 +174,12 @@ class ModelValidator
         return $this->create();
     }
 
+    /**
+     * Run validation for save.
+     *
+     * @param  null  $element
+     * @return $this
+     */
     public function save($element = null)
     {
         $element = $element ?: $this->element;
@@ -181,7 +190,8 @@ class ModelValidator
     }
 
     /**
-     * Run validations for saving. This should be common for both creating and updating.
+     * Saving validation.
+     * Common for both create and update.
      *
      * @param $element
      * @return $this
@@ -191,6 +201,12 @@ class ModelValidator
         return $this;
     }
 
+    /**
+     * Run validation for create.
+     *
+     * @param  null  $element
+     * @return $this
+     */
     public function create($element = null)
     {
         $element = $element ?: $this->element;
@@ -201,7 +217,7 @@ class ModelValidator
     }
 
     /**
-     * Run validations for creating. This should always call the saving().
+     * Creating validation
      *
      * @param $element
      * @return $this]
@@ -211,6 +227,12 @@ class ModelValidator
         return $this;
     }
 
+    /**
+     * Run validation for update.
+     *
+     * @param  null  $element
+     * @return $this
+     */
     public function update($element = null)
     {
         $element = $element ?: $this->element;
@@ -221,16 +243,22 @@ class ModelValidator
     }
 
     /**
-     * Run validations for updating. This should always call the saving().
+     * Updating validation
      *
      * @param $element
-     * @return $this
+     * @return $this]
      */
     public function updating($element)
     {
         return $this;
     }
 
+    /**
+     * Run validation for delete.
+     *
+     * @param  null  $element
+     * @return $this
+     */
     public function delete($element = null)
     {
         $element = $element ?: $this->element;
@@ -240,16 +268,22 @@ class ModelValidator
     }
 
     /**
-     * Run validations for deleting.
+     * Deleting validation
      *
      * @param $element
-     * @return $this
+     * @return $this]
      */
     public function deleting($element)
     {
         return $this;
     }
 
+    /**
+     * Run validation for restore.
+     *
+     * @param  null  $element
+     * @return $this
+     */
     public function restore($element = null)
     {
         $element = $element ?: $this->element;
@@ -260,10 +294,10 @@ class ModelValidator
     }
 
     /**
-     * Run validations for restoring.
+     * Restoring validation
      *
      * @param $element
-     * @return $this
+     * @return $this]
      */
     public function restoring($element)
     {
