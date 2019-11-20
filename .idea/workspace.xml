@@ -5,10 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ee34113f-6433-40ce-8481-cf6a87088dde" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Helpers/Form/Select/SelectModelMultiple.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Form/Select/SelectModelMultiple.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/BaseController/Traits/ModelOperationsTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/BaseController/Traits/ModelOperationsTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/Skeleton/SuperHeroValidator.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/Skeleton/SuperHeroValidator.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/Validator/ModelValidator.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/Validator/ModelValidator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Users/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Users/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Users/UserValidator.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Users/UserValidator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/form/select/select-array-multiple.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/form/select/select-array-multiple.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/form/select/select-model-multiple.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/form/select/select-model-multiple.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/users/form/js.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/users/form/js.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

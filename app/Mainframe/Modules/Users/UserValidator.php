@@ -28,7 +28,9 @@ class UserValidator extends ModelValidator
     {
         parent::fill($user);
 
-        //$setting->name = 'Lorem Ipsum';
+        $user->is_test = $user->is_test ?? 0;
+        $user->is_active = $user->is_active ?? 0;
+        $user->resolveName();
 
         return $this;
     }

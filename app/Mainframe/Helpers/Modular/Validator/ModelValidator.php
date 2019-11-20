@@ -174,6 +174,14 @@ class ModelValidator
         return $this->create();
     }
 
+    /*
+    |--------------------------------------------------------------------------
+    | Events
+    |--------------------------------------------------------------------------
+    |
+    | Model events where validation is checked.
+    */
+
     /**
      * Run validation for save.
      *
@@ -186,18 +194,6 @@ class ModelValidator
         $this->fill($element)->validateRules();
         $this->saving($element);
 
-        return $this;
-    }
-
-    /**
-     * Saving validation.
-     * Common for both create and update.
-     *
-     * @param $element
-     * @return $this
-     */
-    public function saving($element)
-    {
         return $this;
     }
 
@@ -217,17 +213,6 @@ class ModelValidator
     }
 
     /**
-     * Creating validation
-     *
-     * @param $element
-     * @return $this]
-     */
-    public function creating($element)
-    {
-        return $this;
-    }
-
-    /**
      * Run validation for update.
      *
      * @param  null  $element
@@ -239,17 +224,6 @@ class ModelValidator
         $this->save();
         $this->updating($element);
 
-        return $this;
-    }
-
-    /**
-     * Updating validation
-     *
-     * @param $element
-     * @return $this]
-     */
-    public function updating($element)
-    {
         return $this;
     }
 
@@ -268,17 +242,6 @@ class ModelValidator
     }
 
     /**
-     * Deleting validation
-     *
-     * @param $element
-     * @return $this]
-     */
-    public function deleting($element)
-    {
-        return $this;
-    }
-
-    /**
      * Run validation for restore.
      *
      * @param  null  $element
@@ -290,6 +253,60 @@ class ModelValidator
         $this->save();
         $this->restoring($element);
 
+        return $this;
+    }
+
+    /**
+     * Saving validation.
+     * Common for both create and update.
+     *
+     * @param $element
+     * @return $this
+     */
+    public function saving($element)
+    {
+        return $this;
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Event specific validation
+    |--------------------------------------------------------------------------
+    |
+    | Following functions are overridden in model validators to write
+    | event specific validation logic.
+    */
+
+    /**
+     * Creating validation
+     *
+     * @param $element
+     * @return $this]
+     */
+    public function creating($element)
+    {
+        return $this;
+    }
+
+    /**
+     * Updating validation
+     *
+     * @param $element
+     * @return $this]
+     */
+    public function updating($element)
+    {
+        return $this;
+    }
+
+    /**
+     * Deleting validation
+     *
+     * @param $element
+     * @return $this]
+     */
+    public function deleting($element)
+    {
         return $this;
     }
 

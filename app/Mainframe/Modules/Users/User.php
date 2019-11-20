@@ -255,53 +255,9 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         parent::boot();
         self::observe(UserObserver::class);
-        static::saving(function (User $element) {
-            $valid = true;
-            if (! isset($element->is_test)) {
-                $element->is_test = 0;
-            }
-            $element = $element->resolveName();
 
-            /**************************************************
-             * Resolve group_id
-             * If $user->group_id is set as an array somehow then convert it to json
-             * Store a groups in a temporary array var $groups.
-             */
-
-            // if (is_array($element->group_ids)) {
-            //     $group_ids = $element->group_ids;
-            //     $element->group_ids = json_encode($element->group_ids);
-            // } else {
-            //     $group_ids = json_decode($element->group_ids);
-            // }
-            //
-            // // Set group selection limit
-            // $max_groups = 1;
-            // if (is_array($group_ids) && (count($group_ids) > $max_groups)) {
-            //     $valid = setError("You can assign only {$max_groups} group.");
-            // }
-
-            /**************************************************/
-
-            // fill common fields, null-fill, trim blanks from Request
-            if ($valid) {
-                /**
-                 * If email is confirmed then
-                 */
-                if (! isset($element->is_active)) {
-                    $element->is_active = ($element->email_confirmed === 1) ? 1 : 0;
-                }
-            }
-
-            return $valid;
-        });
         static::saved(function (User $element) {
-            // Sync partner_category table
-
-            $element->groups()->sync([]);
-            if (count($element->group_ids)) {
-                $element->groups()->sync($element->group_ids);
-            }
+            $element->groups()->sync(array_filter($element->group_ids));
         });
     }
 

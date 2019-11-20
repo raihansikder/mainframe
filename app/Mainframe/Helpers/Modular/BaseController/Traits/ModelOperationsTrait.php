@@ -14,8 +14,10 @@ trait ModelOperationsTrait
      *
      * @return mixed|\App\Mainframe\Helpers\Modular\BaseModule\BaseModule
      */
-    public function fillElement()
+    public function fill()
     {
+
+        // dd( request()->all());
         $inputs = request()->all();
 
         // Transform $inputs here
@@ -30,7 +32,7 @@ trait ModelOperationsTrait
      */
     public function modelValidator()
     {
-        $this->modelValidator = $this->fillElement()->validator();
+        $this->modelValidator = $this->fill()->validator();
 
         return $this->modelValidator;
     }
