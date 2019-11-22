@@ -45,15 +45,12 @@ class Input extends Form
     }
 
     /**
-     * Get old input for this field
+     * Get old input
      *
      * @return null|array|\Illuminate\Http\Request|string
      */
     public function old()
     {
-        if ($this->value) {
-            return $this->value;
-        }
         if (request()->has($this->name)) {
             return request($this->name);
         }
@@ -61,8 +58,16 @@ class Input extends Form
         return request()->old($this->name);
     }
 
+    /**
+     * Value
+     *
+     * @return null|array|\Illuminate\Http\Request|string
+     */
     public function value()
     {
+        if ($this->value) {
+            return $this->value;
+        }
         if ($this->old()) {
             return $this->old();
         }
@@ -72,11 +77,11 @@ class Input extends Form
     }
 
     /**
-     * Show value for the readonly
+     * Print value
      *
-     * @return null|string
+     * @return null|array|\Illuminate\Http\Request|string
      */
-    public function readOnlyValue()
+    public function print()
     {
         return $this->value();
     }

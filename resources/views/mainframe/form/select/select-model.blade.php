@@ -13,7 +13,7 @@ $input = new SelectModel($var, $element ?? null);
         </label>
     @endif
 
-    {{ Form::select($input->name, $input->options, $input->old(), $input->params) }}
+    {{ Form::select($input->name, $input->options, $input->value(), $input->params) }}
 
     {!! $errors->first($input->name, '<span class="help-block">:message</span>') !!}
 

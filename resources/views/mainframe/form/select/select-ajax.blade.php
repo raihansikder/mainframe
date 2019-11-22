@@ -20,24 +20,21 @@ $input = new SelectAjax($var, $element ?? null);
     @if($input->isEditable)
         <div class="clearfix"></div>
         <div class="col-md-9 no-padding">
+            {{ Form::text($input->name, $input->value(), $input->params) }}
             <input name="preload" type="hidden" value="{{$input->preload}}"/>
-            {{ Form::text($input->name, $input->old(), $input->params) }}
         </div>
         <div class="col-md-3 no-padding">
-
-            <a id="clear_{{$input->name}}" class="btn  bg-white selectClearBtn" href="#">Clear</a>
+            <a id="clear_{{$input->name}}" class="btn  bg-white selectClearBtn"
+               href="#">Clear</a>
         </div>
     @else
         <span class="{{$input->params['class']}} readonly">
-            {{$input->readOnlyValue()}}
+            {{$input->print()}}
         </span>
     @endif
 
     {!! $errors->first($var['name'], '<span class="help-block">:message</span>') !!}
-
 </div>
-
-{{-- Unset the local variable used in this view. --}}
 
 
 @section('js')

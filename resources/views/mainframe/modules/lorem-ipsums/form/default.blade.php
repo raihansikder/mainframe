@@ -14,7 +14,7 @@
 
         <h3>Text Inputs</h3>
         @include('mainframe.form.input.hidden',['var'=>['name'=>'hidden']])
-        @include('mainframe.form.input.text',['var'=>['name'=>'name','label'=>'input.text']])
+        @include('mainframe.form.input.text',['var'=>['name'=>'name','label'=>'input.text','editable'=>false]])
         @include('mainframe.form.text',['var'=>['name'=>'text','label'=>'Plain text','value'=>'Static value']])
 
         <?php

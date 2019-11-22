@@ -20,12 +20,12 @@ $input = new InputText($var, $element ?? null);
         @if($input->type === 'password')
             {{ Form::password($input->name, $input->params) }}
         @else
-            {{ Form::text($input->name, $input->old(), $input->params) }}
+            {{ Form::text($input->name, $input->value(), $input->params) }}
         @endif
     @else
         <span class="{{$input->params['class']}} readonly">
-            {{ $input->readOnlyValue() }}
-            {{ Form::hidden($input->name, $input->old()) }}
+            {{ $input->print() }}
+            {{ Form::hidden($input->name, $input->value()) }}
         </span>
     @endif
 
@@ -33,5 +33,4 @@ $input = new InputText($var, $element ?? null);
 
 </div>
 
-{{-- Unset the local variable used in this view. --}}
 <?php unset($input) ?>

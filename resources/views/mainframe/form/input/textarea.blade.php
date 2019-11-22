@@ -18,11 +18,11 @@ $input = new TextArea($var, $element ?? null);
     @endif
 
     @if($input->isEditable)
-        {{ Form::textarea($input->name, $input->old(), $input->params) }}
+        {{ Form::textarea($input->name, $input->value(), $input->params) }}
     @else
         <span class="{{$input->params['class']}} readonly">
-            {{ $input->readOnlyValue() }}
-            {{ Form::hidden($input->name, $input->old()) }}
+            {{ $input->print() }}
+            {{ Form::hidden($input->name, $input->value()) }}
         </span>
     @endif
 

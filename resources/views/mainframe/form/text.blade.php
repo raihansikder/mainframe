@@ -17,7 +17,7 @@ $input = new PlainText($var, $element ?? null);
     @endif
 
     <span class="{{$input->params['class']}} readonly">
-        {{$input->readOnlyValue()}}
+        {{$input->print()}}
     </span>
 
 </div>
