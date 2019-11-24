@@ -1,9 +1,32 @@
 <?php
-/** @var \App\Mainframe\Helpers\Modular\BaseModule\BaseModule $element */
-use App\Mainframe\Helpers\Form\Text\InputText;
+/*
+|--------------------------------------------------------------------------
+| Vars
+|--------------------------------------------------------------------------
+|
+| This view partial can be included with a config variable $var.
+| $var is an array and can have following keys.
+| if a $var is not set the default value will be use.
+|
+*/
+/**
+ *      $var['container_class'] ?? 'col-md-3';
+ *      $var['label']           ?? null;
+ *      $var['label_class']     ?? null;
+ *      $var['type']            ?? null;
+ *      $var['value']           ?? null;
+ *      $var['name']            ?? Str::random(8);
+ *      $var['params']          ?? [];  // These are the html attributes like css, id etc for the field.
+ *      $var['editable']        ?? true;
+ */
+/**
+ * @var \App\Mainframe\Modules\Modules\Module $module
+ * @var \App\Mainframe\Modules\Users\User $user
+ * @var \App\Mainframe\Helpers\Modular\BaseModule\BaseModule $element
+ * @var string $formState create|edit
+ */
 
-$var['type'] = $var['type'] ?? 'text';
-$input = new InputText($var, $element ?? null);
+$input = new App\Mainframe\Helpers\Form\Text\InputText($var, $element ?? null);
 ?>
 
 <div class="form-group {{$input->containerClass}} {{$errors->first($input->name, ' has-error')}}">

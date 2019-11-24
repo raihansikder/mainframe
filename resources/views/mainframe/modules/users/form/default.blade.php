@@ -1,5 +1,18 @@
 @extends('mainframe.layouts.module.form.layout')
 
+<?php
+/**
+ * @var \App\Mainframe\Modules\Users\User $element
+ * @var string $formState create|edit
+ * @var \App\Mainframe\Modules\Users\User $formState
+ * @var array $formConfig
+ * @var string $uuid Only available for create
+ * @var bool $elementIsEditable
+ * @var \App\Mainframe\Modules\Modules\Module $module
+ * @var \App\Mainframe\Modules\Users\User $user
+ */
+?>
+
 @section('content')
     <div class="col-md-12 col-lg-10 no-padding">
 
@@ -16,8 +29,8 @@
         @if($elementIsEditable)
             <div class="clearfix"></div>
             <h3>Reset password</h3>
-{{--            @include('mainframe.form.input.text',['var'=>['name'=>'password','type'=>'password','label'=>'New password','value'=>'']])--}}
-{{--            @include('mainframe.form.input.text',['var'=>['name'=>'password_confirmation','type'=>'password','label'=>'Confirm new password']])--}}
+            {{--            @include('mainframe.form.input.text',['var'=>['name'=>'password','type'=>'password','label'=>'New password','value'=>'']])--}}
+            {{--            @include('mainframe.form.input.text',['var'=>['name'=>'password_confirmation','type'=>'password','label'=>'Confirm new password']])--}}
         @endif
 
         <div class="clearfix"></div>
@@ -26,7 +39,7 @@
 
         <div class="clearfix"></div>
         <?php
-                // myprint_r($element->group_ids);
+        // myprint_r($element->group_ids);
         $var = [
             'name' => 'group_ids',
             'label' => 'Group',

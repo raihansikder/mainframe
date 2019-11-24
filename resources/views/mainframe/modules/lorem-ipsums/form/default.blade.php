@@ -51,14 +51,11 @@
         ?>
         @include('mainframe.form.select.select-model-multiple', compact('var'))
 
-
         @include('mainframe.form.select.select-ajax',['var'=>['label' => 'Parent(select-ajax)', 'name' => 'parent_id', 'table' => 'lorem_ipsums']])
-
 
         <div class="clearfix"></div>
         <h3>Checkbox</h3>
         @include('mainframe.form.checkbox.checkbox',['var'=>['name'=>'checkbox','label'=>'checkbox']])
-
 
         @include('mainframe.form.custom.is_active')
         {{--    Form inputs: ends    --}}

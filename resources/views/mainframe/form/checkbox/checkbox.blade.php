@@ -7,12 +7,13 @@ $input = new Checkbox($var, $element ?? null); ?>
 
 <div class="form-group {{$input->containerClass}} {{$errors->first($input->name, ' has-error')}}">
 
-    <input data-checkbox="{{$input->name}}" name="checkbox_{{$input->name}}"
+    <input name="checkbox_{{$input->name}}"
            type="checkbox" value="{{$input->checkedVal}}"
-           data-checked-val="{{$input->checkedVal}}"
-           data-unchecked-val="{{$input->uncheckedVal}}"
            id="{{$input->params['id']}}"
            class="{{$input->params['class']}} spyr-checkbox"
+           data-checkbox="{{$input->name}}"
+           data-checked-val="{{$input->checkedVal}}"
+           data-unchecked-val="{{$input->uncheckedVal}}"
             {{ $input->isEditable != 1 ? 'disabled' : '' }}/>
 
     @if(strlen(trim($input->label)))
