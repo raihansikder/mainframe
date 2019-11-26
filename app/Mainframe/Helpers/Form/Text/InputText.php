@@ -14,7 +14,7 @@ class InputText extends Input
      */
     public function __construct($conf = [], $element = null)
     {
-        parent::__construct($element);
+        parent::__construct($conf, $element);
 
         $this->type = $conf['type'] ?? 'text'; // Can be text or password
     }
