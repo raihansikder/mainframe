@@ -1,5 +1,5 @@
 /****************************************************************************************
- *     CKEditor configuration variable that is commonly called for all CKEditor instances
+ * CKEditor configuration variable that is commonly called for all CKEditor instances
  ****************************************************************************************/
 var editor_config_basic = {
     toolbarGroups: [
@@ -149,6 +149,7 @@ $('.datatable-min-no-pagination').dataTable({
 // make all select selct2
 $('select').select2();
 
+// noinspection JSUnusedGlobalSymbols
 /**
  * disable all input
  */
@@ -177,27 +178,25 @@ $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
  * a checkbox and associative hidden input field is instantiated
  * based on existing value of the hidden input box.
  */
-
 function initCheckbox() {
 
     // Go through each input
-    $('.spyr-checkbox-input').each(function () {
+    $('.spyr-checkbox').each(function () {
 
-        var name = $(this).attr('name'); // input name
+        var checkbox = $(this);
 
-        var checked_val = $('[data-checkbox=' + name + ']').attr('data-checked-val');
-        var unchecked_val = $('[data-checkbox=' + name + ']').attr('data-unchecked-val');
-
-        if ($(this).val() !== checked_val) {
-            $(this).val(unchecked_val);
-            $('[data-checkbox=' + name + ']').prop('checked', false);
+        // alert($(this).val() + ' vs ' + checkbox.attr('data-checked-val'));
+        if ($(this).val() == checkbox.attr('data-checked-val')) {
+            checkbox.prop('checked', true);
         } else {
-            $('[data-checkbox=' + name + ']').prop('checked', true);
+            checkbox.prop('checked', false);
+            $(this).val(checkbox.attr('data-unchecked-val'));
         }
+
     });
 
     $('.spyr-checkbox').change(function () {
-        var name = $(this).attr('data-checkbox');
+        var name = $(this).attr('data-checkbox-name');
         if ($(this).is(':checked')) {
             $('input[name=' + name + ']').val($(this).attr('data-checked-val'));
         } else {
