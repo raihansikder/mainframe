@@ -1,5 +1,14 @@
 <?php
-
+/*
+|--------------------------------------------------------------------------
+| Auth routes
+|--------------------------------------------------------------------------
+|
+| These routes are manually added instead of calling Auth::routes();
+| This gives much flexibility to write these routes as necessary
+| for the architectural implementation
+|
+*/
 // Authentication Routes...
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');
