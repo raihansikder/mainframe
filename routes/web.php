@@ -1,6 +1,5 @@
 <?php
 
-use App\Mainframe\Helpers\Mf;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,14 +11,13 @@ use App\Mainframe\Helpers\Mf;
 |
 */
 
-Auth::routes(['verify' => true]);
 Route::get('/', 'HomeController@index')->name('home')->middleware(['verified']);
-/*
- *****************************************************************************/
 
-Route::middleware(['auth'])->group(function () {
-    Mf::webRoutes();
-    Route::get('logout', 'Auth\LoginController@logout')->name('get.logout');
-});
+// Auth::routes(['verify' => true]);
+
+include_once "../App/Mainframe/routes/auth.php";
+include_once "../App/Mainframe/routes/module.php";
+
+
 
 

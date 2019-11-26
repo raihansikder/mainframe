@@ -8,15 +8,20 @@ use App\Mainframe\Modules\ModuleGroups\ModuleGroup;
 /** @mixin Module $this */
 trait ModuleHelper
 {
+
+    public static function list()
+    {
+        return Module::active()->remember(cacheTime('long'))->get();
+    }
+
     /**
      * @param $name
      * @return mixed|\App\Mainframe\Modules\Modules\Module
      */
     public static function byName($name)
     {
-        /** @noinspection PhpUndefinedMethodInspection */
-        return self::where('name', $name)
-            ->remember(cacheTime('long'))
+        return Module::remember(cacheTime('long'))
+            ->where('name', $name)
             ->first();
     }
 

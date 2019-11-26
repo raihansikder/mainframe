@@ -31,7 +31,7 @@ use App\Mainframe\Helpers\Modular\BaseModule\Traits\TenantContextTrait;
  * @property string|null $deleted_at
  * @property int|null $deleted_by
  * @method static bool|null forceDelete()
- * @method static Model|Builder remember()
+ * @method static Model|Builder remember($param)
  */
 class BaseModule extends Model
 {
