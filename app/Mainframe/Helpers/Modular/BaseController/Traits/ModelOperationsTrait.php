@@ -2,8 +2,11 @@
 
 namespace App\Mainframe\Helpers\Modular\BaseController\Traits;
 
-use App\Mainframe\Modules\Uploads\Upload;
+use App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController;
 
+/**
+ * @mixin ModuleBaseController
+ */
 trait ModelOperationsTrait
 {
     /**
@@ -11,37 +14,48 @@ trait ModelOperationsTrait
      *
      * @return mixed|\App\Mainframe\Helpers\Modular\BaseModule\BaseModule
      */
-    public function modelReady()
+    public function fill()
     {
-        /** @var \App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController|self $this ->element */
-        $this->element->fill($this->transform());
+        // dd(request()->all());
+        $inputs = request()->all();
 
-        return $this->element;
+        // Transform $inputs here
+
+        return $this->element->fill($inputs);
+    }
+
+    /**
+     * Get the Mainframe model Validator on the filled element
+     *
+     * @return mixed|\App\Mainframe\Helpers\Modular\Validator\ModelValidator
+     */
+    public function modelValidator()
+    {
+        $this->modelValidator = $this->fill()->validator();
+
+        return $this->modelValidator;
     }
 
     /**
      * Validate and create
      *
-     * @return mixed
+     * @return mixed|ModuleBaseController
      */
     public function attemptStore()
     {
-        /** @var \App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController $this */
-        $this->modelValidator = $this->modelReady()
-            ->validator();
-        /** @var \App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController $this */
-        if ($this->modelValidator->creating()->fails()) {
-            return $this->fail('Validation failed', 200);
+        $modelValidator = $this->modelValidator();
+
+        if ($modelValidator->create()->failed()) {
+            return $this->response()->fail('Validation failed', 200);
         }
-        /** @var \App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController $this */
-        $this->element = $this->modelValidator->element; // Get the updated element
+
+        $this->element = $modelValidator->element; // Get the updated element
+
         if (! $this->element->save()) {
-            return $this->fail('Can not save for some reason', 200);
+            return $this->response()->fail('Can not save for some reason', 200);
         }
 
-        Upload::linkTemporaryUploads($this->element);
-
-        return $this->success('Successfully saved.', 200);
+        return $this->response()->success('Successfully saved.', 200);
     }
 
     /**
@@ -51,23 +65,19 @@ trait ModelOperationsTrait
      */
     public function attemptUpdate()
     {
-        /** @var \App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController $this */
-        $this->modelValidator = $this->modelReady()->validator();
+        $modelValidator = $this->modelValidator();
 
-        /** @var \App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController $this */
-        if ($this->modelValidator->updating()->fails()) {
-            return $this->fail('Validation failed', 200);
+        if ($modelValidator->update()->failed()) {
+            return $this->response()->fail('Validation failed', 200);
         }
 
-        $this->element = $this->modelValidator->element; // Get the updated element.
+        $this->element = $modelValidator->element; // Get the updated valid element.
 
-        /** @var \App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController $this */
         if (! $this->element->save()) {
-            /** @var \App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController $this */
-            return $this->fail('Can not save for some reason', 200);
+            return $this->response()->fail('Can not update for some reason', 200);
         }
 
-        return $this->success('Successfully saved.', 200);
+        return $this->response()->success('Successfully saved.', 200);
     }
 
     /**
@@ -78,23 +88,20 @@ trait ModelOperationsTrait
      */
     public function attemptDestroy()
     {
-        /** @var \App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController $this */
-        $this->modelValidator = $this->modelReady()->validator();
+        $modelValidator = $this->modelValidator();
 
-        /** @var \App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController $this */
-        if ($this->modelValidator->deleting()->fails()) {
-            return $this->fail('Validation failed', 200);
+        if ($modelValidator->delete()->failed()) {
+            return $this->response()->fail('Validation failed', 200);
         }
 
-        $this->element = $this->modelValidator->element; // Get the updated element.
+        $this->element = $modelValidator->element; // Save the model once before deleting. .
 
-        /** @var \App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController $this */
+        $this->element->save();
         if (! $this->element->delete()) {
-            /** @var \App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController $this */
-            return $this->fail('Can not delete for some reason', 200);
+            return $this->response()->fail('Can not delete for some reason', 200);
         }
 
-        return $this->success('Successfully deleted.', 200);
+        return $this->response()->success('Successfully deleted.', 200);
     }
 
 }

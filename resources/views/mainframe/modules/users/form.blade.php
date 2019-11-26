@@ -291,20 +291,7 @@
     @endif
 
     <div class='clearfix'></div>
-    @if(isset($user))
-        @if($user->isRecommender() || $user->isLBAdminUser() || $user->isLBDailyTaskUser())
-            <div class="col-md-6 no-padding-l">
-                @include('mainframe.modules.users.billing-cycles', ['user' => $user])
-                @include('mainframe.modules.users.purchases-earnings', ['user' => $user])
 
-            </div>
-            <div class="col-md-6 no-padding">
-                @include('mainframe.modules.users.stats', ['user' => $user])
-
-            </div>
-        @endif
-
-    @endif
 
 @endsection
 

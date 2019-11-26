@@ -13,7 +13,6 @@ use App\Mainframe\Helpers\Modular\BaseModule\BaseModulePolicy;
  *
  * @package App\Mainframe\Helpers
  */
-
 class Mf
 {
 
@@ -50,7 +49,6 @@ class Mf
          * request that initiates download of the file matching the uuid.
          */
         Route::get('download/{uuid}', 'UploadsController@download')->name('get.download');
-
     }
 
     /**
@@ -74,6 +72,11 @@ class Mf
         }
 
         return $policy;
+    }
+
+    public static function tenantContext($table, $user = null)
+    {
+        return false;
     }
 
 }

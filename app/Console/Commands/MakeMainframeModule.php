@@ -51,7 +51,7 @@ class MakeMainframeModule extends Command
         $this->templateModule = new Module(['name' => $this->templateModuleName]);
 
         $this->info($this->module->elementNamePlural().'Creating ..');
-        // $this->createMigration();
+        $this->createMigration();
         $this->createClasses();
         $this->createViewFiles();
         $this->info($this->module->elementNamePlural().'... Done');
@@ -70,6 +70,7 @@ class MakeMainframeModule extends Command
         $this->call('make:migration', ['name' => "create_{$this->module->tableName()}_table"]);
         // Find the newly created migration file and put the updated code.
         $migration = Collection::make(File::files('database/migrations'))->last();
+
         File::put($migration, $code);
         // Console output
         $this->info('Migration Created');
@@ -92,7 +93,7 @@ class MakeMainframeModule extends Command
             $source_root.'SuperHeroValidator.php' => $destination_root.$this->module->modelClassName().'Validator.php',
         ];
 
-        File::makeDirectory($this->module->moduleNameSpace());
+        File::makeDirectory($this->module->moduleClassDir());
 
         foreach ($maps as $from => $to) {
             $code = $this->replace(File::get($from));

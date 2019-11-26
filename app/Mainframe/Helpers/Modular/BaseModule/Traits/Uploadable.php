@@ -3,7 +3,7 @@
 namespace App\Mainframe\Helpers\Modular\BaseModule\Traits;
 
 use App\Mainframe\Modules\Uploads\Upload;
-
+/** @mixin $this BaseModule */
 trait Uploadable
 {
     /**

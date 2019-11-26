@@ -1,4 +1,5 @@
-<?php
+<?php /** @noinspection SenselessMethodDuplicationInspection */
+/** @noinspection PhpUnusedParameterInspection */
 /** @noinspection PhpUndefinedClassInspection */
 /** @noinspection NotOptimalIfConditionsInspection */
 /** @noinspection PhpParamsInspection */
@@ -9,8 +10,9 @@ namespace App\Mainframe\Helpers\Modular\BaseController;
 
 use View;
 use Redirect;
-use Validator;
+use Illuminate\Http\Request;
 use App\Mainframe\Modules\Modules\Module;
+use App\Mainframe\Helpers\Responder\Response;
 use App\Mainframe\Helpers\Modular\Resolvers\GridView;
 use App\Mainframe\Helpers\Modular\BaseController\Traits\ListTrait;
 use App\Mainframe\Helpers\Modular\BaseController\Traits\Resolvable;
@@ -29,18 +31,14 @@ class ModuleBaseController extends MainframeBaseController
 
     /** @var string */
     public $moduleName;
-
     /** @var Module */
-    protected $module;
-
+    public $module;
     /** @var \Illuminate\Database\Eloquent\Builder */
-    protected $model;
-
+    public $model;
     /** @var \App\Mainframe\Helpers\Modular\BaseModule\BaseModule */
-    protected $element;
-
+    public $element;
     /** @var \App\Mainframe\Helpers\Modular\Validator\ModelValidator */
-    protected $modelValidator;
+    public $modelValidator;
 
     /**
      * @param  null  $moduleName
@@ -50,11 +48,11 @@ class ModuleBaseController extends MainframeBaseController
         parent::__construct();
         $this->moduleName = $moduleName ?? Module::fromController(get_class($this));
         $this->module = Module::byName($this->moduleName);
-
         $this->model = $this->module->modelInstance();
 
         View::share([
             'module' => $this->module,
+            'user' => user(),
         ]);
     }
 
@@ -67,12 +65,12 @@ class ModuleBaseController extends MainframeBaseController
      */
     public function index()
     {
-        if (! user()->can('viewAny', get_class($this->model))) {
-            return $this->permissionDenied();
+        if (! user()->can('viewAny', $this->model)) {
+            return $this->response()->permissionDenied();
         }
 
-        if ($this->expectsJson()) {
-            return $this->success()->payload($this->listData())->json();
+        if ($this->response()->expectsJson()) {
+            return $this->response()->success()->load($this->listData())->json();
         }
 
         return view(GridView::resolve($this->moduleName))
@@ -89,70 +87,42 @@ class ModuleBaseController extends MainframeBaseController
     {
         $this->element = $this->module->modelInstance();
 
-        if (! user()->cannot('create')) {
-            return $this->permissionDenied();
+        if (! user()->can('create', $this->model)) {
+            return $this->response()->permissionDenied();
         }
 
-        $uuid = $this->request->old('uuid') ?: uuid();
+        $uuid = request()->old('uuid') ?: uuid();
         $formState = 'create';
         $formConfig = $this->createFromConfig();
         $elementIsEditable = true;
 
         return View::make($this->createFormView())
             ->with('element', $this->element)
-            ->with(compact('formConfig', 'uuid',
-                'elementIsEditable', 'formState'));
+            ->with(compact('formConfig', 'uuid', 'elementIsEditable', 'formState'));
     }
 
     /**
-     * Store an spyr element. Returns json response if ret=json is sent as url parameter. Otherwise redirects
-     * based on the url set in redirect_success|redirect_fail
-     *
-     * @return $this|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
-     * @var \App\Mainframe\Helpers\Modular\BaseModule\BaseModule $element
-     * @var \App\Superhero $Model
-     */
-    public function store()
-    {
-        $this->element = $this->model;
-
-        if (! user()->cannot('create')) {
-            return $this->permissionDenied();
-        }
-
-        $this->attemptStore();
-
-        if ($this->expectsJson()) {
-            return $this->json();
-        }
-
-        return $this->redirect();
-    }
-
-    /**
-     * Shows an spyr element. Store an spyr element. Returns json response if ret=json is sent as url parameter.
-     * Otherwise redirects to edit page where details is visible as filled up edit form.
+     * Shows an spyr element. Store an spyr element. Returns json response if ret=json is
+     * sent as url parameter.Otherwise redirects to edit page where details is visible as filled up edit form.
      *
      * @param $id
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
     public function show($id)
     {
-        $this->element = $this->model->find($id);
-
-        if (! $this->element) {
-            return $this->notFound();
+        if (! $this->element = $this->model->find($id)) {
+            return $this->response()->notFound();
         }
 
         if (! user()->can('view', $this->element)) {
-            return $this->permissionDenied();
+            return $this->response()->permissionDenied();
         }
 
-        if ($this->expectsJson()) {
-            return $this->success()->payload($this->element)->json();
+        if ($this->response()->expectsJson()) {
+            return $this->response()->success()->load($this->element)->json();
         }
 
-        return Redirect::route("$this->moduleName.edit", $id);
+        return Redirect::route($this->moduleName.".edit", $id);
     }
 
     /**
@@ -163,14 +133,12 @@ class ModuleBaseController extends MainframeBaseController
      */
     public function edit($id)
     {
-        $this->element = $this->model->find($id);
-
-        if (! $this->element) {
-            return $this->notFound();
+        if (! $this->element = $this->model->find($id)) {
+            return $this->response()->notFound();
         }
 
         if (! user()->can('view', $this->element)) {
-            return $this->permissionDenied();
+            return $this->response()->permissionDenied();
         }
 
         $formState = 'edit';
@@ -183,30 +151,53 @@ class ModuleBaseController extends MainframeBaseController
     }
 
     /**
+     * Store an spyr element. Returns json response if ret=json is sent as url parameter.
+     * Otherwise redirects based on the url set in redirect_success|redirect_fail
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return $this|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
+     */
+    public function store(Request $request)
+    {
+        if (! user()->can('create', $this->model)) {
+            return $this->response()->permissionDenied();
+        }
+
+        $this->element = $this->model; // Create an empty model to be stored.
+
+        $this->attemptStore();
+
+        if ($this->response()->expectsJson()) {
+            return $this->response()->load($this->element)->json();
+        }
+
+        return $this->response()->redirect();
+    }
+
+    /**
      * Update handler for spyr element.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @param $id
      * @return $this|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
-    public function update($id)
+    public function update(Request $request, $id)
     {
-        $this->element = $this->model->find($id);
-
-        if (! $this->element) {
-            return $this->notFound();
+        if (! $this->element = $this->model->find($id)) {
+            return $this->response()->notFound();
         }
 
-        if (user()->cannot('update', $this->element)) {
-            return $this->permissionDenied();
+        if (! user()->can('update', $this->element)) {
+            return $this->response()->permissionDenied();
         }
 
         $this->attemptUpdate();
 
-        if ($this->expectsJson()) {
-            return $this->payload($this->element)->json();
+        if ($this->response()->expectsJson()) {
+            return $this->response()->load($this->element)->json();
         }
 
-        return $this->redirect();
+        return $this->response()->redirect();
     }
 
     /**
@@ -218,23 +209,21 @@ class ModuleBaseController extends MainframeBaseController
      */
     public function destroy($id)
     {
-        $this->element = $this->model->find($id);
-
-        if (! $this->element) {
-            return $this->notFound();
+        if (! $this->element = $this->model->find($id)) {
+            return $this->response()->notFound();
         }
 
         if (user()->cannot('delete', $this->element)) {
-            return $this->permissionDenied();
+            return $this->response()->permissionDenied();
         }
 
         $this->attemptDestroy();
 
-        if ($this->expectsJson()) {
-            return $this->json();
+        if ($this->response()->expectsJson()) {
+            return $this->response()->json();
         }
 
-        return $this->redirect();
+        return $this->response()->redirect();
     }
 
     /**
@@ -248,4 +237,15 @@ class ModuleBaseController extends MainframeBaseController
         return abort(403, $id.'- Restore restricted');
     }
 
+    /**
+     * @return mixed|Response
+     */
+    public function response()
+    {
+        $response = parent::response();
+        $response->modelValidator = $this->modelValidator;
+        $response->element = $this->element;
+
+        return $response;
+    }
 }

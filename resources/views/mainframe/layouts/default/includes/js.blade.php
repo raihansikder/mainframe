@@ -2,7 +2,7 @@
 /** @noinspection SpellCheckingInspection */
 $script_paths = [
     'mainframe/templates/admin/plugins/jQuery/jquery-2.2.3.min.js',
-    'mainframe/templates/js/jquery-ui-1.10.3.min.js',
+    'mainframe/js/jquery-ui-1.10.3.min.js',
     'mainframe/templates/admin/bootstrap/js/bootstrap.min.js',
     'mainframe/templates/admin/plugins/chartjs/Chart.min.js',
     'mainframe/templates/admin/plugins/fastclick/fastclick.js',

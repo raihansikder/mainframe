@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="SCOPE_TYPE" value="3" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="ee34113f-6433-40ce-8481-cf6a87088dde" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_ide_helper_models.php" beforeDir="false" afterPath="$PROJECT_DIR$/_ide_helper_models.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Change.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Group.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Group.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/BaseModule/BaseModuleObserver.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/BaseModule/BaseModuleObserver.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/BaseModule/Traits/Changable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/BaseModule/Traits/Changable.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Changes/ChangeHelper.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Changes/ChangeHelper.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Modules/Module.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Modules/Module.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Settings/Setting.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Settings/Setting.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/ModuleGroup.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/ModuleGroup.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Report.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Report.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Upload.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Upload.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Helpers/Form/Text/InputText.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Form/Text/InputText.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/Skeleton/views/form/default.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/Skeleton/views/form/default.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/Skeleton/views/form/js.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Modular/Skeleton/views/form/js.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/form/checkbox/checkbox.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/form/checkbox/checkbox.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/form/input/text.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/form/input/text.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/layouts/module/form/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/module/form/layout.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/lorem-ipsums/form/default.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/lorem-ipsums/form/default.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/users/form/default.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/users/form/default.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,6 +27,9 @@
       <executable path="composer" />
     </execution>
   </component>
+  <component name="FavoritesManager">
+    <favorites_list name="mainframe" />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -38,7 +41,7 @@
   <component name="PackageJsonUpdateNotifier">
     <dismissed value="$PROJECT_DIR$/package.json" />
   </component>
-  <component name="PhpWorkspaceProjectConfiguration">
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 7.2">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/psr/log" />
       <path value="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet" />
@@ -164,27 +167,29 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/mainframe/modules/modules" />
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="PHP" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/mainframe" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
     <property name="typescript.add.unambiguous.imports.on.the.fly" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\MAMP\htdocs\mainframe\resources\views\mainframe\modules\modules" />
-      <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Helpers\Modular\BaseModule" />
-      <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Helpers\Modular\Skeleton" />
-      <recent name="E:\MAMP\htdocs\mainframe\app\Console\Commands" />
-      <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Modules\Modules" />
+      <recent name="E:\MAMP\htdocs\mainframe\resources\views\mainframe\form\input" />
+      <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Helpers\Form\Text" />
+      <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Helpers\Form\Select" />
+      <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Helpers\Form" />
+      <recent name="E:\MAMP\htdocs\mainframe\resources\views\mainframe\form-elements\text" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\MAMP\htdocs\mainframe\resources\views\mainframe\form" />
+      <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Helpers\Form\Text" />
+      <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Helpers" />
+      <recent name="E:\MAMP\htdocs\mainframe\resources\views\mainframe\layouts\report" />
       <recent name="E:\MAMP\htdocs\mainframe\config\mainframe" />
-      <recent name="E:\MAMP\htdocs\mainframe\resources\views\mainframe\modules\groups\form" />
-      <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Helpers\Modular\BaseModule\Traits" />
-      <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Helpers\Modular\BaseController\Traits" />
-      <recent name="E:\MAMP\htdocs\mainframe\app\Mainframe\Helpers\Modular\Skeleton" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -199,13 +204,35 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="PHPUnit.phpunit.xml">
+    <configuration name="ExampleTest.testBasicTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\ExampleTest" file="$PROJECT_DIR$/tests/Feature/ExampleTest.php" method="testBasicTest" scope="Method" />
+      <method v="2" />
+    </configuration>
+    <configuration name="ExampleTest.testLoggedInUser" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\ExampleTest" file="$PROJECT_DIR$/tests/Feature/ExampleTest.php" method="testLoggedInUser" scope="Method" />
+      <method v="2" />
+    </configuration>
+    <configuration name="ExampleTest.testUserCanLogin" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\ExampleTest" file="$PROJECT_DIR$/tests/Feature/ExampleTest.php" method="testUserCanLogin" scope="Method" />
+      <method v="2" />
+    </configuration>
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner scope="XML" />
       <method v="2" />
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="PHPUnit.ExampleTest.testBasicTest" />
+        <item itemvalue="PHPUnit.ExampleTest.testLoggedInUser" />
+        <item itemvalue="PHPUnit.ExampleTest.testUserCanLogin" />
+      </list>
+    </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" BundledDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="StructureViewFactory">
+    <option name="ACTIVE_ACTIONS" value=",Show Private Members,Show Protected Members,Show Constants,Show Fields" />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="ee34113f-6433-40ce-8481-cf6a87088dde" name="Default Changelist" comment="" />

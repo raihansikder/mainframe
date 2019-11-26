@@ -23,12 +23,7 @@ $script_paths = [
     /**
      * Custom CSS files
      */
-    'mainframe/templates/admin/css/custom.css',
-
-    /**
-     * Project Specific CSS
-     */
-    'projects/letsbab/css/letsbab.css',
+    'mainframe/css/mainframe.css',
 ]
 ?>
 
@@ -38,9 +33,7 @@ $script_paths = [
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-<link href="https://fonts.googleapis.com/css?family=Roboto|Ubuntu|Comfortaa" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Baumans" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css?family=Karla:400,700|Montserrat:300,400,500,600,700,800|Roboto:400,500,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
       integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
 

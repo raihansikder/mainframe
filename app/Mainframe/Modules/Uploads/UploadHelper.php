@@ -2,13 +2,14 @@
 
 namespace App\Mainframe\Modules\Uploads;
 
-use App\Mainframe\Modules\Uploads\Upload;
+use File;
 use App\Mainframe\Helpers\Modular\BaseModule\BaseModule;
 
 trait UploadHelper
 {
     /**
      * get all uploads under a module
+     *
      * @param  array  $entry_uuid
      * @param  string  $filter
      * @return mixed
@@ -16,6 +17,7 @@ trait UploadHelper
     public static function getList($entry_uuid, $filter = '') // TODO : filter logic incomplete
     {
         $uploads = Upload::where('element_uuid', $entry_uuid);
+
         return $uploads->orderBy('created_at', 'DESC')->get();
     }
 
@@ -36,6 +38,7 @@ trait UploadHelper
     /**
      * returns the absolute server path.
      * This function is useful for plugins that needs the file location in the operating system
+     *
      * @return string
      */
     public function absPath()
@@ -45,11 +48,11 @@ trait UploadHelper
 
     /**
      * Get the url for thumbnail of an upload.
+     *
      * @return string
      */
     public function thumbSrc()
     {
-
         if ($this->isImage()) {
             $src = route('get.download', $this->uuid);
         } else {
@@ -61,6 +64,7 @@ trait UploadHelper
 
     /**
      * Checks if an upload file is image
+     *
      * @return mixed
      */
     public function isImage()
@@ -68,11 +72,13 @@ trait UploadHelper
         if (isImageExtension($this->ext)) {
             return true;
         }
+
         return false;
     }
 
     /**
      * 'file_type_icons' contains number of file type icons.
+     *
      * @return string
      */
     public function extIconPath()
@@ -80,14 +86,16 @@ trait UploadHelper
         $ext = strtolower($this->ext); // get full lower case extension
         $icon_path = 'mainframe/images/file_type_icons/'.$ext.'.png';
 
-        if (! \File::exists($icon_path)) {
+        if (! File::exists($icon_path)) {
             $icon_path = 'mainframe/images/file_type_icons/noimage.png';
         }
+
         return asset($icon_path);
     }
 
     /**
      * Generate masked and plain url of the uploaded file.
+     *
      * @param  bool  $auth  set false to generate plain url.
      * @return string
      */
@@ -96,6 +104,7 @@ trait UploadHelper
         if ($auth) {
             return route('get.download', $this->uuid);
         }
+
         return asset($this->path);
     }
 }

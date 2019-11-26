@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\MessageBag;
 use Illuminate\Support\ServiceProvider;
+use App\Mainframe\Helpers\Responder\Response;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -14,9 +15,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton(MessageBag::class, static function () {
-            return new MessageBag();
-        });
+        $this->app->singleton(MessageBag::class, function () { return new MessageBag(); });
+        $this->app->singleton(Response::class, function () { return new Response(); });
     }
 
     /**

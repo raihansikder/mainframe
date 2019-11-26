@@ -1,5 +1,17 @@
 @extends('mainframe.layouts.module.form.layout')
 
+<?php
+/**
+ * @var \App\Mainframe\Modules\Superheroes\SuperHero $module
+ * @var \App\Mainframe\Modules\Users\User $user
+ * @var \App\Mainframe\Modules\Users\User $element
+ * @var string $formState create|edit
+ * @var array $formConfig
+ * @var string $uuid Only available for create
+ * @var bool $elementIsEditable
+ */
+?>
+
 @section('content')
     <div class="col-md-12 no-padding">
 
@@ -11,8 +23,8 @@
 
         {{--    Form inputs: starts    --}}
         {{--   --------------------    --}}
-        @include('mainframe.form-elements.text.input-text',['var'=>['name'=>'name','label'=>'Name']])
-        @include('mainframe.form-elements.custom.is_active')
+        @include('mainframe.form.input.text',['var'=>['name'=>'name','label'=>'Name']])
+        @include('mainframe.form.custom.is_active')
         {{--    Form inputs: ends    --}}
 
         @include('mainframe.layouts.module.form.includes.action-buttons')

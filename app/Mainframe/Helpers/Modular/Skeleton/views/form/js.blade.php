@@ -1,32 +1,61 @@
-<script type="text/javascript">
-    /*******************************************************************/
-    // List of functions
-    /*******************************************************************/
+<?php
+/**
+ * @var \App\Mainframe\Modules\Superheroes\SuperHero $module
+ * @var \App\Mainframe\Modules\Users\User $user
+ * @var \App\Mainframe\Modules\Users\User $element
+ * @var string $formState create|edit
+ * @var array $formConfig
+ * @var string $uuid Only available for create
+ * @var bool $elementIsEditable
+ */
+?>
+<script>
+    /*
+    |--------------------------------------------------------------------------
+    | Common JS to run for both create and update
+    |--------------------------------------------------------------------------
+    |
+    | Write the functions on this top section of the file so that they
+    | can be called by the codes after it.
+    */
     /**
-     * Enable front-end validation rules
+     * Assigns validation rules during saving (both creating and updating)
+     */
+    addValidationRules(); // Assign validation classes/rules
+
+    // enableValidation('{{$module->name}}'); // Enable Ajax based form validation.
+
+    @if($element->isCreating())
+    /*
+    |--------------------------------------------------------------------------
+    | JS to run only during creation
+    |--------------------------------------------------------------------------
+    |
+    | Some JS may only be required to be executed while creating a
+    | model. Write such JS here
+    */
+    @elseif($element->isUpdating())
+    /*
+    |--------------------------------------------------------------------------
+    | JS to run only during update
+    |--------------------------------------------------------------------------
+    |
+    | Some JS may only be required to be executed while updating an
+    | existing model. Write such JS here
+    */
+    @endif
+    /*
+    |--------------------------------------------------------------------------
+    | List of functions
+    |--------------------------------------------------------------------------
+    |
+    | Write the functions on this top section of the file so that they
+    | can be called by the codes after it.
+    */
+    /**
+     * Assigns validation rules during saving (both creating and updating)
      */
     function addValidationRules() {
         $("input[name=name]").addClass('validate[required]');
     }
-</script>
-
-@if($element->isCreating())
-    <script type="text/javascript">
-        // Execute these codes when a module is being created.
-    </script>
-@elseif($element->isUpdating())
-    <script type="text/javascript">
-        // Execute these codes when the form is opened for update.
-    </script>
-@endif
-
-<script type="text/javascript">
-    /*******************************************************************/
-    // Saving (Common )
-    /*******************************************************************/
-    addValidationRules(); // Assign validation classes/rules
-    /**
-     * frontend and Ajax hybrid validation
-     */
-    enableValidation('{{$module->name}}');
 </script>

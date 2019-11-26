@@ -24,7 +24,6 @@ class UploadValidator extends ModelValidator
     public static function rules($element, $merge = [])
     {
         $rules = [
-            'name' => 'required|between:1,255|unique:modules,name,'.(isset($element->id) ? (string) $element->id : 'null').',id,deleted_at,NULL',
             'is_active' => 'in:1,0',
         ];
 
@@ -32,24 +31,18 @@ class UploadValidator extends ModelValidator
     }
 
     /*
-   |--------------------------------------------------------------------------
-   | Execute validation on module events
-   |--------------------------------------------------------------------------
-   |
-   | Check validations on saving, creating, updating, deleting and restoring
-   */
+    |--------------------------------------------------------------------------
+    | Execute validation on module events
+    |--------------------------------------------------------------------------
+    |
+    | Check validations on saving, creating, updating, deleting and restoring
+    */
     /**
      * Run validations for saving. This should be common for both creating and updating.
      *
      * @return $this
      */
-    public function saving()
-    {
-        parent::saving();
-        $this->uploadNameShouldNotbeJoker();
 
-        return $this;
-    }
     /**
      * Run validations for creating. This should always call the saving().
      *

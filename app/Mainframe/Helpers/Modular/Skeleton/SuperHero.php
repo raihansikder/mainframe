@@ -93,7 +93,7 @@ class SuperHero extends BaseModule
     {
         parent::boot();
         self::observe(SuperHeroObserver::class);
-        // static::saving(function (SuperHero $element) { });
+        static::saving(function (SuperHero $element) { });
     }
 
     /*
@@ -134,6 +134,16 @@ class SuperHero extends BaseModule
     | getting or setting them. Get a transformed value of an attribute
     */
     // public function setFirstNameAttribute($value) { $this->attributes['first_name'] = strtolower($value); }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Attributes
+    |--------------------------------------------------------------------------
+    |
+    | If you want to add extra fields(that doesn't exist in database) to you model
+    | you can use the getSomeAttribute() feature of eloquent.
+    */
+    // public function getUrlAttribute(){return asset($this->path); }
 
     /*
     |--------------------------------------------------------------------------

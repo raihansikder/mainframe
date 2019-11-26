@@ -10,9 +10,9 @@
  */
 ?>
 
-<div class="table-responsive">
-    <table id="{{$module->name}}Grid" class="table module-grid table table-bordered table-striped dataTable " width="100%">
-        <thead>
+<div class="">
+    <table id="{{$module->name}}Grid" class="table module-grid  dataTable" style="width: 100%">
+        <thead class="bg-gray-light">
         <tr>
             {{-- print the headers/columns --}}
             @foreach($gridColumns as $c)

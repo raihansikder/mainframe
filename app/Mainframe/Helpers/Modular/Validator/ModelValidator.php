@@ -1,4 +1,7 @@
-<?php /** @noinspection SelfClassReferencingInspection */
+<?php
+/** @noinspection PhpUnusedParameterInspection */
+
+/** @noinspection SelfClassReferencingInspection */
 
 namespace App\Mainframe\Helpers\Modular\Validator;
 
@@ -7,14 +10,18 @@ use Illuminate\Support\Facades\Validator;
 
 class ModelValidator
 {
-    /** @var \App\Mainframe\Helpers\Modular\BaseModule\BaseModule */
-    public $element;
-    /** @var array|mixed */
-    public $elementOriginal;
     /** @var bool */
     private $valid;
+
+    /** @var \App\Mainframe\Helpers\Modular\BaseModule\BaseModule */
+    public $element;
+
+    /** @var array|mixed */
+    public $elementOriginal;
+
     /** @var \Illuminate\Validation\Validator */
     public $validator;
+
     /** @var MessageBag */
     public $messageBag;
 
@@ -25,16 +32,27 @@ class ModelValidator
      */
     public function __construct($element)
     {
-        $this->messageBag = app(MessageBag::class);
+        $this->messageBag = resolve(MessageBag::class);
         $this->valid = true;
         $this->element = $element;
         $this->elementOriginal = $element->getOriginal();
     }
 
     /**
-     * Validation rules. For regular expression validation use array instead of pipe
+     * Fill the model with values
      *
-     * @param       $element
+     * @param $element \App\Mainframe\Helpers\Modular\BaseModule\BaseModule|mixed
+     * @return $this
+     */
+    public function fill($element)
+    {
+        return $this;
+    }
+
+    /**
+     * Validation rules.
+     *
+     * @param  mixed  $element
      * @param  array  $merge
      * @return array
      */
@@ -51,6 +69,8 @@ class ModelValidator
     }
 
     /**
+     * Custom error messages.
+     *
      * @param  array  $merge
      * @return array
      */
@@ -61,51 +81,56 @@ class ModelValidator
         return array_merge($messages, $merge);
     }
 
+    /**
+     * Validate based on rules
+     *
+     * @return \Illuminate\Contracts\Validation\Validator|\Illuminate\Validation\Validator
+     */
     public function validateRules()
     {
         $validator = Validator::make(
             $this->element->getAttributes(),
-            self::rules($this->element),
-            self::customErrorMessages()
+            $this::rules($this->element),
+            $this::customErrorMessages()
         );
+
+        $this->validator = $validator;
 
         if ($validator->fails()) {
             $this->invalidate();
         }
 
-        $this->validator = $validator;
-
         return $this->validator;
     }
 
     /**
-     * Get results
+     * Get result
      *
      * @return \App\Mainframe\Helpers\Modular\BaseModule\BaseModule|bool
      */
     public function result()
     {
-        return $this->passes() ? $this->element : false;
+        return $this->passed() ? $this->element : false;
     }
 
     /**
-     * Check if valid flag is set to false
+     * Check if failed
      *
      * @return bool
      */
-    public function fails()
+    public function failed()
     {
         return $this->valid ? false : true;
     }
 
     /**
-     * Check if the valid flag is set to true
+     * Check if passed
      *
      * @return bool
      */
-    public function passes()
+    public function passed()
     {
-        return ! $this->fails();
+        return ! $this->failed();
     }
 
     /**
@@ -135,17 +160,7 @@ class ModelValidator
     }
 
     /**
-     * Fill the model with values
-     *
-     * @return $this
-     */
-    public function fill()
-    {
-        // $element->some_val = $new_val
-        return $this;
-    }
-
-    /**
+     * Run validation logic on model.
      * Based on existence of id field decide to check creating()/updating()
      *
      * @return $this
@@ -153,67 +168,156 @@ class ModelValidator
     public function validate()
     {
         if (isset($this->element->id)) {
-            return $this->updating();
+            return $this->update();
         }
 
-        return $this->saving();
+        return $this->create();
     }
 
+    /*
+    |--------------------------------------------------------------------------
+    | Events
+    |--------------------------------------------------------------------------
+    |
+    | Model events where validation is checked.
+    */
+
     /**
-     * Run validations for saving. This should be common for both creating and updating.
+     * Run validation for save.
      *
+     * @param  null  $element
      * @return $this
      */
-    public function saving()
+    public function save($element = null)
     {
-        $this->fill()->validateRules();
+        $element = $element ?: $this->element;
+        $this->fill($element)->validateRules();
+        $this->saving($element);
 
         return $this;
     }
 
     /**
-     * Run validations for creating. This should always call the saving().
+     * Run validation for create.
      *
+     * @param  null  $element
+     * @return $this
+     */
+    public function create($element = null)
+    {
+        $element = $element ?: $this->element;
+        $this->save();
+        $this->creating($element);
+
+        return $this;
+    }
+
+    /**
+     * Run validation for update.
+     *
+     * @param  null  $element
+     * @return $this
+     */
+    public function update($element = null)
+    {
+        $element = $element ?: $this->element;
+        $this->save();
+        $this->updating($element);
+
+        return $this;
+    }
+
+    /**
+     * Run validation for delete.
+     *
+     * @param  null  $element
+     * @return $this
+     */
+    public function delete($element = null)
+    {
+        $element = $element ?: $this->element;
+        $this->deleting($element);
+
+        return $this;
+    }
+
+    /**
+     * Run validation for restore.
+     *
+     * @param  null  $element
+     * @return $this
+     */
+    public function restore($element = null)
+    {
+        $element = $element ?: $this->element;
+        $this->save();
+        $this->restoring($element);
+
+        return $this;
+    }
+
+    /**
+     * Saving validation.
+     * Common for both create and update.
+     *
+     * @param $element
+     * @return $this
+     */
+    public function saving($element)
+    {
+        return $this;
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Event specific validation
+    |--------------------------------------------------------------------------
+    |
+    | Following functions are overridden in model validators to write
+    | event specific validation logic.
+    */
+
+    /**
+     * Creating validation
+     *
+     * @param $element
      * @return $this]
      */
-    public function creating()
-    {
-        $this->saving();
-
-        return $this;
-    }
-
-    /**
-     * Run validations for updating. This should always call the saving().
-     *
-     * @return $this
-     */
-    public function updating()
-    {
-        $this->fill()->saving();
-
-        return $this;
-    }
-
-    /**
-     * Run validations for deleting.
-     *
-     * @return $this
-     */
-    public function deleting()
+    public function creating($element)
     {
         return $this;
     }
 
     /**
-     * Run validations for restoring.
+     * Updating validation
      *
-     * @return $this
+     * @param $element
+     * @return $this]
      */
-    public function restoring()
+    public function updating($element)
     {
-        $this->saving();
+        return $this;
+    }
 
+    /**
+     * Deleting validation
+     *
+     * @param $element
+     * @return $this]
+     */
+    public function deleting($element)
+    {
+        return $this;
+    }
+
+    /**
+     * Restoring validation
+     *
+     * @param $element
+     * @return $this]
+     */
+    public function restoring($element)
+    {
         return $this;
     }
 

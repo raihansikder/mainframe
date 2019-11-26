@@ -4,6 +4,7 @@ namespace App\Mainframe\Modules\Users;
 
 use App\Mainframe\Modules\Groups\Group;
 
+/** @mixin \App\Mainframe\Modules\Users\User $this */
 trait UserHelper
 {
     /**
@@ -33,7 +34,7 @@ trait UserHelper
     public static function ofBearer($bearer_token)
     {
         if ($bearer_token) {
-            return \App\Mainframe\Modules\Users\User::where('auth_token', $bearer_token)->first();
+            return User::where('auth_token', $bearer_token)->first();
         }
 
         return null;

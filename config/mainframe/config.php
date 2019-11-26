@@ -16,5 +16,6 @@ return [
     */
 
     'name' => env('APP_NAME', 'Laravel'),
+    'upload_root' => '/files/',
 
 ];

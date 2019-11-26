@@ -10,14 +10,15 @@ use App\Mainframe\Modules\Users\User;
  */
 function renderModulePermissionTree($tree)
 {
+    $html = '';
     if (is_array($tree)) {
-        echo "<ul>";
+        $html .= "<ul>";
         foreach ($tree as $leaf) {
             // $perm = 'perm-'.$leaf['type'].'-'.$leaf['item']->name;
             $perm = $leaf['item']->name;
             $val = $perm;
 
-            echo "<div class='clearfix'></div><li class='pull-left'>".
+            $html .= "<div class='clearfix'></div><li class='pull-left'>".
                 "<input name='permission[]' type='checkbox' v-model='permission' value='$val'
 				v-on:click='clicked'/>".
                 "<label><b>".$leaf['item']->title."</b> - <small>".$leaf['item']->desc."</small></label> <div class='clearfix'></div>";
@@ -34,64 +35,25 @@ function renderModulePermissionTree($tree)
                     'report' => 'Report',
                 ];
 
-                echo "<ul class='pull-left module-permissions'>";
+                $html .= "<ul class='pull-left module-permissions'>";
                 foreach ($module_default_permissions_suffixes as $k => $v) {
                     $val = "$perm-$k";
-                    echo "<li>".
+                    $html .= "<li>".
                         "<input name='permission[]' type='checkbox' v-model='permission'  value='$val'/>".
                         "<label>".$v."</label>".
                         "</li>";
                 }
-                echo "</ul>";
-                /*
-                if ($leaf['item']->has_uploads) {
-                    $file_permission_suffixes = [
-                        'files-view-list' => 'View file list',
-                        'files-view-details' => 'View file details',
-                        'files-create' => 'File upload',
-                        'files-edit' => 'File edit',
-                        'files-delete' => 'File delete',
-                        'files-download' => 'File download',
-                    ];
-                    echo "<ul class='pull-left '>";
-                    foreach ($file_permission_suffixes as $k => $v) {
-                        $val = "$perm-$k";
-                        echo "<li>" .
-                            "<input name='permission[]' type='checkbox' v-model='permission'  value='$val'/>" .
-                            "<label>" . $v . "</label>" .
-                            "</li>";
-                    }
-                    echo "</ul>";
-                }
-
-                if ($leaf['item']->has_messages) {
-                    $message_permission_suffixes = [
-                        'messages-view-list' => 'View message list',
-                        'messages-create' => 'View create',
-                        'messages-edit' => 'Message edit',
-                        'messages-delete' => 'Message delete',
-                    ];
-                    echo "<ul class='pull-left '>";
-                    foreach ($message_permission_suffixes as $k => $v) {
-                        $val = "$perm-$k";
-                        echo "<li>" .
-                            "<input name='permission[]' type='checkbox' v-model='permission'  value='$val'/>" .
-                            "<label>" . $v . "</label>" .
-                            "</li>";
-                    }
-                    echo "</ul>";
-                }
-                */
+                $html .= "</ul>";
             }
 
             if (isset($leaf['children']) && count($leaf['children'])) {
-                renderModulePermissionTree($leaf['children']);
+                $html .= renderModulePermissionTree($leaf['children']);
             }
-            echo "</li>";
+            $html .= "</li>";
         }
-        echo "</ul>";
+        $html .= "</ul>";
 
-        return;
+        return $html;
     }
 }
 

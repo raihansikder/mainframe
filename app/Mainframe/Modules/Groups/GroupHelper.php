@@ -101,10 +101,10 @@ trait GroupHelper
             // accordingly.
             if ($all === true and $matched === false) {
                 return false;
-            } else {
-                if ($all === false and $matched === true) {
-                    return true;
-                }
+            }
+
+            if ($all === false and $matched === true) {
+                return true;
             }
         }
 

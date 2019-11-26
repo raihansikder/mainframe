@@ -7,6 +7,33 @@ use App\Mainframe\Helpers\Modular\Validator\ModelValidator;
 
 class UserValidator extends ModelValidator
 {
+    /*
+    |--------------------------------------------------------------------------
+    | Fill model .
+    |--------------------------------------------------------------------------
+    |
+    | Sometimes you need to automatically fill some fields of a model based
+    | on known logic. For example: if you can take first_name and last_name
+    | of an user and auto fill full_name.
+    */
+
+    /** @noinspection SenselessMethodDuplicationInspection */
+    /**
+     * Fill the model with values
+     *
+     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @return $this
+     */
+    public function fill($user)
+    {
+        parent::fill($user);
+
+        $user->is_test = $user->is_test ?? 0;
+        $user->is_active = $user->is_active ?? 0;
+        $user->resolveName();
+
+        return $this;
+    }
 
     /*
     |--------------------------------------------------------------------------
@@ -15,6 +42,7 @@ class UserValidator extends ModelValidator
     |
     | Write the laravel validation rules
     */
+
     /**
      * Validation rules. For regular expression validation use array instead of pipe
      *
@@ -28,8 +56,6 @@ class UserValidator extends ModelValidator
             'email' => 'required|email|unique:users,email'.(isset($element->id) ? ",$element->id" : ''),
             'first_name' => 'required|between:0,128',
             'last_name' => 'required|between:0,128',
-            'partner_id' => 'required_if:group_id,2',
-            'charity_id' => 'required_if:group_id,5',
             'address1' => 'between:0,512',
             'address2' => 'between:0,512',
             'city' => 'between:0,64',
@@ -37,7 +63,6 @@ class UserValidator extends ModelValidator
             'zip_code' => 'between:0,20',
             'phone' => 'between:0,20',
             'mobile' => 'between:0,20',
-            'country_id' => 'required',
         ];
 
         // While creation/registration of user password and password_confirm both should be available
@@ -63,15 +88,24 @@ class UserValidator extends ModelValidator
    |
    | Check validations on saving, creating, updating, deleting and restoring
    */
+
     /**
      * Run validations for saving. This should be common for both creating and updating.
      *
+     * @param  \App\Mainframe\Modules\Users\User  $user
      * @return $this
      */
-    public function saving()
+    public function saving($user)
     {
-        parent::saving();
-        $this->userNameShouldNotbeJoker();
+        parent::saving($user);
+        /*
+        |--------------------------------------------------------------------------
+        | Call validation functions one by one.
+        |--------------------------------------------------------------------------
+        |
+        | A list of functions that will be called sequentially to validate the model
+        */
+        $this->userNameShouldNotbeJoker($user);
 
         return $this;
     }
@@ -127,12 +161,11 @@ class UserValidator extends ModelValidator
     /**
      * Validate the name. Name should not be 'Joker'
      *
+     * @param  \App\Mainframe\Modules\Users\User  $user
      * @return $this
      */
-    private function userNameShouldNotBeJoker()
+    private function userNameShouldNotBeJoker($user)
     {
-        $user = $this->element;
-
         if ($user->name === 'Joker') {
             $this->invalidate('name', "Name can not be Joker");
         }
