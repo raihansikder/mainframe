@@ -1,5 +1,5 @@
 <?php
-use App\Mainframe\Helpers\Form\Select\SelectAjax;
+use App\Mainframe\Features\Form\Select\SelectAjax;
 
 $rand = \Illuminate\Support\Str::random(8);
 $input = new SelectAjax($var, $element ?? null);

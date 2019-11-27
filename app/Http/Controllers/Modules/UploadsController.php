@@ -7,7 +7,7 @@ use Storage;
 use Response;
 use Redirect;
 use App\Mainframe\Modules\Uploads\Upload;
-use App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController;
+use App\Mainframe\Features\Modular\BaseController\ModuleBaseController;
 
 class UploadsController extends ModuleBaseController
 {
@@ -23,8 +23,8 @@ class UploadsController extends ModuleBaseController
     {
         $input_name = Request::has('input_name') ? Request::get('input_name') : $input_name;
 
-        /** @var \App\Http\Mainframe\Helpers\Modular\BaseModule\BaseModule $Model */
-        /** @var \App\Http\Mainframe\Helpers\Modular\BaseModule\BaseModule $element */
+        /** @var \App\Http\Mainframe\Features\Modular\BaseModule\BaseModule $Model */
+        /** @var \App\Http\Mainframe\Features\Modular\BaseModule\BaseModule $element */
         // init local variables
         $moduleName = $this->moduleName;
         $Model = model($this->moduleName);

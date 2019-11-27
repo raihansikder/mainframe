@@ -2,7 +2,7 @@
 
 namespace App\Mainframe\Modules\LoremIpsums;
 
-use App\Mainframe\Helpers\Modular\BaseModule\BaseModule;
+use App\Mainframe\Features\Modular\BaseModule\BaseModule;
 
 class LoremIpsum extends BaseModule
 {

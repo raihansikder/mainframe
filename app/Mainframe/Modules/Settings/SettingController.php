@@ -2,7 +2,7 @@
 
 namespace App\Mainframe\Modules\Settings;
 
-use App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController;
+use App\Mainframe\Features\Modular\BaseController\ModuleBaseController;
 
 class SettingController extends ModuleBaseController
 {

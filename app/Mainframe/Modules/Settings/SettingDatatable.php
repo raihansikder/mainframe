@@ -2,7 +2,7 @@
 
 namespace App\Mainframe\Modules\Settings;
 
-use App\Mainframe\Helpers\Datatable\Datatable;
+use App\Mainframe\Features\Datatable\Datatable;
 
 class SettingDatatable extends Datatable
 {

@@ -7,7 +7,7 @@ use Response;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
-use App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController;
+use App\Mainframe\Features\Modular\BaseController\ModuleBaseController;
 
 class UploadController extends ModuleBaseController
 {
@@ -31,7 +31,7 @@ class UploadController extends ModuleBaseController
 
     /**
      * @param  \Illuminate\Http\Request  $request
-     * @return \App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|void
+     * @return \App\Mainframe\Features\Modular\BaseController\ModuleBaseController|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|void
      */
     public function store(Request $request)
     {

@@ -15,7 +15,7 @@ use App\Invoice;
 use App\Purchase;
 use Illuminate\Support\Str;
 use App\Classes\Reports\UsersReport;
-use App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController;
+use App\Mainframe\Features\Modular\BaseController\ModuleBaseController;
 
 class UsersController extends ModuleBaseController
 {
@@ -219,8 +219,8 @@ class UsersController extends ModuleBaseController
      */
     public function edit($id)
     {
-        /** @var \App\Http\Mainframe\Helpers\Modular\BaseModule\BaseModule $Model */
-        /** @var \App\Http\Mainframe\Helpers\Modular\BaseModule\BaseModule $element */
+        /** @var \App\Http\Mainframe\Features\Modular\BaseModule\BaseModule $Model */
+        /** @var \App\Http\Mainframe\Features\Modular\BaseModule\BaseModule $element */
         // init local variables
         $moduleName = $this->moduleName;
         $Model = model($this->moduleName);
@@ -403,7 +403,7 @@ class UsersController extends ModuleBaseController
 
     public function list()
     {
-        /** @var \App\Http\Mainframe\Helpers\Modular\BaseModule\BaseModule $Model */
+        /** @var \App\Http\Mainframe\Features\Modular\BaseModule\BaseModule $Model */
         /** @var \Illuminate\Database\Eloquent\Builder $q */
         $Model = model($this->moduleName);
 

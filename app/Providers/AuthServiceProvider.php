@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use Gate;
-use App\Mainframe\Helpers\Mf;
+use App\Mainframe\Features\Mf;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
