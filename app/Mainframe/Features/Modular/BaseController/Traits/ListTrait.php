@@ -24,7 +24,6 @@ trait ListTrait
      */
     public function list()
     {
-        /** @var \App\Mainframe\Features\Modular\BaseController\ModuleBaseController $this */
         $ret = ret('success', "{$this->moduleName} list", $this->listData());
 
         return Response::json(fillRet($ret));

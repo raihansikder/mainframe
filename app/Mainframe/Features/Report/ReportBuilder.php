@@ -79,26 +79,22 @@ class ReportBuilder
     public function dataSourceColumns()
     {
         if ($this->dataSource) {
-            return $this->tableColumns($this->dataSource);
+            return Cache::remember('columns-of:'.$this->dataSource, cacheTime('very-long'), function () {
+                return Schema::getColumnListing($this->dataSource);
+            });
         }
 
-        return null;
+        return [];
     }
 
     /**
-     * @param $table
-     * @return mixed
+     * Show this in a selection option in the front-end
+     *
+     * @return array
      */
-    public function tableColumns($table)
-    {
-        return Cache::remember('columns-of:'.$table, cacheTime('very-long'), function () use ($table) {
-            return Schema::getColumnListing($table);
-        });
-    }
-
     public function showColumnsOptions()
     {
-        return array_merge($this->tableColumns($this->dataSource), $this->ghostSelectColumns());
+        return array_merge($this->dataSourceColumns(), $this->ghostSelectColumns());
     }
 
     /**
@@ -123,42 +119,41 @@ class ReportBuilder
         $dataSourceColumns = $this->dataSourceColumns();
         $showColumnsOptions = $this->showColumnsOptions();
 
-        if (isset($this->request['submit']) && $this->request['submit'] === 'Run') {
-            //$this->run();
-
-            $showColumns = $this->mutateShowColumns($this->showColumns());
-            $aliasColumns = $this->mutateAliasColumns($this->aliasColumns());
-            $results = $this->mutateResults($this->results());
-            $total = $this->total();
-
-            if ($this->output() === 'json') {
-                return $results;
-            }
-
-            if ($this->output() === 'excel') {
-                try {
-                    /** @noinspection PhpVoidFunctionResultUsedInspection */
-                    return $this->dumpExcel($showColumns, $aliasColumns, $results);
-                } catch (Exception $e) {
-                    return setError($e->getMessage());
-                } catch (\PhpOffice\PhpSpreadsheet\Exception $e) {
-                    return setError($e->getMessage());
-                }
-            }
-
-            if ($this->output() === 'print') {
-                return view($this->resultsPrintPath())
-                    ->with(compact('showColumns', 'aliasColumns', 'total', 'results', 'baseDir', 'dataSource',
-                        'dataSourceColumns', 'showColumnsOptions'));
-            }
-
+        if (request('submit') != 'Run') {
             return view($this->resultsViewPath())
+                ->with(compact('baseDir', 'dataSource', 'dataSourceColumns', 'showColumnsOptions'));
+        }
+
+        $showColumns = $this->mutateShowColumns($this->showColumns());
+        $aliasColumns = $this->mutateAliasColumns($this->aliasColumns());
+        $results = $this->mutateResults($this->results());
+        $total = $this->total();
+
+        if ($this->output() === 'json') {
+            return $results;
+        }
+
+        if ($this->output() === 'excel') {
+            try {
+                /** @noinspection PhpVoidFunctionResultUsedInspection */
+                return $this->dumpExcel($showColumns, $aliasColumns, $results);
+            } catch (Exception $e) {
+                return setError($e->getMessage());
+            } catch (\PhpOffice\PhpSpreadsheet\Exception $e) {
+                return setError($e->getMessage());
+            }
+        }
+
+        if ($this->output() === 'print') {
+            return view($this->resultsPrintPath())
                 ->with(compact('showColumns', 'aliasColumns', 'total', 'results', 'baseDir', 'dataSource',
                     'dataSourceColumns', 'showColumnsOptions'));
         }
 
         return view($this->resultsViewPath())
-            ->with(compact('baseDir', 'dataSource', 'dataSourceColumns', 'showColumnsOptions'));
+            ->with(compact('showColumns', 'aliasColumns', 'total', 'results', 'baseDir', 'dataSource',
+                'dataSourceColumns', 'showColumnsOptions'));
+
     }
 
     /**

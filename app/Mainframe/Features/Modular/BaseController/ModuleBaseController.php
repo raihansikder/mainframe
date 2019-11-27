@@ -31,12 +31,16 @@ class ModuleBaseController extends MainframeBaseController
 
     /** @var string */
     public $moduleName;
+
     /** @var Module */
     public $module;
+
     /** @var \Illuminate\Database\Eloquent\Builder */
     public $model;
+
     /** @var \App\Mainframe\Features\Modular\BaseModule\BaseModule */
     public $element;
+
     /** @var \App\Mainframe\Features\Modular\Validator\ModelValidator */
     public $modelValidator;
 
@@ -46,6 +50,7 @@ class ModuleBaseController extends MainframeBaseController
     public function __construct($moduleName = null)
     {
         parent::__construct();
+
         $this->moduleName = $moduleName ?? Module::fromController(get_class($this));
         $this->module = Module::byName($this->moduleName);
         $this->model = $this->module->modelInstance();
