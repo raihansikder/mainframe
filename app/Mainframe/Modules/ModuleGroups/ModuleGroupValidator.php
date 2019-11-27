@@ -45,11 +45,12 @@ class ModuleGroupValidator extends ModelValidator
     /**
      * Run validations for saving. This should be common for both creating and updating.
      *
+     * @param $element \App\Mainframe\Modules\ModuleGroups\ModuleGroup
      * @return $this
      */
-    public function saving()
+    public function saving($element)
     {
-        parent::saving();
+        parent::saving($element);
         $this->moduleGroupNameShouldNotbeJoker();
 
         return $this;

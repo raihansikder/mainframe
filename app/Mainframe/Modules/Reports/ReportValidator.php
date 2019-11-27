@@ -43,7 +43,7 @@ class ReportValidator extends ModelValidator
      *
      * @return $this
      */
-    public function saving()
+    public function saving($element)
     {
         parent::saving();
         $this->reportNameShouldNotbeJoker();

@@ -96,7 +96,7 @@ trait ModuleHelper
                 $i = $predecessor->parent_id;
             }
         }
-        $stack = array_reverse($stack);
+        $stacGroupValidatork = array_reverse($stack);
 
         return $stack;
     }
