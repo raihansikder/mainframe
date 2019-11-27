@@ -2,7 +2,7 @@
 
 namespace App\Mainframe\Modules\Reports;
 
-use App\Mainframe\Helpers\Modular\Validator\ModelValidator;
+use App\Mainframe\Features\Modular\Validator\ModelValidator;
 
 class ReportValidator extends ModelValidator
 {
@@ -53,7 +53,7 @@ class ReportValidator extends ModelValidator
     /**
      * Run validations for creating. This should always call the saving().
      *
-     * @return \App\Mainframe\Helpers\Modular\Validator\ModelValidator|\App\Mainframe\Modules\Settings\SettingValidator
+     * @return \App\Mainframe\Features\Modular\Validator\ModelValidator|\App\Mainframe\Modules\Settings\SettingValidator
      */
     // public function creating()
     // {
@@ -63,7 +63,7 @@ class ReportValidator extends ModelValidator
     /**
      * Run validations for updating. This should always call the saving().
      *
-     * @return \App\Mainframe\Helpers\Modular\Validator\ModelValidator|\App\Mainframe\Modules\Settings\SettingValidator
+     * @return \App\Mainframe\Features\Modular\Validator\ModelValidator|\App\Mainframe\Modules\Settings\SettingValidator
      */
     // public function updating()
     // {
@@ -73,7 +73,7 @@ class ReportValidator extends ModelValidator
     /**
      * Run validations for deleting.
      *
-     * @return \App\Mainframe\Helpers\Modular\Validator\ModelValidator|\App\Mainframe\Modules\Settings\SettingValidator
+     * @return \App\Mainframe\Features\Modular\Validator\ModelValidator|\App\Mainframe\Modules\Settings\SettingValidator
      */
     // public function deleting()
     // {
@@ -83,7 +83,7 @@ class ReportValidator extends ModelValidator
     /**
      * Run validations for restoring. This should always call the saving().
      *
-     * @return \App\Mainframe\Helpers\Modular\Validator\ModelValidator|\App\Mainframe\Modules\Settings\SettingValidator
+     * @return \App\Mainframe\Features\Modular\Validator\ModelValidator|\App\Mainframe\Modules\Settings\SettingValidator
      */
     // public function restoring()
     // {

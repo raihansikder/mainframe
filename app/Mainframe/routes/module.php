@@ -1,6 +1,6 @@
 <?php
 
-use App\Mainframe\Helpers\Mf;
+use App\Mainframe\Features\Mf;
 
 $modules = Mf::modules();
 $moduleGroups = Mf::moduleGroups();

@@ -5,14 +5,14 @@ namespace App\Mainframe\Modules\Changes;
 use App\Mainframe\Modules\Changes\Change;
 use App\Mainframe\Modules\Modules\Module;
 use Illuminate\Support\Str;
-use App\Mainframe\Helpers\Modular\BaseModule\BaseModule;
+use App\Mainframe\Features\Modular\BaseModule\BaseModule;
 
 trait ChangeHelper
 {
     /**
      * Get changes of a model and store in session.
      *
-     * @param  \App\Http\Mainframe\Helpers\Modular\BaseModule\BaseModule  $element
+     * @param  \App\Http\Mainframe\Features\Modular\BaseModule\BaseModule  $element
      */
     public static function keepChangesInSession($element)
     {
@@ -22,7 +22,7 @@ trait ChangeHelper
     /**
      * Get the changes in an array
      *
-     * @param  \App\Http\Mainframe\Helpers\Modular\BaseModule\BaseModule  $filled_element
+     * @param  \App\Http\Mainframe\Features\Modular\BaseModule\BaseModule  $filled_element
      * @param  array  $except
      * @return array
      */
@@ -66,7 +66,7 @@ trait ChangeHelper
      * Fetch changes that are stored in session and save in database.
      *
      * @param  string  $change_name
-     * @param  \App\Http\Mainframe\Helpers\Modular\BaseModule\BaseModule  $element
+     * @param  \App\Http\Mainframe\Features\Modular\BaseModule\BaseModule  $element
      * @param  string  $desc
      */
     public static function storeChangesFromSession($change_name = "", $element, $desc = "")
@@ -78,7 +78,7 @@ trait ChangeHelper
 
     /**
      * @param  string  $change_name  : assign a meaningful name of the change
-     * @param  \App\Http\Mainframe\Helpers\Modular\BaseModule\BaseModule  $element
+     * @param  \App\Http\Mainframe\Features\Modular\BaseModule\BaseModule  $element
      * @param  array  $changes
      * @param  string  $desc
      * @internal param array $change_items
@@ -118,7 +118,7 @@ trait ChangeHelper
     /**
      * Store a log entry when a new element is created
      *
-     * @param  \App\Http\Mainframe\Helpers\Modular\BaseModule\BaseModule  $element
+     * @param  \App\Http\Mainframe\Features\Modular\BaseModule\BaseModule  $element
      * @param  string  $details
      */
     public static function storeCreateLog($element, $details = "")

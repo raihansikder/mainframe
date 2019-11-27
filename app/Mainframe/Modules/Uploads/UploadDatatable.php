@@ -6,7 +6,7 @@
 namespace App\Mainframe\Modules\Uploads;
 
 use DB;
-use App\Mainframe\Helpers\Datatable\Datatable;
+use App\Mainframe\Features\Datatable\Datatable;
 
 class UploadDatatable extends Datatable
 {

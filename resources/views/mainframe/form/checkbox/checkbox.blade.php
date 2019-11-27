@@ -1,7 +1,7 @@
 <?php
-/** @var \App\Mainframe\Helpers\Modular\BaseModule\BaseModule $element */
+/** @var \App\Mainframe\Features\Modular\BaseModule\BaseModule $element */
 
-use App\Mainframe\Helpers\Form\Checkbox\Checkbox;
+use App\Mainframe\Features\Form\Checkbox\Checkbox;
 
 $input = new Checkbox($var, $element ?? null); ?>
 

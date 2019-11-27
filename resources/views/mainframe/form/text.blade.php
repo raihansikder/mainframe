@@ -1,6 +1,6 @@
 <?php
-/** @var \App\Mainframe\Helpers\Modular\BaseModule\BaseModule $element */
-use App\Mainframe\Helpers\Form\Text\PlainText;
+/** @var \App\Mainframe\Features\Modular\BaseModule\BaseModule $element */
+use App\Mainframe\Features\Form\Text\PlainText;
 
 $var['type'] = $var['type'] ?? 'text';
 $input = new PlainText($var, $element ?? null);

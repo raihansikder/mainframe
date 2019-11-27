@@ -7,7 +7,7 @@
 namespace App\Mainframe\Modules\LoremIpsums;
 
 use App\Mainframe\Modules\Users\User;
-use App\Mainframe\Helpers\Modular\BaseModule\BaseModulePolicy;
+use App\Mainframe\Features\Modular\BaseModule\BaseModulePolicy;
 
 class LoremIpsumPolicy extends BaseModulePolicy
 {

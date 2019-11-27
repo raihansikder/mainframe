@@ -2,7 +2,7 @@
 
 namespace App\Mainframe\Modules\DolorSits;
 
-use App\Mainframe\Helpers\Modular\Validator\ModelValidator;
+use App\Mainframe\Features\Modular\Validator\ModelValidator;
 
 class DolorSitValidator extends ModelValidator
 {
@@ -105,7 +105,7 @@ class DolorSitValidator extends ModelValidator
     //  * Creating validation
     //  *
     //  * @param $dolorSit \App\Mainframe\Modules\Superheroes\DolorSit
-    //  * @return \App\Mainframe\Helpers\Modular\Validator\ModelValidator|\App\Mainframe\Modules\Settings\SettingValidator
+    //  * @return \App\Mainframe\Features\Modular\Validator\ModelValidator|\App\Mainframe\Modules\Settings\SettingValidator
     //  */
     // public function creating($dolorSit)
     // {
@@ -116,7 +116,7 @@ class DolorSitValidator extends ModelValidator
     //  * Updating validation
     //  *
     //  * @param $dolorSit \App\Mainframe\Modules\Superheroes\DolorSit
-    //  * @return \App\Mainframe\Helpers\Modular\Validator\ModelValidator|\App\Mainframe\Modules\Settings\SettingValidator
+    //  * @return \App\Mainframe\Features\Modular\Validator\ModelValidator|\App\Mainframe\Modules\Settings\SettingValidator
     //  */
     // public function updating($dolorSit)
     // {
@@ -127,7 +127,7 @@ class DolorSitValidator extends ModelValidator
     //  *  Deleting validation
     //  *
     //  * @param $dolorSit \App\Mainframe\Modules\Superheroes\DolorSit
-    //  * @return \App\Mainframe\Helpers\Modular\Validator\ModelValidator|\App\Mainframe\Modules\Settings\SettingValidator
+    //  * @return \App\Mainframe\Features\Modular\Validator\ModelValidator|\App\Mainframe\Modules\Settings\SettingValidator
     //  */
     // public function deleting($dolorSit)
     // {
@@ -138,7 +138,7 @@ class DolorSitValidator extends ModelValidator
     //  * Restoring validation
     //  *
     //  * @param $dolorSit \App\Mainframe\Modules\Superheroes\DolorSit
-    //  * @return \App\Mainframe\Helpers\Modular\Validator\ModelValidator|\App\Mainframe\Modules\Settings\SettingValidator
+    //  * @return \App\Mainframe\Features\Modular\Validator\ModelValidator|\App\Mainframe\Modules\Settings\SettingValidator
     //  */
     // public function restoring($dolorSit)
     // {

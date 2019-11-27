@@ -2,7 +2,7 @@
 
 namespace App\Mainframe\Modules\Reports;
 
-use App\Mainframe\Helpers\Modular\BaseModule\BaseModule;
+use App\Mainframe\Features\Modular\BaseModule\BaseModule;
 
 /**
  * App\Mainframe\Modules\Reports\Report
@@ -34,7 +34,7 @@ use App\Mainframe\Helpers\Modular\BaseModule\BaseModule;
  * @property-read \App\Mainframe\Modules\Users\User|null $updater
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Uploads\Upload[] $uploads
  * @property-read int|null $uploads_count
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Helpers\Modular\BaseModule\BaseModule active()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Features\Modular\BaseModule\BaseModule active()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Reports\Report newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Reports\Report newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Reports\Report query()

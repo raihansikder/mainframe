@@ -2,7 +2,7 @@
 
 namespace App\Mainframe\Modules\LoremIpsums;
 
-use App\Mainframe\Helpers\Modular\Validator\ModelValidator;
+use App\Mainframe\Features\Modular\Validator\ModelValidator;
 
 class LoremIpsumValidator extends ModelValidator
 {
@@ -107,7 +107,7 @@ class LoremIpsumValidator extends ModelValidator
     //  * Creating validation
     //  *
     //  * @param $loremIpsum \App\Mainframe\Modules\Superheroes\LoremIpsum
-    //  * @return \App\Mainframe\Helpers\Modular\Validator\ModelValidator|\App\Mainframe\Modules\Settings\SettingValidator
+    //  * @return \App\Mainframe\Features\Modular\Validator\ModelValidator|\App\Mainframe\Modules\Settings\SettingValidator
     //  */
     // public function creating($loremIpsum)
     // {
@@ -118,7 +118,7 @@ class LoremIpsumValidator extends ModelValidator
     //  * Updating validation
     //  *
     //  * @param $loremIpsum \App\Mainframe\Modules\Superheroes\LoremIpsum
-    //  * @return \App\Mainframe\Helpers\Modular\Validator\ModelValidator|\App\Mainframe\Modules\Settings\SettingValidator
+    //  * @return \App\Mainframe\Features\Modular\Validator\ModelValidator|\App\Mainframe\Modules\Settings\SettingValidator
     //  */
     // public function updating($loremIpsum)
     // {
@@ -129,7 +129,7 @@ class LoremIpsumValidator extends ModelValidator
     //  *  Deleting validation
     //  *
     //  * @param $loremIpsum \App\Mainframe\Modules\Superheroes\LoremIpsum
-    //  * @return \App\Mainframe\Helpers\Modular\Validator\ModelValidator|\App\Mainframe\Modules\Settings\SettingValidator
+    //  * @return \App\Mainframe\Features\Modular\Validator\ModelValidator|\App\Mainframe\Modules\Settings\SettingValidator
     //  */
     // public function deleting($loremIpsum)
     // {
@@ -140,7 +140,7 @@ class LoremIpsumValidator extends ModelValidator
     //  * Restoring validation
     //  *
     //  * @param $loremIpsum \App\Mainframe\Modules\Superheroes\LoremIpsum
-    //  * @return \App\Mainframe\Helpers\Modular\Validator\ModelValidator|\App\Mainframe\Modules\Settings\SettingValidator
+    //  * @return \App\Mainframe\Features\Modular\Validator\ModelValidator|\App\Mainframe\Modules\Settings\SettingValidator
     //  */
     // public function restoring($loremIpsum)
     // {

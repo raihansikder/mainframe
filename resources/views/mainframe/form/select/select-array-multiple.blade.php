@@ -1,5 +1,5 @@
 <?php
-use App\Mainframe\Helpers\Form\Select\SelectArrayMultiple;
+use App\Mainframe\Features\Form\Select\SelectArrayMultiple;
 
 $input = new SelectArrayMultiple($var, $element ?? null);
 ?>

@@ -3,7 +3,7 @@
 namespace App\Mainframe\Modules\Uploads;
 
 use File;
-use App\Mainframe\Helpers\Modular\BaseModule\BaseModule;
+use App\Mainframe\Features\Modular\BaseModule\BaseModule;
 
 trait UploadHelper
 {

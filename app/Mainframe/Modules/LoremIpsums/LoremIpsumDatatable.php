@@ -6,7 +6,7 @@
 namespace App\Mainframe\Modules\LoremIpsums;
 
 use DB;
-use App\Mainframe\Helpers\Datatable\Datatable;
+use App\Mainframe\Features\Datatable\Datatable;
 
 class LoremIpsumDatatable extends Datatable
 {

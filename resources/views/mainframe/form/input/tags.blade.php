@@ -1,8 +1,8 @@
 <?php
-/** @var \App\Mainframe\Helpers\Modular\BaseModule\BaseModule $element */
+/** @var \App\Mainframe\Features\Modular\BaseModule\BaseModule $element */
 
 
-use App\Mainframe\Helpers\Form\Text\Tags;
+use App\Mainframe\Features\Form\Text\Tags;
 
 // $input = new InputText($var, $element ?? null);
 $input = new Tags($var, $element ?? null);

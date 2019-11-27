@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\MessageBag;
 use Illuminate\Support\ServiceProvider;
-use App\Mainframe\Helpers\Responder\Response;
+use App\Mainframe\Features\Responder\Response;
 
 class AppServiceProvider extends ServiceProvider
 {

@@ -3,7 +3,7 @@
 namespace App\Mainframe\Modules\Modules;
 
 
-use App\Mainframe\Helpers\Modular\Validator\ModelValidator;
+use App\Mainframe\Features\Modular\Validator\ModelValidator;
 
 class ModuleValidator extends ModelValidator
 {
@@ -31,7 +31,7 @@ class ModuleValidator extends ModelValidator
     /**
      * Run all rule checkers
      *
-     * @return \App\Http\Mainframe\Helpers\Modular\BaseModule\BaseModule|bool
+     * @return \App\Http\Mainframe\Features\Modular\BaseModule\BaseModule|bool
      */
     public function run()
     {
@@ -44,7 +44,7 @@ class ModuleValidator extends ModelValidator
     /**
      * Get results
      *
-     * @return \App\Http\Mainframe\Helpers\Modular\BaseModule\BaseModule|bool
+     * @return \App\Http\Mainframe\Features\Modular\BaseModule\BaseModule|bool
      */
     public function result()
     {

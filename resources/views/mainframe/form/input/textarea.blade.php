@@ -1,6 +1,6 @@
 <?php
-/** @var \App\Mainframe\Helpers\Modular\BaseModule\BaseModule $element */
-use App\Mainframe\Helpers\Form\Text\TextArea;
+/** @var \App\Mainframe\Features\Modular\BaseModule\BaseModule $element */
+use App\Mainframe\Features\Form\Text\TextArea;
 
 
 $var['type'] = $var['type'] ?? 'text';

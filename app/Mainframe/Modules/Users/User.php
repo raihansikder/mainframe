@@ -10,14 +10,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Mainframe\Modules\Users\Traits\UserGroupable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use App\Mainframe\Helpers\Modular\BaseModule\Traits\Validable;
-use App\Mainframe\Helpers\Modular\BaseModule\Traits\Changeable;
-use App\Mainframe\Helpers\Modular\BaseModule\Traits\Uploadable;
-use App\Mainframe\Helpers\Modular\BaseModule\Traits\UpdaterTrait;
-use App\Mainframe\Helpers\Modular\BaseModule\Traits\ModularTrait;
-use App\Mainframe\Helpers\Modular\BaseModule\Traits\EventIdentifiable;
-use App\Mainframe\Helpers\Modular\BaseModule\Traits\RelatedUsersTrait;
-use App\Mainframe\Helpers\Modular\BaseModule\Traits\TenantContextTrait;
+use App\Mainframe\Features\Modular\BaseModule\Traits\Validable;
+use App\Mainframe\Features\Modular\BaseModule\Traits\Changeable;
+use App\Mainframe\Features\Modular\BaseModule\Traits\Uploadable;
+use App\Mainframe\Features\Modular\BaseModule\Traits\UpdaterTrait;
+use App\Mainframe\Features\Modular\BaseModule\Traits\ModularTrait;
+use App\Mainframe\Features\Modular\BaseModule\Traits\EventIdentifiable;
+use App\Mainframe\Features\Modular\BaseModule\Traits\RelatedUsersTrait;
+use App\Mainframe\Features\Modular\BaseModule\Traits\TenantContextTrait;
 
 /**
  * App\Mainframe\Modules\Users\User

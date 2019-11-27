@@ -1,5 +1,5 @@
 <?php
-use App\Mainframe\Helpers\Form\Select\SelectModelMultiple;
+use App\Mainframe\Features\Form\Select\SelectModelMultiple;
 
 $input = new SelectModelMultiple($var, $element ?? null);
 ?>

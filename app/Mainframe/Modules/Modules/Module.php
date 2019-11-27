@@ -3,7 +3,7 @@
 namespace App\Mainframe\Modules\Modules;
 
 use Illuminate\Database\Eloquent\Builder;
-use App\Mainframe\Helpers\Modular\BaseModule\BaseModule;
+use App\Mainframe\Features\Modular\BaseModule\BaseModule;
 
 /**
  * App\Mainframe\Modules\Modules\Module

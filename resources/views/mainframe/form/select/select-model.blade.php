@@ -1,5 +1,5 @@
 <?php
-use App\Mainframe\Helpers\Form\Select\SelectModel;
+use App\Mainframe\Features\Form\Select\SelectModel;
 
 $input = new SelectModel($var, $element ?? null);
 ?>
