@@ -9,6 +9,9 @@ use App\Mainframe\Modules\ModuleGroups\ModuleGroup;
 trait ModuleHelper
 {
 
+    /**
+     * @return \Illuminate\Support\Collection
+     */
     public static function list()
     {
         return Module::active()->remember(cacheTime('long'))->get();

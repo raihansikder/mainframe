@@ -165,7 +165,9 @@ return [
         /*
          * Package Service Providers...
          */
-
+        //Barryvdh\Debugbar\ServiceProvider::class,
+        Yajra\DataTables\DataTablesServiceProvider::class,
+        Collective\Html\HtmlServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -175,9 +177,11 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\TelescopeServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        //Barryvdh\Debugbar\ServiceProvider::class,
-        Yajra\DataTables\DataTablesServiceProvider::class,
-        Collective\Html\HtmlServiceProvider::class,
+        /*
+         * My Service Providers...
+         */
+        App\Providers\HelperServiceProvider::class,
+
     ],
 
     /*

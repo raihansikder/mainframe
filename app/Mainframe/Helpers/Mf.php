@@ -50,7 +50,7 @@ class Mf
 
     public static function moduleGroups()
     {
-        return Schema::hasTable('module-groups') ? ModuleGroup::list() : [];
+        return Schema::hasTable('module_groups') ? ModuleGroup::list() : [];
     }
 
 }
