@@ -12,6 +12,7 @@ namespace App\Mainframe\Features\Modular\BaseController\Traits;
 use Request;
 use Response;
 
+/** @mixin \App\Mainframe\Features\Modular\BaseController\ModuleBaseController $this */
 trait ListTrait
 {
 
@@ -132,9 +133,12 @@ trait ListTrait
             $q = $q->where($fieldName, $fieldValue);
         }
 
-        $q_fields = columns($this->moduleName); // Get all table field names
+        $q_fields = columns($this->module->tableName()); // Get all table field names
+
         foreach (Request::all() as $name => $val) { // Loop through all the fields in request
+
             if (in_array($name, $q_fields)) { // If field is available
+
                 if (is_array($val) && count($val)) { // If array check whereIn()
                     $temp = removeEmptyVals($val);
                     if (count($temp)) {
