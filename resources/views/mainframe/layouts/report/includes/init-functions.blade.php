@@ -13,9 +13,10 @@ function transformRow($column, $row, $value, $module_name = null)
     $new_value = $value;
     if (in_array($column, ['id', 'name'])) {
         if (isset($row->id) && $module_name) {
-            $new_value = "<a href='" . route($module_name . '.edit', $row->id) . "'>" . $value . "</a>";
+            $new_value = "<a href='".route($module_name.'.edit', $row->id)."'>".$value."</a>";
         }
     }
+
     return $new_value;
 }
 

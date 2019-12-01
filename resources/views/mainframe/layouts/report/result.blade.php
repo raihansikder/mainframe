@@ -38,10 +38,10 @@
                     <tbody>
                     @foreach ($result as $row)
                         <tr>
-                            @foreach ($showColumns as $col)
+                            @foreach ($selectedColumns as $col)
                                 <td>
                                     @if(isset($row->$col))
-                                        {!! transformRow($col, $row, $row->$col, $dataSource) !!}
+                                        {!! transformRow($col, $row, $row->$col, $module->name ) !!}
                                     @endif
                                 </td>
                             @endforeach
