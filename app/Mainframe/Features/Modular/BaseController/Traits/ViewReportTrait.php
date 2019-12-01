@@ -47,7 +47,7 @@ trait ViewReportTrait
     public function report()
     {
         if (hasModulePermission($this->moduleName, 'report')) {
-            $report = new ModuleReportBuilder();
+            $report = new ModuleReportBuilder($this->module);
             $report->dataSource = $this->reportDataSource();
             $report->baseDir = $this->reportViewBaseDir();
 

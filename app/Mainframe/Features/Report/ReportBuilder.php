@@ -6,21 +6,19 @@ use DB;
 use View;
 use Cache;
 use Schema;
-use Request;
 use Illuminate\Support\Str;
 use Illuminate\Database\Query\Builder;
 use PhpOffice\PhpSpreadsheet\Writer\Csv;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Exception;
+use App\Mainframe\Features\Modular\BaseController\MainframeBaseController;
 
-class ReportBuilder
+class ReportBuilder extends MainframeBaseController
 {
-    /** @var  \Illuminate\Http\Request Input from form */
-    public $request;
 
     /** @var  string DB Table/View names */
-    public $dataSource = null;
+    public $dataSource;
 
     /** @var  string Directory location of the report blade templates */
     public $baseDir;
@@ -55,20 +53,13 @@ class ReportBuilder
      */
     public function __construct($dataSource = null, $baseDir = null, $cache = 0)
     {
-        $this->request = Request::all();
+        parent::__construct();
+
         $this->dataSource = $dataSource;
         $this->baseDir = $baseDir ?? 'mainframe.layouts.report';
         $this->cache = $cache;
         $this->dataSourceColumns = $this->dataSourceColumns();
         $this->showColumnsOptions = $this->showColumnsOptions();
-
-        // Share the variables across all views accessed by this controller
-        // View::share([
-        //     'baseDir' => $this->baseDir,
-        //     'dataSource' => $this->dataSource,
-        //     'dataSourceColumns' => $this->dataSourceColumns,
-        //     'showColumnsOptions' => $this->showColumnsOptions,
-        // ]);
     }
 
     /**
@@ -198,7 +189,7 @@ class ReportBuilder
      */
     public function showColumnsCsv()
     {
-        return $this->cleanCsv($this->request['show_columns_csv'] ?? null);
+        return $this->cleanCsv(request('show_columns_csv') ?? null);
     }
 
     /**
@@ -209,6 +200,10 @@ class ReportBuilder
      */
     protected function cleanCsv($csv)
     {
+        if ($csv == null) {
+            return null;
+        }
+
         // $clearChars = array("\n", " ", "\r");
         $clearChars = ["\n", "\r"];
 
@@ -285,7 +280,7 @@ class ReportBuilder
      */
     public function aliasColumnsCsv()
     {
-        return $this->cleanCsv($this->request['alias_columns_csv'] ?? null);
+        return $this->cleanCsv(request('alias_columns_csv') ?? null);
     }
 
     public function fillAliasColumns($keys)
@@ -332,6 +327,11 @@ class ReportBuilder
         }
 
         return $query->get();
+    }
+
+    public function json()
+    {
+        return $this->results();
     }
 
     /**
@@ -400,15 +400,11 @@ class ReportBuilder
     /**
      * Get the direct user input CSV
      *
-     * @return mixed
+     * @return string|null
      */
     public function selectColumnsCsv()
     {
-        if (isset($this->request['select_columns_csv'])) {
-            return $this->cleanCsv($this->request['select_columns_csv'] ?? null);
-        }
-
-        return null;
+        return $this->cleanCsv(request('select_columns_csv'));
     }
 
     /**
@@ -469,7 +465,9 @@ class ReportBuilder
         /** @var array $escape_fields */
         $escape_fields = $this->defaultFilterEscapeFields(); // Default filter logic will not apply on these
 
-        foreach ($this->request as $name => $val) {
+        $requests = request()->all();
+
+        foreach ($requests as $name => $val) {
             if (in_array($name, $escape_fields)) {
                 $query = $this->customFilterOnEscapedFields($query, $name, $val);
             } else {
@@ -714,7 +712,7 @@ class ReportBuilder
      */
     public function additionalFilterConditions()
     {
-        return $this->request['additional_conditions'] ?? null;
+        return request('additional_conditions') ?? null;
     }
 
     /**
@@ -723,7 +721,7 @@ class ReportBuilder
      */
     public function orderBy($query)
     {
-        $order_by_raw = trim($this->request['order_by'] ?? null);
+        $order_by_raw = trim(request('order_by') ?? null);
         if (strlen($order_by_raw)) {
             $query = $query->orderByRaw($order_by_raw);
         }
@@ -739,7 +737,7 @@ class ReportBuilder
      */
     public function groupByFields()
     {
-        return $this->csvToArray($this->request['group_by'] ?? null);
+        return $this->csvToArray(request('group_by') ?? null);
     }
 
     /**
@@ -765,7 +763,7 @@ class ReportBuilder
      */
     public function output()
     {
-        return $this->request['ret'] ?? null;
+        return request('ret') ?? null;
     }
 
     /**
@@ -780,7 +778,7 @@ class ReportBuilder
             return $this->total();
         }
 
-        return $this->request['rows_per_page'] ?? null;
+        return request('rows_per_page') ?? null;
     }
 
     /**

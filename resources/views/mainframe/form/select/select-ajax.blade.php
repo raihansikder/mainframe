@@ -78,7 +78,7 @@ $input = new SelectAjax($var, $element ?? null);
                     },
                     results: function (response) {
                         return {
-                            results: $.map(response.items, function (item) {
+                            results: $.map(response.data.items, function (item) {
                                 return {
                                     text: item.{{$input->nameField}},
                                     id: item.id

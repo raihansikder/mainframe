@@ -10,7 +10,7 @@
 namespace App\Mainframe\Features\Modular\BaseController\Traits;
 
 use Request;
-use Response;
+use App\Mainframe\Features\Report\ModuleList;
 
 /** @mixin \App\Mainframe\Features\Modular\BaseController\ModuleBaseController $this */
 trait ListTrait
@@ -24,9 +24,11 @@ trait ListTrait
      */
     public function list()
     {
-        $ret = ret('success', "{$this->moduleName} list", $this->listData());
 
-        return Response::json(fillRet($ret));
+        $items = (new ModuleList($this->module))->json();
+
+        return $this->response()->success()->load(['items'=>$items])->json();
+
     }
 
     /**

@@ -75,7 +75,8 @@ class ModuleBaseController extends MainframeBaseController
         }
 
         if ($this->response()->expectsJson()) {
-            return $this->response()->success()->load($this->listData())->json();
+            return $this->list();
+            // return $this->response()->success()->load($this->listData())->json();
         }
 
         return view(GridView::resolve($this->moduleName))

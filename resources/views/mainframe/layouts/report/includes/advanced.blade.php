@@ -40,10 +40,10 @@
 @section('js')
     @parent
     <script type="text/javascript">
-        $("textarea[name=select_columns_csv]").select2({
-            tags: [{!!   "'". implode("','",$dataSourceColumns). "'" !!}],
-            tokenSeparators: [',']
-        });
+        {{--$("textarea[name=select_columns_csv]").select2({--}}
+        {{--    tags: [{!!   "'". implode("','",$dataSourceColumns). "'" !!}],--}}
+        {{--    tokenSeparators: [',']--}}
+        {{--});--}}
 
         $("textarea[name=show_columns_csv]").select2({
             tags: [{!!   "'". implode("','",$showColumnsOptions). "'" !!}],
