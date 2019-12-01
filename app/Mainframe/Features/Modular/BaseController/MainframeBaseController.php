@@ -37,6 +37,9 @@ class MainframeBaseController extends Controller
         // $this->response = new Response();
     }
 
+    /**
+     * @return mixed|Response
+     */
     public function response()
     {
         /** @noinspection UnknownInspectionInspection */

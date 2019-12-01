@@ -2,7 +2,7 @@
 <?php
 /**
  * @var $dataSource  string Table/DB view name (i.e. v_users, users)
- * @var $results      \Illuminate\Pagination\LengthAwarePaginator
+ * @var $result      \Illuminate\Pagination\LengthAwarePaginator
  * @var $total        integer Total number of rows returned
  * @var $baseDir     string
  */
@@ -26,7 +26,7 @@
         Total {{$total}} items found.
         <div class="clearfix"></div>
         <div class="table-responsive">
-            @if(count($results))
+            @if(count($result))
                 <table class="table table-condensed" id="report-table">
                     <thead>
                     <tr>
@@ -36,12 +36,12 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach ($results as $result)
+                    @foreach ($result as $row)
                         <tr>
                             @foreach ($showColumns as $col)
                                 <td>
-                                    @if(isset($result->$col))
-                                        {!! transformRow($col, $result, $result->$col, $dataSource) !!}
+                                    @if(isset($row->$col))
+                                        {!! transformRow($col, $row, $row->$col, $dataSource) !!}
                                     @endif
                                 </td>
                             @endforeach
@@ -49,7 +49,7 @@
                     @endforeach
                     </tbody>
                 </table>
-                {{ $results->setPath(URL::full())->links() ?? '' }}
+                {{ $result->setPath(URL::full())->links() ?? '' }}
             @endif
         </div>
     @endif

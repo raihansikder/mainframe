@@ -17,23 +17,42 @@ use App\Mainframe\Features\Modular\BaseController\MainframeBaseController;
 class ReportBuilder extends MainframeBaseController
 {
 
-    /** @var  string DB Table/View names */
+    /*
+    |--------------------------------------------------------------------------
+    | Data Source
+    |--------------------------------------------------------------------------
+    |
+    | Source of data. This can be a string that represents a table or SQL view
+    | Or, this can be a model name.
+    |
+    */
+    /** @var  \Illuminate\Database\Query\Builder|string|\Illuminate\Database\Eloquent\Model DB Table/View names */
     public $dataSource;
 
+    /*
+    |--------------------------------------------------------------------------
+    | Base Directory for view/blade
+    |--------------------------------------------------------------------------
+    |
+    | All view files of a report is stored under a single directory.
+    |
+    */
     /** @var  string Directory location of the report blade templates */
     public $baseDir;
 
-    /** @var  string Directory location of the default report blade templates */
-    public $defaultBaseDir = 'modules.base.report';
-
+    /*
+    |--------------------------------------------------------------------------
+    | Query cache time
+    |--------------------------------------------------------------------------
+    |
+    | How long the report result is cached
+    |
+    */
     /** @var int Cache time */
     public $cache;
 
     /** @var array */
-    public $dataSourceColumns;
-
-    /** @var array */
-    public $showColumnsOptions;
+    public $columnOptions;
 
     /** @var  Builder */
     public $query;
@@ -41,8 +60,8 @@ class ReportBuilder extends MainframeBaseController
     /** @var  integer total count */
     public $total;
 
-    /** @var  \Illuminate\Support\Collection Report results */
-    public $results;
+    /** @var  \Illuminate\Support\Collection Report result */
+    public $result;
 
     /**
      * ReportBuilder constructor.
@@ -51,15 +70,14 @@ class ReportBuilder extends MainframeBaseController
      * @param  string  $baseDir
      * @param  int  $cache
      */
-    public function __construct($dataSource = null, $baseDir = null, $cache = 0)
+    public function __construct($dataSource = null, $baseDir = null, $cache = null)
     {
         parent::__construct();
 
         $this->dataSource = $dataSource;
-        $this->baseDir = $baseDir ?? 'mainframe.layouts.report';
-        $this->cache = $cache;
-        $this->dataSourceColumns = $this->dataSourceColumns();
-        $this->showColumnsOptions = $this->showColumnsOptions();
+        $this->baseDir = $baseDir ?: 'mainframe.layouts.report';
+        $this->cache = $cache ?: 1000;
+        $this->columnOptions = $this->columnOptions();
     }
 
     /**
@@ -69,7 +87,7 @@ class ReportBuilder extends MainframeBaseController
      */
     public function dataSourceColumns()
     {
-        if ($this->dataSource) {
+        if (is_string($this->dataSource)) {
             return Cache::remember('columns-of:'.$this->dataSource, cacheTime('very-long'), function () {
                 return Schema::getColumnListing($this->dataSource);
             });
@@ -83,7 +101,7 @@ class ReportBuilder extends MainframeBaseController
      *
      * @return array
      */
-    public function showColumnsOptions()
+    public function columnOptions()
     {
         return array_merge($this->dataSourceColumns(), $this->ghostSelectColumns());
     }
@@ -105,51 +123,81 @@ class ReportBuilder extends MainframeBaseController
      */
     public function show()
     {
-        $baseDir = $this->baseDir;
-        $dataSource = $this->dataSource;
-        $dataSourceColumns = $this->dataSourceColumns();
-        $showColumnsOptions = $this->showColumnsOptions();
 
         if (request('submit') != 'Run') {
-            return view($this->resultsViewPath())
-                ->with(compact('baseDir', 'dataSource', 'dataSourceColumns', 'showColumnsOptions'));
+            return $this->html($type = 'blank');
         }
 
-        $showColumns = $this->mutateShowColumns($this->showColumns());
-        $aliasColumns = $this->mutateAliasColumns($this->aliasColumns());
-        $results = $this->mutateResults($this->results());
-        $total = $this->total();
-
         if ($this->output() === 'json') {
-            return $results;
+            return $this->json();
         }
 
         if ($this->output() === 'excel') {
-            try {
-                /** @noinspection PhpVoidFunctionResultUsedInspection */
-                return $this->dumpExcel($showColumns, $aliasColumns, $results);
-            } catch (Exception $e) {
-                return setError($e->getMessage());
-            } catch (\PhpOffice\PhpSpreadsheet\Exception $e) {
-                return setError($e->getMessage());
-            }
+            return $this->excel();
         }
 
         if ($this->output() === 'print') {
-            return view($this->resultsPrintPath())
-                ->with(compact('showColumns', 'aliasColumns', 'total', 'results', 'baseDir', 'dataSource',
-                    'dataSourceColumns', 'showColumnsOptions'));
+            return $this->html($type = 'print');
         }
 
-        return view($this->resultsViewPath())
-            ->with(compact('showColumns', 'aliasColumns', 'total', 'results', 'baseDir', 'dataSource',
-                'dataSourceColumns', 'showColumnsOptions'));
+        return $this->html();
 
     }
 
     /**
+     * @return mixed|\Illuminate\Support\Collection
+     */
+    public function json()
+    {
+        return $this->mutateResult($this->result());
+    }
+
+    public function excel()
+    {
+        $showColumns = $this->mutateShowColumns($this->showColumns());
+        $aliasColumns = $this->mutateAliasColumns($this->aliasColumns());
+        $result = $this->mutateResult($this->result());
+
+        try {
+            /** @noinspection PhpVoidFunctionResultUsedInspection */
+            return $this->dumpExcel($showColumns, $aliasColumns, $result);
+        } catch (Exception $e) {
+            return setError($e->getMessage());
+        } catch (\PhpOffice\PhpSpreadsheet\Exception $e) {
+            return setError($e->getMessage());
+        }
+    }
+
+    public function html($type = null)
+    {
+
+        $vars = [
+            'baseDir' => $this->baseDir,
+            'dataSource' => $this->dataSource,
+            'columnOptions' => $this->columnOptions(),
+
+        ];
+
+        if ($type !== 'blank') {
+            $vars = array_merge($vars, [
+                'showColumns' => $this->mutateShowColumns($this->showColumns()),
+                'aliasColumns' => $this->mutateAliasColumns($this->aliasColumns()),
+                'total' => $this->total(),
+                'result' => $this->mutateResult($this->result()),
+            ]);
+        }
+
+        $path = $this->resultViewPath();
+        if ($type == 'print') {
+            $path = $this->resultPrintPath();
+        }
+
+        return view($path)->with($vars);
+    }
+
+    /**
      * This function gives and option to modify $showColumns array for output.
-     * $showColumns array has the initial column names from the SQL query results.
+     * $showColumns array has the initial column names from the SQL query result.
      * These columns are finally printed in report out put.
      *
      * @param $showColumns
@@ -189,45 +237,7 @@ class ReportBuilder extends MainframeBaseController
      */
     public function showColumnsCsv()
     {
-        return $this->cleanCsv(request('show_columns_csv') ?? null);
-    }
-
-    /**
-     * cleans a string and returns as csv
-     *
-     * @param $csv
-     * @return string
-     */
-    protected function cleanCsv($csv)
-    {
-        if ($csv == null) {
-            return null;
-        }
-
-        // $clearChars = array("\n", " ", "\r");
-        $clearChars = ["\n", "\r"];
-
-        return str_replace($clearChars, '', trim($csv, ', '));
-    }
-
-    /**
-     * Remove empty values and arrays values from an array.
-     *
-     * @param  array  $array
-     * @return array
-     */
-    protected function cleanArray($array = [])
-    {
-        $temp = [];
-        if (is_array($array) && count($array)) {                    // handle if input is an array1
-            foreach ($array as $a) {
-                if (! is_array($a) && strlen(trim($a))) {
-                    $temp[] = $a;
-                }
-            }
-        }
-
-        return $temp;
+        return $this->cleanCsv(request('columns_csv'));
     }
 
     /**
@@ -280,7 +290,7 @@ class ReportBuilder extends MainframeBaseController
      */
     public function aliasColumnsCsv()
     {
-        return $this->cleanCsv(request('alias_columns_csv') ?? null);
+        return $this->cleanCsv(request('alias_columns_csv'));
     }
 
     public function fillAliasColumns($keys)
@@ -298,53 +308,61 @@ class ReportBuilder extends MainframeBaseController
     }
 
     /**
-     * Function changes results, show_column, aliasColumns for the final output
+     * Function changes result, show_column, aliasColumns for the final output
      *
-     * @param $results
+     * @param $result
      * @return mixed
      */
-    public function mutateResults($results)
+    public function mutateResult($result)
     {
-        // foreach ($results as $row) {
+        // foreach ($result as $row) {
         //     $row->new = randomString();
         // }
-        return $results;
+        return $result;
     }
 
     /**
      * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator|\Illuminate\Support\Collection
      */
-    public function results()
+    public function result()
     {
-        $query = $this->queryResults();
+        // return Cache::remember(md5($this->resultQuery()->toSql()), $this->cache, function () {
+        // });
 
-        if (in_array($this->output(), ['excel', 'print'])) {
-            return $query->get();
-        }
+        return $this->resultQuery()->paginate($this->rowsPerPage());
 
-        if ($this->rowsPerPage()) {
-            return $query->paginate($this->rowsPerPage());
-        }
-
-        return $query->get();
-    }
-
-    public function json()
-    {
-        return $this->results();
     }
 
     /**
+     * Check if the response expects full data
+     *
+     * @return bool
+     */
+    public function requestFullData()
+    {
+        if (in_array($this->output(), ['excel', 'print'])) {
+            return true;
+        }
+        if (request('force_all_data') == 'true') {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * Build query to get the data.
+     *
      * @return \Illuminate\Database\Query\Builder
      */
-    public function queryResults()
+    public function resultQuery()
     {
         /** @var Builder $query */
         $query = $this->selectDataSource();
         if (count($this->selectColumns())) {
             $query = $query->select($this->selectColumns());
         }
-        $query = $this->filters($query);
+        $query = $this->filter($query);
         $query = $this->groupBy($query);
         $query = $this->orderBy($query);
 
@@ -352,22 +370,16 @@ class ReportBuilder extends MainframeBaseController
     }
 
     /**
-     * Query select table
+     * Query to initially select table or a model.
      *
-     * @return \Illuminate\Database\Query\Builder||\Illuminate\Database\Eloquent\Builder
+     * @return \Illuminate\Database\Query\Builder|string|\Illuminate\Database\Eloquent\Model
      */
     public function selectDataSource()
     {
-        return DB::table($this->dataSource());
-    }
+        if (is_string($this->dataSource)) {
+            return DB::table($this->dataSource);
+        }
 
-    /**
-     * Generate the data source name that can be used in query string.
-     *
-     * @return string
-     */
-    public function dataSource()
-    {
         return $this->dataSource;
     }
 
@@ -378,33 +390,19 @@ class ReportBuilder extends MainframeBaseController
      */
     public function selectColumns()
     {
-        if (strlen($this->selectColumnsCsv())) {
-            $keys = $this->cleanArray(explode(',', $this->selectColumnsCsv()));
-        } else {
-            if (count($this->showColumns())) {
-                $keys = $this->showColumns();
-                $keys = $this->addAlwaysSelectColumns($keys);
-                $keys = $this->removeGhostShowColumns($keys);
-                //dd($keys);
 
-            } else {
-                $keys = $this->dataSourceColumns();
-            }
+        if (count($this->showColumns())) {
+            $keys = $this->showColumns();
+            $keys = $this->addAlwaysSelectColumns($keys);
+            $keys = $this->removeGhostShowColumns($keys);
+
+        } else {
+            $keys = $this->dataSourceColumns();
         }
 
         $keys = $this->addGroupBySelect($keys);
 
         return $keys;
-    }
-
-    /**
-     * Get the direct user input CSV
-     *
-     * @return string|null
-     */
-    public function selectColumnsCsv()
-    {
-        return $this->cleanCsv(request('select_columns_csv'));
     }
 
     /**
@@ -416,10 +414,8 @@ class ReportBuilder extends MainframeBaseController
     public function addAlwaysSelectColumns($keys = [])
     {
         foreach ($this->alwaysSelectColumns() as $col) {
-            if (! in_array($col, $keys)) {
-                if (in_array($col, $this->dataSourceColumns)) {
-                    $keys[] = $col;
-                }
+            if (! in_array($col, $keys) && in_array($col, $this->dataSourceColumns())) {
+                $keys[] = $col;
             }
         }
 
@@ -460,7 +456,7 @@ class ReportBuilder extends MainframeBaseController
      * @param $query   \Illuminate\Database\Query\Builder
      * @return mixed
      */
-    public function filters($query)
+    public function filter($query)
     {
         /** @var array $escape_fields */
         $escape_fields = $this->defaultFilterEscapeFields(); // Default filter logic will not apply on these
@@ -737,7 +733,7 @@ class ReportBuilder extends MainframeBaseController
      */
     public function groupByFields()
     {
-        return $this->csvToArray(request('group_by') ?? null);
+        return $this->csvToArray(request('group_by'));
     }
 
     /**
@@ -763,7 +759,12 @@ class ReportBuilder extends MainframeBaseController
      */
     public function output()
     {
-        return request('ret') ?? null;
+
+        if ($this->response()->expectsJson()) {
+            return 'json';
+        }
+
+        return request('ret');
     }
 
     /**
@@ -774,11 +775,11 @@ class ReportBuilder extends MainframeBaseController
     public function rowsPerPage()
     {
         // For groupBy query show all in one page
-        if ($this->groupByFields()) {
+        if ($this->groupByFields() || $this->requestFullData()) {
             return $this->total();
         }
 
-        return request('rows_per_page') ?? null;
+        return request('rows_per_page') ?: 20;
     }
 
     /**
@@ -788,13 +789,13 @@ class ReportBuilder extends MainframeBaseController
      */
     public function total()
     {
-        return $this->queryTotal()->count();
+        return $this->totalQuery()->count();
     }
 
-    public function queryTotal()
+    public function totalQuery()
     {
         $query = $this->selectDataSource();
-        $query = $this->filters($query);
+        $query = $this->filter($query);
 
         return $query;
     }
@@ -802,12 +803,12 @@ class ReportBuilder extends MainframeBaseController
     /**
      * @param $showColumns
      * @param $aliasColumns
-     * @param $results
+     * @param $result
      * @param  bool  $csv
      * @throws \PhpOffice\PhpSpreadsheet\Exception
      * @throws \PhpOffice\PhpSpreadsheet\Writer\Exception
      */
-    public function dumpExcel($showColumns, $aliasColumns, $results, $csv = false)
+    public function dumpExcel($showColumns, $aliasColumns, $result, $csv = false)
     {
         // Debugbar::disable();
 
@@ -826,9 +827,8 @@ class ReportBuilder extends MainframeBaseController
         }
 
         // Starting from A2
-
         $j = 2;
-        foreach ($results as $row) {
+        foreach ($result as $row) {
             $k = 0;
             foreach ($showColumns as $column) {
                 $sheet->setCellValue($ranges[$k++].$j, $row->$column);
@@ -882,11 +882,11 @@ class ReportBuilder extends MainframeBaseController
      *
      * @return string
      */
-    public function resultsPrintPath()
+    public function resultPrintPath()
     {
-        $print_path = $this->baseDir.'.results-print';
+        $print_path = $this->baseDir.'.result-print';
         if (! View::exists($print_path)) {
-            $print_path = $this->defaultBaseDir.'.results-print';
+            $print_path = 'modules.base.report.result-print';
         }
 
         return $print_path;
@@ -897,9 +897,9 @@ class ReportBuilder extends MainframeBaseController
      *
      * @return string
      */
-    public function resultsViewPath()
+    public function resultViewPath()
     {
-        return $this->baseDir.'.results';
+        return $this->baseDir.'.result';
     }
 
     /**
@@ -918,24 +918,13 @@ class ReportBuilder extends MainframeBaseController
     }
 
     /**
-     * Run the query to get the results.
-     * Run results and store the values.
+     * Run the query to get the result.
+     * Run result and store the values.
      */
     public function run()
     {
         $this->total = $this->total();
-        $this->results = $this->results();
-    }
-
-    /**
-     * Check if a column exist in data source
-     *
-     * @param $column
-     * @return bool
-     */
-    protected function columnIsInDataSource($column)
-    {
-        return in_array($column, $this->dataSourceColumns);
+        $this->result = $this->result();
     }
 
     /**
@@ -997,4 +986,43 @@ class ReportBuilder extends MainframeBaseController
         return ['Total'];
         //$merge[] = 'sum';
     }
+
+    /**
+     * cleans a string and returns as csv
+     *
+     * @param $csv
+     * @return string
+     */
+    protected function cleanCsv($csv)
+    {
+        if ($csv == null) {
+            return null;
+        }
+
+        // $clearChars = array("\n", " ", "\r");
+        $clearChars = ["\n", "\r"];
+
+        return str_replace($clearChars, '', trim($csv, ', '));
+    }
+
+    /**
+     * Remove empty values and arrays values from an array.
+     *
+     * @param  array  $array
+     * @return array
+     */
+    protected function cleanArray($array = [])
+    {
+        $temp = [];
+        if (is_array($array) && count($array)) {                    // handle if input is an array1
+            foreach ($array as $a) {
+                if (! is_array($a) && strlen(trim($a))) {
+                    $temp[] = $a;
+                }
+            }
+        }
+
+        return $temp;
+    }
+
 }

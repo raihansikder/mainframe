@@ -25,9 +25,11 @@ trait ListTrait
     public function list()
     {
 
-        $items = (new ModuleList($this->module))->json();
+        $result = (new ModuleList($this->module))->result()->toArray();
+        $result['items'] = $result['data'];
+        unset($result['data']);
 
-        return $this->response()->success()->load(['items'=>$items])->json();
+        return $this->response()->success()->load($result)->json();
 
     }
 

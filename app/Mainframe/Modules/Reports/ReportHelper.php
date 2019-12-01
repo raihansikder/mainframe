@@ -24,7 +24,7 @@ trait ReportHelper
             $module = Module::remember(cacheTime('long'))->find($module_id);
             $report_url = route($module->name.'.report')."?submit=Run&"
                 ."select_columns_csv=id%2Cname%2Ccreated_by%2Ccreated_at%2Cupdated_by%2Cupdated_at%2Cis_active"
-                ."&show_columns_csv=id%2Cname%2Ccreated_by%2Ccreated_at%2Cupdated_by%2Cupdated_at%2Cis_active"
+                ."&columns_csv=id%2Cname%2Ccreated_by%2Ccreated_at%2Cupdated_by%2Cupdated_at%2Cis_active"
                 ."&alias_columns_csv=Id%2CName%2CCreated+by%2CCreated+at%2CUpdated+by%2CUpdated+at%2CActive%3F"
                 ."&rows_per_page=25";
         }
