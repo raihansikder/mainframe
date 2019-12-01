@@ -5,18 +5,30 @@ namespace App\Mainframe\Features\Report\Traits;
 use Str;
 use Cache;
 use Schema;
+use App\Mainframe\Features\Helpers\Convert;
 
 /** @mixin \App\Mainframe\Features\Report\ReportBuilder $this */
 trait Columns
 {
+    /*
+    |--------------------------------------------------------------------------
+    | Columns options
+    |--------------------------------------------------------------------------
+    |
+    | In the front-end you can select from these options.
+    |
+    */
     /**
-     * Show this in a selection option in the front-end
+     * Show this in a selection option in the front-end. Apart from the actual
+     * columns in the data source(table, view) you can also put some new
+     * columns (ghost columns) om the list and based on the selection
+     * by user you can show desired values for those ghost columns.
      *
      * @return array
      */
     public function columnOptions()
     {
-        return array_merge($this->dataSourceColumns(), $this->ghostSelectColumns());
+        return array_merge($this->dataSourceColumns(), $this->ghostColumnOptions());
     }
 
     /**
@@ -26,13 +38,13 @@ trait Columns
      *
      * @return array
      */
-    public function ghostSelectColumns()
+    public function ghostColumnOptions()
     {
         return [];
     }
 
     /**
-     * Get the data source field|columns names
+     * Get the data source field|columns names from SQL table/view
      *
      * @return mixed|null
      */
@@ -49,69 +61,59 @@ trait Columns
         return [];
     }
 
+
+    /*
+    |--------------------------------------------------------------------------
+    | Selected columns
+    |--------------------------------------------------------------------------
+    |
+    | Selected columns from the front-end. Also inject some automatic selection.
+    |
+    */
+
     /**
-     * Returns an array of columns selected from the form input.If none
-     * selected then by default all the columns are selected.
+     * User selected columns
      *
      * @return array
      */
     public function selectedColumns()
     {
 
-        if (strlen($this->selectedColumnsCsv())) {
-            return $this->cleanArray(explode(',', $this->selectedColumnsCsv()));
+        if (request('columns_csv')) {
+            return Convert::csvToArray(request('columns_csv'));
         }
 
         return $this->dataSourceColumns();
     }
 
     /**
-     * Convert input csv to array
+     * Alter the selected columns for output. i.e.printing in the view blade.
+     * These columns are finally shown in the html/output. Note when you
+     * use 'group by' usually there is a default 'total' field that
+     * needs to be shown in addition to all the selected columns.
+     * This is also added by this array mutator.
      *
-     * @return mixed
-     */
-    public function selectedColumnsCsv()
-    {
-        return $this->cleanCsv(request('columns_csv'));
-    }
-
-    /**
-     * This function gives an option to modify $selectedColumns array for output.
-     * $selectedColumns array has the initial column names from the SQL query result.
-     * These columns are finally printed in report out put.
-     *
-     * @param $selectedColumns
      * @return array
      */
     public function mutateSelectedColumns()
     {
-        $selectedColumns = $this->selectedColumns();
-        $merge = [];
 
         if ($this->groupByFields()) {
-            $merge = array_merge($merge, $this->additionalSelectedColumnsDueToGroupBy());
+            return array_merge($this->selectedColumns(), $this->additionalSelectedColumnsDueToGroupBy());
         }
 
-        return array_merge($selectedColumns, $merge);
+        return $this->selectedColumns();
     }
 
-    /**
-     * Change alias column array for output
-     *
-     * @param $aliasColumns
-     * @return array
-     */
-    public function mutateAliasColumns()
-    {
-        $aliasColumns = $this->aliasColumns();
-        $merge = [];
-
-        if ($this->groupByFields()) {
-            $merge = array_merge($merge, $this->additionalAliasColumnsDueToGroupBy());
-        }
-
-        return array_merge($aliasColumns, $merge);
-    }
+    /*
+    |--------------------------------------------------------------------------
+    | Alias columns
+    |--------------------------------------------------------------------------
+    |
+    | These columns have one-to-one map with selected columns. Aliases are used
+    | for using readable headers for raw table column names.
+    |
+    */
 
     /**
      * This function returns an array of Titles/Column aliases that are mapped with
@@ -122,16 +124,20 @@ trait Columns
      */
     public function aliasColumns()
     {
-        if (strlen($this->aliasColumnsCsv())) {
-            $keys = $this->cleanArray(explode(',', $this->aliasColumnsCsv()));
-        } else {
+        // Use input value if available
+        if (request('alias_columns_csv')) {
+            $keys = Convert::csvToArray(request('alias_columns_csv'));
+        } else { // Else, copy all the selected column values for alias.
             $keys = $this->selectedColumns();
         }
 
+        // If number of alias is less than selected columns then fill the rest
+        // from the selected columns.
         if (count($keys) <= count($this->selectedColumns())) {
             $keys = $this->fillAliasColumns($keys);
         }
 
+        // If alias count is more than selection then trim
         if (count($keys) > count($this->selectedColumns())) {
             $keys = array_slice($keys, count($this->selectedColumns()));
         }
@@ -140,15 +146,27 @@ trait Columns
     }
 
     /**
-     * Get column as csv and clean
+     * Change alias column array for output
      *
-     * @return mixed
+     * @return array
      */
-    public function aliasColumnsCsv()
+    public function mutateAliasColumns()
     {
-        return $this->cleanCsv(request('alias_columns_csv'));
+
+        if ($this->groupByFields()) {
+            return array_merge($this->aliasColumns(), $this->additionalAliasColumnsDueToGroupBy());
+        }
+
+        return $this->aliasColumns();
     }
 
+    /**
+     * Fill the missing alias based on selected columns. Try to make the alias as
+     * much human readable as possible.
+     *
+     * @param $keys
+     * @return array
+     */
     public function fillAliasColumns($keys)
     {
         $sliced = array_slice($this->selectedColumns(), count($keys));

@@ -48,15 +48,25 @@ class ReportBuilder extends MainframeBaseController
     /** @var int Cache time */
     public $cache;
 
-    /** @var array */
-    public $columnOptions;
-
+    /*
+    |--------------------------------------------------------------------------
+    | Query for getting report result
+    |--------------------------------------------------------------------------
+    |
+    | How long the report result is cached
+    |
+    */
     /** @var  Builder */
     public $query;
 
-    /** @var  integer total count */
-    public $total;
-
+    /*
+    |--------------------------------------------------------------------------
+    | results
+    |--------------------------------------------------------------------------
+    |
+    | How long the report result is cached
+    |
+    */
     /** @var  \Illuminate\Support\Collection Report result */
     public $result;
 
@@ -74,9 +84,6 @@ class ReportBuilder extends MainframeBaseController
         $this->dataSource = $dataSource;
         $this->baseDir = $baseDir ?: 'mainframe.layouts.report';
         $this->cache = $cache ?: 1000;
-        $this->columnOptions = $this->columnOptions();
     }
-
-
 
 }

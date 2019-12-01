@@ -3,6 +3,8 @@
 namespace App\Mainframe\Features\Report\Traits;
 
 use Illuminate\Support\Str;
+use App\Mainframe\Features\Helpers\Convert;
+use App\Mainframe\Features\Helpers\Sanitize;
 
 /** @mixin \App\Mainframe\Features\Report\ReportBuilder $this */
 trait Filterable
@@ -77,48 +79,131 @@ trait Filterable
     {
         // The input field name matches a data source field name.
         if ($this->fieldExists($field)) {
-            // Input is array
-            if ($this->paramIsArray($val)) {
-                if ($this->possibleJson($field)) { // Data stored in table is possibly json
-                    // $query = $query->whereJsonContains($field, $val); // Does't work for older maria db
-                } else { // Not json. A single value.
-                    $query = $query->whereIn($field, $this->cleanArray($val));
-                }
-            } else {
-                if ($this->paramIsCsv($val)) { // Input is CSV
-
-                    $query = $query->whereIn($field, $this->csvToArray($val));
-                } else {
-                    if ($this->paramIsString($val) && strlen(trim($val))) { // Input is string
-
-                        if ($val == 'null') {
-                            $query = $query->whereNull($field);
-                        } else {
-                            if ($this->columnIsFullText($field)) { // Substring search. Good for name, email etc.
-                                $query = $query->where($field, 'LIKE', '%'.trim($val).'%');
-                            } else { // Exact string match
-                                $query = $query->where($field, trim($val));
-                            }
-                        }
-                    }
-                }
-            }
+            return $this->queryForExitingFields($query, $field, $val);
         }
 
         /**
          * If there is some field like created_at_from, end_date_from then
          * the builder smartly handles it to create a date range query.
          */
-        if (($this->isFromRange($field) || $this->isToRange($field)) && strlen($val)) {
-            $actual_column = $this->getActualDateField($field);
+        if ($this->isFromRange($field)) {
+            return $this->queryForFromRange($query, $field, $val);
+        }
 
-            if ($this->isFromRange($field)) {
-                $query = $query->where($actual_column, '>=', trim($val));
-            } else {
-                if ($this->isToRange($field)) {
-                    $query = $query->where($actual_column, '<=', trim($val));
-                }
-            }
+        if ($this->isToRange($field)) {
+            return $this->queryForToRange($query, $field, $val);
+        }
+
+        return $query;
+    }
+
+    /**
+     * Query for fields that exists in the data-source
+     *
+     * @param $query \Illuminate\Database\Query\Builder
+     * @param $field
+     * @param $val
+     * @return mixed
+     */
+    public function queryForExitingFields($query, $field, $val)
+    {
+        // Input is array
+        if ($this->paramIsArray($val)) {
+            return $this->queryForArrayParam($query, $field, $val);
+        }
+
+        if ($this->paramIsCsv($val)) { // Input is CSV
+            return $this->queryForCsvParam($query, $field, $val);
+        }
+
+        if ($this->paramIsString($val) && strlen(trim($val))) { // Input is string
+            return $this->queryForStringParam($query, $field, $val);
+        }
+
+        return $query;
+    }
+
+    /**
+     * Default query builder from input.
+     *
+     * @param $query \Illuminate\Database\Query\Builder
+     * @param $field
+     * @param $val
+     * @return mixed
+     */
+    public function queryForArrayParam($query, $field, $val)
+    {
+        if ($this->possibleJsonField($field)) { // Data stored in table is possibly json
+            // return $query->whereJsonContains($field, $val); // Does't work for older maria db
+        }
+
+        return $query->whereIn($field, Sanitize::array($val));
+    }
+
+    /**
+     * Default query builder from input.
+     *
+     * @param $query \Illuminate\Database\Query\Builder
+     * @param $field
+     * @param $val
+     * @return mixed
+     */
+    public function queryForCsvParam($query, $field, $val)
+    {
+        return $query->whereIn($field, Convert::csvToArray($val));
+    }
+
+    /**
+     * Default query builder from input.
+     *
+     * @param $query \Illuminate\Database\Query\Builder
+     * @param $field
+     * @param $val
+     * @return mixed
+     */
+    public function queryForStringParam($query, $field, $val)
+    {
+
+        if ($val == 'null') {
+            return $query->whereNull($field);
+        }
+
+        if ($this->columnIsFullText($field)) { // Substring search. Good for name, email etc.
+            return $query->where($field, 'LIKE', '%'.$val.'%');
+        }
+
+        return $query->where($field, $val);
+    }
+
+    /**
+     * Default query builder from input.
+     *
+     * @param $query \Illuminate\Database\Query\Builder
+     * @param $field
+     * @param $val
+     * @return mixed
+     */
+    public function queryForFromRange($query, $field, $val)
+    {
+        if ($this->isFromRange($field) && strlen($val)) {
+            return $query->where($this->getActualDateField($field), '>=', $val);
+        }
+
+        return $query;
+    }
+
+    /**
+     * Default query builder from input.
+     *
+     * @param $query \Illuminate\Database\Query\Builder
+     * @param $field
+     * @param $val
+     * @return mixed
+     */
+    public function queryForToRange($query, $field, $val)
+    {
+        if ($this->isToRange($field) && strlen($val)) {
+            return $query->where($this->getActualDateField($field), '<=', $val);
         }
 
         return $query;
@@ -133,13 +218,13 @@ trait Filterable
     public function paramIsArray($input)
     {
         if (is_array($input) && count($input)) {
-            return count($this->cleanArray($input));
+            return count(Sanitize::array($input));
         }
 
         return false;
     }
 
-    public function possibleJson($field)
+    public function possibleJsonField($field)
     {
         if (Str::contains($field, ['_ids', '_json'])) {
             return true;
@@ -168,19 +253,13 @@ trait Filterable
     public function paramIsCsv($input)
     {
         if (strlen($input) && strpos($input, ',') !== false) {
-            return strlen($this->cleanCsv($input));
+            return strlen(Sanitize::csv($input));
         }
 
         return false;
     }
 
-    /**
-     * Convert CSV to array.
-     */
-    public function csvToArray($csv)
-    {
-        return $this->cleanArray(explode(',', $this->cleanCsv($csv)));
-    }
+
 
     /**
      * Check if param is string.
@@ -283,53 +362,4 @@ trait Filterable
     }
 
 
-    /**
-     * cleans a string and returns as csv
-     *
-     * @param $csv
-     * @return string
-     */
-    protected function cleanCsv($csv)
-    {
-        if ($csv == null) {
-            return null;
-        }
-
-        // $clearChars = array("\n", " ", "\r");
-        $clearChars = ["\n", "\r"];
-
-        return str_replace($clearChars, '', trim($csv, ', '));
-    }
-
-    /**
-     * Remove empty values and arrays values from an array.
-     *
-     * @param  array  $array
-     * @return array
-     */
-    protected function cleanArray($array = [])
-    {
-        $temp = [];
-        if (is_array($array) && count($array)) {                    // handle if input is an array1
-            foreach ($array as $a) {
-                if (! is_array($a) && strlen(trim($a))) {
-                    $temp[] = $a;
-                }
-            }
-        }
-
-        return $temp;
-    }
-
-    /**
-     * removes new line tabs etc( '\n','\t') from a string
-     * remove-extra-spaces-tabs-and-line-feeds-from-a-sentence-and-substitute
-     *
-     * @param $str
-     * @return mixed
-     */
-    protected function cleanString($str)
-    {
-        return preg_replace('/\s+/S', ' ', $str);
-    }
 }

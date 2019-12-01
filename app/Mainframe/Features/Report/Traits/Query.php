@@ -4,6 +4,7 @@ namespace App\Mainframe\Features\Report\Traits;
 
 use DB;
 use Illuminate\Database\Query\Builder;
+use App\Mainframe\Features\Helpers\Convert;
 
 /** @mixin \App\Mainframe\Features\Report\ReportBuilder $this */
 trait Query
@@ -83,7 +84,7 @@ trait Query
     {
         $temp = [];
         foreach ($keys as $key) {
-            if (! in_array($key, $this->ghostSelectColumns())) {
+            if (! in_array($key, $this->ghostColumnOptions())) {
                 $temp[] = $key;
             }
         }
@@ -112,7 +113,7 @@ trait Query
      */
     public function groupByFields()
     {
-        return $this->csvToArray(request('group_by'));
+        return Convert::csvToArray(request('group_by'));
     }
 
     /**
