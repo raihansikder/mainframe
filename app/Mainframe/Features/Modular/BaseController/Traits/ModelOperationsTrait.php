@@ -29,11 +29,11 @@ trait ModelOperationsTrait
      *
      * @return mixed|\App\Mainframe\Features\Modular\Validator\ModelProcessor
      */
-    public function modelValidator()
+    public function processor()
     {
-        $this->modelValidator = $this->fill()->processor();
+        $this->processor = $this->fill()->processor();
 
-        return $this->modelValidator;
+        return $this->processor;
     }
 
     /**
@@ -43,9 +43,9 @@ trait ModelOperationsTrait
      */
     public function attemptStore()
     {
-        $modelValidator = $this->modelValidator()->create();
+        $modelValidator = $this->processor()->create();
 
-        if ($modelValidator->failed()) {
+        if ($modelValidator->invalid()) {
             $this->response->validator = $modelValidator->validator;
 
             return $this->response->fail('Validation failed', 200);
@@ -67,9 +67,9 @@ trait ModelOperationsTrait
      */
     public function attemptUpdate()
     {
-        $modelValidator = $this->modelValidator()->update();
+        $modelValidator = $this->processor()->update();
 
-        if ($modelValidator->failed()) {
+        if ($modelValidator->invalid()) {
             $this->response->validator = $modelValidator->validator;
 
             return $this->response->fail('Validation failed', 200);
@@ -92,9 +92,9 @@ trait ModelOperationsTrait
      */
     public function attemptDestroy()
     {
-        $modelValidator = $this->modelValidator();
+        $modelValidator = $this->processor();
 
-        if ($modelValidator->delete()->failed()) {
+        if ($modelValidator->delete()->invalid()) {
             return $this->response->fail('Validation failed', 200);
         }
 

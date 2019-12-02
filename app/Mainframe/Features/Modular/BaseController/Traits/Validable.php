@@ -22,7 +22,9 @@ trait Validable
             return $this->validator;
         }
 
-        return Validator::make([], []);
+        $this->validator = Validator::make([], []);
+
+        return $this->validator;
     }
 
     /**
@@ -58,7 +60,7 @@ trait Validable
      *
      * @return bool
      */
-    public function failed()
+    public function invalid()
     {
         return $this->validator()->messages()->count();
         // return $this->valid ? false : true;
@@ -69,9 +71,9 @@ trait Validable
      *
      * @return bool
      */
-    public function passed()
+    public function valid()
     {
-        return ! $this->failed();
+        return ! $this->invalid();
     }
 
 }

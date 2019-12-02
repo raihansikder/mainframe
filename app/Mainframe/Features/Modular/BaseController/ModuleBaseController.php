@@ -40,7 +40,7 @@ class ModuleBaseController extends BaseController
     public $element;
 
     /** @var \App\Mainframe\Features\Modular\Validator\ModelProcessor */
-    public $modelValidator;
+    public $processor;
 
     /**
      * @param  null  $moduleName
