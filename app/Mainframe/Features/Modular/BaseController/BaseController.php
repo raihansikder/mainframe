@@ -36,12 +36,6 @@ class BaseController extends Controller
         $this->response = resolve(Response::class);
     }
 
-    /**
-     * @return mixed|Response
-     */
-    public function response()
-    {
-        return $this->response;
-    }
+
 
 }

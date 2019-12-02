@@ -77,7 +77,7 @@ trait Output
         $result['items'] = $result['data'];
         unset($result['data']);
 
-        return $this->response()->success('Request Processed')
+        return $this->response->success('Request Processed')
             ->load($result)->json();
     }
 
@@ -126,7 +126,7 @@ trait Output
             $path = $this->resultPrintPath();
         }
 
-        return $this->response()->view($path)->with($vars);
+        return $this->response->view($path)->with($vars);
     }
 
     /**
@@ -214,7 +214,7 @@ trait Output
     public function output()
     {
 
-        if ($this->response()->expectsJson()) {
+        if ($this->response->expectsJson()) {
             return 'json';
         }
 
