@@ -44,20 +44,4 @@ class BaseController extends Controller
         return $this->response;
     }
 
-    /**
-     * Determine validator
-     *
-     * @return \Illuminate\Validation\Validator
-     */
-    public function validator()
-    {
-        if ($this->validator) {
-            return $this->validator;
-        }
-
-        $this->validator = \Validator::make([], []);
-
-        return $this->validator;
-    }
-
 }

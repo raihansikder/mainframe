@@ -222,11 +222,10 @@ class Response
      */
     public function redirect($to = null)
     {
-
         $redirect = $to ? Redirect::to($to) : Redirect::back();
 
         if ($this->isFail()) {
-            $redirect = $redirect->withErrors($this->validator)->withInput();
+            $redirect->withErrors($this->validator)->withInput();
         }
 
         return $redirect->with($this->defaultViewVars());
