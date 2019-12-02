@@ -63,7 +63,7 @@ trait Output
      */
     public function resultViewPath()
     {
-        return $this->baseDir.'.result';
+        return $this->path.'.result';
     }
 
     /**
@@ -73,7 +73,7 @@ trait Output
      */
     public function resultPrintPath()
     {
-        $path = $this->baseDir.'.result-print';
+        $path = $this->path.'.result-print';
 
         if (! View::exists($path)) {
             $path = 'mainframe.layouts.report.result-print';
@@ -119,7 +119,7 @@ trait Output
     public function html($type = null)
     {
         $vars = [
-            'baseDir' => $this->baseDir,
+            'path' => $this->path,
             'dataSource' => $this->dataSource,
             'columnOptions' => $this->columnOptions(),
 
@@ -260,6 +260,7 @@ trait Output
         }
 
         $this->validator = Validator::make([], []);
+
         // $this->addError('test', 'some');
 
         return $this->validator;

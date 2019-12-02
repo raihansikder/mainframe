@@ -14,7 +14,7 @@
             <li><a href="#tab_basic" data-toggle="tab">Filters</a></li>
             <li><a href="#tab_advanced" data-toggle="tab">Fields</a></li>
             <li class="pull-right">
-                @include($baseDir.'.includes.cta')
+                @include($path.'.includes.cta')
             </li>
         </ul>
         <div class="tab-content">
@@ -28,7 +28,7 @@
                 @include('mainframe.form.input.text',['var'=>['name'=>'created_at_till','label'=>'Created(till)', 'container_class'=>'col-md-3','params'=>['class'=>'datepicker'] ]])
             </div>
             <div class="tab-pane" id="tab_advanced">
-                @include($baseDir.'.includes.advanced')
+                @include($path.'.includes.advanced')
             </div>
         </div>
         <div class="clearfix"></div>

@@ -36,7 +36,7 @@ class ReportBuilder extends BaseController
     |
     */
     /** @var  string Directory location of the report blade templates */
-    public $baseDir;
+    public $path;
 
     /*
     |--------------------------------------------------------------------------
@@ -75,15 +75,15 @@ class ReportBuilder extends BaseController
      * ReportBuilder constructor.
      *
      * @param  string  $dataSource
-     * @param  string  $baseDir
+     * @param  string  $path
      * @param  int  $cache
      */
-    public function __construct($dataSource = null, $baseDir = null, $cache = null)
+    public function __construct($dataSource = null, $path = null, $cache = null)
     {
         parent::__construct();
 
         $this->dataSource = $dataSource;
-        $this->baseDir = $baseDir ?: 'mainframe.layouts.report';
+        $this->path = $path ?: 'mainframe.layouts.report';
         $this->cache = $cache ?: 1;
     }
 

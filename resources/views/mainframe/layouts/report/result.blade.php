@@ -4,7 +4,7 @@
  * @var $dataSource  string Table/DB view name (i.e. v_users, users)
  * @var $result      \Illuminate\Pagination\LengthAwarePaginator
  * @var $total        integer Total number of rows returned
- * @var $baseDir     string
+ * @var $path     string
  */
 ?>
 
@@ -17,10 +17,10 @@
     </style>
 @endsection
 
-@include($baseDir.'.includes.init-functions')
+@include($path.'.includes.init-functions')
 
 @section('content')
-    @include($baseDir.'.includes.filters')
+    @include($path.'.includes.filters')
 
     @if(Request::get('submit')==='Run' && isset($result))
 

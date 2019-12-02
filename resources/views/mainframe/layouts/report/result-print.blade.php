@@ -6,7 +6,7 @@
  * @var $base_dir      string
  */
 ?>
-@include($baseDir.'.includes.init-functions')
+@include($path.'.includes.init-functions')
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-US">
 <head>
     <link rel="stylesheet" href="{{ asset('assets/css/printreport.css') }}" type="text/css"/>
