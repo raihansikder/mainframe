@@ -3,7 +3,6 @@
 namespace App\Mainframe\Features\Responder;
 
 use Redirect;
-use Validator;
 
 class Response
 {
@@ -28,22 +27,6 @@ class Response
 
     /** @var \Illuminate\View\View|\Illuminate\Contracts\View\Factory */
     public $view;
-
-    /**
-     * Pick which validator to use
-     *
-     * @return \Illuminate\Contracts\Validation\Validator|\Illuminate\Validation\Validator
-     */
-    public function validator()
-    {
-        if ($this->validator) {
-            return $this->validator;
-        }
-
-        $this->validator = Validator::make([], []); // Empty validator
-
-        return $this->validator;
-    }
 
     /**
      * Checks if the response expects JSON
@@ -218,8 +201,8 @@ class Response
          * Select which validator to load
          *-------------------------------- .
          */
-        if ($this->validator()->messages()) {
-            $response['validation_errors'] = json_decode($this->validator()->messages(), true);
+        if ($this->validator && $this->validator->messages()) {
+            $response['validation_errors'] = json_decode($this->validator->messages(), true);
         }
         /*-------------------------------*/
 
@@ -237,13 +220,13 @@ class Response
      * @param  string  $to
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function redirect($to = '#')
+    public function redirect($to = null)
     {
 
         $redirect = $to ? Redirect::to($to) : Redirect::back();
 
         if ($this->isFail()) {
-            $redirect = $redirect->withErrors($this->validator())->withInput();
+            $redirect = $redirect->withErrors($this->validator)->withInput();
         }
 
         return $redirect->with($this->defaultViewVars());
@@ -258,9 +241,10 @@ class Response
      */
     public function view($path, $with = [])
     {
+
         $with = array_merge($with, $this->defaultViewVars());
 
-        return view($path)->withErrors($this->validator())->with($with);
+        return view($path)->withErrors($this->validator)->with($with);
     }
 
     /**
@@ -276,32 +260,6 @@ class Response
             'responseStatus' => $this->status,
             'responseMessage' => $this->message,
         ], $vars);
-    }
-
-    /**
-     * Invalidate with a key and error message
-     *
-     * @param  null  $key
-     * @param  null  $message
-     * @return $this
-     */
-    public function invalidate($key = null, $message = null)
-    {
-        $this->addError($key, $message);
-        $this->fail();
-
-        return $this;
-    }
-
-    /**
-     * Add an error message to a key-value pair
-     *
-     * @param  null  $key
-     * @param  null  $message
-     */
-    public function addError($key = null, $message = null)
-    {
-        $this->validator()->messages()->add($key, $message);
     }
 
 }

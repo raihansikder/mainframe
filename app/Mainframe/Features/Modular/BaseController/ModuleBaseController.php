@@ -11,7 +11,6 @@ namespace App\Mainframe\Features\Modular\BaseController;
 use View;
 use Illuminate\Http\Request;
 use App\Mainframe\Modules\Modules\Module;
-use App\Mainframe\Features\Responder\Response;
 use App\Mainframe\Features\Modular\Resolvers\GridView;
 use App\Mainframe\Features\Modular\BaseController\Traits\ListTrait;
 use App\Mainframe\Features\Modular\BaseController\Traits\Resolvable;
@@ -72,8 +71,6 @@ class ModuleBaseController extends BaseController
         if (! user()->can('viewAny', $this->model)) {
             return $this->response()->permissionDenied();
         }
-
-
 
         if ($this->response()->expectsJson()) {
             return $this->list();
@@ -211,7 +208,7 @@ class ModuleBaseController extends BaseController
             return $this->response()->load($this->element)->json();
         }
 
-        return $this->response()->redirect();
+        return $this->response()->redirect($this->redirectTo());
     }
 
     /**
@@ -250,8 +247,6 @@ class ModuleBaseController extends BaseController
     {
         return abort(403, $id.'- Restore restricted');
     }
-
-
 
     /**
      * Try to figure out where to redirect

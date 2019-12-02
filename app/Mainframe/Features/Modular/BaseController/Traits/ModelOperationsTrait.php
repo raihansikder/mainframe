@@ -68,6 +68,8 @@ trait ModelOperationsTrait
         $modelValidator = $this->modelValidator();
 
         if ($modelValidator->update()->failed()) {
+            $this->response()->validator = $modelValidator->validator;
+
             return $this->response()->fail('Validation failed', 200);
         }
 
