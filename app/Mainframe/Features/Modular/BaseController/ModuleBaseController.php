@@ -79,8 +79,7 @@ class ModuleBaseController extends BaseController
         $path = GridView::resolve($this->moduleName);
         $vars = ['gridColumns' => $this->resolveDatatableClass()->columns()];
 
-        return $this->response->view($path, $vars);
-
+        return $this->response->view($path)->with($vars);
     }
 
     /**
@@ -106,8 +105,7 @@ class ModuleBaseController extends BaseController
             'formState' => 'create',
         ];
 
-        return $this->response->view($path, $vars);
-
+        return $this->response->view($path)->with($vars);
     }
 
     /**
@@ -158,7 +156,7 @@ class ModuleBaseController extends BaseController
             'formState' => 'edit',
         ];
 
-        return $this->response->view($path, $vars);
+        return $this->response->view($path)->with($vars);
     }
 
     /**
@@ -257,7 +255,6 @@ class ModuleBaseController extends BaseController
      */
     public function redirectTo()
     {
-
         if ($this->response->isSuccess() && request('redirect_success')) {
             if ($this->element && request('redirect_success') == '#new') {
                 return route($this->module->name.".edit", $this->element->id);

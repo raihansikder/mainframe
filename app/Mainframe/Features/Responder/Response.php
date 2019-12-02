@@ -123,7 +123,6 @@ class Response
      */
     public function fail($message = null, $code = null)
     {
-
         $message = $message ?: '';
         $code = $code ?: 404;
 
@@ -222,14 +221,12 @@ class Response
      */
     public function redirect($to = null)
     {
-
         if ($to) {
             $redirect = Redirect::to($to);
         } elseif ($this->redirectTo) {
             $redirect = Redirect::to($this->redirectTo);
         } else {
             $redirect = Redirect::back();
-
         }
 
         if ($this->isFail()) {
@@ -243,16 +240,12 @@ class Response
      * Render a view files
      *
      * @param  string  $path
-     * @param  array  $with
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function view($path, $with = [])
+    public function view($path)
     {
-
-        $with = array_merge($with, $this->defaultViewVars());
-
-        $view = view($path)->with($with);
-        if ($this->validator) {
+        $view = view($path)->with($this->defaultViewVars());
+        if ($this->validator && $this->validator->errors()) {
             $view->withErrors($this->validator);
         }
 

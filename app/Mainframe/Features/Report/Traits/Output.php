@@ -16,7 +16,6 @@ trait Output
      */
     public function show()
     {
-
         if (request('submit') != 'Run') {
             return $this->html($type = 'blank');
         }
@@ -38,7 +37,6 @@ trait Output
         }
 
         return $this->html();
-
     }
 
     /**
@@ -72,7 +70,6 @@ trait Output
      */
     public function json()
     {
-
         $result = $this->mutateResult()->toArray();
         $result['items'] = $result['data'];
         unset($result['data']);
@@ -104,7 +101,6 @@ trait Output
 
     public function html($type = null)
     {
-
         $vars = [
             'baseDir' => $this->baseDir,
             'dataSource' => $this->dataSource,
@@ -213,7 +209,6 @@ trait Output
      */
     public function output()
     {
-
         if ($this->response->expectsJson()) {
             return 'json';
         }
@@ -229,7 +224,6 @@ trait Output
      */
     public function mutateResult()
     {
-
         $result = $this->result();
         // foreach ($result as $row) {
         //     $row->is_active = randomString();
