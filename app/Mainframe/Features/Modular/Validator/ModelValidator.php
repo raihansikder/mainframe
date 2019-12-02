@@ -5,13 +5,14 @@
 
 namespace App\Mainframe\Features\Modular\Validator;
 
+use Validator;
 use Illuminate\Support\MessageBag;
-use Illuminate\Support\Facades\Validator;
 
 class ModelValidator
 {
+
     /** @var bool */
-    private $valid;
+    public $valid;
 
     /** @var \App\Mainframe\Features\Modular\BaseModule\BaseModule */
     public $element;
@@ -88,7 +89,6 @@ class ModelValidator
      */
     public function validateRules()
     {
-
         $this->validator = Validator::make(
             $this->element->getAttributes(),
             $this::rules($this->element),
@@ -97,7 +97,6 @@ class ModelValidator
 
         return $this->validator;
     }
-
 
     /**
      * Get result
@@ -153,7 +152,7 @@ class ModelValidator
      */
     public function addError($key = null, $message = null)
     {
-        if($key || $message) {
+        if ($message) {
             $this->validator->messages()->add($key, $message);
         }
     }
@@ -255,6 +254,16 @@ class ModelValidator
         return $this;
     }
 
+    
+    /*
+    |--------------------------------------------------------------------------
+    | Event specific validation
+    |--------------------------------------------------------------------------
+    |
+    | Following functions are overridden in model validators to write
+    | event specific validation logic.
+    */
+
     /**
      * Saving validation.
      * Common for both create and update.
@@ -266,15 +275,6 @@ class ModelValidator
     {
         return $this;
     }
-
-    /*
-    |--------------------------------------------------------------------------
-    | Event specific validation
-    |--------------------------------------------------------------------------
-    |
-    | Following functions are overridden in model validators to write
-    | event specific validation logic.
-    */
 
     /**
      * Creating validation
