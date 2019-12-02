@@ -20,6 +20,10 @@ trait Output
             return $this->html($type = 'blank');
         }
 
+        if ($this->validator()->fails()) {
+            return $this->html($type = 'blank');
+        }
+
         if ($this->output() == 'json') {
             return $this->json();
         }
@@ -224,7 +228,6 @@ trait Output
     /**
      * Function changes result, show_column, aliasColumns for the final output
      *
-     * @param $result
      * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator|\Illuminate\Support\Collection
      */
     public function mutateResult()
@@ -235,6 +238,17 @@ trait Output
         // }
 
         return $result;
+    }
+
+    public function validator()
+    {
+        $this->validator = \Validator::make(
+            request()->all(),
+            [
+                // 'report_name' => 'required|max:255',
+            ]);
+
+        return $this->validator;
     }
 
 }

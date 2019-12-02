@@ -6,9 +6,9 @@
  * @var $base_dir      string
  */
 ?>
+@include($baseDir.'.includes.init-functions')
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-US">
 <head>
-    @include($base_dir.'.init-functions')
     <link rel="stylesheet" href="{{ asset('assets/css/printreport.css') }}" type="text/css"/>
     <meta charset="UTF-8"/>
 </head>
@@ -17,29 +17,37 @@
     <input id="printpagebutton" type="button" value="Print this page" onclick="printpage()"/>
 </div>
 @section('content')
-    @if(count($results))
-        <table class="table table-condensed" id="report-table">
-            <thead>
-            <tr>
-                @foreach ($alias_columns as $col)
-                    <th>{{$col}}</th>
-                @endforeach
-            </tr>
-            </thead>
-            <tbody>
-            @foreach ($results as $result)
-                <tr>
-                    @foreach ($show_columns as $col)
-                        <td>
-                            @if(isset($result->$col))
-                                {!! transformRow($col, $result, $result->$col, $data_source) !!}
-                            @endif
-                        </td>
+    @if(Request::get('submit')==='Run' && isset($result))
+
+        Total {{$total}} items found.
+        <div class="clearfix"></div>
+        <div class="table-responsive">
+            @if(count($result))
+                <table class="table table-condensed" id="report-table">
+                    <thead>
+                    <tr>
+                        @foreach ($aliasColumns as $col)
+                            <th>{{$col}}</th>
+                        @endforeach
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach ($result as $row)
+                        <tr>
+                            @foreach ($selectedColumns as $col)
+                                <td>
+                                    @if(isset($row->$col))
+                                        {!! transformRow($col, $row, $row->$col, $module->name ) !!}
+                                    @endif
+                                </td>
+                            @endforeach
+                        </tr>
                     @endforeach
-                </tr>
-            @endforeach
-            </tbody>
-        </table>
+                    </tbody>
+                </table>
+                {{ $result->setPath(URL::full())->links() ?? '' }}
+            @endif
+        </div>
     @endif
 @show
 </body>

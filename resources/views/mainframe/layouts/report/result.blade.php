@@ -21,7 +21,8 @@
 
 @section('content')
     @include($baseDir.'.includes.filters')
-    @if(Request::get('submit')==='Run')
+
+    @if(Request::get('submit')==='Run' && isset($result))
 
         Total {{$total}} items found.
         <div class="clearfix"></div>
