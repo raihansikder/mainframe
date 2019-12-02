@@ -39,7 +39,7 @@ class ModuleBaseController extends BaseController
     /** @var \App\Mainframe\Features\Modular\BaseModule\BaseModule */
     public $element;
 
-    /** @var \App\Mainframe\Features\Modular\Validator\ModelValidator */
+    /** @var \App\Mainframe\Features\Modular\Validator\ModelProcessor */
     public $modelValidator;
 
     /**

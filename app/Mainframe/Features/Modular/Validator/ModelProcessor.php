@@ -9,7 +9,7 @@ use Validator;
 use Illuminate\Support\MessageBag;
 use App\Mainframe\Features\Modular\BaseController\Traits\Validable;
 
-class ModelValidator
+class ModelProcessor
 {
     use Validable;
 

@@ -27,11 +27,11 @@ trait ModelOperationsTrait
     /**
      * Get the Mainframe model Validator on the filled element
      *
-     * @return mixed|\App\Mainframe\Features\Modular\Validator\ModelValidator
+     * @return mixed|\App\Mainframe\Features\Modular\Validator\ModelProcessor
      */
     public function modelValidator()
     {
-        $this->modelValidator = $this->fill()->validator();
+        $this->modelValidator = $this->fill()->processor();
 
         return $this->modelValidator;
     }

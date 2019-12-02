@@ -3,15 +3,15 @@
 namespace App\Mainframe\Features\Modular\BaseModule\Traits;
 
 /** @mixin $this BaseModule */
-trait Validable
+trait Processable
 {
     /**
-     * @return mixed|\App\Mainframe\Features\Modular\Validator\ModelValidator
+     * @return mixed|\App\Mainframe\Features\Modular\Validator\ModelProcessor
      */
-    public function validator()
+    public function processor()
     {
         /** @var \App\Mainframe\Features\Modular\BaseModule\BaseModule $this */
-        return $this->module()->validatorInstance($this);
+        return $this->module()->processorInstance($this);
     }
 
 }

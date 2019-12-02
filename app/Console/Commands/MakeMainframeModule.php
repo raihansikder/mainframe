@@ -90,7 +90,7 @@ class MakeMainframeModule extends Command
             $source_root.'SuperHeroHelper.php' => $destination_root.$this->module->modelClassName().'Helper.php',
             $source_root.'SuperHeroObserver.php' => $destination_root.$this->module->modelClassName().'Observer.php',
             $source_root.'SuperHeroPolicy.php' => $destination_root.$this->module->modelClassName().'Policy.php',
-            $source_root.'SuperHeroValidator.php' => $destination_root.$this->module->modelClassName().'Validator.php',
+            $source_root.'SuperHeroProcessor.php' => $destination_root.$this->module->modelClassName().'Processor.php',
         ];
 
         File::makeDirectory($this->module->moduleClassDir());
