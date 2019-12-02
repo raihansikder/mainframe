@@ -19,4 +19,15 @@ class Checkbox extends Input
         $this->uncheckedVal = $conf['unchecked_val'] ?? 0;
     }
 
+    public function value()
+    {
+        $value = parent::value();
+
+        if (!$value) {
+            return $this->uncheckedVal;
+        }
+
+        return $value;
+    }
+
 }

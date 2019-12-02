@@ -180,27 +180,40 @@ $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
  */
 function initCheckbox() {
 
-    // Go through each input
+    /**
+     * Go through each checkbox input field and if checkbox value is
+     * equal to checked_val mark as checked(ticket). Otherwise
+     * uncheck.the checkbox.
+     */
     $('.spyr-checkbox').each(function () {
 
         var checkbox = $(this);
+        var checked_val = checkbox.attr('data-checked-val');
+        var unchecked_val = checkbox.attr('data-unchecked-val');
+        var name = checkbox.attr('data-checkbox-name');
 
-        // alert($(this).val() + ' vs ' + checkbox.attr('data-checked-val'));
-        if ($(this).val() == checkbox.attr('data-checked-val')) {
+        if (checkbox.val() == checked_val) {
             checkbox.prop('checked', true);
+            $('input[name=' + name + ']').val(checked_val);
         } else {
             checkbox.prop('checked', false);
-            $(this).val(checkbox.attr('data-unchecked-val'));
+            checkbox.val(unchecked_val);
+            $('input[name=' + name + ']').val(unchecked_val);
         }
-
     });
 
     $('.spyr-checkbox').change(function () {
+        var checkbox = $(this);
+        var checked_val = checkbox.attr('data-checked-val');
+        var unchecked_val = checkbox.attr('data-unchecked-val');
         var name = $(this).attr('data-checkbox-name');
-        if ($(this).is(':checked')) {
-            $('input[name=' + name + ']').val($(this).attr('data-checked-val'));
+
+        if (checkbox.is(':checked')) {
+            $('input[name=' + name + ']').val(checked_val);
+            checkbox.val(checked_val);
         } else {
-            $('input[name=' + name + ']').val($(this).attr('data-unchecked-val'));
+            $('input[name=' + name + ']').val(unchecked_val);
+            checkbox.val(unchecked_val);
         }
     });
 }
