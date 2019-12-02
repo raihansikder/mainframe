@@ -256,7 +256,7 @@ class ModuleBaseController extends BaseController
     {
         $response = parent::response();
 
-        $response->modelValidator = $this->modelValidator;
+        $response->modelValidator = $this->modelValidator();
         $response->element = $this->element;
 
         return $response;

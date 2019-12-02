@@ -17,10 +17,6 @@ trait Output
     public function show()
     {
 
-        $validator = \Validator::make([], []);
-            $validator->getMessageBag()->add('name','test');
-
-
         if (request('submit') != 'Run') {
             return $this->html($type = 'blank');
         }

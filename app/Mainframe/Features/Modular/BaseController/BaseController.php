@@ -55,36 +55,9 @@ class BaseController extends Controller
             return $this->validator;
         }
 
-        $this->validator = Validator::make([], []);
+        $this->validator = \Validator::make([], []);
 
         return $this->validator;
-    }
-
-
-    /**
-     * Invalidate with a key and error message
-     *
-     * @param  null  $key
-     * @param  null  $message
-     * @return $this
-     */
-    public function invalidate($key = null, $message = null)
-    {
-        $this->addError($key, $message);
-        $this->fail();
-
-        return $this;
-    }
-
-    /**
-     * Add an error message to a key-value pair
-     *
-     * @param  null  $key
-     * @param  null  $message
-     */
-    public function addError($key = null, $message = null)
-    {
-        $this->validator()->messages()->add($key, $message);
     }
 
 }

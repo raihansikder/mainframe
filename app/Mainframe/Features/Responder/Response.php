@@ -265,7 +265,7 @@ class Response
         $redirect = $to ? Redirect::to($to) : Redirect::back();
 
         if ($this->isFail()) {
-            $redirect->withInput()->withErrors($this->validator());
+            $redirect = $redirect->withErrors($this->validator())->withInput();
         }
 
         return $redirect->with($this->defaultViewVars());
