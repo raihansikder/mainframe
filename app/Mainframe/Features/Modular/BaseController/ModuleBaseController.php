@@ -9,7 +9,6 @@
 namespace App\Mainframe\Features\Modular\BaseController;
 
 use View;
-use Redirect;
 use Illuminate\Http\Request;
 use App\Mainframe\Modules\Modules\Module;
 use App\Mainframe\Features\Responder\Response;
@@ -24,7 +23,7 @@ use App\Mainframe\Features\Modular\BaseController\Traits\ModelOperationsTrait;
 /**
  * Class ModuleBaseController
  */
-class ModuleBaseController extends MainframeBaseController
+class ModuleBaseController extends BaseController
 {
     use ModelOperationsTrait, ListTrait, ShowChangesTrait,
         ViewReportTrait, DatatableTrait, Resolvable;
@@ -76,11 +75,13 @@ class ModuleBaseController extends MainframeBaseController
 
         if ($this->response()->expectsJson()) {
             return $this->list();
-            // return $this->response()->success()->load($this->listData())->json();
         }
 
-        return view(GridView::resolve($this->moduleName))
-            ->with('gridColumns', $this->resolveDatatableClass()->columns());
+        $path = GridView::resolve($this->moduleName);
+        $vars = ['gridColumns' => $this->resolveDatatableClass()->columns()];
+
+        return $this->response()->view($path)->with($vars);
+
     }
 
     /**
@@ -97,14 +98,17 @@ class ModuleBaseController extends MainframeBaseController
             return $this->response()->permissionDenied();
         }
 
-        $uuid = request()->old('uuid') ?: uuid();
-        $formState = 'create';
-        $formConfig = $this->createFromConfig();
-        $elementIsEditable = true;
+        $path = $this->createFormView();
+        $vars = [
+            'element' => $this->element,
+            'formConfig' => $this->createFromConfig(),
+            'uuid' => request()->old('uuid') ?: uuid(),
+            'elementIsEditable' => true,
+            'formState' => 'create',
+        ];
 
-        return View::make($this->createFormView())
-            ->with('element', $this->element)
-            ->with(compact('formConfig', 'uuid', 'elementIsEditable', 'formState'));
+        return $this->response()->view($path)->with($vars);
+
     }
 
     /**
@@ -128,7 +132,7 @@ class ModuleBaseController extends MainframeBaseController
             return $this->response()->success()->load($this->element)->json();
         }
 
-        return Redirect::route($this->moduleName.".edit", $id);
+        return $this->response()->redirect(route($this->moduleName.".edit", $id));
     }
 
     /**
@@ -151,7 +155,7 @@ class ModuleBaseController extends MainframeBaseController
         $formConfig = $this->editFromConfig();
         $elementIsEditable = user()->can('update', $this->element);
 
-        return View::make($this->editFormView())
+        return view($this->editFormView())
             ->with('element', $this->element)
             ->with(compact('formConfig', 'formState', 'elementIsEditable'));
     }

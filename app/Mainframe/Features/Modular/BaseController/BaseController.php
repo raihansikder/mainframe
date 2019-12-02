@@ -15,7 +15,7 @@ use App\Mainframe\Features\Responder\Response;
 /**
  * Class MainframeBaseController
  */
-class MainframeBaseController extends Controller
+class BaseController extends Controller
 {
 
     /** @var \Illuminate\Support\MessageBag */
@@ -34,6 +34,7 @@ class MainframeBaseController extends Controller
     public function __construct()
     {
         $this->messageBag = resolve(MessageBag::class);
+        $this->response = resolve(Response::class);
     }
 
     /**
@@ -41,17 +42,23 @@ class MainframeBaseController extends Controller
      */
     public function response()
     {
-        /** @noinspection UnknownInspectionInspection */
-        /** @noinspection DuplicatedCode */
-        $response = resolve(Response::class);
-        $response->validator = $this->validator;
-        // $response->code = $response->code ?: $this->code;
-        // $response->status = $response->status ?: $this->status;
-        // $response->message = $response->message ?: $this->message;
-        // $response->payload = $response->payload ?: $this->payload;
-        // $response->redirectTo = $response->redirectTo ?: $this->redirectTo;
+        return $this->response;
+    }
 
-        return $response;
+    /**
+     * Determine validator
+     *
+     * @return \Illuminate\Validation\Validator
+     */
+    public function validator()
+    {
+        if ($this->validator) {
+            return $this->validator;
+        }
+
+        $this->validator = Validator::make([], []);
+
+        return $this->validator;
     }
 
 }

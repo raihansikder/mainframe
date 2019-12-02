@@ -88,17 +88,25 @@ class ModelValidator
      */
     public function validateRules()
     {
-        $validator = Validator::make(
+
+        if ($this->validator()->fails()) {
+            $this->invalidate();
+        }
+
+        return $this->validator();
+    }
+
+    public function validator()
+    {
+        if ($this->validator) {
+            return $this->validator;
+        }
+
+        $this->validator = Validator::make(
             $this->element->getAttributes(),
             $this::rules($this->element),
             $this::customErrorMessages()
         );
-
-        $this->validator = $validator;
-
-        if ($validator->fails()) {
-            $this->invalidate();
-        }
 
         return $this->validator;
     }
@@ -156,7 +164,7 @@ class ModelValidator
      */
     public function addError($key = null, $message = null)
     {
-        $this->validator->messages()->add($key, $message);
+        $this->validator()->messages()->add($key, $message);
     }
 
     /**

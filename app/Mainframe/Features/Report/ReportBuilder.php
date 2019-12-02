@@ -8,9 +8,9 @@ use App\Mainframe\Features\Report\Traits\Query;
 use App\Mainframe\Features\Report\Traits\Output;
 use App\Mainframe\Features\Report\Traits\Columns;
 use App\Mainframe\Features\Report\Traits\Filterable;
-use App\Mainframe\Features\Modular\BaseController\MainframeBaseController;
+use App\Mainframe\Features\Modular\BaseController\BaseController;
 
-class ReportBuilder extends MainframeBaseController
+class ReportBuilder extends BaseController
 {
 
     use Filterable, Columns, Query, Output;

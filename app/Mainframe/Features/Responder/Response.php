@@ -2,27 +2,66 @@
 
 namespace App\Mainframe\Features\Responder;
 
+use URL;
 use Redirect;
+use Validator;
 
 class Response
 {
 
     /** @var int Success/Error codes 200.400 etc */
-    public $code;
+    public $code = 200;
+
     /** @var string success|fail */
     public $status;
+
     /** @var string Single line of message */
     public $message;
+
     /** @var mixed API payload, usually it is a list of a model */
     public $payload;
+
     /** @var \App\Mainframe\Features\Modular\BaseModule\BaseModule */
     public $element;
+
     /** @var string */
     public $redirectTo;
+
     /** @var \App\Mainframe\Features\Modular\Validator\ModelValidator */
     public $modelValidator;
+
     /** @var \Illuminate\Validation\Validator */
     public $validator;
+
+    /** @var \Illuminate\View\View|\Illuminate\Contracts\View\Factory */
+    public $view;
+
+    public function __construct()
+    {
+        //$this->validator = Validator::make([], []);
+    }
+
+    /**
+     * Pick which validator to use
+     *
+     * @return \Illuminate\Contracts\Validation\Validator|\Illuminate\Validation\Validator
+     */
+    public function validator()
+    {
+        if ($this->validator) {
+            return $this->validator;
+        }
+
+        if ($this->modelValidator) { // First load modelValidator
+            $this->validator = $this->modelValidator->validator;
+
+            return $this->validator;
+        }
+
+        $this->validator = Validator::make([], []); // Empty validator
+
+        return $this->validator;
+    }
 
     /**
      * Checks if the response expects JSON
@@ -183,16 +222,14 @@ class Response
             $response['data'] = $this->payload;
         }
 
-        // Add validation error messages
-        if ($this->modelValidator) {
-            $validator = $this->modelValidator->validator;
+        /*--------------------------------
+         * Select which validator to load
+         *-------------------------------- .
+         */
+        if ($this->validator()->messages()) {
+            $response['validation_errors'] = json_decode($this->validator()->messages(), true);
         }
-        if ($this->validator) {
-            $validator = $this->validator;
-        }
-        if (isset($validator) && $validator->messages()) {
-            $response['validation_errors'] = json_decode($validator->messages(), true);
-        }
+        /*-------------------------------*/
 
         // Add redirect to
         if ($this->redirectTo()) {
@@ -217,16 +254,12 @@ class Response
         if ($this->isFail()) {
             $redirect = $redirect->withInput();
 
-            if ($validator = $this->modelValidator->validator) {
-                $redirect = $redirect->withErrors($validator);
+            if ($this->validator()->messages()) {
+                $redirect = $redirect->withErrors($this->validator);
             }
         }
 
-        return $redirect->with([
-            'status' => $this->status,
-            'message' => $this->message,
-
-        ]);
+        return $redirect->with($this->viewVars());
     }
 
     /**
@@ -241,7 +274,7 @@ class Response
         }
 
         if ($this->isSuccess() && request('redirect_success')) {
-            if ($this->element && request('redirect_success') === '#new') {
+            if ($this->element && request('redirect_success') == '#new') {
                 return route($this->element->module()->name.".edit", $this->element->id);
             }
 
@@ -252,7 +285,7 @@ class Response
             return request('redirect_fail');
         }
 
-        return null;
+        return URL::full();
     }
 
     /**
@@ -266,6 +299,79 @@ class Response
         $this->redirectTo = $redirectTo;
 
         return $this;
+    }
+
+    /**
+     * Render a view files
+     *
+     * @param  string  $path
+     * @return \App\Mainframe\Features\Responder\Response
+     */
+    public function view($path)
+    {
+        $this->view = view($path);
+
+        return $this;
+    }
+
+    /**
+     * Pass variables with view
+     *
+     * @param  array  $with
+     * @return mixed| Illuminate\View\View|\Illuminate\Contracts\View\Factory
+     */
+
+    public function with($with = [])
+    {
+        /** @var \App\Mainframe\Features\Responder\Response $view */
+
+        /** @var \Illuminate\View\View $view */
+        $view = $this->view;
+        $with = array_merge($with, $this->viewVars());
+
+        return $view->with($with)->withErrors($this->validator());
+
+    }
+
+    /**
+     * Additional values to be passed to view through view composer or redirect.
+     * In redirect the value has to be accessed via session.
+     *
+     * @param  array  $vars
+     * @return array
+     */
+    public function viewVars($vars = [])
+    {
+        return array_merge([
+            'responseStatus' => $this->status,
+            'responseMessage' => $this->message,
+        ], $vars);
+    }
+
+    /**
+     * Invalidate with a key and error message
+     *
+     * @param  null  $key
+     * @param  null  $message
+     * @return $this
+     */
+    public function invalidate($key = null, $message = null)
+    {
+        $this->addError($key, $message);
+        $this->fail();
+
+        return $this;
+    }
+
+    /**
+     * Add an error message to a key-value pair
+     *
+     * @param  null  $key
+     * @param  null  $message
+     */
+    public function addError($key = null, $message = null)
+    {
+        $this->validator()->messages()->add($key, $message);
     }
 
 }

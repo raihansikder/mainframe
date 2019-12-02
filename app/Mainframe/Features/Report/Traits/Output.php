@@ -17,6 +17,10 @@ trait Output
     public function show()
     {
 
+        $validator = \Validator::make([], []);
+            $validator->getMessageBag()->add('name','test');
+
+
         if (request('submit') != 'Run') {
             return $this->html($type = 'blank');
         }
@@ -72,7 +76,13 @@ trait Output
      */
     public function json()
     {
-        return $this->mutateResult();
+
+        $result = $this->mutateResult()->toArray();
+        $result['items'] = $result['data'];
+        unset($result['data']);
+
+        return $this->response()->success('Request Processed')
+            ->load($result)->json();
     }
 
     public function excel($csv = false)
@@ -120,11 +130,11 @@ trait Output
             $path = $this->resultPrintPath();
         }
 
-        return view($path)->with($vars);
+        return $this->response()->view($path)->with($vars);
     }
 
     /**
-     * @param $showColumns
+     * @param $selectedColumns
      * @param $aliasColumns
      * @param $result
      * @param  bool  $csv
