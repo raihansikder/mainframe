@@ -53,7 +53,22 @@ class Mf
         return Schema::hasTable('module_groups') ? ModuleGroup::list() : [];
     }
 
+    /**
+     * Create a unique signature/key for a request made
+     * Usually used for caching.
+     *
+     * @param  String  $append  Raw Query string
+     * @return string
+     */
+    public static function requestSignature($append = null)
+    {
+        $signature = \URL::full().json_encode(request()->all()).$append;
+        if (user()) {
+            $signature .= user()->uuid;
+        }
 
+        return md5($signature);
+    }
 
     /*
     |--------------------------------------------------------------------------

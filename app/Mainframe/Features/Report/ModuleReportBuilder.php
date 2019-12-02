@@ -9,7 +9,7 @@ class ModuleReportBuilder extends ReportBuilder
     public $module;
     public $model;
 
-    public function __construct(Module $module, $dataSource = null, $baseDir = null, $cache = 0)
+    public function __construct(Module $module, $dataSource = null, $baseDir = null, $cache = null)
     {
 
         $this->module = $module;

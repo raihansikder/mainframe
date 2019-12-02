@@ -225,6 +225,7 @@ class Response
         return $redirect->with([
             'status' => $this->status,
             'message' => $this->message,
+
         ]);
     }
 

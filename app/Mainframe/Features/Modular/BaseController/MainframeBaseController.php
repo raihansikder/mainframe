@@ -17,13 +17,14 @@ use App\Mainframe\Features\Responder\Response;
  */
 class MainframeBaseController extends Controller
 {
-    // public $request;
+
     /** @var \Illuminate\Support\MessageBag */
     public $messageBag;
     /**
      * @var \App\Mainframe\Features\Responder\Response
      */
     public $response;
+
     /** @var \Illuminate\Validation\Validator */
     public $validator;
 
@@ -33,8 +34,6 @@ class MainframeBaseController extends Controller
     public function __construct()
     {
         $this->messageBag = resolve(MessageBag::class);
-        // $this->request = request();
-        // $this->response = new Response();
     }
 
     /**

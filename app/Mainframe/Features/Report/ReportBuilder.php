@@ -78,13 +78,14 @@ class ReportBuilder extends MainframeBaseController
      * @param  string  $baseDir
      * @param  int  $cache
      */
-    public function __construct($dataSource = null, $baseDir = null, $cache = 0)
+    public function __construct($dataSource = null, $baseDir = null, $cache = null)
     {
         parent::__construct();
 
         $this->dataSource = $dataSource;
         $this->baseDir = $baseDir ?: 'mainframe.layouts.report';
-        $this->cache = $cache ?: 1000;
+        $this->cache = $cache ?: 1;
+
     }
 
     /**
@@ -101,18 +102,6 @@ class ReportBuilder extends MainframeBaseController
 
         // Source is a model/collection
         return $this->dataSource;
-    }
-
-    /**
-     * Columns that should be always included in the select column query.
-     * Usually this is id field. This is useful to generate a url
-     * to the linked element.
-     *
-     * @return array
-     */
-    public function defaultSelectedColumns()
-    {
-        return ['id'];
     }
 
     /**
@@ -140,6 +129,96 @@ class ReportBuilder extends MainframeBaseController
         //     $query = $query->where($field,strtok($val));
         // }
         return $query;
+    }
+
+    /**
+     * Show this in a selection option in the front-end. Apart from the actual
+     * columns in the data source(table, view) you can also put some new
+     * columns (ghost columns) om the list and based on the selection
+     * by user you can show desired values for those ghost columns.
+     *
+     * @return array
+     */
+    public function columnOptions()
+    {
+        return array_merge($this->dataSourceColumns(), $this->ghostColumnOptions());
+    }
+
+    /**
+     * Some times we need to pass column names that do not exists in the model/table.
+     * This should not be considered in query building. Rather we want this to be
+     * post processed in mutation function.
+     *
+     * @return array
+     */
+    public function ghostColumnOptions()
+    {
+        return [];
+    }
+
+    /**
+     * Columns that should be always included in the select column query.
+     * Usually this is id field. This is useful to generate a url
+     * to the linked element.
+     *
+     * @return array
+     */
+    public function defaultSelectedColumns()
+    {
+        return ['id', 'name'];
+    }
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Group by Configurations
+    |--------------------------------------------------------------------------
+    |
+    | Functions to tweak 'Group By' handling.
+    |
+    */
+    /**
+     * Adds the custom COUNT/SUM column in SQL SELECT.
+     *
+     * @param  array  $keys
+     * @return array
+     */
+    public function queryAddColumnForGroupBy($keys = [])
+    {
+        if ($this->hasGroupBy()) {
+            $keys[] = DB::raw('count(*) as total');
+        }
+
+        return $keys;
+    }
+
+    /**
+     * Due to existence of a group by clause some additional column
+     * needs to be shown. This function returns the array of those additional columns.
+     *
+     * @return array
+     */
+    public function additionalSelectedColumnsDueToGroupBy()
+    {
+        // considering COUNT(*) as total exists in the query builder. However this
+        // doesn't always have to be total. For example it can be sum if there
+        // query has SUM(*) as sum
+        return ['total'];
+        //$merge[] = 'sum';
+    }
+
+    /**
+     * Due to existence of a group by clause some additional alias columns are required
+     * this array maps with the additionalSelectedColumnsDueToGroupBy.
+     * `@return array
+     */
+    public function additionalAliasColumnsDueToGroupBy()
+    {
+        // considering COUNT(*) as total exists in the query builder. However this
+        // doesn't always have to be total. For example it can be sum if there
+        // query has SUM(*) as sum
+        return ['Total'];
+        //$merge[] = 'sum';
     }
 
 }

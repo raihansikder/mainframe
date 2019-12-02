@@ -236,7 +236,7 @@ class ModuleBaseController extends MainframeBaseController
      * Restore a soft-deleted.
      *
      * @param  null  $id
-     * @return $this
+     * @return \App\Mainframe\Features\Modular\BaseController\ModuleBaseController|void
      */
     public function restore($id = null)
     {
@@ -249,6 +249,7 @@ class ModuleBaseController extends MainframeBaseController
     public function response()
     {
         $response = parent::response();
+
         $response->modelValidator = $this->modelValidator;
         $response->element = $this->element;
 

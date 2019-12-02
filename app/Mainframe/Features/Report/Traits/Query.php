@@ -3,6 +3,9 @@
 namespace App\Mainframe\Features\Report\Traits;
 
 use DB;
+use Cache;
+use App\Mainframe\Features\Mf;
+use Illuminate\Support\MessageBag;
 use Illuminate\Database\Query\Builder;
 use App\Mainframe\Features\Helpers\Convert;
 
@@ -33,10 +36,15 @@ trait Query
      */
     public function result()
     {
-        // return Cache::remember(md5($this->resultQuery()->toSql()), $this->cache, function () {
-        // });
 
-        return $this->resultQuery()->paginate($this->rowsPerPage());
+        resolve(MessageBag::class)->add('message',randomString());
+
+
+        $key = Mf::requestSignature(($this->resultQuery()->toSql()));
+
+        return Cache::remember($key, $this->cache, function () {
+            return $this->resultQuery()->paginate($this->rowsPerPage());
+        });
 
     }
 
@@ -62,7 +70,12 @@ trait Query
      */
     public function total()
     {
-        return $this->totalQuery()->count();
+        $key = Mf::requestSignature(($this->totalQuery()->toSql()));
+
+        return Cache::remember($key, $this->cache, function () {
+            return $this->totalQuery()->count();
+        });
+
     }
 
     /**
@@ -114,14 +127,9 @@ trait Query
     public function querySelectColumns()
     {
 
-        if (count($this->selectedColumns())) {
-            $keys = $this->selectedColumns();                    // Manually selected columns
-            $keys = $this->includeDefaultSelectedColumns($keys); // Default selected columns behind the scene
-            $keys = $this->excludeSelectedGhostColumns($keys);   // Exclude any column name that does not actually exists
-        } else {
-            $keys = $this->dataSourceColumns(); // If no selection is made select all by default.
-        }
-
+        $keys = $this->selectedColumns();                    // Manually selected columns, Default all if none selected.
+        $keys = $this->includeDefaultSelectedColumns($keys); // Default selected columns behind the scene
+        $keys = $this->excludeSelectedGhostColumns($keys);   // Exclude any column name that does not actually exists
         $keys = $this->queryAddColumnForGroupBy($keys);
 
         return $keys;
@@ -280,5 +288,10 @@ trait Query
         }
 
         return false;
+    }
+
+    public function signature()
+    {
+        return Mf::requestSignature(($this->resultQuery()->toSql()));
     }
 }
