@@ -2,7 +2,6 @@
 
 namespace App\Mainframe\Features\Responder;
 
-use URL;
 use Redirect;
 use Validator;
 
@@ -21,28 +20,14 @@ class Response
     /** @var mixed API payload, usually it is a list of a model */
     public $payload;
 
-    /** @var \App\Mainframe\Features\Modular\BaseModule\BaseModule */
-    public $element;
-
-    /** @var string */
-    public $redirectTo;
-
-    /** @var \App\Mainframe\Features\Modular\Validator\ModelValidator */
-    public $modelValidator;
-
     /** @var \Illuminate\Validation\Validator */
     public $validator;
 
+    /** @var string URL */
+    public $redirectTo;
+
     /** @var \Illuminate\View\View|\Illuminate\Contracts\View\Factory */
     public $view;
-
-    /**
-     * Response constructor.
-     */
-    public function __construct()
-    {
-        //$this->validator = Validator::make([], []);
-    }
 
     /**
      * Pick which validator to use
@@ -52,12 +37,6 @@ class Response
     public function validator()
     {
         if ($this->validator) {
-            return $this->validator;
-        }
-
-        if ($this->modelValidator) { // First load modelValidator
-            $this->validator = $this->modelValidator->validator();
-
             return $this->validator;
         }
 
@@ -245,8 +224,8 @@ class Response
         /*-------------------------------*/
 
         // Add redirect to
-        if ($this->redirectTo()) {
-            $response['redirect'] = $this->redirectTo();
+        if ($this->redirectTo) {
+            $response['redirect'] = $this->redirectTo;
         }
 
         return $response;
@@ -255,12 +234,11 @@ class Response
     /**
      * Redirect to a route
      *
-     * @param  null  $to
+     * @param  string  $to
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function redirect($to = null)
+    public function redirect($to = '#')
     {
-        $to = $to ?: $this->redirectTo();
 
         $redirect = $to ? Redirect::to($to) : Redirect::back();
 
@@ -269,32 +247,6 @@ class Response
         }
 
         return $redirect->with($this->defaultViewVars());
-    }
-
-    /**
-     * Try to figure out where to redirect
-     *
-     * @return null|array|\Illuminate\Http\Request|string
-     */
-    public function redirectTo()
-    {
-        if ($this->redirectTo) {
-            return $this->redirectTo;
-        }
-
-        if ($this->isSuccess() && request('redirect_success')) {
-            if ($this->element && request('redirect_success') == '#new') {
-                return route($this->element->module()->name.".edit", $this->element->id);
-            }
-
-            return request('redirect_success');
-        }
-
-        if ($this->isFail() && request('redirect_fail')) {
-            return request('redirect_fail');
-        }
-
-        return URL::full();
     }
 
     /**

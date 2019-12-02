@@ -73,6 +73,8 @@ class ModuleBaseController extends BaseController
             return $this->response()->permissionDenied();
         }
 
+
+
         if ($this->response()->expectsJson()) {
             return $this->list();
         }
@@ -80,7 +82,7 @@ class ModuleBaseController extends BaseController
         $path = GridView::resolve($this->moduleName);
         $vars = ['gridColumns' => $this->resolveDatatableClass()->columns()];
 
-        return $this->response()->view($path)->with($vars);
+        return $this->response()->view($path, $vars);
 
     }
 
@@ -107,7 +109,7 @@ class ModuleBaseController extends BaseController
             'formState' => 'create',
         ];
 
-        return $this->response()->view($path)->with($vars);
+        return $this->response()->view($path, $vars);
 
     }
 
@@ -159,7 +161,7 @@ class ModuleBaseController extends BaseController
             'formState' => 'edit',
         ];
 
-        return $this->response()->view($path)->with($vars);
+        return $this->response()->view($path, $vars);
     }
 
     /**
@@ -183,7 +185,7 @@ class ModuleBaseController extends BaseController
             return $this->response()->load($this->element)->json();
         }
 
-        return $this->response()->redirect();
+        return $this->response()->redirect($this->redirectTo());
     }
 
     /**
@@ -249,16 +251,28 @@ class ModuleBaseController extends BaseController
         return abort(403, $id.'- Restore restricted');
     }
 
+
+
     /**
-     * @return mixed|Response
+     * Try to figure out where to redirect
+     *
+     * @return null|array|\Illuminate\Http\Request|string
      */
-    public function response()
+    public function redirectTo()
     {
-        $response = parent::response();
 
-        $response->modelValidator = $this->modelValidator();
-        $response->element = $this->element;
+        if ($this->response()->isSuccess() && request('redirect_success')) {
+            if ($this->element && request('redirect_success') == '#new') {
+                return route($this->module->name.".edit", $this->element->id);
+            }
 
-        return $response;
+            return request('redirect_success');
+        }
+
+        if ($this->response()->isFail() && request('redirect_fail')) {
+            return request('redirect_fail');
+        }
+
+        return URL::full();
     }
 }
