@@ -151,13 +151,15 @@ class ModuleBaseController extends BaseController
             return $this->response()->permissionDenied();
         }
 
-        $formState = 'edit';
-        $formConfig = $this->editFromConfig();
-        $elementIsEditable = user()->can('update', $this->element);
+        $path = $this->editFormView();
+        $vars = [
+            'element' => $this->element,
+            'formConfig' => $this->editFromConfig(),
+            'elementIsEditable' => user()->can('update', $this->element),
+            'formState' => 'edit',
+        ];
 
-        return view($this->editFormView())
-            ->with('element', $this->element)
-            ->with(compact('formConfig', 'formState', 'elementIsEditable'));
+        return $this->response()->view($path)->with($vars);
     }
 
     /**

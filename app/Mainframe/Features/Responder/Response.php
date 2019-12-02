@@ -36,6 +36,9 @@ class Response
     /** @var \Illuminate\View\View|\Illuminate\Contracts\View\Factory */
     public $view;
 
+    /**
+     * Response constructor.
+     */
     public function __construct()
     {
         //$this->validator = Validator::make([], []);
@@ -53,7 +56,7 @@ class Response
         }
 
         if ($this->modelValidator) { // First load modelValidator
-            $this->validator = $this->modelValidator->validator;
+            $this->validator = $this->modelValidator->validator();
 
             return $this->validator;
         }
@@ -120,8 +123,11 @@ class Response
      * @param  int  $code
      * @return \Illuminate\Http\JsonResponse|void
      */
-    public function notFound($message = 'Item not found', $code = 404)
+    public function notFound($message = null, $code = null)
     {
+        $message = $message ?: 'Item not found';
+        $code = $code ?: 404;
+
         return $this->failed($message, $code);
     }
 
@@ -132,8 +138,11 @@ class Response
      * @param  int  $code
      * @return $this
      */
-    public function success($message = 'Request is successful', $code = 200)
+    public function success($message = null, $code = null)
     {
+        $message = $message ?: '';
+        $code = $code ?: 200;
+
         if ($this->status !== 'fail') {
             $this->code = $code;
             $this->status = 'success';
@@ -150,8 +159,12 @@ class Response
      * @param  int  $code
      * @return $this
      */
-    public function fail($message = 'Operation failed', $code = 404)
+    public function fail($message = null, $code = null)
     {
+
+        $message = $message ?: '';
+        $code = $code ?: 404;
+
         if ($this->status !== 'fail') {
             $this->code = $code;
             $this->status = 'fail';
@@ -252,14 +265,10 @@ class Response
         $redirect = $to ? Redirect::to($to) : Redirect::back();
 
         if ($this->isFail()) {
-            $redirect = $redirect->withInput();
-
-            if ($this->validator()->messages()) {
-                $redirect = $redirect->withErrors($this->validator);
-            }
+            $redirect->withInput()->withErrors($this->validator());
         }
 
-        return $redirect->with($this->viewVars());
+        return $redirect->with($this->defaultViewVars());
     }
 
     /**
@@ -289,48 +298,17 @@ class Response
     }
 
     /**
-     * Setter fro $redirectTo
-     *
-     * @param $redirectTo
-     * @return $this
-     */
-    public function setRedirectTo($redirectTo)
-    {
-        $this->redirectTo = $redirectTo;
-
-        return $this;
-    }
-
-    /**
      * Render a view files
      *
      * @param  string  $path
-     * @return \App\Mainframe\Features\Responder\Response
-     */
-    public function view($path)
-    {
-        $this->view = view($path);
-
-        return $this;
-    }
-
-    /**
-     * Pass variables with view
-     *
      * @param  array  $with
-     * @return mixed| Illuminate\View\View|\Illuminate\Contracts\View\Factory
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-
-    public function with($with = [])
+    public function view($path, $with = [])
     {
-        /** @var \App\Mainframe\Features\Responder\Response $view */
+        $with = array_merge($with, $this->defaultViewVars());
 
-        /** @var \Illuminate\View\View $view */
-        $view = $this->view;
-        $with = array_merge($with, $this->viewVars());
-
-        return $view->with($with)->withErrors($this->validator());
-
+        return view($path)->withErrors($this->validator())->with($with);
     }
 
     /**
@@ -340,7 +318,7 @@ class Response
      * @param  array  $vars
      * @return array
      */
-    public function viewVars($vars = [])
+    public function defaultViewVars($vars = [])
     {
         return array_merge([
             'responseStatus' => $this->status,
