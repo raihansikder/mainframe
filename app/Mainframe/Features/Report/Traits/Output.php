@@ -3,6 +3,7 @@
 namespace App\Mainframe\Features\Report\Traits;
 
 use View;
+use Validator;
 use PhpOffice\PhpSpreadsheet\Writer\Csv;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
@@ -20,8 +21,8 @@ trait Output
             return $this->html($type = 'blank');
         }
 
-        if ($this->validator()->fails()) {
-            return $this->html($type = 'blank');
+        if ($this->invalid()) {
+            return $this->responseInvalid();
         }
 
         if ($this->output() == 'json') {
@@ -41,6 +42,18 @@ trait Output
         }
 
         return $this->html();
+    }
+
+    public function responseInvalid()
+    {
+        $this->response->fail();
+        $this->response->validator = $this->validator;
+
+        if ($this->output() != 'json') {
+            return $this->html($type = 'blank');
+        }
+
+        return $this->response->json();
     }
 
     /**
@@ -129,7 +142,7 @@ trait Output
         // $this->validator = \Validator::make([], []);
         // $this->validator->messages()->add('test', 'test');
 
-        $this->response->validator = $this->validator;
+        // $this->response->validator = $this->validator;
 
         return $this->response->view($path)->with($vars);
     }
@@ -242,11 +255,12 @@ trait Output
 
     public function validator()
     {
-        $this->validator = \Validator::make(
-            request()->all(),
-            [
-                // 'report_name' => 'required|max:255',
-            ]);
+        if ($this->validator) {
+            return $this->validator;
+        }
+
+        $this->validator = Validator::make([], []);
+        // $this->addError('test', 'some');
 
         return $this->validator;
     }

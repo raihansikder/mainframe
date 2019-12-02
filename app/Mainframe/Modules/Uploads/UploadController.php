@@ -26,7 +26,7 @@ class UploadController extends ModuleBaseController
      */
     public function resolveDatatableClass($class = null)
     {
-        return $class ?? new UploadDatatable($this->moduleName);
+        return $class ?? new UploadDatatable($this->name);
     }
 
     /**
@@ -42,7 +42,7 @@ class UploadController extends ModuleBaseController
         $this->element = $this->model; // Create an empty model to be stored.
 
         if (! $file = $this->getFile()) {
-            return $this->response->failed('No file in http request');
+            return $this->response->invalid('No file in http request');
         }
 
         // if($dimensions = $this->getImageDimension($file)){
@@ -51,7 +51,7 @@ class UploadController extends ModuleBaseController
         // }
 
         if (! $uploadPath = $this->handleUpload($file)) {
-            return $this->response->failed('Can not move file to destination from tmp');
+            return $this->response->invalid('Can not move file to destination from tmp');
         }
 
         $this->element->name = $file->getClientOriginalName();

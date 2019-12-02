@@ -176,9 +176,9 @@ var requirejs, require, define;
 
     function makeRequire(relName, forceSync) {
         return function () {
-            //A version of a require function that passes a moduleName
+            //A version of a require function that passes a name
             //value for items that may need to
-            //look up paths relative to the moduleName
+            //look up paths relative to the name
             var args = aps.call(arguments, 0);
 
             //If first arg is not require('string'), and there is only

@@ -5,22 +5,19 @@
 
 namespace App\Mainframe\Features\Modular\Validator;
 
+use Validator;
 use Illuminate\Support\MessageBag;
-use Illuminate\Support\Facades\Validator;
+use App\Mainframe\Features\Modular\BaseController\Traits\Validable;
 
-class ModelValidator
+class ModelProcessor
 {
-    /** @var bool */
-    private $valid;
+    use Validable;
 
     /** @var \App\Mainframe\Features\Modular\BaseModule\BaseModule */
     public $element;
 
     /** @var array|mixed */
     public $elementOriginal;
-
-    /** @var \Illuminate\Validation\Validator */
-    public $validator;
 
     /** @var MessageBag */
     public $messageBag;
@@ -33,7 +30,6 @@ class ModelValidator
     public function __construct($element)
     {
         $this->messageBag = resolve(MessageBag::class);
-        $this->valid = true;
         $this->element = $element;
         $this->elementOriginal = $element->getOriginal();
     }
@@ -86,9 +82,8 @@ class ModelValidator
      *
      * @return \Illuminate\Contracts\Validation\Validator|\Illuminate\Validation\Validator
      */
-    public function validateRules()
+    public function validate()
     {
-
         $this->validator = Validator::make(
             $this->element->getAttributes(),
             $this::rules($this->element),
@@ -98,73 +93,13 @@ class ModelValidator
         return $this->validator;
     }
 
-
-    /**
-     * Get result
-     *
-     * @return \App\Mainframe\Features\Modular\BaseModule\BaseModule|bool
-     */
-    public function result()
-    {
-        return $this->passed() ? $this->element : false;
-    }
-
-    /**
-     * Check if failed
-     *
-     * @return bool
-     */
-    public function failed()
-    {
-        return $this->valid ? false : true;
-    }
-
-    /**
-     * Check if passed
-     *
-     * @return bool
-     */
-    public function passed()
-    {
-        return ! $this->failed();
-    }
-
-    /**
-     * Invalidate with a key and error message
-     *
-     * @param  null  $key
-     * @param  null  $message
-     * @return $this
-     */
-    public function invalidate($key = null, $message = null)
-    {
-        $this->addError($key, $message);
-        $this->valid = false;
-
-        return $this;
-    }
-
-    /**
-     * Ad
-     * d an error message to a key-value pair
-     *
-     * @param  null  $key
-     * @param  null  $message
-     */
-    public function addError($key = null, $message = null)
-    {
-        if($key || $message) {
-            $this->validator->messages()->add($key, $message);
-        }
-    }
-
     /**
      * Run validation logic on model.
      * Based on existence of id field decide to check creating()/updating()
      *
      * @return $this
      */
-    public function validate()
+    public function run()
     {
         if (isset($this->element->id)) {
             return $this->update();
@@ -190,7 +125,7 @@ class ModelValidator
     public function save($element = null)
     {
         $element = $element ?: $this->element;
-        $this->fill($element)->validateRules();
+        $this->fill($element)->validate();
         $this->saving($element);
 
         return $this;
@@ -255,6 +190,16 @@ class ModelValidator
         return $this;
     }
 
+
+    /*
+    |--------------------------------------------------------------------------
+    | Event specific validation
+    |--------------------------------------------------------------------------
+    |
+    | Following functions are overridden in model validators to write
+    | event specific validation logic.
+    */
+
     /**
      * Saving validation.
      * Common for both create and update.
@@ -266,15 +211,6 @@ class ModelValidator
     {
         return $this;
     }
-
-    /*
-    |--------------------------------------------------------------------------
-    | Event specific validation
-    |--------------------------------------------------------------------------
-    |
-    | Following functions are overridden in model validators to write
-    | event specific validation logic.
-    */
 
     /**
      * Creating validation

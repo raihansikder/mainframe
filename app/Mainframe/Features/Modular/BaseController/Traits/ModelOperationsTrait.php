@@ -27,13 +27,13 @@ trait ModelOperationsTrait
     /**
      * Get the Mainframe model Validator on the filled element
      *
-     * @return mixed|\App\Mainframe\Features\Modular\Validator\ModelValidator
+     * @return mixed|\App\Mainframe\Features\Modular\Validator\ModelProcessor
      */
-    public function modelValidator()
+    public function processor()
     {
-        $this->modelValidator = $this->fill()->validator();
+        $this->processor = $this->fill()->processor();
 
-        return $this->modelValidator;
+        return $this->processor;
     }
 
     /**
@@ -43,9 +43,9 @@ trait ModelOperationsTrait
      */
     public function attemptStore()
     {
-        $modelValidator = $this->modelValidator();
+        $modelValidator = $this->processor()->create();
 
-        if ($modelValidator->create()->failed()) {
+        if ($modelValidator->invalid()) {
             $this->response->validator = $modelValidator->validator;
 
             return $this->response->fail('Validation failed', 200);
@@ -67,9 +67,9 @@ trait ModelOperationsTrait
      */
     public function attemptUpdate()
     {
-        $modelValidator = $this->modelValidator();
+        $modelValidator = $this->processor()->update();
 
-        if ($modelValidator->update()->failed()) {
+        if ($modelValidator->invalid()) {
             $this->response->validator = $modelValidator->validator;
 
             return $this->response->fail('Validation failed', 200);
@@ -92,9 +92,9 @@ trait ModelOperationsTrait
      */
     public function attemptDestroy()
     {
-        $modelValidator = $this->modelValidator();
+        $modelValidator = $this->processor();
 
-        if ($modelValidator->delete()->failed()) {
+        if ($modelValidator->delete()->invalid()) {
             return $this->response->fail('Validation failed', 200);
         }
 

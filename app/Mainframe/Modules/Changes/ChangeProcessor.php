@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Mainframe\Modules\Groups;
+namespace App\Mainframe\Modules\Changes;
 
-use App\Mainframe\Features\Modular\Validator\ModelValidator;
+use App\Mainframe\Features\Modular\Validator\ModelProcessor;
 
-class GroupValidator extends ModelValidator
+class ChangeProcessor extends ModelProcessor
 {
 
     /*
@@ -41,20 +41,20 @@ class GroupValidator extends ModelValidator
     /**
      * Run validations for saving. This should be common for both creating and updating.
      *
-     * @param $element \App\Mainframe\Modules\Groups\Group
+     * @param $element \App\Mainframe\Modules\Changes\Change
      * @return $this
      */
     public function saving($element)
     {
         parent::saving($element);
-        $this->groupNameShouldNotbeJoker();
+        $this->changeNameShouldNotbeJoker();
 
         return $this;
     }
     /**
      * Run validations for creating. This should always call the saving().
      *
-     * @return \App\Mainframe\Features\Modular\Validator\ModelValidator|\App\Mainframe\Modules\Settings\SettingValidator
+     * @return \App\Mainframe\Features\Modular\Validator\ModelProcessor|\App\Mainframe\Modules\Settings\SettingProcessor
      */
     // public function creating()
     // {
@@ -64,7 +64,7 @@ class GroupValidator extends ModelValidator
     /**
      * Run validations for updating. This should always call the saving().
      *
-     * @return \App\Mainframe\Features\Modular\Validator\ModelValidator|\App\Mainframe\Modules\Settings\SettingValidator
+     * @return \App\Mainframe\Features\Modular\Validator\ModelProcessor|\App\Mainframe\Modules\Settings\SettingProcessor
      */
     // public function updating()
     // {
@@ -74,7 +74,7 @@ class GroupValidator extends ModelValidator
     /**
      * Run validations for deleting.
      *
-     * @return \App\Mainframe\Features\Modular\Validator\ModelValidator|\App\Mainframe\Modules\Settings\SettingValidator
+     * @return \App\Mainframe\Features\Modular\Validator\ModelProcessor|\App\Mainframe\Modules\Settings\SettingProcessor
      */
     // public function deleting()
     // {
@@ -84,7 +84,7 @@ class GroupValidator extends ModelValidator
     /**
      * Run validations for restoring. This should always call the saving().
      *
-     * @return \App\Mainframe\Features\Modular\Validator\ModelValidator|\App\Mainframe\Modules\Settings\SettingValidator
+     * @return \App\Mainframe\Features\Modular\Validator\ModelProcessor|\App\Mainframe\Modules\Settings\SettingProcessor
      */
     // public function restoring()
     // {
@@ -105,11 +105,11 @@ class GroupValidator extends ModelValidator
      *
      * @return $this
      */
-    private function groupNameShouldNotBeJoker()
+    private function changeNameShouldNotBeJoker()
     {
-        $group = $this->element;
+        $change = $this->element;
 
-        if ($group->name === 'Joker') {
+        if ($change->name === 'Joker') {
             $this->invalidate('name', "Name can not be Joker");
         }
 

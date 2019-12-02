@@ -106,14 +106,14 @@ trait ListTrait
     // {
     //     $model = $this->model;
     //     $text_fields = $model::$text_fields ?? ['name'];
-    //     //$module_sys_name = $this->moduleName;
+    //     //$module_sys_name = $this->name;
     //
     //     /** @var \App\Mainframe\Features\Modular\BaseModule\BaseModule $q */
     //     /** @var \App\Mainframe\Features\Modular\BaseModule\BaseModule $model */
     //     // $q = $q->where('is_active', 1);
     //
-    //     if (inTenantContext($this->moduleName)) {
-    //         $q = injectTenantIdInModelQuery($this->moduleName, $q);
+    //     if (inTenantContext($this->name)) {
+    //         $q = injectTenantIdInModelQuery($this->name, $q);
     //     }
     //
     //     # Generic API return

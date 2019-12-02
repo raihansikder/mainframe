@@ -21,6 +21,6 @@ class LoremIpsumController extends ModuleBaseController
      */
     public function resolveDatatableClass($class = null)
     {
-        return $class ?? new LoremIpsumDatatable($this->moduleName);
+        return $class ?? new LoremIpsumDatatable($this->name);
     }
 }

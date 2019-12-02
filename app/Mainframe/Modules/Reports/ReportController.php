@@ -21,6 +21,6 @@ class ReportController extends ModuleBaseController
      */
     public function resolveDatatableClass($class = null)
     {
-        return $class ?? new ReportDatatable($this->moduleName);
+        return $class ?? new ReportDatatable($this->name);
     }
 }

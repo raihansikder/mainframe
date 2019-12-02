@@ -516,7 +516,7 @@ function showGenericErrorPage($body = '')
 function mlink($moduleName = '', $id = null, $link_text = null)
 {
 
-    //$model = model($moduleName);
+    //$model = model($name);
     if ($module = Module::remember(cacheTime('very-long'))->whereName($moduleName)->first()) {
         if ($id) {
             $link_text = $link_text ? $link_text . "[#$id]" : $module->title . "[#$id]";

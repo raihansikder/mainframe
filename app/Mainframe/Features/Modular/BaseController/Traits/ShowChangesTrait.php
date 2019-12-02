@@ -22,7 +22,7 @@ trait ShowChangesTrait
 
         /** @var \App\Http\Mainframe\Features\Modular\BaseModule\BaseModule $Model */
         /** @var \App\Http\Mainframe\Features\Modular\BaseModule\BaseModule $element */
-        $Model = model($this->moduleName);
+        $Model = model($this->name);
         //$ret = ret(); // load default return values
         # --------------------------------------------------------
         # Process return/redirect

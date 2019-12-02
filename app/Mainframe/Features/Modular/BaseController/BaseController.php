@@ -11,6 +11,7 @@ use Illuminate\Support\MessageBag;
 use App\Http\Controllers\Controller;
 use App\Mainframe\Traits\GridDatatable;
 use App\Mainframe\Features\Responder\Response;
+use App\Mainframe\Features\Modular\BaseController\Traits\Validable;
 
 /**
  * Class MainframeBaseController
@@ -18,14 +19,13 @@ use App\Mainframe\Features\Responder\Response;
 class BaseController extends Controller
 {
 
+    use Validable;
+
     /** @var \Illuminate\Support\MessageBag */
     public $messageBag;
 
     /** * @var \App\Mainframe\Features\Responder\Response */
     public $response;
-
-    /** @var \Illuminate\Validation\Validator */
-    public $validator;
 
     /**
      * MainframeBaseController constructor.

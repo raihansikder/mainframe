@@ -3,9 +3,12 @@
 namespace App\Mainframe\Features\Responder;
 
 use Redirect;
+use App\Mainframe\Features\Modular\BaseController\Traits\Validable;
 
 class Response
 {
+
+    use Validable;
 
     /** @var int Success/Error codes 200.400 etc */
     public $code = 200;
@@ -18,9 +21,6 @@ class Response
 
     /** @var mixed API payload, usually it is a list of a model */
     public $payload;
-
-    /** @var \Illuminate\Validation\Validator */
-    public $validator;
 
     /** @var string URL */
     public $redirectTo;
@@ -142,7 +142,8 @@ class Response
      */
     public function isSuccess()
     {
-        return $this->status === 'success';
+        return $this->valid();
+        // return $this->status === 'success';
     }
 
     /**
@@ -200,8 +201,8 @@ class Response
          * Select which validator to load
          *-------------------------------- .
          */
-        if ($this->validator && $this->validator->messages()) {
-            $response['validation_errors'] = json_decode($this->validator->messages(), true);
+        if ($this->invalid()) {
+            $response['validation_errors'] = $this->validator()->messages()->toArray();
         }
         /*-------------------------------*/
 
@@ -245,7 +246,8 @@ class Response
     public function view($path)
     {
         $view = view($path)->with($this->defaultViewVars());
-        if ($this->validator && $this->validator->errors()) {
+
+        if ($this->isFail()) {
             $view->withErrors($this->validator);
         }
 

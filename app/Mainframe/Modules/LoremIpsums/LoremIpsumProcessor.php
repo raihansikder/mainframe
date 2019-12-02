@@ -2,9 +2,9 @@
 
 namespace App\Mainframe\Modules\LoremIpsums;
 
-use App\Mainframe\Features\Modular\Validator\ModelValidator;
+use App\Mainframe\Features\Modular\Validator\ModelProcessor;
 
-class LoremIpsumValidator extends ModelValidator
+class LoremIpsumProcessor extends ModelProcessor
 {
     /*
     |--------------------------------------------------------------------------

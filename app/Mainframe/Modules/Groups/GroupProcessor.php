@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Mainframe\Modules\Uploads;
+namespace App\Mainframe\Modules\Groups;
 
-use App\Mainframe\Features\Modular\Validator\ModelValidator;
+use App\Mainframe\Features\Modular\Validator\ModelProcessor;
 
-class UploadValidator extends ModelValidator
+class GroupProcessor extends ModelProcessor
 {
 
     /*
@@ -24,6 +24,7 @@ class UploadValidator extends ModelValidator
     public static function rules($element, $merge = [])
     {
         $rules = [
+            'name' => 'required|between:1,255|unique:modules,name,'.(isset($element->id) ? (string) $element->id : 'null').',id,deleted_at,NULL',
             'is_active' => 'in:1,0',
         ];
 
@@ -31,22 +32,29 @@ class UploadValidator extends ModelValidator
     }
 
     /*
-    |--------------------------------------------------------------------------
-    | Execute validation on module events
-    |--------------------------------------------------------------------------
-    |
-    | Check validations on saving, creating, updating, deleting and restoring
-    */
+   |--------------------------------------------------------------------------
+   | Execute validation on module events
+   |--------------------------------------------------------------------------
+   |
+   | Check validations on saving, creating, updating, deleting and restoring
+   */
     /**
      * Run validations for saving. This should be common for both creating and updating.
      *
+     * @param $element \App\Mainframe\Modules\Groups\Group
      * @return $this
      */
+    public function saving($element)
+    {
+        parent::saving($element);
+        $this->groupNameShouldNotbeJoker();
 
+        return $this;
+    }
     /**
      * Run validations for creating. This should always call the saving().
      *
-     * @return \App\Mainframe\Features\Modular\Validator\ModelValidator|\App\Mainframe\Modules\Settings\SettingValidator
+     * @return \App\Mainframe\Features\Modular\Validator\ModelProcessor|\App\Mainframe\Modules\Settings\SettingProcessor
      */
     // public function creating()
     // {
@@ -56,7 +64,7 @@ class UploadValidator extends ModelValidator
     /**
      * Run validations for updating. This should always call the saving().
      *
-     * @return \App\Mainframe\Features\Modular\Validator\ModelValidator|\App\Mainframe\Modules\Settings\SettingValidator
+     * @return \App\Mainframe\Features\Modular\Validator\ModelProcessor|\App\Mainframe\Modules\Settings\SettingProcessor
      */
     // public function updating()
     // {
@@ -66,7 +74,7 @@ class UploadValidator extends ModelValidator
     /**
      * Run validations for deleting.
      *
-     * @return \App\Mainframe\Features\Modular\Validator\ModelValidator|\App\Mainframe\Modules\Settings\SettingValidator
+     * @return \App\Mainframe\Features\Modular\Validator\ModelProcessor|\App\Mainframe\Modules\Settings\SettingProcessor
      */
     // public function deleting()
     // {
@@ -76,7 +84,7 @@ class UploadValidator extends ModelValidator
     /**
      * Run validations for restoring. This should always call the saving().
      *
-     * @return \App\Mainframe\Features\Modular\Validator\ModelValidator|\App\Mainframe\Modules\Settings\SettingValidator
+     * @return \App\Mainframe\Features\Modular\Validator\ModelProcessor|\App\Mainframe\Modules\Settings\SettingProcessor
      */
     // public function restoring()
     // {
@@ -97,11 +105,11 @@ class UploadValidator extends ModelValidator
      *
      * @return $this
      */
-    private function uploadNameShouldNotBeJoker()
+    private function groupNameShouldNotBeJoker()
     {
-        $upload = $this->element;
+        $group = $this->element;
 
-        if ($upload->name === 'Joker') {
+        if ($group->name === 'Joker') {
             $this->invalidate('name', "Name can not be Joker");
         }
 

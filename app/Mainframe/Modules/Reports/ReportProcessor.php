@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Mainframe\Modules\Changes;
+namespace App\Mainframe\Modules\Reports;
 
-use App\Mainframe\Features\Modular\Validator\ModelValidator;
+use App\Mainframe\Features\Modular\Validator\ModelProcessor;
 
-class ChangeValidator extends ModelValidator
+class ReportProcessor extends ModelProcessor
 {
 
     /*
@@ -41,20 +41,19 @@ class ChangeValidator extends ModelValidator
     /**
      * Run validations for saving. This should be common for both creating and updating.
      *
-     * @param $element \App\Mainframe\Modules\Changes\Change
      * @return $this
      */
     public function saving($element)
     {
-        parent::saving($element);
-        $this->changeNameShouldNotbeJoker();
+        parent::saving();
+        $this->reportNameShouldNotbeJoker();
 
         return $this;
     }
     /**
      * Run validations for creating. This should always call the saving().
      *
-     * @return \App\Mainframe\Features\Modular\Validator\ModelValidator|\App\Mainframe\Modules\Settings\SettingValidator
+     * @return \App\Mainframe\Features\Modular\Validator\ModelProcessor|\App\Mainframe\Modules\Settings\SettingProcessor
      */
     // public function creating()
     // {
@@ -64,7 +63,7 @@ class ChangeValidator extends ModelValidator
     /**
      * Run validations for updating. This should always call the saving().
      *
-     * @return \App\Mainframe\Features\Modular\Validator\ModelValidator|\App\Mainframe\Modules\Settings\SettingValidator
+     * @return \App\Mainframe\Features\Modular\Validator\ModelProcessor|\App\Mainframe\Modules\Settings\SettingProcessor
      */
     // public function updating()
     // {
@@ -74,7 +73,7 @@ class ChangeValidator extends ModelValidator
     /**
      * Run validations for deleting.
      *
-     * @return \App\Mainframe\Features\Modular\Validator\ModelValidator|\App\Mainframe\Modules\Settings\SettingValidator
+     * @return \App\Mainframe\Features\Modular\Validator\ModelProcessor|\App\Mainframe\Modules\Settings\SettingProcessor
      */
     // public function deleting()
     // {
@@ -84,7 +83,7 @@ class ChangeValidator extends ModelValidator
     /**
      * Run validations for restoring. This should always call the saving().
      *
-     * @return \App\Mainframe\Features\Modular\Validator\ModelValidator|\App\Mainframe\Modules\Settings\SettingValidator
+     * @return \App\Mainframe\Features\Modular\Validator\ModelProcessor|\App\Mainframe\Modules\Settings\SettingProcessor
      */
     // public function restoring()
     // {
@@ -105,11 +104,11 @@ class ChangeValidator extends ModelValidator
      *
      * @return $this
      */
-    private function changeNameShouldNotBeJoker()
+    private function reportNameShouldNotBeJoker()
     {
-        $change = $this->element;
+        $report = $this->element;
 
-        if ($change->name === 'Joker') {
+        if ($report->name === 'Joker') {
             $this->invalidate('name', "Name can not be Joker");
         }
 

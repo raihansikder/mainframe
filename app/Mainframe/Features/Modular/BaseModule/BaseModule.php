@@ -7,7 +7,7 @@ use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Mainframe\Features\Modular\BaseModule\Traits\Changeable;
-use App\Mainframe\Features\Modular\BaseModule\Traits\Validable;
+use App\Mainframe\Features\Modular\BaseModule\Traits\Processable;
 use App\Mainframe\Features\Modular\BaseModule\Traits\Uploadable;
 use App\Mainframe\Features\Modular\BaseModule\Traits\ModularTrait;
 use App\Mainframe\Features\Modular\BaseModule\Traits\UpdaterTrait;
@@ -35,7 +35,7 @@ use App\Mainframe\Features\Modular\BaseModule\Traits\TenantContextTrait;
  */
 class BaseModule extends Model
 {
-    use SoftDeletes, Rememberable, Validable, EventIdentifiable,
+    use SoftDeletes, Rememberable, Processable, EventIdentifiable,
         RelatedUsersTrait, TenantContextTrait, UpdaterTrait,
         Uploadable, Changeable, ModularTrait;
 

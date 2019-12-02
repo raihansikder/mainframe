@@ -228,9 +228,9 @@ trait ModuleHelper
         return new $classPath;
     }
 
-    public function validatorClassPath()
+    public function processorClassPath()
     {
-        return $this->moduleNameSpace().'\\'.$this->modelClassName().'Validator';
+        return $this->moduleNameSpace().'\\'.$this->modelClassName().'Processor';
     }
 
     /**
@@ -239,9 +239,9 @@ trait ModuleHelper
      * @param $element
      * @return mixed
      */
-    public function validatorInstance($element)
+    public function processorInstance($element)
     {
-        $classPath = $this->validatorClassPath();
+        $classPath = $this->processorClassPath();
 
         return new $classPath($element);
     }

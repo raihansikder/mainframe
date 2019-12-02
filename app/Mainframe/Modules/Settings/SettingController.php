@@ -18,6 +18,6 @@ class SettingController extends ModuleBaseController
      */
     public function resolveDatatableClass($class = null)
     {
-        return $class ?? new SettingDatatable($this->moduleName);
+        return $class ?? new SettingDatatable($this->name);
     }
 }

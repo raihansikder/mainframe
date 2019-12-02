@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Mainframe\Modules\Reports;
+namespace App\Mainframe\Modules\Uploads;
 
-use App\Mainframe\Features\Modular\Validator\ModelValidator;
+use App\Mainframe\Features\Modular\Validator\ModelProcessor;
 
-class ReportValidator extends ModelValidator
+class UploadProcessor extends ModelProcessor
 {
 
     /*
@@ -24,7 +24,6 @@ class ReportValidator extends ModelValidator
     public static function rules($element, $merge = [])
     {
         $rules = [
-            'name' => 'required|between:1,255|unique:modules,name,'.(isset($element->id) ? (string) $element->id : 'null').',id,deleted_at,NULL',
             'is_active' => 'in:1,0',
         ];
 
@@ -32,28 +31,22 @@ class ReportValidator extends ModelValidator
     }
 
     /*
-   |--------------------------------------------------------------------------
-   | Execute validation on module events
-   |--------------------------------------------------------------------------
-   |
-   | Check validations on saving, creating, updating, deleting and restoring
-   */
+    |--------------------------------------------------------------------------
+    | Execute validation on module events
+    |--------------------------------------------------------------------------
+    |
+    | Check validations on saving, creating, updating, deleting and restoring
+    */
     /**
      * Run validations for saving. This should be common for both creating and updating.
      *
      * @return $this
      */
-    public function saving($element)
-    {
-        parent::saving();
-        $this->reportNameShouldNotbeJoker();
 
-        return $this;
-    }
     /**
      * Run validations for creating. This should always call the saving().
      *
-     * @return \App\Mainframe\Features\Modular\Validator\ModelValidator|\App\Mainframe\Modules\Settings\SettingValidator
+     * @return \App\Mainframe\Features\Modular\Validator\ModelProcessor|\App\Mainframe\Modules\Settings\SettingProcessor
      */
     // public function creating()
     // {
@@ -63,7 +56,7 @@ class ReportValidator extends ModelValidator
     /**
      * Run validations for updating. This should always call the saving().
      *
-     * @return \App\Mainframe\Features\Modular\Validator\ModelValidator|\App\Mainframe\Modules\Settings\SettingValidator
+     * @return \App\Mainframe\Features\Modular\Validator\ModelProcessor|\App\Mainframe\Modules\Settings\SettingProcessor
      */
     // public function updating()
     // {
@@ -73,7 +66,7 @@ class ReportValidator extends ModelValidator
     /**
      * Run validations for deleting.
      *
-     * @return \App\Mainframe\Features\Modular\Validator\ModelValidator|\App\Mainframe\Modules\Settings\SettingValidator
+     * @return \App\Mainframe\Features\Modular\Validator\ModelProcessor|\App\Mainframe\Modules\Settings\SettingProcessor
      */
     // public function deleting()
     // {
@@ -83,7 +76,7 @@ class ReportValidator extends ModelValidator
     /**
      * Run validations for restoring. This should always call the saving().
      *
-     * @return \App\Mainframe\Features\Modular\Validator\ModelValidator|\App\Mainframe\Modules\Settings\SettingValidator
+     * @return \App\Mainframe\Features\Modular\Validator\ModelProcessor|\App\Mainframe\Modules\Settings\SettingProcessor
      */
     // public function restoring()
     // {
@@ -104,11 +97,11 @@ class ReportValidator extends ModelValidator
      *
      * @return $this
      */
-    private function reportNameShouldNotBeJoker()
+    private function uploadNameShouldNotBeJoker()
     {
-        $report = $this->element;
+        $upload = $this->element;
 
-        if ($report->name === 'Joker') {
+        if ($upload->name === 'Joker') {
             $this->invalidate('name', "Name can not be Joker");
         }
 
