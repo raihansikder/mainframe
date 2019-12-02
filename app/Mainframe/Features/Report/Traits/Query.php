@@ -5,7 +5,6 @@ namespace App\Mainframe\Features\Report\Traits;
 use DB;
 use Cache;
 use App\Mainframe\Features\Mf;
-use Illuminate\Support\MessageBag;
 use Illuminate\Database\Query\Builder;
 use App\Mainframe\Features\Helpers\Convert;
 
@@ -36,9 +35,6 @@ trait Query
      */
     public function result()
     {
-
-        resolve(MessageBag::class)->add('message',randomString());
-
 
         $key = Mf::requestSignature(($this->resultQuery()->toSql()));
 
@@ -290,6 +286,10 @@ trait Query
         return false;
     }
 
+    /**
+     * Cache key generator
+     * @return string
+     */
     public function signature()
     {
         return Mf::requestSignature(($this->resultQuery()->toSql()));
