@@ -122,6 +122,11 @@ trait Output
             $path = $this->resultPrintPath();
         }
 
+        // $this->validator = \Validator::make([], []);
+        // $this->validator->messages()->add('test', 'test');
+
+        $this->response->validator = $this->validator;
+
         return $this->response->view($path)->with($vars);
     }
 
