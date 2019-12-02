@@ -11,9 +11,6 @@ use Illuminate\Support\MessageBag;
 class ModelValidator
 {
 
-    /** @var bool */
-    public $valid;
-
     /** @var \App\Mainframe\Features\Modular\BaseModule\BaseModule */
     public $element;
 
@@ -34,7 +31,6 @@ class ModelValidator
     public function __construct($element)
     {
         $this->messageBag = resolve(MessageBag::class);
-        $this->valid = true;
         $this->element = $element;
         $this->elementOriginal = $element->getOriginal();
     }
@@ -115,7 +111,8 @@ class ModelValidator
      */
     public function failed()
     {
-        return $this->valid ? false : true;
+        return $this->validator->messages()->count();
+        // return $this->valid ? false : true;
     }
 
     /**
@@ -138,7 +135,6 @@ class ModelValidator
     public function invalidate($key = null, $message = null)
     {
         $this->addError($key, $message);
-        $this->valid = false;
 
         return $this;
     }
@@ -153,7 +149,7 @@ class ModelValidator
     public function addError($key = null, $message = null)
     {
         if ($message) {
-            $this->validator->messages()->add($key, $message);
+            $this->validator->errors()->add($key, $message);
         }
     }
 
@@ -254,7 +250,7 @@ class ModelValidator
         return $this;
     }
 
-    
+
     /*
     |--------------------------------------------------------------------------
     | Event specific validation
