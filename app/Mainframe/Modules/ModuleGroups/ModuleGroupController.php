@@ -21,6 +21,6 @@ class ModuleGroupController extends ModuleBaseController
      */
     public function resolveDatatableClass($class = null)
     {
-        return $class ?? new ModuleGroupDatatable($this->moduleName);
+        return $class ?? new ModuleGroupDatatable($this->name);
     }
 }

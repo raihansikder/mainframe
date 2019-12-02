@@ -227,7 +227,7 @@ trait ResponseTrait
             $this->redirectTo = request()->get('redirect_success');
 
             if ($this->redirectTo === '#new' && $this->element) {
-                return route($this->moduleName.".edit", $this->element->id);
+                return route($this->name.".edit", $this->element->id);
             }
         }
 
@@ -235,7 +235,7 @@ trait ResponseTrait
             $this->redirectTo = request()->get('redirect_fail');
 
             if ($this->redirectTo === '#new' && $this->element) {
-                return route($this->moduleName.".edit", $this->element->id);
+                return route($this->name.".edit", $this->element->id);
             }
         }
 

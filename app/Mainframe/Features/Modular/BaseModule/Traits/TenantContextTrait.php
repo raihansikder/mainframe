@@ -8,7 +8,7 @@ trait TenantContextTrait
      * Checks if a user has tenant context
      *
      * @return bool
-     * @internal param $moduleName
+     * @internal param $name
      */
     public function hasTenantContext()
     {

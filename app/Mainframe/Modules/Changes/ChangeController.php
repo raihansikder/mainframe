@@ -21,6 +21,6 @@ class ChangeController extends ModuleBaseController
      */
     public function resolveDatatableClass($class = null)
     {
-        return $class ?? new ChangeDatatable($this->moduleName);
+        return $class ?? new ChangeDatatable($this->name);
     }
 }

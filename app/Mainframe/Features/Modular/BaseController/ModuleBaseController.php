@@ -27,8 +27,8 @@ class ModuleBaseController extends BaseController
     use ModelOperationsTrait, ListTrait, ShowChangesTrait,
         ViewReportTrait, DatatableTrait, Resolvable;
 
-    /** @var string */
-    public $moduleName;
+    /** @var string Module name */
+    public $name;
 
     /** @var Module */
     public $module;
@@ -49,8 +49,8 @@ class ModuleBaseController extends BaseController
     {
         parent::__construct();
 
-        $this->moduleName = $moduleName ?? Module::fromController(get_class($this));
-        $this->module = Module::byName($this->moduleName);
+        $this->name = $moduleName ?? Module::fromController(get_class($this));
+        $this->module = Module::byName($this->name);
         $this->model = $this->module->modelInstance();
 
         View::share([
@@ -76,7 +76,7 @@ class ModuleBaseController extends BaseController
             return $this->list();
         }
 
-        $path = GridView::resolve($this->moduleName);
+        $path = GridView::resolve($this->name);
         $vars = ['gridColumns' => $this->resolveDatatableClass()->columns()];
 
         return $this->response->view($path)->with($vars);
@@ -129,7 +129,7 @@ class ModuleBaseController extends BaseController
             return $this->response->success()->load($this->element)->json();
         }
 
-        return $this->response->redirect(route($this->moduleName.".edit", $id));
+        return $this->response->redirect(route($this->name.".edit", $id));
     }
 
     /**

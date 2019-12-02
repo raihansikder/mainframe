@@ -26,7 +26,7 @@ class UploadController extends ModuleBaseController
      */
     public function resolveDatatableClass($class = null)
     {
-        return $class ?? new UploadDatatable($this->moduleName);
+        return $class ?? new UploadDatatable($this->name);
     }
 
     /**

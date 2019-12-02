@@ -23,7 +23,7 @@ class Datatable
      * Spyr module. First of all, it load module related meta information, then based
      * on context check(tenant context) it loads the tenant id. The it constructs the default
      * grid query and also add tenant context to grid query if applicable. Finally it
-     * globally shares a couple of variables $moduleName, $currentModule to all views rendered
+     * globally shares a couple of variables $name, $currentModule to all views rendered
      * from this controller
      *
      * @param $moduleName

@@ -10,7 +10,7 @@ $rand = randomString();
 
 /** View parameters */
 $var['module_id'] = $var['module_id'] ?? $module->id;
-$var['moduleName'] = $var['moduleName'] ?? $module->name;
+$var['name'] = $var['name'] ?? $module->name;
 $var['element_id'] = $var['element_id'] ?? null;
 $var['element_uuid'] = $var['element_uuid'] ?? null;
 $var['type'] = $var['type'] ?? null;

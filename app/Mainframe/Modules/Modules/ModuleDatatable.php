@@ -16,11 +16,11 @@ class ModuleDatatable extends Datatable
     {
         /** @var ModuleBaseController $this */
         return [
-            ["{$this->moduleName}.id", "id", "Module ID"],
-            ["{$this->moduleName}.name", "name", "Name"],
+            ["{$this->name}.id", "id", "Module ID"],
+            ["{$this->name}.name", "name", "Name"],
             ["updater.name", "user_name", "Updater"],
-            ["{$this->moduleName}.updated_at", "updated_at", "Updated at"],
-            ["{$this->moduleName}.is_active", "is_active", "Active"]
+            ["{$this->name}.updated_at", "updated_at", "Updated at"],
+            ["{$this->name}.is_active", "is_active", "Active"]
         ];
     }
 

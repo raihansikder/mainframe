@@ -13,7 +13,7 @@
  * @param string $moduleName
  * @return string
  */
-function transformRow($column, $row, $value, $moduleName = '') {
+function transformRow($column, $row, $value, $name = '') {
     //linked to facility details page
     $new_value = $value;
     if (in_array($column, ['id', 'name'])) {

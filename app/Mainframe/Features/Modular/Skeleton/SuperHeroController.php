@@ -21,6 +21,6 @@ class SuperHeroController extends ModuleBaseController
      */
     public function resolveDatatableClass($class = null)
     {
-        return $class ?? new SuperHeroDatatable($this->moduleName);
+        return $class ?? new SuperHeroDatatable($this->name);
     }
 }

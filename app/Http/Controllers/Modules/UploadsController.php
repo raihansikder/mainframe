@@ -26,14 +26,14 @@ class UploadsController extends ModuleBaseController
         /** @var \App\Http\Mainframe\Features\Modular\BaseModule\BaseModule $Model */
         /** @var \App\Http\Mainframe\Features\Modular\BaseModule\BaseModule $element */
         // init local variables
-        $moduleName = $this->moduleName;
-        $Model = model($this->moduleName);
+        $moduleName = $this->name;
+        $Model = model($this->name);
 
         // $ret = ret();
         # --------------------------------------------------------
         # Process store while creation
         # --------------------------------------------------------
-        if (hasModulePermission($this->moduleName, 'create')) { // check module permission
+        if (hasModulePermission($this->name, 'create')) { // check module permission
             $element = new $Model(Request::all());
             // validate
             $validator = \Validator::make(Request::all(), $Model::rules($element), $Model::$customValidationMessages);
@@ -67,7 +67,7 @@ class UploadsController extends ModuleBaseController
                     // plugins like image cropper.
                     $width = $height = null;
                     if (isImageExtension($file->getClientOriginalExtension())) {
-                        list($width, $height) = getimagesize($file->getPathname());
+                        [$width, $height] = getimagesize($file->getPathname());
                     }
 
                     //$aws_path = '/test/' . $unique_name;

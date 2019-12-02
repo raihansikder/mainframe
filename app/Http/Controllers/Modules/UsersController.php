@@ -33,13 +33,13 @@ class UsersController extends ModuleBaseController
     {
         return [
             //['table.id', 'id', 'ID'], // translates to => table.id as id and the last one ID is grid colum header
-            ["{$this->moduleName}.id", "id", "ID"],
-            ["{$this->moduleName}.name", "name", "Name"],
-            ["{$this->moduleName}.email", "email", "Email"],
-            ["{$this->moduleName}.group_titles_csv", "group_titles_csv", "Group"],
+            ["{$this->name}.id", "id", "ID"],
+            ["{$this->name}.name", "name", "Name"],
+            ["{$this->name}.email", "email", "Email"],
+            ["{$this->name}.group_titles_csv", "group_titles_csv", "Group"],
             ["updater.name", "user_name", "Updater"],
-            ["{$this->moduleName}.updated_at", "updated_at", "Updated at"],
-            ["{$this->moduleName}.is_active", "is_active", "Active"]
+            ["{$this->name}.updated_at", "updated_at", "Updated at"],
+            ["{$this->name}.is_active", "is_active", "Active"]
         ];
     }
 
@@ -62,8 +62,8 @@ class UsersController extends ModuleBaseController
      */
     // public function sourceTables()
     // {
-    //     return DB::table($this->moduleName)
-    //         ->leftJoin('users as updater', $this->moduleName . '.updated_by', 'updater.id');
+    //     return DB::table($this->name)
+    //         ->leftJoin('users as updater', $this->name . '.updated_by', 'updater.id');
     // }
 
     /**
@@ -75,12 +75,12 @@ class UsersController extends ModuleBaseController
     //     $query = $this->sourceTables()->select($this->selectColumns());
     //
     //     // Inject tenant context in grid query
-    //     if ($tenant_id = inTenantContext($this->moduleName)) {
-    //         $query = injectTenantIdInModelQuery($this->moduleName, $query);
+    //     if ($tenant_id = inTenantContext($this->name)) {
+    //         $query = injectTenantIdInModelQuery($this->name, $query);
     //     }
     //
     //     // Exclude deleted rows
-    //     $query = $query->whereNull($this->moduleName . '.deleted_at'); // Skip deleted rows
+    //     $query = $query->whereNull($this->name . '.deleted_at'); // Skip deleted rows
     //
     //     return $query;
     // }
@@ -96,8 +96,8 @@ class UsersController extends ModuleBaseController
     //     $dt = $dt->rawColumns(['id', 'name', 'is_active']); // HTML can be printed for raw columns
     //
     //     // Next modify each column content
-    //     $dt = $dt->editColumn('name', '<a href="{{ route(\'' . $this->moduleName . '.edit\', $id) }}">{{$name}}</a>');
-    //     $dt = $dt->editColumn('id', '<a href="{{ route(\'' . $this->moduleName . '.edit\', $id) }}">{{$id}}</a>');
+    //     $dt = $dt->editColumn('name', '<a href="{{ route(\'' . $this->name . '.edit\', $id) }}">{{$name}}</a>');
+    //     $dt = $dt->editColumn('id', '<a href="{{ route(\'' . $this->name . '.edit\', $id) }}">{{$id}}</a>');
     //     $dt = $dt->editColumn('is_active', '@if($is_active)  Yes @else <span class="text-red">No</span> @endif');
     //
     //     return $dt;
@@ -172,9 +172,9 @@ class UsersController extends ModuleBaseController
     {
         /** @var \App\Mainframe\Modules\Users\User $Model */
         /** @var \App\Mainframe\Modules\Users\User $element */
-        $moduleName = $this->moduleName;
-        $Model = model($this->moduleName);
-        //$elementName = str_singular($moduleName);
+        $moduleName = $this->name;
+        $Model = model($this->name);
+        //$elementName = str_singular($name);
         //$ret = ret(); // load default return values
         # --------------------------------------------------------
         # Process show
@@ -222,8 +222,8 @@ class UsersController extends ModuleBaseController
         /** @var \App\Http\Mainframe\Features\Modular\BaseModule\BaseModule $Model */
         /** @var \App\Http\Mainframe\Features\Modular\BaseModule\BaseModule $element */
         // init local variables
-        $moduleName = $this->moduleName;
-        $Model = model($this->moduleName);
+        $moduleName = $this->name;
+        $Model = model($this->name);
         $elementName = Str::singular($moduleName);
         # --------------------------------------------------------
         # Process return/redirect
@@ -267,10 +267,10 @@ class UsersController extends ModuleBaseController
         /** @var \App\Mainframe\Modules\Users\User $Model */
         /** @var \App\Mainframe\Modules\Users\User $element */
         // init local variables
-        // $moduleName = $this->moduleName;
-        $Model = model($this->moduleName);
+        // $name = $this->name;
+        $Model = model($this->name);
 
-        //$elementName = str_singular($moduleName);
+        //$elementName = str_singular($name);
         //$ret = ret();
         # --------------------------------------------------------
         # Process store while creation
@@ -278,7 +278,7 @@ class UsersController extends ModuleBaseController
         $validator = null;
         $inputs = $this->transformInputs(Request::all());
         $element = new $Model($inputs);
-        if (hasModulePermission($this->moduleName, 'create')) { // check module permission
+        if (hasModulePermission($this->name, 'create')) { // check module permission
             $validator = Validator::make(Request::all(), $Model::rules($element), $Model::$customValidationMessages);
 
             // $element = new $Model;
@@ -334,7 +334,7 @@ class UsersController extends ModuleBaseController
          * @var \App\Mainframe\Modules\Users\User $Model
          * @var \App\Mainframe\Modules\Users\User $element
          */
-        $Model = model($this->moduleName);
+        $Model = model($this->name);
         /** @noinspection PhpUnusedLocalVariableInspection */
         $ret = ret(); // load default return values
         # --------------------------------------------------------
@@ -405,7 +405,7 @@ class UsersController extends ModuleBaseController
     {
         /** @var \App\Http\Mainframe\Features\Modular\BaseModule\BaseModule $Model */
         /** @var \Illuminate\Database\Eloquent\Builder $q */
-        $Model = model($this->moduleName);
+        $Model = model($this->name);
 
         if (Request::has('columns')) {
             $q = $Model::select(explode(',', Request::get('columns')));
@@ -474,7 +474,7 @@ class UsersController extends ModuleBaseController
 
         // $data = $q->remember(cacheTime('none'))->get();
         $data = $q->get();
-        $ret = ret('success', "{$this->moduleName} list", compact('data', 'total', 'offset', 'limit'));
+        $ret = ret('success', "{$this->name} list", compact('data', 'total', 'offset', 'limit'));
         return Response::json(fillRet($ret));
     }
 
@@ -553,12 +553,12 @@ class UsersController extends ModuleBaseController
      */
     public function report()
     {
-        if (hasModulePermission($this->moduleName, 'report')) {
+        if (hasModulePermission($this->name, 'report')) {
             $report = new UsersReport($this->reportDataSource(), $this->reportViewBaseDir());
             return $report->show();
         }
         return view('template.blank')->with('title', 'Permission denied!')
-            ->with('body', "You don't have permission [ ".$this->moduleName.".report]");
+            ->with('body', "You don't have permission [ ".$this->name.".report]");
     }
 
 }

@@ -13,7 +13,7 @@ trait Resolvable
      */
     public function createFormView()
     {
-        return FormView::resolve($this->moduleName, 'create');
+        return FormView::resolve($this->name, 'create');
     }
 
     /**
@@ -24,9 +24,9 @@ trait Resolvable
     public function createFromConfig()
     {
         return [
-            'route' => $this->moduleName.'.store',
-            'class' => $this->moduleName.'-form module-base-form create-form',
-            'name' => $this->moduleName,
+            'route' => $this->name.'.store',
+            'class' => $this->name.'-form module-base-form create-form',
+            'name' => $this->name,
             'files' => true
         ];
     }
@@ -38,7 +38,7 @@ trait Resolvable
      */
     public function editFormView()
     {
-        return FormView::resolve($this->moduleName, 'edit', user());
+        return FormView::resolve($this->name, 'edit', user());
     }
 
     /**
@@ -49,12 +49,12 @@ trait Resolvable
     public function editFromConfig()
     {
         return [
-            'route' => [$this->moduleName.'.update', $this->element->id],
-            'class' => $this->moduleName.'-form module-base-form edit-form',
-            'name' => $this->moduleName,
+            'route' => [$this->name.'.update', $this->element->id],
+            'class' => $this->name.'-form module-base-form edit-form',
+            'name' => $this->name,
             'files' => true,
             'method' => 'patch',
-            'id' => $this->moduleName.'Form'
+            'id' => $this->name.'Form'
         ];
     }
 

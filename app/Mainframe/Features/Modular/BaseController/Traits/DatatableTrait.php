@@ -23,7 +23,7 @@ trait DatatableTrait
     public function resolveDatatableClass($class = null)
     {
         /** @var ModuleBaseController $this */
-        return $class ?? new Datatable($this->moduleName);
+        return $class ?? new Datatable($this->name);
     }
 
     /**
