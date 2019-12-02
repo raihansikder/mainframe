@@ -74,6 +74,8 @@ class Input extends Form
         if ($this->element && isset($this->element->{$this->name})) {
             return $this->element->{$this->name};
         }
+
+        return null;
     }
 
     /**

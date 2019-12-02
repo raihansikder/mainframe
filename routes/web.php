@@ -19,7 +19,3 @@ Route::get('/', 'HomeController@index')->name('home')->middleware(['verified']);
  */
 include_once app_path("Mainframe/routes/auth.php");
 include_once app_path("Mainframe/routes/module.php");
-
-
-
-

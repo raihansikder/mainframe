@@ -15,15 +15,15 @@ use App\Mainframe\Features\Responder\Response;
 /**
  * Class MainframeBaseController
  */
-class MainframeBaseController extends Controller
+class BaseController extends Controller
 {
-    // public $request;
+
     /** @var \Illuminate\Support\MessageBag */
     public $messageBag;
-    /**
-     * @var \App\Mainframe\Features\Responder\Response
-     */
+
+    /** * @var \App\Mainframe\Features\Responder\Response */
     public $response;
+
     /** @var \Illuminate\Validation\Validator */
     public $validator;
 
@@ -33,23 +33,7 @@ class MainframeBaseController extends Controller
     public function __construct()
     {
         $this->messageBag = resolve(MessageBag::class);
-        // $this->request = request();
-        // $this->response = new Response();
-    }
-
-    public function response()
-    {
-        /** @noinspection UnknownInspectionInspection */
-        /** @noinspection DuplicatedCode */
-        $response = resolve(Response::class);
-        $response->validator = $this->validator;
-        // $response->code = $response->code ?: $this->code;
-        // $response->status = $response->status ?: $this->status;
-        // $response->message = $response->message ?: $this->message;
-        // $response->payload = $response->payload ?: $this->payload;
-        // $response->redirectTo = $response->redirectTo ?: $this->redirectTo;
-
-        return $response;
+        $this->response = resolve(Response::class);
     }
 
 }

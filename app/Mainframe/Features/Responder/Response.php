@@ -8,21 +8,25 @@ class Response
 {
 
     /** @var int Success/Error codes 200.400 etc */
-    public $code;
+    public $code = 200;
+
     /** @var string success|fail */
     public $status;
+
     /** @var string Single line of message */
     public $message;
+
     /** @var mixed API payload, usually it is a list of a model */
     public $payload;
-    /** @var \App\Mainframe\Features\Modular\BaseModule\BaseModule */
-    public $element;
-    /** @var string */
-    public $redirectTo;
-    /** @var \App\Mainframe\Features\Modular\Validator\ModelValidator */
-    public $modelValidator;
+
     /** @var \Illuminate\Validation\Validator */
     public $validator;
+
+    /** @var string URL */
+    public $redirectTo;
+
+    /** @var \Illuminate\View\View|\Illuminate\Contracts\View\Factory */
+    public $view;
 
     /**
      * Checks if the response expects JSON
@@ -81,8 +85,11 @@ class Response
      * @param  int  $code
      * @return \Illuminate\Http\JsonResponse|void
      */
-    public function notFound($message = 'Item not found', $code = 404)
+    public function notFound($message = null, $code = null)
     {
+        $message = $message ?: 'Item not found';
+        $code = $code ?: 404;
+
         return $this->failed($message, $code);
     }
 
@@ -93,8 +100,11 @@ class Response
      * @param  int  $code
      * @return $this
      */
-    public function success($message = 'Request is successful', $code = 200)
+    public function success($message = null, $code = null)
     {
+        $message = $message ?: '';
+        $code = $code ?: 200;
+
         if ($this->status !== 'fail') {
             $this->code = $code;
             $this->status = 'success';
@@ -111,8 +121,11 @@ class Response
      * @param  int  $code
      * @return $this
      */
-    public function fail($message = 'Operation failed', $code = 404)
+    public function fail($message = null, $code = null)
     {
+        $message = $message ?: '';
+        $code = $code ?: 404;
+
         if ($this->status !== 'fail') {
             $this->code = $code;
             $this->status = 'fail';
@@ -183,20 +196,18 @@ class Response
             $response['data'] = $this->payload;
         }
 
-        // Add validation error messages
-        if ($this->modelValidator) {
-            $validator = $this->modelValidator->validator;
+        /*--------------------------------
+         * Select which validator to load
+         *-------------------------------- .
+         */
+        if ($this->validator && $this->validator->messages()) {
+            $response['validation_errors'] = json_decode($this->validator->messages(), true);
         }
-        if ($this->validator) {
-            $validator = $this->validator;
-        }
-        if (isset($validator) && $validator->messages()) {
-            $response['validation_errors'] = json_decode($validator->messages(), true);
-        }
+        /*-------------------------------*/
 
         // Add redirect to
-        if ($this->redirectTo()) {
-            $response['redirect'] = $this->redirectTo();
+        if ($this->redirectTo) {
+            $response['redirect'] = $this->redirectTo;
         }
 
         return $response;
@@ -205,66 +216,55 @@ class Response
     /**
      * Redirect to a route
      *
-     * @param  null  $to
+     * @param  string  $to
      * @return \Illuminate\Http\RedirectResponse
      */
     public function redirect($to = null)
     {
-        $to = $to ?: $this->redirectTo();
-
-        $redirect = $to ? Redirect::to($to) : Redirect::back();
+        if ($to) {
+            $redirect = Redirect::to($to);
+        } elseif ($this->redirectTo) {
+            $redirect = Redirect::to($this->redirectTo);
+        } else {
+            $redirect = Redirect::back();
+        }
 
         if ($this->isFail()) {
-            $redirect = $redirect->withInput();
-
-            if ($validator = $this->modelValidator->validator) {
-                $redirect = $redirect->withErrors($validator);
-            }
+            $redirect->withErrors($this->validator)->withInput();
         }
 
-        return $redirect->with([
-            'status' => $this->status,
-            'message' => $this->message,
-        ]);
+        return $redirect->with($this->defaultViewVars());
     }
 
     /**
-     * Try to figure out where to redirect
+     * Render a view files
      *
-     * @return null|array|\Illuminate\Http\Request|string
+     * @param  string  $path
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function redirectTo()
+    public function view($path)
     {
-        if ($this->redirectTo) {
-            return $this->redirectTo;
+        $view = view($path)->with($this->defaultViewVars());
+        if ($this->validator && $this->validator->errors()) {
+            $view->withErrors($this->validator);
         }
 
-        if ($this->isSuccess() && request('redirect_success')) {
-            if ($this->element && request('redirect_success') === '#new') {
-                return route($this->element->module()->name.".edit", $this->element->id);
-            }
-
-            return request('redirect_success');
-        }
-
-        if ($this->isFail() && request('redirect_fail')) {
-            return request('redirect_fail');
-        }
-
-        return null;
+        return $view;
     }
 
     /**
-     * Setter fro $redirectTo
+     * Additional values to be passed to view through view composer or redirect.
+     * In redirect the value has to be accessed via session.
      *
-     * @param $redirectTo
-     * @return $this
+     * @param  array  $vars
+     * @return array
      */
-    public function setRedirectTo($redirectTo)
+    public function defaultViewVars($vars = [])
     {
-        $this->redirectTo = $redirectTo;
-
-        return $this;
+        return array_merge([
+            'responseStatus' => $this->status,
+            'responseMessage' => $this->message,
+        ], $vars);
     }
 
 }

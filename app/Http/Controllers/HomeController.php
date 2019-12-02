@@ -2,13 +2,17 @@
 
 namespace App\Http\Controllers;
 
-class HomeController extends Controller
+use App\Mainframe\Features\Modular\BaseController\BaseController;
+
+class HomeController extends BaseController
 {
     /**
      * HomeController constructor.
      */
     public function __construct()
     {
+
+        parent::__construct();
         $this->middleware('auth');
     }
 
@@ -21,7 +25,7 @@ class HomeController extends Controller
     {
         /** @var \App\Mainframe\Modules\Users\User $user */
         // $user = \Auth::user();
-        return view("dashboards.default.index");
+        return $this->response->view("dashboards.default.index");
     }
 
 }

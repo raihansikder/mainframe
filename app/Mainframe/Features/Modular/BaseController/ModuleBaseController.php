@@ -9,10 +9,8 @@
 namespace App\Mainframe\Features\Modular\BaseController;
 
 use View;
-use Redirect;
 use Illuminate\Http\Request;
 use App\Mainframe\Modules\Modules\Module;
-use App\Mainframe\Features\Responder\Response;
 use App\Mainframe\Features\Modular\Resolvers\GridView;
 use App\Mainframe\Features\Modular\BaseController\Traits\ListTrait;
 use App\Mainframe\Features\Modular\BaseController\Traits\Resolvable;
@@ -24,7 +22,7 @@ use App\Mainframe\Features\Modular\BaseController\Traits\ModelOperationsTrait;
 /**
  * Class ModuleBaseController
  */
-class ModuleBaseController extends MainframeBaseController
+class ModuleBaseController extends BaseController
 {
     use ModelOperationsTrait, ListTrait, ShowChangesTrait,
         ViewReportTrait, DatatableTrait, Resolvable;
@@ -71,16 +69,17 @@ class ModuleBaseController extends MainframeBaseController
     public function index()
     {
         if (! user()->can('viewAny', $this->model)) {
-            return $this->response()->permissionDenied();
+            return $this->response->permissionDenied();
         }
 
-        if ($this->response()->expectsJson()) {
+        if ($this->response->expectsJson()) {
             return $this->list();
-            // return $this->response()->success()->load($this->listData())->json();
         }
 
-        return view(GridView::resolve($this->moduleName))
-            ->with('gridColumns', $this->resolveDatatableClass()->columns());
+        $path = GridView::resolve($this->moduleName);
+        $vars = ['gridColumns' => $this->resolveDatatableClass()->columns()];
+
+        return $this->response->view($path)->with($vars);
     }
 
     /**
@@ -94,17 +93,19 @@ class ModuleBaseController extends MainframeBaseController
         $this->element = $this->module->modelInstance();
 
         if (! user()->can('create', $this->model)) {
-            return $this->response()->permissionDenied();
+            return $this->response->permissionDenied();
         }
 
-        $uuid = request()->old('uuid') ?: uuid();
-        $formState = 'create';
-        $formConfig = $this->createFromConfig();
-        $elementIsEditable = true;
+        $path = $this->createFormView();
+        $vars = [
+            'element' => $this->element,
+            'formConfig' => $this->createFromConfig(),
+            'uuid' => request()->old('uuid') ?: uuid(),
+            'elementIsEditable' => true,
+            'formState' => 'create',
+        ];
 
-        return View::make($this->createFormView())
-            ->with('element', $this->element)
-            ->with(compact('formConfig', 'uuid', 'elementIsEditable', 'formState'));
+        return $this->response->view($path)->with($vars);
     }
 
     /**
@@ -117,18 +118,18 @@ class ModuleBaseController extends MainframeBaseController
     public function show($id)
     {
         if (! $this->element = $this->model->find($id)) {
-            return $this->response()->notFound();
+            return $this->response->notFound();
         }
 
         if (! user()->can('view', $this->element)) {
-            return $this->response()->permissionDenied();
+            return $this->response->permissionDenied();
         }
 
-        if ($this->response()->expectsJson()) {
-            return $this->response()->success()->load($this->element)->json();
+        if ($this->response->expectsJson()) {
+            return $this->response->success()->load($this->element)->json();
         }
 
-        return Redirect::route($this->moduleName.".edit", $id);
+        return $this->response->redirect(route($this->moduleName.".edit", $id));
     }
 
     /**
@@ -140,20 +141,22 @@ class ModuleBaseController extends MainframeBaseController
     public function edit($id)
     {
         if (! $this->element = $this->model->find($id)) {
-            return $this->response()->notFound();
+            return $this->response->notFound();
         }
 
         if (! user()->can('view', $this->element)) {
-            return $this->response()->permissionDenied();
+            return $this->response->permissionDenied();
         }
 
-        $formState = 'edit';
-        $formConfig = $this->editFromConfig();
-        $elementIsEditable = user()->can('update', $this->element);
+        $path = $this->editFormView();
+        $vars = [
+            'element' => $this->element,
+            'formConfig' => $this->editFromConfig(),
+            'elementIsEditable' => user()->can('update', $this->element),
+            'formState' => 'edit',
+        ];
 
-        return View::make($this->editFormView())
-            ->with('element', $this->element)
-            ->with(compact('formConfig', 'formState', 'elementIsEditable'));
+        return $this->response->view($path)->with($vars);
     }
 
     /**
@@ -166,18 +169,19 @@ class ModuleBaseController extends MainframeBaseController
     public function store(Request $request)
     {
         if (! user()->can('create', $this->model)) {
-            return $this->response()->permissionDenied();
+            return $this->response->permissionDenied();
         }
 
         $this->element = $this->model; // Create an empty model to be stored.
 
         $this->attemptStore();
 
-        if ($this->response()->expectsJson()) {
-            return $this->response()->load($this->element)->json();
+        $this->response->redirectTo = $this->redirectTo();
+        if ($this->response->expectsJson()) {
+            return $this->response->load($this->element)->json();
         }
 
-        return $this->response()->redirect();
+        return $this->response->redirect();
     }
 
     /**
@@ -190,20 +194,21 @@ class ModuleBaseController extends MainframeBaseController
     public function update(Request $request, $id)
     {
         if (! $this->element = $this->model->find($id)) {
-            return $this->response()->notFound();
+            return $this->response->notFound();
         }
 
         if (! user()->can('update', $this->element)) {
-            return $this->response()->permissionDenied();
+            return $this->response->permissionDenied();
         }
 
         $this->attemptUpdate();
 
-        if ($this->response()->expectsJson()) {
-            return $this->response()->load($this->element)->json();
+        $this->response->redirectTo = $this->redirectTo();
+        if ($this->response->expectsJson()) {
+            return $this->response->load($this->element)->json();
         }
 
-        return $this->response()->redirect();
+        return $this->response->redirect();
     }
 
     /**
@@ -216,27 +221,27 @@ class ModuleBaseController extends MainframeBaseController
     public function destroy($id)
     {
         if (! $this->element = $this->model->find($id)) {
-            return $this->response()->notFound();
+            return $this->response->notFound();
         }
 
         if (user()->cannot('delete', $this->element)) {
-            return $this->response()->permissionDenied();
+            return $this->response->permissionDenied();
         }
 
         $this->attemptDestroy();
 
-        if ($this->response()->expectsJson()) {
-            return $this->response()->json();
+        if ($this->response->expectsJson()) {
+            return $this->response->json();
         }
 
-        return $this->response()->redirect();
+        return $this->response->redirect();
     }
 
     /**
      * Restore a soft-deleted.
      *
      * @param  null  $id
-     * @return $this
+     * @return \App\Mainframe\Features\Modular\BaseController\ModuleBaseController|void
      */
     public function restore($id = null)
     {
@@ -244,14 +249,24 @@ class ModuleBaseController extends MainframeBaseController
     }
 
     /**
-     * @return mixed|Response
+     * Try to figure out where to redirect
+     *
+     * @return null|array|\Illuminate\Http\Request|string
      */
-    public function response()
+    public function redirectTo()
     {
-        $response = parent::response();
-        $response->modelValidator = $this->modelValidator;
-        $response->element = $this->element;
+        if ($this->response->isSuccess() && request('redirect_success')) {
+            if ($this->element && request('redirect_success') == '#new') {
+                return route($this->module->name.".edit", $this->element->id);
+            }
 
-        return $response;
+            return request('redirect_success');
+        }
+
+        if ($this->response->isFail() && request('redirect_fail')) {
+            return request('redirect_fail');
+        }
+
+        return URL::full();
     }
 }
