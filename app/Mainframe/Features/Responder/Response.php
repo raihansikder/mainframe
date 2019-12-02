@@ -142,7 +142,8 @@ class Response
      */
     public function isSuccess()
     {
-        return $this->status === 'success';
+        return $this->valid();
+        // return $this->status === 'success';
     }
 
     /**
@@ -200,8 +201,8 @@ class Response
          * Select which validator to load
          *-------------------------------- .
          */
-        if ($this->validator()->failed()) {
-            $response['validation_errors'] = json_decode($this->validator()->messages(), true);
+        if ($this->invalid()) {
+            $response['validation_errors'] = $this->validator()->messages()->toArray();
         }
         /*-------------------------------*/
 
@@ -246,8 +247,8 @@ class Response
     {
         $view = view($path)->with($this->defaultViewVars());
 
-        if ($this->validator()->failed()) {
-            $view->withErrors($this->validator());
+        if ($this->isFail()) {
+            $view->withErrors($this->validator);
         }
 
         return $view;

@@ -85,7 +85,6 @@ class ReportBuilder extends BaseController
         $this->dataSource = $dataSource;
         $this->baseDir = $baseDir ?: 'mainframe.layouts.report';
         $this->cache = $cache ?: 1;
-
     }
 
     /**
