@@ -43,9 +43,9 @@ trait ModelOperationsTrait
      */
     public function attemptStore()
     {
-        $modelValidator = $this->modelValidator();
+        $modelValidator = $this->modelValidator()->create();
 
-        if ($modelValidator->create()->failed()) {
+        if ($modelValidator->failed()) {
             $this->response->validator = $modelValidator->validator;
 
             return $this->response->fail('Validation failed', 200);
@@ -67,9 +67,9 @@ trait ModelOperationsTrait
      */
     public function attemptUpdate()
     {
-        $modelValidator = $this->modelValidator();
+        $modelValidator = $this->modelValidator()->update();
 
-        if ($modelValidator->update()->failed()) {
+        if ($modelValidator->failed()) {
             $this->response->validator = $modelValidator->validator;
 
             return $this->response->fail('Validation failed', 200);
