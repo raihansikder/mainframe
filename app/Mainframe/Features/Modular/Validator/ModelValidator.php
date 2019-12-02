@@ -89,19 +89,6 @@ class ModelValidator
     public function validateRules()
     {
 
-        if ($this->validator()->fails()) {
-            $this->invalidate();
-        }
-
-        return $this->validator();
-    }
-
-    public function validator()
-    {
-        if ($this->validator) {
-            return $this->validator;
-        }
-
         $this->validator = Validator::make(
             $this->element->getAttributes(),
             $this::rules($this->element),
@@ -110,6 +97,7 @@ class ModelValidator
 
         return $this->validator;
     }
+
 
     /**
      * Get result
@@ -157,14 +145,17 @@ class ModelValidator
     }
 
     /**
-     * Add an error message to a key-value pair
+     * Ad
+     * d an error message to a key-value pair
      *
      * @param  null  $key
      * @param  null  $message
      */
     public function addError($key = null, $message = null)
     {
-        $this->validator()->messages()->add($key, $message);
+        if($key || $message) {
+            $this->validator->messages()->add($key, $message);
+        }
     }
 
     /**

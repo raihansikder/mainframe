@@ -46,5 +46,5 @@ $types = Setting::$types;
 
 @section('js')
     @parent
-    {{--    @include('mainframe.modules.settings.form.js')--}}
+    {{--        @include('mainframe.modules.settings.form.js')--}}
 @endsection

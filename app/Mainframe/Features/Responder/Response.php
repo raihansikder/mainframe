@@ -222,7 +222,15 @@ class Response
      */
     public function redirect($to = null)
     {
-        $redirect = $to ? Redirect::to($to) : Redirect::back();
+
+        if ($to) {
+            $redirect = Redirect::to($to);
+        } elseif ($this->redirectTo) {
+            $redirect = Redirect::to($this->redirectTo);
+        } else {
+            $redirect = Redirect::back();
+
+        }
 
         if ($this->isFail()) {
             $redirect->withErrors($this->validator)->withInput();
@@ -243,7 +251,12 @@ class Response
 
         $with = array_merge($with, $this->defaultViewVars());
 
-        return view($path)->withErrors($this->validator)->with($with);
+        $view = view($path)->with($with);
+        if ($this->validator) {
+            $view->withErrors($this->validator);
+        }
+
+        return $view;
     }
 
     /**
