@@ -29,10 +29,12 @@ trait Filterable
             }
         }
 
+        // Apply raw SQL clause input from front-end.
         if ($this->additionalFilterConditions()) {
             $query = $query->whereRaw($this->additionalFilterConditions());
         }
 
+        // exclude deleted_at fields
         if (in_array('deleted_at', $this->dataSourceColumns())) {
             $query = $query->whereNull('deleted_at');
         }
@@ -133,7 +135,7 @@ trait Filterable
      */
     public function queryForArrayParam($query, $field, $val)
     {
-        if ($this->possibleJsonField($field)) { // Data stored in table is possibly json
+        if ($this->possibleJsonField($field)) { // Todo: Data stored in table is possibly json
             // return $query->whereJsonContains($field, $val); // Does't work for older maria db
         }
 
@@ -259,8 +261,6 @@ trait Filterable
         return false;
     }
 
-
-
     /**
      * Check if param is string.
      *
@@ -360,6 +360,5 @@ trait Filterable
     {
         return request('additional_conditions');
     }
-
 
 }

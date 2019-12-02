@@ -10,21 +10,104 @@ use App\Mainframe\Features\Helpers\Convert;
 trait Query
 {
     /**
+     * Build query to get the data.
+     *
+     * @return \Illuminate\Database\Query\Builder
+     */
+    public function resultQuery()
+    {
+        /** @var Builder $query */
+        $query = $this->queryDataSource();
+        if (count($this->querySelectColumns())) {
+            $query = $query->select($this->querySelectColumns());
+        }
+        $query = $this->filter($query);
+        $query = $this->groupBy($query);
+        $query = $this->orderBy($query);
+
+        return $query;
+    }
+
+    /**
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator|\Illuminate\Support\Collection
+     */
+    public function result()
+    {
+        // return Cache::remember(md5($this->resultQuery()->toSql()), $this->cache, function () {
+        // });
+
+        return $this->resultQuery()->paginate($this->rowsPerPage());
+
+    }
+
+    /**
+     * Rows per page. If grouped then show all rows.
+     *
+     * @return mixed
+     */
+    public function rowsPerPage()
+    {
+        // For groupBy query show all in one page
+        if ($this->hasGroupBy() || $this->expectsAllData()) {
+            return $this->total();
+        }
+
+        return request('rows_per_page') ?: 20;
+    }
+
+    /**
+     * Get total number of rows
+     *
+     * @return int
+     */
+    public function total()
+    {
+        return $this->totalQuery()->count();
+    }
+
+    /**
+     * Query to get total number of rows
+     *
+     * @return \Illuminate\Database\Eloquent\Model|\Illuminate\Database\Query\Builder|mixed|string
+     */
+    public function totalQuery()
+    {
+        $query = $this->queryDataSource();
+        $query = $this->filter($query);
+
+        return $query;
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Build query
+    |--------------------------------------------------------------------------
+    |
+    | Below is a step-by-step query building process broken down into  all
+    | possible units. Functions are used instead of variables to define
+    | some of the configuration so that logic an be applied inside
+    | the function if needed.
+    |
+    */
+
+    /**
      * Query to initially select table or a model.
      *
      * @return \Illuminate\Database\Query\Builder|string|\Illuminate\Database\Eloquent\Model
      */
     public function queryDataSource()
     {
+        // Source is a table
         if (is_string($this->dataSource)) {
             return DB::table($this->dataSource);
         }
 
+        // Source is a model/collection
         return $this->dataSource;
     }
 
     /**
-     * Convert input csv to array
+     * Construct the SQL SELECTS for the final query.
      *
      * @return array
      */
@@ -32,12 +115,11 @@ trait Query
     {
 
         if (count($this->selectedColumns())) {
-            $keys = $this->selectedColumns();
-            $keys = $this->includeDefaultSelectedColumns($keys);
-            $keys = $this->excludeSelectedGhostColumns($keys);
-
+            $keys = $this->selectedColumns();                    // Manually selected columns
+            $keys = $this->includeDefaultSelectedColumns($keys); // Default selected columns behind the scene
+            $keys = $this->excludeSelectedGhostColumns($keys);   // Exclude any column name that does not actually exists
         } else {
-            $keys = $this->dataSourceColumns();
+            $keys = $this->dataSourceColumns(); // If no selection is made select all by default.
         }
 
         $keys = $this->queryAddColumnForGroupBy($keys);
@@ -46,7 +128,7 @@ trait Query
     }
 
     /**
-     * Add the columns that should be always selected.
+     * Add the columns that should be always included in query.
      *
      * @param  array  $keys
      * @return array
@@ -106,6 +188,21 @@ trait Query
     }
 
     /**
+     * Add groupBy clause to the query builder.
+     *
+     * @param $query Builder
+     * @return \Illuminate\Database\Query\Builder
+     */
+    public function groupBy($query)
+    {
+        if ($this->hasGroupBy()) {
+            return $query->groupBy($this->groupByFields());
+        }
+
+        return $query;
+    }
+
+    /**
      * Determine the group by field field names. Usually this is input
      * from the report generator form.
      *
@@ -122,22 +219,6 @@ trait Query
     public function hasGroupBy()
     {
         return $this->groupByFields() ?: false;
-    }
-
-    /**
-     * Add groupBy clause to the query builder.
-     *
-     * @param $query Builder
-     * @return \Illuminate\Database\Query\Builder
-     */
-    public function groupBy($query)
-    {
-        $group_bys = $this->groupByFields();
-        if ($group_bys) {
-            $query = $query->groupBy($group_bys);
-        }
-
-        return $query;
     }
 
     /**
@@ -182,70 +263,6 @@ trait Query
         // query has SUM(*) as sum
         return ['Total'];
         //$merge[] = 'sum';
-    }
-
-    /**
-     * Build query to get the data.
-     *
-     * @return \Illuminate\Database\Query\Builder
-     */
-    public function resultQuery()
-    {
-        /** @var Builder $query */
-        $query = $this->queryDataSource();
-        if (count($this->querySelectColumns())) {
-            $query = $query->select($this->querySelectColumns());
-        }
-        $query = $this->filter($query);
-        $query = $this->groupBy($query);
-        $query = $this->orderBy($query);
-
-        return $query;
-    }
-
-    /**
-     * Rows per page. If grouped then show all rows.
-     *
-     * @return mixed
-     */
-    public function rowsPerPage()
-    {
-        // For groupBy query show all in one page
-        if ($this->hasGroupBy() || $this->expectsAllData()) {
-            return $this->total();
-        }
-
-        return request('rows_per_page') ?: 20;
-    }
-
-    /**
-     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator|\Illuminate\Support\Collection
-     */
-    public function result()
-    {
-        // return Cache::remember(md5($this->resultQuery()->toSql()), $this->cache, function () {
-        // });
-
-        return $this->resultQuery()->paginate($this->rowsPerPage());
-
-    }
-
-    /**
-     * Get total number of rows
-     *
-     * @return int
-     */
-    public function total()
-    {
-        return $this->totalQuery()->count();
-    }
-
-    public function totalQuery()
-    {
-        $query = $this->queryDataSource();
-        $query = $this->filter($query);
-
-        return $query;
     }
 
     /**

@@ -87,22 +87,25 @@ trait Columns
     }
 
     /**
-     * Alter the selected columns for output. i.e.printing in the view blade.
-     * These columns are finally shown in the html/output. Note when you
-     * use 'group by' usually there is a default 'total' field that
-     * needs to be shown in addition to all the selected columns.
-     * This is also added by this array mutator.
+     * Change selectedColumns array before passing to the view file.
+     * For complex group by you may need additional columns
      *
      * @return array
      */
     public function mutateSelectedColumns()
     {
 
+        $selectedColumns = $this->selectedColumns();
+        /*
+         * ------------------------------
+         *  Change the values of
+         *------------------------------
+         */
         if ($this->groupByFields()) {
-            return array_merge($this->selectedColumns(), $this->additionalSelectedColumnsDueToGroupBy());
+            return array_merge($selectedColumns, $this->additionalSelectedColumnsDueToGroupBy());
         }
 
-        return $this->selectedColumns();
+        return $selectedColumns;
     }
 
     /*
