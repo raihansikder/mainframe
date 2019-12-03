@@ -2,14 +2,14 @@
 
 namespace App\Mainframe\Features\Modular\BaseController;
 
-use URL;use View;use Illuminate\Http\Request;use App\Mainframe\Modules\Modules\Module;use App\Mainframe\Features\Report\ModuleList;use App\Mainframe\Features\Modular\Resolvers\GridView;use App\Mainframe\Features\Report\ModuleReportBuilder;use App\Mainframe\Features\Modular\BaseController\Traits\ListTrait;use App\Mainframe\Features\Modular\BaseController\Traits\Resolvable;use App\Mainframe\Features\Modular\BaseController\Traits\DatatableTrait;use App\Mainframe\Features\Modular\BaseController\Traits\ViewReportTrait;use App\Mainframe\Features\Modular\BaseController\Traits\ModelOperations;use App\Mainframe\Features\Modular\BaseController\Traits\ShowChangesTrait;
+use URL;use View;use Illuminate\Http\Request;use App\Mainframe\Modules\Modules\Module;use App\Mainframe\Features\Report\ModuleList;use App\Mainframe\Features\Datatable\ModuleDatatable;use App\Mainframe\Features\Modular\Resolvers\GridView;use App\Mainframe\Features\Report\ModuleReportBuilder;use App\Mainframe\Features\Modular\BaseController\Traits\ListTrait;use App\Mainframe\Features\Modular\BaseController\Traits\Resolvable;use App\Mainframe\Features\Modular\BaseController\Traits\ViewReportTrait;use App\Mainframe\Features\Modular\BaseController\Traits\ModelOperations;use App\Mainframe\Features\Modular\BaseController\Traits\ShowChangesTrait;
 
 /**
  * Class ModuleBaseController
  */
 class ModuleBaseController extends BaseController
 {
-    use ModelOperations, ShowChangesTrait, DatatableTrait, Resolvable;
+    use ModelOperations, ShowChangesTrait, Resolvable;
 
     /** @var string Module name */
     public $name;
@@ -276,5 +276,28 @@ class ModuleBaseController extends BaseController
         }
 
         return URL::full();
+    }
+
+    /**
+     * Resolve which MainframeDatatable class to use.
+     *
+     * @return \App\Mainframe\Features\Datatable\Datatable
+     */
+    public function datatable()
+    {
+        return new ModuleDatatable($this->module);
+    }
+
+    /**
+     * Returns datatable json for the module index page
+     * A route is automatically created for all modules to access this controller function
+     *
+     * @return \Illuminate\Http\JsonResponse
+     * @var \Yajra\DataTables\DataTables $dt
+     */
+    public function datatableJson()
+    {
+
+        return ($this->datatable())->json();
     }
 }
