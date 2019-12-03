@@ -6,15 +6,10 @@
 namespace App\Mainframe\Features\Datatable;
 
 use DB;
-use App\Mainframe\Modules\Modules\Module;
 
 class Datatable
 {
 
-    /** @var string */
-    public $moduleName;
-    /** @var \App\Mainframe\Modules\Modules\Module */
-    public $module;
     /** @var string */
     public $table;
 
@@ -26,13 +21,11 @@ class Datatable
      * globally shares a couple of variables $name, $currentModule to all views rendered
      * from this controller
      *
-     * @param $moduleName
+     * @param $table
      */
-    public function __construct($moduleName)
+    public function __construct($table)
     {
-        $this->moduleName = $moduleName;
-        $this->module = Module::byName($moduleName);
-        $this->table = $this->module->tableName();
+        $this->table = $table;
     }
 
     /**
@@ -108,11 +101,11 @@ class Datatable
         // Set columns for HTML output.
         $dt = $dt->rawColumns(['id', 'name', 'is_active']);
 
-        // Next modify each column content
-        /*  @var $dt \Yajra\DataTables\DataTableAbstract */
-        $dt = $dt->editColumn('name', '<a href="{{ route(\''.$this->moduleName.'.edit\', $id) }}">{{$name}}</a>');
-        $dt = $dt->editColumn('id', '<a href="{{ route(\''.$this->moduleName.'.edit\', $id) }}">{{$id}}</a>');
-        $dt = $dt->editColumn('is_active', '@if($is_active)  Yes @else <span class="text-red">No</span> @endif');
+        // // Next modify each column content
+        // /*  @var $dt \Yajra\DataTables\DataTableAbstract */
+        // $dt = $dt->editColumn('name', '<a href="{{ route(\''.$this->moduleName.'.edit\', $id) }}">{{$name}}</a>');
+        // $dt = $dt->editColumn('id', '<a href="{{ route(\''.$this->moduleName.'.edit\', $id) }}">{{$id}}</a>');
+        // $dt = $dt->editColumn('is_active', '@if($is_active)  Yes @else <span class="text-red">No</span> @endif');
 
         return $dt;
     }

@@ -6,9 +6,9 @@
 namespace App\Mainframe\Modules\SuperHeroes;
 
 use DB;
-use App\Mainframe\Features\Datatable\Datatable;
+use App\Mainframe\Features\Datatable\ModuleDatatable;
 
-class SuperHeroDatatable extends Datatable
+class SuperHeroDatatable extends ModuleDatatable
 {
     /**
      * Define Query for generating results for grid

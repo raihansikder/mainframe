@@ -16,11 +16,10 @@ class LoremIpsumController extends ModuleBaseController
     }
 
     /**
-     * @param  null  $class
      * @return LoremIpsumDatatable
      */
-    public function resolveDatatableClass($class = null)
+    public function datatable()
     {
-        return $class ?? new LoremIpsumDatatable($this->name);
+        return new LoremIpsumDatatable($this->module);
     }
 }

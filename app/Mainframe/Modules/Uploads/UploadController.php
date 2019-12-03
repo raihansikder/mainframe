@@ -21,12 +21,11 @@ class UploadController extends ModuleBaseController
     }
 
     /**
-     * @param  null  $class
      * @return UploadDatatable
      */
-    public function resolveDatatableClass($class = null)
+    public function datatable()
     {
-        return $class ?? new UploadDatatable($this->name);
+        return new UploadDatatable($this->module);
     }
 
     /**

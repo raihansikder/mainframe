@@ -16,11 +16,10 @@ class ModuleGroupController extends ModuleBaseController
     }
 
     /**
-     * @param  null  $class
      * @return ModuleGroupDatatable
      */
-    public function resolveDatatableClass($class = null)
+    public function datatable()
     {
-        return $class ?? new ModuleGroupDatatable($this->name);
+        return new ModuleGroupDatatable($this->module);
     }
 }

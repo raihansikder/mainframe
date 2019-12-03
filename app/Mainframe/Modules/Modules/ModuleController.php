@@ -10,4 +10,9 @@ class ModuleController extends ModuleBaseController
     {
         parent::__construct('modules');
     }
+
+    public function datatable()
+    {
+        return new ModuleDatatable($this->module);
+    }
 }

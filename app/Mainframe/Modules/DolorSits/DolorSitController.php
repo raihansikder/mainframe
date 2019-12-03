@@ -16,11 +16,10 @@ class DolorSitController extends ModuleBaseController
     }
 
     /**
-     * @param  null  $class
      * @return DolorSitDatatable
      */
-    public function resolveDatatableClass($class = null)
+    public function datatable()
     {
-        return $class ?? new DolorSitDatatable($this->name);
+        return new DolorSitDatatable($this->module);
     }
 }

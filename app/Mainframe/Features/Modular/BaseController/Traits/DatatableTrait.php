@@ -3,27 +3,27 @@
 namespace App\Mainframe\Features\Modular\BaseController\Traits;
 
 use App\Mainframe\Features\Datatable\Datatable;
+use App\Mainframe\Features\Datatable\ModuleDatatable;
 use App\Mainframe\Features\Modular\BaseController\ModuleBaseController;
 
 /**
  * Trait GridDatatable
  *
- * @var $this ModuleBaseController
  * @package App\Traits
  */
+
+/** @mixin ModuleBaseController  $this  */
 trait DatatableTrait
 {
 
     /**
      * Resolve which MainframeDatatable class to use.
      *
-     * @param  null  $class
      * @return \App\Mainframe\Features\Datatable\Datatable
      */
-    public function resolveDatatableClass($class = null)
+    public function datatable()
     {
-        /** @var ModuleBaseController $this */
-        return $class ?? new Datatable($this->name);
+        return new ModuleDatatable($this->module);
     }
 
     /**
@@ -35,9 +35,8 @@ trait DatatableTrait
      */
     public function datatableJson()
     {
-        /** @var ModuleBaseController $this */
 
-        return ($this->resolveDatatableClass())->json();
+        return ($this->datatable())->json();
     }
 
 }

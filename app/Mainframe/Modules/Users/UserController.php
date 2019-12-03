@@ -16,11 +16,10 @@ class UserController extends ModuleBaseController
     }
 
     /**
-     * @param  null  $class
      * @return UserDatatable
      */
-    public function resolveDatatableClass($class = null)
+    public function datatable()
     {
-        return $class ?? new UserDatatable($this->name);
+        return new UserDatatable($this->module);
     }
 }

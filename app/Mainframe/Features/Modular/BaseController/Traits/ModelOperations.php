@@ -7,7 +7,7 @@ use App\Mainframe\Features\Modular\BaseController\ModuleBaseController;
 /**
  * @mixin ModuleBaseController
  */
-trait ModelOperationsTrait
+trait ModelOperations
 {
     /**
      * Prepare the model, First transform the input and then fill
@@ -16,7 +16,6 @@ trait ModelOperationsTrait
      */
     public function fill()
     {
-        // dd(request()->all());
         $inputs = request()->all();
 
         // Transform $inputs here
@@ -43,15 +42,15 @@ trait ModelOperationsTrait
      */
     public function attemptStore()
     {
-        $modelValidator = $this->processor()->create();
+        $processor = $this->processor()->create();
 
-        if ($modelValidator->invalid()) {
-            $this->response()->validator = $modelValidator->validator;
+        if ($processor->invalid()) {
+            $this->response()->validator = $processor->validator;
 
             return $this->response()->fail('Validation failed', 200);
         }
 
-        $this->element = $modelValidator->element; // Get the updated element
+        $this->element = $processor->element; // Get the updated element
 
         if (! $this->element->save()) {
             return $this->response()->fail('Can not save for some reason', 200);
@@ -67,15 +66,15 @@ trait ModelOperationsTrait
      */
     public function attemptUpdate()
     {
-        $modelValidator = $this->processor()->update();
+        $processor = $this->processor()->update();
 
-        if ($modelValidator->invalid()) {
-            $this->response()->validator = $modelValidator->validator;
+        if ($processor->invalid()) {
+            $this->response()->validator = $processor->validator;
 
             return $this->response()->fail('Validation failed', 200);
         }
 
-        $this->element = $modelValidator->element; // Get the updated valid element.
+        $this->element = $processor->element; // Get the updated valid element.
 
         if (! $this->element->save()) {
             return $this->response()->fail('Can not update for some reason', 200);
@@ -92,13 +91,13 @@ trait ModelOperationsTrait
      */
     public function attemptDestroy()
     {
-        $modelValidator = $this->processor();
+        $processor = $this->processor();
 
-        if ($modelValidator->delete()->invalid()) {
+        if ($processor->delete()->invalid()) {
             return $this->response()->fail('Validation failed', 200);
         }
 
-        $this->element = $modelValidator->element; // Save the model once before deleting. .
+        $this->element = $processor->element; // Save the model once before deleting. .
 
         $this->element->save();
         if (! $this->element->delete()) {

@@ -16,11 +16,10 @@ class ChangeController extends ModuleBaseController
     }
 
     /**
-     * @param  null  $class
      * @return ChangeDatatable
      */
-    public function resolveDatatableClass($class = null)
+    public function datatable()
     {
-        return $class ?? new ChangeDatatable($this->name);
+        return new ChangeDatatable($this->module);
     }
 }

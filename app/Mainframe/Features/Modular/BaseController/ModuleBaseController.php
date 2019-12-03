@@ -1,31 +1,16 @@
-<?php /** @noinspection SenselessMethodDuplicationInspection */
-/** @noinspection PhpUnusedParameterInspection */
-/** @noinspection PhpUndefinedClassInspection */
-/** @noinspection NotOptimalIfConditionsInspection */
-/** @noinspection PhpParamsInspection */
-/** @noinspection PhpUnusedLocalVariableInspection */
-/** @noinspection PhpUndefinedMethodInspection */
+<?php /** @noinspection PhpUnusedParameterInspection */
 
 namespace App\Mainframe\Features\Modular\BaseController;
 
-use View;
-use Illuminate\Http\Request;
-use App\Mainframe\Modules\Modules\Module;
-use App\Mainframe\Features\Modular\Resolvers\GridView;
-use App\Mainframe\Features\Modular\BaseController\Traits\ListTrait;
-use App\Mainframe\Features\Modular\BaseController\Traits\Resolvable;
-use App\Mainframe\Features\Modular\BaseController\Traits\DatatableTrait;
-use App\Mainframe\Features\Modular\BaseController\Traits\ViewReportTrait;
-use App\Mainframe\Features\Modular\BaseController\Traits\ShowChangesTrait;
-use App\Mainframe\Features\Modular\BaseController\Traits\ModelOperationsTrait;
+use URL;use View;use Illuminate\Http\Request;use App\Mainframe\Modules\Modules\Module;use App\Mainframe\Features\Report\ModuleList;use App\Mainframe\Features\Modular\Resolvers\GridView;use App\Mainframe\Features\Report\ModuleReportBuilder;use App\Mainframe\Features\Modular\BaseController\Traits\ListTrait;use App\Mainframe\Features\Modular\BaseController\Traits\Resolvable;use App\Mainframe\Features\Modular\BaseController\Traits\DatatableTrait;use App\Mainframe\Features\Modular\BaseController\Traits\ViewReportTrait;use App\Mainframe\Features\Modular\BaseController\Traits\ModelOperations;use App\Mainframe\Features\Modular\BaseController\Traits\ShowChangesTrait;
 
 /**
  * Class ModuleBaseController
  */
 class ModuleBaseController extends BaseController
 {
-    use ModelOperationsTrait, ListTrait, ShowChangesTrait,
-        ViewReportTrait, DatatableTrait, Resolvable;
+    use ModelOperations, ShowChangesTrait,
+        DatatableTrait, Resolvable;
 
     /** @var string Module name */
     public $name;
@@ -64,7 +49,7 @@ class ModuleBaseController extends BaseController
      * This controller method is responsible for rendering the view that has the default
      * spyr module grid.
      *
-     * @return \App\Http\Controllers\ModulebaseController|\Illuminate\Contracts\View\View|\Illuminate\Http\JsonResponse|\Illuminate\View\View
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\JsonResponse|\Illuminate\View\View|void
      */
     public function index()
     {
@@ -77,9 +62,19 @@ class ModuleBaseController extends BaseController
         }
 
         $path = GridView::resolve($this->name);
-        $vars = ['gridColumns' => $this->resolveDatatableClass()->columns()];
+        $vars = ['gridColumns' => $this->datatable()->columns()];
 
         return $this->response()->view($path)->with($vars);
+    }
+
+    /**
+     * Returns a collection of objects as Json for an API call
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function list()
+    {
+        return (new ModuleList($this->module))->json();
     }
 
     /**
@@ -245,13 +240,29 @@ class ModuleBaseController extends BaseController
      */
     public function restore($id = null)
     {
-        return abort(403, $id.'- Restore restricted');
+        return abort(403, 'Restore restricted');
+    }
+
+    /**
+     * Show and render report
+     *
+     * @return bool|\Illuminate\Contracts\View\Factory|\Illuminate\Http\JsonResponse|\Illuminate\Support\Collection|\Illuminate\View\View|mixed|void
+     */
+    public function report()
+    {
+
+        if (! user()->can('viewAny', $this->model)) {
+            return $this->response()->permissionDenied();
+        }
+
+        return (new ModuleReportBuilder($this->module))->show();
+
     }
 
     /**
      * Try to figure out where to redirect
      *
-     * @return null|array|\Illuminate\Http\Request|string
+     * @return array|\Illuminate\Http\Request|string
      */
     public function redirectTo()
     {
