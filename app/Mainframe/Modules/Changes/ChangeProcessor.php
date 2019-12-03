@@ -110,7 +110,7 @@ class ChangeProcessor extends ModelProcessor
         $change = $this->element;
 
         if ($change->name === 'Joker') {
-            $this->invalidate('name', "Name can not be Joker");
+            $this->addfieldError('name', "Name can not be Joker");
         }
 
         return $this;

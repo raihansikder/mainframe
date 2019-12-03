@@ -261,7 +261,7 @@ trait Output
 
         $this->validator = Validator::make([], []);
 
-        // $this->addError('test', 'some');
+        // $this->addError( 'some');
 
         return $this->validator;
     }

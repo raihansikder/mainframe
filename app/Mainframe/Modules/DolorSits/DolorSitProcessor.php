@@ -163,7 +163,7 @@ class DolorSitProcessor extends ModelProcessor
     private function nameIsNotJoker($dolorSit)
     {
         if ($dolorSit->name === 'Joker') {
-            $this->invalidate('name', "Name can not be Joker");
+            $this->addfieldError('name', "Name can not be Joker");
         }
 
         return $this;

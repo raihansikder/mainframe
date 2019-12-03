@@ -6,21 +6,18 @@
 namespace App\Mainframe\Features\Modular\Validator;
 
 use Validator;
-use Illuminate\Support\MessageBag;
 use App\Mainframe\Features\Modular\BaseController\Traits\Validable;
+use App\Mainframe\Features\Modular\BaseController\Traits\HasMessageBag;
 
 class ModelProcessor
 {
-    use Validable;
+    use Validable, HasMessageBag;
 
     /** @var \App\Mainframe\Features\Modular\BaseModule\BaseModule */
     public $element;
 
     /** @var array|mixed */
     public $elementOriginal;
-
-    /** @var MessageBag */
-    public $messageBag;
 
     /**
      * MainframeModelValidator constructor.
@@ -29,7 +26,6 @@ class ModelProcessor
      */
     public function __construct($element)
     {
-        $this->messageBag = resolve(MessageBag::class);
         $this->element = $element;
         $this->elementOriginal = $element->getOriginal();
     }

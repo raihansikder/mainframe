@@ -110,7 +110,7 @@ class GroupProcessor extends ModelProcessor
         $group = $this->element;
 
         if ($group->name === 'Joker') {
-            $this->invalidate('name', "Name can not be Joker");
+            $this->addfieldError('name', "Name can not be Joker");
         }
 
         return $this;

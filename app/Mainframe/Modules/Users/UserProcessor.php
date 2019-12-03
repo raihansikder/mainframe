@@ -167,7 +167,7 @@ class UserProcessor extends ModelProcessor
     private function userNameShouldNotBeJoker($user)
     {
         if ($user->name === 'Joker') {
-            $this->invalidate('name', "Name can not be Joker");
+            $this->addfieldError('name', "Name can not be Joker");
         }
 
         return $this;

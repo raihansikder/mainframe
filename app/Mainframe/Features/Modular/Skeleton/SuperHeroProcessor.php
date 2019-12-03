@@ -163,7 +163,7 @@ class SuperHeroProcessor extends ModelProcessor
     private function nameIsNotJoker($superHero)
     {
         if ($superHero->name === 'Joker') {
-            $this->invalidate('name', "Name can not be Joker");
+            $this->addfieldError('name', "Name can not be Joker");
         }
 
         return $this;

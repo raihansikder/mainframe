@@ -1,5 +1,6 @@
 <?php
 
+
 namespace App\Mainframe\Features\Datatable;
 
 class ModuleDatatable extends Datatable

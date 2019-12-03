@@ -28,31 +28,33 @@ trait Validable
     }
 
     /**
-     * Invalidate with a key and error message
+     * Ad
+     * d an error message to a key-value pair
      *
-     * @param  null  $key
      * @param  null  $message
-     * @return $this
+     * @return \App\Mainframe\Features\Modular\BaseController\Traits\Validable
      */
-    public function invalidate($key = null, $message = null)
+    public function addError($message = null)
     {
-        $this->addError($key, $message);
+        if ($message) {
+            $this->validator()->errors()->add(null, $message);
+        }
 
         return $this;
     }
 
     /**
-     * Ad
-     * d an error message to a key-value pair
-     *
      * @param  null  $key
      * @param  null  $message
+     * @return $this
      */
-    public function addError($key = null, $message = null)
+    public function addFieldError($key = null, $message = null)
     {
         if ($message) {
             $this->validator()->errors()->add($key, $message);
         }
+
+        return $this;
     }
 
     /**
