@@ -39,7 +39,7 @@ class SuperHeroDatatable extends ModuleDatatable
     //         ->leftJoin('users as updater', $this->table.'.updated_by', 'updater.id');
     // }
 
-    
+
     // /**
     //  * Define Query for generating results for grid
     //  *
