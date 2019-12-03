@@ -9,8 +9,7 @@ use URL;use View;use Illuminate\Http\Request;use App\Mainframe\Modules\Modules\M
  */
 class ModuleBaseController extends BaseController
 {
-    use ModelOperations, ShowChangesTrait,
-        DatatableTrait, Resolvable;
+    use ModelOperations, ShowChangesTrait, DatatableTrait, Resolvable;
 
     /** @var string Module name */
     public $name;
@@ -28,20 +27,18 @@ class ModuleBaseController extends BaseController
     public $processor;
 
     /**
-     * @param  null  $moduleName
+     * @param  null  $name
      */
-    public function __construct($moduleName = null)
+    public function __construct($name = null)
     {
         parent::__construct();
 
-        $this->name = $moduleName ?? Module::fromController(get_class($this));
+        $this->name = $name ?? Module::fromController(get_class($this));
+
         $this->module = Module::byName($this->name);
         $this->model = $this->module->modelInstance();
 
-        View::share([
-            'module' => $this->module,
-            'user' => user(),
-        ]);
+        View::share(['module' => $this->module]);
     }
 
     /**

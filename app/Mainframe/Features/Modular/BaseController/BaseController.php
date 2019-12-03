@@ -1,16 +1,9 @@
 <?php
-/** @noinspection PhpUndefinedClassInspection */
-/** @noinspection NotOptimalIfConditionsInspection */
-/** @noinspection PhpParamsInspection */
-/** @noinspection PhpUnusedLocalVariableInspection */
-/** @noinspection PhpUndefinedMethodInspection */
 
 namespace App\Mainframe\Features\Modular\BaseController;
 
-use Illuminate\Support\MessageBag;
+use View;
 use App\Http\Controllers\Controller;
-use App\Mainframe\Traits\GridDatatable;
-use App\Mainframe\Features\Responder\Response;
 use App\Mainframe\Features\Modular\BaseController\Traits\Validable;
 use App\Mainframe\Features\Modular\BaseController\Traits\SendResponse;
 use App\Mainframe\Features\Modular\BaseController\Traits\HasMessageBag;
@@ -30,6 +23,7 @@ class BaseController extends Controller
     {
         // $this->messageBag = resolve(MessageBag::class);
         // $this->response() = resolve(Response::class);
+        View::share(['user' => user()]);
     }
 
 }
