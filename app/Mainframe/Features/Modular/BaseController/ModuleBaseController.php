@@ -69,17 +69,17 @@ class ModuleBaseController extends BaseController
     public function index()
     {
         if (! user()->can('viewAny', $this->model)) {
-            return $this->response->permissionDenied();
+            return $this->response()->permissionDenied();
         }
 
-        if ($this->response->expectsJson()) {
+        if ($this->response()->expectsJson()) {
             return $this->list();
         }
 
         $path = GridView::resolve($this->name);
         $vars = ['gridColumns' => $this->resolveDatatableClass()->columns()];
 
-        return $this->response->view($path)->with($vars);
+        return $this->response()->view($path)->with($vars);
     }
 
     /**
@@ -93,7 +93,7 @@ class ModuleBaseController extends BaseController
         $this->element = $this->module->modelInstance();
 
         if (! user()->can('create', $this->model)) {
-            return $this->response->permissionDenied();
+            return $this->response()->permissionDenied();
         }
 
         $path = $this->createFormView();
@@ -105,7 +105,7 @@ class ModuleBaseController extends BaseController
             'formState' => 'create',
         ];
 
-        return $this->response->view($path)->with($vars);
+        return $this->response()->view($path)->with($vars);
     }
 
     /**
@@ -118,18 +118,18 @@ class ModuleBaseController extends BaseController
     public function show($id)
     {
         if (! $this->element = $this->model->find($id)) {
-            return $this->response->notFound();
+            return $this->response()->notFound();
         }
 
         if (! user()->can('view', $this->element)) {
-            return $this->response->permissionDenied();
+            return $this->response()->permissionDenied();
         }
 
-        if ($this->response->expectsJson()) {
-            return $this->response->success()->load($this->element)->json();
+        if ($this->response()->expectsJson()) {
+            return $this->response()->success()->load($this->element)->json();
         }
 
-        return $this->response->redirect(route($this->name.".edit", $id));
+        return $this->response()->redirect(route($this->name.".edit", $id));
     }
 
     /**
@@ -141,11 +141,11 @@ class ModuleBaseController extends BaseController
     public function edit($id)
     {
         if (! $this->element = $this->model->find($id)) {
-            return $this->response->notFound();
+            return $this->response()->notFound();
         }
 
         if (! user()->can('view', $this->element)) {
-            return $this->response->permissionDenied();
+            return $this->response()->permissionDenied();
         }
 
         $path = $this->editFormView();
@@ -156,7 +156,7 @@ class ModuleBaseController extends BaseController
             'formState' => 'edit',
         ];
 
-        return $this->response->view($path)->with($vars);
+        return $this->response()->view($path)->with($vars);
     }
 
     /**
@@ -169,19 +169,19 @@ class ModuleBaseController extends BaseController
     public function store(Request $request)
     {
         if (! user()->can('create', $this->model)) {
-            return $this->response->permissionDenied();
+            return $this->response()->permissionDenied();
         }
 
         $this->element = $this->model; // Create an empty model to be stored.
 
         $this->attemptStore();
 
-        $this->response->redirectTo = $this->redirectTo();
-        if ($this->response->expectsJson()) {
-            return $this->response->load($this->element)->json();
+        $this->response()->redirectTo = $this->redirectTo();
+        if ($this->response()->expectsJson()) {
+            return $this->response()->load($this->element)->json();
         }
 
-        return $this->response->redirect();
+        return $this->response()->redirect();
     }
 
     /**
@@ -194,21 +194,21 @@ class ModuleBaseController extends BaseController
     public function update(Request $request, $id)
     {
         if (! $this->element = $this->model->find($id)) {
-            return $this->response->notFound();
+            return $this->response()->notFound();
         }
 
         if (! user()->can('update', $this->element)) {
-            return $this->response->permissionDenied();
+            return $this->response()->permissionDenied();
         }
 
         $this->attemptUpdate();
 
-        $this->response->redirectTo = $this->redirectTo();
-        if ($this->response->expectsJson()) {
-            return $this->response->load($this->element)->json();
+        $this->response()->redirectTo = $this->redirectTo();
+        if ($this->response()->expectsJson()) {
+            return $this->response()->load($this->element)->json();
         }
 
-        return $this->response->redirect();
+        return $this->response()->redirect();
     }
 
     /**
@@ -221,20 +221,20 @@ class ModuleBaseController extends BaseController
     public function destroy($id)
     {
         if (! $this->element = $this->model->find($id)) {
-            return $this->response->notFound();
+            return $this->response()->notFound();
         }
 
         if (user()->cannot('delete', $this->element)) {
-            return $this->response->permissionDenied();
+            return $this->response()->permissionDenied();
         }
 
         $this->attemptDestroy();
 
-        if ($this->response->expectsJson()) {
-            return $this->response->json();
+        if ($this->response()->expectsJson()) {
+            return $this->response()->json();
         }
 
-        return $this->response->redirect();
+        return $this->response()->redirect();
     }
 
     /**
@@ -255,7 +255,7 @@ class ModuleBaseController extends BaseController
      */
     public function redirectTo()
     {
-        if ($this->response->isSuccess() && request('redirect_success')) {
+        if ($this->response()->isSuccess() && request('redirect_success')) {
             if ($this->element && request('redirect_success') == '#new') {
                 return route($this->module->name.".edit", $this->element->id);
             }
@@ -263,7 +263,7 @@ class ModuleBaseController extends BaseController
             return request('redirect_success');
         }
 
-        if ($this->response->isFail() && request('redirect_fail')) {
+        if ($this->response()->isFail() && request('redirect_fail')) {
             return request('redirect_fail');
         }
 

@@ -25,7 +25,7 @@ class HomeController extends BaseController
     {
         /** @var \App\Mainframe\Modules\Users\User $user */
         // $user = \Auth::user();
-        return $this->response->view("dashboards.default.index");
+        return $this->response()->view("dashboards.default.index");
     }
 
 }

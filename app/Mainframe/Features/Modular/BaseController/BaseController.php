@@ -12,6 +12,8 @@ use App\Http\Controllers\Controller;
 use App\Mainframe\Traits\GridDatatable;
 use App\Mainframe\Features\Responder\Response;
 use App\Mainframe\Features\Modular\BaseController\Traits\Validable;
+use App\Mainframe\Features\Modular\BaseController\Traits\SendResponse;
+use App\Mainframe\Features\Modular\BaseController\Traits\HasMessageBag;
 
 /**
  * Class MainframeBaseController
@@ -19,21 +21,15 @@ use App\Mainframe\Features\Modular\BaseController\Traits\Validable;
 class BaseController extends Controller
 {
 
-    use Validable;
-
-    /** @var \Illuminate\Support\MessageBag */
-    public $messageBag;
-
-    /** * @var \App\Mainframe\Features\Responder\Response */
-    public $response;
+    use Validable, SendResponse, HasMessageBag;
 
     /**
      * MainframeBaseController constructor.
      */
     public function __construct()
     {
-        $this->messageBag = resolve(MessageBag::class);
-        $this->response = resolve(Response::class);
+        // $this->messageBag = resolve(MessageBag::class);
+        // $this->response() = resolve(Response::class);
     }
 
 }

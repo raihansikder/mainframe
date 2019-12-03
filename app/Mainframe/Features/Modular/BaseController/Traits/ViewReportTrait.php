@@ -17,7 +17,7 @@ trait ViewReportTrait
     {
 
         if (! user()->can('viewAny', $this->model)) {
-            return $this->response->permissionDenied();
+            return $this->response()->permissionDenied();
         }
 
         return (new ModuleReportBuilder($this->module))->show();

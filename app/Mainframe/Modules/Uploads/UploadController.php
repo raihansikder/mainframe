@@ -36,13 +36,13 @@ class UploadController extends ModuleBaseController
     public function store(Request $request)
     {
         if (! user()->can('create', $this->model)) {
-            return $this->response->permissionDenied();
+            return $this->response()->permissionDenied();
         }
 
         $this->element = $this->model; // Create an empty model to be stored.
 
         if (! $file = $this->getFile()) {
-            return $this->response->invalid('No file in http request');
+            return $this->response()->invalid('No file in http request');
         }
 
         // if($dimensions = $this->getImageDimension($file)){
@@ -51,18 +51,18 @@ class UploadController extends ModuleBaseController
         // }
 
         if (! $uploadPath = $this->handleUpload($file)) {
-            return $this->response->invalid('Can not move file to destination from tmp');
+            return $this->response()->invalid('Can not move file to destination from tmp');
         }
 
         $this->element->name = $file->getClientOriginalName();
         $this->element->path = $uploadPath;
         $this->attemptStore();
 
-        if ($this->response->expectsJson()) {
-            return $this->response->json();
+        if ($this->response()->expectsJson()) {
+            return $this->response()->json();
         }
 
-        return $this->response->redirect();
+        return $this->response()->redirect();
     }
 
     /**
@@ -144,7 +144,7 @@ class UploadController extends ModuleBaseController
             return Response::download(public_path().$upload->path);
         }
 
-        return $this->response->notFound();
+        return $this->response()->notFound();
     }
 
 }

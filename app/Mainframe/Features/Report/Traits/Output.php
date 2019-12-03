@@ -22,7 +22,7 @@ trait Output
         }
 
         if ($this->invalid()) {
-            return $this->responseInvalid();
+            return $this->response()->responseInvalid();
         }
 
         if ($this->output() == 'json') {
@@ -46,14 +46,14 @@ trait Output
 
     public function responseInvalid()
     {
-        $this->response->fail();
-        $this->response->validator = $this->validator;
+        $this->response()->fail();
+        $this->response()->validator = $this->validator;
 
         if ($this->output() != 'json') {
             return $this->html($type = 'blank');
         }
 
-        return $this->response->json();
+        return $this->response()->json();
     }
 
     /**
@@ -91,7 +91,7 @@ trait Output
         $result['items'] = $result['data'];
         unset($result['data']);
 
-        return $this->response->success('Request Processed')
+        return $this->response()->success('Request Processed')
             ->load($result)->json();
     }
 
@@ -140,11 +140,11 @@ trait Output
         }
 
         // $this->validator = \Validator::make([], []);
-        // $this->validator->messages()->add('test', 'test');
+        // $this->validator()->messages()->add('test', 'test');
 
-        // $this->response->validator = $this->validator;
+        // $this->response()->validator = $this->validator;
 
-        return $this->response->view($path)->with($vars);
+        return $this->response()->view($path)->with($vars);
     }
 
     /**
@@ -231,7 +231,7 @@ trait Output
      */
     public function output()
     {
-        if ($this->response->expectsJson()) {
+        if ($this->response()->expectsJson()) {
             return 'json';
         }
 
