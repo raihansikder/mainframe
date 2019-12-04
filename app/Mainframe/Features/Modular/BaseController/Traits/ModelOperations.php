@@ -45,7 +45,7 @@ trait ModelOperations
         $processor = $this->processor()->create();
 
         if ($processor->invalid()) {
-            $this->response($processor->validator)->fail('Validation failed', 200);
+            $this->response($processor->validator)->failValidation();
 
             return $this;
         }
@@ -53,12 +53,12 @@ trait ModelOperations
         $this->element = $processor->element; // Get the updated element
 
         if (! $this->element->save()) {
-            $this->response()->fail('Can not save for some reason', 200);
+            $this->response()->fail('Can not save for some reason');
 
             return $this;
         }
 
-        $this->response()->success('Successfully saved.', 200);
+        $this->response()->success();
 
         return $this;
     }
@@ -73,7 +73,7 @@ trait ModelOperations
         $processor = $this->processor()->update();
 
         if ($processor->invalid()) {
-            $this->response($processor->validator)->fail('Validation failed', 200);
+            $this->response($processor->validator)->failValidation();
 
             return $this;
         }
@@ -81,12 +81,12 @@ trait ModelOperations
         $this->element = $processor->element; // Get the updated valid element.
 
         if (! $this->element->save()) {
-            $this->response()->fail('Can not update for some reason', 200);
+            $this->response()->fail('Can not be updated for some reason');
 
             return $this;
         }
 
-        $this->response()->success('Successfully saved.', 200);
+        $this->response()->success();
 
         return $this;
     }
@@ -102,7 +102,7 @@ trait ModelOperations
         $processor = $this->processor();
 
         if ($processor->delete()->invalid()) {
-            $this->response()->fail('Validation failed', 200);
+            $this->response($processor->validator)->failValidation();
 
             return $this;
         }
@@ -111,12 +111,12 @@ trait ModelOperations
 
         $this->element->save();
         if (! $this->element->delete()) {
-            $this->response()->fail('Can not delete for some reason', 200);
+            $this->response()->fail('Can not deleted for some reason');
 
             return $this;
         }
 
-        $this->response()->success('Successfully deleted.', 200);
+        $this->response()->success();
 
         return $this;
     }

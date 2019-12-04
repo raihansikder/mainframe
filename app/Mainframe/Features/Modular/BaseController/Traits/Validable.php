@@ -34,11 +34,9 @@ trait Validable
      * @param  null  $message
      * @return \App\Mainframe\Features\Modular\BaseController\Traits\Validable
      */
-    public function addError($message = null)
+    public function addError($message)
     {
-        if ($message) {
-            $this->validator()->errors()->add('error', $message);
-        }
+        $this->validator()->errors()->add('error', $message);
 
         return $this;
     }
@@ -57,7 +55,7 @@ trait Validable
     }
 
     /**
-     * Check if failed
+     * Check if the validator has any error
      *
      * @return bool
      */
