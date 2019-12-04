@@ -68,9 +68,15 @@ class Input extends Form
         if ($this->value) {
             return $this->value;
         }
-        if ($this->old()) {
+        // Retain null input.
+        if (array_key_exists($this->name, request()->old())) {
             return $this->old();
         }
+        // If request has null input then fill with original input from element value
+        // if ($this->old()) {
+        //     return $this->old();
+        // }
+
         if ($this->element && isset($this->element->{$this->name})) {
             return $this->element->{$this->name};
         }

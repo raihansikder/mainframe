@@ -13,7 +13,12 @@ use Illuminate\Support\MessageBag;
 $responseStatus = $responseStatus ?? session('responseStatus');
 $responseMessage = $responseMessage ?? session('responseMessage');
 
-$messageBag = app(MessageBag::class); // todo: need to show messageBag values
+$messageBag = session('messageBag'); // todo: need to show messageBag values
+
+
+if($messageBag){
+    myprint_r($messageBag->toArray());
+}
 
 $css = "callout-danger";
 if ($responseStatus == 'success') {
@@ -27,13 +32,14 @@ if ($responseStatus == 'success') {
     <div class="message-container">
         <div class="callout {{$css}} ajaxMsg errorDiv" id="errorDiv">
             @if($responseStatus)
-                <h4>{{ Str::upper($responseStatus) }}</h4>
+                <h4>
+                    {{ Str::upper($responseStatus) }} :
+                    {{ $responseMessage }}
+                </h4>
             @endif
-            @if($responseMessage)
-                {{ $responseMessage }}
-            @endif
+
             @if ($errors->any())
-                <br/>{!! implode('<br/>', $errors->all()) !!}
+                {!! implode('<br/>', $errors->all()) !!}
             @endif
         </div>
     </div>

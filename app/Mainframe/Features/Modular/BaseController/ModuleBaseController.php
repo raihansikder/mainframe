@@ -61,7 +61,7 @@ class ModuleBaseController extends BaseController
         $path = GridView::resolve($this->name);
         $vars = ['gridColumns' => $this->datatable()->columns()];
 
-        return $this->response()->view($path,$v)->with($vars);
+        return $this->response()->view($path)->with($vars);
     }
 
     /**
@@ -187,6 +187,8 @@ class ModuleBaseController extends BaseController
      */
     public function update(Request $request, $id)
     {
+
+
         if (! $this->element = $this->model->find($id)) {
             return $this->response()->notFound();
         }

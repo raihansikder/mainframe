@@ -4,12 +4,14 @@
 
 namespace App\Mainframe\Features\Responder;
 
+use Illuminate\Support\MessageBag;
 use App\Mainframe\Features\Modular\BaseController\Traits\Validable;
+use App\Mainframe\Features\Modular\BaseController\Traits\HasMessageBag;
 
 class Response
 {
 
-    use Validable;
+    use Validable, HasMessageBag;
 
     /* All HTTP codes
      * https://gist.github.com/jeffochoa/a162fc4381d69a2d862dafa61cda0798
@@ -167,7 +169,6 @@ class Response
     |
     */
 
-
     /**
      * View
      *
@@ -214,9 +215,34 @@ class Response
      */
     public function json()
     {
-        return \Response::json($this->prepareJson());
-    }
+        // Load Generic response
+        $data = [
+            'code' => $this->code,
+            'status' => $this->status,
+            'message' => $this->message
+        ];
+        // Load payload
+        if ($this->payload) {
+            $data['data'] = $this->payload;
+        }
 
+        // Load validation errors
+        if ($this->invalid()) {
+            $data['validation_errors'] = $this->validator()->messages()->toArray();
+        }
+
+        if($this->messageBag()->count()){
+            $data['messages'] = $this->messageBag()->get('some');
+        }
+        /*-------------------------------*/
+
+        // Add redirect to
+        if ($this->redirectTo) {
+            $data['redirect'] = $this->redirectTo;
+        }
+
+        return \Response::json($data);
+    }
 
     /**
      * Json or abort
@@ -381,41 +407,6 @@ class Response
     }
 
     /**
-     * Prepare the array for JSON response.
-     *
-     * @return array
-     */
-    public function prepareJson()
-    {
-        // Generic response
-        $response = [
-            'code' => $this->code,
-            'status' => $this->status,
-            'message' => $this->message
-        ];
-        // Add payload
-        if ($this->payload) {
-            $response['data'] = $this->payload;
-        }
-
-        /*--------------------------------
-         * Select which validator to load
-         *-------------------------------- .
-         */
-        if ($this->invalid()) {
-            $response['validation_errors'] = $this->validator()->messages()->toArray();
-        }
-        /*-------------------------------*/
-
-        // Add redirect to
-        if ($this->redirectTo) {
-            $response['redirect'] = $this->redirectTo;
-        }
-
-        return $response;
-    }
-
-    /**
      * Additional values to be passed to view through view composer or redirect.
      * In redirect the value has to be accessed via session.
      *
@@ -426,6 +417,7 @@ class Response
         return [
             'responseStatus' => $this->status,
             'responseMessage' => $this->message,
+            'messageBag' => resolve(MessageBag::class)
         ];
     }
 }

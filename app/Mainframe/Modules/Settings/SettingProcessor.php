@@ -155,6 +155,10 @@ class SettingProcessor extends ModelProcessor
             $this->addfieldError('value', "If array/json type is selected, value must be a valid json string");
         }
 
+        $this->messageBag()->add('some', 'message1');
+        $this->messageBag()->add('some', 'message2');
+        $this->messageBag()->add('some2', 'message3');
+
         // $this->addError('test');
 
         return $this;
