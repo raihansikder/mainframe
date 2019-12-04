@@ -169,6 +169,7 @@ class ModuleBaseController extends BaseController
         $this->attemptStore();
 
         $this->response()->redirectTo = $this->redirectTo();
+
         if ($this->response()->expectsJson()) {
             return $this->response()->load($this->element)->json();
         }

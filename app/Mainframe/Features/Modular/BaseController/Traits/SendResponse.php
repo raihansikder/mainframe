@@ -10,11 +10,18 @@ trait SendResponse
     public $response;
 
     /**
+     * @param  \Illuminate\Validation\Validator|null  $validator
      * @return mixed|Response
      */
-    public function response()
+    public function response($validator = null)
     {
-       return resolve(Response::class);
+        /** @var Response $response */
+        $this->response = resolve(Response::class);
+        if ($validator) {
+            $this->response->validator = $validator;
+        }
+
+        return $this->response;
     }
 
 }

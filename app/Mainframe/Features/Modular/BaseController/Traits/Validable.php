@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpUnused */
 
 namespace App\Mainframe\Features\Modular\BaseController\Traits;
 
@@ -48,9 +48,10 @@ trait Validable
      * @param  null  $message
      * @return $this
      */
-    public function addFieldError($key = null, $message = null)
+    public function addFieldError($key, $message = null)
     {
-        if ($message) {
+        $message = $message ?: $key.' - is not valid';
+        if ($key) {
             $this->validator()->errors()->add($key, $message);
         }
 

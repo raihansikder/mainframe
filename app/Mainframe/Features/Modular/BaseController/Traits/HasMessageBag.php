@@ -7,8 +7,13 @@ use Illuminate\Support\MessageBag;
 trait HasMessageBag
 {
 
+    /** @var MessageBag */
+    public $messageBag;
+
     public function messageBag()
     {
-        return resolve(MessageBag::class);
+        $this->messageBag = resolve(MessageBag::class);
+
+        return $this->messageBag;
     }
 }
