@@ -102,13 +102,10 @@ class Response
      */
     public function success($message = null, $code = null)
     {
-        $message = $message ?: '';
-        $code = $code ?: 200;
-
         if ($this->status !== 'fail') {
-            $this->code = $code;
             $this->status = 'success';
-            $this->message = $message;
+            $this->code = $code ?: 200;
+            $this->message = $message ?: '';
         }
 
         return $this;
@@ -123,13 +120,11 @@ class Response
      */
     public function fail($message = null, $code = null)
     {
-        $message = $message ?: '';
-        $code = $code ?: 404;
 
         if ($this->status !== 'fail') {
-            $this->code = $code;
             $this->status = 'fail';
-            $this->message = $message;
+            $this->code = $code ?: 400;
+            $this->message = $message ?: '';
         }
 
         return $this;
