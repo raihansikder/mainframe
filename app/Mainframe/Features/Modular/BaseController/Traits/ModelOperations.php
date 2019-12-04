@@ -45,48 +45,56 @@ trait ModelOperations
         $processor = $this->processor()->create();
 
         if ($processor->invalid()) {
-            $this->response()->validator = $processor->validator;
+            $this->response($processor->validator)->fail('Validation failed', 200);
 
-            return $this->response()->fail('Validation failed', 200);
+            return $this;
         }
 
         $this->element = $processor->element; // Get the updated element
 
         if (! $this->element->save()) {
-            return $this->response()->fail('Can not save for some reason', 200);
+            $this->response()->fail('Can not save for some reason', 200);
+
+            return $this;
         }
 
-        return $this->response()->success('Successfully saved.', 200);
+        $this->response()->success('Successfully saved.', 200);
+
+        return $this;
     }
 
     /**
      * Validate and update
      *
-     * @return \App\Mainframe\Features\Modular\BaseController\ModuleBaseController
+     * @return \App\Mainframe\Features\Modular\BaseController\Traits\ModelOperations
      */
     public function attemptUpdate()
     {
         $processor = $this->processor()->update();
 
         if ($processor->invalid()) {
-            $this->response()->validator = $processor->validator;
+            $this->response($processor->validator)->fail('Validation failed', 200);
 
-            return $this->response()->fail('Validation failed', 200);
+            return $this;
         }
 
         $this->element = $processor->element; // Get the updated valid element.
 
         if (! $this->element->save()) {
-            return $this->response()->fail('Can not update for some reason', 200);
+            $this->response()->fail('Can not update for some reason', 200);
+
+            return $this;
         }
 
-        return $this->response()->success('Successfully saved.', 200);
+        $this->response()->success('Successfully saved.', 200);
+
+        return $this;
     }
 
     /**
      * Validate and delete
      *
-     * @return \App\Mainframe\Features\Modular\BaseController\ModuleBaseController
+     * @return \App\Mainframe\Features\Modular\BaseController\Traits\ModelOperations
      * @throws \Exception
      */
     public function attemptDestroy()
@@ -94,17 +102,23 @@ trait ModelOperations
         $processor = $this->processor();
 
         if ($processor->delete()->invalid()) {
-            return $this->response()->fail('Validation failed', 200);
+            $this->response()->fail('Validation failed', 200);
+
+            return $this;
         }
 
         $this->element = $processor->element; // Save the model once before deleting. .
 
         $this->element->save();
         if (! $this->element->delete()) {
-            return $this->response()->fail('Can not delete for some reason', 200);
+            $this->response()->fail('Can not delete for some reason', 200);
+
+            return $this;
         }
 
-        return $this->response()->success('Successfully deleted.', 200);
+        $this->response()->success('Successfully deleted.', 200);
+
+        return $this;
     }
 
 }

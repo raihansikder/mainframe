@@ -37,7 +37,7 @@ trait Validable
     public function addError($message = null)
     {
         if ($message) {
-            $this->validator()->errors()->add(null, $message);
+            $this->validator()->errors()->add('error', $message);
         }
 
         return $this;
@@ -51,9 +51,7 @@ trait Validable
     public function addFieldError($key, $message = null)
     {
         $message = $message ?: $key.' - is not valid';
-        if ($key) {
-            $this->validator()->errors()->add($key, $message);
-        }
+        $this->validator()->errors()->add($key, $message);
 
         return $this;
     }

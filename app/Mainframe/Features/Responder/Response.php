@@ -2,7 +2,6 @@
 
 namespace App\Mainframe\Features\Responder;
 
-use Redirect;
 use App\Mainframe\Features\Modular\BaseController\Traits\Validable;
 
 class Response
@@ -28,22 +27,68 @@ class Response
     /** @var \Illuminate\View\View|\Illuminate\Contracts\View\Factory */
     public $view;
 
+
+    /*
+    |--------------------------------------------------------------------------
+    | Output functions
+    |--------------------------------------------------------------------------
+    |
+    | These functions are responsible for dispatching the final response
+    |
+    */
+
+
     /**
-     * Checks if the response expects JSON
+     * View
      *
-     * @return bool
+     * @param  string  $path
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function expectsJson()
+    public function view($path)
     {
-        if (request()->expectsJson()) {
-            return true;
+        $view = view($path)->with($this->defaultViewVars());
+
+        // todo : Redirection from above creates a new Response instance.
+        if ($this->validator) {
+            $view->withErrors($this->validator);
         }
 
-        return request('ret') === 'json';
+        return $view;
     }
 
     /**
-     * Abort on fail.
+     * Redirect
+     *
+     * @param  string  $to
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function redirect($to = null)
+    {
+        if ($to) {
+            $redirect = redirect($to);
+        } elseif ($this->redirectTo) {
+            $redirect = redirect($this->redirectTo);
+        } else {
+            $redirect = redirect()->back();
+        }
+
+        return $redirect->with($this->defaultViewVars())
+            ->withErrors($this->validator)
+            ->withInput();
+    }
+
+    /**
+     * Json
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function json()
+    {
+        return \Response::json($this->prepareJson(), $this->code);
+    }
+
+    /**
+     * Abort
      *
      * @param  null  $message
      * @param  null  $code
@@ -120,7 +165,6 @@ class Response
      */
     public function fail($message = null, $code = null)
     {
-
         if ($this->status !== 'fail') {
             $this->status = 'fail';
             $this->code = $code ?: 400;
@@ -137,7 +181,9 @@ class Response
      */
     public function isSuccess()
     {
-        return $this->valid();
+        //return $this->valid();
+
+        return $this->status == 'success' && $this->valid();
         // return $this->status === 'success';
     }
 
@@ -164,14 +210,29 @@ class Response
         return $this;
     }
 
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Helpers
+    |--------------------------------------------------------------------------
+    |
+    | Helper functions that takes care of some auxiliary features of the class
+    |
+    */
+
     /**
-     * Send Json response
+     * Checks if the response expects JSON
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return bool
      */
-    public function json()
+    public function expectsJson()
     {
-        return \Response::json($this->prepareJson(), $this->code);
+        if (request()->expectsJson()) {
+            return true;
+        }
+
+        return request('ret') === 'json';
     }
 
     /**
@@ -210,46 +271,6 @@ class Response
     }
 
     /**
-     * Redirect to a route
-     *
-     * @param  string  $to
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function redirect($to = null)
-    {
-        if ($to) {
-            $redirect = Redirect::to($to);
-        } elseif ($this->redirectTo) {
-            $redirect = Redirect::to($this->redirectTo);
-        } else {
-            $redirect = Redirect::back();
-        }
-
-        if ($this->isFail()) {
-            $redirect->withErrors($this->validator)->withInput();
-        }
-
-        return $redirect->with($this->defaultViewVars());
-    }
-
-    /**
-     * Render a view files
-     *
-     * @param  string  $path
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function view($path)
-    {
-        $view = view($path)->with($this->defaultViewVars());
-
-        if ($this->isFail()) {
-            $view->withErrors($this->validator);
-        }
-
-        return $view;
-    }
-
-    /**
      * Additional values to be passed to view through view composer or redirect.
      * In redirect the value has to be accessed via session.
      *
@@ -263,5 +284,4 @@ class Response
             'responseMessage' => $this->message,
         ], $vars);
     }
-
 }
