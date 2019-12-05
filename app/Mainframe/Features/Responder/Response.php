@@ -231,7 +231,7 @@ class Response
             $data['validation_errors'] = $this->validator()->messages()->toArray();
         }
 
-        if($this->messageBag()->count()){
+        if ($this->messageBag()->count()) {
             $data['messages'] = $this->messageBag()->get('some');
         }
         /*-------------------------------*/

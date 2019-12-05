@@ -2,7 +2,18 @@
 
 namespace App\Mainframe\Features\Modular\BaseController;
 
-use URL;use View;use Illuminate\Http\Request;use App\Mainframe\Modules\Modules\Module;use App\Mainframe\Features\Report\ModuleList;use App\Mainframe\Features\Datatable\ModuleDatatable;use App\Mainframe\Features\Modular\Resolvers\GridView;use App\Mainframe\Features\Report\ModuleReportBuilder;use App\Mainframe\Features\Modular\BaseController\Traits\ListTrait;use App\Mainframe\Features\Modular\BaseController\Traits\Resolvable;use App\Mainframe\Features\Modular\BaseController\Traits\ViewReportTrait;use App\Mainframe\Features\Modular\BaseController\Traits\ModelOperations;use App\Mainframe\Features\Modular\BaseController\Traits\ShowChangesTrait;
+use URL;
+use View;
+use Illuminate\Http\Request;
+use App\Mainframe\Modules\Modules\Module;
+use App\Mainframe\Features\Report\ModuleList;
+use App\Mainframe\Features\Datatable\ModuleDatatable;
+use App\Mainframe\Features\Modular\Resolvers\GridView;
+use App\Mainframe\Features\Report\ModuleReportBuilder;
+use App\Mainframe\Features\Modular\BaseController\Traits\Resolvable;
+use App\Mainframe\Features\Modular\BaseController\Traits\ModelOperations;
+use App\Mainframe\Features\Modular\BaseController\Traits\ShowChangesTrait;
+
 
 /**
  * Class ModuleBaseController
@@ -64,14 +75,30 @@ class ModuleBaseController extends BaseController
         return $this->response()->view($path)->with($vars);
     }
 
+
+
     /**
-     * Returns a collection of objects as Json for an API call
+     * Shows an spyr element. Store an spyr element. Returns json response if ret=json is
+     * sent as url parameter.Otherwise redirects to edit page where details is visible as filled up edit form.
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
-    public function list()
+    public function show($id)
     {
-        return (new ModuleList($this->module))->json();
+        if (! $this->element = $this->model->find($id)) {
+            return $this->response()->notFound();
+        }
+
+        if (! user()->can('view', $this->element)) {
+            return $this->response()->permissionDenied();
+        }
+
+        if ($this->response()->expectsJson()) {
+            return $this->response()->success()->load($this->element)->json();
+        }
+
+        return $this->response()->redirect(route($this->name.".edit", $id));
     }
 
     /**
@@ -100,29 +127,7 @@ class ModuleBaseController extends BaseController
         return $this->response()->view($path)->with($vars);
     }
 
-    /**
-     * Shows an spyr element. Store an spyr element. Returns json response if ret=json is
-     * sent as url parameter.Otherwise redirects to edit page where details is visible as filled up edit form.
-     *
-     * @param $id
-     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
-     */
-    public function show($id)
-    {
-        if (! $this->element = $this->model->find($id)) {
-            return $this->response()->notFound();
-        }
 
-        if (! user()->can('view', $this->element)) {
-            return $this->response()->permissionDenied();
-        }
-
-        if ($this->response()->expectsJson()) {
-            return $this->response()->success()->load($this->element)->json();
-        }
-
-        return $this->response()->redirect(route($this->name.".edit", $id));
-    }
 
     /**
      * Show spyr element edit form
@@ -183,7 +188,6 @@ class ModuleBaseController extends BaseController
      *
      * @param  \Illuminate\Http\Request  $request
      * @param $id
-     *
      * @return $this|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, $id)
@@ -263,6 +267,16 @@ class ModuleBaseController extends BaseController
     }
 
     /**
+     * Returns a collection of objects as Json for an API call
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function list()
+    {
+        return (new ModuleList($this->module))->json();
+    }
+
+    /**
      * Try to figure out where to redirect
      *
      * @return array|\Illuminate\Http\Request|string
@@ -303,7 +317,6 @@ class ModuleBaseController extends BaseController
      */
     public function datatableJson()
     {
-
         return ($this->datatable())->json();
     }
 }
