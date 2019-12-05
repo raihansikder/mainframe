@@ -1,9 +1,20 @@
-<?php/** @noinspection PhpUnusedParameterInspection */
+<?php
+
+/** @noinspection PhpUnusedParameterInspection */
 
 namespace App\Mainframe\Features\Modular\BaseController;
 
-use URL;use View;use Illuminate\Http\Request;use App\Mainframe\Modules\Modules\Module;use App\Mainframe\Features\Report\ModuleList;use App\Mainframe\Features\Datatable\ModuleDatatable;use App\Mainframe\Features\Modular\Resolvers\GridView;use App\Mainframe\Features\Report\ModuleReportBuilder;use App\Mainframe\Features\Modular\BaseController\Traits\Resolvable;use App\Mainframe\Features\Modular\BaseController\Traits\ModelOperations;use App\Mainframe\Features\Modular\BaseController\Traits\ShowChangesTrait;
-
+use URL;
+use View;
+use Illuminate\Http\Request;
+use App\Mainframe\Modules\Modules\Module;
+use App\Mainframe\Features\Report\ModuleList;
+use App\Mainframe\Features\Datatable\ModuleDatatable;
+use App\Mainframe\Features\Modular\Resolvers\GridView;
+use App\Mainframe\Features\Report\ModuleReportBuilder;
+use App\Mainframe\Features\Modular\BaseController\Traits\Resolvable;
+use App\Mainframe\Features\Modular\BaseController\Traits\ModelOperations;
+use App\Mainframe\Features\Modular\BaseController\Traits\ShowChangesTrait;
 
 /**
  * Class ModuleBaseController
@@ -36,6 +47,7 @@ class ModuleBaseController extends BaseController
 
         $this->name = $name ?? Module::fromController(get_class($this));
         $this->module = Module::byName($this->name);
+
         $this->model = $this->module->modelInstance();
 
         View::share(['module' => $this->module]);
@@ -53,12 +65,22 @@ class ModuleBaseController extends BaseController
         }
 
         if ($this->response()->expectsJson()) {
-            return $this->list();
+            return $this->listJson();
         }
 
         $vars = ['columns' => $this->datatable()->columns()];
 
-        return $this->response()->view( GridView::resolve($this->name))->with($vars);
+        return $this->response()->view(GridView::resolve($this->name))->with($vars);
+    }
+
+    /**
+     * Returns a collection of objects as Json for an API call
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function listJson()
+    {
+        return (new ModuleList($this->module))->json();
     }
 
     /**
@@ -109,8 +131,6 @@ class ModuleBaseController extends BaseController
         return $this->response()->view($this->createFormView())->with($vars);
     }
 
-
-
     /**
      * Edit
      *
@@ -133,6 +153,7 @@ class ModuleBaseController extends BaseController
             'editable' => user()->can('update', $this->element),
             'formState' => 'edit',
         ];
+
         return $this->response()->view($this->editFormView())->with($vars);
     }
 
@@ -170,7 +191,6 @@ class ModuleBaseController extends BaseController
      */
     public function update(Request $request, $id)
     {
-
         if (! $this->element = $this->model->find($id)) {
             return $this->response()->notFound();
         }
@@ -212,6 +232,7 @@ class ModuleBaseController extends BaseController
         if ($this->response()->expectsJson()) {
             return $this->response()->json();
         }
+
         return $this->response()->redirect();
     }
 
@@ -236,17 +257,8 @@ class ModuleBaseController extends BaseController
         if (! user()->can('viewAny', $this->model)) {
             return $this->response()->permissionDenied();
         }
-        return (new ModuleReportBuilder($this->module))->show();
-    }
 
-    /**
-     * Returns a collection of objects as Json for an API call
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function list()
-    {
-        return (new ModuleList($this->module))->json();
+        return (new ModuleReportBuilder($this->module))->show();
     }
 
     /**

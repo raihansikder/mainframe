@@ -253,17 +253,4 @@ trait Output
         return $result;
     }
 
-    public function validator()
-    {
-        if ($this->validator) {
-            return $this->validator;
-        }
-
-        $this->validator = Validator::make([], []);
-
-        // $this->addError( 'some');
-
-        return $this->validator;
-    }
-
 }

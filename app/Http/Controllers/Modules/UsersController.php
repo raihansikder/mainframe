@@ -401,7 +401,7 @@ class UsersController extends ModuleBaseController
         return $this->jsonOrRedirect($ret, $validator, $element);
     }
 
-    public function list()
+    public function listJson()
     {
         /** @var \App\Http\Mainframe\Features\Modular\BaseModule\BaseModule $Model */
         /** @var \Illuminate\Database\Eloquent\Builder $q */

@@ -16,9 +16,7 @@ $moduleGroups = Mf::moduleGroups();
 */
 
 Route::middleware(['auth'])->group(function () use ($modules, $moduleGroups) {
-
     foreach ($modules as $module) {
-
         $controller = $module->controller;
         $moduleName = $module->name;
 
@@ -35,7 +33,7 @@ Route::middleware(['auth'])->group(function () use ($modules, $moduleGroups) {
         /*
          * Generic list return route. This can be used to obtain an array of element.
          */
-        Route:: get($moduleName."/list/json", $controller."@list")->name($moduleName.'.list-json');
+        Route:: get($moduleName."/list/json", $controller."@listJson")->name($moduleName.'.list-json');
 
         /*
          * Default report route
