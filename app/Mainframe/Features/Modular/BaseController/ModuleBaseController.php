@@ -114,7 +114,7 @@ class ModuleBaseController extends BaseController
 
         $vars = [
             'element' => $this->element,
-            'formConfig' => $this->createFromConfig(),
+            'formConfig' => $this->formConfig('create'),
             'uuid' => request()->old('uuid') ?: uuid(),
             'editable' => true,
             'formState' => 'create',
@@ -148,7 +148,7 @@ class ModuleBaseController extends BaseController
         $path = $this->editFormView();
         $vars = [
             'element' => $this->element,
-            'formConfig' => $this->editFromConfig(),
+            'formConfig' => $this->formConfig('edit'),
             'editable' => user()->can('update', $this->element),
             'formState' => 'edit',
         ];
