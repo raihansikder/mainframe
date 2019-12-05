@@ -183,6 +183,7 @@ class ModuleBaseController extends BaseController
      *
      * @param  \Illuminate\Http\Request  $request
      * @param $id
+     *
      * @return $this|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, $id)
