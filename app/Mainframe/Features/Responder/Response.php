@@ -217,8 +217,8 @@ class Response
     {
         // Load Generic response
         $data = [
-            'code' => $this->code,
-            'status' => $this->status,
+            'code'    => $this->code,
+            'status'  => $this->status,
             'message' => $this->message
         ];
         // Load payload
@@ -305,8 +305,8 @@ class Response
     public function success($message = null, $code = Response::HTTP_OK)
     {
         if ($this->status !== 'fail') {
-            $this->status = 'success';
-            $this->code = $code;
+            $this->status  = 'success';
+            $this->code    = $code;
             $this->message = $message;
         }
 
@@ -323,8 +323,8 @@ class Response
     public function fail($message = null, $code = Response::HTTP_UNPROCESSABLE_ENTITY)
     {
         if ($this->status !== 'fail') {
-            $this->status = 'fail';
-            $this->code = $code;
+            $this->status  = 'fail';
+            $this->code    = $code;
             $this->message = $message;
         }
 
@@ -415,9 +415,9 @@ class Response
     public function defaultViewVars()
     {
         return [
-            'responseStatus' => $this->status,
+            'responseStatus'  => $this->status,
             'responseMessage' => $this->message,
-            'messageBag' => resolve(MessageBag::class)
+            'messageBag'      => resolve(MessageBag::class)
         ];
     }
 }
