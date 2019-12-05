@@ -1,4 +1,5 @@
-<?php /** @noinspection PhpUnusedParameterInspection */
+<?php
+/** @noinspection PhpUnusedParameterInspection */
 
 namespace App\Mainframe\Features\Modular\BaseController;
 
@@ -45,9 +46,9 @@ class ModuleBaseController extends BaseController
         parent::__construct();
 
         $this->name = $name ?? Module::fromController(get_class($this));
-
         $this->module = Module::byName($this->name);
         $this->model = $this->module->modelInstance();
+
         View::share(['module' => $this->module]);
     }
 
@@ -71,8 +72,6 @@ class ModuleBaseController extends BaseController
         return $this->response()->view( GridView::resolve($this->name))->with($vars);
     }
 
-
-
     /**
      * Show
      *
@@ -94,8 +93,6 @@ class ModuleBaseController extends BaseController
         }
 
         return $this->response()->redirect(route($this->name.".edit", $id));
-
-
     }
 
     /**
@@ -171,6 +168,7 @@ class ModuleBaseController extends BaseController
         if ($this->response()->expectsJson()) {
             return $this->response()->load($this->element)->json();
         }
+
         return $this->response()->redirect();
     }
 
@@ -183,7 +181,6 @@ class ModuleBaseController extends BaseController
      */
     public function update(Request $request, $id)
     {
-
 
         if (! $this->element = $this->model->find($id)) {
             return $this->response()->notFound();
@@ -201,8 +198,6 @@ class ModuleBaseController extends BaseController
             return $this->response()->load($this->element)->json();
         }
 
-        
-        
         return $this->response()->redirect();
     }
 
@@ -249,13 +244,10 @@ class ModuleBaseController extends BaseController
      */
     public function report()
     {
-
         if (! user()->can('viewAny', $this->model)) {
             return $this->response()->permissionDenied();
         }
-
         return (new ModuleReportBuilder($this->module))->show();
-
     }
 
     /**

@@ -1,4 +1,5 @@
 <?php
+
 include_once __DIR__."/helper-generic.php";
 include_once __DIR__."/helper-framework.php";
 include_once __DIR__."/helper-db-table.php";
