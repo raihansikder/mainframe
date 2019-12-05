@@ -1,18 +1,8 @@
-<?php
+<?php/** @noinspection PhpUnusedParameterInspection */
 
 namespace App\Mainframe\Features\Modular\BaseController;
 
-use URL;
-use View;
-use Illuminate\Http\Request;
-use App\Mainframe\Modules\Modules\Module;
-use App\Mainframe\Features\Report\ModuleList;
-use App\Mainframe\Features\Datatable\ModuleDatatable;
-use App\Mainframe\Features\Modular\Resolvers\GridView;
-use App\Mainframe\Features\Report\ModuleReportBuilder;
-use App\Mainframe\Features\Modular\BaseController\Traits\Resolvable;
-use App\Mainframe\Features\Modular\BaseController\Traits\ModelOperations;
-use App\Mainframe\Features\Modular\BaseController\Traits\ShowChangesTrait;
+use URL;use View;use Illuminate\Http\Request;use App\Mainframe\Modules\Modules\Module;use App\Mainframe\Features\Report\ModuleList;use App\Mainframe\Features\Datatable\ModuleDatatable;use App\Mainframe\Features\Modular\Resolvers\GridView;use App\Mainframe\Features\Report\ModuleReportBuilder;use App\Mainframe\Features\Modular\BaseController\Traits\Resolvable;use App\Mainframe\Features\Modular\BaseController\Traits\ModelOperations;use App\Mainframe\Features\Modular\BaseController\Traits\ShowChangesTrait;
 
 
 /**

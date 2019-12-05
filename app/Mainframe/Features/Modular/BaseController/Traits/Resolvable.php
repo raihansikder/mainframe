@@ -38,23 +38,22 @@ trait Resolvable
             return [
                 'route' => $this->name.'.store',
                 'class' => $this->name.'-form module-base-form create-form',
-                'name'  => $this->name,
+                'name' => $this->name,
                 'files' => true
             ];
         }
 
         if ($type == 'edit') {
             return [
-                'route'  => [$this->name.'.update', $this->element->id],
-                'class'  => $this->name.'-form module-base-form edit-form',
-                'name'   => $this->name,
-                'files'  => true,
+                'route' => [$this->name.'.update', $this->element->id],
+                'class' => $this->name.'-form module-base-form edit-form',
+                'name' => $this->name,
+                'files' => true,
                 'method' => 'patch',
-                'id'     => $this->name.'Form'
+                'id' => $this->name.'Form'
             ];
         }
 
         return [];
     }
-
 }
