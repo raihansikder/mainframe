@@ -19,7 +19,7 @@ function dbViewExists($view)
 /**
  * Function to check whether a database table exists
  *
- * @param array|string $table full table name with prefix
+ * @param  array|string  $table  full table name with prefix
  * @return bool
  */
 function dbTableExists($table)
@@ -30,10 +30,9 @@ function dbTableExists($table)
     // if (count($results)) return true;
     // return false;
 
-    return Cache::remember($table . ".hasTable", cacheTime('very-long'), function () use ($table) {
+    return Cache::remember($table.".hasTable", cacheTime('very-long'), function () use ($table) {
         return Schema::hasTable(prefixLess($table));
     });
-
 }
 
 /**
@@ -50,7 +49,7 @@ function prefixLess($table)
 /**
  * Returns the database table column field names in an array. The parameter can be both string or array.
  *
- * @param array|string $table : table name excluding prefix. i.e. 'users'
+ * @param  array|string  $table  : table name excluding prefix. i.e. 'users'
  * @return array
  */
 function columns($table)
@@ -59,7 +58,7 @@ function columns($table)
     $columns = [];
     // Handle parameter as array/non array
     $tables = [];
-    if (!is_array($table)) {
+    if (! is_array($table)) {
         array_push($tables, $table);
     } else {
         $tables = $table;
@@ -70,6 +69,7 @@ function columns($table)
 
         $columns = array_merge($columns, $table_columns);
     }
+
     return $columns;
 }
 
@@ -88,10 +88,9 @@ function columsOfTable($table)
     //     array_push($fieldNames, $result->Field);
     // }
 
-    return Cache::remember($table . ".columsOfTable", cacheTime('very-long'), function () use ($table) {
+    return Cache::remember($table.".columsOfTable", cacheTime('very-long'), function () use ($table) {
         return Schema::getColumnListing($table);
     });
-
 }
 
 /**
@@ -99,7 +98,7 @@ function columsOfTable($table)
  * There exists a columns function that can returns fields
  * of a single table or multple tables if passes as array
  *
- * @param $table : table name excluding prefix. i.e. 'users'
+ * @param $table  : table name excluding prefix. i.e. 'users'
  * @return array
  */
 function fields($table)
@@ -111,14 +110,19 @@ function fields($table)
  * Adds prefix to a table name. This is useful for raw query. Laravel by default does not
  * require table prefix.
  *
- * @param $table : table name without prefix
+ * @param $table  : table name without prefix
  * @return string Table name with prefix added
  */
 function dbTable($table)
 {
 
-    if (dbViewExists($table)) return $table;
-    else if (dbTableExists($table)) return $table;
+    if (dbViewExists($table)) {
+        return $table;
+    } else {
+        if (dbTableExists($table)) {
+            return $table;
+        }
+    }
 
     $table_prefix = DB::getTablePrefix();
     // Checks if table name already has prefix.
@@ -127,41 +131,45 @@ function dbTable($table)
     }
 
     // If no prefix is added then a string is returned by adding a prefix.
-    return $table_prefix . $table;
+    return $table_prefix.$table;
 }
 
 /**
  * @param       $Model
- * @param array $except // Todo : adding $except returns a different kind of array.
+ * @param  array  $except  // Todo : adding $except returns a different kind of array.
  * @return array
  * @internal param type $table i.e facilities without table prefix
  */
 function getModelFields($Model, $except = [])
 {
     $except = [];
+
     return array_diff(columns(modelTable($Model)), $except);
 }
 
 /**
  * Checks if a field exists in a table
  *
- * @param string $table
- * @param string $column
+ * @param  string  $table
+ * @param  string  $column
  * @return bool
  */
 function tableHasColumn($table, $column)
 {
-    if (in_array($column, columns($table))) return true;
+    if (in_array($column, columns($table))) {
+        return true;
+    }
+
     return false;
 }
 
 /**
  * get the table name(with prefix) used by a model
  *
- * @param string $Model
+ * @param  string  $Model
  * @return string
  */
 function modelTable($Model)
 {
-    return DB::getTablePrefix() . str_plural(lcfirst($Model));
+    return DB::getTablePrefix().str_plural(lcfirst($Model));
 }

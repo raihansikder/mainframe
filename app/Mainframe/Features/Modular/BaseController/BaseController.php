@@ -13,7 +13,6 @@ use App\Mainframe\Features\Modular\BaseController\Traits\HasMessageBag;
  */
 class BaseController extends Controller
 {
-
     use Validable, SendResponse, HasMessageBag;
 
     /**
@@ -25,5 +24,4 @@ class BaseController extends Controller
         // $this->response() = resolve(Response::class);
         View::share(['user' => user()]);
     }
-
 }
