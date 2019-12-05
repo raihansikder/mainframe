@@ -53,8 +53,6 @@ class ModuleBaseController extends BaseController
 
     /**
      * Index/List page to show grid
-     * This controller method is responsible for rendering the view that has the default
-     * spyr module grid.
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\JsonResponse|\Illuminate\View\View|void
      */
@@ -76,8 +74,7 @@ class ModuleBaseController extends BaseController
 
 
     /**
-     * Shows an spyr element. Store an spyr element. Returns json response if ret=json is
-     * sent as url parameter.Otherwise redirects to edit page where details is visible as filled up edit form.
+     * Show
      *
      * @param $id
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
@@ -95,7 +92,6 @@ class ModuleBaseController extends BaseController
         if ($this->response()->expectsJson()) {
             return $this->response()->success()->load($this->element)->json();
         }
-
 
         return $this->response()->redirect(route($this->name.".edit", $id));
 
@@ -130,7 +126,7 @@ class ModuleBaseController extends BaseController
 
 
     /**
-     * Show spyr element edit form
+     * Edit
      *
      * @param $id
      * @return \Illuminate\Contracts\View\View|\Illuminate\Http\JsonResponse|void
@@ -155,8 +151,7 @@ class ModuleBaseController extends BaseController
     }
 
     /**
-     * Store an spyr element. Returns json response if ret=json is sent as url parameter.
-     * Otherwise redirects based on the url set in redirect_success|redirect_fail
+     * Store
      *
      * @param  \Illuminate\Http\Request  $request
      * @return $this|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
@@ -180,7 +175,7 @@ class ModuleBaseController extends BaseController
     }
 
     /**
-     * Update handler for spyr element.
+     * Update
      *
      * @param  \Illuminate\Http\Request  $request
      * @param $id
@@ -206,11 +201,13 @@ class ModuleBaseController extends BaseController
             return $this->response()->load($this->element)->json();
         }
 
+        
+        
         return $this->response()->redirect();
     }
 
     /**
-     * Delete spyr element.
+     * Delete
      *
      * @param $id
      * @return $this|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
