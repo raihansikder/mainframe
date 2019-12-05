@@ -16,8 +16,15 @@ trait Validable
     /** @var \Illuminate\Validation\Validator */
     public $validator;
 
-    public function validator()
+    /**
+     * @param  null|\Illuminate\Validation\Validator  $validator
+     * @return \Illuminate\Contracts\Validation\Validator|\Illuminate\Validation\Validator
+     */
+    public function validator($validator = null)
     {
+        if ($validator) {
+            $this->validator = $validator;
+        }
         if ($this->validator) {
             return $this->validator;
         }

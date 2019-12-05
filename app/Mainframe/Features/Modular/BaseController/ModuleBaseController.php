@@ -48,7 +48,6 @@ class ModuleBaseController extends BaseController
 
         $this->module = Module::byName($this->name);
         $this->model = $this->module->modelInstance();
-
         View::share(['module' => $this->module]);
     }
 
@@ -70,6 +69,7 @@ class ModuleBaseController extends BaseController
         }
 
         $vars = ['columns' => $this->datatable()->columns()];
+
         return $this->response()->view( GridView::resolve($this->name))->with($vars);
     }
 
@@ -95,7 +95,11 @@ class ModuleBaseController extends BaseController
         if ($this->response()->expectsJson()) {
             return $this->response()->success()->load($this->element)->json();
         }
+
+
         return $this->response()->redirect(route($this->name.".edit", $id));
+
+
     }
 
     /**
@@ -133,26 +137,21 @@ class ModuleBaseController extends BaseController
      */
     public function edit($id)
     {
-
         if (! $this->element = $this->model->find($id)) {
             return $this->response()->notFound();
         }
 
         if (! user()->can('view', $this->element)) {
-
-
-
             return $this->response()->permissionDenied();
         }
 
-        $path = $this->editFormView();
         $vars = [
             'element' => $this->element,
             'formConfig' => $this->formConfig('edit'),
             'editable' => user()->can('update', $this->element),
             'formState' => 'edit',
         ];
-        return $this->response()->view($path)->with($vars);
+        return $this->response()->view($this->editFormView())->with($vars);
     }
 
     /**
@@ -177,7 +176,6 @@ class ModuleBaseController extends BaseController
         if ($this->response()->expectsJson()) {
             return $this->response()->load($this->element)->json();
         }
-
         return $this->response()->redirect();
     }
 

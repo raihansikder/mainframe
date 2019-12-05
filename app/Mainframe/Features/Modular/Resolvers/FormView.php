@@ -16,7 +16,7 @@ class FormView
     public static function resolve($moduleName, $state = 'create', User $user = null)
     {
         $default = 'mainframe.modules.'.$moduleName.'.form.default';
-        if ($state === 'create') {
+        if ($state == 'create') {
             return $default;
         }
 
