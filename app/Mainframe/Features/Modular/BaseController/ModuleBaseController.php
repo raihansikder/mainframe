@@ -69,10 +69,8 @@ class ModuleBaseController extends BaseController
             return $this->list();
         }
 
-        $path = GridView::resolve($this->name);
-        $vars = ['gridColumns' => $this->datatable()->columns()];
-
-        return $this->response()->view($path)->with($vars);
+        $vars = ['columns' => $this->datatable()->columns()];
+        return $this->response()->view( GridView::resolve($this->name))->with($vars);
     }
 
 
@@ -97,7 +95,6 @@ class ModuleBaseController extends BaseController
         if ($this->response()->expectsJson()) {
             return $this->response()->success()->load($this->element)->json();
         }
-
         return $this->response()->redirect(route($this->name.".edit", $id));
     }
 
@@ -115,16 +112,15 @@ class ModuleBaseController extends BaseController
             return $this->response()->permissionDenied();
         }
 
-        $path = $this->createFormView();
         $vars = [
             'element' => $this->element,
             'formConfig' => $this->createFromConfig(),
             'uuid' => request()->old('uuid') ?: uuid(),
-            'elementIsEditable' => true,
+            'editable' => true,
             'formState' => 'create',
         ];
 
-        return $this->response()->view($path)->with($vars);
+        return $this->response()->view($this->createFormView())->with($vars);
     }
 
 
@@ -143,6 +139,9 @@ class ModuleBaseController extends BaseController
         }
 
         if (! user()->can('view', $this->element)) {
+
+
+
             return $this->response()->permissionDenied();
         }
 
@@ -150,10 +149,9 @@ class ModuleBaseController extends BaseController
         $vars = [
             'element' => $this->element,
             'formConfig' => $this->editFromConfig(),
-            'elementIsEditable' => user()->can('update', $this->element),
+            'editable' => user()->can('update', $this->element),
             'formState' => 'edit',
         ];
-
         return $this->response()->view($path)->with($vars);
     }
 
@@ -235,7 +233,6 @@ class ModuleBaseController extends BaseController
         if ($this->response()->expectsJson()) {
             return $this->response()->json();
         }
-
         return $this->response()->redirect();
     }
 

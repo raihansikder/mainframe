@@ -2,7 +2,7 @@
 
 <div id="{{$module->name}}CtaBlock" class="btn-group pull-left cta-block no-margin col-md-12">
     {{--    <a id="{{$module->name}}CancelBtn" class="btn btn-default" href="{{ URL::previous() }}">Cancel</a>--}}
-    @if(((isset($$element) && $elementIsEditable)) || (!isset($$element) && hasModulePermission($module->name,'create')))
+    @if(((isset($$element) && $editable)) || (!isset($$element) && hasModulePermission($module->name,'create')))
         <input name="redirect_success" type="hidden"
                value="{{ Request::has('redirect_success')?Request::get('redirect_success'): route($module->name.".index") }}"/>
         <input name="redirect_fail" type="hidden"

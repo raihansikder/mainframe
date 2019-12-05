@@ -4,9 +4,9 @@
  * @var $moduleName           string 'superheroes'
  * @var $currentModule                   Module
  * @var $element               string 'superhero'
- * @var $elementIsEditable      boolean
+ * @var $editable      boolean
  * @var $uuid                  string '1709c091-8114-4ba4-8fd8-91f0ba0b63e8'
- * @var $gridColumns          array
+ * @var $editable          array
  */
 ?>
 
@@ -15,7 +15,7 @@
         <thead>
         <tr>
             {{-- print the headers/columns --}}
-            @foreach($gridColumns as $c)
+            @foreach($editable as $c)
                 <th>{!! $c[2] !!}</th>
             @endforeach
         </tr>
@@ -29,7 +29,7 @@
 
     <?php
     $columns_json = '';
-    foreach ($gridColumns as $column) {
+    foreach ($editable as $column) {
         $columns_json .= "{ data: '".$column[1]."', name: '".$column[0]."' },";
     }
     ?>
