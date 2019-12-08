@@ -6,7 +6,7 @@ use Request;
 use InvalidArgumentException;
 use App\Mainframe\Modules\Users\User;
 use Illuminate\Database\Eloquent\Builder;
-use App\Mainframe\Helpers\Modular\BaseModule\BaseModule;
+use App\Mainframe\Features\Modular\BaseModule\BaseModule;
 use App\Mainframe\Modules\Groups\Traits\GroupDefinitionsTrait;
 
 /**

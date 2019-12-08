@@ -7,7 +7,7 @@ $rand = randomString();
 
 /** View parameters */
 $var['module_id'] = isset($var['module_id']) ? $var['module_id'] : $module->id;
-$var['moduleName'] = isset($var['moduleName']) ? $var['moduleName'] : $module->name;
+$var['name'] = isset($var['name']) ? $var['name'] : $module->name;
 $var['element_id'] = isset($var['element_id']) ? $var['element_id'] : null;
 $var['element_uuid'] = isset($var['element_uuid']) ? $var['element_uuid'] : null;
 $var['type'] = isset($var['type']) ? $var['type'] : null;

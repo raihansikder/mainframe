@@ -7,7 +7,7 @@ use Storage;
 use Response;
 use Redirect;
 use App\Mainframe\Modules\Uploads\Upload;
-use App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController;
+use App\Mainframe\Features\Modular\BaseController\ModuleBaseController;
 
 class UploadsController extends ModuleBaseController
 {
@@ -23,17 +23,17 @@ class UploadsController extends ModuleBaseController
     {
         $input_name = Request::has('input_name') ? Request::get('input_name') : $input_name;
 
-        /** @var \App\Http\Mainframe\Helpers\Modular\BaseModule\BaseModule $Model */
-        /** @var \App\Http\Mainframe\Helpers\Modular\BaseModule\BaseModule $element */
+        /** @var \App\Http\Mainframe\Features\Modular\BaseModule\BaseModule $Model */
+        /** @var \App\Http\Mainframe\Features\Modular\BaseModule\BaseModule $element */
         // init local variables
-        $moduleName = $this->moduleName;
-        $Model = model($this->moduleName);
+        $moduleName = $this->name;
+        $Model = model($this->name);
 
         // $ret = ret();
         # --------------------------------------------------------
         # Process store while creation
         # --------------------------------------------------------
-        if (hasModulePermission($this->moduleName, 'create')) { // check module permission
+        if (hasModulePermission($this->name, 'create')) { // check module permission
             $element = new $Model(Request::all());
             // validate
             $validator = \Validator::make(Request::all(), $Model::rules($element), $Model::$customValidationMessages);
@@ -67,7 +67,7 @@ class UploadsController extends ModuleBaseController
                     // plugins like image cropper.
                     $width = $height = null;
                     if (isImageExtension($file->getClientOriginalExtension())) {
-                        list($width, $height) = getimagesize($file->getPathname());
+                        [$width, $height] = getimagesize($file->getPathname());
                     }
 
                     //$aws_path = '/test/' . $unique_name;

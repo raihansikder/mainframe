@@ -7,7 +7,7 @@
  * @var \App\Mainframe\Modules\Users\User $formState
  * @var array $formConfig
  * @var string $uuid Only available for create
- * @var bool $elementIsEditable
+ * @var bool $editable
  * @var \App\Mainframe\Modules\Modules\Module $module
  * @var \App\Mainframe\Modules\Users\User $user
  */
@@ -26,7 +26,7 @@
         {{--   --------------------    --}}
         @include('mainframe.form.input.text',['var'=>['name'=>'email','label'=>'Email']])
         {{-- show password only for editable--}}
-        @if($elementIsEditable)
+        @if($editable)
             <div class="clearfix"></div>
             <h3>Reset password</h3>
             {{--            @include('mainframe.form.input.text',['var'=>['name'=>'password','type'=>'password','label'=>'New password','value'=>'']])--}}

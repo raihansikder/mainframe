@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Builder;
 use App\Mainframe\Modules\Groups\Group as GroupModel;
-use App\Mainframe\Helpers\Modular\BaseModule\BaseModule;
+use App\Mainframe\Features\Modular\BaseModule\BaseModule;
 
 /**
  * Class Group

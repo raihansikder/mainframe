@@ -8,7 +8,7 @@
  * @var $currentModule              Module
  * @var $upload           Upload Object that is being edited
  * @var $element          string 'upload'
- * @var $elementIsEditable boolean
+ * @var $editable boolean
  * @var $uuid             string '1709c091-8114-4ba4-8fd8-91f0ba0b63e8'
  */
 ?>

@@ -10,7 +10,7 @@
  * @var $element               string 'user'
  * @var \App\User $$element
  * @var \App\User $user
- * @var $elementIsEditable      boolean
+ * @var $editable      boolean
  * @var $uuid                  string '1709c091-8114-4ba4-8fd8-91f0ba0b63e8'
  */
 ?>
@@ -40,7 +40,7 @@
 @include('form.input-text',['var'=>['name'=>'email','label'=>'Email', 'container_class'=>'col-sm-3']])
 
 {{-- show password only for editable--}}
-@if($elementIsEditable)
+@if($editable)
     <div class="clearfix"></div>
     <h4>Reset password</h4>
     @include('form.input-text',['var'=>['name'=>'password','type'=>'password','label'=>'New password', 'container_class'=>'col-sm-3','value'=>'']])

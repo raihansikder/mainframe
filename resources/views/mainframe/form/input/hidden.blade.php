@@ -1,6 +1,6 @@
 <?php
-/** @var \App\Mainframe\Helpers\Modular\BaseModule\BaseModule $element */
-use App\Mainframe\Helpers\Form\Text\InputHidden;
+/** @var \App\Mainframe\Features\Modular\BaseModule\BaseModule $element */
+use App\Mainframe\Features\Form\Text\InputHidden;
 
 $input = new InputHidden($var, $element ?? null);
 ?>

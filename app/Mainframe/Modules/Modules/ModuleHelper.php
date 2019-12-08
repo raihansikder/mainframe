@@ -8,15 +8,23 @@ use App\Mainframe\Modules\ModuleGroups\ModuleGroup;
 /** @mixin Module $this */
 trait ModuleHelper
 {
+
+    /**
+     * @return \Illuminate\Support\Collection
+     */
+    public static function list()
+    {
+        return Module::active()->remember(cacheTime('long'))->get();
+    }
+
     /**
      * @param $name
      * @return mixed|\App\Mainframe\Modules\Modules\Module
      */
     public static function byName($name)
     {
-        /** @noinspection PhpUndefinedMethodInspection */
-        return self::where('name', $name)
-            ->remember(cacheTime('long'))
+        return Module::remember(cacheTime('long'))
+            ->where('name', $name)
             ->first();
     }
 
@@ -88,7 +96,7 @@ trait ModuleHelper
                 $i = $predecessor->parent_id;
             }
         }
-        $stack = array_reverse($stack);
+        $stacGroupValidatork = array_reverse($stack);
 
         return $stack;
     }
@@ -220,9 +228,9 @@ trait ModuleHelper
         return new $classPath;
     }
 
-    public function validatorClassPath()
+    public function processorClassPath()
     {
-        return $this->moduleNameSpace().'\\'.$this->modelClassName().'Validator';
+        return $this->moduleNameSpace().'\\'.$this->modelClassName().'Processor';
     }
 
     /**
@@ -231,9 +239,9 @@ trait ModuleHelper
      * @param $element
      * @return mixed
      */
-    public function validatorInstance($element)
+    public function processorInstance($element)
     {
-        $classPath = $this->validatorClassPath();
+        $classPath = $this->processorClassPath();
 
         return new $classPath($element);
     }

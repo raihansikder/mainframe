@@ -7,7 +7,7 @@
 namespace App\Mainframe\Modules\Reports;
 
 use App\Mainframe\Modules\Users\User;
-use App\Mainframe\Helpers\Modular\BaseModule\BaseModulePolicy;
+use App\Mainframe\Features\Modular\BaseModule\BaseModulePolicy;
 
 class ReportPolicy extends BaseModulePolicy
 {

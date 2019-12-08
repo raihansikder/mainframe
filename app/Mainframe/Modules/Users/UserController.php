@@ -2,7 +2,7 @@
 
 namespace App\Mainframe\Modules\Users;
 
-use App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController;
+use App\Mainframe\Features\Modular\BaseController\ModuleBaseController;
 
 class UserController extends ModuleBaseController
 {
@@ -16,11 +16,10 @@ class UserController extends ModuleBaseController
     }
 
     /**
-     * @param  null  $class
      * @return UserDatatable
      */
-    public function resolveDatatableClass($class = null)
+    public function datatable()
     {
-        return $class ?? new UserDatatable($this->moduleName);
+        return new UserDatatable($this->module);
     }
 }

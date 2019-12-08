@@ -7,7 +7,7 @@
  * @param string $moduleName
  * @return string
  */
-function transformRow($column, $row, $value, $moduleName = null)
+function transformRow($column, $row, $value, $name = null)
 {
     //linked to facility details page
     $new_value = $value;

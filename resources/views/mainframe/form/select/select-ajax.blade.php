@@ -1,5 +1,5 @@
 <?php
-use App\Mainframe\Helpers\Form\Select\SelectAjax;
+use App\Mainframe\Features\Form\Select\SelectAjax;
 
 $rand = \Illuminate\Support\Str::random(8);
 $input = new SelectAjax($var, $element ?? null);
@@ -78,7 +78,7 @@ $input = new SelectAjax($var, $element ?? null);
                     },
                     results: function (response) {
                         return {
-                            results: $.map(response.items, function (item) {
+                            results: $.map(response.data.items, function (item) {
                                 return {
                                     text: item.{{$input->nameField}},
                                     id: item.id

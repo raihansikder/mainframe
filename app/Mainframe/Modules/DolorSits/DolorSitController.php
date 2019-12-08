@@ -2,7 +2,7 @@
 
 namespace App\Mainframe\Modules\DolorSits;
 
-use App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController;
+use App\Mainframe\Features\Modular\BaseController\ModuleBaseController;
 
 class DolorSitController extends ModuleBaseController
 {
@@ -16,11 +16,10 @@ class DolorSitController extends ModuleBaseController
     }
 
     /**
-     * @param  null  $class
      * @return DolorSitDatatable
      */
-    public function resolveDatatableClass($class = null)
+    public function datatable()
     {
-        return $class ?? new DolorSitDatatable($this->moduleName);
+        return new DolorSitDatatable($this->module);
     }
 }

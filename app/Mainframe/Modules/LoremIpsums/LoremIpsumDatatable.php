@@ -6,9 +6,10 @@
 namespace App\Mainframe\Modules\LoremIpsums;
 
 use DB;
-use App\Mainframe\Helpers\Datatable\Datatable;
+use App\Mainframe\Modules\Settings\SettingDatatable;
+use App\Mainframe\Features\Datatable\ModuleDatatable;
 
-class LoremIpsumDatatable extends Datatable
+class LoremIpsumDatatable extends ModuleDatatable
 {
     /**
      * Define Query for generating results for grid
@@ -29,27 +30,12 @@ class LoremIpsumDatatable extends Datatable
     public function columns()
     {
         return [
-            [$this->table.".id", 'id', 'ID'],
+            [$this->table.".id", 'id', 'Id'],
             [$this->table.".name", 'name', 'Name'],
             ['updater.name', 'user_name', 'Updater'],
             [$this->table.".updated_at", 'updated_at', 'Updated at'],
             [$this->table.".is_active", 'is_active', 'Active']
         ];
-    }
-
-    /**
-     * Construct SELECT statement based
-     *
-     * @return array
-     */
-    public function selects()
-    {
-        $cols = [];
-        foreach ($this->columns() as $col) {
-            $cols[] = $col[0].' as '.$col[1];
-        }
-
-        return $cols;
     }
 
     /**
@@ -85,8 +71,8 @@ class LoremIpsumDatatable extends Datatable
 
         // Next modify each column content
         /*  @var $dt \Yajra\DataTables\DataTableAbstract */
-        $dt = $dt->editColumn('name', '<a href="{{ route(\''.$this->moduleName.'.edit\', $id) }}">{{$name}}</a>');
-        $dt = $dt->editColumn('id', '<a href="{{ route(\''.$this->moduleName.'.edit\', $id) }}">{{$id}}</a>');
+        $dt = $dt->editColumn('name', '<a href="{{ route(\''.$this->module->name.'.edit\', $id) }}">{{$name}}</a>');
+        $dt = $dt->editColumn('id', '<a href="{{ route(\''.$this->module->name.'.edit\', $id) }}">{{$id}}</a>');
         $dt = $dt->editColumn('is_active', '@if($is_active)  Yes @else <span class="text-red">No</span> @endif');
 
         return $dt;

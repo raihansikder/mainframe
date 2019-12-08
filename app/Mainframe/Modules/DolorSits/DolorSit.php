@@ -2,7 +2,7 @@
 
 namespace App\Mainframe\Modules\DolorSits;
 
-use App\Mainframe\Helpers\Modular\BaseModule\BaseModule;
+use App\Mainframe\Features\Modular\BaseModule\BaseModule;
 
 class DolorSit extends BaseModule
 {

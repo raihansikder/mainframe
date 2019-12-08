@@ -49,7 +49,7 @@ function oldInputValue($name = '', $value = null)
  * inputs and set the empty strings to null. Also for all cases we need to set the creator/updater/deleter
  * with timestamp of that event.
  * This function is generally used in Model saving() event
- * @param \App\Mainframe\Helpers\Modular\BaseModule\BaseModule $element Eloquent model object
+ * @param \App\Mainframe\Features\Modular\BaseModule\BaseModule $element Eloquent model object
  * @param array $except If any field should be ignored from auto filling then should be
  *                                                     defined in this array
  * @return mixed : Eloquent model object with filled and cleaned values
@@ -137,7 +137,7 @@ function controllerModule($controller_class)
 
 /**
  * Derive module name from an eloquent model element
- * @param $element \App\Http\Mainframe\Helpers\Modular\BaseModule\BaseModule
+ * @param $element \App\Http\Mainframe\Features\Modular\BaseModule\BaseModule
  * @return string
  * @internal param $element_object
  */
@@ -516,7 +516,7 @@ function showGenericErrorPage($body = '')
 function mlink($moduleName = '', $id = null, $link_text = null)
 {
 
-    //$model = model($moduleName);
+    //$model = model($name);
     if ($module = Module::remember(cacheTime('very-long'))->whereName($moduleName)->first()) {
         if ($id) {
             $link_text = $link_text ? $link_text . "[#$id]" : $module->title . "[#$id]";

@@ -8,7 +8,7 @@
  * @var $currentModule Module
  * @var $tenant Tenant Object that is being edited
  * @var $element string 'tenant'
- * @var $elementIsEditable boolean
+ * @var $editable boolean
  * @var $uuid string '1709c091-8114-4ba4-8fd8-91f0ba0b63e8'
  */
 ?>

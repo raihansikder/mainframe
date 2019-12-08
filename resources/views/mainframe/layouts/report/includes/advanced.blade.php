@@ -7,8 +7,8 @@
         }
     </style>
 @endsection
-{{--@include('mainframe.form.input.textarea',['var'=>['name'=>'select_columns_csv','label'=>'Select columns', ['params'=>['class'=>'tag']],'container_class'=>'col-md-2']])--}}
-@include('mainframe.form.input.textarea',['var'=>['name'=>'show_columns_csv','label'=>'Columns', ['params'=>['class'=>'tag']],'container_class'=>'col-md-2']])
+
+@include('mainframe.form.input.textarea',['var'=>['name'=>'columns_csv','label'=>'Columns', ['params'=>['class'=>'tag']],'container_class'=>'col-md-2']])
 @include('mainframe.form.input.textarea',['var'=>['name'=>'alias_columns_csv','label'=>'Matching tiles', ['params'=>['class'=>'tag']],'container_class'=>'col-md-2']])
 {{--@include('mainframe.form.input.textarea',['var'=>['name'=>'additional_conditions','label'=>'Additional conditions','container_class'=>'col-md-2']])--}}
 {{--@include('mainframe.form.input.text',['var'=>['name'=>'group_by','label'=>'Group by','container_class'=>'col-md-2']])--}}
@@ -40,33 +40,23 @@
 @section('js')
     @parent
     <script type="text/javascript">
-        $("textarea[name=select_columns_csv]").select2({
-            tags: [{!!   "'". implode("','",$dataSourceColumns). "'" !!}],
-            tokenSeparators: [',']
-        });
 
-        $("textarea[name=show_columns_csv]").select2({
-            tags: [{!!   "'". implode("','",$showColumnsOptions). "'" !!}],
+
+        $("textarea[name=columns_csv]").select2({
+            tags: [{!!   "'". implode("','",$columnOptions). "'" !!}],
             tokenSeparators: [',']
         });
         $("textarea[name=alias_columns_csv]").select2({
             tags: [],
             tokenSeparators: [',']
         });
-        $("textarea[name=select_columns_csv]").select2("container").find("ul.select2-choices").sortable({
+
+        $("textarea[name=columns_csv]").select2("container").find("ul.select2-choices").sortable({
             start: function () {
-                $("textarea[name=select_columns_csv]").select2("onSortStart");
+                $("textarea[name=columns_csv]").select2("onSortStart");
             },
             update: function () {
-                $("textarea[name=select_columns_csv]").select2("onSortEnd");
-            }
-        });
-        $("textarea[name=show_columns_csv]").select2("container").find("ul.select2-choices").sortable({
-            start: function () {
-                $("textarea[name=show_columns_csv]").select2("onSortStart");
-            },
-            update: function () {
-                $("textarea[name=show_columns_csv]").select2("onSortEnd");
+                $("textarea[name=columns_csv]").select2("onSortEnd");
             }
         });
 

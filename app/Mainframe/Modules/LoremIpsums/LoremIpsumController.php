@@ -2,7 +2,7 @@
 
 namespace App\Mainframe\Modules\LoremIpsums;
 
-use App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController;
+use App\Mainframe\Features\Modular\BaseController\ModuleBaseController;
 
 class LoremIpsumController extends ModuleBaseController
 {
@@ -16,11 +16,10 @@ class LoremIpsumController extends ModuleBaseController
     }
 
     /**
-     * @param  null  $class
      * @return LoremIpsumDatatable
      */
-    public function resolveDatatableClass($class = null)
+    public function datatable()
     {
-        return $class ?? new LoremIpsumDatatable($this->moduleName);
+        return new LoremIpsumDatatable($this->module);
     }
 }

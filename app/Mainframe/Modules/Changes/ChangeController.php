@@ -2,7 +2,7 @@
 
 namespace App\Mainframe\Modules\Changes;
 
-use App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController;
+use App\Mainframe\Features\Modular\BaseController\ModuleBaseController;
 
 class ChangeController extends ModuleBaseController
 {
@@ -16,11 +16,10 @@ class ChangeController extends ModuleBaseController
     }
 
     /**
-     * @param  null  $class
      * @return ChangeDatatable
      */
-    public function resolveDatatableClass($class = null)
+    public function datatable()
     {
-        return $class ?? new ChangeDatatable($this->moduleName);
+        return new ChangeDatatable($this->module);
     }
 }

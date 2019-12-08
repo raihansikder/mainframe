@@ -1,12 +1,8 @@
 <?php
 /**
  * Variables used in this view file.
- * @var $moduleName           string 'superheroes'
- * @var $currentModule                   Module
- * @var $element               string 'superhero'
- * @var $elementIsEditable      boolean
- * @var $uuid                  string '1709c091-8114-4ba4-8fd8-91f0ba0b63e8'
- * @var $gridColumns          array
+ * @var \App\Mainframe\Modules\Modules\Module $module
+ * @var array $columns
  */
 ?>
 
@@ -15,8 +11,8 @@
         <thead class="bg-gray-light">
         <tr>
             {{-- print the headers/columns --}}
-            @foreach($gridColumns as $c)
-                <th>{!! $c[2] !!}</th>
+            @foreach($columns as $col)
+                <th>{!! $col[2] !!}</th>
             @endforeach
         </tr>
         </thead>
@@ -29,7 +25,7 @@
 
     <?php
     $columns_json = '';
-    foreach ($gridColumns as $column) {
+    foreach ($columns as $column) {
         $columns_json .= "{ data: '".$column[1]."', name: '".$column[0]."' },";
     }
     ?>

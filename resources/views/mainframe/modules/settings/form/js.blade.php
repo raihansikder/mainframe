@@ -14,7 +14,6 @@
 
     enableValidation('{{$module->name}}'); // Enable Ajax based form validation.
 
-
     @if($element->isCreating())
     /*
     |--------------------------------------------------------------------------

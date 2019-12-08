@@ -8,7 +8,7 @@
     </style>
 @endsection
 {{--@include('form.textarea',['var'=>['name'=>'select_columns_csv','label'=>'Select columns', ['params'=>['class'=>'tag']],'container_class'=>'col-md-2']])--}}
-@include('form.textarea',['var'=>['name'=>'show_columns_csv','label'=>'Columns', ['params'=>['class'=>'tag']],'container_class'=>'col-md-2']])
+@include('form.textarea',['var'=>['name'=>'columns_csv','label'=>'Columns', ['params'=>['class'=>'tag']],'container_class'=>'col-md-2']])
 @include('form.textarea',['var'=>['name'=>'alias_columns_csv','label'=>'Matching tiles', ['params'=>['class'=>'tag']],'container_class'=>'col-md-2']])
 {{--@include('form.textarea',['var'=>['name'=>'additional_conditions','label'=>'Additional conditions','container_class'=>'col-md-2']])--}}
 {{--@include('form.input-text',['var'=>['name'=>'group_by','label'=>'Group by','container_class'=>'col-md-2']])--}}
@@ -46,7 +46,7 @@
             tokenSeparators: [',']
         });
 
-        $("textarea[name=show_columns_csv]").select2({
+        $("textarea[name=columns_csv]").select2({
             tags: [{!!   "'". implode("','",$show_columns_options). "'" !!}],
             tokenSeparators: [',']
         });
@@ -62,12 +62,12 @@
                 $("textarea[name=select_columns_csv]").select2("onSortEnd");
             }
         });
-        $("textarea[name=show_columns_csv]").select2("container").find("ul.select2-choices").sortable({
+        $("textarea[name=columns_csv]").select2("container").find("ul.select2-choices").sortable({
             start: function () {
-                $("textarea[name=show_columns_csv]").select2("onSortStart");
+                $("textarea[name=columns_csv]").select2("onSortStart");
             },
             update: function () {
-                $("textarea[name=show_columns_csv]").select2("onSortEnd");
+                $("textarea[name=columns_csv]").select2("onSortEnd");
             }
         });
 

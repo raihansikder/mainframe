@@ -2,7 +2,7 @@
 
 namespace App\Mainframe\Modules\ModuleGroups;
 
-use App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController;
+use App\Mainframe\Features\Modular\BaseController\ModuleBaseController;
 
 class ModuleGroupController extends ModuleBaseController
 {
@@ -16,11 +16,10 @@ class ModuleGroupController extends ModuleBaseController
     }
 
     /**
-     * @param  null  $class
      * @return ModuleGroupDatatable
      */
-    public function resolveDatatableClass($class = null)
+    public function datatable()
     {
-        return $class ?? new ModuleGroupDatatable($this->moduleName);
+        return new ModuleGroupDatatable($this->module);
     }
 }

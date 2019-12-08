@@ -7,7 +7,7 @@ use Response;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
-use App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController;
+use App\Mainframe\Features\Modular\BaseController\ModuleBaseController;
 
 class UploadController extends ModuleBaseController
 {
@@ -21,17 +21,16 @@ class UploadController extends ModuleBaseController
     }
 
     /**
-     * @param  null  $class
      * @return UploadDatatable
      */
-    public function resolveDatatableClass($class = null)
+    public function datatable()
     {
-        return $class ?? new UploadDatatable($this->moduleName);
+        return new UploadDatatable($this->module);
     }
 
     /**
      * @param  \Illuminate\Http\Request  $request
-     * @return \App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|void
+     * @return \App\Mainframe\Features\Modular\BaseController\ModuleBaseController|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|void
      */
     public function store(Request $request)
     {
@@ -42,7 +41,7 @@ class UploadController extends ModuleBaseController
         $this->element = $this->model; // Create an empty model to be stored.
 
         if (! $file = $this->getFile()) {
-            return $this->response()->failed('No file in http request');
+            return $this->response()->invalid('No file in http request');
         }
 
         // if($dimensions = $this->getImageDimension($file)){
@@ -51,7 +50,7 @@ class UploadController extends ModuleBaseController
         // }
 
         if (! $uploadPath = $this->handleUpload($file)) {
-            return $this->response()->failed('Can not move file to destination from tmp');
+            return $this->response()->invalid('Can not move file to destination from tmp');
         }
 
         $this->element->name = $file->getClientOriginalName();

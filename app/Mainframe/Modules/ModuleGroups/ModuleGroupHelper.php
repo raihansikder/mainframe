@@ -6,6 +6,14 @@ use App\Mainframe\Modules\Modules\Module;
 
 trait ModuleGroupHelper
 {
+    /**
+     * @return \Illuminate\Support\Collection
+     */
+    public static function list()
+    {
+        return ModuleGroup::active()->remember(cacheTime('long'))->get();
+    }
+
     public static function ofParentId($id = 0)
     {
         return ModuleGroup::active()->where('parent_id', $id)

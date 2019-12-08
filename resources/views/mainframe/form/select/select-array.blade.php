@@ -1,5 +1,5 @@
 <?php
-use App\Mainframe\Helpers\Form\Select\SelectArray;
+use App\Mainframe\Features\Form\Select\SelectArray;
 
 $input = new SelectArray($var, $element ?? null);
 ?>

@@ -20,8 +20,8 @@
            title="Create a new {{lcfirst(Str::singular($module->title))}}"><i class="fa fa-plus"></i> &nbsp;CREATE NEW </a>
     @endif
 
-    {{--@if(hasModulePermission($moduleName,"view-list"))--}}
-    {{--<a class="btn btn-xs" href="{{route("$moduleName.index")}}" data-toggle="tooltip"--}}
+    {{--@if(hasModulePermission($name,"view-list"))--}}
+    {{--<a class="btn btn-xs" href="{{route("$name.index")}}" data-toggle="tooltip"--}}
     {{--title="View list of {{lcfirst(str_plural($currentModule->title))}}"><i class="fa fa-list"></i></a>--}}
     {{--@endif--}}
 

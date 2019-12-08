@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController;
+use App\Mainframe\Features\Modular\BaseController\ModuleBaseController;
 
 class SuperheroesController extends ModuleBaseController
 {
@@ -21,11 +21,11 @@ class SuperheroesController extends ModuleBaseController
     // {
     //     return [
     //         //['table.id', 'id', 'ID'], // translates to => table.id as id and the last one ID is grid colum header
-    //         ["{$this->moduleName}.id", "id", "ID"],
-    //         ["{$this->moduleName}.name", "name", "Name"],
+    //         ["{$this->name}.id", "id", "ID"],
+    //         ["{$this->name}.name", "name", "Name"],
     //         ["updater.name", "user_name", "Updater"],
-    //         ["{$this->moduleName}.updated_at", "updated_at", "Updated at"],
-    //         ["{$this->moduleName}.is_active", "is_active", "Active"]
+    //         ["{$this->name}.updated_at", "updated_at", "Updated at"],
+    //         ["{$this->name}.is_active", "is_active", "Active"]
     //     ];
     // }
 
@@ -50,8 +50,8 @@ class SuperheroesController extends ModuleBaseController
      */
     // public function sourceTables()
     // {
-    //     return DB::table($this->moduleName)
-    //         ->leftJoin('users as updater', $this->moduleName . '.updated_by', 'updater.id');
+    //     return DB::table($this->name)
+    //         ->leftJoin('users as updater', $this->name . '.updated_by', 'updater.id');
     // }
 
     /**
@@ -64,12 +64,12 @@ class SuperheroesController extends ModuleBaseController
     //     $query = $this->sourceTables()->select($this->selectColumns());
     //
     //     // Inject tenant context in grid query
-    //     if ($tenant_id = inTenantContext($this->moduleName)) {
-    //         $query = injectTenantIdInModelQuery($this->moduleName, $query);
+    //     if ($tenant_id = inTenantContext($this->name)) {
+    //         $query = injectTenantIdInModelQuery($this->name, $query);
     //     }
     //
     //     // Exclude deleted rows
-    //     $query = $query->whereNull($this->moduleName . '.deleted_at'); // Skip deleted rows
+    //     $query = $query->whereNull($this->name . '.deleted_at'); // Skip deleted rows
     //
     //     return $query;
     // }
@@ -86,8 +86,8 @@ class SuperheroesController extends ModuleBaseController
     //     $dt = $dt->rawColumns(['id', 'name', 'is_active']); // HTML can be printed for raw columns
     //
     //     // Next modify each column content
-    //     $dt = $dt->editColumn('name', '<a href="{{ route(\'' . $this->moduleName . '.edit\', $id) }}">{{$name}}</a>');
-    //     $dt = $dt->editColumn('id', '<a href="{{ route(\'' . $this->moduleName . '.edit\', $id) }}">{{$id}}</a>');
+    //     $dt = $dt->editColumn('name', '<a href="{{ route(\'' . $this->name . '.edit\', $id) }}">{{$name}}</a>');
+    //     $dt = $dt->editColumn('id', '<a href="{{ route(\'' . $this->name . '.edit\', $id) }}">{{$id}}</a>');
     //     $dt = $dt->editColumn('is_active', '@if($is_active)  Yes @else <span class="text-red">No</span> @endif');
     //
     //     return $dt;

@@ -2,7 +2,7 @@
 
 namespace App\Mainframe\Modules\Reports;
 
-use App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController;
+use App\Mainframe\Features\Modular\BaseController\ModuleBaseController;
 
 class ReportController extends ModuleBaseController
 {
@@ -16,11 +16,10 @@ class ReportController extends ModuleBaseController
     }
 
     /**
-     * @param  null  $class
      * @return ReportDatatable
      */
-    public function resolveDatatableClass($class = null)
+    public function datatable()
     {
-        return $class ?? new ReportDatatable($this->moduleName);
+        return new ReportDatatable($this->module);
     }
 }

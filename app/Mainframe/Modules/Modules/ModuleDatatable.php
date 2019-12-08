@@ -2,10 +2,7 @@
 
 namespace App\Mainframe\Modules\Modules;
 
-use App\Mainframe\Helpers\Datatable\Datatable;
-use App\Mainframe\Helpers\Modular\BaseController\ModuleBaseController;
-
-class ModuleDatatable extends Datatable
+class ModuleDatatable extends \App\Mainframe\Features\Datatable\ModuleDatatable
 {
     /**
      * Define grid SELECT statement and HTML column name.
@@ -14,13 +11,13 @@ class ModuleDatatable extends Datatable
      */
     public function columns()
     {
-        /** @var ModuleBaseController $this */
         return [
-            ["{$this->moduleName}.id", "id", "Module ID"],
-            ["{$this->moduleName}.name", "name", "Name"],
+            ["{$this->table}.id", "id", "ID"],
+            ["{$this->table}.name", "name", "Name"],
+            ["{$this->table}.title", "title", "Title"],
             ["updater.name", "user_name", "Updater"],
-            ["{$this->moduleName}.updated_at", "updated_at", "Updated at"],
-            ["{$this->moduleName}.is_active", "is_active", "Active"]
+            ["{$this->table}.updated_at", "updated_at", "Updated at"],
+            ["{$this->table}.is_active", "is_active", "Active"]
         ];
     }
 

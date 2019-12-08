@@ -22,11 +22,11 @@
 /**
  * @var \App\Mainframe\Modules\Modules\Module $module
  * @var \App\Mainframe\Modules\Users\User $user
- * @var \App\Mainframe\Helpers\Modular\BaseModule\BaseModule $element
+ * @var \App\Mainframe\Features\Modular\BaseModule\BaseModule $element
  * @var string $formState create|edit
  */
 
-$input = new App\Mainframe\Helpers\Form\Text\InputText($var, $element ?? null);
+$input = new App\Mainframe\Features\Form\Text\InputText($var, $element ?? null);
 ?>
 
 <div class="form-group {{$input->containerClass}} {{$errors->first($input->name, ' has-error')}}">
