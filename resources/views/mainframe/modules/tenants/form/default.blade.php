@@ -4,7 +4,7 @@
 /**
  * @var \App\Mainframe\Modules\Modules\Module $module
  * @var \App\Mainframe\Modules\Users\User $user
- * @var \App\Mainframe\Modules\SuperHeroes\SuperHero $element
+ * @var \App\Mainframe\Modules\Tenants\Tenant $element
  * @var string $formState create|edit
  * @var array $formConfig
  * @var string $uuid Only available for create
@@ -24,6 +24,7 @@
         {{--    Form inputs: starts    --}}
         {{--   --------------------    --}}
         @include('mainframe.form.input.text',['var'=>['name'=>'name','label'=>'Name']])
+        @include('mainframe.form.input.text',['var'=>['name'=>'code','label'=>'code']])
         @include('mainframe.form.custom.is_active')
         {{--    Form inputs: ends    --}}
 
@@ -44,5 +45,5 @@
 
 @section('js')
     @parent
-    @include('mainframe.modules.super-heroes.form.js')
+    @include('mainframe.modules.tenants.form.js')
 @endsection
