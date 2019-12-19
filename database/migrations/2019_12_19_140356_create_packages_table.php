@@ -7,7 +7,7 @@ use App\Mainframe\Modules\Modules\Module;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSuperHeroesTable extends Migration
+class CreatePackagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -19,14 +19,16 @@ class CreateSuperHeroesTable extends Migration
         /*
          * Create schema
          */
-        Schema::create('super_heroes', function (Blueprint $table) {
+        Schema::create('packages', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('uuid', 64)->nullable()->default(null);
-            $table->unsignedInteger('tenant_id')->nullable()->default(null);
-            $table->string('name', 1024)->nullable()->default(null);
+            // $table->unsignedInteger('tenant_id')->nullable()->default(null);
+            $table->string('name', 255)->nullable()->default(null);
 
             /******* Custom columns **********/
-            //$table->string('title', 100)->nullable()->default(null);
+            $table->string('details')->nullable()->default(null);
+            $table->string('modules')->nullable()->default(null);
+            $table->string('limits')->nullable()->default(null);
             //$table->text('somecolumnsname')->nullable()->default(null);
             /*********************************/
 
@@ -41,7 +43,7 @@ class CreateSuperHeroesTable extends Migration
         /*
          * Insert into modules table
          */
-        $name = 'super-heroes';
+        $name = 'packages';
         if (Module::where('name', $name)->doesntExist()) {
             $module = new Module(['name' => $name]);
 
@@ -64,6 +66,6 @@ class CreateSuperHeroesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('super_heroes');
+        Schema::dropIfExists('packages');
     }
 }

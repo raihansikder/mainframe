@@ -60,10 +60,10 @@ function renderModulePermissionTree($tree)
 /**
  * returns sentry object of currently logged in user
  *
- * @param  bool|false  $user_id
+ * @param  bool|null  $user_id
  * @return \Illuminate\Contracts\Auth\Authenticatable|\App\Mainframe\Modules\Users\User
  */
-function user($user_id = false)
+function user($user_id = null)
 {
     if ($user_id) {
         /** @noinspection PhpUndefinedMethodInspection */
@@ -94,7 +94,8 @@ function user($user_id = false)
         return Auth::user();
     }
 
-    return null;
+    // Return an empty user instance
+    return new User();
 }
 
 /**
