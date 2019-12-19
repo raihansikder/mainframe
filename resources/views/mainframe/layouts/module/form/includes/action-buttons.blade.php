@@ -16,7 +16,16 @@
     {{-- Delete modal --}}
     @if(isset($element->id) && user()->can('delete',$element))
         <div class="pull-right delete-cta no-padding">
-            {!! deleteBtn(route($module->name.".destroy",$element->id),route($module->name.".index")) !!}
+{{--            {!! deleteBtn(route($module->name.".destroy",$element->id),route($module->name.".index")) !!}--}}
+            <?php
+            /** @var \App\Mainframe\Modules\Modules\Module $module */
+            /** @var \App\Mainframe\Modules\SuperHeroes\SuperHero $element */
+            $var = [
+                'route' => route($module->name.".destroy", $element->id),
+                'redirect_success' => route($module->name.".index"),
+            ];
+            ?>
+            @include('mainframe.form.delete-button',['var'=>$var])
         </div>
     @endif
     @if(isset($element->id))
