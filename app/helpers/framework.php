@@ -1,64 +1,11 @@
 <?php
 
-use App\Report;
 use Illuminate\Support\Str;
 use Illuminate\Support\MessageBag;
 use App\Mainframe\Modules\Modules\Module;
 use App\Mainframe\Modules\Settings\Setting;
 
-/**
- * For all models While saving(create or update) we need to fill some common fields, trim the blank spaces from
- * inputs and set the empty strings to null. Also for all cases we need to set the creator/updater/deleter
- * with timestamp of that event.
- * This function is generally used in Model saving() event
- *
- * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule  $element  Eloquent model object
- * @param  array  $except  If any field should be ignored from auto filling then should be
- *                                                     defined in this array
- * @return mixed : Eloquent model object with filled and cleaned values
- * @throws Exception
- */
-function fillModel($element, $except = [])
-{
-    $moduleName = moduleName(get_class($element));
-    // uuid
-    if (! isset($element->uuid)) {
-        $element->uuid = Webpatser\Uuid\Uuid::generate(4); // 4 = truly random, uncomment this when you have uuid field added
-    }
 
-    // created_by & created_at
-    $created_by = 1;
-    $created_by = $element->created_by ?? $created_by;
-    $created_by = (! isset($element->created_by) && user()) ? user()->id : $created_by;
-    $created_by = (! isset($element->created_by) && Request::has('created_by')) ? Request::get('created_by') : $created_by;
-    $element->created_by = $created_by;
-    $element->created_at = (! isset($element->created_at)) ? now() : $element->created_at;
-
-    // updated_by & updated_at
-    $updated_by = 1;
-    $updated_by = (isset($element->updated_by)) ? $element->updated_by : $updated_by;
-    $updated_by = (! isset($element->updated_by) && user()) ? user()->id : $updated_by;
-    $updated_by = (! isset($element->created_by) && Request::has('updated_by')) ? Request::get('updated_by') : $updated_by;
-    $element->updated_by = $updated_by;
-    $element->updated_at = now();
-
-    // fill with null if not array
-    $fields = array_diff(columns($moduleName), ['id']);
-    foreach ($fields as $field) {
-        if (isset($element->$field) && ! in_array($field, $except) && ! is_array($element->$field)) {
-            $element->$field = trim($element->$field); // trim white space
-            if (! strlen($element->$field)) {
-                $element->$field = null;
-            }
-        }
-    }
-    // inject tenant context
-    if (inTenantContext($moduleName)) {
-        $element = fillTenantId($element);
-    }
-
-    return $element;
-}
 
 /**
  * returns the table/module name(without prefix) from a model class name
@@ -95,16 +42,7 @@ function controller($module)
     return ucfirst($module)."Controller";
 }
 
-/**
- * Derive the module name from controller class name
- *
- * @param $controller_class
- * @return string
- */
-function controllerModule($controller_class)
-{
-    return lcfirst(str_replace("Controller", '', class_basename($controller_class)));
-}
+
 
 /**
  * Derive module name from an eloquent model element
