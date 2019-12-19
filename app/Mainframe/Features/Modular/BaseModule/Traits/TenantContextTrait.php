@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Mainframe\Features\Modular\BaseModule\Traits;
+
 /** @mixin $this BaseModule */
 trait TenantContextTrait
 {
@@ -12,10 +13,10 @@ trait TenantContextTrait
      */
     public function hasTenantContext()
     {
-        $tenant_field = tenantIdField();
-        if ($this->$tenant_field) {
-            return user()->$tenant_field;
+        if (array_key_exists('tenant_id', $this->getAttributes())) {
+            return user()->tenant_id;
         }
+
         return false;
     }
 }

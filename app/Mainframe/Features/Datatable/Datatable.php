@@ -15,7 +15,7 @@ class Datatable
 
     /**
      * Constructor for this class is very important as it boots up necessary features of
-     * Spyr module. First of all, it load module related meta information, then based
+     * a module. First of all, it load module related meta information, then based
      * on context check(tenant context) it loads the tenant id. The it constructs the default
      * grid query and also add tenant context to grid query if applicable. Finally it
      * globally shares a couple of variables $name, $currentModule to all views rendered
@@ -79,9 +79,9 @@ class Datatable
     {
         $query = $this->source()->select($this->selects());
 
-        // Inject tenant context in grid query
-        if ($tenant_id = inTenantContext($this->table)) {
-            $query = injectTenantIdInModelQuery($this->table, $query);
+        // Inject tenant context.
+        if (user()->ofTenant() && \Schema::hasColumn($this->table, 'tenant_id')) {
+            $query->where('tenant_id', user()->tenant_id);
         }
 
         // Exclude deleted rows

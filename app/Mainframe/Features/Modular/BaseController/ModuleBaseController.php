@@ -229,6 +229,8 @@ class ModuleBaseController extends BaseController
 
         $this->attemptDestroy();
 
+        $this->response()->redirectTo = $this->redirectTo();
+
         if ($this->response()->expectsJson()) {
             return $this->response()->json();
         }

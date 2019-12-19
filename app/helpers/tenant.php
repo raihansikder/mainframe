@@ -6,10 +6,7 @@
  *
  * @return mixed|null
  */
-function tenantIdField()
-{
-    return conf('var.tenant_field_identifier');
-}
+
 
 /**
  * Returns the currently logged in user's tenant id(if the user belongs to a specific tenant)
@@ -19,7 +16,7 @@ function tenantIdField()
  */
 function userTenantId($user_id = null)
 {
-    $tenant_idf = tenantIdField();
+    $tenant_idf = 'tenant_id';
     $user = user($user_id);
 
     if ($user && $user->$tenant_idf) {
@@ -47,7 +44,7 @@ function tenantUser($user_id = null)
  */
 function elementTenantId($element)
 {
-    $tenant_idf = tenantIdField();
+    $tenant_idf = 'tenant_id';
     if (isset($element->$tenant_idf) && $element->$tenant_idf) {
         return $element->$tenant_idf;
     }
@@ -62,7 +59,7 @@ function elementTenantId($element)
  */
 function moduleHasTenantContext($moduleName)
 {
-    $tenant_idf = tenantIdField();
+    $tenant_idf = 'tenant_id';
     return tableHasColumn($moduleName, $tenant_idf);
 }
 
@@ -91,7 +88,7 @@ function inTenantContext($moduleName, $user_id = null)
  */
 function elementBelongsToSameTenant($element, $user_id = null)
 {
-    $tenant_idf = tenantIdField();
+    $tenant_idf = 'tenant_id';
     if (inTenantContext(moduleName(get_class($element))) && (userTenantId($user_id) == $element->$tenant_idf)) {
         return true;
     }
@@ -107,7 +104,7 @@ function elementBelongsToSameTenant($element, $user_id = null)
  */
 function fillTenantId(Eloquent $model, $user_id = null)
 {
-    $tenant_idf = tenantIdField();
+    $tenant_idf = 'tenant_id';
     if (inTenantContext(moduleName(get_class($model)))) {
         $model->$tenant_idf = userTenantId($user_id);
     }
@@ -121,8 +118,8 @@ function fillTenantId(Eloquent $model, $user_id = null)
  */
 function tenantInput()
 {
-    if (Request::has(tenantIdField())) {
-        return Request::get(tenantIdField());
+    if (Request::has('tenant_id')) {
+        return Request::get('tenant_id');
     }
     return false;
 }
@@ -136,7 +133,7 @@ function tenantInput()
 function injectTenantIdInModelQuery($moduleName, $q, $user_id = null)
 {
     if ($tenant_id = inTenantContext($moduleName, $user_id)) {
-        $q = $q->where($moduleName . '.' . tenantIdField(), $tenant_id);
+        $q = $q->where($moduleName . '.' . 'tenant_id', $tenant_id);
     }
     return $q;
 }
@@ -152,7 +149,7 @@ function injectTenantIdInModelQuery($moduleName, $q, $user_id = null)
 function injectTenantIdInSqlQuery($moduleName, $sql, $user_id = null)
 {
     if ($tenant_id = inTenantContext($moduleName, $user_id)) {
-        $sql = $sql . " AND " . dbTable($moduleName) . "." . tenantIdField() . "= $tenant_id";
+        $sql = $sql . " AND " . dbTable($moduleName) . "." . 'tenant_id' . "= $tenant_id";
     }
     return $sql;
 }

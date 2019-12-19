@@ -23,7 +23,7 @@ class CreateSuperHeroesTable extends Migration
             $table->bigIncrements('id');
             $table->string('uuid', 64)->nullable()->default(null);
             $table->unsignedInteger('tenant_id')->nullable()->default(null);
-            $table->string('name', 255)->nullable()->default(null);
+            $table->string('name', 1024)->nullable()->default(null);
 
             /******* Custom columns **********/
             //$table->string('title', 100)->nullable()->default(null);

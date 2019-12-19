@@ -10,7 +10,7 @@ trait UserHelper
     /**
      * Resolve name based on given input.
      *
-     * @return \App\Mainframe\Modules\Users\User
+     * @return \App\Mainframe\Modules\Users\UserHelper
      */
     public function resolveName()
     {
@@ -87,5 +87,10 @@ trait UserHelper
     public function ofSuperadminGroup()
     {
         return $this->inGroupIds(Group::superadminGroupIds());
+    }
+
+    public function ofTenant()
+    {
+        return $this->tenant_id ?: false;
     }
 }

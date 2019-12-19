@@ -19,7 +19,25 @@
                             <b>{{FileSizeConvert(filesize($upload->absPath()))}}</b></span>
                         <span class="info-box-number">{{FileSizeConvert(filesize($upload->absPath()))}}</span>
                     @endif
-                    <div class="pull-right">{!! deleteBtn(route("uploads.destroy",$upload->id),URL::full(),$redirect_on_fail = '', $class='btn btn-xs btn-danger flat', $text='<i class="fa fa-trash"></i>') !!}</div>
+                    <div class="pull-right">
+{{--                        {!! deleteBtn(route("uploads.destroy",$upload->id),URL::full(),$redirect_on_fail = '', $class='btn btn-xs btn-danger flat', $text='<i class="fa fa-trash"></i>') !!}--}}
+
+                        <?php
+                        /** @var \App\Mainframe\Modules\Modules\Module $module */
+                        /** @var \App\Mainframe\Modules\Uploads\Upload $upload */
+                        /** @var \App\Mainframe\Modules\SuperHeroes\SuperHero $element */
+                        $var = [
+                            'route' => route("uploads.destroy", $upload->id),
+                            'redirect_success' => URL::full(),
+                            'params' => [
+                                'class' => 'btn btn-xs btn-danger flat',
+                            ],
+                            'value' => '<i class="fa fa-trash"></i>',
+                        ];
+                        ?>
+                        @include('mainframe.form.delete-button',['var'=>$var])
+
+                    </div>
                 </div>
             </div>
         </div>

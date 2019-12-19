@@ -28,7 +28,9 @@ class MakeMainframeModule extends Command
      */
     protected $templateModuleName = 'super-heroes';
 
-    /** @var \App\Mainframe\Modules\Modules\Module */
+    /**
+     * @var \App\Mainframe\Modules\Modules\Module
+     */
     protected $templateModule;
 
     /**
@@ -36,7 +38,9 @@ class MakeMainframeModule extends Command
      */
     protected $moduleName;
 
-    /** @var \App\Mainframe\Modules\Modules\Module */
+    /**
+     * @var \App\Mainframe\Modules\Modules\Module
+     */
     protected $module;
 
     /**
@@ -65,7 +69,7 @@ class MakeMainframeModule extends Command
     public function createMigration()
     {
         // Get template code and replace
-        $code = $this->replace(File::get("app/Mainframe/Helpers/Modular/Skeleton/migration.php"));
+        $code = $this->replace(File::get("app/Mainframe/Features/Modular/Skeleton/migration.php"));
         // Create a new laravel migration
         $this->call('make:migration', ['name' => "create_{$this->module->tableName()}_table"]);
         // Find the newly created migration file and put the updated code.
@@ -81,7 +85,7 @@ class MakeMainframeModule extends Command
      */
     public function createClasses()
     {
-        $source_root = 'app/Mainframe/Helpers/Modular/Skeleton/';
+        $source_root = 'app/Mainframe/Features/Modular/Skeleton/';
         $destination_root = 'app/Mainframe/Modules/'.$this->module->modelClassNamePlural().'/';
         $maps = [
             $source_root.'SuperHero.php' => $destination_root.$this->module->modelClassName().'.php',
@@ -106,7 +110,7 @@ class MakeMainframeModule extends Command
      */
     public function createViewFiles()
     {
-        $source_root = 'app/Mainframe/Helpers/Modular/Skeleton/views';                  // Source directory
+        $source_root = 'app/Mainframe/Features/Modular/Skeleton/views';                  // Source directory
         $destination_root = 'resources/views/mainframe/modules/'.$this->module->name;   // New module directory
         File::copyDirectory($source_root, $destination_root);
 
