@@ -10,9 +10,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Mainframe\Modules\Users\Traits\UserGroupable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use App\Mainframe\Features\Modular\BaseModule\Traits\Processable;
 use App\Mainframe\Features\Modular\BaseModule\Traits\Changeable;
 use App\Mainframe\Features\Modular\BaseModule\Traits\Uploadable;
+use App\Mainframe\Features\Modular\BaseModule\Traits\Processable;
 use App\Mainframe\Features\Modular\BaseModule\Traits\UpdaterTrait;
 use App\Mainframe\Features\Modular\BaseModule\Traits\ModularTrait;
 use App\Mainframe\Features\Modular\BaseModule\Traits\EventIdentifiable;
@@ -163,7 +163,7 @@ class User extends Authenticatable implements MustVerifyEmail
     | These attributes can be mass assigned
     */
     protected $fillable = [
-        'uuid', 'tenant_id', 'name', 'email', 'password', 'remember_token', 'api_token', 'api_token_generated_at', 'is_tenant_editable', 'permissions',
+        'uuid', 'name', 'email', 'password', 'remember_token', 'api_token', 'api_token_generated_at', 'is_tenant_editable', 'permissions',
         'is_active', 'created_by', 'updated_by', 'created_at', 'updated_at', 'deleted_at', 'deleted_by', 'name_initial', 'first_name', 'last_name', 'full_name',
         'gender', 'device_token', 'address1', 'address2', 'city', 'county', 'country_id', 'country_name', 'zip_code', 'phone', 'mobile', 'first_login_at',
         'last_login_at', 'auth_token', 'email_verified_at', 'email_verification_code', 'currency', 'social_account_id', 'social_account_type', 'dob',

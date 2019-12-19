@@ -73,7 +73,6 @@ class Report extends BaseModule
     protected $fillable = [
         'uuid',
         'name',
-        'tenant_id',
         'title',
         'description',
         'parameters',

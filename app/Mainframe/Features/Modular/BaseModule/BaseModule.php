@@ -60,7 +60,9 @@ class BaseModule extends Model
      */
     public function autoFill()
     {
+        // Inject tenant context.
         $this->autoFillTenant();
+
         $this->uuid = $this->uuid ?? uuid();
         $this->created_by = $this->created_by ?? user()->id;
         $this->created_at = $this->created_by ?? now();

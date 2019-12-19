@@ -73,7 +73,6 @@ class Change extends BaseModule
     */
     protected $fillable = [
         'uuid',
-        'tenant_id',
         'name',
         'change_set',
         'module_id',

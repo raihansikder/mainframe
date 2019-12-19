@@ -72,7 +72,6 @@ class Upload extends BaseModule
     */
     protected $fillable = [
         'uuid',
-        'tenant_id',
         'name',
         'type',
         'path',
