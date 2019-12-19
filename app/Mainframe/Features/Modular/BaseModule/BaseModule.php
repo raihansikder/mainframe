@@ -7,8 +7,8 @@ use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Mainframe\Features\Modular\BaseModule\Traits\Changeable;
-use App\Mainframe\Features\Modular\BaseModule\Traits\Processable;
 use App\Mainframe\Features\Modular\BaseModule\Traits\Uploadable;
+use App\Mainframe\Features\Modular\BaseModule\Traits\Processable;
 use App\Mainframe\Features\Modular\BaseModule\Traits\ModularTrait;
 use App\Mainframe\Features\Modular\BaseModule\Traits\UpdaterTrait;
 use App\Mainframe\Features\Modular\BaseModule\Traits\EventIdentifiable;
@@ -53,6 +53,30 @@ class BaseModule extends Model
     public static function boot()
     {
         parent::boot();
+    }
+
+    /**
+     * Auto fill some of the generic model fields.
+     */
+    public function autoFill()
+    {
+        $this->autoFillTenant();
+        $this->uuid = $this->uuid ?? uuid();
+        $this->created_by = $this->created_by ?? user()->id;
+        $this->created_at = $this->created_by ?? now();
+        $this->updated_by = $this->updated_by ?? user()->id;
+        $this->updated_at = now();
+    }
+
+    /**
+     * Fill tenant id once during creation. Later tenant id can not be
+     * updated.
+     */
+    public function autoFillTenant()
+    {
+        if (user()->ofTenant() && $this->hasTenantContext()) {
+            $this->tenant_id = $this->tenant_id ?: user()->tenant_id;
+        }
     }
 
     /*

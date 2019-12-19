@@ -24,10 +24,24 @@ trait Query
             $query = $query->select($this->querySelectColumns());
         }
         $query = $this->filter($query);
+
+        if(user()->ofTenant() && $this->hasTenantContext()){ // Inject tenant context.
+            $query->where('tenant_id',user()->tenant_id);
+        }
+
         $query = $this->groupBy($query);
         $query = $this->orderBy($query);
 
         return $query;
+    }
+
+    /**
+     * Check if data source has tenant field
+     * @return bool
+     */
+    public function hasTenantContext()
+    {
+        return $this->fieldExists('tenant_id');
     }
 
     /**
