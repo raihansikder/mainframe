@@ -47,7 +47,7 @@ function controller($module)
 /**
  * Derive module name from an eloquent model element
  *
- * @param $element \App\Http\Mainframe\Features\Modular\BaseModule\BaseModule
+ * @param $element App\Mainframe\Features\Modular\BaseModule\BaseModule
  * @return string
  * @internal param $element_object
  */
