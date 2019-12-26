@@ -21,7 +21,7 @@ class SelectModel extends SelectArray
         $this->nameField = $conf['name_field'] ?? 'name';
         $this->valueField = $conf['value_field'] ?? 'id';
 
-        $this->table = $conf['table'] ?? null;
+        $this->table = $conf['table'] ?? null; // Must have table
         $this->query = $conf['query'] ?? DB::table($this->table);
         $this->cache = $conf['cache'] ?? cacheTime('none');
 
