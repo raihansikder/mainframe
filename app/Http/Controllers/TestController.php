@@ -24,8 +24,10 @@ class TestController extends BaseController
      */
     public function test()
     {
-        $results = LoremIpsum::active()->get()->toArray();
-        echo 'test';
+        /** @var LoremIpsum $loremIpsum */
+        $loremIpsum = LoremIpsum::active()->first();
+        echo($loremIpsum->hasTenantContext());
+
         return;
     }
 

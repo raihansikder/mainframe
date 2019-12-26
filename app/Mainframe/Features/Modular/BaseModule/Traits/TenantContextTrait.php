@@ -2,6 +2,9 @@
 
 namespace App\Mainframe\Features\Modular\BaseModule\Traits;
 
+use Cache;
+use Schema;
+
 /** @mixin $this BaseModule */
 trait TenantContextTrait
 {
@@ -13,10 +16,20 @@ trait TenantContextTrait
      */
     public function hasTenantContext()
     {
-        if (array_key_exists('tenant_id', $this->getAttributes())) {
-            return user()->tenant_id;
-        }
+        $table = $this->getTable();
 
-        return false;
+        return Cache::remember("db-{$table}-fields", cacheTime('long'),
+            function () use ($table) {
+                if (Schema::hasColumn($table, 'tenant_id')) {
+                    return user()->tenant_id;
+                }
+
+                return false;
+            });
+
+        /*if (array_key_exists('tenant_id', $this->getAttributes())) {
+            return user()->tenant_id;
+        }*/
+        // return false;
     }
 }

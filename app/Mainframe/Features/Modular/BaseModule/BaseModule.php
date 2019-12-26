@@ -55,7 +55,7 @@ class BaseModule extends Model
     {
         parent::boot();
 
-        if (user()->tenant_id) {
+        if (user()->ofTenant()) {
             static::addGlobalScope(new AddTenant);
         }
     }
