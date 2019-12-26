@@ -28,6 +28,11 @@ class SelectModel extends SelectArray
         $this->options = $this->options();
     }
 
+    /**
+     * Select options
+     *
+     * @return array
+     */
     public function options()
     {
         $query = $this->query->whereNull('deleted_at')->where('is_active', 1);
