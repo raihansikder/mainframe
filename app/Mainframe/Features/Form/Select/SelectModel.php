@@ -31,14 +31,25 @@ class SelectModel extends SelectArray
     public function options()
     {
         $query = $this->query->whereNull('deleted_at')->where('is_active', 1);
-        if ($this->table && Mf::tenantContext($this->table, user())) {
+
+        // Inject tenant context.
+        if ($this->inTenantContext()) {
             $query->where('tenant_id', user()->tenant_id);
         }
-        /** @noinspection PhpUndefinedMethodInspection */
         $options = $query->pluck($this->nameField, $this->valueField)->toArray();
         $options = Arr::prepend($options, '-', null);
 
         return $options;
+    }
+
+    /**
+     * Check if currently in tenant context.
+     *
+     * @return bool
+     */
+    public function inTenantContext()
+    {
+        return (user()->ofTenant() && Mf::tableHasTenant($this->table));
     }
 
 }

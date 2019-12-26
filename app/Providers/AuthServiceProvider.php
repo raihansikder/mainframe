@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use Gate;
-use App\Mainframe\Features\Mf;
+use App\Mainframe\Features\Resolvers\PolicyResolver;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -30,7 +30,7 @@ class AuthServiceProvider extends ServiceProvider
         //
 
         Gate::guessPolicyNamesUsing(function ($modelClass) {
-            return Mf::resolvePolicy($modelClass); // Custom policy discovery
+            return PolicyResolver::resolve($modelClass); // Custom policy discovery
         });
     }
 }
