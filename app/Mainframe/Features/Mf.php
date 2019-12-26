@@ -3,6 +3,7 @@
 namespace App\Mainframe\Features;
 
 use Str;
+use Cache;
 use Schema;
 use App\Mainframe\Modules\Modules\Module;
 use App\Mainframe\Modules\ModuleGroups\ModuleGroup;
@@ -45,16 +46,16 @@ class Mf
 
     public static function modules()
     {
-        return Schema::hasTable('modules') ? Module::list() : [];
+        return Schema::hasTable('modules') ? Module::getActiveList() : [];
     }
 
     public static function moduleGroups()
     {
-        return Schema::hasTable('module_groups') ? ModuleGroup::list() : [];
+        return Schema::hasTable('module_groups') ? ModuleGroup::getActiveList() : [];
     }
 
     /**
-     * Create a unique signature/key for a request made
+     * Create a unique signature/key for a HTTP request made
      * Usually used for caching.
      *
      * @param  String  $append  Raw Query string
@@ -68,6 +69,40 @@ class Mf
         }
 
         return md5($signature);
+    }
+
+    /**
+     * Get columns of a table.
+     *
+     * @param $table
+     * @param  null  $cache
+     * @return array
+     */
+    public static function tableColumns($table, $cache = null)
+    {
+        $cache = $cache ?: cacheTime('long');
+
+        return Cache::remember('columns-of:'.$table, $cache,
+            function () use ($table) {
+                return Schema::getColumnListing($table);
+            });
+    }
+
+    /**
+     * Check if a table has column
+     *
+     * @param $table
+     * @param $column
+     * @param  null  $cache
+     * @return bool
+     */
+    public static function tableHasColumn($table, $column, $cache = null)
+    {
+
+        $cache = $cache ?: cacheTime('long');
+
+        return in_array($column, Mf::tableColumns($table, $cache));
+
     }
 
     /*

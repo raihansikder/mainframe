@@ -2,6 +2,7 @@
 
 namespace App\Mainframe\Features\Modular\BaseModule;
 
+use App\Mainframe\Features\Mf;
 use Watson\Rememberable\Rememberable;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Eloquent\Model;
@@ -94,7 +95,28 @@ class BaseModule extends Model
      */
     public function hasAttribute($attribute)
     {
-        return array_key_exists($attribute, $this->getAttributes());
+        return array_key_exists($attribute, $this->getAttributes()());
+    }
+
+    /**
+     * Check if a model table has a given column
+     *
+     * @param $column
+     * @return bool
+     */
+    public function hasColumn($column)
+    {
+        return in_array($column, $this->tableColumns());
+    }
+
+    /**
+     * Get all the table columns of the model
+     *
+     * @return array
+     */
+    public function tableColumns()
+    {
+        return Mf::tableColumns($this->getTable());
     }
 
     /*

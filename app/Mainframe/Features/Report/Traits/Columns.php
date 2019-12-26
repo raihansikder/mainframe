@@ -3,8 +3,7 @@
 namespace App\Mainframe\Features\Report\Traits;
 
 use Str;
-use Cache;
-use Schema;
+use App\Mainframe\Features\Mf;
 use App\Mainframe\Features\Helpers\Convert;
 
 /** @mixin \App\Mainframe\Features\Report\ReportBuilder $this */
@@ -50,12 +49,8 @@ trait Columns
      */
     public function dataSourceColumns()
     {
-
         if (is_string($this->dataSource)) {
-
-            return Cache::remember('columns-of:'.$this->dataSource, cacheTime('very-long'), function () {
-                return Schema::getColumnListing($this->dataSource);
-            });
+            return Mf::tableColumns($this->dataSource);
         }
 
         return [];
@@ -78,7 +73,6 @@ trait Columns
      */
     public function selectedColumns()
     {
-
         if (request('columns_csv')) {
             return Convert::csvToArray(request('columns_csv'));
         }
@@ -94,7 +88,6 @@ trait Columns
      */
     public function mutateSelectedColumns()
     {
-
         $selectedColumns = $this->selectedColumns();
         /*
          * ------------------------------
@@ -155,7 +148,6 @@ trait Columns
      */
     public function mutateAliasColumns()
     {
-
         if ($this->groupByFields()) {
             return array_merge($this->aliasColumns(), $this->additionalAliasColumnsDueToGroupBy());
         }
