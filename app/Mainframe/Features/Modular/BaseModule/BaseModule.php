@@ -6,6 +6,7 @@ use Watson\Rememberable\Rememberable;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Mainframe\Features\Multitenant\GlobalScope\AddTenant;
 use App\Mainframe\Features\Modular\BaseModule\Traits\Changeable;
 use App\Mainframe\Features\Modular\BaseModule\Traits\Uploadable;
 use App\Mainframe\Features\Modular\BaseModule\Traits\Processable;
@@ -53,6 +54,10 @@ class BaseModule extends Model
     public static function boot()
     {
         parent::boot();
+
+        if (user()->tenant_id) {
+            static::addGlobalScope(new AddTenant);
+        }
     }
 
     /**
@@ -65,7 +70,7 @@ class BaseModule extends Model
 
         $this->uuid = $this->uuid ?? uuid();
         $this->created_by = $this->created_by ?? user()->id;
-        $this->created_at = $this->created_by ?? now();
+        $this->created_at = $this->created_at ?? now();
         $this->updated_by = $this->updated_by ?? user()->id;
         $this->updated_at = now();
     }
@@ -79,6 +84,17 @@ class BaseModule extends Model
         if (user()->ofTenant() && $this->hasTenantContext()) {
             $this->tenant_id = $this->tenant_id ?: user()->tenant_id;
         }
+    }
+
+    /**
+     * Check if a model has a given attribute
+     *
+     * @param $attribute
+     * @return bool
+     */
+    public function hasAttribute($attribute)
+    {
+        return array_key_exists($attribute, $this->getAttributes());
     }
 
     /*
