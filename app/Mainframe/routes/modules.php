@@ -18,37 +18,37 @@ $moduleGroups = Mf::moduleGroups();
 Route::middleware(['auth'])->group(function () use ($modules, $moduleGroups) {
     foreach ($modules as $module) {
         $controller = $module->controller;
-        $moduleName = $module->name;
+        $name = $module->name;
 
         /*
          * Restore route
          */
-        Route:: get($moduleName."/{".Str::singular($moduleName)."}/restore", $controller."@restore")->name($moduleName.'.restore');
+        Route:: get($name."/{".Str::singular($name)."}/restore", $controller."@restore")->name($name.'.restore');
 
         /*
          * Json response route for data-table
          */
-        Route:: get($moduleName."/datatable/json", $controller."@datatableJson")->name($moduleName.'.datatable-json');
+        Route:: get($name."/datatable/json", $controller."@datatableJson")->name($name.'.datatable-json');
 
         /*
          * Generic list return route. This can be used to obtain an array of element.
          */
-        Route:: get($moduleName."/list/json", $controller."@listJson")->name($moduleName.'.list-json');
+        Route:: get($name."/list/json", $controller."@listJson")->name($name.'.list-json');
 
         /*
          * Default report route
          */
-        Route:: get($moduleName."/report", $controller."@report")->name($moduleName.'.report');
+        Route:: get($name."/report", $controller."@report")->name($name.'.report');
 
         /*
          * Route to see the change logs of a particular element
          */
-        Route:: get($moduleName."/{".Str::singular($moduleName)."}/changes", $controller."@changes")->name($moduleName.'.changes');
+        Route:: get($name."/{".Str::singular($name)."}/changes", $controller."@changes")->name($name.'.changes');
 
         /*
          * Resourceful route that creates all REST routs.
          */
-        Route::resource($moduleName, $controller);
+        Route::resource($name, $controller);
     }
 
     foreach ($moduleGroups as $moduleGroup) {

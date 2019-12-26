@@ -5,8 +5,6 @@ use Illuminate\Support\MessageBag;
 use App\Mainframe\Modules\Modules\Module;
 use App\Mainframe\Modules\Settings\Setting;
 
-
-
 /**
  * returns the table/module name(without prefix) from a model class name
  *
@@ -15,7 +13,6 @@ use App\Mainframe\Modules\Settings\Setting;
  */
 function moduleName($class)
 {
-
     return Str::plural(lcfirst(class_basename($class)));
 }
 
@@ -42,12 +39,10 @@ function controller($module)
     return ucfirst($module)."Controller";
 }
 
-
-
 /**
  * Derive module name from an eloquent model element
  *
- * @param $element \App\Http\Mainframe\Features\Modular\BaseModule\BaseModule
+ * @param $element App\Mainframe\Features\Modular\BaseModule\BaseModule
  * @return string
  * @internal param $element_object
  */
