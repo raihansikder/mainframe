@@ -22,3 +22,7 @@ include_once app_path("Mainframe/routes/auth.php");
 include_once app_path("Mainframe/routes/modules.php");
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
