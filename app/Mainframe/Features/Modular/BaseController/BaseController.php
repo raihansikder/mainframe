@@ -24,4 +24,5 @@ class BaseController extends Controller
         // $this->response() = resolve(Response::class);
         View::share(['user' => user()]);
     }
+
 }

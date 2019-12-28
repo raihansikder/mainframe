@@ -15,6 +15,11 @@ use App\Mainframe\Modules\ModuleGroups\ModuleGroup;
 class Mf
 {
 
+    /* All HTTP codes
+     * https://gist.github.com/jeffochoa/a162fc4381d69a2d862dafa61cda0798
+     */
+    public const TENANT_ADMIN_GROUP_ID = 15;
+
     public static function tenantContext($table, $user = null)
     {
         return false;

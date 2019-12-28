@@ -2,6 +2,7 @@
 
 namespace App\Mainframe\Features\Resolvers;
 
+use Str;
 use App\Mainframe\Features\Modular\BaseModule\BaseModulePolicy;
 
 class PolicyResolver

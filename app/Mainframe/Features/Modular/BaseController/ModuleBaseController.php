@@ -263,27 +263,6 @@ class ModuleBaseController extends BaseController
         return (new ModuleReportBuilder($this->module))->show();
     }
 
-    /**
-     * Try to figure out where to redirect
-     *
-     * @return array|\Illuminate\Http\Request|string
-     */
-    public function redirectTo()
-    {
-        if ($this->response()->isSuccess() && request('redirect_success')) {
-            if ($this->element && request('redirect_success') == '#new') {
-                return route($this->module->name.".edit", $this->element->id);
-            }
-
-            return request('redirect_success');
-        }
-
-        if ($this->response()->isFail() && request('redirect_fail')) {
-            return request('redirect_fail');
-        }
-
-        return URL::full();
-    }
 
     /**
      * Resolve which MainframeDatatable class to use.

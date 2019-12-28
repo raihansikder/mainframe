@@ -2,16 +2,15 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Mainframe\Modules\Users\User;
-use App\Mainframe\Traits\IsoOutput;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use App\Mainframe\Modules\Users\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Mainframe\Features\Modular\BaseController\BaseController;
 
-class RegisterController extends Controller
+class RegisterController extends BaseController
 {
     /*
     |--------------------------------------------------------------------------
@@ -25,7 +24,6 @@ class RegisterController extends Controller
     */
 
     use RegistersUsers;
-    use IsoOutput;
 
     /**
      * Where to redirect users after registration.
@@ -41,15 +39,18 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
+        parent::__construct();
         $this->middleware('guest');
     }
 
     /**
      * Handle a registration request for the application.
-     * @param  \Illuminate\Http\Request $request
+     *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
      */
-    public function register(Request $request) {
+    public function register(Request $request)
+    {
 
         $user = new User($request->all());
         // Custom validation error message for specific fields.
@@ -73,10 +74,12 @@ class RegisterController extends Controller
 
             if ($user->save()) {
                 event(new Registered($user));
-                $user->sendRegistrationWithVerificationNotification();
+                //$user->sendRegistrationWithVerificationNotification();
                 //Mail::to($user)->send(new \App\Mail\Registered($user));
                 //$user->sendEmailVerificationNotification();
-                $ret = ret('success', "Lets make sure it's you!<br>A confirmation email has been sent to " . $user->email . ". Click on the confirmation link in the email to activate your account.", ['data' => User::find($user->id)]);
+                $ret = ret('success',
+                    "Lets make sure it's you!<br>A confirmation email has been sent to ".$user->email.". Click on the confirmation link in the email to activate your account.",
+                    ['data' => User::find($user->id)]);
             } else {
                 $ret = ret('fail', "User could not be created");
             }
@@ -97,21 +100,6 @@ class RegisterController extends Controller
         $request->merge(['redirect_success' => $redirect_to]);
 
         return $this->jsonOrRedirect($ret, $validator, $user);
-    }
-
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
     }
 
     /**
