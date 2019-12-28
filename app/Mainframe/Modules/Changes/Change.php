@@ -8,26 +8,26 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule;
 /**
  * App\Mainframe\Modules\Changes\Change
  *
- * @property int $id 
- * @property string|null $uuid 
- * @property int|null $tenant_id 
- * @property string|null $name 
- * @property string|null $change_set 
- * @property int|null $module_id 
- * @property string|null $module_name 
- * @property int|null $element_id 
- * @property string|null $element_uuid 
- * @property string|null $field 
- * @property string|null $old 
- * @property string|null $new 
- * @property string|null $description 
- * @property int|null $is_active 
- * @property int|null $created_by 
- * @property int|null $updated_by 
- * @property \Illuminate\Support\Carbon|null $created_at 
- * @property \Illuminate\Support\Carbon|null $updated_at 
- * @property \Illuminate\Support\Carbon|null $deleted_at 
- * @property int|null $deleted_by 
+ * @property int $id
+ * @property string|null $uuid
+ * @property int|null $tenant_id
+ * @property string|null $name
+ * @property string|null $change_set
+ * @property int|null $module_id
+ * @property string|null $module_name
+ * @property int|null $element_id
+ * @property string|null $element_uuid
+ * @property string|null $field
+ * @property string|null $old
+ * @property string|null $new
+ * @property string|null $description
+ * @property int|null $is_active
+ * @property int|null $created_by
+ * @property int|null $updated_by
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @property int|null $deleted_by
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Changes\Change[] $changes
  * @property-read int|null $changes_count
  * @property-read \App\Mainframe\Modules\Users\User|null $creator

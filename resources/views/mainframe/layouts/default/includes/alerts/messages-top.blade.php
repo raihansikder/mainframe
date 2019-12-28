@@ -18,9 +18,9 @@ $responseMessage = $responseMessage ?? session('responseMessage');
  * need to show messageBag values
  */
 $messageBag = session('messageBag');
-if ($messageBag) {
-    myprint_r($messageBag->toArray());
-}
+// if ($messageBag) {
+//     myprint_r($messageBag->toArray());
+// }
 /*********************************/
 
 $css = "callout-danger";
@@ -44,7 +44,7 @@ if ($responseStatus == 'success') {
                 {!! implode('<br/>', $errors->all()) !!}
             @endif
 
-            @if($messageBag->count())
+            @if($messageBag && $messageBag->count())
                 {!! implode('<br/>', $messageBag->messages()) !!}
             @endif
 

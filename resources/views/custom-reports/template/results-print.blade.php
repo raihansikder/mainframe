@@ -1,1 +1,0 @@
-@extends('mainframe.modules.base.report.results-print')

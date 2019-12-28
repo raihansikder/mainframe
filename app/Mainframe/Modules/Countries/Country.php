@@ -4,6 +4,70 @@ namespace App\Mainframe\Modules\Countries;
 
 use App\Mainframe\Features\Modular\BaseModule\BaseModule;
 
+/**
+ * App\Mainframe\Modules\Countries\Country
+ *
+ * @property int $id
+ * @property string|null $uuid
+ * @property string|null $name
+ * @property string|null $code
+ * @property string|null $country_id
+ * @property string|null $iso2
+ * @property string|null $country_short_name
+ * @property string|null $country_long_name
+ * @property string|null $iso3
+ * @property string|null $numcode
+ * @property string|null $un_member
+ * @property string|null $calling_code
+ * @property string|null $cctld
+ * @property int|null $is_active
+ * @property int|null $created_by
+ * @property int|null $updated_by
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @property int|null $deleted_by
+ * @property string|null $currency
+ * @property string|null $currency_symbol
+ * @property string|null $currency_override
+ * @property string|null $currency_override_symbol
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Changes\Change[] $changes
+ * @property-read int|null $changes_count
+ * @property-read \App\Mainframe\Modules\Users\User|null $creator
+ * @property-read \App\Mainframe\Modules\Uploads\Upload $latestUpload
+ * @property-read \App\Mainframe\Modules\Users\User|null $updater
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Uploads\Upload[] $uploads
+ * @property-read int|null $uploads_count
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Features\Modular\BaseModule\BaseModule active()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Countries\Country newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Countries\Country newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Countries\Country query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Countries\Country whereCallingCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Countries\Country whereCctld($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Countries\Country whereCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Countries\Country whereCountryId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Countries\Country whereCountryLongName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Countries\Country whereCountryShortName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Countries\Country whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Countries\Country whereCreatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Countries\Country whereCurrency($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Countries\Country whereCurrencyOverride($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Countries\Country whereCurrencyOverrideSymbol($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Countries\Country whereCurrencySymbol($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Countries\Country whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Countries\Country whereDeletedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Countries\Country whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Countries\Country whereIsActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Countries\Country whereIso2($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Countries\Country whereIso3($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Countries\Country whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Countries\Country whereNumcode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Countries\Country whereUnMember($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Countries\Country whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Countries\Country whereUpdatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Countries\Country whereUuid($value)
+ * @mixin \Eloquent
+ */
 class Country extends BaseModule
 {
     use CountryHelper;

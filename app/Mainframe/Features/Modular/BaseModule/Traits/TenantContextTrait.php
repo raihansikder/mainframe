@@ -2,6 +2,9 @@
 
 namespace App\Mainframe\Features\Modular\BaseModule\Traits;
 
+use App\Mainframe\Modules\Tenants\Tenant;
+use App\Mainframe\Modules\MfProjects\MfProject;
+
 /** @mixin $this BaseModule */
 trait TenantContextTrait
 {
@@ -13,10 +16,16 @@ trait TenantContextTrait
      */
     public function hasTenantContext()
     {
-        if (array_key_exists('tenant_id', $this->getAttributes())) {
-            return user()->tenant_id;
-        }
-
-        return false;
+        return $this->hasColumn('tenant_id');
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function tenant() { return $this->belongsTo(Tenant::class); }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function project() { return $this->belongsTo(MfProject::class); }
 }

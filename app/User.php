@@ -129,6 +129,13 @@ use App\Mainframe\Modules\Users\User as UserModel;
  * @method static Builder|User whereUuid($value)
  * @method static Builder|User whereZipCode($value)
  * @mixin \Eloquent
+ * @property int $is_tenant_editable
+ * @property string|null $email_verification_code
+ * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
+ * @property-read int|null $notifications_count
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User active()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereEmailVerificationCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereIsTenantEditable($value)
  */
 class User extends UserModel
 {

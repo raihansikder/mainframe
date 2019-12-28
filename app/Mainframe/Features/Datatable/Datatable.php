@@ -80,6 +80,8 @@ class Datatable
         $query = $this->source()->select($this->selects());
 
         // Inject tenant context.
+        // If the query source is a DB::table() you have to inject tenant context manually.
+        // Else, if the source is a model then tenant_id checking is injected automatically.
         if (user()->ofTenant() && \Schema::hasColumn($this->table, 'tenant_id')) {
             $query->where('tenant_id', user()->tenant_id);
         }

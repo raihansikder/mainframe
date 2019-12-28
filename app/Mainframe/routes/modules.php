@@ -15,7 +15,7 @@ $moduleGroups = Mf::moduleGroups();
 |
 */
 
-Route::middleware(['auth'])->group(function () use ($modules, $moduleGroups) {
+Route::middleware(['auth','verified'])->group(function () use ($modules, $moduleGroups) {
     foreach ($modules as $module) {
         $controller = $module->controller;
         $name = $module->name;

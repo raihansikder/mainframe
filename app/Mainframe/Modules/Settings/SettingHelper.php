@@ -2,6 +2,7 @@
 
 namespace App\Mainframe\Modules\Settings;
 
+/** @mixin \App\Mainframe\Modules\Settings\Setting $this */
 trait SettingHelper
 {
     /**
@@ -14,7 +15,7 @@ trait SettingHelper
     {
         /** @var \App\Mainframe\Modules\Settings\Setting $setting */
         /** @noinspection PhpUndefinedMethodInspection */
-        if ($setting = self::where('name', $name)->remember(cacheTime('short'))->first()) {
+        if ($setting = Setting::where('name', $name)->remember(cacheTime('short'))->first()) {
             return $setting->settingValue();
         }
 
@@ -29,7 +30,7 @@ trait SettingHelper
         $val = $this->value;
         switch ($this->type) {
             case 'boolean':
-                $val = $this->value === 'true';
+                $val = $this->value == 'true';
                 break;
             case 'string':
                 $val = $this->value;
@@ -39,7 +40,6 @@ trait SettingHelper
                 break;
             case 'file':
                 $files = [];
-                /** @noinspection PhpUndefinedMethodInspection */
                 if ($this->uploads()->exists()) {
                     foreach ($this->uploads as $upload) {
                         $files[] = $upload->url;

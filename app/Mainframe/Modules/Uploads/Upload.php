@@ -59,6 +59,12 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Uploads\Upload whereUpdatedBy($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Uploads\Upload whereUuid($value)
  * @mixin \Eloquent
+ * @property string|null $uploadable_type
+ * @property int|null $uploadable_id
+ * @property-read mixed $dir
+ * @property-read mixed $url
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Uploads\Upload whereUploadableId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Uploads\Upload whereUploadableType($value)
  */
 class Upload extends BaseModule
 {

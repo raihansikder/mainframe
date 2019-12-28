@@ -3,14 +3,15 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>{{setting('app-name')}}</title>
+    <title>
+        @section('head-title')
+            {{conf('app.name')}}
+        @show
+    </title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
     @section('head')
-        {{-- head section --}}
     @show
-    @include('template.css')
+    @include('mainframe.layouts.default.includes.css')
 </head>
 <body class="hold-transition login-page lb-bg">
 <div class="login-box shadow">
@@ -18,27 +19,22 @@
         {{conf('app.name')}}
     </div>
     <div class="login-box-body">
-        @include('template.include.messages-top')
-        @section('content-top')
-            {{-- +++++++++++++++++++ --}}
-            {{-- content-top section --}}
-            {{-- +++++++++++++++++++ --}}
-        @show
-        @section('content')
-            {{-- +++++++++++++++ --}}
-            {{-- content section --}}
-            {{-- +++++++++++++++ --}}
+        @include('mainframe.layouts.default.includes.alerts.messages-top')
 
+        @section('content-top')
         @show
+
+        @section('content')
+        @show
+
         @section('content-bottom')
-            {{-- ++++++++++++++++++++++ --}}
-            {{-- content-bottom section --}}
-            {{-- ++++++++++++++++++++++ --}}
         @show
     </div>
+    @include('mainframe.layouts.default.includes.modals.messages')
+    @include('mainframe.layouts.default.includes.modals.delete')
 </div>
 
-@include('template.js')
+@include('mainframe.layouts.default.includes..js')
 @section('js')
     {{-- js section   --}}
 @show
