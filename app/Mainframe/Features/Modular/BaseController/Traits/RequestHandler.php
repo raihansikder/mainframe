@@ -148,7 +148,14 @@ trait RequestHandler
             'name' => 'required',
         ];
 
-        return Validator::make(request()->all(), $rules);
+        $message = [
+            //'password.regex' => "The password field should be mix of letters and numbers.",
+        ];
+
+        $this->validator = Validator::make(request()->all(), $rules, $message);
+        //$this->addFieldError('name','Error Lorem Ipsum'); // Sample error message.
+
+        return $this->validator;
     }
 
     /**

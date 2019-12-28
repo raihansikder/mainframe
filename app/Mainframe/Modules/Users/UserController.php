@@ -55,7 +55,11 @@ class UserController extends ModuleBaseController
             'password.regex' => "The password field should be mix of letters and numbers.",
         ];
 
-        return Validator::make(request()->all(), $rules, $message);
+        $this->validator = Validator::make(request()->all(), $rules, $message);
+
+        //$this->addFieldError('name','Error Lorem Ipsum');
+
+        return $this->validator;
     }
 
     /**
@@ -64,18 +68,10 @@ class UserController extends ModuleBaseController
     public function updateRequestValidator()
     {
         if (request('password')) {
-            $rules = [
-                'password' => Mf::PASSWORD_VALIDATION_RULE,
-            ];
-
-            $message = [
-                'password.regex' => "The password field should be mix of letters and numbers.",
-            ];
-
-            return Validator::make(request()->all(), $rules, $message);
+            return $this->storeRequestValidator();
         }
 
-        return Validator::make(request()->all(), [], []); // Return true
+        return $this->validator();
     }
 
 }
