@@ -14,7 +14,7 @@
 
 Route::get('/', 'HomeController@index')->name('root')->middleware(['verified']);
 Route::get('/home', 'HomeController@index')->name('home')->middleware(['verified']);
-Route::get('/test', 'TestController@test')->name('test')->middleware(['verified']);
+Route::get('/test', 'TestController@test')->name('test')->middleware(['verified','password.confirm']);
 
 /**
  * Mainframe routes
