@@ -17,6 +17,10 @@ class MfProject extends BaseModule
     protected $fillable = [
         'uuid',
         'name',
+        'code',
+        'name',
+        'description',
+        'configuration',
         'is_active',
     ];
 

@@ -25,16 +25,22 @@
         {{--    Form inputs: starts    --}}
         {{--   --------------------    --}}
         @include('mainframe.form.input.text',['var'=>['name'=>'email','label'=>'Email']])
+
+        <div class="clearfix"></div>
+        @include('mainframe.form.input.text',['var'=>['name'=>'first_name','label'=>'First Name']])
+        @include('mainframe.form.input.text',['var'=>['name'=>'last_name','label'=>'Last Name']])
+
         {{-- show password only for editable--}}
         @if($editable)
             <div class="clearfix"></div>
-            <h3>Reset password</h3>
-            {{--            @include('mainframe.form.input.text',['var'=>['name'=>'password','type'=>'password','label'=>'New password','value'=>'']])--}}
-            {{--            @include('mainframe.form.input.text',['var'=>['name'=>'password_confirmation','type'=>'password','label'=>'Confirm new password']])--}}
+            <h3>Password</h3>
+            @include('mainframe.form.input.text',['var'=>['name'=>'password','type'=>'password','label'=>'New password','value'=>'']])
+            @include('mainframe.form.input.text',['var'=>['name'=>'password_confirmation','type'=>'password','label'=>'Confirm new password']])
         @endif
 
+
         <div class="clearfix"></div>
-        @include('mainframe.form.input.text',['var'=>['name'=>'email_verified_at','label'=>'Email verified at', 'container_class'=>'col-sm-3','editable'=>false]])
+        @include('mainframe.form.input.text',['var'=>['name'=>'email_verified_at','label'=>'Email verified at', 'editable'=>false]])
         @include('mainframe.form.select.select-array',['var'=>['name'=>'is_active','label'=>'Active', 'options'=>['1'=>'Yes','0'=>'No']]])
 
         <div class="clearfix"></div>

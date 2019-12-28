@@ -2,12 +2,13 @@
 
 namespace App\Mainframe\Features\Modular\BaseController\Traits;
 
+use Validator;
 use App\Mainframe\Features\Modular\BaseController\ModuleBaseController;
 
 /**
  * @mixin ModuleBaseController
  */
-trait ModelOperations
+trait RequestHandler
 {
     /**
      * Prepare the model, First transform the input and then fill
@@ -42,8 +43,13 @@ trait ModelOperations
      */
     public function attemptStore()
     {
-        $processor = $this->processor()->create();
+        if ($this->storeRequestValidator()->fails()) {
+            $this->response($this->storeRequestValidator())->failValidation();
 
+            return $this;
+        }
+
+        $processor = $this->processor()->create();
         if ($processor->invalid()) {
             $this->response($processor->validator)->failValidation();
 
@@ -66,12 +72,17 @@ trait ModelOperations
     /**
      * Validate and update
      *
-     * @return \App\Mainframe\Features\Modular\BaseController\Traits\ModelOperations
+     * @return \App\Mainframe\Features\Modular\BaseController\Traits\RequestHandler
      */
     public function attemptUpdate()
     {
-        $processor = $this->processor()->update();
+        if ($this->updateRequestValidator()->fails()) {
+            $this->response($this->updateRequestValidator())->failValidation();
 
+            return $this;
+        }
+
+        $processor = $this->processor()->update();
         if ($processor->invalid()) {
             $this->response($processor->validator)->failValidation();
 
@@ -94,11 +105,18 @@ trait ModelOperations
     /**
      * Validate and delete
      *
-     * @return \App\Mainframe\Features\Modular\BaseController\Traits\ModelOperations
+     * @return \App\Mainframe\Features\Modular\BaseController\Traits\RequestHandler
      * @throws \Exception
      */
     public function attemptDestroy()
     {
+
+        if ($this->deleteRequestValidator()->fails()) {
+            $this->response($this->deleteRequestValidator())->failValidation();
+
+            return $this;
+        }
+
         $processor = $this->processor();
 
         if ($processor->delete()->invalid()) {
@@ -121,4 +139,33 @@ trait ModelOperations
         return $this;
     }
 
+    /**
+     * @return \Illuminate\Validation\Validator
+     */
+    public function storeRequestValidator()
+    {
+        $rules = [
+            'name' => 'required',
+        ];
+
+        return Validator::make(request()->all(), $rules);
+    }
+
+    /**
+     * @return \Illuminate\Validation\Validator
+     */
+    public function updateRequestValidator()
+    {
+        return $this->storeRequestValidator();
+    }
+
+    /**
+     * @return \Illuminate\Validation\Validator
+     */
+    public function deleteRequestValidator()
+    {
+        $rules = [];
+
+        return Validator::make(request()->all(), $rules);
+    }
 }

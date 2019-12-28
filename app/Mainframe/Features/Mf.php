@@ -18,7 +18,8 @@ class Mf
     /* All HTTP codes
      * https://gist.github.com/jeffochoa/a162fc4381d69a2d862dafa61cda0798
      */
-    public const TENANT_ADMIN_GROUP_ID = 15;
+    public const TENANT_ADMIN_GROUP_ID    = 15;
+    public const PASSWORD_VALIDATION_RULE = 'required|confirmed|min:6|regex:/[a-zA-Z]/|regex:/[0-9]/';
 
     public static function tenantContext($table, $user = null)
     {

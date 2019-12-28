@@ -4,8 +4,8 @@
 
 namespace App\Mainframe\Features\Modular\BaseController;
 
-use URL;
 use View;
+use Validator;
 use Illuminate\Http\Request;
 use App\Mainframe\Modules\Modules\Module;
 use App\Mainframe\Features\Report\ModuleList;
@@ -13,7 +13,7 @@ use App\Mainframe\Features\Datatable\ModuleDatatable;
 use App\Mainframe\Features\Modular\Resolvers\GridView;
 use App\Mainframe\Features\Report\ModuleReportBuilder;
 use App\Mainframe\Features\Modular\BaseController\Traits\Resolvable;
-use App\Mainframe\Features\Modular\BaseController\Traits\ModelOperations;
+use App\Mainframe\Features\Modular\BaseController\Traits\RequestHandler;
 use App\Mainframe\Features\Modular\BaseController\Traits\ShowChangesTrait;
 
 /**
@@ -21,7 +21,7 @@ use App\Mainframe\Features\Modular\BaseController\Traits\ShowChangesTrait;
  */
 class ModuleBaseController extends BaseController
 {
-    use ModelOperations, ShowChangesTrait, Resolvable;
+    use RequestHandler, ShowChangesTrait, Resolvable;
 
     /** @var string Module name */
     public $name;
@@ -182,6 +182,8 @@ class ModuleBaseController extends BaseController
         return $this->response()->redirect();
     }
 
+
+
     /**
      * Update
      *
@@ -262,7 +264,6 @@ class ModuleBaseController extends BaseController
 
         return (new ModuleReportBuilder($this->module))->show();
     }
-
 
     /**
      * Resolve which MainframeDatatable class to use.

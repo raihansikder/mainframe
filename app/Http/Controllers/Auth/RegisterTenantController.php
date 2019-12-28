@@ -50,7 +50,7 @@ class RegisterTenantController extends RegisterController
             'user_first_name' => 'required',
             'user_last_name' => 'required',
             'user_email' => 'required|email|unique:users,email',
-            'password' => 'required|between:5,16|confirmed',
+            'password' => Mf::PASSWORD_VALIDATION_RULE,
         ]);
 
         if ($validator->fails()) {

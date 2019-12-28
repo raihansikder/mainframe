@@ -44,7 +44,7 @@ if ($responseStatus == 'success') {
                 {!! implode('<br/>', $errors->all()) !!}
             @endif
 
-            @if($messageBag->count())
+            @if($messageBag && $messageBag->count())
                 {!! implode('<br/>', $messageBag->messages()) !!}
             @endif
 

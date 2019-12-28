@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Mainframe\Features\Modular\BaseModule\Traits;
+
 use App\Mainframe\Features\Modular\BaseModule\BaseModule;
 
-/** @mixin  BaseModule $this*/
+/** @mixin  BaseModule $this */
 trait ModelAutoFill
 {
     /**
@@ -29,6 +30,7 @@ trait ModelAutoFill
     {
         if (user()->ofTenant() && $this->hasTenantContext()) {
             $this->tenant_id = $this->tenant_id ?: user()->tenant_id;
+            $this->mf_project_id = $this->mf_project_id ?: $this->tenant->project_id;
         }
     }
 
