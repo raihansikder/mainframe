@@ -7,7 +7,7 @@ use App\Mainframe\Modules\Modules\Module;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSuperHeroesTable extends Migration
+class CreateMfProjectsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -19,15 +19,16 @@ class CreateSuperHeroesTable extends Migration
         /*
          * Create schema
          */
-        Schema::create('super_heroes', function (Blueprint $table) {
+        Schema::create('mf_projects', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('uuid', 64)->nullable()->default(null);
-            $table->unsignedInteger('mf_project_id')->nullable()->default(null);
-            $table->unsignedInteger('tenant_id')->nullable()->default(null);
+            // $table->unsignedInteger('tenant_id')->nullable()->default(null);
+            $table->string('code', 36)->nullable()->default(null);
             $table->string('name', 1024)->nullable()->default(null);
 
             /******* Custom columns **********/
-            //$table->string('title', 100)->nullable()->default(null);
+            $table->text('description')->nullable()->default(null);
+            $table->text('configuration')->nullable()->default(null)->comment('JSON configuration for a project');
             //$table->text('somecolumnsname')->nullable()->default(null);
             /*********************************/
 
@@ -42,7 +43,7 @@ class CreateSuperHeroesTable extends Migration
         /*
          * Insert into modules table
          */
-        $name = 'super-heroes';
+        $name = 'mf-projects';
         if (Module::where('name', $name)->doesntExist()) {
             $module = new Module(['name' => $name]);
 
@@ -56,6 +57,29 @@ class CreateSuperHeroesTable extends Migration
 
             $module->save();
         }
+
+        /*
+         * Add mf_project_id field in all the table.
+         */
+
+        $tables = [
+            'changes',
+            'dolor_sits',
+            'groups',
+            'lorem_ipsums',
+            'product_categories',
+            'product_themes',
+            'reports',
+            'subscriptions',
+            'tenants',
+            'uploads',
+            'users',
+        ];
+        foreach ($tables as $table) {
+            Schema::table($table, function (Blueprint $table) {
+                $table->unsignedInteger('mf_project_id')->nullable()->default(null)->after('uuid');
+            });
+        }
     }
 
     /**
@@ -65,6 +89,6 @@ class CreateSuperHeroesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('super_heroes');
+        Schema::dropIfExists('mf_projects');
     }
 }
