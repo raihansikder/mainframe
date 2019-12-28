@@ -12,7 +12,7 @@ trait ModuleHelper
     /**
      * @return \Illuminate\Support\Collection
      */
-    public static function list()
+    public static function getActiveList()
     {
         return Module::active()->remember(cacheTime('long'))->get();
     }

@@ -17,7 +17,7 @@ trait IsoTenant
      */
     public function hasTenantContext()
     {
-        $tenant_field = tenantIdField();
+        $tenant_field = 'tenant_id';
         if ($this->$tenant_field) {
             return user()->$tenant_field;
         }

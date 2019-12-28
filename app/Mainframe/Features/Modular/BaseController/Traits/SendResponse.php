@@ -2,6 +2,7 @@
 
 namespace App\Mainframe\Features\Modular\BaseController\Traits;
 
+use URL;
 use App\Mainframe\Features\Responder\Response;
 
 trait SendResponse
@@ -22,6 +23,32 @@ trait SendResponse
         }
 
         return $this->response;
+    }
+
+    /**
+     * Try to figure out where to redirect
+     *
+     * @return array|\Illuminate\Http\Request|string
+     */
+    public function redirectTo()
+    {
+        $successTo = request('redirect_success');
+        $failTo = request('redirect_fail');
+
+        if ($this->response()->isSuccess() && $successTo) {
+
+            if (isset($this->element, $this->module) && $successTo == '#new') {
+                return route($this->module->name.".edit", $this->element->id);
+            }
+
+            return $successTo;
+        }
+
+        if ($this->response()->isFail() && $failTo) {
+            return $failTo;
+        }
+
+        return URL::full();
     }
 
 }

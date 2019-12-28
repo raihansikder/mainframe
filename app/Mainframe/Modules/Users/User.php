@@ -5,19 +5,22 @@ namespace App\Mainframe\Modules\Users;
 use App\Group;
 use InvalidArgumentException;
 use Watson\Rememberable\Rememberable;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Mainframe\Modules\Users\Traits\UserGroupable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use App\Mainframe\Features\Modular\BaseModule\Traits\Processable;
 use App\Mainframe\Features\Modular\BaseModule\Traits\Changeable;
 use App\Mainframe\Features\Modular\BaseModule\Traits\Uploadable;
+use App\Mainframe\Features\Modular\BaseModule\Traits\Processable;
 use App\Mainframe\Features\Modular\BaseModule\Traits\UpdaterTrait;
 use App\Mainframe\Features\Modular\BaseModule\Traits\ModularTrait;
+use App\Mainframe\Features\Modular\BaseModule\Traits\ModelAutoFill;
 use App\Mainframe\Features\Modular\BaseModule\Traits\EventIdentifiable;
 use App\Mainframe\Features\Modular\BaseModule\Traits\RelatedUsersTrait;
 use App\Mainframe\Features\Modular\BaseModule\Traits\TenantContextTrait;
+
 
 /**
  * App\Mainframe\Modules\Users\User
@@ -29,17 +32,10 @@ use App\Mainframe\Features\Modular\BaseModule\Traits\TenantContextTrait;
  * @property string $email
  * @property string $password
  * @property string|null $remember_token
- * @property int $email_confirmed
- * @property string|null $email_confirmed_at
- * @property string|null $email_confirmation_code
- * @property string|null $access_token
- * @property string|null $access_token_generated_at
- * @property string|null $api_token
+ * @property string|null $api_token X-Auth-Token
  * @property string|null $api_token_generated_at
- * @property int $tenant_editable
+ * @property int $is_tenant_editable
  * @property array $permissions
- * @property string|null $group_ids_csv
- * @property string|null $group_titles_csv
  * @property int|null $is_active
  * @property int|null $created_by
  * @property int|null $updated_by
@@ -64,12 +60,9 @@ use App\Mainframe\Features\Modular\BaseModule\Traits\TenantContextTrait;
  * @property string|null $mobile
  * @property \Illuminate\Support\Carbon|null $first_login_at
  * @property \Illuminate\Support\Carbon|null $last_login_at
- * @property string|null $auth_token
+ * @property string|null $auth_token Bearer token
  * @property string|null $email_verified_at
- * @property string|null $last_active_time
- * @property string|null $last_login_time
- * @property string|null $last_logout_time
- * @property string|null $partner_uuid
+ * @property string|null $email_verification_code
  * @property string|null $currency
  * @property string|null $social_account_id
  * @property string|null $social_account_type
@@ -82,79 +75,72 @@ use App\Mainframe\Features\Modular\BaseModule\Traits\TenantContextTrait;
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Group[] $groups
  * @property-read int|null $groups_count
  * @property-read \App\Mainframe\Modules\Uploads\Upload $latestUpload
+ * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
+ * @property-read int|null $notifications_count
  * @property-read \App\Mainframe\Modules\Users\User|null $updater
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Uploads\Upload[] $uploads
  * @property-read int|null $uploads_count
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User active()
  * @method static bool|null forceDelete()
- * @method static Builder|User newModelQuery()
- * @method static Builder|User newQuery()
- * @method static \Illuminate\Database\Query\Builder|User onlyTrashed()
- * @method static Builder|User query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User newQuery()
+ * @method static \Illuminate\Database\Query\Builder|\App\Mainframe\Modules\Users\User onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User query()
  * @method static bool|null restore()
- * @method static Builder|User whereAccessToken($value)
- * @method static Builder|User whereAccessTokenGeneratedAt($value)
- * @method static Builder|User whereAddress1($value)
- * @method static Builder|User whereAddress2($value)
- * @method static Builder|User whereApiToken($value)
- * @method static Builder|User whereApiTokenGeneratedAt($value)
- * @method static Builder|User whereAuthToken($value)
- * @method static Builder|User whereCity($value)
- * @method static Builder|User whereCountryId($value)
- * @method static Builder|User whereCountryName($value)
- * @method static Builder|User whereCounty($value)
- * @method static Builder|User whereCreatedAt($value)
- * @method static Builder|User whereCreatedBy($value)
- * @method static Builder|User whereCurrency($value)
- * @method static Builder|User whereDeletedAt($value)
- * @method static Builder|User whereDeletedBy($value)
- * @method static Builder|User whereDeviceToken($value)
- * @method static Builder|User whereDob($value)
- * @method static Builder|User whereEmail($value)
- * @method static Builder|User whereEmailConfirmationCode($value)
- * @method static Builder|User whereEmailConfirmed($value)
- * @method static Builder|User whereEmailConfirmedAt($value)
- * @method static Builder|User whereEmailVerifiedAt($value)
- * @method static Builder|User whereFirstLoginAt($value)
- * @method static Builder|User whereFirstName($value)
- * @method static Builder|User whereFullName($value)
- * @method static Builder|User whereGender($value)
- * @method static Builder|User whereGroupIds($value)
- * @method static Builder|User whereGroupIdsCsv($value)
- * @method static Builder|User whereGroupTitlesCsv($value)
- * @method static Builder|User whereId($value)
- * @method static Builder|User whereIsActive($value)
- * @method static Builder|User whereIsTest($value)
- * @method static Builder|User whereLastActiveTime($value)
- * @method static Builder|User whereLastLoginAt($value)
- * @method static Builder|User whereLastLoginTime($value)
- * @method static Builder|User whereLastLogoutTime($value)
- * @method static Builder|User whereLastName($value)
- * @method static Builder|User whereMobile($value)
- * @method static Builder|User whereName($value)
- * @method static Builder|User whereNameInitial($value)
- * @method static Builder|User wherePartnerUuid($value)
- * @method static Builder|User wherePassword($value)
- * @method static Builder|User wherePermissions($value)
- * @method static Builder|User wherePhone($value)
- * @method static Builder|User whereRememberToken($value)
- * @method static Builder|User whereSocialAccountId($value)
- * @method static Builder|User whereSocialAccountType($value)
- * @method static Builder|User whereTenantEditable($value)
- * @method static Builder|User whereTenantId($value)
- * @method static Builder|User whereUpdatedAt($value)
- * @method static Builder|User whereUpdatedBy($value)
- * @method static Builder|User whereUuid($value)
- * @method static Builder|User whereZipCode($value)
- * @method static \Illuminate\Database\Query\Builder|User withTrashed()
- * @method static \Illuminate\Database\Query\Builder|User withoutTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereAddress1($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereAddress2($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereApiToken($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereApiTokenGeneratedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereAuthToken($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereCity($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereCountryId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereCountryName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereCounty($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereCreatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereCurrency($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereDeletedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereDeviceToken($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereDob($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereEmailVerificationCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereEmailVerifiedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereFirstLoginAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereFirstName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereFullName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereGender($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereGroupIds($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereIsActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereIsTenantEditable($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereIsTest($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereLastLoginAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereLastName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereMobile($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereNameInitial($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User wherePassword($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User wherePermissions($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User wherePhone($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereRememberToken($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereSocialAccountId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereSocialAccountType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereTenantId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereUpdatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereUuid($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereZipCode($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Mainframe\Modules\Users\User withTrashed()
+ * @method static \Illuminate\Database\Query\Builder|\App\Mainframe\Modules\Users\User withoutTrashed()
  * @mixin \Eloquent
  */
 class User extends Authenticatable implements MustVerifyEmail
 {
     use UserHelper, UserGroupable;
-    use SoftDeletes, Rememberable, Processable, EventIdentifiable,
+    use Notifiable, SoftDeletes, Rememberable, Processable, EventIdentifiable,
         RelatedUsersTrait, TenantContextTrait, UpdaterTrait,
-        Uploadable, Changeable, ModularTrait;
+        Uploadable, Changeable, ModularTrait, ModelAutoFill;
     /*
     |--------------------------------------------------------------------------
     | Fillable attributes
@@ -163,11 +149,42 @@ class User extends Authenticatable implements MustVerifyEmail
     | These attributes can be mass assigned
     */
     protected $fillable = [
-        'uuid', 'tenant_id', 'name', 'email', 'password', 'remember_token', 'api_token', 'api_token_generated_at', 'is_tenant_editable', 'permissions',
-        'is_active', 'created_by', 'updated_by', 'created_at', 'updated_at', 'deleted_at', 'deleted_by', 'name_initial', 'first_name', 'last_name', 'full_name',
-        'gender', 'device_token', 'address1', 'address2', 'city', 'county', 'country_id', 'country_name', 'zip_code', 'phone', 'mobile', 'first_login_at',
-        'last_login_at', 'auth_token', 'email_verified_at', 'email_verification_code', 'currency', 'social_account_id', 'social_account_type', 'dob',
-        'group_ids', 'is_test',
+        'uuid',
+        'name',
+        'email',
+        'password',
+        'remember_token',
+        'api_token',
+        'api_token_generated_at',
+        'is_tenant_editable',
+        'permissions',
+        'is_active',
+        'name_initial',
+        'first_name',
+        'last_name',
+        'full_name',
+        'gender',
+        'device_token',
+        'address1',
+        'address2',
+        'city',
+        'county',
+        'country_id',
+        'country_name',
+        'zip_code',
+        'phone',
+        'mobile',
+        'first_login_at',
+        'last_login_at',
+        'auth_token',
+        'email_verified_at',
+        'email_verification_code',
+        'currency',
+        'social_account_id',
+        'social_account_type',
+        'dob',
+        'group_ids',
+        'is_test',
 
     ];
 

@@ -6,11 +6,13 @@ use Watson\Rememberable\Rememberable;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Mainframe\Features\Multitenant\GlobalScope\AddTenant;
 use App\Mainframe\Features\Modular\BaseModule\Traits\Changeable;
-use App\Mainframe\Features\Modular\BaseModule\Traits\Processable;
 use App\Mainframe\Features\Modular\BaseModule\Traits\Uploadable;
+use App\Mainframe\Features\Modular\BaseModule\Traits\Processable;
 use App\Mainframe\Features\Modular\BaseModule\Traits\ModularTrait;
 use App\Mainframe\Features\Modular\BaseModule\Traits\UpdaterTrait;
+use App\Mainframe\Features\Modular\BaseModule\Traits\ModelAutoFill;
 use App\Mainframe\Features\Modular\BaseModule\Traits\EventIdentifiable;
 use App\Mainframe\Features\Modular\BaseModule\Traits\RelatedUsersTrait;
 use App\Mainframe\Features\Modular\BaseModule\Traits\TenantContextTrait;
@@ -37,7 +39,7 @@ class BaseModule extends Model
 {
     use SoftDeletes, Rememberable, Processable, EventIdentifiable,
         RelatedUsersTrait, TenantContextTrait, UpdaterTrait,
-        Uploadable, Changeable, ModularTrait;
+        Uploadable, Changeable, ModularTrait, ModelAutoFill;
 
     protected $dates = ['created_at', 'updated_at', 'deleted_at'];
 
@@ -53,32 +55,10 @@ class BaseModule extends Model
     public static function boot()
     {
         parent::boot();
+
+        if (user()->ofTenant()) {
+            static::addGlobalScope(new AddTenant);
+        }
     }
 
-    /*
-    |--------------------------------------------------------------------------
-    | Query scopes + Dynamic scopes
-    |--------------------------------------------------------------------------
-    |
-    | Scopes allow you to easily re-use query logic in your models. To define
-    | a scope, simply prefix a model method with scope:
-    */
-    public function scopeActive($query) { return $query->where('is_active', 1); }
-
-
-    /**
-     * Cast an attribute to a native PHP type.
-     *
-     * @param  string  $key
-     * @param  mixed  $value
-     * @return mixed
-     */
-    // protected function castAttribute($key, $value)
-    // {
-    //     if ($this->getCastType($key) === 'array' && $value === [null]) {
-    //         return [];
-    //     }
-    //
-    //     return parent::castAttribute($key, $value);
-    // }
 }

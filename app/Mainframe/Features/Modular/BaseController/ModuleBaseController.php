@@ -4,8 +4,8 @@
 
 namespace App\Mainframe\Features\Modular\BaseController;
 
-use URL;
 use View;
+use Validator;
 use Illuminate\Http\Request;
 use App\Mainframe\Modules\Modules\Module;
 use App\Mainframe\Features\Report\ModuleList;
@@ -13,7 +13,7 @@ use App\Mainframe\Features\Datatable\ModuleDatatable;
 use App\Mainframe\Features\Modular\Resolvers\GridView;
 use App\Mainframe\Features\Report\ModuleReportBuilder;
 use App\Mainframe\Features\Modular\BaseController\Traits\Resolvable;
-use App\Mainframe\Features\Modular\BaseController\Traits\ModelOperations;
+use App\Mainframe\Features\Modular\BaseController\Traits\RequestHandler;
 use App\Mainframe\Features\Modular\BaseController\Traits\ShowChangesTrait;
 
 /**
@@ -21,7 +21,7 @@ use App\Mainframe\Features\Modular\BaseController\Traits\ShowChangesTrait;
  */
 class ModuleBaseController extends BaseController
 {
-    use ModelOperations, ShowChangesTrait, Resolvable;
+    use RequestHandler, ShowChangesTrait, Resolvable;
 
     /** @var string Module name */
     public $name;
@@ -182,6 +182,8 @@ class ModuleBaseController extends BaseController
         return $this->response()->redirect();
     }
 
+
+
     /**
      * Update
      *
@@ -229,6 +231,8 @@ class ModuleBaseController extends BaseController
 
         $this->attemptDestroy();
 
+        $this->response()->redirectTo = $this->redirectTo();
+
         if ($this->response()->expectsJson()) {
             return $this->response()->json();
         }
@@ -259,28 +263,6 @@ class ModuleBaseController extends BaseController
         }
 
         return (new ModuleReportBuilder($this->module))->show();
-    }
-
-    /**
-     * Try to figure out where to redirect
-     *
-     * @return array|\Illuminate\Http\Request|string
-     */
-    public function redirectTo()
-    {
-        if ($this->response()->isSuccess() && request('redirect_success')) {
-            if ($this->element && request('redirect_success') == '#new') {
-                return route($this->module->name.".edit", $this->element->id);
-            }
-
-            return request('redirect_success');
-        }
-
-        if ($this->response()->isFail() && request('redirect_fail')) {
-            return request('redirect_fail');
-        }
-
-        return URL::full();
     }
 
     /**

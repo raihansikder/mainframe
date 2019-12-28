@@ -13,18 +13,20 @@ use Illuminate\Support\MessageBag;
 $responseStatus = $responseStatus ?? session('responseStatus');
 $responseMessage = $responseMessage ?? session('responseMessage');
 
-$messageBag = session('messageBag'); // todo: need to show messageBag values
-
-
-if($messageBag){
-    myprint_r($messageBag->toArray());
-}
+/*
+ * todo: https://activationltd.atlassian.net/browse/MF-32
+ * need to show messageBag values
+ */
+$messageBag = session('messageBag');
+// if ($messageBag) {
+//     myprint_r($messageBag->toArray());
+// }
+/*********************************/
 
 $css = "callout-danger";
 if ($responseStatus == 'success') {
     $css = "callout-success";
 }
-
 ?>
 
 
@@ -41,6 +43,11 @@ if ($responseStatus == 'success') {
             @if ($errors->any())
                 {!! implode('<br/>', $errors->all()) !!}
             @endif
+
+            @if($messageBag && $messageBag->count())
+                {!! implode('<br/>', $messageBag->messages()) !!}
+            @endif
+
         </div>
     </div>
 @endif

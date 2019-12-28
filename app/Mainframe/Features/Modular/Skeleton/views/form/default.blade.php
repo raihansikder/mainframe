@@ -2,9 +2,9 @@
 
 <?php
 /**
- * @var \App\Mainframe\Modules\Superheroes\SuperHero $module
+ * @var \App\Mainframe\Modules\Modules\Module $module
  * @var \App\Mainframe\Modules\Users\User $user
- * @var \App\Mainframe\Modules\Users\User $element
+ * @var \App\Mainframe\Modules\SuperHeroes\SuperHero $element
  * @var string $formState create|edit
  * @var array $formConfig
  * @var string $uuid Only available for create

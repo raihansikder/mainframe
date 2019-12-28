@@ -68,15 +68,15 @@ class UserProcessor extends ModelProcessor
         // While creation/registration of user password and password_confirm both should be available
         // Also if one password is given the other one should be given as well
         // While creation/registration of user password and password_confirm both should be available
-        if (! isset($element->id)) {
-            $rules = array_merge($rules, [
-                'password' => 'required|min:6|confirmed',
-            ]);
-        } elseif (Request::get('password')) {
-            $rules = array_merge($rules, [
-                'password' => 'min:6|confirmed',
-            ]);
-        }
+        // if (! isset($element->id)) {
+        //     $rules = array_merge($rules, [
+        //         'password' => 'required|min:6|confirmed',
+        //     ]);
+        // } elseif (Request::get('password')) {
+        //     $rules = array_merge($rules, [
+        //         'password' => 'min:6|confirmed',
+        //     ]);
+        // }
 
         return array_merge($rules, $merge);
     }

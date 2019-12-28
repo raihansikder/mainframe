@@ -54,6 +54,7 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule;
  * @property-read int|null $uploads_count
  * @property-read int|null $users_count
  * @method static Builder|BaseModule active()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Group whereTenantId($value)
  */
 class Group extends GroupModel
 {

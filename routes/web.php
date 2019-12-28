@@ -12,10 +12,16 @@
 |
 */
 
-Route::get('/', 'HomeController@index')->name('home')->middleware(['verified']);
+Route::get('/', 'HomeController@index')->name('root')->middleware(['verified']);
+Route::get('/home', 'HomeController@index')->name('home')->middleware(['verified']);
+Route::get('/test', 'TestController@test')->name('test')->middleware(['verified','password.confirm']);
 
 /**
  * Mainframe routes
  */
 include_once app_path("Mainframe/routes/auth.php");
-include_once app_path("Mainframe/routes/module.php");
+include_once app_path("Mainframe/routes/modules.php");
+
+Auth::routes();
+
+

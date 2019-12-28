@@ -39,7 +39,7 @@ $script_paths = [
      * Additional JS added by mainframe.
      */
     'mainframe/js/mainframe.js',
-    'mainframe/js/mainframe-validation.js',
+    'mainframe/js/validation.js',
     'mainframe/js/vue.js',
     'mainframe/js/axios.min.js',
     'mainframe/js/custom.js',

@@ -1,15 +1,16 @@
-<?php
+<?php /** @noinspection PhpPossiblePolymorphicInvocationInspection */
 
 namespace App\Mainframe\Modules\ModuleGroups;
 
 use App\Mainframe\Modules\Modules\Module;
 
+/** @mixin \App\Mainframe\Modules\ModuleGroups\ModuleGroup */
 trait ModuleGroupHelper
 {
     /**
      * @return \Illuminate\Support\Collection
      */
-    public static function list()
+    public static function getActiveList()
     {
         return ModuleGroup::active()->remember(cacheTime('long'))->get();
     }
@@ -28,7 +29,7 @@ trait ModuleGroupHelper
      */
     public static function tree()
     {
-        /** @var \App\Mainframe\Modules\Modules\ModuleGroup $moduleGroups */
+        /** @var \App\Mainframe\Modules\ModuleGroups\ModuleGroup $moduleGroups */
         $moduleGroups = ModuleGroup::ofParentId(0);
         $list = [];
         foreach ($moduleGroups as $moduleGroup) {
@@ -59,6 +60,7 @@ trait ModuleGroupHelper
 
         $moduleGroups = ModuleGroup::ofParentId($this->id);
         if (count($moduleGroups)) {
+            /** @var \App\Mainframe\Modules\ModuleGroups\ModuleGroup $moduleGroups */
             foreach ($moduleGroups as $moduleGroup) {
                 if (count($moduleGroup->children())) {
                     $list[] = ['type' => 'module_group', 'item' => $moduleGroup, 'children' => $moduleGroup->children()];
@@ -90,9 +92,8 @@ trait ModuleGroupHelper
             $q = $q->remember(cacheTime('very-long'))->where('is_active', 1);
         }
         $results = $q->get()->toArray();
-        $modules = array_column($results, 'name');
 
-        return $modules;
+        return array_column($results, 'name');
     }
 
     /**
@@ -106,13 +107,13 @@ trait ModuleGroupHelper
         $moduleGroups = ModuleGroup::whereParentId($this->id)->whereIsActive(1)->orderBy('order')->remember(cacheTime('very-long'))->get();
         if (count($moduleGroups)) {
             foreach ($moduleGroups as $moduleGroup) {
-                array_push($list, ['type' => 'module_group', 'item' => $moduleGroup]);
+                $list[] = ['type' => 'module_group', 'item' => $moduleGroup];
             }
         }
         $modules = Module::whereModuleGroupId($this->id)->whereIsActive(1)->orderBy('order')->remember(cacheTime('very-long'))->get();
         if (count($modules)) {
             foreach ($modules as $module) {
-                array_push($list, ['type' => 'module', 'item' => $module]);
+                $list[] = ['type' => 'module', 'item' => $module];
             }
         }
 
