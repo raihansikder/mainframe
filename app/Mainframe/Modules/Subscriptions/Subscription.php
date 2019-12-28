@@ -4,6 +4,50 @@ namespace App\Mainframe\Modules\Subscriptions;
 
 use App\Mainframe\Features\Modular\BaseModule\BaseModule;
 
+/**
+ * App\Mainframe\Modules\Subscriptions\Subscription
+ *
+ * @property int $id
+ * @property string|null $uuid
+ * @property int|null $tenant_id
+ * @property string|null $name
+ * @property int|null $package_id
+ * @property string|null $valid_from
+ * @property string|null $valid_till
+ * @property int|null $is_active
+ * @property int|null $created_by
+ * @property int|null $updated_by
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @property int|null $deleted_by
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Changes\Change[] $changes
+ * @property-read int|null $changes_count
+ * @property-read \App\Mainframe\Modules\Users\User|null $creator
+ * @property-read \App\Mainframe\Modules\Uploads\Upload $latestUpload
+ * @property-read \App\Mainframe\Modules\Users\User|null $updater
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Uploads\Upload[] $uploads
+ * @property-read int|null $uploads_count
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Features\Modular\BaseModule\BaseModule active()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Subscriptions\Subscription newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Subscriptions\Subscription newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Subscriptions\Subscription query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Subscriptions\Subscription whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Subscriptions\Subscription whereCreatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Subscriptions\Subscription whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Subscriptions\Subscription whereDeletedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Subscriptions\Subscription whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Subscriptions\Subscription whereIsActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Subscriptions\Subscription whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Subscriptions\Subscription wherePackageId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Subscriptions\Subscription whereTenantId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Subscriptions\Subscription whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Subscriptions\Subscription whereUpdatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Subscriptions\Subscription whereUuid($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Subscriptions\Subscription whereValidFrom($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Subscriptions\Subscription whereValidTill($value)
+ * @mixin \Eloquent
+ */
 class Subscription extends BaseModule
 {
     use SubscriptionHelper;

@@ -50,6 +50,8 @@ use App\Mainframe\Modules\Groups\Traits\GroupDefinitionsTrait;
  * @method static Builder|Group whereUpdatedBy($value)
  * @method static Builder|Group whereUuid($value)
  * @mixin \Eloquent
+ * @property int|null $tenant_id
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Groups\Group whereTenantId($value)
  */
 class Group extends BaseModule
 {
