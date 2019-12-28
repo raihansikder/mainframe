@@ -17,7 +17,7 @@ $responseMessage = $responseMessage ?? session('responseMessage');
  * todo: https://activationltd.atlassian.net/browse/MF-32
  * need to show messageBag values
  */
-// $messageBag = session('messageBag');
+$messageBag = session('messageBag');
 // if ($messageBag) {
 //     myprint_r($messageBag->toArray());
 // }

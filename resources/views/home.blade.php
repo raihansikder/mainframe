@@ -1,4 +1,4 @@
-@extends('mainframe.layouts.app')
+@extends('mainframe.layouts.default.layout')
 
 @section('content')
 <div class="container">
