@@ -18,7 +18,6 @@
 
             @include('mainframe.form.input.text',['var'=>['name'=>'email','label'=>'Email', 'container_class'=>'col-sm-12']])
 
-
             <div class="form-group row mb-0">
                 <div class="col-md-12 offset-md-4">
                     <button type="submit" class="btn btn-primary">
