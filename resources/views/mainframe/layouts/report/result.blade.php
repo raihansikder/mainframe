@@ -1,4 +1,4 @@
-@extends('mainframe.layouts.report.layout')
+@extends('mainframe.layouts.report.template')
 <?php
 /**
  * @var $dataSource  string Table/DB view name (i.e. v_users, users)

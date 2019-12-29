@@ -1,1 +1,1 @@
-@extends('mainframe.layouts.email.default')
+@extends('mainframe.layouts.email.template')
