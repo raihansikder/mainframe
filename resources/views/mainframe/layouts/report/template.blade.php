@@ -1,4 +1,4 @@
-@extends('mainframe.layouts.default.layout')
+@extends('mainframe.layouts.default.template')
 {{-- Master view file for report --}}
 
 @section('head')

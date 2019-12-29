@@ -1,4 +1,4 @@
-@extends('mainframe.layouts.default.layout')
+@extends('mainframe.layouts.default.template')
 <?php
 /**
  * @var \App\Mainframe\Modules\Modules\Module $module
