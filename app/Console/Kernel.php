@@ -37,6 +37,11 @@ class Kernel extends ConsoleKernel
     {
         $this->load(__DIR__.'/Commands');
 
+        /*
+         * Load commands from project directories
+         */
+        $this->load(__DIR__.'/Projects/ArtemisPod');
+
         require base_path('routes/console.php');
     }
 }
