@@ -2,8 +2,11 @@
 
 namespace App\Mainframe\Features;
 
+use Auth;
 use Cache;
 use Schema;
+use Request;
+use App\User;
 use App\Mainframe\Modules\Modules\Module;
 use App\Mainframe\Modules\ModuleGroups\ModuleGroup;
 
@@ -15,10 +18,7 @@ use App\Mainframe\Modules\ModuleGroups\ModuleGroup;
 class Mf
 {
 
-    /* All HTTP codes
-     * https://gist.github.com/jeffochoa/a162fc4381d69a2d862dafa61cda0798
-     */
-    public const TENANT_ADMIN_GROUP_ID    = 15;
+    public const TENANT_ADMIN_GROUP_ID    = '15';
     public const PASSWORD_VALIDATION_RULE = 'required|confirmed|min:6|regex:/[a-zA-Z]/|regex:/[0-9]/';
 
     public static function tenantContext($table, $user = null)
@@ -35,6 +35,46 @@ class Mf
     |
     |
     */
+
+    public static function user($user_id = null)
+    {
+        if ($user_id) {
+            return User::remember(cacheTime('short'))->find($user_id);
+        }
+        //    // for API requests find the user based on the param/header values
+        //    if(!$user && Request::has('user_id')){ // No logged user. get from user_id in url param or request header
+        //        $user = User::find(Request::get('user_id'));
+        //    }
+        //    if(!$user && Request::has('client_id')){ // No logged user. get from user_id in url param or request header
+        //        $user = User::find(Request::get('client_id'));
+        //    }
+
+        /**
+         * Resolve user from client_id passed in request header. This is required when API calls are made using
+         * X-Auth-Token and client-id.
+         */
+        if (Request::header('client-id') && Request::header('X-Auth-Token')) { // No logged user. get from user_id in url param or request header
+            /** @noinspection PhpUndefinedMethodInspection */
+            return User::where('id', Request::header('client-id'))
+                ->where('api_token', Request::header('X-Auth-Token'))
+                ->remember(cacheTime('short'))
+                ->find(Request::header('client-id'));
+        }
+
+        // for logged in user
+        if (Auth::check()) {
+            return Auth::user();
+        }
+
+        // Return an empty user instance
+        return new User();
+    }
+
+    /**
+     * Get cached module list
+     *
+     * @return mixed|Module[]
+     */
     public static function modules()
     {
         return Cache::remember('active-modules', cacheTime('long'),
@@ -44,6 +84,11 @@ class Mf
 
     }
 
+    /**
+     * Get cached module groups
+     *
+     * @return mixed|ModuleGroup[]
+     */
     public static function moduleGroups()
     {
         return Cache::remember('active-module-groups', cacheTime('long'),

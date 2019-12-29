@@ -6,27 +6,6 @@ use Illuminate\Support\Str;
 
 trait UserGroupable
 {
-    /**
-     * Updates groups based on csv values
-     *
-     * @param  null  $group_ids_csv
-     */
-    // public function updateGroups($group_ids_csv = null)
-    // {
-    //     // Detach all previous groups
-    //     $this->groups()->detach();
-    //
-    //     // load group ids from function parameter or existing table field value if
-    //     // no param value is provided
-    //     if (!$group_ids_csv) $group_ids_csv = $this->group_ids_csv;
-    //
-    //     if (strlen(trim($group_ids_csv))) {
-    //         $group_ids = arrayFromCsv($group_ids_csv);
-    //         if (is_array($group_ids) && count($group_ids)) {
-    //             $this->groups()->attach($group_ids, ['created_at' => now(), 'updated_at' => now()]);
-    //         }
-    //     }
-    // }
 
     /**
      * returns group ids as array

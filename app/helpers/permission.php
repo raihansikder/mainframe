@@ -1,12 +1,25 @@
 <?php
 
-use App\Mainframe\Modules\Users\User;
+use App\Mainframe\Features\Mf;
+
+/**
+ * returns sentry object of currently logged in user
+ *
+ * @param  bool|null  $user_id
+ * @return \Illuminate\Contracts\Auth\Authenticatable|\App\Mainframe\Modules\Users\User
+ */
+function user($user_id = null)
+{
+    return Mf::user($user_id);
+}
+
 
 /**
  * Renders a multi-dimentional array of permissions in hiararchical order for assigning permission
  * The $tree can be generated from ModuleGroup::tree()
  *
  * @param $tree  : ModuleGroup::tree()
+ * @return string
  */
 function renderModulePermissionTree($tree)
 {
@@ -57,46 +70,6 @@ function renderModulePermissionTree($tree)
     }
 }
 
-/**
- * returns sentry object of currently logged in user
- *
- * @param  bool|null  $user_id
- * @return \Illuminate\Contracts\Auth\Authenticatable|\App\Mainframe\Modules\Users\User
- */
-function user($user_id = null)
-{
-    if ($user_id) {
-        /** @noinspection PhpUndefinedMethodInspection */
-        return User::remember(cacheTime('short'))->find($user_id);
-    }
-    //    // for API requests find the user based on the param/header values
-    //    if(!$user && Request::has('user_id')){ // No logged user. get from user_id in url param or request header
-    //        $user = User::find(Request::get('user_id'));
-    //    }
-    //    if(!$user && Request::has('client_id')){ // No logged user. get from user_id in url param or request header
-    //        $user = User::find(Request::get('client_id'));
-    //    }
-
-    /**
-     * Resolve user from client_id passed in request header. This is required when API calls are made using
-     * X-Auth-Token and client-id.
-     */
-    if (Request::header('client-id') && Request::header('X-Auth-Token')) { // No logged user. get from user_id in url param or request header
-        /** @noinspection PhpUndefinedMethodInspection */
-        return User::where('id', Request::header('client-id'))
-            ->where('api_token', Request::header('X-Auth-Token'))
-            ->remember(cacheTime('short'))
-            ->find(Request::header('client-id'));
-    }
-
-    // for logged in user
-    if (Auth::check()) {
-        return Auth::user();
-    }
-
-    // Return an empty user instance
-    return new User();
-}
 
 /**
  * This is a similar function to sentry's hasAccess. checks if current user has access to a certain permission
@@ -155,184 +128,6 @@ function hasPermission($permission, $user_id = false)
 function hasModulePermission($moduleName, $permission, $user_id = false)
 {
     return hasAccess("perm-module-$moduleName-$permission", $user_id);
-}
-
-/**
- * Checks if an spyr element(model) is creatable by a user
- *
- * @param      $element
- * @param  null  $user_id
- * @param  bool  $set_msg
- * @return bool
- */
-function spyrElementCreatable($element, $user_id = null, $set_msg = false)
-{
-    $valid = true;
-    $moduleName = elementModule($element);
-    $user = user($user_id); // get the currently logged in user
-
-    // First check sentry permission
-    if (! hasModulePermission($moduleName, 'create', $user->id)) {
-        $valid = setError("User[".$user->name."] does not have create permission on module: $moduleName [".$element->id."]", $set_msg);
-    }
-
-    // Check for valid tenant context
-    if ($valid && (inTenantContext($moduleName) && ! elementBelongsToSameTenant($element))) {
-        $valid = setError("User[".$user->name."] does not create permission on module: $moduleName [".$element->id."] because the element does not belong to same user",
-            $set_msg);
-    }
-
-    return $valid;
-}
-
-/**
- * Checks if an spyr element(model) is viewable by a user
- *
- * @param      $element
- * @param  null  $user_id
- * @param  bool  $set_msg
- * @return bool
- */
-function spyrElementViewable($element, $user_id = null, $set_msg = false)
-{
-    $valid = true;
-    $moduleName = elementModule($element);
-    $user = user($user_id); // get the currently logged in user
-
-    // First check sentry permission
-    if (! hasModulePermission($moduleName, 'view-details', $user->id)) {
-        $valid = setError("User[".$user->name."] does not have view permission on module: $moduleName [".$element->id."]", $set_msg);
-    }
-
-    // Check for valid tenant context
-    if ($valid && (inTenantContext($moduleName) && ! elementBelongsToSameTenant($element))) {
-        $valid = setError("User[".$user->name."] does not have view permission on module: $moduleName [".$element->id."] because the element does not belong to same user",
-            $set_msg);
-    }
-
-    return $valid;
-}
-
-/**
- * Checks if an spyr element(model) is editable by a user
- *
- * @param      $element
- * @param  null  $user_id
- * @param  bool  $set_msg
- * @return bool
- */
-function spyrElementEditable($element, $user_id = null, $set_msg = false)
-{
-    $valid = true;
-    $moduleName = elementModule($element);
-    $user = user($user_id); // get the currently logged in user
-
-    // First check sentry permission
-    if ($valid && ! hasModulePermission($moduleName, 'edit', $user->id)) {
-        $valid = setError("User[".$user->name."] does not have edit permission on module: $moduleName [".$element->id."]", $set_msg);
-    }
-    // Check for valid tenant context
-    if ($valid) {
-        $valid = editableInTenantContext($element, $user->id, $set_msg);
-    }
-
-    return $valid;
-}
-
-/**
- * Checks if an spyr element(model) is deletable by a user
- *
- * @param      $element
- * @param  null  $user_id
- * @param  bool  $set_msg
- * @return bool
- */
-function spyrElementDeletable($element, $user_id = null, $set_msg = false)
-{
-    $valid = true;
-    $moduleName = elementModule($element);
-    $user = user($user_id); // get the currently logged in user
-
-    // First check sentry permission
-    if ($valid && ! hasModulePermission($moduleName, 'delete', $user->id)) {
-        $valid = setError("User[".$user->name."] does not have delete permission on module: $moduleName [".$element->id."]", $set_msg);
-    }
-
-    // Check for valid tenant context
-    if ($valid) {
-        $valid = editableInTenantContext($element, $user->id, $set_msg);
-    }
-
-    return $valid;
-}
-
-/**
- * Checks if an spyr element(model) is deletable by a user
- *
- * @param      $element
- * @param  null  $user_id
- * @param  bool  $set_msg
- * @return bool
- */
-function spyrElementRestorable($element, $user_id = null, $set_msg = false)
-{
-    $valid = true;
-    $moduleName = elementModule($element);
-    $user = user($user_id); // get the currently logged in user
-
-    // First check sentry permission
-    if ($valid && ! hasModulePermission($moduleName, 'restore', $user->id)) {
-        $valid = setError("User[".$user->name."] does not have restore permission on module: $moduleName [".$element->id."]", $set_msg);
-    }
-    // Check for valid tenant context
-    if ($valid) {
-        $valid = editableInTenantContext($element, $user->id, $set_msg);
-    }
-
-    return $valid;
-}
-
-/**
- * Some elements are system enforced and not allowed to be editable by tenant.
- *
- * @param      $element
- * @param  bool  $set_msg
- * @return bool
- */
-function editableByTenant($element, $set_msg = false)
-{
-    $valid = true;
-    if (isset($element->is_editable_by_tenant) && $element->is_editable_by_tenant == 0) {
-        $valid = setError("This is a system entry and not editable by tenant user ", $set_msg);
-    }
-
-    return $valid;
-}
-
-/**
- * This function checks if a user has correct tenant context of an element and the elemnet
- * is not a system reserved element.
- *
- * @param      $element
- * @param  null  $user_id
- * @param  bool  $set_msg
- * @return bool
- */
-function editableInTenantContext($element, $user_id = null, $set_msg = false)
-{
-    $user = user($user_id); // get the currently logged in user
-    $moduleName = elementModule($element);
-    $valid = true;
-
-    if (inTenantContext($moduleName, $user->id)) {
-        if (! elementBelongsToSameTenant($element, $user->id)) {
-            $valid = setError("User[".$user->name."] can not edit : $moduleName [".$element->id."] because it does not belong to this user", $set_msg);
-        } else {
-            $valid = editableByTenant($element, $set_msg);
-        }
-    }
-
-    return $valid;
 }
 
 /**
