@@ -1,4 +1,4 @@
-@extends('mainframe.layouts.module.form.layout')
+@extends('mainframe.layouts.module.form.template')
 
 <?php
 use App\Mainframe\Modules\Settings\Setting;

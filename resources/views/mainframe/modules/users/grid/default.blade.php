@@ -1,1 +1,1 @@
-@extends('mainframe.layouts.module.grid.layout')
+@extends('mainframe.layouts.module.grid.template')

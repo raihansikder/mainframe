@@ -1,4 +1,4 @@
-@extends('mainframe.layouts.default.layout')
+@extends('mainframe.layouts.default.template')
 
 @section('sidebar-left')
     @include('mainframe.layouts.default.includes.navigation.left-menu.menu-items')

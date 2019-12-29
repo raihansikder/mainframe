@@ -1,4 +1,4 @@
-@extends('mainframe.layouts.module.form.layout')
+@extends('mainframe.layouts.module.form.template')
 
 @section('content')
     <div class="col-md-12 col-lg-10 no-padding">

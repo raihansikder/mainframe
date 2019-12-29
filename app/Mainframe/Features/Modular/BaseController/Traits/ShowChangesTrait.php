@@ -53,7 +53,7 @@ trait ShowChangesTrait
         // Update successful. Redirect to success path(url)
 
         /** @var array $changes */
-        return view('mainframe.layouts.module.changes.index')
+        return view('mainframe.layouts.module.changes.template')
             ->with('changes', $changes);
     }
 }

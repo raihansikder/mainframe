@@ -1,4 +1,4 @@
-@extends('mainframe.layouts.centered.layout')
+@extends('mainframe.layouts.centered.template')
 
 @section('content')
     <div class="card-body">
