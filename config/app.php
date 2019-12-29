@@ -180,7 +180,7 @@ return [
         /*
          * My Service Providers...
          */
-        App\Providers\HelperServiceProvider::class,
+        App\Providers\Mainframe\HelperServiceProvider::class,
 
     ],
 
