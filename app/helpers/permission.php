@@ -9,6 +9,7 @@
  */
 function hasAccess($permission, $user_id = false)
 {
+
     //return true;
     $allowed = false;
     $user = user($user_id);
