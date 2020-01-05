@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Mainframe\Modules\Settings\Setting;
 use App\Mainframe\Http\Controller\BaseController;
 
 class TestController extends BaseController
@@ -29,7 +28,7 @@ class TestController extends BaseController
         $user = \App\Mainframe\Modules\Users\User::find(2603);
 
         // $this->authorize('create', Setting::class);
-        dd($user->can('do-some-thing', Setting::class));
+        dd(user()->getMergedPermissions());
 
         return abort(403);
     }
