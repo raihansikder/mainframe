@@ -92,6 +92,8 @@ class Upload extends BaseModule
         'module_id',
         'element_id',
         'element_uuid',
+        'uploadable_id',
+        'uploadable_type',
         'is_active',
     ];
 

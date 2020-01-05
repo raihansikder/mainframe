@@ -2,9 +2,8 @@
 
 namespace App\Mainframe\Modules\Changes;
 
-use App\Mainframe\Modules\Changes\Change;
-use App\Mainframe\Modules\Modules\Module;
 use Illuminate\Support\Str;
+use App\Mainframe\Modules\Modules\Module;
 use App\Mainframe\Features\Modular\BaseModule\BaseModule;
 
 trait ChangeHelper
@@ -118,14 +117,14 @@ trait ChangeHelper
     /**
      * Store a log entry when a new element is created
      *
-     * @param  \App\Http\Mainframe\Features\Modular\BaseModule\BaseModule  $element
+     * @param  BaseModule  $element
      * @param  string  $details
      */
     public static function storeCreateLog($element, $details = "")
     {
         if (isset($element->id)) {
             $change_set = Str::random(8);
-            if ($module = Module::whereName(moduleName(get_class($element)))->remember(timer('long'))->first()) {
+            if ($module = Module::whereName($element->module()->name)->remember(timer('long'))->first()) {
                 $change = Change::create([
                     "name" => "Create new ".get_class($element),
                     "change_set" => $change_set,

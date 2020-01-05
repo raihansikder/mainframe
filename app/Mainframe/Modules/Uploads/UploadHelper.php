@@ -32,6 +32,7 @@ trait UploadHelper
     {
         Upload::where('element_uuid', $element->uuid)->update([
             'element_id' => $element->id,
+            'uploadable_id' => $element->id,
         ]);
     }
 

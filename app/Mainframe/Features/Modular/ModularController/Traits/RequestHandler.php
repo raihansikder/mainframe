@@ -145,7 +145,7 @@ trait RequestHandler
     public function storeRequestValidator()
     {
         $rules = [
-            'name' => 'required',
+            //'name' => 'required',
         ];
 
         $message = [
@@ -167,7 +167,7 @@ trait RequestHandler
     }
 
     /**
-     * @return \Illuminate\Validation\Validator
+     * @return \Illuminate\Contracts\Validation\Validator
      */
     public function deleteRequestValidator()
     {

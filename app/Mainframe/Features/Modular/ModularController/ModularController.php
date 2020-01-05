@@ -118,15 +118,17 @@ class ModularController extends BaseController
     public function create()
     {
         $this->element = $this->module->modelInstance();
+        $uuid = request()->old('uuid') ?: uuid();
+        $this->element->uuid = $uuid;
 
         if (! user()->can('create', $this->model)) {
             return $this->response()->permissionDenied();
         }
 
         $vars = [
+            'uuid' => $uuid,
             'element' => $this->element,
             'formConfig' => $this->formConfig('create'),
-            'uuid' => request()->old('uuid') ?: uuid(),
             'editable' => true,
             'formState' => 'create',
         ];
