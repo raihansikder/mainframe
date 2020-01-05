@@ -116,3 +116,4 @@ function breadcrumb($module = null)
 {
     return \App\Mainframe\Helpers\View::breadcrumb($module);
 }
+

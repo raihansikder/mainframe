@@ -44,7 +44,7 @@ class BaseModulePolicy
      */
     public function create(User $user)
     {
-        //
+        return true;
     }
 
     /**
@@ -102,6 +102,7 @@ class BaseModulePolicy
      */
     public function before(User $user, $ability)
     {
+
         return $user->isSuperUser();
     }
 }

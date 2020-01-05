@@ -72,7 +72,7 @@ trait UserGroupable
      */
     public function isApiUser()
     {
-        return $this->hasPermission('superuser') || $this->inGroupId(Group::SUPERUSER);
+        return $this->hasPermission('api') || $this->inGroupId(Group::API);
     }
 
     /**

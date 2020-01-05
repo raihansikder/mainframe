@@ -1,4 +1,63 @@
 <!--suppress XmlUnboundNsPrefix, ES6ConvertVarToLetConst -->
+
+<?php
+/**
+ * Renders a multi-dimensional array of permissions in hiararchical order for assigning permission
+ * The $tree can be generated from ModuleGroup::tree()
+ *
+ * @param $tree  : ModuleGroup::tree()
+ * @return string
+ */
+function renderModulePermissionTree($tree)
+{
+    $html = '';
+    if (is_array($tree)) {
+        $html .= "<ul>";
+        foreach ($tree as $leaf) {
+            // $perm = 'perm-'.$leaf['type'].'-'.$leaf['item']->name;
+            $perm = $leaf['item']->name;
+            $val = $perm;
+
+            $html .= "<div class='clearfix'></div><li class='pull-left'>".
+                "<input name='permission[]' type='checkbox' v-model='permission' value='$val'
+				v-on:click='clicked'/>".
+                "<label><b>".$leaf['item']->title."</b> - <small>".$leaf['item']->desc."</small></label> <div class='clearfix'></div>";
+
+            if ($leaf['type'] === 'module') {
+                $module_default_permissions_suffixes = [
+                    'view-list' => 'View grid',
+                    'view-details' => 'View details',
+                    'create' => 'Create',
+                    'edit' => 'Edit',
+                    'delete' => 'Delete',
+                    'restore' => 'Restore',
+                    'change-logs' => 'Access change logs',
+                    'report' => 'Report',
+                ];
+
+                $html .= "<ul class='pull-left module-permissions'>";
+                foreach ($module_default_permissions_suffixes as $k => $v) {
+                    $val = "$perm-$k";
+                    $html .= "<li>".
+                        "<input name='permission[]' type='checkbox' v-model='permission'  value='$val'/>".
+                        "<label>".$v."</label>".
+                        "</li>";
+                }
+                $html .= "</ul>";
+            }
+
+            if (isset($leaf['children']) && count($leaf['children'])) {
+                $html .= renderModulePermissionTree($leaf['children']);
+            }
+            $html .= "</li>";
+        }
+        $html .= "</ul>";
+
+        return $html;
+    }
+}
+?>
+
 <h4>Permissions</h4>
 <div id="vue_root_permission" class="permissions-tree">
     <ul>
@@ -48,7 +107,6 @@
         @endforeach
     </ul>
 </div>
-
 
 @section('js')
     @parent

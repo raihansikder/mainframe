@@ -94,4 +94,15 @@ class SettingPolicy extends BaseModulePolicy
     //     //
     // }
 
+    /**
+     * @param $user User
+     * @param $ability
+     * @return bool
+     */
+    // public function before(User $user, $ability)
+    // {
+    //
+    //     return true;
+    // }
+
 }

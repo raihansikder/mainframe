@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Mainframe\Modules\LoremIpsums\LoremIpsum;
+use App\Mainframe\Modules\Settings\Setting;
 use App\Mainframe\Http\Controller\BaseController;
 
 class TestController extends BaseController
@@ -24,11 +24,16 @@ class TestController extends BaseController
      */
     public function test()
     {
-        /** @var LoremIpsum $loremIpsum */
-        $loremIpsum = LoremIpsum::active()->first();
-        echo($loremIpsum->hasTenantContext());
 
-        return;
+        $user2 = \App\Mainframe\Modules\Users\User::find(2);
+
+        $user2->can('create', Setting::class);
+
+        return abort(403);
     }
+
+
+    // 9612111777
+    // partnersebakendra uttara 6, Sonargao road, sector 12, Uttara, Dhaka 1230
 
 }

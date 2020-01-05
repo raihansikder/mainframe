@@ -48,6 +48,8 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule;
  * @method static Builder|Setting whereValue($value)
  * @mixin \Eloquent
  * @method static Builder|BaseModule active()
+ * @property-read \App\Mainframe\Modules\MfProjects\MfProject $project
+ * @property-read \App\Mainframe\Modules\Tenants\Tenant $tenant
  */
 class Setting extends BaseModule
 {

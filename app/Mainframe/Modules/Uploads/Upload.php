@@ -65,6 +65,10 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule;
  * @property-read mixed $url
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Uploads\Upload whereUploadableId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Uploads\Upload whereUploadableType($value)
+ * @property int|null $mf_project_id
+ * @property-read \App\Mainframe\Modules\MfProjects\MfProject $project
+ * @property-read \App\Mainframe\Modules\Tenants\Tenant|null $tenant
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Uploads\Upload whereMfProjectId($value)
  */
 class Upload extends BaseModule
 {

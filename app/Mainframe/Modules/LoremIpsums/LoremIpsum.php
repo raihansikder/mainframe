@@ -63,6 +63,10 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\LoremIpsums\LoremIpsum whereUpdatedBy($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\LoremIpsums\LoremIpsum whereUuid($value)
  * @mixin \Eloquent
+ * @property int|null $mf_project_id
+ * @property-read \App\Mainframe\Modules\MfProjects\MfProject $project
+ * @property-read \App\Mainframe\Modules\Tenants\Tenant|null $tenant
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\LoremIpsums\LoremIpsum whereMfProjectId($value)
  */
 class LoremIpsum extends BaseModule
 {
