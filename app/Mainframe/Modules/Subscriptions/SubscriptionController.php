@@ -2,9 +2,9 @@
 
 namespace App\Mainframe\Modules\Subscriptions;
 
-use App\Mainframe\Features\Modular\BaseController\ModuleBaseController;
+use App\Mainframe\Features\Modular\ModularController\ModularController;
 
-class SubscriptionController extends ModuleBaseController
+class SubscriptionController extends ModularController
 {
 
     /**

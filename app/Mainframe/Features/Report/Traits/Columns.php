@@ -3,8 +3,8 @@
 namespace App\Mainframe\Features\Report\Traits;
 
 use Str;
-use App\Mainframe\Features\Mf;
-use App\Mainframe\Features\Helpers\Convert;
+use App\Mainframe\Helpers\Mf;
+use App\Mainframe\Helpers\Convert;
 
 /** @mixin \App\Mainframe\Features\Report\ReportBuilder $this */
 trait Columns

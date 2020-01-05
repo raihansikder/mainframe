@@ -4,7 +4,7 @@ use App\Mainframe\Modules\Uploads\Upload;
 /**
  * @var $module \App\Mainframe\Modules\Modules\Module
  * @var $var array
- * @var \App\Superhero $element
+ * @var \App\Mainframe\Features\Modular\BaseModule\BaseModule $element
  */
 $rand = randomString();
 
@@ -17,20 +17,20 @@ $var['type'] = $var['type'] ?? null;
 $var['limit'] = $var['limit'] ?? 999;
 $var['container_class'] = $var['container_class'] ?? ''; // container_class: main wrapper div class.
 /** Internal variables */
-$var['tenantId'] = tenantUser() ? userTenantId() : null;
+$var['tenant_id'] = user()->tenant_id ?? null;
 $var['upload_container_id'] = "img_container_".$rand;
 
 /** Parameter value overrides */
 
-// If an $element is present (normally during edit) in the context then set tenantId and element
+// If an $element is present (normally during edit) in the context then set tenant_id and element
 // fields based on that element.
 if (($element->isCreating())) {
     $var['element_uuid'] = (! $var['element_uuid'] && isset($uuid)) ? $uuid : $var['element_uuid'];
 } else {
-    $var['element_id'] = $var['element_id'] ? $var['element_id'] : $element->id;
-    $var['element_uuid'] = $var['element_uuid'] ? $var['element_uuid'] : $element->uuid;
-    // If still there is no tenantId resolved from user, attempt to resolve from $element.
-    $var['tenantId'] = (! $var['tenantId'] && isset($element->tenantId)) ? $element->tenantId : $var['tenantId'];
+    $var['element_id'] = $var['element_id'] ?: $element->id;
+    $var['element_uuid'] = $var['element_uuid'] ?: $element->uuid;
+    // If still there is no tenant_id resolved from user, attempt to resolve from $element.
+    $var['tenant_id'] = $element->tenant_id ?? user()->tenant();
 }
 
 ?>
@@ -42,9 +42,9 @@ if (($element->isCreating())) {
         {{-- initUploader gets these values and post to upload route  --}}
         <div id="{{$var['upload_container_id']}}" class="uploads_container">
             <form>
-                {{csrf_field()}}
+                @csrf
                 <input type="hidden" name="ret" value="json"/>
-                <input type="hidden" name="tenantId" value="{{$var['tenantId']}}"/>
+                <input type="hidden" name="tenant_id" value="{{$var['tenant_id'] or null}}"/>
                 <input type="hidden" name="module_id" value="{{$var['module_id']}}"/>
                 <input type="hidden" name="element_id" value="{{$var['element_id']}}"/>
                 <input type="hidden" name="element_uuid" value="{{$var['element_uuid']}}"/>

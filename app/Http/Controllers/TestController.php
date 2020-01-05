@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mainframe\Modules\LoremIpsums\LoremIpsum;
-use App\Mainframe\Features\Modular\BaseController\BaseController;
+use App\Mainframe\Http\Controller\BaseController;
 
 class TestController extends BaseController
 {

@@ -56,6 +56,12 @@ use App\Mainframe\Modules\Groups\Traits\GroupDefinitionsTrait;
 class Group extends BaseModule
 {
     use GroupHelper, GroupDefinitionsTrait;
+
+    public const SUPERUSER = 1;
+    public const API = 2;
+    public const TENANT_ADMIN = 3;
+    public const PROJECT_ADMIN = 4;
+
     /*
     |--------------------------------------------------------------------------
     | Fillable attributes

@@ -1,7 +1,7 @@
 <?php
 /*
 |--------------------------------------------------------------------------
-| Addl-permissions types field
+| Additional-permissions types field
 |--------------------------------------------------------------------------
 |
 | Additional permissions can be categories into different types. These type
@@ -9,13 +9,11 @@
 | parent items. i.e.
 |
 */
-$permissions = [
+return [
     'Widget' => [
-        ['permission' => 'viewWidgetAppTile', 'label' => 'View App tiles'],
+        ['permission' => 'view-widget', 'label' => 'View App tiles'],
     ],
-    'API'    => [
-        ['permission' => 'canMakeApiCallUsingXAuthToken', 'label' => 'API calls using Authentication token(X-Auth-Token)'],
+    'API' => [
+        ['permission' => 'api', 'label' => 'API calls using Authentication token(X-Auth-Token)'],
     ],
 ];
-
-return $permissions;

@@ -3,7 +3,7 @@
 namespace App\Mainframe\Features\Modular\BaseModule\Traits;
 
 use Illuminate\Support\Str;
-use App\Mainframe\Features\Mf;
+use App\Mainframe\Helpers\Mf;
 use App\Mainframe\Modules\Modules\Module;
 
 /** @mixin $this BaseModule */
@@ -20,7 +20,7 @@ trait ModularTrait
         $moduleName = Str::kebab(Str::camel($this->getTable()));
 
         return Module::where('name', $moduleName)
-            ->remember(cacheTime('very-long'))->first();
+            ->remember(timer('very-long'))->first();
     }
 
     /**

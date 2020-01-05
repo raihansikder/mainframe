@@ -2,9 +2,9 @@
 
 namespace App\Mainframe\Modules\Groups;
 
-use App\Mainframe\Features\Modular\BaseController\ModuleBaseController;
+use App\Mainframe\Features\Modular\ModularController\ModularController;
 
-class GroupController extends ModuleBaseController
+class GroupController extends ModularController
 {
 
     /**

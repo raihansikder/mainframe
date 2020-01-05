@@ -8,7 +8,7 @@ use App\Mainframe\Features\Report\Traits\Query;
 use App\Mainframe\Features\Report\Traits\Output;
 use App\Mainframe\Features\Report\Traits\Columns;
 use App\Mainframe\Features\Report\Traits\Filterable;
-use App\Mainframe\Features\Modular\BaseController\BaseController;
+use App\Mainframe\Http\Controller\BaseController;
 
 class ReportBuilder extends BaseController
 {

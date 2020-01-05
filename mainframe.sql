@@ -11,7 +11,7 @@
  Target Server Version : 100313
  File Encoding         : 65001
 
- Date: 29/12/2019 01:28:53
+ Date: 02/01/2020 12:09:51
 */
 
 SET NAMES utf8mb4;
@@ -841,7 +841,7 @@ INSERT INTO `settings` VALUES (39, '931f290b-8cd3-4ca1-a0f1-087bb1355b8a', 'some
 INSERT INTO `settings` VALUES (40, 'a3645306-4f30-41f1-845f-f2ae2ed77dcf', 'rrrr', 'rrrr', 'boolean', NULL, 'true', 0, 5, 5, '2019-11-12 12:18:05', '2019-11-12 12:18:47', '2019-11-12 12:18:47', NULL);
 INSERT INTO `settings` VALUES (41, 'fadb9776-d741-4248-bfa8-19a4a1757081', 'test555', '555523wer', 'string', 'asdfasdf aasdfaf', 'test', 1, 5, 5, '2019-11-20 11:03:42', '2019-12-19 08:08:07', '2019-12-19 08:08:07', NULL);
 INSERT INTO `settings` VALUES (42, 'd879c7df-d4ce-48c7-8abc-dc82af05a37d', 'dfasdfasdf', 'asdfasdfasdf', 'string', NULL, 'asdfadsafsdf', 1, 5, 5, '2019-12-02 16:57:43', '2019-12-19 07:54:40', '2019-12-19 07:54:40', NULL);
-INSERT INTO `settings` VALUES (43, 'a285cd17-969a-4dac-9898-d94168b13057', 'test2323', 'testrset', 'string', NULL, 'asdfsafd', 0, 5, 5, '2019-12-28 07:19:13', '2019-12-28 07:19:13', NULL, NULL);
+INSERT INTO `settings` VALUES (43, 'a285cd17-969a-4dac-9898-d94168b13057', 'test2323', 'testrset', 'string', NULL, 'asdfsafd', 0, 5, 5, '2019-12-28 07:19:13', '2019-12-29 06:00:01', NULL, NULL);
 
 -- ----------------------------
 -- Table structure for subscriptions

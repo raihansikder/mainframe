@@ -125,7 +125,7 @@ trait ChangeHelper
     {
         if (isset($element->id)) {
             $change_set = Str::random(8);
-            if ($module = Module::whereName(moduleName(get_class($element)))->remember(cacheTime('long'))->first()) {
+            if ($module = Module::whereName(moduleName(get_class($element)))->remember(timer('long'))->first()) {
                 $change = Change::create([
                     "name" => "Create new ".get_class($element),
                     "change_set" => $change_set,

@@ -2,9 +2,9 @@
 
 namespace App\Mainframe\Modules\Modules;
 
-use App\Mainframe\Features\Modular\BaseController\ModuleBaseController;
+use App\Mainframe\Features\Modular\ModularController\ModularController;
 
-class ModuleController extends ModuleBaseController
+class ModuleController extends ModularController
 {
     public function __construct()
     {

@@ -16,12 +16,12 @@ trait ReportHelper
     {
         /** @var \App\Report $default_report */
         $default_report = Report::where('module_id', $module_id)->where('is_module_default', 1)
-            ->remember(cacheTime('long'))->first();
+            ->remember(timer('long'))->first();
 
         if ($default_report) {
             $report_url = $default_report->url();
         } else {
-            $module = Module::remember(cacheTime('long'))->find($module_id);
+            $module = Module::remember(timer('long'))->find($module_id);
             $report_url = route($module->name.'.report')."?submit=Run&"
                 ."select_columns_csv=id%2Cname%2Ccreated_by%2Ccreated_at%2Cupdated_by%2Cupdated_at%2Cis_active"
                 ."&columns_csv=id%2Cname%2Ccreated_by%2Ccreated_at%2Cupdated_by%2Cupdated_at%2Cis_active"
@@ -52,7 +52,7 @@ trait ReportHelper
      */
     public static function getReportUrlFromId($id)
     {
-        if ($report = Report::remember(cacheTime('short'))->find($id)) {
+        if ($report = Report::remember(timer('short'))->find($id)) {
             return $report->url().'&report_name='.$report->name;
         }
 

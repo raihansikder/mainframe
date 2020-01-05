@@ -48,7 +48,7 @@
                 @foreach($moduleNames as $name)
                     <?php
                     /** @var \App\Mainframe\Modules\Modules\Module $module */
-                    $module = \App\Mainframe\Modules\Modules\Module::where('name', $name)->remember(cacheTime('long'))->first()?>
+                    $module = \App\Mainframe\Modules\Modules\Module::where('name', $name)->remember(timer('long'))->first()?>
                     <li><a href="{{route("{$module->name}.index")}}"><i
                                     class="{{$module->icon_css}}"></i>{{$module->title}}</a></li>
                 @endforeach
@@ -67,7 +67,7 @@
                 @foreach($moduleNames as $name)
                     <?php
                     /** @var \App\Mainframe\Modules\Modules\Module $module */
-                    $module = \App\Mainframe\Modules\Modules\Module::where('name', $name)->remember(cacheTime('long'))->first()?>
+                    $module = \App\Mainframe\Modules\Modules\Module::where('name', $name)->remember(timer('long'))->first()?>
                     <li><a href="{{route("{$module->name}.index")}}"><i
                                     class="{{$module->icon_css}}"></i>{{$module->title}}</a></li>
                 @endforeach
@@ -89,7 +89,7 @@
                 @foreach($moduleNames as $name)
                     <?php
                     /** @var \App\Mainframe\Modules\Modules\Module $module */
-                    $module = \App\Mainframe\Modules\Modules\Module::where('name', $name)->remember(cacheTime('long'))->first()?>
+                    $module = \App\Mainframe\Modules\Modules\Module::where('name', $name)->remember(timer('long'))->first()?>
                     <li><a href="{{route("{$module->name}.index")}}"><i
                                     class="{{$module->icon_css}}"></i>{{$module->title}}</a></li>
                 @endforeach
@@ -110,7 +110,7 @@
                 @foreach($moduleNames as $name)
                     <?php
                     /** @var \App\Mainframe\Modules\Modules\Module $module */
-                    $module = \App\Mainframe\Modules\Modules\Module::where('name', $name)->remember(cacheTime('long'))->first()?>
+                    $module = \App\Mainframe\Modules\Modules\Module::where('name', $name)->remember(timer('long'))->first()?>
                     <li><a href="{{route("{$module->name}.index")}}"><i
                                     class="{{$module->icon_css}}"></i>{{$module->title}}</a></li>
                 @endforeach
@@ -132,7 +132,7 @@
                 @foreach($moduleNames as $name)
                     <?php
                     /** @var \App\Mainframe\Modules\Modules\Module $module */
-                    $module = \App\Mainframe\Modules\Modules\Module::where('name', $name)->remember(cacheTime('long'))->first()?>
+                    $module = \App\Mainframe\Modules\Modules\Module::where('name', $name)->remember(timer('long'))->first()?>
                     <li><a href="{{route("{$module->name}.index")}}"><i
                                     class="{{$module->icon_css}}"></i>{{$module->title}}</a></li>
                 @endforeach
@@ -154,7 +154,7 @@
                 @foreach($moduleNames as $name)
                     <?php
                     /** @var \App\Mainframe\Modules\Modules\Module $module */
-                    $module = \App\Mainframe\Modules\Modules\Module::where('name', $name)->remember(cacheTime('long'))->first()?>
+                    $module = \App\Mainframe\Modules\Modules\Module::where('name', $name)->remember(timer('long'))->first()?>
                     <li><a href="{{route("{$module->name}.index")}}"><i
                                     class="{{$module->icon_css}}"></i>{{$module->title}}</a></li>
                 @endforeach
@@ -180,7 +180,7 @@
                 @foreach($moduleNames as $name)
                     <?php
                     /** @var \App\Mainframe\Modules\Modules\Module $module */
-                    $module = \App\Mainframe\Modules\Modules\Module::where('name', $name)->remember(cacheTime('long'))->first()?>
+                    $module = \App\Mainframe\Modules\Modules\Module::where('name', $name)->remember(timer('long'))->first()?>
                     <li><a href="{{route("{$module->name}.index")}}"><i
                                     class="{{$module->icon_css}}"></i>{{$module->title}}</a></li>
                 @endforeach

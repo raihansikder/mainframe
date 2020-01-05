@@ -21,7 +21,7 @@
 
         {{--Additional permission options defined in config/mainframe/permissions--}}
         <?php
-        $permissions = conf('mainframe.permissions');
+        $permissions = config('mainframe.permissions');
         ?>
         @foreach($permissions as $block_title=>$entries)
             <div class="clearfix"></div>

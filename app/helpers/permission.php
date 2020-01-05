@@ -1,21 +1,12 @@
 <?php
 
-use App\Mainframe\Features\Mf;
+use App\Mainframe\Helpers\Mf;
 
-/**
- * returns sentry object of currently logged in user
- *
- * @param  bool|null  $user_id
- * @return \Illuminate\Contracts\Auth\Authenticatable|\App\Mainframe\Modules\Users\User
- */
-function user($user_id = null)
-{
-    return Mf::user($user_id);
-}
+
 
 
 /**
- * Renders a multi-dimentional array of permissions in hiararchical order for assigning permission
+ * Renders a multi-dimensional array of permissions in hiararchical order for assigning permission
  * The $tree can be generated from ModuleGroup::tree()
  *
  * @param $tree  : ModuleGroup::tree()

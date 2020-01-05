@@ -35,11 +35,11 @@ Route::post('email/resend', 'Auth\VerificationController@resend')->name('verific
 
 /*
 |--------------------------------------------------------------------------
-| Mainframe Tenant Specific Routs.
+| Mainframe Tenant Registration routes
 |--------------------------------------------------------------------------
 |
 */
-
 // Tenant Registration Routes...
 Route::get('register/tenant', 'Auth\RegisterTenantController@showRegistrationForm')->name('tenant.register');
 Route::post('register/tenant', 'Auth\RegisterTenantController@register');
+

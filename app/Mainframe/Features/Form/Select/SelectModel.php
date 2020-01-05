@@ -4,7 +4,7 @@ namespace App\Mainframe\Features\Form\Select;
 
 use DB;
 use Arr;
-use App\Mainframe\Features\Mf;
+use App\Mainframe\Helpers\Mf;
 
 class SelectModel extends SelectArray
 {
@@ -23,7 +23,7 @@ class SelectModel extends SelectArray
 
         $this->table = $conf['table'] ?? null; // Must have table
         $this->query = $conf['query'] ?? DB::table($this->table);
-        $this->cache = $conf['cache'] ?? cacheTime('none');
+        $this->cache = $conf['cache'] ?? timer('none');
 
         $this->options = $this->options();
     }

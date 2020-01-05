@@ -6,8 +6,8 @@
 namespace App\Mainframe\Features\Modular\Validator;
 
 use Validator;
-use App\Mainframe\Features\Modular\BaseController\Traits\Validable;
-use App\Mainframe\Features\Modular\BaseController\Traits\HasMessageBag;
+use App\Mainframe\Features\Core\Traits\Validable;
+use App\Mainframe\Features\Core\Traits\HasMessageBag;
 
 class ModelProcessor
 {

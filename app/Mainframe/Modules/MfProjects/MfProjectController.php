@@ -2,9 +2,9 @@
 
 namespace App\Mainframe\Modules\MfProjects;
 
-use App\Mainframe\Features\Modular\BaseController\ModuleBaseController;
+use App\Mainframe\Features\Modular\ModularController\ModularController;
 
-class MfProjectController extends ModuleBaseController
+class MfProjectController extends ModularController
 {
 
     /**
