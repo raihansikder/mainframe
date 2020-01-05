@@ -21,13 +21,15 @@ class TestController extends BaseController
      * Show the application dashboard based on different user type/group.
      *
      * @return \Illuminate\Contracts\Support\Renderable|\Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function test()
     {
 
-        $user2 = \App\Mainframe\Modules\Users\User::find(2);
+        $user = \App\Mainframe\Modules\Users\User::find(2603);
 
-        $user2->can('create', Setting::class);
+        // $this->authorize('create', Setting::class);
+        dd($user->can('do-some-thing', Setting::class));
 
         return abort(403);
     }

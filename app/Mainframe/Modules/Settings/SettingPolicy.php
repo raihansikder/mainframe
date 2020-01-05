@@ -18,10 +18,10 @@ class SettingPolicy extends BaseModulePolicy
      * @param  \App\Mainframe\Modules\Users\User  $user
      * @return mixed
      */
-    public function viewAny(User $user)
-    {
-        //
-    }
+    // public function viewAny(User $user)
+    // {
+    //     //
+    // }
 
     /**
      * Determine whether the user can view the setting.
@@ -43,7 +43,8 @@ class SettingPolicy extends BaseModulePolicy
      */
     // public function create(User $user)
     // {
-    //     //
+    //     die("I'm being called in SettingPolicy...");
+    //     return false;
     // }
 
     /**

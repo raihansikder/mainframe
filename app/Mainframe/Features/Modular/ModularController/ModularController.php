@@ -50,7 +50,10 @@ class ModularController extends BaseController
 
         $this->model = $this->module->modelInstance();
 
-        View::share(['module' => $this->module]);
+        View::share([
+            'module' => $this->module,
+            'model' => $this->model
+        ]);
     }
 
     /**
@@ -60,7 +63,7 @@ class ModularController extends BaseController
      */
     public function index()
     {
-        if (! user()->can('viewAny', $this->model)) {
+        if (! user()->can('view-any', $this->model)) {
             return $this->response()->permissionDenied();
         }
 

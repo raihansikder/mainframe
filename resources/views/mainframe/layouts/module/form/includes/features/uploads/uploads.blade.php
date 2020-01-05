@@ -37,7 +37,7 @@ if (($element->isCreating())) {
 
 {{-- upload div + form --}}
 <div class="{{$var['container_class']}}">
-    @if(hasModulePermission($module->name,'create') || hasModulePermission($module->name,'edit'))
+    @if($user->can(['create','update'], $model))
         {{-- A form where values are stored that are later posted with attached file --}}
         {{-- initUploader gets these values and post to upload route  --}}
         <div id="{{$var['upload_container_id']}}" class="uploads_container">
@@ -78,7 +78,7 @@ if (($element->isCreating())) {
 {{-- js --}}
 @section('js')
     @parent
-    @if(hasModulePermission($module->name,'create') || hasModulePermission($module->name,'edit'))
+    @if($user->can(['create','update'], $model))
         <script>
             initUploader("{{$var['upload_container_id']}}", "{{ route('uploads.store')}}"); // init initially
         </script>
