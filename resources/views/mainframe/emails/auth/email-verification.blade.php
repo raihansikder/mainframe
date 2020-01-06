@@ -5,9 +5,13 @@
 @endsection
 
 @section('content')
-    Please click the button below to verify your email address.
+    <div class="center">{{__('Please click the button below to verify your email address.')}}</div>
 
-    <a class="btn btn-lg" href="{{$url}}">Verify Email Address</a>
+    <a class="button button-blue action" href="{{$url}}"> {{__('Verify Email Address')}}</a>
+    <div></div>
+    <a href="{{$url}}">{{$url}}</a>
+    <div></div>
+    <div class="center">{{__('If you did not create an account, no further action is required.')}}</div>
 @endsection
 
 

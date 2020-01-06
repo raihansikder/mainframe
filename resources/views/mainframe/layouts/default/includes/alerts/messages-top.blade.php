@@ -37,7 +37,7 @@ if ($responseStatus == 'success') {
         <div class="callout {{$css}} ajaxMsg errorDiv" id="errorDiv">
             @if($responseStatus)
                 <h4>
-                    {{ Str::upper($responseStatus) }}. {{ $responseMessage }}
+                    {{ ucfirst($responseStatus) }}. {{ $responseMessage }}
                 </h4>
             @endif
 

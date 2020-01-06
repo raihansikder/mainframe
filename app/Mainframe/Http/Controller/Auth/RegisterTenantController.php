@@ -37,8 +37,10 @@ class RegisterTenantController extends RegisterController
      */
     public function register(Request $request)
     {
+
         $this->attemptRegistration();
 
+        request()->merge(['redirect_success' => route('mf.login')]);
         $this->response()->redirectTo = $this->redirectTo();
 
         if ($this->response()->expectsJson()) {
@@ -83,7 +85,7 @@ class RegisterTenantController extends RegisterController
             return $this;
         }
 
-        $this->response()->success();
+        $this->response()->success('Verify your email and log in.');
         $this->registered(request(), $this->user);
 
         return $this;
@@ -131,7 +133,7 @@ class RegisterTenantController extends RegisterController
     protected function registered(Request $request, $user)
     {
         event(new Registered($user));
-        $user->notify(new VerifyEmail());
+        $user->notifyNow(new VerifyEmail());
     }
 
 }
