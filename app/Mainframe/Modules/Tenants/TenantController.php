@@ -2,9 +2,9 @@
 
 namespace App\Mainframe\Modules\Tenants;
 
-use App\Mainframe\Features\Modular\BaseController\ModuleBaseController;
+use App\Mainframe\Features\Modular\ModularController\ModularController;
 
-class TenantController extends ModuleBaseController
+class TenantController extends ModularController
 {
 
     /**

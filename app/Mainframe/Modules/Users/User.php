@@ -134,6 +134,10 @@ use App\Mainframe\Features\Modular\BaseModule\Traits\TenantContextTrait;
  * @method static \Illuminate\Database\Query\Builder|\App\Mainframe\Modules\Users\User withTrashed()
  * @method static \Illuminate\Database\Query\Builder|\App\Mainframe\Modules\Users\User withoutTrashed()
  * @mixin \Eloquent
+ * @property int|null $project_id
+ * @property-read \App\Mainframe\Modules\Projects\Project $project
+ * @property-read \App\Mainframe\Modules\Tenants\Tenant|null $tenant
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereProjectId($value)
  */
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -386,5 +390,6 @@ class User extends Authenticatable implements MustVerifyEmail
 
         return $_permissions;
     }
+
 
 }

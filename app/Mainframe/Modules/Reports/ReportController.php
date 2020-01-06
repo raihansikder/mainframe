@@ -2,9 +2,9 @@
 
 namespace App\Mainframe\Modules\Reports;
 
-use App\Mainframe\Features\Modular\BaseController\ModuleBaseController;
+use App\Mainframe\Features\Modular\ModularController\ModularController;
 
-class ReportController extends ModuleBaseController
+class ReportController extends ModularController
 {
 
     /**

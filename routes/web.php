@@ -12,16 +12,22 @@
 |
 */
 
-Route::get('/', 'HomeController@index')->name('root')->middleware(['verified']);
-Route::get('/home', 'HomeController@index')->name('home')->middleware(['verified']);
-Route::get('/test', 'TestController@test')->name('test')->middleware(['verified','password.confirm']);
+Route::get('/', 'HomeController@index')->name('home')->middleware(['verified']);
 
 /**
  * Mainframe routes
  */
+
 include_once app_path("Mainframe/routes/auth.php");
+include_once app_path("Mainframe/routes/auth-mainframe.php");
 include_once app_path("Mainframe/routes/modules.php");
 
-Auth::routes();
+// Auth::routes();
+Route::get('test', '\App\Mainframe\Http\Controller\TestController@test')->name('test')->middleware(['verified', 'password.confirm']);
 
+Route::get('mail', function () {
+    $user = \App\Mainframe\Modules\Users\User::find(2625);
 
+    return (new \App\Mainframe\Notifications\Auth\VerifyEmail($user))
+        ->toMail($user);
+});

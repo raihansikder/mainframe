@@ -19,7 +19,7 @@
     <div class="col-md-12 col-lg-10 no-padding">
 
         @if(($formState === 'create'))
-            {{ Form::open($formConfig) }} <input name="uuid" type="hidden" value="{{$uuid}}"/>
+            {{ Form::open($formConfig) }} <input name="uuid" type="hidden" value="{{$element->uuid}}"/>
         @elseif($formState === 'edit')
             {{ Form::model($element, $formConfig)}}
         @endif

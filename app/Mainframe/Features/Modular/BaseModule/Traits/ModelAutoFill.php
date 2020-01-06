@@ -30,7 +30,7 @@ trait ModelAutoFill
     {
         if (user()->ofTenant() && $this->hasTenantContext()) {
             $this->tenant_id = $this->tenant_id ?: user()->tenant_id;
-            $this->mf_project_id = $this->mf_project_id ?: $this->tenant->project_id;
+            $this->project_id = $this->project_id ?: $this->tenant->project_id;
         }
     }
 

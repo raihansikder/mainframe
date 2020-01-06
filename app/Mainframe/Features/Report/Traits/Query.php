@@ -4,9 +4,9 @@ namespace App\Mainframe\Features\Report\Traits;
 
 use DB;
 use Cache;
-use App\Mainframe\Features\Mf;
+use App\Mainframe\Helpers\Mf;
 use Illuminate\Database\Query\Builder;
-use App\Mainframe\Features\Helpers\Convert;
+use App\Mainframe\Helpers\Convert;
 
 /** @mixin \App\Mainframe\Features\Report\ReportBuilder $this */
 trait Query

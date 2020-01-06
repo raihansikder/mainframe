@@ -2,9 +2,9 @@
 
 namespace App\Mainframe\Modules\SuperHeroes;
 
-use App\Mainframe\Features\Modular\BaseController\ModuleBaseController;
+use App\Mainframe\Features\Modular\ModularController\ModularController;
 
-class SuperHeroController extends ModuleBaseController
+class SuperHeroController extends ModularController
 {
 
     /**

@@ -19,6 +19,7 @@
  *      $var['params']          ?? [];  // These are the html attributes like css, id etc for the field.
  *      $var['editable']        ?? true;
  */
+
 /**
  * @var \App\Mainframe\Modules\Modules\Module $module
  * @var \App\Mainframe\Modules\Users\User $user

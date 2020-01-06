@@ -2,9 +2,9 @@
 
 namespace App\Mainframe\Modules\Changes;
 
-use App\Mainframe\Features\Modular\BaseController\ModuleBaseController;
+use App\Mainframe\Features\Modular\ModularController\ModularController;
 
-class ChangeController extends ModuleBaseController
+class ChangeController extends ModularController
 {
 
     /**

@@ -9,7 +9,6 @@
  * @var string $uuid Only available for create
  * @var bool $editable
  * @var \App\Mainframe\Modules\Modules\Module $module
- * @var \App\Mainframe\Modules\Users\User $user
  */
 ?>
 
@@ -41,7 +40,6 @@
 
         <div class="clearfix"></div>
         @include('mainframe.form.input.text',['var'=>['name'=>'email_verified_at','label'=>'Email verified at', 'editable'=>false]])
-        @include('mainframe.form.select.select-array',['var'=>['name'=>'is_active','label'=>'Active', 'options'=>['1'=>'Yes','0'=>'No']]])
 
         <div class="clearfix"></div>
         <?php
@@ -49,7 +47,7 @@
         $var = [
             'name' => 'group_ids',
             'label' => 'Group',
-            'value' => (isset($user)) ? $element->group_ids : [],
+            'value' => (isset($element)) ? $element->group_ids : [],
             'query' => new \App\Group,
             'name_field' => 'title',
             'params' => ['multiple', 'id' => 'groups'],

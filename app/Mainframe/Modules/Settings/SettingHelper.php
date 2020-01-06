@@ -15,7 +15,7 @@ trait SettingHelper
     {
         /** @var \App\Mainframe\Modules\Settings\Setting $setting */
         /** @noinspection PhpUndefinedMethodInspection */
-        if ($setting = Setting::where('name', $name)->remember(cacheTime('short'))->first()) {
+        if ($setting = Setting::where('name', $name)->remember(timer('short'))->first()) {
             return $setting->settingValue();
         }
 

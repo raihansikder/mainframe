@@ -2,9 +2,9 @@
 
 namespace App\Mainframe\Modules\Packages;
 
-use App\Mainframe\Features\Modular\BaseController\ModuleBaseController;
+use App\Mainframe\Features\Modular\ModularController\ModularController;
 
-class PackageController extends ModuleBaseController
+class PackageController extends ModularController
 {
 
     /**

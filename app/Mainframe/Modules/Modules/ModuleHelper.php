@@ -14,7 +14,7 @@ trait ModuleHelper
      */
     public static function getActiveList()
     {
-        return Module::active()->remember(cacheTime('long'))->get();
+        return Module::active()->remember(timer('long'))->get();
     }
 
     /**
@@ -23,7 +23,7 @@ trait ModuleHelper
      */
     public static function byName($name)
     {
-        return Module::remember(cacheTime('long'))
+        return Module::remember(timer('long'))
             ->where('name', $name)
             ->first();
     }
@@ -46,7 +46,7 @@ trait ModuleHelper
             $q = $q->where('is_active', 1);
         }
         /** @noinspection PhpUndefinedMethodInspection */
-        $results = $q->remember(cacheTime('long'))
+        $results = $q->remember(timer('long'))
             ->get()->toArray();
 
         return array_column($results, 'name');
@@ -91,7 +91,7 @@ trait ModuleHelper
             if (! $i) {
                 break;
             }
-            if ($predecessor = ModuleGroup::remember(cacheTime('long'))->find($i)) {
+            if ($predecessor = ModuleGroup::remember(timer('long'))->find($i)) {
                 $stack[] = $predecessor;
                 $i = $predecessor->parent_id;
             }
@@ -105,7 +105,7 @@ trait ModuleHelper
     {
         return Module::where('module_group_id', $id)
             ->where('is_active', 1)->orderBy('order')
-            ->remember(cacheTime('long'))
+            ->remember(timer('long'))
             ->get();
     }
 
@@ -150,7 +150,7 @@ trait ModuleHelper
     public static function fromTable($table)
     {
         return Module::where('name', Module::nameFromTable($table))
-            ->remember(cacheTime('long'))
+            ->remember(timer('long'))
             ->first();
     }
 

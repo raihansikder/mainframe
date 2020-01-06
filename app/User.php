@@ -136,6 +136,10 @@ use App\Mainframe\Modules\Users\User as UserModel;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User active()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereEmailVerificationCode($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereIsTenantEditable($value)
+ * @property int|null $project_id
+ * @property-read \App\Mainframe\Modules\Projects\Project $project
+ * @property-read \App\Mainframe\Modules\Tenants\Tenant|null $tenant
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereProjectId($value)
  */
 class User extends UserModel
 {

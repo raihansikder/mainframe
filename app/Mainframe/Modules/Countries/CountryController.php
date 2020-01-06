@@ -2,9 +2,9 @@
 
 namespace App\Mainframe\Modules\Countries;
 
-use App\Mainframe\Features\Modular\BaseController\ModuleBaseController;
+use App\Mainframe\Features\Modular\ModularController\ModularController;
 
-class CountryController extends ModuleBaseController
+class CountryController extends ModularController
 {
 
     /**

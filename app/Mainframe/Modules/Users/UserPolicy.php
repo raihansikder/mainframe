@@ -6,7 +6,6 @@
 
 namespace App\Mainframe\Modules\Users;
 
-use App\Mainframe\Modules\Users\User;
 use App\Mainframe\Features\Modular\BaseModule\BaseModulePolicy;
 
 class UserPolicy extends BaseModulePolicy
@@ -72,5 +71,16 @@ class UserPolicy extends BaseModulePolicy
      * @return mixed
      */
     // public function forceDelete(User $user, $user) { }
+
+    /**
+     * Determine whether the user can permanently delete the user.
+     *
+     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @return mixed
+     */
+    public function accessApi(User $user)
+    {
+        return true;
+    }
 
 }

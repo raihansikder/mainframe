@@ -41,6 +41,10 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\DolorSits\DolorSit whereUpdatedBy($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\DolorSits\DolorSit whereUuid($value)
  * @mixin \Eloquent
+ * @property int|null $project_id
+ * @property-read \App\Mainframe\Modules\Projects\Project $project
+ * @property-read \App\Mainframe\Modules\Tenants\Tenant|null $tenant
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\DolorSits\DolorSit whereProjectId($value)
  */
 class DolorSit extends BaseModule
 {

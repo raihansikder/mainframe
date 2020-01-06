@@ -59,6 +59,10 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Reports\Report whereUuid($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Reports\Report whereVersion($value)
  * @mixin \Eloquent
+ * @property int|null $project_id
+ * @property-read \App\Mainframe\Modules\Projects\Project $project
+ * @property-read \App\Mainframe\Modules\Tenants\Tenant|null $tenant
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Reports\Report whereProjectId($value)
  */
 class Report extends BaseModule
 {

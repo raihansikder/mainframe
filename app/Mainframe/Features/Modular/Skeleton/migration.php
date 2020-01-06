@@ -22,7 +22,7 @@ class CreateSuperHeroesTable extends Migration
         Schema::create('super_heroes', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('uuid', 64)->nullable()->default(null);
-            $table->unsignedInteger('mf_project_id')->nullable()->default(null);
+            $table->unsignedInteger('project_id')->nullable()->default(null);
             $table->unsignedInteger('tenant_id')->nullable()->default(null);
             $table->string('name', 1024)->nullable()->default(null);
 

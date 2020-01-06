@@ -7,9 +7,9 @@ use Response;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
-use App\Mainframe\Features\Modular\BaseController\ModuleBaseController;
+use App\Mainframe\Features\Modular\ModularController\ModularController;
 
-class UploadController extends ModuleBaseController
+class UploadController extends ModularController
 {
 
     /**
@@ -30,7 +30,7 @@ class UploadController extends ModuleBaseController
 
     /**
      * @param  \Illuminate\Http\Request  $request
-     * @return \App\Mainframe\Features\Modular\BaseController\ModuleBaseController|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|void
+     * @return \App\Mainframe\Features\Modular\ModularController\ModularController|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|void
      */
     public function store(Request $request)
     {
@@ -88,7 +88,7 @@ class UploadController extends ModuleBaseController
      */
     public function handleUpload(UploadedFile $file)
     {
-        $path = conf('mainframe.config.upload_root');
+        $path = config('mainframe.config.upload_root');
 
         // todo: resolve tenant file root location
 
@@ -139,7 +139,7 @@ class UploadController extends ModuleBaseController
     public function download($uuid)
     {
         if ($upload = Upload::where('uuid', $uuid)
-            ->remember(cacheTime('long'))->first()) {
+            ->remember(timer('long'))->first()) {
             return Response::download(public_path().$upload->path);
         }
 

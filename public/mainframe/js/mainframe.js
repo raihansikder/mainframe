@@ -229,7 +229,7 @@ initCheckbox(); // Run while page load
  * @param url : url where uploader will post the data
  */
 function initUploader(id, url) {
-    $("#" + id + " #fileuploader").uploadFile({
+    $("#" + id + " .file-uploader").uploadFile({
         dragDropStr: "<span style='margin-left: 5px'> -OR- Drop files here</span>",
         url: url,
         method: "POST",

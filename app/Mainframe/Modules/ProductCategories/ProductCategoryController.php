@@ -2,9 +2,9 @@
 
 namespace App\Mainframe\Modules\ProductCategories;
 
-use App\Mainframe\Features\Modular\BaseController\ModuleBaseController;
+use App\Mainframe\Features\Modular\ModularController\ModularController;
 
-class ProductCategoryController extends ModuleBaseController
+class ProductCategoryController extends ModularController
 {
 
     /**

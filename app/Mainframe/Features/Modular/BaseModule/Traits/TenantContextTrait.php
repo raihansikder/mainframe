@@ -3,7 +3,7 @@
 namespace App\Mainframe\Features\Modular\BaseModule\Traits;
 
 use App\Mainframe\Modules\Tenants\Tenant;
-use App\Mainframe\Modules\MfProjects\MfProject;
+use App\Mainframe\Modules\Projects\Project;
 
 /** @mixin $this BaseModule */
 trait TenantContextTrait
@@ -27,5 +27,5 @@ trait TenantContextTrait
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function project() { return $this->belongsTo(MfProject::class); }
+    public function project() { return $this->belongsTo(Project::class); }
 }
