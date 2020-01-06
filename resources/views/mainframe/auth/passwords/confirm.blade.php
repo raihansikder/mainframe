@@ -8,7 +8,7 @@
 
         {{ __('Please confirm your password before continuing.') }}
 
-        <form method="POST" action="{{ route('password.confirm') }}">
+        <form method="POST" action="{{ route('mf.password.confirm') }}">
             @csrf
 
             @include('mainframe.form.input.text',['var'=>['name'=>'password','type'=>'password','label'=>'Password','value'=>'','container_class'=>'col-sm-12']])
@@ -20,7 +20,7 @@
                     </button>
 
                     @if (Route::has('password.request'))
-                        <a class="btn btn-link" href="{{ route('password.request') }}">
+                        <a class="btn btn-link" href="{{ route('mf.password.request') }}">
                             {{ __('Forgot Your Password?') }}
                         </a>
                     @endif

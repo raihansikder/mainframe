@@ -12,6 +12,11 @@ use App\Mainframe\Modules\Tenants\Tenant;
 class RegisterTenantController extends RegisterController
 {
 
+    /** @var Tenant */
+    public $tenant;
+    /** @var User */
+    public $user;
+
     /**
      * Show the application registration form.
      *
@@ -19,7 +24,7 @@ class RegisterTenantController extends RegisterController
      */
     public function showRegistrationForm()
     {
-        return view('auth.register-tenant');
+        return view('mainframe.auth.register-tenant');
     }
 
     /**
@@ -44,6 +49,7 @@ class RegisterTenantController extends RegisterController
 
     public function attemptRegistration()
     {
+        // Validate
         $validator = Validator::make(request()->all(), [
             'tenant_name' => 'required|unique:tenants,name',
             'user_first_name' => 'required',
@@ -58,11 +64,27 @@ class RegisterTenantController extends RegisterController
             return $this;
         }
 
-        /**
-         * Validation success.
-         */
-        $tenant = $this->createTenant();
-        $user = $this->createUser();
+        // Validation success. Now create tenant
+        $this->tenant = $this->createTenant();
+        if (! $this->tenant) {
+            $this->response()->fail('Tenant creation failed');
+
+            return $this;
+        }
+
+        // Create user
+        $this->user = $this->createUser();
+        if (! $this->user) {
+            $this->response()->fail('User creation failed');
+            Tenant::where('id', $this->tenant->id)->forceDelete();
+
+            return $this;
+        }
+
+        $this->response()->success();
+        $this->registered(request(), $this->user);
+
+        return $this;
 
     }
 
@@ -86,6 +108,7 @@ class RegisterTenantController extends RegisterController
     protected function createUser()
     {
         return User::create([
+            'tenant_id' => $this->tenant->id,
             'first_name' => request('first_name'),
             'last_name' => request('last_name'),
             'name' => request('first_name').' '.request('last_name'),
@@ -93,6 +116,18 @@ class RegisterTenantController extends RegisterController
             'password' => Hash::make(request('password')),
             'group_ids' => [Mf::TENANT_ADMIN_GROUP_ID],
         ]);
+    }
+
+    /**
+     * The user has been registered.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  User  $user
+     * @return mixed
+     */
+    protected function registered(Request $request, $user)
+    {
+        //
     }
 
 }

@@ -24,4 +24,4 @@ include_once app_path("Mainframe/routes/auth-mainframe.php");
 include_once app_path("Mainframe/routes/modules.php");
 
 // Auth::routes();
-Route::get('/test', '\App\Mainframe\Http\Controller\TestController@test')->name('test')->middleware(['verified', 'password.confirm']);
+Route::get('test', '\App\Mainframe\Http\Controller\TestController@test')->name('test')->middleware(['verified', 'password.confirm']);

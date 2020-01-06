@@ -39,4 +39,17 @@ class LoginController extends BaseController
         $this->middleware('guest')->except('logout');
     }
 
+    /*
+     * Mainframe overrides
+     */
+    /**
+     * Show the application's login form.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function showLoginForm()
+    {
+        return view('mainframe.auth.login');
+    }
+
 }

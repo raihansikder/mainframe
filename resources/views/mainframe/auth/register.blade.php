@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="card-body">
-        {{ Form::open(['route' => 'register','class'=>"registration-form", 'name'=>'registration_form', 'files'=>true]) }}
+        {{ Form::open(['route' => 'mf.register','class'=>"registration-form", 'name'=>'registration_form', 'files'=>true]) }}
         <?php
         $groups = [
             // '' => "",
