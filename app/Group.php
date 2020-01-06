@@ -55,10 +55,10 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule;
  * @property-read int|null $users_count
  * @method static Builder|BaseModule active()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Group whereTenantId($value)
- * @property int|null $mf_project_id
- * @property-read \App\Mainframe\Modules\MfProjects\MfProject $project
+ * @property int|null $project_id
+ * @property-read \App\Mainframe\Modules\Projects\Project $project
  * @property-read \App\Mainframe\Modules\Tenants\Tenant|null $tenant
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Group whereMfProjectId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Group whereProjectId($value)
  */
 class Group extends GroupModel
 {

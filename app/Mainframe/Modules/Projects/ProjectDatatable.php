@@ -3,12 +3,12 @@
 /** @noinspection DuplicatedCode */
 /** @noinspection SenselessMethodDuplicationInspection */
 
-namespace App\Mainframe\Modules\MfProjects;
+namespace App\Mainframe\Modules\Projects;
 
 use DB;
 use App\Mainframe\Features\Datatable\ModuleDatatable;
 
-class MfProjectDatatable extends ModuleDatatable
+class ProjectDatatable extends ModuleDatatable
 {
 
 

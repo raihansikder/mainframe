@@ -4,16 +4,16 @@
 
 /** @noinspection PhpUnused */
 
-namespace App\Mainframe\Modules\MfProjects;
+namespace App\Mainframe\Modules\Projects;
 
 use App\Mainframe\Modules\Users\User;
 use App\Mainframe\Features\Modular\BaseModule\BaseModulePolicy;
 
-class MfProjectPolicy extends BaseModulePolicy
+class ProjectPolicy extends BaseModulePolicy
 {
 
     /**
-     * Determine whether the user can view any mfProjects.
+     * Determine whether the user can view any projects.
      *
      * @param  \App\Mainframe\Modules\Users\User  $user
      * @return mixed
@@ -21,16 +21,16 @@ class MfProjectPolicy extends BaseModulePolicy
     public function viewAny(User $user) { }
 
     /**
-     * Determine whether the user can view the mfProject.
+     * Determine whether the user can view the project.
      *
      * @param  \App\Mainframe\Modules\Users\User  $user
-     * @param  MfProject  $mfProject
+     * @param  Project  $project
      * @return mixed
      */
-    // public function view(User $user, $mfProject) { }
+    // public function view(User $user, $project) { }
 
     /**
-     * Determine whether the user can create mfProjects.
+     * Determine whether the user can create projects.
      *
      * @param  \App\Mainframe\Modules\Users\User  $user
      * @return mixed
@@ -38,39 +38,39 @@ class MfProjectPolicy extends BaseModulePolicy
     // public function create(User $user) { }
 
     /**
-     * Determine whether the user can update the mfProject.
+     * Determine whether the user can update the project.
      *
      * @param  \App\Mainframe\Modules\Users\User  $user
-     * @param  MfProject  $mfProject
+     * @param  Project  $project
      * @return mixed
      */
-    // public function update(User $user, $mfProject) { }
+    // public function update(User $user, $project) { }
 
     /**
-     * Determine whether the user can delete the mfProject.
+     * Determine whether the user can delete the project.
      *
      * @param  \App\Mainframe\Modules\Users\User  $user
-     * @param  MfProject  $mfProject
+     * @param  Project  $project
      * @return mixed
      */
-    // public function delete(User $user, $mfProject) { }
+    // public function delete(User $user, $project) { }
 
     /**
-     * Determine whether the user can restore the mfProject.
+     * Determine whether the user can restore the project.
      *
      * @param  \App\Mainframe\Modules\Users\User  $user
-     * @param  MfProject  $mfProject
+     * @param  Project  $project
      * @return mixed
      */
-    // public function restore(User $user, $mfProject) { }
+    // public function restore(User $user, $project) { }
 
     /**
-     * Determine whether the user can permanently delete the mfProject.
+     * Determine whether the user can permanently delete the project.
      *
      * @param  \App\Mainframe\Modules\Users\User  $user
-     * @param  MfProject  $mfProject
+     * @param  Project  $project
      * @return mixed
      */
-    // public function forceDelete(User $user, $mfProject) { }
+    // public function forceDelete(User $user, $project) { }
 
 }

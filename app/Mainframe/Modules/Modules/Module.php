@@ -64,7 +64,7 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule;
  * @method static Builder|Module whereView($value)
  * @mixin \Eloquent
  * @method static Builder|BaseModule active()
- * @property-read \App\Mainframe\Modules\MfProjects\MfProject $project
+ * @property-read \App\Mainframe\Modules\Projects\Project $project
  * @property-read \App\Mainframe\Modules\Tenants\Tenant $tenant
  */
 class Module extends BaseModule

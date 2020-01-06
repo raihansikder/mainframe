@@ -43,10 +43,10 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Tenants\Tenant whereUserId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Tenants\Tenant whereUuid($value)
  * @mixin \Eloquent
- * @property int|null $mf_project_id
- * @property-read \App\Mainframe\Modules\MfProjects\MfProject $project
+ * @property int|null $project_id
+ * @property-read \App\Mainframe\Modules\Projects\Project $project
  * @property-read \App\Mainframe\Modules\Tenants\Tenant $tenant
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Tenants\Tenant whereMfProjectId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Tenants\Tenant whereProjectId($value)
  */
 class Tenant extends BaseModule
 {

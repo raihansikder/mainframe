@@ -24,7 +24,7 @@ DROP TABLE IF EXISTS `changes`;
 CREATE TABLE `changes`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `uuid` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
-  `mf_project_id` int(10) UNSIGNED NULL DEFAULT NULL,
+  `project_id` int(10) UNSIGNED NULL DEFAULT NULL,
   `tenant_id` int(11) NULL DEFAULT NULL,
   `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   `change_set` varchar(32) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
@@ -364,7 +364,7 @@ DROP TABLE IF EXISTS `dolor_sits`;
 CREATE TABLE `dolor_sits`  (
   `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `uuid` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `mf_project_id` int(10) UNSIGNED NULL DEFAULT NULL,
+  `project_id` int(10) UNSIGNED NULL DEFAULT NULL,
   `tenant_id` int(10) UNSIGNED NULL DEFAULT NULL,
   `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `is_active` tinyint(4) NULL DEFAULT 1,
@@ -405,7 +405,7 @@ DROP TABLE IF EXISTS `groups`;
 CREATE TABLE `groups`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `uuid` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
-  `mf_project_id` int(10) UNSIGNED NULL DEFAULT NULL,
+  `project_id` int(10) UNSIGNED NULL DEFAULT NULL,
   `tenant_id` int(11) UNSIGNED NULL DEFAULT NULL,
   `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   `title` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
@@ -443,7 +443,7 @@ DROP TABLE IF EXISTS `lorem_ipsums`;
 CREATE TABLE `lorem_ipsums`  (
   `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `uuid` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `mf_project_id` int(10) UNSIGNED NULL DEFAULT NULL,
+  `project_id` int(10) UNSIGNED NULL DEFAULT NULL,
   `tenant_id` int(10) UNSIGNED NULL DEFAULT NULL,
   `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `hidden` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
@@ -474,10 +474,10 @@ INSERT INTO `lorem_ipsums` VALUES (1, '2c9e9057-6095-4a48-aa9e-181e96172cb1', NU
 INSERT INTO `lorem_ipsums` VALUES (2, '175da4d1-e448-4e27-a642-4da5179ec5c6', 1, 1, 'ainw bNW', NULL, 'asdfasdf', 'asdfasdfsdf asdfasdf', 'Country,takes,lorem', NULL, NULL, '[\"0\",\"1\"]', 1, '[\"1\"]', 2, 0, 1, 5, 5, '2019-11-20 16:01:06', '2019-12-28 12:52:59', NULL, NULL);
 
 -- ----------------------------
--- Table structure for mf_projects
+-- Table structure for projects
 -- ----------------------------
-DROP TABLE IF EXISTS `mf_projects`;
-CREATE TABLE `mf_projects`  (
+DROP TABLE IF EXISTS `projects`;
+CREATE TABLE `projects`  (
   `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `uuid` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `code` varchar(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
@@ -495,10 +495,10 @@ CREATE TABLE `mf_projects`  (
 ) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
--- Records of mf_projects
+-- Records of projects
 -- ----------------------------
-INSERT INTO `mf_projects` VALUES (1, 'b632635d-877b-461e-8f3f-97256567eea7', 'artp', 'ArtemisPod', NULL, NULL, 1, 5, 5, '2019-12-28 14:13:40', '2019-12-28 14:13:40', NULL, NULL);
-INSERT INTO `mf_projects` VALUES (2, 'cedb4d2c-a465-4bb4-818e-09100ed02580', 'orhc', 'OrangeHC', NULL, NULL, 1, 5, 5, '2019-12-28 14:14:04', '2019-12-28 14:14:04', NULL, NULL);
+INSERT INTO `projects` VALUES (1, 'b632635d-877b-461e-8f3f-97256567eea7', 'artp', 'ArtemisPod', NULL, NULL, 1, 5, 5, '2019-12-28 14:13:40', '2019-12-28 14:13:40', NULL, NULL);
+INSERT INTO `projects` VALUES (2, 'cedb4d2c-a465-4bb4-818e-09100ed02580', 'orhc', 'OrangeHC', NULL, NULL, 1, 5, 5, '2019-12-28 14:14:04', '2019-12-28 14:14:04', NULL, NULL);
 
 -- ----------------------------
 -- Table structure for migrations
@@ -525,7 +525,7 @@ INSERT INTO `migrations` VALUES (8, '2019_12_19_135326_create_subscriptions_tabl
 INSERT INTO `migrations` VALUES (9, '2019_12_19_140356_create_packages_table', 6);
 INSERT INTO `migrations` VALUES (10, '2019_12_19_143935_create_notifications_table', 6);
 INSERT INTO `migrations` VALUES (11, '2019_12_19_152132_create_product_themes_table', 7);
-INSERT INTO `migrations` VALUES (12, '2019_12_28_134422_create_mf_projects_table', 8);
+INSERT INTO `migrations` VALUES (12, '2019_12_28_134422_create_projects_table', 8);
 
 -- ----------------------------
 -- Table structure for module_groups
@@ -608,7 +608,7 @@ INSERT INTO `modules` VALUES (53, '11a3b809-b3e0-4c8f-b59a-b99192e99588', 'packa
 INSERT INTO `modules` VALUES (54, 'c4582951-e9ee-4d1d-a9de-9230c037699a', 'countries', 'Country', 'Manage country', '\\App\\Mainframe\\Modules\\Countries\\Country', '\\App\\Mainframe\\Modules\\Countries\\CountryController', 'mainframe.modules.countries', 0, 1, 0, 0, 'countries.index', 'aqua', 'fa fa-plus', 1, 5, 5, '2019-12-19 14:39:47', '2019-12-19 14:39:47', NULL, NULL);
 INSERT INTO `modules` VALUES (55, 'cb21c345-ba75-452c-b326-5c20f6cd17b8', 'notifications', 'Notification', 'List of notifications', '\\App\\Mainframe\\Modules\\Notifications\\Notification', '\\App\\Mainframe\\Modules\\Notifications\\NotificationController', 'mainframe.modules.notifications', 0, 1, 0, 0, 'notifications.index', 'aqua', 'fa fa-plus', 1, 5, 5, '2019-12-19 14:39:47', '2019-12-19 14:39:47', NULL, NULL);
 INSERT INTO `modules` VALUES (56, 'f0180289-564e-4f79-aa5c-c40cce8ec4f3', 'product-themes', 'Product theme', 'Manage product theme', '\\App\\Mainframe\\Modules\\ProductThemes\\ProductTheme', '\\App\\Mainframe\\Modules\\ProductThemes\\ProductThemeController', 'mainframe.modules.product-themes', 0, 1, 0, 0, 'product-themes.index', 'aqua', 'fa fa-plus', 1, NULL, NULL, '2019-12-19 15:25:43', '2019-12-19 15:25:43', NULL, NULL);
-INSERT INTO `modules` VALUES (57, '47df59d0-bacb-4d1e-bfda-01c051c63681', 'mf-projects', 'Mf project', 'Manage mf project', '\\App\\Mainframe\\Modules\\MfProjects\\MfProject', '\\App\\Mainframe\\Modules\\MfProjects\\MfProjectController', NULL, 0, 1, 0, 0, 'mf-projects.index', 'aqua', 'fa fa-plus', 1, NULL, NULL, '2019-12-28 13:57:38', '2019-12-28 13:57:38', NULL, NULL);
+INSERT INTO `modules` VALUES (57, '47df59d0-bacb-4d1e-bfda-01c051c63681', 'projects', 'Mf project', 'Manage mf project', '\\App\\Mainframe\\Modules\\Projects\\Project', '\\App\\Mainframe\\Modules\\Projects\\ProjectController', NULL, 0, 1, 0, 0, 'projects.index', 'aqua', 'fa fa-plus', 1, NULL, NULL, '2019-12-28 13:57:38', '2019-12-28 13:57:38', NULL, NULL);
 
 -- ----------------------------
 -- Table structure for notifications
@@ -683,7 +683,7 @@ DROP TABLE IF EXISTS `product_categories`;
 CREATE TABLE `product_categories`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `uuid` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
-  `mf_project_id` int(10) UNSIGNED NULL DEFAULT NULL,
+  `project_id` int(10) UNSIGNED NULL DEFAULT NULL,
   `tenant_id` int(11) NULL DEFAULT NULL,
   `name` varchar(512) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   `name_ext` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
@@ -710,7 +710,7 @@ DROP TABLE IF EXISTS `product_themes`;
 CREATE TABLE `product_themes`  (
   `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `uuid` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `mf_project_id` int(10) UNSIGNED NULL DEFAULT NULL,
+  `project_id` int(10) UNSIGNED NULL DEFAULT NULL,
   `tenant_id` int(10) UNSIGNED NULL DEFAULT NULL,
   `name` varchar(1024) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `code` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
@@ -732,7 +732,7 @@ DROP TABLE IF EXISTS `reports`;
 CREATE TABLE `reports`  (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `uuid` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
-  `mf_project_id` int(10) UNSIGNED NULL DEFAULT NULL,
+  `project_id` int(10) UNSIGNED NULL DEFAULT NULL,
   `tenant_id` int(11) NULL DEFAULT NULL,
   `name` varchar(1024) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   `code` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
@@ -850,7 +850,7 @@ DROP TABLE IF EXISTS `subscriptions`;
 CREATE TABLE `subscriptions`  (
   `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `uuid` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `mf_project_id` int(10) UNSIGNED NULL DEFAULT NULL,
+  `project_id` int(10) UNSIGNED NULL DEFAULT NULL,
   `tenant_id` int(10) UNSIGNED NULL DEFAULT NULL,
   `name` varchar(1024) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `package_id` int(10) UNSIGNED NULL DEFAULT NULL,
@@ -984,7 +984,7 @@ DROP TABLE IF EXISTS `tenants`;
 CREATE TABLE `tenants`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `uuid` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
-  `mf_project_id` int(10) UNSIGNED NULL DEFAULT NULL,
+  `project_id` int(10) UNSIGNED NULL DEFAULT NULL,
   `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   `code` varchar(32) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   `user_id` int(11) UNSIGNED NULL DEFAULT NULL COMMENT 'Tenant admin who signed up',
@@ -1011,7 +1011,7 @@ DROP TABLE IF EXISTS `uploads`;
 CREATE TABLE `uploads`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `uuid` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
-  `mf_project_id` int(10) UNSIGNED NULL DEFAULT NULL,
+  `project_id` int(10) UNSIGNED NULL DEFAULT NULL,
   `tenant_id` int(11) NULL DEFAULT NULL,
   `name` varchar(512) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   `type` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
@@ -1071,7 +1071,7 @@ DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `uuid` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
-  `mf_project_id` int(10) UNSIGNED NULL DEFAULT NULL,
+  `project_id` int(10) UNSIGNED NULL DEFAULT NULL,
   `tenant_id` int(11) NULL DEFAULT NULL,
   `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   `email` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,

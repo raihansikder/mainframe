@@ -1,5 +1,5 @@
 <?php
-use App\Mainframe\Modules\Uploads\Upload;
+/** @var \App\Mainframe\Features\Modular\BaseModule\BaseModule $element */
 $input = new App\Mainframe\Features\Form\Upload($var, $element ?? null);
 ?>
 
@@ -32,23 +32,19 @@ $input = new App\Mainframe\Features\Form\Upload($var, $element ?? null);
     {{-- uploaded file list --}}
     @if($input->moduleId && $input->elementId)
         <?php
-        $q = Upload::where('module_id', $input->moduleId)
-            ->where('element_id', $input->elementId);
-
+        /** @var \Illuminate\Database\Eloquent\Builder $query */
+        $query = $element->uploads();
         if ($input->type) {
-            $q->where('type', $input->type);
+            $query->where('type', $input->type);
         }
+        $uploads = $query->orderBy('order', 'ASC')->orderBy('created_at', 'DESC')
+            ->offset(0)->take($input->limit)
+            ->get();
 
-        $q->orderBy('order', 'ASC')->orderBy('created_at', 'DESC');
-
-        $uploads = $q->offset(0)->take($input->limit)->get();
         ?>
 
-        <div class="clearfix">
-            @if(count($uploads))
-                @include('mainframe.layouts.module.form.includes.features.uploads.uploads-list-default',$uploads)
-            @endif
-        </div>
+        @include('mainframe.layouts.module.form.includes.features.uploads.uploads-list-default',$uploads)
+
     @endif
 </div>
 

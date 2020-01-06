@@ -19,10 +19,12 @@ Route::get('/test', 'TestController@test')->name('test')->middleware(['verified'
 /**
  * Mainframe routes
  */
+
+
 include_once app_path("Mainframe/routes/auth.php");
 include_once app_path("Mainframe/routes/auth-mainframe.php");
 include_once app_path("Mainframe/routes/modules.php");
 
-Auth::routes();
+// Auth::routes();
 
 

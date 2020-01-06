@@ -60,10 +60,10 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule;
  * @method static Builder|Change whereUpdatedBy($value)
  * @method static Builder|Change whereUuid($value)
  * @mixin \Eloquent
- * @property int|null $mf_project_id
- * @property-read \App\Mainframe\Modules\MfProjects\MfProject $project
+ * @property int|null $project_id
+ * @property-read \App\Mainframe\Modules\Projects\Project $project
  * @property-read \App\Mainframe\Modules\Tenants\Tenant|null $tenant
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Changes\Change whereMfProjectId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Changes\Change whereProjectId($value)
  */
 class Change extends BaseModule
 {

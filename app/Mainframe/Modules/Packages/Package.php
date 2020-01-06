@@ -49,7 +49,7 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Packages\Package whereUuid($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Packages\Package whereYearlyPrice($value)
  * @mixin \Eloquent
- * @property-read \App\Mainframe\Modules\MfProjects\MfProject $project
+ * @property-read \App\Mainframe\Modules\Projects\Project $project
  * @property-read \App\Mainframe\Modules\Tenants\Tenant $tenant
  */
 class Package extends BaseModule

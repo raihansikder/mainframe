@@ -1,6 +1,6 @@
 <?php
 /**
- * @var \App\Mainframe\Modules\Superheroes\MfProject $module
+ * @var \App\Mainframe\Modules\Superheroes\Notification $module
  * @var \App\Mainframe\Modules\Users\User $user
  * @var \App\Mainframe\Modules\Users\User $element
  * @var string $formState create|edit

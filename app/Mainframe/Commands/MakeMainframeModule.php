@@ -14,7 +14,7 @@ class MakeMainframeModule extends Command
      *
      * @var string
      */
-    protected $signature = 'mainframe:module {module}';
+    protected $signature = 'mainframe:make-module {module}';
 
     /**
      * The console command description.

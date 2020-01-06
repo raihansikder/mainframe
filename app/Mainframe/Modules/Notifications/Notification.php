@@ -1,56 +1,12 @@
 <?php /** @noinspection PhpUndefinedMethodInspection */
 
-namespace App\Mainframe\Modules\MfProjects;
+namespace App\Mainframe\Modules\Notifications;
 
 use App\Mainframe\Features\Modular\BaseModule\BaseModule;
 
-/**
- * App\Mainframe\Modules\MfProjects\MfProject
- *
- * @property int $id
- * @property string|null $uuid
- * @property string|null $code
- * @property string|null $name
- * @property string|null $description
- * @property string|null $configuration JSON configuration for a project
- * @property int|null $is_active
- * @property int|null $created_by
- * @property int|null $updated_by
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property \Illuminate\Support\Carbon|null $deleted_at
- * @property int|null $deleted_by
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Changes\Change[] $changes
- * @property-read int|null $changes_count
- * @property-read \App\Mainframe\Modules\Users\User|null $creator
- * @property-read \App\Mainframe\Modules\Uploads\Upload $latestUpload
- * @property-read \App\Mainframe\Modules\MfProjects\MfProject $project
- * @property-read \App\Mainframe\Modules\Tenants\Tenant $tenant
- * @property-read \App\Mainframe\Modules\Users\User|null $updater
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Uploads\Upload[] $uploads
- * @property-read int|null $uploads_count
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Features\Modular\BaseModule\BaseModule active()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\MfProjects\MfProject newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\MfProjects\MfProject newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\MfProjects\MfProject query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\MfProjects\MfProject whereCode($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\MfProjects\MfProject whereConfiguration($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\MfProjects\MfProject whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\MfProjects\MfProject whereCreatedBy($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\MfProjects\MfProject whereDeletedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\MfProjects\MfProject whereDeletedBy($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\MfProjects\MfProject whereDescription($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\MfProjects\MfProject whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\MfProjects\MfProject whereIsActive($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\MfProjects\MfProject whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\MfProjects\MfProject whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\MfProjects\MfProject whereUpdatedBy($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\MfProjects\MfProject whereUuid($value)
- * @mixin \Eloquent
- */
-class MfProject extends BaseModule
+class Notification extends BaseModule
 {
-    use MfProjectHelper;
+    use NotificationHelper;
     /*
     |--------------------------------------------------------------------------
     | Fillable attributes
@@ -61,10 +17,6 @@ class MfProject extends BaseModule
     protected $fillable = [
         'uuid',
         'name',
-        'code',
-        'name',
-        'description',
-        'configuration',
         'is_active',
     ];
 
@@ -140,8 +92,8 @@ class MfProject extends BaseModule
     public static function boot()
     {
         parent::boot();
-        self::observe(MfProjectObserver::class);
-        static::saving(function (MfProject $element) { });
+        self::observe(NotificationObserver::class);
+        static::saving(function (Notification $element) { });
     }
 
     /*
@@ -214,7 +166,7 @@ class MfProject extends BaseModule
    |--------------------------------------------------------------------------
    | Todo: Helper functions
    |--------------------------------------------------------------------------
-   | Todo: Write Helper functions in the MfProjectHelper trait.
+   | Todo: Write Helper functions in the NotificationHelper trait.
    */
 
 }

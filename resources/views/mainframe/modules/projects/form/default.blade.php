@@ -4,7 +4,7 @@
 /**
  * @var \App\Mainframe\Modules\Modules\Module $module
  * @var \App\Mainframe\Modules\Users\User $user
- * @var \App\Mainframe\Modules\MfProjects\MfProject $element
+ * @var \App\Mainframe\Modules\Projects\Project $element
  * @var string $formState create|edit
  * @var array $formConfig
  * @var string $uuid Only available for create
@@ -45,5 +45,5 @@
 
 @section('js')
     @parent
-    @include('mainframe.modules.mf-projects.form.js')
+    @include('mainframe.modules.projects.form.js')
 @endsection
