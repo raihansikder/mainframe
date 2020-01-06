@@ -68,8 +68,5 @@ Route::middleware(['auth','verified'])->group(function () use ($modules, $module
      */
     Route::get('download/{uuid}', '\App\Mainframe\Modules\Uploads\UploadController@download')->name('get.download');
 
-    /*
-     * Log out
-     */
-    Route::get('logout', 'Auth\LoginController@logout')->name('get.logout');
+
 });

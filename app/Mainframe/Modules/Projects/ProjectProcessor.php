@@ -80,7 +80,7 @@ class ProjectProcessor extends ModelProcessor
     /**
      * Run validations for saving. This should be common for both creating and updating.
      *
-     * @param $project \App\Mainframe\Modules\Superheroes\Project
+     * @param $project \App\Mainframe\Modules\Projects\Project
      * @return $this
      */
     public function saving($project)
@@ -104,7 +104,7 @@ class ProjectProcessor extends ModelProcessor
     // /**
     //  * Creating validation
     //  *
-    //  * @param $project \App\Mainframe\Modules\Superheroes\Project
+    //  * @param $project \App\Mainframe\Modules\Projects\Project
     //  * @return \App\Mainframe\Features\Modular\Validator\ModelValidator|\App\Mainframe\Modules\Settings\SettingValidator
     //  */
     // public function creating($project)
@@ -115,7 +115,7 @@ class ProjectProcessor extends ModelProcessor
     // /**
     //  * Updating validation
     //  *
-    //  * @param $project \App\Mainframe\Modules\Superheroes\Project
+    //  * @param $project \App\Mainframe\Modules\Projects\Project
     //  * @return \App\Mainframe\Features\Modular\Validator\ModelValidator|\App\Mainframe\Modules\Settings\SettingValidator
     //  */
     // public function updating($project)
@@ -126,7 +126,7 @@ class ProjectProcessor extends ModelProcessor
     // /**
     //  *  Deleting validation
     //  *
-    //  * @param $project \App\Mainframe\Modules\Superheroes\Project
+    //  * @param $project \App\Mainframe\Modules\Projects\Project
     //  * @return \App\Mainframe\Features\Modular\Validator\ModelValidator|\App\Mainframe\Modules\Settings\SettingValidator
     //  */
     // public function deleting($project)
@@ -137,7 +137,7 @@ class ProjectProcessor extends ModelProcessor
     // /**
     //  * Restoring validation
     //  *
-    //  * @param $project \App\Mainframe\Modules\Superheroes\Project
+    //  * @param $project \App\Mainframe\Modules\Projects\Project
     //  * @return \App\Mainframe\Features\Modular\Validator\ModelValidator|\App\Mainframe\Modules\Settings\SettingValidator
     //  */
     // public function restoring($project)
@@ -157,7 +157,7 @@ class ProjectProcessor extends ModelProcessor
     /**
      * Validate the name. Name should not be 'Joker'
      *
-     * @param $project \App\Mainframe\Modules\Superheroes\Project
+     * @param $project \App\Mainframe\Modules\Projects\Project
      * @return $this
      */
     private function nameIsNotJoker($project)

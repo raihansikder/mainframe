@@ -4,50 +4,6 @@ namespace App\Mainframe\Modules\Projects;
 
 use App\Mainframe\Features\Modular\BaseModule\BaseModule;
 
-/**
- * App\Mainframe\Modules\Projects\Project
- *
- * @property int $id
- * @property string|null $uuid
- * @property string|null $code
- * @property string|null $name
- * @property string|null $description
- * @property string|null $configuration JSON configuration for a project
- * @property int|null $is_active
- * @property int|null $created_by
- * @property int|null $updated_by
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property \Illuminate\Support\Carbon|null $deleted_at
- * @property int|null $deleted_by
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Changes\Change[] $changes
- * @property-read int|null $changes_count
- * @property-read \App\Mainframe\Modules\Users\User|null $creator
- * @property-read \App\Mainframe\Modules\Uploads\Upload $latestUpload
- * @property-read \App\Mainframe\Modules\Projects\Project $project
- * @property-read \App\Mainframe\Modules\Tenants\Tenant $tenant
- * @property-read \App\Mainframe\Modules\Users\User|null $updater
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Uploads\Upload[] $uploads
- * @property-read int|null $uploads_count
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Features\Modular\BaseModule\BaseModule active()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Projects\Project newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Projects\Project newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Projects\Project query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Projects\Project whereCode($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Projects\Project whereConfiguration($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Projects\Project whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Projects\Project whereCreatedBy($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Projects\Project whereDeletedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Projects\Project whereDeletedBy($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Projects\Project whereDescription($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Projects\Project whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Projects\Project whereIsActive($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Projects\Project whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Projects\Project whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Projects\Project whereUpdatedBy($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Projects\Project whereUuid($value)
- * @mixin \Eloquent
- */
 class Project extends BaseModule
 {
     use ProjectHelper;

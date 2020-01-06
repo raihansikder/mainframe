@@ -1,8 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
-
-use App\Mainframe\Http\Controller\BaseController;
+namespace App\Mainframe\Http\Controller;
 
 class TestController extends BaseController
 {

@@ -3,6 +3,7 @@
 namespace App\Mainframe\Http\Controller;
 
 use View;
+use App\Http\Controllers\Controller;
 use App\Mainframe\Features\Core\Traits\Validable;
 use App\Mainframe\Features\Core\Traits\SendResponse;
 use App\Mainframe\Features\Core\Traits\HasMessageBag;

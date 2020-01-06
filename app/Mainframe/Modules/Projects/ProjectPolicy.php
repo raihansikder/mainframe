@@ -1,5 +1,4 @@
 <?php
-
 /** @noinspection PhpInconsistentReturnPointsInspection */
 
 /** @noinspection PhpUnused */

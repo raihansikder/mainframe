@@ -12,31 +12,31 @@
 
 Route::prefix('mf/auth')->group(function () {
 
-    $mfPrefix = 'mf.'; // Route name prefix
-    $path = '\App\Mainframe\Http\Controllers\\';
+    $namePrefix = 'mf.'; // Route name prefix
+    $controllerRoot = '\App\Mainframe\Http\Controllers\\';
 
-    Route::get('login', $path.'Auth\LoginController@showLoginForm')->name($mfPrefix.'login');
-    Route::post('login', $path.'Auth\LoginController@login');
-    Route::post('logout', $path.'Auth\LoginController@logout')->name($mfPrefix.'logout');
+    Route::get('login', $controllerRoot.'Auth\LoginController@showLoginForm')->name($namePrefix.'login');
+    // Route::post('login', $controllerRoot.'Auth\LoginController@login');
+    // Route::post('logout', $controllerRoot.'Auth\LoginController@logout')->name($namePrefix.'logout');
 
     // Registration Routes...
-    Route::get('register', $path.'Auth\RegisterController@showRegistrationForm')->name($mfPrefix.'register');
-    Route::post('register', $path.'Auth\RegisterController@register');
+    Route::get('register', $controllerRoot.'Auth\RegisterController@showRegistrationForm')->name($namePrefix.'register');
+    Route::post('register', $controllerRoot.'Auth\RegisterController@register');
 
     // Password Reset Routes...
-    Route::get('password/reset', $path.'Auth\ForgotPasswordController@showLinkRequestForm')->name($mfPrefix.'password.request');
-    Route::post('password/email', $path.'Auth\ForgotPasswordController@sendResetLinkEmail')->name($mfPrefix.'password.email');
-    Route::get('password/reset/{token}', $path.'Auth\ResetPasswordController@showResetForm')->name($mfPrefix.'password.reset');
-    Route::post('password/reset', $path.'Auth\ResetPasswordController@reset')->name($mfPrefix.'password.update');
+    Route::get('password/reset', $controllerRoot.'Auth\ForgotPasswordController@showLinkRequestForm')->name($namePrefix.'password.request');
+    Route::post('password/email', $controllerRoot.'Auth\ForgotPasswordController@sendResetLinkEmail')->name($namePrefix.'password.email');
+    Route::get('password/reset/{token}', $controllerRoot.'Auth\ResetPasswordController@showResetForm')->name($namePrefix.'password.reset');
+    Route::post('password/reset', $controllerRoot.'Auth\ResetPasswordController@reset')->name($namePrefix.'password.update');
 
     // Password Confirmation Routes...
-    Route::get('password/confirm', $path.'Auth\ConfirmPasswordController@showConfirmForm')->name($mfPrefix.'password.confirm');
-    Route::post('password/confirm', $path.'Auth\ConfirmPasswordController@confirm');
+    Route::get('password/confirm', $controllerRoot.'Auth\ConfirmPasswordController@showConfirmForm')->name($namePrefix.'password.confirm');
+    Route::post('password/confirm', $controllerRoot.'Auth\ConfirmPasswordController@confirm');
 
     // Email Verification Routes...
-    Route::get('email/verify', $path.'Auth\VerificationController@show')->name($mfPrefix.'verification.notice');
-    Route::get('email/verify/{id}/{hash}', $path.'Auth\VerificationController@verify')->name($mfPrefix.'verification.verify');
-    Route::post('email/resend', $path.'Auth\VerificationController@resend')->name($mfPrefix.'verification.resend');
+    Route::get('email/verify', $controllerRoot.'Auth\VerificationController@show')->name($namePrefix.'verification.notice');
+    Route::get('email/verify/{id}/{hash}', $controllerRoot.'Auth\VerificationController@verify')->name($namePrefix.'verification.verify');
+    Route::post('email/resend', $controllerRoot.'Auth\VerificationController@resend')->name($namePrefix.'verification.resend');
 
     /*
     |--------------------------------------------------------------------------
@@ -46,7 +46,9 @@ Route::prefix('mf/auth')->group(function () {
     */
 
     // Tenant Registration Routes...
-    Route::get('register/tenant', $path.'Auth\RegisterTenantController@showRegistrationForm')->name($mfPrefix.'tenant.register');
-    Route::post('register/tenant', $path.'Auth\RegisterTenantController@register');
+    Route::get('register/tenant', $controllerRoot.'Auth\RegisterTenantController@showRegistrationForm')->name($namePrefix.'tenant.register');
+    Route::post('register/tenant', $controllerRoot.'Auth\RegisterTenantController@register');
 
+    // Log out
+    Route::get('logout', $controllerRoot.'Auth\LoginController@logout')->name($namePrefix.'get.logout');
 });
