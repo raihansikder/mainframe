@@ -11,19 +11,16 @@
 
 <h2>
     @section('title')
-        Title
     @show
 </h2>
 
 <div style="clear: both"></div>
 
 @section('content')
-    Content
 @show
 
 <div style="clear: both"></div>
 @section('footer')
-    Footer
 @show
 </body>
 

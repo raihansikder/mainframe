@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection ALL */
 
 namespace App\Mainframe\Http\Controllers\Auth;
 
@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 use App\Mainframe\Helpers\Mf;
 use Illuminate\Support\Facades\Hash;
 use App\Mainframe\Modules\Users\User;
+use Illuminate\Auth\Events\Registered;
 use App\Mainframe\Modules\Tenants\Tenant;
+use App\Mainframe\Notifications\Auth\VerifyEmail;
 
 class RegisterTenantController extends RegisterController
 {
@@ -111,6 +113,7 @@ class RegisterTenantController extends RegisterController
             'tenant_id' => $this->tenant->id,
             'first_name' => request('first_name'),
             'last_name' => request('last_name'),
+
             'name' => request('first_name').' '.request('last_name'),
             'email' => request('user_email'),
             'password' => Hash::make(request('password')),
@@ -127,7 +130,8 @@ class RegisterTenantController extends RegisterController
      */
     protected function registered(Request $request, $user)
     {
-        //
+        event(new Registered($user));
+        $user->notify(new VerifyEmail());
     }
 
 }
