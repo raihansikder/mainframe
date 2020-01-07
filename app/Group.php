@@ -47,7 +47,7 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule;
  * @method static Builder|Group whereUpdatedAt($value)
  * @method static Builder|Group whereUpdatedBy($value)
  * @method static Builder|Group whereUuid($value)
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Changes\Change[] $changes
+
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Uploads\Upload[] $uploads
  * @property-read \App\Mainframe\Modules\Uploads\Upload $latestUpload
  * @property-read int|null $changes_count

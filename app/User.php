@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Builder;
-use App\Mainframe\Modules\Users\User as UserModel;
+use App\Mainframe\Modules\Users\User as MFUserModel;
 
 /**
  * App\User
@@ -62,7 +62,7 @@ use App\Mainframe\Modules\Users\User as UserModel;
  * @property string|null $dob
  * @property string|null $group_ids
  * @property int|null $is_test
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Changes\Change[] $changes
+
  * @property-read int|null $changes_count
  * @property-read \App\Mainframe\Modules\Users\User|null $creator
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Group[] $groups
@@ -141,7 +141,7 @@ use App\Mainframe\Modules\Users\User as UserModel;
  * @property-read \App\Mainframe\Modules\Tenants\Tenant|null $tenant
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereProjectId($value)
  */
-class User extends UserModel
+class User extends MFUserModel
 {
 
 }

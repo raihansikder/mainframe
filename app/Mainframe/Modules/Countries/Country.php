@@ -31,7 +31,7 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule;
  * @property string|null $currency_symbol
  * @property string|null $currency_override
  * @property string|null $currency_override_symbol
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Changes\Change[] $changes
+
  * @property-read int|null $changes_count
  * @property-read \App\Mainframe\Modules\Users\User|null $creator
  * @property-read \App\Mainframe\Modules\Uploads\Upload $latestUpload

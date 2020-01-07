@@ -2,12 +2,13 @@
 
 namespace App\Mainframe\Features\Modular\BaseModule;
 
+use OwenIt\Auditing\Models\Audit;
 use Watson\Rememberable\Rememberable;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Eloquent\Model;
+use OwenIt\Auditing\Contracts\Auditable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Mainframe\Features\Multitenant\GlobalScope\AddTenant;
-use App\Mainframe\Features\Modular\BaseModule\Traits\Changeable;
 use App\Mainframe\Features\Modular\BaseModule\Traits\Uploadable;
 use App\Mainframe\Features\Modular\BaseModule\Traits\Processable;
 use App\Mainframe\Features\Modular\BaseModule\Traits\ModularTrait;
@@ -35,11 +36,14 @@ use App\Mainframe\Features\Modular\BaseModule\Traits\TenantContextTrait;
  * @method static bool|null forceDelete()
  * @method static Model|Builder remember($param)
  */
-class BaseModule extends Model
+class BaseModule extends Model implements Auditable
 {
-    use SoftDeletes, Rememberable, Processable, EventIdentifiable,
+    use SoftDeletes, Rememberable;
+    use \OwenIt\Auditing\Auditable;
+
+    use Processable, EventIdentifiable,
         RelatedUsersTrait, TenantContextTrait, UpdaterTrait,
-        Uploadable, Changeable, ModularTrait, ModelAutoFill;
+        Uploadable, ModularTrait, ModelAutoFill;
 
     protected $dates = ['created_at', 'updated_at', 'deleted_at'];
 
@@ -56,6 +60,18 @@ class BaseModule extends Model
     {
         parent::boot();
 
+        /**
+         * Do not store audit logs if there is no change.
+         */
+        Audit::creating(function (Audit $model) {
+            if (empty($model->old_values) && empty($model->new_values)) {
+                return false;
+            }
+        });
+
+        /**
+         * For tenant user add global scope.
+         */
         if (user()->ofTenant()) {
             static::addGlobalScope(new AddTenant);
         }

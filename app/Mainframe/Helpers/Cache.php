@@ -14,7 +14,7 @@ class Cache extends \Illuminate\Support\Facades\Cache
      */
     public static function time($key = 'none')
     {
-        if (env('QUERY_CACHE') == true && request('no_cache') != 'true') {
+        if (config('mainframe.config.query-cache') == true && request('no_cache') != 'true') {
             return config('mainframe.cache-time.'.$key);
         }
 

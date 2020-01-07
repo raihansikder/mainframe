@@ -191,9 +191,9 @@ class Mf
 
         if (isset($user)) {
             if (! Session::has('permissions')) {
-                storePermissionsInSession();
+                Mf::storePermissionsInSession();
             }
-            storePermissionsInSession(); // Force store permission
+            Mf::storePermissionsInSession(); // Force store permission
 
             $permissions = Session::get('permissions');
             if ((isset($permissions['superuser']) && $permissions['superuser'] == 1)) { // allow for super user
@@ -210,30 +210,7 @@ class Mf
         return $allowed;
     }
 
-    /**
-     * Same as has access
-     *
-     * @param            $permission
-     * @param  bool|false  $user_id
-     * @return bool
-     */
-    public static function hasPermission($permission, $user_id = null)
-    {
-        return hasAccess($permission, $user_id);
-    }
 
-    /**
-     * Short hand function to check module specific permissions
-     *
-     * @param            $moduleName
-     * @param            $permission
-     * @param  bool|false  $user_id
-     * @return bool
-     */
-    public static function hasModulePermission($moduleName, $permission, $user_id = null)
-    {
-        return hasAccess("perm-module-$moduleName-$permission", $user_id);
-    }
 
     /**
      * Stores currently logged in users permission in session as array.

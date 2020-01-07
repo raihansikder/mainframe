@@ -1,1 +1,0 @@
-@extends('mainframe.layouts.module.grid.template')
