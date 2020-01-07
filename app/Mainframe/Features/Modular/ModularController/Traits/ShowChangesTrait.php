@@ -2,58 +2,34 @@
 
 namespace App\Mainframe\Features\Modular\ModularController\Traits;
 
-use Request;
-use Response;
-use App\Mainframe\Features\Modular\ModularController\ModularController;
-
+/** @mixin  \App\Mainframe\Features\Modular\ModularController\ModularController */
 trait ShowChangesTrait
 {
     /**
      * Show all the changes/change logs of an item
      *
      * @param $id
-     * @return \Illuminate\Http\JsonResponse|ModularController
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\JsonResponse|\Illuminate\View\View|void
      */
     public function changes($id)
     {
-        /** @var \App\Http\Mainframe\Features\Modular\BaseModule\BaseModule $Model */
-        /** @var \App\Http\Mainframe\Features\Modular\BaseModule\BaseModule $element */
-        // init local variables
-
-        /** @var \App\Http\Mainframe\Features\Modular\BaseModule\BaseModule $Model */
-        /** @var \App\Http\Mainframe\Features\Modular\BaseModule\BaseModule $element */
-        $Model = model($this->name);
-        //$ret = ret(); // load default return values
-        # --------------------------------------------------------
-        # Process return/redirect
-        # --------------------------------------------------------
-        if ($element = $Model::find($id)) { // Check if the element you are trying to edit exists
-            if (user()->can('view',$element)) { // Check if the element is viewable
-                $changes = $element->changes;
-                $ret = ret('success', '', ['data' => $changes]);
-            } else { // Not viewable by the user. Set error message and return value.
-                $ret = ret('fail', 'The element is not view-able by current user.');
-                //return showPermissionErrorPage("The element is not view-able by current user.");
-            }
-        } else { // The element does not exist. Set error and return values
-            $ret = ret('fail', 'The item that you are trying to access does not exist or has been deleted');
-            //return showGenericErrorPage("The item that you are trying to access does not exist or has been deleted");
-        }
-        # --------------------------------------------------------
-        # Process return/redirect
-        # --------------------------------------------------------
-        if (Request::get('ret') === 'json') {
-            return Response::json(fillRet($ret));
+        if (! $this->element = $this->model->find($id)) {
+            return $this->response()->notFound();
         }
 
-        if ($ret['status'] === 'fail') { // Update failed. Redirect to fail path(url)
-            return showGenericErrorPage($ret['message']);
+        if (! user()->can('view', $this->element)) {
+            return $this->response()->permissionDenied();
         }
 
-        // Update successful. Redirect to success path(url)
+        $audits = $this->element->audits;
+        // return $audits;
 
-        /** @var array $changes */
-        return view('mainframe.layouts.module.changes.template')
-            ->with('changes', $changes);
+        if ($this->response()->expectsJson()) {
+            return $this->response()->success()->load($audits)->json();
+        }
+
+        return $this->response()->view('mainframe.layouts.module.changes.index')
+            ->with(['audits' => $audits]);
+
     }
 }

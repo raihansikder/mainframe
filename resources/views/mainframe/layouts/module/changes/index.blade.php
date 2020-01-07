@@ -1,6 +1,5 @@
 @extends('mainframe.layouts.default.template')
 
-
 @section('title')
     Change log
 @endsection
@@ -10,27 +9,47 @@
         <thead>
         <tr>
             <th>id</th>
-            <th>Change set</th>
-            <th>Event</th>
-            <th>Field</th>
-            <th>Old</th>
-            <th>New</th>
-            <th>Updated By</th>
-            <th>Updated At</th>
+            <th>Changes</th>
         </tr>
         </thead>
         <tbody>
-        @foreach($changes as $change)
+
+        @foreach($audits as $audit)
+            <?php
+            /** @var \OwenIt\Auditing\Models\Audit $audit */
+            $user = \App\User::remember(timer('long'))->find($audit->user_id);
+            $email = $user->email;
+            ?>
             <tr>
-                <td>{{$change->id}}</td>
-                <td>{{$change->change_set}}</td>
-                <td>{{$change->name}}</td>
-                <td>{{$change->field}}</td>
-                <td>{{$change->old}}</td>
-                <td>{{$change->new}}</td>
-                <?php $updatedby_email = \App\User::find($change->updated_by)->email; ?>
-                <td>{{$updatedby_email}}</td>
-                <td>{{$change->updated_at}}</td>
+                <td>
+                    {{pad($audit->id)}} @ {{$audit->updated_at}} <br/>
+                    <span class="label label-info">{{ucfirst($audit->event)}}</span> <br/>
+                    {{$email}}
+                </td>
+                <td>
+                    <?php
+                    $changes = $audit->getModified();
+                    ?>
+                    <table class="table table-striped table-condensed">
+                        <thead class="bg-gray-light">
+                        <tr>
+                            <th style="width: 150px">Field</th>
+                            <th>Old</th>
+                            <th>New</th>
+                        </tr>
+                        </thead>
+
+                        @foreach($changes as $title => $value)
+                            <tbody>
+                            <tr>
+                                <td><code>{{$title}}</code></td>
+                                <td>{{$value['old'] ?? ''}}</td>
+                                <td>{{$value['new'] ?? ''}}</td>
+                            </tr>
+                            </tbody>
+                        @endforeach
+                    </table>
+                </td>
             </tr>
         @endforeach
         </tbody>

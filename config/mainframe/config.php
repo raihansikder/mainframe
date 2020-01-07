@@ -17,5 +17,6 @@ return [
 
     'name' => env('APP_NAME', 'Laravel'),
     'upload_root' => '/files/',
+    'query-cache' => env('QUERY_CACHE', false),
 
 ];
