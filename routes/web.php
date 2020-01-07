@@ -28,6 +28,6 @@ Route::get('test', '\App\Mainframe\Http\Controller\TestController@test')->name('
 Route::get('mail', function () {
     $user = \App\Mainframe\Modules\Users\User::find(2625);
 
-    return (new \App\Mainframe\Notifications\Auth\VerifyEmail($user))
+    return (new \App\Mainframe\Notifications\Auth\ResetPassword())
         ->toMail($user);
 });

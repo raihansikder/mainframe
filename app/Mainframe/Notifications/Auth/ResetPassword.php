@@ -9,7 +9,7 @@ use Illuminate\Support\Carbon;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class VerifyEmail extends \Illuminate\Auth\Notifications\VerifyEmail implements ShouldQueue
+class ResetPassword extends \Illuminate\Auth\Notifications\ResetPassword implements ShouldQueue
 {
     use Queueable;
 
@@ -21,11 +21,17 @@ class VerifyEmail extends \Illuminate\Auth\Notifications\VerifyEmail implements 
      */
     public function toMail($notifiable)
     {
-        $url = $this->verificationUrl($notifiable);
+
+        if (static::$toMailCallback) {
+            return call_user_func(static::$toMailCallback, $notifiable, $this->token);
+        }
 
         return (new MailMessage)->view(
-            'mainframe.emails.auth.email-verification', ['user' => $notifiable, 'url' => $url]
-        )->subject(__('Verify Email Address'));
+            'mainframe.emails.auth.reset-password',
+            [
+                'url' => url(config('app.url').route('password.reset', ['token' => $this->token, 'email' => $notifiable->getEmailForPasswordReset()], false))
+            ]
+        )->subject(__('Reset Password Notification 222'));
     }
 
     /**

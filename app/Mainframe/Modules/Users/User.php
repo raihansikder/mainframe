@@ -6,12 +6,12 @@ use App\Group;
 use InvalidArgumentException;
 use Watson\Rememberable\Rememberable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Database\Eloquent\Builder;
+use OwenIt\Auditing\Contracts\Auditable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Mainframe\Notifications\Auth\ResetPassword;
 use App\Mainframe\Modules\Users\Traits\UserGroupable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use App\Mainframe\Features\Modular\BaseModule\Traits\Changeable;
 use App\Mainframe\Features\Modular\BaseModule\Traits\Uploadable;
 use App\Mainframe\Features\Modular\BaseModule\Traits\Processable;
 use App\Mainframe\Features\Modular\BaseModule\Traits\UpdaterTrait;
@@ -20,7 +20,6 @@ use App\Mainframe\Features\Modular\BaseModule\Traits\ModelAutoFill;
 use App\Mainframe\Features\Modular\BaseModule\Traits\EventIdentifiable;
 use App\Mainframe\Features\Modular\BaseModule\Traits\RelatedUsersTrait;
 use App\Mainframe\Features\Modular\BaseModule\Traits\TenantContextTrait;
-
 
 /**
  * App\Mainframe\Modules\Users\User
@@ -69,7 +68,6 @@ use App\Mainframe\Features\Modular\BaseModule\Traits\TenantContextTrait;
  * @property string|null $dob
  * @property array|null $group_ids
  * @property int|null $is_test
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Changes\Change[] $changes
  * @property-read int|null $changes_count
  * @property-read \App\Mainframe\Modules\Users\User|null $creator
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Group[] $groups
@@ -139,12 +137,15 @@ use App\Mainframe\Features\Modular\BaseModule\Traits\TenantContextTrait;
  * @property-read \App\Mainframe\Modules\Tenants\Tenant|null $tenant
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereProjectId($value)
  */
-class User extends Authenticatable implements MustVerifyEmail
+class User extends Authenticatable implements MustVerifyEmail, Auditable
 {
+    use Notifiable, SoftDeletes, Rememberable;
+    use \OwenIt\Auditing\Auditable;
+
     use UserHelper, UserGroupable;
-    use Notifiable, SoftDeletes, Rememberable, Processable, EventIdentifiable,
+    use  Processable, EventIdentifiable,
         RelatedUsersTrait, TenantContextTrait, UpdaterTrait,
-        Uploadable, Changeable, ModularTrait, ModelAutoFill;
+        Uploadable, ModularTrait, ModelAutoFill;
     /*
     |--------------------------------------------------------------------------
     | Fillable attributes
@@ -391,5 +392,14 @@ class User extends Authenticatable implements MustVerifyEmail
         return $_permissions;
     }
 
+    /**
+     * Send reset password notification.
+     *
+     * @param  string  $token
+     */
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notifyNow(new ResetPassword($token));
+    }
 
 }

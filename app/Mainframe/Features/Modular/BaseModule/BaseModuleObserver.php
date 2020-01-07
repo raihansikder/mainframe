@@ -2,7 +2,6 @@
 
 namespace App\Mainframe\Features\Modular\BaseModule;
 
-use App\Mainframe\Modules\Changes\Change;
 use App\Mainframe\Modules\Uploads\Upload;
 
 class BaseModuleObserver
@@ -10,39 +9,34 @@ class BaseModuleObserver
 
     /**
      * @param $element \App\Mainframe\Features\Modular\BaseModule\BaseModule
-     * @throws \Exception
+     * @return void|bool
      */
     public function saving($element)
     {
-        //$element = fillModel($element);         // This line should be placed just before return
-
+        \Session::pull('event');
         $element->autoFill();
-
-        Change::keepChangesInSession($element); // store change log
-
-        //Validate
-        /*$validator = $element->validateModel();
-        if ($validator->fails()) {
-            Session::set('validation_errors', json_decode($validator->messages(), true));
-            return setError('Failed update - ' . get_class($element));
-        }*/
+        \Session::push('event', 'saving');
     }
 
     /**
-     * This function is executed during a model's saving() phase
-     *
      * @param $element \App\Mainframe\Features\Modular\BaseModule\BaseModule
-     * @return bool
      */
-    public function saved($element)
+    public function creating($element)
     {
-        Upload::linkTemporaryUploads($element);            //
-        Change::storeChangesFromSession("", $element, ""); // Take changes from session and store in changes table
+        // Change::storeCreateLog($element);
     }
 
     /**
      * @param $element \App\Mainframe\Features\Modular\BaseModule\BaseModule
-     * @return bool
+     */
+    public function created($element)
+    {
+        // Change::storeCreateLog($element);
+    }
+
+    /**
+     * @param $element \App\Mainframe\Features\Modular\BaseModule\BaseModule
+     * @return void|bool
      */
     public function updating($element)
     {
@@ -54,14 +48,30 @@ class BaseModuleObserver
         //         return setError("$field can not be further changed.");
         //     }
         // }
+        \Session::push('event', 'updating');
     }
 
     /**
      * @param $element \App\Mainframe\Features\Modular\BaseModule\BaseModule
+     * @return void|bool
      */
-    public function created($element)
+    public function updated($element)
     {
-        Change::storeCreateLog($element);
+        // Change::storeCreateLog($element);
+        \Session::push('event', 'updated');
+    }
+
+    /**
+     * This function is executed during a model's saving() phase
+     *
+     * @param $element \App\Mainframe\Features\Modular\BaseModule\BaseModule
+     * @return void|bool
+     */
+    public function saved($element)
+    {
+        Upload::linkTemporaryUploads($element);            //
+        // Change::storeChangesFromSession("", $element, ""); // Take changes from session and store in changes table
+        \Session::push('event', 'saved');
     }
 
     /**

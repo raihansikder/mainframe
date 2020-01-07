@@ -36,8 +36,7 @@ namespace App\Mainframe\Modules\Modules{
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
  * @property int|null $deleted_by
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Changes\Change[] $changes
- * @property-read int|null $changes_count
+* @property-read int|null $changes_count
  * @property-read \App\User|null $creator
  * @property-read \App\Upload $latestUpload
  * @property-read \App\User|null $updater
@@ -90,7 +89,7 @@ namespace App\Mainframe\Modules\Settings{
  * @property \Illuminate\Support\Carbon|null $updated_at TRIAL
  * @property \Illuminate\Support\Carbon|null $deleted_at TRIAL
  * @property int|null $deleted_by TRIAL
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Changes\Change[] $changes
+
  * @property-read int|null $changes_count
  * @property-read \App\User|null $creator
  * @property-read \App\Upload $latestUpload
@@ -144,8 +143,7 @@ namespace App{
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
  * @property int|null $deleted_by
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Changes\Change[] $changes
- * @property-read int|null $changes_count
+* @property-read int|null $changes_count
  * @property-read \App\User|null $creator
  * @property-read \App\Upload $latestUpload
  * @property-read \App\User|null $updater
@@ -199,7 +197,7 @@ namespace App{
  * @property \Illuminate\Support\Carbon|null $updated_at TRIAL
  * @property \Illuminate\Support\Carbon|null $deleted_at TRIAL
  * @property int|null $deleted_by TRIAL
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Changes\Change[] $changes
+
  * @property-read int|null $changes_count
  * @property-read \App\User|null $creator
  * @property-read \App\Upload $latestUpload
@@ -285,7 +283,7 @@ namespace App{
  * @property string|null $dob
  * @property string|null $group_ids
  * @property int|null $is_test
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Changes\Change[] $changes
+
  * @property-read int|null $changes_count
  * @property-read \App\User|null $creator
  * @property-read null|string $avatar
