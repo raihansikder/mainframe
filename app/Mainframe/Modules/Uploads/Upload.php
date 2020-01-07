@@ -65,6 +65,10 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule;
  * @property-read mixed $url
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Uploads\Upload whereUploadableId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Uploads\Upload whereUploadableType($value)
+ * @property int|null $project_id
+ * @property-read \App\Mainframe\Modules\Projects\Project $project
+ * @property-read \App\Mainframe\Modules\Tenants\Tenant|null $tenant
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Uploads\Upload whereProjectId($value)
  */
 class Upload extends BaseModule
 {
@@ -88,6 +92,8 @@ class Upload extends BaseModule
         'module_id',
         'element_id',
         'element_uuid',
+        'uploadable_id',
+        'uploadable_type',
         'is_active',
     ];
 
@@ -229,9 +235,12 @@ class Upload extends BaseModule
     | Write model relations (belongsTo,hasMany etc) at the bottom the file
     */
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * Get the owning commentable model.
      */
-    // public function updater() { return $this->belongsTo(\App\Mainframe\Modules\Users\User::class, 'updated_by'); }
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\MorphTo
+     */
+    public function uploadable() { return $this->morphTo(); }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

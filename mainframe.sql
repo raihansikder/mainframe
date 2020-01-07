@@ -11,7 +11,7 @@
  Target Server Version : 100313
  File Encoding         : 65001
 
- Date: 29/12/2019 01:28:53
+ Date: 07/01/2020 00:31:08
 */
 
 SET NAMES utf8mb4;
@@ -24,7 +24,7 @@ DROP TABLE IF EXISTS `changes`;
 CREATE TABLE `changes`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `uuid` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
-  `mf_project_id` int(10) UNSIGNED NULL DEFAULT NULL,
+  `project_id` int(10) UNSIGNED NULL DEFAULT NULL,
   `tenant_id` int(11) NULL DEFAULT NULL,
   `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   `change_set` varchar(32) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
@@ -44,7 +44,7 @@ CREATE TABLE `changes`  (
   `deleted_at` datetime(0) NULL DEFAULT NULL,
   `deleted_by` int(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 18 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 70 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of changes
@@ -66,6 +66,58 @@ INSERT INTO `changes` VALUES (14, NULL, NULL, NULL, '', 'SehbROoQ', 4, 'users', 
 INSERT INTO `changes` VALUES (15, NULL, NULL, NULL, '', 'SehbROoQ', 4, 'users', 2603, '02dc2fdc-a275-4a8e-a398-87d4d8f1ac7d', 'remember_token', 'S8T2Mv9AEkKHDH01HxODqiylZjoMFWTPrLkAFeNdGIFtKhSvLcDL8J68aaEw', 'RwmwOC5DMQT79gGMLYcXHJxlt8W7VvPIrpr8BhKu6DuJvfpWrzrHbrUO0LyG', NULL, 1, NULL, NULL, '2019-12-28 18:48:17', '2019-12-28 18:48:17', NULL, NULL);
 INSERT INTO `changes` VALUES (16, NULL, NULL, NULL, '', 'lwhmIhgM', 4, 'users', 2603, '02dc2fdc-a275-4a8e-a398-87d4d8f1ac7d', 'password', '$2y$10$Jup5ORi0qrUHDk2t0kefnOEnI04I9GWHvNp.DxxUAKjvGUY7i11f2', '$2y$10$w/nIIm1EzaxL6JqwYXsotuA3ql0npbl5nZ0bpj/swZC97DbOyeLmS', NULL, 1, NULL, NULL, '2019-12-28 19:19:03', '2019-12-28 19:19:03', NULL, NULL);
 INSERT INTO `changes` VALUES (17, NULL, NULL, NULL, '', 'lwhmIhgM', 4, 'users', 2603, '02dc2fdc-a275-4a8e-a398-87d4d8f1ac7d', 'remember_token', 'RwmwOC5DMQT79gGMLYcXHJxlt8W7VvPIrpr8BhKu6DuJvfpWrzrHbrUO0LyG', 'kLmQM512VkURZdWKwBwbzx2A1YerzKBiAjZIKizag8uiDMlPbPcDdoENidOc', NULL, 1, NULL, NULL, '2019-12-28 19:19:03', '2019-12-28 19:19:03', NULL, NULL);
+INSERT INTO `changes` VALUES (18, NULL, NULL, NULL, '', '4Dkv5t2M', 4, 'users', 5, '3ef9b174-6c7c-41fd-b68e-18d003fb9481', 'remember_token', '5utUB8tQO5E63x16NNvcmV0plO5F9dHVGPnvXTEfJdScKH66r530MYiw6Wag', 'Zi8rUb6U8ThnseVyEgQpv6xfHFfJ0XHJgAVAJfxnaA349hZ4U0fClorDxjxR', NULL, 1, NULL, NULL, '2020-01-02 10:00:33', '2020-01-02 10:00:33', NULL, NULL);
+INSERT INTO `changes` VALUES (19, NULL, NULL, NULL, '', 'QvV484Jg', 1, 'modules', 57, '47df59d0-bacb-4d1e-bfda-01c051c63681', 'created_by', NULL, '5', NULL, 1, NULL, NULL, '2020-01-04 03:53:50', '2020-01-04 03:53:50', NULL, NULL);
+INSERT INTO `changes` VALUES (20, NULL, NULL, NULL, '', 'QvV484Jg', 1, 'modules', 57, '47df59d0-bacb-4d1e-bfda-01c051c63681', 'updated_by', NULL, '5', NULL, 1, NULL, NULL, '2020-01-04 03:53:50', '2020-01-04 03:53:50', NULL, NULL);
+INSERT INTO `changes` VALUES (21, NULL, NULL, NULL, '', '3L4cnAts', 4, 'users', 5, '3ef9b174-6c7c-41fd-b68e-18d003fb9481', 'remember_token', 'Zi8rUb6U8ThnseVyEgQpv6xfHFfJ0XHJgAVAJfxnaA349hZ4U0fClorDxjxR', 'r69wFtAfItcpRLn77yIeKSuuCqemDfdHMyFLiaAc3VWEE68nlA8piA5u0tbC', NULL, 1, NULL, NULL, '2020-01-04 04:18:10', '2020-01-04 04:18:10', NULL, NULL);
+INSERT INTO `changes` VALUES (22, NULL, NULL, NULL, 'Create new App\\Mainframe\\Modules\\Settings\\Setting', 'P2rQAEir', 21, 'settings', 45, '29900234-2353-4098-9390-4a7ef688f639', NULL, NULL, NULL, NULL, 1, NULL, NULL, '2020-01-05 18:58:23', '2020-01-05 18:58:23', NULL, NULL);
+INSERT INTO `changes` VALUES (23, NULL, NULL, NULL, 'Create new App\\Mainframe\\Modules\\Uploads\\Upload', 'kW5QyWAu', 6, 'uploads', 12, '919d6d5a-fec4-4fde-9fb2-872a84752b84', NULL, NULL, NULL, NULL, 1, NULL, NULL, '2020-01-06 04:39:17', '2020-01-06 04:39:17', NULL, NULL);
+INSERT INTO `changes` VALUES (24, NULL, NULL, NULL, 'Create new App\\Mainframe\\Modules\\Uploads\\Upload', 'JBVdmMXa', 6, 'uploads', 13, '71f5f437-2b83-408f-90ba-34afd4851e76', NULL, NULL, NULL, NULL, 1, NULL, NULL, '2020-01-06 04:39:21', '2020-01-06 04:39:21', NULL, NULL);
+INSERT INTO `changes` VALUES (25, NULL, NULL, NULL, 'Create new App\\Mainframe\\Modules\\Uploads\\Upload', 'rZTRxq6m', 6, 'uploads', 14, 'a960dbeb-6901-4810-bf61-d7ac9d8c08c9', NULL, NULL, NULL, NULL, 1, NULL, NULL, '2020-01-06 04:39:31', '2020-01-06 04:39:31', NULL, NULL);
+INSERT INTO `changes` VALUES (26, NULL, NULL, NULL, 'Create new App\\Mainframe\\Modules\\Tenants\\Tenant', '3QsgJFia', 3, 'tenants', 7, '02e4347e-0d40-4fcd-b956-12ab19b6c6d1', NULL, NULL, NULL, NULL, 1, NULL, NULL, '2020-01-06 10:21:13', '2020-01-06 10:21:13', NULL, NULL);
+INSERT INTO `changes` VALUES (27, NULL, NULL, NULL, 'Create new App\\Mainframe\\Modules\\Users\\User', 'QnuNTRzn', 4, 'users', 2604, 'b61404a7-5851-466a-bb1b-69be6b5bad15', NULL, NULL, NULL, NULL, 1, NULL, NULL, '2020-01-06 10:21:13', '2020-01-06 10:21:13', NULL, NULL);
+INSERT INTO `changes` VALUES (28, NULL, NULL, NULL, 'Create new App\\Mainframe\\Modules\\Tenants\\Tenant', 'KoHwqaks', 3, 'tenants', 8, 'fae8d78a-a940-4268-b648-d94bb706c54e', NULL, NULL, NULL, NULL, 1, NULL, NULL, '2020-01-06 10:52:07', '2020-01-06 10:52:07', NULL, NULL);
+INSERT INTO `changes` VALUES (29, NULL, NULL, NULL, 'Create new App\\Mainframe\\Modules\\Users\\User', '1FOloWQu', 4, 'users', 2605, '32b8e96f-599e-4a02-8890-3d8e25bc0d01', NULL, NULL, NULL, NULL, 1, NULL, NULL, '2020-01-06 10:52:07', '2020-01-06 10:52:07', NULL, NULL);
+INSERT INTO `changes` VALUES (30, NULL, NULL, NULL, 'Create new App\\Mainframe\\Modules\\Tenants\\Tenant', 'yeZd69Wm', 3, 'tenants', 9, '21daa5dc-8978-4aac-911d-9f2c2692f540', NULL, NULL, NULL, NULL, 1, NULL, NULL, '2020-01-06 11:46:17', '2020-01-06 11:46:17', NULL, NULL);
+INSERT INTO `changes` VALUES (31, NULL, NULL, NULL, 'Create new App\\Mainframe\\Modules\\Users\\User', '9h9dCa2J', 4, 'users', 2606, '39c15570-87db-47af-87ba-31d2b8c756c6', NULL, NULL, NULL, NULL, 1, NULL, NULL, '2020-01-06 11:46:18', '2020-01-06 11:46:18', NULL, NULL);
+INSERT INTO `changes` VALUES (32, NULL, NULL, NULL, 'Create new App\\Mainframe\\Modules\\Tenants\\Tenant', 'uKwUM5Pc', 3, 'tenants', 10, '9a92d741-1841-4b4f-98ae-66aff774f280', NULL, NULL, NULL, NULL, 1, NULL, NULL, '2020-01-06 13:23:59', '2020-01-06 13:23:59', NULL, NULL);
+INSERT INTO `changes` VALUES (33, NULL, NULL, NULL, 'Create new App\\Mainframe\\Modules\\Users\\User', '1f0e6RXo', 4, 'users', 2607, '0585048a-1120-44ad-9a71-5073e0dd858c', NULL, NULL, NULL, NULL, 1, NULL, NULL, '2020-01-06 13:23:59', '2020-01-06 13:23:59', NULL, NULL);
+INSERT INTO `changes` VALUES (34, NULL, NULL, NULL, 'Create new App\\Mainframe\\Modules\\Tenants\\Tenant', 'sAsLTDgo', 3, 'tenants', 11, 'b310dd5a-93f7-4c77-8d19-208bba586a6b', NULL, NULL, NULL, NULL, 1, NULL, NULL, '2020-01-06 13:28:38', '2020-01-06 13:28:38', NULL, NULL);
+INSERT INTO `changes` VALUES (35, NULL, NULL, NULL, 'Create new App\\Mainframe\\Modules\\Users\\User', 'ZhnjdOU1', 4, 'users', 2608, 'b4b49c93-1b16-425d-99ee-5d43f00d3a57', NULL, NULL, NULL, NULL, 1, NULL, NULL, '2020-01-06 13:28:38', '2020-01-06 13:28:38', NULL, NULL);
+INSERT INTO `changes` VALUES (36, NULL, NULL, NULL, 'Create new App\\Mainframe\\Modules\\Tenants\\Tenant', '8IOWp9rW', 3, 'tenants', 12, '89326a9d-8a3c-4059-a88b-22dacfc27889', NULL, NULL, NULL, NULL, 1, NULL, NULL, '2020-01-06 13:30:25', '2020-01-06 13:30:25', NULL, NULL);
+INSERT INTO `changes` VALUES (37, NULL, NULL, NULL, 'Create new App\\Mainframe\\Modules\\Users\\User', 'qMbGhXED', 4, 'users', 2609, '4e438c6d-5cb0-4d81-8f56-9fba6b117b44', NULL, NULL, NULL, NULL, 1, NULL, NULL, '2020-01-06 13:30:26', '2020-01-06 13:30:26', NULL, NULL);
+INSERT INTO `changes` VALUES (38, NULL, NULL, NULL, 'Create new App\\Mainframe\\Modules\\Tenants\\Tenant', 'WMV2HI7A', 3, 'tenants', 13, '78ed01ad-1614-4658-b00a-cf6d61f23a69', NULL, NULL, NULL, NULL, 1, NULL, NULL, '2020-01-06 13:32:47', '2020-01-06 13:32:47', NULL, NULL);
+INSERT INTO `changes` VALUES (39, NULL, NULL, NULL, 'Create new App\\Mainframe\\Modules\\Users\\User', 'iMXD3e6I', 4, 'users', 2610, 'cc278d62-f846-472f-839b-6c3b3781d80c', NULL, NULL, NULL, NULL, 1, NULL, NULL, '2020-01-06 13:32:47', '2020-01-06 13:32:47', NULL, NULL);
+INSERT INTO `changes` VALUES (40, NULL, NULL, NULL, 'Create new App\\Mainframe\\Modules\\Tenants\\Tenant', '9pKEXEtD', 3, 'tenants', 14, '435e043c-e4cf-4955-9c80-df1d6dcf883c', NULL, NULL, NULL, NULL, 1, NULL, NULL, '2020-01-06 13:41:31', '2020-01-06 13:41:31', NULL, NULL);
+INSERT INTO `changes` VALUES (41, NULL, NULL, NULL, 'Create new App\\Mainframe\\Modules\\Users\\User', 'HFTXXGHP', 4, 'users', 2611, '8a1c509a-7f48-4d63-925a-66f2e1df6f35', NULL, NULL, NULL, NULL, 1, NULL, NULL, '2020-01-06 13:41:31', '2020-01-06 13:41:31', NULL, NULL);
+INSERT INTO `changes` VALUES (42, NULL, NULL, NULL, 'Create new App\\Mainframe\\Modules\\Tenants\\Tenant', 'Iarkj2ut', 3, 'tenants', 15, '24364be9-9035-4683-9718-ab6fd88ebdb4', NULL, NULL, NULL, NULL, 1, NULL, NULL, '2020-01-06 13:44:10', '2020-01-06 13:44:10', NULL, NULL);
+INSERT INTO `changes` VALUES (43, NULL, NULL, NULL, 'Create new App\\Mainframe\\Modules\\Users\\User', 'lw0dPyVo', 4, 'users', 2612, '802dce61-dc5e-4c7b-ac92-dab8f2610a93', NULL, NULL, NULL, NULL, 1, NULL, NULL, '2020-01-06 13:44:10', '2020-01-06 13:44:10', NULL, NULL);
+INSERT INTO `changes` VALUES (44, NULL, NULL, NULL, 'Create new App\\Mainframe\\Modules\\Tenants\\Tenant', 'Lx9H9UXC', 3, 'tenants', 16, 'e994b8b7-a730-4c8f-a06f-aae519ae8f2d', NULL, NULL, NULL, NULL, 1, NULL, NULL, '2020-01-06 13:48:22', '2020-01-06 13:48:22', NULL, NULL);
+INSERT INTO `changes` VALUES (45, NULL, NULL, NULL, 'Create new App\\Mainframe\\Modules\\Users\\User', '2YECMQb0', 4, 'users', 2613, 'e98dc38e-ef9d-48b4-9751-11220ab814e8', NULL, NULL, NULL, NULL, 1, NULL, NULL, '2020-01-06 13:48:22', '2020-01-06 13:48:22', NULL, NULL);
+INSERT INTO `changes` VALUES (46, NULL, NULL, NULL, 'Create new App\\Mainframe\\Modules\\Tenants\\Tenant', 'fDNIBKgs', 3, 'tenants', 17, '0b592407-f202-470d-b671-cf406c46cdcf', NULL, NULL, NULL, NULL, 1, NULL, NULL, '2020-01-06 13:53:16', '2020-01-06 13:53:16', NULL, NULL);
+INSERT INTO `changes` VALUES (47, NULL, NULL, NULL, 'Create new App\\Mainframe\\Modules\\Users\\User', '5H2BM7pf', 4, 'users', 2614, '8be1c9c4-ff62-4b20-ac11-4f5abe0e448f', NULL, NULL, NULL, NULL, 1, NULL, NULL, '2020-01-06 13:53:16', '2020-01-06 13:53:16', NULL, NULL);
+INSERT INTO `changes` VALUES (48, NULL, NULL, NULL, 'Create new App\\Mainframe\\Modules\\Tenants\\Tenant', 'kRPXhzJP', 3, 'tenants', 18, '7fdcccc1-df95-4757-8681-dfab0dbb0a03', NULL, NULL, NULL, NULL, 1, NULL, NULL, '2020-01-06 14:00:11', '2020-01-06 14:00:11', NULL, NULL);
+INSERT INTO `changes` VALUES (49, NULL, NULL, NULL, 'Create new App\\Mainframe\\Modules\\Users\\User', 'oZvzRYoG', 4, 'users', 2615, 'f968a382-1678-4335-a75a-2ae83c4fb8ea', NULL, NULL, NULL, NULL, 1, NULL, NULL, '2020-01-06 14:00:11', '2020-01-06 14:00:11', NULL, NULL);
+INSERT INTO `changes` VALUES (50, NULL, NULL, NULL, 'Create new App\\Mainframe\\Modules\\Tenants\\Tenant', 'RtBtFJwN', 3, 'tenants', 19, '0182c3da-2603-4c03-bfbf-9e849c03166b', NULL, NULL, NULL, NULL, 1, NULL, NULL, '2020-01-06 14:04:01', '2020-01-06 14:04:01', NULL, NULL);
+INSERT INTO `changes` VALUES (51, NULL, NULL, NULL, 'Create new App\\Mainframe\\Modules\\Users\\User', 'ElF7E729', 4, 'users', 2616, '2f7ae927-aa7a-4b34-b3a8-3c51853a49d5', NULL, NULL, NULL, NULL, 1, NULL, NULL, '2020-01-06 14:04:01', '2020-01-06 14:04:01', NULL, NULL);
+INSERT INTO `changes` VALUES (52, NULL, NULL, NULL, 'Create new App\\Mainframe\\Modules\\Tenants\\Tenant', '5yJr3Fk4', 3, 'tenants', 20, '3de3e9ba-41f4-4442-9850-09660051f18f', NULL, NULL, NULL, NULL, 1, NULL, NULL, '2020-01-06 14:08:34', '2020-01-06 14:08:34', NULL, NULL);
+INSERT INTO `changes` VALUES (53, NULL, NULL, NULL, 'Create new App\\Mainframe\\Modules\\Users\\User', 'N5yWodPF', 4, 'users', 2617, '5b54853a-66c6-41d1-9dd4-401ef2857385', NULL, NULL, NULL, NULL, 1, NULL, NULL, '2020-01-06 14:08:34', '2020-01-06 14:08:34', NULL, NULL);
+INSERT INTO `changes` VALUES (54, NULL, NULL, NULL, 'Create new App\\Mainframe\\Modules\\Tenants\\Tenant', 'FjXAQbfY', 3, 'tenants', 21, '31b8cc53-0082-4efc-abcf-263418753e1c', NULL, NULL, NULL, NULL, 1, NULL, NULL, '2020-01-06 14:12:59', '2020-01-06 14:12:59', NULL, NULL);
+INSERT INTO `changes` VALUES (55, NULL, NULL, NULL, 'Create new App\\Mainframe\\Modules\\Users\\User', 'wRKbZWX0', 4, 'users', 2618, '079eab96-a712-419d-b5fc-f1b0ea3e070e', NULL, NULL, NULL, NULL, 1, NULL, NULL, '2020-01-06 14:12:59', '2020-01-06 14:12:59', NULL, NULL);
+INSERT INTO `changes` VALUES (56, NULL, NULL, NULL, 'Create new App\\Mainframe\\Modules\\Tenants\\Tenant', 'D2lG3Ea5', 3, 'tenants', 22, 'eb577051-78c9-4476-b618-bd457f33b134', NULL, NULL, NULL, NULL, 1, NULL, NULL, '2020-01-06 16:55:14', '2020-01-06 16:55:14', NULL, NULL);
+INSERT INTO `changes` VALUES (57, NULL, NULL, NULL, 'Create new App\\Mainframe\\Modules\\Users\\User', 'RMRPqOOy', 4, 'users', 2619, '0b11bb84-a6f9-4612-b823-6eb0feda3342', NULL, NULL, NULL, NULL, 1, NULL, NULL, '2020-01-06 16:55:14', '2020-01-06 16:55:14', NULL, NULL);
+INSERT INTO `changes` VALUES (58, NULL, NULL, NULL, 'Create new App\\Mainframe\\Modules\\Tenants\\Tenant', 'n0gkc00f', 3, 'tenants', 23, '53da6246-1da3-49a9-8489-1573d5e0eca9', NULL, NULL, NULL, NULL, 1, NULL, NULL, '2020-01-06 17:01:50', '2020-01-06 17:01:50', NULL, NULL);
+INSERT INTO `changes` VALUES (59, NULL, NULL, NULL, 'Create new App\\Mainframe\\Modules\\Users\\User', 'ysZTVbAe', 4, 'users', 2620, 'd133212b-4a31-477e-9e19-4ad52496ddac', NULL, NULL, NULL, NULL, 1, NULL, NULL, '2020-01-06 17:01:50', '2020-01-06 17:01:50', NULL, NULL);
+INSERT INTO `changes` VALUES (60, NULL, NULL, NULL, 'Create new App\\Mainframe\\Modules\\Tenants\\Tenant', 'w2DklQRJ', 3, 'tenants', 24, '9277544c-baf2-4533-87f8-53f939da2d4d', NULL, NULL, NULL, NULL, 1, NULL, NULL, '2020-01-06 17:02:42', '2020-01-06 17:02:42', NULL, NULL);
+INSERT INTO `changes` VALUES (61, NULL, NULL, NULL, 'Create new App\\Mainframe\\Modules\\Users\\User', 'Zavybfk4', 4, 'users', 2621, '4d507c35-70e5-4a93-96b4-7b41be64b82a', NULL, NULL, NULL, NULL, 1, NULL, NULL, '2020-01-06 17:02:42', '2020-01-06 17:02:42', NULL, NULL);
+INSERT INTO `changes` VALUES (62, NULL, NULL, NULL, 'Create new App\\Mainframe\\Modules\\Tenants\\Tenant', 'v5ztNgnT', 3, 'tenants', 25, 'c6cd666f-95fe-4d7b-aab8-148c92d50860', NULL, NULL, NULL, NULL, 1, NULL, NULL, '2020-01-06 17:05:37', '2020-01-06 17:05:37', NULL, NULL);
+INSERT INTO `changes` VALUES (63, NULL, NULL, NULL, 'Create new App\\Mainframe\\Modules\\Users\\User', '8pd4m2Xw', 4, 'users', 2622, 'e18112a0-305b-404d-8f5a-fb7395ae2b8d', NULL, NULL, NULL, NULL, 1, NULL, NULL, '2020-01-06 17:05:37', '2020-01-06 17:05:37', NULL, NULL);
+INSERT INTO `changes` VALUES (64, NULL, NULL, NULL, 'Create new App\\Mainframe\\Modules\\Tenants\\Tenant', 'a3QHPyLO', 3, 'tenants', 26, 'd1a102b8-43cc-4f69-b179-18ce419c8060', NULL, NULL, NULL, NULL, 1, NULL, NULL, '2020-01-06 17:10:31', '2020-01-06 17:10:31', NULL, NULL);
+INSERT INTO `changes` VALUES (65, NULL, NULL, NULL, 'Create new App\\Mainframe\\Modules\\Users\\User', 'tIaRqIG9', 4, 'users', 2623, 'f3191649-17be-4d07-ac7e-9d8b810fd375', NULL, NULL, NULL, NULL, 1, NULL, NULL, '2020-01-06 17:10:31', '2020-01-06 17:10:31', NULL, NULL);
+INSERT INTO `changes` VALUES (66, NULL, NULL, NULL, 'Create new App\\Mainframe\\Modules\\Tenants\\Tenant', 'dy4VhZce', 3, 'tenants', 27, '6e327c8f-f534-46d2-a35a-21a0c7a02de1', NULL, NULL, NULL, NULL, 1, NULL, NULL, '2020-01-06 17:13:41', '2020-01-06 17:13:41', NULL, NULL);
+INSERT INTO `changes` VALUES (67, NULL, NULL, NULL, 'Create new App\\Mainframe\\Modules\\Users\\User', 'KTKtui1b', 4, 'users', 2624, 'b8f2058f-463a-4f5a-84dd-9cd65137d878', NULL, NULL, NULL, NULL, 1, NULL, NULL, '2020-01-06 17:13:41', '2020-01-06 17:13:41', NULL, NULL);
+INSERT INTO `changes` VALUES (68, NULL, NULL, NULL, 'Create new App\\Mainframe\\Modules\\Tenants\\Tenant', '14tzbyiG', 3, 'tenants', 28, '044ef0fc-8feb-4389-bb93-7fb832f0a366', NULL, NULL, NULL, NULL, 1, NULL, NULL, '2020-01-06 17:16:18', '2020-01-06 17:16:18', NULL, NULL);
+INSERT INTO `changes` VALUES (69, NULL, NULL, NULL, 'Create new App\\Mainframe\\Modules\\Users\\User', 'aDzkoGLQ', 4, 'users', 2625, 'ea25fb87-7aa6-4165-a7bf-e34c5e4a7988', NULL, NULL, NULL, NULL, 1, NULL, NULL, '2020-01-06 17:16:18', '2020-01-06 17:16:18', NULL, NULL);
 
 -- ----------------------------
 -- Table structure for countries
@@ -364,7 +416,7 @@ DROP TABLE IF EXISTS `dolor_sits`;
 CREATE TABLE `dolor_sits`  (
   `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `uuid` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `mf_project_id` int(10) UNSIGNED NULL DEFAULT NULL,
+  `project_id` int(10) UNSIGNED NULL DEFAULT NULL,
   `tenant_id` int(10) UNSIGNED NULL DEFAULT NULL,
   `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `is_active` tinyint(4) NULL DEFAULT 1,
@@ -382,7 +434,7 @@ CREATE TABLE `dolor_sits`  (
 -- ----------------------------
 INSERT INTO `dolor_sits` VALUES (1, '7be17d1c-1bd9-4620-876a-f3ca5a05717e', NULL, NULL, 'Super wings', 1, 5, 5, '2019-11-20 14:56:35', '2019-11-20 14:56:35', NULL, NULL);
 INSERT INTO `dolor_sits` VALUES (2, '7be17d1c-1bd9-4620-876a-f3ca5a05717f', NULL, NULL, 'Paw Petrol', 1, 5, 5, '2019-11-20 14:56:35', '2019-11-20 14:56:35', NULL, NULL);
-INSERT INTO `dolor_sits` VALUES (3, '7be17d1c-1bd9-4620-876a-f3ca5a05717g', NULL, NULL, 'Captain Planet', 1, 5, 5, '2019-11-20 14:56:35', '2019-11-20 14:56:35', NULL, NULL);
+INSERT INTO `dolor_sits` VALUES (3, '7be17d1c-1bd9-4620-876a-f3ca5a05717g', NULL, NULL, 'Captain Planet', 1, 5, 5, '2019-11-20 14:56:35', '2020-01-06 09:25:49', NULL, NULL);
 
 -- ----------------------------
 -- Table structure for failed_jobs
@@ -405,7 +457,7 @@ DROP TABLE IF EXISTS `groups`;
 CREATE TABLE `groups`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `uuid` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
-  `mf_project_id` int(10) UNSIGNED NULL DEFAULT NULL,
+  `project_id` int(10) UNSIGNED NULL DEFAULT NULL,
   `tenant_id` int(11) UNSIGNED NULL DEFAULT NULL,
   `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   `title` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
@@ -424,8 +476,9 @@ CREATE TABLE `groups`  (
 -- Records of groups
 -- ----------------------------
 INSERT INTO `groups` VALUES (1, 'd48c591a-e6b2-4f7b-9458-0693362e55a6', NULL, NULL, 'superuser', 'Superuser', '{\"superuser\":1}', 1, 1, 1, '2018-12-10 06:50:18', '2019-11-13 15:51:18', NULL, NULL);
-INSERT INTO `groups` VALUES (9, '9c085751-ea3a-44e4-a858-e008894dc1f3', NULL, NULL, 'api', 'API', '{\"superuser\":1,\"modules\":1,\"modules-view-list\":1,\"modules-view-details\":1,\"modules-create\":1,\"modules-edit\":1,\"modules-delete\":1,\"modules-restore\":1,\"modules-change-logs\":1,\"modules-report\":1,\"module-groups\":1,\"module-groups-view-list\":1,\"module-groups-view-details\":1,\"module-groups-create\":1,\"module-groups-edit\":1,\"module-groups-delete\":1,\"module-groups-restore\":1,\"module-groups-change-logs\":1,\"module-groups-report\":1,\"Widget\":1,\"viewWidgetAppTile\":1,\"API\":1,\"canMakeApiCallUsingXAuthToken\":1}', 1, 1, 1, '2018-12-10 16:10:53', '2019-11-27 10:36:47', NULL, NULL);
-INSERT INTO `groups` VALUES (15, '2e5c36e4-7ec2-4c77-8167-1e99237c1336', NULL, NULL, 'tenant-admin', 'Tenant Admin', '', 1, 5, 5, '1970-01-01 00:00:05', '2019-12-19 14:21:45', NULL, NULL);
+INSERT INTO `groups` VALUES (2, '9c085751-ea3a-44e4-a858-e008894dc1f3', NULL, NULL, 'api', 'API', '{\"modules\":1,\"modules-view-list\":1,\"modules-view-details\":1,\"modules-create\":1,\"modules-edit\":1,\"modules-delete\":1,\"modules-restore\":1,\"modules-change-logs\":1,\"modules-report\":1,\"module-groups\":1,\"module-groups-view-list\":1,\"module-groups-view-details\":1,\"module-groups-create\":1,\"module-groups-edit\":1,\"module-groups-delete\":1,\"module-groups-restore\":1,\"module-groups-change-logs\":1,\"module-groups-report\":1,\"Widget\":1,\"API\":1}', 1, 1, 1, '2018-12-10 16:10:53', '2020-01-05 08:38:23', NULL, NULL);
+INSERT INTO `groups` VALUES (3, '2e5c36e4-7ec2-4c77-8167-1e99237c1336', NULL, NULL, 'tenant-admin', 'Tenant Admin', '', 1, 5, 5, '1970-01-01 00:00:05', '2019-12-19 14:21:45', NULL, NULL);
+INSERT INTO `groups` VALUES (4, 'bacee691-a0f7-4ba2-93b6-462b4af9cfb0', NULL, NULL, 'project-admin', 'Project Admin', '', 1, 5, 5, '2019-12-28 14:16:31', '2019-12-28 14:16:38', NULL, NULL);
 INSERT INTO `groups` VALUES (16, '45efaa36-ea5a-4f9d-8eb7-722922c9dd9b', NULL, 1, 'artp-admin', 'Artemis Admin', '', 1, 5, 5, '1970-01-01 00:00:05', '2019-12-19 14:26:04', NULL, NULL);
 INSERT INTO `groups` VALUES (17, 'c903c4b0-1e40-47eb-ad58-9a536f30bec2', NULL, 1, 'artp-buyer', 'Artemis Buyer', '', 1, 5, 5, '1970-01-01 00:00:05', '2019-12-19 14:26:59', NULL, NULL);
 INSERT INTO `groups` VALUES (18, '28600a12-69ed-49a3-9be7-e825cf228822', NULL, 2, 'orhc-admin', 'Orange Admin', '', 0, 5, 5, '1970-01-01 00:00:05', '2019-12-19 14:27:35', NULL, NULL);
@@ -433,8 +486,23 @@ INSERT INTO `groups` VALUES (19, 'b07a9afb-3d15-45b6-9c53-5ee8c3541b58', NULL, 2
 INSERT INTO `groups` VALUES (20, 'f36dcced-f84f-4fdb-9948-a2c044729e22', NULL, 2, 'orhc-patient', 'Patient', '', 1, 5, 5, '1970-01-01 00:00:05', '2019-12-19 14:28:12', NULL, NULL);
 INSERT INTO `groups` VALUES (21, '3b426c6f-3b7c-487a-8008-15ead138ce4d', NULL, 2, 'orhc-patient-family-member', 'Family member', '', 1, 5, 5, '1970-01-01 00:00:05', '2019-12-19 14:28:51', NULL, NULL);
 INSERT INTO `groups` VALUES (22, 'a457a065-fb79-4779-9e6f-8a00cb0c2e43', NULL, 2, 'orhc-api', 'API', '', 1, 5, 5, '1970-01-01 00:00:05', '2019-12-19 14:32:43', NULL, NULL);
-INSERT INTO `groups` VALUES (23, '186062eb-3f99-40f7-a541-223996e1f4e6', NULL, 1, 'artp-api', 'API', '', 1, 5, 5, '1970-01-01 00:00:05', '2019-12-19 15:49:41', NULL, NULL);
-INSERT INTO `groups` VALUES (24, 'bacee691-a0f7-4ba2-93b6-462b4af9cfb0', NULL, NULL, 'project-admin', 'Project Admin', '', 1, 5, 5, '2019-12-28 14:16:31', '2019-12-28 14:16:38', NULL, NULL);
+INSERT INTO `groups` VALUES (23, '186062eb-3f99-40f7-a541-223996e1f4e6', NULL, 1, 'artp-api', 'API', '{\"API\":1,\"api\":1}', 1, 5, 5, '1970-01-01 00:00:05', '2020-01-05 05:57:53', NULL, NULL);
+
+-- ----------------------------
+-- Table structure for jobs
+-- ----------------------------
+DROP TABLE IF EXISTS `jobs`;
+CREATE TABLE `jobs`  (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `queue` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payload` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `attempts` tinyint(3) UNSIGNED NOT NULL,
+  `reserved_at` int(10) UNSIGNED NULL DEFAULT NULL,
+  `available_at` int(10) UNSIGNED NOT NULL,
+  `created_at` int(10) UNSIGNED NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `jobs_queue_index`(`queue`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for lorem_ipsums
@@ -443,7 +511,7 @@ DROP TABLE IF EXISTS `lorem_ipsums`;
 CREATE TABLE `lorem_ipsums`  (
   `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `uuid` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `mf_project_id` int(10) UNSIGNED NULL DEFAULT NULL,
+  `project_id` int(10) UNSIGNED NULL DEFAULT NULL,
   `tenant_id` int(10) UNSIGNED NULL DEFAULT NULL,
   `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `hidden` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
@@ -474,33 +542,6 @@ INSERT INTO `lorem_ipsums` VALUES (1, '2c9e9057-6095-4a48-aa9e-181e96172cb1', NU
 INSERT INTO `lorem_ipsums` VALUES (2, '175da4d1-e448-4e27-a642-4da5179ec5c6', 1, 1, 'ainw bNW', NULL, 'asdfasdf', 'asdfasdfsdf asdfasdf', 'Country,takes,lorem', NULL, NULL, '[\"0\",\"1\"]', 1, '[\"1\"]', 2, 0, 1, 5, 5, '2019-11-20 16:01:06', '2019-12-28 12:52:59', NULL, NULL);
 
 -- ----------------------------
--- Table structure for mf_projects
--- ----------------------------
-DROP TABLE IF EXISTS `mf_projects`;
-CREATE TABLE `mf_projects`  (
-  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `uuid` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `code` varchar(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `name` varchar(1024) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `configuration` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT 'JSON configuration for a project',
-  `is_active` tinyint(4) NULL DEFAULT 1,
-  `created_by` int(10) UNSIGNED NULL DEFAULT NULL,
-  `updated_by` int(10) UNSIGNED NULL DEFAULT NULL,
-  `created_at` timestamp(0) NULL DEFAULT NULL,
-  `updated_at` timestamp(0) NULL DEFAULT NULL,
-  `deleted_at` timestamp(0) NULL DEFAULT NULL,
-  `deleted_by` int(10) UNSIGNED NULL DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of mf_projects
--- ----------------------------
-INSERT INTO `mf_projects` VALUES (1, 'b632635d-877b-461e-8f3f-97256567eea7', 'artp', 'ArtemisPod', NULL, NULL, 1, 5, 5, '2019-12-28 14:13:40', '2019-12-28 14:13:40', NULL, NULL);
-INSERT INTO `mf_projects` VALUES (2, 'cedb4d2c-a465-4bb4-818e-09100ed02580', 'orhc', 'OrangeHC', NULL, NULL, 1, 5, 5, '2019-12-28 14:14:04', '2019-12-28 14:14:04', NULL, NULL);
-
--- ----------------------------
 -- Table structure for migrations
 -- ----------------------------
 DROP TABLE IF EXISTS `migrations`;
@@ -509,7 +550,7 @@ CREATE TABLE `migrations`  (
   `migration` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of migrations
@@ -526,6 +567,7 @@ INSERT INTO `migrations` VALUES (9, '2019_12_19_140356_create_packages_table', 6
 INSERT INTO `migrations` VALUES (10, '2019_12_19_143935_create_notifications_table', 6);
 INSERT INTO `migrations` VALUES (11, '2019_12_19_152132_create_product_themes_table', 7);
 INSERT INTO `migrations` VALUES (12, '2019_12_28_134422_create_mf_projects_table', 8);
+INSERT INTO `migrations` VALUES (13, '2020_01_06_134600_create_jobs_table', 9);
 
 -- ----------------------------
 -- Table structure for module_groups
@@ -592,23 +634,23 @@ CREATE TABLE `modules`  (
 -- ----------------------------
 -- Records of modules
 -- ----------------------------
-INSERT INTO `modules` VALUES (1, 'ca56b8a2-368a-4f84-8336-e9850c406e2d', 'modules', 'Module', 'Manage module', '\\App\\Mainframe\\Modules\\Modules\\Module', '\\App\\Mainframe\\Modules\\Modules\\ModuleController', 'mainframe.modules.modules', 0, 1, 0, 0, 'modules.index', 'aqua', 'fa fa-puzzle-piece', 1, 5, 1, '2018-12-10 06:47:46', '2018-12-10 06:47:46', NULL, NULL);
-INSERT INTO `modules` VALUES (2, '0b89564c-7198-4b1b-9869-a02a0e584262', 'module-groups', 'Module group', 'Manage module group', '\\App\\Mainframe\\Modules\\ModuleGroups\\ModuleGroup', '\\App\\Mainframe\\Modules\\ModuleGroups\\ModuleGroupController', 'mainframe.modules.module-groups', 0, 1, 0, 0, 'modulegroups.index', 'aqua', 'fa fa-puzzle-piece', 1, 5, 1, '2018-12-10 06:47:46', '2018-12-10 06:47:46', NULL, NULL);
-INSERT INTO `modules` VALUES (3, 'eee7b4a8-abab-4b79-a751-b681624eb586', 'tenants', 'Tenant', 'Manage tenant', '\\App\\Mainframe\\Modules\\Tenants\\Tenant', '\\App\\Mainframe\\Modules\\Tenants\\TenantController', 'mainframe.modules.tenants', 0, 1, 0, 0, 'tenants.index', 'aqua', 'fa fa-plus', 1, 5, 1, '2018-12-10 06:47:46', '2018-12-10 06:47:46', NULL, NULL);
-INSERT INTO `modules` VALUES (4, '8f27f918-3a05-4b04-9bd3-d953e9492293', 'users', 'User', 'Manage user', '\\App\\User', '\\App\\Mainframe\\Modules\\Users\\UserController', 'mainframe.modules.users', 0, 0, 0, 4, 'users.index', 'aqua', 'fa fa-user-plus', 1, 5, 1, '2018-12-10 06:47:46', '2018-12-10 06:47:46', NULL, NULL);
-INSERT INTO `modules` VALUES (5, '14612def-5850-49fb-bf99-48d99c73b589', 'groups', 'Group', 'Manage group', '\\App\\Mainframe\\Modules\\Groups\\Group', '\\App\\Mainframe\\Modules\\Groups\\GroupController', 'mainframe.modules.groups', 0, 1, 0, 0, 'groups.index', 'aqua', 'fa fa-plus', 1, 5, 1, '2018-12-10 06:47:46', '2018-12-10 06:47:46', NULL, NULL);
-INSERT INTO `modules` VALUES (6, '50ed1cc8-3ecf-4caf-9724-819cd90dd3d2', 'uploads', 'Upload', 'Manage upload', '\\App\\Mainframe\\Modules\\Uploads\\Upload', '\\App\\Mainframe\\Modules\\Uploads\\UploadController', 'mainframe.modules.uploads', 0, 1, 0, 0, 'uploads.index', 'aqua', 'fa fa-plus', 1, 5, 1, '2018-12-13 20:57:47', '2018-12-13 20:57:47', NULL, NULL);
-INSERT INTO `modules` VALUES (7, '04a9fb30-17ac-4390-86f2-053f2b7cb028', 'changes', 'Change', 'Manage change', '\\App\\Mainframe\\Modules\\Changes\\Change', '\\App\\Mainframe\\Modules\\Changes\\ChangeController', 'mainframe.modules.changes', 0, 1, 0, 0, 'changes.index', 'aqua', 'fa fa-plus', 1, 5, 1, '2018-12-13 20:58:36', '2018-12-13 20:58:36', NULL, NULL);
-INSERT INTO `modules` VALUES (21, '6d1fff93-328b-4501-b643-e21cc6cbf9d2', 'settings', 'Setting', 'Manage setting', '\\App\\Mainframe\\Modules\\Settings\\Setting', '\\App\\Mainframe\\Modules\\Settings\\SettingController', 'mainframe.modules.settings', 0, 1, 0, 0, 'settings.index', 'aqua', 'fa fa-list-alt', 1, 5, 1, '2018-12-24 19:56:38', '2019-12-03 05:01:17', NULL, NULL);
-INSERT INTO `modules` VALUES (23, '3207985e-3886-4a1c-8121-c8e4147cfa72', 'reports', 'Report', 'Manage report', '\\App\\Mainframe\\Modules\\Reports\\Report', '\\App\\Mainframe\\Modules\\Reports\\ReportController', 'mainframe.modules.reports', 0, 0, 0, 999, 'reports.index', 'aqua', 'fa fa-pie-chart', 1, 5, 1, '2019-01-17 05:00:25', '2019-01-22 08:33:07', NULL, NULL);
-INSERT INTO `modules` VALUES (50, '778e5ea8-acee-4458-aab7-5e275a4084a5', 'lorem-ipsums', 'Lorem ipsum', 'Manage lorem ipsum', '\\App\\Mainframe\\Modules\\LoremIpsums\\LoremIpsum', '\\App\\Mainframe\\Modules\\LoremIpsums\\LoremIpsumController', 'mainframe.modules.lorem-ipsums', 0, 1, 0, 0, 'lorem-ipsums.index', 'aqua', 'fa fa-plus', 1, 5, 1, '2019-11-20 14:08:23', '2019-11-20 14:08:23', NULL, NULL);
-INSERT INTO `modules` VALUES (51, 'a0c23e13-1bd6-4346-828b-b7878d67ee29', 'dolor-sits', 'Dolor sit', 'Manage dolor sit', '\\App\\Mainframe\\Modules\\DolorSits\\DolorSit', '\\App\\Mainframe\\Modules\\DolorSits\\DolorSitController', 'mainframe.modules.dolor-sits', 0, 1, 0, 0, 'dolor-sits.index', 'aqua', 'fa fa-plus', 1, 5, 1, '2019-11-20 14:10:34', '2019-12-03 05:31:58', NULL, NULL);
-INSERT INTO `modules` VALUES (52, '2da95896-4a15-4ad6-9919-767dabeef9fe', 'subscriptions', 'Subscription', 'Manage subscription', '\\App\\Mainframe\\Modules\\Subscriptions\\Subscription', '\\App\\Mainframe\\Modules\\Subscriptions\\SubscriptionController', 'mainframe.modules.subscriptions', 0, 1, 0, 0, 'subscriptions.index', 'aqua', 'fa fa-plus', 1, 5, 5, '2019-12-19 14:00:52', '2019-12-19 14:00:52', NULL, NULL);
-INSERT INTO `modules` VALUES (53, '11a3b809-b3e0-4c8f-b59a-b99192e99588', 'packages', 'Package', 'Manage package', '\\App\\Mainframe\\Modules\\Packages\\Package', '\\App\\Mainframe\\Modules\\Packages\\PackageController', 'mainframe.modules.packages', 0, 1, 0, 0, 'packages.index', 'aqua', 'fa fa-plus', 1, 5, 5, '2019-12-19 14:39:47', '2019-12-19 14:39:47', NULL, NULL);
-INSERT INTO `modules` VALUES (54, 'c4582951-e9ee-4d1d-a9de-9230c037699a', 'countries', 'Country', 'Manage country', '\\App\\Mainframe\\Modules\\Countries\\Country', '\\App\\Mainframe\\Modules\\Countries\\CountryController', 'mainframe.modules.countries', 0, 1, 0, 0, 'countries.index', 'aqua', 'fa fa-plus', 1, 5, 5, '2019-12-19 14:39:47', '2019-12-19 14:39:47', NULL, NULL);
-INSERT INTO `modules` VALUES (55, 'cb21c345-ba75-452c-b326-5c20f6cd17b8', 'notifications', 'Notification', 'List of notifications', '\\App\\Mainframe\\Modules\\Notifications\\Notification', '\\App\\Mainframe\\Modules\\Notifications\\NotificationController', 'mainframe.modules.notifications', 0, 1, 0, 0, 'notifications.index', 'aqua', 'fa fa-plus', 1, 5, 5, '2019-12-19 14:39:47', '2019-12-19 14:39:47', NULL, NULL);
-INSERT INTO `modules` VALUES (56, 'f0180289-564e-4f79-aa5c-c40cce8ec4f3', 'product-themes', 'Product theme', 'Manage product theme', '\\App\\Mainframe\\Modules\\ProductThemes\\ProductTheme', '\\App\\Mainframe\\Modules\\ProductThemes\\ProductThemeController', 'mainframe.modules.product-themes', 0, 1, 0, 0, 'product-themes.index', 'aqua', 'fa fa-plus', 1, NULL, NULL, '2019-12-19 15:25:43', '2019-12-19 15:25:43', NULL, NULL);
-INSERT INTO `modules` VALUES (57, '47df59d0-bacb-4d1e-bfda-01c051c63681', 'mf-projects', 'Mf project', 'Manage mf project', '\\App\\Mainframe\\Modules\\MfProjects\\MfProject', '\\App\\Mainframe\\Modules\\MfProjects\\MfProjectController', NULL, 0, 1, 0, 0, 'mf-projects.index', 'aqua', 'fa fa-plus', 1, NULL, NULL, '2019-12-28 13:57:38', '2019-12-28 13:57:38', NULL, NULL);
+INSERT INTO `modules` VALUES (1, 'ca56b8a2-368a-4f84-8336-e9850c406e2d', 'modules', 'Module', 'Manage modules', '\\App\\Mainframe\\Modules\\Modules\\Module', '\\App\\Mainframe\\Modules\\Modules\\ModuleController', 'mainframe.modules.modules', 0, 1, 0, 0, 'modules.index', 'aqua', 'fa fa-puzzle-piece', 1, 1, 1, '2018-12-10 06:47:46', '2018-12-10 06:47:46', NULL, NULL);
+INSERT INTO `modules` VALUES (2, '0b89564c-7198-4b1b-9869-a02a0e584262', 'module-groups', 'Module group', 'Manage module groups', '\\App\\Mainframe\\Modules\\ModuleGroups\\ModuleGroup', '\\App\\Mainframe\\Modules\\ModuleGroups\\ModuleGroupController', 'mainframe.modules.module-groups', 0, 1, 0, 0, 'modulegroups.index', 'aqua', 'fa fa-puzzle-piece', 1, 1, 1, '2018-12-10 06:47:46', '2018-12-10 06:47:46', NULL, NULL);
+INSERT INTO `modules` VALUES (3, 'eee7b4a8-abab-4b79-a751-b681624eb586', 'tenants', 'Tenant', 'Manage tenants', '\\App\\Mainframe\\Modules\\Tenants\\Tenant', '\\App\\Mainframe\\Modules\\Tenants\\TenantController', 'mainframe.modules.tenants', 0, 1, 0, 0, 'tenants.index', 'aqua', 'fa fa-plus', 1, 1, 1, '2018-12-10 06:47:46', '2018-12-10 06:47:46', NULL, NULL);
+INSERT INTO `modules` VALUES (4, '8f27f918-3a05-4b04-9bd3-d953e9492293', 'users', 'User', 'Manage users', '\\App\\User', '\\App\\Mainframe\\Modules\\Users\\UserController', 'mainframe.modules.users', 0, 0, 0, 4, 'users.index', 'aqua', 'fa fa-user-plus', 1, 1, 1, '2018-12-10 06:47:46', '2018-12-10 06:47:46', NULL, NULL);
+INSERT INTO `modules` VALUES (5, '14612def-5850-49fb-bf99-48d99c73b589', 'groups', 'Group', 'Manage groups', '\\App\\Mainframe\\Modules\\Groups\\Group', '\\App\\Mainframe\\Modules\\Groups\\GroupController', 'mainframe.modules.groups', 0, 1, 0, 0, 'groups.index', 'aqua', 'fa fa-plus', 1, 1, 1, '2018-12-10 06:47:46', '2018-12-10 06:47:46', NULL, NULL);
+INSERT INTO `modules` VALUES (6, '50ed1cc8-3ecf-4caf-9724-819cd90dd3d2', 'uploads', 'Upload', 'Manage uploads', '\\App\\Mainframe\\Modules\\Uploads\\Upload', '\\App\\Mainframe\\Modules\\Uploads\\UploadController', 'mainframe.modules.uploads', 0, 1, 0, 0, 'uploads.index', 'aqua', 'fa fa-plus', 1, 1, 1, '2018-12-13 20:57:47', '2018-12-13 20:57:47', NULL, NULL);
+INSERT INTO `modules` VALUES (7, '04a9fb30-17ac-4390-86f2-053f2b7cb028', 'changes', 'Change', 'Manage changes', '\\App\\Mainframe\\Modules\\Changes\\Change', '\\App\\Mainframe\\Modules\\Changes\\ChangeController', 'mainframe.modules.changes', 0, 1, 0, 0, 'changes.index', 'aqua', 'fa fa-plus', 1, 1, 1, '2018-12-13 20:58:36', '2018-12-13 20:58:36', NULL, NULL);
+INSERT INTO `modules` VALUES (21, '6d1fff93-328b-4501-b643-e21cc6cbf9d2', 'settings', 'Setting', 'Manage settings', '\\App\\Mainframe\\Modules\\Settings\\Setting', '\\App\\Mainframe\\Modules\\Settings\\SettingController', 'mainframe.modules.settings', 0, 1, 0, 0, 'settings.index', 'aqua', 'fa fa-list-alt', 1, 1, 1, '2018-12-24 19:56:38', '2019-12-03 05:01:17', NULL, NULL);
+INSERT INTO `modules` VALUES (23, '3207985e-3886-4a1c-8121-c8e4147cfa72', 'reports', 'Report', 'Manage reports', '\\App\\Mainframe\\Modules\\Reports\\Report', '\\App\\Mainframe\\Modules\\Reports\\ReportController', 'mainframe.modules.reports', 0, 0, 0, 999, 'reports.index', 'aqua', 'fa fa-pie-chart', 1, 1, 1, '2019-01-17 05:00:25', '2019-01-22 08:33:07', NULL, NULL);
+INSERT INTO `modules` VALUES (50, '778e5ea8-acee-4458-aab7-5e275a4084a5', 'lorem-ipsums', 'Lorem ipsum', 'Manage lorem ipsums', '\\App\\Mainframe\\Modules\\LoremIpsums\\LoremIpsum', '\\App\\Mainframe\\Modules\\LoremIpsums\\LoremIpsumController', 'mainframe.modules.lorem-ipsums', 0, 1, 0, 0, 'lorem-ipsums.index', 'aqua', 'fa fa-plus', 1, 1, 1, '2019-11-20 14:08:23', '2019-11-20 14:08:23', NULL, NULL);
+INSERT INTO `modules` VALUES (51, 'a0c23e13-1bd6-4346-828b-b7878d67ee29', 'dolor-sits', 'Dolor sit', 'Manage dolor sits', '\\App\\Mainframe\\Modules\\DolorSits\\DolorSit', '\\App\\Mainframe\\Modules\\DolorSits\\DolorSitController', 'mainframe.modules.dolor-sits', 0, 1, 0, 0, 'dolor-sits.index', 'aqua', 'fa fa-plus', 1, 1, 1, '2019-11-20 14:10:34', '2019-12-03 05:31:58', NULL, NULL);
+INSERT INTO `modules` VALUES (52, '2da95896-4a15-4ad6-9919-767dabeef9fe', 'subscriptions', 'Subscription', 'Manage subscriptions', '\\App\\Mainframe\\Modules\\Subscriptions\\Subscription', '\\App\\Mainframe\\Modules\\Subscriptions\\SubscriptionController', 'mainframe.modules.subscriptions', 0, 1, 0, 0, 'subscriptions.index', 'aqua', 'fa fa-plus', 1, 1, 1, '2019-12-19 14:00:52', '2019-12-19 14:00:52', NULL, NULL);
+INSERT INTO `modules` VALUES (53, '11a3b809-b3e0-4c8f-b59a-b99192e99588', 'packages', 'Package', 'Manage packages', '\\App\\Mainframe\\Modules\\Packages\\Package', '\\App\\Mainframe\\Modules\\Packages\\PackageController', 'mainframe.modules.packages', 0, 1, 0, 0, 'packages.index', 'aqua', 'fa fa-plus', 1, 1, 1, '2019-12-19 14:39:47', '2019-12-19 14:39:47', NULL, NULL);
+INSERT INTO `modules` VALUES (54, 'c4582951-e9ee-4d1d-a9de-9230c037699a', 'countries', 'Country', 'Manage countries', '\\App\\Mainframe\\Modules\\Countries\\Country', '\\App\\Mainframe\\Modules\\Countries\\CountryController', 'mainframe.modules.countries', 0, 1, 0, 0, 'countries.index', 'aqua', 'fa fa-plus', 1, 1, 1, '2019-12-19 14:39:47', '2019-12-19 14:39:47', NULL, NULL);
+INSERT INTO `modules` VALUES (55, 'cb21c345-ba75-452c-b326-5c20f6cd17b8', 'notifications', 'Notification', 'List of notifications', '\\App\\Mainframe\\Modules\\Notifications\\Notification', '\\App\\Mainframe\\Modules\\Notifications\\NotificationController', 'mainframe.modules.notifications', 0, 1, 0, 0, 'notifications.index', 'aqua', 'fa fa-plus', 1, 1, 1, '2019-12-19 14:39:47', '2019-12-19 14:39:47', NULL, NULL);
+INSERT INTO `modules` VALUES (56, 'f0180289-564e-4f79-aa5c-c40cce8ec4f3', 'product-themes', 'Product theme', 'Manage product themes', '\\App\\Mainframe\\Modules\\ProductThemes\\ProductTheme', '\\App\\Mainframe\\Modules\\ProductThemes\\ProductThemeController', 'mainframe.modules.product-themes', 0, 1, 0, 0, 'product-themes.index', 'aqua', 'fa fa-plus', 1, 1, 1, '2019-12-19 15:25:43', '2019-12-19 15:25:43', NULL, NULL);
+INSERT INTO `modules` VALUES (57, '47df59d0-bacb-4d1e-bfda-01c051c63681', 'projects', 'Project', 'Manage projects', '\\App\\Mainframe\\Modules\\Projects\\Project', '\\App\\Mainframe\\Modules\\Projects\\ProjectController', 'mainframe.modules.projects', 0, 1, 0, 0, 'projects.index', 'aqua', 'fa fa-plus', 1, 1, 1, '2019-12-28 13:57:38', '2020-01-04 07:33:21', NULL, NULL);
 
 -- ----------------------------
 -- Table structure for notifications
@@ -617,6 +659,7 @@ DROP TABLE IF EXISTS `notifications`;
 CREATE TABLE `notifications`  (
   `id` char(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `uuid` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `project_id` int(10) UNSIGNED NULL DEFAULT NULL,
   `tenant_id` int(10) UNSIGNED NULL DEFAULT NULL,
   `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -683,7 +726,7 @@ DROP TABLE IF EXISTS `product_categories`;
 CREATE TABLE `product_categories`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `uuid` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
-  `mf_project_id` int(10) UNSIGNED NULL DEFAULT NULL,
+  `project_id` int(10) UNSIGNED NULL DEFAULT NULL,
   `tenant_id` int(11) NULL DEFAULT NULL,
   `name` varchar(512) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   `name_ext` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
@@ -710,7 +753,7 @@ DROP TABLE IF EXISTS `product_themes`;
 CREATE TABLE `product_themes`  (
   `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `uuid` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `mf_project_id` int(10) UNSIGNED NULL DEFAULT NULL,
+  `project_id` int(10) UNSIGNED NULL DEFAULT NULL,
   `tenant_id` int(10) UNSIGNED NULL DEFAULT NULL,
   `name` varchar(1024) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `code` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
@@ -726,13 +769,40 @@ CREATE TABLE `product_themes`  (
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
+-- Table structure for projects
+-- ----------------------------
+DROP TABLE IF EXISTS `projects`;
+CREATE TABLE `projects`  (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `uuid` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `code` varchar(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `name` varchar(1024) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `configuration` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT 'JSON configuration for a project',
+  `is_active` tinyint(4) NULL DEFAULT 1,
+  `created_by` int(10) UNSIGNED NULL DEFAULT NULL,
+  `updated_by` int(10) UNSIGNED NULL DEFAULT NULL,
+  `created_at` timestamp(0) NULL DEFAULT NULL,
+  `updated_at` timestamp(0) NULL DEFAULT NULL,
+  `deleted_at` timestamp(0) NULL DEFAULT NULL,
+  `deleted_by` int(10) UNSIGNED NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of projects
+-- ----------------------------
+INSERT INTO `projects` VALUES (1, 'b632635d-877b-461e-8f3f-97256567eea7', 'art', 'ArtemisPod', NULL, NULL, 1, 5, 5, '2019-12-28 14:13:40', '2019-12-28 14:13:40', NULL, NULL);
+INSERT INTO `projects` VALUES (2, 'cedb4d2c-a465-4bb4-818e-09100ed02580', 'orh', 'OrangeHC', NULL, NULL, 1, 5, 5, '2019-12-28 14:14:04', '2019-12-28 14:14:04', NULL, NULL);
+
+-- ----------------------------
 -- Table structure for reports
 -- ----------------------------
 DROP TABLE IF EXISTS `reports`;
 CREATE TABLE `reports`  (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `uuid` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
-  `mf_project_id` int(10) UNSIGNED NULL DEFAULT NULL,
+  `project_id` int(10) UNSIGNED NULL DEFAULT NULL,
   `tenant_id` int(11) NULL DEFAULT NULL,
   `name` varchar(1024) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   `code` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
@@ -794,54 +864,17 @@ CREATE TABLE `settings`  (
   `deleted_at` datetime(0) NULL DEFAULT NULL,
   `deleted_by` int(11) UNSIGNED NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 44 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 46 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of settings
 -- ----------------------------
-INSERT INTO `settings` VALUES (1, '6e9d6b57-966d-4b1e-aa77-fc937d9118b6', 'app-name', 'App Name', 'string', 'test description', 'Mainframe', 1, 1, 1, '2018-12-24 20:25:41', '2019-03-29 14:22:26', NULL, NULL);
+INSERT INTO `settings` VALUES (1, '6e9d6b57-966d-4b1e-aa77-fc937d9118b6', 'app-name', 'App Name', 'string', 'Mainframe Rapid Development Framework', 'Mainframe', 1, 1, 1, '2018-12-24 20:25:41', '2020-01-05 11:57:39', NULL, NULL);
 INSERT INTO `settings` VALUES (2, '2dfc744e-752b-49ef-baee-048fa2fa4969', 'ios-app-version', 'iOS App Version', 'string', 'Latest iOS app version. This is matched with the users app version to prompt app update.', '1.2.0', 1, 1, 1, '2018-12-24 20:26:42', '2019-05-17 07:53:55', NULL, NULL);
 INSERT INTO `settings` VALUES (3, 'e446d927-902b-4633-83d8-5f9fa0ef43cb', 'android-app-version', 'Android App Version', 'string', 'Latest Android app version. This is matched with the users app version to prompt app update.', '1.24', 0, 1, 1, '2018-12-24 20:27:46', '2019-04-11 09:16:28', NULL, NULL);
 INSERT INTO `settings` VALUES (4, '279fb65c-30c2-4727-b3e6-fc18a3476bf7', 'mobile-portrait-help-steps', 'Mobile Portrait Help Steps', 'file', 'Mobile Portrait Helps slides for screen size.', NULL, 1, 1, 1, '2019-03-19 10:02:46', '2019-03-20 09:21:39', NULL, NULL);
 INSERT INTO `settings` VALUES (5, 'f8e2ab99-e6ef-46d5-ae98-edee783b8f56', 'mobile-landscape-help-steps', 'Mobile Landscape Help Steps', 'file', 'Mobile landscape Helps slides for screen size.', NULL, 1, 1, 1, '2019-03-19 10:15:44', '2019-03-30 09:19:32', NULL, NULL);
-INSERT INTO `settings` VALUES (6, 'f05d80a3-9f0d-4f29-982c-331c4f1a4c38', 'ipad-landscape-help-steps', 'ipad Landscape Help Steps', 'file', 'ipad landscape Helps slides for screen size.', NULL, 1, 1, 1, '2019-03-19 11:21:31', '2019-03-19 12:53:38', NULL, NULL);
-INSERT INTO `settings` VALUES (7, '38b7feda-f71f-4d33-a747-f76a3ef2dd6c', 'ipad-Portrait-help-steps', 'ipad Portrait Help Steps', 'file', 'ipad Portrait Helps slides for screen size.', NULL, 1, 1, 1, '2019-03-19 11:23:45', '2019-03-20 08:57:38', NULL, NULL);
-INSERT INTO `settings` VALUES (8, '9b8c14eb-9727-45cd-aac8-408ce28ef9ff', 'iphone-x-portrait-help-steps', 'iphone x portrait Help Steps', 'file', 'iphone x portrait Helps slides for screen size.', NULL, 1, 1, 1, '2019-03-19 11:27:09', '2019-03-19 12:44:58', NULL, NULL);
-INSERT INTO `settings` VALUES (9, '52c18f31-b450-47c7-b832-2d7022118d26', 'popup-show-time', 'Popup show time', 'string', NULL, '1000', 1, 2, 2, '2019-03-27 15:31:06', '2019-03-28 15:21:06', NULL, NULL);
-INSERT INTO `settings` VALUES (10, 'c20bb33e-2252-4412-bfce-53ab92b911b7', 'test-addition', 'test', 'string', NULL, 'test', 0, 1, 1, '2019-03-29 14:22:42', '2019-03-29 18:01:26', '2019-03-29 18:01:26', NULL);
-INSERT INTO `settings` VALUES (11, 'e59fe84e-eb1f-4207-ba19-3cad930731e0', 'app-version-android', 'Android App Version', 'string', 'Latest Android app version. This is matched with the users app version to prompt app update.', '1.4.5', 1, 1, 1, '2019-04-12 04:42:28', '2019-06-20 11:42:33', NULL, NULL);
-INSERT INTO `settings` VALUES (12, 'f49feefd-ca6e-47de-999a-f3a199b08a92', 'app-version-ios', 'iOS App Version', 'string', 'Latest iOS app version. This is matched with the users app version to prompt app update.', '1.3.5', 1, 1, 1, '2019-04-12 04:43:41', '2019-06-17 07:16:41', NULL, NULL);
-INSERT INTO `settings` VALUES (13, '21da3eb2-977f-4200-b699-56febe1957ef', 'review-popup-setting', 'Review Pop Up Settings', 'array', 'Here are the values which use to show/hide the app review popup on the mobile app. Below points you need to keep in your mind for any changes.<br />\r\n1. Never change the parameter names.<br />\r\n2. If you want to stop/disable any condition just remove that parameter from the above value box data. It will be good if you can store somewhere for reminder befor save it. May be you want it again in future.<br />\r\n3. The time value is in minutes for &#39;app-time-spent&#39; and &#39;second_time&#39; parameters. So if you want to set it 2 hours you need to replace 15 by 120.', '{\r\n  \"recommendations\": 10000,\r\n  \"conversions\": 200,\r\n  \"app_time_spent\": 2,\r\n  \"second_time\": 6,\r\n  \"viewed_brands\": 6000,\r\n  \"select_charity\": 100,\r\n  \"total_made\": 2000.33,\r\n  \"total_shared\": 120000\r\n}', 1, 1, 1, '2019-04-18 10:21:39', '2019-06-12 13:05:04', NULL, NULL);
-INSERT INTO `settings` VALUES (14, 'db7adc17-fb5a-4dc5-811d-b6e0fc03183b', 'crowd-funding-popup-enable', 'Crowd Funding Popup', 'boolean', NULL, 'false', 1, 1, 1, '2019-05-09 11:45:27', '2019-06-25 09:24:04', NULL, NULL);
-INSERT INTO `settings` VALUES (15, '899243d5-f301-4e82-a905-b5226b456dd1', 'home-screen-popup-enable', 'Two home screen popups', 'array', 'This single setting used to enable / disable => \"Shop It | Bab It | Bank It | Give It\" popup and \"Cookie and Terms & condition\" popup.', '{\r\n\"shopBabBankGive\": true,\r\n\"shopBabBankGiveText\": \"Shop It | Bab It | Bank It | Give It\",\r\n\"cookieTermsAndCondition\": true,\r\n\"cookieURL\": \"https://www.letsbab.com/cookies-policy/\",\r\n\"termsAndConditionsURL\": \"http://www.letsbab.com/termsofuse/\",\r\n\"cookieTermsAndConditionText\": \"By using our app, you agree to our http://www.letsbab.com/termsofuse/ and our https://www.letsbab.com/cookies-policy/\",\r\n\"cookieURLReplaceText\": \"Privacy and Cookie Statement.\",\r\n\"termsAndConditionsURLReplaceText\": \"Terms and Conditions\"\r\n}', 1, 1, 1, '2019-05-09 12:41:03', '2019-07-05 05:04:06', NULL, NULL);
-INSERT INTO `settings` VALUES (16, 'ef8ec3fb-92c9-4254-86f5-fee1d6a0931a', 'update-app-popup', 'Update app popup', 'array', '<strong>nTimeToDisplay</strong> = How many times to show \"App update popup\".<br />\r\n<strong>interval</strong> (in minutes) = Time different between showing this popup. E.g. First time this popup displayed, and user not updated the app, after that user have to spent N minutes (E.g. 15) in app to see this popup again.<br />\r\n<strong>popupLine1</strong> = First line of app update popup.<br />\r\n<strong>popupLine2</strong> = Second line of app update popup.<br />\r\n<strong>buttonText = </strong>Text of bottom button. This button will open relevant app store to update app.<br />\r\n<br />\r\nIf you want to disable this popup, then change first two field values to 0. You can also remove first two fields to disable this popup.', '{\r\n\"nTimeToDisplay\": 6,\r\n\"interval\": 10,\r\n\"popupLine1\": \"\",\r\n\"popupLine2\": \"To continue \'Babbing\' please update your app to unlock exciting new changes!\",\r\n\"buttonText\": \"Update\"\r\n}', 1, 1, 1, '2019-05-23 06:39:38', '2019-06-20 13:46:34', NULL, NULL);
-INSERT INTO `settings` VALUES (17, '89d6040e-2f19-4127-95cc-cd6f46b9b354', 'first-notification-update-bank-detail', 'First Notification Update Bank Detail', 'array', 'The COMMISSION_AMOUNT is a constant which will use to replace with actual value at app end..', '{\r\n\"message\": \"You’ve made COMMISSION_AMOUNT in commission! Please enter your payment details.\"\r\n}', 1, 1, 1, '2019-06-05 10:03:06', '2019-06-18 10:54:42', NULL, NULL);
-INSERT INTO `settings` VALUES (18, '9565d2e6-996b-46d1-aa3e-db92f73bf595', 'test', 'test', 'string', 'lest', 'test', 0, 1, 1, '2019-06-05 10:06:52', '2019-10-16 15:33:42', NULL, NULL);
-INSERT INTO `settings` VALUES (19, 'c87f5654-5080-4981-9a6e-6630828f8255', 'recommend_popup', 'Recommend additional popup', 'array', '<strong>enable  </strong>= <strong>0</strong> for disable and <strong>1 </strong>for enable.<br />\r\n<strong>iosMsg </strong>= Message to show in ios apps only.<br />\r\n<strong>androidMsg  </strong>= Message to show in android apps only.', '{\r\n\"enable\": 1,\r\n\"iosMsg\": \"\\\\u{1F44A} You\'ve made a recommendation! If your friend buys it, it can take up to 48 hours to show in your app.\",\r\n\"androidMsg\": \"\\\\u{1F44A} You\'ve made a recommendation! If your friend buys it, it can take up to 48 hours to show in your app.\"\r\n}', 1, 1, 1, '2019-06-13 07:47:20', '2019-06-17 07:23:25', NULL, NULL);
-INSERT INTO `settings` VALUES (20, 'a56df79f-8a30-4f50-8964-a64fffb90079', 'rev_split_buy_now_popup', 'Revenue Split Buy Now Popup', 'array', '<strong>popupLine1</strong>: First line of popup<br />\r\n<strong>popupLine2</strong>: Second line of popup. If you don\'t want to show the name of recommender (User A), then you can remove the word \"USERNAME\". Otherwise you need to keep this word as it is. This word will replace with the first name of User A.<br />\r\n<strong>buttonText</strong>: Bottom button text.', '{\r\n\"popupLine1\": \"Welcome to LetsBab!\",\r\n\"popupLine2\": \"Don\'t forget USERNAME\'s recommendation is waiting for you \\\\u{1F4E6}\",\r\n\"buttonText\": \"Check it out\"\r\n}', 0, 1, 1, '2019-06-27 06:43:46', '2019-07-02 12:28:04', NULL, NULL);
-INSERT INTO `settings` VALUES (21, '4ccd44ff-ed04-4927-9b86-ccb48b271633', 'asdfasdf', 'Location popup message text.', 'array', 'For location popup, we are showing tow popup in app.<br />\r\n1) Using first popup we are asking user, why we need this permission. If user denied the permission first time. <strong>This popup only specific to Android OS.</strong><br />\r\n2). Second popup displays to guide user, how to enable location permission, when it is permanently disabled by user.<br />\r\n<br />\r\n<strong>title:</strong> Title of dfirst popup. Only for Android. asdf<br />\r\n<strong>popup1Msg</strong>: Message for first popup. Only for Android.<br />\r\n<br />\r\n<strong>androidMsg</strong>: For android message we can change \"<em><strong>LetsBab needs location permission, please enable it from</strong></em>\" and \"<em><strong>To do that select</strong></em>\". Rest of words we need to keep as it is.<br />\r\n<br />\r\n<strong>iosMsg:</strong> For ios message we can also change \"<em><strong>LetsBab needs location permission, please enable it from</strong></em>\" and \"<em><strong>To do that select</strong></em>\". Rest of words we need to keep as it is.', '{\r\n\"title\": \"Location Permission\",\r\n\"popup1Msg\": \"Letsbab App needs access to your device location so you can see brands that are available in your region.\",\r\n\"androidMsg\": \"LetsBab needs location permission, please enable it from settings.\\nTo do that select Open Settings -> Permissions -> enable \'Location\'.\",\r\n\"iosMsg\": \"LetsBab needs location permission, please enable it from settings.\\nTo do that select Open Settings -> Location -> select \'While Using the App\'.\"\r\n}', 0, 1, 1, '2019-07-09 13:47:52', '2019-10-24 09:53:56', NULL, NULL);
-INSERT INTO `settings` VALUES (22, '456fcf8a-274a-436b-89c7-384651f4f0e2', 'asdfasdf', '', 'boolean', '', '', 0, NULL, NULL, '2019-10-24 10:15:47', '2019-10-24 10:15:47', NULL, NULL);
-INSERT INTO `settings` VALUES (23, '77caa344-ce49-40c9-b3fd-1b8e225f625e', 'asdfasdf', '', 'boolean', '', '', 0, NULL, NULL, '2019-10-24 10:16:09', '2019-10-24 10:16:09', NULL, NULL);
-INSERT INTO `settings` VALUES (24, '3ed7267a-5caa-49fb-bc8e-44492ae1333d', 'tertreyryrty', '', 'boolean', '', '', 0, NULL, NULL, '2019-10-24 10:16:52', '2019-10-24 10:16:52', NULL, NULL);
-INSERT INTO `settings` VALUES (25, '88f40313-9793-43e3-b777-ef49ced38378', 'raihan', '', 'boolean', '', '', 0, NULL, NULL, '2019-10-24 10:17:11', '2019-10-24 10:17:11', NULL, NULL);
-INSERT INTO `settings` VALUES (26, '9a0ab966-d229-44f0-beb8-f3fa8f5cac80', 'raihan', '', 'boolean', '', '', 0, NULL, NULL, '2019-10-24 10:18:47', '2019-10-24 10:18:47', NULL, NULL);
-INSERT INTO `settings` VALUES (27, '60633455-2617-48c3-88d5-615733935f36', 'asdfasdf', '', 'boolean', '', '', 0, NULL, NULL, '2019-10-24 10:19:04', '2019-10-24 10:19:04', NULL, NULL);
-INSERT INTO `settings` VALUES (28, 'a8b42074-91c9-40ac-be19-52ae08f9fd0a', 'asdfasdf', '', 'boolean', '', '', 0, NULL, NULL, '2019-10-24 10:19:23', '2019-10-24 10:19:23', NULL, NULL);
-INSERT INTO `settings` VALUES (29, '74a81c0f-8d10-415a-99c0-b2c929f05415', 'sdfasdf', NULL, 'boolean', NULL, NULL, 0, 5, 5, '2019-10-24 10:23:16', '2019-10-24 10:23:16', NULL, NULL);
-INSERT INTO `settings` VALUES (30, '74a81c0f-8d10-415a-99c0-b2c929f05415', 'sdfasdf', NULL, 'boolean', NULL, NULL, 0, 5, 5, '2019-10-24 10:24:04', '2019-10-24 10:24:04', NULL, NULL);
-INSERT INTO `settings` VALUES (31, '74a81c0f-8d10-415a-99c0-b2c929f05415', 'sdfasdf', NULL, 'boolean', NULL, NULL, 0, 5, 5, '2019-10-24 10:24:34', '2019-10-24 10:24:34', NULL, NULL);
-INSERT INTO `settings` VALUES (32, '727517d9-4757-44e7-a528-dcaa835365eb', 'aaa', 'asdf', 'string', NULL, 'asdfsdf', 0, 5, 5, '2019-10-24 10:27:53', '2019-12-19 07:53:59', '2019-12-19 07:53:59', NULL);
-INSERT INTO `settings` VALUES (33, '41ca3ed4-5b3d-4bb2-a020-326396efe209', 'Wow', NULL, 'string', NULL, NULL, 1, 5, 5, '2019-10-24 13:20:52', '2019-10-28 10:51:09', '2019-10-28 10:51:09', NULL);
-INSERT INTO `settings` VALUES (34, 'd602a787-1b8c-46c9-aa64-2ad6aa830c70', 'd602a787-1b8c-46c9-aa64-2ad6aa830c70', 'test upload', 'string', NULL, 'asdfadf', 1, 5, 5, '1970-01-01 00:00:05', '2019-12-19 09:41:55', NULL, NULL);
-INSERT INTO `settings` VALUES (35, 'e85d9a3d-b77e-46db-9422-078eeac8923a', 'sASDasd', 'asdASD', 'string', NULL, 'AsdaSD', 0, 5, 5, '2019-10-31 10:09:22', '2019-11-22 09:28:42', NULL, NULL);
-INSERT INTO `settings` VALUES (36, 'cdbff8f5-b6a7-4c73-9c65-2f3f46f5138a', 'testasdfsadf', 'asdfasdfasdf', 'string', NULL, 'asdfasdf', 0, 5, 5, '2019-10-31 10:33:21', '2019-10-31 11:35:22', NULL, NULL);
-INSERT INTO `settings` VALUES (37, 'd793a3f5-477a-4ba0-94dc-3bd3aa3064fe', 'fouritems', 'fouritems', 'string', NULL, 'asdfasdf', 0, 5, 5, '2019-10-31 13:00:19', '2019-10-31 13:00:19', NULL, NULL);
-INSERT INTO `settings` VALUES (38, '8ebb7c68-ccb4-414b-8633-8d08f602b10c', 'sadfasdf', 'asdfasdf', 'string', NULL, 'asdfasdf', 0, 5, 5, '2019-10-31 13:01:56', '2019-12-28 07:18:54', NULL, NULL);
-INSERT INTO `settings` VALUES (39, '931f290b-8cd3-4ca1-a0f1-087bb1355b8a', 'some-setting-tag', 'Lorem Ipsum dolor Sit amet', 'string', NULL, 'Lorel ipsum dolor sit amet', 0, 5, 5, '2019-10-31 13:10:35', '2019-11-20 11:03:13', '2019-11-20 11:03:13', NULL);
-INSERT INTO `settings` VALUES (40, 'a3645306-4f30-41f1-845f-f2ae2ed77dcf', 'rrrr', 'rrrr', 'boolean', NULL, 'true', 0, 5, 5, '2019-11-12 12:18:05', '2019-11-12 12:18:47', '2019-11-12 12:18:47', NULL);
-INSERT INTO `settings` VALUES (41, 'fadb9776-d741-4248-bfa8-19a4a1757081', 'test555', '555523wer', 'string', 'asdfasdf aasdfaf', 'test', 1, 5, 5, '2019-11-20 11:03:42', '2019-12-19 08:08:07', '2019-12-19 08:08:07', NULL);
-INSERT INTO `settings` VALUES (42, 'd879c7df-d4ce-48c7-8abc-dc82af05a37d', 'dfasdfasdf', 'asdfasdfasdf', 'string', NULL, 'asdfadsafsdf', 1, 5, 5, '2019-12-02 16:57:43', '2019-12-19 07:54:40', '2019-12-19 07:54:40', NULL);
-INSERT INTO `settings` VALUES (43, 'a285cd17-969a-4dac-9898-d94168b13057', 'test2323', 'testrset', 'string', NULL, 'asdfsafd', 0, 5, 5, '2019-12-28 07:19:13', '2019-12-28 07:19:13', NULL, NULL);
+INSERT INTO `settings` VALUES (6, 'f05d80a3-9f0d-4f29-982c-331c4f1a4c38', 'ipad-landscape-help-steps', 'ipad Landscape Help Steps', 'file', 'ipad landscape Helps slides for screen size.', NULL, 1, 1, 1, '2019-03-19 11:21:31', '2020-01-06 09:13:40', NULL, NULL);
 
 -- ----------------------------
 -- Table structure for subscriptions
@@ -850,7 +883,7 @@ DROP TABLE IF EXISTS `subscriptions`;
 CREATE TABLE `subscriptions`  (
   `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `uuid` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `mf_project_id` int(10) UNSIGNED NULL DEFAULT NULL,
+  `project_id` int(10) UNSIGNED NULL DEFAULT NULL,
   `tenant_id` int(10) UNSIGNED NULL DEFAULT NULL,
   `name` varchar(1024) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `package_id` int(10) UNSIGNED NULL DEFAULT NULL,
@@ -984,7 +1017,7 @@ DROP TABLE IF EXISTS `tenants`;
 CREATE TABLE `tenants`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `uuid` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
-  `mf_project_id` int(10) UNSIGNED NULL DEFAULT NULL,
+  `project_id` int(10) UNSIGNED NULL DEFAULT NULL,
   `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   `code` varchar(32) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   `user_id` int(11) UNSIGNED NULL DEFAULT NULL COMMENT 'Tenant admin who signed up',
@@ -996,13 +1029,20 @@ CREATE TABLE `tenants`  (
   `deleted_at` datetime(0) NULL DEFAULT NULL,
   `deleted_by` int(11) UNSIGNED NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 29 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of tenants
 -- ----------------------------
-INSERT INTO `tenants` VALUES (1, 'ceba2dba-bfad-4045-a36f-ce0572f77679', 1, 'ArtemisPod-default', 'artp-default', NULL, 1, 5, 5, '1970-01-01 00:00:05', '2019-12-19 13:31:02', NULL, NULL);
-INSERT INTO `tenants` VALUES (2, '2170cada-a1fc-43a9-90e5-6bf6a5037952', 2, 'OrangeHC-default', 'orhc-default', NULL, 1, 5, 5, '1970-01-01 00:00:05', '2019-12-28 14:26:39', NULL, NULL);
+INSERT INTO `tenants` VALUES (1, 'ceba2dba-bfad-4045-a36f-ce0572f77679', 1, 'ArtemisPod-default', 'art', NULL, 1, 5, 5, '2019-12-19 13:31:02', '2019-12-19 13:31:02', NULL, NULL);
+INSERT INTO `tenants` VALUES (2, '2170cada-a1fc-43a9-90e5-6bf6a5037952', 2, 'OrangeHC-default', 'orh', NULL, 1, 5, 5, '2019-12-19 13:31:02', '2019-12-28 14:26:39', NULL, NULL);
+INSERT INTO `tenants` VALUES (22, 'eb577051-78c9-4476-b618-bd457f33b134', NULL, 'Elizabeth Solis', NULL, NULL, 1, NULL, NULL, '2020-01-06 16:55:14', '2020-01-06 16:55:14', NULL, NULL);
+INSERT INTO `tenants` VALUES (23, '53da6246-1da3-49a9-8489-1573d5e0eca9', NULL, 'Quail Vaughan', NULL, NULL, 1, NULL, NULL, '2020-01-06 17:01:50', '2020-01-06 17:01:50', NULL, NULL);
+INSERT INTO `tenants` VALUES (24, '9277544c-baf2-4533-87f8-53f939da2d4d', NULL, 'Wyoming Kemp', NULL, NULL, 1, NULL, NULL, '2020-01-06 17:02:42', '2020-01-06 17:02:42', NULL, NULL);
+INSERT INTO `tenants` VALUES (25, 'c6cd666f-95fe-4d7b-aab8-148c92d50860', NULL, 'Samantha Walter', NULL, NULL, 1, NULL, NULL, '2020-01-06 17:05:37', '2020-01-06 17:05:37', NULL, NULL);
+INSERT INTO `tenants` VALUES (26, 'd1a102b8-43cc-4f69-b179-18ce419c8060', NULL, 'Mikayla Cunningham', NULL, NULL, 1, NULL, NULL, '2020-01-06 17:10:31', '2020-01-06 17:10:31', NULL, NULL);
+INSERT INTO `tenants` VALUES (27, '6e327c8f-f534-46d2-a35a-21a0c7a02de1', NULL, 'MacKensie Deleon', NULL, NULL, 1, NULL, NULL, '2020-01-06 17:13:41', '2020-01-06 17:13:41', NULL, NULL);
+INSERT INTO `tenants` VALUES (28, '044ef0fc-8feb-4389-bb93-7fb832f0a366', NULL, 'Eaton Blake', NULL, NULL, 1, NULL, NULL, '2020-01-06 17:16:18', '2020-01-06 17:16:18', NULL, NULL);
 
 -- ----------------------------
 -- Table structure for uploads
@@ -1011,7 +1051,7 @@ DROP TABLE IF EXISTS `uploads`;
 CREATE TABLE `uploads`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `uuid` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
-  `mf_project_id` int(10) UNSIGNED NULL DEFAULT NULL,
+  `project_id` int(10) UNSIGNED NULL DEFAULT NULL,
   `tenant_id` int(11) NULL DEFAULT NULL,
   `name` varchar(512) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   `type` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
@@ -1033,7 +1073,7 @@ CREATE TABLE `uploads`  (
   `deleted_at` datetime(0) NULL DEFAULT NULL,
   `deleted_by` int(11) UNSIGNED NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of uploads
@@ -1044,6 +1084,14 @@ INSERT INTO `uploads` VALUES (3, 'c0c7f836-b76c-4ef1-9481-c82529f2bd1a', NULL, N
 INSERT INTO `uploads` VALUES (4, '8db449ef-4733-4f09-ab2d-061460b6ee3a', NULL, NULL, 'Central-HRIS-for-MoHFW-New-Era-of-Data-Driven-Decision-Final (1).jpg', NULL, '/files/Ie6cROjt_Central-HRIS-for-MoHFW-New-Era-of-Data-Driven-Decision-Final (1).jpg', NULL, 'jpg', NULL, NULL, NULL, NULL, 21, 39, '931f290b-8cd3-4ca1-a0f1-087bb1355b8a', 1, 5, 5, '2019-11-13 16:17:29', '2019-11-13 16:17:41', '2019-11-13 16:17:41', NULL);
 INSERT INTO `uploads` VALUES (5, '5809f712-1527-4620-9ef8-bcd904d3b21b', NULL, NULL, '2019-11-27 10_10_58-Cortana.jpg', NULL, '/files/UohSKFJT_2019-11-27 10_10_58-Cortana.jpg', NULL, 'jpg', NULL, NULL, NULL, NULL, 21, 42, 'd879c7df-d4ce-48c7-8abc-dc82af05a37d', 1, 5, 5, '2019-12-02 16:58:02', '2019-12-19 07:54:40', NULL, NULL);
 INSERT INTO `uploads` VALUES (6, '940f11a7-6772-4de4-a27d-370982e3383c', NULL, NULL, 'WWW.YIFY-TORRENTS.COM.jpg', NULL, '/files/z0rOZjo2_WWW.YIFY-TORRENTS.COM.jpg', NULL, 'jpg', NULL, NULL, NULL, NULL, 21, 34, 'd602a787-1b8c-46c9-aa64-2ad6aa830c70', 1, 5, 5, '2019-12-19 08:53:16', '2019-12-19 08:55:20', '2019-12-19 08:55:20', NULL);
+INSERT INTO `uploads` VALUES (7, 'e5d35b1f-4625-4214-8dda-9f1ad4608383', NULL, NULL, 'raihan-round.png', NULL, '/files/hsQtWhy1_raihan-round.png', NULL, 'png', NULL, NULL, NULL, NULL, 4, NULL, NULL, 1, 1, 1, '2020-01-05 17:40:40', '2020-01-05 17:40:40', NULL, NULL);
+INSERT INTO `uploads` VALUES (8, '52047e4d-262f-435d-8959-9a7f43157293', NULL, NULL, 'raihan-round.png', NULL, '/files/ocJxKCvK_raihan-round.png', NULL, 'png', NULL, NULL, NULL, NULL, 4, NULL, '338b5180-c35a-494e-b684-02288035361f', 1, 1, 1, '2020-01-05 17:41:57', '2020-01-05 17:41:57', NULL, NULL);
+INSERT INTO `uploads` VALUES (9, 'ced54918-9691-4212-8a8c-5cbfca4c127a', NULL, NULL, 'raihan-round.png', NULL, '/files/RdniZdHy_raihan-round.png', NULL, 'png', NULL, NULL, NULL, NULL, 21, 43, 'a285cd17-969a-4dac-9898-d94168b13057', 1, 1, 1, '2020-01-05 18:51:19', '2020-01-05 18:51:19', NULL, NULL);
+INSERT INTO `uploads` VALUES (10, '4f4d5297-170c-4313-b15c-cf4bbace9056', NULL, NULL, 'raihan-round.png', NULL, '/files/GShmXTCO_raihan-round.png', NULL, 'png', NULL, NULL, 'App\\Mainframe\\Modules\\Settings\\Setting', 0, 21, 43, 'a285cd17-969a-4dac-9898-d94168b13057', 1, 1, 1, '2020-01-05 18:52:15', '2020-01-05 18:52:15', NULL, NULL);
+INSERT INTO `uploads` VALUES (11, 'ff387f29-c792-4b8e-a985-85c665f6be8e', NULL, NULL, 'raihan-round.png', NULL, '/files/sSCXBzSS_raihan-round.png', NULL, 'png', NULL, NULL, 'App\\Mainframe\\Modules\\Settings\\Setting', 45, 21, 45, '29900234-2353-4098-9390-4a7ef688f639', 1, 1, 1, '2020-01-05 18:55:51', '2020-01-06 04:44:42', NULL, NULL);
+INSERT INTO `uploads` VALUES (12, '919d6d5a-fec4-4fde-9fb2-872a84752b84', NULL, NULL, 'raihan-round.png', NULL, '/files/ITeOd51R_raihan-round.png', NULL, 'png', NULL, NULL, 'App\\Mainframe\\Modules\\Settings\\Setting', 45, 21, 45, '29900234-2353-4098-9390-4a7ef688f639', 1, 1, 1, '2020-01-06 04:39:17', '2020-01-06 04:44:42', NULL, NULL);
+INSERT INTO `uploads` VALUES (13, '71f5f437-2b83-408f-90ba-34afd4851e76', NULL, NULL, 'retro-wallpaper-49.jpg', NULL, '/files/WLcA82gK_retro-wallpaper-49.jpg', NULL, 'jpg', NULL, NULL, 'App\\Mainframe\\Modules\\Settings\\Setting', 45, 21, 45, '29900234-2353-4098-9390-4a7ef688f639', 1, 1, 1, '2020-01-06 04:39:21', '2020-01-06 04:44:42', NULL, NULL);
+INSERT INTO `uploads` VALUES (14, 'a960dbeb-6901-4810-bf61-d7ac9d8c08c9', NULL, NULL, 'temp.txt', NULL, '/files/MLJ54xuL_temp.txt', NULL, 'txt', NULL, NULL, 'App\\Mainframe\\Modules\\Settings\\Setting', 45, 21, 45, '29900234-2353-4098-9390-4a7ef688f639', 1, 1, 1, '2020-01-06 04:39:30', '2020-01-06 04:44:42', NULL, NULL);
 
 -- ----------------------------
 -- Table structure for user_group
@@ -1063,6 +1111,29 @@ INSERT INTO `user_group` VALUES (5, 1, NULL, NULL);
 INSERT INTO `user_group` VALUES (2, 2, NULL, NULL);
 INSERT INTO `user_group` VALUES (2603, 3, NULL, NULL);
 INSERT INTO `user_group` VALUES (2603, 4, NULL, NULL);
+INSERT INTO `user_group` VALUES (1, 1, NULL, NULL);
+INSERT INTO `user_group` VALUES (2604, 15, NULL, NULL);
+INSERT INTO `user_group` VALUES (2605, 15, NULL, NULL);
+INSERT INTO `user_group` VALUES (2606, 15, NULL, NULL);
+INSERT INTO `user_group` VALUES (2607, 15, NULL, NULL);
+INSERT INTO `user_group` VALUES (2608, 15, NULL, NULL);
+INSERT INTO `user_group` VALUES (2609, 15, NULL, NULL);
+INSERT INTO `user_group` VALUES (2610, 15, NULL, NULL);
+INSERT INTO `user_group` VALUES (2611, 15, NULL, NULL);
+INSERT INTO `user_group` VALUES (2612, 15, NULL, NULL);
+INSERT INTO `user_group` VALUES (2613, 15, NULL, NULL);
+INSERT INTO `user_group` VALUES (2614, 15, NULL, NULL);
+INSERT INTO `user_group` VALUES (2615, 15, NULL, NULL);
+INSERT INTO `user_group` VALUES (2616, 15, NULL, NULL);
+INSERT INTO `user_group` VALUES (2617, 15, NULL, NULL);
+INSERT INTO `user_group` VALUES (2618, 15, NULL, NULL);
+INSERT INTO `user_group` VALUES (2619, 15, NULL, NULL);
+INSERT INTO `user_group` VALUES (2620, 15, NULL, NULL);
+INSERT INTO `user_group` VALUES (2621, 15, NULL, NULL);
+INSERT INTO `user_group` VALUES (2622, 15, NULL, NULL);
+INSERT INTO `user_group` VALUES (2623, 15, NULL, NULL);
+INSERT INTO `user_group` VALUES (2624, 15, NULL, NULL);
+INSERT INTO `user_group` VALUES (2625, 15, NULL, NULL);
 
 -- ----------------------------
 -- Table structure for users
@@ -1071,7 +1142,7 @@ DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `uuid` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
-  `mf_project_id` int(10) UNSIGNED NULL DEFAULT NULL,
+  `project_id` int(10) UNSIGNED NULL DEFAULT NULL,
   `tenant_id` int(11) NULL DEFAULT NULL,
   `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   `email` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
@@ -1115,13 +1186,19 @@ CREATE TABLE `users`  (
   `group_ids` longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL,
   `is_test` tinyint(4) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2604 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 2626 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of users
 -- ----------------------------
-INSERT INTO `users` VALUES (2, '856a81bf-ab1b-4289-9d65-9751009d00ad', NULL, NULL, 'API', 'api@mainframe', '$2y$10$t5wa5wPH8XAgoRYyptOJ0uSf/klm0S/71XUdK3Gz.2llsQHh1nXAm', '7HL9zfX8YzCLTo8uHS4qsYo50twq2nwQLT9R8Evgu5QxhnuQ3Azw0SkVEE0q', '7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0', NULL, 0, NULL, 1, 1, 1, '2018-12-24 05:48:25', '2019-11-20 13:31:57', NULL, NULL, NULL, 'LB', 'API', 'LB API', NULL, 'eFGlVn8yFn8:APA91bHgq2zk-9JrBNNtVMn4iFMB6eicQOUVyFZGRft8jv-GwGJej9sFppTG5w9E_3IeOyR_3NN1i3cWFHaiVl_k1Zlt2jDMVoh7D90CsJG1qxVnuruH-Eidi1CgO9QVlpmFByK2azr3', NULL, NULL, NULL, NULL, 187, 'UK (United Kingdom)', NULL, NULL, NULL, '2019-01-31 08:31:54', '2019-04-09 15:17:25', 'Q29anuSIvoR9N8OmB2ueGGRI8tlHPZau', '2019-01-01 12:00:00', NULL, 'GBP', NULL, NULL, NULL, '[\"2\"]', 0);
-INSERT INTO `users` VALUES (5, '3ef9b174-6c7c-41fd-b68e-18d003fb9481', NULL, NULL, 'Super admin', 'su@mainframe', '$2y$10$MPClZ27.7vXjZR9U.RtAOunXE7aNR3CTe.m9JYJTpVlLTmDWBZhBq', '5utUB8tQO5E63x16NNvcmV0plO5F9dHVGPnvXTEfJdScKH66r530MYiw6Wag', NULL, NULL, 1, NULL, 1, 1, 1, '2018-09-10 15:30:06', '2019-12-28 18:17:34', NULL, NULL, NULL, 'Prime', 'Superuser', 'Prime Superuser', NULL, NULL, NULL, NULL, NULL, NULL, 187, 'UK (United Kingdom)', NULL, NULL, NULL, '2018-09-10 15:30:06', '2019-11-12 12:47:17', 'Tr1JojY6w2WjM5z/t/.HQvj2HJUzrjse', '2019-01-22 19:27:07', NULL, 'GBP', NULL, NULL, NULL, '[\"1\"]', 0);
-INSERT INTO `users` VALUES (2603, '02dc2fdc-a275-4a8e-a398-87d4d8f1ac7d', 1, 1, 'Artemis Pod', 'artemislifestylestore@gmail.com', '$2y$10$w/nIIm1EzaxL6JqwYXsotuA3ql0npbl5nZ0bpj/swZC97DbOyeLmS', 'kLmQM512VkURZdWKwBwbzx2A1YerzKBiAjZIKizag8uiDMlPbPcDdoENidOc', NULL, NULL, 1, NULL, 1, 5, 5, '2019-12-28 16:05:43', '2019-12-28 19:19:03', NULL, NULL, NULL, 'Artemis', 'Pod', 'Artemis Pod', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-28 16:17:48', NULL, NULL, NULL, NULL, NULL, '[\"3\",\"4\"]', 0);
+INSERT INTO `users` VALUES (1, '3ef9b174-6c7c-41fd-b68e-18d003fb9481', NULL, NULL, 'Super admin', 'su@mainframe', '$2y$10$MPClZ27.7vXjZR9U.RtAOunXE7aNR3CTe.m9JYJTpVlLTmDWBZhBq', 'XStm9lF0aMOq4xMVSGsUfNC6dE7g34HSdC2eakk1skcHlhXn93H3I0eTYXkp', NULL, NULL, 1, NULL, 1, 1, 1, '2018-09-10 15:30:06', '2020-01-06 10:10:36', NULL, NULL, NULL, 'Prime', 'Superuser', 'Prime Superuser', NULL, NULL, NULL, NULL, NULL, NULL, 187, 'UK (United Kingdom)', NULL, NULL, NULL, '2018-09-10 15:30:06', '2019-11-12 12:47:17', 'Tr1JojY6w2WjM5z/t/.HQvj2HJUzrjse', '2019-01-22 19:27:07', NULL, 'GBP', NULL, NULL, NULL, '[\"1\"]', 0);
+INSERT INTO `users` VALUES (2, '856a81bf-ab1b-4289-9d65-9751009d00ad', NULL, NULL, 'API', 'api@mainframe', '$2y$10$t5wa5wPH8XAgoRYyptOJ0uSf/klm0S/71XUdK3Gz.2llsQHh1nXAm', '7HL9zfX8YzCLTo8uHS4qsYo50twq2nwQLT9R8Evgu5QxhnuQ3Azw0SkVEE0q', '7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0', NULL, 0, NULL, 1, 1, 1, '2018-12-24 05:48:25', '2020-01-05 06:24:49', NULL, NULL, NULL, 'LB', 'API', 'LB API', NULL, 'eFGlVn8yFn8:APA91bHgq2zk-9JrBNNtVMn4iFMB6eicQOUVyFZGRft8jv-GwGJej9sFppTG5w9E_3IeOyR_3NN1i3cWFHaiVl_k1Zlt2jDMVoh7D90CsJG1qxVnuruH-Eidi1CgO9QVlpmFByK2azr3', NULL, NULL, NULL, NULL, 187, 'UK (United Kingdom)', NULL, NULL, NULL, '2019-01-31 08:31:54', '2019-04-09 15:17:25', 'Q29anuSIvoR9N8OmB2ueGGRI8tlHPZau', '2019-01-01 12:00:00', NULL, 'GBP', NULL, NULL, NULL, '[\"2\"]', 0);
+INSERT INTO `users` VALUES (2619, '0b11bb84-a6f9-4612-b823-6eb0feda3342', NULL, NULL, ' ', 'dote@mailinator.net', '$2y$10$zZmnBn0xe0wXNCmKpWFnV.dQq/yJasjT4Bk1gZ9yQdWrp/e.2GgFK', NULL, NULL, NULL, 1, NULL, 1, NULL, NULL, '2020-01-06 16:55:14', '2020-01-06 16:55:14', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '[\"15\"]', NULL);
+INSERT INTO `users` VALUES (2620, 'd133212b-4a31-477e-9e19-4ad52496ddac', NULL, NULL, ' ', 'nunege@mailinator.com', '$2y$10$tIoP274rzojEZuV1neaHee14mZ4Z44UUExekbBd/pq7H6PB7ifZx6', NULL, NULL, NULL, 1, NULL, 1, NULL, NULL, '2020-01-06 17:01:50', '2020-01-06 17:01:50', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '[\"15\"]', NULL);
+INSERT INTO `users` VALUES (2621, '4d507c35-70e5-4a93-96b4-7b41be64b82a', NULL, NULL, ' ', 'fewyhena@mailinator.com', '$2y$10$P9BLbLpWGQJApQ2w6JLU7ullP/MWRH1lk16leMNwxaV.dXTDrnwG6', NULL, NULL, NULL, 1, NULL, 1, NULL, NULL, '2020-01-06 17:02:42', '2020-01-06 17:02:42', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '[\"15\"]', NULL);
+INSERT INTO `users` VALUES (2622, 'e18112a0-305b-404d-8f5a-fb7395ae2b8d', NULL, NULL, ' ', 'xela@mailinator.net', '$2y$10$Ikc5YiL37BJpNdaQpcfxv.9eXtfoSVaZgOAhIDuyk2hyY7KOEa3Wi', NULL, NULL, NULL, 1, NULL, 1, NULL, NULL, '2020-01-06 17:05:37', '2020-01-06 17:05:37', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '[\"15\"]', NULL);
+INSERT INTO `users` VALUES (2623, 'f3191649-17be-4d07-ac7e-9d8b810fd375', NULL, NULL, ' ', 'jumixe@mailinator.net', '$2y$10$HTScryzy2SpO9ehMsuULpexvgPLuM7gBjlBhRahesIen4MF.NJ.Oi', NULL, NULL, NULL, 1, NULL, 1, NULL, NULL, '2020-01-06 17:10:31', '2020-01-06 17:10:31', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '[\"15\"]', NULL);
+INSERT INTO `users` VALUES (2624, 'b8f2058f-463a-4f5a-84dd-9cd65137d878', NULL, NULL, ' ', 'sydydipof@mailinator.net', '$2y$10$Lw8iFSwy.GYrKtDMUrfHmuf0R/ZFD/tv8j9/5v1efUa6qLRV3DsZu', NULL, NULL, NULL, 1, NULL, 1, NULL, NULL, '2020-01-06 17:13:41', '2020-01-06 17:13:41', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '[\"15\"]', NULL);
+INSERT INTO `users` VALUES (2625, 'ea25fb87-7aa6-4165-a7bf-e34c5e4a7988', NULL, NULL, ' ', 'namup@mailinator.net', '$2y$10$yIpQzP.0AF.b7cq8/R7v9.s5R46napfirHhRy0jMwAkMNX1zm6aPK', NULL, NULL, NULL, 1, NULL, 1, NULL, NULL, '2020-01-06 17:16:18', '2020-01-06 17:16:18', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '[\"15\"]', NULL);
 
 SET FOREIGN_KEY_CHECKS = 1;

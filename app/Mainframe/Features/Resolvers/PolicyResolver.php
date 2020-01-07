@@ -18,16 +18,20 @@ class PolicyResolver
     {
         $modelName = class_basename($modelClass);
 
-        if (class_exists('\\App\\Policies\\'.$modelName.'Policy')) {
-            $policy = '\\App\\Policies\\'.$modelName.'Policy';
-        } elseif (class_exists('App\\Mainframe\\Modules\\'.Str::plural($modelName).'\\'.$modelName.'Policy')) {
-            $policy = 'App\\Mainframe\\Modules\\'.Str::plural($modelName).'\\'.$modelName.'Policy';
-        } elseif (class_exists($modelClass.'Policy')) {
-            $policy = $modelClass.'Policy';
-        } else {
-            $policy = BaseModulePolicy::class;
+
+        $paths = [
+            '\\App\\Policies\\'.$modelName.'Policy', // Laravel's default policy path
+            '\\App\\Mainframe\\Modules\\'.Str::plural($modelName).'\\'.$modelName.'Policy', // Inside mainframe module directory
+            $modelClass.'Policy' // In the same directory of the model
+        ];
+
+        foreach ($paths as $path) {
+            if (class_exists($path)) {
+                return $path;
+            }
         }
 
-        return $policy;
+        return BaseModulePolicy::class;
+
     }
 }

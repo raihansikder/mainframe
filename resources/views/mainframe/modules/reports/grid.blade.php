@@ -15,15 +15,12 @@
 
 @section('title')
     <span style="padding-right: 20px">{{$module->title}}</span>
-    @if(hasModulePermission($moduleName,"create"))
+    @if($user->can('create',$element))
         <a class="btn btn-xs btn-success" href="{{route("$moduleName.create")}}" data-toggle="tooltip"
            title="Create a new {{lcfirst(Str::singular($module->title))}}"><i class="fa fa-plus"></i> &nbsp;CREATE NEW </a>
     @endif
 
-    {{--@if(hasModulePermission($name,"view-list"))--}}
-    {{--<a class="btn btn-xs" href="{{route("$name.index")}}" data-toggle="tooltip"--}}
-    {{--title="View list of {{lcfirst(str_plural($currentModule->title))}}"><i class="fa fa-list"></i></a>--}}
-    {{--@endif--}}
+
 
     @if(hasModulePermission($moduleName,"report"))
         <a href="{{\App\Report::defaultForModule($module->id)}}" class="btn btn-default btn-xs"

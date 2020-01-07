@@ -15,8 +15,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton(MessageBag::class, function () { return new MessageBag(); });
-        $this->app->singleton(Response::class, function () { return new Response(); });
+
     }
 
     /**

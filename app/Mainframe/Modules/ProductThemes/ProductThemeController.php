@@ -2,9 +2,9 @@
 
 namespace App\Mainframe\Modules\ProductThemes;
 
-use App\Mainframe\Features\Modular\BaseController\ModuleBaseController;
+use App\Mainframe\Features\Modular\ModularController\ModularController;
 
-class ProductThemeController extends ModuleBaseController
+class ProductThemeController extends ModularController
 {
 
     /**

@@ -2,9 +2,9 @@
 
 namespace App\Mainframe\Modules\Settings;
 
-use App\Mainframe\Features\Modular\BaseController\ModuleBaseController;
+use App\Mainframe\Features\Modular\ModularController\ModularController;
 
-class SettingController extends ModuleBaseController
+class SettingController extends ModularController
 {
 
     public function __construct()

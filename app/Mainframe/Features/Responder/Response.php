@@ -5,8 +5,8 @@
 namespace App\Mainframe\Features\Responder;
 
 use Illuminate\Support\MessageBag;
-use App\Mainframe\Features\Modular\BaseController\Traits\Validable;
-use App\Mainframe\Features\Modular\BaseController\Traits\HasMessageBag;
+use App\Mainframe\Features\Core\Traits\Validable;
+use App\Mainframe\Features\Core\Traits\HasMessageBag;
 
 class Response
 {

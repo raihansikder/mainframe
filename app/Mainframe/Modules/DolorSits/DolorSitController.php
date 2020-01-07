@@ -2,9 +2,9 @@
 
 namespace App\Mainframe\Modules\DolorSits;
 
-use App\Mainframe\Features\Modular\BaseController\ModuleBaseController;
+use App\Mainframe\Features\Modular\ModularController\ModularController;
 
-class DolorSitController extends ModuleBaseController
+class DolorSitController extends ModularController
 {
 
     /**

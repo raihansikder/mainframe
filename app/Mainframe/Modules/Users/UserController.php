@@ -4,10 +4,10 @@ namespace App\Mainframe\Modules\Users;
 
 use Hash;
 use Validator;
-use App\Mainframe\Features\Mf;
-use App\Mainframe\Features\Modular\BaseController\ModuleBaseController;
+use App\Mainframe\Helpers\Mf;
+use App\Mainframe\Features\Modular\ModularController\ModularController;
 
-class UserController extends ModuleBaseController
+class UserController extends ModularController
 {
 
     /**

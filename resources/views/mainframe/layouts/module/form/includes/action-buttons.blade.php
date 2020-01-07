@@ -3,6 +3,7 @@
  * @var \App\Mainframe\Modules\Modules\Module $module
  * @var \App\Mainframe\Modules\SuperHeroes\SuperHero $element
  */
+
 ?>
 
 <div class="clearfix"></div>
@@ -10,7 +11,7 @@
 <div id="{{$module->name}}CtaBlock" class="btn-group pull-left cta-block no-margin col-md-12">
 
     {{--  Save button    --}}
-    @if(((isset($element) && $editable)) || (!isset($element) && hasModulePermission($module->name,'create')))
+    @if(((isset($element) && $editable)) || (!isset($element) && $user->can('create',$element)))
 
         <input name="redirect_success" type="hidden"
                value="{{ request('redirect_success',route($module->name.".index") ) }}"/>

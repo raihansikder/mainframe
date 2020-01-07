@@ -15,7 +15,6 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         // 'App\Model' => 'App\Policies\ModelPolicy',
-
     ];
 
     /**
@@ -26,8 +25,6 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
-
-        //
 
         Gate::guessPolicyNamesUsing(function ($modelClass) {
             return PolicyResolver::resolve($modelClass); // Custom policy discovery

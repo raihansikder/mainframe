@@ -20,7 +20,7 @@ $var['upload_container_id'] = "img_container_" . $rand;
                 <input type="hidden" name="ret" value="json"/>
                 <input type="hidden" name="id" value="{{$var['id']}}"/>
             </form>
-            <div id="fileuploader">Upload file</div>
+            <div class="file-uploader">Upload file</div>
         </div>
     @endif
 </div>

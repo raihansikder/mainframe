@@ -1,4 +1,4 @@
-@extends('template.app-frame')
+@extends('mainframe.layouts.default.template')
 
 @section('sidebar-left')
     @include('mainframe.modules.base.include.sidebar-left')

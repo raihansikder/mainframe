@@ -2,9 +2,9 @@
 
 namespace App\Mainframe\Modules\LoremIpsums;
 
-use App\Mainframe\Features\Modular\BaseController\ModuleBaseController;
+use App\Mainframe\Features\Modular\ModularController\ModularController;
 
-class LoremIpsumController extends ModuleBaseController
+class LoremIpsumController extends ModularController
 {
 
     /**

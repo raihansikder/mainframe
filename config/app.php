@@ -178,9 +178,9 @@ return [
         App\Providers\TelescopeServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         /*
-         * My Service Providers...
+         * Mainframe Service Providers...
          */
-        App\Providers\Mainframe\HelperServiceProvider::class,
+        App\Mainframe\Providers\MainframeServiceProvider::class,
 
     ],
 

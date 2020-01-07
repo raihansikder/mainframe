@@ -3,42 +3,10 @@
 namespace App\Mainframe\Modules\Users\Traits;
 
 use Illuminate\Support\Str;
+use App\Mainframe\Modules\Groups\Group;
 
 trait UserGroupable
 {
-    /**
-     * Updates groups based on csv values
-     *
-     * @param  null  $group_ids_csv
-     */
-    // public function updateGroups($group_ids_csv = null)
-    // {
-    //     // Detach all previous groups
-    //     $this->groups()->detach();
-    //
-    //     // load group ids from function parameter or existing table field value if
-    //     // no param value is provided
-    //     if (!$group_ids_csv) $group_ids_csv = $this->group_ids_csv;
-    //
-    //     if (strlen(trim($group_ids_csv))) {
-    //         $group_ids = arrayFromCsv($group_ids_csv);
-    //         if (is_array($group_ids) && count($group_ids)) {
-    //             $this->groups()->attach($group_ids, ['created_at' => now(), 'updated_at' => now()]);
-    //         }
-    //     }
-    // }
-
-    /**
-     * returns group ids as array
-     *
-     * @return array
-     */
-    public function groupIds()
-    {
-        /** @var \App\Mainframe\Modules\Users\User $this */
-        return json_decode($this->group_ids);
-        //return explode(',', trim($this->group_ids_csv, ", "));
-    }
 
     /**
      * Checks if user belongs to a certain groupId
@@ -48,7 +16,7 @@ trait UserGroupable
      */
     public function inGroupId($group_id)
     {
-        return in_array($group_id, $this->groupIds());
+        return in_array($group_id, $this->group_ids);
     }
 
     /**
@@ -60,12 +28,29 @@ trait UserGroupable
     public function inGroupIds($group_ids = [])
     {
         foreach ($group_ids as $group_id) {
-            if (in_array($group_id, $this->groupIds())) {
+            if ($this->inGroupId($group_id)) {
                 return true;
             }
         }
 
         return false;
+    }
+
+    /**
+     * Find if the user belongs to all the groups.
+     *
+     * @param  array  $group_ids
+     * @return bool
+     */
+    public function inAllGroupIds($group_ids = [])
+    {
+        foreach ($group_ids as $group_id) {
+            if (! $this->inGroupId($group_id)) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     /**
@@ -76,17 +61,18 @@ trait UserGroupable
      */
     public function isSuperUser()
     {
-        return $this->hasPermission('superuser');
+        return $this->hasPermission('superuser') || $this->inGroupId(Group::SUPERUSER);
     }
 
     /**
-     * Check if user can make api call
+     * Checks if the user is a super user - has
+     * access to everything regardless of permissions.
      *
      * @return bool
      */
-    public function canMakeApiCall()
+    public function isApiUser()
     {
-        return $this->inGroupId(9); // 9 = API user
+        return $this->hasPermission('api') || $this->inGroupId(Group::API);
     }
 
     /**
@@ -217,18 +203,14 @@ trait UserGroupable
             // accordingly.
             if ($all === true and $matched === false) {
                 return false;
-            } else {
-                if ($all === false and $matched === true) {
-                    return true;
-                }
+            }
+
+            if ($all === false and $matched === true) {
+                return true;
             }
         }
 
-        if ($all === false) {
-            return false;
-        }
-
-        return true;
+        return ! ($all === false);
     }
 
     /**

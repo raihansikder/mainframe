@@ -52,10 +52,20 @@ use App\Mainframe\Modules\Groups\Traits\GroupDefinitionsTrait;
  * @mixin \Eloquent
  * @property int|null $tenant_id
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Groups\Group whereTenantId($value)
+ * @property int|null $project_id
+ * @property-read \App\Mainframe\Modules\Projects\Project $project
+ * @property-read \App\Mainframe\Modules\Tenants\Tenant|null $tenant
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Groups\Group whereProjectId($value)
  */
 class Group extends BaseModule
 {
     use GroupHelper, GroupDefinitionsTrait;
+
+    public const SUPERUSER = 1;
+    public const API = 2;
+    public const TENANT_ADMIN = 3;
+    public const PROJECT_ADMIN = 4;
+
     /*
     |--------------------------------------------------------------------------
     | Fillable attributes

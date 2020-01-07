@@ -3,8 +3,8 @@
 namespace App\Mainframe\Features\Report\Traits;
 
 use Illuminate\Support\Str;
-use App\Mainframe\Features\Helpers\Convert;
-use App\Mainframe\Features\Helpers\Sanitize;
+use App\Mainframe\Helpers\Convert;
+use App\Mainframe\Helpers\Sanitize;
 
 /** @mixin \App\Mainframe\Features\Report\ReportBuilder $this */
 trait Filterable

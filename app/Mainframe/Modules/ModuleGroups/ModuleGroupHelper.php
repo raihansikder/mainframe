@@ -12,14 +12,14 @@ trait ModuleGroupHelper
      */
     public static function getActiveList()
     {
-        return ModuleGroup::active()->remember(cacheTime('long'))->get();
+        return ModuleGroup::active()->remember(timer('long'))->get();
     }
 
     public static function ofParentId($id = 0)
     {
         return ModuleGroup::active()->where('parent_id', $id)
             ->orderBy('order')
-            ->remember(cacheTime('long'))->get();
+            ->remember(timer('long'))->get();
     }
 
     /**
@@ -89,7 +89,7 @@ trait ModuleGroupHelper
     {
         $q = ModuleGroup::select('name');
         if ($only_active) {
-            $q = $q->remember(cacheTime('very-long'))->where('is_active', 1);
+            $q = $q->remember(timer('very-long'))->where('is_active', 1);
         }
         $results = $q->get()->toArray();
 
@@ -104,13 +104,13 @@ trait ModuleGroupHelper
     public function firstLevelChildren()
     {
         $list = [];
-        $moduleGroups = ModuleGroup::whereParentId($this->id)->whereIsActive(1)->orderBy('order')->remember(cacheTime('very-long'))->get();
+        $moduleGroups = ModuleGroup::whereParentId($this->id)->whereIsActive(1)->orderBy('order')->remember(timer('very-long'))->get();
         if (count($moduleGroups)) {
             foreach ($moduleGroups as $moduleGroup) {
                 $list[] = ['type' => 'module_group', 'item' => $moduleGroup];
             }
         }
-        $modules = Module::whereModuleGroupId($this->id)->whereIsActive(1)->orderBy('order')->remember(cacheTime('very-long'))->get();
+        $modules = Module::whereModuleGroupId($this->id)->whereIsActive(1)->orderBy('order')->remember(timer('very-long'))->get();
         if (count($modules)) {
             foreach ($modules as $module) {
                 $list[] = ['type' => 'module', 'item' => $module];

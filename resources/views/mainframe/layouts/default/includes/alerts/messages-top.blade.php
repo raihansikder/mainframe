@@ -31,12 +31,13 @@ if ($responseStatus == 'success') {
 
 
 @if($responseStatus || $responseMessage || $errors->any())
+
     <div class="message-container">
+
         <div class="callout {{$css}} ajaxMsg errorDiv" id="errorDiv">
             @if($responseStatus)
                 <h4>
-                    {{ Str::upper($responseStatus) }} :
-                    {{ $responseMessage }}
+                    {{ ucfirst($responseStatus) }}. {{ $responseMessage }}
                 </h4>
             @endif
 
@@ -50,6 +51,7 @@ if ($responseStatus == 'success') {
 
         </div>
     </div>
+
 @endif
 
 <?php session()->forget(['status', 'message', 'error']);?>

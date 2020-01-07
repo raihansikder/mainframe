@@ -1,6 +1,6 @@
 <?php
 
-use App\Mainframe\Features\Mf;
+use App\Mainframe\Helpers\Mf;
 
 $modules = Mf::modules();
 $moduleGroups = Mf::moduleGroups();
@@ -55,21 +55,18 @@ Route::middleware(['auth','verified'])->group(function () use ($modules, $module
         /*
          * Default module-group routes.
          */
-        Route::get($moduleGroup->name, 'ModuleGroupsController@modulegroupIndex')->name($moduleGroup->name.'.index');
+        Route::get($moduleGroup->name, '\App\Mainframe\Modules\ModuleGroups\ModuleGroupController@modulegroupIndex')->name($moduleGroup->name.'.index');
     }
 
     /*
     * Update and replace an existing file in an upload.
     */
-    Route::post('update_upload', 'UploadsController@updateExistingUpload')->name('uploads.update_last_upload');
+    Route::post('update_upload', '\App\Mainframe\Modules\Uploads\UploadController@updateExistingUpload')->name('uploads.update_last_upload');
 
     /*
      * Download a file
      */
-    Route::get('download/{uuid}', 'UploadsController@download')->name('get.download');
+    Route::get('download/{uuid}', '\App\Mainframe\Modules\Uploads\UploadController@download')->name('get.download');
 
-    /*
-     * Log out
-     */
-    Route::get('logout', 'Auth\LoginController@logout')->name('get.logout');
+
 });

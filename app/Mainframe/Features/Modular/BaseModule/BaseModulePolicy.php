@@ -102,6 +102,21 @@ class BaseModulePolicy
      */
     public function before(User $user, $ability)
     {
-        return $user->isSuperUser();
+
+        if ($user->isSuperUser()) {
+            return true;
+        }
+    }
+
+    /**
+     * Sample function
+     * In the code you can use both camelCase and kebab-case function name.
+     *
+     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @return bool
+     */
+    public function doSomeThing(User $user)
+    {
+        return true;
     }
 }
