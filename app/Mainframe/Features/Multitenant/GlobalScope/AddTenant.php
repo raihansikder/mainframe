@@ -2,7 +2,7 @@
 
 namespace App\Mainframe\Features\Multitenant\GlobalScope;
 
-use Schema;
+use App\Mainframe\Helpers\Mf;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Scope;
 use Illuminate\Database\Eloquent\Builder;
@@ -18,7 +18,7 @@ class AddTenant implements Scope
      */
     public function apply(Builder $builder, Model $model)
     {
-        if (Schema::hasColumn($model->getTable(), 'tenant_id')) {
+        if (Mf::tableHasColumn($model->getTable(), 'tenant_id')) {
             $builder->where('tenant_id', user()->tenant_id);
         }
     }

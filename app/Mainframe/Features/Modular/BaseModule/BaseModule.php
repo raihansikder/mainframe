@@ -60,12 +60,18 @@ class BaseModule extends Model implements Auditable
     {
         parent::boot();
 
+        /**
+         * Do not store audit logs if there is no change.
+         */
         Audit::creating(function (Audit $model) {
             if (empty($model->old_values) && empty($model->new_values)) {
                 return false;
             }
         });
 
+        /**
+         * For tenant user add global scope.
+         */
         if (user()->ofTenant()) {
             static::addGlobalScope(new AddTenant);
         }
