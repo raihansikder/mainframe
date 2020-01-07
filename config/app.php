@@ -181,6 +181,7 @@ return [
          * Mainframe Service Providers...
          */
         App\Mainframe\Providers\MainframeServiceProvider::class,
+        OwenIt\Auditing\AuditingServiceProvider::class,
 
     ],
 

@@ -16,8 +16,8 @@ Route::prefix('mf/auth')->group(function () {
     $controllerRoot = '\App\Mainframe\Http\Controllers\\';
 
     Route::get('login', $controllerRoot.'Auth\LoginController@showLoginForm')->name($namePrefix.'login');
-    // Route::post('login', $controllerRoot.'Auth\LoginController@login');
-    // Route::post('logout', $controllerRoot.'Auth\LoginController@logout')->name($namePrefix.'logout');
+    Route::post('login', $controllerRoot.'Auth\LoginController@login');
+    Route::post('logout', $controllerRoot.'Auth\LoginController@logout')->name($namePrefix.'logout');
 
     // Registration Routes...
     Route::get('register', $controllerRoot.'Auth\RegisterController@showRegistrationForm')->name($namePrefix.'register');
