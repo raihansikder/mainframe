@@ -1,16 +1,17 @@
-<!--suppress XmlUnboundNsPrefix, ES6ConvertVarToLetConst -->
-
 <?php
+$customPermissionItems = config('mainframe.permissions.custom');
 /**
- * Renders a multi-dimensional array of permissions in hiararchical order for assigning permission
+ * Renders a multi-dimensional array of permissions in hierarchical order for assigning permission
  * The $tree can be generated from ModuleGroup::tree()
  *
- * @param $tree  : ModuleGroup::tree()
+ * @param array $tree  : ModuleGroup::tree()
  * @return string
  */
-function renderModulePermissionTree($tree)
+function renderTree($tree)
 {
+    $module_permissions = config('mainframe.permissions.module');
     $html = '';
+
     if (is_array($tree)) {
         $html .= "<ul>";
         foreach ($tree as $leaf) {
@@ -24,19 +25,8 @@ function renderModulePermissionTree($tree)
                 "<label><b>".$leaf['item']->title."</b> - <small>".$leaf['item']->desc."</small></label> <div class='clearfix'></div>";
 
             if ($leaf['type'] === 'module') {
-                $module_default_permissions_suffixes = [
-                    'view-list' => 'View grid',
-                    'view-details' => 'View details',
-                    'create' => 'Create',
-                    'edit' => 'Edit',
-                    'delete' => 'Delete',
-                    'restore' => 'Restore',
-                    'change-logs' => 'Access change logs',
-                    'report' => 'Report',
-                ];
-
                 $html .= "<ul class='pull-left module-permissions'>";
-                foreach ($module_default_permissions_suffixes as $k => $v) {
+                foreach ($module_permissions as $k => $v) {
                     $val = "$perm-$k";
                     $html .= "<li>".
                         "<input name='permission[]' type='checkbox' v-model='permission'  value='$val'/>".
@@ -47,7 +37,7 @@ function renderModulePermissionTree($tree)
             }
 
             if (isset($leaf['children']) && count($leaf['children'])) {
-                $html .= renderModulePermissionTree($leaf['children']);
+                $html .= renderTree($leaf['children']);
             }
             $html .= "</li>";
         }
@@ -63,7 +53,7 @@ function renderModulePermissionTree($tree)
     <ul>
 
         {{--Super user permission--}}
-        <li class="superuser">
+        <li class="superuser col-md-12">
             <label>
                 <input name='permission[]' type='checkbox' v-model='permission' value='superuser'
                        data-toggle="tooltip" title="Assign super admin permission"/>
@@ -74,31 +64,29 @@ function renderModulePermissionTree($tree)
 
         {{-- Module view, create, edit permissions--}}
         <li class="module-permissions">
-            {!!  renderModulePermissionTree(\App\Mainframe\Modules\ModuleGroups\ModuleGroup::tree()) !!}
+            {!!  renderTree(\App\Mainframe\Modules\ModuleGroups\ModuleGroup::tree()) !!}
         </li>
 
 
         {{--Additional permission options defined in config/mainframe/permissions--}}
         <?php
-        $permissions = config('mainframe.permissions');
+        $customPermissionItems = config('mainframe.permissions.custom');
         ?>
-        @foreach($permissions as $block_title=>$entries)
+        @foreach($customPermissionItems as $item => $permissions)
             <div class="clearfix"></div>
             <li class="pull-left">
-                <label>
-                    <input name="permission[]" type="checkbox" value="{{$block_title}}" v-model='permission' v-on:click='clicked'>
-                    {{$block_title}}
-                </label>
+
+                <input name="permission[]" type="checkbox" value="{{$item}}" v-model='permission' v-on:click='clicked'>
+                <label>{{Str::ucfirst(str_replace('-',' ',$item))}}</label>
 
                 <div class="clearfix"></div>
                 <ul class="pull-left">
-                    @foreach($entries as $entry)
+                    @foreach($permissions as $key=>$label)
                         <li>
                             <label>
-                                <input name="permission[]" type="checkbox" value="{{$entry['permission']}}" v-model='permission'>
-                                {{$entry['label']}}<code>
-                                    <small>{{$entry['permission']}}</small>
-                                </code>
+                                <input name="permission[]" type="checkbox" value="{{$key}}" v-model='permission'>
+                                {{$label}}
+                                <code><small>{{$key}}</small></code>
                             </label>
                         </li>
                     @endforeach

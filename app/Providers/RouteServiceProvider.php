@@ -58,6 +58,24 @@ class RouteServiceProvider extends ServiceProvider
         Route::middleware('web')
             ->namespace($this->namespace)
             ->group(base_path('routes/web.php'));
+
+        /*
+         * Additional routes for Mainframe
+         */
+        // Default auth routes
+        Route::middleware('web')
+            ->namespace($this->namespace)
+            ->group(base_path('app/Mainframe/routes/auth.php'));
+
+        // Mainframe auth routes
+        Route::middleware('web')
+            ->namespace('App\Mainframe\Http\Controllers')
+            ->group(base_path('app/Mainframe/routes/auth-mainframe.php'));
+
+        // Module
+        Route::middleware('web')
+            ->namespace('App\Mainframe\Modules')
+            ->group(base_path('app/Mainframe/routes/mainframe.php'));
     }
 
     /**

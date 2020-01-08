@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpUndefinedMethodInspection */
 
 namespace App\Mainframe\Modules\Modules;
 
@@ -96,7 +96,7 @@ trait ModuleHelper
                 $i = $predecessor->parent_id;
             }
         }
-        $stacGroupValidatork = array_reverse($stack);
+        $stack = array_reverse($stack);
 
         return $stack;
     }
@@ -288,6 +288,17 @@ trait ModuleHelper
         $classPath = $this->controllerClassPath();
 
         return new $classPath;
+    }
+
+    /**
+     * Get module name from class name/path.
+     *
+     * @param $class
+     * @return string
+     */
+    public static function nameFromClass($class)
+    {
+        return Str::plural(Str::kebab(class_basename($class)));
     }
 
 }

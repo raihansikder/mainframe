@@ -6,26 +6,55 @@
 
 namespace App\Mainframe\Features\Modular\BaseModule;
 
+use Str;
 use App\Mainframe\Modules\Users\User;
+use App\Mainframe\Modules\Modules\Module;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class BaseModulePolicy
 {
     use HandlesAuthorization;
 
+    public $moduleName;
+
+    public function __construct()
+    {
+        $this->moduleName = $this->getModuleName();
+    }
+
     /**
-     * Determine whether the user can view any settings.
+     * Runs before any of the other checks.
+     *
+     * @param $user User
+     * @param $ability
+     * @return bool
+     */
+    public function before(User $user, $ability)
+    {
+        if ($user->isSuperUser()) {
+            return true;
+        }
+        // Do not return false.
+    }
+
+    /**
+     * Determine whether the user can view any items.
      *
      * @param  \App\Mainframe\Modules\Users\User  $user
      * @return mixed
      */
     public function viewAny(User $user)
     {
-        //
+
+        if (! $user->hasPermission($this->moduleName.'-view-any')) {
+            return false;
+        }
+
+        return true;
     }
 
     /**
-     * Determine whether the user can view the setting.
+     * Determine whether the user can view the item.
      *
      * @param  \App\Mainframe\Modules\Users\User  $user
      * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule  $element
@@ -33,22 +62,30 @@ class BaseModulePolicy
      */
     public function view(User $user, $element)
     {
-        //
+        if (! $user->hasPermission($this->moduleName.'-view')) {
+            return false;
+        }
+
+        return true;
     }
 
     /**
-     * Determine whether the user can create settings.
+     * Determine whether the user can create items.
      *
      * @param  \App\Mainframe\Modules\Users\User  $user
      * @return mixed
      */
     public function create(User $user)
     {
-        //
+        if (! $user->hasPermission($this->moduleName.'-create')) {
+            return false;
+        }
+
+        return true;
     }
 
     /**
-     * Determine whether the user can update the setting.
+     * Determine whether the user can update the item.
      *
      * @param  \App\Mainframe\Modules\Users\User  $user
      * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule  $element
@@ -56,11 +93,15 @@ class BaseModulePolicy
      */
     public function update(User $user, $element)
     {
-        //
+        if (! $user->hasPermission($this->moduleName.'-update')) {
+            return false;
+        }
+
+        return true;
     }
 
     /**
-     * Determine whether the user can delete the setting.
+     * Determine whether the user can delete the item.
      *
      * @param  \App\Mainframe\Modules\Users\User  $user
      * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule  $element
@@ -68,11 +109,15 @@ class BaseModulePolicy
      */
     public function delete(User $user, $element)
     {
-        //
+        if (! $user->hasPermission($this->moduleName.'-delete')) {
+            return false;
+        }
+
+        return true;
     }
 
     /**
-     * Determine whether the user can restore the setting.
+     * Determine whether the user can restore the item.
      *
      * @param  \App\Mainframe\Modules\Users\User  $user
      * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule  $element
@@ -80,11 +125,15 @@ class BaseModulePolicy
      */
     public function restore(User $user, $element)
     {
-        //
+        if (! $user->hasPermission($this->moduleName.'-restore')) {
+            return false;
+        }
+
+        return true;
     }
 
     /**
-     * Determine whether the user can permanently delete the setting.
+     * Determine whether the user can permanently delete the item.
      *
      * @param  \App\Mainframe\Modules\Users\User  $user
      * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule  $element
@@ -92,31 +141,54 @@ class BaseModulePolicy
      */
     public function forceDelete(User $user, $element)
     {
-        //
-    }
-
-    /**
-     * @param $user User
-     * @param $ability
-     * @return bool
-     */
-    public function before(User $user, $ability)
-    {
-
-        if ($user->isSuperUser()) {
-            return true;
+        if (! $user->hasPermission($this->moduleName.'-force-delete')) {
+            return false;
         }
+
+        return true;
     }
 
     /**
-     * Sample function
+     * Determine whether the user can view change log of the item
      * In the code you can use both camelCase and kebab-case function name.
      *
      * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule  $element
      * @return bool
      */
-    public function doSomeThing(User $user)
+    public function viewChangeLog(User $user, $element)
     {
+        if (! $user->hasPermission($this->moduleName.'-view-change-log')) {
+            return false;
+        }
+
         return true;
+    }
+
+    /**
+     * Determine whether the user can view change log of the item
+     * In the code you can use both camelCase and kebab-case function name.
+     *
+     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule  $element
+     * @return bool
+     */
+    public function viewReport(User $user, $element)
+    {
+        if (! $user->hasPermission($this->moduleName.'-view-report')) {
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * Get module name of the policy
+     *
+     * @return string
+     */
+    public function getModuleName()
+    {
+        return Str::plural(str_replace('-policies', '', Module::nameFromClass($this)));
     }
 }

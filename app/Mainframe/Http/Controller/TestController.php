@@ -23,16 +23,10 @@ class TestController extends BaseController
     public function test()
     {
 
-        $user = \App\Mainframe\Modules\Users\User::find(2603);
+        $testUser = \App\Mainframe\Modules\Users\User::find(999);
 
-        // $this->authorize('create', Setting::class);
-        dd(user()->getMergedPermissions());
+        dd($testUser->can('view-any', Setting::class));
 
-        return abort(403);
     }
-
-
-    // 9612111777
-    // partnersebakendra uttara 6, Sonargao road, sector 12, Uttara, Dhaka 1230
 
 }

@@ -20,11 +20,11 @@ class SelectModelMultiple extends SelectModel
         $this->params['multiple'] = 'multiple';
         $this->dataParent = $this->name.'_data_parent';
 
-        //$this->name .= '[]'; // For multiselect
     }
 
     /**
      * Generate options
+     *
      * @return array
      */
     public function options()
