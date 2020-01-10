@@ -17,9 +17,9 @@ class LoginTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
+
         $this->superadmin = User::find(1);
-        // Impersonate as the currently created admin user
-        $this->be($this->superadmin);
+        $this->be($this->superadmin); // Impersonate as the currently created admin user
     }
 
     /**
@@ -31,8 +31,8 @@ class LoginTest extends TestCase
             ->assertStatus(200)
             ->assertSee('Dashboard');
     }
+
     /**
-     * A basic feature test example.
      *
      * @return void
      */
@@ -40,6 +40,17 @@ class LoginTest extends TestCase
     {
         $this->get('/')->assertStatus(200)
             ->assertSee('Dashboard');
+    }
+
+    /**
+     *
+     * @return void
+     */
+    public function testLogout()
+    {
+        $this->followingRedirects()->get('/logout')
+            ->assertStatus(200)
+            ->assertSee('Login');
     }
 
 

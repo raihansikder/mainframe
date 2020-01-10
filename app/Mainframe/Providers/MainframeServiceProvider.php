@@ -12,6 +12,11 @@ class MainframeServiceProvider extends ServiceProvider
         \App\Mainframe\Commands\MakeMainframeModule::Class,
     ];
 
+    protected $helpers = [
+        'Mainframe/Helpers/functions.php',
+        'Mainframe/Helpers/generic.php',
+    ];
+
     /**
      * Register services.
      *
@@ -21,16 +26,12 @@ class MainframeServiceProvider extends ServiceProvider
     {
 
 
-        // Include commands
-        $this->commands($this->commands);
-
         // Include all the helper functions
         require_once app_path('Mainframe/Helpers/functions.php');
         require_once app_path('Mainframe/Helpers/generic.php');
         foreach (glob(app_path('Helpers').'/*.php') as $file) {
             require_once $file;
         }
-
 
         // Register singletons
         $this->app->singleton(MessageBag::class, function () { return new MessageBag(); });
@@ -47,5 +48,10 @@ class MainframeServiceProvider extends ServiceProvider
         //
     }
 
+    public function registerCommands()
+    {
+        // Include commands
+        $this->commands($this->commands);
+    }
 
 }
