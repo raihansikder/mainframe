@@ -6,12 +6,12 @@ use Illuminate\Support\MessageBag;
 /**
  * returns sentry object of currently logged in user
  *
- * @param  bool|null  $user_id
+ * @param  bool|null  $id
  * @return \Illuminate\Contracts\Auth\Authenticatable|\App\Mainframe\Modules\Users\User
  */
-function user($user_id = null)
+function user($id = null)
 {
-    return Mf::user($user_id);
+    return Mf::user($id);
 }
 
 /**
@@ -54,12 +54,12 @@ function timer($key = null)
 /**
  * returns absolute path from a relative path
  *
- * @param $relative_path
+ * @param $relativePath
  * @return string
  */
-function absPath($relative_path)
+function absPath($relativePath)
 {
-    return public_path().$relative_path;
+    return public_path().$relativePath;
 }
 
 /**
@@ -78,12 +78,12 @@ function querySignature($query)
  *
  * @param  string  $str
  * @param  bool  $ret
- * @param  bool  $set_msg
+ * @param  bool  $setMsg
  * @return bool
  */
-function setError($str = '', $set_msg = true, $ret = false)
+function setError($str = '', $setMsg = true, $ret = false)
 {
-    if ($set_msg && strlen($str)) {
+    if ($setMsg && strlen($str)) {
         if (! in_array($str, Session::get('error', []))) {
             Session::push('error', $str);
         }
@@ -97,13 +97,13 @@ function setError($str = '', $set_msg = true, $ret = false)
  * Renders the left menu of the application and makes the current item active based on breadcrumb
  *
  * @param        $tree
- * @param  string  $current_module_name
+ * @param  string  $currentModuleName
  * @param  array  $breadcrumbs
  * @return null
  */
-function renderMenuTree($tree, $current_module_name = '', $breadcrumbs = [])
+function renderMenuTree($tree, $currentModuleName = '', $breadcrumbs = [])
 {
-    return \App\Mainframe\Helpers\View::renderMenuTree($tree, $current_module_name, $breadcrumbs);
+    return \App\Mainframe\Helpers\View::renderMenuTree($tree, $currentModuleName, $breadcrumbs);
 }
 
 /**
