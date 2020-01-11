@@ -38,7 +38,8 @@ class LoginTest extends TestCase
      */
     public function testShowDashboard()
     {
-        $this->get('/')->assertStatus(200)
+        $this->get('/')
+            ->assertStatus(200)
             ->assertSee('Dashboard');
     }
 
