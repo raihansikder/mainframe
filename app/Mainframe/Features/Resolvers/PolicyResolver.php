@@ -31,7 +31,7 @@ class PolicyResolver
             }
         }
 
-        // test pull request asdf
+        // test pull request
         return BaseModulePolicy::class;
 
     }
