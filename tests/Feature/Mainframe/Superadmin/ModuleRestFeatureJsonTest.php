@@ -2,12 +2,11 @@
 
 namespace Tests\Feature\Mainframe\Superadmin;
 
-use DB;
-use Illuminate\Support\Str;
 use App\Mainframe\Modules\Modules\Module;
+use App\Mainframe\Features\Responder\Response;
 use App\Mainframe\Modules\LoremIpsums\LoremIpsum;
 
-class RestModuleTest extends SuperadminTestCase
+class ModuleRestFeatureJsonTest extends SuperadminTestCase
 {
     /*
     |--------------------------------------------------------------------------
@@ -31,7 +30,7 @@ class RestModuleTest extends SuperadminTestCase
         parent::setUp();
 
         $this->module = Module::where('name', 'lorem-ipsums')->first();
-        $this->newElementName = 'phpunit-test-'.date('YmdHi');
+        $this->newElementName = 'phpunit-test-json'.date('YmdHi');
     }
 
     /**************************************************************
@@ -47,17 +46,6 @@ class RestModuleTest extends SuperadminTestCase
     /**************************************************************
      * Test functions
      *************************************************************/
-    /**
-     * Superadmin can see create form.
-     *
-     * @return void
-     */
-    public function testSuperAdminCanSeeCreateForm()
-    {
-        $this->get('/'.$this->module->name.'/create')
-            ->assertStatus(200)
-            ->assertSee('Lorem ipsum'); // A test name
-    }
 
     /**
      * Superadmin can create a new lorem-ipsum.
@@ -66,12 +54,17 @@ class RestModuleTest extends SuperadminTestCase
      */
     public function testSuperAdminCanCreateEntry()
     {
-        $this->followingRedirects()
-            ->post('/'.$this->module->name, [
-                'name' => $this->newElementName
-            ])
+        $this->post("/{$this->module->name}?ret=json", [
+            'name' => $this->newElementName,
+        ])
             ->assertStatus(200)
-            ->assertSee('Lorem ipsum'); // A test name
+            ->assertJson([
+                'code' => 200,
+                'status' => 'success',
+                'data' => [
+                    'name' => $this->newElementName
+                ],
+            ]);
 
     }
 
@@ -82,13 +75,22 @@ class RestModuleTest extends SuperadminTestCase
      */
     public function testSuperAdminCreateEntryValidation()
     {
-        $this->followingRedirects()
-            ->post('/'.$this->module->name, [
-                'name' => $this->newElementName
-            ])
+        $this->post("/{$this->module->name}?ret=json", [
+            'name' => $this->newElementName,
+        ])
             ->assertStatus(200)
-            ->assertSee('Validation failed') // A test name
-            ->assertSee('The name has already been taken.'); // A test name
+            ->assertJson([
+                'code' => Response::HTTP_UNPROCESSABLE_ENTITY,
+                'status' => 'fail',
+                'data' => [
+                    'name' => $this->newElementName
+                ],
+                'validation_errors' => [
+                    'name' => [
+                        "The name has already been taken."
+                    ]
+                ]
+            ]);
     }
 
     /**
@@ -98,35 +100,19 @@ class RestModuleTest extends SuperadminTestCase
      */
     public function testSuperAdminCanViewList()
     {
-        $this->get('/'.$this->module->name)
-            ->assertStatus(200)
-            ->assertSee('Lorem ipsum'); // A test name
-
-        $this->get('/'.$this->module->name.'/datatable/json')
+        $this->get("/{$this->module->name}/list/json")
             ->assertStatus(200)
             ->assertSee($this->newElementName); // A test name
     }
 
     /**
-     * Superadmin can view the element as a JSON if ret=json is passed.
+     * Superadmin can view list of lorem-ipsums
      *
      * @return void
      */
-    public function testSuperAdminCanViewElementJson()
+    public function testSuperAdminCanViewElement()
     {
         $this->get("/{$this->module->name}/{$this->element()->id}?ret=json")
-            ->assertStatus(200)
-            ->assertSee($this->newElementName); // A test name
-    }
-
-    /**
-     * Superadmin can view edit page.
-     *
-     * @return void
-     */
-    public function testSuperAdminCanSeeEditPage()
-    {
-        $this->get("/{$this->module->name}/{$this->element()->id}/edit")
             ->assertStatus(200)
             ->assertSee($this->newElementName); // A test name
     }
@@ -138,14 +124,20 @@ class RestModuleTest extends SuperadminTestCase
      */
     public function testSuperAdminCanUpdateElement()
     {
-        $textAreaVal = Str::random();
+        $textAreaVal = \Str::random();
         $this->followingRedirects()
-            ->patch("/{$this->module->name}/{$this->element()->id}", [
+            ->patch("/{$this->module->name}/{$this->element()->id}?ret=json", [
                 'textarea' => $textAreaVal
             ])
             ->assertStatus(200)
-            ->assertSee('Success')
-            ->assertSee($this->newElementName); // A test name
+            ->assertJson([
+                'code' => 200,
+                'status' => 'success',
+                'data' => [
+                    'name' => $this->newElementName,
+                    'textarea' => $textAreaVal
+                ],
+            ]);
     }
 
     /**
@@ -158,15 +150,21 @@ class RestModuleTest extends SuperadminTestCase
 
         // delete with redirect=success to index route.
         $this->followingRedirects()
-            ->delete("/{$this->module->name}/{$this->element()->id}?redirect_success=".route('lorem-ipsums.index'))
-            ->assertStatus(200)
-            ->assertSee('Lorem ipsum');
+            ->delete("/{$this->module->name}/{$this->element()->id}?ret=json&redirect_success=".route('lorem-ipsums.index'))
+            ->assertJson([
+                'code' => 200,
+                'status' => 'success',
+                'message' => 'Successfully deleted',
+                'data' => [
+                    'name' => $this->newElementName,
+                ],
+            ]);
 
         // Check if it has been soft deleted.
         $this->assertDatabaseMissing($this->module->tableName(), ['name' => $this->newElementName, 'deleted_at' => null]);
 
         // Clean up test entries. This is messy way. But works for now.
-                DB::table('lorem_ipsums')->where('name', 'LIKE', 'phpunit%')->delete();
+        \DB::table('lorem_ipsums')->where('name', 'LIKE', 'phpunit%')->delete();
         $this->assertDatabaseMissing($this->module->tableName(), ['name' => $this->newElementName]);
     }
 }

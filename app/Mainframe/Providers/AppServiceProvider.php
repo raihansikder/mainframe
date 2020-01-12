@@ -6,7 +6,7 @@ use Illuminate\Support\MessageBag;
 use Illuminate\Support\ServiceProvider;
 use App\Mainframe\Features\Responder\Response;
 
-class MainframeServiceProvider extends ServiceProvider
+class AppServiceProvider extends ServiceProvider
 {
     protected $commands = [
         \App\Mainframe\Commands\MakeMainframeModule::Class,

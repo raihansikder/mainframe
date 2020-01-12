@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Providers;
+namespace App\Mainframe\Providers;
 
 use Gate;
+use App\Mainframe\Features\Resolvers\PolicyResolver;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -26,7 +27,8 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         Gate::guessPolicyNamesUsing(function ($modelClass) {
-            //return PolicyResolver::resolve($modelClass); // Custom policy discovery
+            return PolicyResolver::resolve($modelClass); // Custom policy discovery
         });
+
     }
 }

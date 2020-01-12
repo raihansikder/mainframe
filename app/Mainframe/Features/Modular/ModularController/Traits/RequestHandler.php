@@ -134,7 +134,7 @@ trait RequestHandler
             return $this;
         }
 
-        $this->response()->success();
+        $this->response()->success('Successfully deleted');
 
         return $this;
     }

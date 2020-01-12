@@ -177,11 +177,16 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\TelescopeServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        /*
+        /**************************************************
          * Mainframe Service Providers...
-         */
-        App\Mainframe\Providers\MainframeServiceProvider::class,
+         *************************************************/
+        App\Mainframe\Providers\AppServiceProvider::class,
+        App\Mainframe\Providers\AuthServiceProvider::class,
+        App\Mainframe\Providers\EventServiceProvider::class,
+        App\Mainframe\Providers\RouteServiceProvider::class,
+        // Additional suuporting services
         OwenIt\Auditing\AuditingServiceProvider::class,
+        /*************************************************/
 
     ],
 

@@ -32,7 +32,7 @@ function modules()
 function uuid()
 {
     try {
-        return Webpatser\Uuid\Uuid::generate(4);
+        return Webpatser\Uuid\Uuid::generate(4)->string;
     } catch (Exception $e) {
     }
 
