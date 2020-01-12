@@ -264,6 +264,11 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
      */
     protected $allowedPermissionsValues = [-1, 0, 1];
 
+    /**
+     * Constants
+     */
+    public const PASSWORD_VALIDATION_RULE = 'required|confirmed|min:6|regex:/[a-zA-Z]/|regex:/[0-9]/';
+
     /*
     |--------------------------------------------------------------------------
     | Boot method and model events.

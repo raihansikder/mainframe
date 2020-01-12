@@ -17,6 +17,16 @@ trait UserGroupable
      */
     public function inGroupId($group_id)
     {
+        if(is_array($group_id)){
+            foreach ($group_id as $id) {
+                if (in_array($id, $this->group_ids)) {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         return in_array($group_id, $this->group_ids);
     }
 
@@ -62,7 +72,7 @@ trait UserGroupable
      */
     public function isSuperUser()
     {
-        return $this->hasPermission('superuser') || $this->inGroupId(Group::SUPERUSER);
+        return $this->hasPermission('superuser') || $this->inGroupId(Group::superadmin()->id);
     }
 
     /**
@@ -73,7 +83,7 @@ trait UserGroupable
      */
     public function isApiUser()
     {
-        return $this->hasPermission('api') || $this->inGroupId(Group::API);
+        return $this->hasPermission('api') || $this->inGroupId(Group::api()->id);
     }
 
     /**

@@ -51,7 +51,7 @@ trait Query
     public function result()
     {
 
-        $key = Mf::requestSignature(($this->resultQuery()->toSql()));
+        $key = Mf::httpRequestSignature(($this->resultQuery()->toSql()));
 
         return Cache::remember($key, $this->cache, function () {
             return $this->resultQuery()->paginate($this->rowsPerPage());
@@ -81,7 +81,7 @@ trait Query
      */
     public function total()
     {
-        $key = Mf::requestSignature(($this->totalQuery()->toSql()));
+        $key = Mf::httpRequestSignature(($this->totalQuery()->toSql()));
 
         return Cache::remember($key, $this->cache, function () {
             return $this->totalQuery()->count();
@@ -307,6 +307,6 @@ trait Query
      */
     public function signature()
     {
-        return Mf::requestSignature(($this->resultQuery()->toSql()));
+        return Mf::httpRequestSignature(($this->resultQuery()->toSql()));
     }
 }

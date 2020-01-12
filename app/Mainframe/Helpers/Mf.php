@@ -5,7 +5,6 @@ namespace App\Mainframe\Helpers;
 use Auth;
 use Cache;
 use Schema;
-use Session;
 use App\Mainframe\Modules\Users\User;
 use App\Mainframe\Modules\Modules\Module;
 use App\Mainframe\Modules\ModuleGroups\ModuleGroup;
@@ -18,16 +17,12 @@ use App\Mainframe\Modules\ModuleGroups\ModuleGroup;
 class Mf
 {
 
-    public const TENANT_ADMIN_GROUP_ID    = '15';
-    public const PASSWORD_VALIDATION_RULE = 'required|confirmed|min:6|regex:/[a-zA-Z]/|regex:/[0-9]/';
-
     /*
     |--------------------------------------------------------------------------
     | System functions
     |--------------------------------------------------------------------------
     |
     | Mainframe requires a set of functions to bootstrap its features.
-    |
     |
     */
 
@@ -104,7 +99,7 @@ class Mf
      * @param  String  $append  Raw Query string
      * @return string
      */
-    public static function requestSignature($append = null)
+    public static function httpRequestSignature($append = null)
     {
         $signature = \URL::full().json_encode(request()->all()).$append;
         if (user()) {
@@ -134,9 +129,9 @@ class Mf
      */
     public static function tableColumns($table, $cache = null)
     {
-        $cache = $cache ?: timer('long');
+        $cache = $cache ?: timer('very-long');
 
-        return Cache::remember('columns-of:'.$table, $cache,
+        return Cache::remember("columns-of-{$table}", $cache,
             function () use ($table) {
                 return Schema::getColumnListing($table);
             });
@@ -152,7 +147,7 @@ class Mf
      */
     public static function tableHasColumn($table, $column, $cache = null)
     {
-        $cache = $cache ?: timer('long');
+        $cache = $cache ?: timer('very-long');
 
         return in_array($column, Mf::tableColumns($table, $cache));
     }
@@ -166,58 +161,6 @@ class Mf
     public static function tableHasTenant($table)
     {
         return Mf::tableHasColumn($table, 'tenant_id');
-    }
-
-    /*
-    |--------------------------------------------------------------------------
-    | Access & permission
-    |--------------------------------------------------------------------------
-    |
-    | The functions that support main frame access management features.
-    |
-    */
-    /**
-     * This is a similar function to sentry's hasAccess. checks if current user has access to a certain permission
-     *
-     * @param           $permission
-     * @param  bool|null  $user_id
-     * @return bool
-     */
-    public static function hasAccess($permission, $user_id = null)
-    {
-        //return true;
-        $allowed = false;
-        $user = user($user_id);
-
-        if (isset($user)) {
-            if (! Session::has('permissions')) {
-                Mf::storePermissionsInSession();
-            }
-            Mf::storePermissionsInSession(); // Force store permission
-
-            $permissions = Session::get('permissions');
-            if ((isset($permissions['superuser']) && $permissions['superuser'] == 1)) { // allow for super user
-                $allowed = true;
-            } else {
-                if (isset($permissions[$permission]) && $permissions[$permission] == 1) { // allow based on specific permission
-                    $allowed = true;
-                }
-            }
-        } else {
-            Session::push('permissions', "Undefined user - '$permission'");
-        }
-
-        return $allowed;
-    }
-
-    /**
-     * Stores currently logged in users permission in session as array.
-     */
-    public static function storePermissionsInSession()
-    {
-        if (user()) {
-            Session::put('permissions', user()->getMergedPermissions());
-        }
     }
 
 }

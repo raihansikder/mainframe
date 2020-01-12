@@ -24,7 +24,7 @@ use App\Mainframe\Modules\Groups\Traits\GroupDefinitionsTrait;
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
  * @property int|null $deleted_by
-* @property-read int|null $changes_count
+ * @property-read int|null $changes_count
  * @property-read \App\Mainframe\Modules\Users\User|null $creator
  * @property-read \App\Mainframe\Modules\Uploads\Upload $latestUpload
  * @property-read \App\Mainframe\Modules\Users\User|null $updater
@@ -59,11 +59,6 @@ use App\Mainframe\Modules\Groups\Traits\GroupDefinitionsTrait;
 class Group extends BaseModule
 {
     use GroupHelper, GroupDefinitionsTrait;
-
-    public const SUPERUSER = 1;
-    public const API = 2;
-    public const TENANT_ADMIN = 3;
-    public const PROJECT_ADMIN = 4;
 
     /*
     |--------------------------------------------------------------------------
