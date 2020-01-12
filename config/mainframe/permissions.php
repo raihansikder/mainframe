@@ -46,7 +46,7 @@ return [
             'view-widgets' => 'View App tiles',
         ],
         'apis' => [
-            'api' => 'API calls using Authentication token(X-Auth-Token)',
+            'make-api-call' => 'API calls using Authentication token(X-Auth-Token)',
         ],
     ],
 ];

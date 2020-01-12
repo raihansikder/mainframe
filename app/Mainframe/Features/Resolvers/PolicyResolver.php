@@ -18,11 +18,11 @@ class PolicyResolver
     {
         $modelName = class_basename($modelClass);
 
-
         $paths = [
+            $modelClass.'Policy', // In the same directory of the model
             '\\App\\Policies\\'.$modelName.'Policy', // Laravel's default policy path
             '\\App\\Mainframe\\Modules\\'.Str::plural($modelName).'\\'.$modelName.'Policy', // Inside mainframe module directory
-            $modelClass.'Policy' // In the same directory of the model
+            '\\App\\Mainframe\\Policies\\'.$modelName.'Policy', // Inside mainframe policies directory
         ];
 
         foreach ($paths as $path) {

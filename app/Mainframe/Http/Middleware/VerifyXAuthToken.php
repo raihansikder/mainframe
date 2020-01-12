@@ -31,7 +31,7 @@ class VerifyXAuthToken
                 ->json();
         }
 
-        if ((! $user->hasPermission('api'))) {
+        if ((! $user->can('make-api-call'))) {
 
             return $this->response()
                 ->fail('User/Device does not have permission to make API calls', 401)
