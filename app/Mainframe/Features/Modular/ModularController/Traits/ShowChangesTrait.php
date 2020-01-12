@@ -13,6 +13,7 @@ trait ShowChangesTrait
      */
     public function changes($id)
     {
+
         if (! $this->element = $this->model->find($id)) {
             return $this->response()->notFound();
         }

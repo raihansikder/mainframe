@@ -82,8 +82,8 @@ function keyAsArray($array = [])
 function echoArray($my_array)
 {
     if (is_array($my_array)) {
-        echo "<table border=1 cellspacing=0 cellpadding=3 width=100%>";
-        echo '<tr><td colspan=2 style="background-color:#333333;"><strong><span style="color: white; ">ARRAY</span></strong></td></tr>';
+        echo "<table cellspacing=0 cellpadding=3 width=100% class='table table-condensed'>";
+        echo '<tr><td colspan=2 style="background-color:#333333;"><strong><span style="color: white; "></span></strong></td></tr>';
         foreach ($my_array as $k => $v) {
             echo '<tr><td  style="width:40px;background-color:#F0F0F0;">';
             echo '<strong>'.$k."</strong></td><td>";

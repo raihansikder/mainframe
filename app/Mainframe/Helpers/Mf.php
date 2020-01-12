@@ -5,9 +5,8 @@ namespace App\Mainframe\Helpers;
 use Auth;
 use Cache;
 use Schema;
-use Request;
 use Session;
-use App\User;
+use App\Mainframe\Modules\Users\User;
 use App\Mainframe\Modules\Modules\Module;
 use App\Mainframe\Modules\ModuleGroups\ModuleGroup;
 
@@ -38,30 +37,31 @@ class Mf
      */
     public static function user($id = null)
     {
+        /*
+         * Resolve user from id.
+         */
         if ($id) {
             return User::remember(timer('short'))->find($id);
         }
-        //    // for API requests find the user based on the param/header values
-        //    if(!$user && Request::has('user_id')){ // No logged user. get from user_id in url param or request header
-        //        $user = User::find(Request::get('user_id'));
-        //    }
-        //    if(!$user && Request::has('client_id')){ // No logged user. get from user_id in url param or request header
-        //        $user = User::find(Request::get('client_id'));
-        //    }
 
         /**
-         * Resolve user from client_id passed in request header. This is required when API calls are made using
-         * X-Auth-Token and client-id.
+         * Resolve user from X-Auth-Token and client-id
          */
-        if (Request::header('client-id') && Request::header('X-Auth-Token')) { // No logged user. get from user_id in url param or request header
+
+        $apiToken = request()->header('X-Auth-Token', null);
+        $clientId = request()->header('client-id', null);
+
+        if ($apiToken && $clientId) { // No logged user. get from user_id in url param or request header
             /** @noinspection PhpUndefinedMethodInspection */
-            return User::where('id', Request::header('client-id'))
-                ->where('api_token', Request::header('X-Auth-Token'))
+            return User::where('api_token', $apiToken)
+                ->where('id', $clientId)
                 ->remember(timer('short'))
-                ->find(Request::header('client-id'));
+                ->first();
         }
 
-        // for logged in user
+        /*
+         * Resolved from logged in user.
+         */
         if (Auth::check()) {
             return Auth::user();
         }
@@ -209,8 +209,6 @@ class Mf
 
         return $allowed;
     }
-
-
 
     /**
      * Stores currently logged in users permission in session as array.

@@ -23,7 +23,7 @@ Route::middleware(['auth','verified'])->group(function () use ($modules, $module
         /*
          * Restore route
          */
-        Route:: get($name."/{".Str::singular($name)."}/restore", $controller."@restore")->name($name.'.restore');
+        Route:: get($name."/{id}/restore", $controller."@restore")->name($name.'.restore');
 
         /*
          * Json response route for data-table
@@ -43,7 +43,7 @@ Route::middleware(['auth','verified'])->group(function () use ($modules, $module
         /*
          * Route to see the change logs of a particular element
          */
-        Route:: get($name."/{".Str::singular($name)."}/changes", $controller."@changes")->name($name.'.changes');
+        Route:: get($name."/{id}/changes", $controller."@changes")->name($name.'.changes');
 
         /*
          * Resourceful route that creates all REST routs.

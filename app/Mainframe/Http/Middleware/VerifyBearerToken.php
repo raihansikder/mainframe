@@ -5,9 +5,11 @@ namespace App\Mainframe\Http\Middleware;
 use Closure;
 use Response;
 use App\Mainframe\Modules\Users\User;
+use App\Mainframe\Features\Core\Traits\SendResponse;
 
 class VerifyBearerToken
 {
+    use SendResponse;
     /**
      * Handle an incoming request.
      *
@@ -23,11 +25,9 @@ class VerifyBearerToken
 
         // Response error
         if (! $user) {
-            return Response::json([
-                'error' => true,
-                'message' => 'Not authenticated',
-                'code' => 401,
-            ], 401);
+            return $this->response()
+                ->fail('Not authenticated.(Invalid Bearer Token)', 401)
+                ->json();
         }
 
         // Add logged user in the request attribute

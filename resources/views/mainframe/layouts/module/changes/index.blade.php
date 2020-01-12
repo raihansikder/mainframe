@@ -23,12 +23,13 @@
             <tr>
                 <td>
                     {{pad($audit->id)}} @ {{$audit->updated_at}} <br/>
-                    <span class="label label-info">{{ucfirst($audit->event)}}</span> <br/>
+                    <span class="label label-default bg-black">{{ucfirst($audit->event)}}</span> <br/>
                     {{$email}}
                 </td>
                 <td>
                     <?php
                     $changes = $audit->getModified();
+                    //dd($changes);
                     ?>
                     <table class="table table-striped table-condensed">
                         <thead class="bg-gray-light">
@@ -43,8 +44,20 @@
                             <tbody>
                             <tr>
                                 <td><code>{{$title}}</code></td>
-                                <td>{{$value['old'] ?? ''}}</td>
-                                <td>{{$value['new'] ?? ''}}</td>
+                                <td>
+                                    @if(isset($value['old']) && is_array($value['old']))
+                                        {{echoArray($value['old'])}}
+                                    @else
+                                        {{$value['old'] ?? ''}}
+                                    @endif
+                                </td>
+                                <td>
+                                    @if(isset($value['new']) && is_array($value['new']))
+                                        {{echoArray($value['new'])}}
+                                    @else
+                                        {{$value['new'] ?? ''}}
+                                    @endif
+                                </td>
                             </tr>
                             </tbody>
                         @endforeach
