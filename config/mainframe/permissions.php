@@ -1,19 +1,52 @@
 <?php
 /*
 |--------------------------------------------------------------------------
-| Additional-permissions types field
+| Permission
 |--------------------------------------------------------------------------
 |
-| Additional permissions can be categories into different types. These type
-| segregation allows to present related permission options under relevant
-| parent items. i.e.
+| Mainframe uses a permission config array. These are shown as option in
+| groups details.
 |
 */
+
 return [
-    'Widget' => [
-        ['permission' => 'view-widget', 'label' => 'View App tiles'],
+    /*
+    |--------------------------------------------------------------------------
+    | Default module permission
+    |--------------------------------------------------------------------------
+    |
+    | The name of these permission keys should match what is in the
+    | BaseModulePolicy.
+    |
+    */
+    'module' => [
+        'view-any' => 'View grid',  // viewAny()
+        'view' => 'View details',   // view()
+        'create' => 'Create',       // create()
+        'update' => 'Update',       // update()
+        'delete' => 'Delete',       // delete()
+        'view-change-log' => 'Access change logs', //viewChangeLog()
+        'view-report' => 'Report',  //viewReport()
+
+        // Following policy functions are not included here
+        // restore(), forceDelete().
     ],
-    'API' => [
-        ['permission' => 'api', 'label' => 'API calls using Authentication token(X-Auth-Token)'],
+    /*
+    |--------------------------------------------------------------------------
+    | Custom permissions
+    |--------------------------------------------------------------------------
+    |
+    | These are permissions that are not related to modular architecture of
+    | Mainframe. Here you can put new permission keys as they come up.
+    |
+    |
+    */
+    'custom' => [
+        'widgets' => [
+            'view-widgets' => 'View App tiles',
+        ],
+        'apis' => [
+            'make-api-call' => 'API calls using Authentication token(X-Auth-Token)',
+        ],
     ],
 ];

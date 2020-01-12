@@ -5,6 +5,7 @@ namespace App\Mainframe\Modules\Users\Traits;
 use Illuminate\Support\Str;
 use App\Mainframe\Modules\Groups\Group;
 
+/** @mixin \App\Mainframe\Modules\Users\User $this */
 trait UserGroupable
 {
 
@@ -84,6 +85,8 @@ trait UserGroupable
     public function getMergedPermissions()
     {
         $permissions = [];
+
+
         foreach ($this->groups as $group) {
             $permissions = array_merge($permissions, $group->permissions);
         }
@@ -112,6 +115,7 @@ trait UserGroupable
 
         return $this->hasPermission($permissions, $all);
     }
+
 
     /**
      * See if a user has access to the passed permission(s).

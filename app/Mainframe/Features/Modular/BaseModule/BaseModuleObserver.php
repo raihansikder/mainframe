@@ -13,9 +13,8 @@ class BaseModuleObserver
      */
     public function saving($element)
     {
-        \Session::pull('event');
+
         $element->autoFill();
-        \Session::push('event', 'saving');
     }
 
     /**
@@ -48,7 +47,6 @@ class BaseModuleObserver
         //         return setError("$field can not be further changed.");
         //     }
         // }
-        \Session::push('event', 'updating');
     }
 
     /**
@@ -58,7 +56,6 @@ class BaseModuleObserver
     public function updated($element)
     {
         // Change::storeCreateLog($element);
-        \Session::push('event', 'updated');
     }
 
     /**
@@ -71,7 +68,6 @@ class BaseModuleObserver
     {
         Upload::linkTemporaryUploads($element);            //
         // Change::storeChangesFromSession("", $element, ""); // Take changes from session and store in changes table
-        \Session::push('event', 'saved');
     }
 
     /**

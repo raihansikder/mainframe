@@ -94,14 +94,19 @@
     <inspection_tool class="OneTimeUseVariablesInspection" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="PhpComposerExtensionStubsInspection" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="PhpFullyQualifiedNameUsageInspection" enabled="false" level="WARNING" enabled_by_default="false" />
-    <inspection_tool class="PhpIncludeInspection" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="PhpInconsistentReturnPointsInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="PhpMethodOrClassCallIsNotCaseSensitiveInspection" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="PhpSingleStatementWithBracesInspection" enabled="false" level="INFORMATION" enabled_by_default="false" />
+    <inspection_tool class="PhpTooManyParametersInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="limit" value="4" />
+    </inspection_tool>
     <inspection_tool class="PhpUndefinedClassInspection" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="DONT_REPORT_MULTI_RESOLVE" value="true" />
     </inspection_tool>
     <inspection_tool class="PhpUnnecessaryFullyQualifiedNameInspection" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="PhpUnusedParameterInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="PhpUsageOfSilenceOperatorInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true" />
+    <inspection_tool class="PhpVariableVariableInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true" />
     <inspection_tool class="PowerOperatorCanBeUsedInspection" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="ProperNullCoalescingOperatorUsageInspection" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
     <inspection_tool class="ReturnTypeCanBeDeclaredInspection" enabled="false" level="WEAK WARNING" enabled_by_default="false" />

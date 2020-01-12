@@ -3,45 +3,56 @@
 namespace App\Mainframe\Http\Middleware;
 
 use Closure;
-use Response;
 use App\Mainframe\Modules\Users\User;
+use App\Mainframe\Features\Core\Traits\SendResponse;
 
 class VerifyXAuthToken
 {
+    use SendResponse;
+
     /**
      * Check if the request contains a valid X-Auth-Token and client-id
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  \Closure $next
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Closure  $next
      * @return mixed
      */
     public function handle($request, Closure $next)
     {
 
-        $api_token = $request->header('X-Auth-Token');
-        $client_id = request('client-id') ?: request()->header('client-id');
+        $apiToken = $request->header('X-Auth-Token');
+        $clientId = request('client-id') ?: request()->header('client-id');
 
+        $user = $this->fetchUser($apiToken, $clientId);
 
-        /** @var User $user */
-        $user = User::where('api_token', $api_token)->where('id', $client_id)
-            ->remember(timer('short'))->first();
-
-        if (!$user) {
-            return Response::json([
-                'error' => true,
-                'message' => 'Not authenticated.(X-Auth-Token not matched)',
-                'code' => 401,
-            ], 401);
+        if (! $user) {
+            return $this->response()
+                ->fail('Not authenticated.(X-Auth-Token not matched)', 401)
+                ->json();
         }
 
-        if ((!$user->can('accessApi'))) {
-            return Response::json([
-                'error' => true,
-                'message' => 'User/Device does not have permission to make API calls',
-                'code' => 401,
-            ], 401);
+        if ((! $user->can('make-api-call'))) {
+
+            return $this->response()
+                ->fail('User/Device does not have permission to make API calls', 401)
+                ->json();
+
         }
 
         return $next($request);
+    }
+
+    /**
+     * Fetch matching user.
+     *
+     * @param $apiToken
+     * @param $clientId
+     * @return mixed|User
+     */
+    public function fetchUser($apiToken, $clientId)
+    {
+        return User::where('api_token', $apiToken)
+            ->where('id', $clientId)
+            ->remember(timer('short'))->first();
     }
 }

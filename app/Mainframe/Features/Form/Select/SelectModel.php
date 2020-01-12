@@ -41,8 +41,11 @@ class SelectModel extends SelectArray
         if ($this->inTenantContext()) {
             $query->where('tenant_id', user()->tenant_id);
         }
-        $options = $query->pluck($this->nameField, $this->valueField)->toArray();
-        $options = Arr::prepend($options, '-', null);
+        $options = $query->orderBy($this->nameField)
+            ->pluck($this->nameField, $this->valueField)
+            ->toArray();
+
+        $options[0] = null;
 
         return $options;
     }

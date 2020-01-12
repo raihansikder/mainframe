@@ -8,6 +8,7 @@ use App\Mainframe\Modules\Modules\Module;
 trait ModuleGroupHelper
 {
     /**
+     * Get Module-groups that are active
      * @return \Illuminate\Support\Collection
      */
     public static function getActiveList()
@@ -15,6 +16,11 @@ trait ModuleGroupHelper
         return ModuleGroup::active()->remember(timer('long'))->get();
     }
 
+    /**
+     * Get Module-groups that are active
+     * @param  int  $id
+     * @return \Illuminate\Support\Collection
+     */
     public static function ofParentId($id = 0)
     {
         return ModuleGroup::active()->where('parent_id', $id)

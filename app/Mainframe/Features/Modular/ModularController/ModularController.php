@@ -181,7 +181,7 @@ class ModularController extends BaseController
         $this->response()->redirectTo = $this->redirectTo();
 
         if ($this->response()->expectsJson()) {
-            return $this->response()->load($this->element)->json();
+            return $this->response()->load($this->element->toArray())->json();
         }
 
         return $this->response()->redirect();
@@ -237,7 +237,7 @@ class ModularController extends BaseController
         $this->response()->redirectTo = $this->redirectTo();
 
         if ($this->response()->expectsJson()) {
-            return $this->response()->json();
+            return $this->response()->load($this->element)->json();
         }
 
         return $this->response()->redirect();

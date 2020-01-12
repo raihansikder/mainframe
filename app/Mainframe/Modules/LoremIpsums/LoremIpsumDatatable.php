@@ -6,7 +6,6 @@
 namespace App\Mainframe\Modules\LoremIpsums;
 
 use DB;
-use App\Mainframe\Modules\Settings\SettingDatatable;
 use App\Mainframe\Features\Datatable\ModuleDatatable;
 
 class LoremIpsumDatatable extends ModuleDatatable
@@ -36,26 +35,6 @@ class LoremIpsumDatatable extends ModuleDatatable
             [$this->table.".updated_at", 'updated_at', 'Updated at'],
             [$this->table.".is_active", 'is_active', 'Active']
         ];
-    }
-
-    /**
-     * Define Query for generating results for grid
-     *
-     * @return $this|mixed
-     */
-    public function query()
-    {
-        $query = $this->source()->select($this->selects());
-
-        // Inject tenant context in grid query
-        if ($tenant_id = inTenantContext($this->table)) {
-            $query = injectTenantIdInModelQuery($this->table, $query);
-        }
-
-        // Exclude deleted rows
-        $query = $query->whereNull($this->table.'.deleted_at'); // Skip deleted rows
-
-        return $query;
     }
 
     /**

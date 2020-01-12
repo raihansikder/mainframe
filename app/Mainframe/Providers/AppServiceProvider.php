@@ -6,10 +6,15 @@ use Illuminate\Support\MessageBag;
 use Illuminate\Support\ServiceProvider;
 use App\Mainframe\Features\Responder\Response;
 
-class MainframeServiceProvider extends ServiceProvider
+class AppServiceProvider extends ServiceProvider
 {
     protected $commands = [
         \App\Mainframe\Commands\MakeMainframeModule::Class,
+    ];
+
+    protected $helpers = [
+        'Mainframe/Helpers/functions.php',
+        'Mainframe/Helpers/generic.php',
     ];
 
     /**
@@ -19,8 +24,7 @@ class MainframeServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        // Include commands
-        $this->commands($this->commands);
+
 
         // Include all the helper functions
         require_once app_path('Mainframe/Helpers/functions.php');
@@ -28,7 +32,6 @@ class MainframeServiceProvider extends ServiceProvider
         foreach (glob(app_path('Helpers').'/*.php') as $file) {
             require_once $file;
         }
-
 
         // Register singletons
         $this->app->singleton(MessageBag::class, function () { return new MessageBag(); });
@@ -44,4 +47,11 @@ class MainframeServiceProvider extends ServiceProvider
     {
         //
     }
+
+    public function registerCommands()
+    {
+        // Include commands
+        $this->commands($this->commands);
+    }
+
 }
