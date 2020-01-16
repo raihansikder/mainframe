@@ -55,6 +55,8 @@ use App\Mainframe\Modules\Groups\Traits\GroupDefinitionsTrait;
  * @property-read \App\Mainframe\Modules\Projects\Project $project
  * @property-read \App\Mainframe\Modules\Tenants\Tenant|null $tenant
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Groups\Group whereProjectId($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\OwenIt\Auditing\Models\Audit[] $audits
+ * @property-read int|null $audits_count
  */
 class Group extends BaseModule
 {

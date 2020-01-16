@@ -161,10 +161,10 @@ class ModuleRestFeatureJsonTest extends SuperadminTestCase
             ]);
 
         // Check if it has been soft deleted.
-        $this->assertDatabaseMissing($this->module->tableName(), ['name' => $this->newElementName, 'deleted_at' => null]);
+        $this->assertDatabaseMissing($this->module->module_table, ['name' => $this->newElementName, 'deleted_at' => null]);
 
         // Clean up test entries. This is messy way. But works for now.
         \DB::table('lorem_ipsums')->where('name', 'LIKE', 'phpunit%')->delete();
-        $this->assertDatabaseMissing($this->module->tableName(), ['name' => $this->newElementName]);
+        $this->assertDatabaseMissing($this->module->module_table, ['name' => $this->newElementName]);
     }
 }

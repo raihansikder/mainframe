@@ -7,13 +7,7 @@ use App\Mainframe\Features\Modular\ModularController\ModularController;
 class LoremIpsumController extends ModularController
 {
 
-    /**
-     * Init with module name
-     */
-    public function __construct()
-    {
-        parent::__construct('lorem-ipsums');
-    }
+    protected $name = 'lorem-ipsums';
 
     /**
      * @return LoremIpsumDatatable

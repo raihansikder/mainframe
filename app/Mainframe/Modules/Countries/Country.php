@@ -31,7 +31,6 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule;
  * @property string|null $currency_symbol
  * @property string|null $currency_override
  * @property string|null $currency_override_symbol
-
  * @property-read int|null $changes_count
  * @property-read \App\Mainframe\Modules\Users\User|null $creator
  * @property-read \App\Mainframe\Modules\Uploads\Upload $latestUpload
@@ -69,6 +68,8 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule;
  * @mixin \Eloquent
  * @property-read \App\Mainframe\Modules\Projects\Project $project
  * @property-read \App\Mainframe\Modules\Tenants\Tenant $tenant
+ * @property-read \Illuminate\Database\Eloquent\Collection|\OwenIt\Auditing\Models\Audit[] $audits
+ * @property-read int|null $audits_count
  */
 class Country extends BaseModule
 {

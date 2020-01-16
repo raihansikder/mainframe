@@ -54,11 +54,11 @@ class MakeMainframeModule extends Command
         $this->module = new Module(['name' => $this->moduleName]);
         $this->templateModule = new Module(['name' => $this->templateModuleName]);
 
-        $this->info($this->module->elementNamePlural().'Creating ..');
+        $this->info($this->module->collectionName().'Creating ..');
         $this->createMigration();
         $this->createClasses();
         $this->createViewFiles();
-        $this->info($this->module->elementNamePlural().'... Done');
+        $this->info($this->module->collectionName().'... Done');
 
         return;
     }
@@ -139,7 +139,7 @@ class MakeMainframeModule extends Command
         $replaces = [
             $this->templateModule->tableName() => $this->module->tableName(),                       //'super_heroes' -> 'good_boys'
             $this->templateModule->modelClassNamePlural() => $this->module->modelClassNamePlural(), //'SuperHeroes' -> 'GoodBoys'
-            $this->templateModule->elementNamePlural() => $this->module->elementNamePlural(),       //'superHeroes' -> 'goodBoys'
+            $this->templateModule->collectionName() => $this->module->collectionName(),       //'superHeroes' -> 'goodBoys'
             $this->templateModule->name => $this->module->name,                                     //'super-heroes' -> 'good-boys'
             $this->templateModule->modelClassName() => $this->module->modelClassName(),             //'SuperHero' -> 'GoodBoy'
             $this->templateModule->elementName() => $this->module->elementName(),                   //'superHero' -> 'goodBoy'

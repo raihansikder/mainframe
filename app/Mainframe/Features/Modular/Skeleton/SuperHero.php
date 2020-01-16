@@ -7,6 +7,9 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule;
 class SuperHero extends BaseModule
 {
     use SuperHeroHelper;
+
+    protected $moduleName = 'super-heroes';
+
     /*
     |--------------------------------------------------------------------------
     | Fillable attributes

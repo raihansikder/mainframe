@@ -27,7 +27,6 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule;
  * @property \Illuminate\Support\Carbon|null $updated_at TRIAL
  * @property \Illuminate\Support\Carbon|null $deleted_at TRIAL
  * @property int|null $deleted_by TRIAL
-
  * @property-read int|null $changes_count
  * @property-read \App\Mainframe\Modules\Users\User|null $creator
  * @property-read \App\Mainframe\Modules\Uploads\Upload $latestUpload
@@ -69,6 +68,9 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule;
  * @property-read \App\Mainframe\Modules\Projects\Project $project
  * @property-read \App\Mainframe\Modules\Tenants\Tenant|null $tenant
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Uploads\Upload whereProjectId($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\OwenIt\Auditing\Models\Audit[] $audits
+ * @property-read int|null $audits_count
+ * @property-read \App\Mainframe\Modules\Uploads\Upload|null $uploadable
  */
 class Upload extends BaseModule
 {

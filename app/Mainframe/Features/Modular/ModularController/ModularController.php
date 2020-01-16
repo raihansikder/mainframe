@@ -24,19 +24,19 @@ class ModularController extends BaseController
     use RequestHandler, ShowChangesTrait, Resolvable;
 
     /** @var string Module name */
-    public $name;
+    protected $name;
 
     /** @var Module */
-    public $module;
+    protected $module;
 
     /** @var \Illuminate\Database\Eloquent\Builder */
-    public $model;
+    protected $model;
 
     /** @var \App\Mainframe\Features\Modular\BaseModule\BaseModule */
-    public $element;
+    protected $element;
 
     /** @var \App\Mainframe\Features\Modular\Validator\ModelProcessor */
-    public $processor;
+    protected $processor;
 
     /**
      * @param  null  $name
@@ -45,7 +45,7 @@ class ModularController extends BaseController
     {
         parent::__construct();
 
-        $this->name = $name ?? Module::fromController(get_class($this));
+        //$this->name = $name ?? Module::fromController(get_class($this));
         $this->module = Module::byName($this->name);
 
         $this->model = $this->module->modelInstance();

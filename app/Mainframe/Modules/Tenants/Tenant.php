@@ -19,7 +19,7 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule;
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
  * @property int|null $deleted_by
-* @property-read int|null $changes_count
+ * @property-read int|null $changes_count
  * @property-read \App\Mainframe\Modules\Users\User|null $creator
  * @property-read \App\Mainframe\Modules\Uploads\Upload $latestUpload
  * @property-read \App\Mainframe\Modules\Users\User|null $updater
@@ -46,6 +46,8 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule;
  * @property-read \App\Mainframe\Modules\Projects\Project $project
  * @property-read \App\Mainframe\Modules\Tenants\Tenant $tenant
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Tenants\Tenant whereProjectId($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\OwenIt\Auditing\Models\Audit[] $audits
+ * @property-read int|null $audits_count
  */
 class Tenant extends BaseModule
 {
