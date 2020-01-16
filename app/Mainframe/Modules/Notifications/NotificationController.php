@@ -6,14 +6,13 @@ use App\Mainframe\Features\Modular\ModularController\ModularController;
 
 class NotificationController extends ModularController
 {
-
-    /**
-     * Init with module name
-     */
-    public function __construct()
-    {
-        parent::__construct('notifications');
-    }
+    /*
+    |--------------------------------------------------------------------------
+    | Module definitions
+    |--------------------------------------------------------------------------
+    |
+    */
+    protected $moduleName = 'notifications';
 
     /**
      * @return NotificationDatatable

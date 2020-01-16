@@ -7,6 +7,15 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule;
 class ProductCategory extends BaseModule
 {
     use ProductCategoryHelper;
+
+    /*
+    |--------------------------------------------------------------------------
+    | Module definitions
+    |--------------------------------------------------------------------------
+    |
+    */
+    protected $moduleName = 'product-categories';
+    protected $table      = 'product_categories';
     /*
     |--------------------------------------------------------------------------
     | Fillable attributes

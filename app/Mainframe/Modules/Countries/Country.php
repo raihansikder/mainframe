@@ -74,6 +74,16 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule;
 class Country extends BaseModule
 {
     use CountryHelper;
+
+    /*
+    |--------------------------------------------------------------------------
+    | Module definitions
+    |--------------------------------------------------------------------------
+    |
+    */
+    protected $moduleName = 'countries';
+    protected $table      = 'countries';
+
     /*
     |--------------------------------------------------------------------------
     | Fillable attributes

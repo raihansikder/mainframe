@@ -68,6 +68,15 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule;
 class Report extends BaseModule
 {
     use ReportHelper;
+
+    /*
+    |--------------------------------------------------------------------------
+    | Module definitions
+    |--------------------------------------------------------------------------
+    |
+    */
+    protected $moduleName = 'reports';
+    protected $table      = 'reports';
     /*
     |--------------------------------------------------------------------------
     | Fillable attributes

@@ -61,6 +61,14 @@ use App\Mainframe\Modules\Groups\Traits\GroupDefinitionsTrait;
 class Group extends BaseModule
 {
     use GroupHelper, GroupDefinitionsTrait;
+    /*
+    |--------------------------------------------------------------------------
+    | Module definitions
+    |--------------------------------------------------------------------------
+    |
+    */
+    protected $moduleName = 'groups';
+    protected $table      = 'groups';
 
     /*
     |--------------------------------------------------------------------------

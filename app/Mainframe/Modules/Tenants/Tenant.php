@@ -52,6 +52,16 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule;
 class Tenant extends BaseModule
 {
     use TenantHelper;
+
+    /*
+    |--------------------------------------------------------------------------
+    | Module definitions
+    |--------------------------------------------------------------------------
+    |
+    */
+    protected $moduleName = 'tenants';
+    protected $table      = 'tenants';
+
     /*
     |--------------------------------------------------------------------------
     | Fillable attributes

@@ -9,13 +9,13 @@ use App\Mainframe\Features\Modular\ModularController\ModularController;
 class UserController extends ModularController
 {
 
-    /**
-     * Init with module name
-     */
-    public function __construct()
-    {
-        parent::__construct('users');
-    }
+    /*
+    |--------------------------------------------------------------------------
+    | Module definitions
+    |--------------------------------------------------------------------------
+    |
+    */
+    protected $moduleName = 'users';
 
     /**
      * @return UserDatatable

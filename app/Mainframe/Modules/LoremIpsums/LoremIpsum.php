@@ -72,7 +72,14 @@ class LoremIpsum extends BaseModule
 {
     use LoremIpsumHelper;
 
+    /*
+    |--------------------------------------------------------------------------
+    | Module definitions
+    |--------------------------------------------------------------------------
+    |
+    */
     protected $moduleName = 'lorem-ipsums';
+    protected $table      = 'lorem_ipsums';
 
     /*
     |--------------------------------------------------------------------------

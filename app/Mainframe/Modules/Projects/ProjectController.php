@@ -7,13 +7,13 @@ use App\Mainframe\Features\Modular\ModularController\ModularController;
 class ProjectController extends ModularController
 {
 
-    /**
-     * Init with module name
-     */
-    public function __construct()
-    {
-        parent::__construct('projects');
-    }
+    /*
+    |--------------------------------------------------------------------------
+    | Module definitions
+    |--------------------------------------------------------------------------
+    |
+    */
+    protected $moduleName = 'projects';
 
     /**
      * @return ProjectDatatable

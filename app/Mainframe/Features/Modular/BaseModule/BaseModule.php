@@ -45,8 +45,13 @@ class BaseModule extends Model implements Auditable
         RelatedUsersTrait, TenantContextTrait, UpdaterTrait,
         Uploadable, ModularTrait, ModelAutoFill;
 
+    /*
+    |--------------------------------------------------------------------------
+    | Module definitions
+    |--------------------------------------------------------------------------
+    |
+    */
     protected $moduleName;
-
 
     protected $dates = ['created_at', 'updated_at', 'deleted_at'];
 

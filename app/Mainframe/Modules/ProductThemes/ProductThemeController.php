@@ -7,13 +7,13 @@ use App\Mainframe\Features\Modular\ModularController\ModularController;
 class ProductThemeController extends ModularController
 {
 
-    /**
-     * Init with module name
-     */
-    public function __construct()
-    {
-        parent::__construct('product-themes');
-    }
+    /*
+    |--------------------------------------------------------------------------
+    | Module definitions
+    |--------------------------------------------------------------------------
+    |
+    */
+    protected $moduleName = 'product-themes';
 
     /**
      * @return ProductThemeDatatable

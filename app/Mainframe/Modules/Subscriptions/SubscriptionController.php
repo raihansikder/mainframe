@@ -7,13 +7,13 @@ use App\Mainframe\Features\Modular\ModularController\ModularController;
 class SubscriptionController extends ModularController
 {
 
-    /**
-     * Init with module name
+    /*
+     |--------------------------------------------------------------------------
+     | Module definitions
+     |--------------------------------------------------------------------------
+     |
      */
-    public function __construct()
-    {
-        parent::__construct('subscriptions');
-    }
+    protected $moduleName = 'subscriptions';
 
     /**
      * @return SubscriptionDatatable

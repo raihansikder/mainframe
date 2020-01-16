@@ -7,13 +7,13 @@ use App\Mainframe\Features\Modular\ModularController\ModularController;
 class ProductCategoryController extends ModularController
 {
 
-    /**
-     * Init with module name
-     */
-    public function __construct()
-    {
-        parent::__construct('product-categories');
-    }
+    /*
+    |--------------------------------------------------------------------------
+    | Module definitions
+    |--------------------------------------------------------------------------
+    |
+    */
+    protected $moduleName = 'product-categories';
 
     /**
      * @return ProductCategoryDatatable

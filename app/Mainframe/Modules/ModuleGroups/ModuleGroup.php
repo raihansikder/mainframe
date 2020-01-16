@@ -62,6 +62,16 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule;
 class ModuleGroup extends BaseModule
 {
     use ModuleGroupHelper;
+
+    /*
+    |--------------------------------------------------------------------------
+    | Module definitions
+    |--------------------------------------------------------------------------
+    |
+    */
+    protected $moduleName = 'module-groups';
+    protected $table      = 'module_groups';
+
     /*
     |--------------------------------------------------------------------------
     | Fillable attributes

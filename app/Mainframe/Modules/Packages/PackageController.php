@@ -7,13 +7,13 @@ use App\Mainframe\Features\Modular\ModularController\ModularController;
 class PackageController extends ModularController
 {
 
-    /**
-     * Init with module name
-     */
-    public function __construct()
-    {
-        parent::__construct('packages');
-    }
+    /*
+    |--------------------------------------------------------------------------
+    | Module definitions
+    |--------------------------------------------------------------------------
+    |
+    */
+    protected $moduleName = 'packages';
 
     /**
      * @return PackageDatatable

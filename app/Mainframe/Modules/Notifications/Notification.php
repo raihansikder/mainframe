@@ -63,6 +63,16 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule;
 class Notification extends BaseModule
 {
     use NotificationHelper;
+
+    /*
+    |--------------------------------------------------------------------------
+    | Module definitions
+    |--------------------------------------------------------------------------
+    |
+    */
+    protected $moduleName = 'notifications';
+    protected $table      = 'notifications';
+
     /*
     |--------------------------------------------------------------------------
     | Fillable attributes

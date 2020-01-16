@@ -7,7 +7,13 @@ use App\Mainframe\Features\Modular\ModularController\ModularController;
 class LoremIpsumController extends ModularController
 {
 
-    protected $name = 'lorem-ipsums';
+    /*
+    |--------------------------------------------------------------------------
+    | Module definitions
+    |--------------------------------------------------------------------------
+    |
+    */
+    protected $moduleName = 'lorem-ipsums';
 
     /**
      * @return LoremIpsumDatatable

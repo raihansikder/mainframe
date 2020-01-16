@@ -75,6 +75,15 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule;
 class Upload extends BaseModule
 {
     use UploadHelper;
+
+    /*
+    |--------------------------------------------------------------------------
+    | Module definitions
+    |--------------------------------------------------------------------------
+    |
+    */
+    protected $moduleName = 'uploads';
+    protected $table      = 'uploads';
     /*
     |--------------------------------------------------------------------------
     | Fillable attributes

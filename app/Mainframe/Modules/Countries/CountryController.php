@@ -7,14 +7,13 @@ use App\Mainframe\Features\Modular\ModularController\ModularController;
 class CountryController extends ModularController
 {
 
-
-    /**
-     * Init with module name
-     */
-    public function __construct()
-    {
-        parent::__construct('countries');
-    }
+    /*
+    |--------------------------------------------------------------------------
+    | Module definitions
+    |--------------------------------------------------------------------------
+    |
+    */
+    protected $moduleName = 'countries';
 
     /**
      * @return CountryDatatable

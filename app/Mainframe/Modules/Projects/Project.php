@@ -51,6 +51,15 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule;
 class Project extends BaseModule
 {
     use ProjectHelper;
+
+    /*
+    |--------------------------------------------------------------------------
+    | Module definitions
+    |--------------------------------------------------------------------------
+    |
+    */
+    protected $moduleName = 'projects';
+    protected $table      = 'projects';
     /*
     |--------------------------------------------------------------------------
     | Fillable attributes

@@ -58,6 +58,14 @@ class Subscription extends BaseModule
     use SubscriptionHelper;
     /*
     |--------------------------------------------------------------------------
+    | Module definitions
+    |--------------------------------------------------------------------------
+    |
+    */
+    protected $moduleName = 'subscriptions';
+    protected $table      = 'subscriptions';
+    /*
+    |--------------------------------------------------------------------------
     | Fillable attributes
     |--------------------------------------------------------------------------
     |

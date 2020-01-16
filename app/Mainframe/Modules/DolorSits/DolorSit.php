@@ -50,6 +50,16 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule;
 class DolorSit extends BaseModule
 {
     use DolorSitHelper;
+
+    /*
+    |--------------------------------------------------------------------------
+    | Module definitions
+    |--------------------------------------------------------------------------
+    |
+    */
+    protected $moduleName = 'dolor-sits';
+    protected $table      = 'dolor_sits';
+
     /*
     |--------------------------------------------------------------------------
     | Fillable attributes

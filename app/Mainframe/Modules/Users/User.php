@@ -148,6 +148,15 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
     use  Processable, EventIdentifiable,
         RelatedUsersTrait, TenantContextTrait, UpdaterTrait,
         Uploadable, ModularTrait, ModelAutoFill;
+
+    /*
+    |--------------------------------------------------------------------------
+    | Module definitions
+    |--------------------------------------------------------------------------
+    |
+    */
+    protected $moduleName = 'users';
+    protected $table      = 'users';
     /*
     |--------------------------------------------------------------------------
     | Fillable attributes
@@ -357,7 +366,6 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
     public function setPermissionsAttribute(array $permissions)
     {
         // Merge permissions
-        /** @noinspection PhpParamsInspection */
         $permissions = array_merge($this->permissions, $permissions);
 
         // Loop through and adjust permissions as needed

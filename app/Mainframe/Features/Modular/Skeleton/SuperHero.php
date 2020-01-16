@@ -8,7 +8,14 @@ class SuperHero extends BaseModule
 {
     use SuperHeroHelper;
 
+    /*
+    |--------------------------------------------------------------------------
+    | Module definitions
+    |--------------------------------------------------------------------------
+    |
+    */
     protected $moduleName = 'super-heroes';
+    protected $table      = 'super_heroes';
 
     /*
     |--------------------------------------------------------------------------

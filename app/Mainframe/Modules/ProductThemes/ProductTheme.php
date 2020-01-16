@@ -54,6 +54,15 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule;
 class ProductTheme extends BaseModule
 {
     use ProductThemeHelper;
+
+    /*
+    |--------------------------------------------------------------------------
+    | Module definitions
+    |--------------------------------------------------------------------------
+    |
+    */
+    protected $moduleName = 'product-themes';
+    protected $table      = 'product_themes';
     /*
     |--------------------------------------------------------------------------
     | Fillable attributes

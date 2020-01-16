@@ -24,7 +24,7 @@ class ModularController extends BaseController
     use RequestHandler, ShowChangesTrait, Resolvable;
 
     /** @var string Module name */
-    protected $name;
+    protected $moduleName;
 
     /** @var Module */
     protected $module;
@@ -46,7 +46,7 @@ class ModularController extends BaseController
         parent::__construct();
 
         //$this->name = $name ?? Module::fromController(get_class($this));
-        $this->module = Module::byName($this->name);
+        $this->module = Module::byName($this->moduleName);
 
         $this->model = $this->module->modelInstance();
 
@@ -73,7 +73,7 @@ class ModularController extends BaseController
 
         $vars = ['columns' => $this->datatable()->columns()];
 
-        return $this->response()->view(GridView::resolve($this->name))->with($vars);
+        return $this->response()->view(GridView::resolve($this->moduleName))->with($vars);
     }
 
     /**
@@ -106,7 +106,7 @@ class ModularController extends BaseController
             return $this->response()->success()->load($this->element)->json();
         }
 
-        return $this->response()->redirect(route($this->name.".edit", $id));
+        return $this->response()->redirect(route($this->moduleName.".edit", $id));
     }
 
     /**
