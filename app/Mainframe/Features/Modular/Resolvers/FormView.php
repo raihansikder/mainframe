@@ -15,7 +15,7 @@ class FormView
      */
     public static function resolve($module, $state = 'create', User $user = null)
     {
-        $default = $module->view.'.form.default';
+        $default = $module->view_directory.'.form.default';
         if ($state == 'create') {
             return $default;
         }

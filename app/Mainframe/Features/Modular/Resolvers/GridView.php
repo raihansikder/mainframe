@@ -13,7 +13,7 @@ class GridView
      */
     public static function resolve($module, User $user = null)
     {
-        return $module->view.'.grid.default';
+        return $module->view_directory.'.grid.default';
     }
 
 }
