@@ -1,6 +1,6 @@
 <?php
 
-$script_paths = [
+$scripts = [
     /**
      * Admin Lte CSS
      */
@@ -27,8 +27,8 @@ $script_paths = [
 ]
 ?>
 
-@foreach($script_paths as $script_path)
-    <link rel="stylesheet" href="{{asset($script_path)}}">
+@foreach($scripts as $script)
+    <link rel="stylesheet" href="{{asset($script)}}">
 @endforeach
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
@@ -39,7 +39,4 @@ $script_paths = [
 
 
 @section('css')
-    {{-- ++++++++++++ --}}
-    {{-- css section --}}
-    {{-- ++++++++++++ --}}
 @show
