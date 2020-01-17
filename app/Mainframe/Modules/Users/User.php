@@ -268,6 +268,7 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
     |
     */
     protected $with = ['groups'];
+
     /**
      * Allowed permissions values.
      * Possible options:

@@ -11,7 +11,7 @@
  Target Server Version : 100313
  File Encoding         : 65001
 
- Date: 17/01/2020 09:49:13
+ Date: 17/01/2020 14:57:30
 */
 
 SET NAMES utf8mb4;
@@ -521,12 +521,12 @@ CREATE TABLE `lorem_ipsums`  (
   `deleted_at` timestamp(0) NULL DEFAULT NULL,
   `deleted_by` int(10) UNSIGNED NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 200 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 210 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of lorem_ipsums
 -- ----------------------------
-INSERT INTO `lorem_ipsums` VALUES (1, '2c9e9057-6095-4a48-aa9e-181e96172cb1', NULL, NULL, 'Test Input', NULL, 'Prior to proceeding with the enforcement of new rules and regulations , it was good if authorities concerned would have been taken of such possible unruly anarchies of the transport workers . asdfasdf sdfgsdfg sdfg', 'sdfgssdfgsdfgdfsg', 'Roads', NULL, NULL, '[\"0\",\"2\"]', 1, '[\"3\",\"1\"]', 1, 0, 1, 5, 5, '2019-11-20 16:01:06', '2020-01-16 07:39:41', NULL, NULL);
+INSERT INTO `lorem_ipsums` VALUES (1, '2c9e9057-6095-4a48-aa9e-181e96172cb1', NULL, NULL, 'Test Input', NULL, 'Prior to proceeding with the enforcement of new rules and regulations , it was good if authorities concerned would have been taken of such possible unruly anarchies of the transport workers . asdfasdf sdfgsdfg sdfg', 'sdfgssdfgsdfgdfsg', 'Roads', NULL, NULL, '[\"0\",\"2\"]', 1, '[\"3\",\"1\"]', 1, 0, 1, 5, 5, '2019-11-20 16:01:06', '2020-01-17 06:36:36', NULL, NULL);
 INSERT INTO `lorem_ipsums` VALUES (2, '175da4d1-e448-4e27-a642-4da5179ec5c6', 1, 1, 'ainw bNW', NULL, 'asdfasdf', 'asdfasdfsdf asdfasdf', 'Country,takes,lorem', NULL, NULL, '[\"0\",\"1\"]', 1, '[\"1\"]', 2, 0, 1, 5, 5, '2019-11-20 16:01:06', '2020-01-12 08:39:58', NULL, NULL);
 
 -- ----------------------------
@@ -612,7 +612,7 @@ CREATE TABLE `modules`  (
   `policy` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   `processor` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   `controller` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
-  `view` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
+  `view_directory` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   `parent_id` int(11) NULL DEFAULT NULL,
   `module_group_id` int(11) NULL DEFAULT NULL,
   `level` int(11) NULL DEFAULT NULL,
@@ -641,13 +641,12 @@ INSERT INTO `modules` VALUES (5, '14612def-5850-49fb-bf99-48d99c73b589', 'groups
 INSERT INTO `modules` VALUES (6, '50ed1cc8-3ecf-4caf-9724-819cd90dd3d2', 'uploads', NULL, NULL, 'Upload', 'Manage uploads', 'uploads', 'uploads', 'uploads', 'app/Mainframe/Modules/Uploads', '\\App\\Mainframe\\Modules\\Uploads', '\\App\\Mainframe\\Modules\\Uploads\\Upload', '\\App\\Mainframe\\Modules\\Uploads\\UploadPolicy', '\\App\\Mainframe\\Modules\\Uploads\\UploadProcessor', '\\App\\Mainframe\\Modules\\Uploads\\UploadController', 'mainframe.modules.uploads', 0, 1, 0, 0, 'uploads.index', 'aqua', 'fa fa-plus', 1, 1, 1, '2018-12-13 20:57:47', '2020-01-16 06:01:43', NULL, NULL);
 INSERT INTO `modules` VALUES (21, '6d1fff93-328b-4501-b643-e21cc6cbf9d2', 'settings', NULL, NULL, 'Setting', 'Manage settings', 'settings', 'settings', 'settings', 'app/Mainframe/Modules/Settings', '\\App\\Mainframe\\Modules\\Settings', '\\App\\Mainframe\\Modules\\Settings\\Setting', '\\App\\Mainframe\\Modules\\Settings\\SettingPolicy', '\\App\\Mainframe\\Modules\\Settings\\SettingProcessor', '\\App\\Mainframe\\Modules\\Settings\\SettingController', 'mainframe.modules.settings', 0, 1, 0, 0, 'settings.index', 'aqua', 'fa fa-list-alt', 1, 1, 1, '2018-12-24 19:56:38', '2020-01-16 06:01:43', NULL, NULL);
 INSERT INTO `modules` VALUES (23, '3207985e-3886-4a1c-8121-c8e4147cfa72', 'reports', NULL, NULL, 'Report', 'Manage reports', 'reports', 'reports', 'reports', 'app/Mainframe/Modules/Reports', '\\App\\Mainframe\\Modules\\Reports', '\\App\\Mainframe\\Modules\\Reports\\Report', '\\App\\Mainframe\\Modules\\Reports\\ReportPolicy', '\\App\\Mainframe\\Modules\\Reports\\ReportProcessor', '\\App\\Mainframe\\Modules\\Reports\\ReportController', 'mainframe.modules.reports', 0, 0, 0, 999, 'reports.index', 'aqua', 'fa fa-pie-chart', 1, 1, 1, '2019-01-17 05:00:25', '2020-01-16 06:01:43', NULL, NULL);
-INSERT INTO `modules` VALUES (50, '778e5ea8-acee-4458-aab7-5e275a4084a5', 'lorem-ipsums', NULL, NULL, 'Lorem ipsum', 'Manage lorem ipsums', 'lorem_ipsums', 'lorem-ipsums', 'lorem-ipsums', 'app/Mainframe/Modules/LoremIpsums', '\\App\\Mainframe\\Modules\\LoremIpsums', '\\App\\Mainframe\\Modules\\LoremIpsums\\LoremIpsum', '\\App\\Mainframe\\Modules\\LoremIpsums\\LoremIpsumPolicy', '\\App\\Mainframe\\Modules\\LoremIpsums\\LoremIpsumProcessor', '\\App\\Mainframe\\Modules\\LoremIpsums\\LoremIpsumController', 'mainframe.modules.lorem-ipsums', 0, 1, 0, 0, 'lorem-ipsums.index', 'aqua', 'fa fa-plus', 1, 1, 1, '2019-11-20 14:08:23', '2020-01-16 06:01:43', NULL, NULL);
-INSERT INTO `modules` VALUES (51, 'a0c23e13-1bd6-4346-828b-b7878d67ee29', 'dolor-sits', NULL, NULL, 'Dolor sit', 'Manage dolor sits', 'dolor-sits', 'dolor-sits', 'dolor-sits', 'app/Mainframe/Modules/DolorSits', '\\App\\Mainframe\\Modules\\DolorSits', '\\App\\Mainframe\\Modules\\DolorSits\\DolorSit', '\\App\\Mainframe\\Modules\\DolorSits\\DolorSitPolicy', '\\App\\Mainframe\\Modules\\DolorSits\\DolorSitProcessor', '\\App\\Mainframe\\Modules\\DolorSits\\DolorSitController', 'mainframe.modules.dolor-sits', 0, 1, 0, 0, 'dolor-sits.index', 'aqua', 'fa fa-plus', 1, 1, 1, '2019-11-20 14:10:34', '2020-01-16 06:01:43', NULL, NULL);
+INSERT INTO `modules` VALUES (50, '778e5ea8-acee-4458-aab7-5e275a4084a5', 'lorem-ipsums', NULL, NULL, 'Lorem ipsum', 'Manage lorem ipsums', 'lorem_ipsums', 'lorem-ipsums', 'lorem-ipsums', 'app/Mainframe/Modules/Samples/LoremIpsums', '\\App\\Mainframe\\Modules\\Samples\\LoremIpsums', '\\App\\Mainframe\\Modules\\Samples\\LoremIpsums\\LoremIpsum', '\\App\\Mainframe\\Modules\\LoremIpsums\\LoremIpsumPolicy', '\\App\\Mainframe\\Modules\\Samples\\LoremIpsums\\LoremIpsumProcessor', '\\App\\Mainframe\\Modules\\Samples\\LoremIpsums\\LoremIpsumController', 'mainframe.modules.samples.lorem-ipsums', 0, 1, 0, 0, 'lorem-ipsums.index', 'aqua', 'fa fa-plus', 1, 1, 1, '2019-11-20 14:08:23', '2020-01-16 06:01:43', NULL, NULL);
+INSERT INTO `modules` VALUES (51, 'a0c23e13-1bd6-4346-828b-b7878d67ee29', 'dolor-sits', NULL, NULL, 'Dolor sit', 'Manage dolor sits', 'dolor-sits', 'dolor-sits', 'dolor-sits', 'app/Mainframe/Modules/Samples/DolorSits', '\\App\\Mainframe\\Modules\\Samples\\DolorSits', '\\App\\Mainframe\\Modules\\Samples\\DolorSits\\DolorSit', '\\App\\Mainframe\\Modules\\DolorSits\\DolorSitPolicy', '\\App\\Mainframe\\Modules\\Samples\\DolorSits\\DolorSitProcessor', '\\App\\Mainframe\\Modules\\Samples\\DolorSits\\DolorSitController', 'mainframe.modules.samples.dolor-sits', 0, 1, 0, 0, 'dolor-sits.index', 'aqua', 'fa fa-plus', 1, 1, 1, '2019-11-20 14:10:34', '2020-01-16 06:01:43', NULL, NULL);
 INSERT INTO `modules` VALUES (52, '2da95896-4a15-4ad6-9919-767dabeef9fe', 'subscriptions', NULL, NULL, 'Subscription', 'Manage subscriptions', 'subscriptions', 'subscriptions', 'subscriptions', 'app/Mainframe/Modules/Subscriptions', '\\App\\Mainframe\\Modules\\Subscriptions', '\\App\\Mainframe\\Modules\\Subscriptions\\Subscription', '\\App\\Mainframe\\Modules\\Subscriptions\\SubscriptionPolicy', '\\App\\Mainframe\\Modules\\Subscriptions\\SubscriptionProcessor', '\\App\\Mainframe\\Modules\\Subscriptions\\SubscriptionController', 'mainframe.modules.subscriptions', 0, 1, 0, 0, 'subscriptions.index', 'aqua', 'fa fa-plus', 1, 1, 1, '2019-12-19 14:00:52', '2020-01-16 06:01:43', NULL, NULL);
 INSERT INTO `modules` VALUES (53, '11a3b809-b3e0-4c8f-b59a-b99192e99588', 'packages', NULL, NULL, 'Package', 'Manage packages', 'packages', 'packages', 'packages', 'app/Mainframe/Modules/Packages', '\\App\\Mainframe\\Modules\\Packages', '\\App\\Mainframe\\Modules\\Packages\\Package', '\\App\\Mainframe\\Modules\\Packages\\PackagePolicy', '\\App\\Mainframe\\Modules\\Packages\\PackageProcessor', '\\App\\Mainframe\\Modules\\Packages\\PackageController', 'mainframe.modules.packages', 0, 1, 0, 0, 'packages.index', 'aqua', 'fa fa-plus', 1, 1, 1, '2019-12-19 14:39:47', '2020-01-16 06:01:43', NULL, NULL);
 INSERT INTO `modules` VALUES (54, 'c4582951-e9ee-4d1d-a9de-9230c037699a', 'countries', NULL, NULL, 'Country', 'Manage countries', 'countries', 'countries', 'countries', 'app/Mainframe/Modules/Countries', '\\App\\Mainframe\\Modules\\Countries', '\\App\\Mainframe\\Modules\\Countries\\Country', '\\App\\Mainframe\\Modules\\Countries\\CountryPolicy', '\\App\\Mainframe\\Modules\\Countries\\CountryProcessor', '\\App\\Mainframe\\Modules\\Countries\\CountryController', 'mainframe.modules.countries', 0, 1, 0, 0, 'countries.index', 'aqua', 'fa fa-plus', 1, 1, 1, '2019-12-19 14:39:47', '2020-01-16 06:01:43', NULL, NULL);
 INSERT INTO `modules` VALUES (55, 'cb21c345-ba75-452c-b326-5c20f6cd17b8', 'notifications', NULL, NULL, 'Notification', 'List of notifications', 'notifications', 'notifications', 'notifications', 'app/Mainframe/Modules/Notifications', '\\App\\Mainframe\\Modules\\Notifications', '\\App\\Mainframe\\Modules\\Notifications\\Notification', '\\App\\Mainframe\\Modules\\Notifications\\NotificationPolicy', '\\App\\Mainframe\\Modules\\Notifications\\NotificationProcessor', '\\App\\Mainframe\\Modules\\Notifications\\NotificationController', 'mainframe.modules.notifications', 0, 1, 0, 0, 'notifications.index', 'aqua', 'fa fa-plus', 1, 1, 1, '2019-12-19 14:39:47', '2020-01-16 06:01:43', NULL, NULL);
-INSERT INTO `modules` VALUES (56, 'f0180289-564e-4f79-aa5c-c40cce8ec4f3', 'product-themes', NULL, NULL, 'Product theme', 'Manage product themes', 'product_themes', 'product-themes', 'product-themes', 'app/Mainframe/Modules/ProductThemes', '\\App\\Mainframe\\Modules\\ProductThemes', '\\App\\Mainframe\\Modules\\ProductThemes\\ProductTheme', '\\App\\Mainframe\\Modules\\ProductThemes\\ProductThemePolicy', '\\App\\Mainframe\\Modules\\ProductThemes\\ProductThemeProcessor', '\\App\\Mainframe\\Modules\\ProductThemes\\ProductThemeController', 'mainframe.modules.product-themes', 0, 1, 0, 0, 'product-themes.index', 'aqua', 'fa fa-plus', 1, 1, 1, '2019-12-19 15:25:43', '2020-01-16 06:01:43', NULL, NULL);
 INSERT INTO `modules` VALUES (57, '47df59d0-bacb-4d1e-bfda-01c051c63681', 'projects', NULL, NULL, 'Project', 'Manage projects', 'projects', 'projects', 'projects', 'app/Mainframe/Modules/Projects', '\\App\\Mainframe\\Modules\\Projects', '\\App\\Mainframe\\Modules\\Projects\\Project', '\\App\\Mainframe\\Modules\\Projects\\ProjectPolicy', '\\App\\Mainframe\\Modules\\Projects\\ProjectProcessor', '\\App\\Mainframe\\Modules\\Projects\\ProjectController', 'mainframe.modules.projects', 0, 1, 0, 0, 'projects.index', 'aqua', 'fa fa-plus', 1, 1, 1, '2019-12-28 13:57:38', '2020-01-16 06:01:43', NULL, NULL);
 
 -- ----------------------------
@@ -719,55 +718,6 @@ INSERT INTO `password_resets` VALUES ('tenant113@gmail.com', '$2y$10$qdhrBqozQiQ
 INSERT INTO `password_resets` VALUES ('namup@mailinator.net', '$2y$10$dQx0uGG.wrrsnxPmHOdyHexhOOBdsbA0NDJAXtuRI1y9jpHgWqp3i', '2020-01-07 11:31:54');
 
 -- ----------------------------
--- Table structure for product_categories
--- ----------------------------
-DROP TABLE IF EXISTS `product_categories`;
-CREATE TABLE `product_categories`  (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `uuid` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
-  `project_id` int(10) UNSIGNED NULL DEFAULT NULL,
-  `tenant_id` int(11) NULL DEFAULT NULL,
-  `name` varchar(512) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
-  `name_ext` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
-  `slug` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
-  `parent_id` int(11) NULL DEFAULT NULL,
-  `order` smallint(11) NULL DEFAULT NULL,
-  `order_web` smallint(6) NULL DEFAULT NULL,
-  `order_mobile` smallint(6) NULL DEFAULT NULL,
-  `details` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
-  `is_active` smallint(6) NULL DEFAULT 1,
-  `created_by` int(11) NULL DEFAULT NULL,
-  `updated_by` int(11) NULL DEFAULT NULL,
-  `created_at` datetime(0) NULL DEFAULT NULL,
-  `updated_at` datetime(0) NULL DEFAULT NULL,
-  `deleted_at` datetime(0) NULL DEFAULT NULL,
-  `deleted_by` int(11) NULL DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Compact;
-
--- ----------------------------
--- Table structure for product_themes
--- ----------------------------
-DROP TABLE IF EXISTS `product_themes`;
-CREATE TABLE `product_themes`  (
-  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `uuid` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `project_id` int(10) UNSIGNED NULL DEFAULT NULL,
-  `tenant_id` int(10) UNSIGNED NULL DEFAULT NULL,
-  `name` varchar(1024) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `code` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `details` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `is_active` tinyint(4) NULL DEFAULT 1,
-  `created_by` int(10) UNSIGNED NULL DEFAULT NULL,
-  `updated_by` int(10) UNSIGNED NULL DEFAULT NULL,
-  `created_at` timestamp(0) NULL DEFAULT NULL,
-  `updated_at` timestamp(0) NULL DEFAULT NULL,
-  `deleted_at` timestamp(0) NULL DEFAULT NULL,
-  `deleted_by` int(10) UNSIGNED NULL DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
 -- Table structure for projects
 -- ----------------------------
 DROP TABLE IF EXISTS `projects`;
@@ -778,6 +728,10 @@ CREATE TABLE `projects`  (
   `name` varchar(1024) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `configuration` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT 'JSON configuration for a project',
+  `route_group` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `class_directory` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `namespace` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `view_directory` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `is_active` tinyint(4) NULL DEFAULT 1,
   `created_by` int(10) UNSIGNED NULL DEFAULT NULL,
   `updated_by` int(10) UNSIGNED NULL DEFAULT NULL,
@@ -791,8 +745,8 @@ CREATE TABLE `projects`  (
 -- ----------------------------
 -- Records of projects
 -- ----------------------------
-INSERT INTO `projects` VALUES (1, 'b632635d-877b-461e-8f3f-97256567eea7', 'art', 'ArtemisPod', NULL, NULL, 1, 5, 5, '2019-12-28 14:13:40', '2019-12-28 14:13:40', NULL, NULL);
-INSERT INTO `projects` VALUES (2, 'cedb4d2c-a465-4bb4-818e-09100ed02580', 'orh', 'OrangeHC', NULL, NULL, 1, 5, 5, '2019-12-28 14:14:04', '2019-12-28 14:14:04', NULL, NULL);
+INSERT INTO `projects` VALUES (1, 'b632635d-877b-461e-8f3f-97256567eea7', 'artp', 'ArtemisPod', NULL, NULL, 'artp', 'app/Projects/ArtemisPod', '\\App\\ArtemisPod', 'mainframe.projects.artemis-pod', 1, 5, 5, '2019-12-28 14:13:40', '2019-12-28 14:13:40', NULL, NULL);
+INSERT INTO `projects` VALUES (2, 'cedb4d2c-a465-4bb4-818e-09100ed02580', 'orhc', 'OrangeHC', NULL, NULL, 'orhc', 'app/Projects/OrangeHc', '\\App\\OrangeHC', 'mainframe.projects.orange-hc', 1, 5, 5, '2019-12-28 14:14:04', '2019-12-28 14:14:04', NULL, NULL);
 
 -- ----------------------------
 -- Table structure for reports
@@ -1020,6 +974,10 @@ CREATE TABLE `tenants`  (
   `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   `code` varchar(32) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   `user_id` int(11) UNSIGNED NULL DEFAULT NULL COMMENT 'Tenant admin who signed up',
+  `route_group` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
+  `class_directory` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
+  `namespace` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
+  `view` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   `is_active` smallint(6) NULL DEFAULT 1,
   `created_by` int(11) UNSIGNED NULL DEFAULT NULL,
   `updated_by` int(11) UNSIGNED NULL DEFAULT NULL,
@@ -1033,16 +991,8 @@ CREATE TABLE `tenants`  (
 -- ----------------------------
 -- Records of tenants
 -- ----------------------------
-INSERT INTO `tenants` VALUES (1, 'ceba2dba-bfad-4045-a36f-ce0572f77679', 1, 'ArtemisPod-default', 'art', NULL, 1, 5, 5, '2019-12-19 13:31:02', '2019-12-19 13:31:02', NULL, NULL);
-INSERT INTO `tenants` VALUES (2, '2170cada-a1fc-43a9-90e5-6bf6a5037952', 2, 'OrangeHC-default', 'orh', NULL, 1, 5, 5, '2019-12-19 13:31:02', '2019-12-28 14:26:39', NULL, NULL);
-INSERT INTO `tenants` VALUES (22, 'eb577051-78c9-4476-b618-bd457f33b134', NULL, 'Elizabeth Solis', NULL, NULL, 1, NULL, NULL, '2020-01-06 16:55:14', '2020-01-06 16:55:14', NULL, NULL);
-INSERT INTO `tenants` VALUES (23, '53da6246-1da3-49a9-8489-1573d5e0eca9', NULL, 'Quail Vaughan', NULL, NULL, 1, NULL, NULL, '2020-01-06 17:01:50', '2020-01-06 17:01:50', NULL, NULL);
-INSERT INTO `tenants` VALUES (24, '9277544c-baf2-4533-87f8-53f939da2d4d', NULL, 'Wyoming Kemp', NULL, NULL, 1, NULL, NULL, '2020-01-06 17:02:42', '2020-01-06 17:02:42', NULL, NULL);
-INSERT INTO `tenants` VALUES (25, 'c6cd666f-95fe-4d7b-aab8-148c92d50860', NULL, 'Samantha Walter', NULL, NULL, 1, NULL, NULL, '2020-01-06 17:05:37', '2020-01-06 17:05:37', NULL, NULL);
-INSERT INTO `tenants` VALUES (26, 'd1a102b8-43cc-4f69-b179-18ce419c8060', NULL, 'Mikayla Cunningham', NULL, NULL, 1, NULL, NULL, '2020-01-06 17:10:31', '2020-01-06 17:10:31', NULL, NULL);
-INSERT INTO `tenants` VALUES (27, '6e327c8f-f534-46d2-a35a-21a0c7a02de1', NULL, 'MacKensie Deleon', NULL, NULL, 1, NULL, NULL, '2020-01-06 17:13:41', '2020-01-06 17:13:41', NULL, NULL);
-INSERT INTO `tenants` VALUES (28, '044ef0fc-8feb-4389-bb93-7fb832f0a366', NULL, 'Eaton Blake', NULL, NULL, 1, NULL, NULL, '2020-01-06 17:16:18', '2020-01-06 17:16:18', NULL, NULL);
-INSERT INTO `tenants` VALUES (29, 'b283e497-5911-45e1-8aff-daebe5b14466', NULL, 'Carol Whitehead', NULL, NULL, 1, NULL, NULL, '2020-01-07 11:17:13', '2020-01-07 11:17:13', NULL, NULL);
+INSERT INTO `tenants` VALUES (1, 'ceba2dba-bfad-4045-a36f-ce0572f77679', 1, 'ArtemisPod-default', 'artp', NULL, 'artp', 'app/Projects/ArtemisPod', '\\App\\ArtemisPod', 'mainframe.projects.artemis-pod', 1, 5, 5, '2019-12-19 13:31:02', '2019-12-19 13:31:02', NULL, NULL);
+INSERT INTO `tenants` VALUES (2, '2170cada-a1fc-43a9-90e5-6bf6a5037952', 2, 'OrangeHC-default', 'orhc', NULL, 'orhc', 'app/Projects/OrangeHc', '\\App\\OrangeHC', 'mainframe.projects.orange-hc', 1, 5, 5, '2019-12-19 13:31:02', '2019-12-28 14:26:39', NULL, NULL);
 
 -- ----------------------------
 -- Table structure for uploads
@@ -1167,7 +1117,7 @@ CREATE TABLE `users`  (
 -- ----------------------------
 -- Records of users
 -- ----------------------------
-INSERT INTO `users` VALUES (1, '3ef9b174-6c7c-41fd-b68e-18d003fb9481', NULL, NULL, 'Super admin', 'su@mainframe', '$2y$10$MPClZ27.7vXjZR9U.RtAOunXE7aNR3CTe.m9JYJTpVlLTmDWBZhBq', 'BHH4RMwurREAdv5uZbqknPscyUjs7jMqceUxqUCQR2NKgXcQJX71y19AL3hc', NULL, NULL, 1, NULL, 1, 1, 1, '2018-09-10 15:30:06', '2020-01-16 08:19:54', NULL, NULL, NULL, 'Prime', 'Superuser', 'Prime Superuser', NULL, NULL, NULL, NULL, NULL, NULL, 187, 'UK (United Kingdom)', NULL, NULL, NULL, '2018-09-10 15:30:06', '2019-11-12 12:47:17', 'Tr1JojY6w2WjM5z/t/.HQvj2HJUzrjse', '2019-01-22 19:27:07', NULL, 'GBP', NULL, NULL, NULL, '[\"1\"]', 0);
+INSERT INTO `users` VALUES (1, '3ef9b174-6c7c-41fd-b68e-18d003fb9481', NULL, NULL, 'Super admin', 'su@mainframe', '$2y$10$MPClZ27.7vXjZR9U.RtAOunXE7aNR3CTe.m9JYJTpVlLTmDWBZhBq', 'YpEVSEIOq7RTJzBBXyuX8BQr5qCyZ7AogDQXRRMUueqHyfqh3I7Dv78DnpIU', NULL, NULL, 1, NULL, 1, 1, 1, '2018-09-10 15:30:06', '2020-01-17 08:45:46', NULL, NULL, NULL, 'Prime', 'Superuser', 'Prime Superuser', NULL, NULL, NULL, NULL, NULL, NULL, 187, 'UK (United Kingdom)', NULL, NULL, NULL, '2018-09-10 15:30:06', '2019-11-12 12:47:17', 'Tr1JojY6w2WjM5z/t/.HQvj2HJUzrjse', '2019-01-22 19:27:07', NULL, 'GBP', NULL, NULL, NULL, '[\"1\"]', 0);
 INSERT INTO `users` VALUES (2, '856a81bf-ab1b-4289-9d65-9751009d00ad', NULL, NULL, 'API', 'api@mainframe', '$2y$10$t5wa5wPH8XAgoRYyptOJ0uSf/klm0S/71XUdK3Gz.2llsQHh1nXAm', '7HL9zfX8YzCLTo8uHS4qsYo50twq2nwQLT9R8Evgu5QxhnuQ3Azw0SkVEE0q', '7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0', NULL, 0, NULL, 1, 1, 1, '2018-12-24 05:48:25', '2020-01-05 06:24:49', NULL, NULL, NULL, 'LB', 'API', 'LB API', NULL, 'eFGlVn8yFn8:APA91bHgq2zk-9JrBNNtVMn4iFMB6eicQOUVyFZGRft8jv-GwGJej9sFppTG5w9E_3IeOyR_3NN1i3cWFHaiVl_k1Zlt2jDMVoh7D90CsJG1qxVnuruH-Eidi1CgO9QVlpmFByK2azr3', NULL, NULL, NULL, NULL, 187, 'UK (United Kingdom)', NULL, NULL, NULL, '2019-01-31 08:31:54', '2019-04-09 15:17:25', 'Q29anuSIvoR9N8OmB2ueGGRI8tlHPZau', '2019-01-01 12:00:00', NULL, 'GBP', NULL, NULL, NULL, '[\"2\"]', 0);
 INSERT INTO `users` VALUES (999, '0b11bb84-a6f9-4612-b823-6eb0feda3342', NULL, NULL, ' ', 'dote@mailinator.net', '$2y$10$zZmnBn0xe0wXNCmKpWFnV.dQq/yJasjT4Bk1gZ9yQdWrp/e.2GgFK', NULL, NULL, NULL, 1, NULL, 1, 1, 1, '2020-01-06 16:55:14', '2020-01-08 13:11:18', NULL, NULL, NULL, 'Dote', 'Test', 'Dote Test', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '[\"25\"]', 0);
 
