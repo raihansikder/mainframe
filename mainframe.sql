@@ -11,7 +11,7 @@
  Target Server Version : 100313
  File Encoding         : 65001
 
- Date: 17/01/2020 14:57:30
+ Date: 17/01/2020 22:18:39
 */
 
 SET NAMES utf8mb4;
@@ -521,7 +521,7 @@ CREATE TABLE `lorem_ipsums`  (
   `deleted_at` timestamp(0) NULL DEFAULT NULL,
   `deleted_by` int(10) UNSIGNED NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 210 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 212 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of lorem_ipsums
@@ -538,7 +538,7 @@ CREATE TABLE `migrations`  (
   `migration` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 16 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 19 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of migrations
@@ -558,6 +558,9 @@ INSERT INTO `migrations` VALUES (12, '2019_12_28_134422_create_mf_projects_table
 INSERT INTO `migrations` VALUES (13, '2020_01_06_134600_create_jobs_table', 9);
 INSERT INTO `migrations` VALUES (14, '2020_01_07_123232_create_audits_table', 10);
 INSERT INTO `migrations` VALUES (15, '2020_01_07_132100_delete_changes_table', 11);
+INSERT INTO `migrations` VALUES (16, '2020_01_17_120103_create_artm_products_table', 12);
+INSERT INTO `migrations` VALUES (17, '2020_01_17_120806_create_artm_products_table', 13);
+INSERT INTO `migrations` VALUES (18, '2020_01_17_123930_create_artm_products_table', 14);
 
 -- ----------------------------
 -- Table structure for module_groups
@@ -628,7 +631,7 @@ CREATE TABLE `modules`  (
   `deleted_at` datetime(0) NULL DEFAULT NULL,
   `deleted_by` int(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 58 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 60 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of modules
@@ -977,7 +980,7 @@ CREATE TABLE `tenants`  (
   `route_group` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   `class_directory` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   `namespace` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
-  `view` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
+  `view_directory` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   `is_active` smallint(6) NULL DEFAULT 1,
   `created_by` int(11) UNSIGNED NULL DEFAULT NULL,
   `updated_by` int(11) UNSIGNED NULL DEFAULT NULL,
@@ -1117,7 +1120,7 @@ CREATE TABLE `users`  (
 -- ----------------------------
 -- Records of users
 -- ----------------------------
-INSERT INTO `users` VALUES (1, '3ef9b174-6c7c-41fd-b68e-18d003fb9481', NULL, NULL, 'Super admin', 'su@mainframe', '$2y$10$MPClZ27.7vXjZR9U.RtAOunXE7aNR3CTe.m9JYJTpVlLTmDWBZhBq', 'YpEVSEIOq7RTJzBBXyuX8BQr5qCyZ7AogDQXRRMUueqHyfqh3I7Dv78DnpIU', NULL, NULL, 1, NULL, 1, 1, 1, '2018-09-10 15:30:06', '2020-01-17 08:45:46', NULL, NULL, NULL, 'Prime', 'Superuser', 'Prime Superuser', NULL, NULL, NULL, NULL, NULL, NULL, 187, 'UK (United Kingdom)', NULL, NULL, NULL, '2018-09-10 15:30:06', '2019-11-12 12:47:17', 'Tr1JojY6w2WjM5z/t/.HQvj2HJUzrjse', '2019-01-22 19:27:07', NULL, 'GBP', NULL, NULL, NULL, '[\"1\"]', 0);
+INSERT INTO `users` VALUES (1, '3ef9b174-6c7c-41fd-b68e-18d003fb9481', NULL, NULL, 'Super admin', 'su@mainframe', '$2y$10$MPClZ27.7vXjZR9U.RtAOunXE7aNR3CTe.m9JYJTpVlLTmDWBZhBq', 'OWLFbrIg4c498v7AbpmxT2VKscMwZcJemNna8eImaOloO9DIeHZqWjlzxdlU', NULL, NULL, 1, NULL, 1, 1, 1, '2018-09-10 15:30:06', '2020-01-17 12:02:29', NULL, NULL, NULL, 'Prime', 'Superuser', 'Prime Superuser', NULL, NULL, NULL, NULL, NULL, NULL, 187, 'UK (United Kingdom)', NULL, NULL, NULL, '2018-09-10 15:30:06', '2019-11-12 12:47:17', 'Tr1JojY6w2WjM5z/t/.HQvj2HJUzrjse', '2019-01-22 19:27:07', NULL, 'GBP', NULL, NULL, NULL, '[\"1\"]', 0);
 INSERT INTO `users` VALUES (2, '856a81bf-ab1b-4289-9d65-9751009d00ad', NULL, NULL, 'API', 'api@mainframe', '$2y$10$t5wa5wPH8XAgoRYyptOJ0uSf/klm0S/71XUdK3Gz.2llsQHh1nXAm', '7HL9zfX8YzCLTo8uHS4qsYo50twq2nwQLT9R8Evgu5QxhnuQ3Azw0SkVEE0q', '7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0', NULL, 0, NULL, 1, 1, 1, '2018-12-24 05:48:25', '2020-01-05 06:24:49', NULL, NULL, NULL, 'LB', 'API', 'LB API', NULL, 'eFGlVn8yFn8:APA91bHgq2zk-9JrBNNtVMn4iFMB6eicQOUVyFZGRft8jv-GwGJej9sFppTG5w9E_3IeOyR_3NN1i3cWFHaiVl_k1Zlt2jDMVoh7D90CsJG1qxVnuruH-Eidi1CgO9QVlpmFByK2azr3', NULL, NULL, NULL, NULL, 187, 'UK (United Kingdom)', NULL, NULL, NULL, '2019-01-31 08:31:54', '2019-04-09 15:17:25', 'Q29anuSIvoR9N8OmB2ueGGRI8tlHPZau', '2019-01-01 12:00:00', NULL, 'GBP', NULL, NULL, NULL, '[\"2\"]', 0);
 INSERT INTO `users` VALUES (999, '0b11bb84-a6f9-4612-b823-6eb0feda3342', NULL, NULL, ' ', 'dote@mailinator.net', '$2y$10$zZmnBn0xe0wXNCmKpWFnV.dQq/yJasjT4Bk1gZ9yQdWrp/e.2GgFK', NULL, NULL, NULL, 1, NULL, 1, 1, 1, '2020-01-06 16:55:14', '2020-01-08 13:11:18', NULL, NULL, NULL, 'Dote', 'Test', 'Dote Test', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '[\"25\"]', 0);
 

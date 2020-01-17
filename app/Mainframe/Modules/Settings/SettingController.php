@@ -34,7 +34,7 @@ class SettingController extends ModularController
 
         $setting = Setting::where('name', $name)->remember(timer('short'))->first();
         if ($setting) {
-            return $this->response()->success()->load($setting->settingValue())->json();
+            return $this->response()->success()->load($setting->value())->json();
         }
 
         return $this->response()->fail()->json();

@@ -16,7 +16,7 @@ trait SettingHelper
         /** @var \App\Mainframe\Modules\Settings\Setting $setting */
         /** @noinspection PhpUndefinedMethodInspection */
         if ($setting = Setting::where('name', $name)->remember(timer('short'))->first()) {
-            return $setting->settingValue();
+            return $setting->value();
         }
 
         return null;
@@ -25,7 +25,7 @@ trait SettingHelper
     /**
      * Function to get the setting value. The value can be boolean, string, array(json) or files
      */
-    public function settingValue()
+    public function value()
     {
         $val = $this->value;
         switch ($this->type) {

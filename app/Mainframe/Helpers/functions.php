@@ -41,6 +41,17 @@ function uuid()
 }
 
 /**
+ * Get setting
+ *
+ * @param $name
+ * @return null|array|bool|mixed|string
+ */
+function setting($name)
+{
+    return \App\Mainframe\Modules\Settings\Setting::read($name);
+}
+
+/**
  * Get time in seconds
  *
  * @param  null  $key
