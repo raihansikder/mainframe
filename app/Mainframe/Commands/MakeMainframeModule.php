@@ -92,11 +92,11 @@ class MakeMainframeModule extends Command
         // $this->module = new Module(['name' => $this->moduleName]);
         // $this->templateModule = new Module(['name' => $this->templateModuleName]);
 
-        $this->info($this->module->collectionName().'Creating ..');
-        $this->createMigration();
+        $this->info($this->model.'Creating ..');
+        // $this->createMigration();
         $this->createClasses();
         $this->createViewFiles();
-        $this->info($this->module->collectionName().'... Done');
+        $this->info($this->model.'... Done');
 
         return;
     }
@@ -135,7 +135,7 @@ class MakeMainframeModule extends Command
             $sourceRoot.'SuperHeroProcessor.php' => $this->classDirectory().'/'.$this->modelClassName().'Processor.php',
         ];
 
-        File::makeDirectory($this->module->moduleClassDir());
+        File::makeDirectory($this->classDirectory(), 755, true);
 
         foreach ($maps as $from => $to) {
             $code = $this->replace(File::get($from));
