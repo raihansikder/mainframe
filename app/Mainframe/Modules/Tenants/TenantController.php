@@ -7,13 +7,13 @@ use App\Mainframe\Features\Modular\ModularController\ModularController;
 class TenantController extends ModularController
 {
 
-    /**
-     * Init with module name
+    /*
+     |--------------------------------------------------------------------------
+     | Module definitions
+     |--------------------------------------------------------------------------
+     |
      */
-    public function __construct()
-    {
-        parent::__construct('tenants');
-    }
+    protected $moduleName = 'tenants';
 
     /**
      * @return TenantDatatable

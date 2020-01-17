@@ -43,9 +43,9 @@ class AuthServiceProvider extends ServiceProvider
 
         $this->registerCustomPermissions(); // from config mainframe.permissions.custom
 
-        Gate::define('permission-key', function (User $user) {
-            return $user->hasPermission('permissoon-key');
-        });
+        // Gate::define('permission-key', function (User $user) {
+        //     return $user->hasPermission('permission-key');
+        // });
 
     }
 

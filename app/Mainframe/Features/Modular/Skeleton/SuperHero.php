@@ -7,6 +7,16 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule;
 class SuperHero extends BaseModule
 {
     use SuperHeroHelper;
+
+    /*
+    |--------------------------------------------------------------------------
+    | Module definitions
+    |--------------------------------------------------------------------------
+    |
+    */
+    protected $moduleName = 'super-heroes';
+    protected $table      = 'super_heroes';
+
     /*
     |--------------------------------------------------------------------------
     | Fillable attributes
@@ -93,7 +103,7 @@ class SuperHero extends BaseModule
     {
         parent::boot();
         self::observe(SuperHeroObserver::class);
-        static::saving(function (SuperHero $element) { });
+        // static::saved(function (SuperHero $element) { });
     }
 
     /*

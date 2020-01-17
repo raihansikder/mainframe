@@ -12,13 +12,13 @@ use App\Mainframe\Features\Modular\ModularController\ModularController;
 class UploadController extends ModularController
 {
 
-    /**
-     * Init with module name
-     */
-    public function __construct()
-    {
-        parent::__construct('uploads');
-    }
+    /*
+    |--------------------------------------------------------------------------
+    | Module definitions
+    |--------------------------------------------------------------------------
+    |
+    */
+    protected $moduleName = 'uploads';
 
     /**
      * @return UploadDatatable
@@ -41,7 +41,7 @@ class UploadController extends ModularController
         $this->element = $this->model; // Create an empty model to be stored.
 
         if (! $file = $this->getFile()) {
-            return $this->response()->invalid('No file in http request');
+            return $this->response()->fail('No file in http request');
         }
 
         // if($dimensions = $this->getImageDimension($file)){
@@ -50,7 +50,7 @@ class UploadController extends ModularController
         // }
 
         if (! $uploadPath = $this->handleUpload($file)) {
-            return $this->response()->invalid('Can not move file to destination from tmp');
+            return $this->response()->fail('Can not move file to destination from tmp');
         }
 
         $this->element->name = $file->getClientOriginalName();

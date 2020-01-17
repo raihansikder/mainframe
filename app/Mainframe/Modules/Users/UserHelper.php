@@ -77,17 +77,7 @@ trait UserHelper
         return substr(bcrypt($this->email.'|'.$this->password.'|'.date("Y-m-d H:i:s")), 10, 32);
     }
 
-    /**
-     * Checks if user belongs to super admin group.
-     * This function is created with an idea so that some more admin groups i.e. LB-admin, LB-accounts
-     * etc can be covered/included in this same group.
-     *
-     * @return bool
-     */
-    public function ofSuperadminGroup()
-    {
-        return $this->inGroupIds(Group::superadminGroupIds());
-    }
+
 
     public function ofTenant()
     {

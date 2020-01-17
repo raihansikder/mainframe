@@ -1,0 +1,60 @@
+<?php
+/** @noinspection UnknownInspectionInspection */
+/** @noinspection DuplicatedCode */
+/** @noinspection SenselessMethodDuplicationInspection */
+
+namespace App\Mainframe\Modules\Samples\LoremIpsums;
+
+use DB;
+use App\Mainframe\Features\Datatable\ModuleDatatable;
+
+class LoremIpsumDatatable extends ModuleDatatable
+{
+    /**
+     * Define Query for generating results for grid
+     *
+     * @return \Illuminate\Database\Query\Builder|static
+     */
+    public function source()
+    {
+        return DB::table($this->table)
+            ->leftJoin('users as updater', $this->table.'.updated_by', 'updater.id');
+    }
+
+    /**
+     * Define grid SELECT statement and HTML column name.
+     *
+     * @return array
+     */
+    public function columns()
+    {
+        return [
+            [$this->table.".id", 'id', 'Id'],
+            [$this->table.".name", 'name', 'Name'],
+            ['updater.name', 'user_name', 'Updater'],
+            [$this->table.".updated_at", 'updated_at', 'Updated at'],
+            [$this->table.".is_active", 'is_active', 'Active']
+        ];
+    }
+
+    /**
+     * Modify datatable values
+     *
+     * @return mixed
+     * @var $dt \Yajra\DataTables\DataTableAbstract
+     */
+    public function modify($dt)
+    {
+        // Set columns for HTML output.
+        $dt = $dt->rawColumns(['id', 'name', 'is_active']);
+
+        // Next modify each column content
+        /*  @var $dt \Yajra\DataTables\DataTableAbstract */
+        $dt = $dt->editColumn('name', '<a href="{{ route(\''.$this->module->name.'.edit\', $id) }}">{{$name}}</a>');
+        $dt = $dt->editColumn('id', '<a href="{{ route(\''.$this->module->name.'.edit\', $id) }}">{{$id}}</a>');
+        $dt = $dt->editColumn('is_active', '@if($is_active)  Yes @else <span class="text-red">No</span> @endif');
+
+        return $dt;
+    }
+
+}

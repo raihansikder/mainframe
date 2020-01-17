@@ -3,4 +3,9 @@
   <component name="JavaScriptSettings">
     <option name="languageLevel" value="ES6" />
   </component>
+  <component name="TaskProjectConfiguration">
+    <server type="JIRA" url="https://activationltd.atlassian.net" />
+    <server type="Trello" url="https://api.trello.com" />
+    <server type="GitHub" url="https://github.com" />
+  </component>
 </project>

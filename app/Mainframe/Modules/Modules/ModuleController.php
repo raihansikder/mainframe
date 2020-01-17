@@ -6,10 +6,13 @@ use App\Mainframe\Features\Modular\ModularController\ModularController;
 
 class ModuleController extends ModularController
 {
-    public function __construct()
-    {
-        parent::__construct('modules');
-    }
+    /*
+    |--------------------------------------------------------------------------
+    | Module definitions
+    |--------------------------------------------------------------------------
+    |
+    */
+    protected $moduleName = 'modules';
 
     public function datatable()
     {

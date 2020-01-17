@@ -47,7 +47,6 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule;
  * @method static Builder|Group whereUpdatedAt($value)
  * @method static Builder|Group whereUpdatedBy($value)
  * @method static Builder|Group whereUuid($value)
-
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Uploads\Upload[] $uploads
  * @property-read \App\Mainframe\Modules\Uploads\Upload $latestUpload
  * @property-read int|null $changes_count
@@ -59,6 +58,8 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule;
  * @property-read \App\Mainframe\Modules\Projects\Project $project
  * @property-read \App\Mainframe\Modules\Tenants\Tenant|null $tenant
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Group whereProjectId($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\OwenIt\Auditing\Models\Audit[] $audits
+ * @property-read int|null $audits_count
  */
 class Group extends GroupModel
 {

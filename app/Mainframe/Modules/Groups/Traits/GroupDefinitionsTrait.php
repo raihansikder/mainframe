@@ -1,17 +1,57 @@
-<?php
+<?php /** @noinspection PhpUndefinedMethodInspection */
 
 namespace App\Mainframe\Modules\Groups\Traits;
+
+use App\Mainframe\Modules\Groups\Group;
 
 trait GroupDefinitionsTrait
 {
     /**
-     * Get group ids of super user/admin user
+     * Get superadmin group
      *
-     * @return array
+     * @return mixed|Group
      */
-    public static function superadminGroupIds()
+    public static function superadmin()
     {
-        return [1];
+        return Group::where('name', 'superuser')
+            ->remember(timer('very-long'))
+            ->first();
+    }
+
+    /**
+     * Get superadmin group
+     *
+     * @return mixed|Group
+     */
+    public static function api()
+    {
+        return Group::where('name', 'api')
+            ->remember(timer('very-long'))
+            ->first();
+    }
+
+    /**
+     * Get superadmin group
+     *
+     * @return mixed|Group
+     */
+    public static function projectAdmin()
+    {
+        return Group::where('name', 'project-admin')
+            ->remember(timer('very-long'))
+            ->first();
+    }
+
+    /**
+     * Get superadmin group
+     *
+     * @return mixed|Group
+     */
+    public static function tenantAdmin()
+    {
+        return Group::where('name', 'tenant-admin')
+            ->remember(timer('very-long'))
+            ->first();
     }
 
 }

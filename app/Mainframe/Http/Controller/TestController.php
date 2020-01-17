@@ -2,6 +2,9 @@
 
 namespace App\Mainframe\Http\Controller;
 
+use Illuminate\Support\Str;
+use App\Mainframe\Modules\Modules\Module;
+
 class TestController extends BaseController
 {
     /**
@@ -23,9 +26,11 @@ class TestController extends BaseController
     public function test()
     {
 
-        $testUser = \App\Mainframe\Modules\Users\User::find(999);
-
-        dd($testUser->can('view-any', Setting::class));
+        $modules = Module::all();
+        foreach ($modules as $module) {
+            $module->namespace = '\App\Mainframe\Modules\\'.Str::plural($module->modelClassName());
+            $module->save();
+        }
 
     }
 

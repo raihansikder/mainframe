@@ -28,13 +28,13 @@ trait ModuleHelper
             ->first();
     }
 
-    public static function fromController($classPath)
+    public static function fromController($classPath) // Todo: where is this used?
     {
         return lcfirst(str_replace('Controller', '', class_basename($classPath)));
     }
 
     /**
-     * Get module names as one-dimentional array, by default get only the active ones
+     * Get module names as one-dimensional array, by default get only the active ones
      *
      * @param  bool|true  $only_active
      * @return array
@@ -78,7 +78,7 @@ trait ModuleHelper
     }
 
     /**
-     * Returns a multi dimentional array with hiararchically stored module_groups and modules.
+     * Returns a multi dimensional array with hierarchically stored module_groups and modules.
      * Unlike previous moduleTree() function, this one check the parent relationship with
      * module_group instead of module.
      *
@@ -110,57 +110,43 @@ trait ModuleHelper
     }
 
     /**
-     * returns super-heroes -> superHero
-     *
-     * @return string
-     */
-    public function elementName()
-    {
-        /** @var \App\Mainframe\Modules\Modules\Module|self $this */
-        return Str::singular(Str::camel($this->name));
-    }
-
-    /**
-     * returns super-heroes -> superHero
-     *
-     * @return string
-     */
-    public function elementNamePlural()
-    {
-        /** @var \App\Mainframe\Modules\Modules\Module|self $this */
-        return Str::plural($this->elementName());
-    }
-
-    /**
      * super-heroes -> super_heroes
      *
      * @return string
      */
     public function tableName()
     {
-        /** @var \App\Mainframe\Modules\Modules\Module $this */
-        return Str::snake(Str::camel($this->name));
+        if ($this->module_table) {
+            return $this->module_table;
+        }
+
+        return Str::snake(Str::camel($this->name));  // lorem-ipsums > loremIpsums > lorem_ipsums
     }
 
-    public static function nameFromTable($table)
+    public static function nameFromTable($table) // Todo: Need to check
     {
+
         return str_replace('_', '-', $table);
     }
 
     public static function fromTable($table)
     {
-        return Module::where('name', Module::nameFromTable($table))
+        return Module::where('module_table', $table)
             ->remember(timer('long'))
             ->first();
     }
 
     /**
-     * Mainframe Module Namespace
+     * Mainframe Module directory
      *
      * @return string
      */
     public function moduleClassDir()
     {
+        if ($this->class_directory) {
+            return $this->class_directory;
+        }
+
         return 'app/Mainframe/Modules/'.$this->modelClassNamePlural();
     }
 
@@ -171,7 +157,32 @@ trait ModuleHelper
      */
     public function moduleNameSpace()
     {
+        if ($this->namespace) {
+            return $this->namespace;
+        }
+
+        // Todo : Derive from moduleClassDir
         return '\App\Mainframe\Modules\\'.$this->modelClassNamePlural();
+    }
+
+    /**
+     * returns super-heroes -> superHero
+     *
+     * @return string
+     */
+    public function elementName()
+    {
+        return Str::singular(Str::camel($this->name)); // lorem-ipsums > LoremIpsum
+    }
+
+    /**
+     * returns super-heroes -> superHero
+     *
+     * @return string
+     */
+    public function collectionName()
+    {
+        return Str::plural($this->elementName());
     }
 
     /**
@@ -203,8 +214,8 @@ trait ModuleHelper
     {
         $paths = [
             $this->model,                       // 1. Check for DB value
-            '\App\\'.$this->modelClassName(),    // 2. Check in Laravel App\
-            $this->moduleNameSpace().'\\'.$this->modelClassName(), // Check in App\Mainframe\Modules
+            //'\App\\'.$this->modelClassName(),    // 2. Check in Laravel App\ // Risky
+            // $this->moduleNameSpace().'\\'.$this->modelClassName(), // Check in App\Mainframe\Modules
         ];
 
         foreach ($paths as $path) {
@@ -225,11 +236,15 @@ trait ModuleHelper
     {
         $classPath = $this->modelClassPath();
 
-        return new $classPath;
+        return (new $classPath);
     }
 
     public function processorClassPath()
     {
+        if ($this->processor) {
+            return $this->processor;
+        }
+
         return $this->moduleNameSpace().'\\'.$this->modelClassName().'Processor';
     }
 
@@ -243,7 +258,7 @@ trait ModuleHelper
     {
         $classPath = $this->processorClassPath();
 
-        return new $classPath($element);
+        return (new $classPath($element));
     }
 
     /**

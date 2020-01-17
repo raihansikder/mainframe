@@ -14,7 +14,7 @@ class ModuleReportBuilder extends ReportBuilder
 
         $this->module = $module;
         $this->model = $this->module->modelInstance();
-        $this->dataSource = $dataSource ?: $this->module->tableName();
+        $this->dataSource = $dataSource ?: $this->module->module_table;
 
         parent::__construct($this->dataSource, $path, $cache);
     }

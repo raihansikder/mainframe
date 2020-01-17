@@ -14,7 +14,7 @@ class ModuleDatatable extends Datatable
     public function __construct($module)
     {
         $this->module = $module;
-        parent::__construct($this->module->tableName());
+        parent::__construct($this->module->module_table);
     }
 
     /**

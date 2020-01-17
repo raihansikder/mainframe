@@ -4,19 +4,18 @@ namespace App\Mainframe\Modules\Users;
 
 use Hash;
 use Validator;
-use App\Mainframe\Helpers\Mf;
 use App\Mainframe\Features\Modular\ModularController\ModularController;
 
 class UserController extends ModularController
 {
 
-    /**
-     * Init with module name
-     */
-    public function __construct()
-    {
-        parent::__construct('users');
-    }
+    /*
+    |--------------------------------------------------------------------------
+    | Module definitions
+    |--------------------------------------------------------------------------
+    |
+    */
+    protected $moduleName = 'users';
 
     /**
      * @return UserDatatable
@@ -48,7 +47,7 @@ class UserController extends ModularController
     public function storeRequestValidator()
     {
         $rules = [
-            'password' => Mf::PASSWORD_VALIDATION_RULE,
+            'password' => User::PASSWORD_VALIDATION_RULE,
         ];
 
         $message = [
@@ -56,8 +55,6 @@ class UserController extends ModularController
         ];
 
         $this->validator = Validator::make(request()->all(), $rules, $message);
-
-        //$this->addFieldError('name','Error Lorem Ipsum');
 
         return $this->validator;
     }

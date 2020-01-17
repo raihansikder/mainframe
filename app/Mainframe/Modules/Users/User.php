@@ -136,6 +136,8 @@ use App\Mainframe\Features\Modular\BaseModule\Traits\TenantContextTrait;
  * @property-read \App\Mainframe\Modules\Projects\Project $project
  * @property-read \App\Mainframe\Modules\Tenants\Tenant|null $tenant
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereProjectId($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\OwenIt\Auditing\Models\Audit[] $audits
+ * @property-read int|null $audits_count
  */
 class User extends Authenticatable implements MustVerifyEmail, Auditable
 {
@@ -146,6 +148,15 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
     use  Processable, EventIdentifiable,
         RelatedUsersTrait, TenantContextTrait, UpdaterTrait,
         Uploadable, ModularTrait, ModelAutoFill;
+
+    /*
+    |--------------------------------------------------------------------------
+    | Module definitions
+    |--------------------------------------------------------------------------
+    |
+    */
+    protected $moduleName = 'users';
+    protected $table      = 'users';
     /*
     |--------------------------------------------------------------------------
     | Fillable attributes
@@ -153,6 +164,19 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
     |
     | These attributes can be mass assigned
     */
+    /**
+     * Constants
+     */
+    public const PASSWORD_VALIDATION_RULE = 'required|confirmed|min:6|regex:/[a-zA-Z]/|regex:/[0-9]/';
+
+    /*
+    |--------------------------------------------------------------------------
+    | Guarded attributes
+    |--------------------------------------------------------------------------
+    |
+    | The attributes can not be mass assigned.
+    */
+    // protected $guarded = [];
     protected $fillable = [
         'uuid',
         'name',
@@ -195,23 +219,13 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
 
     /*
     |--------------------------------------------------------------------------
-    | Guarded attributes
-    |--------------------------------------------------------------------------
-    |
-    | The attributes can not be mass assigned.
-    */
-    // protected $guarded = [];
-    protected $hidden = ['password', 'remember_token',];
-
-    /*
-    |--------------------------------------------------------------------------
     | Type cast dates
     |--------------------------------------------------------------------------
     |
     | Type cast attributes as date. This allows to create a Carbon object.
     | Of the dates
    */
-    protected $dates = ['created_at', 'updated_at', 'deleted_at', 'first_login_at', 'last_login_at',];
+    protected $hidden = ['password', 'remember_token',];
 
     /*
     |--------------------------------------------------------------------------
@@ -220,9 +234,7 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
     |
     | Type cast attributes (helpful for JSON)
     */
-    protected $casts = [
-        'group_ids' => 'array',
-    ];
+    protected $dates = ['created_at', 'updated_at', 'deleted_at', 'first_login_at', 'last_login_at',];
 
     /*
     |--------------------------------------------------------------------------
@@ -231,7 +243,9 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
     |
     | Auto load these relations whenever the model is retrieved.
     */
-    protected $with = ['groups'];
+    protected $casts = [
+        'group_ids' => 'array',
+    ];
 
     /*
     |--------------------------------------------------------------------------
@@ -253,6 +267,7 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
     | The possible options for some field. Variable name should be
     |
     */
+    protected $with = ['groups'];
     /**
      * Allowed permissions values.
      * Possible options:
@@ -273,6 +288,7 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
     | model events like saving, creating, updating etc to further
     | manipulate the model
     */
+
     public static function boot()
     {
         parent::boot();
@@ -335,11 +351,11 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
     public function groups() { return $this->belongsToMany(Group::class, 'user_group'); }
 
     /*
-   |--------------------------------------------------------------------------
-   | Todo: Helper functions
-   |--------------------------------------------------------------------------
-   | Todo: Write Helper functions in the UserHelper trait.
-   */
+    |--------------------------------------------------------------------------
+    | Todo: Helper functions
+    |--------------------------------------------------------------------------
+    | Todo: Write Helper functions in the UserHelper trait.
+    */
 
     /**
      * Mutator for taking permissions.
@@ -350,7 +366,6 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
     public function setPermissionsAttribute(array $permissions)
     {
         // Merge permissions
-        /** @noinspection PhpParamsInspection */
         $permissions = array_merge($this->permissions, $permissions);
 
         // Loop through and adjust permissions as needed

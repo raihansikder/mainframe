@@ -8,6 +8,7 @@ use App\Mainframe\Helpers\Mf;
 use Illuminate\Support\Facades\Hash;
 use App\Mainframe\Modules\Users\User;
 use Illuminate\Auth\Events\Registered;
+use App\Mainframe\Modules\Groups\Group;
 use App\Mainframe\Modules\Tenants\Tenant;
 use App\Mainframe\Notifications\Auth\VerifyEmail;
 
@@ -59,7 +60,7 @@ class RegisterTenantController extends RegisterController
             'user_first_name' => 'required',
             'user_last_name' => 'required',
             'user_email' => 'required|email|unique:users,email',
-            'password' => Mf::PASSWORD_VALIDATION_RULE,
+            'password' => User::PASSWORD_VALIDATION_RULE,
         ]);
 
         if ($validator->fails()) {
@@ -119,7 +120,7 @@ class RegisterTenantController extends RegisterController
             'name' => request('first_name').' '.request('last_name'),
             'email' => request('user_email'),
             'password' => Hash::make(request('password')),
-            'group_ids' => [Mf::TENANT_ADMIN_GROUP_ID],
+            'group_ids' => [(string) Group::tenantAdmin()->id],
         ]);
     }
 

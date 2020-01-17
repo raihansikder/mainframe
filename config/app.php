@@ -181,11 +181,6 @@ return [
          * Mainframe Service Providers...
          *************************************************/
         App\Mainframe\Providers\AppServiceProvider::class,
-        App\Mainframe\Providers\AuthServiceProvider::class,
-        App\Mainframe\Providers\EventServiceProvider::class,
-        App\Mainframe\Providers\RouteServiceProvider::class,
-        // Additional suuporting services
-        OwenIt\Auditing\AuditingServiceProvider::class,
         /*************************************************/
 
     ],

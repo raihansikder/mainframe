@@ -5,7 +5,7 @@ namespace Tests\Feature\Mainframe\Superadmin;
 use DB;
 use Illuminate\Support\Str;
 use App\Mainframe\Modules\Modules\Module;
-use App\Mainframe\Modules\LoremIpsums\LoremIpsum;
+use App\Mainframe\Modules\Samples\LoremIpsums\LoremIpsum;
 
 class ModuleRestFeatureTest extends SuperadminTestCase
 {
@@ -21,7 +21,7 @@ class ModuleRestFeatureTest extends SuperadminTestCase
 
     /** * @var \App\Mainframe\Modules\Modules\Module */
     public $module;
-    /** * @var \App\Mainframe\Modules\LoremIpsums\LoremIpsum */
+    /** * @var \App\Mainframe\Modules\Samples\LoremIpsums\LoremIpsum */
     public $element;
     /** @var string */
     public $newElementName;
@@ -54,7 +54,7 @@ class ModuleRestFeatureTest extends SuperadminTestCase
      */
     public function testSuperAdminCanSeeCreateForm()
     {
-        $this->get('/'.$this->module->name.'/create')
+        $this->get('/'.$this->module->route_path.'/create')
             ->assertStatus(200)
             ->assertSee('Lorem ipsum'); // A test name
     }
@@ -164,10 +164,10 @@ class ModuleRestFeatureTest extends SuperadminTestCase
             ->assertSee('Lorem ipsum');
 
         // Check if it has been soft deleted.
-        $this->assertDatabaseMissing($this->module->tableName(), ['name' => $this->newElementName, 'deleted_at' => null]);
+        $this->assertDatabaseMissing($this->module->module_table, ['name' => $this->newElementName, 'deleted_at' => null]);
 
         // Clean up test entries. This is messy way. But works for now.
-                DB::table('lorem_ipsums')->where('name', 'LIKE', 'phpunit%')->delete();
-        $this->assertDatabaseMissing($this->module->tableName(), ['name' => $this->newElementName]);
+        DB::table('lorem_ipsums')->where('name', 'LIKE', 'phpunit%')->delete();
+        $this->assertDatabaseMissing($this->module->module_table, ['name' => $this->newElementName]);
     }
 }

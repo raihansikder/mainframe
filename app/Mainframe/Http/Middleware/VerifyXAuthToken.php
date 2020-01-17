@@ -20,21 +20,21 @@ class VerifyXAuthToken
     public function handle($request, Closure $next)
     {
 
-        $apiToken = $request->header('X-Auth-Token');
-        $clientId = request('client-id') ?: request()->header('client-id');
+        // $apiToken = $request->header('X-Auth-Token', null);
+        // $clientId = $request->header('client-id', null);
 
-        $user = $this->fetchUser($apiToken, $clientId);
+        $user = user();
 
         if (! $user) {
             return $this->response()
-                ->fail('Not authenticated.(X-Auth-Token not matched)', 401)
+                ->fail('Not authenticated.(Invalid X-Auth-Token)', 401)
                 ->json();
         }
 
         if ((! $user->can('make-api-call'))) {
 
             return $this->response()
-                ->fail('User/Device does not have permission to make API calls', 401)
+                ->fail('Permission denied (make-api-cal)', 401)
                 ->json();
 
         }
@@ -49,10 +49,10 @@ class VerifyXAuthToken
      * @param $clientId
      * @return mixed|User
      */
-    public function fetchUser($apiToken, $clientId)
-    {
-        return User::where('api_token', $apiToken)
-            ->where('id', $clientId)
-            ->remember(timer('short'))->first();
-    }
+    // public function fetchUser($apiToken, $clientId)
+    // {
+    //     return User::where('api_token', $apiToken)
+    //         ->where('id', $clientId)
+    //         ->remember(timer('short'))->first();
+    // }
 }

@@ -5,9 +5,7 @@ namespace App\Mainframe\Helpers;
 use Auth;
 use Cache;
 use Schema;
-use Request;
-use Session;
-use App\User;
+use App\Mainframe\Modules\Users\User;
 use App\Mainframe\Modules\Modules\Module;
 use App\Mainframe\Modules\ModuleGroups\ModuleGroup;
 
@@ -19,16 +17,12 @@ use App\Mainframe\Modules\ModuleGroups\ModuleGroup;
 class Mf
 {
 
-    public const TENANT_ADMIN_GROUP_ID    = '15';
-    public const PASSWORD_VALIDATION_RULE = 'required|confirmed|min:6|regex:/[a-zA-Z]/|regex:/[0-9]/';
-
     /*
     |--------------------------------------------------------------------------
     | System functions
     |--------------------------------------------------------------------------
     |
     | Mainframe requires a set of functions to bootstrap its features.
-    |
     |
     */
 
@@ -38,30 +32,31 @@ class Mf
      */
     public static function user($id = null)
     {
+        /*
+         * Resolve user from id.
+         */
         if ($id) {
             return User::remember(timer('short'))->find($id);
         }
-        //    // for API requests find the user based on the param/header values
-        //    if(!$user && Request::has('user_id')){ // No logged user. get from user_id in url param or request header
-        //        $user = User::find(Request::get('user_id'));
-        //    }
-        //    if(!$user && Request::has('client_id')){ // No logged user. get from user_id in url param or request header
-        //        $user = User::find(Request::get('client_id'));
-        //    }
 
         /**
-         * Resolve user from client_id passed in request header. This is required when API calls are made using
-         * X-Auth-Token and client-id.
+         * Resolve user from X-Auth-Token and client-id
          */
-        if (Request::header('client-id') && Request::header('X-Auth-Token')) { // No logged user. get from user_id in url param or request header
+
+        $apiToken = request()->header('X-Auth-Token', null);
+        $clientId = request()->header('client-id', null);
+
+        if ($apiToken && $clientId) { // No logged user. get from user_id in url param or request header
             /** @noinspection PhpUndefinedMethodInspection */
-            return User::where('id', Request::header('client-id'))
-                ->where('api_token', Request::header('X-Auth-Token'))
+            return User::where('api_token', $apiToken)
+                ->where('id', $clientId)
                 ->remember(timer('short'))
-                ->find(Request::header('client-id'));
+                ->first();
         }
 
-        // for logged in user
+        /*
+         * Resolved from logged in user.
+         */
         if (Auth::check()) {
             return Auth::user();
         }
@@ -104,7 +99,7 @@ class Mf
      * @param  String  $append  Raw Query string
      * @return string
      */
-    public static function requestSignature($append = null)
+    public static function httpRequestSignature($append = null)
     {
         $signature = \URL::full().json_encode(request()->all()).$append;
         if (user()) {
@@ -134,9 +129,9 @@ class Mf
      */
     public static function tableColumns($table, $cache = null)
     {
-        $cache = $cache ?: timer('long');
+        $cache = $cache ?: timer('very-long');
 
-        return Cache::remember('columns-of:'.$table, $cache,
+        return Cache::remember("columns-of-{$table}", $cache,
             function () use ($table) {
                 return Schema::getColumnListing($table);
             });
@@ -152,7 +147,7 @@ class Mf
      */
     public static function tableHasColumn($table, $column, $cache = null)
     {
-        $cache = $cache ?: timer('long');
+        $cache = $cache ?: timer('very-long');
 
         return in_array($column, Mf::tableColumns($table, $cache));
     }
@@ -166,60 +161,6 @@ class Mf
     public static function tableHasTenant($table)
     {
         return Mf::tableHasColumn($table, 'tenant_id');
-    }
-
-    /*
-    |--------------------------------------------------------------------------
-    | Access & permission
-    |--------------------------------------------------------------------------
-    |
-    | The functions that support main frame access management features.
-    |
-    */
-    /**
-     * This is a similar function to sentry's hasAccess. checks if current user has access to a certain permission
-     *
-     * @param           $permission
-     * @param  bool|null  $user_id
-     * @return bool
-     */
-    public static function hasAccess($permission, $user_id = null)
-    {
-        //return true;
-        $allowed = false;
-        $user = user($user_id);
-
-        if (isset($user)) {
-            if (! Session::has('permissions')) {
-                Mf::storePermissionsInSession();
-            }
-            Mf::storePermissionsInSession(); // Force store permission
-
-            $permissions = Session::get('permissions');
-            if ((isset($permissions['superuser']) && $permissions['superuser'] == 1)) { // allow for super user
-                $allowed = true;
-            } else {
-                if (isset($permissions[$permission]) && $permissions[$permission] == 1) { // allow based on specific permission
-                    $allowed = true;
-                }
-            }
-        } else {
-            Session::push('permissions', "Undefined user - '$permission'");
-        }
-
-        return $allowed;
-    }
-
-
-
-    /**
-     * Stores currently logged in users permission in session as array.
-     */
-    public static function storePermissionsInSession()
-    {
-        if (user()) {
-            Session::put('permissions', user()->getMergedPermissions());
-        }
     }
 
 }

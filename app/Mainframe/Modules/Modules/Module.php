@@ -65,10 +65,39 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule;
  * @method static Builder|BaseModule active()
  * @property-read \App\Mainframe\Modules\Projects\Project $project
  * @property-read \App\Mainframe\Modules\Tenants\Tenant $tenant
+ * @property int|null $project_id
+ * @property int|null $tenant_id
+ * @property string|null $module_table
+ * @property string|null $route_path /relative/path/to/index
+ * @property string|null $route_name some.name
+ * @property string|null $class_directory app/Mainframe/Modules/SomeModules
+ * @property string|null $namespace
+ * @property string|null $policy
+ * @property string|null $processor
+ * @property-read \Illuminate\Database\Eloquent\Collection|\OwenIt\Auditing\Models\Audit[] $audits
+ * @property-read int|null $audits_count
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Modules\Module whereClassDirectory($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Modules\Module whereModuleTable($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Modules\Module whereNamespace($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Modules\Module wherePolicy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Modules\Module whereProcessor($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Modules\Module whereProjectId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Modules\Module whereRouteName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Modules\Module whereRoutePath($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Modules\Module whereTenantId($value)
  */
 class Module extends BaseModule
 {
     use ModuleHelper;
+
+    /*
+    |--------------------------------------------------------------------------
+    | Module definitions
+    |--------------------------------------------------------------------------
+    |
+    */
+    protected $moduleName = 'modules';
+    protected $table      = 'modules';
 
     /*
     |--------------------------------------------------------------------------
@@ -78,9 +107,30 @@ class Module extends BaseModule
     | These attributes can be mass assigned
     */
     protected $fillable = [
-        'name', 'title', 'description', 'parent_id', 'module_group_id', 'level',
-        'order', 'color_css', 'icon_css', 'default_route', 'is_active', 'created_by',
-        'updated_by', 'deleted_by', 'model', 'view', 'controller'
+        'uuid',
+        'name',
+        'project_id',
+        'tenant_id',
+        'title',
+        'description',
+        'module_table',
+        'route_path',
+        'route_name',
+        'class_directory',
+        'namespace',
+        'model',
+        'policy',
+        'processor',
+        'controller',
+        'view',
+        'parent_id',
+        'module_group_id',
+        'level',
+        'order',
+        'default_route',
+        'color_css',
+        'icon_css',
+        'is_active',
     ];
 
     /*

@@ -62,7 +62,6 @@ use App\Mainframe\Modules\Users\User as MFUserModel;
  * @property string|null $dob
  * @property string|null $group_ids
  * @property int|null $is_test
-
  * @property-read int|null $changes_count
  * @property-read \App\Mainframe\Modules\Users\User|null $creator
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Group[] $groups
@@ -140,6 +139,8 @@ use App\Mainframe\Modules\Users\User as MFUserModel;
  * @property-read \App\Mainframe\Modules\Projects\Project $project
  * @property-read \App\Mainframe\Modules\Tenants\Tenant|null $tenant
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereProjectId($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\OwenIt\Auditing\Models\Audit[] $audits
+ * @property-read int|null $audits_count
  */
 class User extends MFUserModel
 {
