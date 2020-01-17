@@ -62,12 +62,12 @@ class SuperHeroProcessor extends ModelProcessor
      * @param  array  $merge
      * @return array
      */
-    public static function customErrorMessages($merge = [])
-    {
-        $messages = [];
-
-        return array_merge($messages, $merge);
-    }
+    // public static function customErrorMessages($merge = [])
+    // {
+    //     $messages = [];
+    //
+    //     return array_merge($messages, $merge);
+    // }
 
     /*
     |--------------------------------------------------------------------------
@@ -162,8 +162,8 @@ class SuperHeroProcessor extends ModelProcessor
      */
     private function nameIsNotJoker($superHero)
     {
-        if ($superHero->name === 'Joker') {
-            $this->addfieldError('name', "Name can not be Joker");
+        if ($superHero->name == 'Joker') {
+            $this->addFieldError('name', "Name can not be Joker");
         }
 
         return $this;

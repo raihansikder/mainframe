@@ -2,7 +2,7 @@
 
 namespace App\Mainframe\Modules\SuperHeroes;
 
-/** @mixin App\Mainframe\Modules\SuperHeroes\Superhero $this */
+/** @mixin \App\Mainframe\Modules\SuperHeroes\SuperHero $this */
 trait SuperHeroHelper
 {
 

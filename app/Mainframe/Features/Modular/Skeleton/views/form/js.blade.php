@@ -31,6 +31,7 @@
     | JS to run only during creation
     |--------------------------------------------------------------------------
     |
+    |
     | Some JS may only be required to be executed while creating a
     | model. Write such JS here
     */

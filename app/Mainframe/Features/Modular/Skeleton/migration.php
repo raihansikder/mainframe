@@ -1,6 +1,5 @@
 <?php
 /** @noinspection UnknownInspectionInspection */
-
 /** @noinspection DuplicatedCode */
 
 use App\Mainframe\Modules\Modules\Module;
@@ -19,7 +18,7 @@ class CreateSuperHeroesTable extends Migration
         /*
          * Create schema
          */
-        Schema::create('super_heroes', function (Blueprint $table) {
+        Schema::create('{table}', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('uuid', 64)->nullable()->default(null);
             $table->unsignedInteger('project_id')->nullable()->default(null);
@@ -42,17 +41,24 @@ class CreateSuperHeroesTable extends Migration
         /*
          * Insert into modules table
          */
-        $name = 'super-heroes';
+        $name = '{module_name}';
         if (Module::where('name', $name)->doesntExist()) {
             $module = new Module(['name' => $name]);
-
-            $classPath = '\App\Mainframe\Modules\\'.$module->modelClassNamePlural();
 
             $module->title = str_replace('-', ' ', ucfirst(Str::singular($name)));
             $module->module_group_id = 1;
             $module->description = 'Manage '.str_replace('-', ' ', Str::singular($name));
-            $module->model = $classPath.'\\'.$module->modelClassName();
-            $module->controller = $classPath.'\\'.$module->controllerClassName();
+
+            $module->module_table = '{table}';
+            $module->route_path = '{route_path}';
+            $module->route_name = '{route_name}';
+            $module->class_directory = '{class_directory}';
+            $module->namespace = '{namespace}';
+            $module->model = '{model}';
+            $module->policy = '{policy}';
+            $module->processor = '{processor}';
+            $module->controller = '{controller}';
+            $module->view_directory = '{view_directory}';
 
             $module->save();
         }
