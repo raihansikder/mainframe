@@ -32,5 +32,5 @@
 
 @section('js')
     @parent
-    @include('mainframe.modules.dolor-sits.form.js')
+    @include('mainframe.modules.samples.dolor-sits.form.js')
 @endsection

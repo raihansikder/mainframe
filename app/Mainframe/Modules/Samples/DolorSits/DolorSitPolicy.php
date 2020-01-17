@@ -4,7 +4,7 @@
 
 /** @noinspection PhpUnused */
 
-namespace App\Mainframe\Modules\DolorSits;
+namespace App\Mainframe\Modules\Samples\DolorSits;
 
 use App\Mainframe\Modules\Users\User;
 use App\Mainframe\Features\Modular\BaseModule\BaseModulePolicy;

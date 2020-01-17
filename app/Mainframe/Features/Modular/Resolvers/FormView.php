@@ -8,14 +8,14 @@ class FormView
 {
 
     /**
-     * @param $moduleName
+     * @param  \App\Mainframe\Modules\Modules\Module  $module
      * @param  string  $state
      * @param  \App\Mainframe\Modules\Users\User|null  $user
      * @return string
      */
-    public static function resolve($moduleName, $state = 'create', User $user = null)
+    public static function resolve($module, $state = 'create', User $user = null)
     {
-        $default = 'mainframe.modules.'.$moduleName.'.form.default';
+        $default = $module->view.'.form.default';
         if ($state == 'create') {
             return $default;
         }

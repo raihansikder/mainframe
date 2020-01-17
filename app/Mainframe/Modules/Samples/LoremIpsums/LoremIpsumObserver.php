@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Mainframe\Modules\LoremIpsums;
+namespace App\Mainframe\Modules\Samples\LoremIpsums;
 
 use App\Mainframe\Features\Modular\BaseModule\BaseModuleObserver;
 

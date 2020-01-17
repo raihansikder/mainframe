@@ -13,7 +13,7 @@ trait Resolvable
      */
     public function createFormView()
     {
-        return FormView::resolve($this->moduleName, 'create');
+        return FormView::resolve($this->module, 'create');
     }
 
     /**
@@ -23,7 +23,7 @@ trait Resolvable
      */
     public function editFormView()
     {
-        return FormView::resolve($this->moduleName, 'edit', user());
+        return FormView::resolve($this->module, 'edit', user());
     }
 
     /**

@@ -46,7 +46,7 @@
         $var = [
             'name' => 'dolor_sit_ids',
             'label' => 'Dolor sits (select-model-multiple)',
-            'query' => new \App\Mainframe\Modules\DolorSits\DolorSit(),
+            'query' => new \App\Mainframe\Modules\Samples\DolorSits\DolorSit(),
         ];
         ?>
         @include('mainframe.form.select.select-model-multiple', compact('var'))
@@ -77,5 +77,5 @@
 
 @section('js')
     @parent
-    @include('mainframe.modules.lorem-ipsums.form.js')
+    @include('mainframe.modules.samples.lorem-ipsums.form.js')
 @endsection

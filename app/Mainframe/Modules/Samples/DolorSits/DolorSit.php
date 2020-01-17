@@ -1,11 +1,11 @@
 <?php /** @noinspection PhpUndefinedMethodInspection */
 
-namespace App\Mainframe\Modules\DolorSits;
+namespace App\Mainframe\Modules\Samples\DolorSits;
 
 use App\Mainframe\Features\Modular\BaseModule\BaseModule;
 
 /**
- * App\Mainframe\Modules\DolorSits\DolorSit
+ * App\Mainframe\Modules\Samples\DolorSits\DolorSit
  *
  * @property int $id
  * @property string|null $uuid
@@ -25,25 +25,25 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule;
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Uploads\Upload[] $uploads
  * @property-read int|null $uploads_count
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Features\Modular\BaseModule\BaseModule active()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\DolorSits\DolorSit newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\DolorSits\DolorSit newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\DolorSits\DolorSit query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\DolorSits\DolorSit whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\DolorSits\DolorSit whereCreatedBy($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\DolorSits\DolorSit whereDeletedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\DolorSits\DolorSit whereDeletedBy($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\DolorSits\DolorSit whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\DolorSits\DolorSit whereIsActive($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\DolorSits\DolorSit whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\DolorSits\DolorSit whereTenantId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\DolorSits\DolorSit whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\DolorSits\DolorSit whereUpdatedBy($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\DolorSits\DolorSit whereUuid($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Samples\DolorSits\DolorSit newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Samples\DolorSits\DolorSit newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Samples\DolorSits\DolorSit query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Samples\DolorSits\DolorSit whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Samples\DolorSits\DolorSit whereCreatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Samples\DolorSits\DolorSit whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Samples\DolorSits\DolorSit whereDeletedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Samples\DolorSits\DolorSit whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Samples\DolorSits\DolorSit whereIsActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Samples\DolorSits\DolorSit whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Samples\DolorSits\DolorSit whereTenantId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Samples\DolorSits\DolorSit whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Samples\DolorSits\DolorSit whereUpdatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Samples\DolorSits\DolorSit whereUuid($value)
  * @mixin \Eloquent
  * @property int|null $project_id
  * @property-read \App\Mainframe\Modules\Projects\Project $project
  * @property-read \App\Mainframe\Modules\Tenants\Tenant|null $tenant
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\DolorSits\DolorSit whereProjectId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Samples\DolorSits\DolorSit whereProjectId($value)
  * @property-read \Illuminate\Database\Eloquent\Collection|\OwenIt\Auditing\Models\Audit[] $audits
  * @property-read int|null $audits_count
  */

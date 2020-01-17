@@ -7,13 +7,13 @@ use App\Mainframe\Modules\Users\User;
 class GridView
 {
     /**
-     * @param $moduleName
+     * @param  \App\Mainframe\Modules\Modules\Module  $module
      * @param  \App\Mainframe\Modules\Users\User|null  $user
      * @return string
      */
-    public static function resolve($moduleName, User $user = null)
+    public static function resolve($module, User $user = null)
     {
-        return 'mainframe.modules.'.$moduleName.'.grid.default';
+        return $module->view.'.grid.default';
     }
 
 }

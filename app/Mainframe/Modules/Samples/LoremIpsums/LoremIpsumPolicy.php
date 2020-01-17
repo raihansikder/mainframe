@@ -4,7 +4,7 @@
 
 /** @noinspection PhpUnused */
 
-namespace App\Mainframe\Modules\LoremIpsums;
+namespace App\Mainframe\Modules\Samples\LoremIpsums;
 
 use App\Mainframe\Modules\Users\User;
 use App\Mainframe\Features\Modular\BaseModule\BaseModulePolicy;

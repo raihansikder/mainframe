@@ -73,7 +73,7 @@ class ModularController extends BaseController
 
         $vars = ['columns' => $this->datatable()->columns()];
 
-        return $this->response()->view(GridView::resolve($this->moduleName))->with($vars);
+        return $this->response()->view(GridView::resolve($this->module))->with($vars);
     }
 
     /**

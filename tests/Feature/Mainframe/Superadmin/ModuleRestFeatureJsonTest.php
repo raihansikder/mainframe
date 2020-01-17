@@ -4,7 +4,7 @@ namespace Tests\Feature\Mainframe\Superadmin;
 
 use App\Mainframe\Modules\Modules\Module;
 use App\Mainframe\Features\Responder\Response;
-use App\Mainframe\Modules\LoremIpsums\LoremIpsum;
+use App\Mainframe\Modules\Samples\LoremIpsums\LoremIpsum;
 
 class ModuleRestFeatureJsonTest extends SuperadminTestCase
 {
@@ -20,7 +20,7 @@ class ModuleRestFeatureJsonTest extends SuperadminTestCase
 
     /** * @var \App\Mainframe\Modules\Modules\Module */
     public $module;
-    /** * @var \App\Mainframe\Modules\LoremIpsums\LoremIpsum */
+    /** * @var \App\Mainframe\Modules\Samples\LoremIpsums\LoremIpsum */
     public $element;
     /** @var string */
     public $newElementName;

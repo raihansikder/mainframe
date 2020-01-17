@@ -1,11 +1,11 @@
 <?php /** @noinspection PhpUndefinedMethodInspection */
 
-namespace App\Mainframe\Modules\LoremIpsums;
+namespace App\Mainframe\Modules\Samples\LoremIpsums;
 
 use App\Mainframe\Features\Modular\BaseModule\BaseModule;
 
 /**
- * App\Mainframe\Modules\LoremIpsums\LoremIpsum
+ * App\Mainframe\Modules\Samples\LoremIpsums\LoremIpsum
  *
  * @property int $id
  * @property string|null $uuid
@@ -35,36 +35,36 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule;
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Uploads\Upload[] $uploads
  * @property-read int|null $uploads_count
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Features\Modular\BaseModule\BaseModule active()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\LoremIpsums\LoremIpsum newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\LoremIpsums\LoremIpsum newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\LoremIpsums\LoremIpsum query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\LoremIpsums\LoremIpsum whereCheckbox($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\LoremIpsums\LoremIpsum whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\LoremIpsums\LoremIpsum whereCreatedBy($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\LoremIpsums\LoremIpsum whereDeletedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\LoremIpsums\LoremIpsum whereDeletedBy($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\LoremIpsums\LoremIpsum whereDolorSitId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\LoremIpsums\LoremIpsum whereDolorSitIds($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\LoremIpsums\LoremIpsum whereHidden($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\LoremIpsums\LoremIpsum whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\LoremIpsums\LoremIpsum whereIsActive($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\LoremIpsums\LoremIpsum whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\LoremIpsums\LoremIpsum whereParentId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\LoremIpsums\LoremIpsum whereSelectArray($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\LoremIpsums\LoremIpsum whereSelectArrayMultiple($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\LoremIpsums\LoremIpsum whereTags($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\LoremIpsums\LoremIpsum whereTenantId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\LoremIpsums\LoremIpsum whereText($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\LoremIpsums\LoremIpsum whereTextarea($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\LoremIpsums\LoremIpsum whereTextareaCkeditor($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\LoremIpsums\LoremIpsum whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\LoremIpsums\LoremIpsum whereUpdatedBy($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\LoremIpsums\LoremIpsum whereUuid($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Samples\LoremIpsums\LoremIpsum newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Samples\LoremIpsums\LoremIpsum newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Samples\LoremIpsums\LoremIpsum query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Samples\LoremIpsums\LoremIpsum whereCheckbox($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Samples\LoremIpsums\LoremIpsum whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Samples\LoremIpsums\LoremIpsum whereCreatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Samples\LoremIpsums\LoremIpsum whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Samples\LoremIpsums\LoremIpsum whereDeletedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Samples\LoremIpsums\LoremIpsum whereDolorSitId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Samples\LoremIpsums\LoremIpsum whereDolorSitIds($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Samples\LoremIpsums\LoremIpsum whereHidden($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Samples\LoremIpsums\LoremIpsum whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Samples\LoremIpsums\LoremIpsum whereIsActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Samples\LoremIpsums\LoremIpsum whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Samples\LoremIpsums\LoremIpsum whereParentId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Samples\LoremIpsums\LoremIpsum whereSelectArray($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Samples\LoremIpsums\LoremIpsum whereSelectArrayMultiple($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Samples\LoremIpsums\LoremIpsum whereTags($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Samples\LoremIpsums\LoremIpsum whereTenantId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Samples\LoremIpsums\LoremIpsum whereText($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Samples\LoremIpsums\LoremIpsum whereTextarea($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Samples\LoremIpsums\LoremIpsum whereTextareaCkeditor($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Samples\LoremIpsums\LoremIpsum whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Samples\LoremIpsums\LoremIpsum whereUpdatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Samples\LoremIpsums\LoremIpsum whereUuid($value)
  * @mixin \Eloquent
  * @property int|null $project_id
  * @property-read \App\Mainframe\Modules\Projects\Project $project
  * @property-read \App\Mainframe\Modules\Tenants\Tenant|null $tenant
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\LoremIpsums\LoremIpsum whereProjectId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Samples\LoremIpsums\LoremIpsum whereProjectId($value)
  * @property-read \Illuminate\Database\Eloquent\Collection|\OwenIt\Auditing\Models\Audit[] $audits
  * @property-read int|null $audits_count
  */

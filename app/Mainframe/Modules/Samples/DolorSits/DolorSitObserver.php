@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Mainframe\Modules\DolorSits;
+namespace App\Mainframe\Modules\Samples\DolorSits;
 
 use App\Mainframe\Features\Modular\BaseModule\BaseModuleObserver;
 

@@ -3,7 +3,7 @@
 /** @noinspection DuplicatedCode */
 /** @noinspection SenselessMethodDuplicationInspection */
 
-namespace App\Mainframe\Modules\LoremIpsums;
+namespace App\Mainframe\Modules\Samples\LoremIpsums;
 
 use DB;
 use App\Mainframe\Features\Datatable\ModuleDatatable;
