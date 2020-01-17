@@ -15,7 +15,7 @@ class MakeMainframeModule extends Command
      *
      * @var string
      */
-    protected $signature = 'mainframe:make-module {model}';
+    protected $signature = 'mainframe:make-module {namespace}';
 
     /**
      * The console command description.
@@ -24,9 +24,10 @@ class MakeMainframeModule extends Command
      */
     protected $description = 'Create a mainframe module';
 
-    /**
-     * @var null|array|string
-     */
+    /** @var string */
+    private $namespace;
+
+    /** * @var string */
     private $model;
 
     /**
@@ -37,11 +38,13 @@ class MakeMainframeModule extends Command
     public function handle()
     {
 
-        $this->model = $this->argument('model');
+        $this->namespace = $this->argument('namespace');
+
+        $this->model = $this->model();
 
         $this->info($this->model.'Creating ..');
-        // $this->createMigration();
-        // $this->createClasses();
+        $this->createMigration();
+        $this->createClasses();
         $this->createViewFiles();
         $this->info($this->model.'... Done');
 
@@ -154,6 +157,13 @@ class MakeMainframeModule extends Command
         }
 
         return $code;
+    }
+
+    public function model()
+    {
+        $modelClass = Str::singular(Arr::last(explode('\\', $this->namespace)));
+
+        return $this->namespace.'\\'.$modelClass;
     }
 
     private function moduleTable()
