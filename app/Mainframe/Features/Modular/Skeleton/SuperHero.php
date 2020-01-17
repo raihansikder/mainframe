@@ -103,7 +103,7 @@ class SuperHero extends BaseModule
     {
         parent::boot();
         self::observe(SuperHeroObserver::class);
-        static::saving(function (SuperHero $element) { });
+        // static::saved(function (SuperHero $element) { });
     }
 
     /*
