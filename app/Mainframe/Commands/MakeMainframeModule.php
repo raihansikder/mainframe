@@ -25,76 +25,23 @@ class MakeMainframeModule extends Command
     protected $description = 'Create a mainframe module';
 
     /**
-     * @var string template base name.
-     */
-    protected $templateModuleName = 'super-heroes';
-
-    /**
-     * @var \App\Mainframe\Modules\Modules\Module
-     */
-    protected $templateModule;
-
-    /**
-     * @var string
-     */
-    protected $moduleName;
-
-    /**
-     * @var \App\Mainframe\Modules\Modules\Module
-     */
-    protected $module;
-    /**
-     * @var null|array|string
-     */
-    protected $moduleClassPath;
-    /**
      * @var null|array|string
      */
     private $model;
-    /**
-     * @var void
-     */
-    private $moduleTable;
-    private $routePath;
-    private $routeName;
-    private $classDirectory;
-    private $namespace;
-    private $policy;
-    private $processor;
-    private $controller;
-    private $viewDirectory;
-    private $modelClassName;
 
     /**
      * Execute the console command.
      *
-     * @return mixed
+     * @return mixed|null
      */
     public function handle()
     {
 
         $this->model = $this->argument('model');
 
-        $this->modelClassName = $this->modelClassName();
-        $this->moduleTable = $this->moduleTable();
-        $this->routePath = $this->routePath();
-        $this->routeName = $this->routeName();
-        $this->classDirectory = $this->classDirectory();
-        $this->namespace = $this->namespace();
-        $this->policy = $this->policy();
-        $this->processor = $this->processor();
-        $this->controller = $this->controller();
-        $this->viewDirectory = $this->viewDirectory();
-
-        //$this->info($this->moduleTable());
-
-        // $this->moduleName = $this->argument('module');
-        // $this->module = new Module(['name' => $this->moduleName]);
-        // $this->templateModule = new Module(['name' => $this->templateModuleName]);
-
         $this->info($this->model.'Creating ..');
         // $this->createMigration();
-        $this->createClasses();
+        // $this->createClasses();
         $this->createViewFiles();
         $this->info($this->model.'... Done');
 
@@ -108,12 +55,15 @@ class MakeMainframeModule extends Command
     {
         // Get template code and replace
         $code = $this->replace(File::get("app/Mainframe/Features/Modular/Skeleton/migration.php"));
+
         // Create a new laravel migration
         $this->call('make:migration', ['name' => "create_{$this->moduleTable()}_table"]);
+
         // Find the newly created migration file and put the updated code.
         $migration = Collection::make(File::files('database/migrations'))->last();
 
         File::put($migration, $code);
+
         // Console output
         $this->info('Migration Created');
     }
@@ -124,7 +74,7 @@ class MakeMainframeModule extends Command
     public function createClasses()
     {
         $sourceRoot = 'app/Mainframe/Features/Modular/Skeleton/';
-        //$destinationRoot = 'app/Mainframe/Modules/'.$this->module->modelClassNamePlural().'/';
+
         $maps = [
             $sourceRoot.'SuperHero.php' => $this->classDirectory().'/'.$this->modelClassName().'.php',
             $sourceRoot.'SuperHeroController.php' => $this->classDirectory().'/'.$this->modelClassName().'Controller.php',
@@ -150,6 +100,7 @@ class MakeMainframeModule extends Command
     {
         $sourceRoot = 'app/Mainframe/Features/Modular/Skeleton/views';                          // Source directory
         $destinationRoot = 'resources/views/'.str_replace('.', '/', $this->viewDirectory());    // New module directory
+
         File::copyDirectory($sourceRoot, $destinationRoot);
 
         $maps = [
@@ -175,14 +126,14 @@ class MakeMainframeModule extends Command
     {
         // replace maps
         $replaces = [
-            'App\Mainframe\Modules\SuperHeroes' => trim('\\', $this->namespace()),
+            'App\Mainframe\Modules\SuperHeroes' => trim($this->namespace(), '\\'),
+            'mainframe.modules.super-heroes' => $this->viewDirectory(),
             'super_heroes' => $this->moduleTable(),
             'super-heroes' => $this->routePath(),
             'SuperHeroes' => Str::plural($this->modelClassName()),
             'SuperHero' => $this->modelClassName(),
             'superHeroes' => lcfirst(Str::plural($this->modelClassName())),
             'superHero' => lcfirst($this->modelClassName()),
-            'mainframe.modules.super-heroes' => $this->viewDirectory(),
             '{table}' => $this->moduleTable(),
             '{module_name}' => $this->moduleName(),
             '{route_path}' => $this->routePath(),
@@ -194,11 +145,6 @@ class MakeMainframeModule extends Command
             '{processor}' => $this->processor(),
             '{controller}' => $this->controller(),
             '{view_directory}' => $this->viewDirectory(),
-            // $this->templateModule->modelClassNamePlural() => $this->module->modelClassNamePlural(), //'SuperHeroes' -> 'GoodBoys'
-            // $this->templateModule->collectionName() => $this->module->collectionName(),       //'superHeroes' -> 'goodBoys'
-            // $this->templateModule->name => $this->module->name,                                     //'super-heroes' -> 'good-boys'
-            // $this->templateModule->modelClassName() => $this->module->modelClassName(),             //'SuperHero' -> 'GoodBoy'
-            // $this->templateModule->elementName() => $this->module->elementName(),                   //'superHero' -> 'goodBoy'
 
         ];
 
@@ -232,9 +178,7 @@ class MakeMainframeModule extends Command
 
     private function classDirectory()
     {
-        $str = str_replace(['\\App', '\\'], ['app', '/'], $this->namespace());
-
-        return $str;
+        return str_replace(['\\App', '\\'], ['app', '/'], $this->namespace());
     }
 
     private function namespace()
