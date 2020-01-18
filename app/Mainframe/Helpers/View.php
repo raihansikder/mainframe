@@ -32,7 +32,7 @@ class View extends \Illuminate\View\View
                     $liClass .= " active";
                 }
                 // set url of the item
-                $url = in_array($leaf['type'], ['module', 'module_group']) ? route($item->name.".index") : '#';
+                $url = in_array($leaf['type'], ['module', 'module_group']) ? route($item->route_name.".index") : '#';
 
                 // matching current breadcrumb of the application set an item as active
 

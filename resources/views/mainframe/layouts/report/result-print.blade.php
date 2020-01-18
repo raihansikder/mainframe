@@ -9,12 +9,13 @@
 @include($path.'.includes.init-functions')
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-US">
 <head>
-    <link rel="stylesheet" href="{{ asset('assets/css/printreport.css') }}" type="text/css"/>
+    <title>Report</title>
+    <link rel="stylesheet" href="{{ asset('mainframe/css/print-report.css') }}" type="text/css"/>
     <meta charset="UTF-8"/>
 </head>
 <body lang=EN-US>
 <div style="width: 150px;float: left; font-size: 14px">
-    <input id="printpagebutton" type="button" value="Print this page" onclick="printpage()"/>
+    <input id="btnPrint" type="button" value="Print this page" onclick="printpage()"/>
 </div>
 @section('content')
     @if(Request::get('submit')==='Run' && isset($result))
@@ -54,14 +55,9 @@
 {{-- JS --}}
 <script type="text/javascript">
     function printpage() {
-        //Get the print button and put it into a variable
-        var printButton = document.getElementById("printpagebutton");
-        //Set the print button visibility to 'hidden'
+        var printButton = document.getElementById("btnPrint");
         printButton.style.visibility = 'hidden';
-        //Print the page content
         window.print();
-        //Set the print button to 'visible' again
-        //[Delete this line if you want it to stay hidden after printing]
         printButton.style.visibility = 'visible';
     }
 </script>

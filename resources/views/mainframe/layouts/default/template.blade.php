@@ -90,7 +90,7 @@
     @include('mainframe.layouts.default.includes.modals.delete')
 </div>
 
-@include('mainframe.layouts.default.includes..js')
+@include('mainframe.layouts.default.includes.js')
 
 @section('js')
 @show

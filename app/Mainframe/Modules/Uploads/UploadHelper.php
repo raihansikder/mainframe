@@ -55,7 +55,7 @@ trait UploadHelper
     public function thumbSrc()
     {
         if ($this->isImage()) {
-            $src = route('get.download', $this->uuid);
+            $src = route('download', $this->uuid);
         } else {
             $src = $this->extIconPath();
         }
@@ -103,7 +103,7 @@ trait UploadHelper
     public function downloadUrl($auth = true)
     {
         if ($auth) {
-            return route('get.download', $this->uuid);
+            return route('download', $this->uuid);
         }
 
         return asset($this->path);

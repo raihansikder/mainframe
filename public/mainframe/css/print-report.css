@@ -1,0 +1,49 @@
+html, body {
+    margin: 5px;
+    padding: 0;
+}
+
+table.printreport_master {
+    font-family: verdana, arial, sans-serif;
+    font-size: 12px;
+    margin-left: 0px;
+    margin-top: 0px;
+}
+
+th,
+td {
+    padding-right: 10px;
+    text-align: left;
+}
+
+th {
+    border-bottom: 1px solid #333333;
+    font-size: 12px;
+}
+
+td {
+    border-bottom: 1px dotted #999999;
+    font-size: 12px;
+}
+
+div.signature {
+    font-size: 10px;
+    font-weight: bold;
+    margin-top: 100px;
+    margin-bottom: 20px;
+    border-top: 1px dotted #999999;
+}
+
+.check_info {
+    float: left;
+    font-size: 28px !important;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.qrcode {
+    float: left;
+    position: absolute;
+    top: 35px;
+    margin-left: -4px
+}
