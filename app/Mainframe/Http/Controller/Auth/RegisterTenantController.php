@@ -4,7 +4,6 @@ namespace App\Mainframe\Http\Controllers\Auth;
 
 use Validator;
 use Illuminate\Http\Request;
-use App\Mainframe\Helpers\Mf;
 use Illuminate\Support\Facades\Hash;
 use App\Mainframe\Modules\Users\User;
 use Illuminate\Auth\Events\Registered;
@@ -41,7 +40,7 @@ class RegisterTenantController extends RegisterController
 
         $this->attemptRegistration();
 
-        request()->merge(['redirect_success' => route('mf.login')]);
+        request()->merge(['redirect_success' => route('login')]);
         $this->response()->redirectTo = $this->redirectTo();
 
         if ($this->response()->expectsJson()) {

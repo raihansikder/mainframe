@@ -29,7 +29,7 @@ class SettingController extends ModularController
      * @param $name
      * @return \Illuminate\Http\JsonResponse
      */
-    public function getSetting($name)
+    public function get($name)
     {
 
         $setting = Setting::where('name', $name)->remember(timer('short'))->first();

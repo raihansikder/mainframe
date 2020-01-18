@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="card-body">
-        <form method="POST" action="{{ route('mf.login') }}" aria-label="{{ __('Login') }}">
+        <form method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}">
             @csrf
             <input name="loginRedirect" type="hidden" value="{{Request::get('loginRedirect')}}"/>
 
@@ -39,7 +39,7 @@
                         {{ __('Login') }}
                     </button>
                     <div class="col-md-12 text-center" style="margin: 15px 0">
-                        <a href="{{ route('mf.password.request') }}">
+                        <a href="{{ route('password.request') }}">
                             {{ __('Forgot Your Password?') }}
                         </a>
                     </div>

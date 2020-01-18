@@ -13,7 +13,7 @@
         @endif
 
 
-        <form method="POST" action="{{ route('mf.password.request') }}" aria-label="{{ __('Reset Password') }}">
+        <form method="POST" action="{{ route('password.request') }}" aria-label="{{ __('Reset Password') }}">
             @csrf
             <input type="hidden" name="token" value="{{ $token }}">
 

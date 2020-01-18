@@ -21,6 +21,15 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected $namespace = 'App\Mainframe\Http\Controllers';
 
+    protected $webRoutes = [
+        'app/Mainframe/routes/auth.php',
+        'app/Mainframe/routes/modules.php'
+    ];
+
+    protected $apiRoutes = [
+        'app/Mainframe/routes/api.php'
+    ];
+
     /**
      * Define your route model bindings, pattern filters, etc.
      *
@@ -41,7 +50,6 @@ class RouteServiceProvider extends ServiceProvider
     public function map()
     {
         $this->mapApiRoutes();
-
         $this->mapWebRoutes();
 
         //
@@ -55,23 +63,11 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapWebRoutes()
     {
-        /*****************************************
-         * Additional routes for Mainframe
-         ****************************************/
-        // Default auth routes
-        Route::middleware('web')
-            ->namespace($this->namespace)
-            ->group(base_path('app/Mainframe/routes/auth.php'));
-
-        // Mainframe auth routes
-        Route::middleware('web')
-            ->namespace($this->namespace)
-            ->group(base_path('app/Mainframe/routes/auth-mainframe.php'));
-
-        // Module
-        Route::middleware('web')
-            ->namespace('App\Mainframe\Modules')
-            ->group(base_path('app/Mainframe/routes/mainframe.php'));
+        foreach ($this->webRoutes as $route) {
+            Route::middleware('web')
+                ->namespace($this->namespace)
+                ->group(base_path($route));
+        }
     }
 
     /**
@@ -82,14 +78,11 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapApiRoutes()
     {
-
-        /*************************************
-         * Additional routes for Mainframe
-         ************************************/
-        // Default auth routes
-        Route::prefix('api')
-            ->middleware('api')
-            ->namespace($this->namespace)
-            ->group(base_path('app/Mainframe/routes/api.php'));
+        foreach ($this->apiRoutes as $route) {
+            Route::prefix('api')
+                ->middleware('api')
+                ->namespace($this->namespace)
+                ->group(base_path($route));
+        }
     }
 }

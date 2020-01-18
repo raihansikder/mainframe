@@ -17,7 +17,7 @@ $moduleGroups = Mf::moduleGroups();
 
 Route::prefix('core/1.0')->middleware(['request.json', 'verify.x-auth-token'])->group(function () use ($modules) {
 
-    // Settings api sampel
-    Route::get('setting/{name}', ['as' => 'api.get.setting', 'uses' => '\App\Mainframe\Modules\Settings\SettingController@getSetting']);
+    // Settings api sample
+    Route::get('setting/{name}', '\App\Mainframe\Modules\Settings\SettingController@get')->name('api.get-setting');
 
 });

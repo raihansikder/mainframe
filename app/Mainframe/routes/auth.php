@@ -1,7 +1,7 @@
 <?php
 /*
 |--------------------------------------------------------------------------
-| Auth routes
+| Mainframe Auth routes
 |--------------------------------------------------------------------------
 |
 | These routes are manually added instead of calling Auth::routes();
@@ -9,7 +9,7 @@
 | for the architectural implementation
 |
 */
-// Authentication Routes...
+
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
@@ -33,15 +33,16 @@ Route::get('email/verify', 'Auth\VerificationController@show')->name('verificati
 Route::get('email/verify/{id}/{hash}', 'Auth\VerificationController@verify')->name('verification.verify');
 Route::post('email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
 
-
-Route::get('logout', 'Auth\LoginController@logout')->name('get.logout');
 /*
 |--------------------------------------------------------------------------
 | Mainframe Tenant Registration routes
 |--------------------------------------------------------------------------
 |
 */
-// Tenant Registration Routes...
-// Route::get('register/tenant', 'Auth\RegisterTenantController@showRegistrationForm')->name('tenant.register');
-// Route::post('register/tenant', 'Auth\RegisterTenantController@register');
 
+// Tenant Registration Routes...
+Route::get('register/tenant', 'Auth\RegisterTenantController@showRegistrationForm')->name('tenant.register');
+Route::post('register/tenant', 'Auth\RegisterTenantController@register');
+
+// Log out
+Route::get('logout', 'Auth\LoginController@logout')->name('get.logout');
