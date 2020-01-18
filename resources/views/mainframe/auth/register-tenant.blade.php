@@ -6,7 +6,7 @@
 
     <div class="card-body">
 
-        {{ Form::open(['route' => 'mf.tenant.register','class'=>"tenant-registration-form", 'name'=>'tenant_registration_form']) }}
+        {{ Form::open(['route' => 'tenant.register','class'=>"tenant-registration-form", 'name'=>'tenant_registration_form']) }}
 
         @include('mainframe.form.input.text',['var'=>['name'=>'tenant_name','label'=>'Business Name', 'container_class'=>'col-sm-12']])
         @include('mainframe.form.input.text',['var'=>['name'=>'user_first_name','label'=>'Contact first Name', 'container_class'=>'col-sm-12']])
