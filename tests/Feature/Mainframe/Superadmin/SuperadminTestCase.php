@@ -7,10 +7,6 @@ use App\Mainframe\Modules\Users\User;
 
 class SuperadminTestCase extends TestCase
 {
-    /**
-     * @var \Tests\Feature\Mainframe\Superadmin\LoginTest
-     */
-    public $response;
     public $superadmin;
 
     protected function setUp(): void

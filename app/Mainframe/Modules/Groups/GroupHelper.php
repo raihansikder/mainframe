@@ -4,6 +4,21 @@ namespace App\Mainframe\Modules\Groups;
 
 trait GroupHelper
 {
+
+    /**
+     * Get group by name
+     * @param $name
+     * @return mixed
+     */
+    public static function byName($name)
+    {
+        return Group::where('name', $name)->remember(timer('very-long'))->first();
+    }
+
+    /**
+     * Get Permissions
+     * @return mixed
+     */
     public function getPermissions()
     {
         return $this->permissions;

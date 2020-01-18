@@ -51,14 +51,18 @@ class RegisterTenantController extends RegisterController
 
     }
 
+    /**
+     * Process input for registration.
+     * @return $this
+     */
     public function attemptRegistration()
     {
         // Validate
         $validator = Validator::make(request()->all(), [
             'tenant_name' => 'required|unique:tenants,name',
-            'user_first_name' => 'required',
-            'user_last_name' => 'required',
-            'user_email' => 'required|email|unique:users,email',
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required|email|unique:users,email',
             'password' => User::PASSWORD_VALIDATION_RULE,
         ]);
 
@@ -115,25 +119,13 @@ class RegisterTenantController extends RegisterController
             'tenant_id' => $this->tenant->id,
             'first_name' => request('first_name'),
             'last_name' => request('last_name'),
-
             'name' => request('first_name').' '.request('last_name'),
-            'email' => request('user_email'),
+            'email' => request('email'),
             'password' => Hash::make(request('password')),
             'group_ids' => [(string) Group::tenantAdmin()->id],
         ]);
     }
 
-    /**
-     * The user has been registered.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  User  $user
-     * @return mixed
-     */
-    protected function registered(Request $request, $user)
-    {
-        event(new Registered($user));
-        $user->notifyNow(new VerifyEmail());
-    }
+
 
 }

@@ -15,7 +15,7 @@ Route::post('login', 'Auth\LoginController@login');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
 // Registration Routes...
-Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+Route::get('register/{groupName?}', 'Auth\RegisterController@showRegistrationForm')->name('register');
 Route::post('register', 'Auth\RegisterController@register');
 
 // Password Reset Routes...
@@ -39,7 +39,6 @@ Route::post('email/resend', 'Auth\VerificationController@resend')->name('verific
 |--------------------------------------------------------------------------
 |
 */
-
 // Tenant Registration Routes...
 Route::get('register/tenant', 'Auth\RegisterTenantController@showRegistrationForm')->name('tenant.register');
 Route::post('register/tenant', 'Auth\RegisterTenantController@register');

@@ -2,6 +2,8 @@
 
 namespace App\Mainframe\Http\Controllers\Auth;
 
+use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 use App\Mainframe\Providers\RouteServiceProvider;
 use App\Mainframe\Http\Controller\BaseController;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -50,6 +52,52 @@ class LoginController extends BaseController
     public function showLoginForm()
     {
         return view('mainframe.auth.login');
+    }
+
+    /**
+     * Get the failed login response instance.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     *
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    protected function sendFailedLoginResponse(Request $request)
+    {
+        if($this->response()->expectsJson()){
+            return $this->response()->fail(trans('auth.failed'))->json();
+        }
+
+        throw ValidationException::withMessages([
+            $this->username() => [trans('auth.failed')],
+        ]);
+    }
+
+    /**
+     * The user has been authenticated.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  mixed  $user
+     * @return mixed
+     */
+    protected function authenticated(Request $request, $user)
+    {
+        if($this->response()->expectsJson()){
+            return $this->response()->success()->load($user)->json();
+        }
+    }
+
+    /**
+     * The user has logged out of the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return mixed
+     */
+    protected function loggedOut(Request $request)
+    {
+        if($this->response()->expectsJson()){
+            return $this->response()->success('Logged out')->json();
+        }
     }
 
 }

@@ -18,6 +18,12 @@ $moduleGroups = Mf::moduleGroups();
 Route::prefix('core/1.0')->middleware(['request.json', 'verify.x-auth-token'])->group(function () use ($modules) {
 
     // Settings api sample
-    Route::get('setting/{name}', '\App\Mainframe\Modules\Settings\SettingController@get')->name('api.get-setting');
+    Route::get('setting/{name}', '\App\Mainframe\Modules\Settings\SettingController@get');
+    /*
+     * Authentication routes.
+     */
+    Route::post('login', 'Auth\LoginController@login');
+    Route::post('logout', 'Auth\LoginController@logout');
+    Route::post('register', 'Auth\RegisterController@register');
 
 });

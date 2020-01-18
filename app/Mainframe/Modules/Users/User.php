@@ -20,6 +20,7 @@ use App\Mainframe\Features\Modular\BaseModule\Traits\ModelAutoFill;
 use App\Mainframe\Features\Modular\BaseModule\Traits\EventIdentifiable;
 use App\Mainframe\Features\Modular\BaseModule\Traits\RelatedUsersTrait;
 use App\Mainframe\Features\Modular\BaseModule\Traits\TenantContextTrait;
+use App\Mainframe\Notifications\Auth\VerifyEmail;
 
 /**
  * App\Mainframe\Modules\Users\User
@@ -155,8 +156,11 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
     |--------------------------------------------------------------------------
     |
     */
+    /**
+     * Constants
+     */
+    public const PASSWORD_VALIDATION_RULE = 'required|confirmed|min:6|regex:/[a-zA-Z]/|regex:/[0-9]/';
     protected $moduleName = 'users';
-    protected $table      = 'users';
     /*
     |--------------------------------------------------------------------------
     | Fillable attributes
@@ -164,10 +168,7 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
     |
     | These attributes can be mass assigned
     */
-    /**
-     * Constants
-     */
-    public const PASSWORD_VALIDATION_RULE = 'required|confirmed|min:6|regex:/[a-zA-Z]/|regex:/[0-9]/';
+    protected $table = 'users';
 
     /*
     |--------------------------------------------------------------------------
@@ -416,6 +417,11 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
     public function sendPasswordResetNotification($token)
     {
         $this->notifyNow(new ResetPassword($token));
+    }
+
+    public function sendEmailVerificationNotification()
+    {
+        $this->notifyNow(new VerifyEmail());
     }
 
 }

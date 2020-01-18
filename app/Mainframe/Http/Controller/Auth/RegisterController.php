@@ -6,10 +6,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Mainframe\Modules\Users\User;
 use Illuminate\Auth\Events\Registered;
-use App\Providers\RouteServiceProvider;
+use App\Mainframe\Modules\Groups\Group;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Mainframe\Providers\RouteServiceProvider;
 use App\Mainframe\Http\Controller\BaseController;
+use App\Mainframe\Notifications\Auth\VerifyEmail;
 
 class RegisterController extends BaseController
 {
@@ -25,6 +27,9 @@ class RegisterController extends BaseController
     */
 
     use RegistersUsers;
+
+    /** @var User */
+    public $user;
 
     /**
      * Where to redirect users after registration.
@@ -45,6 +50,27 @@ class RegisterController extends BaseController
     }
 
     /**
+     * Show the application registration form.
+     *
+     * @param  null  $groupName
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function showRegistrationForm()
+    {
+
+        $groupName = \Route::current()->parameter('groupName');
+
+        $group = Group::byName($groupName);
+
+        if (! $group) {
+            $group = Group::byName('user');
+        }
+
+        return view('mainframe.auth.register')
+            ->with(['group' => $group]);
+    }
+
+    /**
      * Handle a registration request for the application.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -53,68 +79,83 @@ class RegisterController extends BaseController
     public function register(Request $request)
     {
 
-        $user = new User($request->all());
-        // Custom validation error message for specific fields.
-        $customValidationMessages = [
-            'password.regex' => "The password field should be mix of letters and numbers.",
-        ];
+        $this->attemptRegistration();
 
-        $validator = Validator::make($request->all(), array_merge(User::rules($user), [
-            'password' => 'required|confirmed|min:6|regex:/[a-zA-Z]/|regex:/[0-9]/',
-            'password_confirmation' => 'required | same:password',
-            'group_id' => 'required',
-        ]), $customValidationMessages);
+        request()->merge(['redirect_success' => route('login')]);
+        $this->response()->redirectTo = $this->redirectTo();
+
+        if ($this->response()->expectsJson()) {
+            return $this->response()->load()->json();
+        }
+
+        return $this->response()->redirect();
+
+    }
+
+    /**
+     * Process input for registration.
+     *
+     * @return $this
+     */
+    public function attemptRegistration()
+    {
+        // Validate
+        $validator = Validator::make(request()->all(), [
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required|email|unique:users,email',
+            'password' => User::PASSWORD_VALIDATION_RULE,
+        ]);
 
         if ($validator->fails()) {
-            $ret = ret('fail', "Validation error(s)", ['validation_errors' => json_decode($validator->messages(), true)]);
-        } else {
+            $this->response($validator)->failValidation();
 
-            /** Fill the json */
-            $user->group_ids = json_encode([$request->get('group_id')]);
-            $user->password = Hash::make($request->get('password'));
-
-            if ($user->save()) {
-                event(new Registered($user));
-                //$user->sendRegistrationWithVerificationNotification();
-                //Mail::to($user)->send(new \App\Mail\Registered($user));
-                //$user->sendEmailVerificationNotification();
-                $ret = ret('success',
-                    "Lets make sure it's you!<br>A confirmation email has been sent to ".$user->email.". Click on the confirmation link in the email to activate your account.",
-                    ['data' => User::find($user->id)]);
-            } else {
-                $ret = ret('fail', "User could not be created");
-            }
+            return $this;
         }
 
-        /**
-         * Determine where to redirect after registration.
-         */
-        $redirect_to = route('login');
-        if ($request->has('redirect_success')) {
-            $redirect_to = $request->get('redirect_success');
-        } else {
-            if ($user->isRecommender()) {
-                $redirect_to = route('shop.login');
-            }
+        // Create user
+        $this->user = $this->createUser();
+        if (! $this->user) {
+            $this->response()->fail('User creation failed');
+
+            return $this;
         }
 
-        $request->merge(['redirect_success' => $redirect_to]);
+        $this->response()->success('Verify your email and log in.');
+        $this->registered(request(), $this->user);
 
-        return $this->jsonOrRedirect($ret, $validator, $user);
+        return $this;
+
     }
 
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
      * @return \App\Mainframe\Modules\Users\User
      */
-    protected function create(array $data)
+    protected function createUser()
     {
         return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+            'tenant_id' => request('tenant_id'),
+            'first_name' => request('first_name'),
+            'last_name' => request('last_name'),
+            'name' => request('first_name').' '.request('last_name'),
+            'email' => request('email'),
+            'password' => Hash::make(request('password')),
+            'group_ids' => request('group_ids'),
         ]);
+    }
+
+    /**
+     * The user has been registered.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  User  $user
+     * @return mixed
+     */
+    protected function registered(Request $request, $user)
+    {
+        event(new Registered($user));
+        $user->notifyNow(new VerifyEmail());
     }
 }

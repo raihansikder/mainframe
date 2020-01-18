@@ -5,10 +5,13 @@ namespace App\Mainframe\Features\Core\Traits;
 use URL;
 use App\Mainframe\Features\Responder\Response;
 
+/** @mixin  \App\Mainframe\Http\Controller\BaseController $this */
 trait SendResponse
 {
     /** * @var \App\Mainframe\Features\Responder\Response */
     public $response;
+
+    protected $redirectTo;
 
     /**
      * @param  \Illuminate\Validation\Validator|null  $validator
@@ -48,7 +51,7 @@ trait SendResponse
             return $failTo;
         }
 
-        return URL::full();
+        return $this->redirectTo ?: URL::full();
     }
 
 }
