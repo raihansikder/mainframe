@@ -2,12 +2,9 @@
 
 use App\Mainframe\Helpers\Mf;
 
-$modules = Mf::modules();
-$moduleGroups = Mf::moduleGroups();
-
 /*
 |--------------------------------------------------------------------------
-| Common routes for all modules
+| API routes
 |--------------------------------------------------------------------------
 |
 | Mainframe modules require following set of routes for common functions
@@ -15,15 +12,17 @@ $moduleGroups = Mf::moduleGroups();
 |
 */
 
+$modules = Mf::modules();
+
 Route::prefix('core/1.0')->middleware(['request.json', 'verify.x-auth-token'])->group(function () use ($modules) {
 
     // Settings api sample
     Route::get('setting/{name}', '\App\Mainframe\Modules\Settings\SettingController@get');
 
-    Route::post('register', 'Auth\RegisterController@register');
+    // Auth routes
+    Route::post('register/{groupName?}', 'Auth\RegisterController@register');
     Route::post('login', 'Auth\LoginController@login');
     Route::post('logout', 'Auth\LoginController@logout');
-
 
     Route::prefix('user')->middleware(['verify.bearer-token'])->group(function () {
 

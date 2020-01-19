@@ -30,6 +30,8 @@ class RegisterController extends BaseController
 
     /** @var User */
     public $user;
+    /** @var Group */
+    public $group;
 
     /**
      * Where to redirect users after registration.
@@ -50,6 +52,21 @@ class RegisterController extends BaseController
     {
         parent::__construct();
         $this->middleware('guest');
+
+        $this->resolveGroup();
+
+    }
+
+    public function resolveGroup()
+    {
+        // Get group from url parameter register/{groupName}
+        $groupName = \Route::current()->parameter('groupName');
+        $this->group = Group::byName($groupName);
+
+        // If not group defined in url then register in default 'user' group.
+        if (! $this->group) {
+            $this->group = Group::byName('user');
+        }
     }
 
     /**
@@ -61,16 +78,8 @@ class RegisterController extends BaseController
     public function showRegistrationForm()
     {
 
-        $groupName = \Route::current()->parameter('groupName');
-
-        $group = Group::byName($groupName);
-
-        if (! $group) {
-            $group = Group::byName('user');
-        }
-
         return view($this->form)
-            ->with(['group' => $group]);
+            ->with(['group' => $this->group]);
     }
 
     /**
@@ -145,7 +154,8 @@ class RegisterController extends BaseController
             'name' => request('first_name').' '.request('last_name'),
             'email' => request('email'),
             'password' => Hash::make(request('password')),
-            'group_ids' => request('group_ids'),
+            // 'group_ids' => request('group_ids'),
+            'group_ids' => [(string) $this->group->id],
         ]);
     }
 

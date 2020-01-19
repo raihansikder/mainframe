@@ -16,7 +16,7 @@ Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
 // Registration Routes...
 Route::get('register/{groupName?}', 'Auth\RegisterController@showRegistrationForm')->name('register');
-Route::post('register', 'Auth\RegisterController@register');
+Route::post('register/{groupName?}', 'Auth\RegisterController@register');
 
 // Password Reset Routes...
 Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
