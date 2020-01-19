@@ -410,7 +410,7 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
     }
 
     /**
-     * Send reset password notification.
+     * Send reset password link
      *
      * @param  string  $token
      */
@@ -419,6 +419,9 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
         $this->notifyNow(new ResetPassword($token));
     }
 
+    /**
+     * Send email verification link.
+     */
     public function sendEmailVerificationNotification()
     {
         $this->notifyNow(new VerifyEmail());

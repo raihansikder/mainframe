@@ -2,10 +2,7 @@
 
 namespace App\Mainframe\Notifications\Auth;
 
-use URL;
-use Config;
 use Illuminate\Bus\Queueable;
-use Illuminate\Support\Carbon;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
@@ -31,7 +28,6 @@ class ResetPassword extends \Illuminate\Auth\Notifications\ResetPassword impleme
             ]
         )->subject(__('Reset Password Notification'));
     }
-
 
     /**
      * Get the array representation of the notification.
