@@ -27,14 +27,15 @@ class UserApiController extends ApiController
         Request::merge(['user_id' => $this->user->id]);
     }
 
+
     /**
      * Test Api
      *
      * @return mixed
      */
-    public function test()
+    public function profile()
     {
-        return app(SettingController::class)->index();
+        return $this->response()->load($this->user)->json();
     }
 
 }

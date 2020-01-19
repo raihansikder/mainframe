@@ -24,11 +24,18 @@ Route::prefix('core/1.0')->middleware(['request.json', 'verify.x-auth-token'])->
     Route::post('login', 'Auth\LoginController@login');
     Route::post('logout', 'Auth\LoginController@logout');
 
+    // Module Restful API
+    Route::prefix('module')->group(function () use ($modules) {
+        foreach ($modules as $module) {
+            Route:: get($module->route_path."/list/json", $module->controller."@listJson");
+            Route:: get($module->route_path."/report", $module->controller."@report");
+            Route::resource($module->name, $module->controller);
+        }
+    });
+
+
     Route::prefix('user')->middleware(['verify.bearer-token'])->group(function () {
-
-        // Settings api sample
-        Route::get('test', 'Api\UserApiController@test');
-
+        Route::get('profile', 'Api\UserApiController@profile');
     });
 
 });
