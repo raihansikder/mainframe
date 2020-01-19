@@ -29,7 +29,7 @@ class BaseModulePolicy
      * @param $ability
      * @return bool
      */
-    public function before(User $user, $ability)
+    public function before($user, $ability)
     {
         if ($user->isSuperUser()) {
             return true;
@@ -43,7 +43,7 @@ class BaseModulePolicy
      * @param  \App\Mainframe\Modules\Users\User  $user
      * @return mixed
      */
-    public function viewAny(User $user)
+    public function viewAny($user)
     {
 
         if (! $user->hasPermission($this->moduleName.'-view-any')) {
@@ -60,7 +60,7 @@ class BaseModulePolicy
      * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule  $element
      * @return mixed
      */
-    public function view(User $user, $element)
+    public function view($user, $element)
     {
         if (! $user->hasPermission($this->moduleName.'-view')) {
             return false;
@@ -75,7 +75,7 @@ class BaseModulePolicy
      * @param  \App\Mainframe\Modules\Users\User  $user
      * @return mixed
      */
-    public function create(User $user)
+    public function create($user)
     {
         if (! $user->hasPermission($this->moduleName.'-create')) {
             return false;
@@ -91,7 +91,7 @@ class BaseModulePolicy
      * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule  $element
      * @return mixed
      */
-    public function update(User $user, $element)
+    public function update($user, $element)
     {
         if (! $user->hasPermission($this->moduleName.'-update')) {
             return false;
@@ -107,7 +107,7 @@ class BaseModulePolicy
      * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule  $element
      * @return mixed
      */
-    public function delete(User $user, $element)
+    public function delete($user, $element)
     {
         if (! $user->hasPermission($this->moduleName.'-delete')) {
             return false;
@@ -123,7 +123,7 @@ class BaseModulePolicy
      * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule  $element
      * @return mixed
      */
-    public function restore(User $user, $element)
+    public function restore($user, $element)
     {
         if (! $user->hasPermission($this->moduleName.'-restore')) {
             return false;
@@ -139,7 +139,7 @@ class BaseModulePolicy
      * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule  $element
      * @return mixed
      */
-    public function forceDelete(User $user, $element)
+    public function forcedelete($user, $element)
     {
         if (! $user->hasPermission($this->moduleName.'-force-delete')) {
             return false;
@@ -156,7 +156,7 @@ class BaseModulePolicy
      * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule  $element
      * @return bool
      */
-    public function viewChangeLog(User $user, $element)
+    public function viewChangeLog($user, $element)
     {
         if (! $user->hasPermission($this->moduleName.'-view-change-log')) {
             return false;
@@ -173,7 +173,7 @@ class BaseModulePolicy
      * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule  $element
      * @return bool
      */
-    public function viewReport(User $user, $element)
+     public function viewReport($user, $element)
     {
         if (! $user->hasPermission($this->moduleName.'-view-report')) {
             return false;

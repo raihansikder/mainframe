@@ -18,7 +18,7 @@ class ModulePolicy extends BaseModulePolicy
      * @param  \App\Mainframe\Modules\Users\User  $user
      * @return mixed
      */
-    public function viewAny(User $user)
+    public function viewAny($user)
     {
         //
     }
@@ -30,7 +30,7 @@ class ModulePolicy extends BaseModulePolicy
      * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule  $element
      * @return mixed
      */
-    // public function view(User $user, $element)
+    // public function view($user, $element)
     // {
     //     //
     // }
@@ -41,7 +41,7 @@ class ModulePolicy extends BaseModulePolicy
      * @param  \App\Mainframe\Modules\Users\User  $user
      * @return mixed
      */
-    // public function create(User $user)
+    // public function create($user)
     // {
     //     //
     // }
@@ -53,7 +53,7 @@ class ModulePolicy extends BaseModulePolicy
      * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule  $element
      * @return mixed
      */
-    // public function update(User $user, $element)
+    // public function update($user, $element)
     // {
     //     //
     // }
@@ -65,7 +65,7 @@ class ModulePolicy extends BaseModulePolicy
      * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule  $element
      * @return mixed
      */
-    // public function delete(User $user, $element)
+    // public function delete($user, $element)
     // {
     //     //
     // }
@@ -77,7 +77,7 @@ class ModulePolicy extends BaseModulePolicy
      * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule  $element
      * @return mixed
      */
-    // public function restore(User $user, $element)
+    // public function restore($user, $element)
     // {
     //     //
     // }
@@ -89,7 +89,7 @@ class ModulePolicy extends BaseModulePolicy
      * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule  $element
      * @return mixed
      */
-    // public function forceDelete(User $user, $element)
+    // public function forcedelete($user, $element)
     // {
     //     //
     // }

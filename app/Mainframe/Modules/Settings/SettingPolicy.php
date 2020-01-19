@@ -18,7 +18,7 @@ class SettingPolicy extends BaseModulePolicy
      * @param  \App\Mainframe\Modules\Users\User  $user
      * @return mixed
      */
-    // public function viewAny(User $user)
+    // public function viewAny($user)
     // {
     //     //
     // }
@@ -30,7 +30,7 @@ class SettingPolicy extends BaseModulePolicy
      * @param  Setting  $setting
      * @return mixed
      */
-    // public function view(User $user, $setting)
+    // public function view($user, $setting)
     // {
     //     //
     // }
@@ -41,7 +41,7 @@ class SettingPolicy extends BaseModulePolicy
      * @param  \App\Mainframe\Modules\Users\User  $user
      * @return mixed
      */
-    // public function create(User $user)
+    // public function create($user)
     // {
     //     die("I'm being called in SettingPolicy...");
     //     return false;
@@ -100,7 +100,7 @@ class SettingPolicy extends BaseModulePolicy
      * @param $ability
      * @return bool
      */
-    // public function before(User $user, $ability)
+    // public function before($user, $ability)
     // {
     //
     //     return true;

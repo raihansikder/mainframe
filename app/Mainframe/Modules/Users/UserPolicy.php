@@ -17,7 +17,7 @@ class UserPolicy extends BaseModulePolicy
      * @param  \App\Mainframe\Modules\Users\User  $user
      * @return mixed
      */
-    public function viewAny(User $user) { }
+    public function viewAny($user) { }
 
     /**
      * Determine whether the user can view the user.
@@ -26,7 +26,7 @@ class UserPolicy extends BaseModulePolicy
      * @param  User  $user
      * @return mixed
      */
-    // public function view(User $user, $user) { }
+    // public function view($user, $user) { }
 
     /**
      * Determine whether the user can create users.
@@ -34,7 +34,7 @@ class UserPolicy extends BaseModulePolicy
      * @param  \App\Mainframe\Modules\Users\User  $user
      * @return mixed
      */
-    // public function create(User $user) { }
+    // public function create($user) { }
 
     /**
      * Determine whether the user can update the user.

@@ -18,7 +18,7 @@ class UploadPolicy extends BaseModulePolicy
      * @param  \App\Mainframe\Modules\Users\User  $user
      * @return mixed
      */
-    public function viewAny(User $user) { }
+    public function viewAny($user) { }
 
     /**
      * Determine whether the user can view the upload.
@@ -27,7 +27,7 @@ class UploadPolicy extends BaseModulePolicy
      * @param  Upload  $upload
      * @return mixed
      */
-    // public function view(User $user, $upload) { }
+    // public function view($user, $upload) { }
 
     /**
      * Determine whether the user can create uploads.
@@ -35,7 +35,7 @@ class UploadPolicy extends BaseModulePolicy
      * @param  \App\Mainframe\Modules\Users\User  $user
      * @return mixed
      */
-    // public function create(User $user) { }
+    // public function create($user) { }
 
     /**
      * Determine whether the user can update the upload.

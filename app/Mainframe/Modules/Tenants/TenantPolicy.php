@@ -18,7 +18,7 @@ class TenantPolicy extends BaseModulePolicy
      * @param  \App\Mainframe\Modules\Users\User  $user
      * @return mixed
      */
-    public function viewAny(User $user) { }
+    public function viewAny($user) { }
 
     /**
      * Determine whether the user can view the tenant.
@@ -27,7 +27,7 @@ class TenantPolicy extends BaseModulePolicy
      * @param  Tenant  $tenant
      * @return mixed
      */
-    // public function view(User $user, $tenant) { }
+    // public function view($user, $tenant) { }
 
     /**
      * Determine whether the user can create tenants.
@@ -35,7 +35,7 @@ class TenantPolicy extends BaseModulePolicy
      * @param  \App\Mainframe\Modules\Users\User  $user
      * @return mixed
      */
-    // public function create(User $user) { }
+    // public function create($user) { }
 
     /**
      * Determine whether the user can update the tenant.

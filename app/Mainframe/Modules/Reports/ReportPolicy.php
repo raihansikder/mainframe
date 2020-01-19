@@ -18,7 +18,7 @@ class ReportPolicy extends BaseModulePolicy
      * @param  \App\Mainframe\Modules\Users\User  $user
      * @return mixed
      */
-    public function viewAny(User $user) { }
+    public function viewAny($user) { }
 
     /**
      * Determine whether the user can view the report.
@@ -27,7 +27,7 @@ class ReportPolicy extends BaseModulePolicy
      * @param  Report  $report
      * @return mixed
      */
-    // public function view(User $user, $report) { }
+    // public function view($user, $report) { }
 
     /**
      * Determine whether the user can create reports.
@@ -35,7 +35,7 @@ class ReportPolicy extends BaseModulePolicy
      * @param  \App\Mainframe\Modules\Users\User  $user
      * @return mixed
      */
-    // public function create(User $user) { }
+    // public function create($user) { }
 
     /**
      * Determine whether the user can update the report.

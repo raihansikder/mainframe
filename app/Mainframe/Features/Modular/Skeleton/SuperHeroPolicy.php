@@ -18,7 +18,7 @@ class SuperHeroPolicy extends BaseModulePolicy
      * @param  \App\Mainframe\Modules\Users\User  $user
      * @return mixed
      */
-    public function viewAny(User $user) { }
+    public function viewAny($user) { }
 
     /**
      * Determine whether the user can view the superHero.
@@ -27,7 +27,7 @@ class SuperHeroPolicy extends BaseModulePolicy
      * @param  SuperHero  $superHero
      * @return mixed
      */
-    // public function view(User $user, $superHero) { }
+    // public function view($user, $superHero) { }
 
     /**
      * Determine whether the user can create superHeroes.
@@ -35,7 +35,7 @@ class SuperHeroPolicy extends BaseModulePolicy
      * @param  \App\Mainframe\Modules\Users\User  $user
      * @return mixed
      */
-    // public function create(User $user) { }
+    // public function create($user) { }
 
     /**
      * Determine whether the user can update the superHero.

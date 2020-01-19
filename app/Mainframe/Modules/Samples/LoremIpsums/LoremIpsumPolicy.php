@@ -18,7 +18,7 @@ class LoremIpsumPolicy extends BaseModulePolicy
      * @param  \App\Mainframe\Modules\Users\User  $user
      * @return mixed
      */
-    public function viewAny(User $user) { }
+    public function viewAny($user) { }
 
     /**
      * Determine whether the user can view the loremIpsum.
@@ -27,7 +27,7 @@ class LoremIpsumPolicy extends BaseModulePolicy
      * @param  LoremIpsum  $loremIpsum
      * @return mixed
      */
-    // public function view(User $user, $loremIpsum) { }
+    // public function view($user, $loremIpsum) { }
 
     /**
      * Determine whether the user can create loremIpsums.
@@ -35,7 +35,7 @@ class LoremIpsumPolicy extends BaseModulePolicy
      * @param  \App\Mainframe\Modules\Users\User  $user
      * @return mixed
      */
-    // public function create(User $user) { }
+    // public function create($user) { }
 
     /**
      * Determine whether the user can update the loremIpsum.

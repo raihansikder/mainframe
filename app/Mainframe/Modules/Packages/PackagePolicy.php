@@ -18,7 +18,7 @@ class PackagePolicy extends BaseModulePolicy
      * @param  \App\Mainframe\Modules\Users\User  $user
      * @return mixed
      */
-    public function viewAny(User $user) { }
+    public function viewAny($user) { }
 
     /**
      * Determine whether the user can view the package.
@@ -27,7 +27,7 @@ class PackagePolicy extends BaseModulePolicy
      * @param  Package  $package
      * @return mixed
      */
-    // public function view(User $user, $package) { }
+    // public function view($user, $package) { }
 
     /**
      * Determine whether the user can create packages.
@@ -35,7 +35,7 @@ class PackagePolicy extends BaseModulePolicy
      * @param  \App\Mainframe\Modules\Users\User  $user
      * @return mixed
      */
-    // public function create(User $user) { }
+    // public function create($user) { }
 
     /**
      * Determine whether the user can update the package.

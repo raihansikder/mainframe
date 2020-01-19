@@ -18,7 +18,7 @@ class SubscriptionPolicy extends BaseModulePolicy
      * @param  \App\Mainframe\Modules\Users\User  $user
      * @return mixed
      */
-    public function viewAny(User $user) { }
+    public function viewAny($user) { }
 
     /**
      * Determine whether the user can view the subscription.
@@ -27,7 +27,7 @@ class SubscriptionPolicy extends BaseModulePolicy
      * @param  Subscription  $subscription
      * @return mixed
      */
-    // public function view(User $user, $subscription) { }
+    // public function view($user, $subscription) { }
 
     /**
      * Determine whether the user can create subscriptions.
@@ -35,7 +35,7 @@ class SubscriptionPolicy extends BaseModulePolicy
      * @param  \App\Mainframe\Modules\Users\User  $user
      * @return mixed
      */
-    // public function create(User $user) { }
+    // public function create($user) { }
 
     /**
      * Determine whether the user can update the subscription.

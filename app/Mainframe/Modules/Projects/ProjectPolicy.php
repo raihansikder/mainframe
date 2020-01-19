@@ -17,7 +17,7 @@ class ProjectPolicy extends BaseModulePolicy
      * @param  \App\Mainframe\Modules\Users\User  $user
      * @return mixed
      */
-    public function viewAny(User $user) { }
+    public function viewAny($user) { }
 
     /**
      * Determine whether the user can view the project.
@@ -26,7 +26,7 @@ class ProjectPolicy extends BaseModulePolicy
      * @param  Project  $project
      * @return mixed
      */
-    // public function view(User $user, $project) { }
+    // public function view($user, $project) { }
 
     /**
      * Determine whether the user can create projects.
@@ -34,7 +34,7 @@ class ProjectPolicy extends BaseModulePolicy
      * @param  \App\Mainframe\Modules\Users\User  $user
      * @return mixed
      */
-    // public function create(User $user) { }
+    // public function create($user) { }
 
     /**
      * Determine whether the user can update the project.
