@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Mainframe\Http\Controller;
+namespace App\Mainframe\Http\Controllers;
 
 use Illuminate\Support\Str;
 use App\Mainframe\Modules\Modules\Module;

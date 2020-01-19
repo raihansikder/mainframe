@@ -5,7 +5,7 @@ namespace App\Mainframe\Features\Core\Traits;
 use URL;
 use App\Mainframe\Features\Responder\Response;
 
-/** @mixin  \App\Mainframe\Http\Controller\BaseController $this */
+/** @mixin  \App\Mainframe\Http\Controllers\BaseController $this */
 trait SendResponse
 {
     /** * @var \App\Mainframe\Features\Responder\Response */

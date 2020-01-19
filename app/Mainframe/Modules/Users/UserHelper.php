@@ -2,8 +2,6 @@
 
 namespace App\Mainframe\Modules\Users;
 
-use App\Mainframe\Modules\Groups\Group;
-
 /** @mixin \App\Mainframe\Modules\Users\User $this */
 trait UserHelper
 {
@@ -74,10 +72,20 @@ trait UserHelper
      */
     public function generateAuthToken()
     {
-        return substr(bcrypt($this->email.'|'.$this->password.'|'.date("Y-m-d H:i:s")), 10, 32);
+        \DB::table($this->table)->where('id', $this->id)->update(['auth_token' => $this->createAuthToken()]);
+
+        return $this;
     }
 
-
+    /**
+     * Create auth_token
+     *
+     * @return false|string
+     */
+    public function createAuthToken()
+    {
+        return substr(bcrypt($this->email.'|'.$this->password.'|'.date("Y-m-d H:i:s")), 10, 32);
+    }
 
     public function ofTenant()
     {

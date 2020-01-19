@@ -15,7 +15,7 @@
 Route::get('/', 'HomeController@index')->name('home')->middleware(['verified']);
 
 // Auth::routes();
-Route::get('test', '\App\Mainframe\Http\Controller\TestController@test')->name('test')->middleware(['verified', 'password.confirm']);
+Route::get('test', '\App\Mainframe\Http\Controllers\TestController@test')->name('test')->middleware(['verified', 'password.confirm']);
 
 Route::get('mail', function () {
     $user = \App\Mainframe\Modules\Users\User::find(2625);

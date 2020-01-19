@@ -20,8 +20,7 @@ class VerifyXAuthToken
     public function handle($request, Closure $next)
     {
 
-        // $apiToken = $request->header('X-Auth-Token', null);
-        // $clientId = $request->header('client-id', null);
+        \Auth::logout(); // End user session.
 
         $user = user();
 
