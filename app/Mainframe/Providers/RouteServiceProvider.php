@@ -23,7 +23,8 @@ class RouteServiceProvider extends ServiceProvider
 
     protected $webRoutes = [
         'app/Mainframe/routes/auth.php',
-        'app/Mainframe/routes/modules.php'
+        'app/Mainframe/routes/modules.php',
+        'app/Mainframe/routes/web.php'
     ];
 
     protected $apiRoutes = [

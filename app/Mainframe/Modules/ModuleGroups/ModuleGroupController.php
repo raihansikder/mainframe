@@ -26,7 +26,7 @@ class ModuleGroupController extends ModularController
     /**
      * @return string
      */
-    public function groupIndex()
+    public function home()
     {
         return \Route::getCurrentRoute()->getName();
     }

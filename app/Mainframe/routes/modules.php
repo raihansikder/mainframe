@@ -45,7 +45,7 @@ Route::middleware(['auth', 'verified'])->group(function () use ($modules, $modul
         /*
          * Default module-group routes.
          */
-        Route::get('module-groups/index/'.$path, 'ModuleGroups\ModuleGroupController@groupIndex')->name($moduleGroup->route_name.'.index');
+        Route::get('module-groups/index/'.$path, '\App\Mainframe\Modules\ModuleGroups\ModuleGroupController@home')->name($moduleGroup->route_name.'.index');
     }
 
     /*
