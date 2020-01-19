@@ -14,20 +14,19 @@
 
 @section('content')
     <div class="col-md-12 no-padding">
-
-        @if(($formState === 'create'))
+        @if(($formState == 'create'))
             {{ Form::open($formConfig) }} <input name="uuid" type="hidden" value="{{$uuid}}"/>
-        @elseif($formState === 'edit')
+        @elseif($formState == 'edit')
             {{ Form::model($element, $formConfig)}}
         @endif
 
         {{--    Form inputs: starts    --}}
         {{--   --------------------    --}}
-        @include('mainframe.form.input.text',['var'=>['name'=>'name','label'=>'Name']])
-        @include('mainframe.form.custom.is_active')
+        @include('form.text',['var'=>['name'=>'name','label'=>'Name']])
+        @include('form.is-active')
         {{--    Form inputs: ends    --}}
 
-        @include('mainframe.layouts.module.form.includes.action-buttons')
+        @include('form.form.action-buttons')
 
         {{ Form::close() }}
     </div>

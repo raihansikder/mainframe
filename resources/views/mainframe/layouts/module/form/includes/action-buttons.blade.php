@@ -37,7 +37,7 @@
                 'redirect_success' => route($module->name.".index"),
             ];
             ?>
-            @include('mainframe.form.delete-button',['var'=>$var])
+            @include('form.delete-button',['var'=>$var])
         </div>
     @endif
 

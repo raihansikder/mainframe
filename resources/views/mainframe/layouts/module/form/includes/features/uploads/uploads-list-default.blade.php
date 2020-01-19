@@ -36,7 +36,7 @@
                                 'value' => '<i class="fa fa-trash"></i>',
                             ];
                             ?>
-                            @include('mainframe.form.delete-button',['var'=>$var])
+                            @include('form.delete-button',['var'=>$var])
                         </div>
                     </div>
                 </div>
