@@ -22,7 +22,7 @@ class View extends \Illuminate\View\View
             $item = $leaf['item'];
             $permission = $item->name.'view-any'; //lorems-view-any
 
-            if (user()->hasAccess($permission)) {
+            if ($item->is_visible && user()->hasAccess($permission)) {
 
                 // 1. checks if an item has any children
                 $hasChildren = isset($leaf['children']) && count($leaf['children']);
