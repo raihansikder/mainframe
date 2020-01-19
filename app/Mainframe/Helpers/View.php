@@ -20,9 +20,9 @@ class View extends \Illuminate\View\View
         }
         foreach ($tree as $leaf) {
             $item = $leaf['item'];
-            $permission = $item->name.'view-any'; //lorems-view-any
+            $permission = $item->name.'-view-any'; //lorems-view-any
 
-            if ($item->is_visible && user()->hasAccess($permission)) {
+            if ($item->is_visible && user()->hasAnyAccess([$item->name, $permission])) {
 
                 // 1. checks if an item has any children
                 $hasChildren = isset($leaf['children']) && count($leaf['children']);
