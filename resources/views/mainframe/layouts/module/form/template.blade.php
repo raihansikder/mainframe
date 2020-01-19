@@ -18,15 +18,15 @@
 @section('content')
     <div class="col-md-12 col-lg-10 no-padding">
 
-        @if(($formState === 'create'))
+        @if(($formState == 'create'))
             {{ Form::open($formConfig) }} <input name="uuid" type="hidden" value="{{$element->uuid}}"/>
-        @elseif($formState === 'edit')
+        @elseif($formState == 'edit')
             {{ Form::model($element, $formConfig)}}
         @endif
 
         @yield('form-fields')
 
-        @include('mainframe.form.action-buttons')
+        @include('form.action-buttons')
 
         {{ Form::close() }}
     </div>
