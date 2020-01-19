@@ -5,7 +5,7 @@
 
 @section('content')
 
-    <h4>{{ $group->title }} User Registration </h4>
+    <h4>{{ $group->title }} Registration </h4>
 
     <div class="card-body">
 

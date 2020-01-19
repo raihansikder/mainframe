@@ -6,10 +6,8 @@ use Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Mainframe\Modules\Users\User;
-use Illuminate\Auth\Events\Registered;
 use App\Mainframe\Modules\Groups\Group;
 use App\Mainframe\Modules\Tenants\Tenant;
-use App\Mainframe\Notifications\Auth\VerifyEmail;
 
 class RegisterTenantController extends RegisterController
 {
@@ -19,6 +17,9 @@ class RegisterTenantController extends RegisterController
     /** @var User */
     public $user;
 
+    /** @var string */
+    protected $form = 'mainframe.auth.register-tenant';
+
     /**
      * Show the application registration form.
      *
@@ -26,7 +27,7 @@ class RegisterTenantController extends RegisterController
      */
     public function showRegistrationForm()
     {
-        return view('mainframe.auth.register-tenant');
+        return view($this->form);
     }
 
     /**
@@ -53,6 +54,7 @@ class RegisterTenantController extends RegisterController
 
     /**
      * Process input for registration.
+     *
      * @return $this
      */
     public function attemptRegistration()
@@ -125,7 +127,5 @@ class RegisterTenantController extends RegisterController
             'group_ids' => [(string) Group::tenantAdmin()->id],
         ]);
     }
-
-
 
 }

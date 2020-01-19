@@ -20,6 +20,9 @@ class ForgotPasswordController extends BaseController
 
     use SendsPasswordResetEmails;
 
+    /** @var string */
+    protected $form = 'mainframe.auth.passwords.email';
+
     /**
      * Display the form to request a password reset link.
      *
@@ -27,6 +30,6 @@ class ForgotPasswordController extends BaseController
      */
     public function showLinkRequestForm()
     {
-        return view('mainframe.auth.passwords.email');
+        return view($this->form);
     }
 }

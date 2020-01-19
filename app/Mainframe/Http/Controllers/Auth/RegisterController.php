@@ -10,8 +10,8 @@ use App\Mainframe\Modules\Groups\Group;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Mainframe\Providers\RouteServiceProvider;
-use App\Mainframe\Http\Controllers\BaseController;
 use App\Mainframe\Notifications\Auth\VerifyEmail;
+use App\Mainframe\Http\Controllers\BaseController;
 
 class RegisterController extends BaseController
 {
@@ -37,6 +37,9 @@ class RegisterController extends BaseController
      * @var string
      */
     protected $redirectTo = RouteServiceProvider::HOME;
+
+    /** @var string */
+    protected $form = 'mainframe.auth.register';
 
     /**
      * Create a new controller instance.
@@ -66,7 +69,7 @@ class RegisterController extends BaseController
             $group = Group::byName('user');
         }
 
-        return view('mainframe.auth.register')
+        return view($this->form)
             ->with(['group' => $group]);
     }
 

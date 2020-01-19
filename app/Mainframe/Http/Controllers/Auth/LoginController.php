@@ -30,6 +30,9 @@ class LoginController extends BaseController
      */
     protected $redirectTo = RouteServiceProvider::HOME;
 
+    /** @var string */
+    protected $form = 'mainframe.auth.login';
+
     /**
      * Create a new controller instance.
      *
@@ -51,7 +54,7 @@ class LoginController extends BaseController
      */
     public function showLoginForm()
     {
-        return view('mainframe.auth.login');
+        return view($this->form);
     }
 
     /**
@@ -64,7 +67,7 @@ class LoginController extends BaseController
      */
     protected function sendFailedLoginResponse(Request $request)
     {
-        if($this->response()->expectsJson()){
+        if ($this->response()->expectsJson()) {
             return $this->response()->fail(trans('auth.failed'))->json();
         }
 
@@ -85,7 +88,7 @@ class LoginController extends BaseController
 
         $user->generateAuthToken();
 
-        if($this->response()->expectsJson()){
+        if ($this->response()->expectsJson()) {
             return $this->response()->success()->load($user->refresh())->json();
         }
     }
@@ -98,7 +101,7 @@ class LoginController extends BaseController
      */
     protected function loggedOut(Request $request)
     {
-        if($this->response()->expectsJson()){
+        if ($this->response()->expectsJson()) {
             return $this->response()->success('Logged out')->json();
         }
     }

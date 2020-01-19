@@ -2,6 +2,7 @@
 
 namespace App\Mainframe\Http\Controllers\Auth;
 
+use Illuminate\Http\Request;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\VerifiesEmails;
 use App\Mainframe\Http\Controllers\BaseController;
@@ -25,6 +26,8 @@ class VerificationController extends BaseController
      * @var string
      */
     protected $redirectTo = RouteServiceProvider::HOME;
+    /** @var string */
+    protected $view = 'mainframe.auth.verify';
 
     /**
      * Create a new controller instance.
@@ -39,4 +42,16 @@ class VerificationController extends BaseController
         $this->middleware('throttle:6,1')->only('verify', 'resend');
     }
 
+    /**
+     * Show the email verification notice.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|\Illuminate\View\View
+     */
+    public function show(Request $request)
+    {
+        return $request->user()->hasVerifiedEmail()
+            ? redirect($this->redirectPath())
+            : view($this->view);
+    }
 }
