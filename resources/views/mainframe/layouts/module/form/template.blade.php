@@ -26,7 +26,7 @@
 
         @yield('form-fields')
 
-        @include('mainframe.layouts.module.form.includes.action-buttons')
+        @include('mainframe.form.action-buttons')
 
         {{ Form::close() }}
     </div>

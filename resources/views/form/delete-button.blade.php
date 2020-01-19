@@ -19,7 +19,6 @@
  *      $var['params']          ?? [];  // These are the html attributes like css, id etc for the field.
  *      $var['editable']        ?? true;
  */
-
 /**
  * @var \App\Mainframe\Modules\Modules\Module $module
  * @var \App\Mainframe\Modules\Users\User $user
@@ -27,34 +26,26 @@
  * @var string $formState create|edit
  */
 
-$input = new App\Mainframe\Features\Form\Text\InputText($var, $element ?? null);
+$input = new App\Mainframe\Features\Form\DeleteButton($var, $element ?? null);
+// $input->params['name'] = 'genericDeleteBtn';
+// $input->params['type'] = 'button';
+// $input->params['class'] = 'button';
+// $input->params['data-toggle'] = 'modal';
+// $input->params['data-target'] = '#deleteModal';
+// $input->params['data-route'] = $var;
+// $input->params['data-route'] = 'button';
+// $input->params['data-route'] = 'button';
 ?>
 
-<div class="form-group {{$input->containerClass}} {{$errors->first($input->name, ' has-error')}}">
+{{Form::button($input->value,$input->params)}}
 
-    @if($input->label)
-        <label id="label_{{$input->name}}"
-               class="control-label {{$input->labelClass}}"
-               for="{{$input->name}}">
-            {!! $input->label !!}
-        </label>
-    @endif
-
-    @if($input->isEditable)
-        @if($input->type === 'password')
-            {{ Form::password($input->name, $input->params) }}
-        @else
-            {{ Form::text($input->name, $input->value(), $input->params) }}
-        @endif
-    @else
-        <span class="{{$input->params['class']}} readonly">
-            {{ $input->print() }}
-            {{ Form::hidden($input->name, $input->value()) }}
-        </span>
-    @endif
-
-    {!! $errors->first($input->name, '<span class="help-block">:message</span>') !!}
-
-</div>
-
-<?php unset($input) ?>
+{{--<button name='genericDeleteBtn'--}}
+{{--        type='button'--}}
+{{--        data-toggle='modal'--}}
+{{--        data-target='#deleteModal'--}}
+{{--        class='{{$class}}'--}}
+{{--        data-route='{{$route}}'--}}
+{{--        data-redirect_success='{{$redirect_success}}'--}}
+{{--        data-redirect_fail='{{$redirect_fail}}'>--}}
+{{--    {{$label}}--}}
+{{--</button>--}}

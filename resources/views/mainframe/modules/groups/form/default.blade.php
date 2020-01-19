@@ -11,15 +11,15 @@
 
         {{--    Form inputs: starts    --}}
         {{--   --------------------    --}}
-        @include('mainframe.form.input.text',['var'=>['name'=>'name','label'=>'Name']])
-        @include('mainframe.form.custom.is_active')
+        @include('mainframe.form.text',['var'=>['name'=>'name','label'=>'Name']])
+        @include('mainframe.form.is-active')
         {{--    Form inputs: ends    --}}
         <div class="clearfix"></div>
         @if($formState === 'edit')
             @include('mainframe.modules.groups.form.permission-blocks')
         @endif
 
-        @include('mainframe.layouts.module.form.includes.action-buttons')
+        @include('mainframe.form.action-buttons')
 
         {{ Form::close() }}
     </div>

@@ -15,21 +15,21 @@ $types = Setting::$types;
         @endif
         {{--    Form inputs: starts    --}}
         {{--   --------------------    --}}
-        @include('mainframe.form.input.text',['var'=>['name'=>'name','label'=>'Name']])
-        @include('mainframe.form.input.text',['var'=>['name'=>'title','label'=>'Title']])
+        @include('mainframe.form.text',['var'=>['name'=>'name','label'=>'Name']])
+        @include('mainframe.form.text',['var'=>['name'=>'title','label'=>'Title']])
         <div class="clearfix"></div>
 
-        @include('mainframe.form.select.select-array',['var'=>['name'=>'type','label'=>'type', 'options'=>$types]])
+        @include('mainframe.form.select-array',['var'=>['name'=>'type','label'=>'type', 'options'=>$types]])
         <div class="clearfix"></div>
 
-        @include('mainframe.form.input.textarea',['var'=>['name'=>'value','label'=>'Value']])
+        @include('mainframe.form.textarea',['var'=>['name'=>'value','label'=>'Value']])
         <div class="clearfix"></div>
 
-        @include('mainframe.form.input.textarea',['var'=>['name'=>'description','label'=>'Description', 'params'=>['class'=>'ckeditor']]])
-        @include('mainframe.form.custom.is_active')
+        @include('mainframe.form.textarea',['var'=>['name'=>'description','label'=>'Description', 'params'=>['class'=>'ckeditor']]])
+        @include('mainframe.form.is-active')
 
         {{--    Form inputs: ends    --}}
-        @include('mainframe.layouts.module.form.includes.action-buttons')
+        @include('mainframe.form.action-buttons')
         {{ Form::close() }}
     </div>
 @endsection
@@ -40,7 +40,7 @@ $types = Setting::$types;
         <h5>File upload</h5>
         <small>Upload one or more files</small>
 
-        @include('mainframe.layouts.module.form.includes.features.uploads.uploads',['var'=>['limit'=>99]])
+        @include('mainframe.form.uploads',['var'=>['limit'=>99]])
     </div>
 @endsection
 

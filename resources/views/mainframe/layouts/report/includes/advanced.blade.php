@@ -8,12 +8,12 @@
     </style>
 @endsection
 
-@include('mainframe.form.input.textarea',['var'=>['name'=>'columns_csv','label'=>'Columns', ['params'=>['class'=>'tag']],'container_class'=>'col-md-2']])
-@include('mainframe.form.input.textarea',['var'=>['name'=>'alias_columns_csv','label'=>'Matching tiles', ['params'=>['class'=>'tag']],'container_class'=>'col-md-2']])
+@include('mainframe.form.textarea',['var'=>['name'=>'columns_csv','label'=>'Columns', ['params'=>['class'=>'tag']],'container_class'=>'col-md-2']])
+@include('mainframe.form.textarea',['var'=>['name'=>'alias_columns_csv','label'=>'Matching tiles', ['params'=>['class'=>'tag']],'container_class'=>'col-md-2']])
 {{--@include('mainframe.form.input.textarea',['var'=>['name'=>'additional_conditions','label'=>'Additional conditions','container_class'=>'col-md-2']])--}}
 {{--@include('mainframe.form.input.text',['var'=>['name'=>'group_by','label'=>'Group by','container_class'=>'col-md-2']])--}}
-@include('mainframe.form.input.text',['var'=>['name'=>'order_by','label'=>'Order by','container_class'=>'col-md-2']])
-@include('mainframe.form.input.text',['var'=>['name'=>'group_by','label'=>'Group by','container_class'=>'col-md-2']])
+@include('mainframe.form.text',['var'=>['name'=>'order_by','label'=>'Order by','container_class'=>'col-md-2']])
+@include('mainframe.form.text',['var'=>['name'=>'group_by','label'=>'Group by','container_class'=>'col-md-2']])
 
 <div class="clearfix"></div>
 {{--<div class="col-md-12">--}}

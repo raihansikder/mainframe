@@ -11,11 +11,11 @@
 
         {{--    Form inputs: starts    --}}
         {{--   --------------------    --}}
-        @include('mainframe.form.input.text',['var'=>['name'=>'name','label'=>'Name']])
-        @include('mainframe.form.custom.is_active')
+        @include('mainframe.form.text',['var'=>['name'=>'name','label'=>'Name']])
+        @include('mainframe.form.is-active')
         {{--    Form inputs: ends    --}}
 
-        @include('mainframe.layouts.module.form.includes.action-buttons')
+        @include('mainframe.form.action-buttons')
 
         {{ Form::close() }}
     </div>
@@ -26,7 +26,7 @@
     <div class="col-md-6 no-padding-l">
         <h5>File upload</h5>
         <small>Upload one or more files</small>
-        @include('mainframe.layouts.module.form.includes.features.uploads.uploads',['var'=>['limit'=>99]])
+        @include('mainframe.form.uploads',['var'=>['limit'=>99]])
     </div>
 @endsection
 

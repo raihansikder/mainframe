@@ -11,7 +11,7 @@
         <form method="POST" action="{{ route('password.confirm') }}">
             @csrf
 
-            @include('mainframe.form.input.text',['var'=>['name'=>'password','type'=>'password','label'=>'Password','value'=>'','container_class'=>'col-sm-12']])
+            @include('mainframe.form.text',['var'=>['name'=>'password','type'=>'password','label'=>'Password','value'=>'','container_class'=>'col-sm-12']])
 
             <div class="form-group row mb-0">
                 <div class="col-md-8 offset-md-4">
