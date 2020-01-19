@@ -3,13 +3,13 @@
 namespace App\Mainframe\Http\Middleware;
 
 use Closure;
-use Response;
 use App\Mainframe\Modules\Users\User;
 use App\Mainframe\Features\Core\Traits\SendResponse;
 
 class VerifyBearerToken
 {
     use SendResponse;
+
     /**
      * Handle an incoming request.
      *
@@ -21,7 +21,7 @@ class VerifyBearerToken
     {
 
         // Try to find the user.
-        $user = User::ofBearer($request->bearerToken());
+        $user =bearer();
 
         // Response error
         if (! $user) {
@@ -31,8 +31,8 @@ class VerifyBearerToken
         }
 
         // Add logged user in the request attribute
-        $request->attributes->add(['logged_user' => $user]);
-        $request->attributes->add(['logged_user_id' => $user->id]);
+        // $request->attributes->add(['logged_user' => $user]);
+        // $request->attributes->add(['logged_user_id' => $user->id]);
 
         return $next($request);
     }

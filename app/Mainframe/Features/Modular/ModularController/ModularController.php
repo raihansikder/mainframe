@@ -8,7 +8,7 @@ use View;
 use Illuminate\Http\Request;
 use App\Mainframe\Modules\Modules\Module;
 use App\Mainframe\Features\Report\ModuleList;
-use App\Mainframe\Http\Controller\BaseController;
+use App\Mainframe\Http\Controllers\BaseController;
 use App\Mainframe\Features\Datatable\ModuleDatatable;
 use App\Mainframe\Features\Modular\Resolvers\GridView;
 use App\Mainframe\Features\Report\ModuleReportBuilder;

@@ -10,7 +10,7 @@ use App\Mainframe\Modules\Groups\Group;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Mainframe\Providers\RouteServiceProvider;
-use App\Mainframe\Http\Controller\BaseController;
+use App\Mainframe\Http\Controllers\BaseController;
 use App\Mainframe\Notifications\Auth\VerifyEmail;
 
 class RegisterController extends BaseController

@@ -2,6 +2,7 @@
 
 use App\Mainframe\Helpers\Mf;
 use Illuminate\Support\MessageBag;
+use App\Mainframe\Modules\Users\User;
 
 /**
  * returns sentry object of currently logged in user
@@ -12,6 +13,16 @@ use Illuminate\Support\MessageBag;
 function user($id = null)
 {
     return Mf::user($id);
+}
+
+/**
+ * Get bearer user
+ *
+ * @return null|User
+ */
+function bearer()
+{
+    return User::ofBearer(request()->bearerToken());
 }
 
 /**
@@ -104,27 +115,4 @@ function setError($str = '', $setMsg = true, $ret = false)
     return $ret;
 }
 
-/**
- * Renders the left menu of the application and makes the current item active based on breadcrumb
- *
- * @param        $tree
- * @param  string  $currentModuleName
- * @param  array  $breadcrumbs
- * @return null
- */
-function renderMenuTree($tree, $currentModuleName = '', $breadcrumbs = [])
-{
-    return \App\Mainframe\Helpers\View::renderMenuTree($tree, $currentModuleName, $breadcrumbs);
-}
-
-/**
- * Returns an array with module/module_group name as key
- *
- * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule|null  $module
- * @return array
- */
-function breadcrumb($module = null)
-{
-    return \App\Mainframe\Helpers\View::breadcrumb($module);
-}
 

@@ -19,11 +19,17 @@ Route::prefix('core/1.0')->middleware(['request.json', 'verify.x-auth-token'])->
 
     // Settings api sample
     Route::get('setting/{name}', '\App\Mainframe\Modules\Settings\SettingController@get');
-    /*
-     * Authentication routes.
-     */
+
+    Route::post('register', 'Auth\RegisterController@register');
     Route::post('login', 'Auth\LoginController@login');
     Route::post('logout', 'Auth\LoginController@logout');
-    Route::post('register', 'Auth\RegisterController@register');
+
+
+    Route::prefix('user')->middleware(['verify.bearer-token'])->group(function () {
+
+        // Settings api sample
+        Route::get('test', 'Api\UserApiController@test');
+
+    });
 
 });

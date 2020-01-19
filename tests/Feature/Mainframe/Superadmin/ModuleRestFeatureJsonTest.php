@@ -30,7 +30,7 @@ class ModuleRestFeatureJsonTest extends SuperadminTestCase
         parent::setUp();
 
         $this->module = Module::where('name', 'lorem-ipsums')->first();
-        $this->newElementName = 'phpunit-test-json'.date('YmdHi');
+        $this->newElementName = 'pu-test-json'.date('YmdHi');
     }
 
     /**************************************************************
@@ -164,7 +164,7 @@ class ModuleRestFeatureJsonTest extends SuperadminTestCase
         $this->assertDatabaseMissing($this->module->module_table, ['name' => $this->newElementName, 'deleted_at' => null]);
 
         // Clean up test entries. This is messy way. But works for now.
-        \DB::table('lorem_ipsums')->where('name', 'LIKE', 'phpunit%')->delete();
+        \DB::table('lorem_ipsums')->where('name', 'LIKE', 'pu-%')->delete();
         $this->assertDatabaseMissing($this->module->module_table, ['name' => $this->newElementName]);
     }
 }

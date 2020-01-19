@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Mainframe;
+namespace Tests\Feature\Mainframe\Api;
 
 use Tests\TestCase;
 use App\Mainframe\Modules\Users\User;

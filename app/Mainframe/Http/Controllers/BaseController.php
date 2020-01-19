@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Mainframe\Http\Controller;
+namespace App\Mainframe\Http\Controllers;
 
 use View;
 use App\Http\Controllers\Controller;

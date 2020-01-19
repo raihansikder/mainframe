@@ -1,8 +1,8 @@
 <?php
 
-namespace Tests\Feature\Mainframe;
+namespace Tests\Feature\Mainframe\Api;
 
-class BasicApiTest extends ApiTestCase
+class SettingsApiTest extends ApiTestCase
 {
 
     /**

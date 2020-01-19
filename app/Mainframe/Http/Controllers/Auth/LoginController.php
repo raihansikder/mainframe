@@ -5,7 +5,7 @@ namespace App\Mainframe\Http\Controllers\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 use App\Mainframe\Providers\RouteServiceProvider;
-use App\Mainframe\Http\Controller\BaseController;
+use App\Mainframe\Http\Controllers\BaseController;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends BaseController
@@ -77,13 +77,16 @@ class LoginController extends BaseController
      * The user has been authenticated.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  mixed  $user
+     * @param  \App\Mainframe\Modules\Users\User|mixed  $user
      * @return mixed
      */
     protected function authenticated(Request $request, $user)
     {
+
+        $user->generateAuthToken();
+
         if($this->response()->expectsJson()){
-            return $this->response()->success()->load($user)->json();
+            return $this->response()->success()->load($user->refresh())->json();
         }
     }
 

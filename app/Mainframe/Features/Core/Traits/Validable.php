@@ -10,7 +10,7 @@ use Validator;
  * @package App\Mainframe\Features\Modular\BaseController\Traits
  */
 
-/** @mixin  \App\Mainframe\Http\Controller\BaseController $this */
+/** @mixin  \App\Mainframe\Http\Controllers\BaseController $this */
 trait Validable
 {
     /** @var \Illuminate\Validation\Validator */

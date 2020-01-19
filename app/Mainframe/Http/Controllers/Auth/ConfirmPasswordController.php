@@ -4,7 +4,7 @@ namespace App\Mainframe\Http\Controllers\Auth;
 
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\ConfirmsPasswords;
-use App\Mainframe\Http\Controller\BaseController;
+use App\Mainframe\Http\Controllers\BaseController;
 
 class ConfirmPasswordController extends BaseController
 {
