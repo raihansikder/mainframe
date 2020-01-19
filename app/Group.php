@@ -3,7 +3,6 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Builder;
-use App\Mainframe\Modules\Groups\Group as GroupModel;
 use App\Mainframe\Features\Modular\BaseModule\BaseModule;
 
 /**
@@ -61,7 +60,7 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule;
  * @property-read \Illuminate\Database\Eloquent\Collection|\OwenIt\Auditing\Models\Audit[] $audits
  * @property-read int|null $audits_count
  */
-class Group extends GroupModel
+class Group extends \App\Mainframe\Modules\Groups\Group
 {
 
 }

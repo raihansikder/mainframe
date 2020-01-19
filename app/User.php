@@ -3,7 +3,6 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Builder;
-use App\Mainframe\Modules\Users\User as MFUserModel;
 
 /**
  * App\User
@@ -142,7 +141,7 @@ use App\Mainframe\Modules\Users\User as MFUserModel;
  * @property-read \Illuminate\Database\Eloquent\Collection|\OwenIt\Auditing\Models\Audit[] $audits
  * @property-read int|null $audits_count
  */
-class User extends MFUserModel
+class User extends \App\Mainframe\Modules\Users\User
 {
 
 }
