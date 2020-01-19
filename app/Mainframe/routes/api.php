@@ -16,15 +16,15 @@ $modules = Mf::modules();
 
 Route::prefix('core/1.0')->middleware(['request.json', 'verify.x-auth-token'])->group(function () use ($modules) {
 
-    // Settings api sample
+    // List of apis
     Route::get('setting/{name}', '\App\Mainframe\Modules\Settings\SettingController@get');
 
-    // Auth routes
+    // Auth apis
     Route::post('register/{groupName?}', 'Auth\RegisterController@register');
     Route::post('login', 'Auth\LoginController@login');
     Route::post('logout', 'Auth\LoginController@logout');
 
-    // Module Restful API
+    // Module RESTful apis
     Route::prefix('module')->group(function () use ($modules) {
         foreach ($modules as $module) {
             Route:: get($module->route_path."/list/json", $module->controller."@listJson");
@@ -34,6 +34,7 @@ Route::prefix('core/1.0')->middleware(['request.json', 'verify.x-auth-token'])->
     });
 
 
+    // User apis that are called with bearer token.
     Route::prefix('user')->middleware(['verify.bearer-token'])->group(function () {
         Route::get('profile', 'Api\UserApiController@profile');
     });
