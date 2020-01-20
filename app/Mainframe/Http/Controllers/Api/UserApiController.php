@@ -3,6 +3,8 @@
 namespace App\Mainframe\Http\Controllers\Api;
 
 use Request;
+use App\Http\Controllers\UsersController;
+use App\Mainframe\Modules\Users\UserController;
 use App\Mainframe\Modules\Settings\SettingController;
 
 class UserApiController extends ApiController
@@ -38,6 +40,16 @@ class UserApiController extends ApiController
     public function profile()
     {
         return $this->response()->load($this->user)->json();
+    }
+
+
+    /**
+     * Update user
+     * @return mixed|\App\Mainframe\Modules\Users\User
+     */
+    public function update()
+    {
+        return app(UserController::class)->update(request(), $this->user->id);
     }
 
 }
