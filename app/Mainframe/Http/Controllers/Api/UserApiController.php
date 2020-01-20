@@ -24,7 +24,9 @@ class UserApiController extends ApiController
      */
     public function injectUserIdentityInRequest()
     {
-        Request::merge(['user_id' => $this->user->id]);
+        if($this->user) {
+            Request::merge(['user_id' => $this->user->id]);
+        }
     }
 
 

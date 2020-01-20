@@ -51,11 +51,11 @@ Route::middleware(['auth', 'verified'])->group(function () use ($modules, $modul
     /*
     * Update and replace an existing file in an upload.
     */
-    Route::post('update-file', 'Modules\Uploads\UploadController@updateExistingUpload')->name('uploads.update-file');
+    Route::post('update-file', '\App\Mainframe\Modules\Uploads\UploadController@updateExistingUpload')->name('uploads.update-file');
 
     /*
      * Download a file
      */
-    Route::get('download/{uuid}', 'Modules\Uploads\UploadController@download')->name('download');
+    Route::get('download/{uuid}', '\App\Mainframe\Modules\Uploads\UploadController@download')->name('download');
 
 });

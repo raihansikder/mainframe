@@ -60,8 +60,10 @@ class RegisterController extends BaseController
     public function resolveGroup()
     {
         // Get group from url parameter register/{groupName}
-        $groupName = \Route::current()->parameter('groupName');
-        $this->group = Group::byName($groupName);
+        if(\Route::current()) {
+            $groupName = \Route::current()->parameter('groupName');
+            $this->group = Group::byName($groupName);
+        }
 
         // If not group defined in url then register in default 'user' group.
         if (! $this->group) {

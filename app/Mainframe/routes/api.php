@@ -29,10 +29,15 @@ Route::prefix('core/1.0')->middleware(['request.json', 'verify.x-auth-token'])->
         foreach ($modules as $module) {
             Route:: get($module->route_path."/list/json", $module->controller."@listJson");
             Route:: get($module->route_path."/report", $module->controller."@report");
-            Route::resource($module->name, $module->controller);
+            Route::apiResource($module->name, $module->controller)->names([
+                'index' => "api.{$module->name}.index",
+                'store' => "api.{$module->name}.store",
+                'show' => "api.{$module->name}.show",
+                'update' => "api.{$module->name}.update",
+                'destroy' => "api.{$module->name}.destroy",
+            ]);
         }
     });
-
 
     // User apis that are called with bearer token.
     Route::prefix('user')->middleware(['verify.bearer-token'])->group(function () {
