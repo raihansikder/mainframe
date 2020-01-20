@@ -29,12 +29,13 @@ Route::prefix('core/1.0')->middleware(['request.json', 'verify.x-auth-token'])->
         foreach ($modules as $module) {
             Route:: get($module->route_path."/list/json", $module->controller."@listJson");
             Route:: get($module->route_path."/report", $module->controller."@report");
+
             Route::apiResource($module->name, $module->controller)->names([
-                'index' => "api.{$module->name}.index",
-                'store' => "api.{$module->name}.store",
-                'show' => "api.{$module->name}.show",
-                'update' => "api.{$module->name}.update",
-                'destroy' => "api.{$module->name}.destroy",
+                'index' => "core.api.{$module->name}.index",
+                'store' => "core.api.{$module->name}.store",
+                'show' => "core.api.{$module->name}.show",
+                'update' => "core.api.{$module->name}.update",
+                'destroy' => "core.api.{$module->name}.destroy",
             ]);
         }
     });
