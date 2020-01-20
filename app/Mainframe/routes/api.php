@@ -36,7 +36,6 @@ Route::prefix('core/1.0')->middleware(['request.json', 'verify.x-auth-token'])->
         foreach ($modules as $module) {
             Route:: get($module->route_path."/list/json", $module->controller."@listJson");
             Route:: get($module->route_path."/report", $module->controller."@report");
-
             Route::apiResource($module->name, $module->controller)->names([
                 'index' => "core.api.{$module->name}.index",
                 'store' => "core.api.{$module->name}.store",
