@@ -6,7 +6,6 @@
 
 namespace App\Mainframe\Modules\SuperHeroes;
 
-use App\Mainframe\Modules\Users\User;
 use App\Mainframe\Features\Modular\BaseModule\BaseModulePolicy;
 
 class SuperHeroPolicy extends BaseModulePolicy
@@ -18,7 +17,10 @@ class SuperHeroPolicy extends BaseModulePolicy
      * @param  \App\Mainframe\Modules\Users\User  $user
      * @return mixed
      */
-    public function viewAny($user) { }
+    public function viewAny($user)
+    {
+        return parent::viewAny($user);
+    }
 
     /**
      * Determine whether the user can view the superHero.

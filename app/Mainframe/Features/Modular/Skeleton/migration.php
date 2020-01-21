@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection ClassConstantCanBeUsedInspection */
 /** @noinspection UnknownInspectionInspection */
 /** @noinspection DuplicatedCode */
 
@@ -59,6 +59,8 @@ class CreateSuperHeroesTable extends Migration
             $module->processor = '{processor}';
             $module->controller = '{controller}';
             $module->view_directory = '{view_directory}';
+            $module->is_visible = 1;
+            $module->created_by = 1;
 
             $module->save();
         }

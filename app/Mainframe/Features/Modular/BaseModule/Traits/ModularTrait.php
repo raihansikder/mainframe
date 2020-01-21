@@ -2,7 +2,6 @@
 
 namespace App\Mainframe\Features\Modular\BaseModule\Traits;
 
-use Illuminate\Support\Str;
 use App\Mainframe\Helpers\Mf;
 use App\Mainframe\Modules\Modules\Module;
 
@@ -17,9 +16,7 @@ trait ModularTrait
      */
     public function module()
     {
-        $moduleName = Str::kebab(Str::camel($this->getTable()));
-
-        return Module::where('name', $moduleName)
+        return Module::where('name', $this->moduleName)
             ->remember(timer('very-long'))->first();
     }
 
