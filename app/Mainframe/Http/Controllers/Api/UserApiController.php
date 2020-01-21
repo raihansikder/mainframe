@@ -39,7 +39,7 @@ class UserApiController extends ApiController
 
     public function profile()
     {
-        return $this->load($this->user)->dispatch();
+        return $this->load($this->user)->send();
     }
 
     /**

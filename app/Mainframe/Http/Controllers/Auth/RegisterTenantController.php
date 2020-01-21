@@ -42,7 +42,7 @@ class RegisterTenantController extends RegisterController
         $this->attemptRegistration();
 
         request()->merge(['redirect_success' => route('login')]);
-        $this->response()->redirectTo = $this->redirectTo();
+        $this->response()->redirectTo = $this->guessRedirectTo();
 
         if ($this->response()->expectsJson()) {
             return $this->response()->load()->json();

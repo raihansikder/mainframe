@@ -103,10 +103,10 @@ class RegisterController extends BaseController
         $this->attemptRegistration();
 
         request()->merge(['redirect_success' => route('login')]);
-        $this->response()->redirectTo = $this->redirectTo();
+        $this->response()->redirectTo = $this->guessRedirectTo();
 
         if ($this->response()->expectsJson()) {
-            return $this->response()->load()->json();
+            return $this->response()->load($this->user)->json();
         }
 
         return $this->response()->redirect();

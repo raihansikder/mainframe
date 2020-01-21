@@ -33,7 +33,7 @@ trait SendResponse
      *
      * @return array|\Illuminate\Http\Request|string
      */
-    public function redirectTo()
+    public function guessRedirectTo()
     {
         $successTo = request('redirect_success');
         $failTo = request('redirect_fail');
@@ -120,7 +120,7 @@ trait SendResponse
      */
     public function send()
     {
-        return $this->response()->dispatch();
+        return $this->response()->send();
     }
 
     /**
@@ -205,6 +205,7 @@ trait SendResponse
 
     /**
      * Check if response is success
+     *
      * @return bool
      */
     public function isSuccess()

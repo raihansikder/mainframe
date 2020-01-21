@@ -304,6 +304,14 @@ class Response
     }
 
     /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Illuminate\View\View|void
+     */
+    public function send()
+    {
+        return $this->dispatch();
+    }
+
+    /**
      * Abort on permission denial
      *
      * @param  string  $message
