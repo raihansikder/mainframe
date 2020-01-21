@@ -188,9 +188,9 @@ class BaseModulePolicy
      * @param  \App\Mainframe\Modules\Users\User  $user
      * @return mixed
      */
-    public function accessApi(User $user)
+    public function api(User $user)
     {
-        if (! $user->hasPermission($this->moduleName.'-view-report')) {
+        if (! $user->hasPermission($this->moduleName.'-api')) {
             return false;
         }
 
