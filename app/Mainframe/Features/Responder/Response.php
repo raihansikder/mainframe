@@ -179,11 +179,10 @@ class Response
      * @param  array  $vars
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function view($path,$vars = [])
+    public function view($path, $vars = [])
     {
         $view = view($path)->with($this->defaultViewVars())->with($vars);
 
-        // todo : Redirection from above creates a new Response instance.
         if ($this->validator) {
             $view->withErrors($this->validator);
         }
@@ -236,7 +235,7 @@ class Response
         }
 
         if ($this->messageBag()->count()) {
-            $data['messages'] = $this->messageBag()->get('some');
+            $data['messages'] = $this->messageBag()->get('messages'); // Todo: Need to share a list of messages.
         }
         /*-------------------------------*/
 
@@ -267,7 +266,7 @@ class Response
     }
 
     /**
-     * Json or abort
+     * Json or succeeded
      *
      * @param  string  $message
      * @param  int  $code
@@ -290,6 +289,10 @@ class Response
         }
     }
 
+    /**
+     * Determine what needs to be dispatched.
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Illuminate\View\View|void
+     */
     public function dispatch()
     {
         if ($this->status == 'fail') {
@@ -396,6 +399,10 @@ class Response
         return $this;
     }
 
+    /**
+     * @param  null  $redirectTo
+     * @return $this
+     */
     public function to($redirectTo = null)
     {
         $this->redirectTo = $redirectTo;
@@ -448,7 +455,7 @@ class Response
             return true;
         }
 
-        return request('ret') === 'json';
+        return request('ret') == 'json';
     }
 
     /**

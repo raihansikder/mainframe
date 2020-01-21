@@ -32,9 +32,10 @@ class SettingController extends ModularController
     public function get($name)
     {
 
+        /** @var \App\Mainframe\Modules\Settings\Setting $setting */
         $setting = Setting::where('name', $name)->remember(timer('short'))->first();
         if ($setting) {
-            return $this->response()->success()->load($setting->value())->json();
+            return $this->response()->success()->load($setting->getValue())->json();
         }
 
         return $this->response()->fail()->json();
