@@ -48,6 +48,14 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Tenants\Tenant whereProjectId($value)
  * @property-read \Illuminate\Database\Eloquent\Collection|\OwenIt\Auditing\Models\Audit[] $audits
  * @property-read int|null $audits_count
+ * @property string|null $route_group
+ * @property string|null $class_directory
+ * @property string|null $namespace
+ * @property string|null $view_directory
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Tenants\Tenant whereClassDirectory($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Tenants\Tenant whereNamespace($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Tenants\Tenant whereRouteGroup($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Tenants\Tenant whereViewDirectory($value)
  */
 class Tenant extends BaseModule
 {
