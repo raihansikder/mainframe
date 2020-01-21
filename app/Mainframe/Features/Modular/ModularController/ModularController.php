@@ -184,7 +184,7 @@ class ModularController extends BaseController
 
         $this->attemptStore();
 
-        $this->response()->redirectTo = $this->guessRedirectTo();
+        $this->response()->redirectTo = $this->resolveRedirectTo();
 
         if ($this->response()->expectsJson()) {
             return $this->response()->load($this->element->toArray())->json();
@@ -212,7 +212,7 @@ class ModularController extends BaseController
 
         $this->attemptUpdate();
 
-        $this->response()->redirectTo = $this->guessRedirectTo();
+        $this->response()->redirectTo = $this->resolveRedirectTo();
 
         if ($this->response()->expectsJson()) {
             return $this->response()->load($this->element)->json();
@@ -240,7 +240,7 @@ class ModularController extends BaseController
 
         $this->attemptDestroy();
 
-        $this->response()->redirectTo = $this->guessRedirectTo();
+        $this->response()->redirectTo = $this->resolveRedirectTo();
 
         if ($this->response()->expectsJson()) {
             return $this->response()->load($this->element)->json();

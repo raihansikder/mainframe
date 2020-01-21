@@ -33,7 +33,7 @@ trait SendResponse
      *
      * @return array|\Illuminate\Http\Request|string
      */
-    public function guessRedirectTo()
+    public function resolveRedirectTo()
     {
         $successTo = request('redirect_success');
         $failTo = request('redirect_fail');
