@@ -47,6 +47,14 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Projects\Project whereUpdatedBy($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Projects\Project whereUuid($value)
  * @mixin \Eloquent
+ * @property string|null $route_group
+ * @property string|null $class_directory
+ * @property string|null $namespace
+ * @property string|null $view_directory
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Projects\Project whereClassDirectory($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Projects\Project whereNamespace($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Projects\Project whereRouteGroup($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Projects\Project whereViewDirectory($value)
  */
 class Project extends BaseModule
 {

@@ -8,7 +8,7 @@
  * @var string $formState create|edit
  * @var array $formConfig
  * @var string $uuid Only available for create
- * @var bool $elementIsEditable
+ * @var bool $editable
  */
 ?>
 
@@ -20,13 +20,15 @@
             {{ Form::model($element, $formConfig)}}
         @endif
 
-        {{--    Form inputs: starts    --}}
-        {{--   --------------------    --}}
+        {{-- ******** Form inputs: starts *********************************** --}}
+        {{-- **************************************************************** --}}
+
         @include('form.text',['var'=>['name'=>'name','label'=>'Name']])
         @include('form.is-active')
-        {{--    Form inputs: ends    --}}
 
-        @include('form.form.action-buttons')
+        {{--  ******** Form inputs: ends ************************************ --}}
+
+        @include('form.action-buttons')
 
         {{ Form::close() }}
     </div>

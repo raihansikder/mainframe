@@ -160,6 +160,7 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
      * Constants
      */
     public const PASSWORD_VALIDATION_RULE = 'required|confirmed|min:6|regex:/[a-zA-Z]/|regex:/[0-9]/';
+
     protected $moduleName = 'users';
     /*
     |--------------------------------------------------------------------------

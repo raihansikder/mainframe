@@ -58,6 +58,12 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule;
  * @property-read \App\Mainframe\Modules\Tenants\Tenant $tenant
  * @property-read \Illuminate\Database\Eloquent\Collection|\OwenIt\Auditing\Models\Audit[] $audits
  * @property-read int|null $audits_count
+ * @property string|null $route_path
+ * @property string|null $route_name
+ * @property int|null $is_visible
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\ModuleGroups\ModuleGroup whereIsVisible($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\ModuleGroups\ModuleGroup whereRouteName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\ModuleGroups\ModuleGroup whereRoutePath($value)
  */
 class ModuleGroup extends BaseModule
 {

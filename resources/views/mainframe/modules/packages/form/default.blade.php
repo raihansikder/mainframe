@@ -8,7 +8,7 @@
  * @var string $formState create|edit
  * @var array $formConfig
  * @var string $uuid Only available for create
- * @var bool $elementIsEditable
+ * @var bool $editable
  */
 ?>
 
