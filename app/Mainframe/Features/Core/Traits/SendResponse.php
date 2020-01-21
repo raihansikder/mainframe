@@ -54,4 +54,28 @@ trait SendResponse
         return $this->redirectTo ?: URL::full();
     }
 
+    /**
+     * Build a success response.
+     *
+     * @param  null  $message
+     * @param  int  $code
+     * @return \App\Mainframe\Features\Responder\Response|mixed
+     */
+    public function success($message = null, $code = Response::HTTP_OK)
+    {
+        return $this->response()->success($message, $code);
+    }
+
+    /**
+     * Build a fail response.
+     *
+     * @param  null  $message
+     * @param  int  $code
+     * @return \App\Mainframe\Features\Responder\Response|mixed
+     */
+    public function fail($message = null, $code = Response::HTTP_UNPROCESSABLE_ENTITY)
+    {
+        return $this->response()->fail($message, $code);
+    }
+
 }

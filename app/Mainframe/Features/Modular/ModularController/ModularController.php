@@ -102,11 +102,17 @@ class ModularController extends BaseController
             return $this->response()->permissionDenied();
         }
 
-        if ($this->response()->expectsJson()) {
-            return $this->response()->success()->load($this->element)->json();
-        }
+        return $this->response()->load($this->element)
+            ->to(route($this->moduleName.".edit", $id))->dispatch();
+        //$this->response()->redirectTo = route($this->moduleName.".edit", $id);
 
-        return $this->response()->redirect(route($this->moduleName.".edit", $id));
+        //return $this->response()->succeeded();
+
+        // if ($this->response()->expectsJson()) {
+        //     return $this->response()->success()->load($this->element)->json();
+        // }
+        //
+        // return $this->response()->redirect(route($this->moduleName.".edit", $id));
     }
 
     /**

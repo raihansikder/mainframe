@@ -82,17 +82,22 @@ trait Output
         return $path;
     }
 
+    public function jsonPayload()
+    {
+        $result = $this->mutateResult()->toArray();
+        $result['items'] = $result['data'];
+        unset($result['data']);
+        return $result;
+    }
+
     /**
      * @return mixed|\Illuminate\Support\Collection
      */
     public function json()
     {
-        $result = $this->mutateResult()->toArray();
-        $result['items'] = $result['data'];
-        unset($result['data']);
 
         return $this->response()->success('Request Processed')
-            ->load($result)->json();
+            ->load($this->jsonPayload())->json();
     }
 
     public function excel($csv = false)

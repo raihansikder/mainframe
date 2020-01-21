@@ -160,6 +160,9 @@ class Response
     /** @var \Illuminate\View\View|\Illuminate\Contracts\View\Factory */
     public $view;
 
+    /** @var array */
+    public $viewVars;
+
     /*
     |--------------------------------------------------------------------------
     | Output functions
@@ -173,11 +176,12 @@ class Response
      * View
      *
      * @param  string  $path
+     * @param  array  $vars
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function view($path)
+    public function view($path,$vars = [])
     {
-        $view = view($path)->with($this->defaultViewVars());
+        $view = view($path)->with($this->defaultViewVars())->with($vars);
 
         // todo : Redirection from above creates a new Response instance.
         if ($this->validator) {
@@ -217,8 +221,8 @@ class Response
     {
         // Load Generic response
         $data = [
-            'code'    => $this->code,
-            'status'  => $this->status,
+            'code' => $this->code,
+            'status' => $this->status,
             'message' => $this->message
         ];
         // Load payload
@@ -251,7 +255,7 @@ class Response
      * @param  int  $code
      * @return \Illuminate\Http\JsonResponse|void
      */
-    public function failed($message = 'Execution failed', $code = Response::HTTP_BAD_REQUEST)
+    public function failed($message = 'Failed', $code = Response::HTTP_BAD_REQUEST)
     {
         $this->fail($message, $code);
 
@@ -260,6 +264,40 @@ class Response
         }
 
         return abort($code, $message);
+    }
+
+    /**
+     * Json or abort
+     *
+     * @param  string  $message
+     * @param  int  $code
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Illuminate\View\View|void
+     */
+    public function succeeded($message = null, $code = Response::HTTP_OK)
+    {
+        $this->success($message, $code);
+
+        if ($this->expectsJson()) {
+            return $this->load($this->payload)->json();
+        }
+
+        if ($this->redirectTo) {
+            return $this->redirect($this->redirectTo);
+        }
+
+        if ($this->view) {
+            return $this->view($this->view)->with($this->viewVars);
+        }
+    }
+
+    public function dispatch()
+    {
+        if ($this->status == 'fail') {
+            return $this->failed($this->message, $this->code);
+        }
+
+        return $this->succeeded($this->message, $this->code);
+
     }
 
     /**
@@ -305,8 +343,8 @@ class Response
     public function success($message = null, $code = Response::HTTP_OK)
     {
         if ($this->status !== 'fail') {
-            $this->status  = 'success';
-            $this->code    = $code;
+            $this->status = 'success';
+            $this->code = $code;
             $this->message = $message;
         }
 
@@ -323,8 +361,8 @@ class Response
     public function fail($message = null, $code = Response::HTTP_UNPROCESSABLE_ENTITY)
     {
         if ($this->status !== 'fail') {
-            $this->status  = 'fail';
-            $this->code    = $code;
+            $this->status = 'fail';
+            $this->code = $code;
             $this->message = $message;
         }
 
@@ -354,6 +392,13 @@ class Response
     public function load($payload = null)
     {
         $this->payload = $payload;
+
+        return $this;
+    }
+
+    public function to($redirectTo = null)
+    {
+        $this->redirectTo = $redirectTo;
 
         return $this;
     }
@@ -415,9 +460,9 @@ class Response
     public function defaultViewVars()
     {
         return [
-            'responseStatus'  => $this->status,
+            'responseStatus' => $this->status,
             'responseMessage' => $this->message,
-            'messageBag'      => resolve(MessageBag::class)
+            'messageBag' => resolve(MessageBag::class)
         ];
     }
 }
