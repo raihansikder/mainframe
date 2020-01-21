@@ -139,7 +139,7 @@ class BaseModulePolicy
      * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule  $element
      * @return mixed
      */
-    public function forcedelete($user, $element)
+    public function forceDelete($user, $element)
     {
         if (! $user->hasPermission($this->moduleName.'-force-delete')) {
             return false;
@@ -173,7 +173,22 @@ class BaseModulePolicy
      * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule  $element
      * @return bool
      */
-     public function viewReport($user, $element)
+    public function viewReport($user, $element)
+    {
+        if (! $user->hasPermission($this->moduleName.'-view-report')) {
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * Check if user can access Api
+     *
+     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @return mixed
+     */
+    public function accessApi(User $user)
     {
         if (! $user->hasPermission($this->moduleName.'-view-report')) {
             return false;
@@ -191,4 +206,5 @@ class BaseModulePolicy
     {
         return Str::plural(str_replace('-policies', '', Module::nameFromClass($this)));
     }
+
 }
