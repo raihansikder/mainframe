@@ -1,9 +1,12 @@
-<?php
+<?php /** @noinspection SpellCheckingInspection */
+
+/** @noinspection PhpUndefinedMethodInspection */
 
 namespace App\Mainframe\Modules\Reports;
 
 use App\Mainframe\Modules\Modules\Module;
 
+/** @mixin \App\Mainframe\Modules\Reports\Report */
 trait ReportHelper
 {
     /**
@@ -14,14 +17,15 @@ trait ReportHelper
      */
     public static function defaultForModule($module_id)
     {
-        /** @var \App\Report $default_report */
-        $default_report = Report::where('module_id', $module_id)->where('is_module_default', 1)
+        /** @var Report $defaultReport */
+        $defaultReport = Report::where('module_id', $module_id)
+            ->where('is_module_default', 1)
             ->remember(timer('long'))->first();
 
-        if ($default_report) {
-            $report_url = $default_report->url();
+        if ($defaultReport) {
+            $report_url = $defaultReport->url();
         } else {
-            $module = Module::remember(timer('long'))->find($module_id);
+            $module = Module::remember(timer('very-long'))->find($module_id);
             $report_url = route($module->name.'.report')."?submit=Run&"
                 ."select_columns_csv=id%2Cname%2Ccreated_by%2Ccreated_at%2Cupdated_by%2Cupdated_at%2Cis_active"
                 ."&columns_csv=id%2Cname%2Ccreated_by%2Ccreated_at%2Cupdated_by%2Cupdated_at%2Cis_active"

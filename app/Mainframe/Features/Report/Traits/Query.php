@@ -294,7 +294,7 @@ trait Query
         if (in_array($this->output(), ['excel', 'print'])) {
             return true;
         }
-        if (request('force_all_data') == 'true') {
+        if (request('force_all_data') == 'yes') {
             return true;
         }
 

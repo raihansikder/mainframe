@@ -25,17 +25,11 @@ class VerifyXAuthToken
         $user = user();
 
         if (! $user) {
-            return $this->response()
-                ->fail('Not authenticated.(Invalid X-Auth-Token)', 401)
-                ->json();
+            return $this->response()->failed('Not authenticated.(Invalid X-Auth-Token)', 401);
         }
 
         if ((! $user->can('make-api-call'))) {
-
-            return $this->response()
-                ->fail('Permission denied (make-api-cal)', 401)
-                ->json();
-
+            return $this->response()->failed('Permission denied (make-api-cal)', 401);
         }
 
         return $next($request);

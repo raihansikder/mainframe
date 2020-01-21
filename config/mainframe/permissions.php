@@ -16,7 +16,8 @@ return [
     |--------------------------------------------------------------------------
     |
     | The name of these permission keys should match what is in the
-    | BaseModulePolicy.
+    | BaseModulePolicy. Following policy functions are not included here
+    | restore, forceDelete.
     |
     */
     'module' => [
@@ -27,9 +28,6 @@ return [
         'delete' => 'Delete',       // delete()
         'view-change-log' => 'Access change logs', //viewChangeLog()
         'view-report' => 'Report',  //viewReport()
-
-        // Following policy functions are not included here
-        // restore(), forceDelete().
     ],
     /*
     |--------------------------------------------------------------------------

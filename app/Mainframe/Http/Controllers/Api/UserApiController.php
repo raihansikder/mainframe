@@ -3,7 +3,7 @@
 namespace App\Mainframe\Http\Controllers\Api;
 
 use Request;
-use App\Mainframe\Modules\Settings\SettingController;
+use App\Mainframe\Modules\Users\UserController;
 
 class UserApiController extends ApiController
 {
@@ -14,7 +14,9 @@ class UserApiController extends ApiController
     public function __construct()
     {
         parent::__construct();
+
         $this->user = bearer();
+
         $this->injectUserIdentityInRequest();
 
     }
@@ -24,18 +26,30 @@ class UserApiController extends ApiController
      */
     public function injectUserIdentityInRequest()
     {
-        Request::merge(['user_id' => $this->user->id]);
+        if ($this->user) {
+            Request::merge(['user_id' => $this->user->id]);
+        }
     }
-
 
     /**
      * Test Api
      *
      * @return mixed
      */
+
     public function profile()
     {
-        return $this->response()->load($this->user)->json();
+        return $this->load($this->user)->send();
+    }
+
+    /**
+     * Update user
+     *
+     * @return mixed|\App\Mainframe\Modules\Users\User
+     */
+    public function update()
+    {
+        return app(UserController::class)->update(request(), $this->user->id);
     }
 
 }

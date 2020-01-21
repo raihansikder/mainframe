@@ -16,26 +16,33 @@ $modules = Mf::modules();
 
 Route::prefix('core/1.0')->middleware(['request.json', 'verify.x-auth-token'])->group(function () use ($modules) {
 
-    // Settings api sample
-    Route::get('setting/{name}', '\App\Mainframe\Modules\Settings\SettingController@get');
-
-    // Auth routes
+    // Auth apis
     Route::post('register/{groupName?}', 'Auth\RegisterController@register');
     Route::post('login', 'Auth\LoginController@login');
+    Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
     Route::post('logout', 'Auth\LoginController@logout');
 
-    // Module Restful API
+    // User apis that are called with bearer token.
+    Route::prefix('user')->middleware(['verify.bearer-token'])->group(function () {
+        Route::patch('/', 'Api\UserApiController@update');
+        Route::get('profile', 'Api\UserApiController@profile');
+    });
+
+    // Settings
+    Route::get('setting/{name}', '\App\Mainframe\Modules\Settings\SettingController@get');
+
+    // Module RESTful apis
     Route::prefix('module')->group(function () use ($modules) {
         foreach ($modules as $module) {
             Route:: get($module->route_path."/list/json", $module->controller."@listJson");
             Route:: get($module->route_path."/report", $module->controller."@report");
-            Route::resource($module->name, $module->controller);
+            Route::apiResource($module->name, $module->controller)->names([
+                'index' => "core.api.{$module->name}.index",
+                'store' => "core.api.{$module->name}.store",
+                'show' => "core.api.{$module->name}.show",
+                'update' => "core.api.{$module->name}.update",
+                'destroy' => "core.api.{$module->name}.destroy",
+            ]);
         }
     });
-
-
-    Route::prefix('user')->middleware(['verify.bearer-token'])->group(function () {
-        Route::get('profile', 'Api\UserApiController@profile');
-    });
-
 });

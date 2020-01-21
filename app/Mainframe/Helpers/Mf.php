@@ -65,6 +65,11 @@ class Mf
         return new User();
     }
 
+    public static function bearer()
+    {
+        return User::ofBearer(request()->bearerToken());
+    }
+
     /**
      * Get cached module list
      *

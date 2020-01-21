@@ -22,7 +22,7 @@ function user($id = null)
  */
 function bearer()
 {
-    return User::ofBearer(request()->bearerToken());
+    return Mf::bearer();
 }
 
 /**
