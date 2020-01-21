@@ -60,7 +60,7 @@ class RegisterController extends BaseController
     public function resolveGroup()
     {
         // Get group from url parameter register/{groupName}
-        if(\Route::current()) {
+        if (\Route::current()) {
             $groupName = \Route::current()->parameter('groupName');
             $this->group = Group::byName($groupName);
         }
@@ -69,16 +69,20 @@ class RegisterController extends BaseController
         if (! $this->group) {
             $this->group = Group::byName('user');
         }
+
     }
 
     /**
      * Show the application registration form.
      *
-     * @param  null  $groupName
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\JsonResponse|\Illuminate\View\View|void
      */
     public function showRegistrationForm()
     {
+
+        if (! $this->groupAllowedForRegistration()) {
+            return $this->response()->permissionDenied();
+        }
 
         return view($this->form)
             ->with(['group' => $this->group]);
@@ -92,6 +96,9 @@ class RegisterController extends BaseController
      */
     public function register(Request $request)
     {
+        if (! $this->groupAllowedForRegistration()) {
+            return $this->response()->permissionDenied();
+        }
 
         $this->attemptRegistration();
 
@@ -172,5 +179,20 @@ class RegisterController extends BaseController
     {
         event(new Registered($user));
         $user->notifyNow(new VerifyEmail());
+    }
+
+    /**
+     * Check if the group is allowed for registration.
+     *
+     * @return bool
+     */
+    public function groupAllowedForRegistration()
+    {
+        if (! in_array($this->group->name, config('mainframe.config.groups_allowed_for_registration'))) {
+
+            return false;
+        }
+
+        return true;
     }
 }
