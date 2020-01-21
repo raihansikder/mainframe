@@ -149,6 +149,14 @@ class ModuleRestFeatureTest extends SuperadminTestCase
             ->assertSee($this->newElementName); // A test name
     }
 
+    public function testSuperAdminCanViewReport()
+    {
+        $this->get('/lorem-ipsums/report?submit=Run&select_columns_csv=id%2Cname%2Ccreated_by%2Ccreated_at%2Cupdated_by%2Cupdated_at%2Cis_active&columns_csv=id%2Cname%2Ccreated_by%2Ccreated_at%2Cupdated_by%2Cupdated_at%2Cis_active&alias_columns_csv=Id%2CName%2CCreated+by%2CCreated+at%2CUpdated+by%2CUpdated+at%2CActive%3F&rows_per_page=25')
+            ->assertSee('Test Input')
+            ->assertStatus(200);
+
+    }
+
     /**
      * Superadmin can delete an element
      *
