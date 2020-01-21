@@ -15,8 +15,6 @@ class UserApiController extends ApiController
     {
         parent::__construct();
 
-
-
         $this->user = bearer();
 
         $this->injectUserIdentityInRequest();
@@ -38,9 +36,10 @@ class UserApiController extends ApiController
      *
      * @return mixed
      */
+
     public function profile()
     {
-        return $this->response()->load($this->user)->dispatch();
+        return $this->load($this->user)->dispatch();
     }
 
     /**

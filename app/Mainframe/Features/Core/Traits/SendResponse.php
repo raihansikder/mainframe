@@ -118,10 +118,10 @@ trait SendResponse
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Illuminate\View\View|void
      */
-    // public function dispatch()
-    // {
-    //     return $this->response()->dispatch();
-    // }
+    public function send()
+    {
+        return $this->response()->dispatch();
+    }
 
     /**
      * Abort on permission denial
@@ -176,7 +176,7 @@ trait SendResponse
      *
      * @param  string  $message
      * @param  int  $code
-     * @return $this
+     * @return \App\Mainframe\Features\Responder\Response|mixed
      */
     public function failValidation($message = 'Validation failed', $code = Response::HTTP_UNPROCESSABLE_ENTITY)
     {
@@ -187,7 +187,7 @@ trait SendResponse
      * Load a payload to be sent with the response
      *
      * @param  null  $payload
-     * @return $this
+     * @return \App\Mainframe\Features\Responder\Response|mixed
      */
     public function load($payload = null)
     {
@@ -196,7 +196,7 @@ trait SendResponse
 
     /**
      * @param  null  $redirectTo
-     * @return $this
+     * @return \App\Mainframe\Features\Responder\Response|mixed
      */
     public function to($redirectTo = null)
     {
@@ -205,7 +205,6 @@ trait SendResponse
 
     /**
      * Check if response is success
-     *
      * @return bool
      */
     public function isSuccess()

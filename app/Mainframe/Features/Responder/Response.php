@@ -428,10 +428,8 @@ class Response
      */
     public function isSuccess()
     {
-        //return $this->valid();
 
         return $this->status == 'success' && $this->valid();
-        // return $this->status === 'success';
     }
 
     /**
