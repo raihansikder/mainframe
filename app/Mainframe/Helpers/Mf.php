@@ -68,8 +68,8 @@ class Mf
      */
     public static function apiCaller()
     {
-        $apiToken = request()->header('X-Auth-Token', null);
-        $clientId = request()->header('client-id', null);
+        $apiToken = request()->header('X-Auth-Token');
+        $clientId = request()->header('client-id');
 
         return User::apiCaller($apiToken, $clientId);
     }
