@@ -29,7 +29,7 @@ Route::prefix('core/1.0')->middleware(['request.json', 'x-auth-token'])->group(f
     });
 
     // Settings
-    Route::get('setting/{name}', '\App\Mainframe\Modules\Settings\SettingController@get');
+    Route::get('setting/{name}', 'Api\ApiController@getSetting');
 
     // Module RESTful apis
     Route::prefix('module')->group(function () use ($modules) {

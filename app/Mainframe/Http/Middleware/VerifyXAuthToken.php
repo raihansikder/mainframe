@@ -20,6 +20,7 @@ class VerifyXAuthToken
     public function handle($request, Closure $next)
     {
 
+
         \Auth::logout(); // End user session.
 
         $user = user();

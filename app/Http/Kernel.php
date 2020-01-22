@@ -24,9 +24,7 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
 
-        /*
-         * Mainframe middleware
-         */
+        /* * Mainframe middlewares */
         'request.json' => \App\Mainframe\Http\Middleware\RequestJson::class,
         'superuser' => \App\Mainframe\Http\Middleware\AllowSuperuser::class,
         'bearer-token' => \App\Mainframe\Http\Middleware\VerifyBearerToken::class,

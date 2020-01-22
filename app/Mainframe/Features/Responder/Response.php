@@ -221,7 +221,7 @@ class Response
         // Load Generic response
         $data = [
             'code' => $this->code,
-            'status' => $this->status,
+            'status' => $this->status ?: 'success',
             'message' => $this->message
         ];
         // Load payload
@@ -291,6 +291,7 @@ class Response
 
     /**
      * Determine what needs to be dispatched.
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Illuminate\View\View|void
      */
     public function dispatch()

@@ -27,7 +27,7 @@ trait UserHelper
      * Find user based on bearer token(auth_token)
      *
      * @param $bearer_token
-     * @return mixed|null
+     * @return \App\Mainframe\Modules\Users\User|mixed|null
      */
     public static function ofBearer($bearer_token)
     {
@@ -36,6 +36,35 @@ trait UserHelper
         }
 
         return null;
+    }
+
+    /**
+     * @param $token
+     * @param $clientId
+     * @return \App\Mainframe\Modules\Users\User|mixed|null
+     */
+    public static function ofXAuthToken($token, $clientId)
+    {
+        if ($token && $clientId) { // No logged user. get from user_id in url param or request header
+            /** @noinspection PhpUndefinedMethodInspection */
+            return User::where('api_token', $token)
+                ->where('id', $clientId)
+                ->remember(timer('short'))
+                ->first();
+        }
+
+        return null;
+    }
+
+    /**
+     * Resolve the API caller
+     * @param $token
+     * @param $clientId
+     * @return null|\App\Mainframe\Modules\Users\User|mixed
+     */
+    public static function apiCaller($token, $clientId)
+    {
+        return User::ofXAuthToken($token, $clientId);
     }
 
     /**

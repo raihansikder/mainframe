@@ -32,31 +32,17 @@ class Mf
      */
     public static function user($id = null)
     {
-        /*
-         * Resolve user from id.
-         */
+        // Resolve user from id.
         if ($id) {
             return User::remember(timer('short'))->find($id);
         }
 
-        /**
-         * Resolve user from X-Auth-Token and client-id
-         */
-
-        $apiToken = request()->header('X-Auth-Token', null);
-        $clientId = request()->header('client-id', null);
-
-        if ($apiToken && $clientId) { // No logged user. get from user_id in url param or request header
-            /** @noinspection PhpUndefinedMethodInspection */
-            return User::where('api_token', $apiToken)
-                ->where('id', $clientId)
-                ->remember(timer('short'))
-                ->first();
+        // Check if usr is API caller
+        if ($user = Mf::apiCaller()) {
+            return $user;
         }
 
-        /*
-         * Resolved from logged in user.
-         */
+        // Resolved from logged in user
         if (Auth::check()) {
             return Auth::user();
         }
@@ -65,9 +51,27 @@ class Mf
         return new User();
     }
 
+    /**
+     * Get bearer
+     *
+     * @return null|\App\Mainframe\Modules\Users\User|mixed
+     */
     public static function bearer()
     {
         return User::ofBearer(request()->bearerToken());
+    }
+
+    /**
+     * Get
+     *
+     * @return null|\App\Mainframe\Modules\Users\User|mixed
+     */
+    public static function apiCaller()
+    {
+        $apiToken = request()->header('X-Auth-Token', null);
+        $clientId = request()->header('client-id', null);
+
+        return User::apiCaller($apiToken, $clientId);
     }
 
     /**
