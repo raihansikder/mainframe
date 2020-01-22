@@ -269,7 +269,7 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
     | The possible options for some field. Variable name should be
     |
     */
-    protected $with = ['groups'];
+    // protected $with = ['groups'];
 
     /**
      * Allowed permissions values.

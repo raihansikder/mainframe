@@ -39,7 +39,11 @@ class UserApiController extends ApiController
 
     public function profile()
     {
-        return $this->load($this->user)->send();
+        $payload = $this->user
+            ->load(['groups'])
+            ->makeHidden(['group_ids', 'is_test']);
+
+        return $this->load($payload)->send();
     }
 
     /**

@@ -39,7 +39,7 @@
 
 
         <div class="clearfix"></div>
-        @include('form.text',['var'=>['name'=>'email_verified_at','label'=>'Email verified at', 'editable'=>false]])
+        @include('form.datetime',['var'=>['name'=>'email_verified_at','label'=>'Email verified at']])
 
         <div class="clearfix"></div>
         <?php

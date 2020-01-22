@@ -26,6 +26,16 @@ function bearer()
 }
 
 /**
+ * Get bearer user
+ *
+ * @return null|User
+ */
+function apiCaller()
+{
+    return Mf::apiCaller();
+}
+
+/**
  * Get a cached version of active modules.
  *
  * @return \App\Mainframe\Modules\Modules\Module[]|mixed
@@ -34,6 +44,7 @@ function modules()
 {
     return Mf::modules();
 }
+
 
 /**
  * create uuid

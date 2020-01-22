@@ -194,6 +194,7 @@ class ModularController extends BaseController
      */
     public function update(Request $request, $id)
     {
+
         if (! $this->element = $this->model->find($id)) {
             return $this->notFound();
         }

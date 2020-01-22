@@ -45,7 +45,7 @@
                     </div>
                     <div class="clearfix"></div>
                     <a class="btn btn-default btn-block" target="_blank"
-                       href="#">{{ __('Register') }}</a>
+                       href="{{route('register')}}">{{ __('Register') }}</a>
                 </div>
             </div>
         </form>

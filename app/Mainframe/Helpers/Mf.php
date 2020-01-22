@@ -34,7 +34,7 @@ class Mf
     {
         // Resolve user from id.
         if ($id) {
-            return User::remember(timer('short'))->find($id);
+            return User::byId($id);
         }
 
         // Check if usr is API caller
@@ -48,6 +48,7 @@ class Mf
         }
 
         // Return an empty user instance
+        // return null;
         return new User();
     }
 

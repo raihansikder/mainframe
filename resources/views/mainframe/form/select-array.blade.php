@@ -3,7 +3,7 @@ use App\Mainframe\Features\Form\Select\SelectArray;
 
 $input = new SelectArray($var, $element ?? null);
 ?>
-<div class="form-group {{$input->containerClass}} {{$errors->first($input->name, ' has-error')}}">
+<div class="form-group {{$input->containerClass}} {{$errors->first($input->name, ' has-error')}} {{$input->uid}}">
 
     @if($input->label)
         <label id="label_{{$input->name}}"

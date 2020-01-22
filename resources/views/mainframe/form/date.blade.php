@@ -28,7 +28,9 @@
  * @var string $formState create|edit
  */
 
-$input = new App\Mainframe\Features\Form\Text\InputText($var, $element ?? null);
+use App\Mainframe\Features\Form\Text\Date;
+
+$input = new Date($var, $element ?? null);
 ?>
 
 <div class="form-group {{$input->containerClass}} {{$errors->first($input->name, ' has-error')}} {{$input->uid}}">
@@ -42,11 +44,7 @@ $input = new App\Mainframe\Features\Form\Text\InputText($var, $element ?? null);
     @endif
 
     @if($input->isEditable)
-        @if($input->type === 'password')
-            {{ Form::password($input->name, $input->params) }}
-        @else
-            {{ Form::text($input->name, $input->value(), $input->params) }}
-        @endif
+        {{ Form::text($input->name, $input->value(), $input->params) }}
     @else
         <span class="{{$input->params['class']}} readonly">
             {{ $input->print() }}
@@ -55,7 +53,19 @@ $input = new App\Mainframe\Features\Form\Text\InputText($var, $element ?? null);
     @endif
 
     {!! $errors->first($input->name, '<span class="help-block">:message</span>') !!}
-
 </div>
+
+@section('js')
+    @parent
+    <script>
+        $('#{{$input->params['id']}}').datepicker(
+            {
+                format: 'yyyy-mm-dd',
+                autoclose: true,
+                clearBtn: true
+            }
+        );
+    </script>
+@stop
 
 <?php unset($input) ?>

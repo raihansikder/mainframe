@@ -20,33 +20,20 @@ class VerifyXAuthToken
     public function handle($request, Closure $next)
     {
 
-
         \Auth::logout(); // End user session.
 
-        $user = user();
+        $user = apiCaller();
 
         if (! $user) {
-            return $this->response()->failed('Not authenticated.(Invalid X-Auth-Token)', 401);
+            return $this->failed('Not authenticated.(Invalid X-Auth-Token)', 401);
         }
 
         if ((! $user->can('make-api-call'))) {
-            return $this->response()->failed('Permission denied (make-api-cal)', 401);
+            return $this->failed('Permission denied (make-api-cal)', 401);
         }
 
         return $next($request);
     }
 
-    /**
-     * Fetch matching user.
-     *
-     * @param $apiToken
-     * @param $clientId
-     * @return mixed|User
-     */
-    // public function fetchUser($apiToken, $clientId)
-    // {
-    //     return User::where('api_token', $apiToken)
-    //         ->where('id', $clientId)
-    //         ->remember(timer('short'))->first();
-    // }
+
 }

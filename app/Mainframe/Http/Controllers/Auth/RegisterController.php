@@ -163,8 +163,8 @@ class RegisterController extends BaseController
             'name' => request('first_name').' '.request('last_name'),
             'email' => request('email'),
             'password' => Hash::make(request('password')),
-            // 'group_ids' => request('group_ids'),
             'group_ids' => [(string) $this->group->id],
+            'is_active' => 1,
         ]);
     }
 

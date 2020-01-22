@@ -13,7 +13,7 @@ class SuperadminTestCase extends TestCase
     {
         parent::setUp();
 
-        $this->superadmin = User::find(1);
+        $this->superadmin = user(1);
         $this->be($this->superadmin); // Impersonate as the currently created admin user
     }
 

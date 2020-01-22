@@ -4,7 +4,7 @@ $input = new App\Mainframe\Features\Form\Upload($var, $element ?? null);
 ?>
 
 {{-- upload div + form --}}
-<div class="{{$input->containerClass}}">
+<div class="{{$input->containerClass}}  {{$input->uid}}">
 
     @if($user->can(['create','update'], $element))
 

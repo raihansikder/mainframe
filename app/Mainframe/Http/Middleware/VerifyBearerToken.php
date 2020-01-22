@@ -24,12 +24,12 @@ class VerifyBearerToken
 
         // Response error
         if (! $user) {
-            return $this->response()->failed('Not authenticated.(Invalid Bearer Token)', 401);
+            return $this->failed('Not authenticated.(Invalid Bearer Token)', 401);
         }
 
         // Email not verified
         if (! $user->email_verified_at) {
-            return $this->response()->failed('Email not verified', 401);
+            return $this->failed('Email not verified or user is not active.', 401);
         }
 
         // Add logged user in the request attribute

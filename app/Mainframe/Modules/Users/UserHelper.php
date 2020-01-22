@@ -26,13 +26,28 @@ trait UserHelper
     /**
      * Find user based on bearer token(auth_token)
      *
+     * @param $id
+     * @return \App\Mainframe\Modules\Users\User|mixed|null
+     */
+    public static function byId($id = null)
+    {
+        if ($id) {
+            return User::active()->remember(timer('short'))->find($id);
+        }
+
+        return null;
+    }
+
+    /**
+     * Find user based on bearer token(auth_token)
+     *
      * @param $bearer_token
      * @return \App\Mainframe\Modules\Users\User|mixed|null
      */
-    public static function ofBearer($bearer_token)
+    public static function ofBearer($bearer_token = null)
     {
         if ($bearer_token) {
-            return User::where('auth_token', $bearer_token)->first();
+            return User::active()->where('auth_token', $bearer_token)->first();
         }
 
         return null;
@@ -47,7 +62,8 @@ trait UserHelper
     {
         if ($token && $clientId) { // No logged user. get from user_id in url param or request header
             /** @noinspection PhpUndefinedMethodInspection */
-            return User::where('api_token', $token)
+
+            return User::active()->where('api_token', $token)
                 ->where('id', $clientId)
                 ->remember(timer('short'))
                 ->first();
@@ -58,6 +74,7 @@ trait UserHelper
 
     /**
      * Resolve the API caller
+     *
      * @param $token
      * @param $clientId
      * @return null|\App\Mainframe\Modules\Users\User|mixed

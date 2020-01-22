@@ -7,7 +7,7 @@ $var['type'] = $var['type'] ?? 'text';
 $input = new TextArea($var, $element ?? null);
 ?>
 {{-- HTML for the input/select block --}}
-<div class="form-group {{$input->containerClass}} {{$errors->first($input->name, ' has-error')}}">
+<div class="form-group {{$input->containerClass}} {{$errors->first($input->name, ' has-error')}} {{$input->uid}}">
 
     @if($input->label)
         <label id="label_{{$input->name}}"

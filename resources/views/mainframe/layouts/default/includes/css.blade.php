@@ -18,8 +18,8 @@ $scripts = [
     'mainframe/templates/admin/plugins/datepicker/datepicker3.css',
     'mainframe/templates/admin/plugins/daterangepicker/daterangepicker.css',
     'mainframe/templates/admin/plugins/datetimepicker/bootstrap-datetimepicker.css',
-    'mainframe/templates/admin/plugins/datetimepicker/bootstrap-datetimepicker.min.css',
     'mainframe/templates/admin/plugins/bootstrap-slider/slider.css',
+    'mainframe/templates/admin/plugins/jQueryUI/jquery-ui.css',
     /**
      * Custom CSS files
      */

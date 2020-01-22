@@ -5,7 +5,7 @@ use App\Mainframe\Features\Form\Checkbox\Checkbox;
 
 $input = new Checkbox($var, $element ?? null); ?>
 
-<div class="form-group {{$input->containerClass}} {{$errors->first($input->name, ' has-error')}}">
+<div class="form-group {{$input->containerClass}} {{$errors->first($input->name, ' has-error')}} {{$input->uid}}">
 
     <input name="checkbox_{{$input->name}}"
            type="checkbox"
