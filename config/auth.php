@@ -46,6 +46,15 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
+
+        /** Added for mainframe  */
+        'x-auth' => [
+            'driver' => 'x-auth',
+        ],
+
+        'bearer' => [
+            'driver' => 'bearer',
+        ],
     ],
 
     /*

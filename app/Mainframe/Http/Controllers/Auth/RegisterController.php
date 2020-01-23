@@ -96,6 +96,7 @@ class RegisterController extends BaseController
      */
     public function register(Request $request)
     {
+
         if (! $this->groupAllowedForRegistration()) {
             return $this->response()->permissionDenied();
         }

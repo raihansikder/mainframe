@@ -37,42 +37,26 @@ class Mf
             return User::byId($id);
         }
 
-        // Check if usr is API caller
-        if ($user = Mf::apiCaller()) {
-            return $user;
-        }
-
         // Resolved from logged in user
         if (Auth::check()) {
             return Auth::user();
         }
 
-        // Return an empty user instance
+        // // Check if usr is bearer
+        // if ($user = Auth::guard('bearer')->user()) {
+        //     return $user;
+        // }
+        //
+        // // Check if usr is API caller
+        // if ($user = Auth::guard('x-auth')->user()) {
+        //     return $user;
+        // }
+
+
+        // Return an empty guest user instance
         // return null;
-        return new User();
-    }
 
-    /**
-     * Get bearer
-     *
-     * @return null|\App\Mainframe\Modules\Users\User|mixed
-     */
-    public static function bearer()
-    {
-        return User::ofBearer(request()->bearerToken());
-    }
-
-    /**
-     * Get
-     *
-     * @return null|\App\Mainframe\Modules\Users\User|mixed
-     */
-    public static function apiCaller()
-    {
-        $apiToken = request()->header('X-Auth-Token');
-        $clientId = request()->header('client-id');
-
-        return User::apiCaller($apiToken, $clientId);
+        return User::guestInstance();
     }
 
     /**

@@ -3,6 +3,7 @@
 namespace App\Mainframe\Http\Controllers;
 
 use Illuminate\Support\Str;
+use App\Mainframe\Modules\Users\User;
 use App\Mainframe\Modules\Modules\Module;
 
 class TestController extends BaseController
@@ -26,11 +27,7 @@ class TestController extends BaseController
     public function test()
     {
 
-        $modules = Module::all();
-        foreach ($modules as $module) {
-            $module->namespace = '\App\Mainframe\Modules\\'.Str::plural($module->modelClassName());
-            $module->save();
-        }
+        return bearer();
 
     }
 

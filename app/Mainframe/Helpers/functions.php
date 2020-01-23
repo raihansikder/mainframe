@@ -18,21 +18,21 @@ function user($id = null)
 /**
  * Get bearer user
  *
- * @return null|User
+ * @return \Illuminate\Contracts\Auth\Authenticatable
  */
 function bearer()
 {
-    return Mf::bearer();
+    return Auth::guard('bearer')->user();
 }
 
 /**
  * Get bearer user
  *
- * @return null|User
+ * @return \Illuminate\Contracts\Auth\Authenticatable
  */
 function apiCaller()
 {
-    return Mf::apiCaller();
+    return Auth::guard('x-auth')->user();
 }
 
 /**

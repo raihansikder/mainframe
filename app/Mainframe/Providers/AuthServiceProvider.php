@@ -3,6 +3,7 @@
 namespace App\Mainframe\Providers;
 
 use Gate;
+use Auth;
 use App\Mainframe\Modules\Users\User;
 use App\Mainframe\Features\Resolvers\PolicyResolver;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
@@ -26,12 +27,14 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
-
         Gate::guessPolicyNamesUsing(function ($modelClass) {
             return PolicyResolver::resolve($modelClass); // Custom policy discovery
         });
 
         $this->registerGates();
+        $this->registerGuards();
+
+
 
     }
 
@@ -41,7 +44,7 @@ class AuthServiceProvider extends ServiceProvider
     public function registerGates()
     {
 
-        $this->registerCustomPermissions(); // from config mainframe.permissions.custom
+        $this->gateCustomPermissions(); // from config mainframe.permissions.custom
 
         // Gate::define('permission-key', function (User $user) {
         //     return $user->hasPermission('permission-key');
@@ -53,7 +56,7 @@ class AuthServiceProvider extends ServiceProvider
      * Based on permission keys set in config/mainframe/permissions.php
      * custom gates are auto defined.
      */
-    public function registerCustomPermissions()
+    public function gateCustomPermissions()
     {
         $customPermissions = config('mainframe.permissions.custom');
 
@@ -64,5 +67,26 @@ class AuthServiceProvider extends ServiceProvider
                 });
             }
         }
+    }
+
+    public function registerGuards()
+    {
+        /**
+         * Drive x-auth
+         */
+        Auth::viaRequest('x-auth', function (\Illuminate\Http\Request $request) {
+
+            return User::apiAuthenticator();
+
+        });
+
+        /**
+         * Drive bearer
+         */
+        Auth::viaRequest('bearer', function (\Illuminate\Http\Request $request) {
+
+            return User::bearer();
+
+        });
     }
 }

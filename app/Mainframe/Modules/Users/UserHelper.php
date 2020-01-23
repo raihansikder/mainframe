@@ -31,57 +31,46 @@ trait UserHelper
      */
     public static function byId($id = null)
     {
-        if ($id) {
-            return User::active()->remember(timer('short'))->find($id);
-        }
+        return User::active()->remember(timer('short'))->find($id);
 
-        return null;
     }
 
     /**
-     * Find user based on bearer token(auth_token)
-     *
-     * @param $bearer_token
-     * @return \App\Mainframe\Modules\Users\User|mixed|null
+     * @param  null  $token
+     * @return \Illuminate\Database\Eloquent\Model|\Illuminate\Database\Query\Builder|object
      */
-    public static function ofBearer($bearer_token = null)
+    public static function bearer($token = null)
     {
-        if ($bearer_token) {
-            return User::active()->where('auth_token', $bearer_token)->first();
-        }
+        $token = $token ?: request()->bearerToken();
 
-        return null;
-    }
-
-    /**
-     * @param $token
-     * @param $clientId
-     * @return \App\Mainframe\Modules\Users\User|mixed|null
-     */
-    public static function ofXAuthToken($token, $clientId)
-    {
-        if ($token && $clientId) { // No logged user. get from user_id in url param or request header
-            /** @noinspection PhpUndefinedMethodInspection */
-
-            return User::active()->where('api_token', $token)
-                ->where('id', $clientId)
+        if ($token) {
+            return User::active()
+                ->where('auth_token', $token)
                 ->remember(timer('short'))
                 ->first();
         }
 
-        return null;
+        // return Auth::guard('bearer')->user();
     }
 
     /**
      * Resolve the API caller
      *
-     * @param $token
-     * @param $clientId
+     * @param  null|mixed  $token
+     * @param  null|mixed  $clientId
      * @return null|\App\Mainframe\Modules\Users\User|mixed
      */
-    public static function apiCaller($token, $clientId)
+    public static function apiAuthenticator($token = null, $clientId = null)
     {
-        return User::ofXAuthToken($token, $clientId);
+        $token = $token ?: request()->header('X-Auth-Token');
+        $clientId = $clientId ?: request()->header('client-id');
+
+        if ($token && $clientId) {
+            return \App\User::active()
+                ->where('api_token', $token)
+                ->remember(timer('short'))
+                ->find($clientId);
+        }
     }
 
     /**
@@ -136,5 +125,15 @@ trait UserHelper
     public function ofTenant()
     {
         return $this->tenant_id ?: false;
+    }
+
+    /**
+     * Create an empty guest user
+     *
+     * @return \App\Mainframe\Modules\Users\User
+     */
+    public static function guestInstance()
+    {
+        return new \App\User(['first_name' => 'guest']);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Mainframe\Http\Controllers\Api;
 
+use Auth;
 use Request;
 use App\Mainframe\Modules\Users\UserController;
 
@@ -15,7 +16,8 @@ class UserApiController extends ApiController
     {
         parent::__construct();
 
-        $this->user = bearer();
+        $this->middleware('bearer-token');
+        $this->user = Auth::guard('bearer')->user();
 
         $this->injectUserIdentityInRequest();
 
@@ -39,8 +41,8 @@ class UserApiController extends ApiController
 
     public function profile()
     {
-        $payload = $this->user
-            ->load(['groups'])
+
+        $payload = $this->user->load(['groups'])
             ->makeHidden(['group_ids', 'is_test']);
 
         return $this->load($payload)->send();

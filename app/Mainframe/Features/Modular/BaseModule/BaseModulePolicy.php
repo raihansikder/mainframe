@@ -188,7 +188,7 @@ class BaseModulePolicy
      * @param  \App\Mainframe\Modules\Users\User  $user
      * @return mixed
      */
-    public function api(User $user)
+    public function api($user)
     {
         if (! $user->hasPermission($this->moduleName.'-api')) {
             return false;

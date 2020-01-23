@@ -2,6 +2,7 @@
 
 namespace App\Mainframe\Http\Middleware;
 
+use Auth;
 use Closure;
 use App\Mainframe\Features\Core\Traits\SendResponse;
 
@@ -18,23 +19,20 @@ class VerifyBearerToken
      */
     public function handle($request, Closure $next)
     {
+        Auth::logout(); // Force to discard any user state.
 
-        // Try to find the user.
-        $user = bearer();
-
-        // Response error
-        if (! $user) {
-            return $this->failed('Not authenticated.(Invalid Bearer Token)', 401);
+        if (! $user = Auth::guard('bearer')->user()) {
+            return $this->failed('Authentication failed', 401);
         }
+
 
         // Email not verified
         if (! $user->email_verified_at) {
             return $this->failed('Email not verified or user is not active.', 401);
         }
 
-        // Add logged user in the request attribute
-        // $request->attributes->add(['logged_user' => $user]);
-        // $request->attributes->add(['logged_user_id' => $user->id]);
+        // Onetime login for Api
+        // \Auth::onceUsingId($user->id);
 
         return $next($request);
     }
