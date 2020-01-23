@@ -33,9 +33,6 @@ class AuthServiceProvider extends ServiceProvider
 
         $this->registerGates();
         $this->registerGuards();
-
-
-
     }
 
     /**
@@ -69,24 +66,23 @@ class AuthServiceProvider extends ServiceProvider
         }
     }
 
+    /**
+     * Register the guards
+     */
     public function registerGuards()
     {
         /**
-         * Drive x-auth
+         * Derive x-auth
          */
         Auth::viaRequest('x-auth', function (\Illuminate\Http\Request $request) {
-
             return User::apiAuthenticator();
-
         });
 
         /**
-         * Drive bearer
+         * Derive bearer
          */
         Auth::viaRequest('bearer', function (\Illuminate\Http\Request $request) {
-
             return User::bearer();
-
         });
     }
 }
