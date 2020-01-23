@@ -1,5 +1,6 @@
 <?php /** @noinspection ClassConstantCanBeUsedInspection */
 /** @noinspection UnknownInspectionInspection */
+
 /** @noinspection DuplicatedCode */
 
 use App\Mainframe\Modules\Modules\Module;
@@ -26,6 +27,7 @@ class CreateSuperHeroesTable extends Migration
             $table->string('name', 1024)->nullable()->default(null);
 
             /******* Custom columns **********/
+            // Todo: Add module specific fields
             //$table->string('title', 100)->nullable()->default(null);
             //$table->text('somecolumnsname')->nullable()->default(null);
             /*********************************/
@@ -45,10 +47,9 @@ class CreateSuperHeroesTable extends Migration
         if (Module::where('name', $name)->doesntExist()) {
             $module = new Module(['name' => $name]);
 
-            $module->title = str_replace('-', ' ', ucfirst(Str::singular($name)));
-            $module->module_group_id = 1;
-            $module->description = 'Manage '.str_replace('-', ' ', Str::singular($name));
-
+            $module->title = str_replace('-', ' ', ucfirst(Str::singular($name)));        // Todo: Give a human friendly name
+            $module->module_group_id = 1;                                                 // Todo: Are you sure you want to put this in default module-group
+            $module->description = 'Manage '.str_replace('-', ' ', Str::singular($name)); // Todo: human friendly name.
             $module->module_table = '{table}';
             $module->route_path = '{route_path}';
             $module->route_name = '{route_name}';
