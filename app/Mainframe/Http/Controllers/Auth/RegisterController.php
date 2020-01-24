@@ -28,17 +28,21 @@ class RegisterController extends BaseController
 
     use RegistersUsers;
 
-    /** @var User */
-    public $user;
-    /** @var Group */
-    public $group;
-
     /**
      * Where to redirect users after registration.
      *
      * @var string
      */
     protected $redirectTo = RouteServiceProvider::HOME;
+
+    /** @var User */
+    public $user;
+
+    /** @var Group */
+    public $group;
+
+    /** @var string */
+    public $defaultGroupName = 'user';
 
     /** @var string */
     protected $form = 'mainframe.auth.register';
@@ -67,7 +71,7 @@ class RegisterController extends BaseController
 
         // If not group defined in url then register in default 'user' group.
         if (! $this->group) {
-            $this->group = Group::byName('user');
+            $this->group = Group::byName($this->defaultGroupName);
         }
 
     }

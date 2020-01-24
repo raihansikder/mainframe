@@ -32,12 +32,15 @@ class ModuleRestFeatureTest extends SuperadminTestCase
      * @var \App\Mainframe\Modules\Modules\Module
      */
     public $module;
+
     /**
      * A sample element/entry that is used for testing.
      *
      * @var \App\Mainframe\Modules\Samples\LoremIpsums\LoremIpsum
      */
+
     public $element;
+
     /**
      * Define a element name for storing. This is used for identifying the
      * newly created item and remove it afterwards.
