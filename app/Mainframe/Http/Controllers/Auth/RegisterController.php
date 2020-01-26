@@ -36,13 +36,20 @@ class RegisterController extends BaseController
     protected $redirectTo = RouteServiceProvider::HOME;
 
     /** @var User */
-    public $user;
+    protected $user;
 
     /** @var Group */
-    public $group;
+    protected $group;
+
+    /** @var array */
+    protected $groupsAllowedForRegistration = [
+        'tenant-admin',
+        'user',
+        'test-group',
+    ];
 
     /** @var string */
-    public $defaultGroupName = 'user';
+    protected $defaultGroupName = 'user';
 
     /** @var string */
     protected $form = 'mainframe.auth.register';
@@ -84,8 +91,8 @@ class RegisterController extends BaseController
     public function showRegistrationForm()
     {
 
-        if (! $this->groupAllowedForRegistration()) {
-            return $this->response()->permissionDenied();
+        if (! $this->groupAllowed()) {
+            return $this->response()->permissionDenied('Group not allowed for registration');
         }
 
         return view($this->form)
@@ -101,7 +108,7 @@ class RegisterController extends BaseController
     public function register(Request $request)
     {
 
-        if (! $this->groupAllowedForRegistration()) {
+        if (! $this->groupAllowed()) {
             return $this->response()->permissionDenied();
         }
 
@@ -191,9 +198,9 @@ class RegisterController extends BaseController
      *
      * @return bool
      */
-    public function groupAllowedForRegistration()
+    public function groupAllowed()
     {
-        if (! in_array($this->group->name, config('mainframe.config.groups_allowed_for_registration'))) {
+        if (! in_array($this->group->name, $this->groupsAllowedForRegistration)) {
 
             return false;
         }

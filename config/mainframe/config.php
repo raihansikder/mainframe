@@ -50,21 +50,21 @@ return [
     |
     */
 
-    'groups_allowed_for_registration' => [
-        // 'superuser',
-        // 'api',
-        'tenant-admin',
-        'project-admin',
-        'artp-admin',
-        'artp-buyer',
-        'orhc-admin',
-        'orhc-nurse',
-        'orhc-patient',
-        'orhc-family-member',
-        // 'orhc-api',
-        // 'artp-api',
-        'test-group',
-        'user'
-    ]
+    // 'groups_allowed_for_registration' => [
+    //     // 'superuser',
+    //     // 'api',
+    //     'tenant-admin',
+    //     'project-admin',
+    //     'artp-admin',
+    //     'artp-buyer',
+    //     'orhc-admin',
+    //     'orhc-nurse',
+    //     'orhc-patient',
+    //     'orhc-family-member',
+    //     // 'orhc-api',
+    //     // 'artp-api',
+    //     'test-group',
+    //     'user'
+    // ]
 
 ];
