@@ -10,7 +10,3 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('web-test', function () {
-    return 'web-test working!';
-});

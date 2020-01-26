@@ -27,7 +27,8 @@ class TestController extends BaseController
     public function test()
     {
 
-        return bearer();
+        dd(\user()->inGroup('superauser'));
+       return +\user()->inGroup('superaadmin');
 
     }
 
