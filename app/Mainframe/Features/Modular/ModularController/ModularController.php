@@ -73,7 +73,7 @@ class ModularController extends BaseController
 
         $vars = ['columns' => $this->datatable()->columns()];
 
-        return $this->view(GridView::resolve($this->module))->with($vars);
+        return $this->view($this->grid())->with($vars);
     }
 
     /**
@@ -131,7 +131,7 @@ class ModularController extends BaseController
             'formState' => 'create',
         ];
 
-        return $this->view($this->createFormView())->with($vars);
+        return $this->view($this->form('create'))->with($vars);
     }
 
     /**
@@ -157,7 +157,7 @@ class ModularController extends BaseController
             'formState' => 'edit',
         ];
 
-        return $this->view($this->editFormView())->with($vars);
+        return $this->view($this->form('edit'))->with($vars);
     }
 
     /**
