@@ -200,7 +200,7 @@ class Response
     {
         if ($to) {
             $redirect = redirect($to);
-        } elseif ($this->redirectTo) {
+        } elseif ($this->isSuccess() && $this->redirectTo) {
             $redirect = redirect($this->redirectTo);
         } else {
             $redirect = redirect()->back();
@@ -418,7 +418,6 @@ class Response
 
         return $this;
     }
-
 
 
     /*
