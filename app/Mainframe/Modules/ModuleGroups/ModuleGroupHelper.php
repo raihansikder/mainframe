@@ -25,6 +25,7 @@ trait ModuleGroupHelper
     {
         return ModuleGroup::active()->where('parent_id', $id)
             ->orderBy('order')
+            ->orderBy('title')
             ->remember(timer('long'))->get();
     }
 
@@ -35,7 +36,7 @@ trait ModuleGroupHelper
      */
     public static function tree()
     {
-        /** @var \App\Mainframe\Modules\ModuleGroups\ModuleGroup $moduleGroups */
+        /** @var \App\Mainframe\Modules\ModuleGroups\ModuleGroup[] $moduleGroups */
         $moduleGroups = ModuleGroup::ofParentId(0);
         $list = [];
         foreach ($moduleGroups as $moduleGroup) {

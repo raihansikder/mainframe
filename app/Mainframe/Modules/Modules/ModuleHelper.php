@@ -104,7 +104,9 @@ trait ModuleHelper
     public static function ofGroupId($id = 0)
     {
         return Module::where('module_group_id', $id)
-            ->where('is_active', 1)->orderBy('order')
+            ->where('is_active', 1)
+            ->orderBy('order')
+            ->orderBy('title')
             ->remember(timer('long'))
             ->get();
     }
