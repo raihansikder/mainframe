@@ -174,7 +174,11 @@ class ModularController extends BaseController
 
         $this->element = $this->model; // Create an empty model to be stored.
 
-        $this->attemptStore();
+        try {
+            $this->attemptStore();
+        } catch (\Exception $e) {
+            $this->response()->validator = $e->getMessage();
+        }
 
         $this->response()->redirectTo = $this->resolveRedirectTo();
 
@@ -203,7 +207,11 @@ class ModularController extends BaseController
             return $this->permissionDenied();
         }
 
-        $this->attemptUpdate();
+        try {
+            $this->attemptUpdate();
+        } catch (\Exception $e) {
+            $this->response()->validator = $e->getMessage();
+        }
 
         $this->response()->redirectTo = $this->resolveRedirectTo();
 
@@ -231,7 +239,11 @@ class ModularController extends BaseController
             return $this->permissionDenied();
         }
 
-        $this->attemptDestroy();
+        try {
+            $this->attemptDestroy();
+        } catch (\Exception $e) {
+            $this->response()->validator = $e->getMessage();
+        }
 
         $this->response()->redirectTo = $this->resolveRedirectTo();
 
