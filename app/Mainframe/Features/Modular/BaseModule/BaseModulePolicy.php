@@ -7,7 +7,7 @@
 namespace App\Mainframe\Features\Modular\BaseModule;
 
 use Str;
-use App\Mainframe\Modules\Users\User;
+use App\User;
 use App\Mainframe\Modules\Modules\Module;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
@@ -40,7 +40,7 @@ class BaseModulePolicy
     /**
      * Determine whether the user can view any items.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @return mixed
      */
     public function viewAny($user)
@@ -56,7 +56,7 @@ class BaseModulePolicy
     /**
      * Determine whether the user can view the item.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule  $element
      * @return mixed
      */
@@ -72,7 +72,7 @@ class BaseModulePolicy
     /**
      * Determine whether the user can create items.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @return mixed
      */
     public function create($user)
@@ -87,7 +87,7 @@ class BaseModulePolicy
     /**
      * Determine whether the user can update the item.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule  $element
      * @return mixed
      */
@@ -103,7 +103,7 @@ class BaseModulePolicy
     /**
      * Determine whether the user can delete the item.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule  $element
      * @return mixed
      */
@@ -119,7 +119,7 @@ class BaseModulePolicy
     /**
      * Determine whether the user can restore the item.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule  $element
      * @return mixed
      */
@@ -135,7 +135,7 @@ class BaseModulePolicy
     /**
      * Determine whether the user can permanently delete the item.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule  $element
      * @return mixed
      */
@@ -152,7 +152,7 @@ class BaseModulePolicy
      * Determine whether the user can view change log of the item
      * In the code you can use both camelCase and kebab-case function name.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule  $element
      * @return bool
      */
@@ -169,7 +169,7 @@ class BaseModulePolicy
      * Determine whether the user can view change log of the item
      * In the code you can use both camelCase and kebab-case function name.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule  $element
      * @return bool
      */
@@ -185,7 +185,7 @@ class BaseModulePolicy
     /**
      * Check if user can access Api
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @return mixed
      */
     public function api($user)

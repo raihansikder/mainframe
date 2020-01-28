@@ -5,7 +5,7 @@ namespace Tests\Feature\Mainframe\Auth;
 use App\Group;
 use Faker\Factory;
 use Tests\TestCase;
-use App\Mainframe\Modules\Users\User;
+use App\User;
 
 class UserRegistrationTest extends TestCase
 {

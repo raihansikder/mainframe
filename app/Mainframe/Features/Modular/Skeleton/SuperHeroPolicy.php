@@ -14,7 +14,7 @@ class SuperHeroPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can view any superHeroes.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @return mixed
      */
     public function viewAny($user)
@@ -25,7 +25,7 @@ class SuperHeroPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can view the superHero.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @param  SuperHero  $superHero
      * @return mixed
      */
@@ -34,7 +34,7 @@ class SuperHeroPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can create superHeroes.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @return mixed
      */
     // public function create($user) { }
@@ -42,7 +42,7 @@ class SuperHeroPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can update the superHero.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @param  SuperHero  $superHero
      * @return mixed
      */
@@ -51,7 +51,7 @@ class SuperHeroPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can delete the superHero.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @param  SuperHero  $superHero
      * @return mixed
      */
@@ -60,7 +60,7 @@ class SuperHeroPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can restore the superHero.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @param  SuperHero  $superHero
      * @return mixed
      */
@@ -69,7 +69,7 @@ class SuperHeroPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can permanently delete the superHero.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @param  SuperHero  $superHero
      * @return mixed
      */

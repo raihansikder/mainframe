@@ -5,7 +5,7 @@ namespace App\Mainframe\Helpers;
 use Auth;
 use Cache;
 use Schema;
-use App\Mainframe\Modules\Users\User;
+use App\User;
 use App\Mainframe\Modules\Modules\Module;
 use App\Mainframe\Modules\ModuleGroups\ModuleGroup;
 

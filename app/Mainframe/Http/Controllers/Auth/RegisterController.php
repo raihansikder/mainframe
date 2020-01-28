@@ -4,7 +4,7 @@ namespace App\Mainframe\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use App\Mainframe\Modules\Users\User;
+use App\User;
 use Illuminate\Auth\Events\Registered;
 use App\Mainframe\Modules\Groups\Group;
 use Illuminate\Support\Facades\Validator;
@@ -164,7 +164,7 @@ class RegisterController extends BaseController
     /**
      * Create a new user instance after a valid registration.
      *
-     * @return \App\Mainframe\Modules\Users\User
+     * @return \App\User
      */
     protected function createUser()
     {

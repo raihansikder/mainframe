@@ -80,7 +80,7 @@ class LoginController extends BaseController
      * The user has been authenticated.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Mainframe\Modules\Users\User|mixed  $user
+     * @param  \App\User|mixed  $user
      * @return mixed
      */
     protected function authenticated(Request $request, $user)

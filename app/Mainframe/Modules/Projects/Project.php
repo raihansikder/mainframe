@@ -22,11 +22,11 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule;
  * @property int|null $deleted_by
  * @property-read \Illuminate\Database\Eloquent\Collection|\OwenIt\Auditing\Models\Audit[] $audits
  * @property-read int|null $audits_count
- * @property-read \App\Mainframe\Modules\Users\User|null $creator
+ * @property-read \App\User|null $creator
  * @property-read \App\Mainframe\Modules\Uploads\Upload $latestUpload
  * @property-read \App\Mainframe\Modules\Projects\Project $project
  * @property-read \App\Mainframe\Modules\Tenants\Tenant $tenant
- * @property-read \App\Mainframe\Modules\Users\User|null $updater
+ * @property-read \App\User|null $updater
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Uploads\Upload[] $uploads
  * @property-read int|null $uploads_count
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Features\Modular\BaseModule\BaseModule active()
@@ -220,12 +220,12 @@ class Project extends BaseModule
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    // public function updater() { return $this->belongsTo(\App\Mainframe\Modules\Users\User::class, 'updated_by'); }
+    // public function updater() { return $this->belongsTo(\App\User::class, 'updated_by'); }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    // public function creator() { return $this->belongsTo(\App\Mainframe\Modules\Users\User::class, 'created_by'); }
+    // public function creator() { return $this->belongsTo(\App\User::class, 'created_by'); }
 
     /*
    |--------------------------------------------------------------------------

@@ -6,7 +6,7 @@
 
 namespace App\Mainframe\Modules\Subscriptions;
 
-use App\Mainframe\Modules\Users\User;
+use App\User;
 use App\Mainframe\Features\Modular\BaseModule\BaseModulePolicy;
 
 class SubscriptionPolicy extends BaseModulePolicy
@@ -15,7 +15,7 @@ class SubscriptionPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can view any subscriptions.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @return mixed
      */
     public function viewAny($user) { }
@@ -23,7 +23,7 @@ class SubscriptionPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can view the subscription.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @param  Subscription  $subscription
      * @return mixed
      */
@@ -32,7 +32,7 @@ class SubscriptionPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can create subscriptions.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @return mixed
      */
     // public function create($user) { }
@@ -40,7 +40,7 @@ class SubscriptionPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can update the subscription.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @param  Subscription  $subscription
      * @return mixed
      */
@@ -49,7 +49,7 @@ class SubscriptionPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can delete the subscription.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @param  Subscription  $subscription
      * @return mixed
      */
@@ -58,7 +58,7 @@ class SubscriptionPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can restore the subscription.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @param  Subscription  $subscription
      * @return mixed
      */
@@ -67,7 +67,7 @@ class SubscriptionPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can permanently delete the subscription.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @param  Subscription  $subscription
      * @return mixed
      */

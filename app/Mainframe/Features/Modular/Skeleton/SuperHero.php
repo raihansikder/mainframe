@@ -165,12 +165,12 @@ class SuperHero extends BaseModule
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    // public function updater() { return $this->belongsTo(\App\Mainframe\Modules\Users\User::class, 'updated_by'); }
+    // public function updater() { return $this->belongsTo(\App\User::class, 'updated_by'); }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    // public function creator() { return $this->belongsTo(\App\Mainframe\Modules\Users\User::class, 'created_by'); }
+    // public function creator() { return $this->belongsTo(\App\User::class, 'created_by'); }
 
     /*
    |--------------------------------------------------------------------------

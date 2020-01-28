@@ -6,7 +6,7 @@
 
 namespace App\Mainframe\Modules\Notifications;
 
-use App\Mainframe\Modules\Users\User;
+use App\User;
 use App\Mainframe\Features\Modular\BaseModule\BaseModulePolicy;
 
 class NotificationPolicy extends BaseModulePolicy
@@ -15,7 +15,7 @@ class NotificationPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can view any notifications.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @return mixed
      */
     public function viewAny($user) { }
@@ -23,7 +23,7 @@ class NotificationPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can view the notification.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @param  Notification  $notification
      * @return mixed
      */
@@ -32,7 +32,7 @@ class NotificationPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can create notifications.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @return mixed
      */
     // public function create($user) { }
@@ -40,7 +40,7 @@ class NotificationPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can update the notification.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @param  Notification  $notification
      * @return mixed
      */
@@ -49,7 +49,7 @@ class NotificationPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can delete the notification.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @param  Notification  $notification
      * @return mixed
      */
@@ -58,7 +58,7 @@ class NotificationPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can restore the notification.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @param  Notification  $notification
      * @return mixed
      */
@@ -67,7 +67,7 @@ class NotificationPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can permanently delete the notification.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @param  Notification  $notification
      * @return mixed
      */

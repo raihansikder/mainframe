@@ -2,17 +2,17 @@
 
 namespace App\Mainframe\Modules\Users;
 
-/** @mixin \App\Mainframe\Modules\Users\User $this */
+/** @mixin \App\User $this */
 trait UserHelper
 {
     /**
      * Resolve name based on given input.
      *
-     * @return \App\Mainframe\Modules\Users\UserHelper
+     * @return \App\UserHelper
      */
     public function resolveName()
     {
-        /** @var \App\Mainframe\Modules\Users\User $this */
+        /** @var \App\User $this */
         $this->full_name = $this->first_name." ".$this->last_name;
         // No 'name' field is
         if (! isset($this->name)) {
@@ -27,7 +27,7 @@ trait UserHelper
      * Find user based on bearer token(auth_token)
      *
      * @param $id
-     * @return \App\Mainframe\Modules\Users\User|mixed|null
+     * @return \App\User|mixed|null
      */
     public static function byId($id = null)
     {
@@ -58,7 +58,7 @@ trait UserHelper
      *
      * @param  null|mixed  $token
      * @param  null|mixed  $clientId
-     * @return null|\App\Mainframe\Modules\Users\User|mixed
+     * @return null|\App\User|mixed
      */
     public static function apiAuthenticator($token = null, $clientId = null)
     {
@@ -130,7 +130,7 @@ trait UserHelper
     /**
      * Create an empty guest user
      *
-     * @return \App\Mainframe\Modules\Users\User
+     * @return \App\User
      */
     public static function guestInstance()
     {

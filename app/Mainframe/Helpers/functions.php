@@ -2,13 +2,13 @@
 
 use App\Mainframe\Helpers\Mf;
 use Illuminate\Support\MessageBag;
-use App\Mainframe\Modules\Users\User;
+use App\User;
 
 /**
  * returns sentry object of currently logged in user
  *
  * @param  bool|null  $id
- * @return \Illuminate\Contracts\Auth\Authenticatable|\App\Mainframe\Modules\Users\User
+ * @return \Illuminate\Contracts\Auth\Authenticatable|\App\User
  */
 function user($id = null)
 {

@@ -4,7 +4,7 @@ namespace App\Mainframe\Providers;
 
 use Gate;
 use Auth;
-use App\Mainframe\Modules\Users\User;
+use App\User;
 use App\Mainframe\Features\Resolvers\PolicyResolver;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 

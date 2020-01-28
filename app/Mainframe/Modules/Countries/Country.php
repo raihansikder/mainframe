@@ -32,9 +32,9 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule;
  * @property string|null $currency_override
  * @property string|null $currency_override_symbol
  * @property-read int|null $changes_count
- * @property-read \App\Mainframe\Modules\Users\User|null $creator
+ * @property-read \App\User|null $creator
  * @property-read \App\Mainframe\Modules\Uploads\Upload $latestUpload
- * @property-read \App\Mainframe\Modules\Users\User|null $updater
+ * @property-read \App\User|null $updater
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Uploads\Upload[] $uploads
  * @property-read int|null $uploads_count
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Features\Modular\BaseModule\BaseModule active()
@@ -232,12 +232,12 @@ class Country extends BaseModule
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    // public function updater() { return $this->belongsTo(\App\Mainframe\Modules\Users\User::class, 'updated_by'); }
+    // public function updater() { return $this->belongsTo(\App\User::class, 'updated_by'); }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    // public function creator() { return $this->belongsTo(\App\Mainframe\Modules\Users\User::class, 'created_by'); }
+    // public function creator() { return $this->belongsTo(\App\User::class, 'created_by'); }
 
     /*
    |--------------------------------------------------------------------------

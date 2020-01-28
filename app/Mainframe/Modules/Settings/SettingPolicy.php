@@ -6,7 +6,7 @@
 
 namespace App\Mainframe\Modules\Settings;
 
-use App\Mainframe\Modules\Users\User;
+use App\User;
 use App\Mainframe\Features\Modular\BaseModule\BaseModulePolicy;
 
 class SettingPolicy extends BaseModulePolicy
@@ -15,7 +15,7 @@ class SettingPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can view any settings.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @return mixed
      */
     // public function viewAny($user)
@@ -26,7 +26,7 @@ class SettingPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can view the setting.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @param  Setting  $setting
      * @return mixed
      */
@@ -38,7 +38,7 @@ class SettingPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can create settings.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @return mixed
      */
     // public function create($user)
@@ -50,7 +50,7 @@ class SettingPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can update the setting.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @param  Setting  $setting
      * @return mixed
      */
@@ -62,7 +62,7 @@ class SettingPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can delete the setting.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @param  Setting  $setting
      * @return mixed
      */
@@ -74,7 +74,7 @@ class SettingPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can restore the setting.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @param  Setting  $setting
      * @return mixed
      */
@@ -86,7 +86,7 @@ class SettingPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can permanently delete the setting.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @param  Setting  $setting
      * @return mixed
      */

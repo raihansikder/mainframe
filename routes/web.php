@@ -17,7 +17,7 @@ Route::get('/', 'HomeController@index')->name('home')->middleware(['verified']);
 Route::get('test', '\App\Mainframe\Http\Controllers\TestController@test')->name('test')->middleware(['verified', 'password.confirm']);
 
 Route::get('mail', function () {
-    $user = \App\Mainframe\Modules\Users\User::find(2625);
+    $user = \App\User::find(2625);
 
     return (new \App\Mainframe\Notifications\Auth\ResetPassword())
         ->toMail($user);

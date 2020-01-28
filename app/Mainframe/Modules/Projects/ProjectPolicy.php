@@ -5,7 +5,7 @@
 
 namespace App\Mainframe\Modules\Projects;
 
-use App\Mainframe\Modules\Users\User;
+use App\User;
 use App\Mainframe\Features\Modular\BaseModule\BaseModulePolicy;
 
 class ProjectPolicy extends BaseModulePolicy
@@ -14,7 +14,7 @@ class ProjectPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can view any projects.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @return mixed
      */
     public function viewAny($user) { }
@@ -22,7 +22,7 @@ class ProjectPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can view the project.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @param  Project  $project
      * @return mixed
      */
@@ -31,7 +31,7 @@ class ProjectPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can create projects.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @return mixed
      */
     // public function create($user) { }
@@ -39,7 +39,7 @@ class ProjectPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can update the project.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @param  Project  $project
      * @return mixed
      */
@@ -48,7 +48,7 @@ class ProjectPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can delete the project.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @param  Project  $project
      * @return mixed
      */
@@ -57,7 +57,7 @@ class ProjectPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can restore the project.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @param  Project  $project
      * @return mixed
      */
@@ -66,7 +66,7 @@ class ProjectPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can permanently delete the project.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @param  Project  $project
      * @return mixed
      */

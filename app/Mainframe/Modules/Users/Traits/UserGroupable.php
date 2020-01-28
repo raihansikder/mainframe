@@ -5,7 +5,7 @@ namespace App\Mainframe\Modules\Users\Traits;
 use Illuminate\Support\Str;
 use App\Mainframe\Modules\Groups\Group;
 
-/** @mixin \App\Mainframe\Modules\Users\User $this */
+/** @mixin \App\User $this */
 trait UserGroupable
 {
 

@@ -2,9 +2,9 @@
 
 <?php
 /**
- * @var \App\Mainframe\Modules\Users\User $element
+ * @var \App\User $element
  * @var string $formState create|edit
- * @var \App\Mainframe\Modules\Users\User $formState
+ * @var \App\User $formState
  * @var array $formConfig
  * @var string $uuid Only available for create
  * @var bool $editable

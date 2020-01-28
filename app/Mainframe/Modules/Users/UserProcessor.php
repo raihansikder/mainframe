@@ -21,7 +21,7 @@ class UserProcessor extends ModelProcessor
     /**
      * Fill the model with values
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @return $this
      */
     public function fill($user)
@@ -92,7 +92,7 @@ class UserProcessor extends ModelProcessor
     /**
      * Run validations for saving. This should be common for both creating and updating.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @return $this
      */
     public function saving($user)
@@ -161,7 +161,7 @@ class UserProcessor extends ModelProcessor
     /**
      * Validate the name. Name should not be 'Joker'
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @return $this
      */
     private function userNameShouldNotBeJoker($user)

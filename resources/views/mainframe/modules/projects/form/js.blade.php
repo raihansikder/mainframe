@@ -1,8 +1,8 @@
 <?php
 /**
  * @var \App\Mainframe\Modules\Superheroes\Project $module
- * @var \App\Mainframe\Modules\Users\User $user
- * @var \App\Mainframe\Modules\Users\User $element
+ * @var \App\User $user
+ * @var \App\User $element
  * @var string $formState create|edit
  * @var array $formConfig
  * @var string $uuid Only available for create

@@ -14,7 +14,7 @@ class UserPolicy extends BaseModulePolicy
     /**
      * Check if user can access Api
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @return mixed
      */
     public function makeApiCall($user)

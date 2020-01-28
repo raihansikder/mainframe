@@ -3,7 +3,7 @@
 namespace App\Mainframe\Http\Controllers;
 
 use Illuminate\Support\Str;
-use App\Mainframe\Modules\Users\User;
+use App\User;
 use App\Mainframe\Modules\Modules\Module;
 
 class TestController extends BaseController

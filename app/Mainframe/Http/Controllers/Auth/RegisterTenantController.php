@@ -5,7 +5,7 @@ namespace App\Mainframe\Http\Controllers\Auth;
 use Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use App\Mainframe\Modules\Users\User;
+use App\User;
 use App\Mainframe\Modules\Groups\Group;
 use App\Mainframe\Modules\Tenants\Tenant;
 
@@ -113,7 +113,7 @@ class RegisterTenantController extends RegisterController
     /**
      * Create a new user instance after a valid registration.
      *
-     * @return \App\Mainframe\Modules\Users\User
+     * @return \App\User
      */
     protected function createUser()
     {

@@ -23,7 +23,7 @@
 /**
  * @var array $var
  * @var \App\Mainframe\Modules\Modules\Module $module
- * @var \App\Mainframe\Modules\Users\User $user
+ * @var \App\User $user
  * @var \App\Mainframe\Features\Modular\BaseModule\BaseModule $element
  * @var string $formState create|edit
  */

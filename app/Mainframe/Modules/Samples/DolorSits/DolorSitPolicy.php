@@ -6,7 +6,7 @@
 
 namespace App\Mainframe\Modules\Samples\DolorSits;
 
-use App\Mainframe\Modules\Users\User;
+use App\User;
 use App\Mainframe\Features\Modular\BaseModule\BaseModulePolicy;
 
 class DolorSitPolicy extends BaseModulePolicy
@@ -15,7 +15,7 @@ class DolorSitPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can view any dolorSits.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @return mixed
      */
     public function viewAny($user) { }
@@ -23,7 +23,7 @@ class DolorSitPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can view the dolorSit.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @param  DolorSit  $dolorSit
      * @return mixed
      */
@@ -32,7 +32,7 @@ class DolorSitPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can create dolorSits.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @return mixed
      */
     // public function create($user) { }
@@ -40,7 +40,7 @@ class DolorSitPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can update the dolorSit.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @param  DolorSit  $dolorSit
      * @return mixed
      */
@@ -49,7 +49,7 @@ class DolorSitPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can delete the dolorSit.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @param  DolorSit  $dolorSit
      * @return mixed
      */
@@ -58,7 +58,7 @@ class DolorSitPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can restore the dolorSit.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @param  DolorSit  $dolorSit
      * @return mixed
      */
@@ -67,7 +67,7 @@ class DolorSitPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can permanently delete the dolorSit.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @param  DolorSit  $dolorSit
      * @return mixed
      */

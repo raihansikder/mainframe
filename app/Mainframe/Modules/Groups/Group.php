@@ -4,7 +4,7 @@ namespace App\Mainframe\Modules\Groups;
 
 use Request;
 use InvalidArgumentException;
-use App\Mainframe\Modules\Users\User;
+use App\User;
 use Illuminate\Database\Eloquent\Builder;
 use App\Mainframe\Features\Modular\BaseModule\BaseModule;
 use App\Mainframe\Modules\Groups\Traits\GroupDefinitionsTrait;
@@ -25,12 +25,12 @@ use App\Mainframe\Modules\Groups\Traits\GroupDefinitionsTrait;
  * @property \Illuminate\Support\Carbon|null $deleted_at
  * @property int|null $deleted_by
  * @property-read int|null $changes_count
- * @property-read \App\Mainframe\Modules\Users\User|null $creator
+ * @property-read \App\User|null $creator
  * @property-read \App\Mainframe\Modules\Uploads\Upload $latestUpload
- * @property-read \App\Mainframe\Modules\Users\User|null $updater
+ * @property-read \App\User|null $updater
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Uploads\Upload[] $uploads
  * @property-read int|null $uploads_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Users\User[] $users
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\User[] $users
  * @property-read int|null $users_count
  * @method static Builder|BaseModule active()
  * @method static Builder|Group newModelQuery()

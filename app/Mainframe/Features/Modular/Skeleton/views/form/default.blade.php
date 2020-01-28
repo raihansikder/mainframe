@@ -3,7 +3,7 @@
 <?php
 /**
  * @var \App\Mainframe\Modules\Modules\Module $module
- * @var \App\Mainframe\Modules\Users\User $user
+ * @var \App\User $user
  * @var \App\Mainframe\Modules\SuperHeroes\SuperHero $element
  * @var string $formState create|edit
  * @var array $formConfig

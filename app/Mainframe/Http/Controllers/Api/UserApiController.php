@@ -4,12 +4,12 @@ namespace App\Mainframe\Http\Controllers\Api;
 
 use Auth;
 use Request;
-use App\Mainframe\Modules\Users\UserController;
+use App\UserController;
 
 class UserApiController extends ApiController
 {
 
-    /** @var \App\Mainframe\Modules\Users\User|null|mixed */
+    /** @var \App\User|null|mixed */
     protected $user;
 
     public function __construct()
@@ -51,7 +51,7 @@ class UserApiController extends ApiController
     /**
      * Update user
      *
-     * @return mixed|\App\Mainframe\Modules\Users\User
+     * @return mixed|\App\User
      */
     public function update()
     {

@@ -6,7 +6,7 @@
 
 namespace App\Mainframe\Modules\Countries;
 
-use App\Mainframe\Modules\Users\User;
+use App\User;
 use App\Mainframe\Features\Modular\BaseModule\BaseModulePolicy;
 
 class CountryPolicy extends BaseModulePolicy
@@ -15,7 +15,7 @@ class CountryPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can view any countries.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @return mixed
      */
     public function viewAny($user) { }
@@ -23,7 +23,7 @@ class CountryPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can view the country.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @param  Country  $country
      * @return mixed
      */
@@ -32,7 +32,7 @@ class CountryPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can create countries.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @return mixed
      */
     // public function create($user) { }
@@ -40,7 +40,7 @@ class CountryPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can update the country.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @param  Country  $country
      * @return mixed
      */
@@ -49,7 +49,7 @@ class CountryPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can delete the country.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @param  Country  $country
      * @return mixed
      */
@@ -58,7 +58,7 @@ class CountryPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can restore the country.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @param  Country  $country
      * @return mixed
      */
@@ -67,7 +67,7 @@ class CountryPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can permanently delete the country.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @param  Country  $country
      * @return mixed
      */

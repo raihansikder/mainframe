@@ -3,7 +3,7 @@
 namespace Tests\Feature\Mainframe\Api;
 
 use Tests\TestCase;
-use App\Mainframe\Modules\Users\User;
+use App\User;
 
 class ApiTestCase extends TestCase
 {
