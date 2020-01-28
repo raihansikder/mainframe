@@ -31,7 +31,7 @@ trait UserHelper
      */
     public static function byId($id = null)
     {
-        return User::active()->remember(timer('short'))->find($id);
+        return \App\User::active()->remember(timer('short'))->find($id);
 
     }
 
@@ -44,7 +44,7 @@ trait UserHelper
         $token = $token ?: request()->bearerToken();
 
         if ($token) {
-            return User::active()
+            return \App\User::active()
                 ->where('auth_token', $token)
                 ->remember(timer('short'))
                 ->first();
