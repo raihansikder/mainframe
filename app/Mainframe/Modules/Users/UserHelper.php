@@ -7,8 +7,6 @@ trait UserHelper
 {
     /**
      * Resolve name based on given input.
-     *
-     * @return \App\UserHelper
      */
     public function resolveName()
     {
@@ -19,8 +17,6 @@ trait UserHelper
             // $this->full_name = $this->first_name." ".$this->last_name;
             $this->name = $this->full_name;
         }
-
-        return $this;
     }
 
     /**
