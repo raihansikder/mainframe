@@ -32,7 +32,7 @@ $input = new SelectAjax($var, $element ?? null);
             {{$input->print()}}
         </span>
     @endif
-
+    <div class="clearfix"></div>
     {!! $errors->first($var['name'], '<span class="help-block">:message</span>') !!}
 </div>
 
