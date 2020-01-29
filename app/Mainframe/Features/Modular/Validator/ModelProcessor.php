@@ -105,6 +105,33 @@ class ModelProcessor
     }
 
     /**
+     * Invalidate if an un-mutable field has been updated
+     *
+     * @return $this
+     */
+    public function checkUnMutable()
+    {
+
+        foreach ($this->getUnMutableFields() as $field) {
+            if ($this->original[$field] != $this->element->$field) {
+                $this->fieldError($field, "This field can not be updated.");
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get a list of un-mutable fields
+     *
+     * @return array
+     */
+    public function getUnMutableFields()
+    {
+        return $this->unMutableFields;
+    }
+
+    /**
      * Run validation logic on model.
      * Based on existence of id field decide to check creating()/updating()
      *
@@ -137,6 +164,7 @@ class ModelProcessor
     {
         $element = $element ?: $this->element;
         $this->fill($element)->validate();
+        $this->checkUnMutable();
         $this->saving($element);
 
         return $this;
@@ -201,22 +229,6 @@ class ModelProcessor
         return $this;
     }
 
-    /**
-     * Invalidate if an un-mutable field has been updated
-     *
-     * @return $this
-     */
-    public function checkUnMutable()
-    {
-
-        foreach ($this->unMutableFields as $field) {
-            if ($this->original[$field] != $this->element->$field) {
-                $this->addfieldError($field, "This field can not be updated.");
-            }
-        }
-
-        return $this;
-    }
 
 
     /*
@@ -237,7 +249,7 @@ class ModelProcessor
      */
     public function saving($element)
     {
-        $this->checkUnMutable();
+
 
         return $this;
     }

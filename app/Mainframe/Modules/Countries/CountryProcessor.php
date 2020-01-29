@@ -163,7 +163,7 @@ class CountryProcessor extends ModelProcessor
     private function nameIsNotJoker($country)
     {
         if ($country->name === 'Joker') {
-            $this->addfieldError('name', "Name can not be Joker");
+            $this->fieldError('name', "Name can not be Joker");
         }
 
         return $this;

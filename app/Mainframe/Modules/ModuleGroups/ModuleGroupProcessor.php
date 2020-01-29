@@ -114,7 +114,7 @@ class ModuleGroupProcessor extends ModelProcessor
         $moduleGroup = $this->element;
 
         if ($moduleGroup->name === 'Joker') {
-            $this->addfieldError('name', "Name can not be Joker");
+            $this->fieldError('name', "Name can not be Joker");
         }
 
         return $this;

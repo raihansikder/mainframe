@@ -163,7 +163,7 @@ class TenantProcessor extends ModelProcessor
     private function nameIsNotJoker($tenant)
     {
         if ($tenant->name === 'Joker') {
-            $this->addfieldError('name', "Name can not be Joker");
+            $this->fieldError('name', "Name can not be Joker");
         }
 
         return $this;

@@ -102,7 +102,7 @@ class UploadProcessor extends ModelProcessor
         $upload = $this->element;
 
         if ($upload->name === 'Joker') {
-            $this->addfieldError('name', "Name can not be Joker");
+            $this->fieldError('name', "Name can not be Joker");
         }
 
         return $this;

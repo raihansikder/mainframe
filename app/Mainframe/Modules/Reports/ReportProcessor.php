@@ -109,7 +109,7 @@ class ReportProcessor extends ModelProcessor
         $report = $this->element;
 
         if ($report->name === 'Joker') {
-            $this->addfieldError('name', "Name can not be Joker");
+            $this->fieldError('name', "Name can not be Joker");
         }
 
         return $this;
