@@ -478,3 +478,7 @@ pre.sf-dump, pre.sf-dump .sf-dump-default {
 a i {
     color: inherit;
 }
+
+.form-group.has-error .help-block {
+    font-size: .9em;
+}
