@@ -13,11 +13,26 @@ class ModelProcessor
 {
     use Validable, HasMessageBag;
 
-    /** @var \App\Mainframe\Features\Modular\BaseModule\BaseModule */
+    /**
+     * Element filled with new values
+     *
+     * @var \App\Mainframe\Features\Modular\BaseModule\BaseModule
+     */
     public $element;
 
-    /** @var array|mixed */
-    public $elementOriginal;
+    /**
+     * Element with previous value
+     *
+     * @var array|mixed
+     */
+    public $original;
+
+    /**
+     * Fields that can not be changed.
+     *
+     * @var array
+     */
+    public $unMutableFields = [];
 
     /**
      * MainframeModelValidator constructor.
@@ -27,7 +42,7 @@ class ModelProcessor
     public function __construct($element)
     {
         $this->element = $element;
-        $this->elementOriginal = $element->getOriginal();
+        $this->original = $element->getOriginal();
     }
 
     /**
@@ -186,6 +201,23 @@ class ModelProcessor
         return $this;
     }
 
+    /**
+     * Invalidate if an un-mutable field has been updated
+     *
+     * @return $this
+     */
+    public function checkUnMutable()
+    {
+
+        foreach ($this->unMutableFields as $field) {
+            if ($this->original[$field] != $this->element->$field) {
+                $this->addfieldError($field, "This field can not be updated.");
+            }
+        }
+
+        return $this;
+    }
+
 
     /*
     |--------------------------------------------------------------------------
@@ -205,6 +237,8 @@ class ModelProcessor
      */
     public function saving($element)
     {
+        $this->checkUnMutable();
+
         return $this;
     }
 

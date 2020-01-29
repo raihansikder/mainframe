@@ -4,7 +4,7 @@ namespace App\Mainframe\Http\Controllers\Api;
 
 use Auth;
 use Request;
-use App\UserController;
+use App\Mainframe\Modules\Users\UserController;
 
 class UserApiController extends ApiController
 {
@@ -34,7 +34,7 @@ class UserApiController extends ApiController
     }
 
     /**
-     * Test Api
+     * Get user profile
      *
      * @return mixed
      */

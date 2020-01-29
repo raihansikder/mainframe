@@ -42,16 +42,15 @@ class Mf
             return Auth::user();
         }
 
-        // // Check if usr is bearer
-        // if ($user = Auth::guard('bearer')->user()) {
-        //     return $user;
-        // }
-        //
+        // Check if usr is bearer
+        if ($user = Auth::guard('bearer')->user()) {
+            return $user;
+        }
+
         // // Check if usr is API caller
         // if ($user = Auth::guard('x-auth')->user()) {
         //     return $user;
         // }
-
 
         // Return an empty guest user instance
         // return null;
