@@ -19,16 +19,17 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Application upload directory
+    | File upload directory
     |--------------------------------------------------------------------------
     |
     | If the application uses local directory to store uploaded file then
-    | it will use the following
-    | any other location as required by the application or its packages.
+    | it will use the following. The directory is relative to public.
+    | Do not use a module name as directory name. This causes a
+    | route url conflict.
     |
     */
 
-    'upload_root' => '/files/',
+    'upload_root' => env('UPLOAD_ROOT', 'files'), // public/files
 
     /*
     |--------------------------------------------------------------------------
@@ -38,33 +39,5 @@ return [
     | Enable/Disable query cache.
     |
     */
-
     'query_cache' => env('QUERY_CACHE', false),
-
-    /*
-    |--------------------------------------------------------------------------
-    | Allow web or api based registration for selected groups
-    |--------------------------------------------------------------------------
-    |
-    | List of groups for which registration is allowed.
-    |
-    */
-
-    // 'groups_allowed_for_registration' => [
-    //     // 'superuser',
-    //     // 'api',
-    //     'tenant-admin',
-    //     'project-admin',
-    //     'artp-admin',
-    //     'artp-buyer',
-    //     'orhc-admin',
-    //     'orhc-nurse',
-    //     'orhc-patient',
-    //     'orhc-family-member',
-    //     // 'orhc-api',
-    //     // 'artp-api',
-    //     'test-group',
-    //     'user'
-    // ]
-
 ];
