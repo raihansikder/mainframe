@@ -21,14 +21,15 @@ class ModelProcessor
     public $element;
 
     /**
-     * Element with previous value
+     * An array that has the original value of the element.
+     * Field names are array keys.
      *
-     * @var array|mixed
+     * @var array
      */
     public $original;
 
     /**
-     * Fields that can not be changed.
+     * Fields that can not be changed once created.
      *
      * @var array
      */
@@ -46,7 +47,11 @@ class ModelProcessor
     }
 
     /**
-     * Fill the model with values
+     * Fill the model with values. This is helpful when a model has additional
+     * fields that is not filled through mass assignment but needs to be
+     * filled so that the data is locally available. Often in the
+     * case of id-name pair id will be filled by mass assignment
+     * but the name needs to be auto filled in this method.
      *
      * @param $element \App\Mainframe\Features\Modular\BaseModule\BaseModule|mixed
      * @return $this
@@ -57,7 +62,7 @@ class ModelProcessor
     }
 
     /**
-     * Validation rules.
+     * Laravel validator validation rules.
      *
      * @param  mixed  $element
      * @param  array  $merge
@@ -76,7 +81,7 @@ class ModelProcessor
     }
 
     /**
-     * Custom error messages.
+     * Custom error messages for the validation rules above.
      *
      * @param  array  $merge
      * @return array
@@ -89,7 +94,7 @@ class ModelProcessor
     }
 
     /**
-     * Validate based on rules
+     * Run Laravel validation
      *
      * @return \Illuminate\Contracts\Validation\Validator|\Illuminate\Validation\Validator
      */
@@ -105,16 +110,15 @@ class ModelProcessor
     }
 
     /**
-     * Invalidate if an un-mutable field has been updated
+     * Invalidate if the value of an un-mutable field has been changed.
      *
      * @return $this
      */
     public function checkUnMutable()
     {
-
         foreach ($this->getUnMutableFields() as $field) {
             if ($this->original[$field] != $this->element->$field) {
-                $this->fieldError($field, "This field can not be updated.");
+                $this->fieldError($field, " - can not be updated.");
             }
         }
 
@@ -132,8 +136,9 @@ class ModelProcessor
     }
 
     /**
-     * Run validation logic on model.
-     * Based on existence of id field decide to check creating()/updating()
+     * Generic function to process all validation logic. This function auto
+     * determines whether it should call the creating() or updating()
+     * logic based on existence of id field in the element.
      *
      * @return $this
      */
@@ -151,11 +156,13 @@ class ModelProcessor
     | Events
     |--------------------------------------------------------------------------
     |
-    | Model events where validation is checked.
+    | Model events where validation is checked. This events refer to intentions.
+    | If you are attempting to save a model in some place of your application
+    | Then you should call the save() processor function.
     */
 
     /**
-     * Run validation for save.
+     * Run validation for save. Common for create and update.
      *
      * @param  null  $element
      * @return $this
@@ -171,7 +178,8 @@ class ModelProcessor
     }
 
     /**
-     * Run validation for create.
+     * Run validation for create. This initially runs the save()
+     * validation checks then loads creating() checks.
      *
      * @param  null  $element
      * @return $this
@@ -229,8 +237,6 @@ class ModelProcessor
         return $this;
     }
 
-
-
     /*
     |--------------------------------------------------------------------------
     | Event specific validation
@@ -249,7 +255,6 @@ class ModelProcessor
      */
     public function saving($element)
     {
-
 
         return $this;
     }
