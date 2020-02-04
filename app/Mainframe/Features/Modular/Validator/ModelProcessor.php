@@ -33,7 +33,7 @@ class ModelProcessor
      *
      * @var array
      */
-    public $unMutableFields = [];
+    public $unMutable = [];
 
     /**
      * MainframeModelValidator constructor.
@@ -116,9 +116,9 @@ class ModelProcessor
      */
     public function checkUnMutable()
     {
-        foreach ($this->getUnMutableFields() as $field) {
+        foreach ($this->getUnMutable() as $field) {
             if ($this->original[$field] != $this->element->$field) {
-                $this->fieldError($field, " - can not be updated.");
+                $this->fieldError($field, $field." - can not be updated.");
             }
         }
 
@@ -130,9 +130,9 @@ class ModelProcessor
      *
      * @return array
      */
-    public function getUnMutableFields()
+    public function getUnMutable()
     {
-        return $this->unMutableFields;
+        return $this->unMutable;
     }
 
     /**

@@ -2,9 +2,9 @@
 
 namespace App\Mainframe\Http\Controllers\Auth;
 
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use App\User;
 use Illuminate\Auth\Events\Registered;
 use App\Mainframe\Modules\Groups\Group;
 use Illuminate\Support\Facades\Validator;
@@ -68,6 +68,9 @@ class RegisterController extends BaseController
 
     }
 
+    /**
+     * Result group based on the registration url param.
+     */
     public function resolveGroup()
     {
         // Get group from url parameter register/{groupName}
