@@ -153,7 +153,7 @@ trait RequestHandler
         ];
 
         $this->validator = Validator::make(request()->all(), $rules, $message);
-        //$this->addFieldError('name','Error Lorem Ipsum'); // Sample error message.
+        //$this->fieldError('name','Error Lorem Ipsum'); // Sample error message.
 
         return $this->validator;
     }

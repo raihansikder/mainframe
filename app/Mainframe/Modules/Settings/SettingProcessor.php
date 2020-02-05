@@ -159,7 +159,7 @@ class SettingProcessor extends ModelProcessor
         // $this->messageBag()->add('some', 'message2');
         // $this->messageBag()->add('some2', 'message3');
 
-        // $this->addError('test');
+        // $this->error('test');
 
         return $this;
     }
