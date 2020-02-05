@@ -117,7 +117,7 @@ class ModelProcessor
     public function checkUnMutable()
     {
         foreach ($this->getUnMutable() as $field) {
-            if ($this->original[$field] != $this->element->$field) {
+            if (isset($this->original[$field], $this->element->$field) && $this->original[$field] != $this->element->$field) {
                 $this->fieldError($field, $field." - can not be updated.");
             }
         }
@@ -171,7 +171,6 @@ class ModelProcessor
     {
         $element = $element ?: $this->element;
         $this->fill($element)->validate();
-        $this->checkUnMutable();
         $this->saving($element);
 
         return $this;
@@ -203,6 +202,7 @@ class ModelProcessor
     {
         $element = $element ?: $this->element;
         $this->save();
+        $this->checkUnMutable();
         $this->updating($element);
 
         return $this;
