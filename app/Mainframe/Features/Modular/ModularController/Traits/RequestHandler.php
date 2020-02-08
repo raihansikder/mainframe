@@ -59,7 +59,7 @@ trait RequestHandler
         $this->element = $processor->element; // Get the updated element
 
         if (! $this->element->save()) {
-            $this->response()->fail('Can not save for some reason');
+            $this->fail('Can not save for some reason');
 
             return $this;
         }
@@ -92,12 +92,12 @@ trait RequestHandler
         $this->element = $processor->element; // Get the updated valid element.
 
         if (! $this->element->save()) {
-            $this->response()->fail('Can not be updated for some reason');
+            $this->fail('Can not be updated for some reason');
 
             return $this;
         }
 
-        $this->response()->success();
+        $this->success();
 
         return $this;
     }
@@ -129,12 +129,12 @@ trait RequestHandler
 
         $this->element->save();
         if (! $this->element->delete()) {
-            $this->response()->fail('Can not deleted for some reason');
+            $this->fail('Can not deleted for some reason');
 
             return $this;
         }
 
-        $this->response()->success('Successfully deleted');
+        $this->success('Successfully deleted');
 
         return $this;
     }
@@ -153,6 +153,7 @@ trait RequestHandler
         ];
 
         $this->validator = Validator::make(request()->all(), $rules, $message);
+
         //$this->fieldError('name','Error Lorem Ipsum'); // Sample error message.
 
         return $this->validator;
