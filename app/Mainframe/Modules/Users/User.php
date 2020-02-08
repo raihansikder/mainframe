@@ -162,13 +162,6 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
     public const PASSWORD_VALIDATION_RULE = 'required|confirmed|min:6|regex:/[a-zA-Z]/|regex:/[0-9]/';
 
     protected $moduleName = 'users';
-    /*
-    |--------------------------------------------------------------------------
-    | Fillable attributes
-    |--------------------------------------------------------------------------
-    |
-    | These attributes can be mass assigned
-    */
     protected $table = 'users';
 
     /*
@@ -179,6 +172,14 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
     | The attributes can not be mass assigned.
     */
     // protected $guarded = [];
+
+    /*
+    |--------------------------------------------------------------------------
+    | Fillable attributes
+    |--------------------------------------------------------------------------
+    |
+    | These attributes can be mass assigned
+    */
     protected $fillable = [
         'uuid',
         'name',
@@ -216,7 +217,6 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
         'dob',
         'group_ids',
         'is_test',
-
     ];
 
     /*
@@ -355,9 +355,9 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
 
     /*
     |--------------------------------------------------------------------------
-    | Todo: Helper functions
+    | Helper functions
     |--------------------------------------------------------------------------
-    | Todo: Write Helper functions in the UserHelper trait.
+    |
     */
 
     /**
