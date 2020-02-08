@@ -95,7 +95,7 @@ class RegisterController extends BaseController
     {
 
         if (! $this->groupAllowed()) {
-            return $this->response()->permissionDenied('Group not allowed for registration');
+            return $this->permissionDenied('Group not allowed for registration');
         }
 
         return view($this->form)
@@ -112,7 +112,7 @@ class RegisterController extends BaseController
     {
 
         if (! $this->groupAllowed()) {
-            return $this->response()->permissionDenied();
+            return $this->permissionDenied();
         }
 
         $this->attemptRegistration();
@@ -120,11 +120,11 @@ class RegisterController extends BaseController
         request()->merge(['redirect_success' => route('login')]);
         $this->response()->redirectTo = $this->resolveRedirectTo();
 
-        if ($this->response()->expectsJson()) {
-            return $this->response()->load($this->user)->json();
+        if ($this->expectsJson()) {
+            return $this->load($this->user)->json();
         }
 
-        return $this->response()->redirect();
+        return $this->redirect();
 
     }
 
@@ -152,12 +152,12 @@ class RegisterController extends BaseController
         // Create user
         $this->user = $this->createUser();
         if (! $this->user) {
-            $this->response()->fail('User creation failed');
+            $this->fail('User creation failed');
 
             return $this;
         }
 
-        $this->response()->success('Verify your email and log in.');
+        $this->success('Verify your email and log in.');
         $this->registered(request(), $this->user);
 
         return $this;

@@ -43,8 +43,8 @@ class ForgotPasswordController extends BaseController
      */
     protected function sendResetLinkResponse(Request $request, $response)
     {
-        if ($this->response()->expectsJson()) {
-            return $this->response()->success('Password reset link sent in email')->json();
+        if ($this->expectsJson()) {
+            return $this->success('Password reset link sent in email')->json();
         }
 
         return back()->with('status', trans($response));
@@ -59,8 +59,8 @@ class ForgotPasswordController extends BaseController
      */
     protected function sendResetLinkFailedResponse(Request $request, $response)
     {
-        if ($this->response()->expectsJson()) {
-            return $this->response()->fail(trans($response))->json();
+        if ($this->expectsJson()) {
+            return $this->fail(trans($response))->json();
         }
 
         return back()

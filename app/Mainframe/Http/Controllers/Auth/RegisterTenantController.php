@@ -44,11 +44,11 @@ class RegisterTenantController extends RegisterController
         request()->merge(['redirect_success' => route('login')]);
         $this->response()->redirectTo = $this->resolveRedirectTo();
 
-        if ($this->response()->expectsJson()) {
-            return $this->response()->load()->json();
+        if ($this->expectsJson()) {
+            return $this->load()->json();
         }
 
-        return $this->response()->redirect();
+        return $this->redirect();
 
     }
 
@@ -77,7 +77,7 @@ class RegisterTenantController extends RegisterController
         // Validation success. Now create tenant
         $this->tenant = $this->createTenant();
         if (! $this->tenant) {
-            $this->response()->fail('Tenant creation failed');
+            $this->fail('Tenant creation failed');
 
             return $this;
         }
@@ -85,13 +85,13 @@ class RegisterTenantController extends RegisterController
         // Create user
         $this->user = $this->createUser();
         if (! $this->user) {
-            $this->response()->fail('User creation failed');
+            $this->fail('User creation failed');
             Tenant::where('id', $this->tenant->id)->forceDelete();
 
             return $this;
         }
 
-        $this->response()->success('Verify your email and log in.');
+        $this->success('Verify your email and log in.');
         $this->registered(request(), $this->user);
 
         return $this;

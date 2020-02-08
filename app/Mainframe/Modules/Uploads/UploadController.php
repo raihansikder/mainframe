@@ -37,17 +37,17 @@ class UploadController extends ModularController
     public function store(Request $request)
     {
         if (! user()->can('create', $this->model)) {
-            return $this->response()->permissionDenied();
+            return $this->permissionDenied();
         }
 
         $this->element = $this->model; // Create an empty model to be stored.
 
         if (! $this->file = $this->getFile()) {
-            return $this->response()->fail('No file in http request');
+            return $this->fail('No file in http request');
         }
 
         if (! $path = $this->attemptUpload()) {
-            return $this->response()->fail('Can not move file to destination from tmp');
+            return $this->fail('Can not move file to destination from tmp');
         }
 
         $this->element->name = $this->file->getClientOriginalName();
@@ -60,11 +60,11 @@ class UploadController extends ModularController
 
         $this->attemptStore();
 
-        if ($this->response()->expectsJson()) {
-            return $this->response()->json();
+        if ($this->expectsJson()) {
+            return $this->json();
         }
 
-        return $this->response()->redirect();
+        return $this->redirect();
     }
 
     /**
@@ -180,7 +180,7 @@ class UploadController extends ModularController
             return Response::download(public_path().$upload->path);
         }
 
-        return $this->response()->notFound();
+        return $this->notFound();
     }
 
 }

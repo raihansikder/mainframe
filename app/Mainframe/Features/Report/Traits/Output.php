@@ -22,7 +22,7 @@ trait Output
         }
 
         if ($this->invalid()) {
-            return $this->response()->responseInvalid();
+            return $this->responseInvalid();
         }
 
         if ($this->output() == 'json') {
@@ -46,14 +46,14 @@ trait Output
 
     public function responseInvalid()
     {
-        $this->response()->fail();
+        $this->fail();
         $this->response()->validator = $this->validator;
 
         if ($this->output() != 'json') {
             return $this->html($type = 'blank');
         }
 
-        return $this->response()->json();
+        return $this->json();
     }
 
     /**
@@ -96,7 +96,7 @@ trait Output
     public function json()
     {
 
-        return $this->response()->success('Request Processed')
+        return $this->success('Request Processed')
             ->load($this->jsonPayload())->json();
     }
 
@@ -149,7 +149,7 @@ trait Output
 
         // $this->response()->validator = $this->validator;
 
-        return $this->response()->view($path)->with($vars);
+        return $this->view($path)->with($vars);
     }
 
     /**
@@ -236,7 +236,7 @@ trait Output
      */
     public function output()
     {
-        if ($this->response()->expectsJson()) {
+        if ($this->expectsJson()) {
             return 'json';
         }
 

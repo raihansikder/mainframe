@@ -67,8 +67,8 @@ class LoginController extends BaseController
      */
     protected function sendFailedLoginResponse(Request $request)
     {
-        if ($this->response()->expectsJson()) {
-            return $this->response()->fail(trans('auth.failed'))->json();
+        if ($this->expectsJson()) {
+            return $this->fail(trans('auth.failed'))->json();
         }
 
         throw ValidationException::withMessages([
@@ -88,8 +88,8 @@ class LoginController extends BaseController
 
         $user->generateAuthToken();
 
-        if ($this->response()->expectsJson()) {
-            return $this->response()->success()->load($user->refresh())->json();
+        if ($this->expectsJson()) {
+            return $this->success()->load($user->refresh())->json();
         }
     }
 
@@ -101,8 +101,8 @@ class LoginController extends BaseController
      */
     protected function loggedOut(Request $request)
     {
-        if ($this->response()->expectsJson()) {
-            return $this->response()->success('Logged out')->json();
+        if ($this->expectsJson()) {
+            return $this->success('Logged out')->json();
         }
     }
 

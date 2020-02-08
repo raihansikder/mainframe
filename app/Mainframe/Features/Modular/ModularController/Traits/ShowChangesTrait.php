@@ -15,21 +15,21 @@ trait ShowChangesTrait
     {
 
         if (! $this->element = $this->model->find($id)) {
-            return $this->response()->notFound();
+            return $this->notFound();
         }
 
         if (! user()->can('view', $this->element)) {
-            return $this->response()->permissionDenied();
+            return $this->permissionDenied();
         }
 
         $audits = $this->element->audits;
         // return $audits;
 
-        if ($this->response()->expectsJson()) {
-            return $this->response()->success()->load($audits)->json();
+        if ($this->expectsJson()) {
+            return $this->success()->load($audits)->json();
         }
 
-        return $this->response()->view('mainframe.layouts.module.changes.index')
+        return $this->view('mainframe.layouts.module.changes.index')
             ->with(['audits' => $audits]);
 
     }
