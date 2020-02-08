@@ -3,8 +3,8 @@
 namespace App\Mainframe\Modules\Groups;
 
 use Request;
-use InvalidArgumentException;
 use App\User;
+use InvalidArgumentException;
 use Illuminate\Database\Eloquent\Builder;
 use App\Mainframe\Features\Modular\BaseModule\BaseModule;
 use App\Mainframe\Modules\Groups\Traits\GroupDefinitionsTrait;
