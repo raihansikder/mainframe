@@ -97,13 +97,60 @@ trait UserHelper
     }
 
     /**
+     * Handle a set of actions that result from a successful login.
+     * i.e. update login timestamp. authToken if it is expired.
+     */
+    public function loggedIn()
+    {
+        $this->updateLoginTimestamps();
+
+        if ($this->authTokenHasExpired() || ! $this->auth_token) {
+            $this->updateAuthToken();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Check if auth_token has expired.
+     *
+     * @return bool
+     */
+    public function authTokenHasExpired()
+    {
+        return $this->last_login_at->addMinutes(config('session.lifetime')) < now();
+    }
+
+    /**
+     * Update login timestamps
+     *
+     * @return $this
+     */
+    public function updateLoginTimestamps()
+    {
+
+        $this->last_login_at = now();
+        $updates = ['last_login_at' => now()];
+
+        if (! $this->first_login_at) {
+            $this->first_login_at = now();
+            $updates['first_login_at'] = now();
+        }
+
+        User::where('id', $this->id)->update($updates);
+
+        return $this;
+
+    }
+
+    /**
      * Generates auth_token (bearer token) for this user.
      *
      * @return bool|string
      */
-    public function generateAuthToken()
+    public function updateAuthToken()
     {
-        \DB::table($this->table)->where('id', $this->id)->update(['auth_token' => $this->createAuthToken()]);
+        User::where('id', $this->id)->update(['auth_token' => $this->createAuthToken()]);
 
         return $this;
     }
