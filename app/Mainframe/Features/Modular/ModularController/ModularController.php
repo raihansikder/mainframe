@@ -93,7 +93,9 @@ class ModularController extends BaseController
      */
     public function show($id)
     {
-        if (! $this->element = $this->model->find($id)) {
+        $relations = request('with') ? explode(',', request('with')) : [];
+
+        if (! $this->element = $this->model->with($relations)->find($id)) {
             return $this->notFound();
         }
 
