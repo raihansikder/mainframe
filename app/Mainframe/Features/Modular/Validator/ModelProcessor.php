@@ -136,6 +136,21 @@ class ModelProcessor
     }
 
     /**
+     * Get the original value. If not original value exists return null
+     *
+     * @param $key
+     * @return mixed
+     */
+    public function original($key)
+    {
+        if (isset($this->original[$key])) {
+            return $this->original[$key];
+        }
+
+        return null;
+    }
+
+    /**
      * Generic function to process all validation logic. This function auto
      * determines whether it should call the creating() or updating()
      * logic based on existence of id field in the element.
