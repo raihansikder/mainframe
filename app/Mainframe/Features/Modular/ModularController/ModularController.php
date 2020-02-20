@@ -175,11 +175,12 @@ class ModularController extends BaseController
 
         $this->element = $this->model; // Create an empty model to be stored.
 
-        try {
-            $this->attemptStore();
-        } catch (\Exception $e) {
-            $this->response()->validator = $e->getMessage();
-        }
+        $this->attemptStore();
+        // try {
+        //     $this->attemptStore();
+        // } catch (\Exception $e) {
+        //     $this->response()->validator->errors()->add('Error', $e->getMessage());
+        // }
 
         $this->response()->redirectTo = $this->resolveRedirectTo();
 
@@ -204,16 +205,7 @@ class ModularController extends BaseController
             return $this->notFound();
         }
 
-        if (! user()->can('update', $this->element)) {
-            return $this->permissionDenied();
-        }
-
-        try {
-            $this->attemptUpdate();
-        } catch (\Exception $e) {
-            $this->response()->validator = $e->getMessage();
-        }
-
+        $this->attemptUpdate();
         $this->response()->redirectTo = $this->resolveRedirectTo();
 
         if ($this->expectsJson()) {
@@ -240,11 +232,7 @@ class ModularController extends BaseController
             return $this->permissionDenied();
         }
 
-        try {
-            $this->attemptDestroy();
-        } catch (\Exception $e) {
-            $this->response()->validator = $e->getMessage();
-        }
+        $this->attemptDestroy();
 
         $this->response()->redirectTo = $this->resolveRedirectTo();
 
