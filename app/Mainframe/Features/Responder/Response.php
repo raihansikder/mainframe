@@ -222,7 +222,8 @@ class Response
         $data = [
             'code' => $this->code,
             'status' => $this->status ?: 'success',
-            'message' => $this->message
+            'message' => $this->message,
+            'data' => null,
         ];
         // Load payload
         if ($this->payload) {
