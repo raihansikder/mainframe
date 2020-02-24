@@ -2,7 +2,8 @@
 /** @noinspection SpellCheckingInspection */
 $script_paths = [
     'mainframe/templates/admin/plugins/jQuery/jquery-2.2.3.min.js',
-    'mainframe/js/jquery-ui-1.10.3.min.js',
+    // 'mainframe/js/jquery-ui-1.10.3.min.js',
+    'mainframe/templates/admin/plugins/jQueryUI/jquery-ui.js',
     'mainframe/templates/admin/bootstrap/js/bootstrap.min.js',
     'mainframe/templates/admin/plugins/chartjs/Chart.min.js',
     'mainframe/templates/admin/plugins/fastclick/fastclick.js',
@@ -17,7 +18,7 @@ $script_paths = [
     'mainframe/templates/admin/plugins/datepicker/bootstrap-datepicker.js',
     'mainframe/templates/admin/plugins/daterangepicker/daterangepicker.js',
     'mainframe/templates/admin/plugins/datetimepicker/bootstrap-datetimepicker.js',
-    'mainframe/templates/admin/plugins/datetimepicker/bootstrap-datetimepicker.min.js',
+    // 'mainframe/templates/admin/plugins/datetimepicker/bootstrap-datetimepicker.min.js',
     'mainframe/templates/admin/plugins/slimScroll/jquery.slimscroll.min.js',
     'mainframe/templates/admin/plugins/fastclick/fastclick.js',
     'mainframe/templates/admin/plugins/iCheck/icheck.min.js',

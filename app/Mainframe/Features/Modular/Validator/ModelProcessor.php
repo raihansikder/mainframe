@@ -13,11 +13,38 @@ class ModelProcessor
 {
     use Validable, HasMessageBag;
 
-    /** @var \App\Mainframe\Features\Modular\BaseModule\BaseModule */
+    /**
+     * Element filled with new values
+     *
+     * @var \App\Mainframe\Features\Modular\BaseModule\BaseModule
+     */
     public $element;
 
-    /** @var array|mixed */
-    public $elementOriginal;
+    /**
+     * An array that has the original value of the element.
+     * Field names are array keys.
+     *
+     * @var array
+     */
+    public $original;
+
+    /**
+     * Fields that can not be changed once created.
+     *
+     * @var array
+     */
+    public $unMutable = [];
+
+    /**
+     * Define the allowed strict value change of specific fields
+     *
+     * @var array
+     */
+    public $transitions = [
+        'status' => [
+            'Lorem' => ['Ipsum', 'Dolor']
+        ]
+    ];
 
     /**
      * MainframeModelValidator constructor.
@@ -27,11 +54,15 @@ class ModelProcessor
     public function __construct($element)
     {
         $this->element = $element;
-        $this->elementOriginal = $element->getOriginal();
+        $this->original = $element->getOriginal();
     }
 
     /**
-     * Fill the model with values
+     * Fill the model with values. This is helpful when a model has additional
+     * fields that is not filled through mass assignment but needs to be
+     * filled so that the data is locally available. Often in the
+     * case of id-name pair id will be filled by mass assignment
+     * but the name needs to be auto filled in this method.
      *
      * @param $element \App\Mainframe\Features\Modular\BaseModule\BaseModule|mixed
      * @return $this
@@ -42,7 +73,7 @@ class ModelProcessor
     }
 
     /**
-     * Validation rules.
+     * Laravel validator validation rules.
      *
      * @param  mixed  $element
      * @param  array  $merge
@@ -61,7 +92,7 @@ class ModelProcessor
     }
 
     /**
-     * Custom error messages.
+     * Custom error messages for the validation rules above.
      *
      * @param  array  $merge
      * @return array
@@ -74,7 +105,7 @@ class ModelProcessor
     }
 
     /**
-     * Validate based on rules
+     * Run Laravel validation
      *
      * @return \Illuminate\Contracts\Validation\Validator|\Illuminate\Validation\Validator
      */
@@ -90,8 +121,108 @@ class ModelProcessor
     }
 
     /**
-     * Run validation logic on model.
-     * Based on existence of id field decide to check creating()/updating()
+     * Invalidate if the value of an un-mutable field has been changed.
+     *
+     * @return $this
+     */
+    public function checkUnMutable()
+    {
+        foreach ($this->getUnMutable() as $field) {
+            if ($this->element->fieldHasChanged($field)) {
+                $this->fieldError($field, $field." - can not be updated.");
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * Checks if all the transitions are valid.
+     *
+     * @return $this
+     */
+    public function checkTransitions()
+    {
+        $allTransitions = $this->getTransitions();
+
+        foreach ($allTransitions as $field => $transition) {
+            if ($this->element->fieldHasChanged($field)) {
+
+                $change = $this->element->transition($field);
+
+                if ($change && ! $this->transitionAllowed($field, $change['old'], $change['new'])) {
+                    $this->fieldError($field, $field." - can not be updated from ".$change['old']." to ".$change['new']);
+                }
+
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * Check if a value transition is allowed.
+     *
+     * @param $field
+     * @param $from
+     * @param $to
+     * @return bool
+     */
+    public function transitionAllowed($field, $from, $to)
+    {
+        $allTransitions = $this->getTransitions();
+
+        if (! isset($allTransitions[$field])) {
+            return true;
+        }
+
+        if (! isset($allTransitions[$field][$from])) {
+            return true;
+        }
+
+        $transitions = $allTransitions[$field][$from];
+        if (in_array($to, $transitions)) {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * Get a list of un-mutable fields
+     *
+     * @return array
+     */
+    public function getUnMutable()
+    {
+        return $this->unMutable;
+    }
+
+    /**
+     * Get a list of un-mutable fields
+     *
+     * @return array
+     */
+    public function getTransitions()
+    {
+        return $this->transitions;
+    }
+
+    /**
+     * Get the original value. If not original value exists return null
+     *
+     * @param $key
+     * @return mixed
+     */
+    public function original($key)
+    {
+        return $this->original[$key] ?? null;
+    }
+
+    /**
+     * Generic function to process all validation logic. This function auto
+     * determines whether it should call the creating() or updating()
+     * logic based on existence of id field in the element.
      *
      * @return $this
      */
@@ -109,11 +240,13 @@ class ModelProcessor
     | Events
     |--------------------------------------------------------------------------
     |
-    | Model events where validation is checked.
+    | Model events where validation is checked. This events refer to intentions.
+    | If you are attempting to save a model in some place of your application
+    | Then you should call the save() processor function.
     */
 
     /**
-     * Run validation for save.
+     * Run validation for save. Common for create and update.
      *
      * @param  null  $element
      * @return $this
@@ -128,7 +261,8 @@ class ModelProcessor
     }
 
     /**
-     * Run validation for create.
+     * Run validation for create. This initially runs the save()
+     * validation checks then loads creating() checks.
      *
      * @param  null  $element
      * @return $this
@@ -152,6 +286,8 @@ class ModelProcessor
     {
         $element = $element ?: $this->element;
         $this->save();
+        $this->checkUnMutable();
+        $this->checkTransitions();
         $this->updating($element);
 
         return $this;
@@ -186,7 +322,6 @@ class ModelProcessor
         return $this;
     }
 
-
     /*
     |--------------------------------------------------------------------------
     | Event specific validation
@@ -205,6 +340,7 @@ class ModelProcessor
      */
     public function saving($element)
     {
+
         return $this;
     }
 

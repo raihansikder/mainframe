@@ -6,7 +6,7 @@
 
 namespace App\Mainframe\Modules\Packages;
 
-use App\Mainframe\Modules\Users\User;
+use App\User;
 use App\Mainframe\Features\Modular\BaseModule\BaseModulePolicy;
 
 class PackagePolicy extends BaseModulePolicy
@@ -15,32 +15,32 @@ class PackagePolicy extends BaseModulePolicy
     /**
      * Determine whether the user can view any packages.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @return mixed
      */
-    public function viewAny(User $user) { }
+    public function viewAny($user) { }
 
     /**
      * Determine whether the user can view the package.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @param  Package  $package
      * @return mixed
      */
-    // public function view(User $user, $package) { }
+    // public function view($user, $package) { }
 
     /**
      * Determine whether the user can create packages.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @return mixed
      */
-    // public function create(User $user) { }
+    // public function create($user) { }
 
     /**
      * Determine whether the user can update the package.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @param  Package  $package
      * @return mixed
      */
@@ -49,7 +49,7 @@ class PackagePolicy extends BaseModulePolicy
     /**
      * Determine whether the user can delete the package.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @param  Package  $package
      * @return mixed
      */
@@ -58,7 +58,7 @@ class PackagePolicy extends BaseModulePolicy
     /**
      * Determine whether the user can restore the package.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @param  Package  $package
      * @return mixed
      */
@@ -67,7 +67,7 @@ class PackagePolicy extends BaseModulePolicy
     /**
      * Determine whether the user can permanently delete the package.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @param  Package  $package
      * @return mixed
      */

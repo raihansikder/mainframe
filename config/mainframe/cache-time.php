@@ -7,7 +7,9 @@ return [
     |--------------------------------------------------------------------------
     | Following values are used in remember() function where queries are executed.
     |
-    |*/
+    |
+    */
+
     'forever' => -1,
     'none' => null,
     'very-long' => 36000,

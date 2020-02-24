@@ -2,16 +2,37 @@
 
 use App\Mainframe\Helpers\Mf;
 use Illuminate\Support\MessageBag;
+use App\User;
 
 /**
  * returns sentry object of currently logged in user
  *
  * @param  bool|null  $id
- * @return \Illuminate\Contracts\Auth\Authenticatable|\App\Mainframe\Modules\Users\User
+ * @return \Illuminate\Contracts\Auth\Authenticatable|\App\User
  */
 function user($id = null)
 {
     return Mf::user($id);
+}
+
+/**
+ * Get bearer user
+ *
+ * @return \Illuminate\Contracts\Auth\Authenticatable
+ */
+function bearer()
+{
+    return Auth::guard('bearer')->user();
+}
+
+/**
+ * Get bearer user
+ *
+ * @return \Illuminate\Contracts\Auth\Authenticatable
+ */
+function apiCaller()
+{
+    return Auth::guard('x-auth')->user();
 }
 
 /**
@@ -23,6 +44,7 @@ function modules()
 {
     return Mf::modules();
 }
+
 
 /**
  * create uuid
@@ -38,6 +60,17 @@ function uuid()
 
     return false;
 
+}
+
+/**
+ * Get setting
+ *
+ * @param $name
+ * @return null|array|bool|mixed|string
+ */
+function setting($name)
+{
+    return \App\Mainframe\Modules\Settings\Setting::read($name);
 }
 
 /**
@@ -93,27 +126,4 @@ function setError($str = '', $setMsg = true, $ret = false)
     return $ret;
 }
 
-/**
- * Renders the left menu of the application and makes the current item active based on breadcrumb
- *
- * @param        $tree
- * @param  string  $currentModuleName
- * @param  array  $breadcrumbs
- * @return null
- */
-function renderMenuTree($tree, $currentModuleName = '', $breadcrumbs = [])
-{
-    return \App\Mainframe\Helpers\View::renderMenuTree($tree, $currentModuleName, $breadcrumbs);
-}
-
-/**
- * Returns an array with module/module_group name as key
- *
- * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule|null  $module
- * @return array
- */
-function breadcrumb($module = null)
-{
-    return \App\Mainframe\Helpers\View::breadcrumb($module);
-}
 

@@ -163,7 +163,7 @@ class ProjectProcessor extends ModelProcessor
     private function nameIsNotJoker($project)
     {
         if ($project->name === 'Joker') {
-            $this->addfieldError('name', "Name can not be Joker");
+            $this->fieldError('name', "Name can not be Joker");
         }
 
         return $this;

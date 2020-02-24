@@ -22,7 +22,7 @@
 @if(isset($upload))
     <div class="clearfix"></div>
     <div class="col-md-6 no-padding-l">
-        <a href="{{route('get.download', $upload->uuid)}}">
+        <a href="{{route('download', $upload->uuid)}}">
             @if($upload->isImage())
                 <img src="{{ $upload->url}}" alt=""/>
             @else

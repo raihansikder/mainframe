@@ -10,7 +10,7 @@ use Validator;
  * @package App\Mainframe\Features\Modular\BaseController\Traits
  */
 
-/** @mixin  \App\Mainframe\Http\Controller\BaseController $this */
+/** @mixin  \App\Mainframe\Http\Controllers\BaseController $this */
 trait Validable
 {
     /** @var \Illuminate\Validation\Validator */
@@ -35,25 +35,25 @@ trait Validable
     }
 
     /**
-     * Ad
-     * d an error message to a key-value pair
+     * Add an error message to a key-value pair
      *
      * @param  null  $message
      * @return \App\Mainframe\Features\Core\Traits\Validable
      */
-    public function addError($message)
+    public function error($message)
     {
-        $this->validator()->errors()->add('error', $message);
+        $this->fieldError('error', $message);
 
         return $this;
     }
 
     /**
+     * Add a field specific error message
      * @param  null  $key
      * @param  null  $message
      * @return $this
      */
-    public function addFieldError($key, $message = null)
+    public function fieldError($key, $message = null)
     {
         $message = $message ?: $key.' - is not valid';
         $this->validator()->errors()->add($key, $message);

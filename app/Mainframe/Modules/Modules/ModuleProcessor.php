@@ -31,7 +31,7 @@ class ModuleProcessor extends ModelProcessor
     /**
      * Run all rule checkers
      *
-     * @return \App\Http\Mainframe\Features\Modular\BaseModule\BaseModule|bool
+     * @return \App\Mainframe\Features\Modular\BaseModule\BaseModule|bool
      */
     public function run()
     {
@@ -44,7 +44,7 @@ class ModuleProcessor extends ModelProcessor
     /**
      * Get results
      *
-     * @return \App\Http\Mainframe\Features\Modular\BaseModule\BaseModule|bool
+     * @return \App\Mainframe\Features\Modular\BaseModule\BaseModule|bool
      */
     public function result()
     {

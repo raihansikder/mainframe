@@ -3,7 +3,6 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Builder;
-use App\Mainframe\Modules\Users\User as MFUserModel;
 
 /**
  * App\User
@@ -63,11 +62,11 @@ use App\Mainframe\Modules\Users\User as MFUserModel;
  * @property string|null $group_ids
  * @property int|null $is_test
  * @property-read int|null $changes_count
- * @property-read \App\Mainframe\Modules\Users\User|null $creator
+ * @property-read \App\User|null $creator
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Group[] $groups
  * @property-read int|null $groups_count
  * @property-read \App\Mainframe\Modules\Uploads\Upload $latestUpload
- * @property-read \App\Mainframe\Modules\Users\User|null $updater
+ * @property-read \App\User|null $updater
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Uploads\Upload[] $uploads
  * @property-read int|null $uploads_count
  * @method static Builder|User newModelQuery()
@@ -132,7 +131,7 @@ use App\Mainframe\Modules\Users\User as MFUserModel;
  * @property string|null $email_verification_code
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property-read int|null $notifications_count
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User active()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\User active()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereEmailVerificationCode($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereIsTenantEditable($value)
  * @property int|null $project_id
@@ -142,7 +141,7 @@ use App\Mainframe\Modules\Users\User as MFUserModel;
  * @property-read \Illuminate\Database\Eloquent\Collection|\OwenIt\Auditing\Models\Audit[] $audits
  * @property-read int|null $audits_count
  */
-class User extends MFUserModel
+class User extends \App\Mainframe\Modules\Users\User
 {
 
 }

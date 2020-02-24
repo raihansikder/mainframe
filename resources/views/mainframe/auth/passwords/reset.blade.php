@@ -12,15 +12,12 @@
             </div>
         @endif
 
-
-        <form method="POST" action="{{ route('mf.password.request') }}" aria-label="{{ __('Reset Password') }}">
+        <form method="POST" action="{{ route('password.request') }}" aria-label="{{ __('Reset Password') }}">
             @csrf
             <input type="hidden" name="token" value="{{ $token }}">
-
-            @include('mainframe.form.input.text',['var'=>['name'=>'email','label'=>'Email','container_class'=>'col-sm-12']])
-
-            @include('mainframe.form.input.text',['var'=>['name'=>'password','type'=>'password','label'=>'New password','value'=>'','container_class'=>'col-sm-12']])
-            @include('mainframe.form.input.text',['var'=>['name'=>'password_confirmation','type'=>'password','label'=>'Confirm new password','container_class'=>'col-sm-12']])
+            @include('form.text',['var'=>['name'=>'email','label'=>'Email','container_class'=>'col-sm-12']])
+            @include('form.text',['var'=>['name'=>'password','type'=>'password','label'=>'New password','value'=>'','container_class'=>'col-sm-12']])
+            @include('form.text',['var'=>['name'=>'password_confirmation','type'=>'password','label'=>'Confirm new password','container_class'=>'col-sm-12']])
             <input type="submit" value="Reset Password">
         </form>
     </div>

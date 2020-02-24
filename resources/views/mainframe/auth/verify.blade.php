@@ -15,7 +15,7 @@
         Before proceeding, please check your email for a verification link.
         If you did not receive the email click below.
 
-        <form action="{{ route('mf.verification.resend') }}" method="post">
+        <form action="{{ route('verification.resend') }}" method="post">
             {{csrf_field()}}
             <button type="submit">Resend verification link</button>
         </form>

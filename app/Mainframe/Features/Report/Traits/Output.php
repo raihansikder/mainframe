@@ -22,7 +22,7 @@ trait Output
         }
 
         if ($this->invalid()) {
-            return $this->response()->responseInvalid();
+            return $this->responseInvalid();
         }
 
         if ($this->output() == 'json') {
@@ -46,14 +46,14 @@ trait Output
 
     public function responseInvalid()
     {
-        $this->response()->fail();
+        $this->fail();
         $this->response()->validator = $this->validator;
 
         if ($this->output() != 'json') {
             return $this->html($type = 'blank');
         }
 
-        return $this->response()->json();
+        return $this->json();
     }
 
     /**
@@ -82,17 +82,22 @@ trait Output
         return $path;
     }
 
+    public function jsonPayload()
+    {
+        $result = $this->mutateResult()->toArray();
+        $result['items'] = $result['data'];
+        unset($result['data']);
+        return $result;
+    }
+
     /**
      * @return mixed|\Illuminate\Support\Collection
      */
     public function json()
     {
-        $result = $this->mutateResult()->toArray();
-        $result['items'] = $result['data'];
-        unset($result['data']);
 
-        return $this->response()->success('Request Processed')
-            ->load($result)->json();
+        return $this->success('Request Processed')
+            ->load($this->jsonPayload())->json();
     }
 
     public function excel($csv = false)
@@ -144,7 +149,7 @@ trait Output
 
         // $this->response()->validator = $this->validator;
 
-        return $this->response()->view($path)->with($vars);
+        return $this->view($path)->with($vars);
     }
 
     /**
@@ -231,7 +236,7 @@ trait Output
      */
     public function output()
     {
-        if ($this->response()->expectsJson()) {
+        if ($this->expectsJson()) {
             return 'json';
         }
 

@@ -1,12 +1,12 @@
 <?php
 /**
  * @var \App\Mainframe\Modules\Superheroes\SuperHero $module
- * @var \App\Mainframe\Modules\Users\User $user
- * @var \App\Mainframe\Modules\Users\User $element
+ * @var \App\User $user
+ * @var \App\User $element
  * @var string $formState create|edit
  * @var array $formConfig
  * @var string $uuid Only available for create
- * @var bool $elementIsEditable
+ * @var bool $editable
  */
 ?>
 <script>
@@ -30,6 +30,7 @@
     |--------------------------------------------------------------------------
     | JS to run only during creation
     |--------------------------------------------------------------------------
+    |
     |
     | Some JS may only be required to be executed while creating a
     | model. Write such JS here

@@ -6,7 +6,7 @@
 
 namespace App\Mainframe\Modules\Reports;
 
-use App\Mainframe\Modules\Users\User;
+use App\User;
 use App\Mainframe\Features\Modular\BaseModule\BaseModulePolicy;
 
 class ReportPolicy extends BaseModulePolicy
@@ -15,32 +15,32 @@ class ReportPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can view any reports.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @return mixed
      */
-    public function viewAny(User $user) { }
+    public function viewAny($user) { }
 
     /**
      * Determine whether the user can view the report.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @param  Report  $report
      * @return mixed
      */
-    // public function view(User $user, $report) { }
+    // public function view($user, $report) { }
 
     /**
      * Determine whether the user can create reports.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @return mixed
      */
-    // public function create(User $user) { }
+    // public function create($user) { }
 
     /**
      * Determine whether the user can update the report.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @param  Report  $report
      * @return mixed
      */
@@ -49,7 +49,7 @@ class ReportPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can delete the report.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @param  Report  $report
      * @return mixed
      */
@@ -58,7 +58,7 @@ class ReportPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can restore the report.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @param  Report  $report
      * @return mixed
      */
@@ -67,7 +67,7 @@ class ReportPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can permanently delete the report.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @param  Report  $report
      * @return mixed
      */

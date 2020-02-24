@@ -6,7 +6,7 @@
 
 namespace App\Mainframe\Modules\Tenants;
 
-use App\Mainframe\Modules\Users\User;
+use App\User;
 use App\Mainframe\Features\Modular\BaseModule\BaseModulePolicy;
 
 class TenantPolicy extends BaseModulePolicy
@@ -15,32 +15,32 @@ class TenantPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can view any tenants.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @return mixed
      */
-    public function viewAny(User $user) { }
+    public function viewAny($user) { }
 
     /**
      * Determine whether the user can view the tenant.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @param  Tenant  $tenant
      * @return mixed
      */
-    // public function view(User $user, $tenant) { }
+    // public function view($user, $tenant) { }
 
     /**
      * Determine whether the user can create tenants.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @return mixed
      */
-    // public function create(User $user) { }
+    // public function create($user) { }
 
     /**
      * Determine whether the user can update the tenant.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @param  Tenant  $tenant
      * @return mixed
      */
@@ -49,7 +49,7 @@ class TenantPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can delete the tenant.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @param  Tenant  $tenant
      * @return mixed
      */
@@ -58,7 +58,7 @@ class TenantPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can restore the tenant.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @param  Tenant  $tenant
      * @return mixed
      */
@@ -67,7 +67,7 @@ class TenantPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can permanently delete the tenant.
      *
-     * @param  \App\Mainframe\Modules\Users\User  $user
+     * @param  \App\User  $user
      * @param  Tenant  $tenant
      * @return mixed
      */

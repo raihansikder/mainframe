@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use OwenIt\Auditing\Contracts\Auditable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Mainframe\Notifications\Auth\VerifyEmail;
 use App\Mainframe\Notifications\Auth\ResetPassword;
 use App\Mainframe\Modules\Users\Traits\UserGroupable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -26,6 +27,7 @@ use App\Mainframe\Features\Modular\BaseModule\Traits\TenantContextTrait;
  *
  * @property int $id
  * @property string|null $uuid
+ * @property int|null $project_id
  * @property int|null $tenant_id
  * @property string|null $name
  * @property string $email
@@ -68,14 +70,17 @@ use App\Mainframe\Features\Modular\BaseModule\Traits\TenantContextTrait;
  * @property string|null $dob
  * @property array|null $group_ids
  * @property int|null $is_test
- * @property-read int|null $changes_count
- * @property-read \App\Mainframe\Modules\Users\User|null $creator
+ * @property-read \Illuminate\Database\Eloquent\Collection|\OwenIt\Auditing\Models\Audit[] $audits
+ * @property-read int|null $audits_count
+ * @property-read \App\User|null $creator
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Group[] $groups
  * @property-read int|null $groups_count
  * @property-read \App\Mainframe\Modules\Uploads\Upload $latestUpload
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property-read int|null $notifications_count
- * @property-read \App\Mainframe\Modules\Users\User|null $updater
+ * @property-read \App\Mainframe\Modules\Projects\Project|null $project
+ * @property-read \App\Mainframe\Modules\Tenants\Tenant|null $tenant
+ * @property-read \App\User|null $updater
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Uploads\Upload[] $uploads
  * @property-read int|null $uploads_count
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User active()
@@ -121,6 +126,7 @@ use App\Mainframe\Features\Modular\BaseModule\Traits\TenantContextTrait;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User wherePassword($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User wherePermissions($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User wherePhone($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereProjectId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereRememberToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereSocialAccountId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereSocialAccountType($value)
@@ -132,12 +138,6 @@ use App\Mainframe\Features\Modular\BaseModule\Traits\TenantContextTrait;
  * @method static \Illuminate\Database\Query\Builder|\App\Mainframe\Modules\Users\User withTrashed()
  * @method static \Illuminate\Database\Query\Builder|\App\Mainframe\Modules\Users\User withoutTrashed()
  * @mixin \Eloquent
- * @property int|null $project_id
- * @property-read \App\Mainframe\Modules\Projects\Project $project
- * @property-read \App\Mainframe\Modules\Tenants\Tenant|null $tenant
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereProjectId($value)
- * @property-read \Illuminate\Database\Eloquent\Collection|\OwenIt\Auditing\Models\Audit[] $audits
- * @property-read int|null $audits_count
  */
 class User extends Authenticatable implements MustVerifyEmail, Auditable
 {
@@ -155,19 +155,13 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
     |--------------------------------------------------------------------------
     |
     */
-    protected $moduleName = 'users';
-    protected $table      = 'users';
-    /*
-    |--------------------------------------------------------------------------
-    | Fillable attributes
-    |--------------------------------------------------------------------------
-    |
-    | These attributes can be mass assigned
-    */
     /**
      * Constants
      */
     public const PASSWORD_VALIDATION_RULE = 'required|confirmed|min:6|regex:/[a-zA-Z]/|regex:/[0-9]/';
+
+    protected $moduleName = 'users';
+    protected $table = 'users';
 
     /*
     |--------------------------------------------------------------------------
@@ -177,6 +171,14 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
     | The attributes can not be mass assigned.
     */
     // protected $guarded = [];
+
+    /*
+    |--------------------------------------------------------------------------
+    | Fillable attributes
+    |--------------------------------------------------------------------------
+    |
+    | These attributes can be mass assigned
+    */
     protected $fillable = [
         'uuid',
         'name',
@@ -214,7 +216,6 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
         'dob',
         'group_ids',
         'is_test',
-
     ];
 
     /*
@@ -267,7 +268,8 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
     | The possible options for some field. Variable name should be
     |
     */
-    protected $with = ['groups'];
+    // protected $with = ['groups'];
+
     /**
      * Allowed permissions values.
      * Possible options:
@@ -352,9 +354,9 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
 
     /*
     |--------------------------------------------------------------------------
-    | Todo: Helper functions
+    | Helper functions
     |--------------------------------------------------------------------------
-    | Todo: Write Helper functions in the UserHelper trait.
+    |
     */
 
     /**
@@ -408,13 +410,21 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
     }
 
     /**
-     * Send reset password notification.
+     * Send reset password link
      *
      * @param  string  $token
      */
     public function sendPasswordResetNotification($token)
     {
         $this->notifyNow(new ResetPassword($token));
+    }
+
+    /**
+     * Send email verification link.
+     */
+    public function sendEmailVerificationNotification()
+    {
+        $this->notifyNow(new VerifyEmail());
     }
 
 }

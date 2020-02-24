@@ -8,9 +8,8 @@ use View;
 use Illuminate\Http\Request;
 use App\Mainframe\Modules\Modules\Module;
 use App\Mainframe\Features\Report\ModuleList;
-use App\Mainframe\Http\Controller\BaseController;
+use App\Mainframe\Http\Controllers\BaseController;
 use App\Mainframe\Features\Datatable\ModuleDatatable;
-use App\Mainframe\Features\Modular\Resolvers\GridView;
 use App\Mainframe\Features\Report\ModuleReportBuilder;
 use App\Mainframe\Features\Modular\ModularController\Traits\Resolvable;
 use App\Mainframe\Features\Modular\ModularController\Traits\RequestHandler;
@@ -64,16 +63,16 @@ class ModularController extends BaseController
     public function index()
     {
         if (! user()->can('view-any', $this->model)) {
-            return $this->response()->permissionDenied();
+            return $this->permissionDenied();
         }
 
-        if ($this->response()->expectsJson()) {
+        if ($this->expectsJson()) {
             return $this->listJson();
         }
 
         $vars = ['columns' => $this->datatable()->columns()];
 
-        return $this->response()->view(GridView::resolve($this->module))->with($vars);
+        return $this->view($this->grid())->with($vars);
     }
 
     /**
@@ -94,19 +93,19 @@ class ModularController extends BaseController
      */
     public function show($id)
     {
-        if (! $this->element = $this->model->find($id)) {
-            return $this->response()->notFound();
+        $relations = request('with') ? explode(',', request('with')) : [];
+
+        if (! $this->element = $this->model->with($relations)->find($id)) {
+            return $this->notFound();
         }
 
         if (! user()->can('view', $this->element)) {
-            return $this->response()->permissionDenied();
+            return $this->permissionDenied();
         }
 
-        if ($this->response()->expectsJson()) {
-            return $this->response()->success()->load($this->element)->json();
-        }
+        return $this->load($this->element)
+            ->to(route($this->moduleName.".edit", $id))->send();
 
-        return $this->response()->redirect(route($this->moduleName.".edit", $id));
     }
 
     /**
@@ -122,7 +121,7 @@ class ModularController extends BaseController
         $this->element->uuid = $uuid;
 
         if (! user()->can('create', $this->model)) {
-            return $this->response()->permissionDenied();
+            return $this->permissionDenied();
         }
 
         $vars = [
@@ -133,7 +132,7 @@ class ModularController extends BaseController
             'formState' => 'create',
         ];
 
-        return $this->response()->view($this->createFormView())->with($vars);
+        return $this->view($this->form('create'))->with($vars);
     }
 
     /**
@@ -145,11 +144,11 @@ class ModularController extends BaseController
     public function edit($id)
     {
         if (! $this->element = $this->model->find($id)) {
-            return $this->response()->notFound();
+            return $this->notFound();
         }
 
         if (! user()->can('view', $this->element)) {
-            return $this->response()->permissionDenied();
+            return $this->permissionDenied();
         }
 
         $vars = [
@@ -159,7 +158,7 @@ class ModularController extends BaseController
             'formState' => 'edit',
         ];
 
-        return $this->response()->view($this->editFormView())->with($vars);
+        return $this->view($this->form('edit'))->with($vars);
     }
 
     /**
@@ -171,20 +170,25 @@ class ModularController extends BaseController
     public function store(Request $request)
     {
         if (! user()->can('create', $this->model)) {
-            return $this->response()->permissionDenied();
+            return $this->permissionDenied();
         }
 
         $this->element = $this->model; // Create an empty model to be stored.
 
         $this->attemptStore();
+        // try {
+        //     $this->attemptStore();
+        // } catch (\Exception $e) {
+        //     $this->response()->validator->errors()->add('Error', $e->getMessage());
+        // }
 
-        $this->response()->redirectTo = $this->redirectTo();
+        $this->response()->redirectTo = $this->resolveRedirectTo();
 
-        if ($this->response()->expectsJson()) {
-            return $this->response()->load($this->element->toArray())->json();
+        if ($this->expectsJson()) {
+            return $this->load($this->element->toArray())->json();
         }
 
-        return $this->response()->redirect();
+        return $this->redirect();
     }
 
     /**
@@ -196,23 +200,19 @@ class ModularController extends BaseController
      */
     public function update(Request $request, $id)
     {
-        if (! $this->element = $this->model->find($id)) {
-            return $this->response()->notFound();
-        }
 
-        if (! user()->can('update', $this->element)) {
-            return $this->response()->permissionDenied();
+        if (! $this->element = $this->model->find($id)) {
+            return $this->notFound();
         }
 
         $this->attemptUpdate();
+        $this->response()->redirectTo = $this->resolveRedirectTo();
 
-        $this->response()->redirectTo = $this->redirectTo();
-
-        if ($this->response()->expectsJson()) {
-            return $this->response()->load($this->element)->json();
+        if ($this->expectsJson()) {
+            return $this->load($this->element)->json();
         }
 
-        return $this->response()->redirect();
+        return $this->redirect();
     }
 
     /**
@@ -225,22 +225,22 @@ class ModularController extends BaseController
     public function destroy($id)
     {
         if (! $this->element = $this->model->find($id)) {
-            return $this->response()->notFound();
+            return $this->notFound();
         }
 
         if (user()->cannot('delete', $this->element)) {
-            return $this->response()->permissionDenied();
+            return $this->permissionDenied();
         }
 
         $this->attemptDestroy();
 
-        $this->response()->redirectTo = $this->redirectTo();
+        $this->response()->redirectTo = $this->resolveRedirectTo();
 
-        if ($this->response()->expectsJson()) {
-            return $this->response()->load($this->element)->json();
+        if ($this->expectsJson()) {
+            return $this->load($this->element)->json();
         }
 
-        return $this->response()->redirect();
+        return $this->redirect();
     }
 
     /**
@@ -262,7 +262,7 @@ class ModularController extends BaseController
     public function report()
     {
         if (! user()->can('viewAny', $this->model)) {
-            return $this->response()->permissionDenied();
+            return $this->permissionDenied();
         }
 
         return (new ModuleReportBuilder($this->module))->show();

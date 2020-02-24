@@ -1,7 +1,7 @@
 <?php
 /*
 |--------------------------------------------------------------------------
-| Auth routes
+| Mainframe Auth routes
 |--------------------------------------------------------------------------
 |
 | These routes are manually added instead of calling Auth::routes();
@@ -9,14 +9,14 @@
 | for the architectural implementation
 |
 */
-// Authentication Routes...
+
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
 // Registration Routes...
-Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
-Route::post('register', 'Auth\RegisterController@register');
+Route::get('register/{groupName?}', 'Auth\RegisterController@showRegistrationForm')->name('register');
+Route::post('register/{groupName?}', 'Auth\RegisterController@register');
 
 // Password Reset Routes...
 Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
@@ -33,8 +33,6 @@ Route::get('email/verify', 'Auth\VerificationController@show')->name('verificati
 Route::get('email/verify/{id}/{hash}', 'Auth\VerificationController@verify')->name('verification.verify');
 Route::post('email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
 
-
-Route::get('logout', 'Auth\LoginController@logout')->name('get.logout');
 /*
 |--------------------------------------------------------------------------
 | Mainframe Tenant Registration routes
@@ -42,6 +40,8 @@ Route::get('logout', 'Auth\LoginController@logout')->name('get.logout');
 |
 */
 // Tenant Registration Routes...
-// Route::get('register/tenant', 'Auth\RegisterTenantController@showRegistrationForm')->name('tenant.register');
-// Route::post('register/tenant', 'Auth\RegisterTenantController@register');
+Route::get('register-tenant', 'Auth\RegisterTenantController@showRegistrationForm')->name('register.tenant');
+Route::post('register-tenant', 'Auth\RegisterTenantController@register');
 
+// Log out
+Route::get('logout', 'Auth\LoginController@logout')->name('get.logout');

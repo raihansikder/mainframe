@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>
         @section('head-title')
-            {{config('app.name')}}
+            {{setting('app-name')}}
         @show
     </title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -29,7 +29,7 @@
             {{--<span class="logo-mini">{{setting('app-name')}}</span>--}}
             {{--<!-- logo for regular state and mobile devices -->--}}
             {{--<span class="logo-lg">{{setting('app-name')}}</span>--}}
-            {{ config('app.name') }}
+            {{ setting('app-name') }}
         </a>
 
         <nav class="navbar navbar-static-top">
@@ -90,7 +90,7 @@
     @include('mainframe.layouts.default.includes.modals.delete')
 </div>
 
-@include('mainframe.layouts.default.includes..js')
+@include('mainframe.layouts.default.includes.js')
 
 @section('js')
 @show

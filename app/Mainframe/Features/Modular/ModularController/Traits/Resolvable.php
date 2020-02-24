@@ -6,24 +6,31 @@ use App\Mainframe\Features\Modular\Resolvers\FormView;
 
 trait Resolvable
 {
+
     /**
-     * Get the path to the blade file for edit form
+     * Resolve the view blade for the module form
      *
+     * @param  string  $state
      * @return string
      */
-    public function createFormView()
+    public function form($state = 'create')
     {
-        return FormView::resolve($this->module, 'create');
+        $default = $this->module->view_directory.'.form.default';
+        if ($state == 'create') {
+            return $default;
+        }
+
+        return $default;
     }
 
     /**
-     * Get the path to the blade file for edit form
+     * Resolve the view blade for grid
      *
      * @return string
      */
-    public function editFormView()
+    public function grid()
     {
-        return FormView::resolve($this->module, 'edit', user());
+        return $this->module->view_directory.'.grid.default';
     }
 
     /**

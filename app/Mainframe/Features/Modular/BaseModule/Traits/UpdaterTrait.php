@@ -2,7 +2,7 @@
 
 namespace App\Mainframe\Features\Modular\BaseModule\Traits;
 
-use App\Mainframe\Modules\Users\User;
+use App\User;
 /** @mixin $this BaseModule */
 trait UpdaterTrait
 {

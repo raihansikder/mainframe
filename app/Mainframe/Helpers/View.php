@@ -20,9 +20,9 @@ class View extends \Illuminate\View\View
         }
         foreach ($tree as $leaf) {
             $item = $leaf['item'];
-            $permission = $item->name.'view-any'; //lorems-view-any
+            $permission = $item->name.'-view-any'; //lorems-view-any
 
-            if (user()->hasAccess($permission)) {
+            if ($item->is_visible && user()->hasAnyAccess([$item->name, $permission])) {
 
                 // 1. checks if an item has any children
                 $hasChildren = isset($leaf['children']) && count($leaf['children']);
@@ -32,7 +32,7 @@ class View extends \Illuminate\View\View
                     $liClass .= " active";
                 }
                 // set url of the item
-                $url = in_array($leaf['type'], ['module', 'module_group']) ? route($item->name.".index") : '#';
+                $url = in_array($leaf['type'], ['module', 'module_group']) ? route($item->route_name.".index") : '#';
 
                 // matching current breadcrumb of the application set an item as active
 

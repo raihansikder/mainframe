@@ -6,7 +6,6 @@ use Storage;
 use Response;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use Illuminate\Http\UploadedFile;
 use App\Mainframe\Features\Modular\ModularController\ModularController;
 
 class UploadController extends ModularController
@@ -19,6 +18,9 @@ class UploadController extends ModularController
     |
     */
     protected $moduleName = 'uploads';
+
+    /** @var null|array|bool|\Illuminate\Http\UploadedFile|\Illuminate\Http\UploadedFile[] */
+    protected $file;
 
     /**
      * @return UploadDatatable
@@ -35,33 +37,34 @@ class UploadController extends ModularController
     public function store(Request $request)
     {
         if (! user()->can('create', $this->model)) {
-            return $this->response()->permissionDenied();
+            return $this->permissionDenied();
         }
 
         $this->element = $this->model; // Create an empty model to be stored.
 
-        if (! $file = $this->getFile()) {
-            return $this->response()->fail('No file in http request');
+        if (! $this->file = $this->getFile()) {
+            return $this->fail('No file in http request');
         }
+
+        if (! $path = $this->attemptUpload()) {
+            return $this->fail('Can not move file to destination from tmp');
+        }
+
+        $this->element->name = $this->file->getClientOriginalName();
+        $this->element->path = $path;
 
         // if($dimensions = $this->getImageDimension($file)){
         //     $this->element->width = $dimensions['width'];
         //     $this->element->height = $dimensions['height'];
         // }
 
-        if (! $uploadPath = $this->handleUpload($file)) {
-            return $this->response()->fail('Can not move file to destination from tmp');
-        }
-
-        $this->element->name = $file->getClientOriginalName();
-        $this->element->path = $uploadPath;
         $this->attemptStore();
 
-        if ($this->response()->expectsJson()) {
-            return $this->response()->json();
+        if ($this->expectsJson()) {
+            return $this->json();
         }
 
-        return $this->response()->redirect();
+        return $this->redirect();
     }
 
     /**
@@ -71,44 +74,79 @@ class UploadController extends ModularController
      */
     public function getFile()
     {
-        $fileField = request()->get('file_field', 'file');
+        $fileRequestField = request()->get('file_field', 'file');
 
-        if (! request()->hasFile($fileField)) {
+        if (! request()->hasFile($fileRequestField)) {
             return false;
         }
 
-        return request()->file($fileField);
+        $this->file = request()->file($fileRequestField);
+
+        return $this->file;
     }
 
     /**
      * Physically move the file to a location.
      *
-     * @param $file
      * @return bool|string
      */
-    public function handleUpload(UploadedFile $file)
+    public function attemptUpload()
+    {
+        return $this->attemptLocalUpload();
+        // return $this->attemptAwsUpload();
+
+    }
+
+    /**
+     * Upload in the same local server
+     * @return string
+     */
+    public function attemptLocalUpload()
+    {
+        $directory = $this->uploadDirectory();
+        $fileRelativePath = $this->localRelativePath();
+
+        if ($this->file->move($directory, $fileRelativePath)) {
+            return $fileRelativePath;
+        }
+    }
+
+    /**
+     * Upload in aws
+     * @return mixed
+     */
+    public function attemptAwsUpload()
+    {
+        if ($awsPath = Storage::disk('s3')->putFile(env('APP_ENV'), $this->file, 'public')) {
+            return Storage::disk('s3')->url($awsPath);
+        }
+    }
+
+    /**
+     * Relative path to local directory inside public
+     *
+     * @return \Illuminate\Config\Repository|mixed
+     */
+    public function uploadDirectory()
     {
         $path = config('mainframe.config.upload_root');
 
-        // todo: resolve tenant file root location
+        return $path;
+    }
 
-        //$dimensions = $this->getImageDimension($file);
+    public function localRelativePath()
+    {
+        return '/'.trim($this->uploadDirectory(), '/').'/'.$this->uniqueFileName();
+    }
 
-        $uniqueFileName = Str::random(8)."_".$file->getClientOriginalName();
-        // Upload to local
-        if (env('APP_ENV') === 'local') {
-            $relativePath = $path.$uniqueFileName;
-            if ($file->move(public_path().$path, $relativePath)) {
-                return $relativePath;
-            }
-        }
-
-        // Upload to AWS
-        if ($awsPath = Storage::disk('s3')->putFile(env('APP_ENV'), $file, 'public')) {
-            return Storage::disk('s3')->url($awsPath);
-        }
-
-        return false;
+    /**
+     * Generate unique file name
+     *
+     * @return string
+     */
+    public function uniqueFileName()
+    {
+        return Str::random(8)."_".$this->file->getClientOriginalName();
     }
 
     /** @noinspection PhpUnused */
@@ -116,13 +154,12 @@ class UploadController extends ModularController
     /**
      * Get dimension of image
      *
-     * @param $file
      * @return array|bool
      */
-    public function getImageDimension(UploadedFile $file)
+    public function getImageDimension()
     {
-        if (isImageExtension($file->getClientOriginalExtension())) {
-            [$width, $height] = getimagesize($file->getPathname());
+        if (isImageExtension($this->file->getClientOriginalExtension())) {
+            [$width, $height] = getimagesize($this->file->getPathname());
 
             return ['width' => $width, 'height' => $height];
         }
@@ -143,7 +180,7 @@ class UploadController extends ModularController
             return Response::download(public_path().$upload->path);
         }
 
-        return $this->response()->notFound();
+        return $this->notFound();
     }
 
 }

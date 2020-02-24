@@ -4,9 +4,8 @@ namespace Tests\Feature\Mainframe\Superadmin;
 
 use App\Mainframe\Modules\Modules\Module;
 use App\Mainframe\Features\Responder\Response;
-use App\Mainframe\Modules\Samples\LoremIpsums\LoremIpsum;
 
-class ModuleRestFeatureJsonTest extends SuperadminTestCase
+class ModuleRestFeatureJsonTest extends ModuleRestFeatureTest
 {
     /*
     |--------------------------------------------------------------------------
@@ -18,45 +17,48 @@ class ModuleRestFeatureJsonTest extends SuperadminTestCase
     |
     */
 
-    /** * @var \App\Mainframe\Modules\Modules\Module */
-    public $module;
-    /** * @var \App\Mainframe\Modules\Samples\LoremIpsums\LoremIpsum */
-    public $element;
-    /** @var string */
-    public $newElementName;
-
+    /**
+     * Setup the class. This works like constructor.
+     */
     public function setUp(): void
     {
         parent::setUp();
 
-        $this->module = Module::where('name', 'lorem-ipsums')->first();
-        $this->newElementName = 'phpunit-test-json'.date('YmdHi');
+        $this->module = Module::where('name', $this->moduleName)->first();
+        $this->newElementName = 'pu-test-json'.date('YmdHi');
     }
 
-    /**************************************************************
-     * Helpers
-     *************************************************************/
+    /*
+    |--------------------------------------------------------------------------
+    | Helpers
+    |--------------------------------------------------------------------------
+    |
+    | These are not actual tests rather helpers to fun the tests.
+    |
+    */
 
-    public function element()
-    {
-        $this->element = LoremIpsum::where('name', $this->newElementName)->first();
+    //
 
-        return $this->element;
-    }
-    /**************************************************************
-     * Test functions
-     *************************************************************/
+    /*
+    |--------------------------------------------------------------------------
+    | Test functions
+    |--------------------------------------------------------------------------
+    |
+    | List of test functions
+    |
+    */
 
     /**
-     * Superadmin can create a new lorem-ipsum.
+     * Superadmin can create a new element.
      *
      * @return void
      */
-    public function testSuperAdminCanCreateEntry()
+    public function testSuperAdminCanCreateElement()
     {
-        $this->post("/{$this->module->name}?ret=json", [
-            'name' => $this->newElementName,
-        ])
+        $this->post("/{$this->module->name}?ret=json",
+            [
+                'name' => $this->newElementName,
+            ])
             ->assertStatus(200)
             ->assertJson([
                 'code' => 200,
@@ -75,9 +77,10 @@ class ModuleRestFeatureJsonTest extends SuperadminTestCase
      */
     public function testSuperAdminCreateEntryValidation()
     {
-        $this->post("/{$this->module->name}?ret=json", [
-            'name' => $this->newElementName,
-        ])
+        $this->post("/{$this->module->name}?ret=json",
+            [
+                'name' => $this->newElementName,
+            ])
             ->assertStatus(200)
             ->assertJson([
                 'code' => Response::HTTP_UNPROCESSABLE_ENTITY,
@@ -126,9 +129,10 @@ class ModuleRestFeatureJsonTest extends SuperadminTestCase
     {
         $textAreaVal = \Str::random();
         $this->followingRedirects()
-            ->patch("/{$this->module->name}/{$this->element()->id}?ret=json", [
-                'textarea' => $textAreaVal
-            ])
+            ->patch("/{$this->module->name}/{$this->element()->id}?ret=json",
+                [
+                    'textarea' => $textAreaVal
+                ])
             ->assertStatus(200)
             ->assertJson([
                 'code' => 200,
@@ -164,7 +168,7 @@ class ModuleRestFeatureJsonTest extends SuperadminTestCase
         $this->assertDatabaseMissing($this->module->module_table, ['name' => $this->newElementName, 'deleted_at' => null]);
 
         // Clean up test entries. This is messy way. But works for now.
-        \DB::table('lorem_ipsums')->where('name', 'LIKE', 'phpunit%')->delete();
+        \DB::table('lorem_ipsums')->where('name', 'LIKE', 'pu-%')->delete();
         $this->assertDatabaseMissing($this->module->module_table, ['name' => $this->newElementName]);
     }
 }

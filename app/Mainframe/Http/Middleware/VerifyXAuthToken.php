@@ -2,8 +2,8 @@
 
 namespace App\Mainframe\Http\Middleware;
 
+use Auth;
 use Closure;
-use App\Mainframe\Modules\Users\User;
 use App\Mainframe\Features\Core\Traits\SendResponse;
 
 class VerifyXAuthToken
@@ -20,39 +20,20 @@ class VerifyXAuthToken
     public function handle($request, Closure $next)
     {
 
-        // $apiToken = $request->header('X-Auth-Token', null);
-        // $clientId = $request->header('client-id', null);
+        Auth::logout(); // Force to discard any user state.
 
-        $user = user();
-
-        if (! $user) {
-            return $this->response()
-                ->fail('Not authenticated.(Invalid X-Auth-Token)', 401)
-                ->json();
+        if (! $user = Auth::guard('x-auth')->user()) {
+            return $this->failed('Authentication failed', 401);
         }
 
         if ((! $user->can('make-api-call'))) {
-
-            return $this->response()
-                ->fail('Permission denied (make-api-cal)', 401)
-                ->json();
-
+            return $this->failed('Permission denied [make-api-cal]', 401);
         }
+
+        // Onetime login for Api
+        // \Auth::onceUsingId($user->id);
 
         return $next($request);
     }
 
-    /**
-     * Fetch matching user.
-     *
-     * @param $apiToken
-     * @param $clientId
-     * @return mixed|User
-     */
-    // public function fetchUser($apiToken, $clientId)
-    // {
-    //     return User::where('api_token', $apiToken)
-    //         ->where('id', $clientId)
-    //         ->remember(timer('short'))->first();
-    // }
 }

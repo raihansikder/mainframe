@@ -85,4 +85,105 @@ class BaseModule extends Model implements Auditable
         }
     }
 
+    /**
+     * Check if value has changed
+     *
+     * @param $field
+     * @return bool
+     */
+    public function fieldHasChanged($field)
+    {
+        if (array_key_exists($field, $this->getChanges())) {
+            return true; // This only works inside boot::saved()
+        }
+
+        if (($this->isUpdating() && isset($this->$field)) && $this->getOriginal($field) != $this->$field) {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * Get old and new value of a changed field field
+     *
+     * @param $field
+     * @return array
+     */
+    public function transition($field)
+    {
+        if ($this->fieldHasChanged($field)) {
+            return ['field' => $field, 'old' => $this->getOriginal($field), 'new' => $this->$field];
+        }
+
+        return null;
+    }
+
+    /**
+     * Check if a certain transition took place.
+     *
+     * @param $field
+     * @param $from
+     * @param $to
+     * @return bool
+     */
+    public function hasTransition($field, $from, $to)
+    {
+        if (! is_array($from)) {
+            $from = [$from];
+        }
+
+        if (! is_array($to)) {
+            $to = [$to];
+        }
+
+        $change = $this->transition($field);
+
+        if ($change) {
+            return in_array($change['old'], $from) && in_array($change['new'], $to);
+        }
+    }
+
+    /**
+     * Check if a certain transition took place.
+     *
+     * @param $field
+     * @param $from
+     * @return bool
+     */
+    public function hasTransitionFrom($field, $from)
+    {
+
+        if (! is_array($from)) {
+            $from = [$from];
+        }
+
+        $change = $this->transition($field);
+
+        if ($change) {
+            return in_array($change['old'], $from);
+        }
+    }
+
+    /**
+     * Check if a certain transition took place.
+     *
+     * @param $field
+     * @param $to
+     * @return bool
+     */
+    public function hasTransitionTo($field, $to)
+    {
+
+        if (! is_array($to)) {
+            $to = [$to];
+        }
+
+        $change = $this->transition($field);
+
+        if ($change) {
+            return in_array($change['new'], $to);
+        }
+    }
+
 }

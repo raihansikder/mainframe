@@ -31,9 +31,9 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule;
  * @property \Illuminate\Support\Carbon|null $deleted_at
  * @property int|null $deleted_by
  * @property-read int|null $changes_count
- * @property-read \App\Mainframe\Modules\Users\User|null $creator
+ * @property-read \App\User|null $creator
  * @property-read \App\Mainframe\Modules\Uploads\Upload $latestUpload
- * @property-read \App\Mainframe\Modules\Users\User|null $updater
+ * @property-read \App\User|null $updater
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Uploads\Upload[] $uploads
  * @property-read int|null $uploads_count
  * @method static Builder|Module newModelQuery()
@@ -85,6 +85,10 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Modules\Module whereRouteName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Modules\Module whereRoutePath($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Modules\Module whereTenantId($value)
+ * @property string|null $view_directory
+ * @property int|null $is_visible
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Modules\Module whereIsVisible($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Modules\Module whereViewDirectory($value)
  */
 class Module extends BaseModule
 {
@@ -268,12 +272,12 @@ class Module extends BaseModule
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    // public function updater() { return $this->belongsTo(\App\Mainframe\Modules\Users\User::class, 'updated_by'); }
+    // public function updater() { return $this->belongsTo(\App\User::class, 'updated_by'); }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    // public function creator() { return $this->belongsTo(\App\Mainframe\Modules\Users\User::class, 'created_by'); }
+    // public function creator() { return $this->belongsTo(\App\User::class, 'created_by'); }
 
     /*
    |--------------------------------------------------------------------------

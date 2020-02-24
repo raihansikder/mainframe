@@ -1,7 +1,7 @@
 @extends('mainframe.layouts.email.template')
 
 @section('title')
-    Verify Email Address
+    Reset password
 @endsection
 
 @section('content')

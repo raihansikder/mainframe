@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>
         @section('head-title')
-            {{config('app.name')}}
+            {{setting('app-name')}}
         @show
     </title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -16,7 +16,7 @@
 <body class="hold-transition login-page lb-bg">
 <div class="login-box shadow">
     <div class="login-logo">
-        {{config('app.name')}}
+        {{setting('app-name')}}
     </div>
     <div class="login-box-body">
         @include('mainframe.layouts.default.includes.alerts.messages-top')

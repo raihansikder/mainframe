@@ -19,34 +19,76 @@ class ModuleRestFeatureTest extends SuperadminTestCase
     |
     */
 
-    /** * @var \App\Mainframe\Modules\Modules\Module */
+    /**
+     * The module name that is being tested
+     *
+     * @var string
+     */
+    public $moduleName = 'lorem-ipsums';
+
+    /**
+     * The module object
+     *
+     * @var \App\Mainframe\Modules\Modules\Module
+     */
     public $module;
-    /** * @var \App\Mainframe\Modules\Samples\LoremIpsums\LoremIpsum */
+
+    /**
+     * A sample element/entry that is used for testing.
+     *
+     * @var \App\Mainframe\Modules\Samples\LoremIpsums\LoremIpsum
+     */
+
     public $element;
-    /** @var string */
+
+    /**
+     * Define a element name for storing. This is used for identifying the
+     * newly created item and remove it afterwards.
+     *
+     * @var string
+     */
     public $newElementName;
 
+    /**
+     * Setup the class. This works like constructor.
+     */
     public function setUp(): void
     {
         parent::setUp();
 
-        $this->module = Module::where('name', 'lorem-ipsums')->first();
-        $this->newElementName = 'phpunit-test-'.date('YmdHi');
+        $this->module = Module::where('name', $this->moduleName)->first();
+        $this->newElementName = 'pu-'.date('YmdHi');
     }
 
-    /**************************************************************
-     * Helpers
-     *************************************************************/
+    /*
+    |--------------------------------------------------------------------------
+    | Helpers
+    |--------------------------------------------------------------------------
+    |
+    | These are not actual tests rather helpers to fun the tests.
+    |
+    */
 
+    /**
+     * Get the element that is tested for. Usually this is the one that
+     * is just created.
+     *
+     * @return null|\App\Mainframe\Modules\Samples\LoremIpsums\LoremIpsum|\Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model|object
+     */
     public function element()
     {
         $this->element = LoremIpsum::where('name', $this->newElementName)->first();
 
         return $this->element;
     }
-    /**************************************************************
-     * Test functions
-     *************************************************************/
+    /*
+    |--------------------------------------------------------------------------
+    | Test functions
+    |--------------------------------------------------------------------------
+    |
+    | List of test functions
+    |
+    */
     /**
      * Superadmin can see create form.
      *
@@ -87,8 +129,8 @@ class ModuleRestFeatureTest extends SuperadminTestCase
                 'name' => $this->newElementName
             ])
             ->assertStatus(200)
-            ->assertSee('Validation failed') // A test name
-            ->assertSee('The name has already been taken.'); // A test name
+            ->assertSee('Validation failed')
+            ->assertSee('The name has already been taken.');
     }
 
     /**
@@ -167,7 +209,7 @@ class ModuleRestFeatureTest extends SuperadminTestCase
         $this->assertDatabaseMissing($this->module->module_table, ['name' => $this->newElementName, 'deleted_at' => null]);
 
         // Clean up test entries. This is messy way. But works for now.
-        DB::table('lorem_ipsums')->where('name', 'LIKE', 'phpunit%')->delete();
+        DB::table('lorem_ipsums')->where('name', 'LIKE', 'pu-%')->delete();
         $this->assertDatabaseMissing($this->module->module_table, ['name' => $this->newElementName]);
     }
 }

@@ -147,19 +147,19 @@ class SettingProcessor extends ModelProcessor
     private function valueCompatibleWithType($setting)
     {
         if (($setting->type === 'boolean') && ! in_array($setting->value, ['true', 'false'])) {
-            $this->addfieldError('value', "If boolean type is selected, value must be 'true' or 'false'");
+            $this->fieldError('value', "If boolean type is selected, value must be 'true' or 'false'");
         }
 
         /** @noinspection JsonEncodingApiUsageInspection */
         if (($setting->type === 'array') && ! json_decode($setting->value)) {
-            $this->addfieldError('value', "If array/json type is selected, value must be a valid json string");
+            $this->fieldError('value', "If array/json type is selected, value must be a valid json string");
         }
 
         // $this->messageBag()->add('some', 'message1');
         // $this->messageBag()->add('some', 'message2');
         // $this->messageBag()->add('some2', 'message3');
 
-        // $this->addError('test');
+        // $this->error('test');
 
         return $this;
     }

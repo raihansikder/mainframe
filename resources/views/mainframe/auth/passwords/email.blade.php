@@ -13,10 +13,10 @@
         @endif
 
 
-        <form method="POST" action="{{ route('mf.password.email') }}" aria-label="{{ __('Reset Password') }}">
+        <form method="POST" action="{{ route('password.email') }}" aria-label="{{ __('Reset Password') }}">
             @csrf
 
-            @include('mainframe.form.input.text',['var'=>['name'=>'email','label'=>'Email', 'container_class'=>'col-sm-12']])
+            @include('form.text',['var'=>['name'=>'email','label'=>'Email', 'container_class'=>'col-sm-12']])
 
             <div class="form-group row mb-0">
                 <div class="col-md-12 offset-md-4">

@@ -23,20 +23,5 @@ class SettingController extends ModularController
         return new SettingDatatable($this->module);
     }
 
-    /**
-     * API to get the setting
-     *
-     * @param $name
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function getSetting($name)
-    {
 
-        $setting = Setting::where('name', $name)->remember(timer('short'))->first();
-        if ($setting) {
-            return $this->response()->success()->load($setting->settingValue())->json();
-        }
-
-        return $this->response()->fail()->json();
-    }
 }

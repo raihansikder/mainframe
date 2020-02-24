@@ -5,9 +5,36 @@ namespace App\Mainframe\Modules\Users\Traits;
 use Illuminate\Support\Str;
 use App\Mainframe\Modules\Groups\Group;
 
-/** @mixin \App\Mainframe\Modules\Users\User $this */
+/** @mixin \App\User $this */
 trait UserGroupable
 {
+
+
+
+    /**
+     * Proxy function Check if user belongs to a group.
+     *
+     * @param  string  $name
+     * @return bool
+     */
+    public function isA($name = '')
+    {
+        return $this->inGroup($name);
+    }
+
+
+    /**
+     * Check if user belongs to a group.
+     *
+     * @param  string  $name
+     * @return bool
+     */
+    public function inGroup($name = '')
+    {
+        if ($group = Group::byName($name)) {
+            return $this->groups->contains('id', $group->id);
+        }
+    }
 
     /**
      * Checks if user belongs to a certain groupId
@@ -17,7 +44,7 @@ trait UserGroupable
      */
     public function inGroupId($group_id)
     {
-        if(is_array($group_id)){
+        if (is_array($group_id)) {
             foreach ($group_id as $id) {
                 if (in_array($id, $this->group_ids)) {
                     return true;
@@ -96,7 +123,6 @@ trait UserGroupable
     {
         $permissions = [];
 
-
         foreach ($this->groups as $group) {
             $permissions = array_merge($permissions, $group->permissions);
         }
@@ -125,7 +151,6 @@ trait UserGroupable
 
         return $this->hasPermission($permissions, $all);
     }
-
 
     /**
      * See if a user has access to the passed permission(s).

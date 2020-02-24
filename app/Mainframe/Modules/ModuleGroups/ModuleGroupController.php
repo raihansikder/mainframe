@@ -22,4 +22,12 @@ class ModuleGroupController extends ModularController
     {
         return new ModuleGroupDatatable($this->module);
     }
+
+    /**
+     * @return string
+     */
+    public function home()
+    {
+        return \Route::getCurrentRoute()->getName();
+    }
 }

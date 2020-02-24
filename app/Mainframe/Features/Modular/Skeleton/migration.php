@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection ClassConstantCanBeUsedInspection */
 /** @noinspection UnknownInspectionInspection */
 
 /** @noinspection DuplicatedCode */
@@ -19,7 +19,7 @@ class CreateSuperHeroesTable extends Migration
         /*
          * Create schema
          */
-        Schema::create('super_heroes', function (Blueprint $table) {
+        Schema::create('{table}', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('uuid', 64)->nullable()->default(null);
             $table->unsignedInteger('project_id')->nullable()->default(null);
@@ -27,6 +27,7 @@ class CreateSuperHeroesTable extends Migration
             $table->string('name', 1024)->nullable()->default(null);
 
             /******* Custom columns **********/
+            // Todo: Add module specific fields
             //$table->string('title', 100)->nullable()->default(null);
             //$table->text('somecolumnsname')->nullable()->default(null);
             /*********************************/
@@ -42,17 +43,25 @@ class CreateSuperHeroesTable extends Migration
         /*
          * Insert into modules table
          */
-        $name = 'super-heroes';
+        $name = '{module_name}';
         if (Module::where('name', $name)->doesntExist()) {
             $module = new Module(['name' => $name]);
 
-            $classPath = '\App\Mainframe\Modules\\'.$module->modelClassNamePlural();
-
-            $module->title = str_replace('-', ' ', ucfirst(Str::singular($name)));
-            $module->module_group_id = 1;
-            $module->description = 'Manage '.str_replace('-', ' ', Str::singular($name));
-            $module->model = $classPath.'\\'.$module->modelClassName();
-            $module->controller = $classPath.'\\'.$module->controllerClassName();
+            $module->title = str_replace('-', ' ', ucfirst(Str::singular($name)));        // Todo: Give a human friendly name
+            $module->module_group_id = 1;                                                 // Todo: Are you sure you want to put this in default module-group
+            $module->description = 'Manage '.str_replace('-', ' ', Str::singular($name)); // Todo: human friendly name.
+            $module->module_table = '{table}';
+            $module->route_path = '{route_path}';
+            $module->route_name = '{route_name}';
+            $module->class_directory = '{class_directory}';
+            $module->namespace = '{namespace}';
+            $module->model = '{model}';
+            $module->policy = '{policy}';
+            $module->processor = '{processor}';
+            $module->controller = '{controller}';
+            $module->view_directory = '{view_directory}';
+            $module->is_visible = 1;
+            $module->created_by = 1;
 
             $module->save();
         }

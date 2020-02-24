@@ -62,12 +62,12 @@ class SuperHeroProcessor extends ModelProcessor
      * @param  array  $merge
      * @return array
      */
-    public static function customErrorMessages($merge = [])
-    {
-        $messages = [];
-
-        return array_merge($messages, $merge);
-    }
+    // public static function customErrorMessages($merge = [])
+    // {
+    //     $messages = [];
+    //
+    //     return array_merge($messages, $merge);
+    // }
 
     /*
     |--------------------------------------------------------------------------
@@ -80,7 +80,7 @@ class SuperHeroProcessor extends ModelProcessor
     /**
      * Run validations for saving. This should be common for both creating and updating.
      *
-     * @param $superHero \App\Mainframe\Modules\Superheroes\SuperHero
+     * @param SuperHero $superHero
      * @return $this
      */
     public function saving($superHero)
@@ -104,7 +104,7 @@ class SuperHeroProcessor extends ModelProcessor
     // /**
     //  * Creating validation
     //  *
-    //  * @param $superHero \App\Mainframe\Modules\Superheroes\SuperHero
+    //  * @param SuperHero $superHero
     //  * @return \App\Mainframe\Features\Modular\Validator\ModelValidator|\App\Mainframe\Modules\Settings\SettingValidator
     //  */
     // public function creating($superHero)
@@ -115,7 +115,7 @@ class SuperHeroProcessor extends ModelProcessor
     // /**
     //  * Updating validation
     //  *
-    //  * @param $superHero \App\Mainframe\Modules\Superheroes\SuperHero
+    //  * @param SuperHero $superHero
     //  * @return \App\Mainframe\Features\Modular\Validator\ModelValidator|\App\Mainframe\Modules\Settings\SettingValidator
     //  */
     // public function updating($superHero)
@@ -126,7 +126,7 @@ class SuperHeroProcessor extends ModelProcessor
     // /**
     //  *  Deleting validation
     //  *
-    //  * @param $superHero \App\Mainframe\Modules\Superheroes\SuperHero
+    //  * @param SuperHero $superHero
     //  * @return \App\Mainframe\Features\Modular\Validator\ModelValidator|\App\Mainframe\Modules\Settings\SettingValidator
     //  */
     // public function deleting($superHero)
@@ -137,7 +137,7 @@ class SuperHeroProcessor extends ModelProcessor
     // /**
     //  * Restoring validation
     //  *
-    //  * @param $superHero \App\Mainframe\Modules\Superheroes\SuperHero
+    //  * @param SuperHero $superHero
     //  * @return \App\Mainframe\Features\Modular\Validator\ModelValidator|\App\Mainframe\Modules\Settings\SettingValidator
     //  */
     // public function restoring($superHero)
@@ -157,13 +157,13 @@ class SuperHeroProcessor extends ModelProcessor
     /**
      * Validate the name. Name should not be 'Joker'
      *
-     * @param $superHero \App\Mainframe\Modules\Superheroes\SuperHero
+     * @param SuperHero $superHero
      * @return $this
      */
     private function nameIsNotJoker($superHero)
     {
-        if ($superHero->name === 'Joker') {
-            $this->addfieldError('name', "Name can not be Joker");
+        if ($superHero->name == 'Joker') {
+            $this->fieldError('name', "Name can not be Joker");
         }
 
         return $this;

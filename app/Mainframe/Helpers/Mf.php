@@ -5,7 +5,7 @@ namespace App\Mainframe\Helpers;
 use Auth;
 use Cache;
 use Schema;
-use App\Mainframe\Modules\Users\User;
+use App\User;
 use App\Mainframe\Modules\Modules\Module;
 use App\Mainframe\Modules\ModuleGroups\ModuleGroup;
 
@@ -32,37 +32,30 @@ class Mf
      */
     public static function user($id = null)
     {
-        /*
-         * Resolve user from id.
-         */
+        // Resolve user from id.
         if ($id) {
-            return User::remember(timer('short'))->find($id);
+            return User::byId($id);
         }
 
-        /**
-         * Resolve user from X-Auth-Token and client-id
-         */
-
-        $apiToken = request()->header('X-Auth-Token', null);
-        $clientId = request()->header('client-id', null);
-
-        if ($apiToken && $clientId) { // No logged user. get from user_id in url param or request header
-            /** @noinspection PhpUndefinedMethodInspection */
-            return User::where('api_token', $apiToken)
-                ->where('id', $clientId)
-                ->remember(timer('short'))
-                ->first();
-        }
-
-        /*
-         * Resolved from logged in user.
-         */
+        // Resolved from logged in user
         if (Auth::check()) {
             return Auth::user();
         }
 
-        // Return an empty user instance
-        return new User();
+        // Check if usr is bearer
+        if ($user = Auth::guard('bearer')->user()) {
+            return $user;
+        }
+
+        // // Check if usr is API caller
+        // if ($user = Auth::guard('x-auth')->user()) {
+        //     return $user;
+        // }
+
+        // Return an empty guest user instance
+        // return null;
+
+        return User::guestInstance();
     }
 
     /**
