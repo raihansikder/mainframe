@@ -2,6 +2,7 @@
 
 namespace App\Mainframe\Features\Modular\BaseModule;
 
+use DateTimeInterface;
 use OwenIt\Auditing\Models\Audit;
 use Watson\Rememberable\Rememberable;
 use Illuminate\Database\Query\Builder;
@@ -186,4 +187,14 @@ class BaseModule extends Model implements Auditable
         }
     }
 
+    /**
+     * Prepare a date for array / JSON serialization.
+     *
+     * @param  \DateTimeInterface  $date
+     * @return string
+     */
+    protected function serializeDate(DateTimeInterface $date)
+    {
+        return $date->format('Y-m-d H:i:s');
+    }
 }
