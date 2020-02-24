@@ -36,6 +36,17 @@ class ModelProcessor
     public $unMutable = [];
 
     /**
+     * Define the allowed strict value change of specific fields
+     *
+     * @var array
+     */
+    public $transitions = [
+        'status' => [
+            'Lorem' => ['Ipsum', 'Dolor']
+        ]
+    ];
+
+    /**
      * MainframeModelValidator constructor.
      *
      * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule  $element
@@ -117,12 +128,64 @@ class ModelProcessor
     public function checkUnMutable()
     {
         foreach ($this->getUnMutable() as $field) {
-            if (isset($this->original[$field], $this->element->$field) && $this->original[$field] != $this->element->$field) {
+            if ($this->element->fieldHasChanged($field)) {
                 $this->fieldError($field, $field." - can not be updated.");
             }
         }
 
         return $this;
+    }
+
+    /**
+     * Checks if all the transitions are valid.
+     *
+     * @return $this
+     */
+    public function checkTransitions()
+    {
+        $allTransitions = $this->getTransitions();
+
+        foreach ($allTransitions as $field => $transition) {
+            if ($this->element->fieldHasChanged($field)) {
+
+                $change = $this->element->transition($field);
+
+                if ($change && ! $this->transitionAllowed($field, $change['old'], $change['new'])) {
+                    $this->fieldError($field, $field." - can not be updated from ".$change['old']." to ".$change['new']);
+                }
+
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * Check if a value transition is allowed.
+     *
+     * @param $field
+     * @param $from
+     * @param $to
+     * @return bool
+     */
+    public function transitionAllowed($field, $from, $to)
+    {
+        $allTransitions = $this->getTransitions();
+
+        if (! isset($allTransitions[$field])) {
+            return true;
+        }
+
+        if (! isset($allTransitions[$field][$from])) {
+            return true;
+        }
+
+        $transitions = $allTransitions[$field][$from];
+        if (in_array($to, $transitions)) {
+            return true;
+        }
+
+        return false;
     }
 
     /**
@@ -136,6 +199,16 @@ class ModelProcessor
     }
 
     /**
+     * Get a list of un-mutable fields
+     *
+     * @return array
+     */
+    public function getTransitions()
+    {
+        return $this->transitions;
+    }
+
+    /**
      * Get the original value. If not original value exists return null
      *
      * @param $key
@@ -143,11 +216,7 @@ class ModelProcessor
      */
     public function original($key)
     {
-        if (isset($this->original[$key])) {
-            return $this->original[$key];
-        }
-
-        return null;
+        return $this->original[$key] ?? null;
     }
 
     /**
@@ -218,6 +287,7 @@ class ModelProcessor
         $element = $element ?: $this->element;
         $this->save();
         $this->checkUnMutable();
+        $this->checkTransitions();
         $this->updating($element);
 
         return $this;
