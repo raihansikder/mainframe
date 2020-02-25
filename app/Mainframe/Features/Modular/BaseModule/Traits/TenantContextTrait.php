@@ -5,7 +5,7 @@ namespace App\Mainframe\Features\Modular\BaseModule\Traits;
 use App\Mainframe\Modules\Tenants\Tenant;
 use App\Mainframe\Modules\Projects\Project;
 
-/** @mixin $this BaseModule */
+/** @mixin \App\Mainframe\Features\Modular\BaseModule\BaseModule $this  */
 trait TenantContextTrait
 {
     /**

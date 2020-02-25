@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Mainframe\Features\Modular\BaseModule\Traits;
-/** @mixin $this BaseModule */
+/** @mixin \App\Mainframe\Features\Modular\BaseModule\BaseModule $this  */
 trait RelatedUsersTrait
 {
     /**

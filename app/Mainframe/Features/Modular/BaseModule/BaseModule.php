@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Mainframe\Features\Multitenant\GlobalScope\AddTenant;
 use App\Mainframe\Features\Modular\BaseModule\Traits\Uploadable;
 use App\Mainframe\Features\Modular\BaseModule\Traits\Processable;
+use App\Mainframe\Features\Modular\BaseModule\Traits\Commentable;
 use App\Mainframe\Features\Modular\BaseModule\Traits\ModularTrait;
 use App\Mainframe\Features\Modular\BaseModule\Traits\UpdaterTrait;
 use App\Mainframe\Features\Modular\BaseModule\Traits\ModelAutoFill;
@@ -43,7 +44,7 @@ class BaseModule extends Model implements Auditable
 
     use Processable, EventIdentifiable,
         RelatedUsersTrait, TenantContextTrait, UpdaterTrait,
-        Uploadable, ModularTrait, ModelAutoFill;
+        Uploadable, Commentable, ModularTrait, ModelAutoFill;
 
     /*
     |--------------------------------------------------------------------------

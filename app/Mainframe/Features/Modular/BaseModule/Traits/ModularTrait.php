@@ -5,7 +5,7 @@ namespace App\Mainframe\Features\Modular\BaseModule\Traits;
 use App\Mainframe\Helpers\Mf;
 use App\Mainframe\Modules\Modules\Module;
 
-/** @mixin $this BaseModule */
+/** @mixin \App\Mainframe\Features\Modular\BaseModule\BaseModule $this  */
 trait ModularTrait
 {
     /**

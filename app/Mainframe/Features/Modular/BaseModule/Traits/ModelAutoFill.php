@@ -4,7 +4,7 @@ namespace App\Mainframe\Features\Modular\BaseModule\Traits;
 
 use App\Mainframe\Features\Modular\BaseModule\BaseModule;
 
-/** @mixin  BaseModule $this */
+/** @mixin \App\Mainframe\Features\Modular\BaseModule\BaseModule $this  */
 trait ModelAutoFill
 {
     /**

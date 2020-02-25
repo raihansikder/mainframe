@@ -16,13 +16,9 @@ $input = new App\Mainframe\Features\Form\Upload($var, $element ?? null);
                 <input type="hidden" name="module_id" value="{{$input->moduleId}}"/>
                 <input type="hidden" name="element_id" value="{{$input->elementId}}"/>
                 <input type="hidden" name="element_uuid" value="{{$input->elementUuid}}"/>
-
                 <input type="hidden" name="uploadable_id" value="{{$input->elementId}}"/>
                 <input type="hidden" name="uploadable_type" value="{{$input->uploadableType}}"/>
-
-                @if($input->elementUuid)
-                    <input type="hidden" name="type" value="{{$input->type}}"/>
-                @endif
+                <input type="hidden" name="type" value="{{$input->type}}"/>
             </form>
             <div class="file-uploader">Upload file</div>
         </div>

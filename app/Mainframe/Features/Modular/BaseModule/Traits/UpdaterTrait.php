@@ -3,7 +3,7 @@
 namespace App\Mainframe\Features\Modular\BaseModule\Traits;
 
 use App\User;
-/** @mixin $this BaseModule */
+/** @mixin \App\Mainframe\Features\Modular\BaseModule\BaseModule $this  */
 trait UpdaterTrait
 {
     /**

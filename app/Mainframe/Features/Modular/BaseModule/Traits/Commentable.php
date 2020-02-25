@@ -2,23 +2,23 @@
 
 namespace App\Mainframe\Features\Modular\BaseModule\Traits;
 
-use App\Mainframe\Modules\Uploads\Upload;
+use App\Mainframe\Modules\Comments\Comment;
 
-/** @mixin \App\Mainframe\Features\Modular\BaseModule\BaseModule $this */
-trait Uploadable
+/** @mixin \App\Mainframe\Features\Modular\BaseModule\BaseModule $this  */
+trait Commentable
 {
     /**
      * Get a list of uploads under an element.
      *
      * @return mixed
      */
-    public function uploads()
+    public function comments()
     {
-        // return $this->hasMany(Upload::class, 'element_id')
+        // return $this->hasMany('App\Mainframe\Modules\Comments\Comment', 'element_id')
         //     ->where('module_id', $this->module()->id)
         //     ->orderBy('order', 'ASC')->orderBy('created_at', 'DESC');
 
-        return $this->morphMany('App\Mainframe\Modules\Uploads\Upload', 'uploadable');
+        return $this->morphMany('App\Mainframe\Modules\Comments\Comment', 'commentable');
     }
 
     /**
@@ -26,9 +26,9 @@ trait Uploadable
      *
      * @return mixed
      */
-    public function latestUpload()
+    public function latestComment()
     {
-        return $this->hasOne(Upload::class, 'element_id')
+        return $this->hasOne(Comment::class, 'element_id')
             ->where('module_id', $this->module()->id)
             ->orderBy('created_at', 'DESC');
     }
