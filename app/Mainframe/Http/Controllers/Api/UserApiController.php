@@ -66,10 +66,10 @@ class UserApiController extends ApiController
      */
     public function profilePicStore()
     {
-
         request()->merge([
             'module_id' => Module::byName('users')->id,
             'element_id' => $this->user->id,
+            'type' => 'profile-pic',
         ]);
 
         return app(UploadController::class)->store(request());
@@ -90,5 +90,4 @@ class UserApiController extends ApiController
 
         return $this->notFound();
     }
-
 }
