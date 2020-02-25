@@ -2,6 +2,7 @@
 
 namespace App\Mainframe\Modules\Uploads;
 
+use App\Mainframe\Modules\Modules\Module;
 use App\Mainframe\Features\Modular\BaseModule\BaseModule;
 
 /**
@@ -165,8 +166,7 @@ class Upload extends BaseModule
     | The possible options for some field. Variable name should be
     |
     */
-    // public static $types = [];
-    // public static $statuses = [];
+    public static $types = ['profile'];
 
     /*
     |--------------------------------------------------------------------------
@@ -181,9 +181,11 @@ class Upload extends BaseModule
     {
         parent::boot();
         self::observe(UploadObserver::class);
-        static::saving(function (Upload $element) {
-            $element->is_active = 1;                    // Always set as 'Yes'
-            $element->ext = extFrmPath($element->path); // Store file extension separately
+
+        static::saved(function (Upload $element) {
+            if ($element->type == 'profile') {
+                $element->deletePreviousOfSameType();
+            }
         });
     }
 
@@ -265,4 +267,13 @@ class Upload extends BaseModule
    | Todo: Write Helper functions in the UploadHelper trait.
    */
 
+    /**
+     * Deletes the previously uploaded file of the same type.
+     * This function is useful for uploading profile pic
+     * where there latest pic will discard the last one.
+     */
+    public function deletePreviousOfSameType()
+    {
+        $this->uploadable->uploads()->where('type', $this->type)->where('id', '!=', $this->id)->delete();
+    }
 }

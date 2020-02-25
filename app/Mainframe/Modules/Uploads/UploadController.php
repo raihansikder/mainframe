@@ -61,7 +61,7 @@ class UploadController extends ModularController
         $this->attemptStore();
 
         if ($this->expectsJson()) {
-            return $this->json();
+            return $this->load($this->element->toArray())->json();
         }
 
         return $this->redirect();
@@ -99,6 +99,7 @@ class UploadController extends ModularController
 
     /**
      * Upload in the same local server
+     *
      * @return string
      */
     public function attemptLocalUpload()
@@ -113,6 +114,7 @@ class UploadController extends ModularController
 
     /**
      * Upload in aws
+     *
      * @return mixed
      */
     public function attemptAwsUpload()

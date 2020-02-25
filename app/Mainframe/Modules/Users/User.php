@@ -161,7 +161,7 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
     public const PASSWORD_VALIDATION_RULE = 'required|confirmed|min:6|regex:/[a-zA-Z]/|regex:/[0-9]/';
 
     protected $moduleName = 'users';
-    protected $table = 'users';
+    protected $table      = 'users';
 
     /*
     |--------------------------------------------------------------------------
@@ -257,7 +257,7 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
     | you should first create and accessor getNewFieldAttribute and then
     | add the attribute name in the array
     */
-    // protected $appends = [];
+    protected $appends = ['profile_pic'];
 
     /*
     |--------------------------------------------------------------------------
@@ -329,6 +329,20 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
     | getting or setting them. Get a transformed value of an attribute
     */
     // public function getFirstNameAttribute($value) { return ucfirst($value); }
+
+    /**
+     * Accessor for profile_pic
+     *
+     * @return null|string
+     */
+    public function getProfilePicAttribute()
+    {
+        if ($upload = $this->uploads->where('type', 'profile')->first()) {
+            return $upload->url;
+        }
+
+        return null;
+    }
 
     /*
     |--------------------------------------------------------------------------

@@ -240,7 +240,7 @@ function initUploader(id, url) {
         dragDrop: true,
         dragdropWidth: '70%',
         //maxFileSize: 8,
-        //maxFileCount: 1,
+            //maxFileCount: 1,
         //acceptFiles: "audio/*",
         multiple: true,
         statusBarWidth: '70%',

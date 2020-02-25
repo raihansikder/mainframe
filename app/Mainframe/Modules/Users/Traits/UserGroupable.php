@@ -9,8 +9,6 @@ use App\Mainframe\Modules\Groups\Group;
 trait UserGroupable
 {
 
-
-
     /**
      * Proxy function Check if user belongs to a group.
      *
@@ -21,7 +19,6 @@ trait UserGroupable
     {
         return $this->inGroup($name);
     }
-
 
     /**
      * Check if user belongs to a group.
@@ -46,7 +43,7 @@ trait UserGroupable
     {
         if (is_array($group_id)) {
             foreach ($group_id as $id) {
-                if (in_array($id, $this->group_ids)) {
+                if (in_array($id, (array) $this->group_ids)) {
                     return true;
                 }
             }
@@ -54,7 +51,7 @@ trait UserGroupable
             return false;
         }
 
-        return in_array($group_id, $this->group_ids);
+        return in_array($group_id, (array) $this->group_ids);
     }
 
     /**

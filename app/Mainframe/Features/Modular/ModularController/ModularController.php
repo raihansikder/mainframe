@@ -9,7 +9,9 @@ use Illuminate\Http\Request;
 use App\Mainframe\Modules\Modules\Module;
 use App\Mainframe\Features\Report\ModuleList;
 use App\Mainframe\Http\Controllers\BaseController;
+use App\Mainframe\Modules\Uploads\UploadController;
 use App\Mainframe\Features\Datatable\ModuleDatatable;
+use App\Mainframe\Modules\Comments\CommentController;
 use App\Mainframe\Features\Report\ModuleReportBuilder;
 use App\Mainframe\Features\Modular\ModularController\Traits\Resolvable;
 use App\Mainframe\Features\Modular\ModularController\Traits\RequestHandler;
@@ -288,5 +290,37 @@ class ModularController extends BaseController
     public function datatableJson()
     {
         return ($this->datatable())->json();
+    }
+
+    /**
+     * Uploads files under an element
+     *
+     * @param  null  $id
+     * @return \App\Mainframe\Features\Modular\ModularController\ModularController|void
+     */
+    public function storeUploads($id)
+    {
+        request()->merge([
+            'module_id' => $this->module->id,
+            'element_id' => $id,
+        ]);
+
+        return app(UploadController::class)->store(request());
+    }
+
+    /**
+     * Store comment files under an element
+     *
+     * @param  null  $id
+     * @return \App\Mainframe\Features\Modular\ModularController\ModularController|void
+     */
+    public function storeComments($id)
+    {
+        request()->merge([
+            'module_id' => $this->module->id,
+            'element_id' => $id,
+        ]);
+
+        return app(CommentController::class)->store(request());
     }
 }

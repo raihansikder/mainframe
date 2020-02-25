@@ -2,6 +2,7 @@
 
 namespace App\Mainframe\Modules\Comments;
 
+use App\Mainframe\Modules\Modules\Module;
 use App\Mainframe\Features\Modular\Validator\ModelProcessor;
 
 class CommentProcessor extends ModelProcessor
@@ -27,6 +28,27 @@ class CommentProcessor extends ModelProcessor
         parent::fill($comment);
 
         $comment->is_active = 1;
+
+        $module = null;
+        if (isset($comment->element_id)) {
+            $module = Module::find($comment->module_id);
+        }
+
+        $element = null;
+        if ($module && isset($comment->element_id)) {
+            /** @var \App\Mainframe\Features\Modular\BaseModule\BaseModule $model */
+            $model = $module->model;
+            $element = $model::find($comment->element_id);
+        }
+
+        if ($module) {
+            $comment->commentable_type = trim($module->model, '\\');
+        }
+
+        if ($element) {
+            $comment->commentable_id = $element->id;
+            $comment->element_uuid = $element->uuid;
+        }
 
         return $this;
     }

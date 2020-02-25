@@ -2,10 +2,50 @@
 
 namespace App\Mainframe\Modules\Uploads;
 
+use App\Mainframe\Modules\Modules\Module;
 use App\Mainframe\Features\Modular\Validator\ModelProcessor;
 
 class UploadProcessor extends ModelProcessor
 {
+    /**
+     * Fill the model with values. This is helpful when a model has additional
+     * fields that is not filled through mass assignment but needs to be
+     * filled so that the data is locally available. Often in the
+     * case of id-name pair id will be filled by mass assignment
+     * but the name needs to be auto filled in this method.
+     *
+     * @param $upload \App\Mainframe\Modules\Uploads\Upload|mixed
+     * @return $this
+     */
+    public function fill($upload)
+    {
+        $upload->is_active = 1;
+
+        $module = null;
+        if (isset($upload->element_id)) {
+            $module = Module::find($upload->module_id);
+        }
+
+        $element = null;
+        if ($module && isset($upload->element_id)) {
+            /** @var \App\Mainframe\Features\Modular\BaseModule\BaseModule $model */
+            $model = $module->model;
+            $element = $model::find($upload->element_id);
+        }
+
+        if ($module) {
+            $upload->uploadable_type = trim($module->model, '\\');
+        }
+
+        if ($element) {
+            $upload->uploadable_id = $element->id;
+            $upload->element_uuid = $element->uuid;
+        }
+
+        $upload->ext = extFrmPath($upload->path); // Store file extension separately
+
+        return $this;
+    }
 
     /*
     |--------------------------------------------------------------------------
@@ -24,7 +64,7 @@ class UploadProcessor extends ModelProcessor
     public static function rules($element, $merge = [])
     {
         $rules = [
-            'is_active' => 'in:1,0',
+            'type' => 'in:'.implode(',', Upload::$types),
         ];
 
         return array_merge($rules, $merge);

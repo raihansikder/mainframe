@@ -302,6 +302,7 @@ class ModelProcessor
     public function delete($element = null)
     {
         $element = $element ?: $this->element;
+        $element->deleted_by = user()->id; // Fill with the deleter id.
         $this->deleting($element);
 
         return $this;
