@@ -293,6 +293,22 @@ class ModularController extends BaseController
     }
 
     /**
+     * Get all the uploads of an element
+     *
+     * @param  null  $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function uploads($id)
+    {
+        request()->merge([
+            'module_id' => $this->module->id,
+            'element_id' => $id,
+        ]);
+
+        return app(UploadController::class)->listJson();
+    }
+
+    /**
      * Uploads files under an element
      *
      * @param  null  $id
@@ -306,6 +322,22 @@ class ModularController extends BaseController
         ]);
 
         return app(UploadController::class)->store(request());
+    }
+
+    /**
+     * Get all the comments of an element
+     *
+     * @param  null  $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function comments($id)
+    {
+        request()->merge([
+            'module_id' => $this->module->id,
+            'element_id' => $id,
+        ]);
+
+        return app(CommentController::class)->listJson();
     }
 
     /**

@@ -72,8 +72,6 @@
         <h5>File upload</h5>
         <small>Upload one or more files</small>
         @include('form.uploads',['var'=>['limit'=>99]])
-
-
     </div>
     <div class="col-md-6 no-padding-l">
         <h5>Comment</h5>

@@ -64,7 +64,6 @@ class UserApiController extends ApiController
      *
      * @return mixed
      */
-
     public function profilePicStore()
     {
 
@@ -82,7 +81,6 @@ class UserApiController extends ApiController
      * @return mixed
      * @throws \Exception
      */
-
     public function profilePicDestroy()
     {
         $upload = $this->user->uploads->where('type', 'profile')->first();

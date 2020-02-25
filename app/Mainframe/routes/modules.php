@@ -37,9 +37,11 @@ Route::middleware(['auth', 'verified'])->group(function () use ($modules, $modul
         Route:: get($path."/{id}/changes", $controller."@changes")->name($moduleName.'.changes');
 
         /* * Route to upload file a particular element */
+        Route:: get($path."/{id}/uploads", $controller."@uploads")->name($moduleName.'.uploads.index');
         Route:: post($path."/{id}/uploads", $controller."@storeUploads")->name($moduleName.'.uploads.store');
 
         /* * Route to add comment file a particular element */
+        Route:: get($path."/{id}/comments", $controller."@comments")->name($moduleName.'.comments.index');
         Route:: post($path."/{id}/comments", $controller."@storeComments")->name($moduleName.'.comments.store');
 
         /* * Resourceful route that creates all REST routs. */
