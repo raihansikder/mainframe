@@ -3,7 +3,6 @@
 namespace App\Mainframe\Features\Report\Traits;
 
 use View;
-use Validator;
 use PhpOffice\PhpSpreadsheet\Writer\Csv;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
@@ -87,6 +86,7 @@ trait Output
         $result = $this->mutateResult()->toArray();
         $result['items'] = $result['data'];
         unset($result['data']);
+
         return $result;
     }
 
@@ -95,11 +95,15 @@ trait Output
      */
     public function json()
     {
-
         return $this->success('Request Processed')
             ->load($this->jsonPayload())->json();
     }
 
+    /**
+     * Download excel
+     * @param  bool  $csv
+     * @return bool|void
+     */
     public function excel($csv = false)
     {
         $selectedColumns = $this->mutateSelectedColumns();
@@ -116,11 +120,20 @@ trait Output
         }
     }
 
+    /**
+     * Download CSV
+     * @return bool|void
+     */
     public function csv()
     {
         return $this->excel($csv = true);
     }
 
+    /**
+     * Output as HTML
+     * @param  null  $type
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function html($type = null)
     {
         $vars = [
