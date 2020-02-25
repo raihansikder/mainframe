@@ -2,7 +2,6 @@
 
 namespace App\Mainframe\Modules\Uploads;
 
-use App\Mainframe\Modules\Modules\Module;
 use App\Mainframe\Features\Modular\BaseModule\BaseModule;
 
 /**
@@ -166,7 +165,7 @@ class Upload extends BaseModule
     | The possible options for some field. Variable name should be
     |
     */
-    public static $types = ['profile'];
+    public static $types = ['profile-pic'];
 
     /*
     |--------------------------------------------------------------------------
@@ -183,7 +182,7 @@ class Upload extends BaseModule
         self::observe(UploadObserver::class);
 
         static::saved(function (Upload $element) {
-            if ($element->type == 'profile') {
+            if ($element->type == 'profile-pic') {
                 $element->deletePreviousOfSameType();
             }
         });

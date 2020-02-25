@@ -337,7 +337,7 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
      */
     public function getProfilePicAttribute()
     {
-        if ($upload = $this->uploads->where('type', 'profile')->first()) {
+        if ($upload = $this->uploads->where('type', 'profile-pic')->first()) {
             return $upload->url;
         }
 

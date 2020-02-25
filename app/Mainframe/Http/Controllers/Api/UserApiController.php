@@ -83,7 +83,7 @@ class UserApiController extends ApiController
      */
     public function profilePicDestroy()
     {
-        $upload = $this->user->uploads->where('type', 'profile')->first();
+        $upload = $this->user->uploads->where('type', 'profile-pic')->first();
         if ($upload) {
             return app(UploadController::class)->destroy($upload->id);
         }
