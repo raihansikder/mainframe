@@ -1,6 +1,6 @@
 @extends('mainframe.layouts.centered.template')
 <?php
-/** @var \App\Mainframe\Modules\Groups\Group $group */
+/** @var \App\Group $group */
 ?>
 
 @section('content')

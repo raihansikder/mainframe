@@ -3,10 +3,10 @@
 namespace App\Mainframe\Http\Controllers\Auth;
 
 use App\User;
+use App\Group;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Events\Registered;
-use App\Mainframe\Modules\Groups\Group;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Mainframe\Providers\RouteServiceProvider;

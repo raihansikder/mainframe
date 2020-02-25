@@ -26,6 +26,8 @@ Route::prefix('core/1.0')->middleware(['request.json', 'x-auth-token'])->group(f
     Route::prefix('user')->middleware(['bearer-token'])->group(function () {
         Route::patch('/', 'Api\UserApiController@update');
         Route::get('profile', 'Api\UserApiController@profile');
+        Route::post('profile-pic/store', 'Api\UserApiController@profilePicStore');
+        Route::delete('profile-pic/delete', 'Api\UserApiController@profilePicDestroy');
     });
 
     // Settings

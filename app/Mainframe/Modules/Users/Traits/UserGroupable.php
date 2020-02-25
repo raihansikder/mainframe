@@ -2,8 +2,8 @@
 
 namespace App\Mainframe\Modules\Users\Traits;
 
+use App\Group;
 use Illuminate\Support\Str;
-use App\Mainframe\Modules\Groups\Group;
 
 /** @mixin \App\User $this */
 trait UserGroupable
