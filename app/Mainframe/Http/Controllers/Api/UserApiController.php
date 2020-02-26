@@ -42,7 +42,6 @@ class UserApiController extends ApiController
 
     public function profile()
     {
-
         $payload = $this->user->load(['groups'])
             ->makeHidden(['group_ids', 'is_test']);
 
