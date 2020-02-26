@@ -48,7 +48,7 @@ $input = new App\Mainframe\Features\Form\Comment($var, $element ?? null);
                 <p class="message">
                     <a href="#" class="name">
                         <small class="text-muted pull-right"><i class="fa fa-clock-o"></i> {{$comment->created_at->format('H:i')}}</small>
-                        Alexander Pierce
+                        {{$comment->creator->name}}
                     </a>
                     {{$comment->body}}
                 </p>
