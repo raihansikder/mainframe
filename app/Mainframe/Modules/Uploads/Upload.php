@@ -273,6 +273,11 @@ class Upload extends BaseModule
      */
     public function deletePreviousOfSameType()
     {
-        $this->uploadable->uploads()->where('type', $this->type)->where('id', '!=', $this->id)->delete();
+        if(isset($this->uploadable)) {
+            $this->uploadable->uploads()
+                ->where('type', $this->type)
+                ->where('id', '!=', $this->id)
+                ->delete();
+        }
     }
 }

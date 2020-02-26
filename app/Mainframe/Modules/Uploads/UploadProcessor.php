@@ -22,7 +22,7 @@ class UploadProcessor extends ModelProcessor
         $upload->is_active = 1;
 
         $module = null;
-        if (isset($upload->element_id)) {
+        if (isset($upload->module_id)) {
             $module = Module::find($upload->module_id);
         }
 
@@ -30,6 +30,7 @@ class UploadProcessor extends ModelProcessor
         if ($module && isset($upload->element_id)) {
             /** @var \App\Mainframe\Features\Modular\BaseModule\BaseModule $model */
             $model = $module->model;
+            /** @noinspection PhpUndefinedMethodInspection */
             $element = $model::find($upload->element_id);
         }
 
