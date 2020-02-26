@@ -13,11 +13,11 @@ $input = new App\Mainframe\Features\Form\Upload($var, $element ?? null);
                 @csrf
                 <input type="hidden" name="ret" value="json"/>
                 <input type="hidden" name="tenant_id" value="{{$input->tenantId}}"/>
-                {{-- <input type="hidden" name="module_id" value="{{$input->moduleId}}"/>--}}
-                {{-- <input type="hidden" name="element_id" value="{{$input->elementId}}"/>--}}
-                {{-- <input type="hidden" name="element_uuid" value="{{$input->elementUuid}}"/>--}}
-                {{-- <input type="hidden" name="uploadable_id" value="{{$input->elementId}}"/>--}}
-                {{-- <input type="hidden" name="uploadable_type" value="{{$input->uploadableType}}"/>--}}
+                <input type="hidden" name="module_id" value="{{$input->moduleId}}"/>
+                <input type="hidden" name="element_id" value="{{$input->elementId}}"/>
+                {{--                 <input type="hidden" name="element_uuid" value="{{$input->elementUuid}}"/>--}}
+                {{--                 <input type="hidden" name="uploadable_id" value="{{$input->elementId}}"/>--}}
+                {{--                 <input type="hidden" name="uploadable_type" value="{{$input->uploadableType}}"/>--}}
                 @if($input->type)
                     <input type="hidden" name="type" value="{{$input->type}}"/>
                 @endif
@@ -51,7 +51,8 @@ $input = new App\Mainframe\Features\Form\Upload($var, $element ?? null);
     @parent
     @if($user->can(['create','update'], $model))
         <script>
-            initUploader("{{$input->uploadBoxId}}", "{{ route($module->name.'.uploads.store', $element->id)}}");
+            {{--initUploader("{{$input->uploadBoxId}}", "{{ route($module->name.'.uploads.store', $element->id)}}");--}}
+            initUploader("{{$input->uploadBoxId}}", "{{ route('uploads.store')}}");
         </script>
     @endif
 @endsection
