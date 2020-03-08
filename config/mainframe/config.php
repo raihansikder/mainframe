@@ -40,4 +40,40 @@ return [
     |
     */
     'query_cache' => env('QUERY_CACHE', false),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Load default mainframe routes
+    |--------------------------------------------------------------------------
+    |
+    | You can enable/disable loading of some of the mainframe default routes.
+    |
+    */
+    'routes' => [
+        'web' => [
+            'app/Mainframe/routes/auth.php',
+            'app/Mainframe/routes/modules.php',
+            'app/Mainframe/routes/web.php'
+        ],
+        'api' => [
+            'app/Mainframe/routes/api.php'
+        ],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Load additional CSS and JS file
+    |--------------------------------------------------------------------------
+    |
+    | Projects may have additional CSS/JS files which needs to be included
+    |
+    */
+    'load' => [
+        'css' => [
+            'projects/project-name/css/project-name.css',
+        ],
+        'js' => [
+            //'projects/project-name/css/project-name.js',
+        ],
+    ],
 ];

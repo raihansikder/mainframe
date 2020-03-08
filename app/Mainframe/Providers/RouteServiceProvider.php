@@ -21,15 +21,19 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected $namespace = 'App\Mainframe\Http\Controllers';
 
-    protected $webRoutes = [
-        'app/Mainframe/routes/auth.php',
-        'app/Mainframe/routes/modules.php',
-        'app/Mainframe/routes/web.php'
-    ];
+    /**
+     * Web routes
+     *
+     * @var array
+     */
+    protected $webRoutes = [];
 
-    protected $apiRoutes = [
-        'app/Mainframe/routes/api.php'
-    ];
+    /**
+     * API routes
+     *
+     * @var array
+     */
+    protected $apiRoutes = [];
 
     /**
      * Define your route model bindings, pattern filters, etc.
@@ -64,7 +68,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapWebRoutes()
     {
-        foreach ($this->webRoutes as $route) {
+        foreach ($this->webRoutes() as $route) {
             Route::middleware('web')
                 ->namespace($this->namespace)
                 ->group(base_path($route));
@@ -79,11 +83,32 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapApiRoutes()
     {
-        foreach ($this->apiRoutes as $route) {
+        foreach ($this->apiRoutes() as $route) {
             Route::prefix('api')
                 ->middleware('api')
                 ->namespace($this->namespace)
                 ->group(base_path($route));
         }
+    }
+
+    /**
+     * Get web routes
+     *
+     * @return \Illuminate\Config\Repository|mixed
+     */
+    public function webRoutes()
+    {
+        return array_merge($this->webRoutes, config('mainframe.config.routes.web'));
+    }
+
+    /**
+     * Get web routes
+     *
+     * @return \Illuminate\Config\Repository|mixed
+     */
+    public function apiRoutes()
+    {
+        // dd(config('mainframe.config.routes.api'));
+        return array_merge($this->apiRoutes, config('mainframe.config.routes.api'));
     }
 }
