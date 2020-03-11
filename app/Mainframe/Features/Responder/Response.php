@@ -206,9 +206,13 @@ class Response
             $redirect = redirect()->back();
         }
 
+        // Only load input if operation failed.
+        if ($this->isFail()) {
+            $redirect = $redirect->withInput();
+        }
+
         return $redirect->with($this->defaultViewVars())
-            ->withErrors($this->validator)
-            ->withInput();
+            ->withErrors($this->validator);
     }
 
     /**
