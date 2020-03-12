@@ -47,7 +47,7 @@ class SelectModel extends SelectArray
 
         $options[0] = null;
 
-        return $options;
+        return Arr::sort($options);
     }
 
     /**
