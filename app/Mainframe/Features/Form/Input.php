@@ -34,7 +34,11 @@ class Input extends Form
         $this->oldInput = $this->old();
         $this->name = $conf['name'] ?? Str::random(8);
         $this->params = $conf['params'] ?? [];
+
         $this->isEditable = $conf['editable'] ?? true;
+        if ($element && user()->cannot('update', $element)) {
+            $this->isEditable = false;
+        }
 
         // Force add form-control class
         $this->params['class'] = $this->params['class'] ?? '';

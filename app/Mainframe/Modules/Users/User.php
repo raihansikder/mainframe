@@ -18,7 +18,7 @@ use App\Mainframe\Features\Modular\BaseModule\Traits\Processable;
 use App\Mainframe\Features\Modular\BaseModule\Traits\UpdaterTrait;
 use App\Mainframe\Features\Modular\BaseModule\Traits\ModularTrait;
 use App\Mainframe\Features\Modular\BaseModule\Traits\ModelAutoFill;
-use App\Mainframe\Features\Modular\BaseModule\Traits\EventIdentifiable;
+use App\Mainframe\Features\Modular\BaseModule\Traits\EventsTrait;
 use App\Mainframe\Features\Modular\BaseModule\Traits\RelatedUsersTrait;
 use App\Mainframe\Features\Modular\BaseModule\Traits\TenantContextTrait;
 
@@ -145,7 +145,7 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
     use \OwenIt\Auditing\Auditable;
 
     use UserHelper, UserGroupable;
-    use  Processable, EventIdentifiable,
+    use  Processable, EventsTrait,
         RelatedUsersTrait, TenantContextTrait, UpdaterTrait,
         Uploadable, ModularTrait, ModelAutoFill;
 

@@ -255,7 +255,10 @@ class ModelProcessor
     {
         $element = $element ?: $this->element;
         $this->fill($element)->validate();
-        $this->saving($element);
+
+        if ($this->valid()) {
+            $this->saving($element);
+        }
 
         return $this;
     }

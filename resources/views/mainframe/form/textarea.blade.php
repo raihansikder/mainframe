@@ -20,10 +20,10 @@ $input = new TextArea($var, $element ?? null);
     @if($input->isEditable)
         {{ Form::textarea($input->name, $input->value(), $input->params) }}
     @else
-        <span class="{{$input->params['class']}} readonly">
+        <div class="readonly">
             {{ $input->print() }}
             {{ Form::hidden($input->name, $input->value()) }}
-        </span>
+        </div>
     @endif
 
     {!!  $errors->first($input->name, '<span class="help-block">:message</span>') !!}

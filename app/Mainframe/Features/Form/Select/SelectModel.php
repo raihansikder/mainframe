@@ -60,4 +60,14 @@ class SelectModel extends SelectArray
         return (user()->ofTenant() && Mf::tableHasTenant($this->table));
     }
 
+    /**
+     * Print value
+     *
+     * @return null|array|\Illuminate\Http\Request|string
+     */
+    public function print()
+    {
+        return  $this->options[$this->value()];
+    }
+
 }
