@@ -10,7 +10,7 @@ trait RelatedUsersTrait
      *
      * @return array
      */
-    public function relatedUsers()
+    public function relatedUserIds()
     {
         $user_ids = []; // Init array to store all user ids
         if (isset($this->creator->id)) {

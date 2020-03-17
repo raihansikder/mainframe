@@ -2,12 +2,25 @@
 
 namespace App\Mainframe\Features\Modular\BaseModule\Traits;
 
+use App\User;
 use App\Mainframe\Helpers\Mf;
 use App\Mainframe\Modules\Modules\Module;
+use App\Mainframe\Modules\Tenants\Tenant;
+use App\Mainframe\Modules\Uploads\Upload;
+use App\Mainframe\Modules\Projects\Project;
+use App\Mainframe\Modules\Comments\Comment;
 
 /** @mixin \App\Mainframe\Features\Modular\BaseModule\BaseModule $this */
 trait ModularTrait
 {
+    /*
+    |--------------------------------------------------------------------------
+    | Module features
+    |--------------------------------------------------------------------------
+    |
+    | Scopes allow you to easily re-use query logic in your models. To define
+    | a scope, simply prefix a model method with scope:
+    */
     /**
      * Get the module object that an element belongs to. If the element is $tenant then the function
      * returns the row from modules table that has module name 'tenants'.
@@ -79,6 +92,12 @@ trait ModularTrait
     //     return parent::castAttribute($key, $value);
     // }
 
+    /*
+    |--------------------------------------------------------------------------
+    | Value transitions
+    |--------------------------------------------------------------------------
+    |
+    */
     /**
      * Check if value has changed
      *
@@ -177,6 +196,240 @@ trait ModularTrait
 
         if ($change) {
             return in_array($change['new'], $to);
+        }
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Related users
+    |--------------------------------------------------------------------------
+    |
+    */
+
+    /**
+     * Get the user who has created the element
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function creator() { return $this->belongsTo(User::class, 'created_by'); }
+
+    /**
+     * Get the user who has last updated the element
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function updater() { return $this->belongsTo(User::class, 'updated_by'); }
+
+    /**
+     * Returns array of user ids including creator and updater user ids.
+     * This can be overridden in different modules as per business.
+     *
+     * @return array
+     */
+    public function relatedUserIds()
+    {
+        $userIds = []; // Init array to store all user ids
+        if (isset($this->creator->id)) {
+            $userIds[] = $this->creator->id;
+        }
+        //get the creator
+        //if the creator and updater is same no need to add the id twice
+        if (isset($this->updater->id, $this->creator->id) && $this->creator->id !== $this->updater->id) {
+            $userIds[] = $this->updater->id;
+        } //get the updater
+
+        return $userIds;
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Tenants & Project
+    |--------------------------------------------------------------------------
+    |
+    |
+    */
+    /**
+     * Checks if a user has tenant context
+     *
+     * @return bool
+     * @internal param $name
+     */
+    public function hasTenantContext() { return $this->hasColumn('tenant_id'); }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function tenant() { return $this->belongsTo(Tenant::class); }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function project() { return $this->belongsTo(Project::class); }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Events
+    |--------------------------------------------------------------------------
+    |
+    |
+    */
+    /**
+     * Check if the model is being created.
+     *
+     * @return bool
+     */
+    public function isCreating()
+    {
+        return ! $this->isUpdating();
+    }
+
+    /**
+     * Check if the model is being created.
+     *
+     * @return bool
+     */
+    public function isUpdating()
+    {
+        return isset($this->id);
+    }
+
+    /**
+     * Disable model events while saving.
+     *
+     * @param  array  $options
+     * @return mixed
+     */
+    public function saveQuietly(array $options = [])
+    {
+        return static::withoutEvents(function () use ($options) {
+            return $this->save($options);
+        });
+    }
+
+    /**
+     * Disable events to avoid infinite loop
+     *
+     * @return $this
+     */
+    public function disableEvents()
+    {
+        /** @var \App\Mainframe\Modules\SuperHeroes\SuperHero $model */
+        $model = $this->module()->model;
+
+        $model::unsetEventDispatcher();
+
+        return $this;
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Processor
+    |--------------------------------------------------------------------------
+    |
+    */
+    /**
+     * @return mixed|\App\Mainframe\Features\Modular\Validator\ModelProcessor
+     */
+    public function processor()
+    {
+        /** @var \App\Mainframe\Features\Modular\BaseModule\BaseModule $this */
+        return $this->module()->processorInstance($this);
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Uploadable
+    |--------------------------------------------------------------------------
+    |
+    */
+    /**
+     * Get a list of uploads under an element.
+     *
+     * @return mixed
+     */
+    public function uploads()
+    {
+        // return $this->hasMany(Upload::class, 'element_id')
+        //     ->where('module_id', $this->module()->id)
+        //     ->orderBy('order', 'ASC')->orderBy('created_at', 'DESC');
+
+        return $this->morphMany('App\Mainframe\Modules\Uploads\Upload', 'uploadable');
+    }
+
+    /**
+     * Get a list of uploads under an element.
+     *
+     * @return mixed
+     */
+    public function latestUpload()
+    {
+        return $this->hasOne(Upload::class, 'element_id')
+            ->where('module_id', $this->module()->id)
+            ->orderBy('created_at', 'DESC');
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Commentable
+    |--------------------------------------------------------------------------
+    |
+    */
+    /**
+     * Get a list of uploads under an element.
+     *
+     * @return mixed
+     */
+    public function comments()
+    {
+        // return $this->hasMany('App\Mainframe\Modules\Comments\Comment', 'element_id')
+        //     ->where('module_id', $this->module()->id)
+        //     ->orderBy('order', 'ASC')->orderBy('created_at', 'DESC');
+
+        return $this->morphMany('App\Mainframe\Modules\Comments\Comment', 'commentable');
+    }
+
+    /**
+     * Get a list of uploads under an element.
+     *
+     * @return mixed
+     */
+    public function latestComment()
+    {
+        return $this->hasOne(Comment::class, 'element_id')
+            ->where('module_id', $this->module()->id)
+            ->orderBy('created_at', 'DESC');
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Autofill
+    |--------------------------------------------------------------------------
+    |
+    */
+    /**
+     * Auto fill some of the generic model fields.
+     */
+    public function autoFill()
+    {
+        // Inject tenant context.
+        $this->autoFillTenant();
+
+        $this->uuid = $this->uuid ?? uuid();
+        $this->created_by = $this->created_by ?? user()->id;
+        $this->created_at = $this->created_at ?? now();
+        $this->updated_by = $this->updated_by ?? user()->id;
+        $this->updated_at = now();
+    }
+
+    /**
+     * Fill tenant id once during creation. Later tenant id can not be
+     * updated.
+     */
+    public function autoFillTenant()
+    {
+        if (user()->ofTenant() && $this->hasTenantContext()) {
+            $this->tenant_id = $this->tenant_id ?: user()->tenant_id;
+            $this->project_id = $this->project_id ?: $this->tenant->project_id;
         }
     }
 }

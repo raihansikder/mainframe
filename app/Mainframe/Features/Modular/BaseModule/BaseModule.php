@@ -39,12 +39,26 @@ use App\Mainframe\Features\Modular\BaseModule\Traits\TenantContextTrait;
  */
 class BaseModule extends Model implements Auditable
 {
-    use SoftDeletes, Rememberable;
-    use \OwenIt\Auditing\Auditable;
+    /*
+    |--------------------------------------------------------------------------
+    | Include mainframe module traits
+    |--------------------------------------------------------------------------
+    |
+    */
+    use SoftDeletes,                // Laravel default trait to enable soft delete
+        Rememberable,               // Third party plugin to cache model query
+        \OwenIt\Auditing\Auditable, // 3rd party audit log
+        ModularTrait                // Mainframe modular features.
 
-    use Processable, EventsTrait,
-        RelatedUsersTrait, TenantContextTrait, UpdaterTrait,
-        Uploadable, Commentable, ModularTrait, ModelAutoFill;
+        // Processable,
+        // EventsTrait,
+        // RelatedUsersTrait,
+        // TenantContextTrait,
+        // UpdaterTrait,
+        // Uploadable,
+        // Commentable,
+        // ModelAutoFill
+        ;
 
     /*
     |--------------------------------------------------------------------------
@@ -69,23 +83,27 @@ class BaseModule extends Model implements Auditable
     {
         parent::boot();
 
-        /**
-         * Do not store audit logs if there is no change.
-         */
+        /*
+        |--------------------------------------------------------------------------
+        | Skip audit log store if no change
+        |--------------------------------------------------------------------------
+        |
+        */
         Audit::creating(function (Audit $model) {
             if (empty($model->old_values) && empty($model->new_values)) {
                 return false;
             }
         });
 
-        /**
-         * For tenant user add global scope.
-         */
+        /*
+        |--------------------------------------------------------------------------
+        | Add tenant scope to model if current user() belongs to a tenant
+        |--------------------------------------------------------------------------
+        |
+        */
         if (user()->ofTenant()) {
             static::addGlobalScope(new AddTenant);
         }
     }
-
-
 
 }

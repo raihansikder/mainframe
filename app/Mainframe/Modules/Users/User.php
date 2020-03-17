@@ -141,13 +141,14 @@ use App\Mainframe\Features\Modular\BaseModule\Traits\TenantContextTrait;
  */
 class User extends Authenticatable implements MustVerifyEmail, Auditable
 {
-    use Notifiable, SoftDeletes, Rememberable;
-    use \OwenIt\Auditing\Auditable;
+    use SoftDeletes,
+        Rememberable,
+        \OwenIt\Auditing\Auditable,
+        ModularTrait;
+
+    use Notifiable;
 
     use UserHelper, UserGroupable;
-    use  Processable, EventsTrait,
-        RelatedUsersTrait, TenantContextTrait, UpdaterTrait,
-        Uploadable, ModularTrait, ModelAutoFill;
 
     /*
     |--------------------------------------------------------------------------

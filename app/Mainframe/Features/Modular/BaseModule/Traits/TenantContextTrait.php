@@ -14,10 +14,7 @@ trait TenantContextTrait
      * @return bool
      * @internal param $name
      */
-    public function hasTenantContext()
-    {
-        return $this->hasColumn('tenant_id');
-    }
+    public function hasTenantContext() { return $this->hasColumn('tenant_id'); }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
