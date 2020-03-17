@@ -1,6 +1,6 @@
 <?php
 /**
- *  @version  1.1
+ * @version  1.1
  *
  */
 
@@ -33,15 +33,16 @@ if ($responseStatus == 'success') {
     $css = "callout-success";
     $textCss = "text-green";
 }
+
 ?>
 
 @if($responseStatus || $responseMessage || $errors->any())
     <div class="message-container">
         <div class="callout ajaxMsg errorDiv" id="errorDiv">
             @if($responseStatus)
-                <h4  class="{{$textCss}}">
-                    {{ ucfirst($responseStatus) }}. {{ $responseMessage }}
-                </h4>
+                <h4 class="{{$textCss}}">
+                    {{ ucfirst($responseStatus) }}
+                </h4> {{ $responseMessage }}
             @endif
 
             @if ($errors->any())

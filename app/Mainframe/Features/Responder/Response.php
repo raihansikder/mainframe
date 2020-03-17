@@ -478,9 +478,9 @@ class Response
     public function defaultViewVars()
     {
         return [
-            'responseStatus' => $this->status,
-            'responseMessage' => $this->message,
-            'messageBag' => resolve(MessageBag::class)
+            'responseStatus' => session('responseStatus') ?: $this->status,
+            'responseMessage' => session('responseMessage') ?: $this->message,
+            'messageBag' => session('messageBag') ?: resolve(MessageBag::class)
         ];
     }
 }
