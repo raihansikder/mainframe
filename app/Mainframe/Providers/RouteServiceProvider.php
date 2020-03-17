@@ -108,7 +108,6 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function apiRoutes()
     {
-        // dd(config('mainframe.config.routes.api'));
         return array_merge($this->apiRoutes, config('mainframe.config.routes.api'));
     }
 }
