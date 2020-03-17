@@ -90,7 +90,7 @@ trait RequestHandler
             return $this;
         }
 
-        $this->element->save(); // Save the model once before deleting to store deleted_by
+        $this->element->saveQuietly(); // Save the model once before deleting to store deleted_by
 
         if (! $this->element->delete()) {
             $this->fail('Can not deleted for some reason');

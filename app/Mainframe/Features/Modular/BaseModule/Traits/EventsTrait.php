@@ -26,6 +26,19 @@ trait EventsTrait
     }
 
     /**
+     * Disable model events while saving.
+     *
+     * @param  array  $options
+     * @return mixed
+     */
+    public function saveQuietly(array $options = [])
+    {
+        return static::withoutEvents(function () use ($options) {
+            return $this->save($options);
+        });
+    }
+
+    /**
      * Disable events to avoid infinite loop
      *
      * @return $this
@@ -39,4 +52,5 @@ trait EventsTrait
 
         return $this;
     }
+
 }
