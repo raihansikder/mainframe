@@ -1,6 +1,6 @@
 <?php
 /**
- *  @version  1.1
+ *  @version  1.0
  *
  */
 
@@ -28,18 +28,19 @@ $messageBag = session('messageBag');
 /*********************************/
 
 $css = "callout-danger";
-$textCss = "text-red";
 if ($responseStatus == 'success') {
     $css = "callout-success";
-    $textCss = "text-green";
 }
 ?>
 
+
 @if($responseStatus || $responseMessage || $errors->any())
+
     <div class="message-container">
-        <div class="callout ajaxMsg errorDiv" id="errorDiv">
+
+        <div class="callout {{$css}} ajaxMsg errorDiv" id="errorDiv">
             @if($responseStatus)
-                <h4  class="{{$textCss}}">
+                <h4>
                     {{ ucfirst($responseStatus) }}. {{ $responseMessage }}
                 </h4>
             @endif
@@ -51,8 +52,10 @@ if ($responseStatus == 'success') {
             @if($messageBag && $messageBag->count())
                 {!! implode('<br/>', $messageBag->messages()) !!}
             @endif
+
         </div>
     </div>
+
 @endif
 
-<?php session()->forget(['status', 'message', 'error']); ?>
+<?php session()->forget(['status', 'message', 'error']);?>
