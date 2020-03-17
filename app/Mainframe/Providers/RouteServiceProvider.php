@@ -98,7 +98,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function webRoutes()
     {
-        return array_merge($this->webRoutes, config('mainframe.config.routes.web'));
+        return array_merge($this->webRoutes, config('mainframe.config.routes.web',[]));
     }
 
     /**
@@ -108,6 +108,6 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function apiRoutes()
     {
-        return array_merge($this->apiRoutes, config('mainframe.config.routes.api'));
+        return array_merge($this->apiRoutes, config('mainframe.config.routes.api',[]));
     }
 }
