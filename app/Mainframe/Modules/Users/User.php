@@ -138,6 +138,10 @@ use App\Mainframe\Features\Modular\BaseModule\Traits\TenantContextTrait;
  * @method static \Illuminate\Database\Query\Builder|\App\Mainframe\Modules\Users\User withTrashed()
  * @method static \Illuminate\Database\Query\Builder|\App\Mainframe\Modules\Users\User withoutTrashed()
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Comments\Comment[] $comments
+ * @property-read int|null $comments_count
+ * @property-read null|string $profile_pic
+ * @property-read \App\Mainframe\Modules\Comments\Comment $latestComment
  */
 class User extends Authenticatable implements MustVerifyEmail, Auditable
 {

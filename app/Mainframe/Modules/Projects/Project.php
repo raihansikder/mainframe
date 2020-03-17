@@ -55,6 +55,9 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Projects\Project whereNamespace($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Projects\Project whereRouteGroup($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Projects\Project whereViewDirectory($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Comments\Comment[] $comments
+ * @property-read int|null $comments_count
+ * @property-read \App\Mainframe\Modules\Comments\Comment $latestComment
  */
 class Project extends BaseModule
 {
