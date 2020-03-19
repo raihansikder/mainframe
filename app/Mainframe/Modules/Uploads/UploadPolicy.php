@@ -44,7 +44,7 @@ class UploadPolicy extends BaseModulePolicy
      * @param  Upload  $upload
      * @return mixed
      */
-    // public function update(User $user, $upload) { }
+    // public function update($user, $upload) { }
 
     /**
      * Determine whether the user can delete the upload.
@@ -53,7 +53,7 @@ class UploadPolicy extends BaseModulePolicy
      * @param  Upload  $upload
      * @return mixed
      */
-    // public function delete(User $user, $upload) { }
+    // public function delete($user, $upload) { }
 
     /**
      * Determine whether the user can restore the upload.
@@ -62,7 +62,7 @@ class UploadPolicy extends BaseModulePolicy
      * @param  Upload  $upload
      * @return mixed
      */
-    // public function restore(User $user, $upload) { }
+    // public function restore($user, $upload) { }
 
     /**
      * Determine whether the user can permanently delete the upload.
@@ -71,6 +71,6 @@ class UploadPolicy extends BaseModulePolicy
      * @param  Upload  $upload
      * @return mixed
      */
-    // public function forceDelete(User $user, $upload) { }
+    // public function forceDelete($user, $upload) { }
 
 }

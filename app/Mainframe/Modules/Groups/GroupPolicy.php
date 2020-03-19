@@ -44,7 +44,7 @@ class GroupPolicy extends BaseModulePolicy
      * @param  Group  $group
      * @return mixed
      */
-    // public function update(User $user, $group) { }
+    // public function update($user, $group) { }
 
     /**
      * Determine whether the user can delete the group.
@@ -53,7 +53,7 @@ class GroupPolicy extends BaseModulePolicy
      * @param  Group  $group
      * @return mixed
      */
-    // public function delete(User $user, $group) { }
+    // public function delete($user, $group) { }
 
     /**
      * Determine whether the user can restore the group.
@@ -62,7 +62,7 @@ class GroupPolicy extends BaseModulePolicy
      * @param  Group  $group
      * @return mixed
      */
-    // public function restore(User $user, $group) { }
+    // public function restore($user, $group) { }
 
     /**
      * Determine whether the user can permanently delete the group.
@@ -71,6 +71,6 @@ class GroupPolicy extends BaseModulePolicy
      * @param  Group  $group
      * @return mixed
      */
-    // public function forceDelete(User $user, $group) { }
+    // public function forceDelete($user, $group) { }
 
 }

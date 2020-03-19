@@ -44,7 +44,7 @@ class PackagePolicy extends BaseModulePolicy
      * @param  Package  $package
      * @return mixed
      */
-    // public function update(User $user, $package) { }
+    // public function update($user, $package) { }
 
     /**
      * Determine whether the user can delete the package.
@@ -53,7 +53,7 @@ class PackagePolicy extends BaseModulePolicy
      * @param  Package  $package
      * @return mixed
      */
-    // public function delete(User $user, $package) { }
+    // public function delete($user, $package) { }
 
     /**
      * Determine whether the user can restore the package.
@@ -62,7 +62,7 @@ class PackagePolicy extends BaseModulePolicy
      * @param  Package  $package
      * @return mixed
      */
-    // public function restore(User $user, $package) { }
+    // public function restore($user, $package) { }
 
     /**
      * Determine whether the user can permanently delete the package.
@@ -71,6 +71,6 @@ class PackagePolicy extends BaseModulePolicy
      * @param  Package  $package
      * @return mixed
      */
-    // public function forceDelete(User $user, $package) { }
+    // public function forceDelete($user, $package) { }
 
 }

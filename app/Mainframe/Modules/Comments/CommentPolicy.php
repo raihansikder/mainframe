@@ -46,7 +46,7 @@ class CommentPolicy extends BaseModulePolicy
      * @param  Comment  $comment
      * @return mixed
      */
-    // public function update(User $user, $comment) { }
+    // public function update($user, $comment) { }
 
     /**
      * Determine whether the user can delete the comment.
@@ -55,7 +55,7 @@ class CommentPolicy extends BaseModulePolicy
      * @param  Comment  $comment
      * @return mixed
      */
-    // public function delete(User $user, $comment) { }
+    // public function delete($user, $comment) { }
 
     /**
      * Determine whether the user can restore the comment.
@@ -64,7 +64,7 @@ class CommentPolicy extends BaseModulePolicy
      * @param  Comment  $comment
      * @return mixed
      */
-    // public function restore(User $user, $comment) { }
+    // public function restore($user, $comment) { }
 
     /**
      * Determine whether the user can permanently delete the comment.
@@ -73,6 +73,6 @@ class CommentPolicy extends BaseModulePolicy
      * @param  Comment  $comment
      * @return mixed
      */
-    // public function forceDelete(User $user, $comment) { }
+    // public function forceDelete($user, $comment) { }
 
 }

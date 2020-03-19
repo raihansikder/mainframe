@@ -44,7 +44,7 @@ class ModuleGroupPolicy extends BaseModulePolicy
      * @param  ModuleGroup  $moduleGroup
      * @return mixed
      */
-    // public function update(User $user, $moduleGroup) { }
+    // public function update($user, $moduleGroup) { }
 
     /**
      * Determine whether the user can delete the moduleGroup.
@@ -53,7 +53,7 @@ class ModuleGroupPolicy extends BaseModulePolicy
      * @param  ModuleGroup  $moduleGroup
      * @return mixed
      */
-    // public function delete(User $user, $moduleGroup) { }
+    // public function delete($user, $moduleGroup) { }
 
     /**
      * Determine whether the user can restore the moduleGroup.
@@ -62,7 +62,7 @@ class ModuleGroupPolicy extends BaseModulePolicy
      * @param  ModuleGroup  $moduleGroup
      * @return mixed
      */
-    // public function restore(User $user, $moduleGroup) { }
+    // public function restore($user, $moduleGroup) { }
 
     /**
      * Determine whether the user can permanently delete the moduleGroup.
@@ -71,6 +71,6 @@ class ModuleGroupPolicy extends BaseModulePolicy
      * @param  ModuleGroup  $moduleGroup
      * @return mixed
      */
-    // public function forceDelete(User $user, $moduleGroup) { }
+    // public function forceDelete($user, $moduleGroup) { }
 
 }

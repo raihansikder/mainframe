@@ -46,7 +46,7 @@ class SuperHeroPolicy extends BaseModulePolicy
      * @param  SuperHero  $superHero
      * @return mixed
      */
-    // public function update(User $user, $superHero) { }
+    // public function update($user, $superHero) { }
 
     /**
      * Determine whether the user can delete the superHero.
@@ -55,7 +55,7 @@ class SuperHeroPolicy extends BaseModulePolicy
      * @param  SuperHero  $superHero
      * @return mixed
      */
-    // public function delete(User $user, $superHero) { }
+    // public function delete($user, $superHero) { }
 
     /**
      * Determine whether the user can restore the superHero.
@@ -64,7 +64,7 @@ class SuperHeroPolicy extends BaseModulePolicy
      * @param  SuperHero  $superHero
      * @return mixed
      */
-    // public function restore(User $user, $superHero) { }
+    // public function restore($user, $superHero) { }
 
     /**
      * Determine whether the user can permanently delete the superHero.
@@ -73,6 +73,6 @@ class SuperHeroPolicy extends BaseModulePolicy
      * @param  SuperHero  $superHero
      * @return mixed
      */
-    // public function forceDelete(User $user, $superHero) { }
+    // public function forceDelete($user, $superHero) { }
 
 }

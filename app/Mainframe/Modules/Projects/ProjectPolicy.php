@@ -43,7 +43,7 @@ class ProjectPolicy extends BaseModulePolicy
      * @param  Project  $project
      * @return mixed
      */
-    // public function update(User $user, $project) { }
+    // public function update($user, $project) { }
 
     /**
      * Determine whether the user can delete the project.
@@ -52,7 +52,7 @@ class ProjectPolicy extends BaseModulePolicy
      * @param  Project  $project
      * @return mixed
      */
-    // public function delete(User $user, $project) { }
+    // public function delete($user, $project) { }
 
     /**
      * Determine whether the user can restore the project.
@@ -61,7 +61,7 @@ class ProjectPolicy extends BaseModulePolicy
      * @param  Project  $project
      * @return mixed
      */
-    // public function restore(User $user, $project) { }
+    // public function restore($user, $project) { }
 
     /**
      * Determine whether the user can permanently delete the project.
@@ -70,6 +70,6 @@ class ProjectPolicy extends BaseModulePolicy
      * @param  Project  $project
      * @return mixed
      */
-    // public function forceDelete(User $user, $project) { }
+    // public function forceDelete($user, $project) { }
 
 }

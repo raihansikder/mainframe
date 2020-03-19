@@ -54,7 +54,7 @@ class SettingPolicy extends BaseModulePolicy
      * @param  Setting  $setting
      * @return mixed
      */
-    // public function update(User $user, $setting)
+    // public function update($user, $setting)
     // {
     //     //
     // }
@@ -66,7 +66,7 @@ class SettingPolicy extends BaseModulePolicy
      * @param  Setting  $setting
      * @return mixed
      */
-    // public function delete(User $user, $setting)
+    // public function delete($user, $setting)
     // {
     //     //
     // }
@@ -78,7 +78,7 @@ class SettingPolicy extends BaseModulePolicy
      * @param  Setting  $setting
      * @return mixed
      */
-    // public function restore(User $user, $setting)
+    // public function restore($user, $setting)
     // {
     //     //
     // }
@@ -90,7 +90,7 @@ class SettingPolicy extends BaseModulePolicy
      * @param  Setting  $setting
      * @return mixed
      */
-    // public function forceDelete(User $user, $setting)
+    // public function forceDelete($user, $setting)
     // {
     //     //
     // }

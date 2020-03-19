@@ -44,7 +44,7 @@ class CountryPolicy extends BaseModulePolicy
      * @param  Country  $country
      * @return mixed
      */
-    // public function update(User $user, $country) { }
+    // public function update($user, $country) { }
 
     /**
      * Determine whether the user can delete the country.
@@ -53,7 +53,7 @@ class CountryPolicy extends BaseModulePolicy
      * @param  Country  $country
      * @return mixed
      */
-    // public function delete(User $user, $country) { }
+    // public function delete($user, $country) { }
 
     /**
      * Determine whether the user can restore the country.
@@ -62,7 +62,7 @@ class CountryPolicy extends BaseModulePolicy
      * @param  Country  $country
      * @return mixed
      */
-    // public function restore(User $user, $country) { }
+    // public function restore($user, $country) { }
 
     /**
      * Determine whether the user can permanently delete the country.
@@ -71,6 +71,6 @@ class CountryPolicy extends BaseModulePolicy
      * @param  Country  $country
      * @return mixed
      */
-    // public function forceDelete(User $user, $country) { }
+    // public function forceDelete($user, $country) { }
 
 }

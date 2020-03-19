@@ -44,7 +44,7 @@ class LoremIpsumPolicy extends BaseModulePolicy
      * @param  LoremIpsum  $loremIpsum
      * @return mixed
      */
-    // public function update(User $user, $loremIpsum) { }
+    // public function update($user, $loremIpsum) { }
 
     /**
      * Determine whether the user can delete the loremIpsum.
@@ -53,7 +53,7 @@ class LoremIpsumPolicy extends BaseModulePolicy
      * @param  LoremIpsum  $loremIpsum
      * @return mixed
      */
-    // public function delete(User $user, $loremIpsum) { }
+    // public function delete($user, $loremIpsum) { }
 
     /**
      * Determine whether the user can restore the loremIpsum.
@@ -62,7 +62,7 @@ class LoremIpsumPolicy extends BaseModulePolicy
      * @param  LoremIpsum  $loremIpsum
      * @return mixed
      */
-    // public function restore(User $user, $loremIpsum) { }
+    // public function restore($user, $loremIpsum) { }
 
     /**
      * Determine whether the user can permanently delete the loremIpsum.
@@ -71,6 +71,6 @@ class LoremIpsumPolicy extends BaseModulePolicy
      * @param  LoremIpsum  $loremIpsum
      * @return mixed
      */
-    // public function forceDelete(User $user, $loremIpsum) { }
+    // public function forceDelete($user, $loremIpsum) { }
 
 }
