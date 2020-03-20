@@ -1,9 +1,10 @@
-<?php
+<?php /** @noinspection ALL */
 
 namespace App\Mainframe\Features\Resolvers;
 
-use Str;
 use App\Mainframe\Features\Modular\BaseModule\BaseModulePolicy;
+use App\Mainframe\Modules\Modules\Module;
+use Str;
 
 class PolicyResolver
 {
@@ -16,9 +17,15 @@ class PolicyResolver
      */
     public static function resolve($modelClass)
     {
-        $modelName = class_basename($modelClass);
+        $module = Module::where('model', '\\'.$modelClass)
+            ->remember(timer('very-long'))
+            ->first();
 
+        $modulePolicy = $module ? $module->policy : 'NoFile';
+
+        $modelName = class_basename($modelClass);
         $paths = [
+            $modulePolicy,        // Check module table value
             $modelClass.'Policy', // In the same directory of the model
             '\\App\\Policies\\'.$modelName.'Policy', // Laravel's default policy path
             '\\App\\Mainframe\\Modules\\'.Str::plural($modelName).'\\'.$modelName.'Policy', // Inside mainframe module directory
@@ -32,6 +39,5 @@ class PolicyResolver
         }
 
         return BaseModulePolicy::class;
-
     }
 }

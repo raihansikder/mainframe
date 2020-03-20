@@ -19,8 +19,8 @@ class Input extends Form
     /**
      * Input constructor.
      *
-     * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule  $element
-     * @param  array  $conf
+     * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule $element
+     * @param  array $conf
      */
     public function __construct($conf = [], $element = null)
     {
@@ -36,7 +36,12 @@ class Input extends Form
         $this->params = $conf['params'] ?? [];
 
         $this->isEditable = $conf['editable'] ?? true;
-        if ($element && user()->cannot('update', $element)) {
+
+        if ($element && $element->isUpdating() && user()->cannot('update', $element)) {
+            $this->isEditable = false;
+        }
+
+        if ($element && $element->isCreating() && user()->cannot('create', $element)) {
             $this->isEditable = false;
         }
 
