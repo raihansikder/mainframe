@@ -4,18 +4,18 @@
 
 namespace App\Mainframe\Features\Modular\ModularController;
 
-use View;
-use Illuminate\Http\Request;
-use App\Mainframe\Modules\Modules\Module;
-use App\Mainframe\Features\Report\ModuleList;
-use App\Mainframe\Http\Controllers\BaseController;
-use App\Mainframe\Modules\Uploads\UploadController;
 use App\Mainframe\Features\Datatable\ModuleDatatable;
-use App\Mainframe\Modules\Comments\CommentController;
-use App\Mainframe\Features\Report\ModuleReportBuilder;
-use App\Mainframe\Features\Modular\ModularController\Traits\Resolvable;
 use App\Mainframe\Features\Modular\ModularController\Traits\RequestHandler;
+use App\Mainframe\Features\Modular\ModularController\Traits\Resolvable;
 use App\Mainframe\Features\Modular\ModularController\Traits\ShowChangesTrait;
+use App\Mainframe\Features\Report\ModuleList;
+use App\Mainframe\Features\Report\ModuleReportBuilder;
+use App\Mainframe\Http\Controllers\BaseController;
+use App\Mainframe\Modules\Comments\CommentController;
+use App\Mainframe\Modules\Modules\Module;
+use App\Mainframe\Modules\Uploads\UploadController;
+use Illuminate\Http\Request;
+use View;
 
 /**
  * Class ModuleBaseController
@@ -40,7 +40,7 @@ class ModularController extends BaseController
     protected $processor;
 
     /**
-     * @param  null  $name
+     * @param  null $name
      */
     public function __construct($name = null)
     {
@@ -166,7 +166,7 @@ class ModularController extends BaseController
     /**
      * Store
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return $this|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
@@ -183,6 +183,7 @@ class ModularController extends BaseController
         // } catch (\Exception $e) {
         //     $this->response()->validator->errors()->add('Error', $e->getMessage());
         // }
+        $this->stored();
 
         $this->response()->redirectTo = $this->resolveRedirectTo();
 
@@ -194,9 +195,17 @@ class ModularController extends BaseController
     }
 
     /**
+     * After successful store
+     */
+    public function stored()
+    {
+        // Do something
+    }
+
+    /**
      * Update
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @param $id
      * @return $this|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
@@ -208,6 +217,8 @@ class ModularController extends BaseController
         }
 
         $this->attemptUpdate();
+        $this->updated();
+
         $this->response()->redirectTo = $this->resolveRedirectTo();
 
         if ($this->expectsJson()) {
@@ -215,6 +226,14 @@ class ModularController extends BaseController
         }
 
         return $this->redirect();
+    }
+
+    /**
+     * After successful update
+     */
+    public function updated()
+    {
+        // Do something
     }
 
     /**
@@ -235,6 +254,7 @@ class ModularController extends BaseController
         }
 
         $this->attemptDestroy();
+        $this->deleted();
 
         $this->response()->redirectTo = $this->resolveRedirectTo();
 
@@ -246,9 +266,17 @@ class ModularController extends BaseController
     }
 
     /**
+     * After successful delete
+     */
+    public function deleted()
+    {
+        // Do something
+    }
+
+    /**
      * Restore a soft-deleted.
      *
-     * @param  null  $id
+     * @param  null $id
      * @return \App\Mainframe\Features\Modular\ModularController\ModularController|void
      */
     public function restore($id = null)
@@ -295,7 +323,7 @@ class ModularController extends BaseController
     /**
      * Get all the uploads of an element
      *
-     * @param  null  $id
+     * @param  null $id
      * @return \Illuminate\Http\JsonResponse
      */
     public function uploads($id)
@@ -311,7 +339,7 @@ class ModularController extends BaseController
     /**
      * Uploads files under an element
      *
-     * @param  null  $id
+     * @param  null $id
      * @return \App\Mainframe\Features\Modular\ModularController\ModularController|void
      */
     public function storeUploads($id)
@@ -327,7 +355,7 @@ class ModularController extends BaseController
     /**
      * Get all the comments of an element
      *
-     * @param  null  $id
+     * @param  null $id
      * @return \Illuminate\Http\JsonResponse
      */
     public function comments($id)
@@ -343,7 +371,7 @@ class ModularController extends BaseController
     /**
      * Store comment files under an element
      *
-     * @param  null  $id
+     * @param  null $id
      * @return \App\Mainframe\Features\Modular\ModularController\ModularController|void
      */
     public function storeComments($id)
