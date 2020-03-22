@@ -2,7 +2,6 @@
 
 namespace App\Mainframe\Modules\Uploads;
 
-use App\Mainframe\Modules\Modules\Module;
 use App\Mainframe\Features\Modular\Validator\ModelProcessor;
 
 class UploadProcessor extends ModelProcessor
@@ -19,32 +18,7 @@ class UploadProcessor extends ModelProcessor
      */
     public function fill($upload)
     {
-        $upload->is_active = 1;
-
-        $module = null;
-        if (isset($upload->module_id)) {
-            $module = Module::find($upload->module_id);
-        }
-
-        $element = null;
-        if ($module && isset($upload->element_id)) {
-            /** @var \App\Mainframe\Features\Modular\BaseModule\BaseModule $model */
-            $model = $module->model;
-            /** @noinspection PhpUndefinedMethodInspection */
-            $element = $model::find($upload->element_id);
-        }
-
-        if ($module) {
-            $upload->uploadable_type = trim($module->model, '\\');
-        }
-
-        if ($element) {
-            $upload->uploadable_id = $element->id;
-            $upload->element_uuid = $element->uuid;
-        }
-
-        $upload->ext = extFrmPath($upload->path); // Store file extension separately
-
+        $upload->is_active = 1; // Always set as active
         return $this;
     }
 
@@ -59,7 +33,7 @@ class UploadProcessor extends ModelProcessor
      * Validation rules. For regular expression validation use array instead of pipe
      *
      * @param       $element
-     * @param  array  $merge
+     * @param  array $merge
      * @return array
      */
     public static function rules($element, $merge = [])

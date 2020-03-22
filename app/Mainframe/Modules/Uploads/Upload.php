@@ -1,8 +1,9 @@
-<?php /** @noinspection PhpUndefinedMethodInspection */
+<?php
 
 namespace App\Mainframe\Modules\Uploads;
 
 use App\Mainframe\Features\Modular\BaseModule\BaseModule;
+use App\Mainframe\Modules\Modules\Module;
 
 /**
  * App\Mainframe\Modules\Uploads\Upload
@@ -184,12 +185,50 @@ class Upload extends BaseModule
         parent::boot();
         self::observe(UploadObserver::class);
 
+        static::saving(function (Upload $element) {
+            $element->fillModuleAndElementData();
+        });
         static::saved(function (Upload $element) {
             if ($element->type == 'profile-pic') {
                 $element->deletePreviousOfSameType();
             }
         });
     }
+
+    /**
+     * Fill data to relate this upload with another module element.
+     *
+     * @return $this
+     */
+    public function fillModuleAndElementData()
+    {
+
+        $module = $this->linkedModule()->exists() ? $this->linkedModule : null;
+        $element = null;
+
+        if ($module) {
+            /** @var \App\Mainframe\Features\Modular\BaseModule\BaseModule $model */
+            $model = $module->model;
+            $this->uploadable_type = trim($module->model, '\\');
+        }
+
+        if ($module && isset($this->element_id)) {
+            $element = $model::remember(timer('very-long'))
+                ->find($this->element_id);
+        }
+
+        if ($element) {
+            $this->uploadable_id = $element->id;
+            $this->element_uuid = $element->uuid;
+        }
+
+        $this->ext = extFrmPath($this->path); // Store file extension separately
+
+        return $this;
+
+    }
+
+
 
     /*
     |--------------------------------------------------------------------------
@@ -257,6 +296,12 @@ class Upload extends BaseModule
      */
     public function uploadable() { return $this->morphTo(); }
 
+    public function linkedModule()
+    {
+        return $this->belongsTo(Module::class, 'module_id')
+            ->remember(timer('long'));
+    }
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -276,7 +321,7 @@ class Upload extends BaseModule
      */
     public function deletePreviousOfSameType()
     {
-        if(isset($this->uploadable)) {
+        if (isset($this->uploadable)) {
             $this->uploadable->uploads()
                 ->where('type', $this->type)
                 ->where('id', '!=', $this->id)
