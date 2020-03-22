@@ -2,8 +2,12 @@
 /** @var \App\Mainframe\Features\Modular\BaseModule\BaseModule $element */
 use App\Mainframe\Features\Form\Text\TextArea;
 
-
 $var['type'] = $var['type'] ?? 'text';
+
+// Check edibility
+if (! isset($var['editable']) && isset($editable)) {
+    $var['editable'] = $editable;
+}
 $input = new TextArea($var, $element ?? null);
 ?>
 {{-- HTML for the input/select block --}}

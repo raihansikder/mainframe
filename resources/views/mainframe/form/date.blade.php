@@ -30,6 +30,10 @@
 
 use App\Mainframe\Features\Form\Text\Date;
 
+// Check edibility
+if (! isset($var['editable']) && isset($editable)) {
+    $var['editable'] = $editable;
+}
 $input = new Date($var, $element ?? null);
 ?>
 

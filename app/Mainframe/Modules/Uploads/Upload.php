@@ -187,6 +187,7 @@ class Upload extends BaseModule
 
         static::saving(function (Upload $element) {
             $element->fillModuleAndElementData();
+            $element->fillExtension();
         });
         static::saved(function (Upload $element) {
             if ($element->type == 'profile-pic') {
@@ -222,10 +223,20 @@ class Upload extends BaseModule
             $this->element_uuid = $element->uuid;
         }
 
+        return $this;
+
+    }
+
+    /**
+     * Fill extension
+     *
+     * @return $this
+     */
+    public function fillExtension()
+    {
         $this->ext = extFrmPath($this->path); // Store file extension separately
 
         return $this;
-
     }
 
 

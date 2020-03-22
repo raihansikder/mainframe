@@ -1,9 +1,11 @@
 <?php
 /** @var \App\Mainframe\Features\Modular\BaseModule\BaseModule $element */
-
-
 use App\Mainframe\Features\Form\Text\Tags;
 
+// Check edibility
+if (! isset($var['editable']) && isset($editable)) {
+    $var['editable'] = $editable;
+}
 // $input = new InputText($var, $element ?? null);
 $input = new Tags($var, $element ?? null);
 ?>

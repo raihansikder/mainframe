@@ -28,6 +28,10 @@
  * @var string $formState create|edit
  */
 
+// Check edibility
+if (! isset($var['editable']) && isset($editable)) {
+    $var['editable'] = $editable;
+}
 $input = new App\Mainframe\Features\Form\Text\InputText($var, $element ?? null);
 ?>
 

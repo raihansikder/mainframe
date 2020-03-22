@@ -30,6 +30,10 @@
 
 use App\Mainframe\Features\Form\Text\Datetime;
 
+// Check edibility
+if (! isset($var['editable']) && isset($editable)) {
+    $var['editable'] = $editable;
+}
 $input = new Datetime($var, $element ?? null);
 ?>
 <div class="form-group {{$input->containerClass}} {{$errors->first($input->name, ' has-error')}} {{$input->uid}}">

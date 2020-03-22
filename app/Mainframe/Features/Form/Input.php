@@ -6,6 +6,7 @@ use Illuminate\Support\Str;
 
 class Input extends Form
 {
+    public $conf;
     public $containerClass;
     public $label;
     public $labelClass;
@@ -26,6 +27,8 @@ class Input extends Form
     {
         parent::__construct($element);
 
+        $this->conf = $conf;
+
         $this->containerClass = $conf['container_class'] ?? 'col-md-3';
         $this->label = $conf['label'] ?? null;
         $this->labelClass = $conf['label_class'] ?? null;
@@ -35,15 +38,7 @@ class Input extends Form
         $this->name = $conf['name'] ?? Str::random(8);
         $this->params = $conf['params'] ?? [];
 
-        $this->isEditable = $conf['editable'] ?? true;
-
-        if ($element && $element->isUpdating() && user()->cannot('update', $element)) {
-            $this->isEditable = false;
-        }
-
-        if ($element && $element->isCreating() && user()->cannot('create', $element)) {
-            $this->isEditable = false;
-        }
+        $this->isEditable = $this->getEditable();
 
         // Force add form-control class
         $this->params['class'] = $this->params['class'] ?? '';
@@ -91,6 +86,37 @@ class Input extends Form
         }
 
         return null;
+    }
+
+    /**
+     * Determine if the field is editable
+     *
+     * @return bool|mixed
+     */
+    public function getEditable()
+    {
+
+        if (isset($this->conf['editable'])) {
+            return $this->conf['editable'];
+        }
+
+        return true;
+
+        // $element = $this->element;
+        //
+        // if ($element
+        //     && $element->isUpdating()
+        //     && user()->cannot('update', $element)) {
+        //
+        //     return false;
+        // }
+        //
+        // if ($element
+        //     && $element->isCreating()
+        //     && user()->cannot('create', $element)) {
+        //
+        //     return false;
+        // }
     }
 
     /**

@@ -1,6 +1,10 @@
 <?php
 use App\Mainframe\Features\Form\Select\SelectArrayMultiple;
 
+// Check edibility
+if (! isset($var['editable']) && isset($editable)) {
+    $var['editable'] = $editable;
+}
 $input = new SelectArrayMultiple($var, $element ?? null);
 ?>
 
