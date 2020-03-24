@@ -435,31 +435,75 @@ trait ModularTrait
 
     /**
      * Fill data and set calculated data in fields for saving the module
+     * This can depend of supporting fillFunct, setFunct,calculateFunct
      */
-    public function prepare()
+    public function populate()
     {
-        return $this->fillData()->setData();
-    }
-
-    /**
-     * Fill linked data fetching from different linked tables
-     *
-     * @return $this
-     */
-    public function fillData()
-    {
+        // $this->fillAddress()->setAmounts();
 
         return $this;
     }
 
-    /**
-     * Do necessary calculation and set some calculated fields.
-     *
-     * @return $this
-     */
-    public function setData()
-    {
 
-        return $this;
+    /*
+    |--------------------------------------------------------------------------
+    | Ability to create, edit, delete or restore
+    |--------------------------------------------------------------------------
+    |
+    | An element can be editable or non-editable based on it's internal status
+    | This is not related to any user, rather it is a model's individual sate
+    | For example - A confirmed quotation should not be editable regardless
+    | Of who is attempting to edit it.
+    |
+    */
+    /**
+     * Check if the model can be viewed based on it's values.
+     *
+     * @return bool
+     */
+    public function isViewable()
+    {
+        return true;
     }
+
+    /**
+     * Check if the model can be created based on it's values.
+     *
+     * @return bool
+     */
+    public function isCreatable()
+    {
+        return true;
+    }
+
+    /**
+     * Check if the model can be edited based on it's values.
+     *
+     * @return bool
+     */
+    public function isEditable()
+    {
+        return true;
+    }
+
+    /**
+     * Check if the model can be deleted based on it's values.
+     *
+     * @return bool
+     */
+    public function isDeletable()
+    {
+        return true;
+    }
+
+    /**
+     * Check if the model can be created based on it's values.
+     *
+     * @return bool
+     */
+    public function isRestorable()
+    {
+        return true;
+    }
+
 }
