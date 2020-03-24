@@ -84,7 +84,7 @@ class BaseModulePolicy
             return false;
         }
 
-        if ($element && ! $element->isCreatable()) {
+        if ($element && !$element->isCreatable()) {
             return false;
         }
 

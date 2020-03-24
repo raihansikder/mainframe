@@ -19,14 +19,13 @@ class SuperHeroProcessor extends ModelProcessor
     /**
      * Fill the model with values
      *
-     * @param  \App\Mainframe\Modules\SuperHeroes\SuperHero  $superHero
+     * @param  \App\Mainframe\Modules\SuperHeroes\SuperHero $superHero
      * @return $this
      */
     public function fill($superHero)
     {
         parent::fill($superHero);
-
-        // $superHero->name = 'Lorem Ipsum';
+        $superHero->populate();
 
         return $this;
     }
@@ -42,8 +41,8 @@ class SuperHeroProcessor extends ModelProcessor
     /**
      * Validation rules.
      *
-     * @param  \App\Mainframe\Modules\SuperHeroes\SuperHero  $superHero
-     * @param  array  $merge
+     * @param  \App\Mainframe\Modules\SuperHeroes\SuperHero $superHero
+     * @param  array $merge
      * @return array
      */
     public static function rules($superHero, $merge = [])
@@ -59,7 +58,7 @@ class SuperHeroProcessor extends ModelProcessor
     /**
      * Custom error messages.
      *
-     * @param  array  $merge
+     * @param  array $merge
      * @return array
      */
     // public static function customErrorMessages($merge = [])
