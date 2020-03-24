@@ -1,15 +1,13 @@
-<?php
-
+<?php /** @noinspection PhpUnusedParameterInspection */
 /** @noinspection PhpInconsistentReturnPointsInspection */
 
 /** @noinspection PhpUnused */
 
 namespace App\Mainframe\Features\Modular\BaseModule;
 
-use Str;
-use App\User;
 use App\Mainframe\Modules\Modules\Module;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Illuminate\Support\Str;
 
 class BaseModulePolicy
 {
@@ -66,6 +64,10 @@ class BaseModulePolicy
             return false;
         }
 
+        if (! $element->isViewable()) {
+            return false;
+        }
+
         return true;
     }
 
@@ -73,11 +75,16 @@ class BaseModulePolicy
      * Determine whether the user can create items.
      *
      * @param  \App\User $user
+     * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule|mixed $element
      * @return mixed
      */
-    public function create($user)
+    public function create($user, $element = null)
     {
         if (! $user->hasPermission($this->moduleName.'-create')) {
+            return false;
+        }
+
+        if ($element && ! $element->isCreatable()) {
             return false;
         }
 
@@ -97,6 +104,10 @@ class BaseModulePolicy
             return false;
         }
 
+        if (! $element->isEditable()) {
+            return false;
+        }
+
         return true;
     }
 
@@ -113,6 +124,10 @@ class BaseModulePolicy
             return false;
         }
 
+        if (! $element->isDeletable()) {
+            return false;
+        }
+
         return true;
     }
 
@@ -126,6 +141,10 @@ class BaseModulePolicy
     public function restore($user, $element)
     {
         if (! $user->hasPermission($this->moduleName.'-restore')) {
+            return false;
+        }
+
+        if (! $element->isRestorable()) {
             return false;
         }
 
