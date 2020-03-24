@@ -8,7 +8,7 @@ if (! isset($var['editable']) && isset($editable)) {
 }
 $input = new App\Mainframe\Features\Form\Upload($var, $element ?? null);
 
-$uploads = null;
+$uploads = [];
 if ($input->moduleId && $input->elementId) {
     /** @var \Illuminate\Database\Eloquent\Builder $query */
     $query = $element->uploads();

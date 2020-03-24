@@ -2,9 +2,9 @@
 
 namespace App\Mainframe\Features\Form\Select;
 
-use DB;
-use Arr;
 use App\Mainframe\Helpers\Mf;
+use Arr;
+use DB;
 
 class SelectModel extends SelectArray
 {
@@ -38,7 +38,7 @@ class SelectModel extends SelectArray
     public function options()
     {
         $query = $this->query->whereNull('deleted_at');
-        if(!$this->showInactive) {
+        if (! $this->showInactive) {
             $query->where('is_active', 1);
         }
 
@@ -72,7 +72,7 @@ class SelectModel extends SelectArray
      */
     public function print()
     {
-        return $this->options[$this->value()];
+        return $this->options[$this->value()] ?? '';
     }
 
 }

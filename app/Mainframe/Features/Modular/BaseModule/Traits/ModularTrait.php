@@ -2,13 +2,13 @@
 
 namespace App\Mainframe\Features\Modular\BaseModule\Traits;
 
-use App\User;
 use App\Mainframe\Helpers\Mf;
+use App\Mainframe\Modules\Comments\Comment;
 use App\Mainframe\Modules\Modules\Module;
+use App\Mainframe\Modules\Projects\Project;
 use App\Mainframe\Modules\Tenants\Tenant;
 use App\Mainframe\Modules\Uploads\Upload;
-use App\Mainframe\Modules\Projects\Project;
-use App\Mainframe\Modules\Comments\Comment;
+use App\User;
 
 /** @mixin \App\Mainframe\Features\Modular\BaseModule\BaseModule $this */
 trait ModularTrait
@@ -79,8 +79,8 @@ trait ModularTrait
     /**
      * Cast an attribute to a native PHP type.
      *
-     * @param  string  $key
-     * @param  mixed  $value
+     * @param  string $key
+     * @param  mixed $value
      * @return mixed
      */
     // protected function castAttribute($key, $value)
@@ -296,7 +296,7 @@ trait ModularTrait
     /**
      * Disable model events while saving.
      *
-     * @param  array  $options
+     * @param  array $options
      * @return mixed
      */
     public function saveQuietly(array $options = [])
@@ -431,5 +431,35 @@ trait ModularTrait
             $this->tenant_id = $this->tenant_id ?: user()->tenant_id;
             $this->project_id = $this->project_id ?: $this->tenant->project_id;
         }
+    }
+
+    /**
+     * Fill data and set calculated data in fields for saving the module
+     */
+    public function prepare()
+    {
+        return $this->fillData()->setData();
+    }
+
+    /**
+     * Fill linked data fetching from different linked tables
+     *
+     * @return $this
+     */
+    public function fillData()
+    {
+
+        return $this;
+    }
+
+    /**
+     * Do necessary calculation and set some calculated fields.
+     *
+     * @return $this
+     */
+    public function setData()
+    {
+
+        return $this;
     }
 }
