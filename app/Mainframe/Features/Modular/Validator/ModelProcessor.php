@@ -352,7 +352,7 @@ class ModelProcessor
      * Creating validation
      *
      * @param $element
-     * @return $this]
+     * @return $this
      */
     public function creating($element)
     {
@@ -376,7 +376,7 @@ class ModelProcessor
      * Updating validation
      *
      * @param $element
-     * @return $this]
+     * @return $this
      */
     public function updating($element)
     {
@@ -387,7 +387,7 @@ class ModelProcessor
      * Updating validation
      *
      * @param $element
-     * @return $this]
+     * @return $this
      */
     public function updated($element)
     {
@@ -411,7 +411,7 @@ class ModelProcessor
      * Deleting validation
      *
      * @param $element
-     * @return $this]
+     * @return $this
      */
     public function deleting($element)
     {
@@ -422,7 +422,7 @@ class ModelProcessor
      * Deleting validation
      *
      * @param $element
-     * @return $this]
+     * @return $this
      */
     public function deleted($element)
     {
@@ -433,7 +433,7 @@ class ModelProcessor
      * Restoring validation
      *
      * @param $element
-     * @return $this]
+     * @return $this
      */
     public function restoring($element)
     {
@@ -444,7 +444,7 @@ class ModelProcessor
      * Restoring validation
      *
      * @param $element
-     * @return $this]
+     * @return $this
      */
     public function restored($element)
     {
