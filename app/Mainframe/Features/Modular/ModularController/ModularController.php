@@ -200,8 +200,8 @@ class ModularController extends BaseController
      */
     public function stored()
     {
-
-        // Do something
+        $this->processor->created($this->element);
+        $this->processor->saved($this->element);
     }
 
     /**
@@ -236,7 +236,8 @@ class ModularController extends BaseController
      */
     public function updated()
     {
-        // Do something
+        $this->processor->updated($this->element);
+        $this->processor->saved($this->element);
     }
 
     /**
@@ -274,7 +275,7 @@ class ModularController extends BaseController
      */
     public function deleted()
     {
-        // Do something
+        $this->processor->deleted($this->element);
     }
 
     /**

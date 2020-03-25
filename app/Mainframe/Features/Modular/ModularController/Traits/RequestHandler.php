@@ -2,8 +2,8 @@
 
 namespace App\Mainframe\Features\Modular\ModularController\Traits;
 
-use Validator;
 use App\Mainframe\Features\Modular\ModularController\ModularController;
+use Validator;
 
 /**
  * @mixin ModularController
@@ -37,9 +37,6 @@ trait RequestHandler
             return $this;
         }
 
-        $this->processor->created($this->element);
-        $this->processor->saved($this->element);
-
         $this->success();
 
         return $this;
@@ -68,9 +65,6 @@ trait RequestHandler
 
             return $this;
         }
-
-        $this->processor->updated($this->element);
-        $this->processor->saved($this->element);
 
         $this->success();
 
@@ -103,8 +97,6 @@ trait RequestHandler
 
             return $this;
         }
-
-        $this->processor->deleted($this->element);
 
         $this->success('Successfully deleted');
 
