@@ -179,11 +179,4 @@ class SuperHero extends BaseModule
      */
     // public function creator() { return $this->belongsTo(\App\User::class, 'created_by'); }
 
-    /*
-   |--------------------------------------------------------------------------
-   | Todo: Helper functions
-   |--------------------------------------------------------------------------
-   | Todo: Write Helper functions in the SuperHeroHelper trait.
-   */
-
 }

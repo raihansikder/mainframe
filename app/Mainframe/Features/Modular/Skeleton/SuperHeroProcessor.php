@@ -24,7 +24,6 @@ class SuperHeroProcessor extends ModelProcessor
      */
     public function fill($superHero)
     {
-        parent::fill($superHero);
         $superHero->populate();
 
         return $this;
@@ -151,7 +150,6 @@ class SuperHeroProcessor extends ModelProcessor
      * @return $this
      */
     // public function deleted($superHero) { return $this; }
-
 
     /*
     |--------------------------------------------------------------------------
