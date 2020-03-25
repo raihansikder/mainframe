@@ -60,7 +60,7 @@ class ModularController extends BaseController
     /**
      * Index/List page to show grid
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\JsonResponse|\Illuminate\View\View|void
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\JsonResponse|\Illuminate\View\View
      */
     public function index()
     {
@@ -106,14 +106,14 @@ class ModularController extends BaseController
         }
 
         return $this->load($this->element)
-            ->to(route($this->moduleName.".edit", $id))->send();
+            ->to(route($this->moduleName.'.edit', $id))->send();
 
     }
 
     /**
      * Shows an element create form.
      *
-     * @return \Illuminate\Contracts\View\View|\Illuminate\Http\JsonResponse|\View|void
+     * @return \Illuminate\Contracts\View\View|\Illuminate\Http\JsonResponse|\View
      * @throws \Exception
      */
     public function create()
@@ -141,7 +141,7 @@ class ModularController extends BaseController
      * Edit
      *
      * @param $id
-     * @return \Illuminate\Contracts\View\View|\Illuminate\Http\JsonResponse|void
+     * @return \Illuminate\Contracts\View\View|\Illuminate\Http\JsonResponse
      */
     public function edit($id)
     {
@@ -183,9 +183,10 @@ class ModularController extends BaseController
         // } catch (\Exception $e) {
         //     $this->response()->validator->errors()->add('Error', $e->getMessage());
         // }
-        $this->stored();
 
-        $this->response()->redirectTo = $this->resolveRedirectTo();
+        $this->setRedirectTo();
+
+        $this->stored();
 
         if ($this->expectsJson()) {
             return $this->load($this->element->toArray())->json();
@@ -199,6 +200,7 @@ class ModularController extends BaseController
      */
     public function stored()
     {
+
         // Do something
     }
 
@@ -217,9 +219,10 @@ class ModularController extends BaseController
         }
 
         $this->attemptUpdate();
-        $this->updated();
 
-        $this->response()->redirectTo = $this->resolveRedirectTo();
+        $this->setRedirectTo();
+
+        $this->updated();
 
         if ($this->expectsJson()) {
             return $this->load($this->element)->json();
@@ -254,9 +257,10 @@ class ModularController extends BaseController
         }
 
         $this->attemptDestroy();
-        $this->deleted();
 
-        $this->response()->redirectTo = $this->resolveRedirectTo();
+        $this->setRedirectTo();
+
+        $this->deleted();
 
         if ($this->expectsJson()) {
             return $this->load($this->element)->json();
@@ -277,7 +281,7 @@ class ModularController extends BaseController
      * Restore a soft-deleted.
      *
      * @param  null $id
-     * @return \App\Mainframe\Features\Modular\ModularController\ModularController|void
+     * @return \App\Mainframe\Features\Modular\ModularController\ModularController
      */
     public function restore($id = null)
     {
@@ -287,7 +291,7 @@ class ModularController extends BaseController
     /**
      * Show and render report
      *
-     * @return bool|\Illuminate\Contracts\View\Factory|\Illuminate\Http\JsonResponse|\Illuminate\Support\Collection|\Illuminate\View\View|mixed|void
+     * @return bool|\Illuminate\Contracts\View\Factory|\Illuminate\Http\JsonResponse|\Illuminate\Support\Collection|\Illuminate\View\View|mixed
      */
     public function report()
     {
@@ -340,7 +344,7 @@ class ModularController extends BaseController
      * Uploads files under an element
      *
      * @param  null $id
-     * @return \App\Mainframe\Features\Modular\ModularController\ModularController|void
+     * @return \App\Mainframe\Features\Modular\ModularController\ModularController
      */
     public function storeUploads($id)
     {
@@ -372,7 +376,7 @@ class ModularController extends BaseController
      * Store comment files under an element
      *
      * @param  null $id
-     * @return \App\Mainframe\Features\Modular\ModularController\ModularController|void
+     * @return \App\Mainframe\Features\Modular\ModularController\ModularController
      */
     public function storeComments($id)
     {

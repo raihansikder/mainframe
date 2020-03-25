@@ -5,9 +5,9 @@
 
 namespace App\Mainframe\Features\Modular\Validator;
 
-use Validator;
-use App\Mainframe\Features\Core\Traits\Validable;
 use App\Mainframe\Features\Core\Traits\HasMessageBag;
+use App\Mainframe\Features\Core\Traits\Validable;
+use Validator;
 
 class ModelProcessor
 {
@@ -49,7 +49,7 @@ class ModelProcessor
     /**
      * MainframeModelValidator constructor.
      *
-     * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule  $element
+     * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule $element
      */
     public function __construct($element)
     {
@@ -75,8 +75,8 @@ class ModelProcessor
     /**
      * Laravel validator validation rules.
      *
-     * @param  mixed  $element
-     * @param  array  $merge
+     * @param  mixed $element
+     * @param  array $merge
      * @return array
      */
     public static function rules($element, $merge = [])
@@ -94,7 +94,7 @@ class ModelProcessor
     /**
      * Custom error messages for the validation rules above.
      *
-     * @param  array  $merge
+     * @param  array $merge
      * @return array
      */
     public static function customErrorMessages($merge = [])
@@ -129,7 +129,7 @@ class ModelProcessor
     {
         foreach ($this->getUnMutable() as $field) {
             if ($this->element->fieldHasChanged($field)) {
-                $this->fieldError($field, $field." - can not be updated.");
+                $this->fieldError($field, $field.' - can not be updated.');
             }
         }
 
@@ -151,7 +151,7 @@ class ModelProcessor
                 $change = $this->element->transition($field);
 
                 if ($change && ! $this->transitionAllowed($field, $change['old'], $change['new'])) {
-                    $this->fieldError($field, $field." - can not be updated from ".$change['old']." to ".$change['new']);
+                    $this->fieldError($field, $field.' - can not be updated from '.$change['old'].' to '.$change['new']);
                 }
 
             }
@@ -248,7 +248,7 @@ class ModelProcessor
     /**
      * Run validation for save. Common for create and update.
      *
-     * @param  null  $element
+     * @param  null $element
      * @return $this
      */
     public function save($element = null)
@@ -267,7 +267,7 @@ class ModelProcessor
      * Run validation for create. This initially runs the save()
      * validation checks then loads creating() checks.
      *
-     * @param  null  $element
+     * @param  null $element
      * @return $this
      */
     public function create($element = null)
@@ -282,7 +282,7 @@ class ModelProcessor
     /**
      * Run validation for update.
      *
-     * @param  null  $element
+     * @param  null $element
      * @return $this
      */
     public function update($element = null)
@@ -299,7 +299,7 @@ class ModelProcessor
     /**
      * Run validation for delete.
      *
-     * @param  null  $element
+     * @param  null $element
      * @return $this
      */
     public function delete($element = null)
@@ -314,7 +314,7 @@ class ModelProcessor
     /**
      * Run validation for restore.
      *
-     * @param  null  $element
+     * @param  null $element
      * @return $this
      */
     public function restore($element = null)
@@ -360,6 +360,19 @@ class ModelProcessor
     }
 
     /**
+     * Saved validation.
+     * Common for both create and update.
+     *
+     * @param $element
+     * @return $this
+     */
+    public function created($element)
+    {
+
+        return $this;
+    }
+
+    /**
      * Updating validation
      *
      * @param $element
@@ -367,6 +380,30 @@ class ModelProcessor
      */
     public function updating($element)
     {
+        return $this;
+    }
+
+    /**
+     * Updating validation
+     *
+     * @param $element
+     * @return $this]
+     */
+    public function updated($element)
+    {
+        return $this;
+    }
+
+    /**
+     * Saved validation.
+     * Common for both create and update.
+     *
+     * @param $element
+     * @return $this
+     */
+    public function saved($element)
+    {
+
         return $this;
     }
 
@@ -382,6 +419,17 @@ class ModelProcessor
     }
 
     /**
+     * Deleting validation
+     *
+     * @param $element
+     * @return $this]
+     */
+    public function deleted($element)
+    {
+        return $this;
+    }
+
+    /**
      * Restoring validation
      *
      * @param $element
@@ -392,4 +440,14 @@ class ModelProcessor
         return $this;
     }
 
+    /**
+     * Restoring validation
+     *
+     * @param $element
+     * @return $this]
+     */
+    public function restored($element)
+    {
+        return $this;
+    }
 }
