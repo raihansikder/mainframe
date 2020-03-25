@@ -3,24 +3,17 @@
 namespace App\Mainframe\Modules\Users;
 
 use App\Group;
-use InvalidArgumentException;
-use Watson\Rememberable\Rememberable;
-use Illuminate\Notifications\Notifiable;
-use OwenIt\Auditing\Contracts\Auditable;
-use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use App\Mainframe\Notifications\Auth\VerifyEmail;
-use App\Mainframe\Notifications\Auth\ResetPassword;
-use App\Mainframe\Modules\Users\Traits\UserGroupable;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use App\Mainframe\Features\Modular\BaseModule\Traits\Uploadable;
-use App\Mainframe\Features\Modular\BaseModule\Traits\Processable;
-use App\Mainframe\Features\Modular\BaseModule\Traits\UpdaterTrait;
 use App\Mainframe\Features\Modular\BaseModule\Traits\ModularTrait;
-use App\Mainframe\Features\Modular\BaseModule\Traits\ModelAutoFill;
-use App\Mainframe\Features\Modular\BaseModule\Traits\EventsTrait;
-use App\Mainframe\Features\Modular\BaseModule\Traits\RelatedUsersTrait;
-use App\Mainframe\Features\Modular\BaseModule\Traits\TenantContextTrait;
+use App\Mainframe\Modules\Users\Traits\UserGroupable;
+use App\Mainframe\Notifications\Auth\ResetPassword;
+use App\Mainframe\Notifications\Auth\VerifyEmail;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use InvalidArgumentException;
+use OwenIt\Auditing\Contracts\Auditable;
+use Watson\Rememberable\Rememberable;
 
 /**
  * App\Mainframe\Modules\Users\User
@@ -381,7 +374,7 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
     /**
      * Mutator for taking permissions.
      *
-     * @param  array  $permissions
+     * @param  array $permissions
      * @return string
      */
     public function setPermissionsAttribute(array $permissions)
@@ -408,7 +401,7 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
     /**
      * Mutator for giving permissions.
      *
-     * @param  mixed  $permissions
+     * @param  mixed $permissions
      * @return array  $_permissions
      */
     public function getPermissionsAttribute($permissions)
@@ -431,7 +424,7 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
     /**
      * Send reset password link
      *
-     * @param  string  $token
+     * @param  string $token
      */
     public function sendPasswordResetNotification($token)
     {

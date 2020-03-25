@@ -9,15 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Contracts\Auditable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Mainframe\Features\Multitenant\GlobalScope\AddTenant;
-use App\Mainframe\Features\Modular\BaseModule\Traits\Uploadable;
-use App\Mainframe\Features\Modular\BaseModule\Traits\Processable;
-use App\Mainframe\Features\Modular\BaseModule\Traits\Commentable;
 use App\Mainframe\Features\Modular\BaseModule\Traits\ModularTrait;
-use App\Mainframe\Features\Modular\BaseModule\Traits\UpdaterTrait;
-use App\Mainframe\Features\Modular\BaseModule\Traits\ModelAutoFill;
-use App\Mainframe\Features\Modular\BaseModule\Traits\EventsTrait;
-use App\Mainframe\Features\Modular\BaseModule\Traits\RelatedUsersTrait;
-use App\Mainframe\Features\Modular\BaseModule\Traits\TenantContextTrait;
 
 /**
  * Class BaseModule
