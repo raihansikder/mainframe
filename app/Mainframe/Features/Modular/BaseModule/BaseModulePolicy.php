@@ -84,7 +84,7 @@ class BaseModulePolicy
             return false;
         }
 
-        if ($element && !$element->isCreatable()) {
+        if ($element && ! $element->isCreatable()) {
             return false;
         }
 
@@ -120,6 +120,10 @@ class BaseModulePolicy
      */
     public function delete($user, $element)
     {
+        if (! $user->can('update', $element)) {
+            return false;
+        }
+
         if (! $user->hasPermission($this->moduleName.'-delete')) {
             return false;
         }
