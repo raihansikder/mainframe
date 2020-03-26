@@ -16,7 +16,7 @@ class BaseController extends Controller
     use Validable, SendResponse, HasMessageBag;
 
     /** @var \App\User|null */
-    public $user;
+    protected $user;
 
     /**
      * MainframeBaseController constructor.
