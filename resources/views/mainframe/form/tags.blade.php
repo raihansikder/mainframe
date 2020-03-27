@@ -5,7 +5,13 @@ use App\Mainframe\Features\Form\Text\Tags;
 // Check edibility
 if (! isset($var['editable']) && isset($editable)) {
     $var['editable'] = $editable;
+
+    // Check immutability
+    if (isset($immutables)) {
+        $var['editable'] = ! in_array($var['name'], $immutables);
+    }
 }
+
 // $input = new InputText($var, $element ?? null);
 $input = new Tags($var, $element ?? null);
 ?>

@@ -4,7 +4,13 @@ use App\Mainframe\Features\Form\Select\SelectModel;
 // Check edibility
 if (! isset($var['editable']) && isset($editable)) {
     $var['editable'] = $editable;
+
+    // Check immutability
+    if (isset($immutables)) {
+        $var['editable'] = ! in_array($var['name'], $immutables);
+    }
 }
+
 $input = new SelectModel($var, $element ?? null);
 ?>
 <div class="form-group {{$input->containerClass}} {{$errors->first($input->name, ' has-error')}} {{$input->uid}}">

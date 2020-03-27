@@ -6,7 +6,13 @@ $rand = \Illuminate\Support\Str::random(8);
 // Check edibility
 if (! isset($var['editable']) && isset($editable)) {
     $var['editable'] = $editable;
+
+    // Check immutability
+    if (isset($immutables)) {
+        $var['editable'] = ! in_array($var['name'], $immutables);
+    }
 }
+
 $input = new SelectAjax($var, $element ?? null);
 ?>
 

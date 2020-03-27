@@ -33,7 +33,13 @@ use App\Mainframe\Features\Form\Text\Date;
 // Check edibility
 if (! isset($var['editable']) && isset($editable)) {
     $var['editable'] = $editable;
+
+    // Check immutability
+    if (isset($immutables)) {
+        $var['editable'] = ! in_array($var['name'], $immutables);
+    }
 }
+
 $input = new Date($var, $element ?? null);
 ?>
 

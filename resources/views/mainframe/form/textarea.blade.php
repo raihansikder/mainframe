@@ -7,7 +7,13 @@ $var['type'] = $var['type'] ?? 'text';
 // Check edibility
 if (! isset($var['editable']) && isset($editable)) {
     $var['editable'] = $editable;
+
+    // Check immutability
+    if (isset($immutables)) {
+        $var['editable'] = ! in_array($var['name'], $immutables);
+    }
 }
+
 $input = new TextArea($var, $element ?? null);
 ?>
 {{-- HTML for the input/select block --}}
