@@ -33,7 +33,7 @@ class ModelProcessor
      *
      * @var array
      */
-    public $unMutable = [];
+    public $immutables = [];
 
     /**
      * Define the allowed strict value change of specific fields
@@ -127,7 +127,7 @@ class ModelProcessor
      */
     public function checkUnMutable()
     {
-        foreach ($this->getUnMutable() as $field) {
+        foreach ($this->getImmutables() as $field) {
             if ($this->element->fieldHasChanged($field)) {
                 $this->fieldError($field, $field.' - can not be updated.');
             }
@@ -153,7 +153,6 @@ class ModelProcessor
                 if ($change && ! $this->transitionAllowed($field, $change['old'], $change['new'])) {
                     $this->fieldError($field, $field.' - can not be updated from '.$change['old'].' to '.$change['new']);
                 }
-
             }
         }
 
@@ -193,9 +192,9 @@ class ModelProcessor
      *
      * @return array
      */
-    public function getUnMutable()
+    public function getImmutables()
     {
-        return $this->unMutable;
+        return $this->immutables;
     }
 
     /**
