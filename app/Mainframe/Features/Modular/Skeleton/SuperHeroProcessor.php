@@ -6,6 +6,8 @@ use App\Mainframe\Features\Modular\Validator\ModelProcessor;
 
 class SuperHeroProcessor extends ModelProcessor
 {
+    /** @var \App\Mainframe\Modules\SuperHeroes\SuperHero */
+    public $element;
     /*
     |--------------------------------------------------------------------------
     | Fill model .
