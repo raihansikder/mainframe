@@ -33,7 +33,7 @@ if (! isset($var['editable']) && isset($editable)) {
     $var['editable'] = $editable;
 
     // Check immutability
-    if (isset($immutables)) {
+    if ($editable && isset($immutables)) {
         $var['editable'] = ! in_array($var['name'], $immutables);
     }
 }
