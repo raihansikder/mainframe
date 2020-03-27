@@ -125,7 +125,7 @@ class ModelProcessor
      *
      * @return $this
      */
-    public function checkUnMutable()
+    public function checkImmutables()
     {
         foreach ($this->getImmutables() as $field) {
             if ($this->element->fieldHasChanged($field)) {
@@ -157,6 +157,88 @@ class ModelProcessor
         }
 
         return $this;
+    }
+
+    /**
+     * Get old and new value of a changed field field
+     *
+     * @param $field
+     * @return array
+     */
+    public function transition($field)
+    {
+        if ($this->element->fieldHasChanged($field) && isset($this->original[$field])) {
+            return ['field' => $field, 'old' => $this->original[$field], 'new' => $this->element->$field];
+        }
+
+        return null;
+    }
+
+    /**
+     * Check if a certain transition took place.
+     *
+     * @param $field
+     * @param $from
+     * @param $to
+     * @return bool
+     */
+    public function hasTransition($field, $from, $to)
+    {
+        if (! is_array($from)) {
+            $from = [$from];
+        }
+
+        if (! is_array($to)) {
+            $to = [$to];
+        }
+
+        $change = $this->transition($field);
+
+        if ($change) {
+            return in_array($change['old'], $from) && in_array($change['new'], $to);
+        }
+    }
+
+    /**
+     * Check if a certain transition took place.
+     *
+     * @param $field
+     * @param $from
+     * @return bool
+     */
+    public function hasTransitionFrom($field, $from)
+    {
+
+        if (! is_array($from)) {
+            $from = [$from];
+        }
+
+        $change = $this->transition($field);
+
+        if ($change) {
+            return in_array($change['old'], $from);
+        }
+    }
+
+    /**
+     * Check if a certain transition took place.
+     *
+     * @param $field
+     * @param $to
+     * @return bool
+     */
+    public function hasTransitionTo($field, $to)
+    {
+
+        if (! is_array($to)) {
+            $to = [$to];
+        }
+
+        $change = $this->transition($field);
+
+        if ($change) {
+            return in_array($change['new'], $to);
+        }
     }
 
     /**
@@ -288,7 +370,7 @@ class ModelProcessor
     {
         $element = $element ?: $this->element;
         $this->save();
-        $this->checkUnMutable();
+        $this->checkImmutables();
         $this->checkTransitions();
         $this->updating($element);
 

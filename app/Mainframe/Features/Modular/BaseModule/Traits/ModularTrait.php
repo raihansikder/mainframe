@@ -108,6 +108,18 @@ trait ModularTrait
     |--------------------------------------------------------------------------
     |
     */
+
+    /**
+     * Get latest changes
+     * http://www.laravel-auditing.com/docs/9.0/getting-audits
+     *
+     * @return mixed
+     */
+    public function lastChanges()
+    {
+        return $this->audits()->latest()->first()->getModified();
+    }
+
     /**
      * Check if value has changed
      *
