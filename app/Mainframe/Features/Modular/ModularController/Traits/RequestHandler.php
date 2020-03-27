@@ -38,8 +38,18 @@ trait RequestHandler
         }
 
         $this->success();
+        $this->stored();
 
         return $this;
+    }
+
+    /**
+     * After successful store
+     */
+    public function stored()
+    {
+        $this->processor->created($this->element);
+        $this->processor->saved($this->element);
     }
 
     /**
@@ -67,8 +77,18 @@ trait RequestHandler
         }
 
         $this->success();
+        $this->updated();
 
         return $this;
+    }
+
+    /**
+     * After successful update
+     */
+    public function updated()
+    {
+        $this->processor->updated($this->element);
+        $this->processor->saved($this->element);
     }
 
     /**
@@ -99,10 +119,18 @@ trait RequestHandler
         }
 
         $this->success('Successfully deleted');
+        $this->deleted();
 
         return $this;
     }
 
+    /**
+     * After successful delete
+     */
+    public function deleted()
+    {
+        $this->processor->deleted($this->element);
+    }
     /**
      * Transform request input and fill.
      *

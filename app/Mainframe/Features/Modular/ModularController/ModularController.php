@@ -186,22 +186,11 @@ class ModularController extends BaseController
 
         $this->setRedirectTo();
 
-        $this->stored();
-
         if ($this->expectsJson()) {
             return $this->load($this->element->toArray())->json();
         }
 
         return $this->redirect();
-    }
-
-    /**
-     * After successful store
-     */
-    public function stored()
-    {
-        $this->processor->created($this->element);
-        $this->processor->saved($this->element);
     }
 
     /**
@@ -222,22 +211,11 @@ class ModularController extends BaseController
 
         $this->setRedirectTo();
 
-        $this->updated();
-
         if ($this->expectsJson()) {
             return $this->load($this->element)->json();
         }
 
         return $this->redirect();
-    }
-
-    /**
-     * After successful update
-     */
-    public function updated()
-    {
-        $this->processor->updated($this->element);
-        $this->processor->saved($this->element);
     }
 
     /**
@@ -261,21 +239,11 @@ class ModularController extends BaseController
 
         $this->setRedirectTo();
 
-        $this->deleted();
-
         if ($this->expectsJson()) {
             return $this->load($this->element)->json();
         }
 
         return $this->redirect();
-    }
-
-    /**
-     * After successful delete
-     */
-    public function deleted()
-    {
-        $this->processor->deleted($this->element);
     }
 
     /**
