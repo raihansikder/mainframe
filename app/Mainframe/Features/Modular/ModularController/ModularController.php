@@ -158,6 +158,7 @@ class ModularController extends BaseController
             'formConfig' => $this->formConfig('edit'),
             'editable' => user()->can('update', $this->element),
             'formState' => 'edit',
+            'immutables' => $this->element->processor()->getImmutables(),
         ];
 
         return $this->view($this->form('edit'))->with($vars);
