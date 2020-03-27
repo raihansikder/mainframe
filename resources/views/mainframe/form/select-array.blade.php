@@ -28,7 +28,7 @@ $input = new SelectArray($var, $element ?? null);
     @else
         <span class="{{$input->params['class']}} readonly">
             {{ $input->print() }}
-            {{ Form::hidden($input->name, $input->print()) }}
+            {{--{{ Form::hidden($input->name, $input->print()) }}--}}
         </span>
     @endif
 

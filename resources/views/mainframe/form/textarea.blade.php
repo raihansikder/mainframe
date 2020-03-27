@@ -32,7 +32,7 @@ $input = new TextArea($var, $element ?? null);
     @else
         <div class="readonly">
             {{ $input->print() }}
-            {{ Form::hidden($input->name, $input->value()) }}
+            {{--{{ Form::hidden($input->name, $input->value()) }}--}}
         </div>
     @endif
 
