@@ -45,6 +45,16 @@ trait ModularTrait
     }
 
     /**
+     * Get all attribute names
+     *
+     * @return bool
+     */
+    public function getAttributeKeys()
+    {
+        return array_keys($this->getAttributes());
+    }
+
+    /**
      * Check if a model table has a given column
      *
      * @param $column
