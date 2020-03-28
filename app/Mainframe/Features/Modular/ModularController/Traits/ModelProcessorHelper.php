@@ -8,7 +8,7 @@ use Validator;
 /**
  * @mixin ModularController
  */
-trait RequestHandler
+trait ModelProcessorHelper
 {
 
     /**
@@ -55,7 +55,7 @@ trait RequestHandler
     /**
      * Validate and update
      *
-     * @return \App\Mainframe\Features\Modular\ModularController\Traits\RequestHandler
+     * @return \App\Mainframe\Features\Modular\ModularController\Traits\ModelProcessorHelper
      */
     public function attemptUpdate()
     {
@@ -94,7 +94,7 @@ trait RequestHandler
     /**
      * Validate and delete
      *
-     * @return \App\Mainframe\Features\Modular\ModularController\Traits\RequestHandler
+     * @return \App\Mainframe\Features\Modular\ModularController\Traits\ModelProcessorHelper
      * @throws \Exception
      */
     public function attemptDestroy()
@@ -176,7 +176,7 @@ trait RequestHandler
      */
     public function validateStoreProcessor()
     {
-        $processor = $this->processor()->create();
+        $processor = $this->processor()->forCreate();
 
         if ($processor->invalid()) {
             $this->response($processor->validator)->failValidation();
@@ -200,7 +200,7 @@ trait RequestHandler
      */
     public function validateUpdateProcessor()
     {
-        $processor = $this->processor()->update();
+        $processor = $this->processor()->forUpdate();
 
         if ($processor->invalid()) {
             $this->response($processor->validator)->failValidation();

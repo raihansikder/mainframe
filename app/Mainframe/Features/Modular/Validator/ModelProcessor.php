@@ -310,10 +310,10 @@ class ModelProcessor
     public function run()
     {
         if (isset($this->element->id)) {
-            return $this->update();
+            return $this->forUpdate();
         }
 
-        return $this->create();
+        return $this->forCreate();
     }
 
     /*
@@ -332,7 +332,7 @@ class ModelProcessor
      * @param  null $element
      * @return $this
      */
-    public function save($element = null)
+    public function forSave($element = null)
     {
         $element = $element ?: $this->element;
         $this->fill($element)->validate();
@@ -345,17 +345,63 @@ class ModelProcessor
     }
 
     /**
+     * Save the element
+     */
+    public function save()
+    {
+        $this->forSave();
+
+        if($this->element->isCreating()){
+            $this->forCreate();
+        }
+
+        if($this->element->isUpdating()){
+            $this->forUpdate();
+        }
+
+        if ($this->valid()) {
+            $this->element->save();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Save the element
+     */
+    public function saveQuietly()
+    {
+        if ($this->forSave()->valid()) {
+            $this->element->saveQuietly();
+        }
+
+        return $this;
+    }
+
+    /**
      * Run validation for create. This initially runs the save()
      * validation checks then loads creating() checks.
      *
      * @param  null $element
      * @return $this
      */
-    public function create($element = null)
+    public function forCreate($element = null)
     {
         $element = $element ?: $this->element;
-        $this->save();
+        $this->forSave();
         $this->creating($element);
+
+        return $this;
+    }
+
+    /**
+     * Create the element
+     */
+    public function create()
+    {
+        if ($this->forCreate()->valid()) {
+            $this->element->save();
+        }
 
         return $this;
     }
@@ -366,10 +412,10 @@ class ModelProcessor
      * @param  null $element
      * @return $this
      */
-    public function update($element = null)
+    public function forUpdate($element = null)
     {
         $element = $element ?: $this->element;
-        $this->save();
+        $this->forSave();
         $this->checkImmutables();
         $this->checkTransitions();
         $this->updating($element);
@@ -377,6 +423,17 @@ class ModelProcessor
         return $this;
     }
 
+    /**
+     * Create the element
+     */
+    public function update()
+    {
+        if ($this->forUpdate()->valid()) {
+            $this->element->save();
+        }
+
+        return $this;
+    }
     /**
      * Run validation for delete.
      *
@@ -401,7 +458,7 @@ class ModelProcessor
     public function restore($element = null)
     {
         $element = $element ?: $this->element;
-        $this->save();
+        $this->forSave();
         $this->restoring($element);
 
         return $this;
