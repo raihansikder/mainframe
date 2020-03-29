@@ -6,6 +6,7 @@ namespace App\Mainframe\Features\Modular\ModularController;
 
 use App\Mainframe\Features\Datatable\ModuleDatatable;
 use App\Mainframe\Features\Modular\ModularController\Traits\ModelProcessorHelper;
+use App\Mainframe\Features\Modular\ModularController\Traits\RequestValidator;
 use App\Mainframe\Features\Modular\ModularController\Traits\Resolvable;
 use App\Mainframe\Features\Modular\ModularController\Traits\ShowChangesTrait;
 use App\Mainframe\Features\Report\ModuleList;
@@ -22,7 +23,7 @@ use View;
  */
 class ModularController extends BaseController
 {
-    use ModelProcessorHelper, ShowChangesTrait, Resolvable;
+    use RequestValidator, ModelProcessorHelper, ShowChangesTrait, Resolvable;
 
     /** @var string Module name */
     protected $moduleName;

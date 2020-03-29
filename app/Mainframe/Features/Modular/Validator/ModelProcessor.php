@@ -167,7 +167,8 @@ class ModelProcessor
      */
     public function transition($field)
     {
-        if ($this->element->fieldHasChanged($field) && isset($this->original[$field])) {
+        // Previous $this->element->fieldHasChanged($field)
+        if (isset($this->original[$field], $this->element->$field) && $this->original[$field] != $this->element->$field) {
             return ['field' => $field, 'old' => $this->original[$field], 'new' => $this->element->$field];
         }
 
@@ -327,7 +328,7 @@ class ModelProcessor
     */
 
     /**
-     * Run validation for save. Common for create and update.
+     * Run processor for save.
      *
      * @param  null $element
      * @return $this
@@ -337,10 +338,30 @@ class ModelProcessor
         $element = $element ?: $this->element;
         $this->fill($element)->validate();
 
-        if ($this->valid()) {
-            $this->saving($element);
+        if (! $this->valid()) {
+            return $this;
         }
 
+        $this->preSave();
+        $this->saving($element);
+
+        if ($element->isCreating()) {
+            $this->preCreate();
+
+            return $this->creating($element);
+        }
+
+        if ($element->isUpdating()) {
+            $this->preUpdate();
+
+            return $this->updating($element);
+        }
+
+        return $this;
+    }
+
+    public function preSave()
+    {
         return $this;
     }
 
@@ -349,19 +370,38 @@ class ModelProcessor
      */
     public function save()
     {
+        // echo 'In Processor Save() ';
+        $isCreate = $isUpdate = false;
+
         $this->forSave();
 
-        if($this->element->isCreating()){
-            $this->forCreate();
+        if ($this->element->isCreating()) {
+            $isCreate = true;
         }
 
-        if($this->element->isUpdating()){
-            $this->forUpdate();
+        if ($this->element->isUpdating()) {
+            $isUpdate = true;
         }
 
-        if ($this->valid()) {
-            $this->element->save();
+        if (! $this->valid()) {
+            return $this;
         }
+
+        if (! $this->element->save()) {
+            $this->error('Error: Can not be saved for some reason.');
+
+            return $this;
+        }
+
+        if ($isCreate) {
+            $this->created($this->element);
+        }
+
+        if ($isUpdate) {
+            $this->updated($this->element);
+        }
+
+        $this->saved($this->element);
 
         return $this;
     }
@@ -388,8 +428,24 @@ class ModelProcessor
     public function forCreate($element = null)
     {
         $element = $element ?: $this->element;
-        $this->forSave();
+        $this->fill($element)->validate();
+
+        $this->saving($element);
+        $this->preCreate();
         $this->creating($element);
+
+        return $this;
+    }
+
+    /**
+     * Run common codes before update.
+     *
+     * @return $this
+     */
+    public function preCreate()
+    {
+        // $this->checkImmutables(); // Example
+        // $this->checkTransitions(); // Example
 
         return $this;
     }
@@ -415,10 +471,24 @@ class ModelProcessor
     public function forUpdate($element = null)
     {
         $element = $element ?: $this->element;
-        $this->forSave();
+        $this->fill($element)->validate();
+
+        $this->saving($element);
+        $this->preUpdate();
+        $this->updating($element);
+
+        return $this;
+    }
+
+    /**
+     * Run common codes before update.
+     *
+     * @return $this
+     */
+    public function preUpdate()
+    {
         $this->checkImmutables();
         $this->checkTransitions();
-        $this->updating($element);
 
         return $this;
     }
@@ -434,17 +504,55 @@ class ModelProcessor
 
         return $this;
     }
+
     /**
      * Run validation for delete.
      *
      * @param  null $element
      * @return $this
      */
-    public function delete($element = null)
+    public function forDelete($element = null)
     {
         $element = $element ?: $this->element;
         $element->deleted_by = user()->id; // Fill with the deleter id.
+        $this->preDelete();
         $this->deleting($element);
+
+        return $this;
+    }
+
+    /**
+     * Run common codes before delete
+     */
+    public function preDelete()
+    {
+
+    }
+
+    /**
+     * Create the element
+     *
+     * @throws \Exception
+     */
+    public function delete()
+    {
+        // echo 'In Processor delete() ';
+
+        $this->forDelete();
+
+        if (! $this->valid()) {
+            return $this;
+
+        }
+        $this->element->saveQuietly(); // Set deleted by field
+
+        if (! $this->element->delete()) {
+            $this->error('Error: Can not be deleted for some reason.');
+
+            return $this;
+        }
+
+        $this->deleted($this->element);
 
         return $this;
     }
@@ -483,6 +591,8 @@ class ModelProcessor
     public function saving($element)
     {
 
+        // echo 'In Processor saving(). ';
+
         return $this;
     }
 
@@ -494,6 +604,8 @@ class ModelProcessor
      */
     public function creating($element)
     {
+        // echo 'In Processor creating(). ';
+
         return $this;
     }
 
@@ -506,6 +618,7 @@ class ModelProcessor
      */
     public function created($element)
     {
+        // echo 'In Processor created(). ';
 
         return $this;
     }
@@ -518,6 +631,8 @@ class ModelProcessor
      */
     public function updating($element)
     {
+        // echo 'In Processor updating(). ';
+
         return $this;
     }
 
@@ -529,6 +644,8 @@ class ModelProcessor
      */
     public function updated($element)
     {
+        // echo 'In Processor updated(). ';
+
         return $this;
     }
 
@@ -541,6 +658,7 @@ class ModelProcessor
      */
     public function saved($element)
     {
+        // echo 'In Processor saved(). ';
 
         return $this;
     }
@@ -553,6 +671,8 @@ class ModelProcessor
      */
     public function deleting($element)
     {
+        // echo 'In Processor deleting(). ';
+
         return $this;
     }
 
@@ -564,6 +684,8 @@ class ModelProcessor
      */
     public function deleted($element)
     {
+        // echo 'In Processor deleted(). ';
+
         return $this;
     }
 
@@ -575,6 +697,8 @@ class ModelProcessor
      */
     public function restoring($element)
     {
+        // echo 'In Processor restoring(). ';
+
         return $this;
     }
 
@@ -586,6 +710,8 @@ class ModelProcessor
      */
     public function restored($element)
     {
+        // echo 'In Processor restored(). ';
+
         return $this;
     }
 }
