@@ -371,33 +371,30 @@ class ModelProcessor
     public function save()
     {
         // echo 'In Processor Save() ';
-        $isCreate = $isUpdate = false;
+        $isCreateOperation = $this->element->isCreating();
+        $isUpdateOperation = $this->element->isUpdating();
 
+        // Run validation, call saving, then call creating/updating
         $this->forSave();
-
-        if ($this->element->isCreating()) {
-            $isCreate = true;
-        }
-
-        if ($this->element->isUpdating()) {
-            $isUpdate = true;
-        }
 
         if (! $this->valid()) {
             return $this;
         }
 
+        // If validation passes then attempt model save.
         if (! $this->element->save()) {
             $this->error('Error: Can not be saved for some reason.');
 
             return $this;
         }
 
-        if ($isCreate) {
+        // Call created() if this save() function is called during a create operation.
+        if ($isCreateOperation) {
             $this->created($this->element);
         }
 
-        if ($isUpdate) {
+        // Call updated() if this save() function is called during a create operation.
+        if ($isUpdateOperation) {
             $this->updated($this->element);
         }
 
