@@ -19,7 +19,7 @@ trait ModelProcessorHelper
      */
     public function processor()
     {
-        $this->processor = $this->fill()->processor();
+        $this->processor = $this->element->processor();
 
         return $this->processor;
     }
@@ -41,7 +41,7 @@ trait ModelProcessorHelper
         }
 
         // If request is valid then only call processor which also calls model save.
-        $processor = $this->processor()->save();
+        $processor = $this->fill()->processor()->save();
 
         // Return error if save fails due to validation errors
         if ($processor->invalid()) {
@@ -115,7 +115,7 @@ trait ModelProcessorHelper
         }
 
         // If request is valid then only call processor which also calls model save.
-        $processor = $this->processor()->save();
+        $processor = $this->fill()->processor()->save();
 
         // Return error if save fails due to validation errors
         if ($processor->invalid()) {
@@ -199,7 +199,7 @@ trait ModelProcessorHelper
         }
 
         // If request is valid then only call processor which also calls model delete.
-        $processor = $this->processor()->delete();
+        $processor = $this->fill()->processor()->delete();
 
         // Return error if save fails due to validation errors
         if ($processor->invalid()) {

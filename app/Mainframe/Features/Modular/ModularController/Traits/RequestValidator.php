@@ -19,7 +19,7 @@ trait RequestValidator
      * the request may be an array that you want to transform
      * into a string and then save.
      *
-     * @return mixed|\App\Mainframe\Features\Modular\BaseModule\BaseModule
+     * @return mixed|ModularController
      */
     public function fill()
     {
@@ -27,7 +27,9 @@ trait RequestValidator
 
         // Transform $inputs here
 
-        return $this->element->fill($inputs);
+        $this->element->fill($inputs);
+
+        return $this;
     }
 
     /**
