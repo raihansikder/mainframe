@@ -9,6 +9,27 @@ use App\Mainframe\Features\Modular\ModularController\ModularController;
  */
 trait ModelProcessorHelper
 {
+    /**
+     * Transform request input and fill.
+     *
+     * First transform the input and then fill.
+     * This function is useful when you don't want to exactly
+     * store a model field as it is in the request. Sometimes
+     * the request may be an array that you want to transform
+     * into a string and then save.
+     *
+     * @return mixed|ModularController
+     */
+    public function fill()
+    {
+        $inputs = request()->all();
+
+        // Transform $inputs here
+
+        $this->element->fill($inputs);
+
+        return $this;
+    }
 
     /**
      * After filling the model with request instantiate the
@@ -50,14 +71,6 @@ trait ModelProcessorHelper
             return $this;
         }
 
-        /*
-         *  Post save operations
-         */
-        // If there is no validation error in processor return the filled
-        // and processed element back to controller. This is eventually
-        // returned to view or API payload.
-        $this->element = $processor->element;
-
         // Set response flag and message.
         $this->success();
 
@@ -68,31 +81,7 @@ trait ModelProcessorHelper
     }
 
     /**
-     * Validate the model by the processors create logic.
-     * During this process the original element may get updated, filled
-     * or changed in various ways based on business logic. Finally
-     * the processor returns a final model that is populated with
-     * correct data and ready to be stored.
-     *
-     * @return bool
-     */
-    // public function validateStoreProcessor()
-    // {
-    //     $processor = $this->processor()->forCreate();
-    //
-    //     if ($processor->invalid()) {
-    //         $this->response($processor->validator)->failValidation();
-    //
-    //         return false;
-    //     }
-    //
-    //     $this->element = $processor->element; // Get the updated element
-    //
-    //     return true;
-    // }
-
-    /**
-     * This cunftion is called after successful store operation.
+     * This function is called after successful store operation.
      *
      */
     public function stored()
@@ -124,25 +113,6 @@ trait ModelProcessorHelper
             return $this;
         }
 
-        $this->element = $processor->element;
-
-        // Todo: Older implementation
-        // if (! $this->validateUpdateProcessor()) {
-        //     return $this;
-        // }
-        //
-        // if (! $this->element->save()) {
-        //     $this->fail('Can not be updated for some reason');
-        //     return $this;
-        // }
-
-        /*
-        *  Post save operations
-        */
-        // If there is no validation error in processor return the filled
-        // and processed element back to controller. This is eventually
-        // returned to view or API payload.
-
         // Set response flag and message.
         $this->success();
 
@@ -151,30 +121,6 @@ trait ModelProcessorHelper
 
         return $this;
     }
-
-    /**
-     * Validate the model by the processors update logic.
-     * During this process the original element may get updated, filled
-     * or changed in various ways based on business logic. Finally
-     * the processor returns a final model that is populated with
-     * correct data and ready to be stored.
-     *
-     * @return bool
-     */
-    // public function validateUpdateProcessor()
-    // {
-    //     $processor = $this->processor()->forUpdate();
-    //
-    //     if ($processor->invalid()) {
-    //         $this->response($processor->validator)->failValidation();
-    //
-    //         return false;
-    //     }
-    //
-    //     $this->element = $processor->element; // Get the updated element
-    //
-    //     return true;
-    // }
 
     /**
      * After successful update
@@ -208,28 +154,6 @@ trait ModelProcessorHelper
             return $this;
         }
 
-        /*
-         *  Post save operations
-         */
-        // If there is no validation error in processor return the filled
-        // and processed element back to controller. This is eventually
-        // returned to view or API payload.
-        $this->element = $processor->element;
-
-        /**/
-        // if (! $this->validateDeleteProcessor()) {
-        //
-        //     return $this;
-        // }
-        //
-        // $this->element->saveQuietly(); // Save the model once before deleting to store deleted_by
-        //
-        // if (! $this->element->delete()) {
-        //     $this->fail('Can not deleted for some reason');
-        //
-        //     return $this;
-        // }
-
         // Set response flag and message.
         $this->success('Successfully deleted');
 
@@ -238,31 +162,6 @@ trait ModelProcessorHelper
 
         return $this;
     }
-
-    /**
-     * Validate the model by the processors delete logic.
-     * During this process the original element may get updated, filled
-     * or changed in various ways based on business logic. Finally
-     * the processor returns a final model that is populated with
-     * correct data and ready to be stored.
-     *
-     * @return bool
-     */
-    // public function validateDeleteProcessor()
-    // {
-    //
-    //     $processor = $this->processor()->forDelete();
-    //
-    //     if ($processor->invalid()) {
-    //         $this->response($processor->validator)->failValidation();
-    //
-    //         return false;
-    //     }
-    //
-    //     $this->element = $processor->element; // Get the updated element
-    //
-    //     return true;
-    // }
 
     /**
      * After successful delete

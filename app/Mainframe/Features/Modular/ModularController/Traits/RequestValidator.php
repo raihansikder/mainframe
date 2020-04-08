@@ -10,27 +10,6 @@ use Validator;
  */
 trait RequestValidator
 {
-    /**
-     * Transform request input and fill.
-     *
-     * First transform the input and then fill.
-     * This function is useful when you don't want to exactly
-     * store a model field as it is in the request. Sometimes
-     * the request may be an array that you want to transform
-     * into a string and then save.
-     *
-     * @return mixed|ModularController
-     */
-    public function fill()
-    {
-        $inputs = request()->all();
-
-        // Transform $inputs here
-
-        $this->element->fill($inputs);
-
-        return $this;
-    }
 
     /**
      * During creation, before utilizing the model, this function runs a raw
