@@ -4,7 +4,9 @@ namespace App\Mainframe\Http\Controllers\Api;
 
 use Auth;
 use Request;
+use App\Mainframe\Modules\Modules\Module;
 use App\Mainframe\Modules\Users\UserController;
+use App\Mainframe\Modules\Uploads\UploadController;
 
 class UserApiController extends ApiController
 {
@@ -18,7 +20,6 @@ class UserApiController extends ApiController
 
         $this->middleware('bearer-token');
         $this->user = Auth::guard('bearer')->user();
-
         $this->injectUserIdentityInRequest();
 
     }
@@ -41,7 +42,6 @@ class UserApiController extends ApiController
 
     public function profile()
     {
-
         $payload = $this->user->load(['groups'])
             ->makeHidden(['group_ids', 'is_test']);
 
@@ -58,4 +58,35 @@ class UserApiController extends ApiController
         return app(UserController::class)->update(request(), $this->user->id);
     }
 
+    /**
+     * Store user profile pic
+     *
+     * @return mixed
+     */
+    public function profilePicStore()
+    {
+        request()->merge([
+            'module_id' => Module::byName('users')->id,
+            'element_id' => $this->user->id,
+            'type' => 'profile-pic',
+        ]);
+
+        return app(UploadController::class)->store(request());
+    }
+
+    /**
+     * Delete user profile pic
+     *
+     * @return mixed
+     * @throws \Exception
+     */
+    public function profilePicDestroy()
+    {
+        $upload = $this->user->uploads->where('type', 'profile-pic')->first();
+        if ($upload) {
+            return app(UploadController::class)->destroy($upload->id);
+        }
+
+        return $this->notFound();
+    }
 }

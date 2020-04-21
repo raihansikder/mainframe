@@ -2,6 +2,10 @@
 /** @var \App\Mainframe\Features\Modular\BaseModule\BaseModule $element */
 use App\Mainframe\Features\Form\Text\PlainText;
 
+// Check edibility
+if (! isset($var['editable']) && isset($editable)) {
+    $var['editable'] = $editable;
+}
 $var['type'] = $var['type'] ?? 'text';
 $input = new PlainText($var, $element ?? null);
 

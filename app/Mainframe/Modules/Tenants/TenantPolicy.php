@@ -44,7 +44,7 @@ class TenantPolicy extends BaseModulePolicy
      * @param  Tenant  $tenant
      * @return mixed
      */
-    // public function update(User $user, $tenant) { }
+    // public function update($user, $tenant) { }
 
     /**
      * Determine whether the user can delete the tenant.
@@ -53,7 +53,7 @@ class TenantPolicy extends BaseModulePolicy
      * @param  Tenant  $tenant
      * @return mixed
      */
-    // public function delete(User $user, $tenant) { }
+    // public function delete($user, $tenant) { }
 
     /**
      * Determine whether the user can restore the tenant.
@@ -62,7 +62,7 @@ class TenantPolicy extends BaseModulePolicy
      * @param  Tenant  $tenant
      * @return mixed
      */
-    // public function restore(User $user, $tenant) { }
+    // public function restore($user, $tenant) { }
 
     /**
      * Determine whether the user can permanently delete the tenant.
@@ -71,6 +71,6 @@ class TenantPolicy extends BaseModulePolicy
      * @param  Tenant  $tenant
      * @return mixed
      */
-    // public function forceDelete(User $user, $tenant) { }
+    // public function forceDelete($user, $tenant) { }
 
 }

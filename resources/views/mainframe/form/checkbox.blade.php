@@ -3,7 +3,18 @@
 
 use App\Mainframe\Features\Form\Checkbox\Checkbox;
 
-$input = new Checkbox($var, $element ?? null); ?>
+// Check edibility
+if (! isset($var['editable']) && isset($editable)) {
+    $var['editable'] = $editable;
+
+    // Check immutability
+    if ($editable && isset($immutables)) {
+        $var['editable'] = ! in_array($var['name'], $immutables);
+    }
+}
+
+$input = new Checkbox($var, $element ?? null);
+?>
 
 <div class="form-group {{$input->containerClass}} {{$errors->first($input->name, ' has-error')}} {{$input->uid}}">
 

@@ -1,15 +1,13 @@
-<?php
-
+<?php /** @noinspection PhpUnusedParameterInspection */
 /** @noinspection PhpInconsistentReturnPointsInspection */
 
 /** @noinspection PhpUnused */
 
 namespace App\Mainframe\Features\Modular\BaseModule;
 
-use Str;
-use App\User;
 use App\Mainframe\Modules\Modules\Module;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Illuminate\Support\Str;
 
 class BaseModulePolicy
 {
@@ -25,7 +23,7 @@ class BaseModulePolicy
     /**
      * Runs before any of the other checks.
      *
-     * @param $user User
+     * @param \App\User $user
      * @param $ability
      * @return bool
      */
@@ -40,7 +38,7 @@ class BaseModulePolicy
     /**
      * Determine whether the user can view any items.
      *
-     * @param  \App\User  $user
+     * @param  \App\User $user
      * @return mixed
      */
     public function viewAny($user)
@@ -56,13 +54,17 @@ class BaseModulePolicy
     /**
      * Determine whether the user can view the item.
      *
-     * @param  \App\User  $user
-     * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule  $element
+     * @param  \App\User $user
+     * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule|mixed $element
      * @return mixed
      */
     public function view($user, $element)
     {
         if (! $user->hasPermission($this->moduleName.'-view')) {
+            return false;
+        }
+
+        if (! $element->isViewable()) {
             return false;
         }
 
@@ -72,12 +74,17 @@ class BaseModulePolicy
     /**
      * Determine whether the user can create items.
      *
-     * @param  \App\User  $user
+     * @param  \App\User $user
+     * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule|mixed $element
      * @return mixed
      */
-    public function create($user)
+    public function create($user, $element = null)
     {
         if (! $user->hasPermission($this->moduleName.'-create')) {
+            return false;
+        }
+
+        if ($element && ! $element->isCreatable()) {
             return false;
         }
 
@@ -87,13 +94,17 @@ class BaseModulePolicy
     /**
      * Determine whether the user can update the item.
      *
-     * @param  \App\User  $user
-     * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule  $element
+     * @param  \App\User $user
+     * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule|mixed $element
      * @return mixed
      */
     public function update($user, $element)
     {
         if (! $user->hasPermission($this->moduleName.'-update')) {
+            return false;
+        }
+
+        if (! $element->isEditable()) {
             return false;
         }
 
@@ -103,13 +114,21 @@ class BaseModulePolicy
     /**
      * Determine whether the user can delete the item.
      *
-     * @param  \App\User  $user
-     * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule  $element
+     * @param  \App\User $user
+     * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule|mixed $element
      * @return mixed
      */
     public function delete($user, $element)
     {
+        if (! $user->can('update', $element)) {
+            return false;
+        }
+
         if (! $user->hasPermission($this->moduleName.'-delete')) {
+            return false;
+        }
+
+        if (! $element->isDeletable()) {
             return false;
         }
 
@@ -119,13 +138,17 @@ class BaseModulePolicy
     /**
      * Determine whether the user can restore the item.
      *
-     * @param  \App\User  $user
-     * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule  $element
+     * @param  \App\User $user
+     * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule|mixed $element
      * @return mixed
      */
     public function restore($user, $element)
     {
         if (! $user->hasPermission($this->moduleName.'-restore')) {
+            return false;
+        }
+
+        if (! $element->isRestorable()) {
             return false;
         }
 
@@ -135,8 +158,8 @@ class BaseModulePolicy
     /**
      * Determine whether the user can permanently delete the item.
      *
-     * @param  \App\User  $user
-     * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule  $element
+     * @param  \App\User $user
+     * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule|mixed $element
      * @return mixed
      */
     public function forceDelete($user, $element)
@@ -152,8 +175,8 @@ class BaseModulePolicy
      * Determine whether the user can view change log of the item
      * In the code you can use both camelCase and kebab-case function name.
      *
-     * @param  \App\User  $user
-     * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule  $element
+     * @param  \App\User $user
+     * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule|mixed $element
      * @return bool
      */
     public function viewChangeLog($user, $element)
@@ -169,8 +192,8 @@ class BaseModulePolicy
      * Determine whether the user can view change log of the item
      * In the code you can use both camelCase and kebab-case function name.
      *
-     * @param  \App\User  $user
-     * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule  $element
+     * @param  \App\User $user
+     * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule|mixed $element
      * @return bool
      */
     public function viewReport($user, $element)
@@ -185,7 +208,7 @@ class BaseModulePolicy
     /**
      * Check if user can access Api
      *
-     * @param  \App\User  $user
+     * @param  \App\User $user
      * @return mixed
      */
     public function api($user)

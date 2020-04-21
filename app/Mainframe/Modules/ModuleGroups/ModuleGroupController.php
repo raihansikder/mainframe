@@ -13,7 +13,7 @@ class ModuleGroupController extends ModularController
      |--------------------------------------------------------------------------
      |
      */
-    protected $moduleName = 'settings';
+    protected $moduleName = 'module-groups';
 
     /**
      * @return ModuleGroupDatatable

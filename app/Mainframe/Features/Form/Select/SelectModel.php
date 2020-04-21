@@ -2,9 +2,9 @@
 
 namespace App\Mainframe\Features\Form\Select;
 
-use DB;
-use Arr;
 use App\Mainframe\Helpers\Mf;
+use Arr;
+use DB;
 
 class SelectModel extends SelectArray
 {
@@ -12,6 +12,7 @@ class SelectModel extends SelectArray
     public $valueField;
     public $table;
     public $query;
+    public $showInactive;
     public $cache;
 
     public function __construct($conf = [], $element = null)
@@ -23,6 +24,7 @@ class SelectModel extends SelectArray
 
         $this->table = $conf['table'] ?? null; // Must have table
         $this->query = $conf['query'] ?? DB::table($this->table);
+        $this->showInactive = $conf['show_inactive'] ?? false;
         $this->cache = $conf['cache'] ?? timer('none');
 
         $this->options = $this->options();
@@ -35,7 +37,10 @@ class SelectModel extends SelectArray
      */
     public function options()
     {
-        $query = $this->query->whereNull('deleted_at')->where('is_active', 1);
+        $query = $this->query->whereNull('deleted_at');
+        if (! $this->showInactive) {
+            $query->where('is_active', 1);
+        }
 
         // Inject tenant context.
         if ($this->inTenantContext()) {
@@ -47,7 +52,7 @@ class SelectModel extends SelectArray
 
         $options[0] = null;
 
-        return $options;
+        return Arr::sort($options);
     }
 
     /**
@@ -58,6 +63,16 @@ class SelectModel extends SelectArray
     public function inTenantContext()
     {
         return (user()->ofTenant() && Mf::tableHasTenant($this->table));
+    }
+
+    /**
+     * Print value
+     *
+     * @return null|array|\Illuminate\Http\Request|string
+     */
+    public function print()
+    {
+        return $this->options[$this->value()] ?? '';
     }
 
 }

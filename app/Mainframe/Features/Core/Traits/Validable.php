@@ -17,7 +17,7 @@ trait Validable
     public $validator;
 
     /**
-     * @param  null|\Illuminate\Validation\Validator  $validator
+     * @param  null|\Illuminate\Validation\Validator $validator
      * @return \Illuminate\Contracts\Validation\Validator|\Illuminate\Validation\Validator
      */
     public function validator($validator = null)
@@ -37,20 +37,23 @@ trait Validable
     /**
      * Add an error message to a key-value pair
      *
-     * @param  null  $message
+     * @param  null $message
+     * @param null $key
      * @return \App\Mainframe\Features\Core\Traits\Validable
      */
-    public function error($message)
+    public function error($message, $key = null)
     {
-        $this->fieldError('error', $message);
+        $key = $key ?: 'error';
+        $this->fieldError($key, $message);
 
         return $this;
     }
 
     /**
      * Add a field specific error message
-     * @param  null  $key
-     * @param  null  $message
+     *
+     * @param  null $key
+     * @param  null $message
      * @return $this
      */
     public function fieldError($key, $message = null)

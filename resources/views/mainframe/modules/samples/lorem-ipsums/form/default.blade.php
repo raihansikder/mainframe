@@ -73,6 +73,11 @@
         <small>Upload one or more files</small>
         @include('form.uploads',['var'=>['limit'=>99]])
     </div>
+    <div class="col-md-6 no-padding-l">
+        <h5>Comment</h5>
+        <small>Add comment</small>
+        @include('form.comments',['var'=>['limit'=>99]])
+    </div>
 @endsection
 
 @section('js')

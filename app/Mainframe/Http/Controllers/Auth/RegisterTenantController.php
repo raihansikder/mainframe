@@ -2,11 +2,11 @@
 
 namespace App\Mainframe\Http\Controllers\Auth;
 
+use App\User;
 use Validator;
+use App\Group;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use App\User;
-use App\Mainframe\Modules\Groups\Group;
 use App\Mainframe\Modules\Tenants\Tenant;
 
 class RegisterTenantController extends RegisterController

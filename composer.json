@@ -12,19 +12,18 @@
         "barryvdh/laravel-debugbar": "^3.2",
         "barryvdh/laravel-ide-helper": "^2.4",
         "fideloper/proxy": "^4.2",
+        "fruitcake/laravel-cors": "^1.0",
         "guzzlehttp/guzzle": "^6.3",
         "laravel/framework": "^7.0",
         "laravel/socialite": "^4.2",
-        "laravel/telescope": "^2.1",
+        "laravel/telescope": "^3.2",
         "laravel/tinker": "^2.0",
         "laravelcollective/html": "^6.0",
-        "owen-it/laravel-auditing": "^9.3",
+        "owen-it/laravel-auditing": "^10.0",
         "phpoffice/phpspreadsheet": "^1.9",
         "ramsey/uuid": "^3.8",
-        "watson/rememberable": "^3.1",
         "webpatser/laravel-uuid": "^3.0",
-        "yajra/laravel-datatables-oracle": "^9.6",
-        "fruitcake/laravel-cors": "^1.0"
+        "yajra/laravel-datatables-oracle": "^9.6"
     },
     "require-dev": {
         "facade/ignition": "^2.0",

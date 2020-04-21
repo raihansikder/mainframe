@@ -13,73 +13,47 @@ class BaseModuleObserver
      */
     public function saving($element)
     {
-
         $element->autoFill();
     }
 
     /**
-     * @param $element \App\Mainframe\Features\Modular\BaseModule\BaseModule
+     * @param $element \App\Mainframe\Features\Modular\BaseModule\
+     * @return void|bool
      */
-    public function creating($element)
-    {
-        // Change::storeCreateLog($element);
-    }
-
-    /**
-     * @param $element \App\Mainframe\Features\Modular\BaseModule\BaseModule
-     */
-    public function created($element)
-    {
-        // Change::storeCreateLog($element);
-    }
+    public function creating($element) { }
 
     /**
      * @param $element \App\Mainframe\Features\Modular\BaseModule\BaseModule
      * @return void|bool
      */
-    public function updating($element)
-    {
-        // Restrict change in fields where change is not allowed.
-        // However new value can be set if there is no original value.
-        // -----------------------------------------------------
-        // foreach ($element->restrictedUpdates() as $field) {
-        //     if ((isset($element->$field) && $element->getOriginal($field) != null) && ($element->$field != $element->getOriginal($field))) {
-        //         return setError("$field can not be further changed.");
-        //     }
-        // }
-    }
+    public function created($element) { }
 
     /**
      * @param $element \App\Mainframe\Features\Modular\BaseModule\BaseModule
      * @return void|bool
      */
-    public function updated($element)
-    {
-        // Change::storeCreateLog($element);
-    }
+    public function updating($element) { }
 
     /**
-     * This function is executed during a model's saving() phase
-     *
+     * @param $element \App\Mainframe\Features\Modular\BaseModule\BaseModule
+     * @return void|bool
+     */
+    public function updated($element) { }
+
+    /**
      * @param $element \App\Mainframe\Features\Modular\BaseModule\BaseModule
      * @return void|bool
      */
     public function saved($element)
     {
-        Upload::linkTemporaryUploads($element);            //
-        // Change::storeChangesFromSession("", $element, ""); // Take changes from session and store in changes table
+        Upload::linkTemporaryUploads($element);
     }
 
     /**
      * @param $element \App\Mainframe\Features\Modular\BaseModule\BaseModule
-     * @return bool
+     * @return void|bool
      */
-    public function deleting($element)
-    {
-        // if (!validForeignReferenceForDelete(get_class($element), $element->id)) {
-        //     return setError('Error validForeignReferenceForDelete');
-        // }
-    }
+    public function deleting($element) { }
 
     /**
      * Handle the base module "deleted" event.
@@ -89,8 +63,6 @@ class BaseModuleObserver
      */
     public function deleted($element)
     {
-        // $table = $element->module()->name;
-        // if (user()) DB::table($table)->withTrashed()->where('id', $element->id)->update(['deleted_by' => user()->id]);
     }
 
     /**
@@ -101,7 +73,6 @@ class BaseModuleObserver
      */
     public function restored($element)
     {
-        //
     }
 
     /**
@@ -112,6 +83,5 @@ class BaseModuleObserver
      */
     public function forceDeleted($element)
     {
-        //
     }
 }

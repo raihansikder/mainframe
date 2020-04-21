@@ -2,7 +2,7 @@
 
 namespace App\Mainframe\Features\Form;
 
-class Upload extends Form
+class Upload extends Input
 {
     /** @var string */
     public $containerClass;
@@ -31,8 +31,7 @@ class Upload extends Form
      */
     public function __construct($conf = [], $element = null)
     {
-        parent::__construct($element);
-
+        parent::__construct($conf,$element);
 
         $this->containerClass = $conf['container_class'] ?? '';
 

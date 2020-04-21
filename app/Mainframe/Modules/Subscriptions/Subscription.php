@@ -52,6 +52,9 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Subscriptions\Subscription whereProjectId($value)
  * @property-read \Illuminate\Database\Eloquent\Collection|\OwenIt\Auditing\Models\Audit[] $audits
  * @property-read int|null $audits_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Comments\Comment[] $comments
+ * @property-read int|null $comments_count
+ * @property-read \App\Mainframe\Modules\Comments\Comment $latestComment
  */
 class Subscription extends BaseModule
 {

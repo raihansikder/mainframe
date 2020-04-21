@@ -67,7 +67,9 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Samples\LoremIpsums\LoremIpsum whereProjectId($value)
  * @property-read \Illuminate\Database\Eloquent\Collection|\OwenIt\Auditing\Models\Audit[] $audits
  * @property-read int|null $audits_count
- * @property int|null $deleted_by
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Comments\Comment[] $comments
+ * @property-read int|null $comments_count
+ * @property-read \App\Mainframe\Modules\Comments\Comment $latestComment
  */
 class LoremIpsum extends BaseModule
 {
@@ -182,7 +184,30 @@ class LoremIpsum extends BaseModule
     {
         parent::boot();
         self::observe(LoremIpsumObserver::class);
-        static::saving(function (LoremIpsum $element) { });
+        static::saving(function (LoremIpsum $element) {
+            // echo 'In Model boot:saving() ';
+        });
+        static::creating(function (LoremIpsum $element) {
+            // echo 'In Model boot:creating() ';
+        });
+        static::created(function (LoremIpsum $element) {
+            // echo 'In Model boot:created() ';
+        });
+        static::updating(function (LoremIpsum $element) {
+            // echo 'In Model boot:updating() ';
+        });
+        static::updated(function (LoremIpsum $element) {
+            // echo 'In Model boot:updated() ';
+        });
+        static::saved(function (LoremIpsum $element) {
+            // echo 'In Model boot:saved() ';
+        });
+        static::deleting(function (LoremIpsum $element) {
+            // echo 'In Model boot:deleting() ';
+        });
+        static::deleted(function (LoremIpsum $element) {
+            // echo 'In Model boot:deleted() ';
+        });
     }
 
     /*

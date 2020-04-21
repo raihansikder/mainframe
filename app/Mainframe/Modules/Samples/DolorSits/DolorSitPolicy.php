@@ -44,7 +44,7 @@ class DolorSitPolicy extends BaseModulePolicy
      * @param  DolorSit  $dolorSit
      * @return mixed
      */
-    // public function update(User $user, $dolorSit) { }
+    // public function update($user, $dolorSit) { }
 
     /**
      * Determine whether the user can delete the dolorSit.
@@ -53,7 +53,7 @@ class DolorSitPolicy extends BaseModulePolicy
      * @param  DolorSit  $dolorSit
      * @return mixed
      */
-    // public function delete(User $user, $dolorSit) { }
+    // public function delete($user, $dolorSit) { }
 
     /**
      * Determine whether the user can restore the dolorSit.
@@ -62,7 +62,7 @@ class DolorSitPolicy extends BaseModulePolicy
      * @param  DolorSit  $dolorSit
      * @return mixed
      */
-    // public function restore(User $user, $dolorSit) { }
+    // public function restore($user, $dolorSit) { }
 
     /**
      * Determine whether the user can permanently delete the dolorSit.
@@ -71,6 +71,6 @@ class DolorSitPolicy extends BaseModulePolicy
      * @param  DolorSit  $dolorSit
      * @return mixed
      */
-    // public function forceDelete(User $user, $dolorSit) { }
+    // public function forceDelete($user, $dolorSit) { }
 
 }

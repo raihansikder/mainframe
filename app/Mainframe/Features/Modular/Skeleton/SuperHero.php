@@ -103,7 +103,14 @@ class SuperHero extends BaseModule
     {
         parent::boot();
         self::observe(SuperHeroObserver::class);
+        // static::saving(function (SuperHero $element) { });
+        // static::creating(function (SuperHero $element) { });
+        // static::updating(function (SuperHero $element) { });
+        // static::created(function (SuperHero $element) { });
+        // static::updated(function (SuperHero $element) { });
         // static::saved(function (SuperHero $element) { });
+        // static::deleting(function (SuperHero $element) { });
+        // static::deleted(function (SuperHero $element) { });
     }
 
     /*
@@ -171,12 +178,5 @@ class SuperHero extends BaseModule
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     // public function creator() { return $this->belongsTo(\App\User::class, 'created_by'); }
-
-    /*
-   |--------------------------------------------------------------------------
-   | Todo: Helper functions
-   |--------------------------------------------------------------------------
-   | Todo: Write Helper functions in the SuperHeroHelper trait.
-   */
 
 }

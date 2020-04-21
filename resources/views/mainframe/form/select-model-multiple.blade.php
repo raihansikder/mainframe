@@ -1,6 +1,16 @@
 <?php
 use App\Mainframe\Features\Form\Select\SelectModelMultiple;
 
+// Check edibility
+if (! isset($var['editable']) && isset($editable)) {
+    $var['editable'] = $editable;
+
+    // Check immutability
+    if ($editable && isset($immutables)) {
+        $var['editable'] = ! in_array($var['name'], $immutables);
+    }
+}
+
 $input = new SelectModelMultiple($var, $element ?? null);
 ?>
 

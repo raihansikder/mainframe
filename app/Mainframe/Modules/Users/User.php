@@ -3,24 +3,17 @@
 namespace App\Mainframe\Modules\Users;
 
 use App\Group;
-use InvalidArgumentException;
-use Watson\Rememberable\Rememberable;
-use Illuminate\Notifications\Notifiable;
-use OwenIt\Auditing\Contracts\Auditable;
-use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use App\Mainframe\Notifications\Auth\VerifyEmail;
-use App\Mainframe\Notifications\Auth\ResetPassword;
-use App\Mainframe\Modules\Users\Traits\UserGroupable;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use App\Mainframe\Features\Modular\BaseModule\Traits\Uploadable;
-use App\Mainframe\Features\Modular\BaseModule\Traits\Processable;
-use App\Mainframe\Features\Modular\BaseModule\Traits\UpdaterTrait;
 use App\Mainframe\Features\Modular\BaseModule\Traits\ModularTrait;
-use App\Mainframe\Features\Modular\BaseModule\Traits\ModelAutoFill;
-use App\Mainframe\Features\Modular\BaseModule\Traits\EventIdentifiable;
-use App\Mainframe\Features\Modular\BaseModule\Traits\RelatedUsersTrait;
-use App\Mainframe\Features\Modular\BaseModule\Traits\TenantContextTrait;
+use App\Mainframe\Features\Modular\Rememberable\Rememberable;
+use App\Mainframe\Modules\Users\Traits\UserGroupable;
+use App\Mainframe\Notifications\Auth\ResetPassword;
+use App\Mainframe\Notifications\Auth\VerifyEmail;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use InvalidArgumentException;
+use OwenIt\Auditing\Contracts\Auditable;
 
 /**
  * App\Mainframe\Modules\Users\User
@@ -138,16 +131,21 @@ use App\Mainframe\Features\Modular\BaseModule\Traits\TenantContextTrait;
  * @method static \Illuminate\Database\Query\Builder|\App\Mainframe\Modules\Users\User withTrashed()
  * @method static \Illuminate\Database\Query\Builder|\App\Mainframe\Modules\Users\User withoutTrashed()
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Comments\Comment[] $comments
+ * @property-read int|null $comments_count
+ * @property-read null|string $profile_pic
+ * @property-read \App\Mainframe\Modules\Comments\Comment $latestComment
  */
 class User extends Authenticatable implements MustVerifyEmail, Auditable
 {
-    use Notifiable, SoftDeletes, Rememberable;
-    use \OwenIt\Auditing\Auditable;
+    use SoftDeletes,
+        Rememberable,
+        \OwenIt\Auditing\Auditable,
+        ModularTrait;
+
+    use Notifiable;
 
     use UserHelper, UserGroupable;
-    use  Processable, EventIdentifiable,
-        RelatedUsersTrait, TenantContextTrait, UpdaterTrait,
-        Uploadable, ModularTrait, ModelAutoFill;
 
     /*
     |--------------------------------------------------------------------------
@@ -161,7 +159,7 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
     public const PASSWORD_VALIDATION_RULE = 'required|confirmed|min:6|regex:/[a-zA-Z]/|regex:/[0-9]/';
 
     protected $moduleName = 'users';
-    protected $table = 'users';
+    protected $table      = 'users';
 
     /*
     |--------------------------------------------------------------------------
@@ -257,7 +255,7 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
     | you should first create and accessor getNewFieldAttribute and then
     | add the attribute name in the array
     */
-    // protected $appends = [];
+    protected $appends = ['profile_pic'];
 
     /*
     |--------------------------------------------------------------------------
@@ -330,6 +328,20 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
     */
     // public function getFirstNameAttribute($value) { return ucfirst($value); }
 
+    /**
+     * Accessor for profile_pic
+     *
+     * @return null|string
+     */
+    public function getProfilePicAttribute()
+    {
+        if ($upload = $this->uploads->where('type', 'profile-pic')->first()) {
+            return $upload->url;
+        }
+
+        return null;
+    }
+
     /*
     |--------------------------------------------------------------------------
     | Mutators
@@ -362,7 +374,7 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
     /**
      * Mutator for taking permissions.
      *
-     * @param  array  $permissions
+     * @param  array $permissions
      * @return string
      */
     public function setPermissionsAttribute(array $permissions)
@@ -389,7 +401,7 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
     /**
      * Mutator for giving permissions.
      *
-     * @param  mixed  $permissions
+     * @param  mixed $permissions
      * @return array  $_permissions
      */
     public function getPermissionsAttribute($permissions)
@@ -412,7 +424,7 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
     /**
      * Send reset password link
      *
-     * @param  string  $token
+     * @param  string $token
      */
     public function sendPasswordResetNotification($token)
     {

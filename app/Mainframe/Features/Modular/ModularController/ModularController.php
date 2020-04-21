@@ -4,23 +4,26 @@
 
 namespace App\Mainframe\Features\Modular\ModularController;
 
-use View;
-use Illuminate\Http\Request;
-use App\Mainframe\Modules\Modules\Module;
-use App\Mainframe\Features\Report\ModuleList;
-use App\Mainframe\Http\Controllers\BaseController;
 use App\Mainframe\Features\Datatable\ModuleDatatable;
-use App\Mainframe\Features\Report\ModuleReportBuilder;
+use App\Mainframe\Features\Modular\ModularController\Traits\ModelProcessorHelper;
+use App\Mainframe\Features\Modular\ModularController\Traits\RequestValidator;
 use App\Mainframe\Features\Modular\ModularController\Traits\Resolvable;
-use App\Mainframe\Features\Modular\ModularController\Traits\RequestHandler;
 use App\Mainframe\Features\Modular\ModularController\Traits\ShowChangesTrait;
+use App\Mainframe\Features\Report\ModuleList;
+use App\Mainframe\Features\Report\ModuleReportBuilder;
+use App\Mainframe\Http\Controllers\BaseController;
+use App\Mainframe\Modules\Comments\CommentController;
+use App\Mainframe\Modules\Modules\Module;
+use App\Mainframe\Modules\Uploads\UploadController;
+use Illuminate\Http\Request;
+use View;
 
 /**
  * Class ModuleBaseController
  */
 class ModularController extends BaseController
 {
-    use RequestHandler, ShowChangesTrait, Resolvable;
+    use RequestValidator, ModelProcessorHelper, ShowChangesTrait, Resolvable;
 
     /** @var string Module name */
     protected $moduleName;
@@ -38,7 +41,7 @@ class ModularController extends BaseController
     protected $processor;
 
     /**
-     * @param  null  $name
+     * @param  null $name
      */
     public function __construct($name = null)
     {
@@ -58,7 +61,7 @@ class ModularController extends BaseController
     /**
      * Index/List page to show grid
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\JsonResponse|\Illuminate\View\View|void
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\JsonResponse|\Illuminate\View\View
      */
     public function index()
     {
@@ -104,14 +107,14 @@ class ModularController extends BaseController
         }
 
         return $this->load($this->element)
-            ->to(route($this->moduleName.".edit", $id))->send();
+            ->to(route($this->moduleName.'.edit', $id))->send();
 
     }
 
     /**
      * Shows an element create form.
      *
-     * @return \Illuminate\Contracts\View\View|\Illuminate\Http\JsonResponse|\View|void
+     * @return \Illuminate\Contracts\View\View|\Illuminate\Http\JsonResponse|\View
      * @throws \Exception
      */
     public function create()
@@ -139,7 +142,7 @@ class ModularController extends BaseController
      * Edit
      *
      * @param $id
-     * @return \Illuminate\Contracts\View\View|\Illuminate\Http\JsonResponse|void
+     * @return \Illuminate\Contracts\View\View|\Illuminate\Http\JsonResponse
      */
     public function edit($id)
     {
@@ -156,6 +159,7 @@ class ModularController extends BaseController
             'formConfig' => $this->formConfig('edit'),
             'editable' => user()->can('update', $this->element),
             'formState' => 'edit',
+            'immutables' => $this->element->processor()->getImmutables(),
         ];
 
         return $this->view($this->form('edit'))->with($vars);
@@ -164,7 +168,7 @@ class ModularController extends BaseController
     /**
      * Store
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return $this|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
@@ -182,7 +186,7 @@ class ModularController extends BaseController
         //     $this->response()->validator->errors()->add('Error', $e->getMessage());
         // }
 
-        $this->response()->redirectTo = $this->resolveRedirectTo();
+        $this->setRedirectTo();
 
         if ($this->expectsJson()) {
             return $this->load($this->element->toArray())->json();
@@ -194,7 +198,7 @@ class ModularController extends BaseController
     /**
      * Update
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @param $id
      * @return $this|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
@@ -206,7 +210,8 @@ class ModularController extends BaseController
         }
 
         $this->attemptUpdate();
-        $this->response()->redirectTo = $this->resolveRedirectTo();
+
+        $this->setRedirectTo();
 
         if ($this->expectsJson()) {
             return $this->load($this->element)->json();
@@ -234,7 +239,7 @@ class ModularController extends BaseController
 
         $this->attemptDestroy();
 
-        $this->response()->redirectTo = $this->resolveRedirectTo();
+        $this->setRedirectTo();
 
         if ($this->expectsJson()) {
             return $this->load($this->element)->json();
@@ -246,8 +251,8 @@ class ModularController extends BaseController
     /**
      * Restore a soft-deleted.
      *
-     * @param  null  $id
-     * @return \App\Mainframe\Features\Modular\ModularController\ModularController|void
+     * @param  null $id
+     * @return \App\Mainframe\Features\Modular\ModularController\ModularController
      */
     public function restore($id = null)
     {
@@ -257,7 +262,7 @@ class ModularController extends BaseController
     /**
      * Show and render report
      *
-     * @return bool|\Illuminate\Contracts\View\Factory|\Illuminate\Http\JsonResponse|\Illuminate\Support\Collection|\Illuminate\View\View|mixed|void
+     * @return bool|\Illuminate\Contracts\View\Factory|\Illuminate\Http\JsonResponse|\Illuminate\Support\Collection|\Illuminate\View\View|mixed
      */
     public function report()
     {
@@ -288,5 +293,69 @@ class ModularController extends BaseController
     public function datatableJson()
     {
         return ($this->datatable())->json();
+    }
+
+    /**
+     * Get all the uploads of an element
+     *
+     * @param  null $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function uploads($id)
+    {
+        request()->merge([
+            'module_id' => $this->module->id,
+            'element_id' => $id,
+        ]);
+
+        return app(UploadController::class)->listJson();
+    }
+
+    /**
+     * Uploads files under an element
+     *
+     * @param  null $id
+     * @return \App\Mainframe\Features\Modular\ModularController\ModularController
+     */
+    public function storeUploads($id)
+    {
+        request()->merge([
+            'module_id' => $this->module->id,
+            'element_id' => $id,
+        ]);
+
+        return app(UploadController::class)->store(request());
+    }
+
+    /**
+     * Get all the comments of an element
+     *
+     * @param  null $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function comments($id)
+    {
+        request()->merge([
+            'module_id' => $this->module->id,
+            'element_id' => $id,
+        ]);
+
+        return app(CommentController::class)->listJson();
+    }
+
+    /**
+     * Store comment files under an element
+     *
+     * @param  null $id
+     * @return \App\Mainframe\Features\Modular\ModularController\ModularController
+     */
+    public function storeComments($id)
+    {
+        request()->merge([
+            'module_id' => $this->module->id,
+            'element_id' => $id,
+        ]);
+
+        return app(CommentController::class)->store(request());
     }
 }

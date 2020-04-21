@@ -5,9 +5,9 @@
 
 namespace App\Mainframe\Features\Modular\Validator;
 
-use Validator;
-use App\Mainframe\Features\Core\Traits\Validable;
 use App\Mainframe\Features\Core\Traits\HasMessageBag;
+use App\Mainframe\Features\Core\Traits\Validable;
+use Validator;
 
 class ModelProcessor
 {
@@ -33,7 +33,7 @@ class ModelProcessor
      *
      * @var array
      */
-    public $unMutable = [];
+    public $immutables = [];
 
     /**
      * Define the allowed strict value change of specific fields
@@ -49,7 +49,7 @@ class ModelProcessor
     /**
      * MainframeModelValidator constructor.
      *
-     * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule  $element
+     * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule $element
      */
     public function __construct($element)
     {
@@ -75,8 +75,8 @@ class ModelProcessor
     /**
      * Laravel validator validation rules.
      *
-     * @param  mixed  $element
-     * @param  array  $merge
+     * @param  mixed $element
+     * @param  array $merge
      * @return array
      */
     public static function rules($element, $merge = [])
@@ -94,7 +94,7 @@ class ModelProcessor
     /**
      * Custom error messages for the validation rules above.
      *
-     * @param  array  $merge
+     * @param  array $merge
      * @return array
      */
     public static function customErrorMessages($merge = [])
@@ -125,11 +125,11 @@ class ModelProcessor
      *
      * @return $this
      */
-    public function checkUnMutable()
+    public function checkImmutables()
     {
-        foreach ($this->getUnMutable() as $field) {
+        foreach ($this->getImmutables() as $field) {
             if ($this->element->fieldHasChanged($field)) {
-                $this->fieldError($field, $field." - can not be updated.");
+                $this->fieldError($field, $field.' - can not be updated.');
             }
         }
 
@@ -151,13 +151,95 @@ class ModelProcessor
                 $change = $this->element->transition($field);
 
                 if ($change && ! $this->transitionAllowed($field, $change['old'], $change['new'])) {
-                    $this->fieldError($field, $field." - can not be updated from ".$change['old']." to ".$change['new']);
+                    $this->fieldError($field, $field.' - can not be updated from '.$change['old'].' to '.$change['new']);
                 }
-
             }
         }
 
         return $this;
+    }
+
+    /**
+     * Get old and new value of a changed field field
+     *
+     * @param $field
+     * @return array
+     */
+    public function transition($field)
+    {
+        // Previous $this->element->fieldHasChanged($field)
+        if (isset($this->original[$field], $this->element->$field) && $this->original[$field] != $this->element->$field) {
+            return ['field' => $field, 'old' => $this->original[$field], 'new' => $this->element->$field];
+        }
+
+        return null;
+    }
+
+    /**
+     * Check if a certain transition took place.
+     *
+     * @param $field
+     * @param $from
+     * @param $to
+     * @return bool
+     */
+    public function hasTransition($field, $from, $to)
+    {
+        if (! is_array($from)) {
+            $from = [$from];
+        }
+
+        if (! is_array($to)) {
+            $to = [$to];
+        }
+
+        $change = $this->transition($field);
+
+        if ($change) {
+            return in_array($change['old'], $from) && in_array($change['new'], $to);
+        }
+    }
+
+    /**
+     * Check if a certain transition took place.
+     *
+     * @param $field
+     * @param $from
+     * @return bool
+     */
+    public function hasTransitionFrom($field, $from)
+    {
+
+        if (! is_array($from)) {
+            $from = [$from];
+        }
+
+        $change = $this->transition($field);
+
+        if ($change) {
+            return in_array($change['old'], $from);
+        }
+    }
+
+    /**
+     * Check if a certain transition took place.
+     *
+     * @param $field
+     * @param $to
+     * @return bool
+     */
+    public function hasTransitionTo($field, $to)
+    {
+
+        if (! is_array($to)) {
+            $to = [$to];
+        }
+
+        $change = $this->transition($field);
+
+        if ($change) {
+            return in_array($change['new'], $to);
+        }
     }
 
     /**
@@ -193,9 +275,9 @@ class ModelProcessor
      *
      * @return array
      */
-    public function getUnMutable()
+    public function getImmutables()
     {
-        return $this->unMutable;
+        return $this->immutables;
     }
 
     /**
@@ -229,10 +311,10 @@ class ModelProcessor
     public function run()
     {
         if (isset($this->element->id)) {
-            return $this->update();
+            return $this->forUpdate();
         }
 
-        return $this->create();
+        return $this->forCreate();
     }
 
     /*
@@ -246,16 +328,89 @@ class ModelProcessor
     */
 
     /**
-     * Run validation for save. Common for create and update.
+     * Run processor for save.
      *
-     * @param  null  $element
+     * @param  null $element
      * @return $this
      */
-    public function save($element = null)
+    public function forSave($element = null)
     {
         $element = $element ?: $this->element;
         $this->fill($element)->validate();
+
+        if (! $this->valid()) {
+            return $this;
+        }
+
+        $this->preSave();
         $this->saving($element);
+
+        if ($element->isCreating()) {
+            $this->preCreate();
+
+            return $this->creating($element);
+        }
+
+        if ($element->isUpdating()) {
+            $this->preUpdate();
+
+            return $this->updating($element);
+        }
+
+        return $this;
+    }
+
+    public function preSave()
+    {
+        return $this;
+    }
+
+    /**
+     * Save the element
+     */
+    public function save()
+    {
+        // echo 'In Processor Save() ';
+        $isCreateOperation = $this->element->isCreating();
+        $isUpdateOperation = $this->element->isUpdating();
+
+        // Run validation, call saving, then call creating/updating
+        $this->forSave();
+
+        if (! $this->valid()) {
+            return $this;
+        }
+
+        // If validation passes then attempt model save.
+        if (! $this->element->save()) {
+            $this->error('Error: Can not be saved for some reason.');
+
+            return $this;
+        }
+
+        // Call created() if this save() function is called during a create operation.
+        if ($isCreateOperation) {
+            $this->created($this->element);
+        }
+
+        // Call updated() if this save() function is called during a create operation.
+        if ($isUpdateOperation) {
+            $this->updated($this->element);
+        }
+
+        $this->saved($this->element);
+
+        return $this;
+    }
+
+    /**
+     * Save the element
+     */
+    public function saveQuietly()
+    {
+        if ($this->forSave()->valid()) {
+            $this->element->saveQuietly();
+        }
 
         return $this;
     }
@@ -264,14 +419,42 @@ class ModelProcessor
      * Run validation for create. This initially runs the save()
      * validation checks then loads creating() checks.
      *
-     * @param  null  $element
+     * @param  null $element
      * @return $this
      */
-    public function create($element = null)
+    public function forCreate($element = null)
     {
         $element = $element ?: $this->element;
-        $this->save();
+        $this->fill($element)->validate();
+
+        $this->saving($element);
+        $this->preCreate();
         $this->creating($element);
+
+        return $this;
+    }
+
+    /**
+     * Run common codes before update.
+     *
+     * @return $this
+     */
+    public function preCreate()
+    {
+        // $this->checkImmutables(); // Example
+        // $this->checkTransitions(); // Example
+
+        return $this;
+    }
+
+    /**
+     * Create the element
+     */
+    public function create()
+    {
+        if ($this->forCreate()->valid()) {
+            $this->element->save();
+        }
 
         return $this;
     }
@@ -279,16 +462,42 @@ class ModelProcessor
     /**
      * Run validation for update.
      *
-     * @param  null  $element
+     * @param  null $element
      * @return $this
      */
-    public function update($element = null)
+    public function forUpdate($element = null)
     {
         $element = $element ?: $this->element;
-        $this->save();
-        $this->checkUnMutable();
-        $this->checkTransitions();
+        $this->fill($element)->validate();
+
+        $this->saving($element);
+        $this->preUpdate();
         $this->updating($element);
+
+        return $this;
+    }
+
+    /**
+     * Run common codes before update.
+     *
+     * @return $this
+     */
+    public function preUpdate()
+    {
+        $this->checkImmutables();
+        $this->checkTransitions();
+
+        return $this;
+    }
+
+    /**
+     * Create the element
+     */
+    public function update()
+    {
+        if ($this->forUpdate()->valid()) {
+            $this->element->save();
+        }
 
         return $this;
     }
@@ -296,13 +505,51 @@ class ModelProcessor
     /**
      * Run validation for delete.
      *
-     * @param  null  $element
+     * @param  null $element
      * @return $this
      */
-    public function delete($element = null)
+    public function forDelete($element = null)
     {
         $element = $element ?: $this->element;
+        $element->deleted_by = user()->id; // Fill with the deleter id.
+        $this->preDelete();
         $this->deleting($element);
+
+        return $this;
+    }
+
+    /**
+     * Run common codes before delete
+     */
+    public function preDelete()
+    {
+
+    }
+
+    /**
+     * Create the element
+     *
+     * @throws \Exception
+     */
+    public function delete()
+    {
+        // echo 'In Processor delete() ';
+
+        $this->forDelete();
+
+        if (! $this->valid()) {
+            return $this;
+
+        }
+        $this->element->saveQuietly(); // Set deleted by field
+
+        if (! $this->element->delete()) {
+            $this->error('Error: Can not be deleted for some reason.');
+
+            return $this;
+        }
+
+        $this->deleted($this->element);
 
         return $this;
     }
@@ -310,13 +557,13 @@ class ModelProcessor
     /**
      * Run validation for restore.
      *
-     * @param  null  $element
+     * @param  null $element
      * @return $this
      */
     public function restore($element = null)
     {
         $element = $element ?: $this->element;
-        $this->save();
+        $this->forSave();
         $this->restoring($element);
 
         return $this;
@@ -341,6 +588,8 @@ class ModelProcessor
     public function saving($element)
     {
 
+        // echo 'In Processor saving(). ';
+
         return $this;
     }
 
@@ -348,10 +597,26 @@ class ModelProcessor
      * Creating validation
      *
      * @param $element
-     * @return $this]
+     * @return $this
      */
     public function creating($element)
     {
+        // echo 'In Processor creating(). ';
+
+        return $this;
+    }
+
+    /**
+     * Saved validation.
+     * Common for both create and update.
+     *
+     * @param $element
+     * @return $this
+     */
+    public function created($element)
+    {
+        // echo 'In Processor created(). ';
+
         return $this;
     }
 
@@ -359,10 +624,39 @@ class ModelProcessor
      * Updating validation
      *
      * @param $element
-     * @return $this]
+     * @return $this
      */
     public function updating($element)
     {
+        // echo 'In Processor updating(). ';
+
+        return $this;
+    }
+
+    /**
+     * Updating validation
+     *
+     * @param $element
+     * @return $this
+     */
+    public function updated($element)
+    {
+        // echo 'In Processor updated(). ';
+
+        return $this;
+    }
+
+    /**
+     * Saved validation.
+     * Common for both create and update.
+     *
+     * @param $element
+     * @return $this
+     */
+    public function saved($element)
+    {
+        // echo 'In Processor saved(). ';
+
         return $this;
     }
 
@@ -370,10 +664,25 @@ class ModelProcessor
      * Deleting validation
      *
      * @param $element
-     * @return $this]
+     * @return $this
      */
     public function deleting($element)
     {
+        // echo 'In Processor deleting(). ';
+
+        return $this;
+    }
+
+    /**
+     * Deleting validation
+     *
+     * @param $element
+     * @return $this
+     */
+    public function deleted($element)
+    {
+        // echo 'In Processor deleted(). ';
+
         return $this;
     }
 
@@ -381,11 +690,25 @@ class ModelProcessor
      * Restoring validation
      *
      * @param $element
-     * @return $this]
+     * @return $this
      */
     public function restoring($element)
     {
+        // echo 'In Processor restoring(). ';
+
         return $this;
     }
 
+    /**
+     * Restoring validation
+     *
+     * @param $element
+     * @return $this
+     */
+    public function restored($element)
+    {
+        // echo 'In Processor restored(). ';
+
+        return $this;
+    }
 }

@@ -44,7 +44,7 @@ class NotificationPolicy extends BaseModulePolicy
      * @param  Notification  $notification
      * @return mixed
      */
-    // public function update(User $user, $notification) { }
+    // public function update($user, $notification) { }
 
     /**
      * Determine whether the user can delete the notification.
@@ -53,7 +53,7 @@ class NotificationPolicy extends BaseModulePolicy
      * @param  Notification  $notification
      * @return mixed
      */
-    // public function delete(User $user, $notification) { }
+    // public function delete($user, $notification) { }
 
     /**
      * Determine whether the user can restore the notification.
@@ -62,7 +62,7 @@ class NotificationPolicy extends BaseModulePolicy
      * @param  Notification  $notification
      * @return mixed
      */
-    // public function restore(User $user, $notification) { }
+    // public function restore($user, $notification) { }
 
     /**
      * Determine whether the user can permanently delete the notification.
@@ -71,6 +71,6 @@ class NotificationPolicy extends BaseModulePolicy
      * @param  Notification  $notification
      * @return mixed
      */
-    // public function forceDelete(User $user, $notification) { }
+    // public function forceDelete($user, $notification) { }
 
 }

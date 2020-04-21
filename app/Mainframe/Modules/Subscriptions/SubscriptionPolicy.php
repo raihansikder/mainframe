@@ -44,7 +44,7 @@ class SubscriptionPolicy extends BaseModulePolicy
      * @param  Subscription  $subscription
      * @return mixed
      */
-    // public function update(User $user, $subscription) { }
+    // public function update($user, $subscription) { }
 
     /**
      * Determine whether the user can delete the subscription.
@@ -53,7 +53,7 @@ class SubscriptionPolicy extends BaseModulePolicy
      * @param  Subscription  $subscription
      * @return mixed
      */
-    // public function delete(User $user, $subscription) { }
+    // public function delete($user, $subscription) { }
 
     /**
      * Determine whether the user can restore the subscription.
@@ -62,7 +62,7 @@ class SubscriptionPolicy extends BaseModulePolicy
      * @param  Subscription  $subscription
      * @return mixed
      */
-    // public function restore(User $user, $subscription) { }
+    // public function restore($user, $subscription) { }
 
     /**
      * Determine whether the user can permanently delete the subscription.
@@ -71,6 +71,6 @@ class SubscriptionPolicy extends BaseModulePolicy
      * @param  Subscription  $subscription
      * @return mixed
      */
-    // public function forceDelete(User $user, $subscription) { }
+    // public function forceDelete($user, $subscription) { }
 
 }

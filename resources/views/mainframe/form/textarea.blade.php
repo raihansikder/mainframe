@@ -2,8 +2,18 @@
 /** @var \App\Mainframe\Features\Modular\BaseModule\BaseModule $element */
 use App\Mainframe\Features\Form\Text\TextArea;
 
-
 $var['type'] = $var['type'] ?? 'text';
+
+// Check edibility
+if (! isset($var['editable']) && isset($editable)) {
+    $var['editable'] = $editable;
+
+    // Check immutability
+    if ($editable && isset($immutables)) {
+        $var['editable'] = ! in_array($var['name'], $immutables);
+    }
+}
+
 $input = new TextArea($var, $element ?? null);
 ?>
 {{-- HTML for the input/select block --}}
@@ -20,10 +30,10 @@ $input = new TextArea($var, $element ?? null);
     @if($input->isEditable)
         {{ Form::textarea($input->name, $input->value(), $input->params) }}
     @else
-        <span class="{{$input->params['class']}} readonly">
+        <div class="readonly">
             {{ $input->print() }}
-            {{ Form::hidden($input->name, $input->value()) }}
-        </span>
+            {{--{{ Form::hidden($input->name, $input->value()) }}--}}
+        </div>
     @endif
 
     {!!  $errors->first($input->name, '<span class="help-block">:message</span>') !!}

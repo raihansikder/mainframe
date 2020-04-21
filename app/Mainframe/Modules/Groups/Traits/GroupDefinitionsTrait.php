@@ -2,7 +2,7 @@
 
 namespace App\Mainframe\Modules\Groups\Traits;
 
-use App\Mainframe\Modules\Groups\Group;
+use App\Group;
 
 trait GroupDefinitionsTrait
 {

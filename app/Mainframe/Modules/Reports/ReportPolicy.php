@@ -44,7 +44,7 @@ class ReportPolicy extends BaseModulePolicy
      * @param  Report  $report
      * @return mixed
      */
-    // public function update(User $user, $report) { }
+    // public function update($user, $report) { }
 
     /**
      * Determine whether the user can delete the report.
@@ -53,7 +53,7 @@ class ReportPolicy extends BaseModulePolicy
      * @param  Report  $report
      * @return mixed
      */
-    // public function delete(User $user, $report) { }
+    // public function delete($user, $report) { }
 
     /**
      * Determine whether the user can restore the report.
@@ -62,7 +62,7 @@ class ReportPolicy extends BaseModulePolicy
      * @param  Report  $report
      * @return mixed
      */
-    // public function restore(User $user, $report) { }
+    // public function restore($user, $report) { }
 
     /**
      * Determine whether the user can permanently delete the report.
@@ -71,6 +71,6 @@ class ReportPolicy extends BaseModulePolicy
      * @param  Report  $report
      * @return mixed
      */
-    // public function forceDelete(User $user, $report) { }
+    // public function forceDelete($user, $report) { }
 
 }

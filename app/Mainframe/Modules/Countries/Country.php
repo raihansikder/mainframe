@@ -70,6 +70,9 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule;
  * @property-read \App\Mainframe\Modules\Tenants\Tenant $tenant
  * @property-read \Illuminate\Database\Eloquent\Collection|\OwenIt\Auditing\Models\Audit[] $audits
  * @property-read int|null $audits_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Comments\Comment[] $comments
+ * @property-read int|null $comments_count
+ * @property-read \App\Mainframe\Modules\Comments\Comment $latestComment
  */
 class Country extends BaseModule
 {

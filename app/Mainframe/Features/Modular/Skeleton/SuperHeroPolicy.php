@@ -14,19 +14,20 @@ class SuperHeroPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can view any superHeroes.
      *
-     * @param  \App\User  $user
+     * @param  \App\User $user
      * @return mixed
      */
     public function viewAny($user)
     {
+        // Sample
         return parent::viewAny($user);
     }
 
     /**
      * Determine whether the user can view the superHero.
      *
-     * @param  \App\User  $user
-     * @param  SuperHero  $superHero
+     * @param  \App\User $user
+     * @param  SuperHero $superHero
      * @return mixed
      */
     // public function view($user, $superHero) { }
@@ -34,45 +35,46 @@ class SuperHeroPolicy extends BaseModulePolicy
     /**
      * Determine whether the user can create superHeroes.
      *
-     * @param  \App\User  $user
+     * @param  \App\User $user
+     * @param  SuperHero $superHero
      * @return mixed
      */
-    // public function create($user) { }
+    // public function create($user, $superHero) { }
 
     /**
      * Determine whether the user can update the superHero.
      *
-     * @param  \App\User  $user
-     * @param  SuperHero  $superHero
+     * @param  \App\User $user
+     * @param  SuperHero $superHero
      * @return mixed
      */
-    // public function update(User $user, $superHero) { }
+    // public function update($user, $superHero) { }
 
     /**
      * Determine whether the user can delete the superHero.
      *
-     * @param  \App\User  $user
-     * @param  SuperHero  $superHero
+     * @param  \App\User $user
+     * @param  SuperHero $superHero
      * @return mixed
      */
-    // public function delete(User $user, $superHero) { }
+    // public function delete($user, $superHero) { }
 
     /**
      * Determine whether the user can restore the superHero.
      *
-     * @param  \App\User  $user
-     * @param  SuperHero  $superHero
+     * @param  \App\User $user
+     * @param  SuperHero $superHero
      * @return mixed
      */
-    // public function restore(User $user, $superHero) { }
+    // public function restore($user, $superHero) { }
 
     /**
      * Determine whether the user can permanently delete the superHero.
      *
-     * @param  \App\User  $user
-     * @param  SuperHero  $superHero
+     * @param  \App\User $user
+     * @param  SuperHero $superHero
      * @return mixed
      */
-    // public function forceDelete(User $user, $superHero) { }
+    // public function forceDelete($user, $superHero) { }
 
 }

@@ -51,6 +51,9 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule;
  * @property-read \App\Mainframe\Modules\Tenants\Tenant $tenant
  * @property-read \Illuminate\Database\Eloquent\Collection|\OwenIt\Auditing\Models\Audit[] $audits
  * @property-read int|null $audits_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Comments\Comment[] $comments
+ * @property-read int|null $comments_count
+ * @property-read \App\Mainframe\Modules\Comments\Comment $latestComment
  */
 class Setting extends BaseModule
 {
@@ -168,6 +171,32 @@ class Setting extends BaseModule
     {
         parent::boot();
         self::observe(SettingObserver::class);
+
+        static::saving(function (Setting $element) {
+            // echo 'In Model boot:saving() ';
+        });
+        static::creating(function (Setting $element) {
+            // echo 'In Model boot:creating() ';
+        });
+        static::created(function (Setting $element) {
+            // echo 'In Model boot:created() ';
+        });
+        static::updating(function (Setting $element) {
+            // echo 'In Model boot:updating() ';
+        });
+        static::updated(function (Setting $element) {
+            // echo 'In Model boot:updated() ';
+        });
+        static::saved(function (Setting $element) {
+            // echo 'In Model boot:saved() ';
+        });
+        static::deleting(function (Setting $element) {
+            return false;
+            // echo 'In Model boot:deleting() ';
+        });
+        static::deleted(function (Setting $element) {
+            // echo 'In Model boot:deleted() ';
+        });
     }
 
 

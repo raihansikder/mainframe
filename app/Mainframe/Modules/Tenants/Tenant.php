@@ -56,6 +56,9 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Tenants\Tenant whereNamespace($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Tenants\Tenant whereRouteGroup($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Tenants\Tenant whereViewDirectory($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Comments\Comment[] $comments
+ * @property-read int|null $comments_count
+ * @property-read \App\Mainframe\Modules\Comments\Comment $latestComment
  */
 class Tenant extends BaseModule
 {

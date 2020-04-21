@@ -89,6 +89,9 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule;
  * @property int|null $is_visible
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Modules\Module whereIsVisible($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Modules\Module whereViewDirectory($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Comments\Comment[] $comments
+ * @property-read int|null $comments_count
+ * @property-read \App\Mainframe\Modules\Comments\Comment $latestComment
  */
 class Module extends BaseModule
 {

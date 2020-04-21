@@ -2,11 +2,11 @@
 
 namespace App\Mainframe\Http\Controllers;
 
-use View;
 use App\Http\Controllers\Controller;
-use App\Mainframe\Features\Core\Traits\Validable;
-use App\Mainframe\Features\Core\Traits\SendResponse;
 use App\Mainframe\Features\Core\Traits\HasMessageBag;
+use App\Mainframe\Features\Core\Traits\SendResponse;
+use App\Mainframe\Features\Core\Traits\Validable;
+use View;
 
 /**
  * Class MainframeBaseController
@@ -15,12 +15,16 @@ class BaseController extends Controller
 {
     use Validable, SendResponse, HasMessageBag;
 
+    /** @var \App\User|null */
+    protected $user;
+
     /**
      * MainframeBaseController constructor.
      */
     public function __construct()
     {
-        View::share(['user' => user()]);
+        $this->user = user();
+        View::share(['user' => $this->user]);
     }
 
 }

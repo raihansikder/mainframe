@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\MessageBag;
 use Illuminate\Support\ServiceProvider;
 use App\Mainframe\Features\Responder\Response;
+use Laravel\Telescope\TelescopeServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -15,7 +16,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-
+        if ($this->app->isLocal()) {
+            $this->app->register(\Laravel\Telescope\TelescopeServiceProvider::class);
+            $this->app->register(TelescopeServiceProvider::class);
+        }
     }
 
     /**

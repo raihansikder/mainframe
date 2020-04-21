@@ -2,8 +2,18 @@
 use App\Mainframe\Features\Form\Select\SelectAjax;
 
 $rand = \Illuminate\Support\Str::random(8);
-$input = new SelectAjax($var, $element ?? null);
 
+// Check edibility
+if (! isset($var['editable']) && isset($editable)) {
+    $var['editable'] = $editable;
+
+    // Check immutability
+    if ($editable && isset($immutables)) {
+        $var['editable'] = ! in_array($var['name'], $immutables);
+    }
+}
+
+$input = new SelectAjax($var, $element ?? null);
 ?>
 
 <div id="{{$rand}}"

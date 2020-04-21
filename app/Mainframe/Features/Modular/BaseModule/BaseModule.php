@@ -2,22 +2,14 @@
 
 namespace App\Mainframe\Features\Modular\BaseModule;
 
-use DateTimeInterface;
+use App\Mainframe\Features\Modular\Rememberable\Rememberable;
 use OwenIt\Auditing\Models\Audit;
-use Watson\Rememberable\Rememberable;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Contracts\Auditable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Mainframe\Features\Multitenant\GlobalScope\AddTenant;
-use App\Mainframe\Features\Modular\BaseModule\Traits\Uploadable;
-use App\Mainframe\Features\Modular\BaseModule\Traits\Processable;
 use App\Mainframe\Features\Modular\BaseModule\Traits\ModularTrait;
-use App\Mainframe\Features\Modular\BaseModule\Traits\UpdaterTrait;
-use App\Mainframe\Features\Modular\BaseModule\Traits\ModelAutoFill;
-use App\Mainframe\Features\Modular\BaseModule\Traits\EventIdentifiable;
-use App\Mainframe\Features\Modular\BaseModule\Traits\RelatedUsersTrait;
-use App\Mainframe\Features\Modular\BaseModule\Traits\TenantContextTrait;
 
 /**
  * Class BaseModule
@@ -39,12 +31,26 @@ use App\Mainframe\Features\Modular\BaseModule\Traits\TenantContextTrait;
  */
 class BaseModule extends Model implements Auditable
 {
-    use SoftDeletes, Rememberable;
-    use \OwenIt\Auditing\Auditable;
+    /*
+    |--------------------------------------------------------------------------
+    | Include mainframe module traits
+    |--------------------------------------------------------------------------
+    |
+    */
+    use SoftDeletes,                // Laravel default trait to enable soft delete
+        Rememberable,               // Third party plugin to cache model query
+        \OwenIt\Auditing\Auditable, // 3rd party audit log
+        ModularTrait                // Mainframe modular features.
 
-    use Processable, EventIdentifiable,
-        RelatedUsersTrait, TenantContextTrait, UpdaterTrait,
-        Uploadable, ModularTrait, ModelAutoFill;
+        // Processable,
+        // EventsTrait,
+        // RelatedUsersTrait,
+        // TenantContextTrait,
+        // UpdaterTrait,
+        // Uploadable,
+        // Commentable,
+        // ModelAutoFill
+        ;
 
     /*
     |--------------------------------------------------------------------------
@@ -69,132 +75,27 @@ class BaseModule extends Model implements Auditable
     {
         parent::boot();
 
-        /**
-         * Do not store audit logs if there is no change.
-         */
+        /*
+        |--------------------------------------------------------------------------
+        | Skip audit log store if no change
+        |--------------------------------------------------------------------------
+        |
+        */
         Audit::creating(function (Audit $model) {
             if (empty($model->old_values) && empty($model->new_values)) {
                 return false;
             }
         });
 
-        /**
-         * For tenant user add global scope.
-         */
+        /*
+        |--------------------------------------------------------------------------
+        | Add tenant scope to model if current user() belongs to a tenant
+        |--------------------------------------------------------------------------
+        |
+        */
         if (user()->ofTenant()) {
             static::addGlobalScope(new AddTenant);
         }
     }
 
-    /**
-     * Check if value has changed
-     *
-     * @param $field
-     * @return bool
-     */
-    public function fieldHasChanged($field)
-    {
-        if (array_key_exists($field, $this->getChanges())) {
-            return true; // This only works inside boot::saved()
-        }
-
-        if (($this->isUpdating() && isset($this->$field)) && $this->getOriginal($field) != $this->$field) {
-            return true;
-        }
-
-        return false;
-    }
-
-    /**
-     * Get old and new value of a changed field field
-     *
-     * @param $field
-     * @return array
-     */
-    public function transition($field)
-    {
-        if ($this->fieldHasChanged($field)) {
-            return ['field' => $field, 'old' => $this->getOriginal($field), 'new' => $this->$field];
-        }
-
-        return null;
-    }
-
-    /**
-     * Check if a certain transition took place.
-     *
-     * @param $field
-     * @param $from
-     * @param $to
-     * @return bool
-     */
-    public function hasTransition($field, $from, $to)
-    {
-        if (! is_array($from)) {
-            $from = [$from];
-        }
-
-        if (! is_array($to)) {
-            $to = [$to];
-        }
-
-        $change = $this->transition($field);
-
-        if ($change) {
-            return in_array($change['old'], $from) && in_array($change['new'], $to);
-        }
-    }
-
-    /**
-     * Check if a certain transition took place.
-     *
-     * @param $field
-     * @param $from
-     * @return bool
-     */
-    public function hasTransitionFrom($field, $from)
-    {
-
-        if (! is_array($from)) {
-            $from = [$from];
-        }
-
-        $change = $this->transition($field);
-
-        if ($change) {
-            return in_array($change['old'], $from);
-        }
-    }
-
-    /**
-     * Check if a certain transition took place.
-     *
-     * @param $field
-     * @param $to
-     * @return bool
-     */
-    public function hasTransitionTo($field, $to)
-    {
-
-        if (! is_array($to)) {
-            $to = [$to];
-        }
-
-        $change = $this->transition($field);
-
-        if ($change) {
-            return in_array($change['new'], $to);
-        }
-    }
-
-    /**
-     * Prepare a date for array / JSON serialization.
-     *
-     * @param  \DateTimeInterface  $date
-     * @return string
-     */
-    protected function serializeDate(DateTimeInterface $date)
-    {
-        return $date->format('Y-m-d H:i:s');
-    }
 }

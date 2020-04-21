@@ -59,6 +59,9 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Notifications\Notification whereUpdatedBy($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Notifications\Notification whereUuid($value)
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Comments\Comment[] $comments
+ * @property-read int|null $comments_count
+ * @property-read \App\Mainframe\Modules\Comments\Comment $latestComment
  */
 class Notification extends BaseModule
 {

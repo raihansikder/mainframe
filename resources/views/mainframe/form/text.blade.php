@@ -28,6 +28,16 @@
  * @var string $formState create|edit
  */
 
+// Check edibility
+if (! isset($var['editable']) && isset($editable)) {
+    $var['editable'] = $editable;
+
+    // Check immutability
+    if ($editable && isset($immutables)) {
+        $var['editable'] = ! in_array($var['name'], $immutables);
+    }
+}
+
 $input = new App\Mainframe\Features\Form\Text\InputText($var, $element ?? null);
 ?>
 
@@ -50,7 +60,7 @@ $input = new App\Mainframe\Features\Form\Text\InputText($var, $element ?? null);
     @else
         <span class="{{$input->params['class']}} readonly">
             {{ $input->print() }}
-            {{ Form::hidden($input->name, $input->value()) }}
+            {{--{{ Form::hidden($input->name, $input->value()) }}--}}
         </span>
     @endif
 

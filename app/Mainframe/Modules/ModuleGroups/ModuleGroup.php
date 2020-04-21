@@ -64,6 +64,9 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\ModuleGroups\ModuleGroup whereIsVisible($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\ModuleGroups\ModuleGroup whereRouteName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\ModuleGroups\ModuleGroup whereRoutePath($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Comments\Comment[] $comments
+ * @property-read int|null $comments_count
+ * @property-read \App\Mainframe\Modules\Comments\Comment $latestComment
  */
 class ModuleGroup extends BaseModule
 {

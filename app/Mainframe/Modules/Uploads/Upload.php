@@ -1,8 +1,9 @@
-<?php /** @noinspection PhpUndefinedMethodInspection */
+<?php
 
 namespace App\Mainframe\Modules\Uploads;
 
 use App\Mainframe\Features\Modular\BaseModule\BaseModule;
+use App\Mainframe\Modules\Modules\Module;
 
 /**
  * App\Mainframe\Modules\Uploads\Upload
@@ -71,6 +72,10 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule;
  * @property-read \Illuminate\Database\Eloquent\Collection|\OwenIt\Auditing\Models\Audit[] $audits
  * @property-read int|null $audits_count
  * @property-read \App\Mainframe\Modules\Uploads\Upload|null $uploadable
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Comments\Comment[] $comments
+ * @property-read int|null $comments_count
+ * @property-read \App\Mainframe\Modules\Comments\Comment $latestComment
+ * @property-read \App\Mainframe\Modules\Modules\Module|null $linkedModule
  */
 class Upload extends BaseModule
 {
@@ -165,8 +170,7 @@ class Upload extends BaseModule
     | The possible options for some field. Variable name should be
     |
     */
-    // public static $types = [];
-    // public static $statuses = [];
+    public static $types = ['profile-pic'];
 
     /*
     |--------------------------------------------------------------------------
@@ -181,11 +185,62 @@ class Upload extends BaseModule
     {
         parent::boot();
         self::observe(UploadObserver::class);
+
         static::saving(function (Upload $element) {
-            $element->is_active = 1;                    // Always set as 'Yes'
-            $element->ext = extFrmPath($element->path); // Store file extension separately
+            $element->fillModuleAndElementData();
+            $element->fillExtension();
+        });
+        static::saved(function (Upload $element) {
+            if ($element->type == 'profile-pic') {
+                $element->deletePreviousOfSameType();
+            }
         });
     }
+
+    /**
+     * Fill data to relate this upload with another module element.
+     *
+     * @return $this
+     */
+    public function fillModuleAndElementData()
+    {
+
+        $module = $this->linkedModule()->exists() ? $this->linkedModule : null;
+        $element = null;
+
+        if ($module) {
+            /** @var \App\Mainframe\Features\Modular\BaseModule\BaseModule $model */
+            $model = $module->model;
+            $this->uploadable_type = trim($module->model, '\\');
+        }
+
+        if ($module && isset($this->element_id)) {
+            $element = $model::remember(timer('very-long'))
+                ->find($this->element_id);
+        }
+
+        if ($element) {
+            $this->uploadable_id = $element->id;
+            $this->element_uuid = $element->uuid;
+        }
+
+        return $this;
+
+    }
+
+    /**
+     * Fill extension
+     *
+     * @return $this
+     */
+    public function fillExtension()
+    {
+        $this->ext = extFrmPath($this->path); // Store file extension separately
+
+        return $this;
+    }
+
+
 
     /*
     |--------------------------------------------------------------------------
@@ -253,6 +308,12 @@ class Upload extends BaseModule
      */
     public function uploadable() { return $this->morphTo(); }
 
+    public function linkedModule()
+    {
+        return $this->belongsTo(Module::class, 'module_id')
+            ->remember(timer('long'));
+    }
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -265,4 +326,18 @@ class Upload extends BaseModule
    | Todo: Write Helper functions in the UploadHelper trait.
    */
 
+    /**
+     * Deletes the previously uploaded file of the same type.
+     * This function is useful for uploading profile pic
+     * where there latest pic will discard the last one.
+     */
+    public function deletePreviousOfSameType()
+    {
+        if (isset($this->uploadable)) {
+            $this->uploadable->uploads()
+                ->where('type', $this->type)
+                ->where('id', '!=', $this->id)
+                ->delete();
+        }
+    }
 }

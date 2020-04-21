@@ -27,7 +27,7 @@ class Mf
     */
 
     /**
-     * @param  null  $id
+     * @param  null $id
      * @return null|\App\User|\Illuminate\Database\Eloquent\Model|\Illuminate\Database\Query\Builder|mixed
      */
     public static function user($id = null)
@@ -47,10 +47,10 @@ class Mf
             return $user;
         }
 
-        // // Check if usr is API caller
-        // if ($user = Auth::guard('x-auth')->user()) {
-        //     return $user;
-        // }
+        // Check if usr is API caller
+        if ($user = Auth::guard('x-auth')->user()) {
+            return $user;
+        }
 
         // Return an empty guest user instance
         // return null;
@@ -65,10 +65,9 @@ class Mf
      */
     public static function modules()
     {
-        return Cache::remember('active-modules', timer('long'),
-            function () {
-                return Schema::hasTable('modules') ? Module::getActiveList() : [];
-            });
+        return Cache::remember('active-modules', timer('long'), function () {
+            return Schema::hasTable('modules') ? Module::getActiveList() : [];
+        });
 
     }
 
@@ -89,7 +88,7 @@ class Mf
      * Create a unique signature/key for a HTTP request made
      * Usually used for caching.
      *
-     * @param  String  $append  Raw Query string
+     * @param  String $append Raw Query string
      * @return string
      */
     public static function httpRequestSignature($append = null)
@@ -117,7 +116,7 @@ class Mf
      * Get columns of a table.
      *
      * @param $table
-     * @param  null  $cache
+     * @param  null $cache
      * @return array
      */
     public static function tableColumns($table, $cache = null)
@@ -135,7 +134,7 @@ class Mf
      *
      * @param $table
      * @param $column
-     * @param  null  $cache
+     * @param  null $cache
      * @return bool
      */
     public static function tableHasColumn($table, $column, $cache = null)
