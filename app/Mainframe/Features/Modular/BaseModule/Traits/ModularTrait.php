@@ -163,7 +163,7 @@ trait ModularTrait
             return User::remember(timer('long'))->find($userId);
         }
 
-        return null;
+        return $this->creator;
     }
 
     /**
