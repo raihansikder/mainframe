@@ -140,6 +140,33 @@ trait ModularTrait
     }
 
     /**
+     * Get the last updater user of a field
+     *
+     * @param string $field
+     * @return \Illuminate\Database\Eloquent\Model|\Illuminate\Database\Query\Builder|mixed|null
+     */
+    public function updaterOfField($field)
+    {
+        $audits = $this->audits;
+
+        $userId = null;
+
+        foreach ($audits as $audit) {
+            $userId = $audit->user_id;
+            $changes = $audit->getModified();
+            if (array_key_exists($field, $changes)) {
+                break;
+            }
+        }
+
+        if ($userId) {
+            return User::remember(timer('long'))->find($userId);
+        }
+
+        return null;
+    }
+
+    /**
      * Get old and new value of a changed field field
      *
      * @param $field

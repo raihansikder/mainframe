@@ -2,13 +2,13 @@
 
 namespace App\Mainframe\Features\Report;
 
-use DB;
-use Illuminate\Database\Query\Builder;
-use App\Mainframe\Features\Report\Traits\Query;
-use App\Mainframe\Features\Report\Traits\Output;
 use App\Mainframe\Features\Report\Traits\Columns;
 use App\Mainframe\Features\Report\Traits\Filterable;
+use App\Mainframe\Features\Report\Traits\Output;
+use App\Mainframe\Features\Report\Traits\Query;
 use App\Mainframe\Http\Controllers\BaseController;
+use DB;
+use Illuminate\Database\Query\Builder;
 
 class ReportBuilder extends BaseController
 {
@@ -71,12 +71,23 @@ class ReportBuilder extends BaseController
     /** @var  \Illuminate\Support\Collection Report result */
     public $result;
 
+    /*
+    |--------------------------------------------------------------------------
+    | full text fields
+    |--------------------------------------------------------------------------
+    |
+    | How long the report result is cached
+    |
+    */
+    /** @var array  */
+    public $fullTextFields = ['name','name_ext'];
+
     /**
      * ReportBuilder constructor.
      *
-     * @param  string  $dataSource
-     * @param  string  $path
-     * @param  int  $cache
+     * @param  string $dataSource
+     * @param  string $path
+     * @param  int $cache
      */
     public function __construct($dataSource = null, $path = null, $cache = null)
     {
@@ -179,7 +190,7 @@ class ReportBuilder extends BaseController
     /**
      * Adds the custom COUNT/SUM column in SQL SELECT.
      *
-     * @param  array  $keys
+     * @param  array $keys
      * @return array
      */
     public function queryAddColumnForGroupBy($keys = [])

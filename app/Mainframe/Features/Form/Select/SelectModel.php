@@ -3,8 +3,8 @@
 namespace App\Mainframe\Features\Form\Select;
 
 use App\Mainframe\Helpers\Mf;
-use Arr;
 use DB;
+use Illuminate\Support\Arr;
 
 class SelectModel extends SelectArray
 {

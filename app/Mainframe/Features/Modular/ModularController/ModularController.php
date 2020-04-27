@@ -8,7 +8,6 @@ use App\Mainframe\Features\Datatable\ModuleDatatable;
 use App\Mainframe\Features\Modular\ModularController\Traits\ModelProcessorHelper;
 use App\Mainframe\Features\Modular\ModularController\Traits\RequestValidator;
 use App\Mainframe\Features\Modular\ModularController\Traits\Resolvable;
-use App\Mainframe\Features\Modular\ModularController\Traits\ShowChangesTrait;
 use App\Mainframe\Features\Report\ModuleList;
 use App\Mainframe\Features\Report\ModuleReportBuilder;
 use App\Mainframe\Http\Controllers\BaseController;
@@ -23,7 +22,7 @@ use View;
  */
 class ModularController extends BaseController
 {
-    use RequestValidator, ModelProcessorHelper, ShowChangesTrait, Resolvable;
+    use RequestValidator, ModelProcessorHelper, Resolvable;
 
     /** @var string Module name */
     protected $moduleName;
@@ -325,6 +324,35 @@ class ModularController extends BaseController
         ]);
 
         return app(UploadController::class)->store(request());
+    }
+
+    /**
+     * Show all the changes/change logs of an item
+     *
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\JsonResponse|\Illuminate\View\View|void
+     */
+    public function changes($id)
+    {
+
+        if (! $this->element = $this->model->find($id)) {
+            return $this->notFound();
+        }
+
+        if (! user()->can('view', $this->element)) {
+            return $this->permissionDenied();
+        }
+
+        $audits = $this->element->audits;
+        // return $audits;
+
+        if ($this->expectsJson()) {
+            return $this->success()->load($audits)->json();
+        }
+
+        return $this->view('mainframe.layouts.module.changes.index')
+            ->with(['audits' => $audits]);
+
     }
 
     /**

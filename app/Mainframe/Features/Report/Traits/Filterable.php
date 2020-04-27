@@ -280,9 +280,17 @@ trait Filterable
      */
     public function columnIsFullText($column)
     {
-        $full_text_columns = ['name'];
 
-        return in_array($column, $full_text_columns);
+        return in_array($column, $this->getFullTextFields());
+    }
+
+    /**
+     * Get an array for full text search. These fields will be SQL LIKE
+     * @return array
+     */
+    public function getFullTextFields()
+    {
+        return $this->fullTextFields;
     }
 
     /**

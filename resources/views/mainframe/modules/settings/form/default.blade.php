@@ -16,6 +16,7 @@ $types = Setting::$types;
         {{--    Form inputs: starts    --}}
         {{--   --------------------    --}}
         @include('form.text',['var'=>['name'=>'name','label'=>'Name']])
+            {{--{{optional($element->updaterOfField('name'))->email}}--}}
         @include('form.text',['var'=>['name'=>'title','label'=>'Title']])
         <div class="clearfix"></div>
 

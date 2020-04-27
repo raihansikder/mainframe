@@ -53,7 +53,7 @@ $input = new SelectAjax($var, $element ?? null);
     <script type="text/javascript">
 
         var divId = '{{$rand}}';
-        var url = '{{$input->url}}';
+        var url = '{!! $input->url !!}';
         var inputName = '{{$input->name}}';
 
         initAjaxSelect(divId, url, inputName);
