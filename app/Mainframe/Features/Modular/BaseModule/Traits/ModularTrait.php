@@ -147,7 +147,7 @@ trait ModularTrait
      */
     public function updaterOfField($field)
     {
-        $audits = $this->audits;
+        $audits = $this->audits()->latest()->get();
 
         $userId = null;
 
