@@ -14,6 +14,8 @@ trait SuperHeroHelper
     /**
      * Fill data and set calculated data in fields for saving the module
      * This can depend of supporting fillFunct, setFunct,calculateFunct
+     *
+     * return $this
      */
     public function populate()
     {
