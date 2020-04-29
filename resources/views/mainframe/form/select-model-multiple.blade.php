@@ -14,7 +14,7 @@ if (! isset($var['editable']) && isset($editable)) {
 $input = new SelectModelMultiple($var, $element ?? null);
 ?>
 
-<div class="form-group {{$input->containerClass}} {{$errors->first($input->name, ' has-error')}} {{$input->uid}}"
+<div class="form-group {{$input->containerClass}} {{$errors->first($input->name, 'has-error')}} {{$input->uid}}"
      data-parent="{{$input->dataParent}}">
 
     @if($input->label)

@@ -41,7 +41,7 @@ if (! isset($var['editable']) && isset($editable)) {
 $input = new App\Mainframe\Features\Form\Text\InputText($var, $element ?? null);
 ?>
 
-<div class="form-group {{$input->containerClass}} {{$errors->first($input->name, ' has-error')}} {{$input->uid}}">
+<div class="form-group {{$input->containerClass}} {{$errors->first($input->name, 'has-error')}} {{$input->uid}}">
 
     @if($input->label)
         <label id="label_{{$input->name}}"

@@ -17,7 +17,7 @@ $input = new SelectAjax($var, $element ?? null);
 ?>
 
 <div id="{{$rand}}"
-     class="form-group {{$input->containerClass}} {{$errors->first($input->name, ' has-error')}} {{$input->uid}}">
+     class="form-group {{$input->containerClass}} {{$errors->first($input->name, 'has-error')}} {{$input->uid}}">
 
     @if($input->label)
         <label id="label_{{$input->name}}"
