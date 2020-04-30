@@ -336,12 +336,13 @@ class ModelProcessor
     public function forSave($element = null)
     {
         $element = $element ?: $this->element;
-        $this->fill($element)->validate();
+        $this->validate();
 
         if (! $this->valid()) {
             return $this;
         }
 
+        $this->fill($element);
         $this->preSave();
         $this->saving($element);
 
