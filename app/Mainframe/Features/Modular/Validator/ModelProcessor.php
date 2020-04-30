@@ -18,6 +18,13 @@ class ModelProcessor
      *
      * @var \App\Mainframe\Features\Modular\BaseModule\BaseModule
      */
+    public $operation;
+
+    /**
+     * Element filled with new values
+     *
+     * @var \App\Mainframe\Features\Modular\BaseModule\BaseModule
+     */
     public $element;
 
     /**
@@ -372,8 +379,8 @@ class ModelProcessor
     public function save()
     {
         // echo 'In Processor Save() ';
-        $isCreateOperation = $this->element->isCreating();
-        $isUpdateOperation = $this->element->isUpdating();
+
+        $this->operation = $this->element->isCreating() ? 'create' : 'update';
 
         // Run validation, call saving, then call creating/updating
         $this->forSave();
@@ -390,12 +397,12 @@ class ModelProcessor
         }
 
         // Call created() if this save() function is called during a create operation.
-        if ($isCreateOperation) {
+        if ($this->operation == 'create') {
             $this->created($this->element);
         }
 
         // Call updated() if this save() function is called during a create operation.
-        if ($isUpdateOperation) {
+        if ($this->operation == 'update') {
             $this->updated($this->element);
         }
 
@@ -535,6 +542,7 @@ class ModelProcessor
     public function delete()
     {
         // echo 'In Processor delete() ';
+        $this->operation = 'delete';
 
         $this->forDelete();
 
@@ -564,6 +572,8 @@ class ModelProcessor
     public function restore($element = null)
     {
         $element = $element ?: $this->element;
+
+        $this->operation = 'restore';
         $this->forSave();
         $this->restoring($element);
 
