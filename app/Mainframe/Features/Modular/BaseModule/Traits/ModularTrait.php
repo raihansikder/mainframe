@@ -248,6 +248,20 @@ trait ModularTrait
         }
     }
 
+    /**
+     * Get an array of allowed next transition values
+     *
+     * @param $field
+     * @param null $from
+     * @return array
+     */
+    public function nextTransitions($field, $from = null)
+    {
+        $from = $from ?: $this->$field;
+
+        return $this->processor()->nextTransitions($field, $from);
+    }
+
     /*
     |--------------------------------------------------------------------------
     | Related users

@@ -299,6 +299,21 @@ class ModelProcessor
     }
 
     /**
+     * Get an array of allowed next transition values
+     *
+     * @param $field
+     * @param null $from
+     * @return array
+     */
+    public function nextTransitions($field, $from = null)
+    {
+        $from = $from ?: $this->original[$field];
+        $allTransitions = $this->getTransitions();
+
+        return array_merge($allTransitions[$field][$from], [$from]); // Merge the same item
+    }
+
+    /**
      * Get a list of un-mutable fields
      *
      * @return array
