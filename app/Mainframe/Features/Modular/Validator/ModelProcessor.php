@@ -167,6 +167,27 @@ class ModelProcessor
     }
 
     /**
+     * Check if a field has been just created some value. This function is useful
+     * inside processor saved()
+     *
+     * @param $field
+     * @param $value
+     * @return bool
+     */
+    public function justCreatedWith($field, $value)
+    {
+        if ($this->operation !== 'create') {
+            return false;
+        }
+
+        if ($this->element->$field == $value) {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
      * Get old and new value of a changed field field
      *
      * @param $field
