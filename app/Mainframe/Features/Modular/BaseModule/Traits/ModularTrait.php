@@ -424,12 +424,12 @@ trait ModularTrait
      *
      * @return mixed
      */
-    public function latestUpload()
-    {
-        return $this->hasOne(Upload::class, 'element_id')
-            ->where('module_id', $this->module()->id)
-            ->orderBy('created_at', 'DESC');
-    }
+    // public function latestUpload()
+    // {
+    //     return $this->hasOne(Upload::class, 'element_id')
+    //         ->where('module_id', $this->module()->id)
+    //         ->orderBy('created_at', 'DESC');
+    // }
 
     /*
     |--------------------------------------------------------------------------
@@ -456,12 +456,12 @@ trait ModularTrait
      *
      * @return mixed
      */
-    public function latestComment()
-    {
-        return $this->hasOne(Comment::class, 'element_id')
-            ->where('module_id', $this->module()->id)
-            ->orderBy('created_at', 'DESC');
-    }
+    // public function latestComment()
+    // {
+    //     return $this->hasOne(Comment::class, 'element_id')
+    //         ->where('module_id', $this->module()->id)
+    //         ->orderBy('created_at', 'DESC');
+    // }
 
     /*
     |--------------------------------------------------------------------------
