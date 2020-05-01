@@ -212,7 +212,7 @@ trait Output
             $writer = new Xlsx($spreadsheet);
         }
 
-        $filename = 'Report'.now().$ext;
+        $filename = ($this->fileName ?: 'Report '.now()).$ext;
         header('Content-Disposition: attachment; filename='.$filename);
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
         $writer->save('php://output');

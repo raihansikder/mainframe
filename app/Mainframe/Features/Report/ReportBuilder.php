@@ -79,8 +79,19 @@ class ReportBuilder extends BaseController
     | How long the report result is cached
     |
     */
-    /** @var array  */
-    public $fullTextFields = ['name','name_ext'];
+    /** @var array */
+    public $fullTextFields = ['name', 'name_ext'];
+
+    /*
+    |--------------------------------------------------------------------------
+    | Output file name
+    |--------------------------------------------------------------------------
+    |
+    | How long the report result is cached
+    |
+    */
+    /** @var string */
+    public $fileName;
 
     /**
      * ReportBuilder constructor.
