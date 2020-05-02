@@ -1,11 +1,10 @@
-<?php /** @noinspection ClassConstantCanBeUsedInspection */
-/** @noinspection UnknownInspectionInspection */
-
+<?php
 /** @noinspection DuplicatedCode */
 
 use App\Mainframe\Modules\Modules\Module;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Str;
 
 class CreateSuperHeroesTable extends Migration
 {
@@ -29,7 +28,7 @@ class CreateSuperHeroesTable extends Migration
             /******* Custom columns **********/
             // Todo: Add module specific fields
             //$table->string('title', 100)->nullable()->default(null);
-            //$table->text('somecolumnsname')->nullable()->default(null);
+            //$table->text('field')->nullable()->default(null);
             /*********************************/
 
             $table->tinyInteger('is_active')->nullable()->default(1);

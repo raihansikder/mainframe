@@ -50,7 +50,8 @@ class SelectModel extends SelectArray
             ->pluck($this->nameField, $this->valueField)
             ->toArray();
 
-        $options[0] = null;
+        // $options[0] = null; // Zero fill empty selection
+        $options[null] = '-';  // Null fill empty selection
 
         return Arr::sort($options);
     }

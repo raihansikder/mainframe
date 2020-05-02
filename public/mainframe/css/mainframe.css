@@ -402,10 +402,7 @@ label {
 }
 
 /* Make module CTA block semi-transparent*/
-.cta-block {
-    -webkit-mask-image: -webkit-gradient(linear, left 20%,
-    left top, from(rgba(0, 0, 0, 1)), to(rgba(0, 0, 0, 0)));
-}
+
 
 /* Small font size in dashboard box*/
 .small-box h3 {
@@ -479,6 +476,10 @@ a i {
     color: inherit;
 }
 
-.form-group.has-error .help-block {
-    font-size: .9em;
+.border-dashed {
+    border: 1px gainsboro dashed;
+}
+
+.border-dotted {
+    border: 2px gainsboro dotted;
 }
