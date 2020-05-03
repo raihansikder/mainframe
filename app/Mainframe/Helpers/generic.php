@@ -7,16 +7,11 @@
  * @email  : raihan.act@gmail.com
  */
 
-
-
-
-
-
 /**
  * Converts a one dimensional array to a key-value paired array with same key and value
  * this is useful to generate options for select.
  *
- * @param  array  $array
+ * @param  array $array
  * @return array
  */
 function kv($array = [])
@@ -30,8 +25,6 @@ function kv($array = [])
 
     return $temp;
 }
-
-
 
 /**
  * returns extension from path
@@ -76,7 +69,7 @@ function keyAsArray($array = [])
 /**
  * echos array in a more readable manner
  *
- * @param  array  $my_array
+ * @param  array $my_array
  * @return string $my_array
  */
 function echoArray($my_array)
@@ -98,6 +91,16 @@ function echoArray($my_array)
 }
 
 /**
+ * Shorthand function for echoArray
+ * @param $arr
+ * @return string
+ */
+function printArray($arr)
+{
+    return echoArray($arr);
+}
+
+/**
  * Changes array to object
  *
  * @param $array
@@ -111,7 +114,7 @@ function arrayToObject($array)
 /**
  * Generate random characters
  *
- * @param  int  $length
+ * @param  int $length
  * @return string
  * @throws \Exception
  */
@@ -217,7 +220,7 @@ function removeUtf8Bom($text)
  *
  * @param       $array
  * @param       $search
- * @param  array  $keys
+ * @param  array $keys
  * @return array
  */
 function deepSearchArray($array, $search, $keys = [])
@@ -246,7 +249,6 @@ function deepSearchArray($array, $search, $keys = [])
 // function today() {
 //     return date('Y-m-d');
 // }
-
 
 /**
  * returns current date time
@@ -297,8 +299,8 @@ function decimal($number, $decimalPlaces = 2)
 
 /**
  * @param        $str
- * @param  int  $count
- * @param  string  $char
+ * @param  int $count
+ * @param  string $char
  * @return string
  */
 function pad($str, $count = 6, $char = '0')
@@ -348,7 +350,6 @@ function csvToArray($csv)
 {
     return cleanArray(explode(',', cleanCsv($csv)));
 }
-
 
 /**
  * Converts an One-dimensional array into CSV.
@@ -405,7 +406,7 @@ function commaWrap($str)
 /**
  * Converts bytes into human readable file size.
  *
- * @param  string  $bytes
+ * @param  string $bytes
  * @return string human readable file size (2,87 ??)
  * @author Mogilev Arseny
  */
@@ -450,7 +451,7 @@ function convertFileSize($bytes)
 /**
  * check if an extension is an image extension
  *
- * @param  string  $ext
+ * @param  string $ext
  * @return bool
  */
 function isImageExtension($ext = '')
@@ -467,8 +468,8 @@ function isImageExtension($ext = '')
 /**
  * Checks if all of the needls are available in array
  *
- * @param  array  $needles
- * @param  array  $haystack
+ * @param  array $needles
+ * @param  array $haystack
  * @return bool
  */
 function allInArray(array $needles, array $haystack)
@@ -489,8 +490,8 @@ function allInArray(array $needles, array $haystack)
 /**
  * Checks if at least one of the needles is available in array
  *
- * @param  array  $needles
- * @param  array  $haystack
+ * @param  array $needles
+ * @param  array $haystack
  * @return bool
  */
 function oneInArray(array $needles, array $haystack)
@@ -509,8 +510,8 @@ function oneInArray(array $needles, array $haystack)
 /**
  * Checks if non of the needles are in array
  *
- * @param  array  $needles
- * @param  array  $haystack
+ * @param  array $needles
+ * @param  array $haystack
  * @return bool
  */
 function noneInArray(array $needles, array $haystack)
@@ -521,8 +522,8 @@ function noneInArray(array $needles, array $haystack)
 /**
  * Function to do multiple find replaces in a string.
  *
- * @param  string  $str
- * @param  array  $replaces
+ * @param  string $str
+ * @param  array $replaces
  * @return mixed|string
  */
 function multipleStrReplace($str = '', $replaces = [])
@@ -537,7 +538,7 @@ function multipleStrReplace($str = '', $replaces = [])
 /**
  * Remove empty values and arrays values from an array.
  *
- * @param  array  $array
+ * @param  array $array
  * @return array
  */
 function removeEmptyVals($array = [])
@@ -557,7 +558,7 @@ function removeEmptyVals($array = [])
 /**
  * Alias function for removeEmptyVals()
  *
- * @param  array  $array
+ * @param  array $array
  * @return array
  */
 function cleanArray($array = [])
@@ -592,7 +593,7 @@ function arrayForWhereIn($val)
 /**
  * create a letter range with arbitrary length
  *
- * @param  int  $length
+ * @param  int $length
  * @return array
  */
 function createLetterRange($length)

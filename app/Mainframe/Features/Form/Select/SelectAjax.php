@@ -13,10 +13,10 @@ class SelectAjax extends SelectModel
     {
         parent::__construct($var, $element);
 
-        $this->preload = $var['preload'] ?? $this->preload();
-        $this->containerClass = $var['container_class'] ?? 'col-md-6';
+        $this->preload = $this->var['preload'] ?? $this->preload();
+        $this->containerClass = $this->var['container_class'] ?? 'col-md-6';
         $this->params['class'] .= ' ajax ';
-        $this->url = $var['url'] ?? $this->url();
+        $this->url = $this->var['url'] ?? $this->url();
     }
 
     /**

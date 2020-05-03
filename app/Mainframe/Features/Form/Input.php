@@ -6,7 +6,7 @@ use Illuminate\Support\Str;
 
 class Input extends Form
 {
-    public $conf;
+    public $var;
     public $containerClass;
     public $label;
     public $labelClass;
@@ -25,18 +25,16 @@ class Input extends Form
      */
     public function __construct($var = [], $element = null)
     {
-        parent::__construct($element);
+        parent::__construct($var, $element);
 
-        $this->conf = $var;
-
-        $this->containerClass = $var['container_class'] ?? 'col-md-3';
-        $this->label = $var['label'] ?? null;
-        $this->labelClass = $var['label_class'] ?? null;
-        $this->type = $var['type'] ?? null;
-        $this->value = $var['value'] ?? null;
+        $this->containerClass = $this->var['container_class'] ?? 'col-md-3';
+        $this->label = $this->var['label'] ?? null;
+        $this->labelClass = $this->var['label_class'] ?? null;
+        $this->type = $this->var['type'] ?? null;
+        $this->value = $this->var['value'] ?? null;
         $this->oldInput = $this->old();
-        $this->name = $var['name'] ?? Str::random(8);
-        $this->params = $var['params'] ?? [];
+        $this->name = $this->var['name'] ?? Str::random(8);
+        $this->params = $this->var['params'] ?? [];
 
         $this->isEditable = $this->getEditable();
 
@@ -46,6 +44,7 @@ class Input extends Form
 
         // Force add form-control class
         $this->params['id'] = $this->params['id'] ?? $this->name;
+
     }
 
     /**
@@ -96,8 +95,8 @@ class Input extends Form
     public function getEditable()
     {
 
-        if (isset($this->conf['editable'])) {
-            return $this->conf['editable'];
+        if (isset($this->var['editable'])) {
+            return $this->var['editable'];
         }
 
         return true;
@@ -127,6 +126,13 @@ class Input extends Form
     public function print()
     {
         return $this->value();
+    }
+
+    public function containerClasses()
+    {
+        return 'form-group'.' '.$this->containerClass
+            .' '.$this->errors->first($this->name, 'has-error')
+            .' '.$this->uid;
     }
 
 }

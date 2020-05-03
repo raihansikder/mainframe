@@ -31,15 +31,14 @@ class Comment extends Form
      */
     public function __construct($var = [], $element = null)
     {
-        parent::__construct($element);
+        parent::__construct($var,$element);
 
-
-        $this->containerClass = $var['container_class'] ?? '';
+        $this->containerClass = $this->var['container_class'] ?? '';
 
         $this->elementUuid = $element->uuid;
 
         if($element){
-            $this->commentableType = $var['commentable_type'] ?? get_class($element);
+            $this->commentableType = $this->var['commentable_type'] ?? get_class($element);
         }
 
         if ($element && $element->isUpdating()) {
@@ -47,16 +46,16 @@ class Comment extends Form
             $this->tenantId = $element->tenant_id ?? null;
         }
 
-        $this->moduleId = $var['module_id'] ?? $element->module()->id;
+        $this->moduleId = $this->var['module_id'] ?? $element->module()->id;
 
 
-        $this->elementId = $var['element_id'] ?? $this->elementId;
-        $this->elementUuid = $var['element_uuid'] ?? $this->elementUuid;
-        $this->tenantId = $var['tenant_id'] ?? $this->tenantId;
+        $this->elementId = $this->var['element_id'] ?? $this->elementId;
+        $this->elementUuid = $this->var['element_uuid'] ?? $this->elementUuid;
+        $this->tenantId = $this->var['tenant_id'] ?? $this->tenantId;
 
-        $this->type = $var['type'] ?? null;
-        $this->limit = $var['limit'] ?? 999;
-        $this->commentBoxId = $var['comment_box_id'] ?? 'commentBox'.\Str::random(8);
+        $this->type = $this->var['type'] ?? null;
+        $this->limit = $this->var['limit'] ?? 999;
+        $this->commentBoxId = $this->var['comment_box_id'] ?? 'commentBox'.\Str::random(8);
 
     }
 }

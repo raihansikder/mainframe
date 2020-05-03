@@ -95,7 +95,7 @@
                 {{--first_name--}}
                 @include('form.input-text',['var'=>['name'=>'first_name','label'=>'First name', 'container_class'=>'col-sm-3']])
                 {{--last_name--}}
-                @include('form.input-text',['var'=>['name'=>'last_name','label'=>'Last name', 'container_class'=>'col-sm-3']])
+                @include('form.input-text',['var'=>['name'=>'last_name','label'=>'Surname', 'container_class'=>'col-sm-3']])
                 {{--full_name--}}
                 @include('form.input-text',['var'=>['name'=>'full_name','label'=>'Full name', 'container_class'=>'col-sm-6']])
                 {{--address1--}}
@@ -109,7 +109,7 @@
                 {{--country_id--}}
                 @include('form.select-model',['var'=>['name'=>'country_id','label'=>'Country','table'=>'countries', 'container_class'=>'col-sm-3']])
                 {{--zip_code--}}
-                @include('form.input-text',['var'=>['name'=>'zip_code','label'=>'ZIP code', 'container_class'=>'col-sm-3']])
+                @include('form.input-text',['var'=>['name'=>'zip_code','label'=>'Postcode / ZIP Code', 'container_class'=>'col-sm-3']])
                 {{--phone--}}
                 @include('form.input-text',['var'=>['name'=>'phone','label'=>'Phone', 'container_class'=>'col-sm-3']])
                 {{--mobile--}}

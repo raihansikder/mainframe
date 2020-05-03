@@ -12,6 +12,6 @@ class SelectArray extends Input
     {
         parent::__construct($var, $element);
 
-        $this->options = $var['options'] ?? [];
+        $this->options = $this->var['options'] ?? [];
     }
 }

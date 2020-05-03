@@ -16,18 +16,18 @@ class Button extends Form
     /**
      * Input constructor.
      *
-     * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule  $element
-     * @param  array  $var
+     * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule $element
+     * @param  array $var
      */
     public function __construct($var = [], $element = null)
     {
-        parent::__construct($element);
+        parent::__construct($var, $element);
 
-        $this->label = $var['label'] ?? null;
-        $this->value = $var['value'] ?? null;
-        $this->name = $var['name'] ?? Str::random(8);
-        $this->params = $var['params'] ?? [];
-        $this->isEditable = $var['editable'] ?? true;
+        $this->label = $this->var['label'] ?? null;
+        $this->value = $this->var['value'] ?? null;
+        $this->name = $this->var['name'] ?? Str::random(8);
+        $this->params = $this->var['params'] ?? [];
+        $this->isEditable = $this->var['editable'] ?? true;
 
         // Force add form-control class
         $this->params['class'] = $this->params['class'] ?? ' btn-default';

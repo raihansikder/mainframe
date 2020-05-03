@@ -27,29 +27,36 @@
  * @var \App\Mainframe\Features\Modular\BaseModule\BaseModule $element
  * @var string $formState create|edit
  */
+// if (! isset($var['editable']) && isset($editable)) {
+//     $var['editable'] = $editable;
+//
+//     // Check immutability
+//     if ($editable && isset($immutables)) {
+//         $var['editable'] = ! in_array($var['name'], $immutables);
+//     }
+// }
+//
+// if (! array_key_exists('element', $var)) {
+//     $var['element'] = $element ?? null;
+// }
+// $var['immutables'] = $immutables ?? [];
+//
+// $var['errors'] = $errors ?? [] ;
 
-// Check edibility
-if (! isset($var['editable']) && isset($editable)) {
-    $var['editable'] = $editable;
 
-    // Check immutability
-    if ($editable && isset($immutables)) {
-        $var['editable'] = ! in_array($var['name'], $immutables);
-    }
-}
+// $var = \App\Mainframe\Features\Form\Form::setUpVar($var,$errors, $element, $editable, $immutables);
 
-$input = new App\Mainframe\Features\Form\Text\InputText($var, $element ?? null);
+$var = \App\Mainframe\Features\Form\Form::setUpVar($var,
+    $errors ?? null,
+    $element ?? null,
+    $editable ?? null,
+    $immutables ?? null);
+
+$input = new App\Mainframe\Features\Form\Text\InputText($var);
 ?>
 
-<div class="form-group {{$input->containerClass}} {{$errors->first($input->name, 'has-error')}} {{$input->uid}}">
-
-    @if($input->label)
-        <label id="label_{{$input->name}}"
-               class="control-label {{$input->labelClass}}"
-               for="{{$input->name}}">
-            {!! $input->label !!}
-        </label>
-    @endif
+<div class="{{$input->containerClasses()}}">
+    @include('mainframe.form.includes.label')
 
     @if($input->isEditable)
         @if($input->type === 'password')
@@ -58,14 +65,10 @@ $input = new App\Mainframe\Features\Form\Text\InputText($var, $element ?? null);
             {{ Form::text($input->name, $input->value(), $input->params) }}
         @endif
     @else
-        <span class="{{$input->params['class']}} readonly">
-            {{ $input->print() }}
-            {{ Form::hidden($input->name, $input->value()) }}
-        </span>
+        @include('mainframe.form.includes.read-only-view')
     @endif
 
-    {!! $errors->first($input->name, '<span class="help-block">:message</span>') !!}
-
+    @include('mainframe.form.includes.show-error')
 </div>
 
 <?php unset($input) ?>
