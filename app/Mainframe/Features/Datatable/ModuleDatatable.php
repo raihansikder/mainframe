@@ -29,10 +29,20 @@ class ModuleDatatable extends Datatable
         $dt = $dt->rawColumns(['id', 'name', 'is_active']);
 
         // Next modify each column content
-        /*  @var $dt \Yajra\DataTables\DataTableAbstract */
-        $dt = $dt->editColumn('name', '<a href="{{ route(\''.$this->module->name.'.edit\', $id) }}">{{$name}}</a>');
-        $dt = $dt->editColumn('id', '<a href="{{ route(\''.$this->module->name.'.edit\', $id) }}">{{$id}}</a>');
-        $dt = $dt->editColumn('is_active', '@if($is_active)  Yes @else <span class="text-red">No</span> @endif');
+
+        if ($this->hasColumn('name')) {
+            // $dt = $dt->editColumn('name', '<a href="{{ route(\''.$this->module->name.'.edit\', $id) }}">{{$name}}</a>');
+            $dt = $dt->editColumn('name', function ($row) {
+                return '<a href="'.route($this->module->name.'.edit', $row->id).'"> test'.$row->name.'</a>';
+            });
+        }
+        if ($this->hasColumn('id')) {
+            $dt = $dt->editColumn('id', '<a href="{{ route(\''.$this->module->name.'.edit\', $id) }}">{{$id}}</a>');
+        }
+
+        if ($this->hasColumn('is_active')) {
+            $dt = $dt->editColumn('is_active', '@if($is_active)  Yes @else <span class="text-red">No</span> @endif');
+        }
 
         return $dt;
     }

@@ -11,6 +11,16 @@ use App\Mainframe\Features\Datatable\ModuleDatatable;
 class SuperHeroDatatable extends ModuleDatatable
 {
 
+    /**
+     * Define Query for generating results for grid
+     *
+     * @return \Illuminate\Database\Query\Builder|static
+     */
+    // public function source()
+    // {
+    //     return DB::table($this->table)
+    //         ->leftJoin('users as updater', 'updater.id', $this->table.'.updated_by');
+    // }
 
     /**
      * Define grid SELECT statement and HTML column name.
@@ -20,24 +30,13 @@ class SuperHeroDatatable extends ModuleDatatable
     public function columns()
     {
         return [
-            [$this->table.".id", 'id', 'ID'],
-            [$this->table.".name", 'name', 'Name'],
+            [$this->table.'.id', 'id', 'ID'],
+            [$this->table.'.name', 'name', 'Name'],
             ['updater.name', 'user_name', 'Updater'],
-            [$this->table.".updated_at", 'updated_at', 'Updated at'],
-            [$this->table.".is_active", 'is_active', 'Active']
+            [$this->table.'.updated_at', 'updated_at', 'Updated at'],
+            [$this->table.'.is_active', 'is_active', 'Active']
         ];
     }
-
-    /**
-     * Define Query for generating results for grid
-     *
-     * @return \Illuminate\Database\Query\Builder|static
-     */
-    // public function source()
-    // {
-    //     return DB::table($this->table)
-    //         ->leftJoin('users as updater', $this->table.'.updated_by', 'updater.id');
-    // }
 
 
     // /**
