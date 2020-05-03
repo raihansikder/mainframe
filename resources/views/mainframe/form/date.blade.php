@@ -58,7 +58,7 @@ $input = new Date($var, $element ?? null);
     @else
         <span class="{{$input->params['class']}} readonly">
             {{ $input->print() }}
-            {{--{{ Form::hidden($input->name, $input->value()) }}--}}
+            {{ Form::hidden($input->name, $input->value()) }}
         </span>
     @endif
 

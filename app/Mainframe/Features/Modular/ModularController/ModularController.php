@@ -120,6 +120,7 @@ class ModularController extends BaseController
     {
         $this->element = $this->module->modelInstance();
         $uuid = request()->old('uuid') ?: uuid();
+        $this->element->fill(request()->all());
         $this->element->uuid = $uuid;
 
         if (! user()->can('create', $this->model)) {
