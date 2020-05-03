@@ -9,14 +9,14 @@ class Checkbox extends Input
     public $checkedVal;
     public $uncheckedVal;
 
-    public function __construct($conf = [], $element = null)
+    public function __construct($var = [], $element = null)
     {
-        parent::__construct($conf, $element);
+        parent::__construct($var, $element);
 
         $this->type = 'checkbox';
-        $this->params['class'] = $conf['params']['class'] ?? '';
-        $this->checkedVal = $conf['checked_val'] ?? 1;
-        $this->uncheckedVal = $conf['unchecked_val'] ?? 0;
+        $this->params['class'] = $var['params']['class'] ?? '';
+        $this->checkedVal = $var['checked_val'] ?? 1;
+        $this->uncheckedVal = $var['unchecked_val'] ?? 0;
     }
 
     public function value()

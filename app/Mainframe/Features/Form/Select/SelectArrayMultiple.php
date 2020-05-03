@@ -6,9 +6,9 @@ class SelectArrayMultiple extends SelectArray
 {
     public $dataParent;
 
-    public function __construct($conf = [], $element = null)
+    public function __construct($var = [], $element = null)
     {
-        parent::__construct($conf, $element);
+        parent::__construct($var, $element);
         $this->params['multiple'] = 'multiple';
         $this->dataParent = $this->name.'_data_parent';
 

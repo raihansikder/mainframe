@@ -21,22 +21,22 @@ class Input extends Form
      * Input constructor.
      *
      * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule $element
-     * @param  array $conf
+     * @param  array $var
      */
-    public function __construct($conf = [], $element = null)
+    public function __construct($var = [], $element = null)
     {
         parent::__construct($element);
 
-        $this->conf = $conf;
+        $this->conf = $var;
 
-        $this->containerClass = $conf['container_class'] ?? 'col-md-3';
-        $this->label = $conf['label'] ?? null;
-        $this->labelClass = $conf['label_class'] ?? null;
-        $this->type = $conf['type'] ?? null;
-        $this->value = $conf['value'] ?? null;
+        $this->containerClass = $var['container_class'] ?? 'col-md-3';
+        $this->label = $var['label'] ?? null;
+        $this->labelClass = $var['label_class'] ?? null;
+        $this->type = $var['type'] ?? null;
+        $this->value = $var['value'] ?? null;
         $this->oldInput = $this->old();
-        $this->name = $conf['name'] ?? Str::random(8);
-        $this->params = $conf['params'] ?? [];
+        $this->name = $var['name'] ?? Str::random(8);
+        $this->params = $var['params'] ?? [];
 
         $this->isEditable = $this->getEditable();
 

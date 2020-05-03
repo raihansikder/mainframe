@@ -133,6 +133,7 @@ class ModularController extends BaseController
             'formConfig' => $this->formConfig('create'),
             'editable' => true,
             'formState' => 'create',
+            'immutables' => [],
         ];
 
         return $this->view($this->form('create'))->with($vars);

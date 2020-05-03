@@ -27,18 +27,18 @@ class Upload extends Input
      * Input constructor.
      *
      * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule  $element
-     * @param  array  $conf
+     * @param  array  $var
      */
-    public function __construct($conf = [], $element = null)
+    public function __construct($var = [], $element = null)
     {
-        parent::__construct($conf,$element);
+        parent::__construct($var,$element);
 
-        $this->containerClass = $conf['container_class'] ?? '';
+        $this->containerClass = $var['container_class'] ?? '';
 
         $this->elementUuid = $element->uuid;
 
         if($element){
-            $this->uploadableType = $conf['uploadable_type'] ?? get_class($element);
+            $this->uploadableType = $var['uploadable_type'] ?? get_class($element);
         }
 
         if ($element && $element->isUpdating()) {
@@ -46,16 +46,16 @@ class Upload extends Input
             $this->tenantId = $element->tenant_id ?? null;
         }
 
-        $this->moduleId = $conf['module_id'] ?? $element->module()->id;
+        $this->moduleId = $var['module_id'] ?? $element->module()->id;
 
 
-        $this->elementId = $conf['element_id'] ?? $this->elementId;
-        $this->elementUuid = $conf['element_uuid'] ?? $this->elementUuid;
-        $this->tenantId = $conf['tenant_id'] ?? $this->tenantId;
+        $this->elementId = $var['element_id'] ?? $this->elementId;
+        $this->elementUuid = $var['element_uuid'] ?? $this->elementUuid;
+        $this->tenantId = $var['tenant_id'] ?? $this->tenantId;
 
-        $this->type = $conf['type'] ?? null;
-        $this->limit = $conf['limit'] ?? 999;
-        $this->uploadBoxId = $conf['upload_box_id'] ?? 'uploadBox'.\Str::random(8);
+        $this->type = $var['type'] ?? null;
+        $this->limit = $var['limit'] ?? 999;
+        $this->uploadBoxId = $var['upload_box_id'] ?? 'uploadBox'.\Str::random(8);
 
     }
 }

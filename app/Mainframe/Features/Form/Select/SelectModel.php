@@ -15,17 +15,17 @@ class SelectModel extends SelectArray
     public $showInactive;
     public $cache;
 
-    public function __construct($conf = [], $element = null)
+    public function __construct($var = [], $element = null)
     {
-        parent::__construct($conf, $element);
+        parent::__construct($var, $element);
 
-        $this->nameField = $conf['name_field'] ?? 'name';
-        $this->valueField = $conf['value_field'] ?? 'id';
+        $this->nameField = $var['name_field'] ?? 'name';
+        $this->valueField = $var['value_field'] ?? 'id';
 
-        $this->table = $conf['table'] ?? null; // Must have table
-        $this->query = $conf['query'] ?? DB::table($this->table);
-        $this->showInactive = $conf['show_inactive'] ?? false;
-        $this->cache = $conf['cache'] ?? timer('none');
+        $this->table = $var['table'] ?? null; // Must have table
+        $this->query = $var['query'] ?? DB::table($this->table);
+        $this->showInactive = $var['show_inactive'] ?? false;
+        $this->cache = $var['cache'] ?? timer('none');
 
         $this->options = $this->options();
     }

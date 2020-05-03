@@ -11,12 +11,12 @@ class SelectModelMultiple extends SelectModel
     /**
      * SelectModelMultiple constructor.
      *
-     * @param  array  $conf
+     * @param  array  $var
      * @param  null  $element
      */
-    public function __construct($conf = [], $element = null)
+    public function __construct($var = [], $element = null)
     {
-        parent::__construct($conf, $element);
+        parent::__construct($var, $element);
         $this->params['multiple'] = 'multiple';
         $this->dataParent = $this->name.'_data_parent';
 

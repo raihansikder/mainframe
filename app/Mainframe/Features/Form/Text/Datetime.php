@@ -8,11 +8,11 @@ class Datetime extends InputText
      * Input constructor.
      *
      * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule  $element
-     * @param  array  $conf
+     * @param  array  $var
      */
-    public function __construct($conf = [], $element = null)
+    public function __construct($var = [], $element = null)
     {
-        parent::__construct($conf, $element);
+        parent::__construct($var, $element);
 
     }
 }

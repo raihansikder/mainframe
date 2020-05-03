@@ -10,12 +10,12 @@ class InputText extends Input
      * Input constructor.
      *
      * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule  $element
-     * @param  array  $conf
+     * @param  array  $var
      */
-    public function __construct($conf = [], $element = null)
+    public function __construct($var = [], $element = null)
     {
-        parent::__construct($conf, $element);
+        parent::__construct($var, $element);
 
-        $this->type = $conf['type'] ?? 'text'; // Can be text or password
+        $this->type = $var['type'] ?? 'text'; // Can be text or password
     }
 }
