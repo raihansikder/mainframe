@@ -25,15 +25,12 @@ class ModuleDatatable extends Datatable
      */
     public function modify($dt)
     {
-        // Set columns for HTML output.
-        $dt = $dt->rawColumns(['id', 'name', 'is_active']);
 
-        // Next modify each column content
-
+        // Modify each column content
         if ($this->hasColumn('name')) {
             // $dt = $dt->editColumn('name', '<a href="{{ route(\''.$this->module->name.'.edit\', $id) }}">{{$name}}</a>');
             $dt = $dt->editColumn('name', function ($row) {
-                return '<a href="'.route($this->module->name.'.edit', $row->id).'"> test'.$row->name.'</a>';
+                return '<a href="'.route($this->module->name.'.edit', $row->id).'">'.$row->name.'</a>';
             });
         }
         if ($this->hasColumn('id')) {
