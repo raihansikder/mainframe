@@ -27,24 +27,7 @@
  * @var \App\Mainframe\Features\Modular\BaseModule\BaseModule $element
  * @var string $formState create|edit
  */
-// if (! isset($var['editable']) && isset($editable)) {
-//     $var['editable'] = $editable;
-//
-//     // Check immutability
-//     if ($editable && isset($immutables)) {
-//         $var['editable'] = ! in_array($var['name'], $immutables);
-//     }
-// }
-//
-// if (! array_key_exists('element', $var)) {
-//     $var['element'] = $element ?? null;
-// }
-// $var['immutables'] = $immutables ?? [];
-//
-// $var['errors'] = $errors ?? [] ;
 
-
-// $var = \App\Mainframe\Features\Form\Form::setUpVar($var,$errors, $element, $editable, $immutables);
 
 $var = \App\Mainframe\Features\Form\Form::setUpVar($var,
     $errors ?? null,
