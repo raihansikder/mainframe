@@ -112,6 +112,19 @@ class ModelProcessor
     }
 
     /**
+     * Custom attributes for the validation rules above.
+     *
+     * @param  array $merge
+     * @return array
+     */
+    public static function customAttributes($merge = [])
+    {
+        $attributes = [];
+
+        return array_merge($attributes, $merge);
+    }
+
+    /**
      * Run Laravel validation
      *
      * @return \Illuminate\Contracts\Validation\Validator|\Illuminate\Validation\Validator
@@ -121,7 +134,8 @@ class ModelProcessor
         $this->validator = Validator::make(
             $this->element->getAttributes(),
             $this::rules($this->element),
-            $this::customErrorMessages()
+            $this::customErrorMessages(),
+            $this::customAttributes()
         );
 
         return $this->validator;

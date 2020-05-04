@@ -17,10 +17,6 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule;
  * @property-read \App\User $updater
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Uploads\Upload[] $uploads
  * @property-read int|null $uploads_count
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Features\Modular\BaseModule\BaseModule active()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\SuperHeroes\SuperHero newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\SuperHeroes\SuperHero newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\SuperHeroes\SuperHero query()
  * @mixin \Eloquent
  */
 class SuperHero extends BaseModule

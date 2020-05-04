@@ -69,6 +69,19 @@ class SuperHeroProcessor extends ModelProcessor
     //     return array_merge($messages, $merge);
     // }
 
+    /**
+     * Custom attributes for the validation rules above.
+     *
+     * @param  array $merge
+     * @return array
+     */
+    // public static function customAttributes($merge = [])
+    // {
+    //     $attributes = [];
+    //
+    //     return array_merge($attributes, $merge);
+    // }
+
     /*
     |--------------------------------------------------------------------------
     | Execute validation on module events
