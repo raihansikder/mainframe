@@ -21,12 +21,12 @@ class SuperHeroProcessor extends ModelProcessor
     /**
      * Fill the model with values
      *
-     * @param  \App\Mainframe\Modules\SuperHeroes\SuperHero $superHero
+     * @param  \App\Mainframe\Modules\SuperHeroes\SuperHero $element
      * @return $this
      */
-    public function fill($superHero)
+    public function fill($element)
     {
-        $superHero->populate();
+        $element->populate();
 
         return $this;
     }
@@ -42,14 +42,14 @@ class SuperHeroProcessor extends ModelProcessor
     /**
      * Validation rules.
      *
-     * @param  \App\Mainframe\Modules\SuperHeroes\SuperHero $superHero
+     * @param  \App\Mainframe\Modules\SuperHeroes\SuperHero $element
      * @param  array $merge
      * @return array
      */
-    public static function rules($superHero, $merge = [])
+    public static function rules($element, $merge = [])
     {
         $rules = [
-            'name' => 'required|between:1,255|unique:super_heroes,name,'.(isset($superHero->id) ? (string) $superHero->id : 'null').',id,deleted_at,NULL',
+            'name' => 'required|between:1,255|unique:super_heroes,name,'.$element->id ?? 'null'.',id,deleted_at,NULL',
             'is_active' => 'in:1,0',
         ];
 
@@ -80,10 +80,10 @@ class SuperHeroProcessor extends ModelProcessor
     /**
      * Run validations for saving. This should be common for both creating and updating.
      *
-     * @param SuperHero $superHero
+     * @param SuperHero $element
      * @return $this
      */
-    public function saving($superHero)
+    public function saving($element)
     {
         /*
         |--------------------------------------------------------------------------
@@ -100,58 +100,58 @@ class SuperHeroProcessor extends ModelProcessor
     /**
      * Creating validation
      *
-     * @param SuperHero $superHero
+     * @param SuperHero $element
      * @return $this
      */
-    // public function creating($superHero) { return $this; }
+    // public function creating($element) { return $this; }
 
     /**
      * Updating validation
      *
-     * @param SuperHero $superHero
+     * @param SuperHero $element
      * @return $this
      */
-    // public function updating($superHero) { return $this; }
+    // public function updating($element) { return $this; }
 
     /**
      * Do something after creation
      *
-     * @param SuperHero $superHero
+     * @param SuperHero $element
      * @return $this
      */
-    // public function created($superHero) { return $this; }
+    // public function created($element) { return $this; }
 
     /**
      * Do something after update
      *
-     * @param SuperHero $superHero
+     * @param SuperHero $element
      * @return $this
      */
-    // public function updated($superHero) { return $this; }
+    // public function updated($element) { return $this; }
 
     /**
      * Do something after saved(common for updated and created)
      *
-     * @param SuperHero $superHero
+     * @param SuperHero $element
      * @return $this
      */
-    // public function saved($superHero) { return $this; }
+    // public function saved($element) { return $this; }
 
     /**
      *  Deleting validation
      *
-     * @param SuperHero $superHero
+     * @param SuperHero $element
      * @return $this
      */
-    // public function deleting($superHero) { return $this; }
+    // public function deleting($element) { return $this; }
 
     /**
      *  Deleting validation
      *
-     * @param SuperHero $superHero
+     * @param SuperHero $element
      * @return $this
      */
-    // public function deleted($superHero) { return $this; }
+    // public function deleted($element) { return $this; }
 
     /*
     |--------------------------------------------------------------------------
@@ -169,9 +169,9 @@ class SuperHeroProcessor extends ModelProcessor
      */
     public function validateName()
     {
-        $superHero = $this->element;
+        $element = $this->element;
 
-        if ($superHero->name == 'Joker') {
+        if ($element->name == 'Joker') {
             $this->error('Name can not be Joker', 'name');
             // Same as
             $this->fieldError('name', 'Name can not be Joker');

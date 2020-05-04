@@ -139,7 +139,7 @@ label {
 /* add padding at the bottom of the app-frame so that CTA does not overlap with page econtent*/
 .content {
     padding-top: 0;
-    padding-bottom: 50px;
+    padding-bottom: 150px;
     min-height: 600px;
     background-color: #FFFFFF;
 !important;
