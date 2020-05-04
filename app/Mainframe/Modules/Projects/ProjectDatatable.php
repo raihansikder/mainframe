@@ -68,11 +68,7 @@ class ProjectDatatable extends ModuleDatatable
     //  */
     // public function modify($dt)
     // {
-    //     // Set columns for HTML output.
-    //     $dt = $dt->rawColumns(['id', 'name', 'is_active']);
-    //
-    //     // Next modify each column content
-    //     /*  @var $dt \Yajra\DataTables\DataTableAbstract */
+
     //     $dt = $dt->editColumn('name', '<a href="{{ route(\''.$this->module->name.'.edit\', $id) }}">{{$name}}</a>');
     //     $dt = $dt->editColumn('id', '<a href="{{ route(\''.$this->module->name.'.edit\', $id) }}">{{$id}}</a>');
     //     $dt = $dt->editColumn('is_active', '@if($is_active)  Yes @else <span class="text-red">No</span> @endif');

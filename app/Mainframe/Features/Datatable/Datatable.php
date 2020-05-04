@@ -13,6 +13,18 @@ class Datatable
     /** @var string */
     public $table;
 
+    /** @var \Yajra\DataTables\DataTableAbstract */
+    public $dt;
+
+    /** @var array */
+    public $whiteList = [];
+
+    /** @var array */
+    public $blackList = [];
+
+    /** @var array */
+    public $rawColumns = ['id', 'name', 'is_active'];
+
     /**
      * Constructor for this class is very important as it boots up necessary features of
      * a module. First of all, it load module related meta information, then based
@@ -101,14 +113,23 @@ class Datatable
     public function modify($dt)
     {
         // Set columns for HTML output.
-        $dt = $dt->rawColumns(['id', 'name', 'is_active']);
+        // $dt = $dt->rawColumns($this->rawColumns);
 
         // // Next modify each column content
         // /*  @var $dt \Yajra\DataTables\DataTableAbstract */
-        // $dt = $dt->editColumn('name', '<a href="{{ route(\''.$this->moduleName.'.edit\', $id) }}">{{$name}}</a>');
-        // $dt = $dt->editColumn('id', '<a href="{{ route(\''.$this->moduleName.'.edit\', $id) }}">{{$id}}</a>');
-        // $dt = $dt->editColumn('is_active', '@if($is_active)  Yes @else <span class="text-red">No</span> @endif');
-
+        // if ($this->hasColumn('name')) {
+        //     // $dt = $dt->editColumn('name', '<a href="{{ route(\''.$this->module->name.'.edit\', $id) }}">{{$name}}</a>');
+        //     $dt = $dt->editColumn('name', function ($row) {
+        //         return '<a href="'.route($this->module->name.'.edit', $row->id).'">'.$row->name.'</a>';
+        //     });
+        // }
+        // if ($this->hasColumn('id')) {
+        //     $dt = $dt->editColumn('id', '<a href="{{ route(\''.$this->module->name.'.edit\', $id) }}">{{$id}}</a>');
+        // }
+        //
+        // if ($this->hasColumn('is_active')) {
+        //     $dt = $dt->editColumn('is_active', '@if($is_active)  Yes @else <span class="text-red">No</span> @endif');
+        // }
         return $dt;
     }
 
@@ -121,19 +142,44 @@ class Datatable
      */
     public function json()
     {
-        /** @var \Yajra\DataTables\DataTableAbstract $dt */
-        return ($this->modify(datatables($this->query())))->toJson();
+        $dt = datatables($this->query());
+
+        // HTML Output
+        $dt->rawColumns($this->rawColumns);
+
+        if (count($this->whiteList)) {
+            $dt->whitelist($this->whiteList);
+        }
+
+        if (count($this->blackList)) {
+            $dt->blacklist($this->blackList);
+        }
+
+        return $this->modify($dt)->toJson();
+    }
+
+    /**
+     * Instantiate data table.
+     *
+     * @return $this
+     */
+    public function datatable()
+    {
+        $this->dt = datatables($this->query());
+
+        return $this;
     }
 
     /**
      * Check if a column exists in the data table
+     *
      * @param $column
      * @return bool
      */
     public function hasColumn($column)
     {
         foreach ($this->columns() as $col) {
-            if ($col[1] == $column){
+            if ($col[1] == $column) {
                 return true;
             }
         }

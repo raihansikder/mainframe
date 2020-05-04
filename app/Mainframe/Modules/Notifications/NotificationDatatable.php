@@ -20,11 +20,11 @@ class NotificationDatatable extends ModuleDatatable
     public function columns()
     {
         return [
-            [$this->table.".id", 'id', 'ID'],
-            [$this->table.".name", 'name', 'Name'],
+            [$this->table.'.id', 'id', 'ID'],
+            [$this->table.'.name', 'name', 'Name'],
             ['updater.name', 'user_name', 'Updater'],
-            [$this->table.".updated_at", 'updated_at', 'Updated at'],
-            [$this->table.".is_active", 'is_active', 'Active']
+            [$this->table.'.updated_at', 'updated_at', 'Updated at'],
+            [$this->table.'.is_active', 'is_active', 'Active']
         ];
     }
 
@@ -68,11 +68,6 @@ class NotificationDatatable extends ModuleDatatable
     //  */
     // public function modify($dt)
     // {
-    //     // Set columns for HTML output.
-    //     $dt = $dt->rawColumns(['id', 'name', 'is_active']);
-    //
-    //     // Next modify each column content
-    //     /*  @var $dt \Yajra\DataTables\DataTableAbstract */
     //     $dt = $dt->editColumn('name', '<a href="{{ route(\''.$this->module->name.'.edit\', $id) }}">{{$name}}</a>');
     //     $dt = $dt->editColumn('id', '<a href="{{ route(\''.$this->module->name.'.edit\', $id) }}">{{$id}}</a>');
     //     $dt = $dt->editColumn('is_active', '@if($is_active)  Yes @else <span class="text-red">No</span> @endif');
