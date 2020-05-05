@@ -15,6 +15,7 @@ class ModelProcessor
 
     /**
      * Element filled with new values
+     * Values: create, update, delete, restore
      *
      * @var \App\Mainframe\Features\Modular\BaseModule\BaseModule
      */
@@ -55,6 +56,7 @@ class ModelProcessor
 
     /**
      * MainframeModelValidator constructor.
+     *
      *
      * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule $element
      */
@@ -367,11 +369,7 @@ class ModelProcessor
      */
     public function run()
     {
-        if (isset($this->element->id)) {
-            return $this->forUpdate();
-        }
-
-        return $this->forCreate();
+        return $this->forSave();
     }
 
     /*
@@ -393,24 +391,24 @@ class ModelProcessor
     public function forSave($element = null)
     {
         $element = $element ?: $this->element;
-        $this->validate();
+
+        $this->fill($element)->validate();
 
         if (! $this->valid()) {
             return $this;
         }
 
-        $this->fill($element);
-        $this->preSave();
+        $this->preSaving();
         $this->saving($element);
 
         if ($element->isCreating()) {
-            $this->preCreate();
+            $this->preCreating();
 
             return $this->creating($element);
         }
 
         if ($element->isUpdating()) {
-            $this->preUpdate();
+            $this->preUpdating();
 
             return $this->updating($element);
         }
@@ -418,7 +416,10 @@ class ModelProcessor
         return $this;
     }
 
-    public function preSave()
+    /**
+     * @return $this
+     */
+    public function preSaving()
     {
         return $this;
     }
@@ -480,24 +481,25 @@ class ModelProcessor
      * @param  null $element
      * @return $this
      */
-    public function forCreate($element = null)
-    {
-        $element = $element ?: $this->element;
-        $this->fill($element)->validate();
-
-        $this->saving($element);
-        $this->preCreate();
-        $this->creating($element);
-
-        return $this;
-    }
+    // public function forCreate($element = null)
+    // {
+    //     $element = $element ?: $this->element;
+    //
+    //     $this->fill($element)->validate();
+    //
+    //     $this->saving($element);
+    //     $this->preCreating();
+    //     $this->creating($element);
+    //
+    //     return $this;
+    // }
 
     /**
      * Run common codes before update.
      *
      * @return $this
      */
-    public function preCreate()
+    public function preCreating()
     {
         // $this->checkImmutables(); // Example
         // $this->checkTransitions(); // Example
@@ -508,14 +510,14 @@ class ModelProcessor
     /**
      * Create the element
      */
-    public function create()
-    {
-        if ($this->forCreate()->valid()) {
-            $this->element->save();
-        }
-
-        return $this;
-    }
+    // public function create()
+    // {
+    //     if ($this->forCreate()->valid()) {
+    //         $this->element->save();
+    //     }
+    //
+    //     return $this;
+    // }
 
     /**
      * Run validation for update.
@@ -523,24 +525,24 @@ class ModelProcessor
      * @param  null $element
      * @return $this
      */
-    public function forUpdate($element = null)
-    {
-        $element = $element ?: $this->element;
-        $this->fill($element)->validate();
-
-        $this->saving($element);
-        $this->preUpdate();
-        $this->updating($element);
-
-        return $this;
-    }
+    // public function forUpdate($element = null)
+    // {
+    //     $element = $element ?: $this->element;
+    //     $this->fill($element)->validate();
+    //
+    //     $this->saving($element);
+    //     $this->preUpdating();
+    //     $this->updating($element);
+    //
+    //     return $this;
+    // }
 
     /**
      * Run common codes before update.
      *
      * @return $this
      */
-    public function preUpdate()
+    public function preUpdating()
     {
         $this->checkImmutables();
         $this->checkTransitions();
@@ -551,14 +553,14 @@ class ModelProcessor
     /**
      * Create the element
      */
-    public function update()
-    {
-        if ($this->forUpdate()->valid()) {
-            $this->element->save();
-        }
-
-        return $this;
-    }
+    // public function update()
+    // {
+    //     if ($this->forUpdate()->valid()) {
+    //         $this->element->save();
+    //     }
+    //
+    //     return $this;
+    // }
 
     /**
      * Run validation for delete.
@@ -570,7 +572,7 @@ class ModelProcessor
     {
         $element = $element ?: $this->element;
         $element->deleted_by = user()->id; // Fill with the deleter id.
-        $this->preDelete();
+        $this->preDeleting();
         $this->deleting($element);
 
         return $this;
@@ -579,7 +581,7 @@ class ModelProcessor
     /**
      * Run common codes before delete
      */
-    public function preDelete()
+    public function preDeleting()
     {
 
     }
