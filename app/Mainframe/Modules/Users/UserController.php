@@ -46,13 +46,8 @@ class UserController extends ModularController
      */
     public function storeRequestValidator()
     {
-        $rules = [
-            'password' => User::PASSWORD_VALIDATION_RULE,
-        ];
-
-        $message = [
-            'password.regex' => "The password field should be mix of letters and numbers.",
-        ];
+        $rules = ['password' => User::PASSWORD_VALIDATION_RULE,];
+        $message = ['password.regex' => 'The password field should be mix of letters and numbers.',];
 
         $this->validator = Validator::make(request()->all(), $rules, $message);
 

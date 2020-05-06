@@ -318,7 +318,7 @@ class ModularController extends BaseController
      * @param  null $id
      * @return \App\Mainframe\Features\Modular\ModularController\ModularController
      */
-    public function storeUploads($id)
+    public function attachUpload($id)
     {
         request()->merge([
             'module_id' => $this->module->id,
@@ -379,7 +379,7 @@ class ModularController extends BaseController
      * @param  null $id
      * @return \App\Mainframe\Features\Modular\ModularController\ModularController
      */
-    public function storeComments($id)
+    public function attachComment($id)
     {
         request()->merge([
             'module_id' => $this->module->id,

@@ -22,27 +22,27 @@ Route::middleware(['auth', 'verified'])->group(function () use ($modules, $modul
         $moduleName = $module->name;
 
         /* * Restore route */
-        Route:: get($path."/{id}/restore", $controller."@restore")->name($moduleName.'.restore');
+        Route:: get($path.'/{id}/restore', $controller.'@restore')->name($moduleName.'.restore');
 
         /* * Json response route for data-table */
-        Route:: get($path."/datatable/json", $controller."@datatableJson")->name($moduleName.'.datatable-json');
+        Route:: get($path.'/datatable/json', $controller.'@datatableJson')->name($moduleName.'.datatable-json');
 
         /* * Generic list return route. This can be used to obtain an array of element. */
-        Route:: get($path."/list/json", $controller."@listJson")->name($moduleName.'.list-json');
+        Route:: get($path.'/list/json', $controller.'@listJson')->name($moduleName.'.list-json');
 
         /* * Default report route */
-        Route:: get($path."/report", $controller."@report")->name($moduleName.'.report');
+        Route:: get($path.'/report', $controller.'@report')->name($moduleName.'.report');
 
         /* * Route to see the change logs of a particular element */
-        Route:: get($path."/{id}/changes", $controller."@changes")->name($moduleName.'.changes');
+        Route:: get($path.'/{id}/changes', $controller.'@changes')->name($moduleName.'.changes');
 
         /* * Route to upload file a particular element */
-        Route:: get($path."/{id}/uploads", $controller."@uploads")->name($moduleName.'.uploads.index');
-        Route:: post($path."/{id}/uploads", $controller."@storeUploads")->name($moduleName.'.uploads.store');
+        Route:: get($path.'/{id}/uploads', $controller.'@uploads')->name($moduleName.'.uploads.index');
+        Route:: post($path.'/{id}/uploads', $controller.'@attachUpload')->name($moduleName.'.uploads.store');
 
         /* * Route to add comment file a particular element */
-        Route:: get($path."/{id}/comments", $controller."@comments")->name($moduleName.'.comments.index');
-        Route:: post($path."/{id}/comments", $controller."@storeComments")->name($moduleName.'.comments.store');
+        Route:: get($path.'/{id}/comments', $controller.'@comments')->name($moduleName.'.comments.index');
+        Route:: post($path.'/{id}/comments', $controller.'@storeComments')->name($moduleName.'.comments.store');
 
         /* * Resourceful route that creates all REST routs. */
         Route::resource($moduleName, $controller);

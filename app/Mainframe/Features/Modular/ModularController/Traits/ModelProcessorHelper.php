@@ -10,23 +10,31 @@ use App\Mainframe\Features\Modular\ModularController\ModularController;
 trait ModelProcessorHelper
 {
     /**
-     * Transform request input and fill.
+     * Transform request inputs
      *
-     * First transform the input and then fill.
      * This function is useful when you don't want to exactly
      * store a model field as it is in the request. Sometimes
      * the request may be an array that you want to transform
      * into a string and then save.
      *
-     * @return mixed|ModularController
+     * @return array
      */
-    public function fill()
+    public function transformInputRequests()
     {
         $inputs = request()->all();
 
-        // Transform $inputs here
+        return $inputs;
+    }
 
-        $this->element->fill($inputs);
+    /**
+     * Fill the element with transformed request inputs.
+     *
+     * @return $this
+     */
+    public function fill()
+    {
+
+        $this->element->fill($this->transformInputRequests());
 
         return $this;
     }
@@ -71,11 +79,10 @@ trait ModelProcessorHelper
             return $this;
         }
 
-        // Set response flag and message.
-        $this->success();
+        $this->success();  // Set response flag and message.
 
-        // Execute controller stored() function for any post save operation in controller.
         $this->stored();
+        $this->saved();
 
         return $this;
     }
@@ -116,8 +123,8 @@ trait ModelProcessorHelper
         // Set response flag and message.
         $this->success();
 
-        // Execute controller stored() function for any post save operation in controller.
         $this->updated();
+        $this->saved();
 
         return $this;
     }
@@ -126,6 +133,14 @@ trait ModelProcessorHelper
      * After successful update
      */
     public function updated()
+    {
+        // echo 'In Controller updated(). ';
+    }
+
+    /**
+     * After successful update
+     */
+    public function saved()
     {
         // echo 'In Controller updated(). ';
     }

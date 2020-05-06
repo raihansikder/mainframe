@@ -36,14 +36,14 @@ Route::prefix('core/1.0')->middleware(['request.json', 'x-auth-token'])->group(f
     // Module RESTful apis
     Route::prefix('module')->group(function () use ($modules) {
         foreach ($modules as $module) {
-            Route::get($module->route_path."/list/json", $module->controller."@listJson");
-            Route::get($module->route_path."/report", $module->controller."@report");
+            Route::get($module->route_path.'/list/json', $module->controller.'@listJson');
+            Route::get($module->route_path.'/report', $module->controller.'@report');
 
-            Route::get($module->route_path."/{id}/uploads", $module->controller."@uploads");
-            Route::post($module->route_path."/{id}/uploads", $module->controller."@storeUploads");
+            Route::get($module->route_path.'/{id}/uploads', $module->controller.'@uploads');
+            Route::post($module->route_path.'/{id}/uploads', $module->controller.'@attachUpload');
 
-            Route::get($module->route_path."/{id}/comments", $module->controller."@comments");
-            Route::post($module->route_path."/{id}/comments", $module->controller."@storeComments");
+            Route::get($module->route_path.'/{id}/comments', $module->controller.'@comments');
+            Route::post($module->route_path.'/{id}/comments', $module->controller.'@attachComments');
 
             Route::apiResource($module->name, $module->controller)->names([
                 'index' => "core.api.{$module->name}.index",
