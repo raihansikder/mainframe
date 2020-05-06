@@ -6,6 +6,7 @@
 namespace App\Mainframe\Features\Datatable;
 
 use DB;
+use Schema;
 
 class Datatable
 {
@@ -85,22 +86,31 @@ class Datatable
     /**
      * Define Query for generating results for grid
      *
-     * @return $this|mixed
+     * @return \Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder|mixed
      */
     public function query()
     {
         $query = $this->source()->select($this->selects());
 
         // Inject tenant context.
-        // If the query source is a DB::table() you have to inject tenant context manually.
-        // Else, if the source is a model then tenant_id checking is injected automatically.
-        if (user()->ofTenant() && \Schema::hasColumn($this->table, 'tenant_id')) {
-            $query->where('tenant_id', user()->tenant_id);
+        if (user()->ofTenant() && Schema::hasColumn($this->table, 'tenant_id')) {
+            $query->where($this->table, '.tenant_id', user()->tenant_id);
         }
 
         // Exclude deleted rows
-        $query = $query->whereNull($this->table.'.deleted_at'); // Skip deleted rows
+        $query = $query->whereNull($this->table.'.deleted_at');
 
+        return $this->filter($query);
+    }
+
+    /**
+     * Apply filter on query.
+     *
+     * @param $query
+     * @return \Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder|mixed
+     */
+    public function filter($query)
+    {
         return $query;
     }
 
@@ -112,24 +122,13 @@ class Datatable
      */
     public function modify($dt)
     {
-        // Set columns for HTML output.
-        // $dt = $dt->rawColumns($this->rawColumns);
-
-        // // Next modify each column content
-        // /*  @var $dt \Yajra\DataTables\DataTableAbstract */
         // if ($this->hasColumn('name')) {
         //     // $dt = $dt->editColumn('name', '<a href="{{ route(\''.$this->module->name.'.edit\', $id) }}">{{$name}}</a>');
         //     $dt = $dt->editColumn('name', function ($row) {
         //         return '<a href="'.route($this->module->name.'.edit', $row->id).'">'.$row->name.'</a>';
         //     });
         // }
-        // if ($this->hasColumn('id')) {
-        //     $dt = $dt->editColumn('id', '<a href="{{ route(\''.$this->module->name.'.edit\', $id) }}">{{$id}}</a>');
-        // }
-        //
-        // if ($this->hasColumn('is_active')) {
-        //     $dt = $dt->editColumn('is_active', '@if($is_active)  Yes @else <span class="text-red">No</span> @endif');
-        // }
+
         return $dt;
     }
 
