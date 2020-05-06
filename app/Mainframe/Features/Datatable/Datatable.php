@@ -106,7 +106,7 @@ class Datatable
     /**
      * Apply filter on query.
      *
-     * @param $query
+     * @param $query \Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder|mixed
      * @return \Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder|mixed
      */
     public function filter($query)

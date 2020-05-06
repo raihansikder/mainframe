@@ -9,6 +9,7 @@
  * @var array $formConfig
  * @var string $uuid Only available for create
  * @var bool $editable
+ * @var array $immutables
  */
 ?>
 

@@ -14,7 +14,6 @@
     |--------------------------------------------------------------------------
     | Common JS to run for both create and update
     |--------------------------------------------------------------------------
-    |
     | Write the functions on this top section of the file so that they
     | can be called by the codes after it.
     */
@@ -30,7 +29,6 @@
     |--------------------------------------------------------------------------
     | JS to run only during creation
     |--------------------------------------------------------------------------
-    |
     |
     | Some JS may only be required to be executed while creating a
     | model. Write such JS here

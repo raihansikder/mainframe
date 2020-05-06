@@ -5,7 +5,6 @@
 
 namespace App\Mainframe\Modules\SuperHeroes;
 
-use DB;
 use App\Mainframe\Features\Datatable\ModuleDatatable;
 
 class SuperHeroDatatable extends ModuleDatatable
@@ -38,26 +37,20 @@ class SuperHeroDatatable extends ModuleDatatable
         ];
     }
 
+    /**
+     * Apply filter on query.
+     *
+     * @param $query \Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder|mixed
+     * @return \Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder|mixed
+     */
+    public function filter($query)
+    {
+        // if (request('id')) { // Todo: Sample code
+        //     $query->where('id', request('id'));
+        // }
 
-    // /**
-    //  * Define Query for generating results for grid
-    //  *
-    //  * @return $this|mixed
-    //  */
-    // public function query()
-    // {
-    //     $query = $this->source()->select($this->selects());
-    //
-    //     // Inject tenant context in grid query
-    //     if ($tenant_id = inTenantContext($this->table)) {
-    //         $query = injectTenantIdInModelQuery($this->table, $query);
-    //     }
-    //
-    //     // Exclude deleted rows
-    //     $query = $query->whereNull($this->table.'.deleted_at'); // Skip deleted rows
-    //
-    //     return $query;
-    // }
+        return $query;
+    }
 
     /**
      * Modify datatable values
@@ -70,7 +63,7 @@ class SuperHeroDatatable extends ModuleDatatable
     //     $dt = parent::modify($dt);
     //
     //     if ($this->hasColumn('column_name')) {
-    //         $dt->editColumn('grand_total', function ($row) {
+    //         $dt->editColumn('column_name', function ($row) {
     //             return $row->column_name.'updated';
     //         });
     //     }
