@@ -25,8 +25,7 @@ class ModuleDatatable extends Datatable
      */
     public function modify($dt)
     {
-
-        // Modify each column content
+        // Modify column contents
         if ($this->hasColumn('name')) {
             // $dt = $dt->editColumn('name', '<a href="{{ route(\''.$this->module->name.'.edit\', $id) }}">{{$name}}</a>');
             $dt = $dt->editColumn('name', function ($row) {

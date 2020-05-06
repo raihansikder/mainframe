@@ -6,12 +6,10 @@ use App\Mainframe\Features\Modular\ModularController\ModularController;
 
 class SuperHeroController extends ModularController
 {
-
     /*
     |--------------------------------------------------------------------------
     | Module definitions
     |--------------------------------------------------------------------------
-    |
     */
     protected $moduleName = 'super-heroes';
 

@@ -58,7 +58,7 @@ trait Validable
      */
     public function fieldError($key, $message = null)
     {
-        $message = $message ?: $key.' - is not valid';
+        $message = $message ?: $key.' is not valid';
         $this->validator()->errors()->add($key, $message);
 
         return $this;
@@ -69,7 +69,7 @@ trait Validable
      *
      * @return bool
      */
-    public function invalid()
+    public function isInvalid()
     {
         return $this->validator()->messages()->count();
         // return $this->valid ? false : true;
@@ -80,9 +80,9 @@ trait Validable
      *
      * @return bool
      */
-    public function valid()
+    public function isValid()
     {
-        return ! $this->invalid();
+        return ! $this->isInvalid();
     }
 
 }

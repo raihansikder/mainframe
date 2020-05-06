@@ -148,7 +148,7 @@ class ModelProcessor
      *
      * @return $this
      */
-    public function checkImmutables()
+    public function validateImmutables()
     {
         foreach ($this->getImmutables() as $field) {
             if ($this->element->fieldHasChanged($field)) {
@@ -164,7 +164,7 @@ class ModelProcessor
      *
      * @return $this
      */
-    public function checkTransitions()
+    public function validateTransitions()
     {
         $allTransitions = $this->getTransitions();
 
@@ -173,7 +173,7 @@ class ModelProcessor
 
                 $change = $this->element->transition($field);
 
-                if ($change && ! $this->transitionAllowed($field, $change['old'], $change['new'])) {
+                if ($change && ! $this->transitionIsAllowed($field, $change['old'], $change['new'])) {
                     $this->fieldError($field, $field.' - can not be updated from '.$change['old'].' to '.$change['new']);
                 }
             }
@@ -209,7 +209,7 @@ class ModelProcessor
      * @param $field
      * @return array
      */
-    public function transition($field)
+    public function transitionOf($field)
     {
         // Previous $this->element->fieldHasChanged($field)
         if (isset($this->original[$field], $this->element->$field) && $this->original[$field] != $this->element->$field) {
@@ -237,7 +237,7 @@ class ModelProcessor
             $to = [$to];
         }
 
-        $change = $this->transition($field);
+        $change = $this->transitionOf($field);
 
         if ($change) {
             return in_array($change['old'], $from) && in_array($change['new'], $to);
@@ -258,7 +258,7 @@ class ModelProcessor
             $from = [$from];
         }
 
-        $change = $this->transition($field);
+        $change = $this->transitionOf($field);
 
         if ($change) {
             return in_array($change['old'], $from);
@@ -279,7 +279,7 @@ class ModelProcessor
             $to = [$to];
         }
 
-        $change = $this->transition($field);
+        $change = $this->transitionOf($field);
 
         if ($change) {
             return in_array($change['new'], $to);
@@ -294,7 +294,7 @@ class ModelProcessor
      * @param $to
      * @return bool
      */
-    public function transitionAllowed($field, $from, $to)
+    public function transitionIsAllowed($field, $from, $to)
     {
         $allTransitions = $this->getTransitions();
 
@@ -321,7 +321,7 @@ class ModelProcessor
      * @param null $from
      * @return array
      */
-    public function nextTransitions($field, $from = null)
+    public function allowedTransitionsOf($field, $from = null)
     {
         $from = $from ?: $this->original[$field];
         $allTransitions = $this->getTransitions();
@@ -394,7 +394,7 @@ class ModelProcessor
 
         $this->fill($element)->validate();
 
-        if (! $this->valid()) {
+        if (! $this->isValid()) {
             return $this;
         }
 
@@ -436,7 +436,7 @@ class ModelProcessor
         // Run validation, call saving, then call creating/updating
         $this->forSave();
 
-        if (! $this->valid()) {
+        if (! $this->isValid()) {
             return $this;
         }
 
@@ -467,7 +467,7 @@ class ModelProcessor
      */
     public function saveQuietly()
     {
-        if ($this->forSave()->valid()) {
+        if ($this->forSave()->isValid()) {
             $this->element->saveQuietly();
         }
 
@@ -544,8 +544,8 @@ class ModelProcessor
      */
     public function preUpdating()
     {
-        $this->checkImmutables();
-        $this->checkTransitions();
+        $this->validateImmutables();
+        $this->validateTransitions();
 
         return $this;
     }
@@ -598,7 +598,7 @@ class ModelProcessor
 
         $this->forDelete();
 
-        if (! $this->valid()) {
+        if (! $this->isValid()) {
             return $this;
 
         }

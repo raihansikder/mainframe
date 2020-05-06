@@ -255,11 +255,11 @@ trait ModularTrait
      * @param null $from
      * @return array
      */
-    public function nextTransitions($field, $from = null)
+    public function allowedTransitionsOf($field, $from = null)
     {
         $from = $from ?: $this->$field;
 
-        return $this->processor()->nextTransitions($field, $from);
+        return $this->processor()->allowedTransitionsOf($field, $from);
     }
 
     /*
@@ -391,12 +391,34 @@ trait ModularTrait
     |
     */
     /**
+     * Get the processor for this module
      * @return mixed|\App\Mainframe\Features\Modular\Validator\ModelProcessor
      */
     public function processor()
     {
-        /** @var \App\Mainframe\Features\Modular\BaseModule\BaseModule $this */
         return $this->module()->processorInstance($this);
+    }
+
+    /**
+     * Run processor logic on model
+     * @return \App\Mainframe\Features\Modular\Validator\ModelProcessor|mixed
+     */
+    public function process()
+    {
+        return $this->processor()->forSave();
+    }
+
+    /**
+     * @return $this
+     */
+    public function processed()
+    {
+        return $this->process()->element;
+    }
+
+    public function validate()
+    {
+        return $this->module()->processorInstance($this)->forSave()->element;
     }
 
     /*

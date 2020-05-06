@@ -235,7 +235,7 @@ class Response
         }
 
         // Load validation errors
-        if ($this->invalid()) {
+        if ($this->isInvalid()) {
             $data['validation_errors'] = $this->validator()->messages()->toArray();
         }
 
@@ -442,7 +442,7 @@ class Response
     public function isSuccess()
     {
 
-        return $this->status == 'success' && $this->valid();
+        return $this->status == 'success' && $this->isValid();
     }
 
     /**

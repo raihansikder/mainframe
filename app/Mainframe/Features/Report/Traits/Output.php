@@ -20,7 +20,7 @@ trait Output
             return $this->html($type = 'blank');
         }
 
-        if ($this->invalid()) {
+        if ($this->isInvalid()) {
             return $this->responseInvalid();
         }
 

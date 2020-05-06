@@ -36,7 +36,7 @@ trait ModuleHelper
     /**
      * Get module names as one-dimensional array, by default get only the active ones
      *
-     * @param  bool|true  $only_active
+     * @param  bool|true $only_active
      * @return array
      */
     public static function names($only_active = true)
@@ -241,6 +241,9 @@ trait ModuleHelper
         return (new $classPath);
     }
 
+    /**
+     * @return string|null
+     */
     public function processorClassPath()
     {
         if ($this->processor) {
@@ -254,7 +257,7 @@ trait ModuleHelper
      * Create instance of a model.
      *
      * @param $element
-     * @return mixed
+     * @return \App\Mainframe\Features\Modular\Validator\ModelProcessor|mixed
      */
     public function processorInstance($element)
     {
