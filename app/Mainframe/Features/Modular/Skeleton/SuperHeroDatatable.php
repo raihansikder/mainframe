@@ -59,17 +59,21 @@ class SuperHeroDatatable extends ModuleDatatable
     //     return $query;
     // }
 
-    // /**
-    //  * Modify datatable values
-    //  *
-    //  * @return mixed
-    //  * @var $dt \Yajra\DataTables\DataTableAbstract
-    //  */
+    /**
+     * Modify datatable values
+     *
+     * @return mixed
+     * @var $dt \Yajra\DataTables\DataTableAbstract
+     */
     // public function modify($dt)
     // {
-    //     $dt = $dt->editColumn('name', '<a href="{{ route(\''.$this->module->name.'.edit\', $id) }}">{{$name}}</a>');
-    //     $dt = $dt->editColumn('id', '<a href="{{ route(\''.$this->module->name.'.edit\', $id) }}">{{$id}}</a>');
-    //     $dt = $dt->editColumn('is_active', '@if($is_active)  Yes @else <span class="text-red">No</span> @endif');
+    //     $dt = parent::modify($dt);
+    //
+    //     if ($this->hasColumn('column_name')) {
+    //         $dt->editColumn('grand_total', function ($row) {
+    //             return $row->column_name.'updated';
+    //         });
+    //     }
     //
     //     return $dt;
     // }
