@@ -104,7 +104,8 @@ function loadMsg(ret) {
         $('div#msgError').append('<h4>Error : ' + ret.message + '</h4>');
     } else if (ret.status === 'success') {
         hasSuccess = true;
-        $('div#msgSuccess').append('<h4>Success</h4>');
+        // $('div#msgSuccess').append('<h4>Success</h4>');
+        $('div#msgSuccess').append('<h4>Success : ' + ret.message + '</h4>');
     }
 
     if (ret.hasOwnProperty('session_error')) {

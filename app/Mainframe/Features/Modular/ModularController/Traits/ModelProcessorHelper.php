@@ -3,6 +3,7 @@
 namespace App\Mainframe\Features\Modular\ModularController\Traits;
 
 use App\Mainframe\Features\Modular\ModularController\ModularController;
+use Illuminate\Support\Str;
 
 /**
  * @mixin ModularController
@@ -79,7 +80,7 @@ trait ModelProcessorHelper
             return $this;
         }
 
-        $this->success();  // Set response flag and message.
+        $this->success('The '.Str::singular($this->module->title).' has been saved');
 
         $this->stored();
         $this->saved();
@@ -121,7 +122,7 @@ trait ModelProcessorHelper
         }
 
         // Set response flag and message.
-        $this->success();
+        $this->success('The '.Str::singular($this->module->title).' is updated');
 
         $this->updated();
         $this->saved();
@@ -170,7 +171,7 @@ trait ModelProcessorHelper
         }
 
         // Set response flag and message.
-        $this->success('Successfully deleted');
+        $this->success('The '.Str::singular($this->module->title).' is deleted');
 
         // Execute controller stored() function for any post save operation in controller.
         $this->deleted();

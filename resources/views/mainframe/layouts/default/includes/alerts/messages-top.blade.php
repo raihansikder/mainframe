@@ -9,6 +9,8 @@
 
 use Illuminate\Support\MessageBag;
 
+
+$showAlerts = false;
 /**
  * These vars are passed from \App\Mainframe\Features\Responder\Response::redirect
  * and \App\Mainframe\Features\Responder\Response::with
@@ -34,9 +36,13 @@ if ($responseStatus == 'success') {
     $textCss = "text-green";
 }
 
+
+if(($responseStatus && $responseMessage) || $errors->any()){
+    $showAlerts = true;
+}
 ?>
 
-@if($responseStatus || $responseMessage || $errors->any())
+@if($showAlerts)
     <div class="message-container">
         <div class="callout ajaxMsg errorDiv" id="errorDiv">
             @if($responseStatus)
