@@ -18,29 +18,23 @@
  *      $var['name']            ?? Str::random(8);
  *      $var['params']          ?? [];  // These are the html attributes like css, id etc for the field.
  *      $var['editable']        ?? true;
- */
-
-/**
- * @var array $var
- * @var \App\Mainframe\Modules\Modules\Module $module
- * @var \App\User $user
+ *
+ * @var \Illuminate\Support\ViewErrorBag $errors
  * @var \App\Mainframe\Features\Modular\BaseModule\BaseModule $element
- * @var string $formState create|edit
+ * @var bool $editable
+ * @var array $immutables
  */
 
-
-$var = \App\Mainframe\Features\Form\Form::setUpVar($var,
-    $errors ?? null,
-    $element ?? null,
-    $editable ?? null,
-    $immutables ?? null);
-
-$input = new App\Mainframe\Features\Form\Text\InputText($var);
+$var = \App\Mainframe\Features\Form\Form::setUpVar($var, $errors ?? null, $element ?? null, $editable ?? null, $immutables ?? null);
+$input = new \App\Mainframe\Features\Form\Text\InputText($var);
 ?>
 
 <div class="{{$input->containerClasses()}}">
+
+    {{-- label --}}
     @include('mainframe.form.includes.label')
 
+    {{-- input --}}
     @if($input->isEditable)
         @if($input->type === 'password')
             {{ Form::password($input->name, $input->params) }}
@@ -51,7 +45,8 @@ $input = new App\Mainframe\Features\Form\Text\InputText($var);
         @include('mainframe.form.includes.read-only-view')
     @endif
 
+    {{-- Error --}}
     @include('mainframe.form.includes.show-error')
 </div>
 
-<?php unset($input) ?>
+<?php unset($input) // Make sure to clear $input var ?>

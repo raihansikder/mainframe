@@ -53,11 +53,15 @@ class Form
             }
         }
 
+        // Get the module element
         if (! array_key_exists('element', $var)) {
             $var['element'] = $element ?? null;
         }
+
+        // Get a list of immutables
         $var['immutables'] = $immutables ?? [];
 
+        // Set errors from ErrorBag
         $var['errors'] = $errors ?? [];
 
         return $var;
