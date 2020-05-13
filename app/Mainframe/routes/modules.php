@@ -45,7 +45,15 @@ Route::middleware(['auth', 'verified'])->group(function () use ($modules, $modul
         Route:: post($path.'/{id}/comments', $controller.'@storeComments')->name($moduleName.'.comments.store');
 
         /* * Resourceful route that creates all REST routs. */
-        Route::resource($moduleName, $controller);
+        Route::resource($path, $controller)->names([
+            'index' => "{$module->name}.index",
+            'create' => "{$module->name}.create",
+            'store' => "{$module->name}.store",
+            'show' => "{$module->name}.show",
+            'edit' => "{$module->name}.edit",
+            'update' => "{$module->name}.update",
+            'destroy' => "{$module->name}.destroy",
+        ]);
     }
 
     foreach ($moduleGroups as $moduleGroup) {

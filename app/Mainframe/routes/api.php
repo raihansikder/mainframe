@@ -36,21 +36,26 @@ Route::prefix('core/1.0')->middleware(['request.json', 'x-auth-token'])->group(f
     // Module RESTful apis
     Route::prefix('module')->group(function () use ($modules) {
         foreach ($modules as $module) {
-            Route::get($module->route_path.'/list/json', $module->controller.'@listJson');
-            Route::get($module->route_path.'/report', $module->controller.'@report');
 
-            Route::get($module->route_path.'/{id}/uploads', $module->controller.'@uploads');
-            Route::post($module->route_path.'/{id}/uploads', $module->controller.'@attachUpload');
+            $path = $module->route_path;
+            $controller = $module->controller;
+            $moduleName = $module->name;
 
-            Route::get($module->route_path.'/{id}/comments', $module->controller.'@comments');
-            Route::post($module->route_path.'/{id}/comments', $module->controller.'@attachComments');
+            Route::get($path.'/list/json', $controller.'@listJson');
+            Route::get($path.'/report', $controller.'@report');
 
-            Route::apiResource($module->name, $module->controller)->names([
-                'index' => "core.api.{$module->name}.index",
-                'store' => "core.api.{$module->name}.store",
-                'show' => "core.api.{$module->name}.show",
-                'update' => "core.api.{$module->name}.update",
-                'destroy' => "core.api.{$module->name}.destroy",
+            Route::get($path.'/{id}/uploads', $controller.'@uploads');
+            Route::post($path.'/{id}/uploads', $controller.'@attachUpload');
+
+            Route::get($path.'/{id}/comments', $controller.'@comments');
+            Route::post($path.'/{id}/comments', $controller.'@attachComments');
+
+            Route::apiResource($path, $controller)->names([
+                'index' => "core.api.{$moduleName}.index",
+                'store' => "core.api.{$moduleName}.store",
+                'show' => "core.api.{$moduleName}.show",
+                'update' => "core.api.{$moduleName}.update",
+                'destroy' => "core.api.{$moduleName}.destroy",
             ]);
         }
     });
