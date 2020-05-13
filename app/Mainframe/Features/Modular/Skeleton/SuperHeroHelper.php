@@ -19,17 +19,17 @@ trait SuperHeroHelper
      */
     public function populate()
     {
-        // Sample
+        // Todo: Remove this sample code
         // $this->fillAddress()->setAmounts();
         return $this;
     }
 
     /**
-     * Fill address
-     *
+     * Set address
+     * Todo: Remove this sample code
      * @return $this
      */
-    // public function fillAddress()
+    // public function setAddress()
     // {
     //     $this->field = 'val';
     //     return $this;
@@ -66,11 +66,8 @@ trait SuperHeroHelper
     */
 
     // public function isViewable() { return true; }
-
     // public function isCreatable() { return true; }
-
     // public function isEditable(){return true; }
-
     // public function isDeletable(){return true; }
 
 }
