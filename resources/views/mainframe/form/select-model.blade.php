@@ -1,38 +1,45 @@
 <?php
-use App\Mainframe\Features\Form\Select\SelectModel;
-
-// Check edibility
-if (! isset($var['editable']) && isset($editable)) {
-    $var['editable'] = $editable;
-
-    // Check immutability
-    if ($editable && isset($immutables)) {
-        $var['editable'] = ! in_array($var['name'], $immutables);
-    }
-}
-
-$input = new SelectModel($var, $element ?? null);
+/*
+|--------------------------------------------------------------------------
+| Vars
+|--------------------------------------------------------------------------
+|
+| This view partial can be included with a config variable $var.
+| $var is an array and can have following keys.
+| if a $var is not set the default value will be use.
+|
+*/
+/**
+ *      $var['container_class'] ?? 'col-md-3';
+ *      $var['label']           ?? null;
+ *      $var['label_class']     ?? null;
+ *      $var['type']            ?? null;
+ *      $var['value']           ?? null;
+ *      $var['name']            ?? Str::random(8);
+ *      $var['params']          ?? [];  // These are the html attributes like css, id etc for the field.
+ *      $var['editable']        ?? true;
+ *
+ * @var \Illuminate\Support\ViewErrorBag $errors
+ * @var \App\Mainframe\Features\Modular\BaseModule\BaseModule $element
+ * @var bool $editable
+ * @var array $immutables
+ */
+$var = \App\Mainframe\Features\Form\Form::setUpVar($var, $errors ?? null, $element ?? null, $editable ?? null, $immutables ?? null);
+$input = new App\Mainframe\Features\Form\Select\SelectModel($var);
 ?>
-<div class="form-group {{$input->containerClass}} {{$errors->first($input->name, 'has-error')}} {{$input->uid}}">
+<div class="{{$input->containerClasses()}}" id="{{$input->uid}}">
 
-    @if($input->label)
-        <label id="label_{{$input->name}}"
-               class="control-label {{$input->labelClass}}"
-               for="{{$input->name}}">
-            {!! $input->label !!}
-        </label>
-    @endif
+    {{-- label --}}
+    @include('mainframe.form.includes.label')
 
     @if($input->isEditable)
         {{ Form::select($input->name, $input->options, $input->value(), $input->params) }}
     @else
-        <span class="{{$input->params['class']}} readonly">
-            {{ $input->print() }}
-            {{ Form::hidden($input->name, $input->value()) }}
-        </span>
+        @include('mainframe.form.includes.read-only-view')
     @endif
 
-    {!! $errors->first($input->name, '<span class="help-block">:message</span>') !!}
+    {{-- Error --}}
+    @include('mainframe.form.includes.show-error')
 
 </div>
 

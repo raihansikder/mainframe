@@ -29,7 +29,7 @@ $var = \App\Mainframe\Features\Form\Form::setUpVar($var, $errors ?? null, $eleme
 $input = new \App\Mainframe\Features\Form\Text\InputText($var);
 ?>
 
-<div class="{{$input->containerClasses()}}">
+<div class="{{$input->containerClasses()}}" id="{{$input->uid}}">
 
     {{-- label --}}
     @include('mainframe.form.includes.label')
@@ -47,6 +47,7 @@ $input = new \App\Mainframe\Features\Form\Text\InputText($var);
 
     {{-- Error --}}
     @include('mainframe.form.includes.show-error')
+
 </div>
 
 <?php unset($input) // Make sure to clear $input var ?>
