@@ -34,6 +34,7 @@ class Date
      * Show time
      *
      * @param \Carbon\Carbon|string $date
+     * @param null $format
      * @return mixed
      */
     public static function formattedDateTime($date, $format = null)
