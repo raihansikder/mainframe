@@ -2,7 +2,7 @@
 
 namespace App\Mainframe\Features\Form\Text;
 
-class Datetime extends InputText
+class Datetime extends Date
 {
 
     public $format = 'd-m-Y H:i:s';
@@ -19,19 +19,4 @@ class Datetime extends InputText
 
     }
 
-    /**
-     * Get the formatted date to show in the frontend.
-     *
-     * @return string|null
-     */
-    public function formatted()
-    {
-
-        if ($this->value()) {
-            return \Carbon\Carbon::createFromTimeString($this->value())
-                ->format($this->format);
-        }
-
-        return null;
-    }
 }

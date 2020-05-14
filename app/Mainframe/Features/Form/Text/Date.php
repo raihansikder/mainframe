@@ -2,6 +2,8 @@
 
 namespace App\Mainframe\Features\Form\Text;
 
+use Carbon\Carbon;
+
 class Date extends InputText
 {
 
@@ -16,7 +18,6 @@ class Date extends InputText
     public function __construct($var = [], $element = null)
     {
         parent::__construct($var, $element);
-        // $this->params['class'] .= ' datepicker ';
 
     }
 
@@ -28,11 +29,17 @@ class Date extends InputText
     public function formatted()
     {
 
-        if ($this->value()) {
-            return \Carbon\Carbon::createFromDate($this->value())
-                ->format($this->format);
+        $date = $this->value();
+
+        if (! $date) {
+            return null;
         }
 
-        return null;
+        if ($date instanceof Carbon) {
+            return $date->format($this->format);
+        }
+
+        return Carbon::createFromDate($date)->format($this->format);
+
     }
 }

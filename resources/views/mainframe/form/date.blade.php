@@ -28,7 +28,7 @@
 $var = \App\Mainframe\Features\Form\Form::setUpVar($var, $errors ?? null, $element ?? null, $editable ?? null, $immutables ?? null);
 $input = new App\Mainframe\Features\Form\Text\Date($var);
 
-$input->format = 'd-m-Y'; // Format to show in the datepicker
+$input->format = config('mainframe.config.date_format'); // Format to show in the datepicker
 ?>
 
 <div class="{{$input->containerClasses()}}" id="{{$input->uid}}">

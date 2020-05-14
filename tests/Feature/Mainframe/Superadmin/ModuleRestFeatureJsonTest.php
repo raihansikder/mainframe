@@ -158,7 +158,7 @@ class ModuleRestFeatureJsonTest extends ModuleRestFeatureTest
             ->assertJson([
                 'code' => 200,
                 'status' => 'success',
-                'message' => 'Successfully deleted',
+                'message' => 'The Lorem ipsum is deleted',
                 'data' => [
                     'name' => $this->newElementName,
                 ],
