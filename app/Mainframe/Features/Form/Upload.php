@@ -2,6 +2,8 @@
 
 namespace App\Mainframe\Features\Form;
 
+use Illuminate\Support\Str;
+
 class Upload extends Input
 {
     /** @var string */
@@ -26,28 +28,26 @@ class Upload extends Input
     /**
      * Input constructor.
      *
-     * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule  $element
-     * @param  array  $var
+     * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule $element
+     * @param  array $var
      */
     public function __construct($var = [], $element = null)
     {
-        parent::__construct($var,$element);
+        parent::__construct($var, $element);
 
         $this->containerClass = $this->var['container_class'] ?? '';
 
-        $this->elementUuid = $element->uuid;
-
-        if($element){
-            $this->uploadableType = $this->var['uploadable_type'] ?? get_class($element);
+        if ($this->element) {
+            $this->elementUuid = $this->element->uuid;
+            $this->uploadableType = $this->var['uploadable_type'] ?? get_class($this->element);
         }
 
-        if ($element && $element->isUpdating()) {
-            $this->elementId = $element->id;
-            $this->tenantId = $element->tenant_id ?? null;
+        if ($this->element && $this->element->isUpdating()) {
+            $this->elementId = $this->element->id;
+            $this->tenantId = $this->element->tenant_id ?? null;
         }
 
-        $this->moduleId = $this->var['module_id'] ?? $element->module()->id;
-
+        $this->moduleId = $this->var['module_id'] ?? $this->element->module()->id;
 
         $this->elementId = $this->var['element_id'] ?? $this->elementId;
         $this->elementUuid = $this->var['element_uuid'] ?? $this->elementUuid;
@@ -55,7 +55,7 @@ class Upload extends Input
 
         $this->type = $this->var['type'] ?? null;
         $this->limit = $this->var['limit'] ?? 999;
-        $this->uploadBoxId = $this->var['upload_box_id'] ?? 'uploadBox'.\Str::random(8);
+        $this->uploadBoxId = $this->var['upload_box_id'] ?? 'uploadBox'.Str::random(8);
 
     }
 }

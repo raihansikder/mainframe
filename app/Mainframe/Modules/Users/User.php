@@ -135,6 +135,12 @@ use Watson\Rememberable\Rememberable;
  * @property-read int|null $comments_count
  * @property-read null|string $profile_pic
  * @property-read \App\Mainframe\Modules\Comments\Comment $latestComment
+ * @property int|null $vendor_id
+ * @property int|null $reseller_id
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereResellerId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereVendorId($value)
+ * @property int|null $client_id
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereClientId($value)
  */
 class User extends Authenticatable implements MustVerifyEmail, Auditable
 {

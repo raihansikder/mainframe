@@ -48,7 +48,7 @@ class Form
             $var['editable'] = $editable;
 
             // Check immutability
-            if ($editable && isset($immutables)) {
+            if ($editable && isset($immutables,$var['name']) ) {
                 $var['editable'] = ! in_array($var['name'], $immutables);
             }
         }
