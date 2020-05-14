@@ -240,7 +240,7 @@ function initUploader(id, url) {
         dragDrop: true,
         dragdropWidth: '70%',
         //maxFileSize: 8,
-            //maxFileCount: 1,
+        //maxFileCount: 1,
         //acceptFiles: "audio/*",
         multiple: true,
         statusBarWidth: '70%',
@@ -268,8 +268,9 @@ function initUploader(id, url) {
             //console.log(ret);
             // var path = ret.message.path;
         },
-        onError: function (files, status, errMsg) {
-            $("#status").html("<span style='color: red;'>Something Wrong." + errMsg + "</span>");
+        //onError: function (files, status, errMsg) {};
+        onError: function () {
+            $("#status").html("<span style='color: green;'>Something Wrong</span>");
         }
     });
 }
