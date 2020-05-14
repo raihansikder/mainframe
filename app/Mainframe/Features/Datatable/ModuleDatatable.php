@@ -2,6 +2,8 @@
 
 namespace App\Mainframe\Features\Datatable;
 
+use App\Mainframe\Helpers\Date;
+
 class ModuleDatatable extends Datatable
 {
 
@@ -37,6 +39,18 @@ class ModuleDatatable extends Datatable
 
         if ($this->hasColumn('is_active')) {
             $dt = $dt->editColumn('is_active', '@if($is_active)  Yes @else <span class="text-red">No</span> @endif');
+        }
+
+        if ($this->hasColumn('updated_at')) {
+            $dt = $dt->editColumn('updated_at', function ($row) {
+                return Date::formattedDateTime($row->updated_at);
+            });
+        }
+
+        if ($this->hasColumn('updated_at')) {
+            $dt = $dt->editColumn('updated_at', function ($row) {
+                return Date::formattedDateTime($row->updated_at);
+            });
         }
 
         return $dt;
