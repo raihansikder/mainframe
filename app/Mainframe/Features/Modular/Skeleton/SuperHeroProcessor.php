@@ -11,7 +11,7 @@ class SuperHeroProcessor extends ModelProcessor
     | Define properties and variables
     |--------------------------------------------------------------------------
     */
-    /** @var \App\Mainframe\Modules\SuperHeroes\SuperHero */
+    /** @var SuperHero */
     public $element;
     // public $immutables
     // public $transitions
@@ -40,7 +40,7 @@ class SuperHeroProcessor extends ModelProcessor
     }
 
     /**
-     * @param  \App\Mainframe\Modules\SuperHeroes\SuperHero $element
+     * @param  SuperHero $element
      * @param  array $merge
      * @return array
      */
