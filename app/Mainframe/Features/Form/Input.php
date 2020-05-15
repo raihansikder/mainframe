@@ -90,11 +90,11 @@ class Input extends Form
     }
 
     /**
-     * Determine if the field is editable
-     *
+     * logically determine if the field is editable
+     * todo: unused
      * @return bool|mixed
      */
-    public function getEditable()
+    public function determineEditability()
     {
 
         if (isset($this->var['editable'])) {

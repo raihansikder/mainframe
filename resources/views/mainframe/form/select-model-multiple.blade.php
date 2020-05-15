@@ -37,12 +37,12 @@ $input = new \App\Mainframe\Features\Form\Select\SelectModelMultiple($var);
     {{-- input --}}
     {{ Form::select($input->name.'[]', $input->options, $input->value(), $input->params) }}
     {{--
-        Ghost input
-
-        In the case of multiple select, if no option is selected then the empty value
-        does not post. As a result the model fills with old value. To avoid this, when
-        there is no selection, a blank html input is enabled.
-        --}}
+    Ghost input
+    ==================================================
+    In the case of multiple select, if no option is selected then the empty value
+    does not post. As a result the model fills with old value. To avoid this, when
+    there is no selection, a blank html input is enabled.
+    --}}
     <input type="hidden" name="{{$input->name}}" class="ghost" value="" disabled/>
 
     {{-- Error --}}
