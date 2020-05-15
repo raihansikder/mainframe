@@ -42,4 +42,12 @@ class Date extends InputText
         return Carbon::createFromDate($date)->format($this->format);
 
     }
+
+    /**
+     * @return array|\Illuminate\Http\Request|string|null
+     */
+    public function print()
+    {
+        return $this->formatted();
+    }
 }
