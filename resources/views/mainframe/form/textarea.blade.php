@@ -38,7 +38,7 @@ $input = new \App\Mainframe\Features\Form\Text\TextArea($var);
     @if($input->isEditable)
         {{ Form::textarea($input->name, $input->value(), $input->params) }}
     @else
-        @include('mainframe.form.includes.read-only-view')
+        @include('mainframe.form.includes.textarea-read-only-view')
     @endif
     {{-- Error --}}
     @include('mainframe.form.includes.show-error')
