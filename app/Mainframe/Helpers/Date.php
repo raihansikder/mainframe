@@ -21,6 +21,10 @@ class Date
      */
     public static function formatted($date, $format = null)
     {
+        if (! $date) {
+            return null;
+        }
+
         $format = $format ?: config('mainframe.config.date_format');
 
         if ($date instanceof Carbon) {
@@ -39,6 +43,10 @@ class Date
      */
     public static function formattedDateTime($date, $format = null)
     {
+        if (! $date) {
+            return null;
+        }
+
         $format = $format ?: config('mainframe.config.datetime_format');
 
         if ($date instanceof Carbon) {

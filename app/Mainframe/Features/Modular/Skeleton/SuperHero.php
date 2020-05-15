@@ -42,7 +42,7 @@ class SuperHero extends BaseModule
     ];
 
     // protected $guarded = [];
-    // protected $dates = [];
+    // protected $dates = ['created_at', 'updated_at', 'deleted_at'];
     // protected $casts = [];
     // protected $with = [];
     // protected $appends = [];
