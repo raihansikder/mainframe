@@ -101,7 +101,8 @@ trait Output
 
     /**
      * Download excel
-     * @param  bool  $csv
+     *
+     * @param  bool $csv
      * @return bool|void
      */
     public function excel($csv = false)
@@ -122,6 +123,7 @@ trait Output
 
     /**
      * Download CSV
+     *
      * @return bool|void
      */
     public function csv()
@@ -131,7 +133,8 @@ trait Output
 
     /**
      * Output as HTML
-     * @param  null  $type
+     *
+     * @param  null $type
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function html($type = null)
@@ -169,13 +172,13 @@ trait Output
      * @param $selectedColumns
      * @param $aliasColumns
      * @param $result
-     * @param  bool  $csv
+     * @param  bool $csv
      * @throws \PhpOffice\PhpSpreadsheet\Exception
      * @throws \PhpOffice\PhpSpreadsheet\Writer\Exception
      */
     public function dumpExcel($selectedColumns, $aliasColumns, $result, $csv = false)
     {
-        // Debugbar::disable();
+        \Debugbar::disable(); // Disable debugger. Because it add debug codes in output file.
 
         $ext = $csv ? '.csv' : '.xlsx';
 
