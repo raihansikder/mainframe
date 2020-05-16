@@ -21,9 +21,13 @@ trait SendResponse
     {
         /** @var Response $response */
         $this->response = resolve(Response::class);
+
         if ($validator) {
             $this->response->validator = $validator;
         }
+        // elseif ($this->validator) {
+        //     $this->response->validator = $this->validator;
+        // }
 
         return $this->response;
     }
@@ -44,7 +48,8 @@ trait SendResponse
             return $this->redirectTo;
         }
 
-        return URL::full();
+        return request()->headers->get('referer') ?: URL::full();
+        // return request()->headers->get('referer');
     }
 
     /**
@@ -77,9 +82,13 @@ trait SendResponse
      *
      * @return $this
      */
-    public function setRedirectTo()
+    public function setRedirectTo($to = null)
     {
-        $this->response()->redirectTo = $this->resolveRedirectTo();
+        $to = $to ?: $this->resolveRedirectTo();
+
+        $this->redirectTo = $to;
+
+        $this->response()->redirectTo = $this->redirectTo;
 
         return $this;
     }
@@ -157,7 +166,7 @@ trait SendResponse
      */
     public function send()
     {
-        return $this->response()->send();
+        return $this->setRedirectTo()->response()->send();
     }
 
     /**
@@ -217,7 +226,7 @@ trait SendResponse
      */
     public function failValidation($message = 'Validation failed', $code = Response::HTTP_UNPROCESSABLE_ENTITY)
     {
-        return $this->response()->failValidation($message, $code);
+        return $this->setRedirectTo()->response()->failValidation($message, $code);
     }
 
     /**
