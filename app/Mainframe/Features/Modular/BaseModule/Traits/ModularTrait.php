@@ -55,6 +55,17 @@ trait ModularTrait
     }
 
     /**
+     * Get attribute except
+     *
+     * @param array $except
+     * @return bool
+     */
+    public function getAttributeKeysExcept($except = [])
+    {
+        return collect($this->getAttributes())->except($except)->keys()->toArray();
+    }
+
+    /**
      * Check if a model table has a given column
      *
      * @param $column
@@ -392,6 +403,7 @@ trait ModularTrait
     */
     /**
      * Get the processor for this module
+     *
      * @return mixed|\App\Mainframe\Features\Modular\Validator\ModelProcessor
      */
     public function processor()
@@ -401,6 +413,7 @@ trait ModularTrait
 
     /**
      * Run processor logic on model
+     *
      * @return \App\Mainframe\Features\Modular\Validator\ModelProcessor|mixed
      */
     public function process()
