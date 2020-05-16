@@ -222,6 +222,15 @@ div.form-group span.readonly {
     background-color: #fbfbfb;
 }
 
+div.form-control {
+    height: auto;
+    background-color: #fbfbfb;
+}
+
+.readonly {
+    background-color: #fbfbfb;
+}
+
 .navbar-nav > .user-menu > .dropdown-menu {
     padding: 0;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
