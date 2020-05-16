@@ -257,7 +257,7 @@ class Response
      *
      * @param  string  $message
      * @param  int  $code
-     * @return \Illuminate\Http\JsonResponse|void
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|void
      */
     public function failed($message = 'Failed', $code = Response::HTTP_BAD_REQUEST)
     {
@@ -265,6 +265,10 @@ class Response
 
         if ($this->expectsJson()) {
             return $this->json();
+        }
+
+        if($this->redirectTo){
+            return $this->redirect($this->redirectTo);
         }
 
         return abort($code, $message);
