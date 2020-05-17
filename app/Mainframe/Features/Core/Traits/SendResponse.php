@@ -169,7 +169,7 @@ trait SendResponse
      */
     public function send()
     {
-        return $this->setRedirectTo()->response()->send();
+        return $this->setRedirectTo()->response()->setValidator($this->validator)->send();
     }
 
     /**
@@ -282,6 +282,5 @@ trait SendResponse
     {
         return $this->response()->expectsJson();
     }
-
 
 }
