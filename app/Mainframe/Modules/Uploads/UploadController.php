@@ -59,13 +59,8 @@ class UploadController extends ModularController
         // }
 
         $this->attemptStore();
-        $this->setRedirectTo();
 
-        if ($this->expectsJson()) {
-            return $this->load($this->element->toArray())->json();
-        }
-
-        return $this->redirect();
+        return $this->setRedirectTo()->load($this->element)->send();
     }
 
     /**

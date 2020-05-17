@@ -16,4 +16,11 @@ trait HasMessageBag
 
         return $this->messageBag;
     }
+
+    public function setMessageBag($messageBag)
+    {
+        $this->messageBag = $messageBag;
+
+        return $this;
+    }
 }

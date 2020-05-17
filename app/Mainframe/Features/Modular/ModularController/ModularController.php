@@ -187,13 +187,13 @@ class ModularController extends BaseController
         //     $this->response()->validator->errors()->add('Error', $e->getMessage());
         // }
 
-        $this->setRedirectTo();
+        return $this->setRedirectTo()->load($this->element->toArray())->send();
 
-        if ($this->expectsJson()) {
-            return $this->load($this->element->toArray())->json();
-        }
-
-        return $this->redirect();
+        // if ($this->expectsJson()) {
+        //     return $this->json();
+        // }
+        //
+        // return $this->redirect();
     }
 
     /**
@@ -212,13 +212,7 @@ class ModularController extends BaseController
 
         $this->attemptUpdate();
 
-        $this->setRedirectTo();
-
-        if ($this->expectsJson()) {
-            return $this->load($this->element)->json();
-        }
-
-        return $this->redirect();
+        return $this->setRedirectTo()->load($this->element)->send();
     }
 
     /**
@@ -240,13 +234,7 @@ class ModularController extends BaseController
 
         $this->attemptDestroy();
 
-        $this->setRedirectTo();
-
-        if ($this->expectsJson()) {
-            return $this->load($this->element)->json();
-        }
-
-        return $this->redirect();
+        return $this->setRedirectTo()->load($this->element)->send();
     }
 
     /**

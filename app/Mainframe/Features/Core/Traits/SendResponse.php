@@ -11,6 +11,7 @@ trait SendResponse
     /** * @var \App\Mainframe\Features\Responder\Response */
     public $response;
 
+    /** @var string */
     protected $redirectTo;
 
     /**
@@ -30,6 +31,22 @@ trait SendResponse
         // }
 
         return $this->response;
+    }
+
+    /**
+     * Set redirection url
+     *
+     * @return $this
+     */
+    public function setRedirectTo($to = null)
+    {
+        $to = $to ?: $this->resolveRedirectTo();
+
+        $this->redirectTo = $to;
+
+        $this->response()->redirectTo = $this->redirectTo;
+
+        return $this;
     }
 
     /**
@@ -77,21 +94,7 @@ trait SendResponse
         return null;
     }
 
-    /**
-     * Set redirection url
-     *
-     * @return $this
-     */
-    public function setRedirectTo($to = null)
-    {
-        $to = $to ?: $this->resolveRedirectTo();
 
-        $this->redirectTo = $to;
-
-        $this->response()->redirectTo = $this->redirectTo;
-
-        return $this;
-    }
 
     /*
     |--------------------------------------------------------------------------
@@ -280,15 +283,5 @@ trait SendResponse
         return $this->response()->expectsJson();
     }
 
-    /**
-     * Additional values to be passed to view through view composer or redirect.
-     * In redirect the value has to be accessed via session.
-     *
-     * @return array
-     */
-    public function defaultViewVars()
-    {
-        return $this->response()->defaultViewVars();
-    }
 
 }

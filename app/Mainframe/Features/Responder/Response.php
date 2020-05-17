@@ -142,6 +142,12 @@ class Response
         511 => 'Network Authentication Required',                             // RFC6585
     ];
 
+    /** @var \Illuminate\Validation\Validator */
+    public $validator;
+
+    /** @var MessageBag */
+    public $messageBag;
+
     /** @var int Success/Error codes 200.400 etc */
     public $code = Response::HTTP_OK;
 
@@ -161,7 +167,7 @@ class Response
     public $view;
 
     /** @var array */
-    public $viewVars;
+    public $viewVars = [];
 
     /*
     |--------------------------------------------------------------------------
@@ -172,16 +178,83 @@ class Response
     |
     */
 
+    public function setValidator($validator)
+    {
+        $this->validator = $validator;
+
+        return $this;
+    }
+
+    public function setMessageBag($messageBag)
+    {
+        $this->messageBag = $messageBag;
+
+        return $this;
+    }
+
+    public function setCode($code)
+    {
+        $this->code = $code;
+
+        return $this;
+    }
+
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    public function setMessage($message)
+    {
+        $this->message = $message;
+
+        return $this;
+    }
+
+    public function setPayload($payload)
+    {
+        $this->payload = $payload;
+
+        return $this;
+    }
+
+    public function setRedirectTo($redirectTo)
+    {
+        $this->redirectTo = $redirectTo;
+
+        return $this;
+    }
+
+
+
+    public function setView($view)
+    {
+        $this->view = $view;
+
+        return $this;
+    }
+
+    public function setViewVars($viewVars)
+    {
+        $this->viewVars = $viewVars;
+
+        return $this;
+    }
+
     /**
      * View
      *
-     * @param  string  $path
-     * @param  array  $vars
+     * @param  string $path
+     * @param  array $vars
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function view($path, $vars = [])
+    public function view($path = null, $vars = null)
     {
-        $view = view($path)->with($this->defaultViewVars())->with($vars);
+        $this->setView($path)->setViewVars($vars);
+
+        $view = view($this->view)->with($this->defaultViewVars())->with($this->viewVars);
 
         if ($this->validator) {
             $view->withErrors($this->validator);
@@ -193,7 +266,7 @@ class Response
     /**
      * Redirect
      *
-     * @param  string  $to
+     * @param  string $to
      * @return \Illuminate\Http\RedirectResponse
      */
     public function redirect($to = null)
@@ -255,8 +328,8 @@ class Response
     /**
      * Json or abort
      *
-     * @param  string  $message
-     * @param  int  $code
+     * @param  string $message
+     * @param  int $code
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|void
      */
     public function failed($message = 'Failed', $code = Response::HTTP_BAD_REQUEST)
@@ -267,7 +340,7 @@ class Response
             return $this->json();
         }
 
-        if($this->redirectTo){
+        if ($this->redirectTo) {
             return $this->redirect($this->redirectTo);
         }
 
@@ -277,8 +350,8 @@ class Response
     /**
      * Json or succeeded
      *
-     * @param  string  $message
-     * @param  int  $code
+     * @param  string $message
+     * @param  int $code
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Illuminate\View\View|void
      */
     public function succeeded($message = null, $code = Response::HTTP_OK)
@@ -305,7 +378,7 @@ class Response
      */
     public function dispatch()
     {
-        if ($this->status == 'fail') {
+        if ($this->isFail()) {
             return $this->failed($this->message, $this->code);
         }
 
@@ -324,8 +397,8 @@ class Response
     /**
      * Abort on permission denial
      *
-     * @param  string  $message
-     * @param  int  $code
+     * @param  string $message
+     * @param  int $code
      * @return \Illuminate\Http\JsonResponse|void
      */
     public function permissionDenied($message = 'Permission denied', $code = Response::HTTP_FORBIDDEN)
@@ -336,8 +409,8 @@ class Response
     /**
      * Abort on resource not found
      *
-     * @param  string  $message
-     * @param  int  $code
+     * @param  string $message
+     * @param  int $code
      * @return \Illuminate\Http\JsonResponse|void
      */
     public function notFound($message = 'Not found', $code = Response::HTTP_NOT_FOUND)
@@ -357,8 +430,8 @@ class Response
     /**
      * Set response as success
      *
-     * @param  string  $message
-     * @param  int  $code
+     * @param  string $message
+     * @param  int $code
      * @return $this
      */
     public function success($message = null, $code = Response::HTTP_OK)
@@ -375,8 +448,8 @@ class Response
     /**
      * Set response as fail
      *
-     * @param  string  $message
-     * @param  int  $code
+     * @param  string $message
+     * @param  int $code
      * @return $this
      */
     public function fail($message = null, $code = Response::HTTP_UNPROCESSABLE_ENTITY)
@@ -393,8 +466,8 @@ class Response
     /**
      * Set response as fail
      *
-     * @param  string  $message
-     * @param  int  $code
+     * @param  string $message
+     * @param  int $code
      * @return $this
      */
     public function failValidation($message = 'Validation failed', $code = Response::HTTP_UNPROCESSABLE_ENTITY)
@@ -407,7 +480,7 @@ class Response
     /**
      * Load a payload to be sent with the response
      *
-     * @param  null  $payload
+     * @param  null $payload
      * @return $this
      */
     public function load($payload = null)
@@ -418,14 +491,13 @@ class Response
     }
 
     /**
-     * @param  null  $redirectTo
+     * @param  null $redirectTo
      * @return $this
      */
     public function to($redirectTo = null)
     {
-        $this->redirectTo = $redirectTo;
 
-        return $this;
+        return $this->setRedirectTo($redirectTo);
     }
 
 

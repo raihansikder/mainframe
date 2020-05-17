@@ -17,6 +17,19 @@ trait Validable
     public $validator;
 
     /**
+     * Setter function for $validator
+     *
+     * @param $validator
+     * @return $this
+     */
+    public function setValidator($validator)
+    {
+        $this->validator = $validator;
+
+        return $this;
+    }
+
+    /**
      * @param  null|\Illuminate\Validation\Validator $validator
      * @return \Illuminate\Contracts\Validation\Validator|\Illuminate\Validation\Validator
      */
