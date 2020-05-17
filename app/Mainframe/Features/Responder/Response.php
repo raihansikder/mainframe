@@ -227,8 +227,6 @@ class Response
         return $this;
     }
 
-
-
     public function setView($view)
     {
         $this->view = $view;
@@ -403,7 +401,7 @@ class Response
      */
     public function permissionDenied($message = 'Permission denied', $code = Response::HTTP_FORBIDDEN)
     {
-        return $this->failed($message, $code);
+        return abort($code, $message);
     }
 
     /**
@@ -415,7 +413,7 @@ class Response
      */
     public function notFound($message = 'Not found', $code = Response::HTTP_NOT_FOUND)
     {
-        return $this->failed($message, $code);
+        return abort($code, $message);
     }
 
     /*
