@@ -26,9 +26,6 @@ trait SendResponse
         if ($validator) {
             $this->response->validator = $validator;
         }
-        // elseif ($this->validator) {
-        //     $this->response->validator = $this->validator;
-        // }
 
         return $this->response;
     }
@@ -56,8 +53,7 @@ trait SendResponse
      */
     public function resolveRedirectTo()
     {
-        $to = $this->redirectToBasedOnRequestParam();
-        if ($to) {
+        if ($to = $this->redirectToBasedOnRequestParam()) {
             return $to;
         }
 
@@ -66,7 +62,6 @@ trait SendResponse
         }
 
         return request()->headers->get('referer') ?: URL::full();
-        // return request()->headers->get('referer');
     }
 
     /**
@@ -147,7 +142,7 @@ trait SendResponse
      */
     public function failed($message = 'Failed', $code = Response::HTTP_BAD_REQUEST)
     {
-        return $this->response()->failed($message, $code);
+        return $this->setRedirectTo()->response()->failed($message, $code);
     }
 
     /**
@@ -159,7 +154,7 @@ trait SendResponse
      */
     public function succeeded($message = null, $code = Response::HTTP_OK)
     {
-        return $this->response()->succeeded($message, $code);
+        return $this->setRedirectTo()->response()->succeeded($message, $code);
     }
 
     /**
@@ -181,7 +176,7 @@ trait SendResponse
      */
     public function permissionDenied($message = 'Permission denied', $code = Response::HTTP_FORBIDDEN)
     {
-        return $this->response()->permissionDenied($message, $code);
+        return $this->setRedirectTo()->response()->permissionDenied($message, $code);
     }
 
     /**
@@ -229,7 +224,7 @@ trait SendResponse
      */
     public function failValidation($message = 'Validation failed', $code = Response::HTTP_UNPROCESSABLE_ENTITY)
     {
-        return $this->setRedirectTo()->response($this->validator)->failValidation($message, $code);
+        return $this->setRedirectTo()->response()->setValidator($processor->validator)->failValidation($message, $code);
     }
 
     /**

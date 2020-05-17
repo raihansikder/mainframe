@@ -21,13 +21,13 @@ trait RequestValidator
     public function validateStoreRequest()
     {
         if ($this->storeRequestValidator()->fails()) {
-            $this->response($this->storeRequestValidator())->failValidation();
+            $this->response()->setValidator($this->storeRequestValidator())->failValidation();
 
             return false;
         }
 
         if ($this->saveRequestValidator()->fails()) {
-            $this->response($this->saveRequestValidator())->failValidation();
+            $this->response()->setValidator($this->saveRequestValidator())->failValidation();
 
             return false;
         }
@@ -46,13 +46,13 @@ trait RequestValidator
     public function validateUpdateRequest()
     {
         if ($this->updateRequestValidator()->fails()) {
-            $this->response($this->updateRequestValidator())->failValidation();
+            $this->response()->setValidator($this->updateRequestValidator())->failValidation();
 
             return false;
         }
 
         if ($this->saveRequestValidator()->fails()) {
-            $this->response($this->saveRequestValidator())->failValidation();
+            $this->response()->setValidator($this->saveRequestValidator())->failValidation();
 
             return false;
         }
@@ -71,7 +71,7 @@ trait RequestValidator
     public function validateDeleteRequest()
     {
         if ($this->deleteRequestValidator()->fails()) {
-            $this->response($this->deleteRequestValidator())->failValidation();
+            $this->response()->setValidator($this->deleteRequestValidator())->failValidation();
 
             return false;
         }

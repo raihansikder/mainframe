@@ -129,7 +129,7 @@ class ModuleRestFeatureTest extends SuperadminTestCase
                 'name' => $this->newElementName
             ])
             ->assertStatus(200)
-            ->assertSee('Validation failed')
+            ->assertSee('Fail')
             ->assertSee('The name has already been taken.');
     }
 

@@ -69,7 +69,7 @@ class RegisterTenantController extends RegisterController
         ]);
 
         if ($validator->fails()) {
-            $this->response($validator)->failValidation();
+            $this->response()->setValidator($validator)->failValidation();
 
             return $this;
         }

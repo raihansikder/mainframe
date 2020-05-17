@@ -144,7 +144,7 @@ class RegisterController extends BaseController
         ]);
 
         if ($validator->fails()) {
-            $this->response($validator)->failValidation();
+            $this->response()->setValidator($validator)->failValidation();
 
             return $this;
         }

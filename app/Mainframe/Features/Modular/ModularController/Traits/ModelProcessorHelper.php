@@ -75,7 +75,7 @@ trait ModelProcessorHelper
 
         // Return error if save fails due to validation errors
         if ($processor->isInvalid()) {
-            $this->response($processor->validator)->failValidation();
+            $this->response()->setValidator($processor->validator)->fail();
 
             return $this;
         }
@@ -116,7 +116,7 @@ trait ModelProcessorHelper
 
         // Return error if save fails due to validation errors
         if ($processor->isInvalid()) {
-            $this->response($processor->validator)->failValidation();
+            $this->response()->setValidator($processor->validator)->fail();
 
             return $this;
         }
@@ -165,7 +165,7 @@ trait ModelProcessorHelper
 
         // Return error if save fails due to validation errors
         if ($processor->isInvalid()) {
-            $this->response($processor->validator)->failValidation();
+            $this->response()->setValidator($processor->validator)->fail();
 
             return $this;
         }
