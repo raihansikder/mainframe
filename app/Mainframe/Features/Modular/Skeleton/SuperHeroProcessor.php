@@ -6,6 +6,8 @@ use App\Mainframe\Features\Modular\Validator\ModelProcessor;
 
 class SuperHeroProcessor extends ModelProcessor
 {
+    use SuperHeroProcessorHelper;
+
     /*
     |--------------------------------------------------------------------------
     | Define properties and variables
@@ -58,25 +60,6 @@ class SuperHeroProcessor extends ModelProcessor
     /* Further customize error messages and attribute names by overriding */
     // public function customErrorMessages($merge = [])
     // public static function customAttributes($merge = [])
-
-    /*
-    |--------------------------------------------------------------------------
-    | Validation functions
-    |--------------------------------------------------------------------------
-    */
-    /**
-     * @return $this
-     */
-    public function validateName()  // Todo: Remove this sample code
-    {
-        $element = $this->element; // Short hand variable.
-
-        if ($element->name == 'Joker') {
-            $this->error('Name can not be Joker', 'name');
-        }
-
-        return $this;
-    }
 
     /*
     |--------------------------------------------------------------------------

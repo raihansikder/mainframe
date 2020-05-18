@@ -48,7 +48,6 @@ class MakeMainframeModule extends Command
         $this->createViewFiles();
         $this->info($this->model.'... Done');
 
-        return;
     }
 
     /**
@@ -86,6 +85,7 @@ class MakeMainframeModule extends Command
             $sourceRoot.'SuperHeroObserver.php' => $this->classDirectory().'/'.$this->modelClassName().'Observer.php',
             $sourceRoot.'SuperHeroPolicy.php' => $this->classDirectory().'/'.$this->modelClassName().'Policy.php',
             $sourceRoot.'SuperHeroProcessor.php' => $this->classDirectory().'/'.$this->modelClassName().'Processor.php',
+            $sourceRoot.'SuperHeroProcessorHelper.php' => $this->classDirectory().'/'.$this->modelClassName().'ProcessorHelper.php',
         ];
 
         File::makeDirectory($this->classDirectory(), 755, true);
