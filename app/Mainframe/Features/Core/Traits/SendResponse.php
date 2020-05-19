@@ -33,7 +33,8 @@ trait SendResponse
     /**
      * Set redirection url
      *
-     * @return $this
+     * @param null $to
+     * @return \App\Mainframe\Features\Responder\Response|mixed
      */
     public function setRedirectTo($to = null)
     {
@@ -41,9 +42,8 @@ trait SendResponse
 
         $this->redirectTo = $to;
 
-        $this->response()->redirectTo = $to;
+        return $this->response()->setRedirectTo($to);
 
-        return $this;
     }
 
     /**
@@ -142,7 +142,7 @@ trait SendResponse
      */
     public function failed($message = 'Failed', $code = Response::HTTP_BAD_REQUEST)
     {
-        return $this->setRedirectTo()->response()->failed($message, $code);
+        return $this->setRedirectTo()->setValidator($this->validator)->failed($message, $code);
     }
 
     /**
@@ -154,7 +154,7 @@ trait SendResponse
      */
     public function succeeded($message = null, $code = Response::HTTP_OK)
     {
-        return $this->setRedirectTo()->response()->succeeded($message, $code);
+        return $this->setRedirectTo()->succeeded($message, $code);
     }
 
     /**
@@ -164,7 +164,7 @@ trait SendResponse
      */
     public function send()
     {
-        return $this->setRedirectTo()->response()->setValidator($this->validator)->send();
+        return $this->setRedirectTo()->setValidator($this->validator)->send();
     }
 
     /**
@@ -176,7 +176,7 @@ trait SendResponse
      */
     public function permissionDenied($message = 'Permission denied', $code = Response::HTTP_FORBIDDEN)
     {
-        return $this->setRedirectTo()->response()->permissionDenied($message, $code);
+        return $this->setRedirectTo()->setValidator($this->validator)->permissionDenied($message, $code);
     }
 
     /**
@@ -212,7 +212,7 @@ trait SendResponse
      */
     public function fail($message = null, $code = Response::HTTP_UNPROCESSABLE_ENTITY)
     {
-        return $this->response()->fail($message, $code);
+        return $this->response()->setValidator($this->validator)->fail($message, $code);
     }
 
     /**
@@ -224,7 +224,7 @@ trait SendResponse
      */
     public function failValidation($message = 'Validation failed', $code = Response::HTTP_UNPROCESSABLE_ENTITY)
     {
-        return $this->setRedirectTo()->response()->setValidator($this->validator)->failValidation($message, $code);
+        return $this->response()->setValidator($this->validator)->failValidation($message, $code);
     }
 
     /**
