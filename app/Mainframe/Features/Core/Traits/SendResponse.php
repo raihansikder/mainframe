@@ -224,7 +224,7 @@ trait SendResponse
      */
     public function failValidation($message = 'Validation failed', $code = Response::HTTP_UNPROCESSABLE_ENTITY)
     {
-        return $this->response()->setValidator($this->validator)->failValidation($message, $code);
+        return $this->setRedirectTo()->setValidator($this->validator)->failValidation($message, $code);
     }
 
     /**
