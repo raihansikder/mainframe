@@ -23,7 +23,7 @@ class CreateSuperHeroesTable extends Migration
             $table->string('uuid', 64)->nullable()->default(null);
             $table->unsignedInteger('project_id')->nullable()->default(null);
             $table->unsignedInteger('tenant_id')->nullable()->default(null);
-            $table->string('name', 1024)->nullable()->default(null);
+            $table->string('name', 512)->nullable()->default(null);
 
             /******* Custom columns **********/
             // Todo: Add module specific fields
