@@ -100,6 +100,11 @@ trait SendResponse
     |
     */
 
+    public function prepareResponse()
+    {
+        return $this->setRedirectTo()->setValidator($this->validator);
+    }
+
     /**
      * Render view
      *
@@ -109,7 +114,7 @@ trait SendResponse
      */
     public function view($path, $vars = [])
     {
-        return $this->response()->view($path, $vars = []);
+        return $this->prepareResponse()->view($path, $vars = []);
     }
 
     /**
@@ -120,7 +125,7 @@ trait SendResponse
      */
     public function redirect($to = null)
     {
-        return $this->response()->redirect($to);
+        return $this->prepareResponse()->redirect($to);
     }
 
     /**
@@ -130,7 +135,7 @@ trait SendResponse
      */
     public function json()
     {
-        return $this->response()->json();
+        return $this->prepareResponse()->json();
     }
 
     /**
@@ -142,7 +147,7 @@ trait SendResponse
      */
     public function failed($message = 'Failed', $code = Response::HTTP_BAD_REQUEST)
     {
-        return $this->setRedirectTo()->setValidator($this->validator)->failed($message, $code);
+        return $this->prepareResponse()->failed($message, $code);
     }
 
     /**
@@ -154,7 +159,7 @@ trait SendResponse
      */
     public function succeeded($message = null, $code = Response::HTTP_OK)
     {
-        return $this->setRedirectTo()->succeeded($message, $code);
+        return $this->prepareResponse()->succeeded($message, $code);
     }
 
     /**
@@ -164,7 +169,7 @@ trait SendResponse
      */
     public function send()
     {
-        return $this->setRedirectTo()->setValidator($this->validator)->send();
+        return $this->prepareResponse()->send();
     }
 
     /**
@@ -176,7 +181,7 @@ trait SendResponse
      */
     public function permissionDenied($message = 'Permission denied', $code = Response::HTTP_FORBIDDEN)
     {
-        return $this->setRedirectTo()->setValidator($this->validator)->permissionDenied($message, $code);
+        return $this->prepareResponse()->permissionDenied($message, $code);
     }
 
     /**
@@ -188,7 +193,7 @@ trait SendResponse
      */
     public function notFound($message = 'Not found', $code = Response::HTTP_NOT_FOUND)
     {
-        return $this->response()->notFound($message, $code);
+        return $this->prepareResponse()->notFound($message, $code);
     }
 
     /**
@@ -200,7 +205,7 @@ trait SendResponse
      */
     public function success($message = null, $code = Response::HTTP_OK)
     {
-        return $this->response()->success($message, $code);
+        return $this->prepareResponse()->success($message, $code);
     }
 
     /**
@@ -212,7 +217,7 @@ trait SendResponse
      */
     public function fail($message = null, $code = Response::HTTP_UNPROCESSABLE_ENTITY)
     {
-        return $this->response()->setValidator($this->validator)->fail($message, $code);
+        return $this->prepareResponse()->fail($message, $code);
     }
 
     /**
@@ -224,7 +229,7 @@ trait SendResponse
      */
     public function failValidation($message = 'Validation failed', $code = Response::HTTP_UNPROCESSABLE_ENTITY)
     {
-        return $this->setRedirectTo()->setValidator($this->validator)->failValidation($message, $code);
+        return $this->prepareResponse()->failValidation($message, $code);
     }
 
     /**
@@ -235,7 +240,7 @@ trait SendResponse
      */
     public function load($payload = null)
     {
-        return $this->response()->load($payload);
+        return $this->prepareResponse()->load($payload);
     }
 
     /**
@@ -244,7 +249,7 @@ trait SendResponse
      */
     public function to($redirectTo = null)
     {
-        return $this->response()->to($redirectTo);
+        return $this->prepareResponse()->to($redirectTo);
     }
 
     /**
@@ -255,7 +260,7 @@ trait SendResponse
     public function isSuccess()
     {
 
-        return $this->response()->isSuccess();
+        return $this->prepareResponse()->isSuccess();
     }
 
     /**
@@ -265,7 +270,7 @@ trait SendResponse
      */
     public function isFail()
     {
-        return $this->response()->isFail();
+        return $this->prepareResponse()->isFail();
     }
 
     /**
@@ -275,7 +280,7 @@ trait SendResponse
      */
     public function expectsJson()
     {
-        return $this->response()->expectsJson();
+        return $this->prepareResponse()->expectsJson();
     }
 
 }
