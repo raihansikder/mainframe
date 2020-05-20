@@ -1,4 +1,8 @@
 <?php
+/** @noinspection PhpSignatureMismatchDuringInheritanceInspection */
+/** @noinspection PhpInconsistentReturnPointsInspection */
+/** @noinspection PhpUnused */
+
 namespace App\Mainframe\Modules\SuperHeroes;
 
 use App\Mainframe\Features\Modular\BaseModule\BaseModulePolicy;
