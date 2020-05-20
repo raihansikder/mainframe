@@ -1,5 +1,4 @@
 <?php
-/** @noinspection PhpSignatureMismatchDuringInheritanceInspection */
 /** @noinspection PhpInconsistentReturnPointsInspection */
 /** @noinspection PhpUnused */
 
@@ -38,7 +37,7 @@ class SuperHeroPolicy extends BaseModulePolicy
      * @param  SuperHero $superHero
      * @return mixed
      */
-    // public function create($user, $superHero) { }
+    // public function create($user, $superHero = null) { }
 
     /**
      * Determine whether the user can update the superHero.
