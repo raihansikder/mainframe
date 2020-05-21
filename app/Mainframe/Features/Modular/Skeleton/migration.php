@@ -64,6 +64,8 @@ class CreateSuperHeroesTable extends Migration
 
             $module->save();
         }
+
+        Artisan::call('cache:clear');
     }
 
     /**
