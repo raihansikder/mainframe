@@ -48,6 +48,8 @@ class Money
 
         if ($comma) {
             $number = number_format($amount, 2, '.', ',');
+        } else {
+            $number = number_format($amount, 2, '.','');
         }
 
         if ($prefix) {
