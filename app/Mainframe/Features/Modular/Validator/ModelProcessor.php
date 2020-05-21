@@ -326,7 +326,12 @@ class ModelProcessor
         $from = $from ?: $this->original[$field];
         $allTransitions = $this->getTransitions();
 
-        return array_merge($allTransitions[$field][$from], [$from]); // Merge the same item
+        if (isset($allTransitions[$field][$from])) {
+
+            return array_merge($allTransitions[$field][$from], [$from]); // Merge the same item
+        }
+
+        return [$from];
     }
 
     /**
