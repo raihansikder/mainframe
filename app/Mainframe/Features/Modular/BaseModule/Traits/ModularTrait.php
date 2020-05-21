@@ -45,6 +45,15 @@ trait ModularTrait
     }
 
     /**
+     * @param array $except
+     * @return bool
+     */
+    public function fields($except = [])
+    {
+        return $this->getAttributeKeysExcept($except);
+    }
+
+    /**
      * Get all attribute names
      *
      * @return bool
