@@ -36,6 +36,18 @@ trait SendResponse
      * @param null $to
      * @return \App\Mainframe\Features\Responder\Response|mixed
      */
+    public function setMessage($message)
+    {
+        return $this->prepareResponse()->setMessage($message);
+    }
+
+
+    /**
+     * Set redirection url
+     *
+     * @param null $to
+     * @return \App\Mainframe\Features\Responder\Response|mixed
+     */
     public function setRedirectTo($to = null)
     {
         $to = $to ?: $this->resolveRedirectTo();
