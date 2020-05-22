@@ -18,7 +18,7 @@ trait SendResponse
      * @param  \Illuminate\Validation\Validator|null $validator
      * @return mixed|Response
      */
-    public function response($validator = null)
+    public function response()
     {
         /** @var Response $response */
         $this->response = resolve(Response::class);
