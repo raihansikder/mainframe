@@ -26,8 +26,6 @@ trait Validable
     public function setValidator($validator)
     {
         $this->validator = $validator;
-        $response = resolve(Response::class);
-        $response->validator = $validator;
 
         return $this;
     }
