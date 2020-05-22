@@ -353,7 +353,7 @@ class Response
      * @param  int $code
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Illuminate\View\View|void
      */
-    public function succeeded($message = null, $code = Response::HTTP_OK)
+    public function succeeded($message = null, $code = null)
     {
         $this->success($message, $code);
 
@@ -443,11 +443,11 @@ class Response
      * @param  int $code
      * @return $this
      */
-    public function success($message = null, $code = Response::HTTP_OK)
+    public function success($message = null, $code = null)
     {
         if ($this->status !== 'fail') {
             $this->status = 'success';
-            $this->code = $code;
+            $this->code = $code ?: Response::HTTP_OK;
             $this->message = $message ?: $this->message;
         }
 
@@ -461,10 +461,10 @@ class Response
      * @param  int $code
      * @return $this
      */
-    public function fail($message = null, $code = Response::HTTP_UNPROCESSABLE_ENTITY)
+    public function fail($message = null, $code = null)
     {
         $this->status = 'fail';
-        $this->code = $code;
+        $this->code = $code ?: Response::HTTP_UNPROCESSABLE_ENTITY;
         $this->message = $message ?: $this->message;
 
         return $this;
@@ -477,10 +477,11 @@ class Response
      * @param  int $code
      * @return $this
      */
-    public function failValidation($message = null, $code = Response::HTTP_UNPROCESSABLE_ENTITY)
+    public function failValidation($message = null)
     {
         $this->message = $message ?: $this->message ?: 'Validation failed';
-        $this->fail($message, $code);
+        $this->code = Response::HTTP_UNPROCESSABLE_ENTITY;
+        $this->fail();
 
         return $this;
     }
