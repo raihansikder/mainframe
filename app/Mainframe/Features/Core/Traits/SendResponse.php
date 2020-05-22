@@ -9,7 +9,7 @@ use URL;
 trait SendResponse
 {
     /** * @var \App\Mainframe\Features\Responder\Response */
-    public $response;
+    public $response; // Todo : Need this ?
 
     /** @var string */
     protected $redirectTo;
@@ -21,9 +21,14 @@ trait SendResponse
     public function response()
     {
         /** @var Response $response */
-        $this->response = resolve(Response::class);
+        $this->response = resolve(Response::class); // Todo : Need this ?
 
-        return $this->response;
+        return $this->prepareResponse();
+    }
+
+    public function prepareResponse()
+    {
+        return $this->setRedirectTo()->setValidator($this->validator);
     }
 
     /**
@@ -34,9 +39,8 @@ trait SendResponse
      */
     public function setMessage($message)
     {
-        return $this->prepareResponse()->setMessage($message);
+        return $this->response()->setMessage($message);
     }
-
 
     /**
      * Set redirection url
@@ -50,7 +54,7 @@ trait SendResponse
 
         $this->redirectTo = $to;
 
-        return $this->response()->setRedirectTo($to);
+        return resolve(Response::class)->setRedirectTo($to);
 
     }
 
@@ -81,7 +85,7 @@ trait SendResponse
         $successTo = request('redirect_success');
         $failTo = request('redirect_fail');
 
-        if ($successTo && $this->response()->isSuccess()) {
+        if ($successTo && resolve(Response::class)->isSuccess()) {
 
             if (isset($this->element, $this->module) && $successTo == '#new') {
                 return route($this->module->name.".edit", $this->element->id);
@@ -90,7 +94,7 @@ trait SendResponse
             return $successTo;
         }
 
-        if ($failTo && $this->response()->isFail()) {
+        if ($failTo && resolve(Response::class)->isFail()) {
             return $failTo;
         }
 
@@ -108,11 +112,6 @@ trait SendResponse
     |
     */
 
-    public function prepareResponse()
-    {
-        return $this->setRedirectTo()->setValidator($this->validator);
-    }
-
     /**
      * Render view
      *
@@ -122,7 +121,7 @@ trait SendResponse
      */
     public function view($path, $vars = [])
     {
-        return $this->prepareResponse()->view($path, $vars = []);
+        return $this->response()->view($path, $vars = []);
     }
 
     /**
@@ -133,7 +132,7 @@ trait SendResponse
      */
     public function redirect($to = null)
     {
-        return $this->prepareResponse()->redirect($to);
+        return $this->response()->redirect($to);
     }
 
     /**
@@ -143,7 +142,7 @@ trait SendResponse
      */
     public function json()
     {
-        return $this->prepareResponse()->json();
+        return $this->response()->json();
     }
 
     /**
@@ -155,7 +154,7 @@ trait SendResponse
      */
     public function failed($message = 'Failed', $code = Response::HTTP_BAD_REQUEST)
     {
-        return $this->prepareResponse()->failed($message, $code);
+        return $this->response()->failed($message, $code);
     }
 
     /**
@@ -167,7 +166,7 @@ trait SendResponse
      */
     public function succeeded($message = null, $code = Response::HTTP_OK)
     {
-        return $this->prepareResponse()->succeeded($message, $code);
+        return $this->response()->succeeded($message, $code);
     }
 
     /**
@@ -177,7 +176,7 @@ trait SendResponse
      */
     public function send()
     {
-        return $this->prepareResponse()->send();
+        return $this->response()->send();
     }
 
     /**
@@ -189,7 +188,7 @@ trait SendResponse
      */
     public function permissionDenied($message = 'Permission denied', $code = Response::HTTP_FORBIDDEN)
     {
-        return $this->prepareResponse()->permissionDenied($message, $code);
+        return $this->response()->permissionDenied($message, $code);
     }
 
     /**
@@ -201,7 +200,7 @@ trait SendResponse
      */
     public function notFound($message = 'Not found', $code = Response::HTTP_NOT_FOUND)
     {
-        return $this->prepareResponse()->notFound($message, $code);
+        return $this->response()->notFound($message, $code);
     }
 
     /**
@@ -213,7 +212,7 @@ trait SendResponse
      */
     public function success($message = null, $code = Response::HTTP_OK)
     {
-        return $this->prepareResponse()->success($message, $code);
+        return $this->response()->success($message, $code);
     }
 
     /**
@@ -225,7 +224,7 @@ trait SendResponse
      */
     public function fail($message = null, $code = Response::HTTP_UNPROCESSABLE_ENTITY)
     {
-        return $this->prepareResponse()->fail($message, $code);
+        return $this->response()->fail($message, $code);
     }
 
     /**
@@ -237,7 +236,7 @@ trait SendResponse
      */
     public function failValidation($message = 'Validation failed', $code = Response::HTTP_UNPROCESSABLE_ENTITY)
     {
-        return $this->prepareResponse()->failValidation($message, $code);
+        return $this->response()->failValidation($message, $code);
     }
 
     /**
@@ -248,7 +247,7 @@ trait SendResponse
      */
     public function load($payload = null)
     {
-        return $this->prepareResponse()->load($payload);
+        return $this->response()->load($payload);
     }
 
     /**
@@ -257,7 +256,7 @@ trait SendResponse
      */
     public function to($redirectTo = null)
     {
-        return $this->prepareResponse()->to($redirectTo);
+        return $this->response()->to($redirectTo);
     }
 
     /**
@@ -268,7 +267,7 @@ trait SendResponse
     public function isSuccess()
     {
 
-        return $this->prepareResponse()->isSuccess();
+        return $this->response()->isSuccess();
     }
 
     /**
@@ -278,7 +277,7 @@ trait SendResponse
      */
     public function isFail()
     {
-        return $this->prepareResponse()->isFail();
+        return $this->response()->isFail();
     }
 
     /**
@@ -288,7 +287,7 @@ trait SendResponse
      */
     public function expectsJson()
     {
-        return $this->prepareResponse()->expectsJson();
+        return $this->response()->expectsJson();
     }
 
 }

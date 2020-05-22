@@ -118,13 +118,10 @@ class RegisterController extends BaseController
         $this->attemptRegistration();
 
         request()->merge(['redirect_success' => route('login')]);
-        $this->response()->redirectTo = $this->resolveRedirectTo();
+        // $this->response()->redirectTo = $this->resolveRedirectTo();
 
-        if ($this->expectsJson()) {
-            return $this->load($this->user)->json();
-        }
+        return $this->load($this->user)->dispatch();
 
-        return $this->redirect();
 
     }
 
@@ -144,7 +141,7 @@ class RegisterController extends BaseController
         ]);
 
         if ($validator->fails()) {
-            $this->response()->setValidator($validator)->failValidation();
+            $this->setValidator($validator);
 
             return $this;
         }

@@ -403,8 +403,11 @@ class Response
      * @param  int $code
      * @return \Illuminate\Http\JsonResponse|void
      */
-    public function permissionDenied($message = 'Permission denied', $code = Response::HTTP_FORBIDDEN)
+    public function permissionDenied($message = null, $code = null)
     {
+        $message = $message ?: $this->message ?: 'Permission denied';
+        $code = $code ?: Response::HTTP_FORBIDDEN;
+
         return abort($code, $message);
     }
 
@@ -415,8 +418,11 @@ class Response
      * @param  int $code
      * @return \Illuminate\Http\JsonResponse|void
      */
-    public function notFound($message = 'Not found', $code = Response::HTTP_NOT_FOUND)
+    public function notFound($message = null, $code = null)
     {
+        $message = $message ?: $this->message ?: 'Not found';
+        $code = $code ?: Response::HTTP_NOT_FOUND;
+
         return abort($code, $message);
     }
 
@@ -497,7 +503,6 @@ class Response
      */
     public function to($redirectTo = null)
     {
-
         return $this->setRedirectTo($redirectTo);
     }
 
@@ -518,7 +523,6 @@ class Response
      */
     public function isSuccess()
     {
-
         return $this->status == 'success' && $this->isValid();
     }
 
