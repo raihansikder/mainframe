@@ -23,10 +23,6 @@ trait SendResponse
         /** @var Response $response */
         $this->response = resolve(Response::class);
 
-        if ($validator) {
-            $this->response->validator = $validator;
-        }
-
         return $this->response;
     }
 
