@@ -164,7 +164,7 @@ class Response
     public $redirectTo;
 
     /** @var \Illuminate\View\View|\Illuminate\Contracts\View\Factory */
-    public $view;
+    public $viewPath;
 
     /** @var array */
     public $viewVars = [];
@@ -227,9 +227,9 @@ class Response
         return $this;
     }
 
-    public function setView($view)
+    public function setViewPath($viewPath)
     {
-        $this->view = $view;
+        $this->viewPath = $viewPath;
 
         return $this;
     }
@@ -244,15 +244,16 @@ class Response
     /**
      * View
      *
-     * @param  string $path
-     * @param  array $vars
+     * @param  string $viewPath
+     * @param  array $viewVars
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function view($path = null, $vars = null)
+    public function view($viewPath = null, $viewVars = null)
     {
-        $this->setView($path)->setViewVars($vars);
+        $this->viewPath = $viewPath ?: $this->viewPath;
+        $this->viewVars = $viewVars ?: $this->viewPath;
 
-        $view = view($this->view)->with($this->defaultViewVars())->with($this->viewVars);
+        $view = view($this->viewPath)->with($this->defaultViewVars())->with($this->viewVars);
 
         if ($this->validator) {
             $view->withErrors($this->validator);
@@ -271,7 +272,7 @@ class Response
     {
         if ($to) {
             $redirect = redirect($to);
-        } elseif ($this->isSuccess() && $this->redirectTo) {
+        } elseif ($this->redirectTo) {
             $redirect = redirect($this->redirectTo);
         } else {
             $redirect = redirect()->back();
@@ -339,7 +340,7 @@ class Response
         }
 
         if ($this->redirectTo) {
-            return $this->redirect($this->redirectTo);
+            return $this->redirect();
         }
 
         return abort($code, $message);
@@ -357,15 +358,15 @@ class Response
         $this->success($message, $code);
 
         if ($this->expectsJson()) {
-            return $this->load($this->payload)->json();
+            return $this->json();
         }
 
         if ($this->redirectTo) {
-            return $this->redirect($this->redirectTo);
+            return $this->redirect();
         }
 
-        if ($this->view) {
-            return $this->view($this->view)->with($this->viewVars);
+        if ($this->viewPath) {
+            return $this->view();
         }
     }
 

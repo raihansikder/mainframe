@@ -115,13 +115,13 @@ trait SendResponse
     /**
      * Render view
      *
-     * @param $path
-     * @param array $vars
+     * @param $viewPath
+     * @param array $viewVars
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function view($path, $vars = [])
+    public function view($viewPath, $viewVars = [])
     {
-        return $this->response()->view($path, $vars = []);
+        return $this->response()->view($viewPath, $viewVars = []);
     }
 
     /**
