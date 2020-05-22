@@ -2,6 +2,7 @@
 
 namespace App\Mainframe\Features\Core\Traits;
 
+use App\Mainframe\Features\Responder\Response;
 use Validator;
 
 /**
@@ -25,6 +26,7 @@ trait Validable
     public function setValidator($validator)
     {
         $this->validator = $validator;
+        resolve(Response::class)->validator = $validator;
 
         return $this;
     }

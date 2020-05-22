@@ -376,11 +376,15 @@ class Response
      */
     public function dispatch()
     {
+        if ($this->isInvalid()) {
+            $this->failValidation();
+        }
+
         if ($this->isFail()) {
             return $this->failed($this->message, $this->code);
         }
 
-        return $this->succeeded($this->message, $this->code);
+        return $this->succeeded($this->message, Response::HTTP_OK);
 
     }
 
@@ -452,11 +456,9 @@ class Response
      */
     public function fail($message = null, $code = Response::HTTP_UNPROCESSABLE_ENTITY)
     {
-        if ($this->status !== 'fail') {
-            $this->status = 'fail';
-            $this->code = $code;
-            $this->message = $message;
-        }
+        $this->status = 'fail';
+        $this->code = $code;
+        $this->message = $message;
 
         return $this;
     }

@@ -21,13 +21,13 @@ trait RequestValidator
     public function validateStoreRequest()
     {
         if ($this->storeRequestValidator()->fails()) {
-            $this->response()->setValidator($this->storeRequestValidator())->failValidation();
+            $this->setValidator($this->storeRequestValidator());
 
             return false;
         }
 
         if ($this->saveRequestValidator()->fails()) {
-            $this->response()->setValidator($this->saveRequestValidator())->failValidation();
+            $this->setValidator($this->saveRequestValidator());
 
             return false;
         }
@@ -46,13 +46,13 @@ trait RequestValidator
     public function validateUpdateRequest()
     {
         if ($this->updateRequestValidator()->fails()) {
-            $this->response()->setValidator($this->updateRequestValidator())->failValidation();
+            $this->setValidator($this->updateRequestValidator());
 
             return false;
         }
 
         if ($this->saveRequestValidator()->fails()) {
-            $this->response()->setValidator($this->saveRequestValidator())->failValidation();
+            $this->setValidator($this->saveRequestValidator());
 
             return false;
         }
@@ -71,7 +71,7 @@ trait RequestValidator
     public function validateDeleteRequest()
     {
         if ($this->deleteRequestValidator()->fails()) {
-            $this->response()->setValidator($this->deleteRequestValidator())->failValidation();
+            $this->setValidator($this->deleteRequestValidator());
 
             return false;
         }
@@ -89,7 +89,7 @@ trait RequestValidator
     public function storeRequestValidator()
     {
         $rules = [
-            //'name' => 'required',
+            // 'lorem' => 'required',
         ];
 
         $message = [
