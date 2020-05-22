@@ -329,11 +329,15 @@ class Response
      *
      * @param  string $message
      * @param  int $code
-     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|void
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Illuminate\View\View|void
      */
     public function failed($message = null, $code = null)
     {
         $this->fail($message, $code);
+
+        if ($this->viewPath) {
+            return $this->view();
+        }
 
         if ($this->expectsJson()) {
             return $this->json();
@@ -357,6 +361,10 @@ class Response
     {
         $this->success($message, $code);
 
+        if ($this->viewPath) {
+            return $this->view();
+        }
+
         if ($this->expectsJson()) {
             return $this->json();
         }
@@ -365,9 +373,7 @@ class Response
             return $this->redirect();
         }
 
-        if ($this->viewPath) {
-            return $this->view();
-        }
+
     }
 
     /**
