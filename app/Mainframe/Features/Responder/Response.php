@@ -164,7 +164,7 @@ class Response
     public $redirectTo;
 
     /** @var \Illuminate\View\View|\Illuminate\Contracts\View\Factory */
-    public $view;
+    public $viewPath;
 
     /** @var array */
     public $viewVars = [];
@@ -227,9 +227,9 @@ class Response
         return $this;
     }
 
-    public function setView($view)
+    public function setViewPath($viewPath)
     {
-        $this->view = $view;
+        $this->viewPath = $viewPath;
 
         return $this;
     }
@@ -244,15 +244,16 @@ class Response
     /**
      * View
      *
-     * @param  string $path
-     * @param  array $vars
+     * @param  string $viewPath
+     * @param  array $viewVars
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function view($path = null, $vars = null)
+    public function view($viewPath = null, $viewVars = null)
     {
-        $this->setView($path)->setViewVars($vars);
+        $this->viewPath = $viewPath ?: $this->viewPath;
+        $this->viewVars = $viewVars ?: $this->viewPath;
 
-        $view = view($this->view)->with($this->defaultViewVars())->with($this->viewVars);
+        $view = view($this->viewPath)->with($this->defaultViewVars())->with($this->viewVars);
 
         if ($this->validator) {
             $view->withErrors($this->validator);
@@ -271,7 +272,7 @@ class Response
     {
         if ($to) {
             $redirect = redirect($to);
-        } elseif ($this->isSuccess() && $this->redirectTo) {
+        } elseif ($this->redirectTo) {
             $redirect = redirect($this->redirectTo);
         } else {
             $redirect = redirect()->back();
@@ -328,18 +329,22 @@ class Response
      *
      * @param  string $message
      * @param  int $code
-     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|void
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Illuminate\View\View|void
      */
     public function failed($message = null, $code = null)
     {
         $this->fail($message, $code);
+
+        if ($this->viewPath) {
+            return $this->view();
+        }
 
         if ($this->expectsJson()) {
             return $this->json();
         }
 
         if ($this->redirectTo) {
-            return $this->redirect($this->redirectTo);
+            return $this->redirect();
         }
 
         return abort($code, $message);
@@ -352,21 +357,20 @@ class Response
      * @param  int $code
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Illuminate\View\View|void
      */
-    public function succeeded($message = null, $code = Response::HTTP_OK)
+    public function succeeded($message = null, $code = null)
     {
         $this->success($message, $code);
 
+        if ($this->viewPath) {
+            return $this->view();
+        }
+
         if ($this->expectsJson()) {
-            return $this->load($this->payload)->json();
+            return $this->json();
         }
 
-        if ($this->redirectTo) {
-            return $this->redirect($this->redirectTo);
-        }
+        return $this->redirect();
 
-        if ($this->view) {
-            return $this->view($this->view)->with($this->viewVars);
-        }
     }
 
     /**
@@ -403,8 +407,11 @@ class Response
      * @param  int $code
      * @return \Illuminate\Http\JsonResponse|void
      */
-    public function permissionDenied($message = 'Permission denied', $code = Response::HTTP_FORBIDDEN)
+    public function permissionDenied($message = null, $code = null)
     {
+        $message = $message ?: $this->message ?: 'Permission denied';
+        $code = $code ?: Response::HTTP_FORBIDDEN;
+
         return abort($code, $message);
     }
 
@@ -415,8 +422,11 @@ class Response
      * @param  int $code
      * @return \Illuminate\Http\JsonResponse|void
      */
-    public function notFound($message = 'Not found', $code = Response::HTTP_NOT_FOUND)
+    public function notFound($message = null, $code = null)
     {
+        $message = $message ?: $this->message ?: 'Not found';
+        $code = $code ?: Response::HTTP_NOT_FOUND;
+
         return abort($code, $message);
     }
 
@@ -436,11 +446,11 @@ class Response
      * @param  int $code
      * @return $this
      */
-    public function success($message = null, $code = Response::HTTP_OK)
+    public function success($message = null, $code = null)
     {
         if ($this->status !== 'fail') {
             $this->status = 'success';
-            $this->code = $code;
+            $this->code = $code ?: Response::HTTP_OK;
             $this->message = $message ?: $this->message;
         }
 
@@ -454,10 +464,10 @@ class Response
      * @param  int $code
      * @return $this
      */
-    public function fail($message = null, $code = Response::HTTP_UNPROCESSABLE_ENTITY)
+    public function fail($message = null, $code = null)
     {
         $this->status = 'fail';
-        $this->code = $code;
+        $this->code = $code ?: Response::HTTP_UNPROCESSABLE_ENTITY;
         $this->message = $message ?: $this->message;
 
         return $this;
@@ -470,10 +480,11 @@ class Response
      * @param  int $code
      * @return $this
      */
-    public function failValidation($message = null, $code = Response::HTTP_UNPROCESSABLE_ENTITY)
+    public function failValidation($message = null)
     {
         $this->message = $message ?: $this->message ?: 'Validation failed';
-        $this->fail($message, $code);
+        $this->code = Response::HTTP_UNPROCESSABLE_ENTITY;
+        $this->fail();
 
         return $this;
     }
@@ -497,7 +508,6 @@ class Response
      */
     public function to($redirectTo = null)
     {
-
         return $this->setRedirectTo($redirectTo);
     }
 
@@ -518,7 +528,6 @@ class Response
      */
     public function isSuccess()
     {
-
         return $this->status == 'success' && $this->isValid();
     }
 

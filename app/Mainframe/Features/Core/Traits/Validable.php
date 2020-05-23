@@ -2,7 +2,6 @@
 
 namespace App\Mainframe\Features\Core\Traits;
 
-use App\Mainframe\Features\Responder\Response;
 use Validator;
 
 /**
@@ -26,28 +25,23 @@ trait Validable
     public function setValidator($validator)
     {
         $this->validator = $validator;
-        $response = resolve(Response::class);
-        $response->validator = $validator;
 
         return $this;
     }
 
     /**
-     * @param  null|\Illuminate\Validation\Validator $validator
      * @return \Illuminate\Contracts\Validation\Validator|\Illuminate\Validation\Validator
      */
-    public function validator($validator = null)
+    public function validator()
     {
-        if ($validator) {
-            $this->validator = $validator;
-        }
+
         if ($this->validator) {
             return $this->validator;
         }
 
         $this->validator = Validator::make([], []);
 
-        return $this->validator;
+        return $this->validator ;
     }
 
     /**
