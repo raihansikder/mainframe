@@ -369,10 +369,7 @@ class Response
             return $this->json();
         }
 
-        if ($this->redirectTo) {
-            return $this->redirect();
-        }
-
+        return $this->redirect();
 
     }
 
