@@ -29,7 +29,8 @@ $types = Setting::$types;
         @include('form.is-active')
 
         {{--    Form inputs: ends    --}}
-        @include('form.action-buttons')
+
+            @include('form.action-buttons')
         {{ Form::close() }}
     </div>
 @endsection

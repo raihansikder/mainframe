@@ -21,7 +21,7 @@ $input = new App\Mainframe\Features\Form\Comment($var, $element ?? null);
                 <input type="hidden" name="type" value="{{$input->type}}"/>
                 <input type="hidden" name="redirect_success" value="{{URL::full()}}"/>
                 <input type="hidden" name="redirect_fail" value="{{URL::full()}}"/>
-                @include('form.textarea',['var'=>['name'=>'body','container_class'=>'col-md-12']])
+                @include('form.textarea',['var'=>['name'=>'body','div'=>'col-md-12']])
                 {{-- <textarea name="body"></textarea>--}}
                 <button type="submit" class="btn btn-default">Save comment</button>
             </form>

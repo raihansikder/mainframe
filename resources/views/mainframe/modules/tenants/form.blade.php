@@ -15,9 +15,9 @@
 
 {{-- Form starts: Form fields are placed here. These will be added inside the spyrframe default form container in
  app/views/spyr/modules/base/form.blade.php --}}
-@include('form.input-text',['var'=>['name'=>'name','label'=>'Name', 'container_class'=>'col-sm-6']])
-@include('form.input-text',['var'=>['name'=>'code','label'=>'Access code', 'container_class'=>'col-sm-2']])
-@include('form.input-text',['var'=>['name'=>'theme_color','label'=>'Theme color (HEX)', 'container_class'=>'col-sm-2']])
+@include('form.input-text',['var'=>['name'=>'name','label'=>'Name', 'div'=>'col-sm-6']])
+@include('form.input-text',['var'=>['name'=>'code','label'=>'Access code', 'div'=>'col-sm-2']])
+@include('form.input-text',['var'=>['name'=>'theme_color','label'=>'Theme color (HEX)', 'div'=>'col-sm-2']])
 {{--@include('form.input-hidden',['var'=>['name'=>'user_id']])--}}
 @include('form.is_active')
 {{-- Form ends--}}

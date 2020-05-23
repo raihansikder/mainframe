@@ -35,7 +35,7 @@ class Upload extends Input
     {
         parent::__construct($var, $element);
 
-        $this->containerClass = $this->var['container_class'] ?? '';
+        $this->containerClass = $this->var['container_class'] ?? $this->var['div'] ?? '';
 
         if ($this->element) {
             $this->elementUuid = $this->element->uuid;

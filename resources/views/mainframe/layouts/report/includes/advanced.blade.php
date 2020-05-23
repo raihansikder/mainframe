@@ -8,12 +8,12 @@
     </style>
 @endsection
 
-@include('form.textarea',['var'=>['name'=>'columns_csv','label'=>'Columns', ['params'=>['class'=>'tag']],'container_class'=>'col-md-2']])
-@include('form.textarea',['var'=>['name'=>'alias_columns_csv','label'=>'Matching tiles', ['params'=>['class'=>'tag']],'container_class'=>'col-md-2']])
-{{--@include('form.input.textarea',['var'=>['name'=>'additional_conditions','label'=>'Additional conditions','container_class'=>'col-md-2']])--}}
-{{--@include('form.input.text',['var'=>['name'=>'group_by','label'=>'Group by','container_class'=>'col-md-2']])--}}
-@include('form.text',['var'=>['name'=>'order_by','label'=>'Order by','container_class'=>'col-md-2']])
-@include('form.text',['var'=>['name'=>'group_by','label'=>'Group by','container_class'=>'col-md-2']])
+@include('form.textarea',['var'=>['name'=>'columns_csv','label'=>'Columns', ['params'=>['class'=>'tag']],'div'=>'col-md-2']])
+@include('form.textarea',['var'=>['name'=>'alias_columns_csv','label'=>'Matching tiles', ['params'=>['class'=>'tag']],'div'=>'col-md-2']])
+{{--@include('form.input.textarea',['var'=>['name'=>'additional_conditions','label'=>'Additional conditions','div'=>'col-md-2']])--}}
+{{--@include('form.input.text',['var'=>['name'=>'group_by','label'=>'Group by','div'=>'col-md-2']])--}}
+@include('form.text',['var'=>['name'=>'order_by','label'=>'Order by','div'=>'col-md-2']])
+@include('form.text',['var'=>['name'=>'group_by','label'=>'Group by','div'=>'col-md-2']])
 
 <div class="clearfix"></div>
 {{--<div class="col-md-12">--}}

@@ -28,7 +28,7 @@ class Input extends Form
     {
         parent::__construct($var, $element);
 
-        $this->containerClass = $this->var['container_class'] ?? 'col-md-3';
+        $this->containerClass = $this->var['container_class'] ?? $this->var['div'] ?? 'col-md-3';
         $this->label = $this->var['label'] ?? null;
         $this->labelClass = $this->var['label_class'] ?? null;
         $this->type = $this->var['type'] ?? null;

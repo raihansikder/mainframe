@@ -19,13 +19,13 @@
         </ul>
         <div class="tab-content">
             <div class="tab-pane active " id="tab_minimize">
-                @include('form.text',['var'=>['name'=>'report_name','label'=>'Report name', 'container_class'=>'col-sm-10']])
-                @include('form.select-array',['var'=>['name'=>'rows_per_page','label'=>'Rows per page','options'=>kv([10,25,50,100]),'container_class'=>'pull-right col-md-2']])
+                @include('form.text',['var'=>['name'=>'report_name','label'=>'Report name', 'div'=>'col-sm-10']])
+                @include('form.select-array',['var'=>['name'=>'rows_per_page','label'=>'Rows per page','options'=>kv([10,25,50,100]),'div'=>'pull-right col-md-2']])
 
             </div>
             <div class="tab-pane" id="tab_basic">
-                @include('form.text',['var'=>['name'=>'created_at_from','label'=>'Created(from)', 'container_class'=>'col-md-3','params'=>['class'=>'datepicker'] ]])
-                @include('form.text',['var'=>['name'=>'created_at_till','label'=>'Created(till)', 'container_class'=>'col-md-3','params'=>['class'=>'datepicker'] ]])
+                @include('form.text',['var'=>['name'=>'created_at_from','label'=>'Created(from)', 'div'=>'col-md-3','params'=>['class'=>'datepicker'] ]])
+                @include('form.text',['var'=>['name'=>'created_at_till','label'=>'Created(till)', 'div'=>'col-md-3','params'=>['class'=>'datepicker'] ]])
             </div>
             <div class="tab-pane" id="tab_advanced">
                 @include($path.'.includes.advanced')

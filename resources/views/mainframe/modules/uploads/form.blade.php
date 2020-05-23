@@ -15,9 +15,9 @@
 
 {{-- Form starts: Form fields are placed here. These will be added inside the spyrframe default form container in
  app/views/spyr/modules/base/form.blade.php --}}
-@include('form.input-text',['var'=>['name'=>'name','label'=>'Name', 'container_class'=>'col-sm-6']])
-{{--@include('form.select-model',['var'=>['name'=>'uploadtype_id','label'=>'Type', 'table'=>'uploadtypes', 'container_class'=>'col-sm-3']])--}}
-@include('form.input-text',['var'=>['name'=>'order','label'=>'Order', 'container_class'=>'col-sm-2']])
+@include('form.input-text',['var'=>['name'=>'name','label'=>'Name', 'div'=>'col-sm-6']])
+{{--@include('form.select-model',['var'=>['name'=>'uploadtype_id','label'=>'Type', 'table'=>'uploadtypes', 'div'=>'col-sm-3']])--}}
+@include('form.input-text',['var'=>['name'=>'order','label'=>'Order', 'div'=>'col-sm-2']])
 
 @if(isset($upload))
     <div class="clearfix"></div>
@@ -39,7 +39,7 @@
     </div>
 @endif
 <div class="clearfix"></div>
-@include('form.textarea',['var'=>['name'=>'desc','label'=>'Description', 'container_class'=>'col-sm-6']])
+@include('form.textarea',['var'=>['name'=>'desc','label'=>'Description', 'div'=>'col-sm-6']])
 {{--@include('form.is_active')--}}
 {{-- Form ends --}}
 @section('content-bottom')

@@ -11,6 +11,6 @@ class InputHidden extends Input
     {
         parent::__construct($var, $element);
         $this->type = 'hidden';
-        $this->containerClass = $var['container_class'] ?? '';
+        $this->containerClass = $this->var['container_class'] ?? $this->var['div'] ?? '';
     }
 }

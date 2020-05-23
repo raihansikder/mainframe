@@ -20,16 +20,16 @@
 
 {{-- Form starts: Form fields are placed here. These will be added inside the spyrframe default form container in
  app/views/spyr/modules/base/form.blade.php --}}
-@include('form.input-text',['var'=>['name'=>'title','label'=>'Title', 'container_class'=>'col-sm-9']])
-@include('form.input-text',['var'=>['name'=>'type','label'=>'Type', 'container_class'=>'col-sm-3']])
+@include('form.input-text',['var'=>['name'=>'title','label'=>'Title', 'div'=>'col-sm-9']])
+@include('form.input-text',['var'=>['name'=>'type','label'=>'Type', 'div'=>'col-sm-3']])
 
-{{--@include('form.select-array',['var'=>['name'=>'type','label'=>'Type', 'options'=>array_merge([''=>'Select'],kv(App\Report::$types)),'container_class'=>'col-sm-3']])--}}
-@include('form.input-text',['var'=>['name'=>'version','label'=>'Version', 'container_class'=>'col-sm-3']])
-@include('form.select-model',['var'=>['name'=>'module_id','label'=>'Module','table'=>'modules', 'container_class'=>'col-sm-3']])
-@include('form.input-text',['var'=>['name'=>'tags','label'=>'Tags', 'container_class'=>'col-sm-3']])
-@include('form.select-array',['var'=>['name'=>'is_module_default','label'=>'Is Module Default', 'options'=>['0'=>'No','1'=>'Yes'],'container_class'=>'col-sm-3']])
-@include('form.textarea',['var'=>['name'=>'description','label'=>'Description', 'container_class'=>'col-sm-12']])
-@include('form.textarea',['var'=>['name'=>'parameters','label'=>'Parameters', 'container_class'=>'col-sm-12']])
+{{--@include('form.select-array',['var'=>['name'=>'type','label'=>'Type', 'options'=>array_merge([''=>'Select'],kv(App\Report::$types)),'div'=>'col-sm-3']])--}}
+@include('form.input-text',['var'=>['name'=>'version','label'=>'Version', 'div'=>'col-sm-3']])
+@include('form.select-model',['var'=>['name'=>'module_id','label'=>'Module','table'=>'modules', 'div'=>'col-sm-3']])
+@include('form.input-text',['var'=>['name'=>'tags','label'=>'Tags', 'div'=>'col-sm-3']])
+@include('form.select-array',['var'=>['name'=>'is_module_default','label'=>'Is Module Default', 'options'=>['0'=>'No','1'=>'Yes'],'div'=>'col-sm-3']])
+@include('form.textarea',['var'=>['name'=>'description','label'=>'Description', 'div'=>'col-sm-12']])
+@include('form.textarea',['var'=>['name'=>'parameters','label'=>'Parameters', 'div'=>'col-sm-12']])
 @include('form.is_active')
 {{-- Form ends --}}
 

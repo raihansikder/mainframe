@@ -33,7 +33,7 @@ class Comment extends Form
     {
         parent::__construct($var,$element);
 
-        $this->containerClass = $this->var['container_class'] ?? '';
+        $this->containerClass = $this->var['container_class'] ??  $this->var['div'] ?? '';
 
         $this->elementUuid = $element->uuid;
 

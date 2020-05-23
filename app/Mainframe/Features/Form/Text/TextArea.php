@@ -12,7 +12,7 @@ class TextArea extends Input
     {
         parent::__construct($var, $element);
 
-        $this->containerClass = $var['container_class'] ?? 'col-md-6';
+        $this->containerClass = $this->var['container_class'] ?? $this->var['div'] ?? 'col-md-6';
         $this->editorConfig = $var['editorConfig'] ?? 'editor_config_basic';
     }
 }
