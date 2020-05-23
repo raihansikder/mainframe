@@ -28,7 +28,7 @@ trait SendResponse
 
     public function prepareResponse()
     {
-        return $this->setRedirectTo()->setValidator($this->validator);
+        return $this->setRedirectTo()->setValidator($this->validator ?? null);
     }
 
     /**
