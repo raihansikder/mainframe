@@ -11,7 +11,7 @@
 |
 */
 /**
- *      $var['container_class'] ?? 'col-md-3';
+ *      $var['div'] ?? 'col-md-3';
  *      $var['label']           ?? null;
  *      $var['label_class']     ?? null;
  *      $var['type']            ?? null;
