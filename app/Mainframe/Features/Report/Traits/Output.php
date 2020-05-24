@@ -83,7 +83,7 @@ trait Output
 
     public function jsonPayload()
     {
-        $result = $this->mutateResult()->toArray();
+        $result          = $this->mutateResult()->toArray();
         $result['items'] = $result['data'];
         unset($result['data']);
 
@@ -108,8 +108,8 @@ trait Output
     public function excel($csv = false)
     {
         $selectedColumns = $this->mutateSelectedColumns();
-        $aliasColumns = $this->mutateAliasColumns();
-        $result = $this->mutateResult();
+        $aliasColumns    = $this->mutateAliasColumns();
+        $result          = $this->mutateResult();
 
         try {
             /** @noinspection PhpVoidFunctionResultUsedInspection */
@@ -140,18 +140,17 @@ trait Output
     public function html($type = null)
     {
         $vars = [
-            'path' => $this->path,
-            'dataSource' => $this->dataSource,
+            'path'          => $this->path,
+            'dataSource'    => $this->dataSource,
             'columnOptions' => $this->columnOptions(),
-
         ];
 
         if ($type !== 'blank') {
             $vars = array_merge($vars, [
                 'selectedColumns' => $this->mutateSelectedColumns(),
-                'aliasColumns' => $this->mutateAliasColumns(),
-                'total' => $this->total(),
-                'result' => $this->mutateResult(),
+                'aliasColumns'    => $this->mutateAliasColumns(),
+                'total'           => $this->total(),
+                'result'          => $this->mutateResult(),
             ]);
         }
 
@@ -183,7 +182,8 @@ trait Output
         $ext = $csv ? '.csv' : '.xlsx';
 
         $spreadsheet = new Spreadsheet();
-        $sheet = $spreadsheet->getActiveSheet();
+
+        $sheet  = $spreadsheet->getActiveSheet();
         $ranges = $this->excelColumnRange(count($selectedColumns));
 
         /**

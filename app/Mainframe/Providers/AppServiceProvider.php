@@ -16,7 +16,7 @@ class AppServiceProvider extends ServiceProvider
         \App\Mainframe\Providers\AuthServiceProvider::class,
         \App\Mainframe\Providers\EventServiceProvider::class,
         \App\Mainframe\Providers\RouteServiceProvider::class,
-        \OwenIt\Auditing\AuditingServiceProvider::class
+        \OwenIt\Auditing\AuditingServiceProvider::class,
     ];
 
     protected $helpers = [

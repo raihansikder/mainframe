@@ -50,8 +50,8 @@ class ModelProcessor
      */
     public $transitions = [
         'status' => [
-            'Lorem' => ['Ipsum', 'Dolor']
-        ]
+            'Lorem' => ['Ipsum', 'Dolor'],
+        ],
     ];
 
     /**
@@ -62,7 +62,7 @@ class ModelProcessor
      */
     public function __construct($element)
     {
-        $this->element = $element;
+        $this->element  = $element;
         $this->original = $element->getOriginal();
     }
 
@@ -91,7 +91,7 @@ class ModelProcessor
     public static function rules($element, $merge = [])
     {
         $rules = [
-            'name' => 'required|between:1,255|unique:modules,name,'
+            'name'      => 'required|between:1,255|unique:modules,name,'
                 .(isset($element->id) ? (string) $element->id : 'null')
                 .',id,deleted_at,NULL',
             'is_active' => 'required|in:1,0',
@@ -323,7 +323,7 @@ class ModelProcessor
      */
     public function allowedTransitionsOf($field, $from = null)
     {
-        $from = $from ?: $this->original[$field];
+        $from           = $from ?: $this->original[$field];
         $allTransitions = $this->getTransitions();
 
         if (isset($allTransitions[$field][$from])) {
@@ -575,7 +575,7 @@ class ModelProcessor
      */
     public function forDelete($element = null)
     {
-        $element = $element ?: $this->element;
+        $element             = $element ?: $this->element;
         $element->deleted_by = user()->id; // Fill with the deleter id.
         $this->preDeleting();
         $this->deleting($element);

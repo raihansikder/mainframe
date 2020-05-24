@@ -92,6 +92,7 @@ function echoArray($my_array)
 
 /**
  * Shorthand function for echoArray
+ *
  * @param $arr
  * @return string
  */
@@ -120,13 +121,13 @@ function arrayToObject($array)
  */
 function randomString($length = 8)
 {
-    $str = '';
+    $str        = '';
     $characters = array_merge(range('A', 'Z'), range('a', 'z'), range('0', '9'));
     //$characters = array_merge(range('A', 'Z'), range('0', '9'));
     $max = count($characters) - 1;
     for ($i = 0; $i < $length; $i++) {
         $rand = random_int(0, $max);
-        $str .= $characters[$rand];
+        $str  .= $characters[$rand];
     }
 
     return $str;
@@ -412,27 +413,27 @@ function commaWrap($str)
  */
 function convertFileSize($bytes)
 {
-    $result = 'undefined';
-    $bytes = floatval($bytes);
+    $result  = 'undefined';
+    $bytes   = floatval($bytes);
     $arBytes = [
         0 => [
-            "UNIT" => "TB",
+            "UNIT"  => "TB",
             "VALUE" => pow(1024, 4),
         ],
         1 => [
-            "UNIT" => "GB",
+            "UNIT"  => "GB",
             "VALUE" => pow(1024, 3),
         ],
         2 => [
-            "UNIT" => "MB",
+            "UNIT"  => "MB",
             "VALUE" => pow(1024, 2),
         ],
         3 => [
-            "UNIT" => "KB",
+            "UNIT"  => "KB",
             "VALUE" => 1024,
         ],
         4 => [
-            "UNIT" => "B",
+            "UNIT"  => "B",
             "VALUE" => 1,
         ],
     ];
@@ -598,7 +599,7 @@ function arrayForWhereIn($val)
  */
 function createLetterRange($length)
 {
-    $range = [];
+    $range   = [];
     $letters = range('A', 'Z');
     for ($i = 0; $i < $length; $i++) {
         $position = $i * 26;

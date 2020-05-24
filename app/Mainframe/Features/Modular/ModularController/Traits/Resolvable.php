@@ -10,7 +10,7 @@ trait Resolvable
     /**
      * Resolve the view blade for the module form
      *
-     * @param  string  $state
+     * @param  string $state
      * @return string
      */
     public function form($state = 'create')
@@ -45,19 +45,19 @@ trait Resolvable
             return [
                 'route' => $this->moduleName.'.store',
                 'class' => $this->moduleName.'-form module-base-form create-form',
-                'name' => $this->moduleName,
-                'files' => true
+                'name'  => $this->moduleName,
+                'files' => true,
             ];
         }
 
         if ($type == 'edit') {
             return [
-                'route' => [$this->moduleName.'.update', $this->element->id],
-                'class' => $this->moduleName.'-form module-base-form edit-form',
-                'name' => $this->moduleName,
-                'files' => true,
+                'route'  => [$this->moduleName.'.update', $this->element->id],
+                'class'  => $this->moduleName.'-form module-base-form edit-form',
+                'name'   => $this->moduleName,
+                'files'  => true,
                 'method' => 'patch',
-                'id' => $this->moduleName.'Form'
+                'id'     => $this->moduleName.'Form',
             ];
         }
 

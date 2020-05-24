@@ -53,7 +53,7 @@ class ModularController extends BaseController
 
         View::share([
             'module' => $this->module,
-            'model' => $this->model
+            'model'  => $this->model,
         ]);
     }
 
@@ -119,7 +119,7 @@ class ModularController extends BaseController
     public function create()
     {
         $this->element = $this->module->modelInstance();
-        $uuid = request()->old('uuid') ?: uuid();
+        $uuid          = request()->old('uuid') ?: uuid();
         $this->element->fill(request()->all());
         $this->element->uuid = $uuid;
 
@@ -128,11 +128,11 @@ class ModularController extends BaseController
         }
 
         $vars = [
-            'uuid' => $uuid,
-            'element' => $this->element,
+            'uuid'       => $uuid,
+            'element'    => $this->element,
             'formConfig' => $this->formConfig('create'),
-            'editable' => true,
-            'formState' => 'create',
+            'editable'   => true,
+            'formState'  => 'create',
             'immutables' => [],
         ];
 
@@ -156,10 +156,10 @@ class ModularController extends BaseController
         }
 
         $vars = [
-            'element' => $this->element,
+            'element'    => $this->element,
             'formConfig' => $this->formConfig('edit'),
-            'editable' => user()->can('update', $this->element),
-            'formState' => 'edit',
+            'editable'   => user()->can('update', $this->element),
+            'formState'  => 'edit',
             'immutables' => $this->element->processor()->getImmutables(),
         ];
 
@@ -293,7 +293,7 @@ class ModularController extends BaseController
     public function uploads($id)
     {
         request()->merge([
-            'module_id' => $this->module->id,
+            'module_id'  => $this->module->id,
             'element_id' => $id,
         ]);
 
@@ -309,7 +309,7 @@ class ModularController extends BaseController
     public function attachUpload($id)
     {
         request()->merge([
-            'module_id' => $this->module->id,
+            'module_id'  => $this->module->id,
             'element_id' => $id,
         ]);
 
@@ -354,7 +354,7 @@ class ModularController extends BaseController
     public function comments($id)
     {
         request()->merge([
-            'module_id' => $this->module->id,
+            'module_id'  => $this->module->id,
             'element_id' => $id,
         ]);
 
@@ -370,7 +370,7 @@ class ModularController extends BaseController
     public function attachComment($id)
     {
         request()->merge([
-            'module_id' => $this->module->id,
+            'module_id'  => $this->module->id,
             'element_id' => $id,
         ]);
 

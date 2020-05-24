@@ -2,7 +2,7 @@
 
 use App\Mainframe\Helpers\Mf;
 
-$modules = Mf::modules();
+$modules      = Mf::modules();
 $moduleGroups = Mf::moduleGroups();
 
 /*
@@ -17,7 +17,7 @@ $moduleGroups = Mf::moduleGroups();
 
 Route::middleware(['auth', 'verified'])->group(function () use ($modules, $moduleGroups) {
     foreach ($modules as $module) {
-        $path = $module->route_path;
+        $path       = $module->route_path;
         $controller = $module->controller;
         $moduleName = $module->name;
 
@@ -46,12 +46,12 @@ Route::middleware(['auth', 'verified'])->group(function () use ($modules, $modul
 
         /* * Resourceful route that creates all REST routs. */
         Route::resource($path, $controller)->names([
-            'index' => "{$module->name}.index",
-            'create' => "{$module->name}.create",
-            'store' => "{$module->name}.store",
-            'show' => "{$module->name}.show",
-            'edit' => "{$module->name}.edit",
-            'update' => "{$module->name}.update",
+            'index'   => "{$module->name}.index",
+            'create'  => "{$module->name}.create",
+            'store'   => "{$module->name}.store",
+            'show'    => "{$module->name}.show",
+            'edit'    => "{$module->name}.edit",
+            'update'  => "{$module->name}.update",
             'destroy' => "{$module->name}.destroy",
         ]);
     }

@@ -75,17 +75,18 @@ class MakeMainframeModule extends Command
      */
     public function createClasses()
     {
-        $sourceRoot = 'app/Mainframe/Features/Modular/Skeleton/';
+        $sourceRoot  = 'app/Mainframe/Features/Modular/Skeleton/';
+        $destination = $this->classDirectory().'/'.$this->modelClassName();
 
         $maps = [
-            $sourceRoot.'SuperHero.php' => $this->classDirectory().'/'.$this->modelClassName().'.php',
-            $sourceRoot.'SuperHeroController.php' => $this->classDirectory().'/'.$this->modelClassName().'Controller.php',
-            $sourceRoot.'SuperHeroDatatable.php' => $this->classDirectory().'/'.$this->modelClassName().'Datatable.php',
-            $sourceRoot.'SuperHeroHelper.php' => $this->classDirectory().'/'.$this->modelClassName().'Helper.php',
-            $sourceRoot.'SuperHeroObserver.php' => $this->classDirectory().'/'.$this->modelClassName().'Observer.php',
-            $sourceRoot.'SuperHeroPolicy.php' => $this->classDirectory().'/'.$this->modelClassName().'Policy.php',
-            $sourceRoot.'SuperHeroProcessor.php' => $this->classDirectory().'/'.$this->modelClassName().'Processor.php',
-            $sourceRoot.'SuperHeroProcessorHelper.php' => $this->classDirectory().'/'.$this->modelClassName().'ProcessorHelper.php',
+            $sourceRoot.'SuperHero.php'                => $destination.'.php',
+            $sourceRoot.'SuperHeroController.php'      => $destination.'Controller.php',
+            $sourceRoot.'SuperHeroDatatable.php'       => $destination.'Datatable.php',
+            $sourceRoot.'SuperHeroHelper.php'          => $destination.'Helper.php',
+            $sourceRoot.'SuperHeroObserver.php'        => $destination.'Observer.php',
+            $sourceRoot.'SuperHeroPolicy.php'          => $destination.'Policy.php',
+            $sourceRoot.'SuperHeroProcessor.php'       => $destination.'Processor.php',
+            $sourceRoot.'SuperHeroProcessorHelper.php' => $destination.'ProcessorHelper.php',
         ];
 
         File::makeDirectory($this->classDirectory(), 755, true);
@@ -101,14 +102,14 @@ class MakeMainframeModule extends Command
      */
     public function createViewFiles()
     {
-        $sourceRoot = 'app/Mainframe/Features/Modular/Skeleton/views';                          // Source directory
+        $sourceRoot      = 'app/Mainframe/Features/Modular/Skeleton/views';                          // Source directory
         $destinationRoot = 'resources/views/'.str_replace('.', '/', $this->viewDirectory());    // New module directory
 
         File::copyDirectory($sourceRoot, $destinationRoot);
 
         $maps = [
             $sourceRoot.'/form/default.blade.php' => $destinationRoot.'/form/default.blade.php',
-            $sourceRoot.'/form/js.blade.php' => $destinationRoot.'/form/js.blade.php',
+            $sourceRoot.'/form/js.blade.php'      => $destinationRoot.'/form/js.blade.php',
             $sourceRoot.'/grid/default.blade.php' => $destinationRoot.'/grid/default.blade.php',
 
         ];
@@ -130,24 +131,25 @@ class MakeMainframeModule extends Command
         // replace maps
         $replaces = [
             'App\Mainframe\Modules\SuperHeroes' => trim($this->namespace(), '\\'),
-            'mainframe.modules.super-heroes' => $this->viewDirectory(),
-            'super_heroes' => $this->moduleTable(),
-            'super-heroes' => $this->routePath(),
-            'SuperHeroes' => Str::plural($this->modelClassName()),
-            'SuperHero' => $this->modelClassName(),
-            'superHeroes' => lcfirst(Str::plural($this->modelClassName())),
-            'superHero' => lcfirst($this->modelClassName()),
-            '{table}' => $this->moduleTable(),
-            '{module_name}' => $this->moduleName(),
-            '{route_path}' => $this->routePath(),
-            '{route_name}' => $this->routeName(),
+            'mainframe.modules.super-heroes'    => $this->viewDirectory(),
+
+            'super_heroes'      => $this->moduleTable(),
+            'super-heroes'      => $this->routePath(),
+            'SuperHeroes'       => Str::plural($this->modelClassName()),
+            'SuperHero'         => $this->modelClassName(),
+            'superHeroes'       => lcfirst(Str::plural($this->modelClassName())),
+            'superHero'         => lcfirst($this->modelClassName()),
+            '{table}'           => $this->moduleTable(),
+            '{module_name}'     => $this->moduleName(),
+            '{route_path}'      => $this->routePath(),
+            '{route_name}'      => $this->routeName(),
             '{class_directory}' => $this->classDirectory(),
-            '{namespace}' => $this->namespace(),
-            '{model}' => $this->model,
-            '{policy}' => $this->policy(),
-            '{processor}' => $this->processor(),
-            '{controller}' => $this->controller(),
-            '{view_directory}' => $this->viewDirectory(),
+            '{namespace}'       => $this->namespace(),
+            '{model}'           => $this->model,
+            '{policy}'          => $this->policy(),
+            '{processor}'       => $this->processor(),
+            '{controller}'      => $this->controller(),
+            '{view_directory}'  => $this->viewDirectory(),
 
         ];
 
@@ -216,7 +218,7 @@ class MakeMainframeModule extends Command
 
     private function viewDirectory()
     {
-        $str = str_replace('\\App', '', $this->namespace());
+        $str         = str_replace('\\App', '', $this->namespace());
         $directories = explode('\\', $str);
 
         $arr = [];

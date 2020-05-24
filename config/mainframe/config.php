@@ -40,7 +40,7 @@ return [
     |
     */
 
-    'date_format' => env('DATE_FORMAT', 'd-m-Y'),
+    'date_format'     => env('DATE_FORMAT', 'd-m-Y'),
     'datetime_format' => env('DATETIME_FORMAT', 'd-m-Y H:i:s'),
 
     /*
@@ -51,6 +51,7 @@ return [
     | Enable/Disable query cache.
     |
     */
+
     'query_cache' => env('QUERY_CACHE', false),
 
     /*
@@ -61,14 +62,15 @@ return [
     | You can enable/disable loading of some of the mainframe default routes.
     |
     */
+
     'routes' => [
         'web' => [
             'app/Mainframe/routes/auth.php',
             'app/Mainframe/routes/modules.php',
-            'app/Mainframe/routes/web.php'
+            'app/Mainframe/routes/web.php',
         ],
         'api' => [
-            'app/Mainframe/routes/api.php'
+            'app/Mainframe/routes/api.php',
         ],
     ],
 
@@ -80,11 +82,12 @@ return [
     | Projects may have additional CSS/JS files which needs to be included
     |
     */
+
     'load' => [
         'css' => [
             // 'projects/project-name/css/project-name.css',
         ],
-        'js' => [
+        'js'  => [
             //'projects/project-name/css/project-name.js',
         ],
     ],
