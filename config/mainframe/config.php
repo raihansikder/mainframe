@@ -82,7 +82,7 @@ return [
     */
     'load' => [
         'css' => [
-            'projects/project-name/css/project-name.css',
+            // 'projects/project-name/css/project-name.css',
         ],
         'js' => [
             //'projects/project-name/css/project-name.js',
