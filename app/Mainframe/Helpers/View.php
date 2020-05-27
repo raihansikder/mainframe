@@ -24,11 +24,11 @@ class View extends \Illuminate\View\View
             $permission = $item->name.'-view-any'; //lorems-view-any
 
             $allow = false;
-            if ($type == 'module_group' && user()->hasAnyAccess([$item->name])) {
+            if ($type == 'module_group' && user()->hasAccess([$item->name])) {
                 $allow = true;
             }
 
-            if ($type == 'module' && user()->hasAccess([$item->name, $permission])) {
+            if ($type == 'module' && user()->hasAccess([$permission])) {
                 $allow = true;
             }
 
