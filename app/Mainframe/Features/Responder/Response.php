@@ -296,10 +296,10 @@ class Response
     {
         // Load Generic response
         $data = [
-            'code' => $this->code,
-            'status' => $this->status ?: 'success',
+            'code'    => $this->code,
+            'status'  => $this->status ?: 'success',
             'message' => $this->message,
-            'data' => null,
+            'data'    => null,
         ];
         // Load payload
         if ($this->payload) {
@@ -307,7 +307,7 @@ class Response
         }
 
         // Load validation errors
-        if ($this->isInvalid()) {
+        if (! $this->isValid()) {
             $data['validation_errors'] = $this->validator()->messages()->toArray();
         }
 
@@ -380,7 +380,7 @@ class Response
      */
     public function dispatch()
     {
-        if ($this->isInvalid()) {
+        if (! $this->isValid()) {
             $this->failValidation();
         }
 
@@ -410,7 +410,7 @@ class Response
     public function permissionDenied($message = null, $code = null)
     {
         $message = $message ?: $this->message ?: 'Permission denied';
-        $code = $code ?: Response::HTTP_FORBIDDEN;
+        $code    = $code ?: Response::HTTP_FORBIDDEN;
 
         return abort($code, $message);
     }
@@ -425,7 +425,7 @@ class Response
     public function notFound($message = null, $code = null)
     {
         $message = $message ?: $this->message ?: 'Not found';
-        $code = $code ?: Response::HTTP_NOT_FOUND;
+        $code    = $code ?: Response::HTTP_NOT_FOUND;
 
         return abort($code, $message);
     }
@@ -449,8 +449,8 @@ class Response
     public function success($message = null, $code = null)
     {
         if ($this->status !== 'fail') {
-            $this->status = 'success';
-            $this->code = $code ?: Response::HTTP_OK;
+            $this->status  = 'success';
+            $this->code    = $code ?: Response::HTTP_OK;
             $this->message = $message ?: $this->message;
         }
 
@@ -466,8 +466,8 @@ class Response
      */
     public function fail($message = null, $code = null)
     {
-        $this->status = 'fail';
-        $this->code = $code ?: Response::HTTP_UNPROCESSABLE_ENTITY;
+        $this->status  = 'fail';
+        $this->code    = $code ?: Response::HTTP_UNPROCESSABLE_ENTITY;
         $this->message = $message ?: $this->message;
 
         return $this;
@@ -483,7 +483,7 @@ class Response
     public function failValidation($message = null)
     {
         $this->message = $message ?: $this->message ?: 'Validation failed';
-        $this->code = Response::HTTP_UNPROCESSABLE_ENTITY;
+        $this->code    = Response::HTTP_UNPROCESSABLE_ENTITY;
         $this->fail();
 
         return $this;
@@ -564,9 +564,9 @@ class Response
     public function defaultViewVars()
     {
         return [
-            'responseStatus' => session('responseStatus') ?: $this->status,
+            'responseStatus'  => session('responseStatus') ?: $this->status,
             'responseMessage' => session('responseMessage') ?: $this->message,
-            'messageBag' => session('messageBag') ?: resolve(MessageBag::class)
+            'messageBag'      => session('messageBag') ?: resolve(MessageBag::class),
         ];
     }
 }
