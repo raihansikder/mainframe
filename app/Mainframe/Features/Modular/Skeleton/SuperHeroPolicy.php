@@ -1,5 +1,6 @@
 <?php
 /** @noinspection PhpInconsistentReturnPointsInspection */
+
 /** @noinspection PhpUnused */
 
 namespace App\Mainframe\Modules\SuperHeroes;
@@ -28,51 +29,51 @@ class SuperHeroPolicy extends BaseModulePolicy
      * @param  SuperHero $superHero
      * @return mixed
      */
-    // public function view($user, $superHero) { }
+    // public function view($user, $element) { }
 
     /**
      * Determine whether the user can create superHeroes.
      *
      * @param  \App\User $user
-     * @param  SuperHero $superHero
+     * @param  SuperHero $element
      * @return mixed
      */
-    // public function create($user, $superHero = null) { }
+    // public function create($user, $element = null) { }
 
     /**
      * Determine whether the user can update the superHero.
      *
      * @param  \App\User $user
-     * @param  SuperHero $superHero
+     * @param  SuperHero $element
      * @return mixed
      */
-    // public function update($user, $superHero) { }
+    // public function update($user, $element) { }
 
     /**
      * Determine whether the user can delete the superHero.
      *
      * @param  \App\User $user
-     * @param  SuperHero $superHero
+     * @param  SuperHero $element
      * @return mixed
      */
-    // public function delete($user, $superHero) { }
+    // public function delete($user, $element) { }
 
     /**
      * Determine whether the user can restore the superHero.
      *
      * @param  \App\User $user
-     * @param  SuperHero $superHero
+     * @param  SuperHero $element
      * @return mixed
      */
-    // public function restore($user, $superHero) { }
+    // public function restore($user, $element) { }
 
     /**
      * Determine whether the user can permanently delete the superHero.
      *
      * @param  \App\User $user
-     * @param  SuperHero $superHero
+     * @param  SuperHero $element
      * @return mixed
      */
-    // public function forceDelete($user, $superHero) { }
+    // public function forceDelete($user, $element) { }
 
 }
