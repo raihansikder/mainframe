@@ -28,7 +28,7 @@ class View extends \Illuminate\View\View
                 $allow = true;
             }
 
-            if ($type == 'module' && user()->hasAnyAccess([$permission])) {
+            if ($type == 'module' && user()->hasAccess([$item->name, $permission])) {
                 $allow = true;
             }
 
@@ -88,5 +88,4 @@ class View extends \Illuminate\View\View
 
         return $breadcrumbs;
     }
-
 }
