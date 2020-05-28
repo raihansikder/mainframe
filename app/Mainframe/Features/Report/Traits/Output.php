@@ -13,6 +13,8 @@ trait Output
 {
     /**
      * Show report blank or filled with data if 'Run'
+     *
+     * @return bool|\Illuminate\Contracts\View\Factory|\Illuminate\Support\Collection|\Illuminate\View\View|mixed|void
      */
     public function show()
     {
@@ -43,6 +45,9 @@ trait Output
         return $this->html();
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Support\Collection|\Illuminate\View\View|mixed
+     */
     public function responseInvalid()
     {
         $this->fail();
@@ -81,6 +86,9 @@ trait Output
         return $path;
     }
 
+    /**
+     * @return array
+     */
     public function jsonPayload()
     {
         $result          = $this->mutateResult()->toArray();
