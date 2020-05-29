@@ -3,6 +3,7 @@
 namespace App\Mainframe\Features\Modular\BaseModule;
 
 use App\Mainframe\Modules\Uploads\Upload;
+use DB;
 
 class BaseModuleObserver
 {
@@ -63,6 +64,11 @@ class BaseModuleObserver
      */
     public function deleted($element)
     {
+        // Store deleter id
+        if (isset($element, $element->id) && $element->deleted_by == null) {
+            DB::table($element->getTable())->where('id', $element->id)
+                ->update(['deleted_by'=> user()->id]);
+        }
     }
 
     /**
@@ -71,9 +77,7 @@ class BaseModuleObserver
      * @param  $element
      * @return void
      */
-    public function restored($element)
-    {
-    }
+    public function restored($element) { }
 
     /**
      * Handle the base module "force deleted" event.
@@ -81,7 +85,5 @@ class BaseModuleObserver
      * @param  $element
      * @return void
      */
-    public function forceDeleted($element)
-    {
-    }
+    public function forceDeleted($element) { }
 }
