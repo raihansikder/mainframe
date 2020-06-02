@@ -7,6 +7,14 @@ use App\Mainframe\Features\Modular\Validator\ModelProcessor;
 /** @mixin \App\Mainframe\Modules\Settings\Setting $this->element */
 class SettingProcessor extends ModelProcessor
 {
+
+    // public $transitions = [
+    //     'value' => ['c' => ['a','*']],
+    // ];
+
+    public $trackedFields = [
+        'name',
+    ];
     /*
     |--------------------------------------------------------------------------
     | Fill model .
@@ -25,7 +33,7 @@ class SettingProcessor extends ModelProcessor
      */
     public function fill($setting)
     {
-        return $this->populate();
+        return $this;
     }
 
     /*

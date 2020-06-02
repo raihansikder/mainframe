@@ -92,6 +92,7 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule;
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Comments\Comment[] $comments
  * @property-read int|null $comments_count
  * @property-read \App\Mainframe\Modules\Comments\Comment $latestComment
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Changes\Change[] $changes
  */
 class Module extends BaseModule
 {

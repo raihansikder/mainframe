@@ -22,6 +22,8 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\SuperHeroes\SuperHero newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\SuperHeroes\SuperHero newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\SuperHeroes\SuperHero query()
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Changes\Change[] $changes
+ * @property-read int|null $changes_count
  */
 class SuperHero extends BaseModule
 {

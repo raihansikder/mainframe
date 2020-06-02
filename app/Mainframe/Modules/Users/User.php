@@ -141,6 +141,8 @@ use Watson\Rememberable\Rememberable;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereVendorId($value)
  * @property int|null $client_id
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereClientId($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Changes\Change[] $changes
+ * @property-read int|null $changes_count
  */
 class User extends Authenticatable implements MustVerifyEmail, Auditable
 {

@@ -76,6 +76,7 @@ use App\Mainframe\Modules\Modules\Module;
  * @property-read int|null $comments_count
  * @property-read \App\Mainframe\Modules\Comments\Comment $latestComment
  * @property-read \App\Mainframe\Modules\Modules\Module|null $linkedModule
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Changes\Change[] $changes
  */
 class Upload extends BaseModule
 {
@@ -205,7 +206,7 @@ class Upload extends BaseModule
     public function fillModuleAndElementData()
     {
 
-        $module = $this->linkedModule()->exists() ? $this->linkedModule : null;
+        $module = $this->linkedModule;
         $element = null;
 
         if ($module) {
@@ -308,6 +309,9 @@ class Upload extends BaseModule
      */
     public function uploadable() { return $this->morphTo(); }
 
+    /**
+     * @return \App\Mainframe\Features\Modular\BaseModule\BaseModule|mixed
+     */
     public function linkedModule()
     {
         return $this->belongsTo(Module::class, 'module_id')

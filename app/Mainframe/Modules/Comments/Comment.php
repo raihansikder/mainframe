@@ -62,6 +62,8 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Comments\Comment whereUpdatedBy($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Comments\Comment whereUuid($value)
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Changes\Change[] $changes
+ * @property-read int|null $changes_count
  */
 class Comment extends BaseModule
 {

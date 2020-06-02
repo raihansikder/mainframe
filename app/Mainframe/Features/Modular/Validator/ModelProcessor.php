@@ -49,9 +49,13 @@ class ModelProcessor
      * @var array
      */
     public $transitions = [
-        'status' => [
-            'Lorem' => ['Ipsum', 'Dolor'],
-        ],
+        // 'status' => [
+        //     'Lorem' => ['Ipsum', 'Dolor'],
+        // ],
+    ];
+
+    public $trackedFields = [
+
     ];
 
     /**
@@ -307,11 +311,12 @@ class ModelProcessor
         }
 
         $transitions = $allTransitions[$field][$from];
-        if (in_array($to, $transitions)) {
-            return true;
+
+        if(!is_array($transitions)){
+            $transitions = [$transitions];
         }
 
-        return false;
+        return in_array('*', $transitions) || in_array($to, $transitions);
     }
 
     /**
@@ -352,6 +357,11 @@ class ModelProcessor
     public function getTransitions()
     {
         return $this->transitions;
+    }
+
+    public function getTrackedFields()
+    {
+        return array_merge($this->trackedFields, array_keys($this->transitions));
     }
 
     /**

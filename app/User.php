@@ -144,6 +144,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property-read int|null $comments_count
  * @property-read null|string $profile_pic
  * @property-read \App\Mainframe\Modules\Comments\Comment $latestComment
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Changes\Change[] $changes
  */
 class User extends \App\Mainframe\Modules\Users\User
 {

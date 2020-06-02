@@ -3,7 +3,6 @@
 namespace App\Mainframe\Features\Modular\BaseModule\Traits;
 
 use App\Mainframe\Helpers\Mf;
-use App\Mainframe\Modules\Comments\Comment;
 use App\Mainframe\Modules\Modules\Module;
 use App\Mainframe\Modules\Projects\Project;
 use App\Mainframe\Modules\Tenants\Tenant;
@@ -16,15 +15,22 @@ trait ModularTrait
 {
     /*
     |--------------------------------------------------------------------------
-    | Module features
+    | Query scopes + Dynamic scopes
     |--------------------------------------------------------------------------
     |
     | Scopes allow you to easily re-use query logic in your models. To define
     | a scope, simply prefix a model method with scope:
     */
+    public function scopeActive($query) { return $query->where('is_active', 1); }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Module features
+    |--------------------------------------------------------------------------
+    |
+    */
     /**
-     * Get the module object that an element belongs to. If the element is $tenant then the function
-     * returns the row from modules table that has module name 'tenants'.
+     * Get the module object of element
      *
      * @return Module
      */
@@ -46,8 +52,11 @@ trait ModularTrait
     }
 
     /**
+     * Shorthand function for getAttributeKeysExcept.
+     * Gets all attribute names
+     *
      * @param array $except
-     * @return bool
+     * @return array|bool|mixed
      */
     public function fields($except = [])
     {
@@ -96,16 +105,6 @@ trait ModularTrait
         return Mf::tableColumns($this->getTable());
     }
 
-    /*
-    |--------------------------------------------------------------------------
-    | Query scopes + Dynamic scopes
-    |--------------------------------------------------------------------------
-    |
-    | Scopes allow you to easily re-use query logic in your models. To define
-    | a scope, simply prefix a model method with scope:
-    */
-    public function scopeActive($query) { return $query->where('is_active', 1); }
-
 
     /**
      * Cast an attribute to a native PHP type.
@@ -125,7 +124,7 @@ trait ModularTrait
 
     /*
     |--------------------------------------------------------------------------
-    | Value transitions
+    | Changes and value transitions
     |--------------------------------------------------------------------------
     |
     */
@@ -188,7 +187,7 @@ trait ModularTrait
     }
 
     /**
-     * Get old and new value of a changed field field
+     * Get old and new value of a changed field
      *
      * @param $field
      * @return array
@@ -196,7 +195,11 @@ trait ModularTrait
     public function transition($field)
     {
         if ($this->fieldHasChanged($field)) {
-            return ['field' => $field, 'old' => $this->getOriginal($field), 'new' => $this->$field];
+            return [
+                'field' => $field,
+                'old'   => $this->getOriginal($field),
+                'new'   => $this->$field,
+            ];
         }
 
         return null;
@@ -278,14 +281,58 @@ trait ModularTrait
      */
     public function allowedTransitionsOf($field, $from = null)
     {
-        $from = $from ?: $this->$field;
+        $from = $from ?: $this->$field; // from current value
 
         return $this->processor()->allowedTransitionsOf($field, $from);
     }
 
     /*
     |--------------------------------------------------------------------------
-    | Related users
+    | Field specific change tracking using 'changes' module
+    |--------------------------------------------------------------------------
+    |
+    */
+    /**
+     * Get all tracked changes of element.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
+     */
+    public function changes()
+    {
+        return $this->morphMany('App\Mainframe\Modules\Changes\Change', 'changeable');
+    }
+
+    /**
+     * Store tracked changes in changes table
+     *
+     * @return $this
+     */
+    public function trackFieldChanges()
+    {
+        $fields = $this->processor()->getTrackedFields();
+
+        // dd($this->getChanges());
+        foreach ($fields as $field) {
+            if ($this->fieldHasChanged($field)) {
+                $transition = $this->transition($field);
+                $this->changes()->create([
+                    'module_id'    => $this->module()->id,
+                    'element_id'   => $this->id,
+                    'element_uuid' => $this->uuid,
+                    'field'        => $field,
+                    'old'          => $transition['old'],
+                    'new'          => $transition['new'],
+                ]);
+            }
+        }
+
+        return $this;
+    }
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | User related functions
     |--------------------------------------------------------------------------
     |
     */
@@ -295,14 +342,20 @@ trait ModularTrait
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function creator() { return $this->belongsTo(User::class, 'created_by'); }
+    public function creator()
+    {
+        return $this->belongsTo(User::class, 'created_by');
+    }
 
     /**
      * Get the user who has last updated the element
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function updater() { return $this->belongsTo(User::class, 'updated_by'); }
+    public function updater()
+    {
+        return $this->belongsTo(User::class, 'updated_by');
+    }
 
     /**
      * Returns array of user ids including creator and updater user ids.
@@ -318,7 +371,8 @@ trait ModularTrait
         }
         //get the creator
         //if the creator and updater is same no need to add the id twice
-        if (isset($this->updater->id, $this->creator->id) && $this->creator->id !== $this->updater->id) {
+        if (isset($this->updater->id, $this->creator->id)
+            && $this->creator->id !== $this->updater->id) {
             $userIds[] = $this->updater->id;
         } //get the updater
 
@@ -327,9 +381,8 @@ trait ModularTrait
 
     /*
     |--------------------------------------------------------------------------
-    | Tenants & Project
+    | Tenants & Project related functions
     |--------------------------------------------------------------------------
-    |
     |
     */
     /**
@@ -355,7 +408,6 @@ trait ModularTrait
     | Events
     |--------------------------------------------------------------------------
     |
-    |
     */
     /**
      * Check if the model is being created.
@@ -368,13 +420,26 @@ trait ModularTrait
     }
 
     /**
-     * Check if the model is being created.
+     * Check if the model is being updated.
      *
      * @return bool
      */
     public function isUpdating()
     {
         return isset($this->id);
+    }
+
+    /**
+     * Disable model events. Useful for avoiding infinite loop scenario.
+     *
+     * @return $this
+     */
+    public function disableEvents()
+    {
+        $model = $this->module()->model;
+        $model::unsetEventDispatcher();
+
+        return $this;
     }
 
     /**
@@ -389,30 +454,14 @@ trait ModularTrait
             return $this->save($options);
         });
     }
-
-    /**
-     * Disable events to avoid infinite loop
-     *
-     * @return $this
-     */
-    public function disableEvents()
-    {
-        /** @var \App\Mainframe\Modules\SuperHeroes\SuperHero $model */
-        $model = $this->module()->model;
-
-        $model::unsetEventDispatcher();
-
-        return $this;
-    }
-
     /*
     |--------------------------------------------------------------------------
-    | Processor
+    | Processor related functions
     |--------------------------------------------------------------------------
     |
     */
     /**
-     * Get the processor for this module
+     * Get the processor for this element
      *
      * @return mixed|\App\Mainframe\Features\Modular\Validator\ModelProcessor
      */
@@ -422,34 +471,56 @@ trait ModularTrait
     }
 
     /**
-     * Run processor logic on model
+     * Run processor logic on model for save().
+     * This covers both create and update cases.
      *
      * @return \App\Mainframe\Features\Modular\Validator\ModelProcessor|mixed
      */
-    public function process()
+    public function process() // Todo: Need to reevaluate this functions purpose.
     {
         return $this->processor()->forSave();
     }
 
     /**
+     * Get a processed element after running the processor logic.
+     * This element may not be fully valid.
+     *
      * @return $this
      */
-    public function processed()
+    public function processed() // Todo: Need to reevaluate this functions purpose.
     {
         return $this->process()->element;
     }
 
-    public function validate()
+    /**
+     * Get a valid element.
+     *
+     * @return \App\Mainframe\Features\Modular\BaseModule\BaseModule
+     */
+    public function validate() // Todo: Need to reevaluate this functions purpose.
     {
         return $this->module()->processorInstance($this)->forSave()->element;
     }
 
     /*
     |--------------------------------------------------------------------------
-    | Uploadable
+    | Uploadable and upload related
     |--------------------------------------------------------------------------
     |
     */
+
+    /**
+     * Link existing uploads with this element
+     *
+     * @return $this
+     */
+    public function linkUploads()
+    {
+        Upload::linkTemporaryUploads($this);
+
+        return $this;
+    }
+
     /**
      * Get a list of uploads under an element.
      *
@@ -460,21 +531,8 @@ trait ModularTrait
         // return $this->hasMany(Upload::class, 'element_id')
         //     ->where('module_id', $this->module()->id)
         //     ->orderBy('order', 'ASC')->orderBy('created_at', 'DESC');
-
         return $this->morphMany('App\Mainframe\Modules\Uploads\Upload', 'uploadable');
     }
-
-    /**
-     * Get a list of uploads under an element.
-     *
-     * @return mixed
-     */
-    // public function latestUpload()
-    // {
-    //     return $this->hasOne(Upload::class, 'element_id')
-    //         ->where('module_id', $this->module()->id)
-    //         ->orderBy('created_at', 'DESC');
-    // }
 
     /*
     |--------------------------------------------------------------------------
@@ -489,24 +547,8 @@ trait ModularTrait
      */
     public function comments()
     {
-        // return $this->hasMany('App\Mainframe\Modules\Comments\Comment', 'element_id')
-        //     ->where('module_id', $this->module()->id)
-        //     ->orderBy('order', 'ASC')->orderBy('created_at', 'DESC');
-
         return $this->morphMany('App\Mainframe\Modules\Comments\Comment', 'commentable');
     }
-
-    /**
-     * Get a list of uploads under an element.
-     *
-     * @return mixed
-     */
-    // public function latestComment()
-    // {
-    //     return $this->hasOne(Comment::class, 'element_id')
-    //         ->where('module_id', $this->module()->id)
-    //         ->orderBy('created_at', 'DESC');
-    // }
 
     /*
     |--------------------------------------------------------------------------
@@ -519,8 +561,8 @@ trait ModularTrait
      */
     public function autoFill()
     {
-        // Inject tenant context.
-        $this->autoFillTenant();
+
+        $this->autoFillTenant();         // Inject tenant context.
 
         $this->uuid       = $this->uuid ?? uuid();
         $this->created_by = $this->created_by ?? user()->id;
@@ -542,34 +584,13 @@ trait ModularTrait
     }
 
     /**
-     * Fill data and set calculated data in fields for saving the module
-     * This can depend of supporting fillFunct, setFunct,calculateFunct
-     */
-    public function populate()
-    {
-        // $this->fillAddress()->setAmounts();
-
-        return $this;
-    }
-
-    /**
-     * Link existing uploads with this element
+     * Mark an entry as deleted by setting the deleted_at, deleted_by
      *
-     * @return $this
-     */
-    public function linkUploads()
-    {
-        Upload::linkTemporaryUploads($this);
-
-        return $this;
-    }
-
-    /**
      * @param null $by
      * @param null $at
      * @return $this
      */
-    public function markDeleted($by = null,$at = null)
+    public function markDeleted($by = null, $at = null)
     {
 
         $by = $by ?: user()->id;
@@ -583,6 +604,20 @@ trait ModularTrait
         return $this;
     }
 
+    /*
+    |--------------------------------------------------------------------------
+    | Framework functions to override based on business requirements
+    |--------------------------------------------------------------------------
+    |
+    */
+    /**
+     * Fill data and set calculated data in fields for saving the module
+     * This can depend of supporting fillFunct, setFunct,calculateFunct
+     */
+    public function populate()
+    {
+        return $this;
+    }
 
     /*
     |--------------------------------------------------------------------------

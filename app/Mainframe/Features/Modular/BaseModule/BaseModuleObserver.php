@@ -48,6 +48,7 @@ class BaseModuleObserver
     public function saved($element)
     {
         $element->linkUploads();
+        $element->trackFieldChanges();
     }
 
     /**

@@ -47,6 +47,8 @@ use App\Mainframe\Features\Modular\BaseModule\Traits\ModularTrait;
  * @method static \Illuminate\Database\Query\Builder|\App\Mainframe\Features\Modular\BaseModule\BaseModule withTrashed()
  * @method static \Illuminate\Database\Query\Builder|\App\Mainframe\Features\Modular\BaseModule\BaseModule withoutTrashed()
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Changes\Change[] $changes
+ * @property-read int|null $changes_count
  */
 class BaseModule extends Model implements Auditable
 {
