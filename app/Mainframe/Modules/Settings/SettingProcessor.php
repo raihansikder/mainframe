@@ -20,16 +20,12 @@ class SettingProcessor extends ModelProcessor
     /**
      * Fill the model with values
      *
-     * @param  \App\Mainframe\Modules\Settings\Setting  $setting
+     * @param  \App\Mainframe\Modules\Settings\Setting $setting
      * @return $this
      */
     public function fill($setting)
     {
-        parent::fill($setting);
-
-        //$setting->name = 'Lorem Ipsum';
-
-        return $this;
+        return $this->populate();
     }
 
     /*
@@ -43,17 +39,17 @@ class SettingProcessor extends ModelProcessor
     /**
      * Validation rules. For regular expression validation use array instead of pipe
      *
-     * @param  \App\Mainframe\Modules\Settings\Setting  $setting
-     * @param  array  $merge
+     * @param  \App\Mainframe\Modules\Settings\Setting $setting
+     * @param  array $merge
      * @return array
      */
     public static function rules($setting, $merge = [])
     {
         $rules = [
-            'name' => 'required|between:1,255|unique:settings,name,'.(isset($setting->id) ? (string) $setting->id : 'null').',id,deleted_at,NULL',
-            'title' => 'required|between:1,255',
-            'type' => 'required|'.'in:'.implode(',', array_keys(Setting::$types)),
-            'desc' => 'between:1,2048',
+            'name'      => 'required|between:1,255|unique:settings,name,'.(isset($setting->id) ? (string) $setting->id : 'null').',id,deleted_at,NULL',
+            'title'     => 'required|between:1,255',
+            'type'      => 'required|'.'in:'.implode(',', array_keys(Setting::$types)),
+            'desc'      => 'between:1,2048',
             'is_active' => 'in:1,0',
         ];
 

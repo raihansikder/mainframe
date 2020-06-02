@@ -9,6 +9,7 @@ use App\Mainframe\Modules\Projects\Project;
 use App\Mainframe\Modules\Tenants\Tenant;
 use App\Mainframe\Modules\Uploads\Upload;
 use App\User;
+use DB;
 
 /** @mixin \App\Mainframe\Features\Modular\BaseModule\BaseModule $this */
 trait ModularTrait
@@ -172,7 +173,7 @@ trait ModularTrait
         $userId = null;
 
         foreach ($audits as $audit) {
-            $userId = $audit->user_id;
+            $userId  = $audit->user_id;
             $changes = $audit->getModified();
             if (array_key_exists($field, $changes)) {
                 break;
@@ -521,7 +522,7 @@ trait ModularTrait
         // Inject tenant context.
         $this->autoFillTenant();
 
-        $this->uuid = $this->uuid ?? uuid();
+        $this->uuid       = $this->uuid ?? uuid();
         $this->created_by = $this->created_by ?? user()->id;
         $this->created_at = $this->created_at ?? now();
         $this->updated_by = $this->updated_by ?? user()->id;
@@ -535,7 +536,7 @@ trait ModularTrait
     public function autoFillTenant()
     {
         if (user()->ofTenant() && $this->hasTenantContext()) {
-            $this->tenant_id = $this->tenant_id ?: user()->tenant_id;
+            $this->tenant_id  = $this->tenant_id ?: user()->tenant_id;
             $this->project_id = $this->project_id ?: $this->tenant->project_id;
         }
     }
@@ -547,6 +548,37 @@ trait ModularTrait
     public function populate()
     {
         // $this->fillAddress()->setAmounts();
+
+        return $this;
+    }
+
+    /**
+     * Link existing uploads with this element
+     *
+     * @return $this
+     */
+    public function linkUploads()
+    {
+        Upload::linkTemporaryUploads($this);
+
+        return $this;
+    }
+
+    /**
+     * @param null $by
+     * @param null $at
+     * @return $this
+     */
+    public function markDeleted($by = null,$at = null)
+    {
+
+        $by = $by ?: user()->id;
+        $at = $at ?: now();
+
+        if (isset($this->id) && $this->deleted_by == null) {
+            DB::table($this->getTable())->where('id', $this->id)
+                ->update(['deleted_by' => $by]);
+        }
 
         return $this;
     }

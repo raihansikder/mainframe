@@ -47,7 +47,7 @@ class BaseModuleObserver
      */
     public function saved($element)
     {
-        Upload::linkTemporaryUploads($element);
+        $element->linkUploads();
     }
 
     /**
@@ -64,11 +64,7 @@ class BaseModuleObserver
      */
     public function deleted($element)
     {
-        // Store deleter id
-        if (isset($element, $element->id) && $element->deleted_by == null) {
-            DB::table($element->getTable())->where('id', $element->id)
-                ->update(['deleted_by'=> user()->id]);
-        }
+        // $element->markDeleted();
     }
 
     /**

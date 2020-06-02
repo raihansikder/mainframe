@@ -59,21 +59,15 @@ class Setting extends BaseModule
 {
     use SettingHelper;
 
-    /*
-    |--------------------------------------------------------------------------
-    | Module definitions
-    |--------------------------------------------------------------------------
-    |
-    */
+    // protected $forceDeleting = false;
+
     protected $moduleName = 'settings';
     protected $table      = 'settings';
 
     /*
     |--------------------------------------------------------------------------
-    | Fillable attributes
+    | Properties
     |--------------------------------------------------------------------------
-    |
-    | These attributes can be mass assigned
     */
     protected $fillable = [
         'uuid',
@@ -84,52 +78,10 @@ class Setting extends BaseModule
         'value',
         'is_active',
     ];
-    /*
-    |--------------------------------------------------------------------------
-    | Guarded attributes
-    |--------------------------------------------------------------------------
-    |
-    | The attributes can not be mass assigned.
-    */
     // protected $guarded = [];
-
-    /*
-    |--------------------------------------------------------------------------
-    | Type cast dates
-    |--------------------------------------------------------------------------
-    |
-    | Type cast attributes as date. This allows to create a Carbon object.
-    | Of the dates
-   */
-    // protected $dates = [];
-
-    /*
-    |--------------------------------------------------------------------------
-    | Type cast attributes
-    |--------------------------------------------------------------------------
-    |
-    | Type cast attributes (helpful for JSON)
-    */
+    // protected $dates = ['created_at', 'updated_at', 'deleted_at'];
     // protected $casts = [];
-
-    /*
-    |--------------------------------------------------------------------------
-    | Automatic eager load
-    |--------------------------------------------------------------------------
-    |
-    | Auto load these relations whenever the model is retrieved.
-    */
     // protected $with = [];
-
-    /*
-    |--------------------------------------------------------------------------
-    | Append new attributes to the model
-    |--------------------------------------------------------------------------
-    |
-    | If you want to append a new attribute that doesn't exists in the table
-    | you should first create and accessor getNewFieldAttribute and then
-    | add the attribute name in the array
-    */
     // protected $appends = [];
 
     /*
@@ -146,17 +98,10 @@ class Setting extends BaseModule
      */
     public static $types = [
         'boolean' => 'Boolean',
-        'string' => 'String',
-        'array' => 'Array',
-        'file' => 'File',
+        'string'  => 'String',
+        'array'   => 'Array',
+        'file'    => 'File',
     ];
-
-    /**
-     * Automatic eager load relation by default (can be expensive)
-     *
-     * @var array
-     */
-    // protected $with = ['relation1', 'relation2'];
 
     /*
     |--------------------------------------------------------------------------
@@ -172,31 +117,14 @@ class Setting extends BaseModule
         parent::boot();
         self::observe(SettingObserver::class);
 
-        static::saving(function (Setting $element) {
-            // echo 'In Model boot:saving() ';
-        });
-        static::creating(function (Setting $element) {
-            // echo 'In Model boot:creating() ';
-        });
-        static::created(function (Setting $element) {
-            // echo 'In Model boot:created() ';
-        });
-        static::updating(function (Setting $element) {
-            // echo 'In Model boot:updating() ';
-        });
-        static::updated(function (Setting $element) {
-            // echo 'In Model boot:updated() ';
-        });
-        static::saved(function (Setting $element) {
-            // echo 'In Model boot:saved() ';
-        });
-        static::deleting(function (Setting $element) {
-            return false;
-            // echo 'In Model boot:deleting() ';
-        });
-        static::deleted(function (Setting $element) {
-            // echo 'In Model boot:deleted() ';
-        });
+        // static::saving(function (Setting $element) { });
+        // static::creating(function (Setting $element) { });
+        // static::updating(function (Setting $element) { });
+        // static::created(function (Setting $element) { });
+        // static::updated(function (Setting $element) { });
+        // static::saved(function (Setting $element) { });
+        // static::deleting(function (Setting $element) { });
+        // static::deleted(function (Setting $element) { });
     }
 
 
