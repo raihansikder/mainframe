@@ -2,6 +2,8 @@
 
 namespace App\Mainframe\Features\Form;
 
+use Illuminate\Support\Str;
+
 class Comment extends Form
 {
     /** @var string */
@@ -55,7 +57,7 @@ class Comment extends Form
 
         $this->type = $this->var['type'] ?? null;
         $this->limit = $this->var['limit'] ?? 999;
-        $this->commentBoxId = $this->var['comment_box_id'] ?? 'commentBox'.\Str::random(8);
+        $this->commentBoxId = $this->var['comment_box_id'] ?? 'commentBox'.Str::random(8);
 
     }
 }
