@@ -329,6 +329,16 @@ trait ModularTrait
         return $this;
     }
 
+    /**
+     * Get a change from a tracked field.
+     *
+     * @param $field
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function track($field)
+    {
+        return $this->changes()->where('field', $field);
+    }
 
     /*
     |--------------------------------------------------------------------------
