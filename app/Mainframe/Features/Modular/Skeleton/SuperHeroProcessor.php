@@ -15,8 +15,9 @@ class SuperHeroProcessor extends ModelProcessor
     */
     /** @var SuperHero */
     public $element;
-    // public $immutables
-    // public $transitions
+    // public $immutables;
+    // public $transitions;
+    // public $trackedFields;
 
     /* Further customize immutables and allowed value transitions*/
     // public function getImmutables(){return $this->immutables; }
