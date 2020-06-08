@@ -55,6 +55,16 @@ trait SuperHeroHelper
 
     /*
     |--------------------------------------------------------------------------
+    | View helper functions
+    |--------------------------------------------------------------------------
+    | Functions that are used in views to shorted the length of logic inside
+    | view blades. This are known as view shorthand functions.
+    */
+
+    // Write code here
+
+    /*
+    |--------------------------------------------------------------------------
     | Ability to create, edit, delete or restore
     |--------------------------------------------------------------------------
     |
