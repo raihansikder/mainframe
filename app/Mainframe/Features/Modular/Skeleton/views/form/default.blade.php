@@ -1,15 +1,14 @@
 @extends('mainframe.layouts.module.form.template')
-
 <?php
 /**
  * @var \App\Mainframe\Modules\Modules\Module $module
  * @var \App\User $user
- * @var \App\Mainframe\Modules\SuperHeroes\SuperHero $element
  * @var string $formState create|edit
  * @var array $formConfig
  * @var string $uuid Only available for create
  * @var bool $editable
  * @var array $immutables
+ * @var \App\Mainframe\Modules\SuperHeroes\SuperHero $element
  */
 ?>
 
@@ -21,27 +20,20 @@
             {{ Form::model($element, $formConfig)}}
         @endif
 
-        {{-- ******** Form inputs: starts *********************************** --}}
-        {{-- **************************************************************** --}}
-
+        {{-- ******** Form inputs: starts *********** --}}
+        {{-- **************************************** --}}
         @include('form.text',['var'=>['name'=>'name','label'=>'Name']])
         @include('form.is-active')
-
-        {{--  ******** Form inputs: ends ************************************ --}}
+        {{--  ******** Form inputs: ends ************ --}}
 
         @include('form.action-buttons')
-
         {{ Form::close() }}
     </div>
 @endsection
 
 @section('content-bottom')
     @parent
-    {{--    <div class="col-md-6 no-padding-l">--}}
-    {{--        <h5>File upload</h5>--}}
-    {{--        <small>Upload one or more files</small>--}}
-    {{--        @include('mainframe.layouts.module.form.includes.features.uploads.uploads',['var'=>['limit'=>99]])--}}
-    {{--    </div>--}}
+    {{-- <div class="col-md-6 no-padding-l"><h5>File upload</h5><small>Upload one or more files</small>@include('mainframe.layouts.module.form.includes.features.uploads.uploads',['var'=>['limit'=>99]])</div>--}}
 @endsection
 
 @section('js')

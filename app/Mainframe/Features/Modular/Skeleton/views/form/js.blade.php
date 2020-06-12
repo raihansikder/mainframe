@@ -12,47 +12,37 @@
 <script>
     /*
     |--------------------------------------------------------------------------
-    | Common JS to run for both create and update
+    | Common - creating and updating
     |--------------------------------------------------------------------------
-    | Write the functions on this top section of the file so that they
-    | can be called by the codes after it.
     */
-    /**
-     * Assigns validation rules during saving (both creating and updating)
-     */
-    addValidationRules(); // Assign validation classes/rules
+    addValidationRules();
+    enableValidation('{{$module->name}}');
 
-    // enableValidation('{{$module->name}}'); // Enable Ajax based form validation.
-
+    /*
+    |--------------------------------------------------------------------------
+    | creating
+    |--------------------------------------------------------------------------
+    */
     @if($element->isCreating())
+        // Todo: write codes here.
+    @endif
+
     /*
     |--------------------------------------------------------------------------
-    | JS to run only during creation
+    | updating
     |--------------------------------------------------------------------------
-    |
-    | Some JS may only be required to be executed while creating a
-    | model. Write such JS here
     */
-    @elseif($element->isUpdating())
-    /*
-    |--------------------------------------------------------------------------
-    | JS to run only during update
-    |--------------------------------------------------------------------------
-    |
-    | Some JS may only be required to be executed while updating an
-    | existing model. Write such JS here
-    */
+    @if($element->isUpdating())
+        // Todo: write codes here.
     @endif
     /*
     |--------------------------------------------------------------------------
     | List of functions
     |--------------------------------------------------------------------------
     |
-    | Write the functions on this top section of the file so that they
-    | can be called by the codes after it.
     */
     /**
-     * Assigns validation rules during saving (both creating and updating)
+     * Add CSS for validation rules
      */
     function addValidationRules() {
         $("input[name=name]").addClass('validate[required]');
