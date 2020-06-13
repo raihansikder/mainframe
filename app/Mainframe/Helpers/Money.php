@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: raihan
- * Date: 5/14/2020
- * Time: 11:13 PM
- */
 
 namespace App\Mainframe\Helpers;
 
@@ -15,7 +9,7 @@ class Money
     /**
      * Get currency symbol from currency name
      *
-     * @param  string $currency
+     * @param string $currency
      * @return null|string
      */
     public static function sign($currency = 'USD')
@@ -49,7 +43,7 @@ class Money
         if ($comma) {
             $number = number_format($amount, 2, '.', ',');
         } else {
-            $number = number_format($amount, 2, '.','');
+            $number = number_format($amount, 2, '.', '');
         }
 
         if ($prefix) {
