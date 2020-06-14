@@ -18,7 +18,6 @@ class SuperHeroPolicy extends BaseModulePolicy
      */
     public function viewAny($user)
     {
-        // Sample
         return parent::viewAny($user);
     }
 
@@ -26,7 +25,7 @@ class SuperHeroPolicy extends BaseModulePolicy
      * Determine whether the user can view the superHero.
      *
      * @param  \App\User $user
-     * @param  SuperHero $superHero
+     * @param  SuperHero $element
      * @return mixed
      */
     // public function view($user, $element) { }
