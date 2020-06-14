@@ -47,6 +47,7 @@ $input = new \App\Mainframe\Features\Form\Select\SelectAjax($var);
         {{--clear button--}}
         <div class="col-md-2 no-padding">
             <a id="clear_{{$input->name}}" class="btn  bg-white selectClearBtn"
+               data-target="{{$input->uid}}"
                href="#">Clear</a>
         </div>
     @else
@@ -72,6 +73,7 @@ $input = new \App\Mainframe\Features\Form\Select\SelectAjax($var);
 
         // clear button
         $("#" + divId + " .selectClearBtn").click(function () {
+            divId = $(this).data('target');
             $("#" + divId + " input.ajax").select2("val", "");
         });
 
