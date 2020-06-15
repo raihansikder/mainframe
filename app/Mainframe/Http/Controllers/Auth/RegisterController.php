@@ -63,8 +63,8 @@ class RegisterController extends BaseController
     {
         parent::__construct();
         $this->middleware('guest');
-
         $this->resolveGroup();
+        $this->user = null; // Set current user as null
 
     }
 
@@ -75,7 +75,7 @@ class RegisterController extends BaseController
     {
         // Get group from url parameter register/{groupName}
         if (\Route::current()) {
-            $groupName = \Route::current()->parameter('groupName');
+            $groupName   = \Route::current()->parameter('groupName');
             $this->group = Group::byName($groupName);
         }
 
@@ -105,7 +105,7 @@ class RegisterController extends BaseController
     /**
      * Handle a registration request for the application.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
      */
     public function register(Request $request)
@@ -118,10 +118,10 @@ class RegisterController extends BaseController
         $this->attemptRegistration();
 
         request()->merge(['redirect_success' => route('login')]);
+
         // $this->response()->redirectTo = $this->resolveRedirectTo();
 
         return $this->load($this->user)->dispatch();
-
 
     }
 
@@ -135,9 +135,9 @@ class RegisterController extends BaseController
         // Validate
         $validator = Validator::make(request()->all(), [
             'first_name' => 'required',
-            'last_name' => 'required',
-            'email' => 'required|email|unique:users,email',
-            'password' => User::PASSWORD_VALIDATION_RULE,
+            'last_name'  => 'required',
+            'email'      => 'required|email|unique:users,email',
+            'password'   => User::PASSWORD_VALIDATION_RULE,
         ]);
 
         if ($validator->fails()) {
@@ -169,22 +169,22 @@ class RegisterController extends BaseController
     protected function createUser()
     {
         return User::create([
-            'tenant_id' => request('tenant_id'),
+            'tenant_id'  => request('tenant_id'),
             'first_name' => request('first_name'),
-            'last_name' => request('last_name'),
-            'name' => request('first_name').' '.request('last_name'),
-            'email' => request('email'),
-            'password' => Hash::make(request('password')),
-            'group_ids' => [(string) $this->group->id],
-            'is_active' => 1,
+            'last_name'  => request('last_name'),
+            'name'       => request('first_name').' '.request('last_name'),
+            'email'      => request('email'),
+            'password'   => Hash::make(request('password')),
+            'group_ids'  => [(string) $this->group->id],
+            'is_active'  => 1,
         ]);
     }
 
     /**
      * The user has been registered.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  User  $user
+     * @param \Illuminate\Http\Request $request
+     * @param User $user
      * @return mixed
      */
     protected function registered(Request $request, $user)
