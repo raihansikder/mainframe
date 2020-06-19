@@ -316,7 +316,7 @@ class Response
         $keys = ['errors', 'messages', 'warnings', 'debug'];
         foreach ($keys as $key) {
             if ($items = $this->getMessages($key)) {
-                $data['errors'] = Arr::flatten($items); // One dimensional array of errors.
+                $data[$key] = Arr::flatten($items); // One dimensional array of errors.
             }
         }
         /*-------------------------------*/
