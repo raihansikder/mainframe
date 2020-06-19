@@ -82,5 +82,5 @@
 
 @section('js')
     @parent
-    @include('mainframe.modules.samples.lorem-ipsums.form.js')
+{{--    @include('mainframe.modules.samples.lorem-ipsums.form.js')--}}
 @endsection

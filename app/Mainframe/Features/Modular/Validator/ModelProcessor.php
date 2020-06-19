@@ -177,8 +177,8 @@ class ModelProcessor
             $msg = 'Failed to delete '.Str::singular($this->module->title.' ('.$this->element->id.')');
         }
 
-        $this->addMessageBagError($msg);
-        $this->addMessageBagValidationError($this->validator);
+        $this->addError($msg);
+        $this->addValidatorErrors($this->validator);
 
         return $this;
     }

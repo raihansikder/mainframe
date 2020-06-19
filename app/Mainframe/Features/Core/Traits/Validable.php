@@ -57,9 +57,6 @@ trait Validable
         $key = $key ?: 'error';
         $this->fieldError($key, $message);
 
-        // Also add the message in message bag
-        resolve(MessageBag::class)->add('errors', $message);
-
         return $this;
     }
 
@@ -74,6 +71,13 @@ trait Validable
     {
         $message = $message ?: $key.' is not valid';
         $this->validator()->errors()->add($key, $message);
+
+        // Also add the message in message bag 'errors' if the key is not
+        // given. If the key is given then it is automatically added in
+        // validator
+        if (!$key) {
+            resolve(MessageBag::class)->add('errors', $message);
+        }
 
         return $this;
     }

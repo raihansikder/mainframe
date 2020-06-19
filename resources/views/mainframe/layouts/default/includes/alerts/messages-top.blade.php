@@ -14,45 +14,43 @@ $showAlerts = false;
  * and \App\Mainframe\Features\Responder\Response::with
  * See \App\Mainframe\Features\Responder\Response::viewVars
  */
-$responseStatus = $responseStatus ?? session('responseStatus');
-$responseMessage = $responseMessage ?? session('responseMessage');
+
+
+$response = $response ?? session('response');
+// $responseStatus = $responseStatus ?? session('responseStatus');
+// $responseMessage = $responseMessage ?? session('responseMessage');
 
 
 
 $css = "callout-danger";
 $textCss = "text-red";
-if ($responseStatus == 'success') {
+if ($response['status'] == 'success') {
     $css     = "callout-success";
     $textCss = "text-green";
 }
 
 
-if (($responseStatus && $responseMessage) || $errors->any()) {
+if ((isset($response['status'], $response['message'])) || $errors->any()) {
     $showAlerts = true;
 }
 
-/*
-* todo: https://activationltd.atlassian.net/browse/MF-32
-* need to show messageBag values
-*/
-$messageBag = session('messageBag');
+$messageBag = session('response.messageBag');
 $messageBagErrors = null;
 if ($messageBag && $messageBag->count()) {
     // echoArray($messageBag->get('error')); // Only get a single key
     // echoArray($messageBag->messages()); // Get all messages
     $messageBagErrors = $messageBag->messages()['errors'] ?? null;
 }
-/*********************************/
 ?>
 
 @if($showAlerts)
     <div class="message-container">
         <div class="callout ajaxMsg errorDiv" id="errorDiv">
-            @if($responseStatus)
+            @if($response['status'])
                 <h4 class="{{$textCss}}">
-                    {{ ucfirst($responseStatus) }}
+                    {{ ucfirst($response['status']) }}
                 </h4>
-                {{ $responseMessage }}
+                {{ $response['message'] }}
             @endif
             <div class="clearfix"></div>
 

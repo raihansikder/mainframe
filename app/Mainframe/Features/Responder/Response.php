@@ -245,8 +245,8 @@ class Response
     /**
      * View
      *
-     * @param  string $viewPath
-     * @param  array $viewVars
+     * @param string $viewPath
+     * @param array $viewVars
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function view($viewPath = null, $viewVars = null)
@@ -266,7 +266,7 @@ class Response
     /**
      * Redirect
      *
-     * @param  string $to
+     * @param string $to
      * @return \Illuminate\Http\RedirectResponse
      */
     public function redirect($to = null)
@@ -312,9 +312,12 @@ class Response
             $data['validation_errors'] = $this->validator()->messages()->toArray();
         }
 
-        if ($errors = $this->getMessageBagErrors()) {
-            $data['errors'] = Arr::flatten($errors); // Todo: Need to share a list of messages.
-            // $data['messages'] = Arr::flatten($this->messageBag()->get('errors')); // Todo: Need to share a list of messages.
+        // Load different messages
+        $keys = ['errors', 'messages', 'warnings', 'debug'];
+        foreach ($keys as $key) {
+            if ($items = $this->getMessages($key)) {
+                $data['errors'] = Arr::flatten($items); // One dimensional array of errors.
+            }
         }
         /*-------------------------------*/
 
@@ -329,8 +332,8 @@ class Response
     /**
      * Json or abort
      *
-     * @param  string $message
-     * @param  int $code
+     * @param string $message
+     * @param int $code
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Illuminate\View\View|void
      */
     public function failed($message = null, $code = null)
@@ -355,8 +358,8 @@ class Response
     /**
      * Json or succeeded
      *
-     * @param  string $message
-     * @param  int $code
+     * @param string $message
+     * @param int $code
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Illuminate\View\View|void
      */
     public function succeeded($message = null, $code = null)
@@ -405,8 +408,8 @@ class Response
     /**
      * Abort on permission denial
      *
-     * @param  string $message
-     * @param  int $code
+     * @param string $message
+     * @param int $code
      * @return \Illuminate\Http\JsonResponse|void
      */
     public function permissionDenied($message = null, $code = null)
@@ -420,8 +423,8 @@ class Response
     /**
      * Abort on resource not found
      *
-     * @param  string $message
-     * @param  int $code
+     * @param string $message
+     * @param int $code
      * @return \Illuminate\Http\JsonResponse|void
      */
     public function notFound($message = null, $code = null)
@@ -444,8 +447,8 @@ class Response
     /**
      * Set response as success
      *
-     * @param  string $message
-     * @param  int $code
+     * @param string $message
+     * @param int $code
      * @return $this
      */
     public function success($message = null, $code = null)
@@ -462,8 +465,8 @@ class Response
     /**
      * Set response as fail
      *
-     * @param  string $message
-     * @param  int $code
+     * @param string $message
+     * @param int $code
      * @return $this
      */
     public function fail($message = null, $code = null)
@@ -478,8 +481,8 @@ class Response
     /**
      * Set response as fail
      *
-     * @param  string $message
-     * @param  int $code
+     * @param string $message
+     * @param int $code
      * @return $this
      */
     public function failValidation($message = null)
@@ -494,7 +497,7 @@ class Response
     /**
      * Load a payload to be sent with the response
      *
-     * @param  null $payload
+     * @param null $payload
      * @return $this
      */
     public function load($payload = null)
@@ -505,7 +508,7 @@ class Response
     }
 
     /**
-     * @param  null $redirectTo
+     * @param null $redirectTo
      * @return $this
      */
     public function to($redirectTo = null)
@@ -530,7 +533,9 @@ class Response
      */
     public function isSuccess()
     {
-        return $this->status == 'success' && $this->isValid() && !$this->hasMessageBagErrors();
+        return $this->status == 'success'
+            && $this->isValid()
+            && ! $this->hasMessages('errors');
     }
 
     /**
@@ -566,9 +571,12 @@ class Response
     public function defaultViewVars()
     {
         return [
-            'responseStatus'  => session('responseStatus') ?: $this->status,
-            'responseMessage' => session('responseMessage') ?: $this->message,
-            'messageBag'      => session('messageBag') ?: resolve(MessageBag::class),
+            'response' => [
+                // Load from session so that when redirected the values are retained
+                'status'     => session('response.status') ?? $this->status,
+                'message'    => session('response.message') ?? $this->message,
+                'messageBag' => session('response.messageBag') ?? $this->messageBag(),
+            ],
         ];
     }
 }
