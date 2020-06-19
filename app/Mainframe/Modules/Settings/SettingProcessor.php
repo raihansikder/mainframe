@@ -3,6 +3,7 @@
 namespace App\Mainframe\Modules\Settings;
 
 use App\Mainframe\Features\Modular\Validator\ModelProcessor;
+use Illuminate\Support\MessageBag;
 
 /** @mixin \App\Mainframe\Modules\Settings\Setting $this->element */
 class SettingProcessor extends ModelProcessor
@@ -28,7 +29,7 @@ class SettingProcessor extends ModelProcessor
     /**
      * Fill the model with values
      *
-     * @param  \App\Mainframe\Modules\Settings\Setting $setting
+     * @param \App\Mainframe\Modules\Settings\Setting $setting
      * @return $this
      */
     public function fill($setting)
@@ -47,8 +48,8 @@ class SettingProcessor extends ModelProcessor
     /**
      * Validation rules. For regular expression validation use array instead of pipe
      *
-     * @param  \App\Mainframe\Modules\Settings\Setting $setting
-     * @param  array $merge
+     * @param \App\Mainframe\Modules\Settings\Setting $setting
+     * @param array $merge
      * @return array
      */
     public static function rules($setting, $merge = [])
@@ -89,6 +90,10 @@ class SettingProcessor extends ModelProcessor
         | A list of functions that will be called sequentially to validate the model
         */
         $this->valueCompatibleWithType($setting);
+
+        // $newSetting = new Setting;
+        // $newSetting->name = 'test 234324';
+        // $newSetting->save();
 
         return $this;
     }
@@ -150,6 +155,7 @@ class SettingProcessor extends ModelProcessor
      */
     private function valueCompatibleWithType($setting)
     {
+
         if (($setting->type === 'boolean') && ! in_array($setting->value, ['true', 'false'])) {
             $this->fieldError('value', "If boolean type is selected, value must be 'true' or 'false'");
         }
@@ -158,12 +164,6 @@ class SettingProcessor extends ModelProcessor
         if (($setting->type === 'array') && ! json_decode($setting->value)) {
             $this->fieldError('value', "If array/json type is selected, value must be a valid json string");
         }
-
-        // $this->messageBag()->add('some', 'message1');
-        // $this->messageBag()->add('some', 'message2');
-        // $this->messageBag()->add('some2', 'message3');
-
-        // $this->error('test');
 
         return $this;
     }

@@ -2,6 +2,7 @@
 
 namespace App\Mainframe\Features\Modular\BaseModule;
 
+use App\Mainframe\Features\Core\Traits\Validable;
 use OwenIt\Auditing\Models\Audit;
 use Watson\Rememberable\Rememberable;
 use Illuminate\Database\Query\Builder;
@@ -61,7 +62,8 @@ class BaseModule extends Model implements Auditable
     use SoftDeletes,                // Laravel default trait to enable soft delete
         Rememberable,               // Third party plugin to cache model query
         \OwenIt\Auditing\Auditable, // 3rd party audit log
-        ModularTrait                // Mainframe modular features.
+        ModularTrait,               // Mainframe modular features.
+        Validable                   // Allow validation
 
         // Processable,
         // EventsTrait,

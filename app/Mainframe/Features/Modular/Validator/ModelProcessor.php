@@ -7,6 +7,8 @@ namespace App\Mainframe\Features\Modular\Validator;
 
 use App\Mainframe\Features\Core\Traits\HasMessageBag;
 use App\Mainframe\Features\Core\Traits\Validable;
+use App\Mainframe\Modules\Modules\Module;
+use Illuminate\Support\Str;
 use Validator;
 
 class ModelProcessor
@@ -19,7 +21,10 @@ class ModelProcessor
      *
      * @var \App\Mainframe\Features\Modular\BaseModule\BaseModule
      */
-    public $operation;
+    public $event;
+
+    /** @var Module */
+    public $module;
 
     /**
      * Element filled with new values
@@ -62,12 +67,18 @@ class ModelProcessor
      * MainframeModelValidator constructor.
      *
      *
-     * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule $element
+     * @param \App\Mainframe\Features\Modular\BaseModule\BaseModule $element
      */
     public function __construct($element)
     {
         $this->element  = $element;
         $this->original = $element->getOriginal();
+        $this->module   = $element->module();
+    }
+
+    public function setEvent($event)
+    {
+        $this->event = $event;
     }
 
     /**
@@ -88,16 +99,17 @@ class ModelProcessor
     /**
      * Laravel validator validation rules.
      *
-     * @param  mixed $element
-     * @param  array $merge
+     * @param mixed $element
+     * @param array $merge
      * @return array
      */
     public static function rules($element, $merge = [])
     {
         $rules = [
-            'name'      => 'required|between:1,255|unique:modules,name,'
+            'name' => 'required|between:1,255|unique:modules,name,'
                 .(isset($element->id) ? (string) $element->id : 'null')
                 .',id,deleted_at,NULL',
+
             'is_active' => 'required|in:1,0',
         ];
 
@@ -107,7 +119,7 @@ class ModelProcessor
     /**
      * Custom error messages for the validation rules above.
      *
-     * @param  array $merge
+     * @param array $merge
      * @return array
      */
     public static function customErrorMessages($merge = [])
@@ -120,7 +132,7 @@ class ModelProcessor
     /**
      * Custom attributes for the validation rules above.
      *
-     * @param  array $merge
+     * @param array $merge
      * @return array
      */
     public static function customAttributes($merge = [])
@@ -148,6 +160,30 @@ class ModelProcessor
     }
 
     /**
+     * Merge validation error to MessageBag
+     *
+     * @return $this
+     */
+    public function sendToMessageBag()
+    {
+        $msg = 'Operation Failed';
+        if ($this->event == 'create') {
+            $msg = 'Failed to create new '.Str::singular($this->module->title);
+        }
+        if ($this->event == 'update') {
+            $msg = 'Failed to update '.Str::singular($this->module->title.' ('.$this->element->id.')');
+        }
+        if ($this->event == 'delete') {
+            $msg = 'Failed to delete '.Str::singular($this->module->title.' ('.$this->element->id.')');
+        }
+
+        $this->addMessageBagError($msg);
+        $this->addMessageBagValidationError($this->validator);
+
+        return $this;
+    }
+
+    /**
      * Invalidate if the value of an un-mutable field has been changed.
      *
      * @return $this
@@ -156,7 +192,7 @@ class ModelProcessor
     {
         foreach ($this->getImmutables() as $field) {
             if ($this->element->fieldHasChanged($field)) {
-                $this->fieldError($field, $field.' - can not be updated.');
+                $this->fieldError($field, 'Value of '.$field.' can not be changed at this stage.');
             }
         }
 
@@ -196,7 +232,7 @@ class ModelProcessor
      */
     public function justCreatedWith($field, $value)
     {
-        if ($this->operation !== 'create') {
+        if ($this->event !== 'create') {
             return false;
         }
 
@@ -312,7 +348,7 @@ class ModelProcessor
 
         $transitions = $allTransitions[$field][$from];
 
-        if(!is_array($transitions)){
+        if (! is_array($transitions)) {
             $transitions = [$transitions];
         }
 
@@ -400,7 +436,7 @@ class ModelProcessor
     /**
      * Run processor for save.
      *
-     * @param  null $element
+     * @param null $element
      * @return $this
      */
     public function forSave($element = null)
@@ -446,12 +482,14 @@ class ModelProcessor
     {
         // echo 'In Processor Save() ';
 
-        $this->operation = $this->element->isCreating() ? 'create' : 'update';
+        $this->event = $this->element->isCreating() ? 'create' : 'update';
 
         // Run validation, call saving, then call creating/updating
         $this->forSave();
 
         if (! $this->isValid()) {
+            $this->sendToMessageBag();
+
             return $this;
         }
 
@@ -463,12 +501,12 @@ class ModelProcessor
         }
 
         // Call created() if this save() function is called during a create operation.
-        if ($this->operation == 'create') {
+        if ($this->event == 'create') {
             $this->created($this->element);
         }
 
         // Call updated() if this save() function is called during a create operation.
-        if ($this->operation == 'update') {
+        if ($this->event == 'update') {
             $this->updated($this->element);
         }
 
@@ -493,7 +531,7 @@ class ModelProcessor
      * Run validation for create. This initially runs the save()
      * validation checks then loads creating() checks.
      *
-     * @param  null $element
+     * @param null $element
      * @return $this
      */
     // public function forCreate($element = null)
@@ -537,7 +575,7 @@ class ModelProcessor
     /**
      * Run validation for update.
      *
-     * @param  null $element
+     * @param null $element
      * @return $this
      */
     // public function forUpdate($element = null)
@@ -580,7 +618,7 @@ class ModelProcessor
     /**
      * Run validation for delete.
      *
-     * @param  null $element
+     * @param null $element
      * @return $this
      */
     public function forDelete($element = null)
@@ -609,11 +647,13 @@ class ModelProcessor
     public function delete()
     {
         // echo 'In Processor delete() ';
-        $this->operation = 'delete';
+        $this->event = 'delete';
 
         $this->forDelete();
 
         if (! $this->isValid()) {
+            $this->sendToMessageBag();
+
             return $this;
 
         }
@@ -633,14 +673,14 @@ class ModelProcessor
     /**
      * Run validation for restore.
      *
-     * @param  null $element
+     * @param null $element
      * @return $this
      */
     public function restore($element = null)
     {
         $element = $element ?: $this->element;
 
-        $this->operation = 'restore';
+        $this->event = 'restore';
         $this->forSave();
         $this->restoring($element);
 

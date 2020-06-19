@@ -13,7 +13,8 @@
     {{--  Save button    --}}
     @if(((isset($element) && $editable)) || (!isset($element) && $user->can('create',$element)))
 
-        <input name="redirect_success" type="hidden"
+        <input name="redirect_success"
+               type="hidden"
                value="{{ request('redirect_success',route($module->name.".index") ) }}"/>
 
         <input name="redirect_fail" type="hidden"

@@ -1,9 +1,7 @@
 <?php
 /**
  * @version  1.1
- *
  */
-
 /** @var \Illuminate\Support\ViewErrorBag $errors */
 /** @var MessageBag $messageBag */
 
@@ -19,27 +17,32 @@ $showAlerts = false;
 $responseStatus = $responseStatus ?? session('responseStatus');
 $responseMessage = $responseMessage ?? session('responseMessage');
 
-/*
- * todo: https://activationltd.atlassian.net/browse/MF-32
- * need to show messageBag values
- */
-$messageBag = session('messageBag');
-// if ($messageBag) {
-//     myprint_r($messageBag->toArray());
-// }
-/*********************************/
+
 
 $css = "callout-danger";
 $textCss = "text-red";
 if ($responseStatus == 'success') {
-    $css = "callout-success";
+    $css     = "callout-success";
     $textCss = "text-green";
 }
 
 
-if(($responseStatus && $responseMessage) || $errors->any()){
+if (($responseStatus && $responseMessage) || $errors->any()) {
     $showAlerts = true;
 }
+
+/*
+* todo: https://activationltd.atlassian.net/browse/MF-32
+* need to show messageBag values
+*/
+$messageBag = session('messageBag');
+$messageBagErrors = null;
+if ($messageBag && $messageBag->count()) {
+    // echoArray($messageBag->get('error')); // Only get a single key
+    // echoArray($messageBag->messages()); // Get all messages
+    $messageBagErrors = $messageBag->messages()['errors'] ?? null;
+}
+/*********************************/
 ?>
 
 @if($showAlerts)
@@ -48,15 +51,17 @@ if(($responseStatus && $responseMessage) || $errors->any()){
             @if($responseStatus)
                 <h4 class="{{$textCss}}">
                     {{ ucfirst($responseStatus) }}
-                </h4> {{ $responseMessage }}
+                </h4>
+                {{ $responseMessage }}
             @endif
+            <div class="clearfix"></div>
 
-            @if ($errors->any())
-                {!! implode('<br/>', $errors->all()) !!}
-            @endif
+{{--            @if ($errors->any())--}}
+{{--                {!! implode('<br/>', $errors->all()) !!}--}}
+{{--            @endif--}}
 
-            @if($messageBag && $messageBag->count())
-                {!! implode('<br/>', $messageBag->messages()) !!}
+            @if($messageBagErrors)
+                 {!! implode('<br/>',Arr::flatten($messageBagErrors)) !!}
             @endif
         </div>
     </div>

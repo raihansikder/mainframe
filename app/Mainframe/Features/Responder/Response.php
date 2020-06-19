@@ -4,6 +4,7 @@
 
 namespace App\Mainframe\Features\Responder;
 
+use Illuminate\Support\Arr;
 use Illuminate\Support\MessageBag;
 use App\Mainframe\Features\Core\Traits\Validable;
 use App\Mainframe\Features\Core\Traits\HasMessageBag;
@@ -311,8 +312,9 @@ class Response
             $data['validation_errors'] = $this->validator()->messages()->toArray();
         }
 
-        if ($this->messageBag()->count()) {
-            $data['messages'] = $this->messageBag()->get('messages'); // Todo: Need to share a list of messages.
+        if ($errors = $this->getMessageBagErrors()) {
+            $data['errors'] = Arr::flatten($errors); // Todo: Need to share a list of messages.
+            // $data['messages'] = Arr::flatten($this->messageBag()->get('errors')); // Todo: Need to share a list of messages.
         }
         /*-------------------------------*/
 
@@ -528,7 +530,7 @@ class Response
      */
     public function isSuccess()
     {
-        return $this->status == 'success' && $this->isValid();
+        return $this->status == 'success' && $this->isValid() && !$this->hasMessageBagErrors();
     }
 
     /**

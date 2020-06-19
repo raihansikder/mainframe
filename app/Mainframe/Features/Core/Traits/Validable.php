@@ -2,6 +2,7 @@
 
 namespace App\Mainframe\Features\Core\Traits;
 
+use Illuminate\Support\MessageBag;
 use Validator;
 
 /**
@@ -41,13 +42,13 @@ trait Validable
 
         $this->validator = Validator::make([], []);
 
-        return $this->validator ;
+        return $this->validator;
     }
 
     /**
      * Add an error message to a key-value pair
      *
-     * @param  null $message
+     * @param null $message
      * @param null $key
      * @return \App\Mainframe\Features\Core\Traits\Validable
      */
@@ -56,14 +57,17 @@ trait Validable
         $key = $key ?: 'error';
         $this->fieldError($key, $message);
 
+        // Also add the message in message bag
+        resolve(MessageBag::class)->add('errors', $message);
+
         return $this;
     }
 
     /**
      * Add a field specific error message
      *
-     * @param  null $key
-     * @param  null $message
+     * @param null $key
+     * @param null $message
      * @return $this
      */
     public function fieldError($key, $message = null)

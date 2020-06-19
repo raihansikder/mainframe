@@ -108,8 +108,8 @@ function loadMsg(ret) {
         $('div#msgSuccess').append('<h4>Success : ' + ret.message + '</h4>');
     }
 
-    if (ret.hasOwnProperty('session_error')) {
-        $.each(ret.session_error, function (k, v) {
+    if (ret.hasOwnProperty('errors')) {
+        $.each(ret.errors, function (k, v) {
             if (v.length) {
                 hasError = true;
                 $('div#msgError').append(v + '<br/>');
@@ -118,14 +118,14 @@ function loadMsg(ret) {
     }
 
     // Get both validation and business error messages from session and append in error msg div
-    if (ret.hasOwnProperty('validation_errors')) {
-        $.each(ret.validation_errors, function (k, v) {
-            if (v.length) {
-                hasError = true;
-                $('div#msgError').append(k + ': ' + v + '<br/>');
-            }
-        });
-    }
+    // if (ret.hasOwnProperty('validation_errors')) {
+    //     $.each(ret.validation_errors, function (k, v) {
+    //         if (v.length) {
+    //             hasError = true;
+    //             $('div#msgError').append(k + ': ' + v + '<br/>');
+    //         }
+    //     });
+    // }
 
     // Get success messages from session and append in success msg div
     if (ret.hasOwnProperty('session_success')) {
