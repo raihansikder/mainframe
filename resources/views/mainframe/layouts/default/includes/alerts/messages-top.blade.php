@@ -20,7 +20,7 @@ if ($response['status'] == 'success') {
 $showAlerts = false;
 if ((isset($response['status'], $response['message']))
     || $errors->any()
-    || $messageBag ) {
+    || ($messageBag && $messageBag->count()) ) {
     $showAlerts = true;
 }
 
@@ -46,7 +46,6 @@ if ((isset($response['status'], $response['message']))
                 @if($messages = $messageBag->messages()[$key] ?? null)
                     {!! implode('<br/>',Arr::flatten($messages)) !!}<br/>
                 @endif
-
             @endforeach
         </div>
     </div>
