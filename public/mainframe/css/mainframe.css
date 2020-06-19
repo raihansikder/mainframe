@@ -480,6 +480,9 @@ pre.sf-dump, pre.sf-dump .sf-dump-default {
 .modal-header {
     border-bottom: 0;
 }
+.modal-footer{
+    border-top:0;
+}
 
 a i {
     color: inherit;

@@ -81,7 +81,7 @@ function showValidationAlert(ret, showAlert) {
     if (ret.hasOwnProperty('validation_errors')) {
         $.each(ret.validation_errors, function (k, v) {
             str += "\n" + k + ": " + v;
-            $("#label_" + k ).validationEngine('showPrompt', v, 'error');
+            $("#label_" + k).validationEngine('showPrompt', v, 'error');
         });
     }
     if (showAlert) {
@@ -101,11 +101,11 @@ function loadMsg(ret) {
 
     if (ret.status === 'fail') {
         hasError = true;
-        $('div#msgError').append('<h4 class="text-red">Error : ' + ret.message + '</h4>');
+        $('div#msgError').append('<h4 class="text-red">Error - ' + ret.message + '</h4>');
     } else if (ret.status === 'success') {
         hasSuccess = true;
         // $('div#msgSuccess').append('<h4>Success</h4>');
-        $('div#msgSuccess').append('<h4 class="text-green">Success : ' + ret.message + '</h4>');
+        $('div#msgSuccess').append('<h4 class="text-green">Success - ' + ret.message + '</h4>');
     }
 
     if (ret.hasOwnProperty('errors')) {
@@ -140,14 +140,33 @@ function loadMsg(ret) {
 
     // Get success messages from session and append in success msg div
     // $('div#msgMessage').append('<h4>Message</h4>');
-    // if (ret.hasOwnProperty('session_message')) {
-    //     $.each(ret.session_message, function (k, v) {
-    //         if (v.length) {
-    //             hasMessage = true;
-    //             $('div#msgMessage').append(v + '<br/>');
-    //         }
-    //     });
-    // }
+
+    if (ret.hasOwnProperty('messages')) {
+        $.each(ret.messages, function (k, v) {
+            if (v.length) {
+                hasMessage = true;
+                $('div#msgMessage').append(v + '<br/>');
+            }
+        });
+    }
+    if (ret.hasOwnProperty('warnings')) {
+        $.each(ret.warnings, function (k, v) {
+            if (v.length) {
+                hasMessage = true;
+                $('div#msgMessage').append(v + '<br/>');
+            }
+        });
+    }
+    if (ret.hasOwnProperty('debug')) {
+        $.each(ret.debug, function (k, v) {
+            if (v.length) {
+                hasMessage = true;
+                $('div#msgMessage').append(v + '<br/>');
+            }
+        });
+    }
+
+
     //$('div#msgSuccess, div#msgError,div#msgMessage').show();
     if (hasError) $('div#msgError').show()
     if (hasSuccess) $('div#msgSuccess').show()
