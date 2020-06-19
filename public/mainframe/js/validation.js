@@ -101,11 +101,11 @@ function loadMsg(ret) {
 
     if (ret.status === 'fail') {
         hasError = true;
-        $('div#msgError').append('<h4>Error : ' + ret.message + '</h4>');
+        $('div#msgError').append('<h4 class="text-red">Error : ' + ret.message + '</h4>');
     } else if (ret.status === 'success') {
         hasSuccess = true;
         // $('div#msgSuccess').append('<h4>Success</h4>');
-        $('div#msgSuccess').append('<h4>Success : ' + ret.message + '</h4>');
+        $('div#msgSuccess').append('<h4 class="text-green">Success : ' + ret.message + '</h4>');
     }
 
     if (ret.hasOwnProperty('errors')) {
@@ -128,26 +128,26 @@ function loadMsg(ret) {
     // }
 
     // Get success messages from session and append in success msg div
-    if (ret.hasOwnProperty('session_success')) {
-        $.each(ret.session_success, function (k, v) {
-            if (v.length) {
-                hasSuccess = true;
-                $('div#msgSuccess').append(v + '<br/>');
-            }
-        });
-    }
+    // if (ret.hasOwnProperty('session_success')) {
+    //     $.each(ret.session_success, function (k, v) {
+    //         if (v.length) {
+    //             hasSuccess = true;
+    //             $('div#msgSuccess').append(v + '<br/>');
+    //         }
+    //     });
+    // }
 
 
     // Get success messages from session and append in success msg div
     // $('div#msgMessage').append('<h4>Message</h4>');
-    if (ret.hasOwnProperty('session_message')) {
-        $.each(ret.session_message, function (k, v) {
-            if (v.length) {
-                hasMessage = true;
-                $('div#msgMessage').append(v + '<br/>');
-            }
-        });
-    }
+    // if (ret.hasOwnProperty('session_message')) {
+    //     $.each(ret.session_message, function (k, v) {
+    //         if (v.length) {
+    //             hasMessage = true;
+    //             $('div#msgMessage').append(v + '<br/>');
+    //         }
+    //     });
+    // }
     //$('div#msgSuccess, div#msgError,div#msgMessage').show();
     if (hasError) $('div#msgError').show()
     if (hasSuccess) $('div#msgSuccess').show()

@@ -23,7 +23,7 @@
     |--------------------------------------------------------------------------
     */
 
-    // $('input[name=redirect_success]').val('#'); // Stop redirection after save
+    $('input[name=redirect_success]').val('#'); // Stop redirection after save
     @endif
     /*
     |--------------------------------------------------------------------------

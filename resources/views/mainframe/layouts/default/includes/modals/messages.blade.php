@@ -8,9 +8,9 @@
                 <h4 class="modal-title" id="myModalLabel"></h4>
             </div>
             <div class="modal-body">
-                <div id="msgSuccess" class="ajaxMsg callout callout-success"></div>
-                <div id="msgError" class="ajaxMsg callout callout-danger"></div>
-                <div id="msgMessage" class="ajaxMsg callout callout-warning"></div>
+                <div id="msgSuccess" class="ajaxMsg callout"></div>
+                <div id="msgError" class="ajaxMsg callout "></div>
+                <div id="msgMessage" class="ajaxMsg callout"></div>
             </div>
             {{--            <div class="modal-footer">--}}
             {{--                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>--}}
