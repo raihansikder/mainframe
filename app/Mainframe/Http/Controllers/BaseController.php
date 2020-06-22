@@ -3,7 +3,6 @@
 namespace App\Mainframe\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Mainframe\Features\Core\Traits\HasMessageBag;
 use App\Mainframe\Features\Core\Traits\SendResponse;
 use App\Mainframe\Features\Core\Traits\Validable;
 use View;
@@ -13,7 +12,7 @@ use View;
  */
 class BaseController extends Controller
 {
-    use Validable, SendResponse, HasMessageBag;
+    use Validable, SendResponse;
 
     /** @var \App\User|null */
     protected $user;

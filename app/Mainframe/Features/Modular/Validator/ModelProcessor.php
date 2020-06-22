@@ -5,7 +5,6 @@
 
 namespace App\Mainframe\Features\Modular\Validator;
 
-use App\Mainframe\Features\Core\Traits\HasMessageBag;
 use App\Mainframe\Features\Core\Traits\Validable;
 use App\Mainframe\Modules\Modules\Module;
 use Illuminate\Support\Str;
@@ -13,7 +12,7 @@ use Validator;
 
 class ModelProcessor
 {
-    use Validable, HasMessageBag;
+    use Validable;
 
     /**
      * Element filled with new values

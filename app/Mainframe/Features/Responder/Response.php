@@ -5,18 +5,14 @@
 namespace App\Mainframe\Features\Responder;
 
 use Illuminate\Support\Arr;
-use Illuminate\Support\MessageBag;
 use App\Mainframe\Features\Core\Traits\Validable;
-use App\Mainframe\Features\Core\Traits\HasMessageBag;
 
 class Response
 {
 
-    use Validable, HasMessageBag;
+    use Validable;
 
-    /* All HTTP codes
-     * https://gist.github.com/jeffochoa/a162fc4381d69a2d862dafa61cda0798
-     */
+    /* All HTTP codes */
     const HTTP_CONTINUE                                                  = 100;
     const HTTP_SWITCHING_PROTOCOLS                                       = 101;
     const HTTP_PROCESSING                                                = 102; // RFC2518
@@ -144,16 +140,16 @@ class Response
     ];
 
     /** @var \Illuminate\Validation\Validator */
-    public $validator;
-
-    /** @var MessageBag */
-    public $messageBag;
+    // public $validator;
+    //
+    // /** @var MessageBag */
+    // public $messageBag;
 
     /** @var int Success/Error codes 200.400 etc */
     public $code = Response::HTTP_OK;
 
     /** @var string success|fail */
-    public $status;
+    public $status = 'success';
 
     /** @var string Single line of message */
     public $message;
