@@ -255,7 +255,7 @@ class ModularController extends BaseController
      */
     public function report()
     {
-        if (! user()->can('viewAny', $this->model)) {
+        if (! user()->can('view-report', $this->model)) {
             return $this->permissionDenied();
         }
 
