@@ -20,7 +20,7 @@ trait ModelProcessorHelper
      *
      * @return array
      */
-    public function transformInputRequests()
+    public function transformRequest()
     {
         $inputs = request()->all();
 
@@ -35,7 +35,7 @@ trait ModelProcessorHelper
     public function fill()
     {
 
-        $this->element->fill($this->transformInputRequests());
+        $this->element->fill($this->transformRequest());
 
         return $this;
     }

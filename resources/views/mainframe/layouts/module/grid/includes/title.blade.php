@@ -8,7 +8,7 @@
 @endif
 
 
-@if($user->can('view-any',$model))
+@if($user->can('view-report',$model))
     <a href="{{\App\Mainframe\Modules\Reports\Report::defaultForModule($module->id)}}"
        class="pull-right module-list-btn {{$module->name.'-module-list-btn'}}"
        title="View advanced report with filters, excel export etc."

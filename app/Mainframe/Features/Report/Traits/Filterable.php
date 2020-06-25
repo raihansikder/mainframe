@@ -9,6 +9,15 @@ use App\Mainframe\Helpers\Sanitize;
 /** @mixin \App\Mainframe\Features\Report\ReportBuilder $this */
 trait Filterable
 {
+    /**
+     * Transform request inputs
+     *
+
+     */
+    public function transformRequest()
+    {
+
+    }
 
     /**
      * @param $query   \Illuminate\Database\Query\Builder
@@ -16,13 +25,12 @@ trait Filterable
      */
     public function filter($query)
     {
-        /** @var array $escape_fields */
-        $escape_fields = $this->defaultFilterEscapeFields(); // Default filter logic will not apply on these
+        $escapeFields = $this->defaultFilterEscapeFields(); // Default filter logic will not apply on these
 
         $requests = request()->all();
 
         foreach ($requests as $field => $val) {
-            if (in_array($field, $escape_fields)) {
+            if (in_array($field, $escapeFields)) {
                 $query = $this->customFilterOnEscapedFields($query, $field, $val);
             } else {
                 $query = $this->defaultFilter($query, $field, $val);
@@ -286,6 +294,7 @@ trait Filterable
 
     /**
      * Get an array for full text search. These fields will be SQL LIKE
+     *
      * @return array
      */
     public function getFullTextFields()
@@ -347,8 +356,13 @@ trait Filterable
     public function getActualDateField($field)
     {
         $replaces = [
-            '_from', '_start', '_starts',
-            '_to', '_till', '_end', '_ends'
+            '_from',
+            '_start',
+            '_starts',
+            '_to',
+            '_till',
+            '_end',
+            '_ends',
         ];
 
         $actual = $field;

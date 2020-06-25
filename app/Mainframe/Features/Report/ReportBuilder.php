@@ -96,17 +96,18 @@ class ReportBuilder extends BaseController
     /**
      * ReportBuilder constructor.
      *
-     * @param  string $dataSource
-     * @param  string $path
-     * @param  int $cache
+     * @param string $dataSource
+     * @param string $path
+     * @param int $cache
      */
     public function __construct($dataSource = null, $path = null, $cache = null)
     {
         parent::__construct();
+        $this->transformRequest();
 
         $this->dataSource = $dataSource;
-        $this->path = $path ?: 'mainframe.layouts.report';
-        $this->cache = $cache ?: 1;
+        $this->path       = $path ?: 'mainframe.layouts.report';
+        $this->cache      = $cache ?: 1;
     }
 
     /**
@@ -201,7 +202,7 @@ class ReportBuilder extends BaseController
     /**
      * Adds the custom COUNT/SUM column in SQL SELECT.
      *
-     * @param  array $keys
+     * @param array $keys
      * @return array
      */
     public function queryAddColumnForGroupBy($keys = [])
