@@ -15,6 +15,7 @@
     | Common - creating and updating
     |--------------------------------------------------------------------------
     */
+    $('#{{$module->name}}-redirect-success').val('#'); // Stop redirection after save
     addValidationRules();
     enableValidation('{{$module->name}}');
 
