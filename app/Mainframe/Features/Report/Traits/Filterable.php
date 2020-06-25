@@ -11,13 +11,8 @@ trait Filterable
 {
     /**
      * Transform request inputs
-     *
-
      */
-    public function transformRequest()
-    {
-
-    }
+    public function transformRequest() { }
 
     /**
      * @param $query   \Illuminate\Database\Query\Builder
