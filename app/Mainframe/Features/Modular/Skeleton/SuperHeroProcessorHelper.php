@@ -5,14 +5,12 @@ namespace App\Mainframe\Modules\SuperHeroes;
 /** @mixin SuperHeroProcessor $this */
 trait SuperHeroProcessorHelper
 {
-
     /*
     |--------------------------------------------------------------------------
     | Functions for deriving immutables
     |--------------------------------------------------------------------------
     |
     */
-
     // Todo: Functions for deriving immutables
 
     /*
@@ -21,7 +19,6 @@ trait SuperHeroProcessorHelper
     |--------------------------------------------------------------------------
     |
     */
-
     // Todo: Other helper functions
 
     /*
@@ -35,7 +32,7 @@ trait SuperHeroProcessorHelper
     /**
      * @return $this
      */
-    public function validateName()  // Todo: Remove this sample code
+    public function checkName()  // Todo: Remove this sample code
     {
         $element = $this->element; // Short hand variable.
 
