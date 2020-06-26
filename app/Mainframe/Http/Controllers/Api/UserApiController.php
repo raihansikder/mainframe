@@ -1,9 +1,10 @@
 <?php
+/**
+ * User/Bearer API
+ */
 
 namespace App\Mainframe\Http\Controllers\Api;
 
-use Auth;
-use Request;
 use App\Mainframe\Modules\Modules\Module;
 use App\Mainframe\Modules\Users\UserController;
 use App\Mainframe\Modules\Uploads\UploadController;
@@ -17,11 +18,7 @@ class UserApiController extends ApiController
     public function __construct()
     {
         parent::__construct();
-
         $this->middleware('bearer-token');
-        $this->user = Auth::guard('bearer')->user();
-        $this->injectUserIdentityInRequest();
-
     }
 
     /**
@@ -29,8 +26,8 @@ class UserApiController extends ApiController
      */
     public function injectUserIdentityInRequest()
     {
-        if ($this->user) {
-            Request::merge(['user_id' => $this->user->id]);
+        if (isset($this->user->id)) {
+            request()->merge(['user_id' => $this->user->id]);
         }
     }
 
@@ -66,9 +63,9 @@ class UserApiController extends ApiController
     public function profilePicStore()
     {
         request()->merge([
-            'module_id' => Module::byName('users')->id,
+            'module_id'  => Module::byName('users')->id,
             'element_id' => $this->user->id,
-            'type' => 'profile-pic',
+            'type'       => 'profile-pic',
         ]);
 
         return app(UploadController::class)->store(request());

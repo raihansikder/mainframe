@@ -23,7 +23,7 @@ class VerifyXAuthToken
         Auth::logout(); // Force to discard any user state.
 
         if (! $user = Auth::guard('x-auth')->user()) {
-            return $this->failed('Authentication failed', 401);
+            return $this->failed('Authentication failed (X-Auth)', 401);
         }
 
         if ((! $user->can('make-api-call'))) {

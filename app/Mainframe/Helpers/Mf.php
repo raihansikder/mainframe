@@ -27,7 +27,10 @@ class Mf
     */
 
     /**
-     * @param  null $id
+     * Common function to get current user.
+     * Do not change this function.
+     *
+     * @param null $id
      * @return null|\App\User|\Illuminate\Database\Eloquent\Model|\Illuminate\Database\Query\Builder|mixed
      */
     public static function user($id = null)
@@ -88,7 +91,7 @@ class Mf
      * Create a unique signature/key for a HTTP request made
      * Usually used for caching.
      *
-     * @param  String $append Raw Query string
+     * @param String $append Raw Query string
      * @return string
      */
     public static function httpRequestSignature($append = null)
@@ -116,7 +119,7 @@ class Mf
      * Get columns of a table.
      *
      * @param $table
-     * @param  null $cache
+     * @param null $cache
      * @return array
      */
     public static function tableColumns($table, $cache = null)
@@ -134,7 +137,7 @@ class Mf
      *
      * @param $table
      * @param $column
-     * @param  null $cache
+     * @param null $cache
      * @return bool
      */
     public static function tableHasColumn($table, $column, $cache = null)
