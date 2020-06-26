@@ -5,7 +5,7 @@
 
 namespace App\Mainframe\Modules\SuperHeroes;
 
-use App\Mainframe\Features\Modular\BaseModule\BaseModulePolicy;
+// use App\Mainframe\Features\Modular\BaseModule\BaseModulePolicy;
 
 class SuperHeroPolicy extends BaseModulePolicy
 {
