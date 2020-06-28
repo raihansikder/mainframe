@@ -32,6 +32,8 @@ trait Filterable
             }
         }
 
+        $query = $this->keySearch($query);
+
         // Apply raw SQL clause input from front-end.
         if ($this->additionalFilterConditions()) {
             $query = $query->whereRaw($this->additionalFilterConditions());
@@ -178,6 +180,45 @@ trait Filterable
         }
 
         return $query->where($field, $val);
+    }
+
+    /**
+     * Key based search
+     *
+     * @param \Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder|mixed $query
+     * @return mixed
+     */
+    public function keySearch($query)
+    {
+        $key = request('key');
+
+        if (! $key) {
+            return $query;
+        }
+
+        # Key based search
+        $query->where(function ($query) use ($key) {
+            foreach ($this->searchFields as $field) {
+                /** @var \Illuminate\Database\Query\Builder $query */
+                // $query->where('name', 'LIKE', "{$key}%");
+
+                if (! $this->fieldExists($field)) {
+                    continue;
+                }
+                if ($key == 'null') {
+                    $query->orWhereNull($field);
+                } elseif ($this->columnIsFullText($field)) { // Substring search. Good for name, email etc.
+                    $query->orWhere($field, 'LIKE', "%{$key}%");
+                } else {
+                    $query->orWhere($field, $key);
+                }
+
+            }
+
+        });
+
+        return $query;
+
     }
 
     /**

@@ -76,11 +76,22 @@ class ReportBuilder extends BaseController
     | full text fields
     |--------------------------------------------------------------------------
     |
-    | How long the report result is cached
+    | Uses SQL Like % %
     |
     */
     /** @var array */
     public $fullTextFields = ['name', 'name_ext'];
+
+    /*
+    |--------------------------------------------------------------------------
+    | Common key based search fields
+    |--------------------------------------------------------------------------
+    |
+    | Uses SQL Like % %
+    |
+    */
+    /** @var array */
+    public $searchFields = ['name', 'name_ext'];
 
     /*
     |--------------------------------------------------------------------------
