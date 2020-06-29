@@ -2,7 +2,7 @@
 
 namespace App\Mainframe\Modules\SuperHeroes;
 
-use App\Mainframe\Features\Modular\BaseModule\BaseModule;
+// use App\Mainframe\Features\Modular\BaseModule\BaseModule;
 
 /**
  * App\Mainframe\Modules\SuperHeroes\SuperHero
