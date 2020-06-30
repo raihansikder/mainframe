@@ -20,7 +20,7 @@ if ($response['status'] == 'success') {
 $showAlerts = false;
 if ((isset($response['status'], $response['message']))
     || $errors->any()
-    || ($messageBag && $messageBag->count()) ) {
+    || ($messageBag && $messageBag->count())) {
     $showAlerts = true;
 }
 
@@ -37,16 +37,16 @@ if ((isset($response['status'], $response['message']))
             @endif
             <div class="clearfix"></div>
 
-            {{--  @if ($errors->any())--}}
-            {{--      {!! implode('<br/>', $errors->all()) !!}--}}
-            {{--  @endif--}}
-
-            <?php $keys = ['errors', 'messages', 'warnings', 'debug']; ?>
-            @foreach($keys as $key)
-                @if($messages = $messageBag->messages()[$key] ?? null)
-                    {!! implode('<br/>',Arr::flatten($messages)) !!}<br/>
-                @endif
-            @endforeach
+            @if(isset($messageBag))
+                <?php $keys = ['errors', 'messages', 'warnings', 'debug']; ?>
+                @foreach($keys as $key)
+                    @if($messages = $messageBag->messages()[$key] ?? null)
+                        {!! implode('<br/>',Arr::flatten($messages)) !!}<br/>
+                    @endif
+                @endforeach
+            @elseif ($errors->any())
+                {!! implode('<br/>', $errors->all()) !!}
+            @endif
         </div>
     </div>
 @endif
