@@ -2,7 +2,7 @@
 
 namespace App\Mainframe\Modules\SuperHeroes;
 
-// use App\Mainframe\Features\Modular\Validator\ModelProcessor;
+use App\Mainframe\Features\Modular\Validator\ModelProcessor;
 
 class SuperHeroProcessor extends ModelProcessor
 {

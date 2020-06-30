@@ -15,7 +15,16 @@
     | Common - creating and updating
     |--------------------------------------------------------------------------
     */
-    $('#{{$module->name}}-redirect-success').val('#'); // Stop redirection after save
+
+    // Redirection after saving
+    $('#{{$module->name}}-redirect-success').val('#'); //  # Stops redirection after save
+
+    // Redirection after delete
+    @if($element->some_id)
+    $('.delete-cta button[name=genericDeleteBtn]').attr('data-redirect_success', '{{route('some-module.edit',$element->some_id)}}')
+    @endif
+
+    // Validation
     addValidationRules();
     enableValidation('{{$module->name}}');
 
@@ -25,7 +34,7 @@
     |--------------------------------------------------------------------------
     */
     @if($element->isCreating())
-        // Todo: write codes here.
+    // Todo: write codes here.
     @endif
 
     /*
@@ -34,7 +43,7 @@
     |--------------------------------------------------------------------------
     */
     @if($element->isUpdating())
-        // Todo: write codes here.
+    // Todo: write codes here.
     @endif
     /*
     |--------------------------------------------------------------------------

@@ -2,7 +2,7 @@
 
 namespace App\Mainframe\Modules\SuperHeroes;
 
-// use App\Mainframe\Features\Modular\ModularController\ModularController;
+use App\Mainframe\Features\Modular\ModularController\ModularController;
 use App\Mainframe\Features\Report\ModuleList;
 
 class SuperHeroController extends ModularController
