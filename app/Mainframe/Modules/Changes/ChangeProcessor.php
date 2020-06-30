@@ -50,7 +50,7 @@ class ChangeProcessor extends ModelProcessor
     {
         $rules = [
             'name' => 'required|between:1,255|'.
-                'unique:changes,name,'.$element->id ?? 'null'.',id,deleted_at,NULL',
+                'unique:changes,name,'.($element->id ?? 'null').',id,deleted_at,NULL',
             'is_active' => 'in:1,0',
         ];
 
