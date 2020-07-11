@@ -56,7 +56,6 @@ trait Validable
         return $this;
     }
 
-
     /**
      * @return \Illuminate\Contracts\Validation\Validator|\Illuminate\Validation\Validator
      */
@@ -81,8 +80,9 @@ trait Validable
      */
     public function error($message, $key = null)
     {
-        $key = $key ?: 'error';
+        $key = $key ?: 'errors';
         $this->fieldError($key, $message);
+        resolve(MessageBag::class)->add('errors', $message);
 
         return $this;
     }
@@ -102,9 +102,6 @@ trait Validable
         // Also add the message in message bag 'errors' if the key is not
         // given. If the key is given then it is automatically added in
         // validator
-        if (!$key) {
-            resolve(MessageBag::class)->add('errors', $message);
-        }
 
         return $this;
     }
@@ -217,6 +214,7 @@ trait Validable
 
     /**
      * Get messages of a given key
+     *
      * @param $key
      * @return mixed|null
      */
@@ -234,6 +232,7 @@ trait Validable
 
     /**
      * Checks if a key has any message
+     *
      * @param $key
      * @return bool
      */
