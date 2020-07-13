@@ -16,9 +16,6 @@
     |--------------------------------------------------------------------------
     */
 
-    // Redirection after saving
-    $('#{{$module->name}}-redirect-success').val('#'); //  # Stops redirection after save
-
     // Redirection after delete
     @if($element->some_id)
     $('.delete-cta button[name=genericDeleteBtn]').attr('data-redirect_success', '{{route('some-module.edit',$element->some_id)}}')
@@ -44,6 +41,8 @@
     */
     @if($element->isUpdating())
     // Todo: write codes here.
+    // Redirection after saving
+    $('#{{$module->name}}-redirect-success').val('#'); //  # Stops redirection after save
     @endif
     /*
     |--------------------------------------------------------------------------

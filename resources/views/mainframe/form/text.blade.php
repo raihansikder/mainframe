@@ -29,25 +29,25 @@ $var = \App\Mainframe\Features\Form\Form::setUpVar($var, $errors ?? null, $eleme
 $input = new \App\Mainframe\Features\Form\Text\InputText($var);
 ?>
 
-<div class="{{$input->containerClasses()}}" id="{{$input->uid}}">
-
-    {{-- label --}}
-    @include('mainframe.form.includes.label')
-
-    {{-- input --}}
-    @if($input->isEditable)
-        @if($input->type === 'password')
-            {{ Form::password($input->name, $input->params) }}
+@if($input->isHidden)
+    {{ Form::hidden($input->name, $input->value(), ['id'=>$input->params['id']] )}}
+@else
+    <div class="{{$input->containerClasses()}}" id="{{$input->uid}}">
+        {{-- label --}}
+        @include('mainframe.form.includes.label')
+        {{-- input --}}
+        @if($input->isEditable)
+            @if($input->type === 'password')
+                {{ Form::password($input->name, $input->params) }}
+            @else
+                {{ Form::text($input->name, $input->value(), $input->params) }}
+            @endif
         @else
-            {{ Form::text($input->name, $input->value(), $input->params) }}
+            @include('mainframe.form.includes.read-only-view')
         @endif
-    @else
-        @include('mainframe.form.includes.read-only-view')
-    @endif
-
-    {{-- Error --}}
-    @include('mainframe.form.includes.show-error')
-
-</div>
+        {{-- Error --}}
+        @include('mainframe.form.includes.show-error')
+    </div>
+@endif
 
 <?php unset($input) // Make sure to clear $input var ?>
