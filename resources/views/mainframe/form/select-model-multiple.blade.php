@@ -29,25 +29,42 @@ $var = \App\Mainframe\Features\Form\Form::setUpVar($var, $errors ?? null, $eleme
 $input = new \App\Mainframe\Features\Form\Select\SelectModelMultiple($var);
 ?>
 
-<div class="{{$input->containerClasses()}}" id="{{$input->uid}}" data-parent="{{$input->dataParent}}">
+@if($input->isHidden)
+    @if(is_array($input->value()))
+        @foreach($input->value() as $value)
+            {{ Form::hidden($input->name.'[]', $value)}}
+        @endforeach
+    @endif
+@else
+    <div class="{{$input->containerClasses()}}" id="{{$input->uid}}" data-parent="{{$input->dataParent}}">
 
-    {{-- label --}}
-    @include('mainframe.form.includes.label')
+        {{-- label --}}
+        @include('mainframe.form.includes.label')
 
-    {{-- input --}}
-    {{ Form::select($input->name.'[]', $input->options, $input->value(), $input->params) }}
-    {{--
-    Ghost input
-    ==================================================
-    In the case of multiple select, if no option is selected then the empty value
-    does not post. As a result the model fills with old value. To avoid this, when
-    there is no selection, a blank html input is enabled.
-    --}}
-    <input type="hidden" name="{{$input->name}}" class="ghost" value="" disabled/>
+        {{-- input --}}
+        {{ Form::select($input->name.'[]', $input->options, $input->value(), $input->params) }}
+        {{--
+        Ghost input
+        ==================================================
+        In the case of multiple select, if no option is selected then the empty value
+        does not post. As a result the model fills with old value. To avoid this, when
+        there is no selection, a blank html input is enabled.
+        --}}
+        <input type="hidden" name="{{$input->name}}" class="ghost" value="" disabled/>
 
-    {{-- Error --}}
-    @include('mainframe.form.includes.show-error')
-</div>
+        {{-- Place hidden input if not editable--}}
+        @if(!$input->isEditable)
+            @if(is_array($input->value()))
+                @foreach($input->value() as $value)
+                    {{ Form::hidden($input->name.'[]', $value)}}
+                @endforeach
+            @endif
+        @endif
+
+        {{-- Error --}}
+        @include('mainframe.form.includes.show-error')
+    </div>
+@endif
 
 @section('js')
     @parent

@@ -20,7 +20,7 @@
         <?php
         $tags = ['Country', 'Roads', 'Take', 'Me', 'Home'];
         ?>
-        @include('form.tags',['var'=>['name'=>'tags','label'=>'input.tags','tags'=>$tags]])
+        @include('form.tags',['var'=>['name'=>'tags','label'=>'input.tags','tags'=>$tags,'editable'=>true]])
 
         <div class="clearfix"></div>
         @include('form.textarea',['var'=>['name'=>'textarea','label'=>'input.textarea']])
@@ -30,21 +30,21 @@
         <h3>Select from array</h3>
 
         <?php $types = [null => 'Select', 0 => 'Zero', 1 => 'One', 2 => 'Two']; ?>
-        @include('form.select-array',['var'=>['name'=>'select_array','label'=>'select-array', 'options'=>$types]])
+        @include('form.select-array',['var'=>['name'=>'select_array','label'=>'select-array', 'options'=>$types, 'editable'=>false, 'hidden'=>false]])
 
         <?php
         /** @noinspection SuspiciousAssignmentsInspection */
         $types = [0 => 'Zero', 1 => 'One', 2 => 'Two'];
         ?>
-        @include('form.select-array-multiple',['var'=>['name'=>'select_array_multiple','label'=>'select-array-multiple', 'options'=>$types]])
+        @include('form.select-array-multiple',['var'=>['name'=>'select_array_multiple','label'=>'select-array-multiple', 'options'=>$types,'editable'=>false]])
 
         <div class="clearfix"></div>
         <h3>Select from a table/module</h3>
-        @include('form.select-model',['var'=>['name'=>'dolor_sit_id','label'=>'Dolor sit(select-model)', 'table'=>'dolor_sits']])
+        @include('form.select-model',['var'=>['name'=>'dolor_sit_id','label'=>'Dolor sit(select-model)', 'table'=>'dolor_sits','editable'=>false]])
 
         <?php
         $var = [
-            'name' => 'dolor_sit_ids',
+            'name'  => 'dolor_sit_ids',
             'label' => 'Dolor sits (select-model-multiple)',
             'query' => new \App\Mainframe\Modules\Samples\DolorSits\DolorSit(),
         ];
@@ -82,5 +82,5 @@
 
 @section('js')
     @parent
-{{--    @include('mainframe.modules.samples.lorem-ipsums.form.js')--}}
+    {{--    @include('mainframe.modules.samples.lorem-ipsums.form.js')--}}
 @endsection

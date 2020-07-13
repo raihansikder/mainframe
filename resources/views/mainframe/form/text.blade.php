@@ -30,7 +30,7 @@ $input = new \App\Mainframe\Features\Form\Text\InputText($var);
 ?>
 
 @if($input->isHidden)
-    {{ Form::hidden($input->name, $input->value(), ['id'=>$input->params['id']] )}}
+    {{ Form::hidden($input->name, $input->value()) }}
 @else
     <div class="{{$input->containerClasses()}}" id="{{$input->uid}}">
         {{-- label --}}

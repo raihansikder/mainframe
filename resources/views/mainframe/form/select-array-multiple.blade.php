@@ -28,41 +28,58 @@
 $var = \App\Mainframe\Features\Form\Form::setUpVar($var, $errors ?? null, $element ?? null, $editable ?? null, $immutables ?? null);
 $input = new \App\Mainframe\Features\Form\Select\SelectArrayMultiple($var);
 ?>
+@if($input->isHidden)
+    @if(is_array($input->value()))
+        @foreach($input->value() as $value)
+            {{ Form::hidden($input->name.'[]', $value)}}
+        @endforeach
+    @endif
+@else
+    <div class="{{$input->containerClasses()}}" id="{{$input->uid}}" data-parent="{{$input->dataParent}}">
 
-<div class="{{$input->containerClasses()}}" id="{{$input->uid}}" data-parent="{{$input->dataParent}}">
+        {{-- label --}}
+        @include('mainframe.form.includes.label')
 
-    {{-- label --}}
-    @include('mainframe.form.includes.label')
+        {{ Form::select($input->name.'[]', $input->options, $input->value(), $input->params) }}
+        {{--
+        Ghost input
 
-    {{-- input --}}
-    {{ Form::select($input->name.'[]', $input->options, $input->value(), $input->params) }}
-    {{--
-    Ghost input
+        In the case of multiple select, if no option is selected then the empty value
+        does not post. As a result the model fills with old value. To avoid this, when
+        there is no selection, a blank html input is enabled.
+        --}}
+        <input type="hidden" name="{{$input->name}}" class="ghost" value="" disabled/>
 
-    In the case of multiple select, if no option is selected then the empty value
-    does not post. As a result the model fills with old value. To avoid this, when
-    there is no selection, a blank html input is enabled.
-    --}}
-    <input type="hidden" name="{{$input->name}}" class="ghost" value="" disabled/>
+        {{-- Place hidden input if not editable--}}
+        @if(!$input->isEditable)
+            @if(is_array($input->value()))
+                @foreach($input->value() as $value)
+                    {{ Form::hidden($input->name.'[]', $value )}}
+                @endforeach
+            @endif
+        @endif
 
-    {{-- Error --}}
-    @include('mainframe.form.includes.show-error')
+        {{-- Error --}}
+        @include('mainframe.form.includes.show-error')
 
-</div>
+    </div>
+@endif
 
 @section('js')
     @parent
-    <script>
-        $('[data-parent={{$input->dataParent}}] select[id={{$input->params['id']}}] ').change(function () {
-            if (!$(this).val()) {
-                $('[data-parent= {{$input->dataParent}}]  input[class=ghost]')
-                    .prop('disabled', false);
-            } else {
-                $('[data-parent= {{$input->dataParent}}]  input[class=ghost]')
-                    .prop('disabled', true);
-            }
-        });
-    </script>
+    @if(!$input->isHidden)
+        <script>
+            $('[data-parent={{$input->dataParent}}] select[id={{$input->params['id']}}] ').change(function () {
+                if (!$(this).val()) {
+                    $('[data-parent= {{$input->dataParent}}]  input[class=ghost]')
+                        .prop('disabled', false);
+                } else {
+                    $('[data-parent= {{$input->dataParent}}]  input[class=ghost]')
+                        .prop('disabled', true);
+                }
+            });
+        </script>
+    @endif
 @endsection
 
 <?php unset($input); ?>

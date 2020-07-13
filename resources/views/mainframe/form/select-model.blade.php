@@ -27,20 +27,27 @@
 $var = \App\Mainframe\Features\Form\Form::setUpVar($var, $errors ?? null, $element ?? null, $editable ?? null, $immutables ?? null);
 $input = new App\Mainframe\Features\Form\Select\SelectModel($var);
 ?>
-<div class="{{$input->containerClasses()}}" id="{{$input->uid}}">
 
-    {{-- label --}}
-    @include('mainframe.form.includes.label')
+@if($input->isHidden)
+    {{ Form::hidden($input->name, $input->value()) }}
+@else
+    <div class="{{$input->containerClasses()}}" id="{{$input->uid}}">
 
-    @if($input->isEditable)
+        {{-- label --}}
+        @include('mainframe.form.includes.label')
+
+        {{-- input --}}
         {{ Form::select($input->name, $input->options, $input->value(), $input->params) }}
-    @else
-        @include('mainframe.form.includes.read-only-view')
-    @endif
 
-    {{-- Error --}}
-    @include('mainframe.form.includes.show-error')
+        {{-- Place hidden input if not editable--}}
+        @if(!$input->isEditable)
+            {{ Form::hidden($input->name, $input->value()) }}
+        @endif
 
-</div>
+        {{-- Error --}}
+        @include('mainframe.form.includes.show-error')
+
+    </div>
+@endif
 
 <?php unset($input); ?>

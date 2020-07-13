@@ -3,4 +3,4 @@
         {{ $input->print() }}
     </div>
 @endif
-{{ Form::hidden($input->name, $input->value(), ['id'=>$input->params['id']] )}}
+{{ Form::hidden($input->name, $input->value()) }}

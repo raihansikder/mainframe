@@ -24,34 +24,33 @@
  * @var bool $editable
  * @var array $immutables
  */
-
-
-
 $var = \App\Mainframe\Features\Form\Form::setUpVar($var, $errors ?? null, $element ?? null, $editable ?? null, $immutables ?? null);
 $input = new \App\Mainframe\Features\Form\Checkbox\Checkbox($var);
 ?>
-
-<div class="{{$input->containerClasses()}}" id="{{$input->uid}}">
-
-    {{-- input --}}
-    <input name="checkbox_{{$input->name}}"
-           type="checkbox"
-           value="{{$input->value()}}"
-           id="{{$input->params['id']}}"
-           class="{{$input->params['class']}} spyr-checkbox"
-           data-checkbox-name="{{$input->name}}"
-           data-checked-val="{{$input->checkedVal}}"
-           data-unchecked-val="{{$input->uncheckedVal}}"
-            {{ $input->isEditable != 1 ? 'disabled' : '' }}/>
-
-    {{-- label --}}
-    @include('mainframe.form.includes.label')
-
+@if($input->isHidden)
     {{ Form::hidden($input->name, $input->value()) }}
+@else
+    <div class="{{$input->containerClasses()}}" id="{{$input->uid}}">
 
-    {{-- Error --}}
-    @include('mainframe.form.includes.show-error')
+        {{-- input --}}
+        <input name="checkbox_{{$input->name}}"
+               type="checkbox"
+               value="{{$input->value()}}"
+               id="{{$input->params['id']}}"
+               class="{{$input->params['class']}} spyr-checkbox"
+               data-checkbox-name="{{$input->name}}"
+               data-checked-val="{{$input->checkedVal}}"
+               data-unchecked-val="{{$input->uncheckedVal}}"
+                {{ $input->isEditable != 1 ? 'disabled' : '' }}/>
 
-</div>
+        {{-- label --}}
+        @include('mainframe.form.includes.label')
 
+        {{ Form::hidden($input->name, $input->value()) }}
+
+        {{-- Error --}}
+        @include('mainframe.form.includes.show-error')
+
+    </div>
+@endif
 <?php unset($input) ?>

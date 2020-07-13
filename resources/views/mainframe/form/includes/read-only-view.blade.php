@@ -3,4 +3,12 @@
         {{ $input->print() }}
     </span>
 @endif
-{{ Form::hidden($input->name, $input->value(), ['id'=>$input->params['id']] )}}
+
+{{-- Show hidden values. They are useful --}}
+@if(is_array($input->value()))
+    @foreach($input->value() as $value)
+        {{ Form::hidden($input->name.'[]', $value)}}
+    @endforeach
+@else
+    {{ Form::hidden($input->name, $input->value())}}
+@endif

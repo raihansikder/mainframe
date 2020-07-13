@@ -19,4 +19,14 @@ class Select extends Input
         }
 
     }
+
+    /**
+     * Print value
+     *
+     * @return null|array|\Illuminate\Http\Request|string
+     */
+    public function print()
+    {
+        return $this->options[$this->value()] ?? '';
+    }
 }

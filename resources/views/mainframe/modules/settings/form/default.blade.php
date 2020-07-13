@@ -60,8 +60,9 @@ $types = Setting::$types;
 </pre>
 
         @include('form.textarea',['var'=>['name'=>'description','label'=>'Description', 'params'=>['class'=>'ckeditor']]])
-        @include('form.is-active')
 
+                    @include('form.is-active',['var'=>['hidden'=>true]])
+{{--            @include('form.checkbox',['var'=>['name'=>'is_active','label'=>'Active test','hidden'=>true]])--}}
         {{--    Form inputs: ends    --}}
 
         @include('form.action-buttons')

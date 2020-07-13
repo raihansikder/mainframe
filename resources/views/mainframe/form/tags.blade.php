@@ -28,34 +28,46 @@
 $var = \App\Mainframe\Features\Form\Form::setUpVar($var, $errors ?? null, $element ?? null, $editable ?? null, $immutables ?? null);
 $input = new \App\Mainframe\Features\Form\Text\Tags($var);
 ?>
+@if($input->isHidden)
+    {{ Form::hidden($input->name, $input->value()) }}
+@else
+    <div class="{{$input->containerClasses()}}" id="{{$input->uid}}">
 
-<div class="{{$input->containerClasses()}}" id="{{$input->uid}}">
+        {{-- label --}}
+        @include('mainframe.form.includes.label')
 
-    {{-- label --}}
-    @include('mainframe.form.includes.label')
+        {{-- input --}}
+        @if($input->isEditable)
+            {{ Form::textarea($input->name, $input->value(), $input->params) }}
+        @else
+            @include('mainframe.form.includes.read-only-view')
+        @endif
 
-    {{-- input --}}
-    @if($input->isEditable)
-        {{ Form::textarea($input->name, $input->value(), $input->params) }}
-    @else
-        @include('mainframe.form.includes.read-only-view')
-    @endif
+        {{-- Error --}}
+        @include('mainframe.form.includes.show-error')
 
-    {{-- Error --}}
-    @include('mainframe.form.includes.show-error')
-
-</div>
+    </div>
+@endif
 
 {{-- js --}}
 @section('js')
     @parent
     {{-- Instantiate the ckeditor if the class 'ckeditor' is added in textarea--}}
-    <script>
-        $("textarea[name={{$input->name}}]").select2({
-            tags: ['{!!$input->tags()!!}'],
-            tokenSeparators: ['{!! $input->separator !!}']
-        });
-    </script>
+
+    @if(!$input->isHidden)
+        <script>
+            $("textarea[name={{$input->name}}]").select2({
+                tags: ['{!!$input->tags()!!}'],
+                tokenSeparators: ['{!! $input->separator !!}']
+            });
+        </script>
+    @endif
+    .
+
+
+
+
+
 @endsection
 
 {{-- Unset the local variable used in this view. --}}

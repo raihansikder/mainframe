@@ -40,7 +40,7 @@ class ModularController extends BaseController
     protected $processor;
 
     /**
-     * @param  null $name
+     * @param null $name
      */
     public function __construct($name = null)
     {
@@ -169,7 +169,7 @@ class ModularController extends BaseController
     /**
      * Store
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param \Illuminate\Http\Request $request
      * @return $this|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
@@ -199,7 +199,7 @@ class ModularController extends BaseController
     /**
      * Update
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param \Illuminate\Http\Request $request
      * @param $id
      * @return $this|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
@@ -240,7 +240,7 @@ class ModularController extends BaseController
     /**
      * Restore a soft-deleted.
      *
-     * @param  null $id
+     * @param null $id
      * @return void
      */
     public function restore($id = null)
@@ -287,7 +287,7 @@ class ModularController extends BaseController
     /**
      * Get all the uploads of an element
      *
-     * @param  null $id
+     * @param null $id
      * @return \Illuminate\Http\JsonResponse
      */
     public function uploads($id)
@@ -303,7 +303,7 @@ class ModularController extends BaseController
     /**
      * Uploads files under an element
      *
-     * @param  null $id
+     * @param null $id
      * @return \App\Mainframe\Features\Modular\ModularController\ModularController
      */
     public function attachUpload($id)
@@ -348,7 +348,7 @@ class ModularController extends BaseController
     /**
      * Get all the comments of an element
      *
-     * @param  null $id
+     * @param null $id
      * @return \Illuminate\Http\JsonResponse
      */
     public function comments($id)
@@ -364,7 +364,7 @@ class ModularController extends BaseController
     /**
      * Store comment files under an element
      *
-     * @param  null $id
+     * @param null $id
      * @return \App\Mainframe\Features\Modular\ModularController\ModularController
      */
     public function attachComment($id)

@@ -30,20 +30,24 @@ $var = \App\Mainframe\Features\Form\Form::setUpVar($var, $errors ?? null, $eleme
 $input = new \App\Mainframe\Features\Form\Text\TextArea($var);
 ?>
 
-<div class="{{$input->containerClasses()}}" id="{{$input->uid}}">
+@if($input->isHidden)
+    {{ Form::hidden($input->name, $input->value()) }}
+@else
+    <div class="{{$input->containerClasses()}}" id="{{$input->uid}}">
 
-    {{-- label --}}
-    @include('mainframe.form.includes.label')
+        {{-- label --}}
+        @include('mainframe.form.includes.label')
 
-    @if($input->isEditable)
-        {{ Form::textarea($input->name, $input->value(), $input->params) }}
-    @else
-        @include('mainframe.form.includes.textarea-read-only-view')
-    @endif
-    {{-- Error --}}
-    @include('mainframe.form.includes.show-error')
+        @if($input->isEditable)
+            {{ Form::textarea($input->name, $input->value(), $input->params) }}
+        @else
+            @include('mainframe.form.includes.textarea-read-only-view')
+        @endif
+        {{-- Error --}}
+        @include('mainframe.form.includes.show-error')
 
-</div>
+    </div>
+@endif
 
 {{-- js --}}
 @section('js')

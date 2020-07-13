@@ -31,52 +31,58 @@ $input = new App\Mainframe\Features\Form\Text\Datetime($var);
 
 $input->format = config('mainframe.config.datetime_format'); // Format to show in the datepicker
 ?>
-<div class="{{$input->containerClasses()}}" id="{{$input->uid}}">
+@if($input->isHidden)
+    {{ Form::hidden($input->name, $input->value()) }}
+@else
+    <div class="{{$input->containerClasses()}}" id="{{$input->uid}}">
 
-    {{-- label --}}
-    @include('mainframe.form.includes.label')
+        {{-- label --}}
+        @include('mainframe.form.includes.label')
 
-    {{-- input --}}
-    @if($input->isEditable)
-        {{ Form::text($input->name.'_formatted', $input->formatted(), array_merge($input->params,['id'=> $input->name.'_formatted'])) }}
-    @else
-        @include('mainframe.form.includes.read-only-view')
-    @endif
+        {{-- input --}}
+        @if($input->isEditable)
+            {{ Form::text($input->name.'_formatted', $input->formatted(), array_merge($input->params,['id'=> $input->name.'_formatted'])) }}
+        @else
+            @include('mainframe.form.includes.read-only-view')
+        @endif
 
-    {{ Form::hidden($input->name, $input->value(),$input->params) }}
+        {{ Form::hidden($input->name, $input->value(),$input->params) }}
 
-    {{-- Error --}}
-    @include('mainframe.form.includes.show-error')
-</div>
+        {{-- Error --}}
+        @include('mainframe.form.includes.show-error')
+    </div>
+@endif
 
 @section('js')
     @parent
-    <script>
-        $('#{{$input->uid}} #{{$input->name.'_formatted'}}').datetimepicker(
-            {
-                sideBySide: true,
-                format: 'DD-MM-YYYY HH:mm:ss' // https://momentjs.com/docs/#/displaying/format/
-            }
-        ).on('dp.change', function (e) {
+    @if(!$input->isHidden)
+        <script>
+            $('#{{$input->uid}} #{{$input->name.'_formatted'}}').datetimepicker(
+                {
+                    sideBySide: true,
+                    format: 'DD-MM-YYYY HH:mm:ss' // https://momentjs.com/docs/#/displaying/format/
+                }
+            ).on('dp.change', function (e) {
 
-            var formattedDateTime = $(this).val();                      // '01-04-2020 02:01:11'
-            var formattedDateTimeParts = formattedDateTime.split(' ');  // ['01-04-2020', '02:01:11']
+                var formattedDateTime = $(this).val();                      // '01-04-2020 02:01:11'
+                var formattedDateTimeParts = formattedDateTime.split(' ');  // ['01-04-2020', '02:01:11']
 
-            var datePart = formattedDateTimeParts[0];               // '01-04-2020'
-            var timePart = formattedDateTimeParts[1];               // '02:01:11'
+                var datePart = formattedDateTimeParts[0];               // '01-04-2020'
+                var timePart = formattedDateTimeParts[1];               // '02:01:11'
 
-            var dateParts = datePart.split('-');                    // ['01','04','2020']
-            var date = dateParts[0];                                // '01'
-            var month = dateParts[1];                               // '04'
-            var year = dateParts[2];                                // '2020'
+                var dateParts = datePart.split('-');                    // ['01','04','2020']
+                var date = dateParts[0];                                // '01'
+                var month = dateParts[1];                               // '04'
+                var year = dateParts[2];                                // '2020'
 
-            // Generate valid format for database store
-            var datetime = year + '-' + month + '-' + date + ' ' + timePart;
-            var validDatetime = moment(datetime).format('YYYY-MM-DD HH:mm:ss');
+                // Generate valid format for database store
+                var datetime = year + '-' + month + '-' + date + ' ' + timePart;
+                var validDatetime = moment(datetime).format('YYYY-MM-DD HH:mm:ss');
 
-            $('#{{$input->uid}} #{{$input->name}}').val(validDatetime);
-        });
-    </script>
+                $('#{{$input->uid}} #{{$input->name}}').val(validDatetime);
+            });
+        </script>
+    @endif
 @stop
 
 <?php unset($input) ?>
