@@ -39,6 +39,7 @@ $input = new \App\Mainframe\Features\Form\Checkbox\Checkbox($var);
                id="{{$input->params['id']}}"
                class="{{$input->params['class']}} spyr-checkbox"
                data-checkbox-name="{{$input->name}}"
+               data-checkbox-id="{{$input->params['id']}}"
                data-checked-val="{{$input->checkedVal}}"
                data-unchecked-val="{{$input->uncheckedVal}}"
                 {{ $input->isEditable != 1 ? 'disabled' : '' }}/>

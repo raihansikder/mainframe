@@ -312,7 +312,7 @@ class Response
         $keys = ['errors', 'messages', 'warnings', 'debug'];
         foreach ($keys as $key) {
             if ($items = $this->getMessages($key)) {
-                $data[$key] = Arr::flatten($items); // One dimensional array of errors.
+                $data[$key] = array_unique(Arr::flatten($items)); // One dimensional array of errors.
             }
         }
         /*-------------------------------*/

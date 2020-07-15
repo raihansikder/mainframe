@@ -440,6 +440,14 @@ trait ModularTrait
     }
 
     /**
+     * @return bool
+     */
+    public function isCreated()
+    {
+        return $this->isUpdating();
+    }
+
+    /**
      * Disable model events. Useful for avoiding infinite loop scenario.
      *
      * @return $this

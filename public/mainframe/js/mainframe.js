@@ -74,6 +74,19 @@ function getMultiSelectAsArray(selector) {
     return arr;
 }
 
+/**
+ * Get selected values as array from an array
+ * @param selector
+ * @returns {Array}
+ */
+function getInputAsArray(selector) {
+    var arr = [];
+    $(selector).each(function (i, input) {
+        arr[i] = $(input).val();
+    });
+    return arr;
+}
+
 /****************************************************************************************
  *   Make delete button responsive to context. Click on delete button loads a modal
  *   and a form with relevant values required for delete. These values include
@@ -190,15 +203,15 @@ function initCheckbox() {
         var checkbox = $(this);
         var checked_val = checkbox.attr('data-checked-val');
         var unchecked_val = checkbox.attr('data-unchecked-val');
-        var name = checkbox.attr('data-checkbox-name');
+        var id = checkbox.attr('data-checkbox-id');
 
         if (checkbox.val() == checked_val) {
             checkbox.prop('checked', true);
-            $('input[name=' + name + ']').val(checked_val);
+            $('input[id=' + id + ']').val(checked_val);
         } else {
             checkbox.prop('checked', false);
             checkbox.val(unchecked_val);
-            $('input[name=' + name + ']').val(unchecked_val);
+            $('input[id=' + id + ']').val(unchecked_val);
         }
     });
 
@@ -206,13 +219,13 @@ function initCheckbox() {
         var checkbox = $(this);
         var checked_val = checkbox.attr('data-checked-val');
         var unchecked_val = checkbox.attr('data-unchecked-val');
-        var name = $(this).attr('data-checkbox-name');
+        var id = $(this).attr('data-checkbox-id');
 
         if (checkbox.is(':checked')) {
-            $('input[name=' + name + ']').val(checked_val);
+            $('input[id=' + id + ']').val(checked_val);
             checkbox.val(checked_val);
         } else {
-            $('input[name=' + name + ']').val(unchecked_val);
+            $('input[id=' + id + ']').val(unchecked_val);
             checkbox.val(unchecked_val);
         }
     });
