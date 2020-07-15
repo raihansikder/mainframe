@@ -47,7 +47,7 @@ $input = new \App\Mainframe\Features\Form\Checkbox\Checkbox($var);
         {{-- label --}}
         @include('mainframe.form.includes.label')
 
-        {{ Form::hidden($input->name, $input->value()) }}
+        {{ Form::hidden($input->name, $input->value(), ['class'=>$input->params['id']]) }}
 
         {{-- Error --}}
         @include('mainframe.form.includes.show-error')

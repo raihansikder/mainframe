@@ -19,17 +19,20 @@ class Checkbox extends Input
     {
         parent::__construct($var, $element);
 
-        $this->type = 'checkbox';
+        $this->type            = 'checkbox';
         $this->params['class'] = $this->var['params']['class'] ?? '';
-        $this->checkedVal = $this->var['checked_val'] ?? 1;
-        $this->uncheckedVal = $this->var['unchecked_val'] ?? 0;
+        $this->checkedVal      = $this->var['checked_val'] ?? 1;
+        $this->uncheckedVal    = $this->var['unchecked_val'] ?? 0;
+
+        // Add Id in class
+        $this->params['class'] .= ' '.$this->params['id'];
     }
 
     public function value()
     {
         $value = parent::value();
 
-        if (!$value) {
+        if (! $value) {
             return $this->uncheckedVal;
         }
 

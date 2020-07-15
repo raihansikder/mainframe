@@ -207,11 +207,11 @@ function initCheckbox() {
 
         if (checkbox.val() == checked_val) {
             checkbox.prop('checked', true);
-            $('input[id=' + id + ']').val(checked_val);
+            $('input[class=' + id + ']').val(checked_val);
         } else {
             checkbox.prop('checked', false);
             checkbox.val(unchecked_val);
-            $('input[id=' + id + ']').val(unchecked_val);
+            $('input[class=' + id + ']').val(unchecked_val);
         }
     });
 
@@ -222,10 +222,10 @@ function initCheckbox() {
         var id = $(this).attr('data-checkbox-id');
 
         if (checkbox.is(':checked')) {
-            $('input[id=' + id + ']').val(checked_val);
+            $('input[class=' + id + ']').val(checked_val);
             checkbox.val(checked_val);
         } else {
-            $('input[id=' + id + ']').val(unchecked_val);
+            $('input[class=' + id + ']').val(unchecked_val);
             checkbox.val(unchecked_val);
         }
     });
@@ -311,6 +311,3 @@ function hasNestedKey(obj /*, level1, level2, ... levelN*/) {
     }
     return true;
 }
-
-
-

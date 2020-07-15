@@ -41,7 +41,7 @@ $input->format = config('mainframe.config.datetime_format'); // Format to show i
 
         {{-- input --}}
         @if($input->isEditable)
-            {{ Form::text($input->name.'_formatted', $input->formatted(), array_merge($input->params,['id'=> $input->name.'_formatted'])) }}
+            {{ Form::text($input->name.'_formatted', $input->formatted(), array_merge($input->params,['id'=> $input->params['id'].'_formatted'])) }}
         @else
             @include('mainframe.form.includes.read-only-view')
         @endif
@@ -57,7 +57,7 @@ $input->format = config('mainframe.config.datetime_format'); // Format to show i
     @parent
     @if(!$input->isHidden)
         <script>
-            $('#{{$input->uid}} #{{$input->name.'_formatted'}}').datetimepicker(
+            $('#{{$input->uid}} #{{$input->params['id'].'_formatted'}}').datetimepicker(
                 {
                     sideBySide: true,
                     format: 'DD-MM-YYYY HH:mm:ss' // https://momentjs.com/docs/#/displaying/format/
@@ -79,7 +79,7 @@ $input->format = config('mainframe.config.datetime_format'); // Format to show i
                 var datetime = year + '-' + month + '-' + date + ' ' + timePart;
                 var validDatetime = moment(datetime).format('YYYY-MM-DD HH:mm:ss');
 
-                $('#{{$input->uid}} #{{$input->name}}').val(validDatetime);
+                $('#{{$input->uid}} #{{$input->params['id']}}').val(validDatetime);
             });
         </script>
     @endif
