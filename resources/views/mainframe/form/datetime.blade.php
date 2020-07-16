@@ -40,8 +40,9 @@ $input->format = config('mainframe.config.datetime_format'); // Format to show i
         @include('mainframe.form.includes.label')
 
         {{-- input --}}
+
         @if($input->isEditable)
-            {{ Form::text($input->name.'_formatted', $input->formatted(), array_merge($input->params,['id'=> $input->params['id'].'_formatted'])) }}
+            {{ Form::text('formatted_'.$input->name, $input->formatted(), array_merge($input->params,['id'=> $input->params['id'].'_formatted'])) }}
         @else
             @include('mainframe.form.includes.read-only-view')
         @endif
