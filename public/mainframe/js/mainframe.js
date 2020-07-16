@@ -195,24 +195,20 @@ function initCheckbox() {
 
     /**
      * Go through each checkbox input field and if checkbox value is
-     * equal to checked_val mark as checked(ticket). Otherwise
+     * equal to checked_val mark as checked(ticked). Otherwise
      * uncheck.the checkbox.
      */
     $('.spyr-checkbox').each(function () {
 
         var checkbox = $(this);
         var checked_val = checkbox.attr('data-checked-val');
-        var unchecked_val = checkbox.attr('data-unchecked-val');
-        var id = checkbox.attr('data-checkbox-id');
 
         if (checkbox.val() == checked_val) {
             checkbox.prop('checked', true);
-            $('input[class=' + id + ']').val(checked_val);
         } else {
             checkbox.prop('checked', false);
-            checkbox.val(unchecked_val);
-            $('input[class=' + id + ']').val(unchecked_val);
         }
+        checkbox.trigger('change')
     });
 
     $('.spyr-checkbox').change(function () {
@@ -311,3 +307,6 @@ function hasNestedKey(obj /*, level1, level2, ... levelN*/) {
     }
     return true;
 }
+
+
+

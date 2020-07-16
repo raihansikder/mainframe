@@ -40,7 +40,7 @@ $input->format = config('mainframe.config.date_format'); // Format to show in th
 
         {{-- input --}}
         @if($input->isEditable)
-            {{ Form::text($input->name.'_formatted', $input->formatted(), array_merge($input->params,['id'=> $input->name.'_formatted'])) }}
+            {{ Form::text('formatted_'.$input->name, $input->formatted(), array_merge($input->params,['id'=> $input->params['id'].'_formatted'])) }}
         @else
             @include('mainframe.form.includes.read-only-view')
         @endif
@@ -56,7 +56,7 @@ $input->format = config('mainframe.config.date_format'); // Format to show in th
     @parent
     @if(!$input->isHidden)
         <script>
-            $('#{{$input->uid}} #{{$input->name.'_formatted'}}').datepicker(
+            $('#{{$input->uid}} #{{$input->params['id'].'_formatted'}}').datepicker(
                 {
                     format: 'dd-mm-yyyy',
                     autoclose: true,
@@ -73,7 +73,7 @@ $input->format = config('mainframe.config.date_format'); // Format to show in th
                 // Generate valid format for database store
                 var validDate = year + '-' + month + '-' + date;
 
-                $('#{{$input->uid}}  #{{$input->name}}').val(validDate);
+                $('#{{$input->uid}}  #{{$input->params['id']}}').val(validDate);
 
             });
         </script>

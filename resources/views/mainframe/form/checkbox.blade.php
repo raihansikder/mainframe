@@ -33,16 +33,21 @@ $input = new \App\Mainframe\Features\Form\Checkbox\Checkbox($var);
     <div class="{{$input->containerClasses()}}" id="{{$input->uid}}">
 
         {{-- input --}}
-        <input name="checkbox_{{$input->name}}"
-               type="checkbox"
-               value="{{$input->value()}}"
-               id="{{$input->params['id']}}"
-               class="{{$input->params['class']}} spyr-checkbox"
-               data-checkbox-name="{{$input->name}}"
-               data-checkbox-id="{{$input->params['id']}}"
-               data-checked-val="{{$input->checkedVal}}"
-               data-unchecked-val="{{$input->uncheckedVal}}"
-                {{ $input->isEditable != 1 ? 'disabled' : '' }}/>
+        <?php
+        // $var = [
+        //     'id'                 => $input->id,
+        //     'class'              => $input->params['class'],
+        //     'data-checkbox-name' => $input->name,
+        //     'data-checkbox-id'   => $input->id,
+        //     'data-checked-val'   => $input->checkedVal,
+        //     'data-unchecked-val' => $input->uncheckedVal
+        // ];
+        //
+        // if (! $input->isEditable) {
+        //     $var[] = 'disabled';
+        // }
+        ?>
+        {{ Form::checkbox("checkbox_".$input->name, $input->value(),$input->checkedVal,$input->params) }}
 
         {{-- label --}}
         @include('mainframe.form.includes.label')
@@ -54,4 +59,4 @@ $input = new \App\Mainframe\Features\Form\Checkbox\Checkbox($var);
 
     </div>
 @endif
-<?php unset($input) ?>
+<?php unset($input,$var) ?>

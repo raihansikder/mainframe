@@ -12,6 +12,7 @@ class Input extends Form
     public $labelClass;
     public $type;
     public $name;
+    public $id;
     public $value;
     public $oldInput;
     public $params;
@@ -21,31 +22,41 @@ class Input extends Form
     /**
      * Input constructor.
      *
-     * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule $element
-     * @param  array $var
+     * @param \App\Mainframe\Features\Modular\BaseModule\BaseModule $element
+     * @param array $var
      */
     public function __construct($var = [], $element = null)
     {
         parent::__construct($var, $element);
 
         $this->containerClass = $this->var['container_class'] ?? $this->var['div'] ?? 'col-md-3';
-        $this->label = $this->var['label'] ?? null;
-        $this->labelClass = $this->var['label_class'] ?? null;
-        $this->type = $this->var['type'] ?? null;
-        $this->value = $this->var['value'] ?? null;
-        $this->oldInput = $this->old();
-        $this->name = $this->var['name'] ?? Str::random(8);
-        $this->params = $this->var['params'] ?? [];
+        $this->label          = $this->var['label'] ?? null;
+        $this->labelClass     = $this->var['label_class'] ?? null;
+        $this->type           = $this->var['type'] ?? null;
+        $this->value          = $this->var['value'] ?? null;
+        $this->oldInput       = $this->old();
+        $this->name           = $this->var['name'] ?? Str::random(8);
+        $this->params         = $this->var['params'] ?? [];
 
         $this->isEditable = $this->var['editable'] ?? true; // $this->getEditable();
-        $this->isHidden = $this->var['hidden'] ?? false;
+        $this->isHidden   = $this->var['hidden'] ?? false;
+
+        // Force add form-control class
+        $this->params['id'] = $this->var['id']
+            ?? $this->params['id']
+            ?? $this->nameToId();
+        $this->id = $this->params['id'];
 
         // Force add form-control class
         $this->params['class'] = $this->params['class'] ?? '';
-        $this->params['class'] .= ' form-control ';
 
-        // Force add form-control class
-        $this->params['id'] = $this->params['id'] ?? $this->name;
+        $this->params['class'] .= ' form-control '
+            .$this->nameWithoutArrayLiteral().' ';
+
+        // Add id in the class too
+        if ($this->nameWithoutArrayLiteral() != $this->params['id']) {
+            $this->params['class'] .= $this->params['id'];
+        }
 
     }
 
@@ -92,6 +103,7 @@ class Input extends Form
     /**
      * logically determine if the field is editable
      * todo: unused
+     *
      * @return bool|mixed
      */
     public function determineEditability()
@@ -130,11 +142,42 @@ class Input extends Form
         return $this->value();
     }
 
+    /**
+     * Class of the main div
+     *
+     * @return string
+     */
     public function containerClasses()
     {
         return 'form-group'.' '.$this->containerClass
             .' '.$this->errors->first($this->name, 'has-error')
             .' '.$this->uid;
+    }
+
+    /**
+     * Convert name to id
+     *
+     * @return string
+     */
+    public function nameToId()
+    {
+        // change name[i][j] to ID name_i_j
+        $id = $this->name;
+        $id = str_replace(['[', ']', '__'], '_', $id);
+
+        $id = trim($id, '_');
+
+        // for name[] change the ID to name_XXXXXX
+        if ($id.'[]' == $this->name) {
+            $id .= '_'.$this->uid;
+        }
+
+        return $id;
+    }
+
+    public function nameWithoutArrayLiteral()
+    {
+        return explode('[', $this->name)[0];
     }
 
 }
