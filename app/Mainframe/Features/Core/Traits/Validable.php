@@ -148,7 +148,7 @@ trait Validable
      * @param $data
      * @return $this
      */
-    public function addError($data)
+    public function addErrorMessage($data)
     {
         $this->addToMessageBag('errors', $data);
 
@@ -201,7 +201,7 @@ trait Validable
      * @param $data
      * @return $this
      */
-    public function addDebug($data)
+    public function addDebugMessage($data)
     {
         $this->addToMessageBag('debug', $data);
 
