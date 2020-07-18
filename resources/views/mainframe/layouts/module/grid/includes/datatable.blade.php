@@ -34,14 +34,14 @@
         var table = $('.module-grid').dataTable({
             processing: true,
             serverSide: true,
-            ajax: "{{ route($module->name . '.datatable-json')}}?{{parse_url(URL::full(), PHP_URL_QUERY)}}",
+            ajax: "{{ route($module->name . '.datatable-json')}}?{!! parse_url(URL::full(), PHP_URL_QUERY) !!}",
             columns: [
                 {!! $columns_json !!}
-                //                { data: 'id', name: 'id' },
-                //                { data: 'name', name: 'name'},
-                //                { data: 'user_name', name: 'updater.name' },
-                //                { data: 'updated_at', name: 'updated_at' },
-                //                { data: 'is_active', name: 'updated_at' }
+                // { data: 'id', name: 'id' },
+                // { data: 'name', name: 'name'},
+                // { data: 'user_name', name: 'updater.name' },
+                // { data: 'updated_at', name: 'updated_at' },
+                // { data: 'is_active', name: 'updated_at' }
             ],
             "order": [[0, 'desc']]
         }).fnSetFilteringDelay(2000);

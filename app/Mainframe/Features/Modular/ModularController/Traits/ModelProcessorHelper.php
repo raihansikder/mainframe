@@ -122,7 +122,7 @@ trait ModelProcessorHelper
         }
 
         // Set response flag and message.
-        $this->success('The '.Str::singular($this->module->title).' is updated');
+        $this->success('The '.Str::singular($this->module->title).' has been updated');
 
         $this->updated();
         $this->saved();
