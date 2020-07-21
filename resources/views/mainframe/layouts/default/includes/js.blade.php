@@ -40,13 +40,10 @@ $script_paths = [
     /**
      * Additional JS added by mainframe.
      */
-
     'mainframe/js/mainframe.js',
     'mainframe/js/validation.js',
-    // 'mainframe/js/vue.js',
-    'https://cdn.jsdelivr.net/npm/vue/dist/vue.js',
-    // 'mainframe/js/axios.min.js',
-    'https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js',
+    'mainframe/js/vue.min.js',
+    'mainframe/js/axios.min.js',
     'mainframe/js/custom.js',
     /**
      * Additional project specific js.
@@ -65,4 +62,3 @@ $script_paths = [
 <script src="{{asset('mainframe/js/html5shiv.min.js')}}"></script>
 <script src="{{asset('mainframe/js/respond.min.js')}}"></script>
 <![endif]-->
-
