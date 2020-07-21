@@ -4,22 +4,23 @@ $scripts = [
     /**
      * Admin Lte CSS
      */
-    'mainframe/templates/admin/css/skins/_all-skins.min.css',
-    'mainframe/templates/admin/bootstrap/css/bootstrap.min.css',
-    'mainframe/templates/admin/css/main.css',
-    'mainframe/templates/admin/plugins/morris/morris.css',
-    'mainframe/templates/admin/plugins/jvectormap/jquery-jvectormap-1.2.2.css',
-    'mainframe/templates/admin/plugins/datatables/dataTables.bootstrap.css',
-    'mainframe/templates/admin/plugins/validation/css/validationEngine.jquery.css',
+    // 'mainframe/templates/admin/css/skins/_all-skins.min.css',
+    // 'mainframe/templates/admin/bootstrap/css/bootstrap.min.css',
+    // 'mainframe/templates/admin/css/main.css',
+    // 'mainframe/templates/admin/plugins/morris/morris.css',
+    // 'mainframe/templates/admin/plugins/jvectormap/jquery-jvectormap-1.2.2.css',
+    // 'mainframe/templates/admin/plugins/datatables/dataTables.bootstrap.css',
+    // 'mainframe/templates/admin/plugins/validation/css/validationEngine.jquery.css',
     'mainframe/templates/admin/plugins/select2-3.5.1/select2.css',
-    'mainframe/templates/admin/plugins/uploadfile/uploadfile.css',
-    'mainframe/templates/admin/plugins/iCheck/all.css',
-    'mainframe/templates/admin/plugins/iCheck/square/blue.css',
-    'mainframe/templates/admin/plugins/datepicker/datepicker3.css',
-    'mainframe/templates/admin/plugins/daterangepicker/daterangepicker.css',
-    'mainframe/templates/admin/plugins/datetimepicker/bootstrap-datetimepicker.css',
-    'mainframe/templates/admin/plugins/bootstrap-slider/slider.css',
-    'mainframe/templates/admin/plugins/jQueryUI/jquery-ui.css',
+    // 'mainframe/templates/admin/plugins/uploadfile/uploadfile.css',
+    // 'mainframe/templates/admin/plugins/iCheck/all.css',
+    // 'mainframe/templates/admin/plugins/iCheck/square/blue.css',
+    // 'mainframe/templates/admin/plugins/datepicker/datepicker3.css',
+    // 'mainframe/templates/admin/plugins/daterangepicker/daterangepicker.css',
+    // 'mainframe/templates/admin/plugins/datetimepicker/bootstrap-datetimepicker.css',
+    // 'mainframe/templates/admin/plugins/bootstrap-slider/slider.css',
+    // 'mainframe/templates/admin/plugins/jQueryUI/jquery-ui.css',
+    'css/all.css',
     /**
      * Custom CSS files
      */
