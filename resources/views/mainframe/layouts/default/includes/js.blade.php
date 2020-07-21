@@ -43,8 +43,10 @@ $script_paths = [
 
     'mainframe/js/mainframe.js',
     'mainframe/js/validation.js',
-    'mainframe/js/vue.js',
-    'mainframe/js/axios.min.js',
+    // 'mainframe/js/vue.js',
+    'https://cdn.jsdelivr.net/npm/vue/dist/vue.js',
+    // 'mainframe/js/axios.min.js',
+    'https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js',
     'mainframe/js/custom.js',
     /**
      * Additional project specific js.
