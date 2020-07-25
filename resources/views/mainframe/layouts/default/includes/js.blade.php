@@ -43,14 +43,11 @@ $script_paths = [
     /**
      * Additional JS added by mainframe.
      */
-
     'mainframe/js/mainframe.js',
     'mainframe/js/validation.js',
+    'mainframe/js/after-loader.js',
     'mainframe/js/custom.js',
-    /**
-     * Additional project specific js.
-     */
-
+    // Additional project specific js.
 ];
 ?>
 
@@ -64,4 +61,3 @@ $script_paths = [
 <script src="{{asset('mainframe/js/html5shiv.min.js')}}"></script>
 <script src="{{asset('mainframe/js/respond.min.js')}}"></script>
 <![endif]-->
-<script type="text/javascript" src="{{asset('mainframe/js/after-loader.js')}}"></script>
