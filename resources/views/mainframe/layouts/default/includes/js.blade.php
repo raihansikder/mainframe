@@ -37,8 +37,8 @@ $script_paths = [
     'mainframe/templates/admin/plugins/select2-3.5.1/select2.js',
     // 'mainframe/templates/admin/plugins/ionslider/ion.rangeSlider.min.js',
     // 'mainframe/templates/admin/plugins/bootstrap-slider/bootstrap-slider.js',
-    // 'mainframe/js/vue.min.js',
-    // 'mainframe/js/axios.min.js',
+    'mainframe/js/vue.min.js',
+    'mainframe/js/axios.min.js',
     // // 'mainframe/js/plugins/date/date.js',
     /**
      * Additional JS added by mainframe.
@@ -64,3 +64,4 @@ $script_paths = [
 <script src="{{asset('mainframe/js/html5shiv.min.js')}}"></script>
 <script src="{{asset('mainframe/js/respond.min.js')}}"></script>
 <![endif]-->
+<script type="text/javascript" src="{{asset('mainframe/js/after-loader.js')}}"></script>

@@ -50,8 +50,8 @@ mix.scripts([
     // 'public/mainframe/templates/admin/plugins/select2-3.5.1/select2.js',
     'public/mainframe/templates/admin/plugins/ionslider/ion.rangeSlider.min.js',
     'public/mainframe/templates/admin/plugins/bootstrap-slider/bootstrap-slider.js',
-    'public/mainframe/js/vue.min.js',
-    'public/mainframe/js/axios.min.js',
+    // 'public/mainframe/js/vue.min.js',
+    // 'public/mainframe/js/axios.min.js',
 ], 'public/js/all.js');
 
 mix.styles([

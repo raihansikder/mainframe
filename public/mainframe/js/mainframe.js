@@ -1,6 +1,8 @@
-/****************************************************************************************
- * CKEditor configuration variable that is commonly called for all CKEditor instances
- ****************************************************************************************/
+// noinspection JSUnusedGlobalSymbols
+/**
+ * Ckeditor config
+ * @type json
+ */
 var editor_config_basic = {
     toolbarGroups: [
         {"name": "basicstyles", "groups": ["basicstyles"]}
@@ -12,9 +14,9 @@ var editor_config_basic = {
 };
 
 /**
- * This function instantiates a text area so that it it compatible with ajax based form submission
- * This function checks for any change in the editor and when changes is found it updates
- * the hidden input with the changed value in the editor
+ * Instantiates a text area so that it it compatible with ajax based form submission
+ * This function checks for any change in the editor and when changes is found
+ * it updates the hidden input with the changed value in the editor
  *
  * @param id
  * @param config
@@ -29,37 +31,17 @@ function initEditor(id, config) {
     }
 }
 
-/****************************************************************************************/
-/*
- *   This function binds a link with a popup action. If a link has class .popup then it will open up
- *   in a pop up window of the configuration defined below.
- * */
-$('.popup').click(function () {
 
-    var height = 600;
-    var width = 800;
-    var NWin = window.open($(this).prop('href'), '', 'scrollbars=1,height=' + height + ',width=' + width);
-    if (window.focus) {
-        NWin.focus();
-    }
-    return false;
-});
-
-// jquery function to get outerHTML
+/**
+ * jquery function to get outerHTML
+ * @param s
+ * @returns {*}
+ */
 jQuery.fn.outerHTML = function (s) {
     return s ? this.before(s).remove() : jQuery("<p>").append(this.eq(0).clone()).html();
 };
 
-// for tooltip popover
-$('[data-toggle="popover"]').popover();
 
-$('.datepicker').datepicker(
-    {
-        format: 'yyyy-mm-dd',
-        autoclose: true,
-        clearBtn: true
-    }
-);
 
 /**
  * Get selected values as array from a multi-select select
@@ -74,6 +56,7 @@ function getMultiSelectAsArray(selector) {
     return arr;
 }
 
+// noinspection JSUnusedGlobalSymbols
 /**
  * Get selected values as array from an array
  * @param selector
@@ -87,15 +70,13 @@ function getInputAsArray(selector) {
     return arr;
 }
 
-/****************************************************************************************
- *   Make delete button responsive to context. Click on delete button loads a modal
- *   and a form with relevant values required for delete. These values include
- *   the route that will trigger the delete. Also determines the redirect
- *   path on successful delete and delete failure.
- ****************************************************************************************/
 
 /**
- *   Function to prepare the for that will POST to delete route.
+ * Function to prepare the for that will POST to delete route.
+ * Make delete button responsive to context. Click on delete button loads a modal
+ * and a form with relevant values required for delete. These values include
+ * the route that will trigger the delete. Also determines the redirect
+ * path on successful delete and delete failure.
  */
 function initGenericDeleteBtn() {
 
@@ -115,16 +96,8 @@ function initGenericDeleteBtn() {
     });
 }
 
-// call the funtion
-initGenericDeleteBtn();
-/********************** delete end *******************************/
 
-// enable slim scroll for all HTML element with class 'slim scroll'
-$('.slimscroll').slimScroll({
-    alwaysVisible: true
-});
-
-/******************************************************************
+/**
  * Checks if returns json is valid json
  * @param val
  * @returns {*}
@@ -139,55 +112,24 @@ function parseJson(val) {
     return val;
 }
 
-$('.datatable-min').dataTable({
-    "bPagination": false,
-    "bFilter": false,
-    //"bPaginate": false,
-    "bLengthChange": false,
-    "bInfo": false,
-    "bPageLength": 10,
-    "aaSorting": [[0, "desc"]]
-});
 
-$('.datatable-min-no-pagination').dataTable({
-    "bPagination": false,
-    "bFilter": false,
-    "bPaginate": false,
-    "bLengthChange": false,
-    "bInfo": false,
-    "bPageLength": 10,
-    "aaSorting": [[0, "desc"]]
-});
-
-// make all select selct2
-$('select').select2();
 
 // noinspection JSUnusedGlobalSymbols
 /**
- * disable all input
+ * Disable all input
  */
 function makeAllInputReadonly() {
     $('input, textarea, select').attr('readonly', 'readonly'); // make everything readonly
     $('button[name=genericDeleteBtn]').hide(); // hide delete buttons
     $('option:not(:selected)').attr('disabled', true).remove(); // remove all options that are not selected
     $("select").prop("disabled", true);
-
 }
 
-// hide messages/notifications
-setTimeout(function () {
-    $('div#showMsg').fadeOut('slow');
-}, 3500);
 
 
-//iCheck for checkbox and radio inputs
-$('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
-    checkboxClass: 'icheckbox_minimal-blue',
-    radioClass: 'iradio_minimal-blue'
-});
 
 /**
- * function is called in app/views/spyr/form/input-checkbox.blade.php
+ * Function is called in app/views/spyr/form/input-checkbox.blade.php
  * a checkbox and associative hidden input field is instantiated
  * based on existing value of the hidden input box.
  */
@@ -227,7 +169,7 @@ function initCheckbox() {
     });
 }
 
-initCheckbox(); // Run while page load
+
 /**************************************************************************/
 
 /**

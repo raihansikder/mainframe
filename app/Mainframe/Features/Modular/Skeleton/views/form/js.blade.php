@@ -18,7 +18,7 @@
 
     // Redirection after delete
     @if($element->some_id)
-    $('.delete-cta button[name=genericDeleteBtn]').attr('data-redirect_success', '{{route('some-module.edit',$element->some_id)}}')
+    $('.delete-cta button[name=genericDeleteBtn]').attr('data-redirect_success', '{!! route('some-module.edit',$element->some_id) !!}')
     @endif
 
     // Validation
