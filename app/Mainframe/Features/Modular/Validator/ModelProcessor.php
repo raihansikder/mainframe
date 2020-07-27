@@ -66,13 +66,13 @@ class ModelProcessor
      * MainframeModelValidator constructor.
      *
      *
-     * @param \App\Mainframe\Features\Modular\BaseModule\BaseModule $element
+     * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule  $element
      */
     public function __construct($element)
     {
-        $this->element  = $element;
+        $this->element = $element;
         $this->original = $element->getOriginal();
-        $this->module   = $element->module();
+        $this->module = $element->module();
     }
 
     public function setEvent($event)
@@ -98,8 +98,8 @@ class ModelProcessor
     /**
      * Laravel validator validation rules.
      *
-     * @param mixed $element
-     * @param array $merge
+     * @param  mixed  $element
+     * @param  array  $merge
      * @return array
      */
     public static function rules($element, $merge = [])
@@ -118,7 +118,7 @@ class ModelProcessor
     /**
      * Custom error messages for the validation rules above.
      *
-     * @param array $merge
+     * @param  array  $merge
      * @return array
      */
     public static function customErrorMessages($merge = [])
@@ -131,7 +131,7 @@ class ModelProcessor
     /**
      * Custom attributes for the validation rules above.
      *
-     * @param array $merge
+     * @param  array  $merge
      * @return array
      */
     public static function customAttributes($merge = [])
@@ -251,11 +251,29 @@ class ModelProcessor
     public function transitionOf($field)
     {
         // Previous $this->element->fieldHasChanged($field)
-        if (isset($this->original[$field], $this->element->$field) && $this->original[$field] != $this->element->$field) {
+        if ($this->fieldHasChanged($field)) {
             return ['field' => $field, 'old' => $this->original[$field], 'new' => $this->element->$field];
         }
 
         return null;
+    }
+
+    /**
+     * @param $field
+     * @return array|null
+     */
+    public function fieldChange($field)
+    {
+        return $this->transitionOf($field);
+    }
+
+    /**
+     * @param $field
+     * @return bool
+     */
+    public function fieldHasChanged($field)
+    {
+        return isset($this->original[$field], $this->element->$field) && $this->original[$field] != $this->element->$field;
     }
 
     /**
@@ -358,12 +376,12 @@ class ModelProcessor
      * Get an array of allowed next transition values
      *
      * @param $field
-     * @param null $from
+     * @param  null  $from
      * @return array
      */
     public function allowedTransitionsOf($field, $from = null)
     {
-        $from           = $from ?: $this->original[$field];
+        $from = $from ?: $this->original[$field];
         $allTransitions = $this->getTransitions();
 
         if (isset($allTransitions[$field][$from])) {
@@ -435,7 +453,7 @@ class ModelProcessor
     /**
      * Run processor for save.
      *
-     * @param null $element
+     * @param  null  $element
      * @return $this
      */
     public function forSave($element = null)
@@ -530,7 +548,7 @@ class ModelProcessor
      * Run validation for create. This initially runs the save()
      * validation checks then loads creating() checks.
      *
-     * @param null $element
+     * @param  null  $element
      * @return $this
      */
     // public function forCreate($element = null)
@@ -574,7 +592,7 @@ class ModelProcessor
     /**
      * Run validation for update.
      *
-     * @param null $element
+     * @param  null  $element
      * @return $this
      */
     // public function forUpdate($element = null)
@@ -617,12 +635,12 @@ class ModelProcessor
     /**
      * Run validation for delete.
      *
-     * @param null $element
+     * @param  null  $element
      * @return $this
      */
     public function forDelete($element = null)
     {
-        $element             = $element ?: $this->element;
+        $element = $element ?: $this->element;
         $element->deleted_by = user()->id; // Fill with the deleter id.
         $this->preDeleting();
         $this->deleting($element);
@@ -672,7 +690,7 @@ class ModelProcessor
     /**
      * Run validation for restore.
      *
-     * @param null $element
+     * @param  null  $element
      * @return $this
      */
     public function restore($element = null)
