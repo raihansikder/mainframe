@@ -81,7 +81,8 @@ function showValidationAlert(ret, showAlert) {
     if (ret.hasOwnProperty('validation_errors')) {
         $.each(ret.validation_errors, function (k, v) {
             str += "\n" + k + ": " + v;
-            $("#label_" + k).validationEngine('showPrompt', v, 'error');
+            // $("#label_" + k).validationEngine('showPrompt', v, 'error');
+            $("input[name=" + k + "]").validationEngine('showPrompt', v, 'error');
         });
     }
     if (showAlert) {
