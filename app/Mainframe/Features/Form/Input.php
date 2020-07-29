@@ -48,7 +48,7 @@ class Input extends Form
         $this->id = $this->params['id'];
 
         // Force add form-control class
-        $this->params['class'] = $this->params['class'] ?? '';
+        $this->params['class'] = $this->var['class'] ?? $this->params['class'] ?? '';
 
         $this->params['class'] .= ' form-control '
             .$this->nameWithoutArrayLiteral().' ';
@@ -58,6 +58,7 @@ class Input extends Form
             $this->params['class'] .= $this->params['id'];
         }
 
+        $this->params['placeholder'] = $this->var['placeholder'] ??  $this->params['placeholder'] ?? '';
     }
 
     /**
