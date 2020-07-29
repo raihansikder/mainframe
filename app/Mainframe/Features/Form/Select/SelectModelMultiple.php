@@ -31,7 +31,12 @@ class SelectModelMultiple extends SelectModel
     {
         $options = parent::options();
 
-        return Arr::except($options, [0]); // Remove the null/0 option
+        // Remove the first(empty) option. Not meaningful for multi-select
+        $collection = collect($options);
+        $firstKey = $collection->keys()->first();
+        $collection->forget($firstKey);
+
+        return $collection->toArray();
     }
 
 }
