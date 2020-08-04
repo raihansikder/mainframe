@@ -39,4 +39,16 @@ class SelectModelMultiple extends SelectModel
         return $collection->toArray();
     }
 
+    /**
+     * Value for multi-select
+     *
+     * @return array|\Illuminate\Http\Request|string|null
+     */
+    public function value()
+    {
+        $value = parent::value();
+
+        return $value ?? [];
+    }
+
 }
