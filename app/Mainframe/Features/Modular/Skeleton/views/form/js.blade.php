@@ -15,6 +15,7 @@
     | Common - creating and updating
     |--------------------------------------------------------------------------
     */
+    // $('select').select2(); // Make all select2
 
     // Redirection after delete
     @if($element->some_id)
