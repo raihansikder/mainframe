@@ -74,7 +74,7 @@ class SuperHeroProcessor extends ModelProcessor
      */
     public function saving($element)
     {
-        $this->validateName(); // Todo: Remove this sample code
+        $this->checkName(); // Todo: Remove this sample code
 
         return $this;
     }

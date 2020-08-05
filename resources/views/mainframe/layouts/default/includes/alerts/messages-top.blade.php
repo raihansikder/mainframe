@@ -13,19 +13,31 @@ $messageBag = $response['messageBag'];
 $css = "callout-danger";
 $textCss = "text-red";
 if ($response['status'] == 'success') {
-    $css     = "callout-success";
+    $css = "callout-success";
     $textCss = "text-green";
 }
+
 
 $showAlerts = false;
 if ((isset($response['status'], $response['message']))
     || $errors->any()
     || ($messageBag && $messageBag->count())) {
     $showAlerts = true;
+
+    $keys = ['errors', 'messages', 'warnings', 'debug'];
+
+    $alerts = [];
+    foreach ($keys as $key) {
+        if ($messages = $messageBag->messages()[$key] ?? []) {
+            /** @noinspection SlowArrayOperationsInLoopInspection */
+            $alerts = array_merge($alerts, $messages);
+        }
+    }
+    $alerts = collect(Arr::flatten($alerts))->unique()->toArray();
 }
 
-?>
 
+?>
 @if($showAlerts)
     <div class="message-container">
         <div class="callout ajaxMsg errorDiv" id="errorDiv">
@@ -37,13 +49,8 @@ if ((isset($response['status'], $response['message']))
             @endif
             <div class="clearfix"></div>
 
-            @if(isset($messageBag))
-                <?php $keys = ['errors', 'messages', 'warnings', 'debug']; ?>
-                @foreach($keys as $key)
-                    @if($messages = $messageBag->messages()[$key] ?? null)
-                        {!! implode('<br/>',Arr::flatten($messages)) !!}<br/>
-                    @endif
-                @endforeach
+            @if(count($alerts))
+                {!! implode('<br/>',$alerts) !!}<br/>
             @elseif ($errors->any())
                 {!! implode('<br/>', $errors->all()) !!}
             @endif
