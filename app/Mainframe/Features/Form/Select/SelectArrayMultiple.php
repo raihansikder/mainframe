@@ -35,4 +35,32 @@ class SelectArrayMultiple extends SelectArray
         return trim($str, ', ');
     }
 
+    /**
+     * Generate options
+     *
+     * @return array
+     */
+    public function options()
+    {
+        $options = $this->options;
+
+        // Remove the first(empty) option. Not meaningful for multi-select
+        $collection = collect($options);
+        $firstKey = $collection->keys()->first();
+        $collection->forget($firstKey);
+
+        return $collection->toArray();
+    }
+
+    /**
+     * Value for multi-select
+     *
+     * @return array|\Illuminate\Http\Request|string|null
+     */
+    public function value()
+    {
+        $value = parent::value();
+
+        return $value ?? [];
+    }
 }

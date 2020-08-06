@@ -480,8 +480,9 @@ pre.sf-dump, pre.sf-dump .sf-dump-default {
 .modal-header {
     border-bottom: 0;
 }
-.modal-footer{
-    border-top:0;
+
+.modal-footer {
+    border-top: 0;
 }
 
 a i {
@@ -494,4 +495,8 @@ a i {
 
 .border-dotted {
     border: 2px gainsboro dotted;
+}
+
+.errorDiv a {
+    color: #3c8dbc;
 }
