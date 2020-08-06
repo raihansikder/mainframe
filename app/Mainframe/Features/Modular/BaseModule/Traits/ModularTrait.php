@@ -66,7 +66,7 @@ trait ModularTrait
     /**
      * Get all attribute names
      *
-     * @return bool
+     * @return array|bool
      */
     public function getAttributeKeys()
     {
@@ -76,8 +76,8 @@ trait ModularTrait
     /**
      * Get attribute except
      *
-     * @param array $except
-     * @return bool
+     * @param  array  $except
+     * @return array|bool
      */
     public function getAttributeKeysExcept($except = [])
     {
@@ -333,7 +333,7 @@ trait ModularTrait
      * Get a change from a tracked field.
      *
      * @param $field
-     * @return \Illuminate\Database\Eloquent\Builder
+     * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Relations\MorphMany
      */
     public function track($field)
     {
@@ -534,6 +534,7 @@ trait ModularTrait
      */
     public function linkUploads()
     {
+        /** @var Module $this */
         Upload::linkTemporaryUploads($this);
 
         return $this;
@@ -616,7 +617,7 @@ trait ModularTrait
 
         if (isset($this->id) && $this->deleted_by == null) {
             DB::table($this->getTable())->where('id', $this->id)
-                ->update(['deleted_by' => $by]);
+                ->update(['deleted_by' => $by,'deleted_at'=>$at]);
         }
 
         return $this;
