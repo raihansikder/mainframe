@@ -42,7 +42,7 @@ $input = new \App\Mainframe\Features\Form\Select\SelectModelMultiple($var);
         @include('mainframe.form.includes.label')
 
         {{-- input --}}
-        {{ Form::select($input->name.'[]', $input->options, $input->value(), $input->params) }}
+        {{ Form::select($input->name.'[]', $input->options(), $input->value(), $input->params) }}
         {{--
         Ghost input
         ==================================================
