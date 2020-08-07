@@ -55,7 +55,7 @@ trait ModularTrait
      * Shorthand function for getAttributeKeysExcept.
      * Gets all attribute names
      *
-     * @param  array  $except
+     * @param array $except
      * @return array|bool|mixed
      */
     public function fields($except = [])
@@ -109,8 +109,8 @@ trait ModularTrait
     /**
      * Cast an attribute to a native PHP type.
      *
-     * @param  string  $key
-     * @param  mixed  $value
+     * @param  string $key
+     * @param  mixed $value
      * @return mixed
      */
     // protected function castAttribute($key, $value)
@@ -162,7 +162,7 @@ trait ModularTrait
     /**
      * Get the last updater user of a field
      *
-     * @param  string  $field
+     * @param string $field
      * @return \Illuminate\Database\Eloquent\Model|\Illuminate\Database\Query\Builder|mixed|null
      */
     public function updaterOfField($field)
@@ -172,7 +172,7 @@ trait ModularTrait
         $userId = null;
 
         foreach ($audits as $audit) {
-            $userId = $audit->user_id;
+            $userId  = $audit->user_id;
             $changes = $audit->getModified();
             if (array_key_exists($field, $changes)) {
                 break;
@@ -276,7 +276,7 @@ trait ModularTrait
      * Get an array of allowed next transition values
      *
      * @param $field
-     * @param  null  $from
+     * @param null $from
      * @return array
      */
     public function allowedTransitionsOf($field, $from = null)
@@ -463,7 +463,7 @@ trait ModularTrait
     /**
      * Disable model events while saving.
      *
-     * @param  array  $options
+     * @param  array $options
      * @return mixed
      */
     public function saveQuietly(array $options = [])
@@ -583,7 +583,7 @@ trait ModularTrait
 
         $this->autoFillTenant();         // Inject tenant context.
 
-        $this->uuid = $this->uuid ?? uuid();
+        $this->uuid       = $this->uuid ?? uuid();
         $this->created_by = $this->created_by ?? user()->id;
         $this->created_at = $this->created_at ?? now();
         $this->updated_by = $this->updated_by ?? user()->id;
@@ -597,7 +597,7 @@ trait ModularTrait
     public function autoFillTenant()
     {
         if (user()->ofTenant() && $this->hasTenantContext()) {
-            $this->tenant_id = $this->tenant_id ?: user()->tenant_id;
+            $this->tenant_id  = $this->tenant_id ?: user()->tenant_id;
             $this->project_id = $this->project_id ?: $this->tenant->project_id;
         }
     }
@@ -605,8 +605,8 @@ trait ModularTrait
     /**
      * Mark an entry as deleted by setting the deleted_at, deleted_by
      *
-     * @param  null  $by
-     * @param  null  $at
+     * @param null $by
+     * @param null $at
      * @return $this
      */
     public function markDeleted($by = null, $at = null)
@@ -617,7 +617,7 @@ trait ModularTrait
 
         if (isset($this->id) && $this->deleted_by == null) {
             DB::table($this->getTable())->where('id', $this->id)
-                ->update(['deleted_by' => $by, 'deleted_at' => $at]);
+                ->update(['deleted_by' => $by,'deleted_at'=>$at]);
         }
 
         return $this;
@@ -631,12 +631,21 @@ trait ModularTrait
     */
     /**
      * Edit link
-     *
      * @return string
      */
-    public function editLink()
+    public function editUrl()
     {
-        return route($this->module()->name.'.edit');
+        return route($this->module()->name.'.edit',$this->id);
+    }
+
+    /**
+     * HTML link
+     * @param  string  $field
+     * @return string
+     */
+    public function editLink($field='id')
+    {
+        return "<a href='".$this->editUrl()."'>{$this->$field}</a>";
     }
 
     /*
