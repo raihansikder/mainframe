@@ -395,6 +395,12 @@ select, .form-control {
 
 }
 
+input:read-only, .form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control,
+.select2-container.select2-container-disabled .select2-choice {
+    background-color: #fbfbfb;
+    border-color: #f0f0f0;
+}
+
 label {
     margin-bottom: 0;
 }

@@ -17,5 +17,9 @@ class InputText extends Input
         parent::__construct($var, $element);
 
         $this->type = $var['type'] ?? 'text'; // Can be text or password
+
+        if (! $this->isEditable) {
+            $this->params['readonly'] = 'readonly';
+        }
     }
 }

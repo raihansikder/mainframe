@@ -35,7 +35,7 @@ $input = new \App\Mainframe\Features\Form\Text\InputText($var);
     <div class="{{$input->containerClasses()}}" id="{{$input->uid}}">
         {{-- label --}}
         @include('mainframe.form.includes.label')
-        {{-- input --}}
+
         @if($input->isEditable)
             @if($input->type === 'password')
                 {{ Form::password($input->name, $input->params) }}
@@ -45,6 +45,7 @@ $input = new \App\Mainframe\Features\Form\Text\InputText($var);
         @else
             @include('mainframe.form.includes.read-only-view')
         @endif
+
         {{-- Error --}}
         @include('mainframe.form.includes.show-error')
     </div>

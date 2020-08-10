@@ -22,24 +22,24 @@ class Input extends Form
     /**
      * Input constructor.
      *
-     * @param \App\Mainframe\Features\Modular\BaseModule\BaseModule $element
-     * @param array $var
+     * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule  $element
+     * @param  array  $var
      */
     public function __construct($var = [], $element = null)
     {
         parent::__construct($var, $element);
 
         $this->containerClass = $this->var['container_class'] ?? $this->var['div'] ?? 'col-md-3';
-        $this->label          = $this->var['label'] ?? null;
-        $this->labelClass     = $this->var['label_class'] ?? null;
-        $this->type           = $this->var['type'] ?? null;
-        $this->value          = $this->var['value'] ?? null;
-        $this->oldInput       = $this->old();
-        $this->name           = $this->var['name'] ?? Str::random(8);
-        $this->params         = $this->var['params'] ?? [];
+        $this->label = $this->var['label'] ?? null;
+        $this->labelClass = $this->var['label_class'] ?? null;
+        $this->type = $this->var['type'] ?? null;
+        $this->value = $this->var['value'] ?? null;
+        $this->oldInput = $this->old();
+        $this->name = $this->var['name'] ?? Str::random(8);
+        $this->params = $this->var['params'] ?? [];
 
         $this->isEditable = $this->var['editable'] ?? true; // $this->getEditable();
-        $this->isHidden   = $this->var['hidden'] ?? false;
+        $this->isHidden = $this->var['hidden'] ?? false;
 
         // Force add form-control class
         $this->params['id'] = $this->var['id']
@@ -58,7 +58,8 @@ class Input extends Form
             $this->params['class'] .= $this->params['id'];
         }
 
-        $this->params['placeholder'] = $this->var['placeholder'] ??  $this->params['placeholder'] ?? '';
+        // Place-holder
+        $this->params['placeholder'] = $this->var['placeholder'] ?? $this->params['placeholder'] ?? '';
     }
 
     /**

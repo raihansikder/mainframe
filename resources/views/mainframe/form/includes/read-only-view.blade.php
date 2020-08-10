@@ -1,5 +1,5 @@
 @if(!$input->isHidden)
-    <span class="{{$input->params['class']}} readonly {{$input->name}}" id="{{$input->name}}">
+    <span class="form-control readonly {{$input->name}}" id="{{$input->id}}">
         {{ $input->print() }}
     </span>
 @endif
