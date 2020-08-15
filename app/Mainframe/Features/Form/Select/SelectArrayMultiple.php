@@ -10,7 +10,7 @@ class SelectArrayMultiple extends SelectArray
     {
         parent::__construct($var, $element);
         $this->params['multiple'] = 'multiple';
-        $this->dataParent         = $this->name.'_data_parent';
+        $this->dataParent = $this->name.'_data_parent';
     }
 
     /**
@@ -27,7 +27,7 @@ class SelectArrayMultiple extends SelectArray
 
         $str = '';
         foreach ($this->value() as $val) {
-            if(isset($this->options[$val])){
+            if (isset($this->options[$val])) {
                 $str .= $this->options[$val].', ';
             }
         }
@@ -46,8 +46,10 @@ class SelectArrayMultiple extends SelectArray
 
         // Remove the first(empty) option. Not meaningful for multi-select
         $collection = collect($options);
-        $firstKey = $collection->keys()->first();
-        $collection->forget($firstKey);
+        // $firstKey = $collection->keys()->first();
+        // if ($firstKey == '') {
+        //     $collection->forget($firstKey);
+        // }
 
         return $collection->toArray();
     }
