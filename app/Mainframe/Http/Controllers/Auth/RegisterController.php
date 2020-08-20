@@ -75,7 +75,7 @@ class RegisterController extends BaseController
     {
         // Get group from url parameter register/{groupName}
         if (\Route::current()) {
-            $groupName   = \Route::current()->parameter('groupName');
+            $groupName = \Route::current()->parameter('groupName');
             $this->group = Group::byName($groupName);
         }
 
@@ -105,7 +105,7 @@ class RegisterController extends BaseController
     /**
      * Handle a registration request for the application.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
      */
     public function register(Request $request)
@@ -117,9 +117,9 @@ class RegisterController extends BaseController
 
         $this->attemptRegistration();
 
-        request()->merge(['redirect_success' => route('login')]);
-
-        // $this->response()->redirectTo = $this->resolveRedirectTo();
+        if (! $this->user) { // Redirect to register page if failed
+            $this->redirectTo = route('register', $this->group->name);
+        }
 
         return $this->load($this->user)->dispatch();
 
@@ -149,7 +149,7 @@ class RegisterController extends BaseController
         // Create user
         $this->user = $this->createUser();
         if (! $this->user) {
-            $this->fail('User creation failed');
+            $this->fail('Registration was not successful');
 
             return $this;
         }
@@ -181,10 +181,10 @@ class RegisterController extends BaseController
     }
 
     /**
-     * The user has been registered.
+     * The user has been successfully registered.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param User $user
+     * @param  \Illuminate\Http\Request  $request
+     * @param  User  $user
      * @return mixed
      */
     protected function registered(Request $request, $user)
@@ -207,4 +207,5 @@ class RegisterController extends BaseController
 
         return true;
     }
+
 }
