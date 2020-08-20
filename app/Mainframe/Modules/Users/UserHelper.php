@@ -100,7 +100,7 @@ trait UserHelper
      * Handle a set of actions that result from a successful login.
      * i.e. update login timestamp. authToken if it is expired.
      */
-    public function loggedIn()
+    public function hasLoggedIn()
     {
         $this->updateLoginTimestamps();
 
@@ -178,5 +178,15 @@ trait UserHelper
     public static function guestInstance()
     {
         return new \App\User(['first_name' => 'guest']);
+    }
+
+    /**
+     * Check if user is guest
+     *
+     * @return bool
+     */
+    public function isGuest()
+    {
+        return $this->id ? false : true;
     }
 }

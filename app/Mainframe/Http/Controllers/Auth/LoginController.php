@@ -100,7 +100,7 @@ class LoginController extends BaseController
      */
     protected function authenticated(Request $request, $user)
     {
-        $user->loggedIn();
+        $user->hasLoggedIn();
 
         if ($this->expectsJson()) {
             return $this->success()->load($user->refresh())->json();
