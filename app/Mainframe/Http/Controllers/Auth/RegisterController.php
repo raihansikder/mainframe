@@ -117,6 +117,7 @@ class RegisterController extends BaseController
 
         $this->attemptRegistration();
 
+        $this->redirectTo = route('login');
         if (! $this->user) { // Redirect to register page if failed
             $this->redirectTo = route('register', $this->group->name);
         }
