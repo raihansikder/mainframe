@@ -2,30 +2,29 @@
 
 namespace App\Mainframe\Features\Modular\ModularController\Traits;
 
-
 trait Resolvable
 {
 
-        /**
-         * Get the view processor instance
-         *
-         * @return mixed|null
-         */
-        public function viewProcessor()
-        {
-            $classPaths = [
-                $this->module->modelClassPath().'ViewProcessor', // Check in App\Mainframe\Modules
-                'App\Mainframe\Features\Modular\BaseModule\BaseModuleViewProcessor',
-            ];
+    /**
+     * Get the view processor instance
+     *
+     * @return mixed|null
+     */
+    public function viewProcessor()
+    {
+        $classPaths = [
+            $this->module->modelClassPath().'ViewProcessor', // Check in App\Mainframe\Modules
+            'App\Mainframe\Features\Modular\BaseModule\BaseModuleViewProcessor',
+        ];
 
-            foreach ($classPaths as $classPath) {
-                if (class_exists($classPath)) {
-                    return (new $classPath);
-                }
+        foreach ($classPaths as $classPath) {
+            if (class_exists($classPath)) {
+                return (new $classPath);
             }
-
-            return null;
         }
+
+        return null;
+    }
 
     /**
      * Resolve the view blade for the module form

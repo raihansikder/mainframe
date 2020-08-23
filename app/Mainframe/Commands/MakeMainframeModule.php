@@ -75,7 +75,7 @@ class MakeMainframeModule extends Command
      */
     public function createClasses()
     {
-        $sourceRoot  = 'app/Mainframe/Features/Modular/Skeleton/';
+        $sourceRoot = 'app/Mainframe/Features/Modular/Skeleton/';
         $destination = $this->classDirectory().'/'.$this->modelClassName();
 
         $maps = [
@@ -87,6 +87,7 @@ class MakeMainframeModule extends Command
             $sourceRoot.'SuperHeroPolicy.php'          => $destination.'Policy.php',
             $sourceRoot.'SuperHeroProcessor.php'       => $destination.'Processor.php',
             $sourceRoot.'SuperHeroProcessorHelper.php' => $destination.'ProcessorHelper.php',
+            $sourceRoot.'SuperHeroViewProcessor.php'   => $destination.'ViewProcessor.php',
         ];
 
         File::makeDirectory($this->classDirectory(), 755, true);
@@ -102,7 +103,7 @@ class MakeMainframeModule extends Command
      */
     public function createViewFiles()
     {
-        $sourceRoot      = 'app/Mainframe/Features/Modular/Skeleton/views';                          // Source directory
+        $sourceRoot = 'app/Mainframe/Features/Modular/Skeleton/views';                          // Source directory
         $destinationRoot = 'resources/views/'.str_replace('.', '/', $this->viewDirectory());    // New module directory
 
         File::copyDirectory($sourceRoot, $destinationRoot);
@@ -218,7 +219,7 @@ class MakeMainframeModule extends Command
 
     private function viewDirectory()
     {
-        $str         = str_replace('\\App', '', $this->namespace());
+        $str = str_replace('\\App', '', $this->namespace());
         $directories = explode('\\', $str);
 
         $arr = [];

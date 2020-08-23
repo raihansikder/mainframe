@@ -121,6 +121,28 @@ class BaseModuleViewProcessor extends ViewProcessor
         return $this;
     }
 
+    /*
+    |--------------------------------------------------------------------------
+    | Blade template locations
+    |--------------------------------------------------------------------------
+    |
+    */
+    /**
+     * Resolve the view blade for the module form
+     *
+     * @param  string  $state
+     * @return string
+     */
+    public function formPath($state = 'create')
+    {
+        $default = $this->module->view_directory.'.form.default';
+        if ($state == 'create') {
+            return $default;
+        }
+
+        return $default;
+    }
+
     /**
      * @return string
      */
@@ -137,6 +159,12 @@ class BaseModuleViewProcessor extends ViewProcessor
         return 'mainframe.layouts.module.changes.index';
     }
 
+    /*
+    |--------------------------------------------------------------------------
+    | View Variables
+    |--------------------------------------------------------------------------
+    |
+    */
     /**
      * Obtain the variables shared in a module create form
      *
@@ -184,22 +212,6 @@ class BaseModuleViewProcessor extends ViewProcessor
         ]);
 
         return $this->vars;
-    }
-
-    /**
-     * Resolve the view blade for the module form
-     *
-     * @param  string  $state
-     * @return string
-     */
-    public function formPath($state = 'create')
-    {
-        $default = $this->module->view_directory.'.form.default';
-        if ($state == 'create') {
-            return $default;
-        }
-
-        return $default;
     }
 
     /**
