@@ -134,8 +134,7 @@ class ModularController extends BaseController
 
         $uuid = request()->old('uuid') ?: uuid();
 
-        $this->element = $this->module->modelInstance();
-        $this->element->fill(request()->all());
+        $this->element = $this->model->fill(request()->all());
         $this->element->uuid = $uuid;
 
         // Set view processor attributes

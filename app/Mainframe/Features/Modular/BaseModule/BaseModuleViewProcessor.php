@@ -66,7 +66,7 @@ class BaseModuleViewProcessor extends ViewProcessor
         return $this;
     }
 
-    /**
+    /**`
      * @param  \App\Mainframe\Modules\Modules\Module  $module
      * @return BaseModuleViewProcessor
      */

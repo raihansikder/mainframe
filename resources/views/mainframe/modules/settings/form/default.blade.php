@@ -3,7 +3,6 @@
 <?php
 use App\Mainframe\Modules\Settings\Setting;
 $types = Setting::$types;
-dd($view);
 ?>
 
 @section('content')
@@ -14,8 +13,8 @@ dd($view);
         @elseif($formState == 'edit')
             {{ Form::model($element, $formConfig)}}
         @endif
-        {{--    Form inputs: starts    --}}
-        {{--   --------------------    --}}
+        {{-- Form inputs: starts    --}}
+        {{-- --------------------    --}}
         @include('form.text',['var'=>['name'=>'name','label'=>'Name']])
         @include('form.text',['var'=>['name'=>'title','label'=>'Title']])
         <div class="clearfix"></div>
@@ -23,7 +22,7 @@ dd($view);
         @include('form.select-array',['var'=>['name'=>'type','label'=>'type', 'options'=>$types]])
         <div class="clearfix"></div>
 
-        {{--        @include('form.textarea',['var'=>['name'=>'value','label'=>'Value']])--}}
+        {{--  @include('form.textarea',['var'=>['name'=>'value','label'=>'Value']])--}}
         <div class="clearfix"></div>
 
         <div class="clearfix"></div>
@@ -33,7 +32,6 @@ dd($view);
         <div class="clearfix"></div>
 
         <div class="col-md-6 no-padding">
-
             @include('form.textarea',['var'=>['name'=>'value','label'=>'Value(For array type put JSON)','div'=>'col-md-12']])
             <div class="col-md-12 no-padding-l">
                 @dump($element->getValue())
@@ -44,27 +42,26 @@ dd($view);
             Sample JSON for configuring invoice
         </label>
         <pre>
-{
-  "invoices": [
-    {
-      "event": "order.status.accepted",
-      "percentage": 50,
-      "due_after_days": 10
-    },
-    {
-      "event": "order.status.completed",
-      "percentage": 50,
-      "due_after_days": 30
-    }
-  ]
-}
-</pre>
+        {
+            "invoices": [
+                {
+                    "event": "order.status.accepted",
+                    "percentage": 50,
+                    "due_after_days": 10
+                },
+                {
+                    "event": "order.status.completed",
+                    "percentage": 50,
+                    "due_after_days": 30
+                }
+            ]
+        }
+        </pre>
 
         @include('form.textarea',['var'=>['name'=>'description','label'=>'Description', 'params'=>['class'=>'ckeditor']]])
-
-                    @include('form.is-active',['var'=>['hidden'=>true]])
-{{--            @include('form.checkbox',['var'=>['name'=>'is_active','label'=>'Active test','hidden'=>true]])--}}
-        {{--    Form inputs: ends    --}}
+        @include('form.is-active',['var'=>['hidden'=>true]])
+        {{--  @include('form.checkbox',['var'=>['name'=>'is_active','label'=>'Active test','hidden'=>true]])--}}
+        {{-- Form inputs: ends --}}
 
         @include('form.action-buttons')
         {{ Form::close() }}
