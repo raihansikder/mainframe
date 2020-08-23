@@ -291,7 +291,7 @@ trait Query
      */
     public function expectsAllData()
     {
-        if (in_array($this->output(), ['excel', 'print'])) {
+        if (in_array($this->outputType(), ['excel', 'print'])) {
             return true;
         }
         if (request('force_all_data') == 'yes') {

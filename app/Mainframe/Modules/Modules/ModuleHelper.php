@@ -226,7 +226,7 @@ trait ModuleHelper
             }
         }
 
-        return false;
+        return null;
     }
 
     /**

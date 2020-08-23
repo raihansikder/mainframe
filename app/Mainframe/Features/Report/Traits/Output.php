@@ -16,7 +16,7 @@ trait Output
      *
      * @return bool|\Illuminate\Contracts\View\Factory|\Illuminate\Support\Collection|\Illuminate\View\View|mixed|void
      */
-    public function show()
+    public function output()
     {
         if (request('submit') != 'Run') {
             return $this->html($type = 'blank');
@@ -26,19 +26,19 @@ trait Output
             return $this->responseInvalid();
         }
 
-        if ($this->output() == 'json') {
+        if ($this->outputType() == 'json') {
             return $this->json();
         }
 
-        if ($this->output() == 'excel') {
+        if ($this->outputType() == 'excel') {
             return $this->excel();
         }
 
-        if ($this->output() == 'csv') {
+        if ($this->outputType() == 'csv') {
             return $this->csv();
         }
 
-        if ($this->output() == 'print') {
+        if ($this->outputType() == 'print') {
             return $this->html($type = 'print');
         }
 
@@ -53,7 +53,7 @@ trait Output
         $this->fail();
         $this->response()->validator = $this->validator;
 
-        if ($this->output() != 'json') {
+        if ($this->outputType() != 'json') {
             return $this->html($type = 'blank');
         }
 
@@ -258,7 +258,7 @@ trait Output
      *
      * @return mixed
      */
-    public function output()
+    public function outputType()
     {
         if ($this->expectsJson()) {
             return 'json';

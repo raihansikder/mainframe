@@ -3,6 +3,7 @@
 <?php
 use App\Mainframe\Modules\Settings\Setting;
 $types = Setting::$types;
+dd($view);
 ?>
 
 @section('content')

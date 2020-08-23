@@ -24,13 +24,21 @@ class ModularController extends BaseController
 {
     use RequestValidator, ModelProcessorHelper, Resolvable;
 
-    /** @var string Module name */
+    /**
+     * Module name
+     *
+     * @var string
+     */
     protected $moduleName;
 
-    /** @var Module */
+    /**
+     * @var Module
+     */
     protected $module;
 
-    /** @var \Illuminate\Database\Eloquent\Builder */
+    /**
+     * @var \Illuminate\Database\Eloquent\Builder
+     */
     protected $model;
 
     /** @var \App\Mainframe\Features\Modular\BaseModule\BaseModule */
@@ -40,20 +48,29 @@ class ModularController extends BaseController
     protected $processor;
 
     /**
-     * @param null $name
+     * View processor where view logic are written
+     *
+     * @var \App\Mainframe\Features\Modular\BaseModule\BaseModuleViewProcessor
      */
-    public function __construct($name = null)
+    protected $view;
+
+    /**
+     * ModularController constructor.
+     */
+    public function __construct()
     {
         parent::__construct();
 
-        //$this->name = $name ?? Module::fromController(get_class($this));
+        // Load
         $this->module = Module::byName($this->moduleName);
-
         $this->model = $this->module->modelInstance();
+        $this->view = $this->viewProcessor()->setModule($this->module)->setModel($this->model);
 
+        // Share these variables in  all views
         View::share([
             'module' => $this->module,
             'model'  => $this->model,
+            'view'   => $this->view,
         ]);
     }
 
@@ -72,19 +89,12 @@ class ModularController extends BaseController
             return $this->listJson();
         }
 
+        // Pass data table columns ot view
         $vars = ['columns' => $this->datatable()->columns()];
+        $this->view->setType('index')->addVars($vars);
 
-        return $this->view($this->grid())->with($vars);
-    }
-
-    /**
-     * Returns a collection of objects as Json for an API call
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function listJson()
-    {
-        return (new ModuleList($this->module))->json();
+        return $this->view($this->view->gridPath())
+            ->with($this->view->getVars());
     }
 
     /**
@@ -105,8 +115,8 @@ class ModularController extends BaseController
             return $this->permissionDenied();
         }
 
-        return $this->load($this->element)
-            ->to(route($this->moduleName.'.edit', $id))->send();
+        // Redirect to edit page.
+        return $this->load($this->element)->to(route($this->moduleName.'.edit', $id))->send();
 
     }
 
@@ -118,25 +128,21 @@ class ModularController extends BaseController
      */
     public function create()
     {
-        $this->element = $this->module->modelInstance();
-        $uuid          = request()->old('uuid') ?: uuid();
-        $this->element->fill(request()->all());
-        $this->element->uuid = $uuid;
-
         if (! user()->can('create', $this->model)) {
             return $this->permissionDenied();
         }
 
-        $vars = [
-            'uuid'       => $uuid,
-            'element'    => $this->element,
-            'formConfig' => $this->formConfig('create'),
-            'editable'   => true,
-            'formState'  => 'create',
-            'immutables' => [],
-        ];
+        $uuid = request()->old('uuid') ?: uuid();
 
-        return $this->view($this->form('create'))->with($vars);
+        $this->element = $this->module->modelInstance();
+        $this->element->fill(request()->all());
+        $this->element->uuid = $uuid;
+
+        // Set view processor attributes
+        $this->view->setType('create')->setElement($this->element);
+
+        return $this->view($this->view->formPath('create'))
+            ->with($this->view->varsCreate());
     }
 
     /**
@@ -155,21 +161,17 @@ class ModularController extends BaseController
             return $this->permissionDenied();
         }
 
-        $vars = [
-            'element'    => $this->element,
-            'formConfig' => $this->formConfig('edit'),
-            'editable'   => user()->can('update', $this->element),
-            'formState'  => 'edit',
-            'immutables' => $this->element->processor()->getImmutables(),
-        ];
+        // Set view processor attributes
+        $this->view->setType('edit')->setElement($this->element);
 
-        return $this->view($this->form('edit'))->with($vars);
+        return $this->view($this->view->formPath('edit'))
+            ->with($this->view->viewVarsEdit());
     }
 
     /**
      * Store
      *
-     * @param \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return $this|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
@@ -188,18 +190,12 @@ class ModularController extends BaseController
         // }
 
         return $this->load($this->element->toArray())->send();
-
-        // if ($this->expectsJson()) {
-        //     return $this->json();
-        // }
-        //
-        // return $this->redirect();
     }
 
     /**
      * Update
      *
-     * @param \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @param $id
      * @return $this|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
@@ -240,12 +236,22 @@ class ModularController extends BaseController
     /**
      * Restore a soft-deleted.
      *
-     * @param null $id
+     * @param  null  $id
      * @return void
      */
     public function restore($id = null)
     {
         return abort(403, 'Restore restricted');
+    }
+
+    /**
+     * Returns a collection of objects as Json for an API call
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function listJson()
+    {
+        return (new ModuleList($this->module))->json();
     }
 
     /**
@@ -259,11 +265,11 @@ class ModularController extends BaseController
             return $this->permissionDenied();
         }
 
-        return (new ModuleReportBuilder($this->module))->show();
+        return (new ModuleReportBuilder($this->module))->output();
     }
 
     /**
-     * Resolve which MainframeDatatable class to use.
+     * Resolve which Datatable class to use.
      *
      * @return \App\Mainframe\Features\Datatable\Datatable
      */
@@ -287,7 +293,7 @@ class ModularController extends BaseController
     /**
      * Get all the uploads of an element
      *
-     * @param null $id
+     * @param  null  $id
      * @return \Illuminate\Http\JsonResponse
      */
     public function uploads($id)
@@ -303,7 +309,7 @@ class ModularController extends BaseController
     /**
      * Uploads files under an element
      *
-     * @param null $id
+     * @param  null  $id
      * @return \App\Mainframe\Features\Modular\ModularController\ModularController
      */
     public function attachUpload($id)
@@ -340,7 +346,7 @@ class ModularController extends BaseController
             return $this->success()->load($audits)->json();
         }
 
-        return $this->view('mainframe.layouts.module.changes.index')
+        return $this->view($this->view->changesPath())
             ->with(['audits' => $audits]);
 
     }
@@ -348,7 +354,7 @@ class ModularController extends BaseController
     /**
      * Get all the comments of an element
      *
-     * @param null $id
+     * @param  null  $id
      * @return \Illuminate\Http\JsonResponse
      */
     public function comments($id)
@@ -364,7 +370,7 @@ class ModularController extends BaseController
     /**
      * Store comment files under an element
      *
-     * @param null $id
+     * @param  null  $id
      * @return \App\Mainframe\Features\Modular\ModularController\ModularController
      */
     public function attachComment($id)
