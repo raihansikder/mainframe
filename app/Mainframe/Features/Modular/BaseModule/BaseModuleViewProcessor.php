@@ -45,14 +45,17 @@ class BaseModuleViewProcessor extends ViewProcessor
      */
     public function __construct($element = null)
     {
-
         parent::__construct();
 
         if ($element) {
             $this->element = $element;
+        }
+
+        if ($this->element) {
             $this->module = $element->module();
             $this->model = $element->newInstance();
         }
+
     }
 
     /**
@@ -66,7 +69,7 @@ class BaseModuleViewProcessor extends ViewProcessor
         return $this;
     }
 
-    /**`
+    /**
      * @param  \App\Mainframe\Modules\Modules\Module  $module
      * @return BaseModuleViewProcessor
      */
@@ -239,6 +242,11 @@ class BaseModuleViewProcessor extends ViewProcessor
         return isset($this->element) && $this->element->isCreated();
     }
 
+    /**
+     * Generate form title
+     *
+     * @return string
+     */
     public function formTitle()
     {
         return Str::singular($this->module->title);
@@ -250,15 +258,35 @@ class BaseModuleViewProcessor extends ViewProcessor
     |--------------------------------------------------------------------------
     |
     */
-
+    /**
+     * Check visibility of create button
+     *
+     * @return bool
+     */
     public function showFormCreateBtn()
     {
         return $this->user->can('create', $this->model);
     }
 
+    /**
+     * Check visibility of list button
+     *
+     * @return bool
+     */
     public function showFormListBtn()
     {
         return $this->user->can('view-any', $this->model);
+    }
+
+    /**
+     * Check visibility of report button
+     *
+     * @return bool
+     */
+    public function showReportLink()
+    {
+
+        return $this->user->can('view-report', $this->model);
     }
 
 }

@@ -1,6 +1,6 @@
 <?php /** @noinspection SpellCheckingInspection */
 
-/** @noinspection PhpUndefinedMethodInspection */
+
 
 namespace App\Mainframe\Modules\Reports;
 

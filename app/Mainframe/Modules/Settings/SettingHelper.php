@@ -14,7 +14,7 @@ trait SettingHelper
     public static function read($name)
     {
         /** @var \App\Mainframe\Modules\Settings\Setting $setting */
-        /** @noinspection PhpUndefinedMethodInspection */
+
         if ($setting = Setting::where('name', $name)->remember(timer('long'))->first()) {
             return $setting->getValue();
         }

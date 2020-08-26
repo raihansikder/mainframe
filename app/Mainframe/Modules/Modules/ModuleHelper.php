@@ -1,4 +1,4 @@
-<?php /** @noinspection PhpUndefinedMethodInspection */
+<?php
 
 namespace App\Mainframe\Modules\Modules;
 
@@ -45,7 +45,7 @@ trait ModuleHelper
         if ($only_active) {
             $q = $q->where('is_active', 1);
         }
-        /** @noinspection PhpUndefinedMethodInspection */
+
         $results = $q->remember(timer('long'))
             ->get()->toArray();
 

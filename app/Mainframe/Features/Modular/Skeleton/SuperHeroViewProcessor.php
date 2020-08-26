@@ -7,33 +7,24 @@ use App\Mainframe\Modules\Modules\Module;
 
 class SuperHeroViewProcessor extends BaseModuleViewProcessor
 {
-    /** @var Module */
-    public $module;
+    /**
+     * @var Module $module
+     * @var \Illuminate\Database\Eloquent\Builder $model test
+     * @var SuperHero $element
+     * @var bool $editable
+     *
+     * @var array $immutables
+     * @var string $type i.e. View type create, edit, index etc.
+     * @var array $vars Variables shared in view blade
+     */
 
-    /** @var \Illuminate\Database\Eloquent\Builder */
-    public $model;
-
-    /** @var SuperHero */
+    /**
+     * @var \App\Mainframe\Modules\SuperHeroes\SuperHero
+     */
     public $element;
 
-    /** @var bool */
-    public $editable;
-
-    /** @var array */
-    public $immutables = [];
-
-    /**
-     * Variables shared in view blade
-     *
-     * @var array
-     */
-    public $vars = [];
-
-    /**
-     * Type of view create, edit, index
-     *
-     * @var string
-     */
-    public $type;
+    // public function formPath($state = 'create') { return parent::formPath($state) }
+    // public function gridPath()
+    // ... See parent class for available functions
 
 }
