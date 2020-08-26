@@ -1,10 +1,8 @@
-@if(user())
+@if(!user()->isGuest())
     <li class="dropdown user user-menu">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <span class="hidden-xs">
                 {{user()->email}}  <span class="badge badge-dark">{{ucfirst(user()->groups()->first()->name)}}</span>
-                {{optional(user()->reseller)->name}}
-                {{optional(user()->vendor)->name}}
             </span>
         </a>
         <ul class="dropdown-menu">
@@ -14,10 +12,7 @@
                 </div>
                 <div class="pull-right">
                     <a class="btn btn-default btn-flat" href="{{ route('logout') }}"
-                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                        {{ __('Logout') }}
-                    </a>
+                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST"
                           style="display: none;">
                         @csrf
@@ -28,6 +23,6 @@
     </li>
 @else
     <li>
-        <a href="{{route('get.signin')}}">Sign in</a>
+        <a href="{{route('login')}}">Sign in</a>
     </li>
 @endif

@@ -136,7 +136,7 @@
         @if(user()->can('updateToken', $element) && (!user()->ofReseller() && !user()->ofVendor()))
             @include('projects.my-project.modules.users.form.includes.token-fields')
         @endif
-        @if(user()->isAdmin())
+        @if(user()->isSuperUser())
             @include('form.is-active')
         @endif
         {{--    Form inputs: ends    --}}

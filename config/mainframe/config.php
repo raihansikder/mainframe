@@ -62,7 +62,6 @@ return [
     | You can enable/disable loading of some of the mainframe default routes.
     |
     */
-
     'routes' => [
         'web' => [
             'app/Mainframe/routes/auth.php',
@@ -85,10 +84,10 @@ return [
 
     'load' => [
         'css' => [
-            // 'projects/project-name/css/project-name.css',
+            'projects/project-name/css/my-project.css',
         ],
         'js'  => [
-            //'projects/project-name/css/project-name.js',
+            'projects/project-name/js/my-project.js',
         ],
     ],
 ];

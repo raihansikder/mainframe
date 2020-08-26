@@ -25,12 +25,8 @@ class HomeController extends BaseController
      */
     public function index()
     {
-        if (user()->isAdmin() || user()->isAdminL2()) {
+
             return view('projects.my-project.dashboards.admin');
-        }
-
-
-        return view('projects.my-project.dashboards.default');
     }
 
 

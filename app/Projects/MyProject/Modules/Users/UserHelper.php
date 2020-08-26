@@ -47,7 +47,7 @@ trait UserHelper
 
     public function isAdmin()
     {
-        return ($this->isA('superuser') || $this->isA('mph-admin'));
+        return ($this->isA('superuser'));
     }
 
     /**

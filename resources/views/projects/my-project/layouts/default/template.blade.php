@@ -5,35 +5,38 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>
-    @section('head-title')
-            MPH | {{isset($module) ? str_singular($module->title): ''}}  {{isset($element) ? $element->id : ''}}
+        @section('head-title')
+            {{ config('app.name') }}
+            @if (isset($module))
+                | {{isset($module) ? str_singular($module->title): ''}}
+                {{isset($element) ? $element->id : ''}}
+            @endif
         @show
     </title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     @section('head')
     @show
     @include('mainframe.layouts.default.includes.css')
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap" rel="stylesheet">
-    {{-- <link rel="stylesheet" href="{{asset('projects/my-project/css/my-project.css')}}">--}}
 </head>
 
-<body class="hold-transition skin-blue-light sidebar-mini fixed {{$view_name}}">
+<body class="hold-transition skin-blue-light sidebar-mini fixed">
 
 <div id="root" class="wrapper">
     <header class="main-header">
         <!-- Logo -->
         <a href="{{route('home')}}" class="logo">
-            {{--            <span class="logo-mini"><img style="width: 65%" src="{{asset("letsbab/images/mini-logo.png")}}" alt="{{setting('app-name')}}"/></span>--}}
-            {{--            <span class="lb-font logo-lg"><img style="width: 50%" src="{{asset("letsbab/images/letsbab-logo-white.png")}}"--}}
-            {{--                                               alt="{{setting('app-name')}}"/></span>--}}
+            <!-- mini logo for sidebar mini 50x50 pixels -->
+        {{-- <span class="logo-mini">--}}
+        {{--     <img style="width: 80%" src="{{asset("projects/my-project/images/logo-mini.png")}}" alt="{{setting('app-name')}}"/>--}}
+        {{-- </span>--}}
 
-            {{--<!-- mini logo for sidebar mini 50x50 pixels -->--}}
-            {{--<img style="height: 60%" src="{{asset("letsbab/images/logo.png")}}" alt="{{setting('app-name')}}"--}}
-            {{--title="{{setting('app-name')}}"/>--}}
-            {{--<span class="logo-mini">{{setting('app-name')}}</span>--}}
-            {{--<!-- logo for regular state and mobile devices -->--}}
-            {{--<span class="logo-lg">{{setting('app-name')}}</span>--}}
-            {{ setting('app-name') }}
+        <!-- logo for regular state and mobile devices -->
+            {{-- <span class="logo-lg">--}}
+            {{--     <img style="width: 50%" src="{{asset("projects/my-project/images/logo-large.png")}}" alt="{{setting('app-name')}}"/>--}}
+            {{-- </span>--}}
+
+            <span class="logo-lg">{{setting('app-name')}}</span>
+            {{-- {{ setting('app-name') }}--}}
         </a>
 
         <nav class="navbar navbar-static-top">
