@@ -1,5 +1,5 @@
 <?php
-namespace App\Projects\MphMarket\Features\Report;
+namespace App\Projects\MyProject\Features\Report;
 
 class ModuleList extends ModuleReportBuilder
 {

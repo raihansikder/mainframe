@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Projects\MphMarket\Features\Modular\ModularController;
+namespace App\Projects\MyProject\Features\Modular\ModularController;
 
 use App\Mainframe\Features\Modular\ModularController\ModularController as MfModularController;
-use App\Projects\MphMarket\Features\Report\ModuleList;
-use App\Projects\MphMarket\Features\Report\ModuleReportBuilder;
+use App\Projects\MyProject\Features\Report\ModuleList;
+use App\Projects\MyProject\Features\Report\ModuleReportBuilder;
 
 class ModularController extends MfModularController
 {
@@ -19,7 +19,7 @@ class ModularController extends MfModularController
             return $this->permissionDenied();
         }
 
-        return (new ModuleReportBuilder($this->module))->show();
+        return (new ModuleReportBuilder($this->module))->output();
     }
 
     /**
@@ -41,7 +41,7 @@ class ModularController extends MfModularController
     {
         $classPaths = [
             $this->module->modelClassPath().'ViewProcessor', // Check in App\Mainframe\Modules
-            'App\Projects\MphMarket\Features\Modular\BaseModule\BaseModuleViewProcessor',
+            'App\Projects\MyProject\Features\Modular\BaseModule\BaseModuleViewProcessor',
         ];
 
         foreach ($classPaths as $classPath) {

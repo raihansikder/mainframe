@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Projects\MphMarket\Features\Core;
+namespace App\Projects\MyProject\Features\Core;
 
 use App\Mainframe\Features\Core\ViewProcessor as MfViewProcessorAlias;
 

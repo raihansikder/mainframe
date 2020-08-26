@@ -1,5 +1,5 @@
 <?php
-namespace App\Projects\MphMarket\Features\Modular\BaseModule;
+namespace App\Projects\MyProject\Features\Modular\BaseModule;
 
 use App\Mainframe\Features\Modular\BaseModule\BaseModuleObserver as MfBaseModuleObserver;
 

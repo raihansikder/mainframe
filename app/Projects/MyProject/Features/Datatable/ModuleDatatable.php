@@ -1,5 +1,5 @@
 <?php
-namespace App\Projects\MphMarket\Features\Datatable;
+namespace App\Projects\MyProject\Features\Datatable;
 
 class ModuleDatatable extends \App\Mainframe\Features\Datatable\ModuleDatatable
 {

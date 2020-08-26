@@ -3,7 +3,7 @@
  * Project specific BaseModule Policy class
  */
 
-namespace App\Projects\MphMarket\Features\Modular\BaseModule;
+namespace App\Projects\MyProject\Features\Modular\BaseModule;
 
 use App\Mainframe\Features\Modular\BaseModule\BaseModulePolicy as MfBaseModulePolicy;
 

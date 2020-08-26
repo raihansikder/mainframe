@@ -1,10 +1,10 @@
 <?php
-namespace App\Projects\MphMarket\Features\Modular\BaseModule;
+namespace App\Projects\MyProject\Features\Modular\BaseModule;
 
 use App\Mainframe\Features\Modular\BaseModule\BaseModule as MfBaseModule;
 
 /**
- * App\Projects\MphMarket\Features\Modular\BaseModule\BaseModule
+ * App\Projects\MyProject\Features\Modular\BaseModule\BaseModule
  *
  * @property-read \Illuminate\Database\Eloquent\Collection|\OwenIt\Auditing\Models\Audit[] $audits
  * @property-read int|null $audits_count
@@ -17,9 +17,9 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule as MfBaseModule;
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Uploads\Upload[] $uploads
  * @property-read int|null $uploads_count
  * @method static \Illuminate\Database\Eloquent\Builder|MfBaseModule active()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MphMarket\Features\Modular\BaseModule\BaseModule newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MphMarket\Features\Modular\BaseModule\BaseModule newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MphMarket\Features\Modular\BaseModule\BaseModule query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Features\Modular\BaseModule\BaseModule newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Features\Modular\BaseModule\BaseModule newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Features\Modular\BaseModule\BaseModule query()
  * @mixin \Eloquent
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Changes\Change[] $changes
  * @property-read int|null $changes_count

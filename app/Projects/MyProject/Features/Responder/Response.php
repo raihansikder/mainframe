@@ -1,5 +1,5 @@
 <?php
-namespace App\Projects\MphMarket\Features\Responder;
+namespace App\Projects\MyProject\Features\Responder;
 
 use App\Mainframe\Features\Responder\Response as MfResponse;
 
