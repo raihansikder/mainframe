@@ -185,7 +185,7 @@ trait Filterable
     /**
      * Key based search
      *
-     * @param \Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder|mixed $query
+     * @param  \Illuminate\Database\Query\Builder $query
      * @return mixed
      */
     public function keySearch($query)
@@ -270,6 +270,11 @@ trait Filterable
         return false;
     }
 
+    /**
+     * Possibly the field contains json data
+     * @param $field
+     * @return bool
+     */
     public function possibleJsonField($field)
     {
         if (Str::contains($field, ['_ids', '_json'])) {
