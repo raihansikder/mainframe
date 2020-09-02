@@ -27,10 +27,12 @@ if ((isset($response['status'], $response['message']))
     $keys = ['errors', 'messages', 'warnings', 'debug'];
 
     $alerts = [];
-    foreach ($keys as $key) {
-        if ($messages = $messageBag->messages()[$key] ?? []) {
-            /** @noinspection SlowArrayOperationsInLoopInspection */
-            $alerts = array_merge($alerts, $messages);
+    if (isset($messageBag)) {
+        foreach ($keys as $key) {
+            if ($messages = $messageBag->messages()[$key] ?? []) {
+                /** @noinspection SlowArrayOperationsInLoopInspection */
+                $alerts = array_merge($alerts, $messages);
+            }
         }
     }
     $alerts = collect(Arr::flatten($alerts))->unique()->toArray();
