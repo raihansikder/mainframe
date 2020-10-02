@@ -285,7 +285,6 @@ class BaseModuleViewProcessor extends ViewProcessor
      */
     public function showReportLink()
     {
-
         return $this->user->can('view-report', $this->model);
     }
 
