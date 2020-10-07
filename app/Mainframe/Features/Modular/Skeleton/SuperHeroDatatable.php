@@ -10,6 +10,8 @@ use App\Mainframe\Features\Datatable\ModuleDatatable;
 class SuperHeroDatatable extends ModuleDatatable
 {
 
+    public $rawColumns = ['id', 'name', 'is_active'];
+
     /**
      * Define Query for generating results for grid
      *
