@@ -26,7 +26,7 @@ class UserProcessor extends \App\Mainframe\Modules\Users\UserProcessor
     /**
      * Fill the model with values
      *
-     * @param  \App\User $user
+     * @param  \App\User  $user
      * @return $this
      */
     public function fill($user)
@@ -35,10 +35,6 @@ class UserProcessor extends \App\Mainframe\Modules\Users\UserProcessor
 
         $user->is_test = $user->is_test ?? 0;
         $user->is_active = $user->is_active ?? 1;
-        //adding is_active 1 for users created by reseller users
-        if (user()->ofReseller() || user()->isSalesAdmin()) {
-            $user->is_active = 1;
-        }
 
         $this->resolveName($user);
         $this->fillCountryName($user);
@@ -50,7 +46,7 @@ class UserProcessor extends \App\Mainframe\Modules\Users\UserProcessor
     /**
      * Resolve name based on given input.
      *
-     * @param  \App\User $user
+     * @param  \App\User  $user
      */
     public function resolveName($user)
     {
@@ -63,7 +59,7 @@ class UserProcessor extends \App\Mainframe\Modules\Users\UserProcessor
     /**
      * Fill country name
      *
-     * @param  \App\User $user
+     * @param  \App\User  $user
      */
     public function fillCountryName($user)
     {
@@ -75,7 +71,7 @@ class UserProcessor extends \App\Mainframe\Modules\Users\UserProcessor
     /**
      * Fill api_token_generated_at
      *
-     * @param  \App\User $user
+     * @param  \App\User  $user
      */
     public function fillApiTokenGeneratedAt($user)
     {
@@ -96,26 +92,26 @@ class UserProcessor extends \App\Mainframe\Modules\Users\UserProcessor
      * Validation rules. For regular expression validation use array instead of pipe
      *
      * @param       $element
-     * @param  array $merge
+     * @param  array  $merge
      * @return array
      */
     public static function rules($element, $merge = [])
     {
         $rules = [
 
-            'email' => 'required|email|'.Rule::unique('users','email')->ignore($element->id)->whereNull('deleted_at'),
+            'email'      => 'required|email|'.Rule::unique('users', 'email')->ignore($element->id)->whereNull('deleted_at'),
             'first_name' => 'required|between:0,128',
-            'last_name' => 'required|between:0,128',
-            'group_ids' => 'required',
-            'address1' => 'between:0,512',
-            'address2' => 'between:0,512',
-            'city' => 'between:0,64',
-            'county' => 'between:0,64',
-            'zip_code' => 'between:0,20',
-            'phone' => 'between:0,20',
-            'mobile' => 'between:0,20',
-            'gender' => 'between:0,32',
-            'dob' => 'nullable|date:Y-m-d|before:'.date("Y-m-d", strtotime("-18 years"))
+            'last_name'  => 'required|between:0,128',
+            'group_ids'  => 'required',
+            'address1'   => 'between:0,512',
+            'address2'   => 'between:0,512',
+            'city'       => 'between:0,64',
+            'county'     => 'between:0,64',
+            'zip_code'   => 'between:0,20',
+            'phone'      => 'between:0,20',
+            'mobile'     => 'between:0,20',
+            'gender'     => 'between:0,32',
+            'dob'        => 'nullable|date:Y-m-d|before:'.date("Y-m-d", strtotime("-18 years")),
         ];
 
         return array_merge($rules, $merge);
@@ -126,20 +122,7 @@ class UserProcessor extends \App\Mainframe\Modules\Users\UserProcessor
      */
     public function getImmutables()
     {
-        // If user is reseller then reseller_id cannot be editable
-        if (user()->ofReseller()) {
-            return array_merge($this->immutables, [
-                'reseller_id'
-            ]);
 
-        }
-        // If user is vendor then vendor_id cannot be editable
-        if (user()->ofVendor()) {
-            return array_merge($this->immutables, [
-                'vendor_id'
-            ]);
-
-        }
         return $this->immutables;
     }
 
@@ -154,7 +137,7 @@ class UserProcessor extends \App\Mainframe\Modules\Users\UserProcessor
     /**
      * Run validations for saving. This should be common for both creating and updating.
      *
-     * @param  \App\User $user
+     * @param  \App\User  $user
      * @return $this
      */
     public function saving($user)
@@ -176,14 +159,10 @@ class UserProcessor extends \App\Mainframe\Modules\Users\UserProcessor
 
         $this->userCanNotAssignIrrelevantGroup($user);
 
-        $this->vendorIdConditionsForUserGroups($user);
-
-        $this->resellerIdConditionsForUserGroups($user);
-
-        $this->clientIdConditionsForUserGroups($user);
 
         return $this;
     }
+
     /**
      * Run validations for creating. This should always call the saving().
      *
@@ -192,12 +171,6 @@ class UserProcessor extends \App\Mainframe\Modules\Users\UserProcessor
     public function creating($user)
     {
         parent::creating($user);
-        //Sales member can only create Partner admin and User not any other type of users
-        //but he should be able to edit his profile
-        //thats why this condition has been added in creating
-        if (user()->isSalesMember() && ! in_array($user->group_ids[0], ['21','22'])) {
-            $this->fieldError('group_ids', "Sales admin can create partner admin,partner user");
-        }
 
         return $this;
     }
@@ -246,9 +219,10 @@ class UserProcessor extends \App\Mainframe\Modules\Users\UserProcessor
      */
     private function userCanNotHaveMultipleGroup($user)
     {
-        if ( count($user->group_ids) > 1) {
+        if (count($user->group_ids) > 1) {
             $this->fieldError('group_ids', "User can have one group selected");
         }
+
         return $this;
     }
 
@@ -258,95 +232,40 @@ class UserProcessor extends \App\Mainframe\Modules\Users\UserProcessor
      */
     private function userMustHaveOneGroup($user)
     {
-        if($user->group_ids === null || $user->group_ids[0] === null){
+        if ($user->group_ids === null || $user->group_ids[0] === null) {
             $this->fieldError('group_ids', "User must have one group selected");
         }
+
         return $this;
     }
 
     /**
-     * @param User $user
+     * @param  User  $user
      * @return $this
      */
     private function restrictFieldsBasedOnUserGroups($user)
     {
-        if (user()->inGroupIds(['19', '20', '22', '23']) && $user->email_verified_at != $user->getOriginal('email_verified_at')) {
-            $this->fieldError('group_ids', "Partner, Client and Vendor admin or user can not edit email verification at field");
-        }
+        // if (user()->inGroupIds(['19', '20', '22', '23']) && $user->email_verified_at != $user->getOriginal('email_verified_at')) {
+        //     $this->fieldError('group_ids', "Partner, Client and Vendor admin or user can not edit email verification at field");
+        // }
+
         return $this;
     }
+
     /**
-     * @param User $user
+     * @param  User  $user
      * @return $this
      */
     private function userCanNotAssignIrrelevantGroup($user)
     {
-        //user is vendor admin
-        if (user()->inGroupId('19') && ! $user->ofVendor()) {
-            $this->fieldError('group_ids', "Vendor admin can only create vendor user/admin");
-        }
-        //user is reseller admin
-        if (user()->inGroupId('21') && (! $user->ofReseller() && ! $user->ofClient())) {
-            $this->fieldError('group_ids', "Reseller admin can only create reseller user/admin or client");
-        }
-        //user is mph admin l2
-        if (user()->isAdminL2() && in_array($user->group_ids[0], ['1', '2', '18', '24'])) {
-            $this->fieldError('group_ids', "Mph admin L2 can only create reseller user/admin, Vendor user/admin, Mph admin L2 or client");
-        }
+
         //user is sales admin
-        if (user()->isSalesAdmin() && ! in_array($user->group_ids[0], ['19','20','21','22','23','28', '29'])) {
-            $this->fieldError('group_ids', "Sales admin can only create resellers, vendors, sales admin,sales user or client user");
-        }
-        //user is sales user
-        // if (user()->isSalesMember() && ! in_array($user->group_ids[0], ['21','22','29'])) {
-        //     $this->fieldError('group_ids', "Sales admin can create partner admin,partner user and Sales user");
+        // if (user()->isSalesAdmin() && ! in_array($user->group_ids[0], ['19', '20', '21', '22', '23', '28', '29'])) {
+        //     $this->fieldError('group_ids', "Sales admin can only create resellers, vendors, sales admin,sales user or client user");
         // }
         return $this;
     }
 
-    /**
-     * @param User $user
-     * @return $this
-     */
-    private function vendorIdConditionsForUserGroups($user)
-    {
-        if (! in_array(19, $user->group_ids) && ! in_array(20, $user->group_ids) && $user->vendor_id != null) {
-            $this->fieldError('vendor_id', "Vendor id should be filled only for vendor admin or user");
-        }
-        if ((in_array(19, $user->group_ids) || in_array(20, $user->group_ids)) && $user->vendor_id == null) {
-            $this->fieldError('vendor_id', "Vendor id must be filled vendor admin or user");
-        }
-        return $this;
-    }
 
-    /**
-     * @param User $user
-     * @return $this
-     */
-    private function resellerIdConditionsForUserGroups($user)
-    {
-        if (! in_array(21, $user->group_ids) && ! in_array(22, $user->group_ids) && $user->reseller_id != null) {
-            $this->fieldError('reseller_id', "Partner id should be filled only for reseller admin or user");
-        }
-        if ((in_array(21, $user->group_ids) || in_array(22, $user->group_ids)) && $user->reseller_id == null) {
-            $this->fieldError('reseller_id', "Partner id must be filled for reseller admin or user");
-        }
-        return $this;
-    }
-
-    /**
-     * @param User $user
-     * @return $this
-     */
-    private function clientIdConditionsForUserGroups($user)
-    {
-        if (! in_array(23, $user->group_ids) && $user->client_id != null) {
-            $this->fieldError('client_id', "Client id should be filled only for client user");
-        }
-        if (in_array(23, $user->group_ids) && $user->client_id == null) {
-            $this->fieldError('client_id', "Client id must be filled only for client user");
-        }
-        return $this;
-    }
 
 }

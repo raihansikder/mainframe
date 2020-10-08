@@ -2,7 +2,6 @@
 
 namespace App\Projects\MyProject\Modules\Users;
 
-use Illuminate\Database\Query\Builder;
 use App\Mainframe\Features\Report\ModuleReportBuilder;
 
 class UserList extends ModuleReportBuilder
@@ -15,7 +14,6 @@ class UserList extends ModuleReportBuilder
      */
     public function resultQuery()
     {
-        /** @var Builder $query */
         $query = $this->queryDataSource();
         if (count($this->querySelectColumns())) {
             $query = $query->select($this->querySelectColumns());
@@ -25,18 +23,6 @@ class UserList extends ModuleReportBuilder
         // Inject tenant context.
         if (user()->ofTenant() && $this->hasTenantContext()) {
             $query->where('tenant_id', user()->tenant_id);
-        }
-
-        // Target vendor
-        if (user()->ofVendor()) {
-            $query->where('users.vendor_id', user()->vendor_id)
-                ->whereNotNull('users.vendor_id');
-        }
-
-        // Target reseller
-        if (user()->ofReseller()) {
-            $query->where('users.reseller_id', user()->reseller_id)
-                ->whereNotNull('users.reseller_id');
         }
 
         $query = $this->groupBy($query);

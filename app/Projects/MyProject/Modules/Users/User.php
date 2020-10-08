@@ -1,16 +1,11 @@
 <?php
 /** @noinspection SenselessMethodDuplicationInspection */
 
-
-
 namespace App\Projects\MyProject\Modules\Users;
 
 use App\Mainframe\Modules\Countries\Country;
-use App\Projects\MyProject\Modules\Vendors\Vendor;
-use App\Projects\MyProject\Modules\Resellers\Reseller;
-use App\Projects\MyProject\Modules\Clients\Client;
-use App\Projects\MyProject\Notifications\Auth\VerifyEmail;
 use App\Projects\MyProject\Notifications\Auth\ResetPassword;
+use App\Projects\MyProject\Notifications\Auth\VerifyEmail;
 
 /**
  * App\Projects\MyProject\Modules\Users\User
@@ -130,14 +125,9 @@ use App\Projects\MyProject\Notifications\Auth\ResetPassword;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Users\User whereVendorId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Users\User whereZipCode($value)
  * @mixin \Eloquent
- * @property-read \App\Projects\MyProject\Modules\Resellers\Reseller|null $reseller
- * @property-read \App\Projects\MyProject\Modules\Vendors\Vendor|null $vendor
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Comments\Comment[] $comments
  * @property-read int|null $comments_count
  * @property-read \App\Mainframe\Modules\Comments\Comment $latestComment
- * @property int|null $client_id
- * @property-read \App\Projects\MyProject\Modules\Clients\Client|null $client
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Users\User whereClientId($value)
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Changes\Change[] $changes
  * @property-read int|null $changes_count
  */
@@ -190,9 +180,6 @@ class User extends \App\Mainframe\Modules\Users\User
         'dob',
         'group_ids',
         'is_test',
-        'vendor_id',
-        'reseller_id',
-        'client_id',
     ];
 
     /**
@@ -252,21 +239,7 @@ class User extends \App\Mainframe\Modules\Users\User
      */
     public function getTypeAttribute()
     {
-        if ($this->isA('vendor-admin')) {
-            return 'vendor-admin';
-        }
-        if ($this->isA('vendor-user')) {
-            return 'vendor-user';
-        }
-        if ($this->isA('reseller-admin')) {
-            return 'reseller-admin';
-        }
-        if ($this->isA('reseller-user')) {
-            return 'reseller-user';
-        }
-        if ($this->isA('client')) {
-            return 'client';
-        }
+
         if ($this->isA('mph-admin')) {
             return 'admin';
         }
@@ -290,26 +263,4 @@ class User extends \App\Mainframe\Modules\Users\User
         return $this->belongsTo(Country::class);
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function vendor()
-    {
-        return $this->belongsTo(Vendor::class);
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function reseller()
-    {
-        return $this->belongsTo(Reseller::class);
-    }
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function client()
-    {
-        return $this->belongsTo(Client::class);
-    }
 }

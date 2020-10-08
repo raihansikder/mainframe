@@ -22,9 +22,7 @@ class UserController extends \App\Mainframe\Modules\Users\UserController
         //     return $this->module->view_directory.'.form.vendor';
         // }
         //
-        // if ($user->->ofReseller()) {
-        //     return $this->module->view_directory.'.form.reseller';
-        // }
+
 
         return $this->module->view_directory.'.form.default';
 

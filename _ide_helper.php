@@ -2,8 +2,8 @@
 // @formatter:off
 
 /**
- * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 6.16.0 on 2020-03-26 18:32:49.
+ * A helper file for Laravel, to provide autocomplete information to your IDE
+ * Generated for Laravel 6.18.31 on 2020-10-08 03:14:13.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -333,10 +333,10 @@ namespace Illuminate\Support\Facades {
          * @return string|bool 
          * @static 
          */ 
-        public static function environment($environments = null)
+        public static function environment(...$environments)
         {
                         /** @var \Illuminate\Foundation\Application $instance */
-                        return $instance->environment($environments);
+                        return $instance->environment(...$environments);
         }
         
         /**
@@ -506,8 +506,6 @@ namespace Illuminate\Support\Facades {
         
         /**
          * Resolve the given type from the container.
-         * 
-         * (Overriding Container::make)
          *
          * @param string $abstract
          * @param array $parameters
@@ -522,8 +520,6 @@ namespace Illuminate\Support\Facades {
         
         /**
          * Determine if the given abstract type has been bound.
-         * 
-         * (Overriding Container::bound)
          *
          * @param string $abstract
          * @return bool 
@@ -2413,10 +2409,10 @@ namespace Illuminate\Support\Facades {
          * @return bool 
          * @static 
          */ 
-        public static function check($name, $parameters = null)
+        public static function check($name, ...$parameters)
         {
                         /** @var \Illuminate\View\Compilers\BladeCompiler $instance */
-                        return $instance->check($name, $parameters);
+                        return $instance->check($name, ...$parameters);
         }
         
         /**
@@ -2734,7 +2730,6 @@ namespace Illuminate\Support\Facades {
          *
          * @param mixed $command
          * @return mixed 
-         * @throws \RuntimeException
          * @static 
          */ 
         public static function dispatchToQueue($command)
@@ -3831,10 +3826,10 @@ namespace Illuminate\Support\Facades {
          * @return void 
          * @static 
          */ 
-        public static function queue($parameters = null)
+        public static function queue(...$parameters)
         {
                         /** @var \Illuminate\Cookie\CookieJar $instance */
-                        $instance->queue($parameters);
+                        $instance->queue(...$parameters);
         }
         
         /**
@@ -6778,7 +6773,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Unset the given channel instance.
          *
-         * @param string|null $name
+         * @param string|null $driver
          * @return \Illuminate\Log\LogManager 
          * @static 
          */ 
@@ -8679,10 +8674,10 @@ namespace Illuminate\Support\Facades {
          * @return bool 
          * @static 
          */ 
-        public static function is($patterns = null)
+        public static function is(...$patterns)
         {
                         /** @var \Illuminate\Http\Request $instance */
-                        return $instance->is($patterns);
+                        return $instance->is(...$patterns);
         }
         
         /**
@@ -8692,10 +8687,10 @@ namespace Illuminate\Support\Facades {
          * @return bool 
          * @static 
          */ 
-        public static function routeIs($patterns = null)
+        public static function routeIs(...$patterns)
         {
                         /** @var \Illuminate\Http\Request $instance */
-                        return $instance->routeIs($patterns);
+                        return $instance->routeIs(...$patterns);
         }
         
         /**
@@ -8705,10 +8700,10 @@ namespace Illuminate\Support\Facades {
          * @return bool 
          * @static 
          */ 
-        public static function fullUrlIs($patterns = null)
+        public static function fullUrlIs(...$patterns)
         {
                         /** @var \Illuminate\Http\Request $instance */
-                        return $instance->fullUrlIs($patterns);
+                        return $instance->fullUrlIs(...$patterns);
         }
         
         /**
@@ -8786,7 +8781,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Get the client user agent.
          *
-         * @return string 
+         * @return string|null 
          * @static 
          */ 
         public static function userAgent()
@@ -10016,7 +10011,9 @@ namespace Illuminate\Support\Facades {
          * Gets the preferred format for the response by inspecting, in the following order:
          *   * the request format set using setRequestFormat
          *   * the values of the Accept HTTP header
-         *   * the content type of the body of the request.
+         * 
+         * Note that if you use this method, you should send the "Vary: Accept" header
+         * in the response to prevent any issues with intermediary HTTP caches.
          *
          * @static 
          */ 
@@ -10664,9 +10661,9 @@ namespace Illuminate\Support\Facades {
          *
          * @static 
          */ 
-        public static function validate($rules, $params = null)
+        public static function validate($rules, ...$params)
         {
-                        return \Illuminate\Http\Request::validate($rules, $params);
+                        return \Illuminate\Http\Request::validate($rules, ...$params);
         }
         
         /**
@@ -10674,9 +10671,9 @@ namespace Illuminate\Support\Facades {
          *
          * @static 
          */ 
-        public static function validateWithBag($errorBag, $rules, $params = null)
+        public static function validateWithBag($errorBag, $rules, ...$params)
         {
-                        return \Illuminate\Http\Request::validateWithBag($errorBag, $rules, $params);
+                        return \Illuminate\Http\Request::validateWithBag($errorBag, $rules, ...$params);
         }
         
         /**
@@ -11658,10 +11655,10 @@ namespace Illuminate\Support\Facades {
          * @return bool 
          * @static 
          */ 
-        public static function is($patterns = null)
+        public static function is(...$patterns)
         {
                         /** @var \Illuminate\Routing\Router $instance */
-                        return $instance->is($patterns);
+                        return $instance->is(...$patterns);
         }
         
         /**
@@ -11671,10 +11668,10 @@ namespace Illuminate\Support\Facades {
          * @return bool 
          * @static 
          */ 
-        public static function currentRouteNamed($patterns = null)
+        public static function currentRouteNamed(...$patterns)
         {
                         /** @var \Illuminate\Routing\Router $instance */
-                        return $instance->currentRouteNamed($patterns);
+                        return $instance->currentRouteNamed(...$patterns);
         }
         
         /**
@@ -11696,10 +11693,10 @@ namespace Illuminate\Support\Facades {
          * @return bool 
          * @static 
          */ 
-        public static function uses($patterns = null)
+        public static function uses(...$patterns)
         {
                         /** @var \Illuminate\Routing\Router $instance */
-                        return $instance->uses($patterns);
+                        return $instance->uses(...$patterns);
         }
         
         /**
@@ -13120,7 +13117,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param string $path
          * @param \Illuminate\Http\File|\Illuminate\Http\UploadedFile|string $file
-         * @param array $options
+         * @param mixed $options
          * @return string|false 
          * @static 
          */ 
@@ -13136,7 +13133,7 @@ namespace Illuminate\Support\Facades {
          * @param string $path
          * @param \Illuminate\Http\File|\Illuminate\Http\UploadedFile|string $file
          * @param string $name
-         * @param array $options
+         * @param mixed $options
          * @return string|false 
          * @static 
          */ 
@@ -13182,7 +13179,8 @@ namespace Illuminate\Support\Facades {
          * @return bool 
          * @static 
          */ 
-        public static function prepend($path, $data, $separator = '')
+        public static function prepend($path, $data, $separator = '
+')
         {
                         /** @var \Illuminate\Filesystem\FilesystemAdapter $instance */
                         return $instance->prepend($path, $data, $separator);
@@ -13197,7 +13195,8 @@ namespace Illuminate\Support\Facades {
          * @return bool 
          * @static 
          */ 
-        public static function append($path, $data, $separator = '')
+        public static function append($path, $data, $separator = '
+')
         {
                         /** @var \Illuminate\Filesystem\FilesystemAdapter $instance */
                         return $instance->append($path, $data, $separator);
@@ -16695,13 +16694,14 @@ namespace Collective\Html {
          * @param string $url
          * @param string $title
          * @param array $attributes
+         * @param bool $escape
          * @return \Illuminate\Support\HtmlString 
          * @static 
          */ 
-        public static function secureLink($url, $title = null, $attributes = [])
+        public static function secureLink($url, $title = null, $attributes = [], $escape = true)
         {
                         /** @var \Collective\Html\HtmlBuilder $instance */
-                        return $instance->secureLink($url, $title, $attributes);
+                        return $instance->secureLink($url, $title, $attributes, $escape);
         }
         
         /**
@@ -16711,13 +16711,14 @@ namespace Collective\Html {
          * @param string $title
          * @param array $attributes
          * @param bool $secure
+         * @param bool $escape
          * @return \Illuminate\Support\HtmlString 
          * @static 
          */ 
-        public static function linkAsset($url, $title = null, $attributes = [], $secure = null)
+        public static function linkAsset($url, $title = null, $attributes = [], $secure = null, $escape = true)
         {
                         /** @var \Collective\Html\HtmlBuilder $instance */
-                        return $instance->linkAsset($url, $title, $attributes, $secure);
+                        return $instance->linkAsset($url, $title, $attributes, $secure, $escape);
         }
         
         /**
@@ -16726,13 +16727,14 @@ namespace Collective\Html {
          * @param string $url
          * @param string $title
          * @param array $attributes
+         * @param bool $escape
          * @return \Illuminate\Support\HtmlString 
          * @static 
          */ 
-        public static function linkSecureAsset($url, $title = null, $attributes = [])
+        public static function linkSecureAsset($url, $title = null, $attributes = [], $escape = true)
         {
                         /** @var \Collective\Html\HtmlBuilder $instance */
-                        return $instance->linkSecureAsset($url, $title, $attributes);
+                        return $instance->linkSecureAsset($url, $title, $attributes, $escape);
         }
         
         /**
@@ -16742,13 +16744,15 @@ namespace Collective\Html {
          * @param string $title
          * @param array $parameters
          * @param array $attributes
+         * @param bool $secure
+         * @param bool $escape
          * @return \Illuminate\Support\HtmlString 
          * @static 
          */ 
-        public static function linkRoute($name, $title = null, $parameters = [], $attributes = [])
+        public static function linkRoute($name, $title = null, $parameters = [], $attributes = [], $secure = null, $escape = true)
         {
                         /** @var \Collective\Html\HtmlBuilder $instance */
-                        return $instance->linkRoute($name, $title, $parameters, $attributes);
+                        return $instance->linkRoute($name, $title, $parameters, $attributes, $secure, $escape);
         }
         
         /**
@@ -16758,13 +16762,15 @@ namespace Collective\Html {
          * @param string $title
          * @param array $parameters
          * @param array $attributes
+         * @param bool $secure
+         * @param bool $escape
          * @return \Illuminate\Support\HtmlString 
          * @static 
          */ 
-        public static function linkAction($action, $title = null, $parameters = [], $attributes = [])
+        public static function linkAction($action, $title = null, $parameters = [], $attributes = [], $secure = null, $escape = true)
         {
                         /** @var \Collective\Html\HtmlBuilder $instance */
-                        return $instance->linkAction($action, $title, $parameters, $attributes);
+                        return $instance->linkAction($action, $title, $parameters, $attributes, $secure, $escape);
         }
         
         /**
@@ -18177,7 +18183,7 @@ namespace  {
              * Pass the query to a given callback.
              *
              * @param callable $callback
-             * @return \Illuminate\Database\Query\Builder 
+             * @return \Illuminate\Database\Eloquent\Builder 
              * @static 
              */ 
             public static function tap($callback)
@@ -18492,7 +18498,7 @@ namespace  {
             /**
              * Add a subselect expression to the query.
              *
-             * @param \Closure|\Illuminate\Database\Query\Builder|string $query
+             * @param \Closure|$this|string $query
              * @param string $as
              * @return \Illuminate\Database\Query\Builder|static 
              * @throws \InvalidArgumentException
@@ -19458,10 +19464,10 @@ namespace  {
              * @return \Illuminate\Database\Query\Builder 
              * @static 
              */ 
-            public static function groupBy($groups = null)
+            public static function groupBy(...$groups)
             {
                                 /** @var \Illuminate\Database\Query\Builder $instance */
-                                return $instance->groupBy($groups);
+                                return $instance->groupBy(...$groups);
             }
          
             /**
@@ -19557,7 +19563,7 @@ namespace  {
             /**
              * Add an "order by" clause to the query.
              *
-             * @param \Closure|\Illuminate\Database\Query\Builder|string $column
+             * @param \Closure|\Illuminate\Database\Query\Builder|\Illuminate\Database\Query\Expression|string $column
              * @param string $direction
              * @return \Illuminate\Database\Query\Builder 
              * @throws \InvalidArgumentException

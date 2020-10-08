@@ -3,8 +3,6 @@
 namespace App\Projects\MyProject\Http\Controllers\Api;
 
 use App\Mainframe\Http\Controllers\Api\UserApiController as MfUserApiController;
-use App\Projects\MyProject\Modules\Clients\ClientController;
-use App\Projects\MyProject\Modules\Quotes\Quote;
 use App\Projects\MyProject\Modules\Users\UserController;
 
 class UserApiController extends ApiController
