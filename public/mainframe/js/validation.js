@@ -82,7 +82,8 @@ function showValidationAlert(ret, showAlert) {
         $.each(ret.validation_errors, function (k, v) {
             str += "\n" + k + ": " + v;
             // $("#label_" + k).validationEngine('showPrompt', v, 'error');
-            $("input[name=" + k + "]").validationEngine('showPrompt', v, 'error');
+            $("*[id=" + k + "]").validationEngine('showPrompt', v, 'error');
+
         });
     }
     if (showAlert) {
