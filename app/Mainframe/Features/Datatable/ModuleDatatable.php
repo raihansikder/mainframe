@@ -47,12 +47,6 @@ class ModuleDatatable extends Datatable
             });
         }
 
-        if ($this->hasColumn('updated_at')) {
-            $dt = $dt->editColumn('updated_at', function ($row) {
-                return Date::formattedDateTime($row->updated_at);
-            });
-        }
-
         return $dt;
     }
 }
