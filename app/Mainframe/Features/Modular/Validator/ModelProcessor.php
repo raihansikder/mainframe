@@ -268,12 +268,19 @@ class ModelProcessor
     }
 
     /**
+     * Check if a field has change
+     *
      * @param $field
      * @return bool
      */
     public function fieldHasChanged($field)
     {
-        return isset($this->original[$field], $this->element->$field) && $this->original[$field] != $this->element->$field;
+        if ($this->element->isUpdating()) {
+            return isset($this->element->$field)
+                && $this->original[$field] != $this->element->$field;
+        }
+
+        return false;
     }
 
     /**
