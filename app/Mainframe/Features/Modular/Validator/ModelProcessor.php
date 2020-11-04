@@ -276,7 +276,7 @@ class ModelProcessor
     public function fieldHasChanged($field)
     {
         if ($this->element->isUpdating()) {
-            return isset($this->element->$field)
+            return isset($this->original[$field], $this->element->$field)
                 && $this->original[$field] != $this->element->$field;
         }
 
