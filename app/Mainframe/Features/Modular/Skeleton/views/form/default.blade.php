@@ -10,8 +10,11 @@
  * @var bool $editable
  * @var array $immutables
  * @var \App\Mainframe\Modules\SuperHeroes\SuperHero $element
+ * @var \App\Mainframe\Modules\SuperHeroes\SuperHero $superhero
  * @var \App\Mainframe\Modules\SuperHeroes\SuperHeroViewProcessor $view
  */
+
+$superhero = $element;
 ?>
 
 @section('content')
