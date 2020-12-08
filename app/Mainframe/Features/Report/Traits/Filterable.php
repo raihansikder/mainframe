@@ -185,7 +185,7 @@ trait Filterable
     /**
      * Key based search
      *
-     * @param  \Illuminate\Database\Query\Builder $query
+     * @param  \Illuminate\Database\Query\Builder  $query
      * @return mixed
      */
     public function keySearch($query)
@@ -231,6 +231,10 @@ trait Filterable
      */
     public function queryForFromRange($query, $field, $val)
     {
+        if (! is_string($val)) {
+            return $query;
+        }
+
         if ($this->isFromRange($field) && strlen($val)) {
             return $query->where($this->getActualDateField($field), '>=', $val);
         }
@@ -248,6 +252,10 @@ trait Filterable
      */
     public function queryForToRange($query, $field, $val)
     {
+        if (! is_string($val)) {
+            return $query;
+        }
+
         if ($this->isToRange($field) && strlen($val)) {
             return $query->where($this->getActualDateField($field), '<=', $val);
         }
@@ -272,6 +280,7 @@ trait Filterable
 
     /**
      * Possibly the field contains json data
+     *
      * @param $field
      * @return bool
      */
@@ -303,6 +312,10 @@ trait Filterable
      */
     public function paramIsCsv($input)
     {
+        if (! is_string($input)) {
+            return false;
+        }
+
         if (strlen($input) && strpos($input, ',') !== false) {
             return strlen(Sanitize::csv($input));
         }
@@ -318,6 +331,10 @@ trait Filterable
      */
     public function paramIsString($input)
     {
+        if (! is_string($input)) {
+            return false;
+        }
+
         return trim(strlen($input));
     }
 
