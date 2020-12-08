@@ -7,12 +7,16 @@
 /**
  * These vars are passed from \App\Mainframe\Features\Responder\Response::defaultViewVars
  */
+
 $response = $response ?? session('response');
-$messageBag = $response['messageBag'];
+
+$messageBag = $response['messageBag'] ?? null;
+
+// dd($messageBag);
 
 $css = "callout-danger";
 $textCss = "text-red";
-if ($response['status'] == 'success') {
+if (isset($response['status']) && $response['status'] == 'success') {
     $css = "callout-success";
     $textCss = "text-green";
 }
@@ -43,11 +47,11 @@ if ((isset($response['status'], $response['message']))
 @if($showAlerts)
     <div class="message-container">
         <div class="callout ajaxMsg errorDiv" id="errorDiv">
-            @if($response['status'])
+            @if(isset($response['status']))
                 <h4 class="{{$textCss}}">
                     {{ ucfirst($response['status']) }}
                 </h4>
-                {{ $response['message'] }}
+                {{ $response['message'] ?? '' }}
             @endif
             <div class="clearfix"></div>
 
