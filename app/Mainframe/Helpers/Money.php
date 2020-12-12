@@ -9,7 +9,7 @@ class Money
     /**
      * Get currency symbol from currency name
      *
-     * @param string $currency
+     * @param  string  $currency
      * @return null|string
      */
     public static function sign($currency = 'USD')
@@ -31,33 +31,31 @@ class Money
      * Show money amount with an optional prefix (i.e. $)
      *
      * @param $amount
-     * @param null $prefix
-     * @param bool $comma
+     * @param  null  $prefix
+     * @param  bool  $comma
      * @return string
      */
     public static function format($amount, $prefix = null, $comma = false)
     {
 
-        $number = $amount;
+        $number = number_format($amount, 2, '.', '');
 
         if ($comma) {
             $number = number_format($amount, 2, '.', ',');
-        } else {
-            $number = number_format($amount, 2, '.', '');
         }
 
-        if ($prefix) {
+        if ($prefix || $comma) {
             return $prefix.$number;
         }
 
-        return $number;
+        return (float) $number;
     }
 
     /**
      * Print the money amount
      *
      * @param $amount
-     * @param null $prefix
+     * @param  null  $prefix
      * @return string
      */
     public static function print($amount, $prefix = null)
