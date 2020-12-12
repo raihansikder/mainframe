@@ -454,6 +454,7 @@ trait ModularTrait
      */
     public function disableEvents()
     {
+        /** @var \Illuminate\Database\Eloquent\Model $model */
         $model = $this->module()->model;
         $model::unsetEventDispatcher();
 
@@ -489,14 +490,13 @@ trait ModularTrait
     }
 
     /**
-     * Run processor logic on model for save().
-     * This covers both create and update cases.
+     * Shorthand function for processor
      *
      * @return \App\Mainframe\Features\Modular\Validator\ModelProcessor|mixed
      */
-    public function process() // Todo: Need to reevaluate this functions purpose.
+    public function process()
     {
-        return $this->processor()->forSave();
+        return $this->processor();
     }
 
     /**
@@ -507,7 +507,7 @@ trait ModularTrait
      */
     public function processed() // Todo: Need to reevaluate this functions purpose.
     {
-        return $this->process()->element;
+        return $this->process()->forSave()->element;
     }
 
     /**
