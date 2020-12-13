@@ -73,6 +73,11 @@ $input->format = config('mainframe.config.date_format'); // Format to show in th
                 // Generate valid format for database store
                 var validDate = year + '-' + month + '-' + date;
 
+                // Clear out invalid date
+                if (validDate.length < 10) {
+                    validDate = null;
+                }
+
                 $('#{{$input->uid}}  #{{$input->params['id']}}').val(validDate);
 
             });

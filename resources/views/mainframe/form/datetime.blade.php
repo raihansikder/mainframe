@@ -80,6 +80,11 @@ $input->format = config('mainframe.config.datetime_format'); // Format to show i
                 var datetime = year + '-' + month + '-' + date + ' ' + timePart;
                 var validDatetime = moment(datetime).format('YYYY-MM-DD HH:mm:ss');
 
+                // Clear out invalid date-time
+                if (validDate.length < 19) {
+                    validDate = null;
+                }
+
                 $('#{{$input->uid}} #{{$input->params['id']}}').val(validDatetime);
             });
         </script>
