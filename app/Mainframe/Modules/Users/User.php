@@ -65,10 +65,14 @@ use Watson\Rememberable\Rememberable;
  * @property int|null $is_test
  * @property-read \Illuminate\Database\Eloquent\Collection|\OwenIt\Auditing\Models\Audit[] $audits
  * @property-read int|null $audits_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Changes\Change[] $changes
+ * @property-read int|null $changes_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Comments\Comment[] $comments
+ * @property-read int|null $comments_count
  * @property-read \App\User|null $creator
+ * @property-read null|string $profile_pic
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Group[] $groups
  * @property-read int|null $groups_count
- * @property-read \App\Mainframe\Modules\Uploads\Upload $latestUpload
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property-read int|null $notifications_count
  * @property-read \App\Mainframe\Modules\Projects\Project|null $project
@@ -77,12 +81,10 @@ use Watson\Rememberable\Rememberable;
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Uploads\Upload[] $uploads
  * @property-read int|null $uploads_count
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User active()
- * @method static bool|null forceDelete()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User newQuery()
  * @method static \Illuminate\Database\Query\Builder|\App\Mainframe\Modules\Users\User onlyTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User query()
- * @method static bool|null restore()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereAddress1($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereAddress2($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereApiToken($value)
@@ -131,18 +133,6 @@ use Watson\Rememberable\Rememberable;
  * @method static \Illuminate\Database\Query\Builder|\App\Mainframe\Modules\Users\User withTrashed()
  * @method static \Illuminate\Database\Query\Builder|\App\Mainframe\Modules\Users\User withoutTrashed()
  * @mixin \Eloquent
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Comments\Comment[] $comments
- * @property-read int|null $comments_count
- * @property-read null|string $profile_pic
- * @property-read \App\Mainframe\Modules\Comments\Comment $latestComment
- * @property int|null $vendor_id
- * @property int|null $reseller_id
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereResellerId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereVendorId($value)
- * @property int|null $client_id
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereClientId($value)
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Changes\Change[] $changes
- * @property-read int|null $changes_count
  */
 class User extends Authenticatable implements MustVerifyEmail, Auditable
 {
