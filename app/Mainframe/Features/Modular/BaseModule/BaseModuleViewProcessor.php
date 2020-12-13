@@ -56,6 +56,10 @@ class BaseModuleViewProcessor extends ViewProcessor
             $this->model = $element->newInstance();
         }
 
+        if ($this->isEditing()) {
+            $this->immutables = $this->element->processor()->getImmutables();
+        }
+
     }
 
     /**
@@ -225,9 +229,7 @@ class BaseModuleViewProcessor extends ViewProcessor
     public function getImmutables()
     {
 
-        if ($this->isEditing()) {
-            $this->immutables = $this->element->processor()->getImmutables();
-        }
+
 
         return $this->immutables;
     }
