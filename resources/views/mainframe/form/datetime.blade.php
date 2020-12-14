@@ -81,8 +81,8 @@ $input->format = config('mainframe.config.datetime_format'); // Format to show i
                 var validDatetime = moment(datetime).format('YYYY-MM-DD HH:mm:ss');
 
                 // Clear out invalid date-time
-                if (validDate.length < 19) {
-                    validDate = null;
+                if (validDatetime.length < 19) {
+                    validDatetime = null;
                 }
 
                 $('#{{$input->uid}} #{{$input->params['id']}}').val(validDatetime);
