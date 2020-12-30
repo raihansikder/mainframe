@@ -60,10 +60,6 @@ class SuperHero extends BaseModule
     |--------------------------------------------------------------------------
     | Boot method and model events.
     |--------------------------------------------------------------------------
-    |
-    | Register the observer in the boot method. You can also make use of
-    | model events like saving, creating, updating etc to further
-    | manipulate the model
     */
     public static function boot()
     {
