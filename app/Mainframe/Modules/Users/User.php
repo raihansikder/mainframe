@@ -293,7 +293,7 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
         self::observe(UserObserver::class);
 
         static::saved(function (User $element) {
-            $element->groups()->sync(array_filter($element->group_ids));
+            $element->groups()->sync($element->group_ids);
         });
     }
 
@@ -372,7 +372,7 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
     /**
      * Mutator for taking permissions.
      *
-     * @param  array $permissions
+     * @param  array  $permissions
      * @return string
      */
     public function setPermissionsAttribute(array $permissions)
@@ -399,7 +399,7 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
     /**
      * Mutator for giving permissions.
      *
-     * @param  mixed $permissions
+     * @param  mixed  $permissions
      * @return array  $_permissions
      */
     public function getPermissionsAttribute($permissions)
@@ -422,7 +422,7 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
     /**
      * Send reset password link
      *
-     * @param  string $token
+     * @param  string  $token
      */
     public function sendPasswordResetNotification($token)
     {
