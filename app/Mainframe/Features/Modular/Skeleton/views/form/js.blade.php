@@ -1,13 +1,17 @@
 <?php
 /**
- * @var \App\Mainframe\Modules\SuperHeroes\SuperHero $module
+ * @var \App\Mainframe\Modules\Modules\Module $module
  * @var \App\User $user
- * @var \App\User $element
  * @var string $formState create|edit
  * @var array $formConfig
  * @var string $uuid Only available for create
  * @var bool $editable
+ * @var array $immutables
+ * @var \App\Mainframe\Modules\SuperHeroes\SuperHero $element
+ * @var \App\Mainframe\Modules\SuperHeroes\SuperHero $superHero
+ * @var \App\Mainframe\Modules\SuperHeroes\SuperHeroViewProcessor $view
  */
+
 ?>
 <script>
     /*

@@ -39,7 +39,6 @@ class MakeMainframeModule extends Command
     {
 
         $this->namespace = $this->argument('namespace');
-
         $this->model = $this->model();
 
         $this->info($this->model.'Creating ..');
@@ -48,6 +47,31 @@ class MakeMainframeModule extends Command
         $this->createViewFiles();
         $this->info($this->model.'... Done');
 
+    }
+
+    /**
+     * Return project name
+     *
+     * @return mixed|string
+     */
+    public function project()
+    {
+        return $this->extractProjectNameFromNamespace();
+    }
+
+    public function projectViewDirName()
+    {
+        return Str::kebab($this->project());
+    }
+
+    /**
+     * Extract Project name
+     *
+     * @return mixed|string
+     */
+    public function extractProjectNameFromNamespace()
+    {
+        return explode('\\', Str::after($this->namespace, 'Projects\\'))[0];
     }
 
     /**
@@ -133,24 +157,25 @@ class MakeMainframeModule extends Command
         $replaces = [
             'App\Mainframe\Modules\SuperHeroes' => trim($this->namespace(), '\\'),
             'mainframe.modules.super-heroes'    => $this->viewDirectory(),
-
-            'super_heroes'      => $this->moduleTable(),
-            'super-heroes'      => $this->routePath(),
-            'SuperHeroes'       => Str::plural($this->modelClassName()),
-            'SuperHero'         => $this->modelClassName(),
-            'superHeroes'       => lcfirst(Str::plural($this->modelClassName())),
-            'superHero'         => lcfirst($this->modelClassName()),
-            '{table}'           => $this->moduleTable(),
-            '{module_name}'     => $this->moduleName(),
-            '{route_path}'      => $this->routePath(),
-            '{route_name}'      => $this->routeName(),
-            '{class_directory}' => $this->classDirectory(),
-            '{namespace}'       => $this->namespace(),
-            '{model}'           => $this->model,
-            '{policy}'          => $this->policy(),
-            '{processor}'       => $this->processor(),
-            '{controller}'      => $this->controller(),
-            '{view_directory}'  => $this->viewDirectory(),
+            'super_heroes'                      => $this->moduleTable(),
+            'super-heroes'                      => $this->routePath(),
+            'SuperHeroes'                       => Str::plural($this->modelClassName()),
+            'SuperHero'                         => $this->modelClassName(),
+            'superHeroes'                       => lcfirst(Str::plural($this->modelClassName())),
+            'superHero'                         => lcfirst($this->modelClassName()),
+            '{table}'                           => $this->moduleTable(),
+            '{module_name}'                     => $this->moduleName(),
+            '{route_path}'                      => $this->routePath(),
+            '{route_name}'                      => $this->routeName(),
+            '{class_directory}'                 => $this->classDirectory(),
+            '{namespace}'                       => $this->namespace(),
+            '{model}'                           => $this->model,
+            '{policy}'                          => $this->policy(),
+            '{processor}'                       => $this->processor(),
+            '{controller}'                      => $this->controller(),
+            '{view_directory}'                  => $this->viewDirectory(),
+            'App\Mainframe\Features'            => 'App\Projects\\'.$this->project().'\Features',
+            '{project-name}'                    => $this->projectViewDirName(),
 
         ];
 
