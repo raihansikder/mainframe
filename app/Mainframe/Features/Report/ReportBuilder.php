@@ -104,6 +104,15 @@ class ReportBuilder extends BaseController
     /** @var string */
     public $fileName;
 
+    /*
+    |--------------------------------------------------------------------------
+    | User executing the report
+    |--------------------------------------------------------------------------
+    |
+    */
+    /** @var \App\User */
+    public $user;
+
     /**
      * ReportBuilder constructor.
      *
@@ -119,6 +128,7 @@ class ReportBuilder extends BaseController
         $this->dataSource = $dataSource ?: $this->dataSource;
         $this->path = $path ?: $this->path;
         $this->cache = $cache ?: $this->cache;
+        $this->user = user();
     }
 
     /**

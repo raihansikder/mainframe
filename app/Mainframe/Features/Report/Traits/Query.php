@@ -26,8 +26,8 @@ trait Query
         $query = $this->filter($query);
 
         // Inject tenant context.
-        if(user()->ofTenant() && $this->hasTenantContext()){
-            $query->where('tenant_id',user()->tenant_id);
+        if($this->user->ofTenant() && $this->hasTenantContext()){
+            $query->where('tenant_id',$this->user->tenant_id);
         }
 
         $query = $this->groupBy($query);
