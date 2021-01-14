@@ -180,16 +180,16 @@ class BaseModuleViewProcessor extends ViewProcessor
     public function varsCreate()
     {
         $this->addVars([
-            'uuid'       => $this->element->uuid,
-            'element'    => $this->element,
-            'formState'  => 'create',
+            'uuid' => $this->element->uuid,
+            'element' => $this->element,
+            'formState' => 'create',
             'formConfig' => [
                 'route' => $this->module->name.'.store',
                 'class' => $this->module->name.'-form module-base-form create-form',
-                'name'  => $this->module->name,
+                'name' => $this->module->name,
                 'files' => true,
             ],
-            'editable'   => true,
+            'editable' => true,
             'immutables' => $this->getImmutables(),
         ]);
 
@@ -204,17 +204,17 @@ class BaseModuleViewProcessor extends ViewProcessor
     public function viewVarsEdit()
     {
         $this->addVars([
-            'element'    => $this->element,
-            'formState'  => 'edit',
+            'element' => $this->element,
+            'formState' => 'edit',
             'formConfig' => [
-                'route'  => [$this->module->name.'.update', $this->element->id],
-                'class'  => $this->module->name.'-form module-base-form edit-form',
-                'name'   => $this->module->name,
-                'files'  => true,
+                'route' => [$this->module->name.'.update', $this->element->id],
+                'class' => $this->module->name.'-form module-base-form edit-form',
+                'name' => $this->module->name,
+                'files' => true,
                 'method' => 'patch',
-                'id'     => $this->module->name.'Form',
+                'id' => $this->module->name.'Form',
             ],
-            'editable'   => $this->user->can('update', $this->element),
+            'editable' => $this->user->can('update', $this->element),
             'immutables' => $this->getImmutables(),
         ]);
 
@@ -228,9 +228,6 @@ class BaseModuleViewProcessor extends ViewProcessor
      */
     public function getImmutables()
     {
-
-
-
         return $this->immutables;
     }
 

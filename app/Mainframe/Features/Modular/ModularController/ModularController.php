@@ -161,7 +161,9 @@ class ModularController extends BaseController
         }
 
         // Set view processor attributes
-        $this->view->setType('edit')->setElement($this->element);
+        $this->view->setType('edit')
+            ->setElement($this->element)
+            ->setImmutable($this->element->processor()->getImmutables());
 
         return $this->view($this->view->formPath('edit'))
             ->with($this->view->viewVarsEdit());
