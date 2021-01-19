@@ -13,6 +13,7 @@ use DB;
 /** @mixin \App\Mainframe\Features\Modular\BaseModule\BaseModule $this */
 trait ModularTrait
 {
+
     /*
     |--------------------------------------------------------------------------
     | Query scopes + Dynamic scopes
@@ -197,8 +198,8 @@ trait ModularTrait
         if ($this->fieldHasChanged($field)) {
             return [
                 'field' => $field,
-                'old'   => $this->getOriginal($field),
-                'new'   => $this->$field,
+                'old' => $this->getOriginal($field),
+                'new' => $this->$field,
             ];
         }
 
@@ -316,12 +317,12 @@ trait ModularTrait
             if ($this->fieldHasChanged($field)) {
                 $transition = $this->transition($field);
                 $this->changes()->create([
-                    'module_id'    => $this->module()->id,
-                    'element_id'   => $this->id,
+                    'module_id' => $this->module()->id,
+                    'element_id' => $this->id,
                     'element_uuid' => $this->uuid,
-                    'field'        => $field,
-                    'old'          => $transition['old'],
-                    'new'          => $transition['new'],
+                    'field' => $field,
+                    'old' => $transition['old'],
+                    'new' => $transition['new'],
                 ]);
             }
         }
@@ -395,13 +396,14 @@ trait ModularTrait
     |--------------------------------------------------------------------------
     |
     */
+
     /**
      * Checks if a user has tenant context
      *
      * @return bool
      * @internal param $name
      */
-    public function hasTenantContext() { return $this->hasColumn('tenant_id'); }
+    public function hasTenantContext() { return $this->hasColumn('tenant_id') && $this->tenantEnabled; }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

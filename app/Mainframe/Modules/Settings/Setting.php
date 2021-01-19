@@ -60,10 +60,11 @@ class Setting extends BaseModule
 {
     use SettingHelper;
 
-    // protected $forceDeleting = false;
+    protected $moduleName    = 'settings';
+    protected $table         = 'settings';
 
-    protected $moduleName = 'settings';
-    protected $table      = 'settings';
+
+    // protected $forceDeleting = false;
 
     /*
     |--------------------------------------------------------------------------
@@ -99,9 +100,9 @@ class Setting extends BaseModule
      */
     public static $types = [
         'boolean' => 'Boolean',
-        'string'  => 'String',
-        'array'   => 'Array',
-        'file'    => 'File',
+        'string' => 'String',
+        'array' => 'Array',
+        'file' => 'File',
     ];
 
     /*

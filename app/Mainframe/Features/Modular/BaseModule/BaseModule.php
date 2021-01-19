@@ -83,6 +83,8 @@ class BaseModule extends Model implements Auditable
     */
     protected $moduleName;
 
+    protected $tenantEnabled = false;
+
     protected $dates = ['created_at', 'updated_at', 'deleted_at'];
 
     /*

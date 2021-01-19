@@ -37,7 +37,6 @@
             @include('form.text',['var'=>['name'=>'password_confirmation','type'=>'password','label'=>'Confirm new password']])
         @endif
 
-
         <div class="clearfix"></div>
         @include('form.datetime',['var'=>['name'=>'email_verified_at','label'=>'Email verified at']])
 

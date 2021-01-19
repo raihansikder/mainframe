@@ -232,7 +232,7 @@ trait ModuleHelper
     /**
      * Create instance of a model.
      *
-     * @return mixed
+     * @return mixed|\App\Mainframe\Features\Modular\BaseModule\BaseModule
      */
     public function modelInstance()
     {
@@ -319,6 +319,15 @@ trait ModuleHelper
     public static function nameFromClass($class)
     {
         return Str::plural(Str::kebab(class_basename($class)));
+    }
+
+    /**
+     * Check if the specific module i.e. users is tenant enabled
+     * @return bool
+     */
+    public function tenantEnabled()
+    {
+        return $this->modelInstance()->hasTenantContext();
     }
 
 }

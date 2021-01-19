@@ -2,7 +2,18 @@
 
 <?php
 use App\Mainframe\Modules\Settings\Setting;
+/**
+ * @var Setting $element
+ * @var string $formState create|edit
+ * @var Setting $formState
+ * @var array $formConfig
+ * @var string $uuid Only available for create
+ * @var bool $editable
+ * @var \App\Mainframe\Modules\Modules\Module $module
+ */
+
 $types = Setting::$types;
+
 ?>
 
 @section('content')

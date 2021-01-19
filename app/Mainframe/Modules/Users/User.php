@@ -136,6 +136,7 @@ use Watson\Rememberable\Rememberable;
  */
 class User extends Authenticatable implements MustVerifyEmail, Auditable
 {
+
     use SoftDeletes,
         Rememberable,
         \OwenIt\Auditing\Auditable,
@@ -159,6 +160,7 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
     protected $moduleName = 'users';
     protected $table      = 'users';
 
+    protected $tenantEnabled = true;
     /*
     |--------------------------------------------------------------------------
     | Guarded attributes
