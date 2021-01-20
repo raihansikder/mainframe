@@ -15,6 +15,8 @@ class ApiController extends BaseController
         parent::__construct();
 
         $this->middleware('x-auth-token'); // This is an additional safe guarding.
+        $this->middleware('tenant');
+
         # Load current user
         // $this->user = user(); // $this->user = Auth::guard('x-auth')->user();
         $this->user->refresh(); // Useful for bearer because token may get updated.

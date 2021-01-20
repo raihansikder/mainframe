@@ -19,6 +19,7 @@ class UserApiController extends ApiController
     {
         parent::__construct();
         $this->middleware('bearer-token');
+        $this->middleware('tenant');
     }
 
     /**

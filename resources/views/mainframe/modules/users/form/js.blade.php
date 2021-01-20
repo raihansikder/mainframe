@@ -21,7 +21,7 @@
      * Assigns validation rules during saving (both creating and updating)
      */
     addValidationRules(); // Assign validation classes/rules
-    enableValidation('{{$module->name}}'); // Enable Ajax based form validation.
+    //enableValidation('{{$module->name}}'); // Enable Ajax based form validation.
 
     /*
     |--------------------------------------------------------------------------

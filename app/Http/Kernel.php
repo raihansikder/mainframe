@@ -29,6 +29,7 @@ class Kernel extends HttpKernel
         'superuser' => \App\Mainframe\Http\Middleware\AllowSuperuser::class,
         'bearer-token' => \App\Mainframe\Http\Middleware\VerifyBearerToken::class,
         'x-auth-token' => \App\Mainframe\Http\Middleware\VerifyXAuthToken::class,
+        'tenant' => \App\Mainframe\Http\Middleware\InjectTenant::class,
     ];
 
     /**

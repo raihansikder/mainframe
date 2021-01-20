@@ -61,6 +61,7 @@ class ModularController extends BaseController
     {
         parent::__construct();
 
+        $this->middleware('tenant');
         // Load
         $this->module = Module::byName($this->moduleName);
         $this->model = $this->module->modelInstance();
@@ -69,8 +70,8 @@ class ModularController extends BaseController
         // Share these variables in  all views
         View::share([
             'module' => $this->module,
-            'model'  => $this->model,
-            'view'   => $this->view,
+            'model' => $this->model,
+            'view' => $this->view,
         ]);
     }
 
@@ -190,6 +191,7 @@ class ModularController extends BaseController
         //     $this->response()->validator->errors()->add('Error', $e->getMessage());
         // }
 
+
         return $this->load($this->element->toArray())->send();
     }
 
@@ -300,7 +302,7 @@ class ModularController extends BaseController
     public function uploads($id)
     {
         request()->merge([
-            'module_id'  => $this->module->id,
+            'module_id' => $this->module->id,
             'element_id' => $id,
         ]);
 
@@ -316,7 +318,7 @@ class ModularController extends BaseController
     public function attachUpload($id)
     {
         request()->merge([
-            'module_id'  => $this->module->id,
+            'module_id' => $this->module->id,
             'element_id' => $id,
         ]);
 
@@ -361,7 +363,7 @@ class ModularController extends BaseController
     public function comments($id)
     {
         request()->merge([
-            'module_id'  => $this->module->id,
+            'module_id' => $this->module->id,
             'element_id' => $id,
         ]);
 
@@ -377,7 +379,7 @@ class ModularController extends BaseController
     public function attachComment($id)
     {
         request()->merge([
-            'module_id'  => $this->module->id,
+            'module_id' => $this->module->id,
             'element_id' => $id,
         ]);
 

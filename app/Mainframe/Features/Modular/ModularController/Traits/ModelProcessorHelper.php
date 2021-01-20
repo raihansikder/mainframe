@@ -12,7 +12,6 @@ trait ModelProcessorHelper
 {
     /**
      * Transform request inputs
-     *
      * This function is useful when you don't want to exactly
      * store a model field as it is in the request. Sometimes
      * the request may be an array that you want to transform
@@ -66,7 +65,6 @@ trait ModelProcessorHelper
     {
         // Before going to processor and model run an initial validation in controller.
         if (! $this->validateStoreRequest()) {
-
             return $this;
         }
 
@@ -90,7 +88,6 @@ trait ModelProcessorHelper
 
     /**
      * This function is called after successful store operation.
-     *
      */
     public function stored()
     {

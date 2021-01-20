@@ -287,4 +287,26 @@ class BaseModuleViewProcessor extends ViewProcessor
         return $this->user->can('view-report', $this->model);
     }
 
+    /**
+     * Check if tenant selector should be shown
+     *
+     * @return bool
+     */
+    public function showTenantSelector()
+    {
+        if (! $this->module->tenantEnabled()) {
+            return false;
+        }
+
+        if ($this->user->tenant_id) {
+            return false;
+        }
+
+        if ($this->user->isSuperUser()) {
+            return true;
+        }
+
+        return false;
+    }
+
 }

@@ -32,7 +32,9 @@ class VerifyBearerToken
         }
 
         // Onetime login for Api
-        // \Auth::onceUsingId($user->id);
+        if($user->id) {
+            \Auth::onceUsingId($user->id);
+        }
 
         return $next($request);
     }
