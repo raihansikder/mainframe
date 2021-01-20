@@ -19,9 +19,7 @@ class InjectTenant
      */
     public function handle($request, Closure $next)
     {
-
         if (Auth::check()) {
-
             /** @var \App\User $user */
             $user = Auth::user();
             if ($user->ofTenant()) {

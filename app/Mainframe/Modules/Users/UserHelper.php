@@ -84,7 +84,7 @@ trait UserHelper
             'city',
             'county',
             'country_name',
-            'zip_code'
+            'zip_code',
         ];
 
         foreach ($fields as $field) {
@@ -165,6 +165,11 @@ trait UserHelper
         return substr(bcrypt($this->email.'|'.$this->password.'|'.date("Y-m-d H:i:s")), 10, 32);
     }
 
+    /**
+     * Check if user belongs to a tenant
+     *
+     * @return bool|int|null
+     */
     public function ofTenant()
     {
         return $this->tenant_id ?: false;

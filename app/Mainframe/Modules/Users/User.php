@@ -160,7 +160,7 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
     protected $moduleName = 'users';
     protected $table      = 'users';
 
-    protected $tenantEnabled = true;
+    protected $tenantEnabled = false;
     /*
     |--------------------------------------------------------------------------
     | Guarded attributes

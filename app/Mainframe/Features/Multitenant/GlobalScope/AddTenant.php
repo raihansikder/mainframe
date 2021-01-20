@@ -18,8 +18,9 @@ class AddTenant implements Scope
      */
     public function apply(Builder $builder, Model $model)
     {
-        if (Mf::tableHasColumn($model->getTable(), 'tenant_id')) {
-            $builder->where('tenant_id', user()->tenant_id);
+        /** @var \App\Mainframe\Features\Modular\BaseModule\BaseModule $model */
+        if ($model->hasTenantContext()) {
+            $builder->where($model->module()->tableName().'.tenant_id', user()->tenant_id);
         }
     }
 }

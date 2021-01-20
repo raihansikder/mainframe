@@ -93,9 +93,9 @@ class Datatable
         $query = $this->source()->select($this->selects());
 
         // Inject tenant context.
-        if (user()->ofTenant() && Schema::hasColumn($this->table, 'tenant_id')) {
-            $query->where($this->table, '.tenant_id', user()->tenant_id);
-        }
+        // if (user()->ofTenant() && Schema::hasColumn($this->table, 'tenant_id')) {
+        //     $query->where($this->table, '.tenant_id', user()->tenant_id);
+        // }
 
         // Exclude deleted rows
         $query = $query->whereNull($this->table.'.deleted_at');

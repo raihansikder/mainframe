@@ -84,7 +84,9 @@ trait SendResponse
         $successTo = request('redirect_success');
         $failTo = request('redirect_fail');
 
-        $this->response->setValidator($this->validator);
+        if (isset($this->validator)) {
+            $this->response->setValidator($this->validator);
+        }
 
         if ($successTo && resolve(Response::class)->isSuccess()) {
 
