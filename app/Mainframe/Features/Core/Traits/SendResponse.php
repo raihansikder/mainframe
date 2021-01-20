@@ -9,19 +9,19 @@ use URL;
 trait SendResponse
 {
     /** * @var \App\Mainframe\Features\Responder\Response */
-    public $response; // Todo : Need this ?
+    public $response;
 
     /** @var string */
     protected $redirectTo;
 
     /**
-     * @param  \Illuminate\Validation\Validator|null $validator
+     * @param  \Illuminate\Validation\Validator|null  $validator
      * @return mixed|Response
      */
     public function response()
     {
         /** @var Response $response */
-        $this->response = resolve(Response::class); // Todo : Need this ?
+        $this->response = resolve(Response::class);
 
         return $this->prepareResponse();
     }
@@ -34,7 +34,7 @@ trait SendResponse
     /**
      * Set redirection url
      *
-     * @param null $to
+     * @param  null  $to
      * @return \App\Mainframe\Features\Responder\Response|mixed
      */
     public function setMessage($message)
@@ -45,7 +45,7 @@ trait SendResponse
     /**
      * Set redirection url
      *
-     * @param null $to
+     * @param  null  $to
      * @return \App\Mainframe\Features\Responder\Response|mixed
      */
     public function setRedirectTo($to = null)
@@ -77,13 +77,14 @@ trait SendResponse
     }
 
     /**
-     *
      * @return array|\Illuminate\Http\Request|string|null
      */
     public function redirectToBasedOnRequestParam()
     {
         $successTo = request('redirect_success');
         $failTo = request('redirect_fail');
+
+        $this->response->setValidator($this->validator);
 
         if ($successTo && resolve(Response::class)->isSuccess()) {
 
@@ -101,8 +102,6 @@ trait SendResponse
         return null;
     }
 
-
-
     /*
     |--------------------------------------------------------------------------
     | Proxy functions from response class
@@ -116,7 +115,7 @@ trait SendResponse
      * Render view
      *
      * @param $viewPath
-     * @param array $viewVars
+     * @param  array  $viewVars
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function view($viewPath, $viewVars = [])
@@ -127,7 +126,7 @@ trait SendResponse
     /**
      * Redirect
      *
-     * @param  string $to
+     * @param  string  $to
      * @return \Illuminate\Http\RedirectResponse
      */
     public function redirect($to = null)
@@ -148,8 +147,8 @@ trait SendResponse
     /**
      * Json or abort
      *
-     * @param  string $message
-     * @param  int $code
+     * @param  string  $message
+     * @param  int  $code
      * @return \Illuminate\Http\JsonResponse|void
      */
     public function failed($message = 'Failed', $code = Response::HTTP_BAD_REQUEST)
@@ -160,8 +159,8 @@ trait SendResponse
     /**
      * Json or succeeded
      *
-     * @param  string $message
-     * @param  int $code
+     * @param  string  $message
+     * @param  int  $code
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Illuminate\View\View|void
      */
     public function succeeded($message = null, $code = Response::HTTP_OK)
@@ -182,8 +181,8 @@ trait SendResponse
     /**
      * Abort on permission denial
      *
-     * @param  string $message
-     * @param  int $code
+     * @param  string  $message
+     * @param  int  $code
      * @return \Illuminate\Http\JsonResponse|void
      */
     public function permissionDenied($message = 'Permission denied', $code = Response::HTTP_FORBIDDEN)
@@ -194,8 +193,8 @@ trait SendResponse
     /**
      * Abort on resource not found
      *
-     * @param  string $message
-     * @param  int $code
+     * @param  string  $message
+     * @param  int  $code
      * @return \Illuminate\Http\JsonResponse|void
      */
     public function notFound($message = 'Not found', $code = Response::HTTP_NOT_FOUND)
@@ -206,8 +205,8 @@ trait SendResponse
     /**
      * Build a success response.
      *
-     * @param  null $message
-     * @param  int $code
+     * @param  null  $message
+     * @param  int  $code
      * @return \App\Mainframe\Features\Responder\Response|mixed
      */
     public function success($message = null, $code = Response::HTTP_OK)
@@ -218,8 +217,8 @@ trait SendResponse
     /**
      * Build a fail response.
      *
-     * @param  null $message
-     * @param  int $code
+     * @param  null  $message
+     * @param  int  $code
      * @return \App\Mainframe\Features\Responder\Response|mixed
      */
     public function fail($message = null, $code = Response::HTTP_UNPROCESSABLE_ENTITY)
@@ -230,8 +229,8 @@ trait SendResponse
     /**
      * Set response as fail
      *
-     * @param  string $message
-     * @param  int $code
+     * @param  string  $message
+     * @param  int  $code
      * @return \App\Mainframe\Features\Responder\Response|mixed
      */
     public function failValidation($message = 'Validation failed', $code = Response::HTTP_UNPROCESSABLE_ENTITY)
@@ -242,7 +241,7 @@ trait SendResponse
     /**
      * Load a payload to be sent with the response
      *
-     * @param  null $payload
+     * @param  null  $payload
      * @return \App\Mainframe\Features\Responder\Response|mixed
      */
     public function load($payload = null)
@@ -251,7 +250,7 @@ trait SendResponse
     }
 
     /**
-     * @param  null $redirectTo
+     * @param  null  $redirectTo
      * @return \App\Mainframe\Features\Responder\Response|mixed
      */
     public function to($redirectTo = null)
