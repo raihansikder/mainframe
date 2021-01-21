@@ -406,6 +406,22 @@ trait ModularTrait
     public function hasTenantContext() { return $this->hasColumn('tenant_id') && $this->tenantEnabled; }
 
     /**
+     * @param  null  $user
+     * @return bool
+     */
+    public function isTenantCompatible($user = null)
+    {
+        $user = $user ?: user();
+        if ($this->hasTenantContext()
+            && $user->ofTenant()
+            && ($this->tenant_id != $user->tenant_id)) {
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function tenant() { return $this->belongsTo(Tenant::class); }
