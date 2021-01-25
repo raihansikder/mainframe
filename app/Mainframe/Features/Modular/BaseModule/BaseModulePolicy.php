@@ -1,6 +1,7 @@
-<?php
-/** @noinspection PhpUnusedParameterInspection */
+<?php /** @noinspection PhpUnusedParameterInspection */
 /** @noinspection PhpInconsistentReturnPointsInspection */
+
+/** @noinspection PhpUnused */
 
 namespace App\Mainframe\Features\Modular\BaseModule;
 
@@ -67,7 +68,7 @@ class BaseModulePolicy
             return false;
         }
 
-        if (!$element->isTenantCompatible($user)) {
+        if (! $element->isTenantCompatible($user)) {
             return false;
         }
 
@@ -91,7 +92,7 @@ class BaseModulePolicy
             return false;
         }
 
-        if ($element && !$element->isTenantCompatible($user)) {
+        if ($element && $element->tenant_id && ! $element->isTenantCompatible($user)) {
             return false;
         }
 
@@ -115,7 +116,7 @@ class BaseModulePolicy
             return false;
         }
 
-        if (!$element->isTenantCompatible($user)) {
+        if (! $element->isTenantCompatible($user)) {
             return false;
         }
 
@@ -143,7 +144,7 @@ class BaseModulePolicy
             return false;
         }
 
-        if (!$element->isTenantCompatible($user)) {
+        if (! $element->isTenantCompatible($user)) {
             return false;
         }
 
@@ -167,7 +168,7 @@ class BaseModulePolicy
             return false;
         }
 
-        if (!$element->isTenantCompatible($user)) {
+        if (! $element->isTenantCompatible($user)) {
             return false;
         }
 
@@ -187,7 +188,7 @@ class BaseModulePolicy
             return false;
         }
 
-        if (!$element->isTenantCompatible($user)) {
+        if (! $element->isTenantCompatible($user)) {
             return false;
         }
 
@@ -208,7 +209,7 @@ class BaseModulePolicy
             return false;
         }
 
-        if (!$element->isTenantCompatible($user)) {
+        if (! $element->isTenantCompatible($user)) {
             return false;
         }
 
@@ -229,7 +230,7 @@ class BaseModulePolicy
             return false;
         }
 
-        if (!$element->isTenantCompatible($user)) {
+        if (! $element->isTenantCompatible($user)) {
             return false;
         }
 

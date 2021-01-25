@@ -129,14 +129,13 @@ class ModularController extends BaseController
      */
     public function create()
     {
-        if (! user()->can('create', $this->model)) {
-            return $this->permissionDenied();
-        }
-
         $uuid = request()->old('uuid') ?: uuid();
-
         $this->element = $this->model->fill(request()->all());
         $this->element->uuid = $uuid;
+
+        if (! user()->can('create', $this->element)) {
+            return $this->permissionDenied();
+        }
 
         // Set view processor attributes
         $this->view->setType('create')->setElement($this->element);
