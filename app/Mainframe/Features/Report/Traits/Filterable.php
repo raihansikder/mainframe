@@ -114,16 +114,18 @@ trait Filterable
      */
     public function queryForExitingFields($query, $field, $val)
     {
-        // Input is array
+        // Handle array input: ?key[]=1,key[]=2
         if ($this->paramIsArray($val)) {
             return $this->queryForArrayParam($query, $field, $val);
         }
 
+        // Handle csv input: ?key=1,2,3
         if ($this->paramIsCsv($val)) { // Input is CSV
             return $this->queryForCsvParam($query, $field, $val);
         }
 
-        if ($this->paramIsString($val) && strlen(trim($val))) { // Input is string
+        // Handle int/string input: ?key=1 or request()->merge(['key'=>1]);
+        if ((is_int($val) || $this->paramIsString($val)) && strlen(trim($val))) { // Input is string
             return $this->queryForStringParam($query, $field, $val);
         }
 
