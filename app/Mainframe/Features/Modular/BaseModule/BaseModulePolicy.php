@@ -1,7 +1,6 @@
-<?php /** @noinspection PhpUnusedParameterInspection */
+<?php
+/** @noinspection PhpUnusedParameterInspection */
 /** @noinspection PhpInconsistentReturnPointsInspection */
-
-/** @noinspection PhpUnused */
 
 namespace App\Mainframe\Features\Modular\BaseModule;
 
