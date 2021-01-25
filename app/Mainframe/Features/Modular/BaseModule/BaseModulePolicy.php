@@ -91,7 +91,7 @@ class BaseModulePolicy
             return false;
         }
 
-        if ($element && $element->tenant_id && ! $element->isTenantCompatible($user)) {
+        if ($element && isset($element->tenant_id) && ! $element->isTenantCompatible($user)) {
             return false;
         }
 
