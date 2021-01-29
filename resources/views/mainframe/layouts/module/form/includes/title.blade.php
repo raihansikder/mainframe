@@ -18,4 +18,4 @@
        title="View list of {{lcfirst(Str::plural($module->title))}}">
         <i class="fa fa-list"></i>
     </a>
-@endif`
+@endif
