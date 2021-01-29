@@ -85,6 +85,8 @@ class Group extends BaseModule
         'uuid',
         'name',
         'is_active',
+        'title',
+        'permissions',
     ];
 
     /*

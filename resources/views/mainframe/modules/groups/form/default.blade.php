@@ -11,7 +11,8 @@
 
         {{--    Form inputs: starts    --}}
         {{--   --------------------    --}}
-        @include('form.text',['var'=>['name'=>'name','label'=>'Name']])
+        @include('form.text',['var'=>['name'=>'title','label'=>'Title']])
+        @include('form.text',['var'=>['name'=>'name','label'=>'System Name']])
         @include('form.is-active')
         {{--    Form inputs: ends    --}}
         <div class="clearfix"></div>
