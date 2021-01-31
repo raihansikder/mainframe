@@ -49,7 +49,7 @@ trait ModularTrait
      */
     public function hasAttribute($attribute)
     {
-        return array_key_exists($attribute, $this->getAttributes()());
+        return array_key_exists($attribute, $this->getAttributes());
     }
 
     /**
