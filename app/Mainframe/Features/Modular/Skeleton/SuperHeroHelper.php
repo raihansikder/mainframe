@@ -14,7 +14,6 @@ trait SuperHeroHelper
     /**
      * Fill data and set calculated data in fields for saving the module
      * This can depend of supporting fillFunct, setFunct,calculateFunct
-     *
      * return $this
      */
     public function populate()
@@ -27,6 +26,7 @@ trait SuperHeroHelper
     /**
      * Set address
      * Todo: Remove this sample code
+     *
      * @return $this
      */
     // public function setAddress()
@@ -79,5 +79,19 @@ trait SuperHeroHelper
     // public function isCreatable() { return true; }
     // public function isEditable() { return true; }
     // public function isDeletable() { return true; }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Notifications
+    |--------------------------------------------------------------------------
+    |
+    */
+    // /**
+    //  * Notify admins when quote is accepted
+    //  */
+    // public function sendSomeNotification()
+    // {
+    //     Notification::send($users, new NotificationClass($this));
+    // }
 
 }
