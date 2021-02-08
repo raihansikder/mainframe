@@ -1,6 +1,6 @@
 <?php
 /** @noinspection SpellCheckingInspection */
-$script_paths = [
+$scriptPaths = [
     'js/all.js',
     // 'mainframe/templates/admin/plugins/jQuery/jquery-2.2.3.min.js',
     // // 'mainframe/js/jquery-ui-1.10.3.min.js',
@@ -51,8 +51,8 @@ $script_paths = [
 ];
 ?>
 
-@foreach($script_paths as $script_path)
-    <script type="text/javascript" src="{{asset($script_path)}}"></script>
+@foreach($scriptPaths as $path)
+    <script type="text/javascript" src="{{asset($path)}}"></script>
 @endforeach
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -61,3 +61,9 @@ $script_paths = [
 <script src="{{asset('mainframe/js/html5shiv.min.js')}}"></script>
 <script src="{{asset('mainframe/js/respond.min.js')}}"></script>
 <![endif]-->
+
+<script>
+    @if(env('APP_ENV')!='production')
+        Vue.config.devtools = true;
+    @endif
+</script>
