@@ -4,6 +4,7 @@
 namespace App\Projects\MyProject\Modules\Users;
 
 use App\Mainframe\Modules\Countries\Country;
+use App\Mainframe\Modules\Users\User as MfUser;
 use App\Projects\MyProject\Notifications\Auth\ResetPassword;
 use App\Projects\MyProject\Notifications\Auth\VerifyEmail;
 
@@ -73,7 +74,7 @@ use App\Projects\MyProject\Notifications\Auth\VerifyEmail;
  * @property-read \App\User|null $updater
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Uploads\Upload[] $uploads
  * @property-read int|null $uploads_count
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User active()
+ * @method static \Illuminate\Database\Eloquent\Builder|MfUser active()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Users\User newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Users\User newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Users\User query()
@@ -131,11 +132,9 @@ use App\Projects\MyProject\Notifications\Auth\VerifyEmail;
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Changes\Change[] $changes
  * @property-read int|null $changes_count
  */
-class User extends \App\Mainframe\Modules\Users\User
+class User extends MfUser
 {
-
     use UserHelper;
-
     /*
     |--------------------------------------------------------------------------
     | Fillable attributes

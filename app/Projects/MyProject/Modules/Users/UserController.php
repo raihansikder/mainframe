@@ -1,33 +1,28 @@
-<?php 
+<?php
 
 namespace App\Projects\MyProject\Modules\Users;
 
-use App\Projects\MyProject\Features\Report\ModuleReportBuilder;
+use App\Projects\MyProject\Features\Modular\ModularController\ModularController;
+use Hash;
+use Validator;
 
-class UserController extends \App\Mainframe\Modules\Users\UserController
+class UserController extends ModularController
 {
+    /*
+    |--------------------------------------------------------------------------
+    | Module definitions
+    |--------------------------------------------------------------------------
+    |
+    */
+    protected $moduleName = 'users';
 
-    /**
-     * Resolve the view blade for the module form
-     *
-     * @param string $state
-     * @return string
-     */
-    public function form($state = 'create')
-    {
-        /** @var \App\User $user */
-        $user = $this->element;
-
-        // if ($user->->ofVendor()) {
-        //     return $this->module->view_directory.'.form.vendor';
-        // }
-        //
-
-
-        return $this->module->view_directory.'.form.default';
-
-    }
-
+    /*
+    |--------------------------------------------------------------------------
+    | Existing Controller functions
+    |--------------------------------------------------------------------------
+    | Override the following list of functions to customize the behavior of the controller
+    |
+    */
     /**
      * @return UserDatatable
      */
@@ -37,13 +32,44 @@ class UserController extends \App\Mainframe\Modules\Users\UserController
     }
 
     /**
-     * Returns a collection of objects as Json for an API call
+     * Prepare the model, First transform the input and then fill
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return mixed|\App\Mainframe\Features\Modular\BaseModule\BaseModule
      */
-    public function listJson()
+    public function fill()
     {
-        return (new UserList($this->module))->json();
+        $inputs = request()->except('password');
+
+        if (request('password')) {
+            $inputs['password'] = Hash::make(request('password'));
+        }
+
+        return $this->element->fill($inputs);
+    }
+
+    /**
+     * @return \Illuminate\Validation\Validator
+     */
+    public function storeRequestValidator()
+    {
+        $rules = ['password' => User::PASSWORD_VALIDATION_RULE,];
+        $message = ['password.regex' => 'The password field should be mix of letters and numbers.',];
+
+        $this->validator = Validator::make(request()->all(), $rules, $message);
+
+        return $this->validator;
+    }
+
+    /**
+     * @return \Illuminate\Validation\Validator
+     */
+    public function updateRequestValidator()
+    {
+        if (request('password')) {
+            return $this->storeRequestValidator();
+        }
+
+        return $this->validator();
     }
 
     /**
@@ -51,13 +77,25 @@ class UserController extends \App\Mainframe\Modules\Users\UserController
      *
      * @return bool|\Illuminate\Contracts\View\Factory|\Illuminate\Http\JsonResponse|\Illuminate\Support\Collection|\Illuminate\View\View|mixed
      */
-    public function report()
-    {
-        if (! user()->can('view-report', $this->model)) {
-            return $this->permissionDenied();
-        }
+    // public function report() { }
+    // public function transformInputRequests() { }
+    // public function storeRequestValidator() { }
+    // public function updateRequestValidator() { }
+    // public function saveRequestValidator() { }
+    // public function attemptStore() { }
+    // public function attemptUpdate() { }
+    // public function attemptDestroy() { }
+    // public function stored() { }
+    // public function updated() { }
+    // public function saved() { }
+    // public function deleted() { }
 
-        return (new \App\Projects\MyProject\Features\Report\ModuleReportBuilder($this->module))->output();
-    }
+    /*
+    |--------------------------------------------------------------------------
+    | Custom Controller functions
+    |--------------------------------------------------------------------------
+    | Write down additional controller functions that might be required for your project to handle bu
+    |
+    */
 
 }
