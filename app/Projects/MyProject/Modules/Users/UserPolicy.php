@@ -2,11 +2,11 @@
 
 /** @noinspection PhpInconsistentReturnPointsInspection */
 
-/** @noinspection PhpUnused */
-
 namespace App\Projects\MyProject\Modules\Users;
 
-class UserPolicy extends \App\Mainframe\Modules\Users\UserPolicy
+use App\Projects\MyProject\Features\Modular\BaseModule\BaseModulePolicy;
+
+class UserPolicy extends BaseModulePolicy
 {
     /**
      * Determine whether the user can view any user.
@@ -32,7 +32,7 @@ class UserPolicy extends \App\Mainframe\Modules\Users\UserPolicy
      */
     public function view($user, $element)
     {
-        if (! $user->hasPermission($this->moduleName.'-view')) {
+        if (! parent::view($user, $element)) {
             return false;
         }
 
@@ -49,9 +49,10 @@ class UserPolicy extends \App\Mainframe\Modules\Users\UserPolicy
     public function create($user, $element = null)
     {
 
-        if (! $user->hasPermission($this->moduleName.'-create')) {
+        if (! parent::create($user, $element)) {
             return false;
         }
+
         //if user is a reseller user he does not have create permission
         // if ($user->isA('reseller-user')) {
         //     return false;

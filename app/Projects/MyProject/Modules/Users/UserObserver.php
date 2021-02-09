@@ -2,7 +2,9 @@
 
 namespace App\Projects\MyProject\Modules\Users;
 
-class UserObserver extends \App\Mainframe\Modules\Users\UserObserver
+use App\Projects\MyProject\Features\Modular\BaseModule\BaseModuleObserver;
+
+class UserObserver extends BaseModuleObserver
 {
 
 }

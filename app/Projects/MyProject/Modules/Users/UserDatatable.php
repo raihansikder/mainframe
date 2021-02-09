@@ -6,10 +6,10 @@
 namespace App\Projects\MyProject\Modules\Users;
 
 use App\Group;
-use App\Mainframe\Modules\Users\UserDatatable as MfUserDatatable;
+use App\Projects\MyProject\Features\Datatable\ModuleDatatable;
 use Schema;
 
-class UserDatatable extends MfUserDatatable
+class UserDatatable extends ModuleDatatable
 {
 
     /**

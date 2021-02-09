@@ -2,7 +2,7 @@
 
 namespace App\Projects\MyProject\Modules\Users;
 
-use App\Mainframe\Features\Report\ModuleReportBuilder;
+use App\Projects\MyProject\Features\Report\ModuleReportBuilder;
 
 class UserList extends ModuleReportBuilder
 {
