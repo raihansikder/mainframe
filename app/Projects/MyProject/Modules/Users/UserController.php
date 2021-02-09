@@ -2,17 +2,14 @@
 
 namespace App\Projects\MyProject\Modules\Users;
 
-use App\Projects\MyProject\Features\Modular\ModularController\ModularController;
-use Hash;
-use Validator;
+use App\Projects\MyProject\Features\Report\ModuleReportBuilder;
 
-class UserController extends ModularController
+class UserController extends \App\Mainframe\Modules\Users\UserController
 {
     /*
     |--------------------------------------------------------------------------
     | Module definitions
     |--------------------------------------------------------------------------
-    |
     */
     protected $moduleName = 'users';
 
@@ -32,44 +29,37 @@ class UserController extends ModularController
     }
 
     /**
-     * Prepare the model, First transform the input and then fill
+     * Show and render report
      *
-     * @return mixed|\App\Mainframe\Features\Modular\BaseModule\BaseModule
+     * @return bool|\Illuminate\Contracts\View\Factory|\Illuminate\Http\JsonResponse|\Illuminate\Support\Collection|\Illuminate\View\View|mixed
      */
-    public function fill()
+    public function report()
     {
-        $inputs = request()->except('password');
-
-        if (request('password')) {
-            $inputs['password'] = Hash::make(request('password'));
+        if (! user()->can('view-report', $this->model)) {
+            return $this->permissionDenied();
         }
 
-        return $this->element->fill($inputs);
+        return (new ModuleReportBuilder($this->module))->output();
     }
 
     /**
-     * @return \Illuminate\Validation\Validator
+     * Returns a collection of objects as Json for an API call
+     *
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function storeRequestValidator()
+    public function listJson()
     {
-        $rules = ['password' => User::PASSWORD_VALIDATION_RULE,];
-        $message = ['password.regex' => 'The password field should be mix of letters and numbers.',];
-
-        $this->validator = Validator::make(request()->all(), $rules, $message);
-
-        return $this->validator;
+        return (new UserList($this->module))->json();
     }
 
     /**
-     * @return \Illuminate\Validation\Validator
+     * Get the view processor instance
+     *
+     * @return mixed|null
      */
-    public function updateRequestValidator()
+    public function viewProcessor()
     {
-        if (request('password')) {
-            return $this->storeRequestValidator();
-        }
-
-        return $this->validator();
+        return new UserViewProcessor();
     }
 
     /**
