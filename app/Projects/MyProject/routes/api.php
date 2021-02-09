@@ -23,9 +23,6 @@ Route::prefix('1.0')->middleware(['request.json', 'x-auth-token'])->group(functi
     Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
     Route::post('logout', 'Auth\LoginController@logout');
 
-    // Settings
-    Route::get('setting/{name}', 'Api\ApiController@getSetting');
-
     // Module RESTful apis
     Route::prefix('')->group(function () use ($modules) {
         foreach ($modules as $module) {
@@ -53,6 +50,9 @@ Route::prefix('1.0')->middleware(['request.json', 'x-auth-token'])->group(functi
         }
     });
 
+    // Settings
+    Route::get('setting/{name}', 'Api\ApiController@getSetting');
+
     # APIs that must have bearer token
     Route::middleware(['bearer-token'])->group(function () {
 
@@ -61,7 +61,9 @@ Route::prefix('1.0')->middleware(['request.json', 'x-auth-token'])->group(functi
             // Profile
             Route::get('/', 'Api\UserApiController@showUser');
             Route::patch('/', 'Api\UserApiController@updateUser');
+            Route::get('profile', 'Api\UserApiController@profile');
             Route::post('profile-pic/store', 'Api\UserApiController@profilePicStore');
+            Route::delete('profile-pic/delete', 'Api\UserApiController@profilePicDestroy');
         });
     });
 

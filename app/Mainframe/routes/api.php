@@ -22,17 +22,6 @@ Route::prefix('core/1.0')->middleware(['request.json', 'x-auth-token'])->group(f
     Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
     Route::post('logout', 'Auth\LoginController@logout');
 
-    // User apis that are called with bearer token.
-    Route::prefix('user')->middleware(['bearer-token'])->group(function () {
-        Route::patch('/', 'Api\UserApiController@update');
-        Route::get('profile', 'Api\UserApiController@profile');
-        Route::post('profile-pic/store', 'Api\UserApiController@profilePicStore');
-        Route::delete('profile-pic/delete', 'Api\UserApiController@profilePicDestroy');
-    });
-
-    // Settings
-    Route::get('setting/{name}', 'Api\ApiController@getSetting');
-
     // Module RESTful apis
     Route::prefix('module')->group(function () use ($modules) {
         foreach ($modules as $module) {
@@ -60,6 +49,9 @@ Route::prefix('core/1.0')->middleware(['request.json', 'x-auth-token'])->group(f
         }
     });
 
+    // Settings
+    Route::get('setting/{name}', 'Api\ApiController@getSetting');
+
     # APIs that must have bearer token
     Route::middleware(['bearer-token'])->group(function () {
 
@@ -68,7 +60,9 @@ Route::prefix('core/1.0')->middleware(['request.json', 'x-auth-token'])->group(f
             // Profile
             Route::get('/', 'Api\UserApiController@showUser');
             Route::patch('/', 'Api\UserApiController@updateUser');
+            Route::get('profile', 'Api\UserApiController@profile');
             Route::post('profile-pic/store', 'Api\UserApiController@profilePicStore');
+            Route::delete('profile-pic/delete', 'Api\UserApiController@profilePicDestroy');
         });
     });
 });
