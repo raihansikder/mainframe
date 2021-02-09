@@ -21,6 +21,7 @@ class BaseModulePolicy extends MfBaseModulePolicy
         if (parent::before($user, $ability)) {
             return true;
         }
+        // Do not return false.
     }
 
     /**
