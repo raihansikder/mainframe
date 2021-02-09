@@ -9,6 +9,7 @@
  * @var string $uuid Only available for create
  * @var bool $editable
  * @var \App\Mainframe\Modules\Modules\Module $module
+ * @var \App\Projects\MyProject\Modules\Users\UserViewProcessor $view
  */
 ?>
 
@@ -130,6 +131,7 @@
             }
             return randomString;
         }
+
         $("#api_token_generate").click(function (e) {
             event.preventDefault(e);
             $("input[name=api_token]").val(randomString(64));
