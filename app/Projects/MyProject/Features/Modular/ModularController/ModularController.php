@@ -41,6 +41,7 @@ class ModularController extends MfModularController
     {
         $classPaths = [
             $this->module->modelClassPath().'ViewProcessor', // Check in App\Mainframe\Modules
+            'App\Projects\MyProject\Modules\\'.$this->module->modelClassNamePlural().'\\'.$this->module->modelClassName().'ViewProcessor',
             'App\Projects\MyProject\Features\Modular\BaseModule\BaseModuleViewProcessor',
         ];
 
