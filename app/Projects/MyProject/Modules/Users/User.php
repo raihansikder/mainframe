@@ -1,5 +1,4 @@
 <?php
-/** @noinspection SenselessMethodDuplicationInspection */
 
 namespace App\Projects\MyProject\Modules\Users;
 
@@ -135,12 +134,13 @@ use App\Projects\MyProject\Notifications\Auth\VerifyEmail;
 class User extends MfUser
 {
     use UserHelper;
+
+    protected $moduleName = 'users';
+    protected $table      = 'users';
     /*
     |--------------------------------------------------------------------------
-    | Fillable attributes
+    | Properties
     |--------------------------------------------------------------------------
-    |
-    | These attributes can be mass assigned
     */
     protected $fillable = [
         'uuid',
@@ -181,27 +181,38 @@ class User extends MfUser
         'is_test',
     ];
 
-    /**
-     * The accessors to append to the model's array form.
-     *
-     * @var array
-     */
+    // protected $guarded = [];
+    // protected $dates = ['created_at', 'updated_at', 'deleted_at'];
+    // protected $casts = [];
+    // protected $with = [];
     protected $appends = ['type', 'profile_pic'];
+
+    /*
+    |--------------------------------------------------------------------------
+    | Options
+    |--------------------------------------------------------------------------
+    */
+    // public static $types = [];
 
     /*
     |--------------------------------------------------------------------------
     | Boot method and model events.
     |--------------------------------------------------------------------------
-    |
-    | Register the observer in the boot method. You can also make use of
-    | model events like saving, creating, updating etc to further
-    | manipulate the model
     */
 
     public static function boot()
     {
         parent::boot();
         self::observe(UserObserver::class);
+
+        // static::saving(function (User $element) { });
+        // static::creating(function (User $element) { });
+        // static::updating(function (User $element) { });
+        // static::created(function (User $element) { });
+        // static::updated(function (User $element) { });
+        // static::saved(function (User $element) { });
+        // static::deleting(function (User $element) { });
+        // static::deleted(function (User $element) { });
     }
 
     /**
@@ -211,7 +222,9 @@ class User extends MfUser
      */
     public function sendPasswordResetNotification($token)
     {
+        // Project specific class
         $this->notifyNow(new ResetPassword($token));
+
     }
 
     /**
@@ -219,18 +232,35 @@ class User extends MfUser
      */
     public function sendEmailVerificationNotification()
     {
+        // Project specific class
         $this->notifyNow(new VerifyEmail());
     }
+    /*
+    |--------------------------------------------------------------------------
+    | Query scopes + Dynamic scopes
+    |--------------------------------------------------------------------------
+    */
+
+    /*
+    |--------------------------------------------------------------------------
+    | Accessors
+    |--------------------------------------------------------------------------
+    */
+    // public function getFirstNameAttribute($value) { return ucfirst($value); }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Mutators
+    |--------------------------------------------------------------------------
+    */
+    // public function setFirstNameAttribute($value) { $this->attributes['first_name'] = strtolower($value); }
 
     /*
     |--------------------------------------------------------------------------
     | Attributes
     |--------------------------------------------------------------------------
-    |
-    | If you want to add extra fields(that doesn't exist in database) to you model
-    | you can use the getSomeAttribute() feature of eloquent.
     */
-
+    // public function getUrlAttribute(){return asset($this->path); }
     /**
      * User type attribute
      *
@@ -239,7 +269,7 @@ class User extends MfUser
     public function getTypeAttribute()
     {
 
-        if ($this->isA('mph-admin')) {
+        if ($this->isA('admin')) {
             return 'admin';
         }
 
@@ -250,10 +280,7 @@ class User extends MfUser
     |--------------------------------------------------------------------------
     | Relations
     |--------------------------------------------------------------------------
-    |
-    | Write model relations (belongsTo,hasMany etc) at the bottom the file
     */
-
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
