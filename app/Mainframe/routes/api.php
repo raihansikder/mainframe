@@ -37,7 +37,7 @@ Route::prefix('core/1.0')->middleware(['request.json', 'x-auth-token'])->group(f
     Route::prefix('module')->group(function () use ($modules) {
         foreach ($modules as $module) {
 
-            $path       = $module->route_path;
+            $path = $module->route_path;
             $controller = $module->controller;
             $moduleName = $module->name;
 
@@ -51,12 +51,24 @@ Route::prefix('core/1.0')->middleware(['request.json', 'x-auth-token'])->group(f
             Route::post($path.'/{id}/comments', $controller.'@attachComments');
 
             Route::apiResource($path, $controller)->names([
-                'index'   => "core.api.{$moduleName}.index",
-                'store'   => "core.api.{$moduleName}.store",
-                'show'    => "core.api.{$moduleName}.show",
-                'update'  => "core.api.{$moduleName}.update",
+                'index' => "core.api.{$moduleName}.index",
+                'store' => "core.api.{$moduleName}.store",
+                'show' => "core.api.{$moduleName}.show",
+                'update' => "core.api.{$moduleName}.update",
                 'destroy' => "core.api.{$moduleName}.destroy",
             ]);
         }
+    });
+
+    # APIs that must have bearer token
+    Route::middleware(['bearer-token'])->group(function () {
+
+        # Path root/api/1.0/user
+        Route::prefix('user')->group(function () {
+            // Profile
+            Route::get('/', 'Api\UserApiController@showUser');
+            Route::patch('/', 'Api\UserApiController@updateUser');
+            Route::post('profile-pic/store', 'Api\UserApiController@profilePicStore');
+        });
     });
 });

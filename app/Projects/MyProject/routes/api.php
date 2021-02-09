@@ -27,26 +27,28 @@ Route::prefix('1.0')->middleware(['request.json', 'x-auth-token'])->group(functi
     Route::get('setting/{name}', 'Api\ApiController@getSetting');
 
     // Module RESTful apis
-    // set a prefix if you want for all the generic module routes.
     Route::prefix('')->group(function () use ($modules) {
-
-        # Path root/api/1.0/module
         foreach ($modules as $module) {
-            Route::get($module->route_path."/list/json", $module->controller."@listJson");
-            Route::get($module->route_path."/report", $module->controller."@report");
 
-            Route::get($module->route_path."/{id}/uploads", $module->controller."@uploads");
-            Route::post($module->route_path."/{id}/uploads", $module->controller."@attachUpload");
+            $path = $module->route_path;
+            $controller = $module->controller;
+            $moduleName = $module->name;
 
-            Route::get($module->route_path."/{id}/comments", $module->controller."@comments");
-            Route::post($module->route_path."/{id}/comments", $module->controller."@storeComments");
+            Route::get($path.'/list/json', $controller.'@listJson');
+            Route::get($path.'/report', $controller.'@report');
 
-            Route::apiResource($module->name, $module->controller)->names([
-                'index'   => "api.{$module->name}.index",
-                'store'   => "api.{$module->name}.store",
-                'show'    => "api.{$module->name}.show",
-                'update'  => "api.{$module->name}.update",
-                'destroy' => "api.{$module->name}.destroy",
+            Route::get($path.'/{id}/uploads', $controller.'@uploads');
+            Route::post($path.'/{id}/uploads', $controller.'@attachUpload');
+
+            Route::get($path.'/{id}/comments', $controller.'@comments');
+            Route::post($path.'/{id}/comments', $controller.'@attachComments');
+
+            Route::apiResource($path, $controller)->names([
+                'index' => "api.{$moduleName}.index",
+                'store' => "api.{$moduleName}.store",
+                'show' => "api.{$moduleName}.show",
+                'update' => "api.{$moduleName}.update",
+                'destroy' => "api.{$moduleName}.destroy",
             ]);
         }
     });

@@ -99,7 +99,7 @@ class RegisterApiTest extends ApiTestCase
     {
 
         $faker = Factory::create();
-        $groupId = Group::byName('test-group')->id;
+        $groupId = Group::byName('user')->id;
         $firstName = 'pu-'.$faker->firstName;
 
         $this->response->post('api/core/1.0/register/test-group',
