@@ -98,7 +98,8 @@ class ModuleRestFeatureTest extends SuperadminTestCase
     {
         $this->get('/'.$this->module->route_path.'/create')
             ->assertStatus(200)
-            ->assertSee('Lorem ipsum'); // A test name
+            ->assertSee('Lorem ipsum')
+        ; // A test name
     }
 
     /**

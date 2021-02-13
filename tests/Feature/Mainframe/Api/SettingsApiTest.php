@@ -11,7 +11,7 @@ class SettingsApiTest extends ApiTestCase
     public function testGetSetting()
     {
 
-        $this->response->get('api/core/1.0/setting/app-name')
+        $this->response->get('api/1.0/setting/app-name')
             ->assertStatus(200)
             ->assertJson([
                 'code' => 200,

@@ -24,7 +24,7 @@ class ReportBuilder extends BaseController
     | Or, this can be a model name.
     |
     */
-    /** @var  \Illuminate\Database\Query\Builder|string|\Illuminate\Database\Eloquent\Model DB Table/View names */
+    /** @var  \Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Model DB Table/View names */
     public $dataSource;
 
     /*
@@ -128,6 +128,7 @@ class ReportBuilder extends BaseController
         $this->dataSource = $dataSource ?: $this->dataSource;
         $this->path = $path ?: $this->path;
         $this->cache = $cache ?: $this->cache;
+
         $this->user = user();
     }
 

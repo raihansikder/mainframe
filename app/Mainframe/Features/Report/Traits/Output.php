@@ -2,6 +2,7 @@
 
 namespace App\Mainframe\Features\Report\Traits;
 
+use App\Mainframe\Features\Report\ReportViewProcessor;
 use View;
 use PhpOffice\PhpSpreadsheet\Writer\Csv;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
@@ -91,7 +92,7 @@ trait Output
      */
     public function jsonPayload()
     {
-        $result          = $this->mutateResult()->toArray();
+        $result = $this->mutateResult()->toArray();
         $result['items'] = $result['data'];
         unset($result['data']);
 
@@ -110,14 +111,14 @@ trait Output
     /**
      * Download excel
      *
-     * @param  bool $csv
+     * @param  bool  $csv
      * @return bool|void
      */
     public function excel($csv = false)
     {
         $selectedColumns = $this->mutateSelectedColumns();
-        $aliasColumns    = $this->mutateAliasColumns();
-        $result          = $this->mutateResult();
+        $aliasColumns = $this->mutateAliasColumns();
+        $result = $this->mutateResult();
 
         try {
             /** @noinspection PhpVoidFunctionResultUsedInspection */
@@ -142,7 +143,7 @@ trait Output
     /**
      * Output as HTML
      *
-     * @param  null $type
+     * @param  null  $type
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function html($type = null)
@@ -162,15 +163,13 @@ trait Output
             ]);
         }
 
+        $this->view = $this->viewProcessor();
+        $vars['view'] = $this->view;
+
         $path = $this->resultViewPath();
         if ($type == 'print') {
             $path = $this->resultPrintPath();
         }
-
-        // $this->validator = \Validator::make([], []);
-        // $this->validator()->messages()->add('test', 'test');
-
-        // $this->response()->validator = $this->validator;
 
         return $this->view($path)->with($vars);
     }
@@ -179,7 +178,7 @@ trait Output
      * @param $selectedColumns
      * @param $aliasColumns
      * @param $result
-     * @param  bool $csv
+     * @param  bool  $csv
      * @throws \PhpOffice\PhpSpreadsheet\Exception
      * @throws \PhpOffice\PhpSpreadsheet\Writer\Exception
      */
@@ -191,7 +190,7 @@ trait Output
 
         $spreadsheet = new Spreadsheet();
 
-        $sheet  = $spreadsheet->getActiveSheet();
+        $sheet = $spreadsheet->getActiveSheet();
         $ranges = $this->excelColumnRange(count($selectedColumns));
 
         /**
@@ -271,6 +270,7 @@ trait Output
      * Function changes result, show_column, aliasColumns for the final output
      *
      * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator|\Illuminate\Support\Collection
+     * @noinspection PhpUnnecessaryLocalVariableInspection
      */
     public function mutateResult()
     {
@@ -280,5 +280,16 @@ trait Output
         // }
 
         return $result;
+    }
+
+    /**
+     * @return \App\Mainframe\Features\Report\ReportViewProcessor
+     * @noinspection PhpUnnecessaryLocalVariableInspection
+     */
+    public function viewProcessor()
+    {
+        $view = new ReportViewProcessor($this);
+
+        return $view;
     }
 }

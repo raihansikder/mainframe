@@ -3,6 +3,7 @@
 namespace App\Mainframe\Features\Core;
 
 use App\Mainframe\Features\Modular\BaseModule\BaseModuleViewProcessor;
+use App\Mainframe\Modules\Modules\Module;
 use Illuminate\Support\Str;
 
 class ViewProcessor
@@ -23,6 +24,21 @@ class ViewProcessor
      * @var string
      */
     public $type;
+
+    /** @var Module */
+    public $module;
+
+    /** @var \Illuminate\Database\Eloquent\Builder */
+    public $model;
+
+    /** @var \App\Mainframe\Features\Modular\BaseModule\BaseModule */
+    public $element;
+
+    /** @var bool */
+    public $editable;
+
+    /** @var array */
+    public $immutables = [];
 
     /**
      * MainframeBaseController constructor.
@@ -71,6 +87,72 @@ class ViewProcessor
     }
 
     /**
+     * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule  $element
+     * @return \App\Mainframe\Features\Core\ViewProcessor
+     */
+    public function setElement($element)
+    {
+        $this->element = $element;
+
+        return $this;
+    }
+
+    /**
+     * @param  \App\Mainframe\Modules\Modules\Module  $module
+     * @return \App\Mainframe\Features\Core\ViewProcessor
+     */
+    public function setModule($module)
+    {
+        $this->module = $module;
+
+        return $this;
+    }
+
+    /**
+     * @param  \Illuminate\Database\Eloquent\Builder  $model
+     * @return \App\Mainframe\Features\Core\ViewProcessor
+     */
+    public function setModel($model)
+    {
+        $this->model = $model;
+
+        return $this;
+    }
+
+    /**
+     * @param $editable
+     * @return $this
+     */
+    public function setEditable($editable)
+    {
+        $this->editable = $editable;
+
+        return $this;
+    }
+
+    /**
+     * @param $immutables
+     * @return $this
+     */
+    public function setImmutable($immutables)
+    {
+        $this->immutables = $immutables;
+
+        return $this;
+    }
+
+    /**
+     * @param $immutables
+     * @return $this
+     */
+    public function addImmutables($immutables)
+    {
+        $this->immutables = array_merge($this->immutables, $immutables);
+
+        return $this;
+    }
+
+    /**
      * Check if a function exists with same signature and return the result
      *
      * @param $signature
@@ -85,4 +167,6 @@ class ViewProcessor
 
         return false;
     }
+
+
 }

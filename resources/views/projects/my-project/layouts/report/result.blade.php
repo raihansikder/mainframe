@@ -1,10 +1,11 @@
 @extends('projects.my-project.layouts.report.template')
 <?php
 /**
- * @var $dataSource  string Table/DB view name (i.e. v_users, users)
- * @var $result      \Illuminate\Pagination\LengthAwarePaginator
- * @var $total        integer Total number of rows returned
- * @var $path     string
+ * @var \Illuminate\Database\Query\Builder $dataSource
+ * @var \Illuminate\Pagination\LengthAwarePaginator $result
+ * @var int $total Total number of rows returned
+ * @var string $path
+ * @var \App\Projects\MyProject\Features\Report\ReportViewProcessor $view
  */
 ?>
 
@@ -42,7 +43,7 @@
                             @foreach ($selectedColumns as $col)
                                 <td>
                                     @if(isset($row->$col))
-                                        {!! transformRow($col, $row, $row->$col, $module->name ) !!}
+                                        {!! $view->transformRow($col, $row, $row->$col, $module->name ) !!}
                                     @endif
                                 </td>
                             @endforeach

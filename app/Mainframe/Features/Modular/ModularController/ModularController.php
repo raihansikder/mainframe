@@ -48,13 +48,6 @@ class ModularController extends BaseController
     protected $processor;
 
     /**
-     * View processor where view logic are written
-     *
-     * @var \App\Mainframe\Features\Modular\BaseModule\BaseModuleViewProcessor
-     */
-    protected $view;
-
-    /**
      * ModularController constructor.
      */
     public function __construct()
@@ -103,6 +96,7 @@ class ModularController extends BaseController
      *
      * @param $id
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
+     * @urlParam  id required The ID of the item.
      */
     public function show($id)
     {
@@ -189,7 +183,6 @@ class ModularController extends BaseController
         // } catch (\Exception $e) {
         //     $this->response()->validator->errors()->add('Error', $e->getMessage());
         // }
-
 
         return $this->load($this->element->toArray())->send();
     }

@@ -28,10 +28,33 @@ class BaseController extends Controller
     {
         $this->user = user();
         $this->view = new ViewProcessor();
+
         View::share([
             'user' => $this->user,
             'view' => $this->view,
         ]);
+    }
+
+    /**
+     * @param  \App\User|null  $user
+     * @return BaseController
+     */
+    public function setUser(?\App\User $user)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModuleViewProcessor  $view
+     * @return BaseController
+     */
+    public function setView($view)
+    {
+        $this->view = $view;
+
+        return $this;
     }
 
 }

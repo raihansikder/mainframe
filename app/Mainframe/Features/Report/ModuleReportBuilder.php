@@ -22,7 +22,7 @@ class ModuleReportBuilder extends ReportBuilder
     /**
      * Query select table
      *
-     * @return \Illuminate\Database\Query\Builder||\Illuminate\Database\Eloquent\Builder
+     * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Query\Builder
      */
     public function queryDataSource()
     {

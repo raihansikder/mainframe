@@ -7,17 +7,17 @@
  * @param string $module_name
  * @return string
  */
-function transformRow($column, $row, $value, $module_name = null)
-{
-    //linked to facility details page
-    $new_value = $value;
-    if (in_array($column, ['id', 'name'])) {
-        if (isset($row->id) && $module_name) {
-            $new_value = "<a href='".route($module_name.'.edit', $row->id)."'>".$value."</a>";
-        }
-    }
-
-    return $new_value;
-}
+// function transformRow($column, $row, $value, $module_name = null)
+// {
+//     //linked to facility details page
+//     $new_value = $value;
+//     if (in_array($column, ['id', 'name'])) {
+//         if (isset($row->id) && $module_name) {
+//             $new_value = "<a href='".route($module_name.'.edit', $row->id)."'>".$value."</a>";
+//         }
+//     }
+//
+//     return $new_value;
+// }
 
 ?>

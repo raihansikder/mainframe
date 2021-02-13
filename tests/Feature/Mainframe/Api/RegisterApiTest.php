@@ -13,12 +13,11 @@ class RegisterApiTest extends ApiTestCase
      */
     public function testRegister()
     {
-
         $faker = Factory::create();
         $groupId = Group::byName('user')->id;
         $firstName = 'pu-'.$faker->firstName;
 
-        $this->response->post('api/core/1.0/register',
+        $this->response->post('api/1.0/register',
             [
                 'first_name' => $firstName,
                 'last_name' => $faker->lastName,
@@ -60,7 +59,7 @@ class RegisterApiTest extends ApiTestCase
         $groupId = Group::byName('user')->id;
         $firstName = 'pu-'.$faker->firstName;
 
-        $this->response->post('api/core/1.0/register/user',
+        $this->response->post('api/1.0/register/user',
             [
                 'first_name' => $firstName,
                 'last_name' => $faker->lastName,
@@ -102,7 +101,7 @@ class RegisterApiTest extends ApiTestCase
         $groupId = Group::byName('user')->id;
         $firstName = 'pu-'.$faker->firstName;
 
-        $this->response->post('api/core/1.0/register/test-group',
+        $this->response->post('api/1.0/register/test-group',
             [
                 'first_name' => $firstName,
                 'last_name' => $faker->lastName,

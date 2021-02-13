@@ -3,40 +3,10 @@
 namespace App\Mainframe\Features\Modular\BaseModule;
 
 use App\Mainframe\Features\Core\ViewProcessor;
-use App\Mainframe\Modules\Modules\Module;
 use Illuminate\Support\Str;
 
 class BaseModuleViewProcessor extends ViewProcessor
 {
-
-    /** @var Module */
-    public $module;
-
-    /** @var \Illuminate\Database\Eloquent\Builder */
-    public $model;
-
-    /** @var \App\Mainframe\Features\Modular\BaseModule\BaseModule */
-    public $element;
-
-    /** @var bool */
-    public $editable;
-
-    /** @var array */
-    public $immutables = [];
-
-    /**
-     * Variables shared in view blade
-     *
-     * @var array
-     */
-    public $vars = [];
-
-    /**
-     * Type of view create, edit, index
-     *
-     * @var string
-     */
-    public $type;
 
     /**
      * BaseModuleViewProcessor constructor.
@@ -62,71 +32,6 @@ class BaseModuleViewProcessor extends ViewProcessor
 
     }
 
-    /**
-     * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule  $element
-     * @return BaseModuleViewProcessor
-     */
-    public function setElement($element)
-    {
-        $this->element = $element;
-
-        return $this;
-    }
-
-    /**
-     * @param  \App\Mainframe\Modules\Modules\Module  $module
-     * @return BaseModuleViewProcessor
-     */
-    public function setModule($module)
-    {
-        $this->module = $module;
-
-        return $this;
-    }
-
-    /**
-     * @param  \Illuminate\Database\Eloquent\Builder  $model
-     * @return BaseModuleViewProcessor
-     */
-    public function setModel($model)
-    {
-        $this->model = $model;
-
-        return $this;
-    }
-
-    /**
-     * @param $editable
-     * @return $this
-     */
-    public function setEditable($editable)
-    {
-        $this->editable = $editable;
-
-        return $this;
-    }
-
-    /**
-     * @param $immutables
-     * @return $this
-     */
-    public function setImmutable($immutables)
-    {
-        $this->immutables = $immutables;
-
-        return $this;
-    }
-
-    /**
-     * @param $immutables
-     * @return $this
-     */
-    public function addImmutables($immutables)
-    {
-        $this->immutables = array_merge($this->immutables, $immutables);
-
-        return $this;
-    }
 
     /*
     |--------------------------------------------------------------------------
