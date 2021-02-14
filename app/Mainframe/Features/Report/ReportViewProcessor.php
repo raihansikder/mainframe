@@ -8,7 +8,7 @@ class ReportViewProcessor extends ViewProcessor
 {
 
     /** @var \App\Mainframe\Features\Report\ReportBuilder */
-    public $reportBuilder;
+    public $report;
 
     /** @var  string Directory location of the report blade templates */
     public $path;
@@ -39,7 +39,7 @@ class ReportViewProcessor extends ViewProcessor
     public function __construct($reportBuilder)
     {
         parent::__construct();
-        $this->reportBuilder = $reportBuilder;
+        $this->report = $reportBuilder;
 
     }
 
@@ -121,12 +121,12 @@ class ReportViewProcessor extends ViewProcessor
     }
 
     /**
-     * @param  \App\Mainframe\Features\Report\ReportBuilder  $reportBuilder
+     * @param  \App\Mainframe\Features\Report\ReportBuilder  $report
      * @return ReportViewProcessor
      */
-    public function setReportBuilder($reportBuilder)
+    public function setReport($report)
     {
-        $this->reportBuilder = $reportBuilder;
+        $this->report = $report;
 
         return $this;
     }

@@ -26,8 +26,8 @@ trait Query
         $query = $this->filter($query);
 
         // Inject tenant context.
-        if($this->user->ofTenant() && $this->hasTenantContext()){
-            $query->where('tenant_id',$this->user->tenant_id);
+        if ($this->user->ofTenant() && $this->hasTenantContext()) {
+            $query->where('tenant_id', $this->user->tenant_id);
         }
 
         $query = $this->groupBy($query);
@@ -38,6 +38,7 @@ trait Query
 
     /**
      * Check if data source has tenant field
+     *
      * @return bool
      */
     public function hasTenantContext()
@@ -51,11 +52,17 @@ trait Query
     public function result()
     {
 
+        if ($this->result) {
+            return $this->result;
+        }
+
         $key = Mf::httpRequestSignature(($this->resultQuery()->toSql()));
 
-        return Cache::remember($key, $this->cache, function () {
+        $this->result = Cache::remember($key, $this->cache, function () {
             return $this->resultQuery()->paginate($this->rowsPerPage());
         });
+
+        return $this->result;
 
     }
 
@@ -303,6 +310,7 @@ trait Query
 
     /**
      * Cache key generator
+     *
      * @return string
      */
     public function signature()

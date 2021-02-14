@@ -143,17 +143,19 @@ trait Output
     /**
      * Output as HTML
      *
-     * @param  null  $type
+     * @param  null  $type  blank|print|null
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function html($type = null)
     {
+
         $vars = [
             'path'          => $this->path,
             'dataSource'    => $this->dataSource,
             'columnOptions' => $this->columnOptions(),
         ];
 
+        // Report prior to running
         if ($type !== 'blank') {
             $vars = array_merge($vars, [
                 'selectedColumns' => $this->mutateSelectedColumns(),
