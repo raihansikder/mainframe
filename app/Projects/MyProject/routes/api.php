@@ -37,8 +37,8 @@ Route::prefix('1.0')->middleware(['request.json', 'x-auth-token'])->group(functi
             Route::get($path.'/{id}/uploads', $controller.'@uploads');
             Route::post($path.'/{id}/uploads', $controller.'@attachUpload');
 
-            Route::get($path.'/{id}/comments', $controller.'@comments');
-            Route::post($path.'/{id}/comments', $controller.'@attachComments');
+            // Route::get($path.'/{id}/comments', $controller.'@comments');
+            // Route::post($path.'/{id}/comments', $controller.'@attachComments');
 
             Route::apiResource($path, $controller)->names([
                 'index' => "api.{$moduleName}.index",

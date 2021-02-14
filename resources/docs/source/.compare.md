@@ -406,13984 +406,6 @@ fetch(url, {
 
 <!-- END_c1aa27515bf03f12d5698af59e31585a -->
 
-<!-- START_7d175ac3285324499f80f1a2995159a2 -->
-## Handle a registration request for the application.
-
-> Example request:
-
-```bash
-curl -X POST \
-    "http://localhost:8081/mainframe/public/api/core/1.0/register/" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/register/"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "POST",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`POST api/core/1.0/register/{groupName?}`
-
-
-<!-- END_7d175ac3285324499f80f1a2995159a2 -->
-
-<!-- START_065c2493ed0b67d75446933c571fdedf -->
-## Handle a login request to the application.
-
-> Example request:
-
-```bash
-curl -X POST \
-    "http://localhost:8081/mainframe/public/api/core/1.0/login" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/login"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "POST",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`POST api/core/1.0/login`
-
-
-<!-- END_065c2493ed0b67d75446933c571fdedf -->
-
-<!-- START_96fc47b7e1c284029aa49a1386e305de -->
-## Send a reset link to the given user.
-
-> Example request:
-
-```bash
-curl -X POST \
-    "http://localhost:8081/mainframe/public/api/core/1.0/password/email" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/password/email"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "POST",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`POST api/core/1.0/password/email`
-
-
-<!-- END_96fc47b7e1c284029aa49a1386e305de -->
-
-<!-- START_5f3eb6242c2fe3d6316efc0525cf21e8 -->
-## Log the user out of the application.
-
-> Example request:
-
-```bash
-curl -X POST \
-    "http://localhost:8081/mainframe/public/api/core/1.0/logout" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/logout"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "POST",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`POST api/core/1.0/logout`
-
-
-<!-- END_5f3eb6242c2fe3d6316efc0525cf21e8 -->
-
-<!-- START_303a67252448cefa63a4d9fd12c44bd2 -->
-## Returns a collection of objects as Json for an API call
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/modules/list/json" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/modules/list/json"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (200):
-
-```json
-{
-    "code": 200,
-    "status": "success",
-    "message": "Request Processed",
-    "data": {
-        "current_page": 1,
-        "first_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/modules\/list\/json?page=1",
-        "from": 1,
-        "last_page": 1,
-        "last_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/modules\/list\/json?page=1",
-        "next_page_url": null,
-        "path": "http:\/\/localhost\/api\/core\/1.0\/module\/modules\/list\/json",
-        "per_page": 20,
-        "prev_page_url": null,
-        "to": 17,
-        "total": 17,
-        "items": [
-            {
-                "id": 1,
-                "uuid": "ca56b8a2-368a-4f84-8336-e9850c406e2d",
-                "name": "modules",
-                "project_id": null,
-                "tenant_id": null,
-                "title": "Module",
-                "description": "Manage modules",
-                "module_table": "modules",
-                "route_path": "modules",
-                "route_name": "modules",
-                "class_directory": "app\/Mainframe\/Modules\/Modules",
-                "namespace": "\\App\\Mainframe\\Modules\\Modules",
-                "model": "\\App\\Mainframe\\Modules\\Modules\\Module",
-                "policy": "\\App\\Mainframe\\Modules\\Modules\\ModulePolicy",
-                "processor": "\\App\\Mainframe\\Modules\\Modules\\ModuleProcessor",
-                "controller": "\\App\\Mainframe\\Modules\\Modules\\ModuleController",
-                "view_directory": "mainframe.modules.modules",
-                "parent_id": 0,
-                "module_group_id": 1,
-                "level": 0,
-                "order": 0,
-                "default_route": "modules.index",
-                "color_css": "aqua",
-                "icon_css": "fa fa-puzzle-piece",
-                "is_visible": 1,
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2018-12-10 06:47:46",
-                "updated_at": "2020-01-23 06:53:54",
-                "deleted_at": null,
-                "deleted_by": null
-            },
-            {
-                "id": 2,
-                "uuid": "0b89564c-7198-4b1b-9869-a02a0e584262",
-                "name": "module-groups",
-                "project_id": null,
-                "tenant_id": null,
-                "title": "Module group",
-                "description": "Manage module groups",
-                "module_table": "module_groups",
-                "route_path": "module-groups",
-                "route_name": "module-groups",
-                "class_directory": "app\/Mainframe\/Modules\/ModuleGroups",
-                "namespace": "\\App\\Mainframe\\Modules\\ModuleGroups",
-                "model": "\\App\\Mainframe\\Modules\\ModuleGroups\\ModuleGroup",
-                "policy": "\\App\\Mainframe\\Modules\\ModuleGroups\\ModuleGroupPolicy",
-                "processor": "\\App\\Mainframe\\Modules\\ModuleGroups\\ModuleGroupProcessor",
-                "controller": "\\App\\Mainframe\\Modules\\ModuleGroups\\ModuleGroupController",
-                "view_directory": "mainframe.modules.module-groups",
-                "parent_id": 0,
-                "module_group_id": 1,
-                "level": 0,
-                "order": 0,
-                "default_route": "moduleg-roups.index",
-                "color_css": "aqua",
-                "icon_css": "fa fa-puzzle-piece",
-                "is_visible": 1,
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2018-12-10 06:47:46",
-                "updated_at": "2020-01-23 06:53:54",
-                "deleted_at": null,
-                "deleted_by": null
-            },
-            {
-                "id": 3,
-                "uuid": "eee7b4a8-abab-4b79-a751-b681624eb586",
-                "name": "tenants",
-                "project_id": null,
-                "tenant_id": null,
-                "title": "Tenant",
-                "description": "Manage tenants",
-                "module_table": "tenants",
-                "route_path": "tenants",
-                "route_name": "tenants",
-                "class_directory": "app\/Mainframe\/Modules\/Tenants",
-                "namespace": "\\App\\Mainframe\\Modules\\Tenants",
-                "model": "\\App\\Mainframe\\Modules\\Tenants\\Tenant",
-                "policy": "\\App\\Mainframe\\Modules\\Tenants\\TenantPolicy",
-                "processor": "\\App\\Mainframe\\Modules\\Tenants\\TenantProcessor",
-                "controller": "\\App\\Mainframe\\Modules\\Tenants\\TenantController",
-                "view_directory": "mainframe.modules.tenants",
-                "parent_id": 0,
-                "module_group_id": 1,
-                "level": 0,
-                "order": 0,
-                "default_route": "tenants.index",
-                "color_css": "aqua",
-                "icon_css": "fa fa-plus",
-                "is_visible": 1,
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2018-12-10 06:47:46",
-                "updated_at": "2020-01-23 06:53:54",
-                "deleted_at": null,
-                "deleted_by": null
-            },
-            {
-                "id": 4,
-                "uuid": "8f27f918-3a05-4b04-9bd3-d953e9492293",
-                "name": "users",
-                "project_id": null,
-                "tenant_id": null,
-                "title": "User",
-                "description": "Manage users",
-                "module_table": "users",
-                "route_path": "users",
-                "route_name": "users",
-                "class_directory": "app\/Projects\/MyProject\/Modules\/Users",
-                "namespace": "\\App\\Projects\\MyProject\\Modules\\Users",
-                "model": "\\App\\User",
-                "policy": "\\App\\Projects\\MyProject\\Modules\\Users\\UserPolicy",
-                "processor": "\\App\\Projects\\MyProject\\Modules\\Users\\UserProcessor",
-                "controller": "\\App\\Projects\\MyProject\\Modules\\Users\\UserController",
-                "view_directory": "projects.my-project.modules.users",
-                "parent_id": 0,
-                "module_group_id": 0,
-                "level": 0,
-                "order": 4,
-                "default_route": "users.index",
-                "color_css": "aqua",
-                "icon_css": "fa fa-user-plus",
-                "is_visible": 1,
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2018-12-10 06:47:46",
-                "updated_at": "2020-01-23 06:53:54",
-                "deleted_at": null,
-                "deleted_by": null
-            },
-            {
-                "id": 5,
-                "uuid": "14612def-5850-49fb-bf99-48d99c73b589",
-                "name": "groups",
-                "project_id": null,
-                "tenant_id": null,
-                "title": "Group",
-                "description": "Manage groups",
-                "module_table": "groups",
-                "route_path": "groups",
-                "route_name": "groups",
-                "class_directory": "app\/Mainframe\/Modules\/Groups",
-                "namespace": "\\App\\Mainframe\\Modules\\Groups",
-                "model": "\\App\\Group",
-                "policy": "\\App\\Mainframe\\Modules\\Groups\\GroupPolicy",
-                "processor": "\\App\\Mainframe\\Modules\\Groups\\GroupProcessor",
-                "controller": "\\App\\Mainframe\\Modules\\Groups\\GroupController",
-                "view_directory": "mainframe.modules.groups",
-                "parent_id": 0,
-                "module_group_id": 1,
-                "level": 0,
-                "order": 0,
-                "default_route": "groups.index",
-                "color_css": "aqua",
-                "icon_css": "fa fa-plus",
-                "is_visible": 1,
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2018-12-10 06:47:46",
-                "updated_at": "2020-01-23 06:53:54",
-                "deleted_at": null,
-                "deleted_by": null
-            },
-            {
-                "id": 6,
-                "uuid": "50ed1cc8-3ecf-4caf-9724-819cd90dd3d2",
-                "name": "uploads",
-                "project_id": null,
-                "tenant_id": null,
-                "title": "Upload",
-                "description": "Manage uploads",
-                "module_table": "uploads",
-                "route_path": "uploads",
-                "route_name": "uploads",
-                "class_directory": "app\/Mainframe\/Modules\/Uploads",
-                "namespace": "\\App\\Mainframe\\Modules\\Uploads",
-                "model": "\\App\\Mainframe\\Modules\\Uploads\\Upload",
-                "policy": "\\App\\Mainframe\\Modules\\Uploads\\UploadPolicy",
-                "processor": "\\App\\Mainframe\\Modules\\Uploads\\UploadProcessor",
-                "controller": "\\App\\Mainframe\\Modules\\Uploads\\UploadController",
-                "view_directory": "mainframe.modules.uploads",
-                "parent_id": 0,
-                "module_group_id": 1,
-                "level": 0,
-                "order": 0,
-                "default_route": "uploads.index",
-                "color_css": "aqua",
-                "icon_css": "fa fa-plus",
-                "is_visible": 1,
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2018-12-13 20:57:47",
-                "updated_at": "2020-01-23 06:53:54",
-                "deleted_at": null,
-                "deleted_by": null
-            },
-            {
-                "id": 21,
-                "uuid": "6d1fff93-328b-4501-b643-e21cc6cbf9d2",
-                "name": "settings",
-                "project_id": null,
-                "tenant_id": null,
-                "title": "Setting",
-                "description": "Manage settings",
-                "module_table": "settings",
-                "route_path": "settings",
-                "route_name": "settings",
-                "class_directory": "app\/Mainframe\/Modules\/Settings",
-                "namespace": "\\App\\Mainframe\\Modules\\Settings",
-                "model": "\\App\\Mainframe\\Modules\\Settings\\Setting",
-                "policy": "\\App\\Mainframe\\Modules\\Settings\\SettingPolicy",
-                "processor": "\\App\\Mainframe\\Modules\\Settings\\SettingProcessor",
-                "controller": "\\App\\Mainframe\\Modules\\Settings\\SettingController",
-                "view_directory": "mainframe.modules.settings",
-                "parent_id": 0,
-                "module_group_id": 1,
-                "level": 0,
-                "order": 0,
-                "default_route": "settings.index",
-                "color_css": "aqua",
-                "icon_css": "fa fa-list-alt",
-                "is_visible": 1,
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2018-12-24 19:56:38",
-                "updated_at": "2020-01-23 06:53:54",
-                "deleted_at": null,
-                "deleted_by": null
-            },
-            {
-                "id": 23,
-                "uuid": "3207985e-3886-4a1c-8121-c8e4147cfa72",
-                "name": "reports",
-                "project_id": null,
-                "tenant_id": null,
-                "title": "Report",
-                "description": "Manage reports",
-                "module_table": "reports",
-                "route_path": "reports",
-                "route_name": "reports",
-                "class_directory": "app\/Mainframe\/Modules\/Reports",
-                "namespace": "\\App\\Mainframe\\Modules\\Reports",
-                "model": "\\App\\Mainframe\\Modules\\Reports\\Report",
-                "policy": "\\App\\Mainframe\\Modules\\Reports\\ReportPolicy",
-                "processor": "\\App\\Mainframe\\Modules\\Reports\\ReportProcessor",
-                "controller": "\\App\\Mainframe\\Modules\\Reports\\ReportController",
-                "view_directory": "mainframe.modules.reports",
-                "parent_id": 0,
-                "module_group_id": 0,
-                "level": 0,
-                "order": 999,
-                "default_route": "reports.index",
-                "color_css": "aqua",
-                "icon_css": "fa fa-pie-chart",
-                "is_visible": 1,
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2019-01-17 05:00:25",
-                "updated_at": "2020-01-23 06:53:54",
-                "deleted_at": null,
-                "deleted_by": null
-            },
-            {
-                "id": 50,
-                "uuid": "778e5ea8-acee-4458-aab7-5e275a4084a5",
-                "name": "lorem-ipsums",
-                "project_id": null,
-                "tenant_id": null,
-                "title": "Lorem ipsum",
-                "description": "Manage lorem ipsums",
-                "module_table": "lorem_ipsums",
-                "route_path": "lorem-ipsums",
-                "route_name": "lorem-ipsums",
-                "class_directory": "app\/Mainframe\/Modules\/Samples\/LoremIpsums",
-                "namespace": "\\App\\Mainframe\\Modules\\LoremIpsums",
-                "model": "\\App\\Mainframe\\Modules\\Samples\\LoremIpsums\\LoremIpsum",
-                "policy": "\\App\\Mainframe\\Modules\\LoremIpsums\\LoremIpsumPolicy",
-                "processor": "\\App\\Mainframe\\Modules\\Samples\\LoremIpsums\\LoremIpsumProcessor",
-                "controller": "\\App\\Mainframe\\Modules\\Samples\\LoremIpsums\\LoremIpsumController",
-                "view_directory": "mainframe.modules.samples.lorem-ipsums",
-                "parent_id": 0,
-                "module_group_id": 1,
-                "level": 0,
-                "order": 0,
-                "default_route": "lorem-ipsums.index",
-                "color_css": "aqua",
-                "icon_css": "fa fa-plus",
-                "is_visible": 1,
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2019-11-20 14:08:23",
-                "updated_at": "2020-01-23 06:53:54",
-                "deleted_at": null,
-                "deleted_by": null
-            },
-            {
-                "id": 51,
-                "uuid": "a0c23e13-1bd6-4346-828b-b7878d67ee29",
-                "name": "dolor-sits",
-                "project_id": null,
-                "tenant_id": null,
-                "title": "Dolor sit",
-                "description": "Manage dolor sits",
-                "module_table": "dolor-sits",
-                "route_path": "dolor-sits",
-                "route_name": "dolor-sits",
-                "class_directory": "app\/Mainframe\/Modules\/Samples\/DolorSits",
-                "namespace": "\\App\\Mainframe\\Modules\\DolorSits",
-                "model": "\\App\\Mainframe\\Modules\\Samples\\DolorSits\\DolorSit",
-                "policy": "\\App\\Mainframe\\Modules\\DolorSits\\DolorSitPolicy",
-                "processor": "\\App\\Mainframe\\Modules\\Samples\\DolorSits\\DolorSitProcessor",
-                "controller": "\\App\\Mainframe\\Modules\\Samples\\DolorSits\\DolorSitController",
-                "view_directory": "mainframe.modules.samples.dolor-sits",
-                "parent_id": 0,
-                "module_group_id": 1,
-                "level": 0,
-                "order": 0,
-                "default_route": "dolor-sits.index",
-                "color_css": "aqua",
-                "icon_css": "fa fa-plus",
-                "is_visible": 1,
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2019-11-20 14:10:34",
-                "updated_at": "2020-01-23 06:53:54",
-                "deleted_at": null,
-                "deleted_by": null
-            },
-            {
-                "id": 52,
-                "uuid": "2da95896-4a15-4ad6-9919-767dabeef9fe",
-                "name": "subscriptions",
-                "project_id": null,
-                "tenant_id": null,
-                "title": "Subscription",
-                "description": "Manage subscriptions",
-                "module_table": "subscriptions",
-                "route_path": "subscriptions",
-                "route_name": "subscriptions",
-                "class_directory": "app\/Mainframe\/Modules\/Subscriptions",
-                "namespace": "\\App\\Mainframe\\Modules\\Subscriptions",
-                "model": "\\App\\Mainframe\\Modules\\Subscriptions\\Subscription",
-                "policy": "\\App\\Mainframe\\Modules\\Subscriptions\\SubscriptionPolicy",
-                "processor": "\\App\\Mainframe\\Modules\\Subscriptions\\SubscriptionProcessor",
-                "controller": "\\App\\Mainframe\\Modules\\Subscriptions\\SubscriptionController",
-                "view_directory": "mainframe.modules.subscriptions",
-                "parent_id": 0,
-                "module_group_id": 1,
-                "level": 0,
-                "order": 0,
-                "default_route": "subscriptions.index",
-                "color_css": "aqua",
-                "icon_css": "fa fa-plus",
-                "is_visible": 1,
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2019-12-19 14:00:52",
-                "updated_at": "2020-01-23 06:53:54",
-                "deleted_at": null,
-                "deleted_by": null
-            },
-            {
-                "id": 53,
-                "uuid": "11a3b809-b3e0-4c8f-b59a-b99192e99588",
-                "name": "packages",
-                "project_id": null,
-                "tenant_id": null,
-                "title": "Package",
-                "description": "Manage packages",
-                "module_table": "packages",
-                "route_path": "packages",
-                "route_name": "packages",
-                "class_directory": "app\/Mainframe\/Modules\/Packages",
-                "namespace": "\\App\\Mainframe\\Modules\\Packages",
-                "model": "\\App\\Mainframe\\Modules\\Packages\\Package",
-                "policy": "\\App\\Mainframe\\Modules\\Packages\\PackagePolicy",
-                "processor": "\\App\\Mainframe\\Modules\\Packages\\PackageProcessor",
-                "controller": "\\App\\Mainframe\\Modules\\Packages\\PackageController",
-                "view_directory": "mainframe.modules.packages",
-                "parent_id": 0,
-                "module_group_id": 1,
-                "level": 0,
-                "order": 0,
-                "default_route": "packages.index",
-                "color_css": "aqua",
-                "icon_css": "fa fa-plus",
-                "is_visible": 1,
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2019-12-19 14:39:47",
-                "updated_at": "2020-01-23 06:53:54",
-                "deleted_at": null,
-                "deleted_by": null
-            },
-            {
-                "id": 54,
-                "uuid": "c4582951-e9ee-4d1d-a9de-9230c037699a",
-                "name": "countries",
-                "project_id": null,
-                "tenant_id": null,
-                "title": "Country",
-                "description": "Manage countries",
-                "module_table": "countries",
-                "route_path": "countries",
-                "route_name": "countries",
-                "class_directory": "app\/Mainframe\/Modules\/Countries",
-                "namespace": "\\App\\Mainframe\\Modules\\Countries",
-                "model": "\\App\\Mainframe\\Modules\\Countries\\Country",
-                "policy": "\\App\\Mainframe\\Modules\\Countries\\CountryPolicy",
-                "processor": "\\App\\Mainframe\\Modules\\Countries\\CountryProcessor",
-                "controller": "\\App\\Mainframe\\Modules\\Countries\\CountryController",
-                "view_directory": "mainframe.modules.countries",
-                "parent_id": 0,
-                "module_group_id": 1,
-                "level": 0,
-                "order": 0,
-                "default_route": "countries.index",
-                "color_css": "aqua",
-                "icon_css": "fa fa-plus",
-                "is_visible": 1,
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2019-12-19 14:39:47",
-                "updated_at": "2020-01-23 06:53:54",
-                "deleted_at": null,
-                "deleted_by": null
-            },
-            {
-                "id": 55,
-                "uuid": "cb21c345-ba75-452c-b326-5c20f6cd17b8",
-                "name": "notifications",
-                "project_id": null,
-                "tenant_id": null,
-                "title": "Notification",
-                "description": "List of notifications",
-                "module_table": "notifications",
-                "route_path": "notifications",
-                "route_name": "notifications",
-                "class_directory": "app\/Mainframe\/Modules\/Notifications",
-                "namespace": "\\App\\Mainframe\\Modules\\Notifications",
-                "model": "\\App\\Mainframe\\Modules\\Notifications\\Notification",
-                "policy": "\\App\\Mainframe\\Modules\\Notifications\\NotificationPolicy",
-                "processor": "\\App\\Mainframe\\Modules\\Notifications\\NotificationProcessor",
-                "controller": "\\App\\Mainframe\\Modules\\Notifications\\NotificationController",
-                "view_directory": "mainframe.modules.notifications",
-                "parent_id": 0,
-                "module_group_id": 1,
-                "level": 0,
-                "order": 0,
-                "default_route": "notifications.index",
-                "color_css": "aqua",
-                "icon_css": "fa fa-plus",
-                "is_visible": 1,
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2019-12-19 14:39:47",
-                "updated_at": "2020-01-23 06:53:54",
-                "deleted_at": null,
-                "deleted_by": null
-            },
-            {
-                "id": 57,
-                "uuid": "47df59d0-bacb-4d1e-bfda-01c051c63681",
-                "name": "projects",
-                "project_id": null,
-                "tenant_id": null,
-                "title": "Project",
-                "description": "Manage projects",
-                "module_table": "projects",
-                "route_path": "projects",
-                "route_name": "projects",
-                "class_directory": "app\/Mainframe\/Modules\/Projects",
-                "namespace": "\\App\\Mainframe\\Modules\\Projects",
-                "model": "\\App\\Mainframe\\Modules\\Projects\\Project",
-                "policy": "\\App\\Mainframe\\Modules\\Projects\\ProjectPolicy",
-                "processor": "\\App\\Mainframe\\Modules\\Projects\\ProjectProcessor",
-                "controller": "\\App\\Mainframe\\Modules\\Projects\\ProjectController",
-                "view_directory": "mainframe.modules.projects",
-                "parent_id": 0,
-                "module_group_id": 1,
-                "level": 0,
-                "order": 0,
-                "default_route": "projects.index",
-                "color_css": "aqua",
-                "icon_css": "fa fa-plus",
-                "is_visible": 1,
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2019-12-28 13:57:38",
-                "updated_at": "2020-01-23 06:53:54",
-                "deleted_at": null,
-                "deleted_by": null
-            },
-            {
-                "id": 60,
-                "uuid": "74ed8001-1178-46f4-b1e6-b6e73fd7ae04",
-                "name": "comments",
-                "project_id": null,
-                "tenant_id": null,
-                "title": "Comment",
-                "description": "Manage comment",
-                "module_table": "comments",
-                "route_path": "comments",
-                "route_name": "comments",
-                "class_directory": "app\/Mainframe\/Modules\/Comments",
-                "namespace": "\\App\\Mainframe\\Modules\\Comments",
-                "model": "\\App\\Mainframe\\Modules\\Comments\\Comment",
-                "policy": "\\App\\Mainframe\\Modules\\Comments\\CommentPolicy",
-                "processor": "\\App\\Mainframe\\Modules\\Comments\\CommentProcessor",
-                "controller": "\\App\\Mainframe\\Modules\\Comments\\CommentController",
-                "view_directory": "mainframe.modules.comments",
-                "parent_id": 0,
-                "module_group_id": 1,
-                "level": 0,
-                "order": 0,
-                "default_route": "comments.index",
-                "color_css": "aqua",
-                "icon_css": "fa fa-plus",
-                "is_visible": 1,
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": null,
-                "created_at": "2020-02-25 08:42:04",
-                "updated_at": "2020-02-25 08:42:04",
-                "deleted_at": null,
-                "deleted_by": null
-            },
-            {
-                "id": 61,
-                "uuid": "0a79b419-8960-4957-badc-ee905f7bf020",
-                "name": "changes",
-                "project_id": null,
-                "tenant_id": null,
-                "title": "Change",
-                "description": "Manage change",
-                "module_table": "changes",
-                "route_path": "changes",
-                "route_name": "changes",
-                "class_directory": "app\/Mainframe\/Modules\/Changes",
-                "namespace": "\\App\\Mainframe\\Modules\\Changes",
-                "model": "\\App\\Mainframe\\Modules\\Changes\\Change",
-                "policy": "\\App\\Mainframe\\Modules\\Changes\\ChangePolicy",
-                "processor": "\\App\\Mainframe\\Modules\\Changes\\ChangeProcessor",
-                "controller": "\\App\\Mainframe\\Modules\\Changes\\ChangeController",
-                "view_directory": "mainframe.modules.changes",
-                "parent_id": 0,
-                "module_group_id": 1,
-                "level": 0,
-                "order": 0,
-                "default_route": "changes.index",
-                "color_css": "aqua",
-                "icon_css": "fa fa-plus",
-                "is_visible": 1,
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": null,
-                "created_at": "2020-06-02 04:34:41",
-                "updated_at": "2020-06-02 04:34:41",
-                "deleted_at": null,
-                "deleted_by": null
-            }
-        ]
-    },
-    "redirect": "http:\/\/localhost\/api\/core\/1.0\/module\/modules\/list\/json"
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/modules/list/json`
-
-
-<!-- END_303a67252448cefa63a4d9fd12c44bd2 -->
-
-<!-- START_8d6e3cabab24784a6e3248a5ab3d1ec0 -->
-## Show and render report
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/modules/report" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/modules/report"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (200):
-
-```json
-null
-```
-
-### HTTP Request
-`GET api/core/1.0/module/modules/report`
-
-
-<!-- END_8d6e3cabab24784a6e3248a5ab3d1ec0 -->
-
-<!-- START_caf396ad968439c84c32f81859df68c6 -->
-## Get all the uploads of an element
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/modules/1/uploads" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/modules/1/uploads"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (200):
-
-```json
-{
-    "code": 200,
-    "status": "success",
-    "message": "Request Processed",
-    "data": {
-        "current_page": 1,
-        "first_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/modules\/1\/uploads?page=1",
-        "from": null,
-        "last_page": 1,
-        "last_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/modules\/1\/uploads?page=1",
-        "next_page_url": null,
-        "path": "http:\/\/localhost\/api\/core\/1.0\/module\/modules\/1\/uploads",
-        "per_page": 20,
-        "prev_page_url": null,
-        "to": null,
-        "total": 0,
-        "items": []
-    },
-    "redirect": "http:\/\/localhost\/api\/core\/1.0\/module\/modules\/1\/uploads"
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/modules/{id}/uploads`
-
-
-<!-- END_caf396ad968439c84c32f81859df68c6 -->
-
-<!-- START_388c1537709c361c9a5a790cbfdca409 -->
-## Uploads files under an element
-
-> Example request:
-
-```bash
-curl -X POST \
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/modules/1/uploads" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/modules/1/uploads"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "POST",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`POST api/core/1.0/module/modules/{id}/uploads`
-
-
-<!-- END_388c1537709c361c9a5a790cbfdca409 -->
-
-<!-- START_5a93442144d141558866fe85a59529e0 -->
-## Get all the comments of an element
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/modules/1/comments" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/modules/1/comments"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (200):
-
-```json
-{
-    "code": 200,
-    "status": "success",
-    "message": "Request Processed",
-    "data": {
-        "current_page": 1,
-        "first_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/modules\/1\/comments?page=1",
-        "from": null,
-        "last_page": 1,
-        "last_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/modules\/1\/comments?page=1",
-        "next_page_url": null,
-        "path": "http:\/\/localhost\/api\/core\/1.0\/module\/modules\/1\/comments",
-        "per_page": 20,
-        "prev_page_url": null,
-        "to": null,
-        "total": 0,
-        "items": []
-    },
-    "redirect": "http:\/\/localhost\/api\/core\/1.0\/module\/modules\/1\/comments"
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/modules/{id}/comments`
-
-
-<!-- END_5a93442144d141558866fe85a59529e0 -->
-
-<!-- START_d1927987bea2c8b41bb2292579f3698d -->
-## Index/List page to show grid
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/modules" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/modules"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (200):
-
-```json
-{
-    "code": 200,
-    "status": "success",
-    "message": "Request Processed",
-    "data": {
-        "current_page": 1,
-        "first_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/modules?page=1",
-        "from": 1,
-        "last_page": 1,
-        "last_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/modules?page=1",
-        "next_page_url": null,
-        "path": "http:\/\/localhost\/api\/core\/1.0\/module\/modules",
-        "per_page": 20,
-        "prev_page_url": null,
-        "to": 17,
-        "total": 17,
-        "items": [
-            {
-                "id": 1,
-                "uuid": "ca56b8a2-368a-4f84-8336-e9850c406e2d",
-                "name": "modules",
-                "project_id": null,
-                "tenant_id": null,
-                "title": "Module",
-                "description": "Manage modules",
-                "module_table": "modules",
-                "route_path": "modules",
-                "route_name": "modules",
-                "class_directory": "app\/Mainframe\/Modules\/Modules",
-                "namespace": "\\App\\Mainframe\\Modules\\Modules",
-                "model": "\\App\\Mainframe\\Modules\\Modules\\Module",
-                "policy": "\\App\\Mainframe\\Modules\\Modules\\ModulePolicy",
-                "processor": "\\App\\Mainframe\\Modules\\Modules\\ModuleProcessor",
-                "controller": "\\App\\Mainframe\\Modules\\Modules\\ModuleController",
-                "view_directory": "mainframe.modules.modules",
-                "parent_id": 0,
-                "module_group_id": 1,
-                "level": 0,
-                "order": 0,
-                "default_route": "modules.index",
-                "color_css": "aqua",
-                "icon_css": "fa fa-puzzle-piece",
-                "is_visible": 1,
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2018-12-10 06:47:46",
-                "updated_at": "2020-01-23 06:53:54",
-                "deleted_at": null,
-                "deleted_by": null
-            },
-            {
-                "id": 2,
-                "uuid": "0b89564c-7198-4b1b-9869-a02a0e584262",
-                "name": "module-groups",
-                "project_id": null,
-                "tenant_id": null,
-                "title": "Module group",
-                "description": "Manage module groups",
-                "module_table": "module_groups",
-                "route_path": "module-groups",
-                "route_name": "module-groups",
-                "class_directory": "app\/Mainframe\/Modules\/ModuleGroups",
-                "namespace": "\\App\\Mainframe\\Modules\\ModuleGroups",
-                "model": "\\App\\Mainframe\\Modules\\ModuleGroups\\ModuleGroup",
-                "policy": "\\App\\Mainframe\\Modules\\ModuleGroups\\ModuleGroupPolicy",
-                "processor": "\\App\\Mainframe\\Modules\\ModuleGroups\\ModuleGroupProcessor",
-                "controller": "\\App\\Mainframe\\Modules\\ModuleGroups\\ModuleGroupController",
-                "view_directory": "mainframe.modules.module-groups",
-                "parent_id": 0,
-                "module_group_id": 1,
-                "level": 0,
-                "order": 0,
-                "default_route": "moduleg-roups.index",
-                "color_css": "aqua",
-                "icon_css": "fa fa-puzzle-piece",
-                "is_visible": 1,
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2018-12-10 06:47:46",
-                "updated_at": "2020-01-23 06:53:54",
-                "deleted_at": null,
-                "deleted_by": null
-            },
-            {
-                "id": 3,
-                "uuid": "eee7b4a8-abab-4b79-a751-b681624eb586",
-                "name": "tenants",
-                "project_id": null,
-                "tenant_id": null,
-                "title": "Tenant",
-                "description": "Manage tenants",
-                "module_table": "tenants",
-                "route_path": "tenants",
-                "route_name": "tenants",
-                "class_directory": "app\/Mainframe\/Modules\/Tenants",
-                "namespace": "\\App\\Mainframe\\Modules\\Tenants",
-                "model": "\\App\\Mainframe\\Modules\\Tenants\\Tenant",
-                "policy": "\\App\\Mainframe\\Modules\\Tenants\\TenantPolicy",
-                "processor": "\\App\\Mainframe\\Modules\\Tenants\\TenantProcessor",
-                "controller": "\\App\\Mainframe\\Modules\\Tenants\\TenantController",
-                "view_directory": "mainframe.modules.tenants",
-                "parent_id": 0,
-                "module_group_id": 1,
-                "level": 0,
-                "order": 0,
-                "default_route": "tenants.index",
-                "color_css": "aqua",
-                "icon_css": "fa fa-plus",
-                "is_visible": 1,
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2018-12-10 06:47:46",
-                "updated_at": "2020-01-23 06:53:54",
-                "deleted_at": null,
-                "deleted_by": null
-            },
-            {
-                "id": 4,
-                "uuid": "8f27f918-3a05-4b04-9bd3-d953e9492293",
-                "name": "users",
-                "project_id": null,
-                "tenant_id": null,
-                "title": "User",
-                "description": "Manage users",
-                "module_table": "users",
-                "route_path": "users",
-                "route_name": "users",
-                "class_directory": "app\/Projects\/MyProject\/Modules\/Users",
-                "namespace": "\\App\\Projects\\MyProject\\Modules\\Users",
-                "model": "\\App\\User",
-                "policy": "\\App\\Projects\\MyProject\\Modules\\Users\\UserPolicy",
-                "processor": "\\App\\Projects\\MyProject\\Modules\\Users\\UserProcessor",
-                "controller": "\\App\\Projects\\MyProject\\Modules\\Users\\UserController",
-                "view_directory": "projects.my-project.modules.users",
-                "parent_id": 0,
-                "module_group_id": 0,
-                "level": 0,
-                "order": 4,
-                "default_route": "users.index",
-                "color_css": "aqua",
-                "icon_css": "fa fa-user-plus",
-                "is_visible": 1,
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2018-12-10 06:47:46",
-                "updated_at": "2020-01-23 06:53:54",
-                "deleted_at": null,
-                "deleted_by": null
-            },
-            {
-                "id": 5,
-                "uuid": "14612def-5850-49fb-bf99-48d99c73b589",
-                "name": "groups",
-                "project_id": null,
-                "tenant_id": null,
-                "title": "Group",
-                "description": "Manage groups",
-                "module_table": "groups",
-                "route_path": "groups",
-                "route_name": "groups",
-                "class_directory": "app\/Mainframe\/Modules\/Groups",
-                "namespace": "\\App\\Mainframe\\Modules\\Groups",
-                "model": "\\App\\Group",
-                "policy": "\\App\\Mainframe\\Modules\\Groups\\GroupPolicy",
-                "processor": "\\App\\Mainframe\\Modules\\Groups\\GroupProcessor",
-                "controller": "\\App\\Mainframe\\Modules\\Groups\\GroupController",
-                "view_directory": "mainframe.modules.groups",
-                "parent_id": 0,
-                "module_group_id": 1,
-                "level": 0,
-                "order": 0,
-                "default_route": "groups.index",
-                "color_css": "aqua",
-                "icon_css": "fa fa-plus",
-                "is_visible": 1,
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2018-12-10 06:47:46",
-                "updated_at": "2020-01-23 06:53:54",
-                "deleted_at": null,
-                "deleted_by": null
-            },
-            {
-                "id": 6,
-                "uuid": "50ed1cc8-3ecf-4caf-9724-819cd90dd3d2",
-                "name": "uploads",
-                "project_id": null,
-                "tenant_id": null,
-                "title": "Upload",
-                "description": "Manage uploads",
-                "module_table": "uploads",
-                "route_path": "uploads",
-                "route_name": "uploads",
-                "class_directory": "app\/Mainframe\/Modules\/Uploads",
-                "namespace": "\\App\\Mainframe\\Modules\\Uploads",
-                "model": "\\App\\Mainframe\\Modules\\Uploads\\Upload",
-                "policy": "\\App\\Mainframe\\Modules\\Uploads\\UploadPolicy",
-                "processor": "\\App\\Mainframe\\Modules\\Uploads\\UploadProcessor",
-                "controller": "\\App\\Mainframe\\Modules\\Uploads\\UploadController",
-                "view_directory": "mainframe.modules.uploads",
-                "parent_id": 0,
-                "module_group_id": 1,
-                "level": 0,
-                "order": 0,
-                "default_route": "uploads.index",
-                "color_css": "aqua",
-                "icon_css": "fa fa-plus",
-                "is_visible": 1,
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2018-12-13 20:57:47",
-                "updated_at": "2020-01-23 06:53:54",
-                "deleted_at": null,
-                "deleted_by": null
-            },
-            {
-                "id": 21,
-                "uuid": "6d1fff93-328b-4501-b643-e21cc6cbf9d2",
-                "name": "settings",
-                "project_id": null,
-                "tenant_id": null,
-                "title": "Setting",
-                "description": "Manage settings",
-                "module_table": "settings",
-                "route_path": "settings",
-                "route_name": "settings",
-                "class_directory": "app\/Mainframe\/Modules\/Settings",
-                "namespace": "\\App\\Mainframe\\Modules\\Settings",
-                "model": "\\App\\Mainframe\\Modules\\Settings\\Setting",
-                "policy": "\\App\\Mainframe\\Modules\\Settings\\SettingPolicy",
-                "processor": "\\App\\Mainframe\\Modules\\Settings\\SettingProcessor",
-                "controller": "\\App\\Mainframe\\Modules\\Settings\\SettingController",
-                "view_directory": "mainframe.modules.settings",
-                "parent_id": 0,
-                "module_group_id": 1,
-                "level": 0,
-                "order": 0,
-                "default_route": "settings.index",
-                "color_css": "aqua",
-                "icon_css": "fa fa-list-alt",
-                "is_visible": 1,
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2018-12-24 19:56:38",
-                "updated_at": "2020-01-23 06:53:54",
-                "deleted_at": null,
-                "deleted_by": null
-            },
-            {
-                "id": 23,
-                "uuid": "3207985e-3886-4a1c-8121-c8e4147cfa72",
-                "name": "reports",
-                "project_id": null,
-                "tenant_id": null,
-                "title": "Report",
-                "description": "Manage reports",
-                "module_table": "reports",
-                "route_path": "reports",
-                "route_name": "reports",
-                "class_directory": "app\/Mainframe\/Modules\/Reports",
-                "namespace": "\\App\\Mainframe\\Modules\\Reports",
-                "model": "\\App\\Mainframe\\Modules\\Reports\\Report",
-                "policy": "\\App\\Mainframe\\Modules\\Reports\\ReportPolicy",
-                "processor": "\\App\\Mainframe\\Modules\\Reports\\ReportProcessor",
-                "controller": "\\App\\Mainframe\\Modules\\Reports\\ReportController",
-                "view_directory": "mainframe.modules.reports",
-                "parent_id": 0,
-                "module_group_id": 0,
-                "level": 0,
-                "order": 999,
-                "default_route": "reports.index",
-                "color_css": "aqua",
-                "icon_css": "fa fa-pie-chart",
-                "is_visible": 1,
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2019-01-17 05:00:25",
-                "updated_at": "2020-01-23 06:53:54",
-                "deleted_at": null,
-                "deleted_by": null
-            },
-            {
-                "id": 50,
-                "uuid": "778e5ea8-acee-4458-aab7-5e275a4084a5",
-                "name": "lorem-ipsums",
-                "project_id": null,
-                "tenant_id": null,
-                "title": "Lorem ipsum",
-                "description": "Manage lorem ipsums",
-                "module_table": "lorem_ipsums",
-                "route_path": "lorem-ipsums",
-                "route_name": "lorem-ipsums",
-                "class_directory": "app\/Mainframe\/Modules\/Samples\/LoremIpsums",
-                "namespace": "\\App\\Mainframe\\Modules\\LoremIpsums",
-                "model": "\\App\\Mainframe\\Modules\\Samples\\LoremIpsums\\LoremIpsum",
-                "policy": "\\App\\Mainframe\\Modules\\LoremIpsums\\LoremIpsumPolicy",
-                "processor": "\\App\\Mainframe\\Modules\\Samples\\LoremIpsums\\LoremIpsumProcessor",
-                "controller": "\\App\\Mainframe\\Modules\\Samples\\LoremIpsums\\LoremIpsumController",
-                "view_directory": "mainframe.modules.samples.lorem-ipsums",
-                "parent_id": 0,
-                "module_group_id": 1,
-                "level": 0,
-                "order": 0,
-                "default_route": "lorem-ipsums.index",
-                "color_css": "aqua",
-                "icon_css": "fa fa-plus",
-                "is_visible": 1,
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2019-11-20 14:08:23",
-                "updated_at": "2020-01-23 06:53:54",
-                "deleted_at": null,
-                "deleted_by": null
-            },
-            {
-                "id": 51,
-                "uuid": "a0c23e13-1bd6-4346-828b-b7878d67ee29",
-                "name": "dolor-sits",
-                "project_id": null,
-                "tenant_id": null,
-                "title": "Dolor sit",
-                "description": "Manage dolor sits",
-                "module_table": "dolor-sits",
-                "route_path": "dolor-sits",
-                "route_name": "dolor-sits",
-                "class_directory": "app\/Mainframe\/Modules\/Samples\/DolorSits",
-                "namespace": "\\App\\Mainframe\\Modules\\DolorSits",
-                "model": "\\App\\Mainframe\\Modules\\Samples\\DolorSits\\DolorSit",
-                "policy": "\\App\\Mainframe\\Modules\\DolorSits\\DolorSitPolicy",
-                "processor": "\\App\\Mainframe\\Modules\\Samples\\DolorSits\\DolorSitProcessor",
-                "controller": "\\App\\Mainframe\\Modules\\Samples\\DolorSits\\DolorSitController",
-                "view_directory": "mainframe.modules.samples.dolor-sits",
-                "parent_id": 0,
-                "module_group_id": 1,
-                "level": 0,
-                "order": 0,
-                "default_route": "dolor-sits.index",
-                "color_css": "aqua",
-                "icon_css": "fa fa-plus",
-                "is_visible": 1,
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2019-11-20 14:10:34",
-                "updated_at": "2020-01-23 06:53:54",
-                "deleted_at": null,
-                "deleted_by": null
-            },
-            {
-                "id": 52,
-                "uuid": "2da95896-4a15-4ad6-9919-767dabeef9fe",
-                "name": "subscriptions",
-                "project_id": null,
-                "tenant_id": null,
-                "title": "Subscription",
-                "description": "Manage subscriptions",
-                "module_table": "subscriptions",
-                "route_path": "subscriptions",
-                "route_name": "subscriptions",
-                "class_directory": "app\/Mainframe\/Modules\/Subscriptions",
-                "namespace": "\\App\\Mainframe\\Modules\\Subscriptions",
-                "model": "\\App\\Mainframe\\Modules\\Subscriptions\\Subscription",
-                "policy": "\\App\\Mainframe\\Modules\\Subscriptions\\SubscriptionPolicy",
-                "processor": "\\App\\Mainframe\\Modules\\Subscriptions\\SubscriptionProcessor",
-                "controller": "\\App\\Mainframe\\Modules\\Subscriptions\\SubscriptionController",
-                "view_directory": "mainframe.modules.subscriptions",
-                "parent_id": 0,
-                "module_group_id": 1,
-                "level": 0,
-                "order": 0,
-                "default_route": "subscriptions.index",
-                "color_css": "aqua",
-                "icon_css": "fa fa-plus",
-                "is_visible": 1,
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2019-12-19 14:00:52",
-                "updated_at": "2020-01-23 06:53:54",
-                "deleted_at": null,
-                "deleted_by": null
-            },
-            {
-                "id": 53,
-                "uuid": "11a3b809-b3e0-4c8f-b59a-b99192e99588",
-                "name": "packages",
-                "project_id": null,
-                "tenant_id": null,
-                "title": "Package",
-                "description": "Manage packages",
-                "module_table": "packages",
-                "route_path": "packages",
-                "route_name": "packages",
-                "class_directory": "app\/Mainframe\/Modules\/Packages",
-                "namespace": "\\App\\Mainframe\\Modules\\Packages",
-                "model": "\\App\\Mainframe\\Modules\\Packages\\Package",
-                "policy": "\\App\\Mainframe\\Modules\\Packages\\PackagePolicy",
-                "processor": "\\App\\Mainframe\\Modules\\Packages\\PackageProcessor",
-                "controller": "\\App\\Mainframe\\Modules\\Packages\\PackageController",
-                "view_directory": "mainframe.modules.packages",
-                "parent_id": 0,
-                "module_group_id": 1,
-                "level": 0,
-                "order": 0,
-                "default_route": "packages.index",
-                "color_css": "aqua",
-                "icon_css": "fa fa-plus",
-                "is_visible": 1,
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2019-12-19 14:39:47",
-                "updated_at": "2020-01-23 06:53:54",
-                "deleted_at": null,
-                "deleted_by": null
-            },
-            {
-                "id": 54,
-                "uuid": "c4582951-e9ee-4d1d-a9de-9230c037699a",
-                "name": "countries",
-                "project_id": null,
-                "tenant_id": null,
-                "title": "Country",
-                "description": "Manage countries",
-                "module_table": "countries",
-                "route_path": "countries",
-                "route_name": "countries",
-                "class_directory": "app\/Mainframe\/Modules\/Countries",
-                "namespace": "\\App\\Mainframe\\Modules\\Countries",
-                "model": "\\App\\Mainframe\\Modules\\Countries\\Country",
-                "policy": "\\App\\Mainframe\\Modules\\Countries\\CountryPolicy",
-                "processor": "\\App\\Mainframe\\Modules\\Countries\\CountryProcessor",
-                "controller": "\\App\\Mainframe\\Modules\\Countries\\CountryController",
-                "view_directory": "mainframe.modules.countries",
-                "parent_id": 0,
-                "module_group_id": 1,
-                "level": 0,
-                "order": 0,
-                "default_route": "countries.index",
-                "color_css": "aqua",
-                "icon_css": "fa fa-plus",
-                "is_visible": 1,
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2019-12-19 14:39:47",
-                "updated_at": "2020-01-23 06:53:54",
-                "deleted_at": null,
-                "deleted_by": null
-            },
-            {
-                "id": 55,
-                "uuid": "cb21c345-ba75-452c-b326-5c20f6cd17b8",
-                "name": "notifications",
-                "project_id": null,
-                "tenant_id": null,
-                "title": "Notification",
-                "description": "List of notifications",
-                "module_table": "notifications",
-                "route_path": "notifications",
-                "route_name": "notifications",
-                "class_directory": "app\/Mainframe\/Modules\/Notifications",
-                "namespace": "\\App\\Mainframe\\Modules\\Notifications",
-                "model": "\\App\\Mainframe\\Modules\\Notifications\\Notification",
-                "policy": "\\App\\Mainframe\\Modules\\Notifications\\NotificationPolicy",
-                "processor": "\\App\\Mainframe\\Modules\\Notifications\\NotificationProcessor",
-                "controller": "\\App\\Mainframe\\Modules\\Notifications\\NotificationController",
-                "view_directory": "mainframe.modules.notifications",
-                "parent_id": 0,
-                "module_group_id": 1,
-                "level": 0,
-                "order": 0,
-                "default_route": "notifications.index",
-                "color_css": "aqua",
-                "icon_css": "fa fa-plus",
-                "is_visible": 1,
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2019-12-19 14:39:47",
-                "updated_at": "2020-01-23 06:53:54",
-                "deleted_at": null,
-                "deleted_by": null
-            },
-            {
-                "id": 57,
-                "uuid": "47df59d0-bacb-4d1e-bfda-01c051c63681",
-                "name": "projects",
-                "project_id": null,
-                "tenant_id": null,
-                "title": "Project",
-                "description": "Manage projects",
-                "module_table": "projects",
-                "route_path": "projects",
-                "route_name": "projects",
-                "class_directory": "app\/Mainframe\/Modules\/Projects",
-                "namespace": "\\App\\Mainframe\\Modules\\Projects",
-                "model": "\\App\\Mainframe\\Modules\\Projects\\Project",
-                "policy": "\\App\\Mainframe\\Modules\\Projects\\ProjectPolicy",
-                "processor": "\\App\\Mainframe\\Modules\\Projects\\ProjectProcessor",
-                "controller": "\\App\\Mainframe\\Modules\\Projects\\ProjectController",
-                "view_directory": "mainframe.modules.projects",
-                "parent_id": 0,
-                "module_group_id": 1,
-                "level": 0,
-                "order": 0,
-                "default_route": "projects.index",
-                "color_css": "aqua",
-                "icon_css": "fa fa-plus",
-                "is_visible": 1,
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2019-12-28 13:57:38",
-                "updated_at": "2020-01-23 06:53:54",
-                "deleted_at": null,
-                "deleted_by": null
-            },
-            {
-                "id": 60,
-                "uuid": "74ed8001-1178-46f4-b1e6-b6e73fd7ae04",
-                "name": "comments",
-                "project_id": null,
-                "tenant_id": null,
-                "title": "Comment",
-                "description": "Manage comment",
-                "module_table": "comments",
-                "route_path": "comments",
-                "route_name": "comments",
-                "class_directory": "app\/Mainframe\/Modules\/Comments",
-                "namespace": "\\App\\Mainframe\\Modules\\Comments",
-                "model": "\\App\\Mainframe\\Modules\\Comments\\Comment",
-                "policy": "\\App\\Mainframe\\Modules\\Comments\\CommentPolicy",
-                "processor": "\\App\\Mainframe\\Modules\\Comments\\CommentProcessor",
-                "controller": "\\App\\Mainframe\\Modules\\Comments\\CommentController",
-                "view_directory": "mainframe.modules.comments",
-                "parent_id": 0,
-                "module_group_id": 1,
-                "level": 0,
-                "order": 0,
-                "default_route": "comments.index",
-                "color_css": "aqua",
-                "icon_css": "fa fa-plus",
-                "is_visible": 1,
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": null,
-                "created_at": "2020-02-25 08:42:04",
-                "updated_at": "2020-02-25 08:42:04",
-                "deleted_at": null,
-                "deleted_by": null
-            },
-            {
-                "id": 61,
-                "uuid": "0a79b419-8960-4957-badc-ee905f7bf020",
-                "name": "changes",
-                "project_id": null,
-                "tenant_id": null,
-                "title": "Change",
-                "description": "Manage change",
-                "module_table": "changes",
-                "route_path": "changes",
-                "route_name": "changes",
-                "class_directory": "app\/Mainframe\/Modules\/Changes",
-                "namespace": "\\App\\Mainframe\\Modules\\Changes",
-                "model": "\\App\\Mainframe\\Modules\\Changes\\Change",
-                "policy": "\\App\\Mainframe\\Modules\\Changes\\ChangePolicy",
-                "processor": "\\App\\Mainframe\\Modules\\Changes\\ChangeProcessor",
-                "controller": "\\App\\Mainframe\\Modules\\Changes\\ChangeController",
-                "view_directory": "mainframe.modules.changes",
-                "parent_id": 0,
-                "module_group_id": 1,
-                "level": 0,
-                "order": 0,
-                "default_route": "changes.index",
-                "color_css": "aqua",
-                "icon_css": "fa fa-plus",
-                "is_visible": 1,
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": null,
-                "created_at": "2020-06-02 04:34:41",
-                "updated_at": "2020-06-02 04:34:41",
-                "deleted_at": null,
-                "deleted_by": null
-            }
-        ]
-    },
-    "redirect": "http:\/\/localhost\/api\/core\/1.0\/module\/modules"
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/modules`
-
-
-<!-- END_d1927987bea2c8b41bb2292579f3698d -->
-
-<!-- START_40828a4948d1631d4ff31d7dc478e920 -->
-## Store
-
-> Example request:
-
-```bash
-curl -X POST \
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/modules" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/modules"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "POST",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`POST api/core/1.0/module/modules`
-
-
-<!-- END_40828a4948d1631d4ff31d7dc478e920 -->
-
-<!-- START_9016f557aad7bda194e5cec14889e935 -->
-## Show
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/modules/1" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/modules/1"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (500):
-
-```json
-{
-    "message": "Server Error"
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/modules/{module}`
-
-#### URL Parameters
-
-Parameter | Status | Description
---------- | ------- | ------- | -------
-    `id` |  required  | The ID of the item.
-
-<!-- END_9016f557aad7bda194e5cec14889e935 -->
-
-<!-- START_3590fe1f12d008afda3051b7bc073798 -->
-## Update
-
-> Example request:
-
-```bash
-curl -X PUT \
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/modules/1" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/modules/1"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "PUT",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`PUT api/core/1.0/module/modules/{module}`
-
-`PATCH api/core/1.0/module/modules/{module}`
-
-
-<!-- END_3590fe1f12d008afda3051b7bc073798 -->
-
-<!-- START_f5a344e648f7dc8b3d6ec60659db1f08 -->
-## Delete
-
-> Example request:
-
-```bash
-curl -X DELETE \
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/modules/1" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/modules/1"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "DELETE",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`DELETE api/core/1.0/module/modules/{module}`
-
-
-<!-- END_f5a344e648f7dc8b3d6ec60659db1f08 -->
-
-<!-- START_01720d144a48a0734535e204ece14bdc -->
-## Returns a collection of objects as Json for an API call
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/module-groups/list/json" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/module-groups/list/json"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (200):
-
-```json
-{
-    "code": 200,
-    "status": "success",
-    "message": "Request Processed",
-    "data": {
-        "current_page": 1,
-        "first_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/module-groups\/list\/json?page=1",
-        "from": 1,
-        "last_page": 1,
-        "last_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/module-groups\/list\/json?page=1",
-        "next_page_url": null,
-        "path": "http:\/\/localhost\/api\/core\/1.0\/module\/module-groups\/list\/json",
-        "per_page": 20,
-        "prev_page_url": null,
-        "to": 2,
-        "total": 2,
-        "items": [
-            {
-                "id": 1,
-                "uuid": "770e22e8-e572-44a3-9a9a-be7fb1964ae5",
-                "name": "app-settings",
-                "title": "Settings",
-                "description": "Manage configuration",
-                "route_path": "app-settings",
-                "route_name": "app-settings",
-                "parent_id": 0,
-                "level": 0,
-                "order": 0,
-                "default_route": "app-configs.index",
-                "color_css": "aqua",
-                "icon_css": "fa fa-gears",
-                "is_visible": 1,
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2018-12-10 06:47:46",
-                "updated_at": "2019-10-28 14:07:42",
-                "deleted_at": null,
-                "deleted_by": null
-            },
-            {
-                "id": 2,
-                "uuid": "a0dc562b-d6ce-45d1-9279-2a8ca2982dc8",
-                "name": "accounts",
-                "title": "Accounts",
-                "description": null,
-                "route_path": "app-settings",
-                "route_name": "app-settings",
-                "parent_id": 0,
-                "level": 0,
-                "order": 0,
-                "default_route": "letsbab.index",
-                "color_css": "aqua",
-                "icon_css": "fa fa-calculator",
-                "is_visible": 1,
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2018-12-14 06:18:07",
-                "updated_at": "2019-10-28 12:41:42",
-                "deleted_at": null,
-                "deleted_by": null
-            }
-        ]
-    },
-    "redirect": "http:\/\/localhost\/api\/core\/1.0\/module\/module-groups\/list\/json"
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/module-groups/list/json`
-
-
-<!-- END_01720d144a48a0734535e204ece14bdc -->
-
-<!-- START_bb61a6fa50e9b547fa8123ac830e9f0d -->
-## Show and render report
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/module-groups/report" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/module-groups/report"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (200):
-
-```json
-null
-```
-
-### HTTP Request
-`GET api/core/1.0/module/module-groups/report`
-
-
-<!-- END_bb61a6fa50e9b547fa8123ac830e9f0d -->
-
-<!-- START_7eca7d1354de538ea194065c80870ba3 -->
-## Get all the uploads of an element
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/module-groups/1/uploads" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/module-groups/1/uploads"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (200):
-
-```json
-{
-    "code": 200,
-    "status": "success",
-    "message": "Request Processed",
-    "data": {
-        "current_page": 1,
-        "first_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/module-groups\/1\/uploads?page=1",
-        "from": null,
-        "last_page": 1,
-        "last_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/module-groups\/1\/uploads?page=1",
-        "next_page_url": null,
-        "path": "http:\/\/localhost\/api\/core\/1.0\/module\/module-groups\/1\/uploads",
-        "per_page": 20,
-        "prev_page_url": null,
-        "to": null,
-        "total": 0,
-        "items": []
-    },
-    "redirect": "http:\/\/localhost\/api\/core\/1.0\/module\/module-groups\/1\/uploads"
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/module-groups/{id}/uploads`
-
-
-<!-- END_7eca7d1354de538ea194065c80870ba3 -->
-
-<!-- START_e099a700ea72f4ef2c941d8f74bc1870 -->
-## Uploads files under an element
-
-> Example request:
-
-```bash
-curl -X POST \
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/module-groups/1/uploads" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/module-groups/1/uploads"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "POST",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`POST api/core/1.0/module/module-groups/{id}/uploads`
-
-
-<!-- END_e099a700ea72f4ef2c941d8f74bc1870 -->
-
-<!-- START_f282057be4cdb9426835416b61e8c5d2 -->
-## Get all the comments of an element
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/module-groups/1/comments" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/module-groups/1/comments"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (200):
-
-```json
-{
-    "code": 200,
-    "status": "success",
-    "message": "Request Processed",
-    "data": {
-        "current_page": 1,
-        "first_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/module-groups\/1\/comments?page=1",
-        "from": null,
-        "last_page": 1,
-        "last_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/module-groups\/1\/comments?page=1",
-        "next_page_url": null,
-        "path": "http:\/\/localhost\/api\/core\/1.0\/module\/module-groups\/1\/comments",
-        "per_page": 20,
-        "prev_page_url": null,
-        "to": null,
-        "total": 0,
-        "items": []
-    },
-    "redirect": "http:\/\/localhost\/api\/core\/1.0\/module\/module-groups\/1\/comments"
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/module-groups/{id}/comments`
-
-
-<!-- END_f282057be4cdb9426835416b61e8c5d2 -->
-
-<!-- START_282d7484e060a28d3d8f50820854b532 -->
-## Index/List page to show grid
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/module-groups" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/module-groups"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (200):
-
-```json
-{
-    "code": 200,
-    "status": "success",
-    "message": "Request Processed",
-    "data": {
-        "current_page": 1,
-        "first_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/module-groups?page=1",
-        "from": 1,
-        "last_page": 1,
-        "last_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/module-groups?page=1",
-        "next_page_url": null,
-        "path": "http:\/\/localhost\/api\/core\/1.0\/module\/module-groups",
-        "per_page": 20,
-        "prev_page_url": null,
-        "to": 2,
-        "total": 2,
-        "items": [
-            {
-                "id": 1,
-                "uuid": "770e22e8-e572-44a3-9a9a-be7fb1964ae5",
-                "name": "app-settings",
-                "title": "Settings",
-                "description": "Manage configuration",
-                "route_path": "app-settings",
-                "route_name": "app-settings",
-                "parent_id": 0,
-                "level": 0,
-                "order": 0,
-                "default_route": "app-configs.index",
-                "color_css": "aqua",
-                "icon_css": "fa fa-gears",
-                "is_visible": 1,
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2018-12-10 06:47:46",
-                "updated_at": "2019-10-28 14:07:42",
-                "deleted_at": null,
-                "deleted_by": null
-            },
-            {
-                "id": 2,
-                "uuid": "a0dc562b-d6ce-45d1-9279-2a8ca2982dc8",
-                "name": "accounts",
-                "title": "Accounts",
-                "description": null,
-                "route_path": "app-settings",
-                "route_name": "app-settings",
-                "parent_id": 0,
-                "level": 0,
-                "order": 0,
-                "default_route": "letsbab.index",
-                "color_css": "aqua",
-                "icon_css": "fa fa-calculator",
-                "is_visible": 1,
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2018-12-14 06:18:07",
-                "updated_at": "2019-10-28 12:41:42",
-                "deleted_at": null,
-                "deleted_by": null
-            }
-        ]
-    },
-    "redirect": "http:\/\/localhost\/api\/core\/1.0\/module\/module-groups"
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/module-groups`
-
-
-<!-- END_282d7484e060a28d3d8f50820854b532 -->
-
-<!-- START_36bffd7c8957090f8aeedc645ae342c1 -->
-## Store
-
-> Example request:
-
-```bash
-curl -X POST \
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/module-groups" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/module-groups"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "POST",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`POST api/core/1.0/module/module-groups`
-
-
-<!-- END_36bffd7c8957090f8aeedc645ae342c1 -->
-
-<!-- START_f57f9ce4d7267a1aa756ead97a1da419 -->
-## Show
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/module-groups/1" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/module-groups/1"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (500):
-
-```json
-{
-    "message": "Server Error"
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/module-groups/{module_group}`
-
-#### URL Parameters
-
-Parameter | Status | Description
---------- | ------- | ------- | -------
-    `id` |  required  | The ID of the item.
-
-<!-- END_f57f9ce4d7267a1aa756ead97a1da419 -->
-
-<!-- START_348ff0cce6f496507f3de5a1b9939582 -->
-## Update
-
-> Example request:
-
-```bash
-curl -X PUT \
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/module-groups/1" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/module-groups/1"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "PUT",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`PUT api/core/1.0/module/module-groups/{module_group}`
-
-`PATCH api/core/1.0/module/module-groups/{module_group}`
-
-
-<!-- END_348ff0cce6f496507f3de5a1b9939582 -->
-
-<!-- START_0d9658235f2493b4deb22e0591d8f888 -->
-## Delete
-
-> Example request:
-
-```bash
-curl -X DELETE \
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/module-groups/1" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/module-groups/1"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "DELETE",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`DELETE api/core/1.0/module/module-groups/{module_group}`
-
-
-<!-- END_0d9658235f2493b4deb22e0591d8f888 -->
-
-<!-- START_85b7fd07477b4f34027193e6af6710bd -->
-## Returns a collection of objects as Json for an API call
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/tenants/list/json" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/tenants/list/json"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (200):
-
-```json
-{
-    "code": 200,
-    "status": "success",
-    "message": "Request Processed",
-    "data": {
-        "current_page": 1,
-        "first_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/tenants\/list\/json?page=1",
-        "from": 1,
-        "last_page": 1,
-        "last_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/tenants\/list\/json?page=1",
-        "next_page_url": null,
-        "path": "http:\/\/localhost\/api\/core\/1.0\/module\/tenants\/list\/json",
-        "per_page": 20,
-        "prev_page_url": null,
-        "to": 2,
-        "total": 2,
-        "items": [
-            {
-                "id": 1,
-                "uuid": "ceba2dba-bfad-4045-a36f-ce0572f77679",
-                "project_id": 1,
-                "name": "ArtemisPod-default",
-                "code": "artp",
-                "user_id": null,
-                "route_group": "artp",
-                "class_directory": "app\/Projects\/ArtemisPod",
-                "namespace": "\\App\\ArtemisPod",
-                "view_directory": "mainframe.projects.artemis-pod",
-                "is_active": 1,
-                "created_by": 5,
-                "updated_by": 5,
-                "created_at": "2019-12-19 13:31:02",
-                "updated_at": "2019-12-19 13:31:02",
-                "deleted_at": null,
-                "deleted_by": null
-            },
-            {
-                "id": 2,
-                "uuid": "2170cada-a1fc-43a9-90e5-6bf6a5037952",
-                "project_id": 2,
-                "name": "OrangeHC-default",
-                "code": "orhc",
-                "user_id": null,
-                "route_group": "orhc",
-                "class_directory": "app\/Projects\/OrangeHc",
-                "namespace": "\\App\\OrangeHC",
-                "view_directory": "mainframe.projects.orange-hc",
-                "is_active": 1,
-                "created_by": 5,
-                "updated_by": 5,
-                "created_at": "2019-12-19 13:31:02",
-                "updated_at": "2019-12-28 14:26:39",
-                "deleted_at": null,
-                "deleted_by": null
-            }
-        ]
-    },
-    "redirect": "http:\/\/localhost\/api\/core\/1.0\/module\/tenants\/list\/json"
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/tenants/list/json`
-
-
-<!-- END_85b7fd07477b4f34027193e6af6710bd -->
-
-<!-- START_79a59468885f5d9c24635849566906e4 -->
-## Show and render report
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/tenants/report" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/tenants/report"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (200):
-
-```json
-null
-```
-
-### HTTP Request
-`GET api/core/1.0/module/tenants/report`
-
-
-<!-- END_79a59468885f5d9c24635849566906e4 -->
-
-<!-- START_dd60aa76b0055065289330438483fae0 -->
-## Get all the uploads of an element
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/tenants/1/uploads" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/tenants/1/uploads"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (200):
-
-```json
-{
-    "code": 200,
-    "status": "success",
-    "message": "Request Processed",
-    "data": {
-        "current_page": 1,
-        "first_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/tenants\/1\/uploads?page=1",
-        "from": null,
-        "last_page": 1,
-        "last_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/tenants\/1\/uploads?page=1",
-        "next_page_url": null,
-        "path": "http:\/\/localhost\/api\/core\/1.0\/module\/tenants\/1\/uploads",
-        "per_page": 20,
-        "prev_page_url": null,
-        "to": null,
-        "total": 0,
-        "items": []
-    },
-    "redirect": "http:\/\/localhost\/api\/core\/1.0\/module\/tenants\/1\/uploads"
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/tenants/{id}/uploads`
-
-
-<!-- END_dd60aa76b0055065289330438483fae0 -->
-
-<!-- START_e2814ea40e4627a6f29a514f5c69952e -->
-## Uploads files under an element
-
-> Example request:
-
-```bash
-curl -X POST \
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/tenants/1/uploads" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/tenants/1/uploads"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "POST",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`POST api/core/1.0/module/tenants/{id}/uploads`
-
-
-<!-- END_e2814ea40e4627a6f29a514f5c69952e -->
-
-<!-- START_4c86e242adce0faae52696121bef4976 -->
-## Get all the comments of an element
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/tenants/1/comments" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/tenants/1/comments"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (200):
-
-```json
-{
-    "code": 200,
-    "status": "success",
-    "message": "Request Processed",
-    "data": {
-        "current_page": 1,
-        "first_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/tenants\/1\/comments?page=1",
-        "from": null,
-        "last_page": 1,
-        "last_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/tenants\/1\/comments?page=1",
-        "next_page_url": null,
-        "path": "http:\/\/localhost\/api\/core\/1.0\/module\/tenants\/1\/comments",
-        "per_page": 20,
-        "prev_page_url": null,
-        "to": null,
-        "total": 0,
-        "items": []
-    },
-    "redirect": "http:\/\/localhost\/api\/core\/1.0\/module\/tenants\/1\/comments"
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/tenants/{id}/comments`
-
-
-<!-- END_4c86e242adce0faae52696121bef4976 -->
-
-<!-- START_493c1ce5f226b1ac748a34fe8ff6f30c -->
-## Index/List page to show grid
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/tenants" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/tenants"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (200):
-
-```json
-{
-    "code": 200,
-    "status": "success",
-    "message": "Request Processed",
-    "data": {
-        "current_page": 1,
-        "first_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/tenants?page=1",
-        "from": 1,
-        "last_page": 1,
-        "last_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/tenants?page=1",
-        "next_page_url": null,
-        "path": "http:\/\/localhost\/api\/core\/1.0\/module\/tenants",
-        "per_page": 20,
-        "prev_page_url": null,
-        "to": 2,
-        "total": 2,
-        "items": [
-            {
-                "id": 1,
-                "uuid": "ceba2dba-bfad-4045-a36f-ce0572f77679",
-                "project_id": 1,
-                "name": "ArtemisPod-default",
-                "code": "artp",
-                "user_id": null,
-                "route_group": "artp",
-                "class_directory": "app\/Projects\/ArtemisPod",
-                "namespace": "\\App\\ArtemisPod",
-                "view_directory": "mainframe.projects.artemis-pod",
-                "is_active": 1,
-                "created_by": 5,
-                "updated_by": 5,
-                "created_at": "2019-12-19 13:31:02",
-                "updated_at": "2019-12-19 13:31:02",
-                "deleted_at": null,
-                "deleted_by": null
-            },
-            {
-                "id": 2,
-                "uuid": "2170cada-a1fc-43a9-90e5-6bf6a5037952",
-                "project_id": 2,
-                "name": "OrangeHC-default",
-                "code": "orhc",
-                "user_id": null,
-                "route_group": "orhc",
-                "class_directory": "app\/Projects\/OrangeHc",
-                "namespace": "\\App\\OrangeHC",
-                "view_directory": "mainframe.projects.orange-hc",
-                "is_active": 1,
-                "created_by": 5,
-                "updated_by": 5,
-                "created_at": "2019-12-19 13:31:02",
-                "updated_at": "2019-12-28 14:26:39",
-                "deleted_at": null,
-                "deleted_by": null
-            }
-        ]
-    },
-    "redirect": "http:\/\/localhost\/api\/core\/1.0\/module\/tenants"
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/tenants`
-
-
-<!-- END_493c1ce5f226b1ac748a34fe8ff6f30c -->
-
-<!-- START_7452286f6d6a133a6aa22a8600db2d7a -->
-## Store
-
-> Example request:
-
-```bash
-curl -X POST \
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/tenants" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/tenants"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "POST",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`POST api/core/1.0/module/tenants`
-
-
-<!-- END_7452286f6d6a133a6aa22a8600db2d7a -->
-
-<!-- START_2f7cd154aeb3c6317f18f4d0a9516813 -->
-## Show
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/tenants/1" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/tenants/1"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (500):
-
-```json
-{
-    "message": "Server Error"
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/tenants/{tenant}`
-
-#### URL Parameters
-
-Parameter | Status | Description
---------- | ------- | ------- | -------
-    `id` |  required  | The ID of the item.
-
-<!-- END_2f7cd154aeb3c6317f18f4d0a9516813 -->
-
-<!-- START_c26a297748134879fac8bd1bd737424d -->
-## Update
-
-> Example request:
-
-```bash
-curl -X PUT \
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/tenants/1" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/tenants/1"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "PUT",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`PUT api/core/1.0/module/tenants/{tenant}`
-
-`PATCH api/core/1.0/module/tenants/{tenant}`
-
-
-<!-- END_c26a297748134879fac8bd1bd737424d -->
-
-<!-- START_24b42cff54428f2ee4ad25f933213e9c -->
-## Delete
-
-> Example request:
-
-```bash
-curl -X DELETE \
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/tenants/1" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/tenants/1"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "DELETE",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`DELETE api/core/1.0/module/tenants/{tenant}`
-
-
-<!-- END_24b42cff54428f2ee4ad25f933213e9c -->
-
-<!-- START_2856dbb1fe7e5ee148f5aa3dc2c9ee72 -->
-## Returns a collection of objects as Json for an API call
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/users/list/json" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/users/list/json"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (200):
-
-```json
-{
-    "code": 200,
-    "status": "success",
-    "message": "Request Processed",
-    "data": {
-        "current_page": 1,
-        "first_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/users\/list\/json?page=1",
-        "from": 1,
-        "last_page": 2,
-        "last_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/users\/list\/json?page=2",
-        "next_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/users\/list\/json?page=2",
-        "path": "http:\/\/localhost\/api\/core\/1.0\/module\/users\/list\/json",
-        "per_page": 20,
-        "prev_page_url": null,
-        "to": 20,
-        "total": 28,
-        "items": [
-            {
-                "id": 1,
-                "uuid": "3ef9b174-6c7c-41fd-b68e-18d003fb9481",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "Super admin",
-                "email": "su@mainframe",
-                "api_token": null,
-                "api_token_generated_at": null,
-                "is_tenant_editable": 1,
-                "permissions": [],
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2018-09-10 15:30:06",
-                "updated_at": "2021-02-13 13:39:29",
-                "deleted_at": null,
-                "deleted_by": null,
-                "name_initial": null,
-                "first_name": "Prime",
-                "last_name": "Superuser",
-                "full_name": "Prime Superuser",
-                "gender": null,
-                "device_token": null,
-                "address1": null,
-                "address2": null,
-                "city": null,
-                "county": null,
-                "country_id": 187,
-                "country_name": "UK (United Kingdom)",
-                "zip_code": null,
-                "phone": null,
-                "mobile": null,
-                "first_login_at": "2020-02-08 10:55:44",
-                "last_login_at": "2021-02-13 13:39:29",
-                "auth_token": "UMZ9oxfJ7gL0OtbBUIe\/odaOr1jEFDq1",
-                "email_verified_at": "2019-01-22 19:27:07",
-                "email_verification_code": null,
-                "currency": "GBP",
-                "social_account_id": null,
-                "social_account_type": null,
-                "dob": null,
-                "group_ids": [
-                    "1"
-                ],
-                "is_test": 0,
-                "profile_pic": null,
-                "uploads": []
-            },
-            {
-                "id": 2,
-                "uuid": "856a81bf-ab1b-4289-9d65-9751009d00ad",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "API",
-                "email": "api@mainframe",
-                "api_token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-                "api_token_generated_at": null,
-                "is_tenant_editable": 0,
-                "permissions": [],
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2018-12-24 05:48:25",
-                "updated_at": "2021-02-13 13:37:20",
-                "deleted_at": null,
-                "deleted_by": null,
-                "name_initial": null,
-                "first_name": "LB",
-                "last_name": "API",
-                "full_name": "LB API",
-                "gender": null,
-                "device_token": "eFGlVn8yFn8:APA91bHgq2zk-9JrBNNtVMn4iFMB6eicQOUVyFZGRft8jv-GwGJej9sFppTG5w9E_3IeOyR_3NN1i3cWFHaiVl_k1Zlt2jDMVoh7D90CsJG1qxVnuruH-Eidi1CgO9QVlpmFByK2azr3",
-                "address1": "62142 Haley Lake",
-                "address2": null,
-                "city": null,
-                "county": null,
-                "country_id": 187,
-                "country_name": "UK (United Kingdom)",
-                "zip_code": null,
-                "phone": null,
-                "mobile": null,
-                "first_login_at": "2019-01-31 08:31:54",
-                "last_login_at": "2019-04-09 15:17:25",
-                "auth_token": "Q29anuSIvoR9N8OmB2ueGGRI8tlHPZau",
-                "email_verified_at": "2019-01-22 19:27:07",
-                "email_verification_code": null,
-                "currency": "GBP",
-                "social_account_id": null,
-                "social_account_type": null,
-                "dob": null,
-                "group_ids": [
-                    "2"
-                ],
-                "is_test": 0,
-                "profile_pic": null,
-                "uploads": []
-            },
-            {
-                "id": 999,
-                "uuid": "0b11bb84-a6f9-4612-b823-6eb0feda3342",
-                "project_id": null,
-                "tenant_id": null,
-                "name": " ",
-                "email": "dote@mailinator.net",
-                "api_token": null,
-                "api_token_generated_at": null,
-                "is_tenant_editable": 1,
-                "permissions": [],
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2020-01-06 16:55:14",
-                "updated_at": "2020-06-30 15:50:15",
-                "deleted_at": null,
-                "deleted_by": null,
-                "name_initial": null,
-                "first_name": "Dote",
-                "last_name": "Test",
-                "full_name": "Dote Test",
-                "gender": null,
-                "device_token": null,
-                "address1": "018 Alva Mountain",
-                "address2": null,
-                "city": null,
-                "county": null,
-                "country_id": null,
-                "country_name": null,
-                "zip_code": null,
-                "phone": null,
-                "mobile": null,
-                "first_login_at": "2020-06-30 15:49:31",
-                "last_login_at": "2020-06-30 15:50:15",
-                "auth_token": "LoremIpsumSIvoR9N8OmB2ueLoremIpsu",
-                "email_verified_at": "2019-01-22 19:27:07",
-                "email_verification_code": null,
-                "currency": null,
-                "social_account_id": null,
-                "social_account_type": null,
-                "dob": null,
-                "group_ids": [
-                    "25"
-                ],
-                "is_test": 0,
-                "profile_pic": null,
-                "uploads": []
-            },
-            {
-                "id": 5055,
-                "uuid": "30e89e31-ec4b-4f79-a6e4-4e5b003c3aaf",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "Daisha Runolfsson",
-                "email": "hansen.quentin@rau.biz",
-                "api_token": null,
-                "api_token_generated_at": null,
-                "is_tenant_editable": 1,
-                "permissions": [],
-                "is_active": 1,
-                "created_by": null,
-                "updated_by": null,
-                "created_at": "2021-02-09 06:30:36",
-                "updated_at": "2021-02-09 06:30:36",
-                "deleted_at": null,
-                "deleted_by": null,
-                "name_initial": null,
-                "first_name": "Daisha",
-                "last_name": "Runolfsson",
-                "full_name": null,
-                "gender": null,
-                "device_token": null,
-                "address1": null,
-                "address2": null,
-                "city": null,
-                "county": null,
-                "country_id": null,
-                "country_name": null,
-                "zip_code": null,
-                "phone": null,
-                "mobile": null,
-                "first_login_at": null,
-                "last_login_at": null,
-                "auth_token": null,
-                "email_verified_at": null,
-                "email_verification_code": null,
-                "currency": null,
-                "social_account_id": null,
-                "social_account_type": null,
-                "dob": null,
-                "group_ids": [
-                    "26"
-                ],
-                "is_test": null,
-                "profile_pic": null,
-                "uploads": []
-            },
-            {
-                "id": 5058,
-                "uuid": "01234f77-a679-4263-8e92-950d83b91c82",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "Skye Abshire",
-                "email": "jarret.streich@volkman.com",
-                "api_token": null,
-                "api_token_generated_at": null,
-                "is_tenant_editable": 1,
-                "permissions": [],
-                "is_active": 1,
-                "created_by": null,
-                "updated_by": null,
-                "created_at": "2021-02-09 06:30:51",
-                "updated_at": "2021-02-09 06:30:51",
-                "deleted_at": null,
-                "deleted_by": null,
-                "name_initial": null,
-                "first_name": "Skye",
-                "last_name": "Abshire",
-                "full_name": null,
-                "gender": null,
-                "device_token": null,
-                "address1": null,
-                "address2": null,
-                "city": null,
-                "county": null,
-                "country_id": null,
-                "country_name": null,
-                "zip_code": null,
-                "phone": null,
-                "mobile": null,
-                "first_login_at": null,
-                "last_login_at": null,
-                "auth_token": null,
-                "email_verified_at": null,
-                "email_verification_code": null,
-                "currency": null,
-                "social_account_id": null,
-                "social_account_type": null,
-                "dob": null,
-                "group_ids": [
-                    "26"
-                ],
-                "is_test": null,
-                "profile_pic": null,
-                "uploads": []
-            },
-            {
-                "id": 5061,
-                "uuid": "bb9c5036-52db-49d7-adce-ccbf8d323241",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "Noemy Wehner",
-                "email": "koss.michel@yahoo.com",
-                "api_token": null,
-                "api_token_generated_at": null,
-                "is_tenant_editable": 1,
-                "permissions": [],
-                "is_active": 1,
-                "created_by": null,
-                "updated_by": null,
-                "created_at": "2021-02-09 06:31:08",
-                "updated_at": "2021-02-09 06:31:08",
-                "deleted_at": null,
-                "deleted_by": null,
-                "name_initial": null,
-                "first_name": "Noemy",
-                "last_name": "Wehner",
-                "full_name": null,
-                "gender": null,
-                "device_token": null,
-                "address1": null,
-                "address2": null,
-                "city": null,
-                "county": null,
-                "country_id": null,
-                "country_name": null,
-                "zip_code": null,
-                "phone": null,
-                "mobile": null,
-                "first_login_at": null,
-                "last_login_at": null,
-                "auth_token": null,
-                "email_verified_at": null,
-                "email_verification_code": null,
-                "currency": null,
-                "social_account_id": null,
-                "social_account_type": null,
-                "dob": null,
-                "group_ids": [
-                    "26"
-                ],
-                "is_test": null,
-                "profile_pic": null,
-                "uploads": []
-            },
-            {
-                "id": 5064,
-                "uuid": "22e6758d-1427-4f8b-a16d-0fc3d5c3beb7",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "Darius Reichert",
-                "email": "mozell23@blick.com",
-                "api_token": null,
-                "api_token_generated_at": null,
-                "is_tenant_editable": 1,
-                "permissions": [],
-                "is_active": 1,
-                "created_by": null,
-                "updated_by": null,
-                "created_at": "2021-02-09 06:31:54",
-                "updated_at": "2021-02-09 06:31:54",
-                "deleted_at": null,
-                "deleted_by": null,
-                "name_initial": null,
-                "first_name": "Darius",
-                "last_name": "Reichert",
-                "full_name": null,
-                "gender": null,
-                "device_token": null,
-                "address1": null,
-                "address2": null,
-                "city": null,
-                "county": null,
-                "country_id": null,
-                "country_name": null,
-                "zip_code": null,
-                "phone": null,
-                "mobile": null,
-                "first_login_at": null,
-                "last_login_at": null,
-                "auth_token": null,
-                "email_verified_at": null,
-                "email_verification_code": null,
-                "currency": null,
-                "social_account_id": null,
-                "social_account_type": null,
-                "dob": null,
-                "group_ids": [
-                    "26"
-                ],
-                "is_test": null,
-                "profile_pic": null,
-                "uploads": []
-            },
-            {
-                "id": 5068,
-                "uuid": "5e5e4726-b44a-4c5e-b854-1d77ae546b4f",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "Chandler Herzog",
-                "email": "hill.enoch@stokes.info",
-                "api_token": null,
-                "api_token_generated_at": null,
-                "is_tenant_editable": 1,
-                "permissions": [],
-                "is_active": 1,
-                "created_by": null,
-                "updated_by": null,
-                "created_at": "2021-02-09 06:32:22",
-                "updated_at": "2021-02-09 06:32:22",
-                "deleted_at": null,
-                "deleted_by": null,
-                "name_initial": null,
-                "first_name": "Chandler",
-                "last_name": "Herzog",
-                "full_name": null,
-                "gender": null,
-                "device_token": null,
-                "address1": null,
-                "address2": null,
-                "city": null,
-                "county": null,
-                "country_id": null,
-                "country_name": null,
-                "zip_code": null,
-                "phone": null,
-                "mobile": null,
-                "first_login_at": null,
-                "last_login_at": null,
-                "auth_token": null,
-                "email_verified_at": null,
-                "email_verification_code": null,
-                "currency": null,
-                "social_account_id": null,
-                "social_account_type": null,
-                "dob": null,
-                "group_ids": [
-                    "26"
-                ],
-                "is_test": null,
-                "profile_pic": null,
-                "uploads": []
-            },
-            {
-                "id": 5072,
-                "uuid": "cbe20307-1d19-494b-974f-c8eb0f9f0fce",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "Aaron Franecki",
-                "email": "shanna.konopelski@schmeler.org",
-                "api_token": null,
-                "api_token_generated_at": null,
-                "is_tenant_editable": 1,
-                "permissions": [],
-                "is_active": 1,
-                "created_by": null,
-                "updated_by": null,
-                "created_at": "2021-02-09 08:40:08",
-                "updated_at": "2021-02-09 08:40:08",
-                "deleted_at": null,
-                "deleted_by": null,
-                "name_initial": null,
-                "first_name": "Aaron",
-                "last_name": "Franecki",
-                "full_name": null,
-                "gender": null,
-                "device_token": null,
-                "address1": null,
-                "address2": null,
-                "city": null,
-                "county": null,
-                "country_id": null,
-                "country_name": null,
-                "zip_code": null,
-                "phone": null,
-                "mobile": null,
-                "first_login_at": null,
-                "last_login_at": null,
-                "auth_token": null,
-                "email_verified_at": null,
-                "email_verification_code": null,
-                "currency": null,
-                "social_account_id": null,
-                "social_account_type": null,
-                "dob": null,
-                "group_ids": [
-                    "26"
-                ],
-                "is_test": null,
-                "profile_pic": null,
-                "uploads": []
-            },
-            {
-                "id": 5076,
-                "uuid": "a757a7d5-9ae4-48a1-a5d0-ea7485561a9d",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "Americo Ondricka",
-                "email": "ewhite@gmail.com",
-                "api_token": null,
-                "api_token_generated_at": null,
-                "is_tenant_editable": 1,
-                "permissions": [],
-                "is_active": 1,
-                "created_by": null,
-                "updated_by": null,
-                "created_at": "2021-02-09 10:10:23",
-                "updated_at": "2021-02-09 10:10:23",
-                "deleted_at": null,
-                "deleted_by": null,
-                "name_initial": null,
-                "first_name": "Americo",
-                "last_name": "Ondricka",
-                "full_name": null,
-                "gender": null,
-                "device_token": null,
-                "address1": null,
-                "address2": null,
-                "city": null,
-                "county": null,
-                "country_id": null,
-                "country_name": null,
-                "zip_code": null,
-                "phone": null,
-                "mobile": null,
-                "first_login_at": null,
-                "last_login_at": null,
-                "auth_token": null,
-                "email_verified_at": null,
-                "email_verification_code": null,
-                "currency": null,
-                "social_account_id": null,
-                "social_account_type": null,
-                "dob": null,
-                "group_ids": [
-                    "26"
-                ],
-                "is_test": null,
-                "profile_pic": null,
-                "uploads": []
-            },
-            {
-                "id": 5080,
-                "uuid": "479c2fd7-f876-48ad-bae8-eaa690503d82",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "Andreane Kuphal",
-                "email": "horacio79@reichel.com",
-                "api_token": null,
-                "api_token_generated_at": null,
-                "is_tenant_editable": 1,
-                "permissions": [],
-                "is_active": 1,
-                "created_by": null,
-                "updated_by": null,
-                "created_at": "2021-02-09 10:29:47",
-                "updated_at": "2021-02-09 10:29:47",
-                "deleted_at": null,
-                "deleted_by": null,
-                "name_initial": null,
-                "first_name": "Andreane",
-                "last_name": "Kuphal",
-                "full_name": null,
-                "gender": null,
-                "device_token": null,
-                "address1": null,
-                "address2": null,
-                "city": null,
-                "county": null,
-                "country_id": null,
-                "country_name": null,
-                "zip_code": null,
-                "phone": null,
-                "mobile": null,
-                "first_login_at": null,
-                "last_login_at": null,
-                "auth_token": null,
-                "email_verified_at": null,
-                "email_verification_code": null,
-                "currency": null,
-                "social_account_id": null,
-                "social_account_type": null,
-                "dob": null,
-                "group_ids": [
-                    "26"
-                ],
-                "is_test": null,
-                "profile_pic": null,
-                "uploads": []
-            },
-            {
-                "id": 5084,
-                "uuid": "eee212a5-6eb4-4bbd-8871-c73b76fe3722",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "Trycia Funk",
-                "email": "maurice.auer@gmail.com",
-                "api_token": null,
-                "api_token_generated_at": null,
-                "is_tenant_editable": 1,
-                "permissions": [],
-                "is_active": 1,
-                "created_by": null,
-                "updated_by": null,
-                "created_at": "2021-02-09 10:30:19",
-                "updated_at": "2021-02-09 10:30:19",
-                "deleted_at": null,
-                "deleted_by": null,
-                "name_initial": null,
-                "first_name": "Trycia",
-                "last_name": "Funk",
-                "full_name": null,
-                "gender": null,
-                "device_token": null,
-                "address1": null,
-                "address2": null,
-                "city": null,
-                "county": null,
-                "country_id": null,
-                "country_name": null,
-                "zip_code": null,
-                "phone": null,
-                "mobile": null,
-                "first_login_at": null,
-                "last_login_at": null,
-                "auth_token": null,
-                "email_verified_at": null,
-                "email_verification_code": null,
-                "currency": null,
-                "social_account_id": null,
-                "social_account_type": null,
-                "dob": null,
-                "group_ids": [
-                    "26"
-                ],
-                "is_test": null,
-                "profile_pic": null,
-                "uploads": []
-            },
-            {
-                "id": 5088,
-                "uuid": "662cb7b2-2ea3-48ab-bb4b-abe836a8989a",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "Conor Daniel",
-                "email": "zmuller@auer.org",
-                "api_token": null,
-                "api_token_generated_at": null,
-                "is_tenant_editable": 1,
-                "permissions": [],
-                "is_active": 1,
-                "created_by": null,
-                "updated_by": null,
-                "created_at": "2021-02-09 11:13:08",
-                "updated_at": "2021-02-09 11:13:08",
-                "deleted_at": null,
-                "deleted_by": null,
-                "name_initial": null,
-                "first_name": "Conor",
-                "last_name": "Daniel",
-                "full_name": null,
-                "gender": null,
-                "device_token": null,
-                "address1": null,
-                "address2": null,
-                "city": null,
-                "county": null,
-                "country_id": null,
-                "country_name": null,
-                "zip_code": null,
-                "phone": null,
-                "mobile": null,
-                "first_login_at": null,
-                "last_login_at": null,
-                "auth_token": null,
-                "email_verified_at": null,
-                "email_verification_code": null,
-                "currency": null,
-                "social_account_id": null,
-                "social_account_type": null,
-                "dob": null,
-                "group_ids": [
-                    "26"
-                ],
-                "is_test": null,
-                "profile_pic": null,
-                "uploads": []
-            },
-            {
-                "id": 5092,
-                "uuid": "04a688d6-eb86-4628-93d0-8ca06684e58a",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "Davon Swaniawski",
-                "email": "larkin.dexter@jaskolski.org",
-                "api_token": null,
-                "api_token_generated_at": null,
-                "is_tenant_editable": 1,
-                "permissions": [],
-                "is_active": 1,
-                "created_by": null,
-                "updated_by": null,
-                "created_at": "2021-02-09 11:34:31",
-                "updated_at": "2021-02-09 11:34:31",
-                "deleted_at": null,
-                "deleted_by": null,
-                "name_initial": null,
-                "first_name": "Davon",
-                "last_name": "Swaniawski",
-                "full_name": null,
-                "gender": null,
-                "device_token": null,
-                "address1": null,
-                "address2": null,
-                "city": null,
-                "county": null,
-                "country_id": null,
-                "country_name": null,
-                "zip_code": null,
-                "phone": null,
-                "mobile": null,
-                "first_login_at": null,
-                "last_login_at": null,
-                "auth_token": null,
-                "email_verified_at": null,
-                "email_verification_code": null,
-                "currency": null,
-                "social_account_id": null,
-                "social_account_type": null,
-                "dob": null,
-                "group_ids": [
-                    "26"
-                ],
-                "is_test": null,
-                "profile_pic": null,
-                "uploads": []
-            },
-            {
-                "id": 5096,
-                "uuid": "ccdb8dd0-fdfc-4747-a0c2-aabff81865d2",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "Ardith Murazik",
-                "email": "aimee11@yahoo.com",
-                "api_token": null,
-                "api_token_generated_at": null,
-                "is_tenant_editable": 1,
-                "permissions": [],
-                "is_active": 1,
-                "created_by": null,
-                "updated_by": null,
-                "created_at": "2021-02-09 13:59:02",
-                "updated_at": "2021-02-09 13:59:02",
-                "deleted_at": null,
-                "deleted_by": null,
-                "name_initial": null,
-                "first_name": "Ardith",
-                "last_name": "Murazik",
-                "full_name": null,
-                "gender": null,
-                "device_token": null,
-                "address1": null,
-                "address2": null,
-                "city": null,
-                "county": null,
-                "country_id": null,
-                "country_name": null,
-                "zip_code": null,
-                "phone": null,
-                "mobile": null,
-                "first_login_at": null,
-                "last_login_at": null,
-                "auth_token": null,
-                "email_verified_at": null,
-                "email_verification_code": null,
-                "currency": null,
-                "social_account_id": null,
-                "social_account_type": null,
-                "dob": null,
-                "group_ids": [
-                    "26"
-                ],
-                "is_test": null,
-                "profile_pic": null,
-                "uploads": []
-            },
-            {
-                "id": 5100,
-                "uuid": "db9bf107-5345-4c8f-b968-1585d0180689",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "Ulices McGlynn",
-                "email": "donnell.kemmer@ziemann.com",
-                "api_token": null,
-                "api_token_generated_at": null,
-                "is_tenant_editable": 1,
-                "permissions": [],
-                "is_active": 1,
-                "created_by": null,
-                "updated_by": null,
-                "created_at": "2021-02-12 06:45:58",
-                "updated_at": "2021-02-12 06:45:58",
-                "deleted_at": null,
-                "deleted_by": null,
-                "name_initial": null,
-                "first_name": "Ulices",
-                "last_name": "McGlynn",
-                "full_name": null,
-                "gender": null,
-                "device_token": null,
-                "address1": null,
-                "address2": null,
-                "city": null,
-                "county": null,
-                "country_id": null,
-                "country_name": null,
-                "zip_code": null,
-                "phone": null,
-                "mobile": null,
-                "first_login_at": null,
-                "last_login_at": null,
-                "auth_token": null,
-                "email_verified_at": null,
-                "email_verification_code": null,
-                "currency": null,
-                "social_account_id": null,
-                "social_account_type": null,
-                "dob": null,
-                "group_ids": [
-                    "26"
-                ],
-                "is_test": null,
-                "profile_pic": null,
-                "uploads": []
-            },
-            {
-                "id": 5104,
-                "uuid": "63b9cc00-6efa-41ef-99d7-e8d17930d5f3",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "Alayna Johns",
-                "email": "elbert45@adams.com",
-                "api_token": null,
-                "api_token_generated_at": null,
-                "is_tenant_editable": 1,
-                "permissions": [],
-                "is_active": 1,
-                "created_by": null,
-                "updated_by": null,
-                "created_at": "2021-02-12 07:13:12",
-                "updated_at": "2021-02-12 07:13:12",
-                "deleted_at": null,
-                "deleted_by": null,
-                "name_initial": null,
-                "first_name": "Alayna",
-                "last_name": "Johns",
-                "full_name": null,
-                "gender": null,
-                "device_token": null,
-                "address1": null,
-                "address2": null,
-                "city": null,
-                "county": null,
-                "country_id": null,
-                "country_name": null,
-                "zip_code": null,
-                "phone": null,
-                "mobile": null,
-                "first_login_at": null,
-                "last_login_at": null,
-                "auth_token": null,
-                "email_verified_at": null,
-                "email_verification_code": null,
-                "currency": null,
-                "social_account_id": null,
-                "social_account_type": null,
-                "dob": null,
-                "group_ids": [
-                    "26"
-                ],
-                "is_test": null,
-                "profile_pic": null,
-                "uploads": []
-            },
-            {
-                "id": 5108,
-                "uuid": "11bb2d30-4edc-4525-a5c7-4dd6177d991a",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "Noelia Spencer",
-                "email": "filiberto75@gmail.com",
-                "api_token": null,
-                "api_token_generated_at": null,
-                "is_tenant_editable": 1,
-                "permissions": [],
-                "is_active": 1,
-                "created_by": null,
-                "updated_by": null,
-                "created_at": "2021-02-12 09:38:07",
-                "updated_at": "2021-02-12 09:38:07",
-                "deleted_at": null,
-                "deleted_by": null,
-                "name_initial": null,
-                "first_name": "Noelia",
-                "last_name": "Spencer",
-                "full_name": null,
-                "gender": null,
-                "device_token": null,
-                "address1": null,
-                "address2": null,
-                "city": null,
-                "county": null,
-                "country_id": null,
-                "country_name": null,
-                "zip_code": null,
-                "phone": null,
-                "mobile": null,
-                "first_login_at": null,
-                "last_login_at": null,
-                "auth_token": null,
-                "email_verified_at": null,
-                "email_verification_code": null,
-                "currency": null,
-                "social_account_id": null,
-                "social_account_type": null,
-                "dob": null,
-                "group_ids": [
-                    "26"
-                ],
-                "is_test": null,
-                "profile_pic": null,
-                "uploads": []
-            },
-            {
-                "id": 5112,
-                "uuid": "68eb09fd-7164-4100-99e1-753a0a45e66a",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "Alexanne Lebsack",
-                "email": "cleta57@stehr.info",
-                "api_token": null,
-                "api_token_generated_at": null,
-                "is_tenant_editable": 1,
-                "permissions": [],
-                "is_active": 1,
-                "created_by": null,
-                "updated_by": null,
-                "created_at": "2021-02-13 11:13:21",
-                "updated_at": "2021-02-13 11:13:21",
-                "deleted_at": null,
-                "deleted_by": null,
-                "name_initial": null,
-                "first_name": "Alexanne",
-                "last_name": "Lebsack",
-                "full_name": null,
-                "gender": null,
-                "device_token": null,
-                "address1": null,
-                "address2": null,
-                "city": null,
-                "county": null,
-                "country_id": null,
-                "country_name": null,
-                "zip_code": null,
-                "phone": null,
-                "mobile": null,
-                "first_login_at": null,
-                "last_login_at": null,
-                "auth_token": null,
-                "email_verified_at": null,
-                "email_verification_code": null,
-                "currency": null,
-                "social_account_id": null,
-                "social_account_type": null,
-                "dob": null,
-                "group_ids": [
-                    "26"
-                ],
-                "is_test": null,
-                "profile_pic": null,
-                "uploads": []
-            },
-            {
-                "id": 5116,
-                "uuid": "062aae3d-d361-43b7-8363-acaee97495d9",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "Daniela Kuhic",
-                "email": "hyatt.kolby@hotmail.com",
-                "api_token": null,
-                "api_token_generated_at": null,
-                "is_tenant_editable": 1,
-                "permissions": [],
-                "is_active": 1,
-                "created_by": null,
-                "updated_by": null,
-                "created_at": "2021-02-13 11:14:59",
-                "updated_at": "2021-02-13 11:14:59",
-                "deleted_at": null,
-                "deleted_by": null,
-                "name_initial": null,
-                "first_name": "Daniela",
-                "last_name": "Kuhic",
-                "full_name": null,
-                "gender": null,
-                "device_token": null,
-                "address1": null,
-                "address2": null,
-                "city": null,
-                "county": null,
-                "country_id": null,
-                "country_name": null,
-                "zip_code": null,
-                "phone": null,
-                "mobile": null,
-                "first_login_at": null,
-                "last_login_at": null,
-                "auth_token": null,
-                "email_verified_at": null,
-                "email_verification_code": null,
-                "currency": null,
-                "social_account_id": null,
-                "social_account_type": null,
-                "dob": null,
-                "group_ids": [
-                    "26"
-                ],
-                "is_test": null,
-                "profile_pic": null,
-                "uploads": []
-            }
-        ]
-    },
-    "redirect": "http:\/\/localhost\/api\/core\/1.0\/module\/users\/list\/json"
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/users/list/json`
-
-
-<!-- END_2856dbb1fe7e5ee148f5aa3dc2c9ee72 -->
-
-<!-- START_7e540bc54000620a2952447572331efa -->
-## Show and render report
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/users/report" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/users/report"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (200):
-
-```json
-null
-```
-
-### HTTP Request
-`GET api/core/1.0/module/users/report`
-
-
-<!-- END_7e540bc54000620a2952447572331efa -->
-
-<!-- START_44328d921cfa784a2973268712f35d94 -->
-## Get all the uploads of an element
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/users/1/uploads" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/users/1/uploads"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (200):
-
-```json
-{
-    "code": 200,
-    "status": "success",
-    "message": "Request Processed",
-    "data": {
-        "current_page": 1,
-        "first_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/users\/1\/uploads?page=1",
-        "from": null,
-        "last_page": 1,
-        "last_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/users\/1\/uploads?page=1",
-        "next_page_url": null,
-        "path": "http:\/\/localhost\/api\/core\/1.0\/module\/users\/1\/uploads",
-        "per_page": 20,
-        "prev_page_url": null,
-        "to": null,
-        "total": 0,
-        "items": []
-    },
-    "redirect": "http:\/\/localhost\/api\/core\/1.0\/module\/users\/1\/uploads"
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/users/{id}/uploads`
-
-
-<!-- END_44328d921cfa784a2973268712f35d94 -->
-
-<!-- START_cf980baf66e17c606e6277502ee2b49e -->
-## Uploads files under an element
-
-> Example request:
-
-```bash
-curl -X POST \
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/users/1/uploads" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/users/1/uploads"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "POST",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`POST api/core/1.0/module/users/{id}/uploads`
-
-
-<!-- END_cf980baf66e17c606e6277502ee2b49e -->
-
-<!-- START_b8543a6ad4abf0adc80b3a8f4e173030 -->
-## Get all the comments of an element
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/users/1/comments" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/users/1/comments"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (200):
-
-```json
-{
-    "code": 200,
-    "status": "success",
-    "message": "Request Processed",
-    "data": {
-        "current_page": 1,
-        "first_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/users\/1\/comments?page=1",
-        "from": null,
-        "last_page": 1,
-        "last_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/users\/1\/comments?page=1",
-        "next_page_url": null,
-        "path": "http:\/\/localhost\/api\/core\/1.0\/module\/users\/1\/comments",
-        "per_page": 20,
-        "prev_page_url": null,
-        "to": null,
-        "total": 0,
-        "items": []
-    },
-    "redirect": "http:\/\/localhost\/api\/core\/1.0\/module\/users\/1\/comments"
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/users/{id}/comments`
-
-
-<!-- END_b8543a6ad4abf0adc80b3a8f4e173030 -->
-
-<!-- START_5d0a619fe7ad1f09420441e12006c263 -->
-## Index/List page to show grid
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/users" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/users"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (200):
-
-```json
-{
-    "code": 200,
-    "status": "success",
-    "message": "Request Processed",
-    "data": {
-        "current_page": 1,
-        "first_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/users?page=1",
-        "from": 1,
-        "last_page": 2,
-        "last_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/users?page=2",
-        "next_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/users?page=2",
-        "path": "http:\/\/localhost\/api\/core\/1.0\/module\/users",
-        "per_page": 20,
-        "prev_page_url": null,
-        "to": 20,
-        "total": 28,
-        "items": [
-            {
-                "id": 1,
-                "uuid": "3ef9b174-6c7c-41fd-b68e-18d003fb9481",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "Super admin",
-                "email": "su@mainframe",
-                "api_token": null,
-                "api_token_generated_at": null,
-                "is_tenant_editable": 1,
-                "permissions": [],
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2018-09-10 15:30:06",
-                "updated_at": "2021-02-13 13:39:29",
-                "deleted_at": null,
-                "deleted_by": null,
-                "name_initial": null,
-                "first_name": "Prime",
-                "last_name": "Superuser",
-                "full_name": "Prime Superuser",
-                "gender": null,
-                "device_token": null,
-                "address1": null,
-                "address2": null,
-                "city": null,
-                "county": null,
-                "country_id": 187,
-                "country_name": "UK (United Kingdom)",
-                "zip_code": null,
-                "phone": null,
-                "mobile": null,
-                "first_login_at": "2020-02-08 10:55:44",
-                "last_login_at": "2021-02-13 13:39:29",
-                "auth_token": "UMZ9oxfJ7gL0OtbBUIe\/odaOr1jEFDq1",
-                "email_verified_at": "2019-01-22 19:27:07",
-                "email_verification_code": null,
-                "currency": "GBP",
-                "social_account_id": null,
-                "social_account_type": null,
-                "dob": null,
-                "group_ids": [
-                    "1"
-                ],
-                "is_test": 0,
-                "profile_pic": null,
-                "uploads": []
-            },
-            {
-                "id": 2,
-                "uuid": "856a81bf-ab1b-4289-9d65-9751009d00ad",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "API",
-                "email": "api@mainframe",
-                "api_token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-                "api_token_generated_at": null,
-                "is_tenant_editable": 0,
-                "permissions": [],
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2018-12-24 05:48:25",
-                "updated_at": "2021-02-13 13:37:20",
-                "deleted_at": null,
-                "deleted_by": null,
-                "name_initial": null,
-                "first_name": "LB",
-                "last_name": "API",
-                "full_name": "LB API",
-                "gender": null,
-                "device_token": "eFGlVn8yFn8:APA91bHgq2zk-9JrBNNtVMn4iFMB6eicQOUVyFZGRft8jv-GwGJej9sFppTG5w9E_3IeOyR_3NN1i3cWFHaiVl_k1Zlt2jDMVoh7D90CsJG1qxVnuruH-Eidi1CgO9QVlpmFByK2azr3",
-                "address1": "62142 Haley Lake",
-                "address2": null,
-                "city": null,
-                "county": null,
-                "country_id": 187,
-                "country_name": "UK (United Kingdom)",
-                "zip_code": null,
-                "phone": null,
-                "mobile": null,
-                "first_login_at": "2019-01-31 08:31:54",
-                "last_login_at": "2019-04-09 15:17:25",
-                "auth_token": "Q29anuSIvoR9N8OmB2ueGGRI8tlHPZau",
-                "email_verified_at": "2019-01-22 19:27:07",
-                "email_verification_code": null,
-                "currency": "GBP",
-                "social_account_id": null,
-                "social_account_type": null,
-                "dob": null,
-                "group_ids": [
-                    "2"
-                ],
-                "is_test": 0,
-                "profile_pic": null,
-                "uploads": []
-            },
-            {
-                "id": 999,
-                "uuid": "0b11bb84-a6f9-4612-b823-6eb0feda3342",
-                "project_id": null,
-                "tenant_id": null,
-                "name": " ",
-                "email": "dote@mailinator.net",
-                "api_token": null,
-                "api_token_generated_at": null,
-                "is_tenant_editable": 1,
-                "permissions": [],
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2020-01-06 16:55:14",
-                "updated_at": "2020-06-30 15:50:15",
-                "deleted_at": null,
-                "deleted_by": null,
-                "name_initial": null,
-                "first_name": "Dote",
-                "last_name": "Test",
-                "full_name": "Dote Test",
-                "gender": null,
-                "device_token": null,
-                "address1": "018 Alva Mountain",
-                "address2": null,
-                "city": null,
-                "county": null,
-                "country_id": null,
-                "country_name": null,
-                "zip_code": null,
-                "phone": null,
-                "mobile": null,
-                "first_login_at": "2020-06-30 15:49:31",
-                "last_login_at": "2020-06-30 15:50:15",
-                "auth_token": "LoremIpsumSIvoR9N8OmB2ueLoremIpsu",
-                "email_verified_at": "2019-01-22 19:27:07",
-                "email_verification_code": null,
-                "currency": null,
-                "social_account_id": null,
-                "social_account_type": null,
-                "dob": null,
-                "group_ids": [
-                    "25"
-                ],
-                "is_test": 0,
-                "profile_pic": null,
-                "uploads": []
-            },
-            {
-                "id": 5055,
-                "uuid": "30e89e31-ec4b-4f79-a6e4-4e5b003c3aaf",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "Daisha Runolfsson",
-                "email": "hansen.quentin@rau.biz",
-                "api_token": null,
-                "api_token_generated_at": null,
-                "is_tenant_editable": 1,
-                "permissions": [],
-                "is_active": 1,
-                "created_by": null,
-                "updated_by": null,
-                "created_at": "2021-02-09 06:30:36",
-                "updated_at": "2021-02-09 06:30:36",
-                "deleted_at": null,
-                "deleted_by": null,
-                "name_initial": null,
-                "first_name": "Daisha",
-                "last_name": "Runolfsson",
-                "full_name": null,
-                "gender": null,
-                "device_token": null,
-                "address1": null,
-                "address2": null,
-                "city": null,
-                "county": null,
-                "country_id": null,
-                "country_name": null,
-                "zip_code": null,
-                "phone": null,
-                "mobile": null,
-                "first_login_at": null,
-                "last_login_at": null,
-                "auth_token": null,
-                "email_verified_at": null,
-                "email_verification_code": null,
-                "currency": null,
-                "social_account_id": null,
-                "social_account_type": null,
-                "dob": null,
-                "group_ids": [
-                    "26"
-                ],
-                "is_test": null,
-                "profile_pic": null,
-                "uploads": []
-            },
-            {
-                "id": 5058,
-                "uuid": "01234f77-a679-4263-8e92-950d83b91c82",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "Skye Abshire",
-                "email": "jarret.streich@volkman.com",
-                "api_token": null,
-                "api_token_generated_at": null,
-                "is_tenant_editable": 1,
-                "permissions": [],
-                "is_active": 1,
-                "created_by": null,
-                "updated_by": null,
-                "created_at": "2021-02-09 06:30:51",
-                "updated_at": "2021-02-09 06:30:51",
-                "deleted_at": null,
-                "deleted_by": null,
-                "name_initial": null,
-                "first_name": "Skye",
-                "last_name": "Abshire",
-                "full_name": null,
-                "gender": null,
-                "device_token": null,
-                "address1": null,
-                "address2": null,
-                "city": null,
-                "county": null,
-                "country_id": null,
-                "country_name": null,
-                "zip_code": null,
-                "phone": null,
-                "mobile": null,
-                "first_login_at": null,
-                "last_login_at": null,
-                "auth_token": null,
-                "email_verified_at": null,
-                "email_verification_code": null,
-                "currency": null,
-                "social_account_id": null,
-                "social_account_type": null,
-                "dob": null,
-                "group_ids": [
-                    "26"
-                ],
-                "is_test": null,
-                "profile_pic": null,
-                "uploads": []
-            },
-            {
-                "id": 5061,
-                "uuid": "bb9c5036-52db-49d7-adce-ccbf8d323241",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "Noemy Wehner",
-                "email": "koss.michel@yahoo.com",
-                "api_token": null,
-                "api_token_generated_at": null,
-                "is_tenant_editable": 1,
-                "permissions": [],
-                "is_active": 1,
-                "created_by": null,
-                "updated_by": null,
-                "created_at": "2021-02-09 06:31:08",
-                "updated_at": "2021-02-09 06:31:08",
-                "deleted_at": null,
-                "deleted_by": null,
-                "name_initial": null,
-                "first_name": "Noemy",
-                "last_name": "Wehner",
-                "full_name": null,
-                "gender": null,
-                "device_token": null,
-                "address1": null,
-                "address2": null,
-                "city": null,
-                "county": null,
-                "country_id": null,
-                "country_name": null,
-                "zip_code": null,
-                "phone": null,
-                "mobile": null,
-                "first_login_at": null,
-                "last_login_at": null,
-                "auth_token": null,
-                "email_verified_at": null,
-                "email_verification_code": null,
-                "currency": null,
-                "social_account_id": null,
-                "social_account_type": null,
-                "dob": null,
-                "group_ids": [
-                    "26"
-                ],
-                "is_test": null,
-                "profile_pic": null,
-                "uploads": []
-            },
-            {
-                "id": 5064,
-                "uuid": "22e6758d-1427-4f8b-a16d-0fc3d5c3beb7",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "Darius Reichert",
-                "email": "mozell23@blick.com",
-                "api_token": null,
-                "api_token_generated_at": null,
-                "is_tenant_editable": 1,
-                "permissions": [],
-                "is_active": 1,
-                "created_by": null,
-                "updated_by": null,
-                "created_at": "2021-02-09 06:31:54",
-                "updated_at": "2021-02-09 06:31:54",
-                "deleted_at": null,
-                "deleted_by": null,
-                "name_initial": null,
-                "first_name": "Darius",
-                "last_name": "Reichert",
-                "full_name": null,
-                "gender": null,
-                "device_token": null,
-                "address1": null,
-                "address2": null,
-                "city": null,
-                "county": null,
-                "country_id": null,
-                "country_name": null,
-                "zip_code": null,
-                "phone": null,
-                "mobile": null,
-                "first_login_at": null,
-                "last_login_at": null,
-                "auth_token": null,
-                "email_verified_at": null,
-                "email_verification_code": null,
-                "currency": null,
-                "social_account_id": null,
-                "social_account_type": null,
-                "dob": null,
-                "group_ids": [
-                    "26"
-                ],
-                "is_test": null,
-                "profile_pic": null,
-                "uploads": []
-            },
-            {
-                "id": 5068,
-                "uuid": "5e5e4726-b44a-4c5e-b854-1d77ae546b4f",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "Chandler Herzog",
-                "email": "hill.enoch@stokes.info",
-                "api_token": null,
-                "api_token_generated_at": null,
-                "is_tenant_editable": 1,
-                "permissions": [],
-                "is_active": 1,
-                "created_by": null,
-                "updated_by": null,
-                "created_at": "2021-02-09 06:32:22",
-                "updated_at": "2021-02-09 06:32:22",
-                "deleted_at": null,
-                "deleted_by": null,
-                "name_initial": null,
-                "first_name": "Chandler",
-                "last_name": "Herzog",
-                "full_name": null,
-                "gender": null,
-                "device_token": null,
-                "address1": null,
-                "address2": null,
-                "city": null,
-                "county": null,
-                "country_id": null,
-                "country_name": null,
-                "zip_code": null,
-                "phone": null,
-                "mobile": null,
-                "first_login_at": null,
-                "last_login_at": null,
-                "auth_token": null,
-                "email_verified_at": null,
-                "email_verification_code": null,
-                "currency": null,
-                "social_account_id": null,
-                "social_account_type": null,
-                "dob": null,
-                "group_ids": [
-                    "26"
-                ],
-                "is_test": null,
-                "profile_pic": null,
-                "uploads": []
-            },
-            {
-                "id": 5072,
-                "uuid": "cbe20307-1d19-494b-974f-c8eb0f9f0fce",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "Aaron Franecki",
-                "email": "shanna.konopelski@schmeler.org",
-                "api_token": null,
-                "api_token_generated_at": null,
-                "is_tenant_editable": 1,
-                "permissions": [],
-                "is_active": 1,
-                "created_by": null,
-                "updated_by": null,
-                "created_at": "2021-02-09 08:40:08",
-                "updated_at": "2021-02-09 08:40:08",
-                "deleted_at": null,
-                "deleted_by": null,
-                "name_initial": null,
-                "first_name": "Aaron",
-                "last_name": "Franecki",
-                "full_name": null,
-                "gender": null,
-                "device_token": null,
-                "address1": null,
-                "address2": null,
-                "city": null,
-                "county": null,
-                "country_id": null,
-                "country_name": null,
-                "zip_code": null,
-                "phone": null,
-                "mobile": null,
-                "first_login_at": null,
-                "last_login_at": null,
-                "auth_token": null,
-                "email_verified_at": null,
-                "email_verification_code": null,
-                "currency": null,
-                "social_account_id": null,
-                "social_account_type": null,
-                "dob": null,
-                "group_ids": [
-                    "26"
-                ],
-                "is_test": null,
-                "profile_pic": null,
-                "uploads": []
-            },
-            {
-                "id": 5076,
-                "uuid": "a757a7d5-9ae4-48a1-a5d0-ea7485561a9d",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "Americo Ondricka",
-                "email": "ewhite@gmail.com",
-                "api_token": null,
-                "api_token_generated_at": null,
-                "is_tenant_editable": 1,
-                "permissions": [],
-                "is_active": 1,
-                "created_by": null,
-                "updated_by": null,
-                "created_at": "2021-02-09 10:10:23",
-                "updated_at": "2021-02-09 10:10:23",
-                "deleted_at": null,
-                "deleted_by": null,
-                "name_initial": null,
-                "first_name": "Americo",
-                "last_name": "Ondricka",
-                "full_name": null,
-                "gender": null,
-                "device_token": null,
-                "address1": null,
-                "address2": null,
-                "city": null,
-                "county": null,
-                "country_id": null,
-                "country_name": null,
-                "zip_code": null,
-                "phone": null,
-                "mobile": null,
-                "first_login_at": null,
-                "last_login_at": null,
-                "auth_token": null,
-                "email_verified_at": null,
-                "email_verification_code": null,
-                "currency": null,
-                "social_account_id": null,
-                "social_account_type": null,
-                "dob": null,
-                "group_ids": [
-                    "26"
-                ],
-                "is_test": null,
-                "profile_pic": null,
-                "uploads": []
-            },
-            {
-                "id": 5080,
-                "uuid": "479c2fd7-f876-48ad-bae8-eaa690503d82",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "Andreane Kuphal",
-                "email": "horacio79@reichel.com",
-                "api_token": null,
-                "api_token_generated_at": null,
-                "is_tenant_editable": 1,
-                "permissions": [],
-                "is_active": 1,
-                "created_by": null,
-                "updated_by": null,
-                "created_at": "2021-02-09 10:29:47",
-                "updated_at": "2021-02-09 10:29:47",
-                "deleted_at": null,
-                "deleted_by": null,
-                "name_initial": null,
-                "first_name": "Andreane",
-                "last_name": "Kuphal",
-                "full_name": null,
-                "gender": null,
-                "device_token": null,
-                "address1": null,
-                "address2": null,
-                "city": null,
-                "county": null,
-                "country_id": null,
-                "country_name": null,
-                "zip_code": null,
-                "phone": null,
-                "mobile": null,
-                "first_login_at": null,
-                "last_login_at": null,
-                "auth_token": null,
-                "email_verified_at": null,
-                "email_verification_code": null,
-                "currency": null,
-                "social_account_id": null,
-                "social_account_type": null,
-                "dob": null,
-                "group_ids": [
-                    "26"
-                ],
-                "is_test": null,
-                "profile_pic": null,
-                "uploads": []
-            },
-            {
-                "id": 5084,
-                "uuid": "eee212a5-6eb4-4bbd-8871-c73b76fe3722",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "Trycia Funk",
-                "email": "maurice.auer@gmail.com",
-                "api_token": null,
-                "api_token_generated_at": null,
-                "is_tenant_editable": 1,
-                "permissions": [],
-                "is_active": 1,
-                "created_by": null,
-                "updated_by": null,
-                "created_at": "2021-02-09 10:30:19",
-                "updated_at": "2021-02-09 10:30:19",
-                "deleted_at": null,
-                "deleted_by": null,
-                "name_initial": null,
-                "first_name": "Trycia",
-                "last_name": "Funk",
-                "full_name": null,
-                "gender": null,
-                "device_token": null,
-                "address1": null,
-                "address2": null,
-                "city": null,
-                "county": null,
-                "country_id": null,
-                "country_name": null,
-                "zip_code": null,
-                "phone": null,
-                "mobile": null,
-                "first_login_at": null,
-                "last_login_at": null,
-                "auth_token": null,
-                "email_verified_at": null,
-                "email_verification_code": null,
-                "currency": null,
-                "social_account_id": null,
-                "social_account_type": null,
-                "dob": null,
-                "group_ids": [
-                    "26"
-                ],
-                "is_test": null,
-                "profile_pic": null,
-                "uploads": []
-            },
-            {
-                "id": 5088,
-                "uuid": "662cb7b2-2ea3-48ab-bb4b-abe836a8989a",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "Conor Daniel",
-                "email": "zmuller@auer.org",
-                "api_token": null,
-                "api_token_generated_at": null,
-                "is_tenant_editable": 1,
-                "permissions": [],
-                "is_active": 1,
-                "created_by": null,
-                "updated_by": null,
-                "created_at": "2021-02-09 11:13:08",
-                "updated_at": "2021-02-09 11:13:08",
-                "deleted_at": null,
-                "deleted_by": null,
-                "name_initial": null,
-                "first_name": "Conor",
-                "last_name": "Daniel",
-                "full_name": null,
-                "gender": null,
-                "device_token": null,
-                "address1": null,
-                "address2": null,
-                "city": null,
-                "county": null,
-                "country_id": null,
-                "country_name": null,
-                "zip_code": null,
-                "phone": null,
-                "mobile": null,
-                "first_login_at": null,
-                "last_login_at": null,
-                "auth_token": null,
-                "email_verified_at": null,
-                "email_verification_code": null,
-                "currency": null,
-                "social_account_id": null,
-                "social_account_type": null,
-                "dob": null,
-                "group_ids": [
-                    "26"
-                ],
-                "is_test": null,
-                "profile_pic": null,
-                "uploads": []
-            },
-            {
-                "id": 5092,
-                "uuid": "04a688d6-eb86-4628-93d0-8ca06684e58a",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "Davon Swaniawski",
-                "email": "larkin.dexter@jaskolski.org",
-                "api_token": null,
-                "api_token_generated_at": null,
-                "is_tenant_editable": 1,
-                "permissions": [],
-                "is_active": 1,
-                "created_by": null,
-                "updated_by": null,
-                "created_at": "2021-02-09 11:34:31",
-                "updated_at": "2021-02-09 11:34:31",
-                "deleted_at": null,
-                "deleted_by": null,
-                "name_initial": null,
-                "first_name": "Davon",
-                "last_name": "Swaniawski",
-                "full_name": null,
-                "gender": null,
-                "device_token": null,
-                "address1": null,
-                "address2": null,
-                "city": null,
-                "county": null,
-                "country_id": null,
-                "country_name": null,
-                "zip_code": null,
-                "phone": null,
-                "mobile": null,
-                "first_login_at": null,
-                "last_login_at": null,
-                "auth_token": null,
-                "email_verified_at": null,
-                "email_verification_code": null,
-                "currency": null,
-                "social_account_id": null,
-                "social_account_type": null,
-                "dob": null,
-                "group_ids": [
-                    "26"
-                ],
-                "is_test": null,
-                "profile_pic": null,
-                "uploads": []
-            },
-            {
-                "id": 5096,
-                "uuid": "ccdb8dd0-fdfc-4747-a0c2-aabff81865d2",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "Ardith Murazik",
-                "email": "aimee11@yahoo.com",
-                "api_token": null,
-                "api_token_generated_at": null,
-                "is_tenant_editable": 1,
-                "permissions": [],
-                "is_active": 1,
-                "created_by": null,
-                "updated_by": null,
-                "created_at": "2021-02-09 13:59:02",
-                "updated_at": "2021-02-09 13:59:02",
-                "deleted_at": null,
-                "deleted_by": null,
-                "name_initial": null,
-                "first_name": "Ardith",
-                "last_name": "Murazik",
-                "full_name": null,
-                "gender": null,
-                "device_token": null,
-                "address1": null,
-                "address2": null,
-                "city": null,
-                "county": null,
-                "country_id": null,
-                "country_name": null,
-                "zip_code": null,
-                "phone": null,
-                "mobile": null,
-                "first_login_at": null,
-                "last_login_at": null,
-                "auth_token": null,
-                "email_verified_at": null,
-                "email_verification_code": null,
-                "currency": null,
-                "social_account_id": null,
-                "social_account_type": null,
-                "dob": null,
-                "group_ids": [
-                    "26"
-                ],
-                "is_test": null,
-                "profile_pic": null,
-                "uploads": []
-            },
-            {
-                "id": 5100,
-                "uuid": "db9bf107-5345-4c8f-b968-1585d0180689",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "Ulices McGlynn",
-                "email": "donnell.kemmer@ziemann.com",
-                "api_token": null,
-                "api_token_generated_at": null,
-                "is_tenant_editable": 1,
-                "permissions": [],
-                "is_active": 1,
-                "created_by": null,
-                "updated_by": null,
-                "created_at": "2021-02-12 06:45:58",
-                "updated_at": "2021-02-12 06:45:58",
-                "deleted_at": null,
-                "deleted_by": null,
-                "name_initial": null,
-                "first_name": "Ulices",
-                "last_name": "McGlynn",
-                "full_name": null,
-                "gender": null,
-                "device_token": null,
-                "address1": null,
-                "address2": null,
-                "city": null,
-                "county": null,
-                "country_id": null,
-                "country_name": null,
-                "zip_code": null,
-                "phone": null,
-                "mobile": null,
-                "first_login_at": null,
-                "last_login_at": null,
-                "auth_token": null,
-                "email_verified_at": null,
-                "email_verification_code": null,
-                "currency": null,
-                "social_account_id": null,
-                "social_account_type": null,
-                "dob": null,
-                "group_ids": [
-                    "26"
-                ],
-                "is_test": null,
-                "profile_pic": null,
-                "uploads": []
-            },
-            {
-                "id": 5104,
-                "uuid": "63b9cc00-6efa-41ef-99d7-e8d17930d5f3",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "Alayna Johns",
-                "email": "elbert45@adams.com",
-                "api_token": null,
-                "api_token_generated_at": null,
-                "is_tenant_editable": 1,
-                "permissions": [],
-                "is_active": 1,
-                "created_by": null,
-                "updated_by": null,
-                "created_at": "2021-02-12 07:13:12",
-                "updated_at": "2021-02-12 07:13:12",
-                "deleted_at": null,
-                "deleted_by": null,
-                "name_initial": null,
-                "first_name": "Alayna",
-                "last_name": "Johns",
-                "full_name": null,
-                "gender": null,
-                "device_token": null,
-                "address1": null,
-                "address2": null,
-                "city": null,
-                "county": null,
-                "country_id": null,
-                "country_name": null,
-                "zip_code": null,
-                "phone": null,
-                "mobile": null,
-                "first_login_at": null,
-                "last_login_at": null,
-                "auth_token": null,
-                "email_verified_at": null,
-                "email_verification_code": null,
-                "currency": null,
-                "social_account_id": null,
-                "social_account_type": null,
-                "dob": null,
-                "group_ids": [
-                    "26"
-                ],
-                "is_test": null,
-                "profile_pic": null,
-                "uploads": []
-            },
-            {
-                "id": 5108,
-                "uuid": "11bb2d30-4edc-4525-a5c7-4dd6177d991a",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "Noelia Spencer",
-                "email": "filiberto75@gmail.com",
-                "api_token": null,
-                "api_token_generated_at": null,
-                "is_tenant_editable": 1,
-                "permissions": [],
-                "is_active": 1,
-                "created_by": null,
-                "updated_by": null,
-                "created_at": "2021-02-12 09:38:07",
-                "updated_at": "2021-02-12 09:38:07",
-                "deleted_at": null,
-                "deleted_by": null,
-                "name_initial": null,
-                "first_name": "Noelia",
-                "last_name": "Spencer",
-                "full_name": null,
-                "gender": null,
-                "device_token": null,
-                "address1": null,
-                "address2": null,
-                "city": null,
-                "county": null,
-                "country_id": null,
-                "country_name": null,
-                "zip_code": null,
-                "phone": null,
-                "mobile": null,
-                "first_login_at": null,
-                "last_login_at": null,
-                "auth_token": null,
-                "email_verified_at": null,
-                "email_verification_code": null,
-                "currency": null,
-                "social_account_id": null,
-                "social_account_type": null,
-                "dob": null,
-                "group_ids": [
-                    "26"
-                ],
-                "is_test": null,
-                "profile_pic": null,
-                "uploads": []
-            },
-            {
-                "id": 5112,
-                "uuid": "68eb09fd-7164-4100-99e1-753a0a45e66a",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "Alexanne Lebsack",
-                "email": "cleta57@stehr.info",
-                "api_token": null,
-                "api_token_generated_at": null,
-                "is_tenant_editable": 1,
-                "permissions": [],
-                "is_active": 1,
-                "created_by": null,
-                "updated_by": null,
-                "created_at": "2021-02-13 11:13:21",
-                "updated_at": "2021-02-13 11:13:21",
-                "deleted_at": null,
-                "deleted_by": null,
-                "name_initial": null,
-                "first_name": "Alexanne",
-                "last_name": "Lebsack",
-                "full_name": null,
-                "gender": null,
-                "device_token": null,
-                "address1": null,
-                "address2": null,
-                "city": null,
-                "county": null,
-                "country_id": null,
-                "country_name": null,
-                "zip_code": null,
-                "phone": null,
-                "mobile": null,
-                "first_login_at": null,
-                "last_login_at": null,
-                "auth_token": null,
-                "email_verified_at": null,
-                "email_verification_code": null,
-                "currency": null,
-                "social_account_id": null,
-                "social_account_type": null,
-                "dob": null,
-                "group_ids": [
-                    "26"
-                ],
-                "is_test": null,
-                "profile_pic": null,
-                "uploads": []
-            },
-            {
-                "id": 5116,
-                "uuid": "062aae3d-d361-43b7-8363-acaee97495d9",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "Daniela Kuhic",
-                "email": "hyatt.kolby@hotmail.com",
-                "api_token": null,
-                "api_token_generated_at": null,
-                "is_tenant_editable": 1,
-                "permissions": [],
-                "is_active": 1,
-                "created_by": null,
-                "updated_by": null,
-                "created_at": "2021-02-13 11:14:59",
-                "updated_at": "2021-02-13 11:14:59",
-                "deleted_at": null,
-                "deleted_by": null,
-                "name_initial": null,
-                "first_name": "Daniela",
-                "last_name": "Kuhic",
-                "full_name": null,
-                "gender": null,
-                "device_token": null,
-                "address1": null,
-                "address2": null,
-                "city": null,
-                "county": null,
-                "country_id": null,
-                "country_name": null,
-                "zip_code": null,
-                "phone": null,
-                "mobile": null,
-                "first_login_at": null,
-                "last_login_at": null,
-                "auth_token": null,
-                "email_verified_at": null,
-                "email_verification_code": null,
-                "currency": null,
-                "social_account_id": null,
-                "social_account_type": null,
-                "dob": null,
-                "group_ids": [
-                    "26"
-                ],
-                "is_test": null,
-                "profile_pic": null,
-                "uploads": []
-            }
-        ]
-    },
-    "redirect": "http:\/\/localhost\/api\/core\/1.0\/module\/users"
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/users`
-
-
-<!-- END_5d0a619fe7ad1f09420441e12006c263 -->
-
-<!-- START_ced62d47cc5111ee5f67304c1f36b64d -->
-## Store
-
-> Example request:
-
-```bash
-curl -X POST \
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/users" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/users"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "POST",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`POST api/core/1.0/module/users`
-
-
-<!-- END_ced62d47cc5111ee5f67304c1f36b64d -->
-
-<!-- START_5df3bc8a32fedc6dde58ad16c7d32b24 -->
-## Show
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/users/1" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/users/1"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (500):
-
-```json
-{
-    "message": "Server Error"
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/users/{user}`
-
-#### URL Parameters
-
-Parameter | Status | Description
---------- | ------- | ------- | -------
-    `id` |  required  | The ID of the item.
-
-<!-- END_5df3bc8a32fedc6dde58ad16c7d32b24 -->
-
-<!-- START_fb080dd795492cc54feed06f6660fb15 -->
-## Update
-
-> Example request:
-
-```bash
-curl -X PUT \
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/users/1" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/users/1"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "PUT",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`PUT api/core/1.0/module/users/{user}`
-
-`PATCH api/core/1.0/module/users/{user}`
-
-
-<!-- END_fb080dd795492cc54feed06f6660fb15 -->
-
-<!-- START_9087ebc8a332cc1b113cc150e48d001b -->
-## Delete
-
-> Example request:
-
-```bash
-curl -X DELETE \
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/users/1" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/users/1"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "DELETE",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`DELETE api/core/1.0/module/users/{user}`
-
-
-<!-- END_9087ebc8a332cc1b113cc150e48d001b -->
-
-<!-- START_0896c2080be03961e27f1a20b82b8c57 -->
-## Returns a collection of objects as Json for an API call
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/groups/list/json" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/groups/list/json"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (200):
-
-```json
-{
-    "code": 200,
-    "status": "success",
-    "message": "Request Processed",
-    "data": {
-        "current_page": 1,
-        "first_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/groups\/list\/json?page=1",
-        "from": 1,
-        "last_page": 1,
-        "last_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/groups\/list\/json?page=1",
-        "next_page_url": null,
-        "path": "http:\/\/localhost\/api\/core\/1.0\/module\/groups\/list\/json",
-        "per_page": 20,
-        "prev_page_url": null,
-        "to": 5,
-        "total": 5,
-        "items": [
-            {
-                "id": 1,
-                "uuid": "d48c591a-e6b2-4f7b-9458-0693362e55a6",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "superuser",
-                "title": "Superuser",
-                "permissions": {
-                    "superuser": 1
-                },
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2018-12-10 06:50:18",
-                "updated_at": "2019-11-13 15:51:18",
-                "deleted_at": null,
-                "deleted_by": null
-            },
-            {
-                "id": 2,
-                "uuid": "9c085751-ea3a-44e4-a858-e008894dc1f3",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "api",
-                "title": "API",
-                "permissions": {
-                    "apis": 1,
-                    "superuser": 1,
-                    "make-api-call": 1
-                },
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2018-12-10 16:10:53",
-                "updated_at": "2020-02-25 11:48:05",
-                "deleted_at": null,
-                "deleted_by": null
-            },
-            {
-                "id": 3,
-                "uuid": "2e5c36e4-7ec2-4c77-8167-1e99237c1336",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "tenant-admin",
-                "title": "Tenant Admin",
-                "permissions": [],
-                "is_active": 1,
-                "created_by": 5,
-                "updated_by": 5,
-                "created_at": "1970-01-01 00:00:05",
-                "updated_at": "2019-12-19 14:21:45",
-                "deleted_at": null,
-                "deleted_by": null
-            },
-            {
-                "id": 4,
-                "uuid": "bacee691-a0f7-4ba2-93b6-462b4af9cfb0",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "project-admin",
-                "title": "Project Admin",
-                "permissions": [],
-                "is_active": 1,
-                "created_by": 5,
-                "updated_by": 5,
-                "created_at": "2019-12-28 14:16:31",
-                "updated_at": "2019-12-28 14:16:38",
-                "deleted_at": null,
-                "deleted_by": null
-            },
-            {
-                "id": 26,
-                "uuid": "03682753-1654-46f1-ad9d-7a7f78794a3d",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "user",
-                "title": "User",
-                "permissions": {
-                    "uploads": 1,
-                    "uploads-view-any": 1,
-                    "uploads-view": 1,
-                    "uploads-create": 1,
-                    "uploads-update": 1,
-                    "uploads-delete": 1,
-                    "uploads-view-change-log": 1,
-                    "uploads-view-report": 1
-                },
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2020-01-18 11:42:51",
-                "updated_at": "2021-01-29 07:35:17",
-                "deleted_at": null,
-                "deleted_by": null
-            }
-        ]
-    },
-    "redirect": "http:\/\/localhost\/api\/core\/1.0\/module\/groups\/list\/json"
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/groups/list/json`
-
-
-<!-- END_0896c2080be03961e27f1a20b82b8c57 -->
-
-<!-- START_7e0a8073e85c32e0856833f3009ec75e -->
-## Show and render report
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/groups/report" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/groups/report"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (200):
-
-```json
-null
-```
-
-### HTTP Request
-`GET api/core/1.0/module/groups/report`
-
-
-<!-- END_7e0a8073e85c32e0856833f3009ec75e -->
-
-<!-- START_a86e132f8bdc549526aa2ca42664a7ed -->
-## Get all the uploads of an element
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/groups/1/uploads" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/groups/1/uploads"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (200):
-
-```json
-{
-    "code": 200,
-    "status": "success",
-    "message": "Request Processed",
-    "data": {
-        "current_page": 1,
-        "first_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/groups\/1\/uploads?page=1",
-        "from": null,
-        "last_page": 1,
-        "last_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/groups\/1\/uploads?page=1",
-        "next_page_url": null,
-        "path": "http:\/\/localhost\/api\/core\/1.0\/module\/groups\/1\/uploads",
-        "per_page": 20,
-        "prev_page_url": null,
-        "to": null,
-        "total": 0,
-        "items": []
-    },
-    "redirect": "http:\/\/localhost\/api\/core\/1.0\/module\/groups\/1\/uploads"
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/groups/{id}/uploads`
-
-
-<!-- END_a86e132f8bdc549526aa2ca42664a7ed -->
-
-<!-- START_4e88e9c527e88b26a77da53adb4c2171 -->
-## Uploads files under an element
-
-> Example request:
-
-```bash
-curl -X POST \
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/groups/1/uploads" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/groups/1/uploads"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "POST",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`POST api/core/1.0/module/groups/{id}/uploads`
-
-
-<!-- END_4e88e9c527e88b26a77da53adb4c2171 -->
-
-<!-- START_a79d0e7d2047794db4b4d2645358e271 -->
-## Get all the comments of an element
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/groups/1/comments" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/groups/1/comments"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (200):
-
-```json
-{
-    "code": 200,
-    "status": "success",
-    "message": "Request Processed",
-    "data": {
-        "current_page": 1,
-        "first_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/groups\/1\/comments?page=1",
-        "from": null,
-        "last_page": 1,
-        "last_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/groups\/1\/comments?page=1",
-        "next_page_url": null,
-        "path": "http:\/\/localhost\/api\/core\/1.0\/module\/groups\/1\/comments",
-        "per_page": 20,
-        "prev_page_url": null,
-        "to": null,
-        "total": 0,
-        "items": []
-    },
-    "redirect": "http:\/\/localhost\/api\/core\/1.0\/module\/groups\/1\/comments"
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/groups/{id}/comments`
-
-
-<!-- END_a79d0e7d2047794db4b4d2645358e271 -->
-
-<!-- START_67bb3db1cf562f22a9a4cbf2dc0b05f5 -->
-## Index/List page to show grid
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/groups" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/groups"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (200):
-
-```json
-{
-    "code": 200,
-    "status": "success",
-    "message": "Request Processed",
-    "data": {
-        "current_page": 1,
-        "first_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/groups?page=1",
-        "from": 1,
-        "last_page": 1,
-        "last_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/groups?page=1",
-        "next_page_url": null,
-        "path": "http:\/\/localhost\/api\/core\/1.0\/module\/groups",
-        "per_page": 20,
-        "prev_page_url": null,
-        "to": 5,
-        "total": 5,
-        "items": [
-            {
-                "id": 1,
-                "uuid": "d48c591a-e6b2-4f7b-9458-0693362e55a6",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "superuser",
-                "title": "Superuser",
-                "permissions": {
-                    "superuser": 1
-                },
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2018-12-10 06:50:18",
-                "updated_at": "2019-11-13 15:51:18",
-                "deleted_at": null,
-                "deleted_by": null
-            },
-            {
-                "id": 2,
-                "uuid": "9c085751-ea3a-44e4-a858-e008894dc1f3",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "api",
-                "title": "API",
-                "permissions": {
-                    "apis": 1,
-                    "superuser": 1,
-                    "make-api-call": 1
-                },
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2018-12-10 16:10:53",
-                "updated_at": "2020-02-25 11:48:05",
-                "deleted_at": null,
-                "deleted_by": null
-            },
-            {
-                "id": 3,
-                "uuid": "2e5c36e4-7ec2-4c77-8167-1e99237c1336",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "tenant-admin",
-                "title": "Tenant Admin",
-                "permissions": [],
-                "is_active": 1,
-                "created_by": 5,
-                "updated_by": 5,
-                "created_at": "1970-01-01 00:00:05",
-                "updated_at": "2019-12-19 14:21:45",
-                "deleted_at": null,
-                "deleted_by": null
-            },
-            {
-                "id": 4,
-                "uuid": "bacee691-a0f7-4ba2-93b6-462b4af9cfb0",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "project-admin",
-                "title": "Project Admin",
-                "permissions": [],
-                "is_active": 1,
-                "created_by": 5,
-                "updated_by": 5,
-                "created_at": "2019-12-28 14:16:31",
-                "updated_at": "2019-12-28 14:16:38",
-                "deleted_at": null,
-                "deleted_by": null
-            },
-            {
-                "id": 26,
-                "uuid": "03682753-1654-46f1-ad9d-7a7f78794a3d",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "user",
-                "title": "User",
-                "permissions": {
-                    "uploads": 1,
-                    "uploads-view-any": 1,
-                    "uploads-view": 1,
-                    "uploads-create": 1,
-                    "uploads-update": 1,
-                    "uploads-delete": 1,
-                    "uploads-view-change-log": 1,
-                    "uploads-view-report": 1
-                },
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2020-01-18 11:42:51",
-                "updated_at": "2021-01-29 07:35:17",
-                "deleted_at": null,
-                "deleted_by": null
-            }
-        ]
-    },
-    "redirect": "http:\/\/localhost\/api\/core\/1.0\/module\/groups"
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/groups`
-
-
-<!-- END_67bb3db1cf562f22a9a4cbf2dc0b05f5 -->
-
-<!-- START_faea19768256751a3772f23437f88d22 -->
-## Store
-
-> Example request:
-
-```bash
-curl -X POST \
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/groups" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/groups"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "POST",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`POST api/core/1.0/module/groups`
-
-
-<!-- END_faea19768256751a3772f23437f88d22 -->
-
-<!-- START_a14c899b337960d76d7efbd5328c0a4b -->
-## Show
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/groups/1" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/groups/1"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (500):
-
-```json
-{
-    "message": "Server Error"
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/groups/{group}`
-
-#### URL Parameters
-
-Parameter | Status | Description
---------- | ------- | ------- | -------
-    `id` |  required  | The ID of the item.
-
-<!-- END_a14c899b337960d76d7efbd5328c0a4b -->
-
-<!-- START_dc05fa3c8312575cffa854e89afeee97 -->
-## Update
-
-> Example request:
-
-```bash
-curl -X PUT \
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/groups/1" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/groups/1"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "PUT",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`PUT api/core/1.0/module/groups/{group}`
-
-`PATCH api/core/1.0/module/groups/{group}`
-
-
-<!-- END_dc05fa3c8312575cffa854e89afeee97 -->
-
-<!-- START_b62f11c6c7425523351ba1300be783d9 -->
-## Delete
-
-> Example request:
-
-```bash
-curl -X DELETE \
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/groups/1" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/groups/1"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "DELETE",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`DELETE api/core/1.0/module/groups/{group}`
-
-
-<!-- END_b62f11c6c7425523351ba1300be783d9 -->
-
-<!-- START_12524bf527da3bdfa5b30c6150a3bfdc -->
-## Returns a collection of objects as Json for an API call
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/uploads/list/json" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/uploads/list/json"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (200):
-
-```json
-{
-    "code": 200,
-    "status": "success",
-    "message": "Request Processed",
-    "data": {
-        "current_page": 1,
-        "first_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/uploads\/list\/json?page=1",
-        "from": 1,
-        "last_page": 2,
-        "last_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/uploads\/list\/json?page=2",
-        "next_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/uploads\/list\/json?page=2",
-        "path": "http:\/\/localhost\/api\/core\/1.0\/module\/uploads\/list\/json",
-        "per_page": 20,
-        "prev_page_url": null,
-        "to": 20,
-        "total": 38,
-        "items": [
-            {
-                "id": 1,
-                "uuid": "821b341e-1eb7-412c-a9ae-0dcfda244275",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "2019-10-31 15_41_04-Start.jpg",
-                "type": null,
-                "path": "\/files\/7km7BL7t_2019-10-31 15_41_04-Start.jpg",
-                "order": null,
-                "ext": "jpg",
-                "bytes": null,
-                "description": null,
-                "uploadable_type": null,
-                "uploadable_id": null,
-                "module_id": 21,
-                "element_id": null,
-                "element_uuid": null,
-                "is_active": 1,
-                "created_by": 5,
-                "updated_by": 5,
-                "created_at": "2019-10-31 13:03:35",
-                "updated_at": "2019-10-31 13:03:35",
-                "deleted_at": null,
-                "deleted_by": null,
-                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/7km7BL7t_2019-10-31 15_41_04-Start.jpg",
-                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/7km7BL7t_2019-10-31 15_41_04-Start.jpg"
-            },
-            {
-                "id": 2,
-                "uuid": "90020e48-a92d-42b5-947d-b1da2ba60204",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "2019-10-31 15_41_04-Start.jpg",
-                "type": null,
-                "path": "\/files\/9ZpEl7dT_2019-10-31 15_41_04-Start.jpg",
-                "order": null,
-                "ext": "jpg",
-                "bytes": null,
-                "description": null,
-                "uploadable_type": null,
-                "uploadable_id": null,
-                "module_id": 21,
-                "element_id": 39,
-                "element_uuid": "931f290b-8cd3-4ca1-a0f1-087bb1355b8a",
-                "is_active": 1,
-                "created_by": 5,
-                "updated_by": 5,
-                "created_at": "2019-10-31 13:10:17",
-                "updated_at": "2019-11-20 11:03:13",
-                "deleted_at": null,
-                "deleted_by": null,
-                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/9ZpEl7dT_2019-10-31 15_41_04-Start.jpg",
-                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/9ZpEl7dT_2019-10-31 15_41_04-Start.jpg"
-            },
-            {
-                "id": 3,
-                "uuid": "c0c7f836-b76c-4ef1-9481-c82529f2bd1a",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "2019-10-31 15_41_04-Start.jpg",
-                "type": null,
-                "path": "\/files\/vYaQdT0Z_2019-10-31 15_41_04-Start.jpg",
-                "order": null,
-                "ext": "jpg",
-                "bytes": null,
-                "description": null,
-                "uploadable_type": null,
-                "uploadable_id": null,
-                "module_id": 21,
-                "element_id": 35,
-                "element_uuid": "e85d9a3d-b77e-46db-9422-078eeac8923a",
-                "is_active": 1,
-                "created_by": 5,
-                "updated_by": 5,
-                "created_at": "2019-10-31 15:10:02",
-                "updated_at": "2019-11-22 09:28:42",
-                "deleted_at": null,
-                "deleted_by": null,
-                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/vYaQdT0Z_2019-10-31 15_41_04-Start.jpg",
-                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/vYaQdT0Z_2019-10-31 15_41_04-Start.jpg"
-            },
-            {
-                "id": 5,
-                "uuid": "5809f712-1527-4620-9ef8-bcd904d3b21b",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "2019-11-27 10_10_58-Cortana.jpg",
-                "type": null,
-                "path": "\/files\/UohSKFJT_2019-11-27 10_10_58-Cortana.jpg",
-                "order": null,
-                "ext": "jpg",
-                "bytes": null,
-                "description": null,
-                "uploadable_type": null,
-                "uploadable_id": null,
-                "module_id": 21,
-                "element_id": 42,
-                "element_uuid": "d879c7df-d4ce-48c7-8abc-dc82af05a37d",
-                "is_active": 1,
-                "created_by": 5,
-                "updated_by": 5,
-                "created_at": "2019-12-02 16:58:02",
-                "updated_at": "2019-12-19 07:54:40",
-                "deleted_at": null,
-                "deleted_by": null,
-                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/UohSKFJT_2019-11-27 10_10_58-Cortana.jpg",
-                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/UohSKFJT_2019-11-27 10_10_58-Cortana.jpg"
-            },
-            {
-                "id": 7,
-                "uuid": "e5d35b1f-4625-4214-8dda-9f1ad4608383",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "raihan-round.png",
-                "type": null,
-                "path": "\/files\/hsQtWhy1_raihan-round.png",
-                "order": null,
-                "ext": "png",
-                "bytes": null,
-                "description": null,
-                "uploadable_type": null,
-                "uploadable_id": null,
-                "module_id": 4,
-                "element_id": null,
-                "element_uuid": null,
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2020-01-05 17:40:40",
-                "updated_at": "2020-01-05 17:40:40",
-                "deleted_at": null,
-                "deleted_by": null,
-                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/hsQtWhy1_raihan-round.png",
-                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/hsQtWhy1_raihan-round.png"
-            },
-            {
-                "id": 8,
-                "uuid": "52047e4d-262f-435d-8959-9a7f43157293",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "raihan-round.png",
-                "type": null,
-                "path": "\/files\/ocJxKCvK_raihan-round.png",
-                "order": null,
-                "ext": "png",
-                "bytes": null,
-                "description": null,
-                "uploadable_type": null,
-                "uploadable_id": null,
-                "module_id": 4,
-                "element_id": null,
-                "element_uuid": "338b5180-c35a-494e-b684-02288035361f",
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2020-01-05 17:41:57",
-                "updated_at": "2020-01-05 17:41:57",
-                "deleted_at": null,
-                "deleted_by": null,
-                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/ocJxKCvK_raihan-round.png",
-                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/ocJxKCvK_raihan-round.png"
-            },
-            {
-                "id": 9,
-                "uuid": "ced54918-9691-4212-8a8c-5cbfca4c127a",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "raihan-round.png",
-                "type": null,
-                "path": "\/files\/RdniZdHy_raihan-round.png",
-                "order": null,
-                "ext": "png",
-                "bytes": null,
-                "description": null,
-                "uploadable_type": null,
-                "uploadable_id": null,
-                "module_id": 21,
-                "element_id": 43,
-                "element_uuid": "a285cd17-969a-4dac-9898-d94168b13057",
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2020-01-05 18:51:19",
-                "updated_at": "2020-01-05 18:51:19",
-                "deleted_at": null,
-                "deleted_by": null,
-                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/RdniZdHy_raihan-round.png",
-                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/RdniZdHy_raihan-round.png"
-            },
-            {
-                "id": 10,
-                "uuid": "4f4d5297-170c-4313-b15c-cf4bbace9056",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "raihan-round.png",
-                "type": null,
-                "path": "\/files\/GShmXTCO_raihan-round.png",
-                "order": null,
-                "ext": "png",
-                "bytes": null,
-                "description": null,
-                "uploadable_type": "App\\Mainframe\\Modules\\Settings\\Setting",
-                "uploadable_id": 0,
-                "module_id": 21,
-                "element_id": 43,
-                "element_uuid": "a285cd17-969a-4dac-9898-d94168b13057",
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2020-01-05 18:52:15",
-                "updated_at": "2020-01-05 18:52:15",
-                "deleted_at": null,
-                "deleted_by": null,
-                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/GShmXTCO_raihan-round.png",
-                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/GShmXTCO_raihan-round.png"
-            },
-            {
-                "id": 11,
-                "uuid": "ff387f29-c792-4b8e-a985-85c665f6be8e",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "raihan-round.png",
-                "type": null,
-                "path": "\/files\/sSCXBzSS_raihan-round.png",
-                "order": null,
-                "ext": "png",
-                "bytes": null,
-                "description": null,
-                "uploadable_type": "App\\Mainframe\\Modules\\Settings\\Setting",
-                "uploadable_id": 45,
-                "module_id": 21,
-                "element_id": 45,
-                "element_uuid": "29900234-2353-4098-9390-4a7ef688f639",
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2020-01-05 18:55:51",
-                "updated_at": "2020-01-06 04:44:42",
-                "deleted_at": null,
-                "deleted_by": null,
-                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/sSCXBzSS_raihan-round.png",
-                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/sSCXBzSS_raihan-round.png"
-            },
-            {
-                "id": 12,
-                "uuid": "919d6d5a-fec4-4fde-9fb2-872a84752b84",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "raihan-round.png",
-                "type": null,
-                "path": "\/files\/ITeOd51R_raihan-round.png",
-                "order": null,
-                "ext": "png",
-                "bytes": null,
-                "description": null,
-                "uploadable_type": "App\\Mainframe\\Modules\\Settings\\Setting",
-                "uploadable_id": 45,
-                "module_id": 21,
-                "element_id": 45,
-                "element_uuid": "29900234-2353-4098-9390-4a7ef688f639",
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2020-01-06 04:39:17",
-                "updated_at": "2020-01-06 04:44:42",
-                "deleted_at": null,
-                "deleted_by": null,
-                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/ITeOd51R_raihan-round.png",
-                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/ITeOd51R_raihan-round.png"
-            },
-            {
-                "id": 13,
-                "uuid": "71f5f437-2b83-408f-90ba-34afd4851e76",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "retro-wallpaper-49.jpg",
-                "type": null,
-                "path": "\/files\/WLcA82gK_retro-wallpaper-49.jpg",
-                "order": null,
-                "ext": "jpg",
-                "bytes": null,
-                "description": null,
-                "uploadable_type": "App\\Mainframe\\Modules\\Settings\\Setting",
-                "uploadable_id": 45,
-                "module_id": 21,
-                "element_id": 45,
-                "element_uuid": "29900234-2353-4098-9390-4a7ef688f639",
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2020-01-06 04:39:21",
-                "updated_at": "2020-01-06 04:44:42",
-                "deleted_at": null,
-                "deleted_by": null,
-                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/WLcA82gK_retro-wallpaper-49.jpg",
-                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/WLcA82gK_retro-wallpaper-49.jpg"
-            },
-            {
-                "id": 14,
-                "uuid": "a960dbeb-6901-4810-bf61-d7ac9d8c08c9",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "temp.txt",
-                "type": null,
-                "path": "\/files\/MLJ54xuL_temp.txt",
-                "order": null,
-                "ext": "txt",
-                "bytes": null,
-                "description": null,
-                "uploadable_type": "App\\Mainframe\\Modules\\Settings\\Setting",
-                "uploadable_id": 45,
-                "module_id": 21,
-                "element_id": 45,
-                "element_uuid": "29900234-2353-4098-9390-4a7ef688f639",
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2020-01-06 04:39:30",
-                "updated_at": "2020-01-06 04:44:42",
-                "deleted_at": null,
-                "deleted_by": null,
-                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/MLJ54xuL_temp.txt",
-                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/MLJ54xuL_temp.txt"
-            },
-            {
-                "id": 15,
-                "uuid": "247be1a0-0b3d-4280-8ee0-b83b4bcf99ae",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "2020-01-28 22_41_26-Windows Default Lock Screen.jpg",
-                "type": null,
-                "path": "\/files\/I04HKZaT_2020-01-28 22_41_26-Windows Default Lock Screen.jpg",
-                "order": null,
-                "ext": "jpg",
-                "bytes": null,
-                "description": null,
-                "uploadable_type": "App\\Mainframe\\Modules\\Settings\\Setting",
-                "uploadable_id": 3,
-                "module_id": 21,
-                "element_id": 3,
-                "element_uuid": "e446d927-902b-4633-83d8-5f9fa0ef43cb",
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2020-01-29 03:24:49",
-                "updated_at": "2020-01-29 03:24:49",
-                "deleted_at": null,
-                "deleted_by": null,
-                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/I04HKZaT_2020-01-28 22_41_26-Windows Default Lock Screen.jpg",
-                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/I04HKZaT_2020-01-28 22_41_26-Windows Default Lock Screen.jpg"
-            },
-            {
-                "id": 16,
-                "uuid": "f1ec6684-bdbf-47e5-9780-ab4eb640ca8e",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "2020-01-28 22_41_26-Windows Default Lock Screen.jpg",
-                "type": null,
-                "path": "\/\/files\/\/\/Vpk8vBIx_2020-01-28 22_41_26-Windows Default Lock Screen.jpg",
-                "order": null,
-                "ext": "jpg",
-                "bytes": null,
-                "description": null,
-                "uploadable_type": "App\\Mainframe\\Modules\\Settings\\Setting",
-                "uploadable_id": 3,
-                "module_id": 21,
-                "element_id": 3,
-                "element_uuid": "e446d927-902b-4633-83d8-5f9fa0ef43cb",
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2020-01-29 03:27:48",
-                "updated_at": "2020-01-29 03:27:48",
-                "deleted_at": null,
-                "deleted_by": null,
-                "url": "\/\/files\/\/\/Vpk8vBIx_2020-01-28 22_41_26-Windows Default Lock Screen.jpg",
-                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/\/files\/\/\/Vpk8vBIx_2020-01-28 22_41_26-Windows Default Lock Screen.jpg"
-            },
-            {
-                "id": 17,
-                "uuid": "46208386-92dc-40ae-b24a-20d3caabf7ce",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "2020-01-28 22_41_52-Windows Default Lock Screen.jpg",
-                "type": null,
-                "path": "\/\/files\/\/\/\/GJ6XPKBh_2020-01-28 22_41_52-Windows Default Lock Screen.jpg",
-                "order": null,
-                "ext": "jpg",
-                "bytes": null,
-                "description": null,
-                "uploadable_type": "App\\Mainframe\\Modules\\Settings\\Setting",
-                "uploadable_id": 3,
-                "module_id": 21,
-                "element_id": 3,
-                "element_uuid": "e446d927-902b-4633-83d8-5f9fa0ef43cb",
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2020-01-29 03:32:56",
-                "updated_at": "2020-01-29 03:32:56",
-                "deleted_at": null,
-                "deleted_by": null,
-                "url": "\/\/files\/\/\/\/GJ6XPKBh_2020-01-28 22_41_52-Windows Default Lock Screen.jpg",
-                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/\/files\/\/\/\/GJ6XPKBh_2020-01-28 22_41_52-Windows Default Lock Screen.jpg"
-            },
-            {
-                "id": 18,
-                "uuid": "d0a4a78a-b676-4cab-8468-2bb9a9316cd3",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "2020-01-28 22_41_26-Windows Default Lock Screen.jpg",
-                "type": null,
-                "path": "\/files\/mlBgovYB_2020-01-28 22_41_26-Windows Default Lock Screen.jpg",
-                "order": null,
-                "ext": "jpg",
-                "bytes": null,
-                "description": null,
-                "uploadable_type": "App\\Mainframe\\Modules\\Settings\\Setting",
-                "uploadable_id": 3,
-                "module_id": 21,
-                "element_id": 3,
-                "element_uuid": "e446d927-902b-4633-83d8-5f9fa0ef43cb",
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2020-01-29 03:33:31",
-                "updated_at": "2020-01-29 03:33:31",
-                "deleted_at": null,
-                "deleted_by": null,
-                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/mlBgovYB_2020-01-28 22_41_26-Windows Default Lock Screen.jpg",
-                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/mlBgovYB_2020-01-28 22_41_26-Windows Default Lock Screen.jpg"
-            },
-            {
-                "id": 25,
-                "uuid": "0380d47e-3ae2-41b8-b114-d4ee956a9e28",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "step1.png",
-                "type": null,
-                "path": "\/files\/RITGPq3I_step1.png",
-                "order": null,
-                "ext": "png",
-                "bytes": null,
-                "description": null,
-                "uploadable_type": "App\\Mainframe\\Modules\\Samples\\LoremIpsums\\LoremIpsum",
-                "uploadable_id": 2,
-                "module_id": 50,
-                "element_id": 2,
-                "element_uuid": "175da4d1-e448-4e27-a642-4da5179ec5c6",
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2020-02-25 10:48:00",
-                "updated_at": "2020-07-13 07:40:37",
-                "deleted_at": null,
-                "deleted_by": null,
-                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/RITGPq3I_step1.png",
-                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/RITGPq3I_step1.png"
-            },
-            {
-                "id": 27,
-                "uuid": "b146bd8d-ff7e-49f8-9399-ade8149aefcf",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "step1.png",
-                "type": null,
-                "path": "\/files\/DDdJ2BFI_step1.png",
-                "order": null,
-                "ext": "png",
-                "bytes": null,
-                "description": null,
-                "uploadable_type": "App\\Mainframe\\Modules\\Samples\\LoremIpsums\\LoremIpsum",
-                "uploadable_id": 2,
-                "module_id": 50,
-                "element_id": 2,
-                "element_uuid": "175da4d1-e448-4e27-a642-4da5179ec5c6",
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2020-02-25 11:13:27",
-                "updated_at": "2020-07-13 07:40:37",
-                "deleted_at": null,
-                "deleted_by": null,
-                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/DDdJ2BFI_step1.png",
-                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/DDdJ2BFI_step1.png"
-            },
-            {
-                "id": 28,
-                "uuid": "ad98dda0-ceb0-4c83-8eef-9eb7c540db5f",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "step3.png",
-                "type": null,
-                "path": "\/files\/ypfo2WWq_step3.png",
-                "order": null,
-                "ext": "png",
-                "bytes": null,
-                "description": null,
-                "uploadable_type": "App\\Mainframe\\Modules\\Samples\\LoremIpsums\\LoremIpsum",
-                "uploadable_id": 2,
-                "module_id": 50,
-                "element_id": 2,
-                "element_uuid": "175da4d1-e448-4e27-a642-4da5179ec5c6",
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2020-02-25 11:14:04",
-                "updated_at": "2020-07-13 07:40:37",
-                "deleted_at": null,
-                "deleted_by": null,
-                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/ypfo2WWq_step3.png",
-                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/ypfo2WWq_step3.png"
-            },
-            {
-                "id": 29,
-                "uuid": "e846f237-d483-4dca-8220-071564112367",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "step1.png",
-                "type": null,
-                "path": "\/files\/y22h5RN2_step1.png",
-                "order": null,
-                "ext": "png",
-                "bytes": null,
-                "description": null,
-                "uploadable_type": "App\\Mainframe\\Modules\\Samples\\LoremIpsums\\LoremIpsum",
-                "uploadable_id": 2,
-                "module_id": 50,
-                "element_id": 2,
-                "element_uuid": "175da4d1-e448-4e27-a642-4da5179ec5c6",
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2020-02-25 11:31:10",
-                "updated_at": "2020-07-13 07:40:37",
-                "deleted_at": null,
-                "deleted_by": null,
-                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/y22h5RN2_step1.png",
-                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/y22h5RN2_step1.png"
-            }
-        ]
-    },
-    "redirect": "http:\/\/localhost\/api\/core\/1.0\/module\/uploads\/list\/json"
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/uploads/list/json`
-
-
-<!-- END_12524bf527da3bdfa5b30c6150a3bfdc -->
-
-<!-- START_5624896f3bf96e49b94d22fe7f342fa1 -->
-## Show and render report
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/uploads/report" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/uploads/report"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (200):
-
-```json
-null
-```
-
-### HTTP Request
-`GET api/core/1.0/module/uploads/report`
-
-
-<!-- END_5624896f3bf96e49b94d22fe7f342fa1 -->
-
-<!-- START_454100baaddbd3e0aa5a666d59afa18a -->
-## Get all the uploads of an element
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/uploads/1/uploads" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/uploads/1/uploads"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (200):
-
-```json
-{
-    "code": 200,
-    "status": "success",
-    "message": "Request Processed",
-    "data": {
-        "current_page": 1,
-        "first_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/uploads\/1\/uploads?page=1",
-        "from": null,
-        "last_page": 1,
-        "last_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/uploads\/1\/uploads?page=1",
-        "next_page_url": null,
-        "path": "http:\/\/localhost\/api\/core\/1.0\/module\/uploads\/1\/uploads",
-        "per_page": 20,
-        "prev_page_url": null,
-        "to": null,
-        "total": 0,
-        "items": []
-    },
-    "redirect": "http:\/\/localhost\/api\/core\/1.0\/module\/uploads\/1\/uploads"
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/uploads/{id}/uploads`
-
-
-<!-- END_454100baaddbd3e0aa5a666d59afa18a -->
-
-<!-- START_9f1fb05c109a490c80e19017abf0fa4f -->
-## Uploads files under an element
-
-> Example request:
-
-```bash
-curl -X POST \
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/uploads/1/uploads" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/uploads/1/uploads"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "POST",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`POST api/core/1.0/module/uploads/{id}/uploads`
-
-
-<!-- END_9f1fb05c109a490c80e19017abf0fa4f -->
-
-<!-- START_99d1bb2a36c247b51ecc79a3608cae8a -->
-## Get all the comments of an element
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/uploads/1/comments" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/uploads/1/comments"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (200):
-
-```json
-{
-    "code": 200,
-    "status": "success",
-    "message": "Request Processed",
-    "data": {
-        "current_page": 1,
-        "first_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/uploads\/1\/comments?page=1",
-        "from": null,
-        "last_page": 1,
-        "last_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/uploads\/1\/comments?page=1",
-        "next_page_url": null,
-        "path": "http:\/\/localhost\/api\/core\/1.0\/module\/uploads\/1\/comments",
-        "per_page": 20,
-        "prev_page_url": null,
-        "to": null,
-        "total": 0,
-        "items": []
-    },
-    "redirect": "http:\/\/localhost\/api\/core\/1.0\/module\/uploads\/1\/comments"
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/uploads/{id}/comments`
-
-
-<!-- END_99d1bb2a36c247b51ecc79a3608cae8a -->
-
-<!-- START_6467df93080778fae7bb91433bd587a7 -->
-## Index/List page to show grid
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/uploads" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/uploads"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (200):
-
-```json
-{
-    "code": 200,
-    "status": "success",
-    "message": "Request Processed",
-    "data": {
-        "current_page": 1,
-        "first_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/uploads?page=1",
-        "from": 1,
-        "last_page": 2,
-        "last_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/uploads?page=2",
-        "next_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/uploads?page=2",
-        "path": "http:\/\/localhost\/api\/core\/1.0\/module\/uploads",
-        "per_page": 20,
-        "prev_page_url": null,
-        "to": 20,
-        "total": 38,
-        "items": [
-            {
-                "id": 1,
-                "uuid": "821b341e-1eb7-412c-a9ae-0dcfda244275",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "2019-10-31 15_41_04-Start.jpg",
-                "type": null,
-                "path": "\/files\/7km7BL7t_2019-10-31 15_41_04-Start.jpg",
-                "order": null,
-                "ext": "jpg",
-                "bytes": null,
-                "description": null,
-                "uploadable_type": null,
-                "uploadable_id": null,
-                "module_id": 21,
-                "element_id": null,
-                "element_uuid": null,
-                "is_active": 1,
-                "created_by": 5,
-                "updated_by": 5,
-                "created_at": "2019-10-31 13:03:35",
-                "updated_at": "2019-10-31 13:03:35",
-                "deleted_at": null,
-                "deleted_by": null,
-                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/7km7BL7t_2019-10-31 15_41_04-Start.jpg",
-                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/7km7BL7t_2019-10-31 15_41_04-Start.jpg"
-            },
-            {
-                "id": 2,
-                "uuid": "90020e48-a92d-42b5-947d-b1da2ba60204",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "2019-10-31 15_41_04-Start.jpg",
-                "type": null,
-                "path": "\/files\/9ZpEl7dT_2019-10-31 15_41_04-Start.jpg",
-                "order": null,
-                "ext": "jpg",
-                "bytes": null,
-                "description": null,
-                "uploadable_type": null,
-                "uploadable_id": null,
-                "module_id": 21,
-                "element_id": 39,
-                "element_uuid": "931f290b-8cd3-4ca1-a0f1-087bb1355b8a",
-                "is_active": 1,
-                "created_by": 5,
-                "updated_by": 5,
-                "created_at": "2019-10-31 13:10:17",
-                "updated_at": "2019-11-20 11:03:13",
-                "deleted_at": null,
-                "deleted_by": null,
-                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/9ZpEl7dT_2019-10-31 15_41_04-Start.jpg",
-                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/9ZpEl7dT_2019-10-31 15_41_04-Start.jpg"
-            },
-            {
-                "id": 3,
-                "uuid": "c0c7f836-b76c-4ef1-9481-c82529f2bd1a",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "2019-10-31 15_41_04-Start.jpg",
-                "type": null,
-                "path": "\/files\/vYaQdT0Z_2019-10-31 15_41_04-Start.jpg",
-                "order": null,
-                "ext": "jpg",
-                "bytes": null,
-                "description": null,
-                "uploadable_type": null,
-                "uploadable_id": null,
-                "module_id": 21,
-                "element_id": 35,
-                "element_uuid": "e85d9a3d-b77e-46db-9422-078eeac8923a",
-                "is_active": 1,
-                "created_by": 5,
-                "updated_by": 5,
-                "created_at": "2019-10-31 15:10:02",
-                "updated_at": "2019-11-22 09:28:42",
-                "deleted_at": null,
-                "deleted_by": null,
-                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/vYaQdT0Z_2019-10-31 15_41_04-Start.jpg",
-                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/vYaQdT0Z_2019-10-31 15_41_04-Start.jpg"
-            },
-            {
-                "id": 5,
-                "uuid": "5809f712-1527-4620-9ef8-bcd904d3b21b",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "2019-11-27 10_10_58-Cortana.jpg",
-                "type": null,
-                "path": "\/files\/UohSKFJT_2019-11-27 10_10_58-Cortana.jpg",
-                "order": null,
-                "ext": "jpg",
-                "bytes": null,
-                "description": null,
-                "uploadable_type": null,
-                "uploadable_id": null,
-                "module_id": 21,
-                "element_id": 42,
-                "element_uuid": "d879c7df-d4ce-48c7-8abc-dc82af05a37d",
-                "is_active": 1,
-                "created_by": 5,
-                "updated_by": 5,
-                "created_at": "2019-12-02 16:58:02",
-                "updated_at": "2019-12-19 07:54:40",
-                "deleted_at": null,
-                "deleted_by": null,
-                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/UohSKFJT_2019-11-27 10_10_58-Cortana.jpg",
-                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/UohSKFJT_2019-11-27 10_10_58-Cortana.jpg"
-            },
-            {
-                "id": 7,
-                "uuid": "e5d35b1f-4625-4214-8dda-9f1ad4608383",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "raihan-round.png",
-                "type": null,
-                "path": "\/files\/hsQtWhy1_raihan-round.png",
-                "order": null,
-                "ext": "png",
-                "bytes": null,
-                "description": null,
-                "uploadable_type": null,
-                "uploadable_id": null,
-                "module_id": 4,
-                "element_id": null,
-                "element_uuid": null,
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2020-01-05 17:40:40",
-                "updated_at": "2020-01-05 17:40:40",
-                "deleted_at": null,
-                "deleted_by": null,
-                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/hsQtWhy1_raihan-round.png",
-                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/hsQtWhy1_raihan-round.png"
-            },
-            {
-                "id": 8,
-                "uuid": "52047e4d-262f-435d-8959-9a7f43157293",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "raihan-round.png",
-                "type": null,
-                "path": "\/files\/ocJxKCvK_raihan-round.png",
-                "order": null,
-                "ext": "png",
-                "bytes": null,
-                "description": null,
-                "uploadable_type": null,
-                "uploadable_id": null,
-                "module_id": 4,
-                "element_id": null,
-                "element_uuid": "338b5180-c35a-494e-b684-02288035361f",
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2020-01-05 17:41:57",
-                "updated_at": "2020-01-05 17:41:57",
-                "deleted_at": null,
-                "deleted_by": null,
-                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/ocJxKCvK_raihan-round.png",
-                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/ocJxKCvK_raihan-round.png"
-            },
-            {
-                "id": 9,
-                "uuid": "ced54918-9691-4212-8a8c-5cbfca4c127a",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "raihan-round.png",
-                "type": null,
-                "path": "\/files\/RdniZdHy_raihan-round.png",
-                "order": null,
-                "ext": "png",
-                "bytes": null,
-                "description": null,
-                "uploadable_type": null,
-                "uploadable_id": null,
-                "module_id": 21,
-                "element_id": 43,
-                "element_uuid": "a285cd17-969a-4dac-9898-d94168b13057",
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2020-01-05 18:51:19",
-                "updated_at": "2020-01-05 18:51:19",
-                "deleted_at": null,
-                "deleted_by": null,
-                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/RdniZdHy_raihan-round.png",
-                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/RdniZdHy_raihan-round.png"
-            },
-            {
-                "id": 10,
-                "uuid": "4f4d5297-170c-4313-b15c-cf4bbace9056",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "raihan-round.png",
-                "type": null,
-                "path": "\/files\/GShmXTCO_raihan-round.png",
-                "order": null,
-                "ext": "png",
-                "bytes": null,
-                "description": null,
-                "uploadable_type": "App\\Mainframe\\Modules\\Settings\\Setting",
-                "uploadable_id": 0,
-                "module_id": 21,
-                "element_id": 43,
-                "element_uuid": "a285cd17-969a-4dac-9898-d94168b13057",
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2020-01-05 18:52:15",
-                "updated_at": "2020-01-05 18:52:15",
-                "deleted_at": null,
-                "deleted_by": null,
-                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/GShmXTCO_raihan-round.png",
-                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/GShmXTCO_raihan-round.png"
-            },
-            {
-                "id": 11,
-                "uuid": "ff387f29-c792-4b8e-a985-85c665f6be8e",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "raihan-round.png",
-                "type": null,
-                "path": "\/files\/sSCXBzSS_raihan-round.png",
-                "order": null,
-                "ext": "png",
-                "bytes": null,
-                "description": null,
-                "uploadable_type": "App\\Mainframe\\Modules\\Settings\\Setting",
-                "uploadable_id": 45,
-                "module_id": 21,
-                "element_id": 45,
-                "element_uuid": "29900234-2353-4098-9390-4a7ef688f639",
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2020-01-05 18:55:51",
-                "updated_at": "2020-01-06 04:44:42",
-                "deleted_at": null,
-                "deleted_by": null,
-                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/sSCXBzSS_raihan-round.png",
-                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/sSCXBzSS_raihan-round.png"
-            },
-            {
-                "id": 12,
-                "uuid": "919d6d5a-fec4-4fde-9fb2-872a84752b84",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "raihan-round.png",
-                "type": null,
-                "path": "\/files\/ITeOd51R_raihan-round.png",
-                "order": null,
-                "ext": "png",
-                "bytes": null,
-                "description": null,
-                "uploadable_type": "App\\Mainframe\\Modules\\Settings\\Setting",
-                "uploadable_id": 45,
-                "module_id": 21,
-                "element_id": 45,
-                "element_uuid": "29900234-2353-4098-9390-4a7ef688f639",
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2020-01-06 04:39:17",
-                "updated_at": "2020-01-06 04:44:42",
-                "deleted_at": null,
-                "deleted_by": null,
-                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/ITeOd51R_raihan-round.png",
-                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/ITeOd51R_raihan-round.png"
-            },
-            {
-                "id": 13,
-                "uuid": "71f5f437-2b83-408f-90ba-34afd4851e76",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "retro-wallpaper-49.jpg",
-                "type": null,
-                "path": "\/files\/WLcA82gK_retro-wallpaper-49.jpg",
-                "order": null,
-                "ext": "jpg",
-                "bytes": null,
-                "description": null,
-                "uploadable_type": "App\\Mainframe\\Modules\\Settings\\Setting",
-                "uploadable_id": 45,
-                "module_id": 21,
-                "element_id": 45,
-                "element_uuid": "29900234-2353-4098-9390-4a7ef688f639",
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2020-01-06 04:39:21",
-                "updated_at": "2020-01-06 04:44:42",
-                "deleted_at": null,
-                "deleted_by": null,
-                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/WLcA82gK_retro-wallpaper-49.jpg",
-                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/WLcA82gK_retro-wallpaper-49.jpg"
-            },
-            {
-                "id": 14,
-                "uuid": "a960dbeb-6901-4810-bf61-d7ac9d8c08c9",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "temp.txt",
-                "type": null,
-                "path": "\/files\/MLJ54xuL_temp.txt",
-                "order": null,
-                "ext": "txt",
-                "bytes": null,
-                "description": null,
-                "uploadable_type": "App\\Mainframe\\Modules\\Settings\\Setting",
-                "uploadable_id": 45,
-                "module_id": 21,
-                "element_id": 45,
-                "element_uuid": "29900234-2353-4098-9390-4a7ef688f639",
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2020-01-06 04:39:30",
-                "updated_at": "2020-01-06 04:44:42",
-                "deleted_at": null,
-                "deleted_by": null,
-                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/MLJ54xuL_temp.txt",
-                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/MLJ54xuL_temp.txt"
-            },
-            {
-                "id": 15,
-                "uuid": "247be1a0-0b3d-4280-8ee0-b83b4bcf99ae",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "2020-01-28 22_41_26-Windows Default Lock Screen.jpg",
-                "type": null,
-                "path": "\/files\/I04HKZaT_2020-01-28 22_41_26-Windows Default Lock Screen.jpg",
-                "order": null,
-                "ext": "jpg",
-                "bytes": null,
-                "description": null,
-                "uploadable_type": "App\\Mainframe\\Modules\\Settings\\Setting",
-                "uploadable_id": 3,
-                "module_id": 21,
-                "element_id": 3,
-                "element_uuid": "e446d927-902b-4633-83d8-5f9fa0ef43cb",
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2020-01-29 03:24:49",
-                "updated_at": "2020-01-29 03:24:49",
-                "deleted_at": null,
-                "deleted_by": null,
-                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/I04HKZaT_2020-01-28 22_41_26-Windows Default Lock Screen.jpg",
-                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/I04HKZaT_2020-01-28 22_41_26-Windows Default Lock Screen.jpg"
-            },
-            {
-                "id": 16,
-                "uuid": "f1ec6684-bdbf-47e5-9780-ab4eb640ca8e",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "2020-01-28 22_41_26-Windows Default Lock Screen.jpg",
-                "type": null,
-                "path": "\/\/files\/\/\/Vpk8vBIx_2020-01-28 22_41_26-Windows Default Lock Screen.jpg",
-                "order": null,
-                "ext": "jpg",
-                "bytes": null,
-                "description": null,
-                "uploadable_type": "App\\Mainframe\\Modules\\Settings\\Setting",
-                "uploadable_id": 3,
-                "module_id": 21,
-                "element_id": 3,
-                "element_uuid": "e446d927-902b-4633-83d8-5f9fa0ef43cb",
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2020-01-29 03:27:48",
-                "updated_at": "2020-01-29 03:27:48",
-                "deleted_at": null,
-                "deleted_by": null,
-                "url": "\/\/files\/\/\/Vpk8vBIx_2020-01-28 22_41_26-Windows Default Lock Screen.jpg",
-                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/\/files\/\/\/Vpk8vBIx_2020-01-28 22_41_26-Windows Default Lock Screen.jpg"
-            },
-            {
-                "id": 17,
-                "uuid": "46208386-92dc-40ae-b24a-20d3caabf7ce",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "2020-01-28 22_41_52-Windows Default Lock Screen.jpg",
-                "type": null,
-                "path": "\/\/files\/\/\/\/GJ6XPKBh_2020-01-28 22_41_52-Windows Default Lock Screen.jpg",
-                "order": null,
-                "ext": "jpg",
-                "bytes": null,
-                "description": null,
-                "uploadable_type": "App\\Mainframe\\Modules\\Settings\\Setting",
-                "uploadable_id": 3,
-                "module_id": 21,
-                "element_id": 3,
-                "element_uuid": "e446d927-902b-4633-83d8-5f9fa0ef43cb",
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2020-01-29 03:32:56",
-                "updated_at": "2020-01-29 03:32:56",
-                "deleted_at": null,
-                "deleted_by": null,
-                "url": "\/\/files\/\/\/\/GJ6XPKBh_2020-01-28 22_41_52-Windows Default Lock Screen.jpg",
-                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/\/files\/\/\/\/GJ6XPKBh_2020-01-28 22_41_52-Windows Default Lock Screen.jpg"
-            },
-            {
-                "id": 18,
-                "uuid": "d0a4a78a-b676-4cab-8468-2bb9a9316cd3",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "2020-01-28 22_41_26-Windows Default Lock Screen.jpg",
-                "type": null,
-                "path": "\/files\/mlBgovYB_2020-01-28 22_41_26-Windows Default Lock Screen.jpg",
-                "order": null,
-                "ext": "jpg",
-                "bytes": null,
-                "description": null,
-                "uploadable_type": "App\\Mainframe\\Modules\\Settings\\Setting",
-                "uploadable_id": 3,
-                "module_id": 21,
-                "element_id": 3,
-                "element_uuid": "e446d927-902b-4633-83d8-5f9fa0ef43cb",
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2020-01-29 03:33:31",
-                "updated_at": "2020-01-29 03:33:31",
-                "deleted_at": null,
-                "deleted_by": null,
-                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/mlBgovYB_2020-01-28 22_41_26-Windows Default Lock Screen.jpg",
-                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/mlBgovYB_2020-01-28 22_41_26-Windows Default Lock Screen.jpg"
-            },
-            {
-                "id": 25,
-                "uuid": "0380d47e-3ae2-41b8-b114-d4ee956a9e28",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "step1.png",
-                "type": null,
-                "path": "\/files\/RITGPq3I_step1.png",
-                "order": null,
-                "ext": "png",
-                "bytes": null,
-                "description": null,
-                "uploadable_type": "App\\Mainframe\\Modules\\Samples\\LoremIpsums\\LoremIpsum",
-                "uploadable_id": 2,
-                "module_id": 50,
-                "element_id": 2,
-                "element_uuid": "175da4d1-e448-4e27-a642-4da5179ec5c6",
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2020-02-25 10:48:00",
-                "updated_at": "2020-07-13 07:40:37",
-                "deleted_at": null,
-                "deleted_by": null,
-                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/RITGPq3I_step1.png",
-                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/RITGPq3I_step1.png"
-            },
-            {
-                "id": 27,
-                "uuid": "b146bd8d-ff7e-49f8-9399-ade8149aefcf",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "step1.png",
-                "type": null,
-                "path": "\/files\/DDdJ2BFI_step1.png",
-                "order": null,
-                "ext": "png",
-                "bytes": null,
-                "description": null,
-                "uploadable_type": "App\\Mainframe\\Modules\\Samples\\LoremIpsums\\LoremIpsum",
-                "uploadable_id": 2,
-                "module_id": 50,
-                "element_id": 2,
-                "element_uuid": "175da4d1-e448-4e27-a642-4da5179ec5c6",
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2020-02-25 11:13:27",
-                "updated_at": "2020-07-13 07:40:37",
-                "deleted_at": null,
-                "deleted_by": null,
-                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/DDdJ2BFI_step1.png",
-                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/DDdJ2BFI_step1.png"
-            },
-            {
-                "id": 28,
-                "uuid": "ad98dda0-ceb0-4c83-8eef-9eb7c540db5f",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "step3.png",
-                "type": null,
-                "path": "\/files\/ypfo2WWq_step3.png",
-                "order": null,
-                "ext": "png",
-                "bytes": null,
-                "description": null,
-                "uploadable_type": "App\\Mainframe\\Modules\\Samples\\LoremIpsums\\LoremIpsum",
-                "uploadable_id": 2,
-                "module_id": 50,
-                "element_id": 2,
-                "element_uuid": "175da4d1-e448-4e27-a642-4da5179ec5c6",
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2020-02-25 11:14:04",
-                "updated_at": "2020-07-13 07:40:37",
-                "deleted_at": null,
-                "deleted_by": null,
-                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/ypfo2WWq_step3.png",
-                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/ypfo2WWq_step3.png"
-            },
-            {
-                "id": 29,
-                "uuid": "e846f237-d483-4dca-8220-071564112367",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "step1.png",
-                "type": null,
-                "path": "\/files\/y22h5RN2_step1.png",
-                "order": null,
-                "ext": "png",
-                "bytes": null,
-                "description": null,
-                "uploadable_type": "App\\Mainframe\\Modules\\Samples\\LoremIpsums\\LoremIpsum",
-                "uploadable_id": 2,
-                "module_id": 50,
-                "element_id": 2,
-                "element_uuid": "175da4d1-e448-4e27-a642-4da5179ec5c6",
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2020-02-25 11:31:10",
-                "updated_at": "2020-07-13 07:40:37",
-                "deleted_at": null,
-                "deleted_by": null,
-                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/y22h5RN2_step1.png",
-                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/y22h5RN2_step1.png"
-            }
-        ]
-    },
-    "redirect": "http:\/\/localhost\/api\/core\/1.0\/module\/uploads"
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/uploads`
-
-
-<!-- END_6467df93080778fae7bb91433bd587a7 -->
-
-<!-- START_10719602d875396f6c1152494c4c7e0c -->
-## api/core/1.0/module/uploads
-> Example request:
-
-```bash
-curl -X POST \
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/uploads" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/uploads"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "POST",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`POST api/core/1.0/module/uploads`
-
-
-<!-- END_10719602d875396f6c1152494c4c7e0c -->
-
-<!-- START_ca09bcc78bd0596b4c06360b002fb1bb -->
-## Show
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/uploads/1" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/uploads/1"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (500):
-
-```json
-{
-    "message": "Server Error"
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/uploads/{upload}`
-
-#### URL Parameters
-
-Parameter | Status | Description
---------- | ------- | ------- | -------
-    `id` |  required  | The ID of the item.
-
-<!-- END_ca09bcc78bd0596b4c06360b002fb1bb -->
-
-<!-- START_0e4f5b804dbb42117963d38b2bd72cee -->
-## Update
-
-> Example request:
-
-```bash
-curl -X PUT \
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/uploads/1" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/uploads/1"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "PUT",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`PUT api/core/1.0/module/uploads/{upload}`
-
-`PATCH api/core/1.0/module/uploads/{upload}`
-
-
-<!-- END_0e4f5b804dbb42117963d38b2bd72cee -->
-
-<!-- START_d7bc8eefd098fb84fffc9a8dd9dcec04 -->
-## Delete
-
-> Example request:
-
-```bash
-curl -X DELETE \
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/uploads/1" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/uploads/1"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "DELETE",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`DELETE api/core/1.0/module/uploads/{upload}`
-
-
-<!-- END_d7bc8eefd098fb84fffc9a8dd9dcec04 -->
-
-<!-- START_0f1805c925233d3efa17c40b6ac4719b -->
-## Returns a collection of objects as Json for an API call
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/settings/list/json" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/settings/list/json"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (200):
-
-```json
-{
-    "code": 200,
-    "status": "success",
-    "message": "Request Processed",
-    "data": {
-        "current_page": 1,
-        "first_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/settings\/list\/json?page=1",
-        "from": 1,
-        "last_page": 1,
-        "last_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/settings\/list\/json?page=1",
-        "next_page_url": null,
-        "path": "http:\/\/localhost\/api\/core\/1.0\/module\/settings\/list\/json",
-        "per_page": 20,
-        "prev_page_url": null,
-        "to": 5,
-        "total": 5,
-        "items": [
-            {
-                "id": 1,
-                "uuid": "6e9d6b57-966d-4b1e-aa77-fc937d9118b6",
-                "name": "app-name",
-                "title": "App Name",
-                "type": "string",
-                "description": "Mainframe Rapid Development Framework",
-                "value": "Mainframe",
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2018-12-24 20:25:41",
-                "updated_at": "2020-01-29 02:45:23",
-                "deleted_at": null,
-                "deleted_by": null
-            },
-            {
-                "id": 2,
-                "uuid": "2dfc744e-752b-49ef-baee-048fa2fa4969",
-                "name": "ios-app-version",
-                "title": "iOS App Version",
-                "type": "string",
-                "description": "Buddy Ramp",
-                "value": "1.1.c.u",
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2018-12-24 20:26:42",
-                "updated_at": "2020-06-26 07:09:28",
-                "deleted_at": null,
-                "deleted_by": null
-            },
-            {
-                "id": 3,
-                "uuid": "e446d927-902b-4633-83d8-5f9fa0ef43cb",
-                "name": "android-app-version",
-                "title": "Android App Version",
-                "type": "string",
-                "description": "Latest Android app version. This is matched with the users app version to prompt app update.",
-                "value": "1.24",
-                "is_active": 0,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2018-12-24 20:27:46",
-                "updated_at": "2019-04-11 09:16:28",
-                "deleted_at": null,
-                "deleted_by": null
-            },
-            {
-                "id": 4,
-                "uuid": "279fb65c-30c2-4727-b3e6-fc18a3476bf7",
-                "name": "mobile-portrait-help-steps",
-                "title": "Mobile Portrait Help Steps",
-                "type": "file",
-                "description": "Mobile Portrait Helps slides for screen size.",
-                "value": null,
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2019-03-19 10:02:46",
-                "updated_at": "2019-03-20 09:21:39",
-                "deleted_at": null,
-                "deleted_by": null
-            },
-            {
-                "id": 5,
-                "uuid": "f8e2ab99-e6ef-46d5-ae98-edee783b8f56",
-                "name": "mobile-landscape-help-steps",
-                "title": "Mobile Landscape Help Steps",
-                "type": "file",
-                "description": "Mobile landscape Helps slides for screen size.",
-                "value": "test lorem",
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2019-03-19 10:15:44",
-                "updated_at": "2020-05-22 06:44:05",
-                "deleted_at": null,
-                "deleted_by": 1
-            }
-        ]
-    },
-    "redirect": "http:\/\/localhost\/api\/core\/1.0\/module\/settings\/list\/json"
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/settings/list/json`
-
-
-<!-- END_0f1805c925233d3efa17c40b6ac4719b -->
-
-<!-- START_103bbdab9069c509d1a6d67bf9df1d8a -->
-## Show and render report
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/settings/report" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/settings/report"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (200):
-
-```json
-null
-```
-
-### HTTP Request
-`GET api/core/1.0/module/settings/report`
-
-
-<!-- END_103bbdab9069c509d1a6d67bf9df1d8a -->
-
-<!-- START_ac8dc86c5473af00f3fa9d13ed01df0c -->
-## Get all the uploads of an element
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/settings/1/uploads" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/settings/1/uploads"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (200):
-
-```json
-{
-    "code": 200,
-    "status": "success",
-    "message": "Request Processed",
-    "data": {
-        "current_page": 1,
-        "first_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/settings\/1\/uploads?page=1",
-        "from": null,
-        "last_page": 1,
-        "last_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/settings\/1\/uploads?page=1",
-        "next_page_url": null,
-        "path": "http:\/\/localhost\/api\/core\/1.0\/module\/settings\/1\/uploads",
-        "per_page": 20,
-        "prev_page_url": null,
-        "to": null,
-        "total": 0,
-        "items": []
-    },
-    "redirect": "http:\/\/localhost\/api\/core\/1.0\/module\/settings\/1\/uploads"
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/settings/{id}/uploads`
-
-
-<!-- END_ac8dc86c5473af00f3fa9d13ed01df0c -->
-
-<!-- START_a2a320dda854f8721db20bb8a619069d -->
-## Uploads files under an element
-
-> Example request:
-
-```bash
-curl -X POST \
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/settings/1/uploads" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/settings/1/uploads"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "POST",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`POST api/core/1.0/module/settings/{id}/uploads`
-
-
-<!-- END_a2a320dda854f8721db20bb8a619069d -->
-
-<!-- START_5d3085404887920bebe7b73d09ff4177 -->
-## Get all the comments of an element
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/settings/1/comments" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/settings/1/comments"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (200):
-
-```json
-{
-    "code": 200,
-    "status": "success",
-    "message": "Request Processed",
-    "data": {
-        "current_page": 1,
-        "first_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/settings\/1\/comments?page=1",
-        "from": null,
-        "last_page": 1,
-        "last_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/settings\/1\/comments?page=1",
-        "next_page_url": null,
-        "path": "http:\/\/localhost\/api\/core\/1.0\/module\/settings\/1\/comments",
-        "per_page": 20,
-        "prev_page_url": null,
-        "to": null,
-        "total": 0,
-        "items": []
-    },
-    "redirect": "http:\/\/localhost\/api\/core\/1.0\/module\/settings\/1\/comments"
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/settings/{id}/comments`
-
-
-<!-- END_5d3085404887920bebe7b73d09ff4177 -->
-
-<!-- START_82f48e1e88d5910c05bcd56a5386042b -->
-## Index/List page to show grid
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/settings" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/settings"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (200):
-
-```json
-{
-    "code": 200,
-    "status": "success",
-    "message": "Request Processed",
-    "data": {
-        "current_page": 1,
-        "first_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/settings?page=1",
-        "from": 1,
-        "last_page": 1,
-        "last_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/settings?page=1",
-        "next_page_url": null,
-        "path": "http:\/\/localhost\/api\/core\/1.0\/module\/settings",
-        "per_page": 20,
-        "prev_page_url": null,
-        "to": 5,
-        "total": 5,
-        "items": [
-            {
-                "id": 1,
-                "uuid": "6e9d6b57-966d-4b1e-aa77-fc937d9118b6",
-                "name": "app-name",
-                "title": "App Name",
-                "type": "string",
-                "description": "Mainframe Rapid Development Framework",
-                "value": "Mainframe",
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2018-12-24 20:25:41",
-                "updated_at": "2020-01-29 02:45:23",
-                "deleted_at": null,
-                "deleted_by": null
-            },
-            {
-                "id": 2,
-                "uuid": "2dfc744e-752b-49ef-baee-048fa2fa4969",
-                "name": "ios-app-version",
-                "title": "iOS App Version",
-                "type": "string",
-                "description": "Buddy Ramp",
-                "value": "1.1.c.u",
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2018-12-24 20:26:42",
-                "updated_at": "2020-06-26 07:09:28",
-                "deleted_at": null,
-                "deleted_by": null
-            },
-            {
-                "id": 3,
-                "uuid": "e446d927-902b-4633-83d8-5f9fa0ef43cb",
-                "name": "android-app-version",
-                "title": "Android App Version",
-                "type": "string",
-                "description": "Latest Android app version. This is matched with the users app version to prompt app update.",
-                "value": "1.24",
-                "is_active": 0,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2018-12-24 20:27:46",
-                "updated_at": "2019-04-11 09:16:28",
-                "deleted_at": null,
-                "deleted_by": null
-            },
-            {
-                "id": 4,
-                "uuid": "279fb65c-30c2-4727-b3e6-fc18a3476bf7",
-                "name": "mobile-portrait-help-steps",
-                "title": "Mobile Portrait Help Steps",
-                "type": "file",
-                "description": "Mobile Portrait Helps slides for screen size.",
-                "value": null,
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2019-03-19 10:02:46",
-                "updated_at": "2019-03-20 09:21:39",
-                "deleted_at": null,
-                "deleted_by": null
-            },
-            {
-                "id": 5,
-                "uuid": "f8e2ab99-e6ef-46d5-ae98-edee783b8f56",
-                "name": "mobile-landscape-help-steps",
-                "title": "Mobile Landscape Help Steps",
-                "type": "file",
-                "description": "Mobile landscape Helps slides for screen size.",
-                "value": "test lorem",
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2019-03-19 10:15:44",
-                "updated_at": "2020-05-22 06:44:05",
-                "deleted_at": null,
-                "deleted_by": 1
-            }
-        ]
-    },
-    "redirect": "http:\/\/localhost\/api\/core\/1.0\/module\/settings"
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/settings`
-
-
-<!-- END_82f48e1e88d5910c05bcd56a5386042b -->
-
-<!-- START_fc965a08f38c5a950e7bf7125bb1b501 -->
-## Store
-
-> Example request:
-
-```bash
-curl -X POST \
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/settings" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/settings"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "POST",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`POST api/core/1.0/module/settings`
-
-
-<!-- END_fc965a08f38c5a950e7bf7125bb1b501 -->
-
-<!-- START_aa3627f57b6aef45a9844fc04ea08726 -->
-## Show
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/settings/1" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/settings/1"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (500):
-
-```json
-{
-    "message": "Server Error"
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/settings/{setting}`
-
-#### URL Parameters
-
-Parameter | Status | Description
---------- | ------- | ------- | -------
-    `id` |  required  | The ID of the item.
-
-<!-- END_aa3627f57b6aef45a9844fc04ea08726 -->
-
-<!-- START_f367e7714dc8b54d87cf0422e7190278 -->
-## Update
-
-> Example request:
-
-```bash
-curl -X PUT \
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/settings/1" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/settings/1"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "PUT",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`PUT api/core/1.0/module/settings/{setting}`
-
-`PATCH api/core/1.0/module/settings/{setting}`
-
-
-<!-- END_f367e7714dc8b54d87cf0422e7190278 -->
-
-<!-- START_b23dd1dd369ac5cae6b8c0e83ed11328 -->
-## Delete
-
-> Example request:
-
-```bash
-curl -X DELETE \
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/settings/1" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/settings/1"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "DELETE",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`DELETE api/core/1.0/module/settings/{setting}`
-
-
-<!-- END_b23dd1dd369ac5cae6b8c0e83ed11328 -->
-
-<!-- START_05bb25c30806d20abc3b9b287b81551c -->
-## Returns a collection of objects as Json for an API call
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/reports/list/json" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/reports/list/json"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (200):
-
-```json
-{
-    "code": 200,
-    "status": "success",
-    "message": "Request Processed",
-    "data": {
-        "current_page": 1,
-        "first_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/reports\/list\/json?page=1",
-        "from": null,
-        "last_page": 1,
-        "last_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/reports\/list\/json?page=1",
-        "next_page_url": null,
-        "path": "http:\/\/localhost\/api\/core\/1.0\/module\/reports\/list\/json",
-        "per_page": 20,
-        "prev_page_url": null,
-        "to": null,
-        "total": 0,
-        "items": []
-    },
-    "redirect": "http:\/\/localhost\/api\/core\/1.0\/module\/reports\/list\/json"
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/reports/list/json`
-
-
-<!-- END_05bb25c30806d20abc3b9b287b81551c -->
-
-<!-- START_549dd37a5a89eb4074b52acdcb11b070 -->
-## Show and render report
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/reports/report" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/reports/report"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (200):
-
-```json
-null
-```
-
-### HTTP Request
-`GET api/core/1.0/module/reports/report`
-
-
-<!-- END_549dd37a5a89eb4074b52acdcb11b070 -->
-
-<!-- START_6375b8d8dc3401d221a09037db232d07 -->
-## Get all the uploads of an element
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/reports/1/uploads" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/reports/1/uploads"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (200):
-
-```json
-{
-    "code": 200,
-    "status": "success",
-    "message": "Request Processed",
-    "data": {
-        "current_page": 1,
-        "first_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/reports\/1\/uploads?page=1",
-        "from": null,
-        "last_page": 1,
-        "last_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/reports\/1\/uploads?page=1",
-        "next_page_url": null,
-        "path": "http:\/\/localhost\/api\/core\/1.0\/module\/reports\/1\/uploads",
-        "per_page": 20,
-        "prev_page_url": null,
-        "to": null,
-        "total": 0,
-        "items": []
-    },
-    "redirect": "http:\/\/localhost\/api\/core\/1.0\/module\/reports\/1\/uploads"
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/reports/{id}/uploads`
-
-
-<!-- END_6375b8d8dc3401d221a09037db232d07 -->
-
-<!-- START_3bb95e0bd6e431053342b3d563f11f84 -->
-## Uploads files under an element
-
-> Example request:
-
-```bash
-curl -X POST \
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/reports/1/uploads" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/reports/1/uploads"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "POST",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`POST api/core/1.0/module/reports/{id}/uploads`
-
-
-<!-- END_3bb95e0bd6e431053342b3d563f11f84 -->
-
-<!-- START_f198d513a2d45b7ebaeb30ad5473d0d1 -->
-## Get all the comments of an element
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/reports/1/comments" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/reports/1/comments"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (200):
-
-```json
-{
-    "code": 200,
-    "status": "success",
-    "message": "Request Processed",
-    "data": {
-        "current_page": 1,
-        "first_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/reports\/1\/comments?page=1",
-        "from": null,
-        "last_page": 1,
-        "last_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/reports\/1\/comments?page=1",
-        "next_page_url": null,
-        "path": "http:\/\/localhost\/api\/core\/1.0\/module\/reports\/1\/comments",
-        "per_page": 20,
-        "prev_page_url": null,
-        "to": null,
-        "total": 0,
-        "items": []
-    },
-    "redirect": "http:\/\/localhost\/api\/core\/1.0\/module\/reports\/1\/comments"
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/reports/{id}/comments`
-
-
-<!-- END_f198d513a2d45b7ebaeb30ad5473d0d1 -->
-
-<!-- START_a7ca51c6f6c0b52aaab99205b2085bd9 -->
-## Index/List page to show grid
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/reports" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/reports"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (200):
-
-```json
-{
-    "code": 200,
-    "status": "success",
-    "message": "Request Processed",
-    "data": {
-        "current_page": 1,
-        "first_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/reports?page=1",
-        "from": null,
-        "last_page": 1,
-        "last_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/reports?page=1",
-        "next_page_url": null,
-        "path": "http:\/\/localhost\/api\/core\/1.0\/module\/reports",
-        "per_page": 20,
-        "prev_page_url": null,
-        "to": null,
-        "total": 0,
-        "items": []
-    },
-    "redirect": "http:\/\/localhost\/api\/core\/1.0\/module\/reports"
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/reports`
-
-
-<!-- END_a7ca51c6f6c0b52aaab99205b2085bd9 -->
-
-<!-- START_c9cbbdc7d1a92997e3e65c804698597a -->
-## Store
-
-> Example request:
-
-```bash
-curl -X POST \
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/reports" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/reports"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "POST",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`POST api/core/1.0/module/reports`
-
-
-<!-- END_c9cbbdc7d1a92997e3e65c804698597a -->
-
-<!-- START_26187e77a69f4700f988de1231e6fc1f -->
-## Show
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/reports/1" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/reports/1"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (404):
-
-```json
-{
-    "message": "Not found"
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/reports/{report}`
-
-#### URL Parameters
-
-Parameter | Status | Description
---------- | ------- | ------- | -------
-    `id` |  required  | The ID of the item.
-
-<!-- END_26187e77a69f4700f988de1231e6fc1f -->
-
-<!-- START_1470e30cf29247fba8ba81c1a9fa55c3 -->
-## Update
-
-> Example request:
-
-```bash
-curl -X PUT \
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/reports/1" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/reports/1"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "PUT",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`PUT api/core/1.0/module/reports/{report}`
-
-`PATCH api/core/1.0/module/reports/{report}`
-
-
-<!-- END_1470e30cf29247fba8ba81c1a9fa55c3 -->
-
-<!-- START_560dcd40af6f1ec017ee367fd2cbec62 -->
-## Delete
-
-> Example request:
-
-```bash
-curl -X DELETE \
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/reports/1" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/reports/1"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "DELETE",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`DELETE api/core/1.0/module/reports/{report}`
-
-
-<!-- END_560dcd40af6f1ec017ee367fd2cbec62 -->
-
-<!-- START_fad35c749297ff76a42de3b43eb6836c -->
-## Returns a collection of objects as Json for an API call
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/lorem-ipsums/list/json" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/lorem-ipsums/list/json"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (200):
-
-```json
-{
-    "code": 200,
-    "status": "success",
-    "message": "Request Processed",
-    "data": {
-        "current_page": 1,
-        "first_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/lorem-ipsums\/list\/json?page=1",
-        "from": 1,
-        "last_page": 1,
-        "last_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/lorem-ipsums\/list\/json?page=1",
-        "next_page_url": null,
-        "path": "http:\/\/localhost\/api\/core\/1.0\/module\/lorem-ipsums\/list\/json",
-        "per_page": 20,
-        "prev_page_url": null,
-        "to": 3,
-        "total": 3,
-        "items": [
-            {
-                "id": 1,
-                "uuid": "2c9e9057-6095-4a48-aa9e-181e96172cb1",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "Test Input",
-                "hidden": null,
-                "textarea": "Prior to proceeding with the enforcement of new rules and regulations , it was good if authorities concerned would have been taken of such possible unruly anarchies of the transport workers . asdfasdf sdfgsdfg sdfg asdfdf",
-                "textarea_ckeditor": "sdfgssdfgsdfgdfsg",
-                "tags": "Roads",
-                "text": null,
-                "select_array": null,
-                "select_array_multiple": [
-                    "0",
-                    "2"
-                ],
-                "dolor_sit_id": 1,
-                "dolor_sit_ids": [
-                    "3",
-                    "1"
-                ],
-                "parent_id": 1,
-                "checkbox": 0,
-                "is_active": 1,
-                "created_by": 5,
-                "updated_by": 5,
-                "created_at": "2019-11-20 16:01:06",
-                "updated_at": "2020-01-21 12:15:07",
-                "deleted_at": null,
-                "deleted_by": null
-            },
-            {
-                "id": 2,
-                "uuid": "175da4d1-e448-4e27-a642-4da5179ec5c6",
-                "project_id": 1,
-                "tenant_id": 1,
-                "name": "ainw bNW",
-                "hidden": null,
-                "textarea": "asdfasdf adfsdf",
-                "textarea_ckeditor": "asdfasdfsdf asdfasdf",
-                "tags": "Country,takes,lorem",
-                "text": null,
-                "select_array": "1",
-                "select_array_multiple": [
-                    "0",
-                    "1"
-                ],
-                "dolor_sit_id": 1,
-                "dolor_sit_ids": [
-                    "1"
-                ],
-                "parent_id": 2,
-                "checkbox": 0,
-                "is_active": 1,
-                "created_by": 5,
-                "updated_by": 5,
-                "created_at": "2019-11-20 16:01:06",
-                "updated_at": "2020-07-13 07:40:37",
-                "deleted_at": null,
-                "deleted_by": null
-            },
-            {
-                "id": 1610,
-                "uuid": "6558b780-0911-4fc9-872c-e4977e175cc7",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "test",
-                "hidden": null,
-                "textarea": null,
-                "textarea_ckeditor": null,
-                "tags": null,
-                "text": null,
-                "select_array": "2",
-                "select_array_multiple": null,
-                "dolor_sit_id": null,
-                "dolor_sit_ids": [
-                    "3",
-                    "2",
-                    "1"
-                ],
-                "parent_id": null,
-                "checkbox": 0,
-                "is_active": 0,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2020-07-13 09:01:21",
-                "updated_at": "2020-10-05 09:01:42",
-                "deleted_at": null,
-                "deleted_by": null
-            }
-        ]
-    },
-    "redirect": "http:\/\/localhost\/api\/core\/1.0\/module\/lorem-ipsums\/list\/json"
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/lorem-ipsums/list/json`
-
-
-<!-- END_fad35c749297ff76a42de3b43eb6836c -->
-
-<!-- START_e5d421b11ae501dd6f493f947dadc40b -->
-## Show and render report
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/lorem-ipsums/report" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/lorem-ipsums/report"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (200):
-
-```json
-null
-```
-
-### HTTP Request
-`GET api/core/1.0/module/lorem-ipsums/report`
-
-
-<!-- END_e5d421b11ae501dd6f493f947dadc40b -->
-
-<!-- START_f0bdbd7311f2b593e59c0c3124570672 -->
-## Get all the uploads of an element
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/lorem-ipsums/1/uploads" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/lorem-ipsums/1/uploads"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (200):
-
-```json
-{
-    "code": 200,
-    "status": "success",
-    "message": "Request Processed",
-    "data": {
-        "current_page": 1,
-        "first_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/lorem-ipsums\/1\/uploads?page=1",
-        "from": null,
-        "last_page": 1,
-        "last_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/lorem-ipsums\/1\/uploads?page=1",
-        "next_page_url": null,
-        "path": "http:\/\/localhost\/api\/core\/1.0\/module\/lorem-ipsums\/1\/uploads",
-        "per_page": 20,
-        "prev_page_url": null,
-        "to": null,
-        "total": 0,
-        "items": []
-    },
-    "redirect": "http:\/\/localhost\/api\/core\/1.0\/module\/lorem-ipsums\/1\/uploads"
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/lorem-ipsums/{id}/uploads`
-
-
-<!-- END_f0bdbd7311f2b593e59c0c3124570672 -->
-
-<!-- START_23c017b83bd2d5adbc0e4520fbc5e9be -->
-## Uploads files under an element
-
-> Example request:
-
-```bash
-curl -X POST \
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/lorem-ipsums/1/uploads" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/lorem-ipsums/1/uploads"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "POST",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`POST api/core/1.0/module/lorem-ipsums/{id}/uploads`
-
-
-<!-- END_23c017b83bd2d5adbc0e4520fbc5e9be -->
-
-<!-- START_c9d19894f85cf16253b5a66dd62c8396 -->
-## Get all the comments of an element
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/lorem-ipsums/1/comments" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/lorem-ipsums/1/comments"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (200):
-
-```json
-{
-    "code": 200,
-    "status": "success",
-    "message": "Request Processed",
-    "data": {
-        "current_page": 1,
-        "first_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/lorem-ipsums\/1\/comments?page=1",
-        "from": null,
-        "last_page": 1,
-        "last_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/lorem-ipsums\/1\/comments?page=1",
-        "next_page_url": null,
-        "path": "http:\/\/localhost\/api\/core\/1.0\/module\/lorem-ipsums\/1\/comments",
-        "per_page": 20,
-        "prev_page_url": null,
-        "to": null,
-        "total": 0,
-        "items": []
-    },
-    "redirect": "http:\/\/localhost\/api\/core\/1.0\/module\/lorem-ipsums\/1\/comments"
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/lorem-ipsums/{id}/comments`
-
-
-<!-- END_c9d19894f85cf16253b5a66dd62c8396 -->
-
-<!-- START_07242bbcdea94c3b4029912679b731ea -->
-## Index/List page to show grid
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/lorem-ipsums" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/lorem-ipsums"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (200):
-
-```json
-{
-    "code": 200,
-    "status": "success",
-    "message": "Request Processed",
-    "data": {
-        "current_page": 1,
-        "first_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/lorem-ipsums?page=1",
-        "from": 1,
-        "last_page": 1,
-        "last_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/lorem-ipsums?page=1",
-        "next_page_url": null,
-        "path": "http:\/\/localhost\/api\/core\/1.0\/module\/lorem-ipsums",
-        "per_page": 20,
-        "prev_page_url": null,
-        "to": 3,
-        "total": 3,
-        "items": [
-            {
-                "id": 1,
-                "uuid": "2c9e9057-6095-4a48-aa9e-181e96172cb1",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "Test Input",
-                "hidden": null,
-                "textarea": "Prior to proceeding with the enforcement of new rules and regulations , it was good if authorities concerned would have been taken of such possible unruly anarchies of the transport workers . asdfasdf sdfgsdfg sdfg asdfdf",
-                "textarea_ckeditor": "sdfgssdfgsdfgdfsg",
-                "tags": "Roads",
-                "text": null,
-                "select_array": null,
-                "select_array_multiple": [
-                    "0",
-                    "2"
-                ],
-                "dolor_sit_id": 1,
-                "dolor_sit_ids": [
-                    "3",
-                    "1"
-                ],
-                "parent_id": 1,
-                "checkbox": 0,
-                "is_active": 1,
-                "created_by": 5,
-                "updated_by": 5,
-                "created_at": "2019-11-20 16:01:06",
-                "updated_at": "2020-01-21 12:15:07",
-                "deleted_at": null,
-                "deleted_by": null
-            },
-            {
-                "id": 2,
-                "uuid": "175da4d1-e448-4e27-a642-4da5179ec5c6",
-                "project_id": 1,
-                "tenant_id": 1,
-                "name": "ainw bNW",
-                "hidden": null,
-                "textarea": "asdfasdf adfsdf",
-                "textarea_ckeditor": "asdfasdfsdf asdfasdf",
-                "tags": "Country,takes,lorem",
-                "text": null,
-                "select_array": "1",
-                "select_array_multiple": [
-                    "0",
-                    "1"
-                ],
-                "dolor_sit_id": 1,
-                "dolor_sit_ids": [
-                    "1"
-                ],
-                "parent_id": 2,
-                "checkbox": 0,
-                "is_active": 1,
-                "created_by": 5,
-                "updated_by": 5,
-                "created_at": "2019-11-20 16:01:06",
-                "updated_at": "2020-07-13 07:40:37",
-                "deleted_at": null,
-                "deleted_by": null
-            },
-            {
-                "id": 1610,
-                "uuid": "6558b780-0911-4fc9-872c-e4977e175cc7",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "test",
-                "hidden": null,
-                "textarea": null,
-                "textarea_ckeditor": null,
-                "tags": null,
-                "text": null,
-                "select_array": "2",
-                "select_array_multiple": null,
-                "dolor_sit_id": null,
-                "dolor_sit_ids": [
-                    "3",
-                    "2",
-                    "1"
-                ],
-                "parent_id": null,
-                "checkbox": 0,
-                "is_active": 0,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2020-07-13 09:01:21",
-                "updated_at": "2020-10-05 09:01:42",
-                "deleted_at": null,
-                "deleted_by": null
-            }
-        ]
-    },
-    "redirect": "http:\/\/localhost\/api\/core\/1.0\/module\/lorem-ipsums"
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/lorem-ipsums`
-
-
-<!-- END_07242bbcdea94c3b4029912679b731ea -->
-
-<!-- START_a75222d11d04eab7c6938c767d8c59e6 -->
-## Store
-
-> Example request:
-
-```bash
-curl -X POST \
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/lorem-ipsums" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/lorem-ipsums"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "POST",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`POST api/core/1.0/module/lorem-ipsums`
-
-
-<!-- END_a75222d11d04eab7c6938c767d8c59e6 -->
-
-<!-- START_b8a83e83719019270ee5294601e55e94 -->
-## Show
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/lorem-ipsums/1" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/lorem-ipsums/1"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (500):
-
-```json
-{
-    "message": "Server Error"
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/lorem-ipsums/{lorem_ipsum}`
-
-#### URL Parameters
-
-Parameter | Status | Description
---------- | ------- | ------- | -------
-    `id` |  required  | The ID of the item.
-
-<!-- END_b8a83e83719019270ee5294601e55e94 -->
-
-<!-- START_b462bed9407aa50e53e2efb8dd3ae0f8 -->
-## Update
-
-> Example request:
-
-```bash
-curl -X PUT \
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/lorem-ipsums/1" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/lorem-ipsums/1"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "PUT",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`PUT api/core/1.0/module/lorem-ipsums/{lorem_ipsum}`
-
-`PATCH api/core/1.0/module/lorem-ipsums/{lorem_ipsum}`
-
-
-<!-- END_b462bed9407aa50e53e2efb8dd3ae0f8 -->
-
-<!-- START_67836cdf2f370006c2ab6174a0a84718 -->
-## Delete
-
-> Example request:
-
-```bash
-curl -X DELETE \
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/lorem-ipsums/1" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/lorem-ipsums/1"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "DELETE",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`DELETE api/core/1.0/module/lorem-ipsums/{lorem_ipsum}`
-
-
-<!-- END_67836cdf2f370006c2ab6174a0a84718 -->
-
-<!-- START_356f07c1d43eefab5c53362c96f5dbc5 -->
-## Returns a collection of objects as Json for an API call
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/dolor-sits/list/json" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/dolor-sits/list/json"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (200):
-
-```json
-{
-    "code": 200,
-    "status": "success",
-    "message": "Request Processed",
-    "data": {
-        "current_page": 1,
-        "first_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/dolor-sits\/list\/json?page=1",
-        "from": 1,
-        "last_page": 1,
-        "last_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/dolor-sits\/list\/json?page=1",
-        "next_page_url": null,
-        "path": "http:\/\/localhost\/api\/core\/1.0\/module\/dolor-sits\/list\/json",
-        "per_page": 20,
-        "prev_page_url": null,
-        "to": 3,
-        "total": 3,
-        "items": [
-            {
-                "id": 1,
-                "uuid": "7be17d1c-1bd9-4620-876a-f3ca5a05717e",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "Super wings",
-                "is_active": 1,
-                "created_by": 5,
-                "updated_by": 5,
-                "created_at": "2019-11-20 14:56:35",
-                "updated_at": "2019-11-20 14:56:35",
-                "deleted_at": null,
-                "deleted_by": null
-            },
-            {
-                "id": 2,
-                "uuid": "7be17d1c-1bd9-4620-876a-f3ca5a05717f",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "Paw Petrol",
-                "is_active": 1,
-                "created_by": 5,
-                "updated_by": 5,
-                "created_at": "2019-11-20 14:56:35",
-                "updated_at": "2019-11-20 14:56:35",
-                "deleted_at": null,
-                "deleted_by": null
-            },
-            {
-                "id": 3,
-                "uuid": "7be17d1c-1bd9-4620-876a-f3ca5a05717g",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "Captain Planet",
-                "is_active": 1,
-                "created_by": 5,
-                "updated_by": 5,
-                "created_at": "2019-11-20 14:56:35",
-                "updated_at": "2020-01-06 09:25:49",
-                "deleted_at": null,
-                "deleted_by": null
-            }
-        ]
-    },
-    "redirect": "http:\/\/localhost\/api\/core\/1.0\/module\/dolor-sits\/list\/json"
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/dolor-sits/list/json`
-
-
-<!-- END_356f07c1d43eefab5c53362c96f5dbc5 -->
-
-<!-- START_27fb2e21f275b251b17f3647afe0444f -->
-## Show and render report
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/dolor-sits/report" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/dolor-sits/report"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (200):
-
-```json
-null
-```
-
-### HTTP Request
-`GET api/core/1.0/module/dolor-sits/report`
-
-
-<!-- END_27fb2e21f275b251b17f3647afe0444f -->
-
-<!-- START_7a3dafb3cc59d67f1ee46342a91ccdbf -->
-## Get all the uploads of an element
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/dolor-sits/1/uploads" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/dolor-sits/1/uploads"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (200):
-
-```json
-{
-    "code": 200,
-    "status": "success",
-    "message": "Request Processed",
-    "data": {
-        "current_page": 1,
-        "first_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/dolor-sits\/1\/uploads?page=1",
-        "from": null,
-        "last_page": 1,
-        "last_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/dolor-sits\/1\/uploads?page=1",
-        "next_page_url": null,
-        "path": "http:\/\/localhost\/api\/core\/1.0\/module\/dolor-sits\/1\/uploads",
-        "per_page": 20,
-        "prev_page_url": null,
-        "to": null,
-        "total": 0,
-        "items": []
-    },
-    "redirect": "http:\/\/localhost\/api\/core\/1.0\/module\/dolor-sits\/1\/uploads"
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/dolor-sits/{id}/uploads`
-
-
-<!-- END_7a3dafb3cc59d67f1ee46342a91ccdbf -->
-
-<!-- START_3c1916ab2955fcfb8f13c8afb55b8f89 -->
-## Uploads files under an element
-
-> Example request:
-
-```bash
-curl -X POST \
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/dolor-sits/1/uploads" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/dolor-sits/1/uploads"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "POST",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`POST api/core/1.0/module/dolor-sits/{id}/uploads`
-
-
-<!-- END_3c1916ab2955fcfb8f13c8afb55b8f89 -->
-
-<!-- START_fca5745c45749e40a59fa88d221e8e51 -->
-## Get all the comments of an element
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/dolor-sits/1/comments" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/dolor-sits/1/comments"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (200):
-
-```json
-{
-    "code": 200,
-    "status": "success",
-    "message": "Request Processed",
-    "data": {
-        "current_page": 1,
-        "first_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/dolor-sits\/1\/comments?page=1",
-        "from": null,
-        "last_page": 1,
-        "last_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/dolor-sits\/1\/comments?page=1",
-        "next_page_url": null,
-        "path": "http:\/\/localhost\/api\/core\/1.0\/module\/dolor-sits\/1\/comments",
-        "per_page": 20,
-        "prev_page_url": null,
-        "to": null,
-        "total": 0,
-        "items": []
-    },
-    "redirect": "http:\/\/localhost\/api\/core\/1.0\/module\/dolor-sits\/1\/comments"
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/dolor-sits/{id}/comments`
-
-
-<!-- END_fca5745c45749e40a59fa88d221e8e51 -->
-
-<!-- START_740f63e1ac854fc035f8fa7b8b3ec7b5 -->
-## Index/List page to show grid
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/dolor-sits" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/dolor-sits"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (200):
-
-```json
-{
-    "code": 200,
-    "status": "success",
-    "message": "Request Processed",
-    "data": {
-        "current_page": 1,
-        "first_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/dolor-sits?page=1",
-        "from": 1,
-        "last_page": 1,
-        "last_page_url": "http:\/\/localhost\/api\/core\/1.0\/module\/dolor-sits?page=1",
-        "next_page_url": null,
-        "path": "http:\/\/localhost\/api\/core\/1.0\/module\/dolor-sits",
-        "per_page": 20,
-        "prev_page_url": null,
-        "to": 3,
-        "total": 3,
-        "items": [
-            {
-                "id": 1,
-                "uuid": "7be17d1c-1bd9-4620-876a-f3ca5a05717e",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "Super wings",
-                "is_active": 1,
-                "created_by": 5,
-                "updated_by": 5,
-                "created_at": "2019-11-20 14:56:35",
-                "updated_at": "2019-11-20 14:56:35",
-                "deleted_at": null,
-                "deleted_by": null
-            },
-            {
-                "id": 2,
-                "uuid": "7be17d1c-1bd9-4620-876a-f3ca5a05717f",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "Paw Petrol",
-                "is_active": 1,
-                "created_by": 5,
-                "updated_by": 5,
-                "created_at": "2019-11-20 14:56:35",
-                "updated_at": "2019-11-20 14:56:35",
-                "deleted_at": null,
-                "deleted_by": null
-            },
-            {
-                "id": 3,
-                "uuid": "7be17d1c-1bd9-4620-876a-f3ca5a05717g",
-                "project_id": null,
-                "tenant_id": null,
-                "name": "Captain Planet",
-                "is_active": 1,
-                "created_by": 5,
-                "updated_by": 5,
-                "created_at": "2019-11-20 14:56:35",
-                "updated_at": "2020-01-06 09:25:49",
-                "deleted_at": null,
-                "deleted_by": null
-            }
-        ]
-    },
-    "redirect": "http:\/\/localhost\/api\/core\/1.0\/module\/dolor-sits"
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/dolor-sits`
-
-
-<!-- END_740f63e1ac854fc035f8fa7b8b3ec7b5 -->
-
-<!-- START_e27e3024b2740f0c1e9bab05c8019d79 -->
-## Store
-
-> Example request:
-
-```bash
-curl -X POST \
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/dolor-sits" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/dolor-sits"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "POST",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`POST api/core/1.0/module/dolor-sits`
-
-
-<!-- END_e27e3024b2740f0c1e9bab05c8019d79 -->
-
-<!-- START_7c2556cb24ad3beb15fc19ae0b4c7715 -->
-## Show
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/dolor-sits/1" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/dolor-sits/1"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (500):
-
-```json
-{
-    "message": "Server Error"
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/dolor-sits/{dolor_sit}`
-
-#### URL Parameters
-
-Parameter | Status | Description
---------- | ------- | ------- | -------
-    `id` |  required  | The ID of the item.
-
-<!-- END_7c2556cb24ad3beb15fc19ae0b4c7715 -->
-
-<!-- START_61aeddec69f3d88a9e9e5d467f54f2fe -->
-## Update
-
-> Example request:
-
-```bash
-curl -X PUT \
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/dolor-sits/1" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/dolor-sits/1"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "PUT",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`PUT api/core/1.0/module/dolor-sits/{dolor_sit}`
-
-`PATCH api/core/1.0/module/dolor-sits/{dolor_sit}`
-
-
-<!-- END_61aeddec69f3d88a9e9e5d467f54f2fe -->
-
-<!-- START_0c63d0cfd66d1c22c2333d20c9daa327 -->
-## Delete
-
-> Example request:
-
-```bash
-curl -X DELETE \
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/dolor-sits/1" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/dolor-sits/1"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "DELETE",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`DELETE api/core/1.0/module/dolor-sits/{dolor_sit}`
-
-
-<!-- END_0c63d0cfd66d1c22c2333d20c9daa327 -->
-
-<!-- START_b9ff65c9b63327f91064e9d64427dbc3 -->
-## Returns a collection of objects as Json for an API call
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/subscriptions/list/json" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/subscriptions/list/json"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (429):
-
-```json
-{
-    "message": "Too Many Attempts."
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/subscriptions/list/json`
-
-
-<!-- END_b9ff65c9b63327f91064e9d64427dbc3 -->
-
-<!-- START_a1534be1a21442dd5a272ce989a2f844 -->
-## Show and render report
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/subscriptions/report" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/subscriptions/report"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (429):
-
-```json
-{
-    "message": "Too Many Attempts."
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/subscriptions/report`
-
-
-<!-- END_a1534be1a21442dd5a272ce989a2f844 -->
-
-<!-- START_4ba9bdc8020b64b788f8c1f3c89d29e2 -->
-## Get all the uploads of an element
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/subscriptions/1/uploads" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/subscriptions/1/uploads"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (429):
-
-```json
-{
-    "message": "Too Many Attempts."
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/subscriptions/{id}/uploads`
-
-
-<!-- END_4ba9bdc8020b64b788f8c1f3c89d29e2 -->
-
-<!-- START_ecf579e6ad3ed732540fc0c514930045 -->
-## Uploads files under an element
-
-> Example request:
-
-```bash
-curl -X POST \
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/subscriptions/1/uploads" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/subscriptions/1/uploads"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "POST",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`POST api/core/1.0/module/subscriptions/{id}/uploads`
-
-
-<!-- END_ecf579e6ad3ed732540fc0c514930045 -->
-
-<!-- START_759ec1d021b09b7b271fa195992d6c4b -->
-## Get all the comments of an element
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/subscriptions/1/comments" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/subscriptions/1/comments"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (429):
-
-```json
-{
-    "message": "Too Many Attempts."
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/subscriptions/{id}/comments`
-
-
-<!-- END_759ec1d021b09b7b271fa195992d6c4b -->
-
-<!-- START_ba3df3808600680e272a5663da62d300 -->
-## Index/List page to show grid
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/subscriptions" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/subscriptions"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (429):
-
-```json
-{
-    "message": "Too Many Attempts."
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/subscriptions`
-
-
-<!-- END_ba3df3808600680e272a5663da62d300 -->
-
-<!-- START_d1a59ac6a79054a639367981e366d68a -->
-## Store
-
-> Example request:
-
-```bash
-curl -X POST \
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/subscriptions" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/subscriptions"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "POST",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`POST api/core/1.0/module/subscriptions`
-
-
-<!-- END_d1a59ac6a79054a639367981e366d68a -->
-
-<!-- START_9c799e04555d0e4a265effb9b739f9ab -->
-## Show
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/subscriptions/1" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/subscriptions/1"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (429):
-
-```json
-{
-    "message": "Too Many Attempts."
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/subscriptions/{subscription}`
-
-#### URL Parameters
-
-Parameter | Status | Description
---------- | ------- | ------- | -------
-    `id` |  required  | The ID of the item.
-
-<!-- END_9c799e04555d0e4a265effb9b739f9ab -->
-
-<!-- START_ebfcf575905d4bb8de1f795fe11deead -->
-## Update
-
-> Example request:
-
-```bash
-curl -X PUT \
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/subscriptions/1" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/subscriptions/1"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "PUT",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`PUT api/core/1.0/module/subscriptions/{subscription}`
-
-`PATCH api/core/1.0/module/subscriptions/{subscription}`
-
-
-<!-- END_ebfcf575905d4bb8de1f795fe11deead -->
-
-<!-- START_7490bd8e3f2ba7e9464994a01f5f0c2d -->
-## Delete
-
-> Example request:
-
-```bash
-curl -X DELETE \
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/subscriptions/1" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/subscriptions/1"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "DELETE",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`DELETE api/core/1.0/module/subscriptions/{subscription}`
-
-
-<!-- END_7490bd8e3f2ba7e9464994a01f5f0c2d -->
-
-<!-- START_db8c9ec95debfd4c597b03ad45c2d8d2 -->
-## Returns a collection of objects as Json for an API call
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/packages/list/json" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/packages/list/json"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (429):
-
-```json
-{
-    "message": "Too Many Attempts."
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/packages/list/json`
-
-
-<!-- END_db8c9ec95debfd4c597b03ad45c2d8d2 -->
-
-<!-- START_a9eff8ad96103d59c3ad56ebf7db1058 -->
-## Show and render report
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/packages/report" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/packages/report"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (429):
-
-```json
-{
-    "message": "Too Many Attempts."
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/packages/report`
-
-
-<!-- END_a9eff8ad96103d59c3ad56ebf7db1058 -->
-
-<!-- START_c46319ecef6249d82bad1dad30db6955 -->
-## Get all the uploads of an element
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/packages/1/uploads" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/packages/1/uploads"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (429):
-
-```json
-{
-    "message": "Too Many Attempts."
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/packages/{id}/uploads`
-
-
-<!-- END_c46319ecef6249d82bad1dad30db6955 -->
-
-<!-- START_66a807bc5c3e2c68461c4fa1d5f32afd -->
-## Uploads files under an element
-
-> Example request:
-
-```bash
-curl -X POST \
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/packages/1/uploads" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/packages/1/uploads"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "POST",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`POST api/core/1.0/module/packages/{id}/uploads`
-
-
-<!-- END_66a807bc5c3e2c68461c4fa1d5f32afd -->
-
-<!-- START_094c497ceba566387ff3912611426950 -->
-## Get all the comments of an element
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/packages/1/comments" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/packages/1/comments"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (429):
-
-```json
-{
-    "message": "Too Many Attempts."
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/packages/{id}/comments`
-
-
-<!-- END_094c497ceba566387ff3912611426950 -->
-
-<!-- START_f79448a08442e8e82dc8b2fae23c2bdb -->
-## Index/List page to show grid
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/packages" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/packages"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (429):
-
-```json
-{
-    "message": "Too Many Attempts."
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/packages`
-
-
-<!-- END_f79448a08442e8e82dc8b2fae23c2bdb -->
-
-<!-- START_0c73c72086c5b6b6125bbb48039f4e6f -->
-## Store
-
-> Example request:
-
-```bash
-curl -X POST \
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/packages" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/packages"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "POST",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`POST api/core/1.0/module/packages`
-
-
-<!-- END_0c73c72086c5b6b6125bbb48039f4e6f -->
-
-<!-- START_5c2eb35997a64be2464968eea771e6e7 -->
-## Show
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/packages/1" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/packages/1"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (429):
-
-```json
-{
-    "message": "Too Many Attempts."
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/packages/{package}`
-
-#### URL Parameters
-
-Parameter | Status | Description
---------- | ------- | ------- | -------
-    `id` |  required  | The ID of the item.
-
-<!-- END_5c2eb35997a64be2464968eea771e6e7 -->
-
-<!-- START_0e90b296e9cb56397ce953706f7fe5fa -->
-## Update
-
-> Example request:
-
-```bash
-curl -X PUT \
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/packages/1" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/packages/1"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "PUT",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`PUT api/core/1.0/module/packages/{package}`
-
-`PATCH api/core/1.0/module/packages/{package}`
-
-
-<!-- END_0e90b296e9cb56397ce953706f7fe5fa -->
-
-<!-- START_0d51cf7a7d811c13535402a7e8a64da1 -->
-## Delete
-
-> Example request:
-
-```bash
-curl -X DELETE \
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/packages/1" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/packages/1"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "DELETE",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`DELETE api/core/1.0/module/packages/{package}`
-
-
-<!-- END_0d51cf7a7d811c13535402a7e8a64da1 -->
-
-<!-- START_6ff2878fd0ad48335a9e699c3c52ce7c -->
-## Returns a collection of objects as Json for an API call
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/countries/list/json" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/countries/list/json"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (429):
-
-```json
-{
-    "message": "Too Many Attempts."
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/countries/list/json`
-
-
-<!-- END_6ff2878fd0ad48335a9e699c3c52ce7c -->
-
-<!-- START_51b99e4f7fa1df841884f8d9e2b9cf26 -->
-## Show and render report
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/countries/report" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/countries/report"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (429):
-
-```json
-{
-    "message": "Too Many Attempts."
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/countries/report`
-
-
-<!-- END_51b99e4f7fa1df841884f8d9e2b9cf26 -->
-
-<!-- START_3a4d7b5d377b163b9a4819fd5b682bf5 -->
-## Get all the uploads of an element
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/countries/1/uploads" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/countries/1/uploads"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (429):
-
-```json
-{
-    "message": "Too Many Attempts."
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/countries/{id}/uploads`
-
-
-<!-- END_3a4d7b5d377b163b9a4819fd5b682bf5 -->
-
-<!-- START_b666d2c41b6d464246d1532cdbbeac4b -->
-## Uploads files under an element
-
-> Example request:
-
-```bash
-curl -X POST \
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/countries/1/uploads" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/countries/1/uploads"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "POST",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`POST api/core/1.0/module/countries/{id}/uploads`
-
-
-<!-- END_b666d2c41b6d464246d1532cdbbeac4b -->
-
-<!-- START_7d5e5f93c04e799293532eb596fcd82f -->
-## Get all the comments of an element
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/countries/1/comments" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/countries/1/comments"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (429):
-
-```json
-{
-    "message": "Too Many Attempts."
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/countries/{id}/comments`
-
-
-<!-- END_7d5e5f93c04e799293532eb596fcd82f -->
-
-<!-- START_956acfaadefca2f8f8d57cbae0f2a4c1 -->
-## Index/List page to show grid
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/countries" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/countries"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (429):
-
-```json
-{
-    "message": "Too Many Attempts."
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/countries`
-
-
-<!-- END_956acfaadefca2f8f8d57cbae0f2a4c1 -->
-
-<!-- START_2ff26e516c7ff4a8b7d3f623bf823d81 -->
-## Store
-
-> Example request:
-
-```bash
-curl -X POST \
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/countries" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/countries"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "POST",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`POST api/core/1.0/module/countries`
-
-
-<!-- END_2ff26e516c7ff4a8b7d3f623bf823d81 -->
-
-<!-- START_d8abca586a3bda153dfac86bb1023d50 -->
-## Show
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/countries/1" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/countries/1"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (429):
-
-```json
-{
-    "message": "Too Many Attempts."
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/countries/{country}`
-
-#### URL Parameters
-
-Parameter | Status | Description
---------- | ------- | ------- | -------
-    `id` |  required  | The ID of the item.
-
-<!-- END_d8abca586a3bda153dfac86bb1023d50 -->
-
-<!-- START_ee30c026b4a55dc30949aac863b0f5b4 -->
-## Update
-
-> Example request:
-
-```bash
-curl -X PUT \
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/countries/1" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/countries/1"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "PUT",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`PUT api/core/1.0/module/countries/{country}`
-
-`PATCH api/core/1.0/module/countries/{country}`
-
-
-<!-- END_ee30c026b4a55dc30949aac863b0f5b4 -->
-
-<!-- START_a37968762b1d85430a62a841d7cae116 -->
-## Delete
-
-> Example request:
-
-```bash
-curl -X DELETE \
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/countries/1" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/countries/1"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "DELETE",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`DELETE api/core/1.0/module/countries/{country}`
-
-
-<!-- END_a37968762b1d85430a62a841d7cae116 -->
-
-<!-- START_81d621c60192ecb1d66537188da2ea53 -->
-## Returns a collection of objects as Json for an API call
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/notifications/list/json" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/notifications/list/json"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (429):
-
-```json
-{
-    "message": "Too Many Attempts."
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/notifications/list/json`
-
-
-<!-- END_81d621c60192ecb1d66537188da2ea53 -->
-
-<!-- START_3470d61d80734010af7d20a486aaeed7 -->
-## Show and render report
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/notifications/report" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/notifications/report"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (429):
-
-```json
-{
-    "message": "Too Many Attempts."
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/notifications/report`
-
-
-<!-- END_3470d61d80734010af7d20a486aaeed7 -->
-
-<!-- START_28289f040d85bd3a8962b78d13995e1d -->
-## Get all the uploads of an element
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/notifications/1/uploads" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/notifications/1/uploads"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (429):
-
-```json
-{
-    "message": "Too Many Attempts."
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/notifications/{id}/uploads`
-
-
-<!-- END_28289f040d85bd3a8962b78d13995e1d -->
-
-<!-- START_aceb73bc73c18f269f32d136d1a4e579 -->
-## Uploads files under an element
-
-> Example request:
-
-```bash
-curl -X POST \
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/notifications/1/uploads" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/notifications/1/uploads"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "POST",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`POST api/core/1.0/module/notifications/{id}/uploads`
-
-
-<!-- END_aceb73bc73c18f269f32d136d1a4e579 -->
-
-<!-- START_40fa48334377b47c483336f597f35db0 -->
-## Get all the comments of an element
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/notifications/1/comments" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/notifications/1/comments"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (429):
-
-```json
-{
-    "message": "Too Many Attempts."
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/notifications/{id}/comments`
-
-
-<!-- END_40fa48334377b47c483336f597f35db0 -->
-
-<!-- START_53f4376b86d5bb53c9f4beeffd8dc3fa -->
-## Index/List page to show grid
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/notifications" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/notifications"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (429):
-
-```json
-{
-    "message": "Too Many Attempts."
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/notifications`
-
-
-<!-- END_53f4376b86d5bb53c9f4beeffd8dc3fa -->
-
-<!-- START_4def25d5cc20be82ad9ea78fdb926900 -->
-## Store
-
-> Example request:
-
-```bash
-curl -X POST \
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/notifications" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/notifications"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "POST",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`POST api/core/1.0/module/notifications`
-
-
-<!-- END_4def25d5cc20be82ad9ea78fdb926900 -->
-
-<!-- START_d93fccc193c7d00f9cbf5022b3e47c02 -->
-## Show
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/notifications/1" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/notifications/1"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (429):
-
-```json
-{
-    "message": "Too Many Attempts."
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/notifications/{notification}`
-
-#### URL Parameters
-
-Parameter | Status | Description
---------- | ------- | ------- | -------
-    `id` |  required  | The ID of the item.
-
-<!-- END_d93fccc193c7d00f9cbf5022b3e47c02 -->
-
-<!-- START_a17f1eb8fd76fd65d62677b30851f931 -->
-## Update
-
-> Example request:
-
-```bash
-curl -X PUT \
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/notifications/1" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/notifications/1"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "PUT",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`PUT api/core/1.0/module/notifications/{notification}`
-
-`PATCH api/core/1.0/module/notifications/{notification}`
-
-
-<!-- END_a17f1eb8fd76fd65d62677b30851f931 -->
-
-<!-- START_2b9911b6cc9cfdb2e337c44a855c598f -->
-## Delete
-
-> Example request:
-
-```bash
-curl -X DELETE \
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/notifications/1" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/notifications/1"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "DELETE",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`DELETE api/core/1.0/module/notifications/{notification}`
-
-
-<!-- END_2b9911b6cc9cfdb2e337c44a855c598f -->
-
-<!-- START_cc81f21ab1d242b55b889ee7f1fbe682 -->
-## Returns a collection of objects as Json for an API call
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/projects/list/json" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/projects/list/json"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (429):
-
-```json
-{
-    "message": "Too Many Attempts."
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/projects/list/json`
-
-
-<!-- END_cc81f21ab1d242b55b889ee7f1fbe682 -->
-
-<!-- START_ca9958f1c9713cdf63da6092024452fb -->
-## Show and render report
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/projects/report" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/projects/report"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (429):
-
-```json
-{
-    "message": "Too Many Attempts."
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/projects/report`
-
-
-<!-- END_ca9958f1c9713cdf63da6092024452fb -->
-
-<!-- START_6ef7af987992f0b2cc820168dc27e3ba -->
-## Get all the uploads of an element
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/projects/1/uploads" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/projects/1/uploads"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (429):
-
-```json
-{
-    "message": "Too Many Attempts."
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/projects/{id}/uploads`
-
-
-<!-- END_6ef7af987992f0b2cc820168dc27e3ba -->
-
-<!-- START_89b9525b059a9dc538005f6e105e4c92 -->
-## Uploads files under an element
-
-> Example request:
-
-```bash
-curl -X POST \
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/projects/1/uploads" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/projects/1/uploads"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "POST",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`POST api/core/1.0/module/projects/{id}/uploads`
-
-
-<!-- END_89b9525b059a9dc538005f6e105e4c92 -->
-
-<!-- START_32d41d18e4bc0d900dd65c7040e29b91 -->
-## Get all the comments of an element
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/projects/1/comments" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/projects/1/comments"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (429):
-
-```json
-{
-    "message": "Too Many Attempts."
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/projects/{id}/comments`
-
-
-<!-- END_32d41d18e4bc0d900dd65c7040e29b91 -->
-
-<!-- START_a041c3a5aaa651b2e23a4835ba254c72 -->
-## Index/List page to show grid
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/projects" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/projects"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (429):
-
-```json
-{
-    "message": "Too Many Attempts."
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/projects`
-
-
-<!-- END_a041c3a5aaa651b2e23a4835ba254c72 -->
-
-<!-- START_90486194ce3aabaf2b7961175d15cd73 -->
-## Store
-
-> Example request:
-
-```bash
-curl -X POST \
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/projects" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/projects"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "POST",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`POST api/core/1.0/module/projects`
-
-
-<!-- END_90486194ce3aabaf2b7961175d15cd73 -->
-
-<!-- START_dee9c29c876f42e184bf2272a390a2a6 -->
-## Show
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/projects/1" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/projects/1"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (429):
-
-```json
-{
-    "message": "Too Many Attempts."
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/projects/{project}`
-
-#### URL Parameters
-
-Parameter | Status | Description
---------- | ------- | ------- | -------
-    `id` |  required  | The ID of the item.
-
-<!-- END_dee9c29c876f42e184bf2272a390a2a6 -->
-
-<!-- START_48b0733b89ea699eeb9cc7c91f141b47 -->
-## Update
-
-> Example request:
-
-```bash
-curl -X PUT \
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/projects/1" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/projects/1"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "PUT",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`PUT api/core/1.0/module/projects/{project}`
-
-`PATCH api/core/1.0/module/projects/{project}`
-
-
-<!-- END_48b0733b89ea699eeb9cc7c91f141b47 -->
-
-<!-- START_7569398495eb65bdd230efe5ad2aa773 -->
-## Delete
-
-> Example request:
-
-```bash
-curl -X DELETE \
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/projects/1" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/projects/1"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "DELETE",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`DELETE api/core/1.0/module/projects/{project}`
-
-
-<!-- END_7569398495eb65bdd230efe5ad2aa773 -->
-
-<!-- START_7ae14717b5b25a03bea95115fa5e94c4 -->
-## Returns a collection of objects as Json for an API call
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/comments/list/json" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/comments/list/json"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (429):
-
-```json
-{
-    "message": "Too Many Attempts."
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/comments/list/json`
-
-
-<!-- END_7ae14717b5b25a03bea95115fa5e94c4 -->
-
-<!-- START_6e35d585d1ae4bfd406c1b14500011a7 -->
-## Show and render report
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/comments/report" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/comments/report"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (429):
-
-```json
-{
-    "message": "Too Many Attempts."
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/comments/report`
-
-
-<!-- END_6e35d585d1ae4bfd406c1b14500011a7 -->
-
-<!-- START_2d203a43e7c872fa832a9b1c3648c017 -->
-## Get all the uploads of an element
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/comments/1/uploads" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/comments/1/uploads"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (429):
-
-```json
-{
-    "message": "Too Many Attempts."
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/comments/{id}/uploads`
-
-
-<!-- END_2d203a43e7c872fa832a9b1c3648c017 -->
-
-<!-- START_2f27ce19b636600b5a87a40f2f200744 -->
-## Uploads files under an element
-
-> Example request:
-
-```bash
-curl -X POST \
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/comments/1/uploads" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/comments/1/uploads"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "POST",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`POST api/core/1.0/module/comments/{id}/uploads`
-
-
-<!-- END_2f27ce19b636600b5a87a40f2f200744 -->
-
-<!-- START_40297886801b87fdcde3b41b99443f27 -->
-## Get all the comments of an element
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/comments/1/comments" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/comments/1/comments"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (429):
-
-```json
-{
-    "message": "Too Many Attempts."
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/comments/{id}/comments`
-
-
-<!-- END_40297886801b87fdcde3b41b99443f27 -->
-
-<!-- START_86a3b28b3ba38d99468d86557b4a6170 -->
-## Index/List page to show grid
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/comments" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/comments"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (429):
-
-```json
-{
-    "message": "Too Many Attempts."
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/comments`
-
-
-<!-- END_86a3b28b3ba38d99468d86557b4a6170 -->
-
-<!-- START_d6e8b2598df45c7589383c2cb9f87d83 -->
-## Store
-
-> Example request:
-
-```bash
-curl -X POST \
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/comments" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/comments"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "POST",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`POST api/core/1.0/module/comments`
-
-
-<!-- END_d6e8b2598df45c7589383c2cb9f87d83 -->
-
-<!-- START_d4c1bd8f0e0cc13f1aa5ff9f115be2a6 -->
-## Show
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/comments/1" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/comments/1"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (429):
-
-```json
-{
-    "message": "Too Many Attempts."
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/comments/{comment}`
-
-#### URL Parameters
-
-Parameter | Status | Description
---------- | ------- | ------- | -------
-    `id` |  required  | The ID of the item.
-
-<!-- END_d4c1bd8f0e0cc13f1aa5ff9f115be2a6 -->
-
-<!-- START_7e91c679dd794b09b0431ef5c3f87c34 -->
-## Update
-
-> Example request:
-
-```bash
-curl -X PUT \
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/comments/1" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/comments/1"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "PUT",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`PUT api/core/1.0/module/comments/{comment}`
-
-`PATCH api/core/1.0/module/comments/{comment}`
-
-
-<!-- END_7e91c679dd794b09b0431ef5c3f87c34 -->
-
-<!-- START_8f3250601abfc7212308345586972649 -->
-## Delete
-
-> Example request:
-
-```bash
-curl -X DELETE \
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/comments/1" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/comments/1"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "DELETE",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`DELETE api/core/1.0/module/comments/{comment}`
-
-
-<!-- END_8f3250601abfc7212308345586972649 -->
-
-<!-- START_82b8ce120837edf52f1aaf419ab930e1 -->
-## Returns a collection of objects as Json for an API call
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/changes/list/json" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/changes/list/json"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (429):
-
-```json
-{
-    "message": "Too Many Attempts."
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/changes/list/json`
-
-
-<!-- END_82b8ce120837edf52f1aaf419ab930e1 -->
-
-<!-- START_742f85a8412ee620ecea7896196631c1 -->
-## Show and render report
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/changes/report" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/changes/report"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (429):
-
-```json
-{
-    "message": "Too Many Attempts."
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/changes/report`
-
-
-<!-- END_742f85a8412ee620ecea7896196631c1 -->
-
-<!-- START_e82613356accff3c9695046382d4e0cc -->
-## Get all the uploads of an element
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/changes/1/uploads" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/changes/1/uploads"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (429):
-
-```json
-{
-    "message": "Too Many Attempts."
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/changes/{id}/uploads`
-
-
-<!-- END_e82613356accff3c9695046382d4e0cc -->
-
-<!-- START_208f03a817ee4a25b1197557440fe35f -->
-## Uploads files under an element
-
-> Example request:
-
-```bash
-curl -X POST \
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/changes/1/uploads" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/changes/1/uploads"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "POST",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`POST api/core/1.0/module/changes/{id}/uploads`
-
-
-<!-- END_208f03a817ee4a25b1197557440fe35f -->
-
-<!-- START_40147359117df83185a41e26c3666f85 -->
-## Get all the comments of an element
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/changes/1/comments" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/changes/1/comments"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (429):
-
-```json
-{
-    "message": "Too Many Attempts."
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/changes/{id}/comments`
-
-
-<!-- END_40147359117df83185a41e26c3666f85 -->
-
-<!-- START_a25e4d6c1bda951c304c7d00eb62e570 -->
-## Index/List page to show grid
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/changes" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/changes"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (429):
-
-```json
-{
-    "message": "Too Many Attempts."
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/changes`
-
-
-<!-- END_a25e4d6c1bda951c304c7d00eb62e570 -->
-
-<!-- START_9eb9c47e49119db3b35996b22478af60 -->
-## Store
-
-> Example request:
-
-```bash
-curl -X POST \
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/changes" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/changes"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "POST",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`POST api/core/1.0/module/changes`
-
-
-<!-- END_9eb9c47e49119db3b35996b22478af60 -->
-
-<!-- START_69cc373655eafd732954854dea4a717c -->
-## Show
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/module/changes/1" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/changes/1"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (429):
-
-```json
-{
-    "message": "Too Many Attempts."
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/module/changes/{change}`
-
-#### URL Parameters
-
-Parameter | Status | Description
---------- | ------- | ------- | -------
-    `id` |  required  | The ID of the item.
-
-<!-- END_69cc373655eafd732954854dea4a717c -->
-
-<!-- START_aecfd5bd2f0cfeab2d21d2c85be6c2c8 -->
-## Update
-
-> Example request:
-
-```bash
-curl -X PUT \
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/changes/1" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/changes/1"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "PUT",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`PUT api/core/1.0/module/changes/{change}`
-
-`PATCH api/core/1.0/module/changes/{change}`
-
-
-<!-- END_aecfd5bd2f0cfeab2d21d2c85be6c2c8 -->
-
-<!-- START_ba1a0bc1ad8fd4263f54755c8e0afea2 -->
-## Delete
-
-> Example request:
-
-```bash
-curl -X DELETE \
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/changes/1" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/module/changes/1"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "DELETE",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`DELETE api/core/1.0/module/changes/{change}`
-
-
-<!-- END_ba1a0bc1ad8fd4263f54755c8e0afea2 -->
-
-<!-- START_897a2e9dfb7a2331c0289567846b2f9c -->
-## Get the setting value from name(key)
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/setting/1" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/setting/1"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (429):
-
-```json
-{
-    "message": "Too Many Attempts."
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/setting/{name}`
-
-
-<!-- END_897a2e9dfb7a2331c0289567846b2f9c -->
-
-<!-- START_7f658cf8ef0eeae3a15e603687b84986 -->
-## Get user profile
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/core/1.0/user/profile" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/user/profile"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (429):
-
-```json
-{
-    "message": "Too Many Attempts."
-}
-```
-
-### HTTP Request
-`GET api/core/1.0/user/profile`
-
-
-<!-- END_7f658cf8ef0eeae3a15e603687b84986 -->
-
-<!-- START_d811a5028757b9cdbbfc91fd99551513 -->
-## Store user profile pic
-
-> Example request:
-
-```bash
-curl -X POST \
-    "http://localhost:8081/mainframe/public/api/core/1.0/user/profile-pic/store" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/user/profile-pic/store"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "POST",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`POST api/core/1.0/user/profile-pic/store`
-
-
-<!-- END_d811a5028757b9cdbbfc91fd99551513 -->
-
-<!-- START_3493b2737c6df4318789286c86e8b4e2 -->
-## Delete user profile pic
-
-> Example request:
-
-```bash
-curl -X DELETE \
-    "http://localhost:8081/mainframe/public/api/core/1.0/user/profile-pic/delete" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/core/1.0/user/profile-pic/delete"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "DELETE",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`DELETE api/core/1.0/user/profile-pic/delete`
-
-
-<!-- END_3493b2737c6df4318789286c86e8b4e2 -->
-
 <!-- START_66e08d3cc8222573018fed49e121e96d -->
 ## Show the application&#039;s login form.
 
@@ -15146,20 +1168,7 @@ fetch(url, {
     "code": 200,
     "status": "success",
     "message": "Logged out",
-    "data": {
-        "id": 1,
-        "uuid": "7be17d1c-1bd9-4620-876a-f3ca5a05717e",
-        "project_id": null,
-        "tenant_id": null,
-        "name": "Super wings",
-        "is_active": 1,
-        "created_by": 5,
-        "updated_by": 5,
-        "created_at": "2019-11-20 14:56:35",
-        "updated_at": "2019-11-20 14:56:35",
-        "deleted_at": null,
-        "deleted_by": null
-    },
+    "data": null,
     "redirect": "\/"
 }
 ```
@@ -27624,11 +13633,607 @@ fetch(url, {
 ```
 
 
-> Example response (429):
+> Example response (200):
 
 ```json
 {
-    "message": "Too Many Attempts."
+    "code": 200,
+    "status": "success",
+    "message": "Request Processed",
+    "data": {
+        "current_page": 1,
+        "first_page_url": "http:\/\/localhost\/api\/1.0\/modules\/list\/json?page=1",
+        "from": 1,
+        "last_page": 1,
+        "last_page_url": "http:\/\/localhost\/api\/1.0\/modules\/list\/json?page=1",
+        "next_page_url": null,
+        "path": "http:\/\/localhost\/api\/1.0\/modules\/list\/json",
+        "per_page": 20,
+        "prev_page_url": null,
+        "to": 17,
+        "total": 17,
+        "items": [
+            {
+                "id": 1,
+                "uuid": "ca56b8a2-368a-4f84-8336-e9850c406e2d",
+                "name": "modules",
+                "project_id": null,
+                "tenant_id": null,
+                "title": "Module",
+                "description": "Manage modules",
+                "module_table": "modules",
+                "route_path": "modules",
+                "route_name": "modules",
+                "class_directory": "app\/Mainframe\/Modules\/Modules",
+                "namespace": "\\App\\Mainframe\\Modules\\Modules",
+                "model": "\\App\\Mainframe\\Modules\\Modules\\Module",
+                "policy": "\\App\\Mainframe\\Modules\\Modules\\ModulePolicy",
+                "processor": "\\App\\Mainframe\\Modules\\Modules\\ModuleProcessor",
+                "controller": "\\App\\Mainframe\\Modules\\Modules\\ModuleController",
+                "view_directory": "mainframe.modules.modules",
+                "parent_id": 0,
+                "module_group_id": 1,
+                "level": 0,
+                "order": 0,
+                "default_route": "modules.index",
+                "color_css": "aqua",
+                "icon_css": "fa fa-puzzle-piece",
+                "is_visible": 1,
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2018-12-10 06:47:46",
+                "updated_at": "2020-01-23 06:53:54",
+                "deleted_at": null,
+                "deleted_by": null
+            },
+            {
+                "id": 2,
+                "uuid": "0b89564c-7198-4b1b-9869-a02a0e584262",
+                "name": "module-groups",
+                "project_id": null,
+                "tenant_id": null,
+                "title": "Module group",
+                "description": "Manage module groups",
+                "module_table": "module_groups",
+                "route_path": "module-groups",
+                "route_name": "module-groups",
+                "class_directory": "app\/Mainframe\/Modules\/ModuleGroups",
+                "namespace": "\\App\\Mainframe\\Modules\\ModuleGroups",
+                "model": "\\App\\Mainframe\\Modules\\ModuleGroups\\ModuleGroup",
+                "policy": "\\App\\Mainframe\\Modules\\ModuleGroups\\ModuleGroupPolicy",
+                "processor": "\\App\\Mainframe\\Modules\\ModuleGroups\\ModuleGroupProcessor",
+                "controller": "\\App\\Mainframe\\Modules\\ModuleGroups\\ModuleGroupController",
+                "view_directory": "mainframe.modules.module-groups",
+                "parent_id": 0,
+                "module_group_id": 1,
+                "level": 0,
+                "order": 0,
+                "default_route": "moduleg-roups.index",
+                "color_css": "aqua",
+                "icon_css": "fa fa-puzzle-piece",
+                "is_visible": 1,
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2018-12-10 06:47:46",
+                "updated_at": "2020-01-23 06:53:54",
+                "deleted_at": null,
+                "deleted_by": null
+            },
+            {
+                "id": 3,
+                "uuid": "eee7b4a8-abab-4b79-a751-b681624eb586",
+                "name": "tenants",
+                "project_id": null,
+                "tenant_id": null,
+                "title": "Tenant",
+                "description": "Manage tenants",
+                "module_table": "tenants",
+                "route_path": "tenants",
+                "route_name": "tenants",
+                "class_directory": "app\/Mainframe\/Modules\/Tenants",
+                "namespace": "\\App\\Mainframe\\Modules\\Tenants",
+                "model": "\\App\\Mainframe\\Modules\\Tenants\\Tenant",
+                "policy": "\\App\\Mainframe\\Modules\\Tenants\\TenantPolicy",
+                "processor": "\\App\\Mainframe\\Modules\\Tenants\\TenantProcessor",
+                "controller": "\\App\\Mainframe\\Modules\\Tenants\\TenantController",
+                "view_directory": "mainframe.modules.tenants",
+                "parent_id": 0,
+                "module_group_id": 1,
+                "level": 0,
+                "order": 0,
+                "default_route": "tenants.index",
+                "color_css": "aqua",
+                "icon_css": "fa fa-plus",
+                "is_visible": 1,
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2018-12-10 06:47:46",
+                "updated_at": "2020-01-23 06:53:54",
+                "deleted_at": null,
+                "deleted_by": null
+            },
+            {
+                "id": 4,
+                "uuid": "8f27f918-3a05-4b04-9bd3-d953e9492293",
+                "name": "users",
+                "project_id": null,
+                "tenant_id": null,
+                "title": "User",
+                "description": "Manage users",
+                "module_table": "users",
+                "route_path": "users",
+                "route_name": "users",
+                "class_directory": "app\/Projects\/MyProject\/Modules\/Users",
+                "namespace": "\\App\\Projects\\MyProject\\Modules\\Users",
+                "model": "\\App\\User",
+                "policy": "\\App\\Projects\\MyProject\\Modules\\Users\\UserPolicy",
+                "processor": "\\App\\Projects\\MyProject\\Modules\\Users\\UserProcessor",
+                "controller": "\\App\\Projects\\MyProject\\Modules\\Users\\UserController",
+                "view_directory": "projects.my-project.modules.users",
+                "parent_id": 0,
+                "module_group_id": 0,
+                "level": 0,
+                "order": 4,
+                "default_route": "users.index",
+                "color_css": "aqua",
+                "icon_css": "fa fa-user-plus",
+                "is_visible": 1,
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2018-12-10 06:47:46",
+                "updated_at": "2020-01-23 06:53:54",
+                "deleted_at": null,
+                "deleted_by": null
+            },
+            {
+                "id": 5,
+                "uuid": "14612def-5850-49fb-bf99-48d99c73b589",
+                "name": "groups",
+                "project_id": null,
+                "tenant_id": null,
+                "title": "Group",
+                "description": "Manage groups",
+                "module_table": "groups",
+                "route_path": "groups",
+                "route_name": "groups",
+                "class_directory": "app\/Mainframe\/Modules\/Groups",
+                "namespace": "\\App\\Mainframe\\Modules\\Groups",
+                "model": "\\App\\Group",
+                "policy": "\\App\\Mainframe\\Modules\\Groups\\GroupPolicy",
+                "processor": "\\App\\Mainframe\\Modules\\Groups\\GroupProcessor",
+                "controller": "\\App\\Mainframe\\Modules\\Groups\\GroupController",
+                "view_directory": "mainframe.modules.groups",
+                "parent_id": 0,
+                "module_group_id": 1,
+                "level": 0,
+                "order": 0,
+                "default_route": "groups.index",
+                "color_css": "aqua",
+                "icon_css": "fa fa-plus",
+                "is_visible": 1,
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2018-12-10 06:47:46",
+                "updated_at": "2020-01-23 06:53:54",
+                "deleted_at": null,
+                "deleted_by": null
+            },
+            {
+                "id": 6,
+                "uuid": "50ed1cc8-3ecf-4caf-9724-819cd90dd3d2",
+                "name": "uploads",
+                "project_id": null,
+                "tenant_id": null,
+                "title": "Upload",
+                "description": "Manage uploads",
+                "module_table": "uploads",
+                "route_path": "uploads",
+                "route_name": "uploads",
+                "class_directory": "app\/Mainframe\/Modules\/Uploads",
+                "namespace": "\\App\\Mainframe\\Modules\\Uploads",
+                "model": "\\App\\Mainframe\\Modules\\Uploads\\Upload",
+                "policy": "\\App\\Mainframe\\Modules\\Uploads\\UploadPolicy",
+                "processor": "\\App\\Mainframe\\Modules\\Uploads\\UploadProcessor",
+                "controller": "\\App\\Mainframe\\Modules\\Uploads\\UploadController",
+                "view_directory": "mainframe.modules.uploads",
+                "parent_id": 0,
+                "module_group_id": 1,
+                "level": 0,
+                "order": 0,
+                "default_route": "uploads.index",
+                "color_css": "aqua",
+                "icon_css": "fa fa-plus",
+                "is_visible": 1,
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2018-12-13 20:57:47",
+                "updated_at": "2020-01-23 06:53:54",
+                "deleted_at": null,
+                "deleted_by": null
+            },
+            {
+                "id": 21,
+                "uuid": "6d1fff93-328b-4501-b643-e21cc6cbf9d2",
+                "name": "settings",
+                "project_id": null,
+                "tenant_id": null,
+                "title": "Setting",
+                "description": "Manage settings",
+                "module_table": "settings",
+                "route_path": "settings",
+                "route_name": "settings",
+                "class_directory": "app\/Mainframe\/Modules\/Settings",
+                "namespace": "\\App\\Mainframe\\Modules\\Settings",
+                "model": "\\App\\Mainframe\\Modules\\Settings\\Setting",
+                "policy": "\\App\\Mainframe\\Modules\\Settings\\SettingPolicy",
+                "processor": "\\App\\Mainframe\\Modules\\Settings\\SettingProcessor",
+                "controller": "\\App\\Mainframe\\Modules\\Settings\\SettingController",
+                "view_directory": "mainframe.modules.settings",
+                "parent_id": 0,
+                "module_group_id": 1,
+                "level": 0,
+                "order": 0,
+                "default_route": "settings.index",
+                "color_css": "aqua",
+                "icon_css": "fa fa-list-alt",
+                "is_visible": 1,
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2018-12-24 19:56:38",
+                "updated_at": "2020-01-23 06:53:54",
+                "deleted_at": null,
+                "deleted_by": null
+            },
+            {
+                "id": 23,
+                "uuid": "3207985e-3886-4a1c-8121-c8e4147cfa72",
+                "name": "reports",
+                "project_id": null,
+                "tenant_id": null,
+                "title": "Report",
+                "description": "Manage reports",
+                "module_table": "reports",
+                "route_path": "reports",
+                "route_name": "reports",
+                "class_directory": "app\/Mainframe\/Modules\/Reports",
+                "namespace": "\\App\\Mainframe\\Modules\\Reports",
+                "model": "\\App\\Mainframe\\Modules\\Reports\\Report",
+                "policy": "\\App\\Mainframe\\Modules\\Reports\\ReportPolicy",
+                "processor": "\\App\\Mainframe\\Modules\\Reports\\ReportProcessor",
+                "controller": "\\App\\Mainframe\\Modules\\Reports\\ReportController",
+                "view_directory": "mainframe.modules.reports",
+                "parent_id": 0,
+                "module_group_id": 0,
+                "level": 0,
+                "order": 999,
+                "default_route": "reports.index",
+                "color_css": "aqua",
+                "icon_css": "fa fa-pie-chart",
+                "is_visible": 1,
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2019-01-17 05:00:25",
+                "updated_at": "2020-01-23 06:53:54",
+                "deleted_at": null,
+                "deleted_by": null
+            },
+            {
+                "id": 50,
+                "uuid": "778e5ea8-acee-4458-aab7-5e275a4084a5",
+                "name": "lorem-ipsums",
+                "project_id": null,
+                "tenant_id": null,
+                "title": "Lorem ipsum",
+                "description": "Manage lorem ipsums",
+                "module_table": "lorem_ipsums",
+                "route_path": "lorem-ipsums",
+                "route_name": "lorem-ipsums",
+                "class_directory": "app\/Mainframe\/Modules\/Samples\/LoremIpsums",
+                "namespace": "\\App\\Mainframe\\Modules\\LoremIpsums",
+                "model": "\\App\\Mainframe\\Modules\\Samples\\LoremIpsums\\LoremIpsum",
+                "policy": "\\App\\Mainframe\\Modules\\LoremIpsums\\LoremIpsumPolicy",
+                "processor": "\\App\\Mainframe\\Modules\\Samples\\LoremIpsums\\LoremIpsumProcessor",
+                "controller": "\\App\\Mainframe\\Modules\\Samples\\LoremIpsums\\LoremIpsumController",
+                "view_directory": "mainframe.modules.samples.lorem-ipsums",
+                "parent_id": 0,
+                "module_group_id": 1,
+                "level": 0,
+                "order": 0,
+                "default_route": "lorem-ipsums.index",
+                "color_css": "aqua",
+                "icon_css": "fa fa-plus",
+                "is_visible": 1,
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2019-11-20 14:08:23",
+                "updated_at": "2020-01-23 06:53:54",
+                "deleted_at": null,
+                "deleted_by": null
+            },
+            {
+                "id": 51,
+                "uuid": "a0c23e13-1bd6-4346-828b-b7878d67ee29",
+                "name": "dolor-sits",
+                "project_id": null,
+                "tenant_id": null,
+                "title": "Dolor sit",
+                "description": "Manage dolor sits",
+                "module_table": "dolor-sits",
+                "route_path": "dolor-sits",
+                "route_name": "dolor-sits",
+                "class_directory": "app\/Mainframe\/Modules\/Samples\/DolorSits",
+                "namespace": "\\App\\Mainframe\\Modules\\DolorSits",
+                "model": "\\App\\Mainframe\\Modules\\Samples\\DolorSits\\DolorSit",
+                "policy": "\\App\\Mainframe\\Modules\\DolorSits\\DolorSitPolicy",
+                "processor": "\\App\\Mainframe\\Modules\\Samples\\DolorSits\\DolorSitProcessor",
+                "controller": "\\App\\Mainframe\\Modules\\Samples\\DolorSits\\DolorSitController",
+                "view_directory": "mainframe.modules.samples.dolor-sits",
+                "parent_id": 0,
+                "module_group_id": 1,
+                "level": 0,
+                "order": 0,
+                "default_route": "dolor-sits.index",
+                "color_css": "aqua",
+                "icon_css": "fa fa-plus",
+                "is_visible": 1,
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2019-11-20 14:10:34",
+                "updated_at": "2020-01-23 06:53:54",
+                "deleted_at": null,
+                "deleted_by": null
+            },
+            {
+                "id": 52,
+                "uuid": "2da95896-4a15-4ad6-9919-767dabeef9fe",
+                "name": "subscriptions",
+                "project_id": null,
+                "tenant_id": null,
+                "title": "Subscription",
+                "description": "Manage subscriptions",
+                "module_table": "subscriptions",
+                "route_path": "subscriptions",
+                "route_name": "subscriptions",
+                "class_directory": "app\/Mainframe\/Modules\/Subscriptions",
+                "namespace": "\\App\\Mainframe\\Modules\\Subscriptions",
+                "model": "\\App\\Mainframe\\Modules\\Subscriptions\\Subscription",
+                "policy": "\\App\\Mainframe\\Modules\\Subscriptions\\SubscriptionPolicy",
+                "processor": "\\App\\Mainframe\\Modules\\Subscriptions\\SubscriptionProcessor",
+                "controller": "\\App\\Mainframe\\Modules\\Subscriptions\\SubscriptionController",
+                "view_directory": "mainframe.modules.subscriptions",
+                "parent_id": 0,
+                "module_group_id": 1,
+                "level": 0,
+                "order": 0,
+                "default_route": "subscriptions.index",
+                "color_css": "aqua",
+                "icon_css": "fa fa-plus",
+                "is_visible": 1,
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2019-12-19 14:00:52",
+                "updated_at": "2020-01-23 06:53:54",
+                "deleted_at": null,
+                "deleted_by": null
+            },
+            {
+                "id": 53,
+                "uuid": "11a3b809-b3e0-4c8f-b59a-b99192e99588",
+                "name": "packages",
+                "project_id": null,
+                "tenant_id": null,
+                "title": "Package",
+                "description": "Manage packages",
+                "module_table": "packages",
+                "route_path": "packages",
+                "route_name": "packages",
+                "class_directory": "app\/Mainframe\/Modules\/Packages",
+                "namespace": "\\App\\Mainframe\\Modules\\Packages",
+                "model": "\\App\\Mainframe\\Modules\\Packages\\Package",
+                "policy": "\\App\\Mainframe\\Modules\\Packages\\PackagePolicy",
+                "processor": "\\App\\Mainframe\\Modules\\Packages\\PackageProcessor",
+                "controller": "\\App\\Mainframe\\Modules\\Packages\\PackageController",
+                "view_directory": "mainframe.modules.packages",
+                "parent_id": 0,
+                "module_group_id": 1,
+                "level": 0,
+                "order": 0,
+                "default_route": "packages.index",
+                "color_css": "aqua",
+                "icon_css": "fa fa-plus",
+                "is_visible": 1,
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2019-12-19 14:39:47",
+                "updated_at": "2020-01-23 06:53:54",
+                "deleted_at": null,
+                "deleted_by": null
+            },
+            {
+                "id": 54,
+                "uuid": "c4582951-e9ee-4d1d-a9de-9230c037699a",
+                "name": "countries",
+                "project_id": null,
+                "tenant_id": null,
+                "title": "Country",
+                "description": "Manage countries",
+                "module_table": "countries",
+                "route_path": "countries",
+                "route_name": "countries",
+                "class_directory": "app\/Mainframe\/Modules\/Countries",
+                "namespace": "\\App\\Mainframe\\Modules\\Countries",
+                "model": "\\App\\Mainframe\\Modules\\Countries\\Country",
+                "policy": "\\App\\Mainframe\\Modules\\Countries\\CountryPolicy",
+                "processor": "\\App\\Mainframe\\Modules\\Countries\\CountryProcessor",
+                "controller": "\\App\\Mainframe\\Modules\\Countries\\CountryController",
+                "view_directory": "mainframe.modules.countries",
+                "parent_id": 0,
+                "module_group_id": 1,
+                "level": 0,
+                "order": 0,
+                "default_route": "countries.index",
+                "color_css": "aqua",
+                "icon_css": "fa fa-plus",
+                "is_visible": 1,
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2019-12-19 14:39:47",
+                "updated_at": "2020-01-23 06:53:54",
+                "deleted_at": null,
+                "deleted_by": null
+            },
+            {
+                "id": 55,
+                "uuid": "cb21c345-ba75-452c-b326-5c20f6cd17b8",
+                "name": "notifications",
+                "project_id": null,
+                "tenant_id": null,
+                "title": "Notification",
+                "description": "List of notifications",
+                "module_table": "notifications",
+                "route_path": "notifications",
+                "route_name": "notifications",
+                "class_directory": "app\/Mainframe\/Modules\/Notifications",
+                "namespace": "\\App\\Mainframe\\Modules\\Notifications",
+                "model": "\\App\\Mainframe\\Modules\\Notifications\\Notification",
+                "policy": "\\App\\Mainframe\\Modules\\Notifications\\NotificationPolicy",
+                "processor": "\\App\\Mainframe\\Modules\\Notifications\\NotificationProcessor",
+                "controller": "\\App\\Mainframe\\Modules\\Notifications\\NotificationController",
+                "view_directory": "mainframe.modules.notifications",
+                "parent_id": 0,
+                "module_group_id": 1,
+                "level": 0,
+                "order": 0,
+                "default_route": "notifications.index",
+                "color_css": "aqua",
+                "icon_css": "fa fa-plus",
+                "is_visible": 1,
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2019-12-19 14:39:47",
+                "updated_at": "2020-01-23 06:53:54",
+                "deleted_at": null,
+                "deleted_by": null
+            },
+            {
+                "id": 57,
+                "uuid": "47df59d0-bacb-4d1e-bfda-01c051c63681",
+                "name": "projects",
+                "project_id": null,
+                "tenant_id": null,
+                "title": "Project",
+                "description": "Manage projects",
+                "module_table": "projects",
+                "route_path": "projects",
+                "route_name": "projects",
+                "class_directory": "app\/Mainframe\/Modules\/Projects",
+                "namespace": "\\App\\Mainframe\\Modules\\Projects",
+                "model": "\\App\\Mainframe\\Modules\\Projects\\Project",
+                "policy": "\\App\\Mainframe\\Modules\\Projects\\ProjectPolicy",
+                "processor": "\\App\\Mainframe\\Modules\\Projects\\ProjectProcessor",
+                "controller": "\\App\\Mainframe\\Modules\\Projects\\ProjectController",
+                "view_directory": "mainframe.modules.projects",
+                "parent_id": 0,
+                "module_group_id": 1,
+                "level": 0,
+                "order": 0,
+                "default_route": "projects.index",
+                "color_css": "aqua",
+                "icon_css": "fa fa-plus",
+                "is_visible": 1,
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2019-12-28 13:57:38",
+                "updated_at": "2020-01-23 06:53:54",
+                "deleted_at": null,
+                "deleted_by": null
+            },
+            {
+                "id": 60,
+                "uuid": "74ed8001-1178-46f4-b1e6-b6e73fd7ae04",
+                "name": "comments",
+                "project_id": null,
+                "tenant_id": null,
+                "title": "Comment",
+                "description": "Manage comment",
+                "module_table": "comments",
+                "route_path": "comments",
+                "route_name": "comments",
+                "class_directory": "app\/Mainframe\/Modules\/Comments",
+                "namespace": "\\App\\Mainframe\\Modules\\Comments",
+                "model": "\\App\\Mainframe\\Modules\\Comments\\Comment",
+                "policy": "\\App\\Mainframe\\Modules\\Comments\\CommentPolicy",
+                "processor": "\\App\\Mainframe\\Modules\\Comments\\CommentProcessor",
+                "controller": "\\App\\Mainframe\\Modules\\Comments\\CommentController",
+                "view_directory": "mainframe.modules.comments",
+                "parent_id": 0,
+                "module_group_id": 1,
+                "level": 0,
+                "order": 0,
+                "default_route": "comments.index",
+                "color_css": "aqua",
+                "icon_css": "fa fa-plus",
+                "is_visible": 1,
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": null,
+                "created_at": "2020-02-25 08:42:04",
+                "updated_at": "2020-02-25 08:42:04",
+                "deleted_at": null,
+                "deleted_by": null
+            },
+            {
+                "id": 61,
+                "uuid": "0a79b419-8960-4957-badc-ee905f7bf020",
+                "name": "changes",
+                "project_id": null,
+                "tenant_id": null,
+                "title": "Change",
+                "description": "Manage change",
+                "module_table": "changes",
+                "route_path": "changes",
+                "route_name": "changes",
+                "class_directory": "app\/Mainframe\/Modules\/Changes",
+                "namespace": "\\App\\Mainframe\\Modules\\Changes",
+                "model": "\\App\\Mainframe\\Modules\\Changes\\Change",
+                "policy": "\\App\\Mainframe\\Modules\\Changes\\ChangePolicy",
+                "processor": "\\App\\Mainframe\\Modules\\Changes\\ChangeProcessor",
+                "controller": "\\App\\Mainframe\\Modules\\Changes\\ChangeController",
+                "view_directory": "mainframe.modules.changes",
+                "parent_id": 0,
+                "module_group_id": 1,
+                "level": 0,
+                "order": 0,
+                "default_route": "changes.index",
+                "color_css": "aqua",
+                "icon_css": "fa fa-plus",
+                "is_visible": 1,
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": null,
+                "created_at": "2020-06-02 04:34:41",
+                "updated_at": "2020-06-02 04:34:41",
+                "deleted_at": null,
+                "deleted_by": null
+            }
+        ]
+    },
+    "redirect": "http:\/\/localhost\/api\/1.0\/modules\/list\/json"
 }
 ```
 
@@ -27673,12 +14278,10 @@ fetch(url, {
 ```
 
 
-> Example response (429):
+> Example response (200):
 
 ```json
-{
-    "message": "Too Many Attempts."
-}
+null
 ```
 
 ### HTTP Request
@@ -27722,11 +14325,28 @@ fetch(url, {
 ```
 
 
-> Example response (429):
+> Example response (200):
 
 ```json
 {
-    "message": "Too Many Attempts."
+    "code": 200,
+    "status": "success",
+    "message": "Request Processed",
+    "data": {
+        "current_page": 1,
+        "first_page_url": "http:\/\/localhost\/api\/1.0\/modules\/1\/uploads?page=1",
+        "from": null,
+        "last_page": 1,
+        "last_page_url": "http:\/\/localhost\/api\/1.0\/modules\/1\/uploads?page=1",
+        "next_page_url": null,
+        "path": "http:\/\/localhost\/api\/1.0\/modules\/1\/uploads",
+        "per_page": 20,
+        "prev_page_url": null,
+        "to": null,
+        "total": 0,
+        "items": []
+    },
+    "redirect": "http:\/\/localhost\/api\/1.0\/modules\/1\/uploads"
 }
 ```
 
@@ -27778,55 +14398,6 @@ fetch(url, {
 
 <!-- END_c67004a31107b325bf8515fb8024e5c4 -->
 
-<!-- START_9e7844b4bfb7e0b5dc7b2dd6c80afb9c -->
-## Get all the comments of an element
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/1.0/modules/1/comments" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/modules/1/comments"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (429):
-
-```json
-{
-    "message": "Too Many Attempts."
-}
-```
-
-### HTTP Request
-`GET api/1.0/modules/{id}/comments`
-
-
-<!-- END_9e7844b4bfb7e0b5dc7b2dd6c80afb9c -->
-
 <!-- START_44aa204054d79546b60055acfe1374a4 -->
 ## Index/List page to show grid
 
@@ -27862,11 +14433,607 @@ fetch(url, {
 ```
 
 
-> Example response (429):
+> Example response (200):
 
 ```json
 {
-    "message": "Too Many Attempts."
+    "code": 200,
+    "status": "success",
+    "message": "Request Processed",
+    "data": {
+        "current_page": 1,
+        "first_page_url": "http:\/\/localhost\/api\/1.0\/modules?page=1",
+        "from": 1,
+        "last_page": 1,
+        "last_page_url": "http:\/\/localhost\/api\/1.0\/modules?page=1",
+        "next_page_url": null,
+        "path": "http:\/\/localhost\/api\/1.0\/modules",
+        "per_page": 20,
+        "prev_page_url": null,
+        "to": 17,
+        "total": 17,
+        "items": [
+            {
+                "id": 1,
+                "uuid": "ca56b8a2-368a-4f84-8336-e9850c406e2d",
+                "name": "modules",
+                "project_id": null,
+                "tenant_id": null,
+                "title": "Module",
+                "description": "Manage modules",
+                "module_table": "modules",
+                "route_path": "modules",
+                "route_name": "modules",
+                "class_directory": "app\/Mainframe\/Modules\/Modules",
+                "namespace": "\\App\\Mainframe\\Modules\\Modules",
+                "model": "\\App\\Mainframe\\Modules\\Modules\\Module",
+                "policy": "\\App\\Mainframe\\Modules\\Modules\\ModulePolicy",
+                "processor": "\\App\\Mainframe\\Modules\\Modules\\ModuleProcessor",
+                "controller": "\\App\\Mainframe\\Modules\\Modules\\ModuleController",
+                "view_directory": "mainframe.modules.modules",
+                "parent_id": 0,
+                "module_group_id": 1,
+                "level": 0,
+                "order": 0,
+                "default_route": "modules.index",
+                "color_css": "aqua",
+                "icon_css": "fa fa-puzzle-piece",
+                "is_visible": 1,
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2018-12-10 06:47:46",
+                "updated_at": "2020-01-23 06:53:54",
+                "deleted_at": null,
+                "deleted_by": null
+            },
+            {
+                "id": 2,
+                "uuid": "0b89564c-7198-4b1b-9869-a02a0e584262",
+                "name": "module-groups",
+                "project_id": null,
+                "tenant_id": null,
+                "title": "Module group",
+                "description": "Manage module groups",
+                "module_table": "module_groups",
+                "route_path": "module-groups",
+                "route_name": "module-groups",
+                "class_directory": "app\/Mainframe\/Modules\/ModuleGroups",
+                "namespace": "\\App\\Mainframe\\Modules\\ModuleGroups",
+                "model": "\\App\\Mainframe\\Modules\\ModuleGroups\\ModuleGroup",
+                "policy": "\\App\\Mainframe\\Modules\\ModuleGroups\\ModuleGroupPolicy",
+                "processor": "\\App\\Mainframe\\Modules\\ModuleGroups\\ModuleGroupProcessor",
+                "controller": "\\App\\Mainframe\\Modules\\ModuleGroups\\ModuleGroupController",
+                "view_directory": "mainframe.modules.module-groups",
+                "parent_id": 0,
+                "module_group_id": 1,
+                "level": 0,
+                "order": 0,
+                "default_route": "moduleg-roups.index",
+                "color_css": "aqua",
+                "icon_css": "fa fa-puzzle-piece",
+                "is_visible": 1,
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2018-12-10 06:47:46",
+                "updated_at": "2020-01-23 06:53:54",
+                "deleted_at": null,
+                "deleted_by": null
+            },
+            {
+                "id": 3,
+                "uuid": "eee7b4a8-abab-4b79-a751-b681624eb586",
+                "name": "tenants",
+                "project_id": null,
+                "tenant_id": null,
+                "title": "Tenant",
+                "description": "Manage tenants",
+                "module_table": "tenants",
+                "route_path": "tenants",
+                "route_name": "tenants",
+                "class_directory": "app\/Mainframe\/Modules\/Tenants",
+                "namespace": "\\App\\Mainframe\\Modules\\Tenants",
+                "model": "\\App\\Mainframe\\Modules\\Tenants\\Tenant",
+                "policy": "\\App\\Mainframe\\Modules\\Tenants\\TenantPolicy",
+                "processor": "\\App\\Mainframe\\Modules\\Tenants\\TenantProcessor",
+                "controller": "\\App\\Mainframe\\Modules\\Tenants\\TenantController",
+                "view_directory": "mainframe.modules.tenants",
+                "parent_id": 0,
+                "module_group_id": 1,
+                "level": 0,
+                "order": 0,
+                "default_route": "tenants.index",
+                "color_css": "aqua",
+                "icon_css": "fa fa-plus",
+                "is_visible": 1,
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2018-12-10 06:47:46",
+                "updated_at": "2020-01-23 06:53:54",
+                "deleted_at": null,
+                "deleted_by": null
+            },
+            {
+                "id": 4,
+                "uuid": "8f27f918-3a05-4b04-9bd3-d953e9492293",
+                "name": "users",
+                "project_id": null,
+                "tenant_id": null,
+                "title": "User",
+                "description": "Manage users",
+                "module_table": "users",
+                "route_path": "users",
+                "route_name": "users",
+                "class_directory": "app\/Projects\/MyProject\/Modules\/Users",
+                "namespace": "\\App\\Projects\\MyProject\\Modules\\Users",
+                "model": "\\App\\User",
+                "policy": "\\App\\Projects\\MyProject\\Modules\\Users\\UserPolicy",
+                "processor": "\\App\\Projects\\MyProject\\Modules\\Users\\UserProcessor",
+                "controller": "\\App\\Projects\\MyProject\\Modules\\Users\\UserController",
+                "view_directory": "projects.my-project.modules.users",
+                "parent_id": 0,
+                "module_group_id": 0,
+                "level": 0,
+                "order": 4,
+                "default_route": "users.index",
+                "color_css": "aqua",
+                "icon_css": "fa fa-user-plus",
+                "is_visible": 1,
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2018-12-10 06:47:46",
+                "updated_at": "2020-01-23 06:53:54",
+                "deleted_at": null,
+                "deleted_by": null
+            },
+            {
+                "id": 5,
+                "uuid": "14612def-5850-49fb-bf99-48d99c73b589",
+                "name": "groups",
+                "project_id": null,
+                "tenant_id": null,
+                "title": "Group",
+                "description": "Manage groups",
+                "module_table": "groups",
+                "route_path": "groups",
+                "route_name": "groups",
+                "class_directory": "app\/Mainframe\/Modules\/Groups",
+                "namespace": "\\App\\Mainframe\\Modules\\Groups",
+                "model": "\\App\\Group",
+                "policy": "\\App\\Mainframe\\Modules\\Groups\\GroupPolicy",
+                "processor": "\\App\\Mainframe\\Modules\\Groups\\GroupProcessor",
+                "controller": "\\App\\Mainframe\\Modules\\Groups\\GroupController",
+                "view_directory": "mainframe.modules.groups",
+                "parent_id": 0,
+                "module_group_id": 1,
+                "level": 0,
+                "order": 0,
+                "default_route": "groups.index",
+                "color_css": "aqua",
+                "icon_css": "fa fa-plus",
+                "is_visible": 1,
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2018-12-10 06:47:46",
+                "updated_at": "2020-01-23 06:53:54",
+                "deleted_at": null,
+                "deleted_by": null
+            },
+            {
+                "id": 6,
+                "uuid": "50ed1cc8-3ecf-4caf-9724-819cd90dd3d2",
+                "name": "uploads",
+                "project_id": null,
+                "tenant_id": null,
+                "title": "Upload",
+                "description": "Manage uploads",
+                "module_table": "uploads",
+                "route_path": "uploads",
+                "route_name": "uploads",
+                "class_directory": "app\/Mainframe\/Modules\/Uploads",
+                "namespace": "\\App\\Mainframe\\Modules\\Uploads",
+                "model": "\\App\\Mainframe\\Modules\\Uploads\\Upload",
+                "policy": "\\App\\Mainframe\\Modules\\Uploads\\UploadPolicy",
+                "processor": "\\App\\Mainframe\\Modules\\Uploads\\UploadProcessor",
+                "controller": "\\App\\Mainframe\\Modules\\Uploads\\UploadController",
+                "view_directory": "mainframe.modules.uploads",
+                "parent_id": 0,
+                "module_group_id": 1,
+                "level": 0,
+                "order": 0,
+                "default_route": "uploads.index",
+                "color_css": "aqua",
+                "icon_css": "fa fa-plus",
+                "is_visible": 1,
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2018-12-13 20:57:47",
+                "updated_at": "2020-01-23 06:53:54",
+                "deleted_at": null,
+                "deleted_by": null
+            },
+            {
+                "id": 21,
+                "uuid": "6d1fff93-328b-4501-b643-e21cc6cbf9d2",
+                "name": "settings",
+                "project_id": null,
+                "tenant_id": null,
+                "title": "Setting",
+                "description": "Manage settings",
+                "module_table": "settings",
+                "route_path": "settings",
+                "route_name": "settings",
+                "class_directory": "app\/Mainframe\/Modules\/Settings",
+                "namespace": "\\App\\Mainframe\\Modules\\Settings",
+                "model": "\\App\\Mainframe\\Modules\\Settings\\Setting",
+                "policy": "\\App\\Mainframe\\Modules\\Settings\\SettingPolicy",
+                "processor": "\\App\\Mainframe\\Modules\\Settings\\SettingProcessor",
+                "controller": "\\App\\Mainframe\\Modules\\Settings\\SettingController",
+                "view_directory": "mainframe.modules.settings",
+                "parent_id": 0,
+                "module_group_id": 1,
+                "level": 0,
+                "order": 0,
+                "default_route": "settings.index",
+                "color_css": "aqua",
+                "icon_css": "fa fa-list-alt",
+                "is_visible": 1,
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2018-12-24 19:56:38",
+                "updated_at": "2020-01-23 06:53:54",
+                "deleted_at": null,
+                "deleted_by": null
+            },
+            {
+                "id": 23,
+                "uuid": "3207985e-3886-4a1c-8121-c8e4147cfa72",
+                "name": "reports",
+                "project_id": null,
+                "tenant_id": null,
+                "title": "Report",
+                "description": "Manage reports",
+                "module_table": "reports",
+                "route_path": "reports",
+                "route_name": "reports",
+                "class_directory": "app\/Mainframe\/Modules\/Reports",
+                "namespace": "\\App\\Mainframe\\Modules\\Reports",
+                "model": "\\App\\Mainframe\\Modules\\Reports\\Report",
+                "policy": "\\App\\Mainframe\\Modules\\Reports\\ReportPolicy",
+                "processor": "\\App\\Mainframe\\Modules\\Reports\\ReportProcessor",
+                "controller": "\\App\\Mainframe\\Modules\\Reports\\ReportController",
+                "view_directory": "mainframe.modules.reports",
+                "parent_id": 0,
+                "module_group_id": 0,
+                "level": 0,
+                "order": 999,
+                "default_route": "reports.index",
+                "color_css": "aqua",
+                "icon_css": "fa fa-pie-chart",
+                "is_visible": 1,
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2019-01-17 05:00:25",
+                "updated_at": "2020-01-23 06:53:54",
+                "deleted_at": null,
+                "deleted_by": null
+            },
+            {
+                "id": 50,
+                "uuid": "778e5ea8-acee-4458-aab7-5e275a4084a5",
+                "name": "lorem-ipsums",
+                "project_id": null,
+                "tenant_id": null,
+                "title": "Lorem ipsum",
+                "description": "Manage lorem ipsums",
+                "module_table": "lorem_ipsums",
+                "route_path": "lorem-ipsums",
+                "route_name": "lorem-ipsums",
+                "class_directory": "app\/Mainframe\/Modules\/Samples\/LoremIpsums",
+                "namespace": "\\App\\Mainframe\\Modules\\LoremIpsums",
+                "model": "\\App\\Mainframe\\Modules\\Samples\\LoremIpsums\\LoremIpsum",
+                "policy": "\\App\\Mainframe\\Modules\\LoremIpsums\\LoremIpsumPolicy",
+                "processor": "\\App\\Mainframe\\Modules\\Samples\\LoremIpsums\\LoremIpsumProcessor",
+                "controller": "\\App\\Mainframe\\Modules\\Samples\\LoremIpsums\\LoremIpsumController",
+                "view_directory": "mainframe.modules.samples.lorem-ipsums",
+                "parent_id": 0,
+                "module_group_id": 1,
+                "level": 0,
+                "order": 0,
+                "default_route": "lorem-ipsums.index",
+                "color_css": "aqua",
+                "icon_css": "fa fa-plus",
+                "is_visible": 1,
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2019-11-20 14:08:23",
+                "updated_at": "2020-01-23 06:53:54",
+                "deleted_at": null,
+                "deleted_by": null
+            },
+            {
+                "id": 51,
+                "uuid": "a0c23e13-1bd6-4346-828b-b7878d67ee29",
+                "name": "dolor-sits",
+                "project_id": null,
+                "tenant_id": null,
+                "title": "Dolor sit",
+                "description": "Manage dolor sits",
+                "module_table": "dolor-sits",
+                "route_path": "dolor-sits",
+                "route_name": "dolor-sits",
+                "class_directory": "app\/Mainframe\/Modules\/Samples\/DolorSits",
+                "namespace": "\\App\\Mainframe\\Modules\\DolorSits",
+                "model": "\\App\\Mainframe\\Modules\\Samples\\DolorSits\\DolorSit",
+                "policy": "\\App\\Mainframe\\Modules\\DolorSits\\DolorSitPolicy",
+                "processor": "\\App\\Mainframe\\Modules\\Samples\\DolorSits\\DolorSitProcessor",
+                "controller": "\\App\\Mainframe\\Modules\\Samples\\DolorSits\\DolorSitController",
+                "view_directory": "mainframe.modules.samples.dolor-sits",
+                "parent_id": 0,
+                "module_group_id": 1,
+                "level": 0,
+                "order": 0,
+                "default_route": "dolor-sits.index",
+                "color_css": "aqua",
+                "icon_css": "fa fa-plus",
+                "is_visible": 1,
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2019-11-20 14:10:34",
+                "updated_at": "2020-01-23 06:53:54",
+                "deleted_at": null,
+                "deleted_by": null
+            },
+            {
+                "id": 52,
+                "uuid": "2da95896-4a15-4ad6-9919-767dabeef9fe",
+                "name": "subscriptions",
+                "project_id": null,
+                "tenant_id": null,
+                "title": "Subscription",
+                "description": "Manage subscriptions",
+                "module_table": "subscriptions",
+                "route_path": "subscriptions",
+                "route_name": "subscriptions",
+                "class_directory": "app\/Mainframe\/Modules\/Subscriptions",
+                "namespace": "\\App\\Mainframe\\Modules\\Subscriptions",
+                "model": "\\App\\Mainframe\\Modules\\Subscriptions\\Subscription",
+                "policy": "\\App\\Mainframe\\Modules\\Subscriptions\\SubscriptionPolicy",
+                "processor": "\\App\\Mainframe\\Modules\\Subscriptions\\SubscriptionProcessor",
+                "controller": "\\App\\Mainframe\\Modules\\Subscriptions\\SubscriptionController",
+                "view_directory": "mainframe.modules.subscriptions",
+                "parent_id": 0,
+                "module_group_id": 1,
+                "level": 0,
+                "order": 0,
+                "default_route": "subscriptions.index",
+                "color_css": "aqua",
+                "icon_css": "fa fa-plus",
+                "is_visible": 1,
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2019-12-19 14:00:52",
+                "updated_at": "2020-01-23 06:53:54",
+                "deleted_at": null,
+                "deleted_by": null
+            },
+            {
+                "id": 53,
+                "uuid": "11a3b809-b3e0-4c8f-b59a-b99192e99588",
+                "name": "packages",
+                "project_id": null,
+                "tenant_id": null,
+                "title": "Package",
+                "description": "Manage packages",
+                "module_table": "packages",
+                "route_path": "packages",
+                "route_name": "packages",
+                "class_directory": "app\/Mainframe\/Modules\/Packages",
+                "namespace": "\\App\\Mainframe\\Modules\\Packages",
+                "model": "\\App\\Mainframe\\Modules\\Packages\\Package",
+                "policy": "\\App\\Mainframe\\Modules\\Packages\\PackagePolicy",
+                "processor": "\\App\\Mainframe\\Modules\\Packages\\PackageProcessor",
+                "controller": "\\App\\Mainframe\\Modules\\Packages\\PackageController",
+                "view_directory": "mainframe.modules.packages",
+                "parent_id": 0,
+                "module_group_id": 1,
+                "level": 0,
+                "order": 0,
+                "default_route": "packages.index",
+                "color_css": "aqua",
+                "icon_css": "fa fa-plus",
+                "is_visible": 1,
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2019-12-19 14:39:47",
+                "updated_at": "2020-01-23 06:53:54",
+                "deleted_at": null,
+                "deleted_by": null
+            },
+            {
+                "id": 54,
+                "uuid": "c4582951-e9ee-4d1d-a9de-9230c037699a",
+                "name": "countries",
+                "project_id": null,
+                "tenant_id": null,
+                "title": "Country",
+                "description": "Manage countries",
+                "module_table": "countries",
+                "route_path": "countries",
+                "route_name": "countries",
+                "class_directory": "app\/Mainframe\/Modules\/Countries",
+                "namespace": "\\App\\Mainframe\\Modules\\Countries",
+                "model": "\\App\\Mainframe\\Modules\\Countries\\Country",
+                "policy": "\\App\\Mainframe\\Modules\\Countries\\CountryPolicy",
+                "processor": "\\App\\Mainframe\\Modules\\Countries\\CountryProcessor",
+                "controller": "\\App\\Mainframe\\Modules\\Countries\\CountryController",
+                "view_directory": "mainframe.modules.countries",
+                "parent_id": 0,
+                "module_group_id": 1,
+                "level": 0,
+                "order": 0,
+                "default_route": "countries.index",
+                "color_css": "aqua",
+                "icon_css": "fa fa-plus",
+                "is_visible": 1,
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2019-12-19 14:39:47",
+                "updated_at": "2020-01-23 06:53:54",
+                "deleted_at": null,
+                "deleted_by": null
+            },
+            {
+                "id": 55,
+                "uuid": "cb21c345-ba75-452c-b326-5c20f6cd17b8",
+                "name": "notifications",
+                "project_id": null,
+                "tenant_id": null,
+                "title": "Notification",
+                "description": "List of notifications",
+                "module_table": "notifications",
+                "route_path": "notifications",
+                "route_name": "notifications",
+                "class_directory": "app\/Mainframe\/Modules\/Notifications",
+                "namespace": "\\App\\Mainframe\\Modules\\Notifications",
+                "model": "\\App\\Mainframe\\Modules\\Notifications\\Notification",
+                "policy": "\\App\\Mainframe\\Modules\\Notifications\\NotificationPolicy",
+                "processor": "\\App\\Mainframe\\Modules\\Notifications\\NotificationProcessor",
+                "controller": "\\App\\Mainframe\\Modules\\Notifications\\NotificationController",
+                "view_directory": "mainframe.modules.notifications",
+                "parent_id": 0,
+                "module_group_id": 1,
+                "level": 0,
+                "order": 0,
+                "default_route": "notifications.index",
+                "color_css": "aqua",
+                "icon_css": "fa fa-plus",
+                "is_visible": 1,
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2019-12-19 14:39:47",
+                "updated_at": "2020-01-23 06:53:54",
+                "deleted_at": null,
+                "deleted_by": null
+            },
+            {
+                "id": 57,
+                "uuid": "47df59d0-bacb-4d1e-bfda-01c051c63681",
+                "name": "projects",
+                "project_id": null,
+                "tenant_id": null,
+                "title": "Project",
+                "description": "Manage projects",
+                "module_table": "projects",
+                "route_path": "projects",
+                "route_name": "projects",
+                "class_directory": "app\/Mainframe\/Modules\/Projects",
+                "namespace": "\\App\\Mainframe\\Modules\\Projects",
+                "model": "\\App\\Mainframe\\Modules\\Projects\\Project",
+                "policy": "\\App\\Mainframe\\Modules\\Projects\\ProjectPolicy",
+                "processor": "\\App\\Mainframe\\Modules\\Projects\\ProjectProcessor",
+                "controller": "\\App\\Mainframe\\Modules\\Projects\\ProjectController",
+                "view_directory": "mainframe.modules.projects",
+                "parent_id": 0,
+                "module_group_id": 1,
+                "level": 0,
+                "order": 0,
+                "default_route": "projects.index",
+                "color_css": "aqua",
+                "icon_css": "fa fa-plus",
+                "is_visible": 1,
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2019-12-28 13:57:38",
+                "updated_at": "2020-01-23 06:53:54",
+                "deleted_at": null,
+                "deleted_by": null
+            },
+            {
+                "id": 60,
+                "uuid": "74ed8001-1178-46f4-b1e6-b6e73fd7ae04",
+                "name": "comments",
+                "project_id": null,
+                "tenant_id": null,
+                "title": "Comment",
+                "description": "Manage comment",
+                "module_table": "comments",
+                "route_path": "comments",
+                "route_name": "comments",
+                "class_directory": "app\/Mainframe\/Modules\/Comments",
+                "namespace": "\\App\\Mainframe\\Modules\\Comments",
+                "model": "\\App\\Mainframe\\Modules\\Comments\\Comment",
+                "policy": "\\App\\Mainframe\\Modules\\Comments\\CommentPolicy",
+                "processor": "\\App\\Mainframe\\Modules\\Comments\\CommentProcessor",
+                "controller": "\\App\\Mainframe\\Modules\\Comments\\CommentController",
+                "view_directory": "mainframe.modules.comments",
+                "parent_id": 0,
+                "module_group_id": 1,
+                "level": 0,
+                "order": 0,
+                "default_route": "comments.index",
+                "color_css": "aqua",
+                "icon_css": "fa fa-plus",
+                "is_visible": 1,
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": null,
+                "created_at": "2020-02-25 08:42:04",
+                "updated_at": "2020-02-25 08:42:04",
+                "deleted_at": null,
+                "deleted_by": null
+            },
+            {
+                "id": 61,
+                "uuid": "0a79b419-8960-4957-badc-ee905f7bf020",
+                "name": "changes",
+                "project_id": null,
+                "tenant_id": null,
+                "title": "Change",
+                "description": "Manage change",
+                "module_table": "changes",
+                "route_path": "changes",
+                "route_name": "changes",
+                "class_directory": "app\/Mainframe\/Modules\/Changes",
+                "namespace": "\\App\\Mainframe\\Modules\\Changes",
+                "model": "\\App\\Mainframe\\Modules\\Changes\\Change",
+                "policy": "\\App\\Mainframe\\Modules\\Changes\\ChangePolicy",
+                "processor": "\\App\\Mainframe\\Modules\\Changes\\ChangeProcessor",
+                "controller": "\\App\\Mainframe\\Modules\\Changes\\ChangeController",
+                "view_directory": "mainframe.modules.changes",
+                "parent_id": 0,
+                "module_group_id": 1,
+                "level": 0,
+                "order": 0,
+                "default_route": "changes.index",
+                "color_css": "aqua",
+                "icon_css": "fa fa-plus",
+                "is_visible": 1,
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": null,
+                "created_at": "2020-06-02 04:34:41",
+                "updated_at": "2020-06-02 04:34:41",
+                "deleted_at": null,
+                "deleted_by": null
+            }
+        ]
+    },
+    "redirect": "http:\/\/localhost\/api\/1.0\/modules"
 }
 ```
 
@@ -27953,11 +15120,11 @@ fetch(url, {
 ```
 
 
-> Example response (429):
+> Example response (500):
 
 ```json
 {
-    "message": "Too Many Attempts."
+    "message": "Server Error"
 }
 ```
 
@@ -28093,11 +15260,75 @@ fetch(url, {
 ```
 
 
-> Example response (429):
+> Example response (200):
 
 ```json
 {
-    "message": "Too Many Attempts."
+    "code": 200,
+    "status": "success",
+    "message": "Request Processed",
+    "data": {
+        "current_page": 1,
+        "first_page_url": "http:\/\/localhost\/api\/1.0\/module-groups\/list\/json?page=1",
+        "from": 1,
+        "last_page": 1,
+        "last_page_url": "http:\/\/localhost\/api\/1.0\/module-groups\/list\/json?page=1",
+        "next_page_url": null,
+        "path": "http:\/\/localhost\/api\/1.0\/module-groups\/list\/json",
+        "per_page": 20,
+        "prev_page_url": null,
+        "to": 2,
+        "total": 2,
+        "items": [
+            {
+                "id": 1,
+                "uuid": "770e22e8-e572-44a3-9a9a-be7fb1964ae5",
+                "name": "app-settings",
+                "title": "Settings",
+                "description": "Manage configuration",
+                "route_path": "app-settings",
+                "route_name": "app-settings",
+                "parent_id": 0,
+                "level": 0,
+                "order": 0,
+                "default_route": "app-configs.index",
+                "color_css": "aqua",
+                "icon_css": "fa fa-gears",
+                "is_visible": 1,
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2018-12-10 06:47:46",
+                "updated_at": "2019-10-28 14:07:42",
+                "deleted_at": null,
+                "deleted_by": null
+            },
+            {
+                "id": 2,
+                "uuid": "a0dc562b-d6ce-45d1-9279-2a8ca2982dc8",
+                "name": "accounts",
+                "title": "Accounts",
+                "description": null,
+                "route_path": "app-settings",
+                "route_name": "app-settings",
+                "parent_id": 0,
+                "level": 0,
+                "order": 0,
+                "default_route": "letsbab.index",
+                "color_css": "aqua",
+                "icon_css": "fa fa-calculator",
+                "is_visible": 1,
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2018-12-14 06:18:07",
+                "updated_at": "2019-10-28 12:41:42",
+                "deleted_at": null,
+                "deleted_by": null
+            }
+        ]
+    },
+    "redirect": "http:\/\/localhost\/api\/1.0\/module-groups\/list\/json"
 }
 ```
 
@@ -28142,12 +15373,10 @@ fetch(url, {
 ```
 
 
-> Example response (429):
+> Example response (200):
 
 ```json
-{
-    "message": "Too Many Attempts."
-}
+null
 ```
 
 ### HTTP Request
@@ -28191,11 +15420,28 @@ fetch(url, {
 ```
 
 
-> Example response (429):
+> Example response (200):
 
 ```json
 {
-    "message": "Too Many Attempts."
+    "code": 200,
+    "status": "success",
+    "message": "Request Processed",
+    "data": {
+        "current_page": 1,
+        "first_page_url": "http:\/\/localhost\/api\/1.0\/module-groups\/1\/uploads?page=1",
+        "from": null,
+        "last_page": 1,
+        "last_page_url": "http:\/\/localhost\/api\/1.0\/module-groups\/1\/uploads?page=1",
+        "next_page_url": null,
+        "path": "http:\/\/localhost\/api\/1.0\/module-groups\/1\/uploads",
+        "per_page": 20,
+        "prev_page_url": null,
+        "to": null,
+        "total": 0,
+        "items": []
+    },
+    "redirect": "http:\/\/localhost\/api\/1.0\/module-groups\/1\/uploads"
 }
 ```
 
@@ -28247,55 +15493,6 @@ fetch(url, {
 
 <!-- END_93e47bbdb8765a00d548b78e158692d5 -->
 
-<!-- START_a5e055fc2815fa379c8154e0aba29874 -->
-## Get all the comments of an element
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/1.0/module-groups/1/comments" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/module-groups/1/comments"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (429):
-
-```json
-{
-    "message": "Too Many Attempts."
-}
-```
-
-### HTTP Request
-`GET api/1.0/module-groups/{id}/comments`
-
-
-<!-- END_a5e055fc2815fa379c8154e0aba29874 -->
-
 <!-- START_7b87d505a4b2516cad0814007d2f4d92 -->
 ## Index/List page to show grid
 
@@ -28331,11 +15528,75 @@ fetch(url, {
 ```
 
 
-> Example response (429):
+> Example response (200):
 
 ```json
 {
-    "message": "Too Many Attempts."
+    "code": 200,
+    "status": "success",
+    "message": "Request Processed",
+    "data": {
+        "current_page": 1,
+        "first_page_url": "http:\/\/localhost\/api\/1.0\/module-groups?page=1",
+        "from": 1,
+        "last_page": 1,
+        "last_page_url": "http:\/\/localhost\/api\/1.0\/module-groups?page=1",
+        "next_page_url": null,
+        "path": "http:\/\/localhost\/api\/1.0\/module-groups",
+        "per_page": 20,
+        "prev_page_url": null,
+        "to": 2,
+        "total": 2,
+        "items": [
+            {
+                "id": 1,
+                "uuid": "770e22e8-e572-44a3-9a9a-be7fb1964ae5",
+                "name": "app-settings",
+                "title": "Settings",
+                "description": "Manage configuration",
+                "route_path": "app-settings",
+                "route_name": "app-settings",
+                "parent_id": 0,
+                "level": 0,
+                "order": 0,
+                "default_route": "app-configs.index",
+                "color_css": "aqua",
+                "icon_css": "fa fa-gears",
+                "is_visible": 1,
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2018-12-10 06:47:46",
+                "updated_at": "2019-10-28 14:07:42",
+                "deleted_at": null,
+                "deleted_by": null
+            },
+            {
+                "id": 2,
+                "uuid": "a0dc562b-d6ce-45d1-9279-2a8ca2982dc8",
+                "name": "accounts",
+                "title": "Accounts",
+                "description": null,
+                "route_path": "app-settings",
+                "route_name": "app-settings",
+                "parent_id": 0,
+                "level": 0,
+                "order": 0,
+                "default_route": "letsbab.index",
+                "color_css": "aqua",
+                "icon_css": "fa fa-calculator",
+                "is_visible": 1,
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2018-12-14 06:18:07",
+                "updated_at": "2019-10-28 12:41:42",
+                "deleted_at": null,
+                "deleted_by": null
+            }
+        ]
+    },
+    "redirect": "http:\/\/localhost\/api\/1.0\/module-groups"
 }
 ```
 
@@ -28422,11 +15683,11 @@ fetch(url, {
 ```
 
 
-> Example response (429):
+> Example response (500):
 
 ```json
 {
-    "message": "Too Many Attempts."
+    "message": "Server Error"
 }
 ```
 
@@ -28562,11 +15823,67 @@ fetch(url, {
 ```
 
 
-> Example response (429):
+> Example response (200):
 
 ```json
 {
-    "message": "Too Many Attempts."
+    "code": 200,
+    "status": "success",
+    "message": "Request Processed",
+    "data": {
+        "current_page": 1,
+        "first_page_url": "http:\/\/localhost\/api\/1.0\/tenants\/list\/json?page=1",
+        "from": 1,
+        "last_page": 1,
+        "last_page_url": "http:\/\/localhost\/api\/1.0\/tenants\/list\/json?page=1",
+        "next_page_url": null,
+        "path": "http:\/\/localhost\/api\/1.0\/tenants\/list\/json",
+        "per_page": 20,
+        "prev_page_url": null,
+        "to": 2,
+        "total": 2,
+        "items": [
+            {
+                "id": 1,
+                "uuid": "ceba2dba-bfad-4045-a36f-ce0572f77679",
+                "project_id": 1,
+                "name": "ArtemisPod-default",
+                "code": "artp",
+                "user_id": null,
+                "route_group": "artp",
+                "class_directory": "app\/Projects\/ArtemisPod",
+                "namespace": "\\App\\ArtemisPod",
+                "view_directory": "mainframe.projects.artemis-pod",
+                "is_active": 1,
+                "created_by": 5,
+                "updated_by": 5,
+                "created_at": "2019-12-19 13:31:02",
+                "updated_at": "2019-12-19 13:31:02",
+                "deleted_at": null,
+                "deleted_by": null
+            },
+            {
+                "id": 2,
+                "uuid": "2170cada-a1fc-43a9-90e5-6bf6a5037952",
+                "project_id": 2,
+                "name": "OrangeHC-default",
+                "code": "orhc",
+                "user_id": null,
+                "route_group": "orhc",
+                "class_directory": "app\/Projects\/OrangeHc",
+                "namespace": "\\App\\OrangeHC",
+                "view_directory": "mainframe.projects.orange-hc",
+                "is_active": 1,
+                "created_by": 5,
+                "updated_by": 5,
+                "created_at": "2019-12-19 13:31:02",
+                "updated_at": "2019-12-28 14:26:39",
+                "deleted_at": null,
+                "deleted_by": null
+            }
+        ]
+    },
+    "redirect": "http:\/\/localhost\/api\/1.0\/tenants\/list\/json"
 }
 ```
 
@@ -28611,12 +15928,10 @@ fetch(url, {
 ```
 
 
-> Example response (429):
+> Example response (200):
 
 ```json
-{
-    "message": "Too Many Attempts."
-}
+null
 ```
 
 ### HTTP Request
@@ -28660,11 +15975,28 @@ fetch(url, {
 ```
 
 
-> Example response (429):
+> Example response (200):
 
 ```json
 {
-    "message": "Too Many Attempts."
+    "code": 200,
+    "status": "success",
+    "message": "Request Processed",
+    "data": {
+        "current_page": 1,
+        "first_page_url": "http:\/\/localhost\/api\/1.0\/tenants\/1\/uploads?page=1",
+        "from": null,
+        "last_page": 1,
+        "last_page_url": "http:\/\/localhost\/api\/1.0\/tenants\/1\/uploads?page=1",
+        "next_page_url": null,
+        "path": "http:\/\/localhost\/api\/1.0\/tenants\/1\/uploads",
+        "per_page": 20,
+        "prev_page_url": null,
+        "to": null,
+        "total": 0,
+        "items": []
+    },
+    "redirect": "http:\/\/localhost\/api\/1.0\/tenants\/1\/uploads"
 }
 ```
 
@@ -28716,55 +16048,6 @@ fetch(url, {
 
 <!-- END_e613003ecc4d9688a3a273efae47f314 -->
 
-<!-- START_0bf087f20b670e15911ab3f06602054b -->
-## Get all the comments of an element
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/1.0/tenants/1/comments" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/tenants/1/comments"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (429):
-
-```json
-{
-    "message": "Too Many Attempts."
-}
-```
-
-### HTTP Request
-`GET api/1.0/tenants/{id}/comments`
-
-
-<!-- END_0bf087f20b670e15911ab3f06602054b -->
-
 <!-- START_6e2d71376453ad9e14dfd23c1cc01cbc -->
 ## Index/List page to show grid
 
@@ -28800,11 +16083,67 @@ fetch(url, {
 ```
 
 
-> Example response (429):
+> Example response (200):
 
 ```json
 {
-    "message": "Too Many Attempts."
+    "code": 200,
+    "status": "success",
+    "message": "Request Processed",
+    "data": {
+        "current_page": 1,
+        "first_page_url": "http:\/\/localhost\/api\/1.0\/tenants?page=1",
+        "from": 1,
+        "last_page": 1,
+        "last_page_url": "http:\/\/localhost\/api\/1.0\/tenants?page=1",
+        "next_page_url": null,
+        "path": "http:\/\/localhost\/api\/1.0\/tenants",
+        "per_page": 20,
+        "prev_page_url": null,
+        "to": 2,
+        "total": 2,
+        "items": [
+            {
+                "id": 1,
+                "uuid": "ceba2dba-bfad-4045-a36f-ce0572f77679",
+                "project_id": 1,
+                "name": "ArtemisPod-default",
+                "code": "artp",
+                "user_id": null,
+                "route_group": "artp",
+                "class_directory": "app\/Projects\/ArtemisPod",
+                "namespace": "\\App\\ArtemisPod",
+                "view_directory": "mainframe.projects.artemis-pod",
+                "is_active": 1,
+                "created_by": 5,
+                "updated_by": 5,
+                "created_at": "2019-12-19 13:31:02",
+                "updated_at": "2019-12-19 13:31:02",
+                "deleted_at": null,
+                "deleted_by": null
+            },
+            {
+                "id": 2,
+                "uuid": "2170cada-a1fc-43a9-90e5-6bf6a5037952",
+                "project_id": 2,
+                "name": "OrangeHC-default",
+                "code": "orhc",
+                "user_id": null,
+                "route_group": "orhc",
+                "class_directory": "app\/Projects\/OrangeHc",
+                "namespace": "\\App\\OrangeHC",
+                "view_directory": "mainframe.projects.orange-hc",
+                "is_active": 1,
+                "created_by": 5,
+                "updated_by": 5,
+                "created_at": "2019-12-19 13:31:02",
+                "updated_at": "2019-12-28 14:26:39",
+                "deleted_at": null,
+                "deleted_by": null
+            }
+        ]
+    },
+    "redirect": "http:\/\/localhost\/api\/1.0\/tenants"
 }
 ```
 
@@ -28891,11 +16230,11 @@ fetch(url, {
 ```
 
 
-> Example response (429):
+> Example response (500):
 
 ```json
 {
-    "message": "Too Many Attempts."
+    "message": "Server Error"
 }
 ```
 
@@ -29031,11 +16370,1009 @@ fetch(url, {
 ```
 
 
-> Example response (429):
+> Example response (200):
 
 ```json
 {
-    "message": "Too Many Attempts."
+    "code": 200,
+    "status": "success",
+    "message": "Request Processed",
+    "data": {
+        "current_page": 1,
+        "first_page_url": "http:\/\/localhost\/api\/1.0\/users\/list\/json?page=1",
+        "from": 1,
+        "last_page": 2,
+        "last_page_url": "http:\/\/localhost\/api\/1.0\/users\/list\/json?page=2",
+        "next_page_url": "http:\/\/localhost\/api\/1.0\/users\/list\/json?page=2",
+        "path": "http:\/\/localhost\/api\/1.0\/users\/list\/json",
+        "per_page": 20,
+        "prev_page_url": null,
+        "to": 20,
+        "total": 31,
+        "items": [
+            {
+                "id": 1,
+                "uuid": "3ef9b174-6c7c-41fd-b68e-18d003fb9481",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "Super admin",
+                "email": "su@mainframe",
+                "api_token": null,
+                "api_token_generated_at": null,
+                "is_tenant_editable": 1,
+                "permissions": [],
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2018-09-10 15:30:06",
+                "updated_at": "2021-02-13 13:51:36",
+                "deleted_at": null,
+                "deleted_by": null,
+                "name_initial": null,
+                "first_name": "Prime",
+                "last_name": "Superuser",
+                "full_name": "Prime Superuser",
+                "gender": null,
+                "device_token": null,
+                "address1": null,
+                "address2": null,
+                "city": null,
+                "county": null,
+                "country_id": 187,
+                "country_name": "UK (United Kingdom)",
+                "zip_code": null,
+                "phone": null,
+                "mobile": null,
+                "first_login_at": "2020-02-08 10:55:44",
+                "last_login_at": "2021-02-13 13:39:29",
+                "auth_token": "UMZ9oxfJ7gL0OtbBUIe\/odaOr1jEFDq1",
+                "email_verified_at": "2019-01-22 19:27:07",
+                "email_verification_code": null,
+                "currency": "GBP",
+                "social_account_id": null,
+                "social_account_type": null,
+                "dob": null,
+                "group_ids": [
+                    "1"
+                ],
+                "is_test": 0,
+                "profile_pic": null,
+                "uploads": []
+            },
+            {
+                "id": 2,
+                "uuid": "856a81bf-ab1b-4289-9d65-9751009d00ad",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "API",
+                "email": "api@mainframe",
+                "api_token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
+                "api_token_generated_at": null,
+                "is_tenant_editable": 0,
+                "permissions": [],
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2018-12-24 05:48:25",
+                "updated_at": "2021-02-13 13:51:36",
+                "deleted_at": null,
+                "deleted_by": null,
+                "name_initial": null,
+                "first_name": "LB",
+                "last_name": "API",
+                "full_name": "LB API",
+                "gender": null,
+                "device_token": "eFGlVn8yFn8:APA91bHgq2zk-9JrBNNtVMn4iFMB6eicQOUVyFZGRft8jv-GwGJej9sFppTG5w9E_3IeOyR_3NN1i3cWFHaiVl_k1Zlt2jDMVoh7D90CsJG1qxVnuruH-Eidi1CgO9QVlpmFByK2azr3",
+                "address1": "62142 Haley Lake",
+                "address2": null,
+                "city": null,
+                "county": null,
+                "country_id": 187,
+                "country_name": "UK (United Kingdom)",
+                "zip_code": null,
+                "phone": null,
+                "mobile": null,
+                "first_login_at": "2019-01-31 08:31:54",
+                "last_login_at": "2019-04-09 15:17:25",
+                "auth_token": "Q29anuSIvoR9N8OmB2ueGGRI8tlHPZau",
+                "email_verified_at": "2019-01-22 19:27:07",
+                "email_verification_code": null,
+                "currency": "GBP",
+                "social_account_id": null,
+                "social_account_type": null,
+                "dob": null,
+                "group_ids": [
+                    "2"
+                ],
+                "is_test": 0,
+                "profile_pic": null,
+                "uploads": []
+            },
+            {
+                "id": 999,
+                "uuid": "0b11bb84-a6f9-4612-b823-6eb0feda3342",
+                "project_id": null,
+                "tenant_id": null,
+                "name": " ",
+                "email": "dote@mailinator.net",
+                "api_token": null,
+                "api_token_generated_at": null,
+                "is_tenant_editable": 1,
+                "permissions": [],
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2020-01-06 16:55:14",
+                "updated_at": "2020-06-30 15:50:15",
+                "deleted_at": null,
+                "deleted_by": null,
+                "name_initial": null,
+                "first_name": "Dote",
+                "last_name": "Test",
+                "full_name": "Dote Test",
+                "gender": null,
+                "device_token": null,
+                "address1": "018 Alva Mountain",
+                "address2": null,
+                "city": null,
+                "county": null,
+                "country_id": null,
+                "country_name": null,
+                "zip_code": null,
+                "phone": null,
+                "mobile": null,
+                "first_login_at": "2020-06-30 15:49:31",
+                "last_login_at": "2020-06-30 15:50:15",
+                "auth_token": "LoremIpsumSIvoR9N8OmB2ueLoremIpsu",
+                "email_verified_at": "2019-01-22 19:27:07",
+                "email_verification_code": null,
+                "currency": null,
+                "social_account_id": null,
+                "social_account_type": null,
+                "dob": null,
+                "group_ids": [
+                    "25"
+                ],
+                "is_test": 0,
+                "profile_pic": null,
+                "uploads": []
+            },
+            {
+                "id": 5055,
+                "uuid": "30e89e31-ec4b-4f79-a6e4-4e5b003c3aaf",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "Daisha Runolfsson",
+                "email": "hansen.quentin@rau.biz",
+                "api_token": null,
+                "api_token_generated_at": null,
+                "is_tenant_editable": 1,
+                "permissions": [],
+                "is_active": 1,
+                "created_by": null,
+                "updated_by": null,
+                "created_at": "2021-02-09 06:30:36",
+                "updated_at": "2021-02-09 06:30:36",
+                "deleted_at": null,
+                "deleted_by": null,
+                "name_initial": null,
+                "first_name": "Daisha",
+                "last_name": "Runolfsson",
+                "full_name": null,
+                "gender": null,
+                "device_token": null,
+                "address1": null,
+                "address2": null,
+                "city": null,
+                "county": null,
+                "country_id": null,
+                "country_name": null,
+                "zip_code": null,
+                "phone": null,
+                "mobile": null,
+                "first_login_at": null,
+                "last_login_at": null,
+                "auth_token": null,
+                "email_verified_at": null,
+                "email_verification_code": null,
+                "currency": null,
+                "social_account_id": null,
+                "social_account_type": null,
+                "dob": null,
+                "group_ids": [
+                    "26"
+                ],
+                "is_test": null,
+                "profile_pic": null,
+                "uploads": []
+            },
+            {
+                "id": 5058,
+                "uuid": "01234f77-a679-4263-8e92-950d83b91c82",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "Skye Abshire",
+                "email": "jarret.streich@volkman.com",
+                "api_token": null,
+                "api_token_generated_at": null,
+                "is_tenant_editable": 1,
+                "permissions": [],
+                "is_active": 1,
+                "created_by": null,
+                "updated_by": null,
+                "created_at": "2021-02-09 06:30:51",
+                "updated_at": "2021-02-09 06:30:51",
+                "deleted_at": null,
+                "deleted_by": null,
+                "name_initial": null,
+                "first_name": "Skye",
+                "last_name": "Abshire",
+                "full_name": null,
+                "gender": null,
+                "device_token": null,
+                "address1": null,
+                "address2": null,
+                "city": null,
+                "county": null,
+                "country_id": null,
+                "country_name": null,
+                "zip_code": null,
+                "phone": null,
+                "mobile": null,
+                "first_login_at": null,
+                "last_login_at": null,
+                "auth_token": null,
+                "email_verified_at": null,
+                "email_verification_code": null,
+                "currency": null,
+                "social_account_id": null,
+                "social_account_type": null,
+                "dob": null,
+                "group_ids": [
+                    "26"
+                ],
+                "is_test": null,
+                "profile_pic": null,
+                "uploads": []
+            },
+            {
+                "id": 5061,
+                "uuid": "bb9c5036-52db-49d7-adce-ccbf8d323241",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "Noemy Wehner",
+                "email": "koss.michel@yahoo.com",
+                "api_token": null,
+                "api_token_generated_at": null,
+                "is_tenant_editable": 1,
+                "permissions": [],
+                "is_active": 1,
+                "created_by": null,
+                "updated_by": null,
+                "created_at": "2021-02-09 06:31:08",
+                "updated_at": "2021-02-09 06:31:08",
+                "deleted_at": null,
+                "deleted_by": null,
+                "name_initial": null,
+                "first_name": "Noemy",
+                "last_name": "Wehner",
+                "full_name": null,
+                "gender": null,
+                "device_token": null,
+                "address1": null,
+                "address2": null,
+                "city": null,
+                "county": null,
+                "country_id": null,
+                "country_name": null,
+                "zip_code": null,
+                "phone": null,
+                "mobile": null,
+                "first_login_at": null,
+                "last_login_at": null,
+                "auth_token": null,
+                "email_verified_at": null,
+                "email_verification_code": null,
+                "currency": null,
+                "social_account_id": null,
+                "social_account_type": null,
+                "dob": null,
+                "group_ids": [
+                    "26"
+                ],
+                "is_test": null,
+                "profile_pic": null,
+                "uploads": []
+            },
+            {
+                "id": 5064,
+                "uuid": "22e6758d-1427-4f8b-a16d-0fc3d5c3beb7",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "Darius Reichert",
+                "email": "mozell23@blick.com",
+                "api_token": null,
+                "api_token_generated_at": null,
+                "is_tenant_editable": 1,
+                "permissions": [],
+                "is_active": 1,
+                "created_by": null,
+                "updated_by": null,
+                "created_at": "2021-02-09 06:31:54",
+                "updated_at": "2021-02-09 06:31:54",
+                "deleted_at": null,
+                "deleted_by": null,
+                "name_initial": null,
+                "first_name": "Darius",
+                "last_name": "Reichert",
+                "full_name": null,
+                "gender": null,
+                "device_token": null,
+                "address1": null,
+                "address2": null,
+                "city": null,
+                "county": null,
+                "country_id": null,
+                "country_name": null,
+                "zip_code": null,
+                "phone": null,
+                "mobile": null,
+                "first_login_at": null,
+                "last_login_at": null,
+                "auth_token": null,
+                "email_verified_at": null,
+                "email_verification_code": null,
+                "currency": null,
+                "social_account_id": null,
+                "social_account_type": null,
+                "dob": null,
+                "group_ids": [
+                    "26"
+                ],
+                "is_test": null,
+                "profile_pic": null,
+                "uploads": []
+            },
+            {
+                "id": 5068,
+                "uuid": "5e5e4726-b44a-4c5e-b854-1d77ae546b4f",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "Chandler Herzog",
+                "email": "hill.enoch@stokes.info",
+                "api_token": null,
+                "api_token_generated_at": null,
+                "is_tenant_editable": 1,
+                "permissions": [],
+                "is_active": 1,
+                "created_by": null,
+                "updated_by": null,
+                "created_at": "2021-02-09 06:32:22",
+                "updated_at": "2021-02-09 06:32:22",
+                "deleted_at": null,
+                "deleted_by": null,
+                "name_initial": null,
+                "first_name": "Chandler",
+                "last_name": "Herzog",
+                "full_name": null,
+                "gender": null,
+                "device_token": null,
+                "address1": null,
+                "address2": null,
+                "city": null,
+                "county": null,
+                "country_id": null,
+                "country_name": null,
+                "zip_code": null,
+                "phone": null,
+                "mobile": null,
+                "first_login_at": null,
+                "last_login_at": null,
+                "auth_token": null,
+                "email_verified_at": null,
+                "email_verification_code": null,
+                "currency": null,
+                "social_account_id": null,
+                "social_account_type": null,
+                "dob": null,
+                "group_ids": [
+                    "26"
+                ],
+                "is_test": null,
+                "profile_pic": null,
+                "uploads": []
+            },
+            {
+                "id": 5072,
+                "uuid": "cbe20307-1d19-494b-974f-c8eb0f9f0fce",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "Aaron Franecki",
+                "email": "shanna.konopelski@schmeler.org",
+                "api_token": null,
+                "api_token_generated_at": null,
+                "is_tenant_editable": 1,
+                "permissions": [],
+                "is_active": 1,
+                "created_by": null,
+                "updated_by": null,
+                "created_at": "2021-02-09 08:40:08",
+                "updated_at": "2021-02-09 08:40:08",
+                "deleted_at": null,
+                "deleted_by": null,
+                "name_initial": null,
+                "first_name": "Aaron",
+                "last_name": "Franecki",
+                "full_name": null,
+                "gender": null,
+                "device_token": null,
+                "address1": null,
+                "address2": null,
+                "city": null,
+                "county": null,
+                "country_id": null,
+                "country_name": null,
+                "zip_code": null,
+                "phone": null,
+                "mobile": null,
+                "first_login_at": null,
+                "last_login_at": null,
+                "auth_token": null,
+                "email_verified_at": null,
+                "email_verification_code": null,
+                "currency": null,
+                "social_account_id": null,
+                "social_account_type": null,
+                "dob": null,
+                "group_ids": [
+                    "26"
+                ],
+                "is_test": null,
+                "profile_pic": null,
+                "uploads": []
+            },
+            {
+                "id": 5076,
+                "uuid": "a757a7d5-9ae4-48a1-a5d0-ea7485561a9d",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "Americo Ondricka",
+                "email": "ewhite@gmail.com",
+                "api_token": null,
+                "api_token_generated_at": null,
+                "is_tenant_editable": 1,
+                "permissions": [],
+                "is_active": 1,
+                "created_by": null,
+                "updated_by": null,
+                "created_at": "2021-02-09 10:10:23",
+                "updated_at": "2021-02-09 10:10:23",
+                "deleted_at": null,
+                "deleted_by": null,
+                "name_initial": null,
+                "first_name": "Americo",
+                "last_name": "Ondricka",
+                "full_name": null,
+                "gender": null,
+                "device_token": null,
+                "address1": null,
+                "address2": null,
+                "city": null,
+                "county": null,
+                "country_id": null,
+                "country_name": null,
+                "zip_code": null,
+                "phone": null,
+                "mobile": null,
+                "first_login_at": null,
+                "last_login_at": null,
+                "auth_token": null,
+                "email_verified_at": null,
+                "email_verification_code": null,
+                "currency": null,
+                "social_account_id": null,
+                "social_account_type": null,
+                "dob": null,
+                "group_ids": [
+                    "26"
+                ],
+                "is_test": null,
+                "profile_pic": null,
+                "uploads": []
+            },
+            {
+                "id": 5080,
+                "uuid": "479c2fd7-f876-48ad-bae8-eaa690503d82",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "Andreane Kuphal",
+                "email": "horacio79@reichel.com",
+                "api_token": null,
+                "api_token_generated_at": null,
+                "is_tenant_editable": 1,
+                "permissions": [],
+                "is_active": 1,
+                "created_by": null,
+                "updated_by": null,
+                "created_at": "2021-02-09 10:29:47",
+                "updated_at": "2021-02-09 10:29:47",
+                "deleted_at": null,
+                "deleted_by": null,
+                "name_initial": null,
+                "first_name": "Andreane",
+                "last_name": "Kuphal",
+                "full_name": null,
+                "gender": null,
+                "device_token": null,
+                "address1": null,
+                "address2": null,
+                "city": null,
+                "county": null,
+                "country_id": null,
+                "country_name": null,
+                "zip_code": null,
+                "phone": null,
+                "mobile": null,
+                "first_login_at": null,
+                "last_login_at": null,
+                "auth_token": null,
+                "email_verified_at": null,
+                "email_verification_code": null,
+                "currency": null,
+                "social_account_id": null,
+                "social_account_type": null,
+                "dob": null,
+                "group_ids": [
+                    "26"
+                ],
+                "is_test": null,
+                "profile_pic": null,
+                "uploads": []
+            },
+            {
+                "id": 5084,
+                "uuid": "eee212a5-6eb4-4bbd-8871-c73b76fe3722",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "Trycia Funk",
+                "email": "maurice.auer@gmail.com",
+                "api_token": null,
+                "api_token_generated_at": null,
+                "is_tenant_editable": 1,
+                "permissions": [],
+                "is_active": 1,
+                "created_by": null,
+                "updated_by": null,
+                "created_at": "2021-02-09 10:30:19",
+                "updated_at": "2021-02-09 10:30:19",
+                "deleted_at": null,
+                "deleted_by": null,
+                "name_initial": null,
+                "first_name": "Trycia",
+                "last_name": "Funk",
+                "full_name": null,
+                "gender": null,
+                "device_token": null,
+                "address1": null,
+                "address2": null,
+                "city": null,
+                "county": null,
+                "country_id": null,
+                "country_name": null,
+                "zip_code": null,
+                "phone": null,
+                "mobile": null,
+                "first_login_at": null,
+                "last_login_at": null,
+                "auth_token": null,
+                "email_verified_at": null,
+                "email_verification_code": null,
+                "currency": null,
+                "social_account_id": null,
+                "social_account_type": null,
+                "dob": null,
+                "group_ids": [
+                    "26"
+                ],
+                "is_test": null,
+                "profile_pic": null,
+                "uploads": []
+            },
+            {
+                "id": 5088,
+                "uuid": "662cb7b2-2ea3-48ab-bb4b-abe836a8989a",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "Conor Daniel",
+                "email": "zmuller@auer.org",
+                "api_token": null,
+                "api_token_generated_at": null,
+                "is_tenant_editable": 1,
+                "permissions": [],
+                "is_active": 1,
+                "created_by": null,
+                "updated_by": null,
+                "created_at": "2021-02-09 11:13:08",
+                "updated_at": "2021-02-09 11:13:08",
+                "deleted_at": null,
+                "deleted_by": null,
+                "name_initial": null,
+                "first_name": "Conor",
+                "last_name": "Daniel",
+                "full_name": null,
+                "gender": null,
+                "device_token": null,
+                "address1": null,
+                "address2": null,
+                "city": null,
+                "county": null,
+                "country_id": null,
+                "country_name": null,
+                "zip_code": null,
+                "phone": null,
+                "mobile": null,
+                "first_login_at": null,
+                "last_login_at": null,
+                "auth_token": null,
+                "email_verified_at": null,
+                "email_verification_code": null,
+                "currency": null,
+                "social_account_id": null,
+                "social_account_type": null,
+                "dob": null,
+                "group_ids": [
+                    "26"
+                ],
+                "is_test": null,
+                "profile_pic": null,
+                "uploads": []
+            },
+            {
+                "id": 5092,
+                "uuid": "04a688d6-eb86-4628-93d0-8ca06684e58a",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "Davon Swaniawski",
+                "email": "larkin.dexter@jaskolski.org",
+                "api_token": null,
+                "api_token_generated_at": null,
+                "is_tenant_editable": 1,
+                "permissions": [],
+                "is_active": 1,
+                "created_by": null,
+                "updated_by": null,
+                "created_at": "2021-02-09 11:34:31",
+                "updated_at": "2021-02-09 11:34:31",
+                "deleted_at": null,
+                "deleted_by": null,
+                "name_initial": null,
+                "first_name": "Davon",
+                "last_name": "Swaniawski",
+                "full_name": null,
+                "gender": null,
+                "device_token": null,
+                "address1": null,
+                "address2": null,
+                "city": null,
+                "county": null,
+                "country_id": null,
+                "country_name": null,
+                "zip_code": null,
+                "phone": null,
+                "mobile": null,
+                "first_login_at": null,
+                "last_login_at": null,
+                "auth_token": null,
+                "email_verified_at": null,
+                "email_verification_code": null,
+                "currency": null,
+                "social_account_id": null,
+                "social_account_type": null,
+                "dob": null,
+                "group_ids": [
+                    "26"
+                ],
+                "is_test": null,
+                "profile_pic": null,
+                "uploads": []
+            },
+            {
+                "id": 5096,
+                "uuid": "ccdb8dd0-fdfc-4747-a0c2-aabff81865d2",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "Ardith Murazik",
+                "email": "aimee11@yahoo.com",
+                "api_token": null,
+                "api_token_generated_at": null,
+                "is_tenant_editable": 1,
+                "permissions": [],
+                "is_active": 1,
+                "created_by": null,
+                "updated_by": null,
+                "created_at": "2021-02-09 13:59:02",
+                "updated_at": "2021-02-09 13:59:02",
+                "deleted_at": null,
+                "deleted_by": null,
+                "name_initial": null,
+                "first_name": "Ardith",
+                "last_name": "Murazik",
+                "full_name": null,
+                "gender": null,
+                "device_token": null,
+                "address1": null,
+                "address2": null,
+                "city": null,
+                "county": null,
+                "country_id": null,
+                "country_name": null,
+                "zip_code": null,
+                "phone": null,
+                "mobile": null,
+                "first_login_at": null,
+                "last_login_at": null,
+                "auth_token": null,
+                "email_verified_at": null,
+                "email_verification_code": null,
+                "currency": null,
+                "social_account_id": null,
+                "social_account_type": null,
+                "dob": null,
+                "group_ids": [
+                    "26"
+                ],
+                "is_test": null,
+                "profile_pic": null,
+                "uploads": []
+            },
+            {
+                "id": 5100,
+                "uuid": "db9bf107-5345-4c8f-b968-1585d0180689",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "Ulices McGlynn",
+                "email": "donnell.kemmer@ziemann.com",
+                "api_token": null,
+                "api_token_generated_at": null,
+                "is_tenant_editable": 1,
+                "permissions": [],
+                "is_active": 1,
+                "created_by": null,
+                "updated_by": null,
+                "created_at": "2021-02-12 06:45:58",
+                "updated_at": "2021-02-12 06:45:58",
+                "deleted_at": null,
+                "deleted_by": null,
+                "name_initial": null,
+                "first_name": "Ulices",
+                "last_name": "McGlynn",
+                "full_name": null,
+                "gender": null,
+                "device_token": null,
+                "address1": null,
+                "address2": null,
+                "city": null,
+                "county": null,
+                "country_id": null,
+                "country_name": null,
+                "zip_code": null,
+                "phone": null,
+                "mobile": null,
+                "first_login_at": null,
+                "last_login_at": null,
+                "auth_token": null,
+                "email_verified_at": null,
+                "email_verification_code": null,
+                "currency": null,
+                "social_account_id": null,
+                "social_account_type": null,
+                "dob": null,
+                "group_ids": [
+                    "26"
+                ],
+                "is_test": null,
+                "profile_pic": null,
+                "uploads": []
+            },
+            {
+                "id": 5104,
+                "uuid": "63b9cc00-6efa-41ef-99d7-e8d17930d5f3",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "Alayna Johns",
+                "email": "elbert45@adams.com",
+                "api_token": null,
+                "api_token_generated_at": null,
+                "is_tenant_editable": 1,
+                "permissions": [],
+                "is_active": 1,
+                "created_by": null,
+                "updated_by": null,
+                "created_at": "2021-02-12 07:13:12",
+                "updated_at": "2021-02-12 07:13:12",
+                "deleted_at": null,
+                "deleted_by": null,
+                "name_initial": null,
+                "first_name": "Alayna",
+                "last_name": "Johns",
+                "full_name": null,
+                "gender": null,
+                "device_token": null,
+                "address1": null,
+                "address2": null,
+                "city": null,
+                "county": null,
+                "country_id": null,
+                "country_name": null,
+                "zip_code": null,
+                "phone": null,
+                "mobile": null,
+                "first_login_at": null,
+                "last_login_at": null,
+                "auth_token": null,
+                "email_verified_at": null,
+                "email_verification_code": null,
+                "currency": null,
+                "social_account_id": null,
+                "social_account_type": null,
+                "dob": null,
+                "group_ids": [
+                    "26"
+                ],
+                "is_test": null,
+                "profile_pic": null,
+                "uploads": []
+            },
+            {
+                "id": 5108,
+                "uuid": "11bb2d30-4edc-4525-a5c7-4dd6177d991a",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "Noelia Spencer",
+                "email": "filiberto75@gmail.com",
+                "api_token": null,
+                "api_token_generated_at": null,
+                "is_tenant_editable": 1,
+                "permissions": [],
+                "is_active": 1,
+                "created_by": null,
+                "updated_by": null,
+                "created_at": "2021-02-12 09:38:07",
+                "updated_at": "2021-02-12 09:38:07",
+                "deleted_at": null,
+                "deleted_by": null,
+                "name_initial": null,
+                "first_name": "Noelia",
+                "last_name": "Spencer",
+                "full_name": null,
+                "gender": null,
+                "device_token": null,
+                "address1": null,
+                "address2": null,
+                "city": null,
+                "county": null,
+                "country_id": null,
+                "country_name": null,
+                "zip_code": null,
+                "phone": null,
+                "mobile": null,
+                "first_login_at": null,
+                "last_login_at": null,
+                "auth_token": null,
+                "email_verified_at": null,
+                "email_verification_code": null,
+                "currency": null,
+                "social_account_id": null,
+                "social_account_type": null,
+                "dob": null,
+                "group_ids": [
+                    "26"
+                ],
+                "is_test": null,
+                "profile_pic": null,
+                "uploads": []
+            },
+            {
+                "id": 5112,
+                "uuid": "68eb09fd-7164-4100-99e1-753a0a45e66a",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "Alexanne Lebsack",
+                "email": "cleta57@stehr.info",
+                "api_token": null,
+                "api_token_generated_at": null,
+                "is_tenant_editable": 1,
+                "permissions": [],
+                "is_active": 1,
+                "created_by": null,
+                "updated_by": null,
+                "created_at": "2021-02-13 11:13:21",
+                "updated_at": "2021-02-13 11:13:21",
+                "deleted_at": null,
+                "deleted_by": null,
+                "name_initial": null,
+                "first_name": "Alexanne",
+                "last_name": "Lebsack",
+                "full_name": null,
+                "gender": null,
+                "device_token": null,
+                "address1": null,
+                "address2": null,
+                "city": null,
+                "county": null,
+                "country_id": null,
+                "country_name": null,
+                "zip_code": null,
+                "phone": null,
+                "mobile": null,
+                "first_login_at": null,
+                "last_login_at": null,
+                "auth_token": null,
+                "email_verified_at": null,
+                "email_verification_code": null,
+                "currency": null,
+                "social_account_id": null,
+                "social_account_type": null,
+                "dob": null,
+                "group_ids": [
+                    "26"
+                ],
+                "is_test": null,
+                "profile_pic": null,
+                "uploads": []
+            },
+            {
+                "id": 5116,
+                "uuid": "062aae3d-d361-43b7-8363-acaee97495d9",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "Daniela Kuhic",
+                "email": "hyatt.kolby@hotmail.com",
+                "api_token": null,
+                "api_token_generated_at": null,
+                "is_tenant_editable": 1,
+                "permissions": [],
+                "is_active": 1,
+                "created_by": null,
+                "updated_by": null,
+                "created_at": "2021-02-13 11:14:59",
+                "updated_at": "2021-02-13 11:14:59",
+                "deleted_at": null,
+                "deleted_by": null,
+                "name_initial": null,
+                "first_name": "Daniela",
+                "last_name": "Kuhic",
+                "full_name": null,
+                "gender": null,
+                "device_token": null,
+                "address1": null,
+                "address2": null,
+                "city": null,
+                "county": null,
+                "country_id": null,
+                "country_name": null,
+                "zip_code": null,
+                "phone": null,
+                "mobile": null,
+                "first_login_at": null,
+                "last_login_at": null,
+                "auth_token": null,
+                "email_verified_at": null,
+                "email_verification_code": null,
+                "currency": null,
+                "social_account_id": null,
+                "social_account_type": null,
+                "dob": null,
+                "group_ids": [
+                    "26"
+                ],
+                "is_test": null,
+                "profile_pic": null,
+                "uploads": []
+            }
+        ]
+    },
+    "redirect": "http:\/\/localhost\/api\/1.0\/users\/list\/json"
 }
 ```
 
@@ -29080,12 +17417,10 @@ fetch(url, {
 ```
 
 
-> Example response (429):
+> Example response (200):
 
 ```json
-{
-    "message": "Too Many Attempts."
-}
+null
 ```
 
 ### HTTP Request
@@ -29129,11 +17464,28 @@ fetch(url, {
 ```
 
 
-> Example response (429):
+> Example response (200):
 
 ```json
 {
-    "message": "Too Many Attempts."
+    "code": 200,
+    "status": "success",
+    "message": "Request Processed",
+    "data": {
+        "current_page": 1,
+        "first_page_url": "http:\/\/localhost\/api\/1.0\/users\/1\/uploads?page=1",
+        "from": null,
+        "last_page": 1,
+        "last_page_url": "http:\/\/localhost\/api\/1.0\/users\/1\/uploads?page=1",
+        "next_page_url": null,
+        "path": "http:\/\/localhost\/api\/1.0\/users\/1\/uploads",
+        "per_page": 20,
+        "prev_page_url": null,
+        "to": null,
+        "total": 0,
+        "items": []
+    },
+    "redirect": "http:\/\/localhost\/api\/1.0\/users\/1\/uploads"
 }
 ```
 
@@ -29185,55 +17537,6 @@ fetch(url, {
 
 <!-- END_6143cb4e54228db669bb8c4a38f12292 -->
 
-<!-- START_45297f749eb2ac7bf8f7530ae09a64b0 -->
-## Get all the comments of an element
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/1.0/users/1/comments" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/users/1/comments"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (429):
-
-```json
-{
-    "message": "Too Many Attempts."
-}
-```
-
-### HTTP Request
-`GET api/1.0/users/{id}/comments`
-
-
-<!-- END_45297f749eb2ac7bf8f7530ae09a64b0 -->
-
 <!-- START_4dccb69b7dcbfaf1004416c926cbbd47 -->
 ## Index/List page to show grid
 
@@ -29269,11 +17572,1009 @@ fetch(url, {
 ```
 
 
-> Example response (429):
+> Example response (200):
 
 ```json
 {
-    "message": "Too Many Attempts."
+    "code": 200,
+    "status": "success",
+    "message": "Request Processed",
+    "data": {
+        "current_page": 1,
+        "first_page_url": "http:\/\/localhost\/api\/1.0\/users?page=1",
+        "from": 1,
+        "last_page": 2,
+        "last_page_url": "http:\/\/localhost\/api\/1.0\/users?page=2",
+        "next_page_url": "http:\/\/localhost\/api\/1.0\/users?page=2",
+        "path": "http:\/\/localhost\/api\/1.0\/users",
+        "per_page": 20,
+        "prev_page_url": null,
+        "to": 20,
+        "total": 31,
+        "items": [
+            {
+                "id": 1,
+                "uuid": "3ef9b174-6c7c-41fd-b68e-18d003fb9481",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "Super admin",
+                "email": "su@mainframe",
+                "api_token": null,
+                "api_token_generated_at": null,
+                "is_tenant_editable": 1,
+                "permissions": [],
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2018-09-10 15:30:06",
+                "updated_at": "2021-02-13 13:51:36",
+                "deleted_at": null,
+                "deleted_by": null,
+                "name_initial": null,
+                "first_name": "Prime",
+                "last_name": "Superuser",
+                "full_name": "Prime Superuser",
+                "gender": null,
+                "device_token": null,
+                "address1": null,
+                "address2": null,
+                "city": null,
+                "county": null,
+                "country_id": 187,
+                "country_name": "UK (United Kingdom)",
+                "zip_code": null,
+                "phone": null,
+                "mobile": null,
+                "first_login_at": "2020-02-08 10:55:44",
+                "last_login_at": "2021-02-13 13:39:29",
+                "auth_token": "UMZ9oxfJ7gL0OtbBUIe\/odaOr1jEFDq1",
+                "email_verified_at": "2019-01-22 19:27:07",
+                "email_verification_code": null,
+                "currency": "GBP",
+                "social_account_id": null,
+                "social_account_type": null,
+                "dob": null,
+                "group_ids": [
+                    "1"
+                ],
+                "is_test": 0,
+                "profile_pic": null,
+                "uploads": []
+            },
+            {
+                "id": 2,
+                "uuid": "856a81bf-ab1b-4289-9d65-9751009d00ad",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "API",
+                "email": "api@mainframe",
+                "api_token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
+                "api_token_generated_at": null,
+                "is_tenant_editable": 0,
+                "permissions": [],
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2018-12-24 05:48:25",
+                "updated_at": "2021-02-13 13:51:36",
+                "deleted_at": null,
+                "deleted_by": null,
+                "name_initial": null,
+                "first_name": "LB",
+                "last_name": "API",
+                "full_name": "LB API",
+                "gender": null,
+                "device_token": "eFGlVn8yFn8:APA91bHgq2zk-9JrBNNtVMn4iFMB6eicQOUVyFZGRft8jv-GwGJej9sFppTG5w9E_3IeOyR_3NN1i3cWFHaiVl_k1Zlt2jDMVoh7D90CsJG1qxVnuruH-Eidi1CgO9QVlpmFByK2azr3",
+                "address1": "62142 Haley Lake",
+                "address2": null,
+                "city": null,
+                "county": null,
+                "country_id": 187,
+                "country_name": "UK (United Kingdom)",
+                "zip_code": null,
+                "phone": null,
+                "mobile": null,
+                "first_login_at": "2019-01-31 08:31:54",
+                "last_login_at": "2019-04-09 15:17:25",
+                "auth_token": "Q29anuSIvoR9N8OmB2ueGGRI8tlHPZau",
+                "email_verified_at": "2019-01-22 19:27:07",
+                "email_verification_code": null,
+                "currency": "GBP",
+                "social_account_id": null,
+                "social_account_type": null,
+                "dob": null,
+                "group_ids": [
+                    "2"
+                ],
+                "is_test": 0,
+                "profile_pic": null,
+                "uploads": []
+            },
+            {
+                "id": 999,
+                "uuid": "0b11bb84-a6f9-4612-b823-6eb0feda3342",
+                "project_id": null,
+                "tenant_id": null,
+                "name": " ",
+                "email": "dote@mailinator.net",
+                "api_token": null,
+                "api_token_generated_at": null,
+                "is_tenant_editable": 1,
+                "permissions": [],
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2020-01-06 16:55:14",
+                "updated_at": "2020-06-30 15:50:15",
+                "deleted_at": null,
+                "deleted_by": null,
+                "name_initial": null,
+                "first_name": "Dote",
+                "last_name": "Test",
+                "full_name": "Dote Test",
+                "gender": null,
+                "device_token": null,
+                "address1": "018 Alva Mountain",
+                "address2": null,
+                "city": null,
+                "county": null,
+                "country_id": null,
+                "country_name": null,
+                "zip_code": null,
+                "phone": null,
+                "mobile": null,
+                "first_login_at": "2020-06-30 15:49:31",
+                "last_login_at": "2020-06-30 15:50:15",
+                "auth_token": "LoremIpsumSIvoR9N8OmB2ueLoremIpsu",
+                "email_verified_at": "2019-01-22 19:27:07",
+                "email_verification_code": null,
+                "currency": null,
+                "social_account_id": null,
+                "social_account_type": null,
+                "dob": null,
+                "group_ids": [
+                    "25"
+                ],
+                "is_test": 0,
+                "profile_pic": null,
+                "uploads": []
+            },
+            {
+                "id": 5055,
+                "uuid": "30e89e31-ec4b-4f79-a6e4-4e5b003c3aaf",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "Daisha Runolfsson",
+                "email": "hansen.quentin@rau.biz",
+                "api_token": null,
+                "api_token_generated_at": null,
+                "is_tenant_editable": 1,
+                "permissions": [],
+                "is_active": 1,
+                "created_by": null,
+                "updated_by": null,
+                "created_at": "2021-02-09 06:30:36",
+                "updated_at": "2021-02-09 06:30:36",
+                "deleted_at": null,
+                "deleted_by": null,
+                "name_initial": null,
+                "first_name": "Daisha",
+                "last_name": "Runolfsson",
+                "full_name": null,
+                "gender": null,
+                "device_token": null,
+                "address1": null,
+                "address2": null,
+                "city": null,
+                "county": null,
+                "country_id": null,
+                "country_name": null,
+                "zip_code": null,
+                "phone": null,
+                "mobile": null,
+                "first_login_at": null,
+                "last_login_at": null,
+                "auth_token": null,
+                "email_verified_at": null,
+                "email_verification_code": null,
+                "currency": null,
+                "social_account_id": null,
+                "social_account_type": null,
+                "dob": null,
+                "group_ids": [
+                    "26"
+                ],
+                "is_test": null,
+                "profile_pic": null,
+                "uploads": []
+            },
+            {
+                "id": 5058,
+                "uuid": "01234f77-a679-4263-8e92-950d83b91c82",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "Skye Abshire",
+                "email": "jarret.streich@volkman.com",
+                "api_token": null,
+                "api_token_generated_at": null,
+                "is_tenant_editable": 1,
+                "permissions": [],
+                "is_active": 1,
+                "created_by": null,
+                "updated_by": null,
+                "created_at": "2021-02-09 06:30:51",
+                "updated_at": "2021-02-09 06:30:51",
+                "deleted_at": null,
+                "deleted_by": null,
+                "name_initial": null,
+                "first_name": "Skye",
+                "last_name": "Abshire",
+                "full_name": null,
+                "gender": null,
+                "device_token": null,
+                "address1": null,
+                "address2": null,
+                "city": null,
+                "county": null,
+                "country_id": null,
+                "country_name": null,
+                "zip_code": null,
+                "phone": null,
+                "mobile": null,
+                "first_login_at": null,
+                "last_login_at": null,
+                "auth_token": null,
+                "email_verified_at": null,
+                "email_verification_code": null,
+                "currency": null,
+                "social_account_id": null,
+                "social_account_type": null,
+                "dob": null,
+                "group_ids": [
+                    "26"
+                ],
+                "is_test": null,
+                "profile_pic": null,
+                "uploads": []
+            },
+            {
+                "id": 5061,
+                "uuid": "bb9c5036-52db-49d7-adce-ccbf8d323241",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "Noemy Wehner",
+                "email": "koss.michel@yahoo.com",
+                "api_token": null,
+                "api_token_generated_at": null,
+                "is_tenant_editable": 1,
+                "permissions": [],
+                "is_active": 1,
+                "created_by": null,
+                "updated_by": null,
+                "created_at": "2021-02-09 06:31:08",
+                "updated_at": "2021-02-09 06:31:08",
+                "deleted_at": null,
+                "deleted_by": null,
+                "name_initial": null,
+                "first_name": "Noemy",
+                "last_name": "Wehner",
+                "full_name": null,
+                "gender": null,
+                "device_token": null,
+                "address1": null,
+                "address2": null,
+                "city": null,
+                "county": null,
+                "country_id": null,
+                "country_name": null,
+                "zip_code": null,
+                "phone": null,
+                "mobile": null,
+                "first_login_at": null,
+                "last_login_at": null,
+                "auth_token": null,
+                "email_verified_at": null,
+                "email_verification_code": null,
+                "currency": null,
+                "social_account_id": null,
+                "social_account_type": null,
+                "dob": null,
+                "group_ids": [
+                    "26"
+                ],
+                "is_test": null,
+                "profile_pic": null,
+                "uploads": []
+            },
+            {
+                "id": 5064,
+                "uuid": "22e6758d-1427-4f8b-a16d-0fc3d5c3beb7",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "Darius Reichert",
+                "email": "mozell23@blick.com",
+                "api_token": null,
+                "api_token_generated_at": null,
+                "is_tenant_editable": 1,
+                "permissions": [],
+                "is_active": 1,
+                "created_by": null,
+                "updated_by": null,
+                "created_at": "2021-02-09 06:31:54",
+                "updated_at": "2021-02-09 06:31:54",
+                "deleted_at": null,
+                "deleted_by": null,
+                "name_initial": null,
+                "first_name": "Darius",
+                "last_name": "Reichert",
+                "full_name": null,
+                "gender": null,
+                "device_token": null,
+                "address1": null,
+                "address2": null,
+                "city": null,
+                "county": null,
+                "country_id": null,
+                "country_name": null,
+                "zip_code": null,
+                "phone": null,
+                "mobile": null,
+                "first_login_at": null,
+                "last_login_at": null,
+                "auth_token": null,
+                "email_verified_at": null,
+                "email_verification_code": null,
+                "currency": null,
+                "social_account_id": null,
+                "social_account_type": null,
+                "dob": null,
+                "group_ids": [
+                    "26"
+                ],
+                "is_test": null,
+                "profile_pic": null,
+                "uploads": []
+            },
+            {
+                "id": 5068,
+                "uuid": "5e5e4726-b44a-4c5e-b854-1d77ae546b4f",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "Chandler Herzog",
+                "email": "hill.enoch@stokes.info",
+                "api_token": null,
+                "api_token_generated_at": null,
+                "is_tenant_editable": 1,
+                "permissions": [],
+                "is_active": 1,
+                "created_by": null,
+                "updated_by": null,
+                "created_at": "2021-02-09 06:32:22",
+                "updated_at": "2021-02-09 06:32:22",
+                "deleted_at": null,
+                "deleted_by": null,
+                "name_initial": null,
+                "first_name": "Chandler",
+                "last_name": "Herzog",
+                "full_name": null,
+                "gender": null,
+                "device_token": null,
+                "address1": null,
+                "address2": null,
+                "city": null,
+                "county": null,
+                "country_id": null,
+                "country_name": null,
+                "zip_code": null,
+                "phone": null,
+                "mobile": null,
+                "first_login_at": null,
+                "last_login_at": null,
+                "auth_token": null,
+                "email_verified_at": null,
+                "email_verification_code": null,
+                "currency": null,
+                "social_account_id": null,
+                "social_account_type": null,
+                "dob": null,
+                "group_ids": [
+                    "26"
+                ],
+                "is_test": null,
+                "profile_pic": null,
+                "uploads": []
+            },
+            {
+                "id": 5072,
+                "uuid": "cbe20307-1d19-494b-974f-c8eb0f9f0fce",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "Aaron Franecki",
+                "email": "shanna.konopelski@schmeler.org",
+                "api_token": null,
+                "api_token_generated_at": null,
+                "is_tenant_editable": 1,
+                "permissions": [],
+                "is_active": 1,
+                "created_by": null,
+                "updated_by": null,
+                "created_at": "2021-02-09 08:40:08",
+                "updated_at": "2021-02-09 08:40:08",
+                "deleted_at": null,
+                "deleted_by": null,
+                "name_initial": null,
+                "first_name": "Aaron",
+                "last_name": "Franecki",
+                "full_name": null,
+                "gender": null,
+                "device_token": null,
+                "address1": null,
+                "address2": null,
+                "city": null,
+                "county": null,
+                "country_id": null,
+                "country_name": null,
+                "zip_code": null,
+                "phone": null,
+                "mobile": null,
+                "first_login_at": null,
+                "last_login_at": null,
+                "auth_token": null,
+                "email_verified_at": null,
+                "email_verification_code": null,
+                "currency": null,
+                "social_account_id": null,
+                "social_account_type": null,
+                "dob": null,
+                "group_ids": [
+                    "26"
+                ],
+                "is_test": null,
+                "profile_pic": null,
+                "uploads": []
+            },
+            {
+                "id": 5076,
+                "uuid": "a757a7d5-9ae4-48a1-a5d0-ea7485561a9d",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "Americo Ondricka",
+                "email": "ewhite@gmail.com",
+                "api_token": null,
+                "api_token_generated_at": null,
+                "is_tenant_editable": 1,
+                "permissions": [],
+                "is_active": 1,
+                "created_by": null,
+                "updated_by": null,
+                "created_at": "2021-02-09 10:10:23",
+                "updated_at": "2021-02-09 10:10:23",
+                "deleted_at": null,
+                "deleted_by": null,
+                "name_initial": null,
+                "first_name": "Americo",
+                "last_name": "Ondricka",
+                "full_name": null,
+                "gender": null,
+                "device_token": null,
+                "address1": null,
+                "address2": null,
+                "city": null,
+                "county": null,
+                "country_id": null,
+                "country_name": null,
+                "zip_code": null,
+                "phone": null,
+                "mobile": null,
+                "first_login_at": null,
+                "last_login_at": null,
+                "auth_token": null,
+                "email_verified_at": null,
+                "email_verification_code": null,
+                "currency": null,
+                "social_account_id": null,
+                "social_account_type": null,
+                "dob": null,
+                "group_ids": [
+                    "26"
+                ],
+                "is_test": null,
+                "profile_pic": null,
+                "uploads": []
+            },
+            {
+                "id": 5080,
+                "uuid": "479c2fd7-f876-48ad-bae8-eaa690503d82",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "Andreane Kuphal",
+                "email": "horacio79@reichel.com",
+                "api_token": null,
+                "api_token_generated_at": null,
+                "is_tenant_editable": 1,
+                "permissions": [],
+                "is_active": 1,
+                "created_by": null,
+                "updated_by": null,
+                "created_at": "2021-02-09 10:29:47",
+                "updated_at": "2021-02-09 10:29:47",
+                "deleted_at": null,
+                "deleted_by": null,
+                "name_initial": null,
+                "first_name": "Andreane",
+                "last_name": "Kuphal",
+                "full_name": null,
+                "gender": null,
+                "device_token": null,
+                "address1": null,
+                "address2": null,
+                "city": null,
+                "county": null,
+                "country_id": null,
+                "country_name": null,
+                "zip_code": null,
+                "phone": null,
+                "mobile": null,
+                "first_login_at": null,
+                "last_login_at": null,
+                "auth_token": null,
+                "email_verified_at": null,
+                "email_verification_code": null,
+                "currency": null,
+                "social_account_id": null,
+                "social_account_type": null,
+                "dob": null,
+                "group_ids": [
+                    "26"
+                ],
+                "is_test": null,
+                "profile_pic": null,
+                "uploads": []
+            },
+            {
+                "id": 5084,
+                "uuid": "eee212a5-6eb4-4bbd-8871-c73b76fe3722",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "Trycia Funk",
+                "email": "maurice.auer@gmail.com",
+                "api_token": null,
+                "api_token_generated_at": null,
+                "is_tenant_editable": 1,
+                "permissions": [],
+                "is_active": 1,
+                "created_by": null,
+                "updated_by": null,
+                "created_at": "2021-02-09 10:30:19",
+                "updated_at": "2021-02-09 10:30:19",
+                "deleted_at": null,
+                "deleted_by": null,
+                "name_initial": null,
+                "first_name": "Trycia",
+                "last_name": "Funk",
+                "full_name": null,
+                "gender": null,
+                "device_token": null,
+                "address1": null,
+                "address2": null,
+                "city": null,
+                "county": null,
+                "country_id": null,
+                "country_name": null,
+                "zip_code": null,
+                "phone": null,
+                "mobile": null,
+                "first_login_at": null,
+                "last_login_at": null,
+                "auth_token": null,
+                "email_verified_at": null,
+                "email_verification_code": null,
+                "currency": null,
+                "social_account_id": null,
+                "social_account_type": null,
+                "dob": null,
+                "group_ids": [
+                    "26"
+                ],
+                "is_test": null,
+                "profile_pic": null,
+                "uploads": []
+            },
+            {
+                "id": 5088,
+                "uuid": "662cb7b2-2ea3-48ab-bb4b-abe836a8989a",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "Conor Daniel",
+                "email": "zmuller@auer.org",
+                "api_token": null,
+                "api_token_generated_at": null,
+                "is_tenant_editable": 1,
+                "permissions": [],
+                "is_active": 1,
+                "created_by": null,
+                "updated_by": null,
+                "created_at": "2021-02-09 11:13:08",
+                "updated_at": "2021-02-09 11:13:08",
+                "deleted_at": null,
+                "deleted_by": null,
+                "name_initial": null,
+                "first_name": "Conor",
+                "last_name": "Daniel",
+                "full_name": null,
+                "gender": null,
+                "device_token": null,
+                "address1": null,
+                "address2": null,
+                "city": null,
+                "county": null,
+                "country_id": null,
+                "country_name": null,
+                "zip_code": null,
+                "phone": null,
+                "mobile": null,
+                "first_login_at": null,
+                "last_login_at": null,
+                "auth_token": null,
+                "email_verified_at": null,
+                "email_verification_code": null,
+                "currency": null,
+                "social_account_id": null,
+                "social_account_type": null,
+                "dob": null,
+                "group_ids": [
+                    "26"
+                ],
+                "is_test": null,
+                "profile_pic": null,
+                "uploads": []
+            },
+            {
+                "id": 5092,
+                "uuid": "04a688d6-eb86-4628-93d0-8ca06684e58a",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "Davon Swaniawski",
+                "email": "larkin.dexter@jaskolski.org",
+                "api_token": null,
+                "api_token_generated_at": null,
+                "is_tenant_editable": 1,
+                "permissions": [],
+                "is_active": 1,
+                "created_by": null,
+                "updated_by": null,
+                "created_at": "2021-02-09 11:34:31",
+                "updated_at": "2021-02-09 11:34:31",
+                "deleted_at": null,
+                "deleted_by": null,
+                "name_initial": null,
+                "first_name": "Davon",
+                "last_name": "Swaniawski",
+                "full_name": null,
+                "gender": null,
+                "device_token": null,
+                "address1": null,
+                "address2": null,
+                "city": null,
+                "county": null,
+                "country_id": null,
+                "country_name": null,
+                "zip_code": null,
+                "phone": null,
+                "mobile": null,
+                "first_login_at": null,
+                "last_login_at": null,
+                "auth_token": null,
+                "email_verified_at": null,
+                "email_verification_code": null,
+                "currency": null,
+                "social_account_id": null,
+                "social_account_type": null,
+                "dob": null,
+                "group_ids": [
+                    "26"
+                ],
+                "is_test": null,
+                "profile_pic": null,
+                "uploads": []
+            },
+            {
+                "id": 5096,
+                "uuid": "ccdb8dd0-fdfc-4747-a0c2-aabff81865d2",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "Ardith Murazik",
+                "email": "aimee11@yahoo.com",
+                "api_token": null,
+                "api_token_generated_at": null,
+                "is_tenant_editable": 1,
+                "permissions": [],
+                "is_active": 1,
+                "created_by": null,
+                "updated_by": null,
+                "created_at": "2021-02-09 13:59:02",
+                "updated_at": "2021-02-09 13:59:02",
+                "deleted_at": null,
+                "deleted_by": null,
+                "name_initial": null,
+                "first_name": "Ardith",
+                "last_name": "Murazik",
+                "full_name": null,
+                "gender": null,
+                "device_token": null,
+                "address1": null,
+                "address2": null,
+                "city": null,
+                "county": null,
+                "country_id": null,
+                "country_name": null,
+                "zip_code": null,
+                "phone": null,
+                "mobile": null,
+                "first_login_at": null,
+                "last_login_at": null,
+                "auth_token": null,
+                "email_verified_at": null,
+                "email_verification_code": null,
+                "currency": null,
+                "social_account_id": null,
+                "social_account_type": null,
+                "dob": null,
+                "group_ids": [
+                    "26"
+                ],
+                "is_test": null,
+                "profile_pic": null,
+                "uploads": []
+            },
+            {
+                "id": 5100,
+                "uuid": "db9bf107-5345-4c8f-b968-1585d0180689",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "Ulices McGlynn",
+                "email": "donnell.kemmer@ziemann.com",
+                "api_token": null,
+                "api_token_generated_at": null,
+                "is_tenant_editable": 1,
+                "permissions": [],
+                "is_active": 1,
+                "created_by": null,
+                "updated_by": null,
+                "created_at": "2021-02-12 06:45:58",
+                "updated_at": "2021-02-12 06:45:58",
+                "deleted_at": null,
+                "deleted_by": null,
+                "name_initial": null,
+                "first_name": "Ulices",
+                "last_name": "McGlynn",
+                "full_name": null,
+                "gender": null,
+                "device_token": null,
+                "address1": null,
+                "address2": null,
+                "city": null,
+                "county": null,
+                "country_id": null,
+                "country_name": null,
+                "zip_code": null,
+                "phone": null,
+                "mobile": null,
+                "first_login_at": null,
+                "last_login_at": null,
+                "auth_token": null,
+                "email_verified_at": null,
+                "email_verification_code": null,
+                "currency": null,
+                "social_account_id": null,
+                "social_account_type": null,
+                "dob": null,
+                "group_ids": [
+                    "26"
+                ],
+                "is_test": null,
+                "profile_pic": null,
+                "uploads": []
+            },
+            {
+                "id": 5104,
+                "uuid": "63b9cc00-6efa-41ef-99d7-e8d17930d5f3",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "Alayna Johns",
+                "email": "elbert45@adams.com",
+                "api_token": null,
+                "api_token_generated_at": null,
+                "is_tenant_editable": 1,
+                "permissions": [],
+                "is_active": 1,
+                "created_by": null,
+                "updated_by": null,
+                "created_at": "2021-02-12 07:13:12",
+                "updated_at": "2021-02-12 07:13:12",
+                "deleted_at": null,
+                "deleted_by": null,
+                "name_initial": null,
+                "first_name": "Alayna",
+                "last_name": "Johns",
+                "full_name": null,
+                "gender": null,
+                "device_token": null,
+                "address1": null,
+                "address2": null,
+                "city": null,
+                "county": null,
+                "country_id": null,
+                "country_name": null,
+                "zip_code": null,
+                "phone": null,
+                "mobile": null,
+                "first_login_at": null,
+                "last_login_at": null,
+                "auth_token": null,
+                "email_verified_at": null,
+                "email_verification_code": null,
+                "currency": null,
+                "social_account_id": null,
+                "social_account_type": null,
+                "dob": null,
+                "group_ids": [
+                    "26"
+                ],
+                "is_test": null,
+                "profile_pic": null,
+                "uploads": []
+            },
+            {
+                "id": 5108,
+                "uuid": "11bb2d30-4edc-4525-a5c7-4dd6177d991a",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "Noelia Spencer",
+                "email": "filiberto75@gmail.com",
+                "api_token": null,
+                "api_token_generated_at": null,
+                "is_tenant_editable": 1,
+                "permissions": [],
+                "is_active": 1,
+                "created_by": null,
+                "updated_by": null,
+                "created_at": "2021-02-12 09:38:07",
+                "updated_at": "2021-02-12 09:38:07",
+                "deleted_at": null,
+                "deleted_by": null,
+                "name_initial": null,
+                "first_name": "Noelia",
+                "last_name": "Spencer",
+                "full_name": null,
+                "gender": null,
+                "device_token": null,
+                "address1": null,
+                "address2": null,
+                "city": null,
+                "county": null,
+                "country_id": null,
+                "country_name": null,
+                "zip_code": null,
+                "phone": null,
+                "mobile": null,
+                "first_login_at": null,
+                "last_login_at": null,
+                "auth_token": null,
+                "email_verified_at": null,
+                "email_verification_code": null,
+                "currency": null,
+                "social_account_id": null,
+                "social_account_type": null,
+                "dob": null,
+                "group_ids": [
+                    "26"
+                ],
+                "is_test": null,
+                "profile_pic": null,
+                "uploads": []
+            },
+            {
+                "id": 5112,
+                "uuid": "68eb09fd-7164-4100-99e1-753a0a45e66a",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "Alexanne Lebsack",
+                "email": "cleta57@stehr.info",
+                "api_token": null,
+                "api_token_generated_at": null,
+                "is_tenant_editable": 1,
+                "permissions": [],
+                "is_active": 1,
+                "created_by": null,
+                "updated_by": null,
+                "created_at": "2021-02-13 11:13:21",
+                "updated_at": "2021-02-13 11:13:21",
+                "deleted_at": null,
+                "deleted_by": null,
+                "name_initial": null,
+                "first_name": "Alexanne",
+                "last_name": "Lebsack",
+                "full_name": null,
+                "gender": null,
+                "device_token": null,
+                "address1": null,
+                "address2": null,
+                "city": null,
+                "county": null,
+                "country_id": null,
+                "country_name": null,
+                "zip_code": null,
+                "phone": null,
+                "mobile": null,
+                "first_login_at": null,
+                "last_login_at": null,
+                "auth_token": null,
+                "email_verified_at": null,
+                "email_verification_code": null,
+                "currency": null,
+                "social_account_id": null,
+                "social_account_type": null,
+                "dob": null,
+                "group_ids": [
+                    "26"
+                ],
+                "is_test": null,
+                "profile_pic": null,
+                "uploads": []
+            },
+            {
+                "id": 5116,
+                "uuid": "062aae3d-d361-43b7-8363-acaee97495d9",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "Daniela Kuhic",
+                "email": "hyatt.kolby@hotmail.com",
+                "api_token": null,
+                "api_token_generated_at": null,
+                "is_tenant_editable": 1,
+                "permissions": [],
+                "is_active": 1,
+                "created_by": null,
+                "updated_by": null,
+                "created_at": "2021-02-13 11:14:59",
+                "updated_at": "2021-02-13 11:14:59",
+                "deleted_at": null,
+                "deleted_by": null,
+                "name_initial": null,
+                "first_name": "Daniela",
+                "last_name": "Kuhic",
+                "full_name": null,
+                "gender": null,
+                "device_token": null,
+                "address1": null,
+                "address2": null,
+                "city": null,
+                "county": null,
+                "country_id": null,
+                "country_name": null,
+                "zip_code": null,
+                "phone": null,
+                "mobile": null,
+                "first_login_at": null,
+                "last_login_at": null,
+                "auth_token": null,
+                "email_verified_at": null,
+                "email_verification_code": null,
+                "currency": null,
+                "social_account_id": null,
+                "social_account_type": null,
+                "dob": null,
+                "group_ids": [
+                    "26"
+                ],
+                "is_test": null,
+                "profile_pic": null,
+                "uploads": []
+            }
+        ]
+    },
+    "redirect": "http:\/\/localhost\/api\/1.0\/users"
 }
 ```
 
@@ -29360,11 +18661,11 @@ fetch(url, {
 ```
 
 
-> Example response (429):
+> Example response (500):
 
 ```json
 {
-    "message": "Too Many Attempts."
+    "message": "Server Error"
 }
 ```
 
@@ -29500,11 +18801,124 @@ fetch(url, {
 ```
 
 
-> Example response (429):
+> Example response (200):
 
 ```json
 {
-    "message": "Too Many Attempts."
+    "code": 200,
+    "status": "success",
+    "message": "Request Processed",
+    "data": {
+        "current_page": 1,
+        "first_page_url": "http:\/\/localhost\/api\/1.0\/groups\/list\/json?page=1",
+        "from": 1,
+        "last_page": 1,
+        "last_page_url": "http:\/\/localhost\/api\/1.0\/groups\/list\/json?page=1",
+        "next_page_url": null,
+        "path": "http:\/\/localhost\/api\/1.0\/groups\/list\/json",
+        "per_page": 20,
+        "prev_page_url": null,
+        "to": 5,
+        "total": 5,
+        "items": [
+            {
+                "id": 1,
+                "uuid": "d48c591a-e6b2-4f7b-9458-0693362e55a6",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "superuser",
+                "title": "Superuser",
+                "permissions": {
+                    "superuser": 1
+                },
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2018-12-10 06:50:18",
+                "updated_at": "2019-11-13 15:51:18",
+                "deleted_at": null,
+                "deleted_by": null
+            },
+            {
+                "id": 2,
+                "uuid": "9c085751-ea3a-44e4-a858-e008894dc1f3",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "api",
+                "title": "API",
+                "permissions": {
+                    "apis": 1,
+                    "superuser": 1,
+                    "make-api-call": 1
+                },
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2018-12-10 16:10:53",
+                "updated_at": "2020-02-25 11:48:05",
+                "deleted_at": null,
+                "deleted_by": null
+            },
+            {
+                "id": 3,
+                "uuid": "2e5c36e4-7ec2-4c77-8167-1e99237c1336",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "tenant-admin",
+                "title": "Tenant Admin",
+                "permissions": [],
+                "is_active": 1,
+                "created_by": 5,
+                "updated_by": 5,
+                "created_at": "1970-01-01 00:00:05",
+                "updated_at": "2019-12-19 14:21:45",
+                "deleted_at": null,
+                "deleted_by": null
+            },
+            {
+                "id": 4,
+                "uuid": "bacee691-a0f7-4ba2-93b6-462b4af9cfb0",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "project-admin",
+                "title": "Project Admin",
+                "permissions": [],
+                "is_active": 1,
+                "created_by": 5,
+                "updated_by": 5,
+                "created_at": "2019-12-28 14:16:31",
+                "updated_at": "2019-12-28 14:16:38",
+                "deleted_at": null,
+                "deleted_by": null
+            },
+            {
+                "id": 26,
+                "uuid": "03682753-1654-46f1-ad9d-7a7f78794a3d",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "user",
+                "title": "User",
+                "permissions": {
+                    "uploads": 1,
+                    "uploads-view-any": 1,
+                    "uploads-view": 1,
+                    "uploads-create": 1,
+                    "uploads-update": 1,
+                    "uploads-delete": 1,
+                    "uploads-view-change-log": 1,
+                    "uploads-view-report": 1
+                },
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2020-01-18 11:42:51",
+                "updated_at": "2021-01-29 07:35:17",
+                "deleted_at": null,
+                "deleted_by": null
+            }
+        ]
+    },
+    "redirect": "http:\/\/localhost\/api\/1.0\/groups\/list\/json"
 }
 ```
 
@@ -29549,12 +18963,10 @@ fetch(url, {
 ```
 
 
-> Example response (429):
+> Example response (200):
 
 ```json
-{
-    "message": "Too Many Attempts."
-}
+null
 ```
 
 ### HTTP Request
@@ -29598,11 +19010,28 @@ fetch(url, {
 ```
 
 
-> Example response (429):
+> Example response (200):
 
 ```json
 {
-    "message": "Too Many Attempts."
+    "code": 200,
+    "status": "success",
+    "message": "Request Processed",
+    "data": {
+        "current_page": 1,
+        "first_page_url": "http:\/\/localhost\/api\/1.0\/groups\/1\/uploads?page=1",
+        "from": null,
+        "last_page": 1,
+        "last_page_url": "http:\/\/localhost\/api\/1.0\/groups\/1\/uploads?page=1",
+        "next_page_url": null,
+        "path": "http:\/\/localhost\/api\/1.0\/groups\/1\/uploads",
+        "per_page": 20,
+        "prev_page_url": null,
+        "to": null,
+        "total": 0,
+        "items": []
+    },
+    "redirect": "http:\/\/localhost\/api\/1.0\/groups\/1\/uploads"
 }
 ```
 
@@ -29654,55 +19083,6 @@ fetch(url, {
 
 <!-- END_a551f3de836e9475af2de958f17eedfa -->
 
-<!-- START_19b04330f01c88ef25e11b53d788057c -->
-## Get all the comments of an element
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/1.0/groups/1/comments" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/groups/1/comments"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (429):
-
-```json
-{
-    "message": "Too Many Attempts."
-}
-```
-
-### HTTP Request
-`GET api/1.0/groups/{id}/comments`
-
-
-<!-- END_19b04330f01c88ef25e11b53d788057c -->
-
 <!-- START_56f82dc0f79f0bac4e81fbec8015aa70 -->
 ## Index/List page to show grid
 
@@ -29738,11 +19118,124 @@ fetch(url, {
 ```
 
 
-> Example response (429):
+> Example response (200):
 
 ```json
 {
-    "message": "Too Many Attempts."
+    "code": 200,
+    "status": "success",
+    "message": "Request Processed",
+    "data": {
+        "current_page": 1,
+        "first_page_url": "http:\/\/localhost\/api\/1.0\/groups?page=1",
+        "from": 1,
+        "last_page": 1,
+        "last_page_url": "http:\/\/localhost\/api\/1.0\/groups?page=1",
+        "next_page_url": null,
+        "path": "http:\/\/localhost\/api\/1.0\/groups",
+        "per_page": 20,
+        "prev_page_url": null,
+        "to": 5,
+        "total": 5,
+        "items": [
+            {
+                "id": 1,
+                "uuid": "d48c591a-e6b2-4f7b-9458-0693362e55a6",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "superuser",
+                "title": "Superuser",
+                "permissions": {
+                    "superuser": 1
+                },
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2018-12-10 06:50:18",
+                "updated_at": "2019-11-13 15:51:18",
+                "deleted_at": null,
+                "deleted_by": null
+            },
+            {
+                "id": 2,
+                "uuid": "9c085751-ea3a-44e4-a858-e008894dc1f3",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "api",
+                "title": "API",
+                "permissions": {
+                    "apis": 1,
+                    "superuser": 1,
+                    "make-api-call": 1
+                },
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2018-12-10 16:10:53",
+                "updated_at": "2020-02-25 11:48:05",
+                "deleted_at": null,
+                "deleted_by": null
+            },
+            {
+                "id": 3,
+                "uuid": "2e5c36e4-7ec2-4c77-8167-1e99237c1336",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "tenant-admin",
+                "title": "Tenant Admin",
+                "permissions": [],
+                "is_active": 1,
+                "created_by": 5,
+                "updated_by": 5,
+                "created_at": "1970-01-01 00:00:05",
+                "updated_at": "2019-12-19 14:21:45",
+                "deleted_at": null,
+                "deleted_by": null
+            },
+            {
+                "id": 4,
+                "uuid": "bacee691-a0f7-4ba2-93b6-462b4af9cfb0",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "project-admin",
+                "title": "Project Admin",
+                "permissions": [],
+                "is_active": 1,
+                "created_by": 5,
+                "updated_by": 5,
+                "created_at": "2019-12-28 14:16:31",
+                "updated_at": "2019-12-28 14:16:38",
+                "deleted_at": null,
+                "deleted_by": null
+            },
+            {
+                "id": 26,
+                "uuid": "03682753-1654-46f1-ad9d-7a7f78794a3d",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "user",
+                "title": "User",
+                "permissions": {
+                    "uploads": 1,
+                    "uploads-view-any": 1,
+                    "uploads-view": 1,
+                    "uploads-create": 1,
+                    "uploads-update": 1,
+                    "uploads-delete": 1,
+                    "uploads-view-change-log": 1,
+                    "uploads-view-report": 1
+                },
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2020-01-18 11:42:51",
+                "updated_at": "2021-01-29 07:35:17",
+                "deleted_at": null,
+                "deleted_by": null
+            }
+        ]
+    },
+    "redirect": "http:\/\/localhost\/api\/1.0\/groups"
 }
 ```
 
@@ -29829,11 +19322,11 @@ fetch(url, {
 ```
 
 
-> Example response (429):
+> Example response (500):
 
 ```json
 {
-    "message": "Too Many Attempts."
+    "message": "Server Error"
 }
 ```
 
@@ -29969,11 +19462,569 @@ fetch(url, {
 ```
 
 
-> Example response (429):
+> Example response (200):
 
 ```json
 {
-    "message": "Too Many Attempts."
+    "code": 200,
+    "status": "success",
+    "message": "Request Processed",
+    "data": {
+        "current_page": 1,
+        "first_page_url": "http:\/\/localhost\/api\/1.0\/uploads\/list\/json?page=1",
+        "from": 1,
+        "last_page": 2,
+        "last_page_url": "http:\/\/localhost\/api\/1.0\/uploads\/list\/json?page=2",
+        "next_page_url": "http:\/\/localhost\/api\/1.0\/uploads\/list\/json?page=2",
+        "path": "http:\/\/localhost\/api\/1.0\/uploads\/list\/json",
+        "per_page": 20,
+        "prev_page_url": null,
+        "to": 20,
+        "total": 38,
+        "items": [
+            {
+                "id": 1,
+                "uuid": "821b341e-1eb7-412c-a9ae-0dcfda244275",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "2019-10-31 15_41_04-Start.jpg",
+                "type": null,
+                "path": "\/files\/7km7BL7t_2019-10-31 15_41_04-Start.jpg",
+                "order": null,
+                "ext": "jpg",
+                "bytes": null,
+                "description": null,
+                "uploadable_type": null,
+                "uploadable_id": null,
+                "module_id": 21,
+                "element_id": null,
+                "element_uuid": null,
+                "is_active": 1,
+                "created_by": 5,
+                "updated_by": 5,
+                "created_at": "2019-10-31 13:03:35",
+                "updated_at": "2019-10-31 13:03:35",
+                "deleted_at": null,
+                "deleted_by": null,
+                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/7km7BL7t_2019-10-31 15_41_04-Start.jpg",
+                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/7km7BL7t_2019-10-31 15_41_04-Start.jpg"
+            },
+            {
+                "id": 2,
+                "uuid": "90020e48-a92d-42b5-947d-b1da2ba60204",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "2019-10-31 15_41_04-Start.jpg",
+                "type": null,
+                "path": "\/files\/9ZpEl7dT_2019-10-31 15_41_04-Start.jpg",
+                "order": null,
+                "ext": "jpg",
+                "bytes": null,
+                "description": null,
+                "uploadable_type": null,
+                "uploadable_id": null,
+                "module_id": 21,
+                "element_id": 39,
+                "element_uuid": "931f290b-8cd3-4ca1-a0f1-087bb1355b8a",
+                "is_active": 1,
+                "created_by": 5,
+                "updated_by": 5,
+                "created_at": "2019-10-31 13:10:17",
+                "updated_at": "2019-11-20 11:03:13",
+                "deleted_at": null,
+                "deleted_by": null,
+                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/9ZpEl7dT_2019-10-31 15_41_04-Start.jpg",
+                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/9ZpEl7dT_2019-10-31 15_41_04-Start.jpg"
+            },
+            {
+                "id": 3,
+                "uuid": "c0c7f836-b76c-4ef1-9481-c82529f2bd1a",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "2019-10-31 15_41_04-Start.jpg",
+                "type": null,
+                "path": "\/files\/vYaQdT0Z_2019-10-31 15_41_04-Start.jpg",
+                "order": null,
+                "ext": "jpg",
+                "bytes": null,
+                "description": null,
+                "uploadable_type": null,
+                "uploadable_id": null,
+                "module_id": 21,
+                "element_id": 35,
+                "element_uuid": "e85d9a3d-b77e-46db-9422-078eeac8923a",
+                "is_active": 1,
+                "created_by": 5,
+                "updated_by": 5,
+                "created_at": "2019-10-31 15:10:02",
+                "updated_at": "2019-11-22 09:28:42",
+                "deleted_at": null,
+                "deleted_by": null,
+                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/vYaQdT0Z_2019-10-31 15_41_04-Start.jpg",
+                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/vYaQdT0Z_2019-10-31 15_41_04-Start.jpg"
+            },
+            {
+                "id": 5,
+                "uuid": "5809f712-1527-4620-9ef8-bcd904d3b21b",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "2019-11-27 10_10_58-Cortana.jpg",
+                "type": null,
+                "path": "\/files\/UohSKFJT_2019-11-27 10_10_58-Cortana.jpg",
+                "order": null,
+                "ext": "jpg",
+                "bytes": null,
+                "description": null,
+                "uploadable_type": null,
+                "uploadable_id": null,
+                "module_id": 21,
+                "element_id": 42,
+                "element_uuid": "d879c7df-d4ce-48c7-8abc-dc82af05a37d",
+                "is_active": 1,
+                "created_by": 5,
+                "updated_by": 5,
+                "created_at": "2019-12-02 16:58:02",
+                "updated_at": "2019-12-19 07:54:40",
+                "deleted_at": null,
+                "deleted_by": null,
+                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/UohSKFJT_2019-11-27 10_10_58-Cortana.jpg",
+                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/UohSKFJT_2019-11-27 10_10_58-Cortana.jpg"
+            },
+            {
+                "id": 7,
+                "uuid": "e5d35b1f-4625-4214-8dda-9f1ad4608383",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "raihan-round.png",
+                "type": null,
+                "path": "\/files\/hsQtWhy1_raihan-round.png",
+                "order": null,
+                "ext": "png",
+                "bytes": null,
+                "description": null,
+                "uploadable_type": null,
+                "uploadable_id": null,
+                "module_id": 4,
+                "element_id": null,
+                "element_uuid": null,
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2020-01-05 17:40:40",
+                "updated_at": "2020-01-05 17:40:40",
+                "deleted_at": null,
+                "deleted_by": null,
+                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/hsQtWhy1_raihan-round.png",
+                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/hsQtWhy1_raihan-round.png"
+            },
+            {
+                "id": 8,
+                "uuid": "52047e4d-262f-435d-8959-9a7f43157293",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "raihan-round.png",
+                "type": null,
+                "path": "\/files\/ocJxKCvK_raihan-round.png",
+                "order": null,
+                "ext": "png",
+                "bytes": null,
+                "description": null,
+                "uploadable_type": null,
+                "uploadable_id": null,
+                "module_id": 4,
+                "element_id": null,
+                "element_uuid": "338b5180-c35a-494e-b684-02288035361f",
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2020-01-05 17:41:57",
+                "updated_at": "2020-01-05 17:41:57",
+                "deleted_at": null,
+                "deleted_by": null,
+                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/ocJxKCvK_raihan-round.png",
+                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/ocJxKCvK_raihan-round.png"
+            },
+            {
+                "id": 9,
+                "uuid": "ced54918-9691-4212-8a8c-5cbfca4c127a",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "raihan-round.png",
+                "type": null,
+                "path": "\/files\/RdniZdHy_raihan-round.png",
+                "order": null,
+                "ext": "png",
+                "bytes": null,
+                "description": null,
+                "uploadable_type": null,
+                "uploadable_id": null,
+                "module_id": 21,
+                "element_id": 43,
+                "element_uuid": "a285cd17-969a-4dac-9898-d94168b13057",
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2020-01-05 18:51:19",
+                "updated_at": "2020-01-05 18:51:19",
+                "deleted_at": null,
+                "deleted_by": null,
+                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/RdniZdHy_raihan-round.png",
+                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/RdniZdHy_raihan-round.png"
+            },
+            {
+                "id": 10,
+                "uuid": "4f4d5297-170c-4313-b15c-cf4bbace9056",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "raihan-round.png",
+                "type": null,
+                "path": "\/files\/GShmXTCO_raihan-round.png",
+                "order": null,
+                "ext": "png",
+                "bytes": null,
+                "description": null,
+                "uploadable_type": "App\\Mainframe\\Modules\\Settings\\Setting",
+                "uploadable_id": 0,
+                "module_id": 21,
+                "element_id": 43,
+                "element_uuid": "a285cd17-969a-4dac-9898-d94168b13057",
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2020-01-05 18:52:15",
+                "updated_at": "2020-01-05 18:52:15",
+                "deleted_at": null,
+                "deleted_by": null,
+                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/GShmXTCO_raihan-round.png",
+                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/GShmXTCO_raihan-round.png"
+            },
+            {
+                "id": 11,
+                "uuid": "ff387f29-c792-4b8e-a985-85c665f6be8e",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "raihan-round.png",
+                "type": null,
+                "path": "\/files\/sSCXBzSS_raihan-round.png",
+                "order": null,
+                "ext": "png",
+                "bytes": null,
+                "description": null,
+                "uploadable_type": "App\\Mainframe\\Modules\\Settings\\Setting",
+                "uploadable_id": 45,
+                "module_id": 21,
+                "element_id": 45,
+                "element_uuid": "29900234-2353-4098-9390-4a7ef688f639",
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2020-01-05 18:55:51",
+                "updated_at": "2020-01-06 04:44:42",
+                "deleted_at": null,
+                "deleted_by": null,
+                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/sSCXBzSS_raihan-round.png",
+                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/sSCXBzSS_raihan-round.png"
+            },
+            {
+                "id": 12,
+                "uuid": "919d6d5a-fec4-4fde-9fb2-872a84752b84",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "raihan-round.png",
+                "type": null,
+                "path": "\/files\/ITeOd51R_raihan-round.png",
+                "order": null,
+                "ext": "png",
+                "bytes": null,
+                "description": null,
+                "uploadable_type": "App\\Mainframe\\Modules\\Settings\\Setting",
+                "uploadable_id": 45,
+                "module_id": 21,
+                "element_id": 45,
+                "element_uuid": "29900234-2353-4098-9390-4a7ef688f639",
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2020-01-06 04:39:17",
+                "updated_at": "2020-01-06 04:44:42",
+                "deleted_at": null,
+                "deleted_by": null,
+                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/ITeOd51R_raihan-round.png",
+                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/ITeOd51R_raihan-round.png"
+            },
+            {
+                "id": 13,
+                "uuid": "71f5f437-2b83-408f-90ba-34afd4851e76",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "retro-wallpaper-49.jpg",
+                "type": null,
+                "path": "\/files\/WLcA82gK_retro-wallpaper-49.jpg",
+                "order": null,
+                "ext": "jpg",
+                "bytes": null,
+                "description": null,
+                "uploadable_type": "App\\Mainframe\\Modules\\Settings\\Setting",
+                "uploadable_id": 45,
+                "module_id": 21,
+                "element_id": 45,
+                "element_uuid": "29900234-2353-4098-9390-4a7ef688f639",
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2020-01-06 04:39:21",
+                "updated_at": "2020-01-06 04:44:42",
+                "deleted_at": null,
+                "deleted_by": null,
+                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/WLcA82gK_retro-wallpaper-49.jpg",
+                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/WLcA82gK_retro-wallpaper-49.jpg"
+            },
+            {
+                "id": 14,
+                "uuid": "a960dbeb-6901-4810-bf61-d7ac9d8c08c9",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "temp.txt",
+                "type": null,
+                "path": "\/files\/MLJ54xuL_temp.txt",
+                "order": null,
+                "ext": "txt",
+                "bytes": null,
+                "description": null,
+                "uploadable_type": "App\\Mainframe\\Modules\\Settings\\Setting",
+                "uploadable_id": 45,
+                "module_id": 21,
+                "element_id": 45,
+                "element_uuid": "29900234-2353-4098-9390-4a7ef688f639",
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2020-01-06 04:39:30",
+                "updated_at": "2020-01-06 04:44:42",
+                "deleted_at": null,
+                "deleted_by": null,
+                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/MLJ54xuL_temp.txt",
+                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/MLJ54xuL_temp.txt"
+            },
+            {
+                "id": 15,
+                "uuid": "247be1a0-0b3d-4280-8ee0-b83b4bcf99ae",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "2020-01-28 22_41_26-Windows Default Lock Screen.jpg",
+                "type": null,
+                "path": "\/files\/I04HKZaT_2020-01-28 22_41_26-Windows Default Lock Screen.jpg",
+                "order": null,
+                "ext": "jpg",
+                "bytes": null,
+                "description": null,
+                "uploadable_type": "App\\Mainframe\\Modules\\Settings\\Setting",
+                "uploadable_id": 3,
+                "module_id": 21,
+                "element_id": 3,
+                "element_uuid": "e446d927-902b-4633-83d8-5f9fa0ef43cb",
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2020-01-29 03:24:49",
+                "updated_at": "2020-01-29 03:24:49",
+                "deleted_at": null,
+                "deleted_by": null,
+                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/I04HKZaT_2020-01-28 22_41_26-Windows Default Lock Screen.jpg",
+                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/I04HKZaT_2020-01-28 22_41_26-Windows Default Lock Screen.jpg"
+            },
+            {
+                "id": 16,
+                "uuid": "f1ec6684-bdbf-47e5-9780-ab4eb640ca8e",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "2020-01-28 22_41_26-Windows Default Lock Screen.jpg",
+                "type": null,
+                "path": "\/\/files\/\/\/Vpk8vBIx_2020-01-28 22_41_26-Windows Default Lock Screen.jpg",
+                "order": null,
+                "ext": "jpg",
+                "bytes": null,
+                "description": null,
+                "uploadable_type": "App\\Mainframe\\Modules\\Settings\\Setting",
+                "uploadable_id": 3,
+                "module_id": 21,
+                "element_id": 3,
+                "element_uuid": "e446d927-902b-4633-83d8-5f9fa0ef43cb",
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2020-01-29 03:27:48",
+                "updated_at": "2020-01-29 03:27:48",
+                "deleted_at": null,
+                "deleted_by": null,
+                "url": "\/\/files\/\/\/Vpk8vBIx_2020-01-28 22_41_26-Windows Default Lock Screen.jpg",
+                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/\/files\/\/\/Vpk8vBIx_2020-01-28 22_41_26-Windows Default Lock Screen.jpg"
+            },
+            {
+                "id": 17,
+                "uuid": "46208386-92dc-40ae-b24a-20d3caabf7ce",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "2020-01-28 22_41_52-Windows Default Lock Screen.jpg",
+                "type": null,
+                "path": "\/\/files\/\/\/\/GJ6XPKBh_2020-01-28 22_41_52-Windows Default Lock Screen.jpg",
+                "order": null,
+                "ext": "jpg",
+                "bytes": null,
+                "description": null,
+                "uploadable_type": "App\\Mainframe\\Modules\\Settings\\Setting",
+                "uploadable_id": 3,
+                "module_id": 21,
+                "element_id": 3,
+                "element_uuid": "e446d927-902b-4633-83d8-5f9fa0ef43cb",
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2020-01-29 03:32:56",
+                "updated_at": "2020-01-29 03:32:56",
+                "deleted_at": null,
+                "deleted_by": null,
+                "url": "\/\/files\/\/\/\/GJ6XPKBh_2020-01-28 22_41_52-Windows Default Lock Screen.jpg",
+                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/\/files\/\/\/\/GJ6XPKBh_2020-01-28 22_41_52-Windows Default Lock Screen.jpg"
+            },
+            {
+                "id": 18,
+                "uuid": "d0a4a78a-b676-4cab-8468-2bb9a9316cd3",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "2020-01-28 22_41_26-Windows Default Lock Screen.jpg",
+                "type": null,
+                "path": "\/files\/mlBgovYB_2020-01-28 22_41_26-Windows Default Lock Screen.jpg",
+                "order": null,
+                "ext": "jpg",
+                "bytes": null,
+                "description": null,
+                "uploadable_type": "App\\Mainframe\\Modules\\Settings\\Setting",
+                "uploadable_id": 3,
+                "module_id": 21,
+                "element_id": 3,
+                "element_uuid": "e446d927-902b-4633-83d8-5f9fa0ef43cb",
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2020-01-29 03:33:31",
+                "updated_at": "2020-01-29 03:33:31",
+                "deleted_at": null,
+                "deleted_by": null,
+                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/mlBgovYB_2020-01-28 22_41_26-Windows Default Lock Screen.jpg",
+                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/mlBgovYB_2020-01-28 22_41_26-Windows Default Lock Screen.jpg"
+            },
+            {
+                "id": 25,
+                "uuid": "0380d47e-3ae2-41b8-b114-d4ee956a9e28",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "step1.png",
+                "type": null,
+                "path": "\/files\/RITGPq3I_step1.png",
+                "order": null,
+                "ext": "png",
+                "bytes": null,
+                "description": null,
+                "uploadable_type": "App\\Mainframe\\Modules\\Samples\\LoremIpsums\\LoremIpsum",
+                "uploadable_id": 2,
+                "module_id": 50,
+                "element_id": 2,
+                "element_uuid": "175da4d1-e448-4e27-a642-4da5179ec5c6",
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2020-02-25 10:48:00",
+                "updated_at": "2020-07-13 07:40:37",
+                "deleted_at": null,
+                "deleted_by": null,
+                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/RITGPq3I_step1.png",
+                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/RITGPq3I_step1.png"
+            },
+            {
+                "id": 27,
+                "uuid": "b146bd8d-ff7e-49f8-9399-ade8149aefcf",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "step1.png",
+                "type": null,
+                "path": "\/files\/DDdJ2BFI_step1.png",
+                "order": null,
+                "ext": "png",
+                "bytes": null,
+                "description": null,
+                "uploadable_type": "App\\Mainframe\\Modules\\Samples\\LoremIpsums\\LoremIpsum",
+                "uploadable_id": 2,
+                "module_id": 50,
+                "element_id": 2,
+                "element_uuid": "175da4d1-e448-4e27-a642-4da5179ec5c6",
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2020-02-25 11:13:27",
+                "updated_at": "2020-07-13 07:40:37",
+                "deleted_at": null,
+                "deleted_by": null,
+                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/DDdJ2BFI_step1.png",
+                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/DDdJ2BFI_step1.png"
+            },
+            {
+                "id": 28,
+                "uuid": "ad98dda0-ceb0-4c83-8eef-9eb7c540db5f",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "step3.png",
+                "type": null,
+                "path": "\/files\/ypfo2WWq_step3.png",
+                "order": null,
+                "ext": "png",
+                "bytes": null,
+                "description": null,
+                "uploadable_type": "App\\Mainframe\\Modules\\Samples\\LoremIpsums\\LoremIpsum",
+                "uploadable_id": 2,
+                "module_id": 50,
+                "element_id": 2,
+                "element_uuid": "175da4d1-e448-4e27-a642-4da5179ec5c6",
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2020-02-25 11:14:04",
+                "updated_at": "2020-07-13 07:40:37",
+                "deleted_at": null,
+                "deleted_by": null,
+                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/ypfo2WWq_step3.png",
+                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/ypfo2WWq_step3.png"
+            },
+            {
+                "id": 29,
+                "uuid": "e846f237-d483-4dca-8220-071564112367",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "step1.png",
+                "type": null,
+                "path": "\/files\/y22h5RN2_step1.png",
+                "order": null,
+                "ext": "png",
+                "bytes": null,
+                "description": null,
+                "uploadable_type": "App\\Mainframe\\Modules\\Samples\\LoremIpsums\\LoremIpsum",
+                "uploadable_id": 2,
+                "module_id": 50,
+                "element_id": 2,
+                "element_uuid": "175da4d1-e448-4e27-a642-4da5179ec5c6",
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2020-02-25 11:31:10",
+                "updated_at": "2020-07-13 07:40:37",
+                "deleted_at": null,
+                "deleted_by": null,
+                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/y22h5RN2_step1.png",
+                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/y22h5RN2_step1.png"
+            }
+        ]
+    },
+    "redirect": "http:\/\/localhost\/api\/1.0\/uploads\/list\/json"
 }
 ```
 
@@ -30018,12 +20069,10 @@ fetch(url, {
 ```
 
 
-> Example response (429):
+> Example response (200):
 
 ```json
-{
-    "message": "Too Many Attempts."
-}
+null
 ```
 
 ### HTTP Request
@@ -30067,11 +20116,28 @@ fetch(url, {
 ```
 
 
-> Example response (429):
+> Example response (200):
 
 ```json
 {
-    "message": "Too Many Attempts."
+    "code": 200,
+    "status": "success",
+    "message": "Request Processed",
+    "data": {
+        "current_page": 1,
+        "first_page_url": "http:\/\/localhost\/api\/1.0\/uploads\/1\/uploads?page=1",
+        "from": null,
+        "last_page": 1,
+        "last_page_url": "http:\/\/localhost\/api\/1.0\/uploads\/1\/uploads?page=1",
+        "next_page_url": null,
+        "path": "http:\/\/localhost\/api\/1.0\/uploads\/1\/uploads",
+        "per_page": 20,
+        "prev_page_url": null,
+        "to": null,
+        "total": 0,
+        "items": []
+    },
+    "redirect": "http:\/\/localhost\/api\/1.0\/uploads\/1\/uploads"
 }
 ```
 
@@ -30123,55 +20189,6 @@ fetch(url, {
 
 <!-- END_f2d1edd13dd37d2c8a6c313349574ffe -->
 
-<!-- START_4701b3213a0619483f2a368a07f59b70 -->
-## Get all the comments of an element
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/1.0/uploads/1/comments" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/uploads/1/comments"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (429):
-
-```json
-{
-    "message": "Too Many Attempts."
-}
-```
-
-### HTTP Request
-`GET api/1.0/uploads/{id}/comments`
-
-
-<!-- END_4701b3213a0619483f2a368a07f59b70 -->
-
 <!-- START_ced7dfc2137036ac6f93ecadca37ef4f -->
 ## Index/List page to show grid
 
@@ -30207,11 +20224,569 @@ fetch(url, {
 ```
 
 
-> Example response (429):
+> Example response (200):
 
 ```json
 {
-    "message": "Too Many Attempts."
+    "code": 200,
+    "status": "success",
+    "message": "Request Processed",
+    "data": {
+        "current_page": 1,
+        "first_page_url": "http:\/\/localhost\/api\/1.0\/uploads?page=1",
+        "from": 1,
+        "last_page": 2,
+        "last_page_url": "http:\/\/localhost\/api\/1.0\/uploads?page=2",
+        "next_page_url": "http:\/\/localhost\/api\/1.0\/uploads?page=2",
+        "path": "http:\/\/localhost\/api\/1.0\/uploads",
+        "per_page": 20,
+        "prev_page_url": null,
+        "to": 20,
+        "total": 38,
+        "items": [
+            {
+                "id": 1,
+                "uuid": "821b341e-1eb7-412c-a9ae-0dcfda244275",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "2019-10-31 15_41_04-Start.jpg",
+                "type": null,
+                "path": "\/files\/7km7BL7t_2019-10-31 15_41_04-Start.jpg",
+                "order": null,
+                "ext": "jpg",
+                "bytes": null,
+                "description": null,
+                "uploadable_type": null,
+                "uploadable_id": null,
+                "module_id": 21,
+                "element_id": null,
+                "element_uuid": null,
+                "is_active": 1,
+                "created_by": 5,
+                "updated_by": 5,
+                "created_at": "2019-10-31 13:03:35",
+                "updated_at": "2019-10-31 13:03:35",
+                "deleted_at": null,
+                "deleted_by": null,
+                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/7km7BL7t_2019-10-31 15_41_04-Start.jpg",
+                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/7km7BL7t_2019-10-31 15_41_04-Start.jpg"
+            },
+            {
+                "id": 2,
+                "uuid": "90020e48-a92d-42b5-947d-b1da2ba60204",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "2019-10-31 15_41_04-Start.jpg",
+                "type": null,
+                "path": "\/files\/9ZpEl7dT_2019-10-31 15_41_04-Start.jpg",
+                "order": null,
+                "ext": "jpg",
+                "bytes": null,
+                "description": null,
+                "uploadable_type": null,
+                "uploadable_id": null,
+                "module_id": 21,
+                "element_id": 39,
+                "element_uuid": "931f290b-8cd3-4ca1-a0f1-087bb1355b8a",
+                "is_active": 1,
+                "created_by": 5,
+                "updated_by": 5,
+                "created_at": "2019-10-31 13:10:17",
+                "updated_at": "2019-11-20 11:03:13",
+                "deleted_at": null,
+                "deleted_by": null,
+                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/9ZpEl7dT_2019-10-31 15_41_04-Start.jpg",
+                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/9ZpEl7dT_2019-10-31 15_41_04-Start.jpg"
+            },
+            {
+                "id": 3,
+                "uuid": "c0c7f836-b76c-4ef1-9481-c82529f2bd1a",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "2019-10-31 15_41_04-Start.jpg",
+                "type": null,
+                "path": "\/files\/vYaQdT0Z_2019-10-31 15_41_04-Start.jpg",
+                "order": null,
+                "ext": "jpg",
+                "bytes": null,
+                "description": null,
+                "uploadable_type": null,
+                "uploadable_id": null,
+                "module_id": 21,
+                "element_id": 35,
+                "element_uuid": "e85d9a3d-b77e-46db-9422-078eeac8923a",
+                "is_active": 1,
+                "created_by": 5,
+                "updated_by": 5,
+                "created_at": "2019-10-31 15:10:02",
+                "updated_at": "2019-11-22 09:28:42",
+                "deleted_at": null,
+                "deleted_by": null,
+                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/vYaQdT0Z_2019-10-31 15_41_04-Start.jpg",
+                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/vYaQdT0Z_2019-10-31 15_41_04-Start.jpg"
+            },
+            {
+                "id": 5,
+                "uuid": "5809f712-1527-4620-9ef8-bcd904d3b21b",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "2019-11-27 10_10_58-Cortana.jpg",
+                "type": null,
+                "path": "\/files\/UohSKFJT_2019-11-27 10_10_58-Cortana.jpg",
+                "order": null,
+                "ext": "jpg",
+                "bytes": null,
+                "description": null,
+                "uploadable_type": null,
+                "uploadable_id": null,
+                "module_id": 21,
+                "element_id": 42,
+                "element_uuid": "d879c7df-d4ce-48c7-8abc-dc82af05a37d",
+                "is_active": 1,
+                "created_by": 5,
+                "updated_by": 5,
+                "created_at": "2019-12-02 16:58:02",
+                "updated_at": "2019-12-19 07:54:40",
+                "deleted_at": null,
+                "deleted_by": null,
+                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/UohSKFJT_2019-11-27 10_10_58-Cortana.jpg",
+                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/UohSKFJT_2019-11-27 10_10_58-Cortana.jpg"
+            },
+            {
+                "id": 7,
+                "uuid": "e5d35b1f-4625-4214-8dda-9f1ad4608383",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "raihan-round.png",
+                "type": null,
+                "path": "\/files\/hsQtWhy1_raihan-round.png",
+                "order": null,
+                "ext": "png",
+                "bytes": null,
+                "description": null,
+                "uploadable_type": null,
+                "uploadable_id": null,
+                "module_id": 4,
+                "element_id": null,
+                "element_uuid": null,
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2020-01-05 17:40:40",
+                "updated_at": "2020-01-05 17:40:40",
+                "deleted_at": null,
+                "deleted_by": null,
+                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/hsQtWhy1_raihan-round.png",
+                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/hsQtWhy1_raihan-round.png"
+            },
+            {
+                "id": 8,
+                "uuid": "52047e4d-262f-435d-8959-9a7f43157293",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "raihan-round.png",
+                "type": null,
+                "path": "\/files\/ocJxKCvK_raihan-round.png",
+                "order": null,
+                "ext": "png",
+                "bytes": null,
+                "description": null,
+                "uploadable_type": null,
+                "uploadable_id": null,
+                "module_id": 4,
+                "element_id": null,
+                "element_uuid": "338b5180-c35a-494e-b684-02288035361f",
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2020-01-05 17:41:57",
+                "updated_at": "2020-01-05 17:41:57",
+                "deleted_at": null,
+                "deleted_by": null,
+                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/ocJxKCvK_raihan-round.png",
+                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/ocJxKCvK_raihan-round.png"
+            },
+            {
+                "id": 9,
+                "uuid": "ced54918-9691-4212-8a8c-5cbfca4c127a",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "raihan-round.png",
+                "type": null,
+                "path": "\/files\/RdniZdHy_raihan-round.png",
+                "order": null,
+                "ext": "png",
+                "bytes": null,
+                "description": null,
+                "uploadable_type": null,
+                "uploadable_id": null,
+                "module_id": 21,
+                "element_id": 43,
+                "element_uuid": "a285cd17-969a-4dac-9898-d94168b13057",
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2020-01-05 18:51:19",
+                "updated_at": "2020-01-05 18:51:19",
+                "deleted_at": null,
+                "deleted_by": null,
+                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/RdniZdHy_raihan-round.png",
+                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/RdniZdHy_raihan-round.png"
+            },
+            {
+                "id": 10,
+                "uuid": "4f4d5297-170c-4313-b15c-cf4bbace9056",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "raihan-round.png",
+                "type": null,
+                "path": "\/files\/GShmXTCO_raihan-round.png",
+                "order": null,
+                "ext": "png",
+                "bytes": null,
+                "description": null,
+                "uploadable_type": "App\\Mainframe\\Modules\\Settings\\Setting",
+                "uploadable_id": 0,
+                "module_id": 21,
+                "element_id": 43,
+                "element_uuid": "a285cd17-969a-4dac-9898-d94168b13057",
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2020-01-05 18:52:15",
+                "updated_at": "2020-01-05 18:52:15",
+                "deleted_at": null,
+                "deleted_by": null,
+                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/GShmXTCO_raihan-round.png",
+                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/GShmXTCO_raihan-round.png"
+            },
+            {
+                "id": 11,
+                "uuid": "ff387f29-c792-4b8e-a985-85c665f6be8e",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "raihan-round.png",
+                "type": null,
+                "path": "\/files\/sSCXBzSS_raihan-round.png",
+                "order": null,
+                "ext": "png",
+                "bytes": null,
+                "description": null,
+                "uploadable_type": "App\\Mainframe\\Modules\\Settings\\Setting",
+                "uploadable_id": 45,
+                "module_id": 21,
+                "element_id": 45,
+                "element_uuid": "29900234-2353-4098-9390-4a7ef688f639",
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2020-01-05 18:55:51",
+                "updated_at": "2020-01-06 04:44:42",
+                "deleted_at": null,
+                "deleted_by": null,
+                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/sSCXBzSS_raihan-round.png",
+                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/sSCXBzSS_raihan-round.png"
+            },
+            {
+                "id": 12,
+                "uuid": "919d6d5a-fec4-4fde-9fb2-872a84752b84",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "raihan-round.png",
+                "type": null,
+                "path": "\/files\/ITeOd51R_raihan-round.png",
+                "order": null,
+                "ext": "png",
+                "bytes": null,
+                "description": null,
+                "uploadable_type": "App\\Mainframe\\Modules\\Settings\\Setting",
+                "uploadable_id": 45,
+                "module_id": 21,
+                "element_id": 45,
+                "element_uuid": "29900234-2353-4098-9390-4a7ef688f639",
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2020-01-06 04:39:17",
+                "updated_at": "2020-01-06 04:44:42",
+                "deleted_at": null,
+                "deleted_by": null,
+                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/ITeOd51R_raihan-round.png",
+                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/ITeOd51R_raihan-round.png"
+            },
+            {
+                "id": 13,
+                "uuid": "71f5f437-2b83-408f-90ba-34afd4851e76",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "retro-wallpaper-49.jpg",
+                "type": null,
+                "path": "\/files\/WLcA82gK_retro-wallpaper-49.jpg",
+                "order": null,
+                "ext": "jpg",
+                "bytes": null,
+                "description": null,
+                "uploadable_type": "App\\Mainframe\\Modules\\Settings\\Setting",
+                "uploadable_id": 45,
+                "module_id": 21,
+                "element_id": 45,
+                "element_uuid": "29900234-2353-4098-9390-4a7ef688f639",
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2020-01-06 04:39:21",
+                "updated_at": "2020-01-06 04:44:42",
+                "deleted_at": null,
+                "deleted_by": null,
+                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/WLcA82gK_retro-wallpaper-49.jpg",
+                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/WLcA82gK_retro-wallpaper-49.jpg"
+            },
+            {
+                "id": 14,
+                "uuid": "a960dbeb-6901-4810-bf61-d7ac9d8c08c9",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "temp.txt",
+                "type": null,
+                "path": "\/files\/MLJ54xuL_temp.txt",
+                "order": null,
+                "ext": "txt",
+                "bytes": null,
+                "description": null,
+                "uploadable_type": "App\\Mainframe\\Modules\\Settings\\Setting",
+                "uploadable_id": 45,
+                "module_id": 21,
+                "element_id": 45,
+                "element_uuid": "29900234-2353-4098-9390-4a7ef688f639",
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2020-01-06 04:39:30",
+                "updated_at": "2020-01-06 04:44:42",
+                "deleted_at": null,
+                "deleted_by": null,
+                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/MLJ54xuL_temp.txt",
+                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/MLJ54xuL_temp.txt"
+            },
+            {
+                "id": 15,
+                "uuid": "247be1a0-0b3d-4280-8ee0-b83b4bcf99ae",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "2020-01-28 22_41_26-Windows Default Lock Screen.jpg",
+                "type": null,
+                "path": "\/files\/I04HKZaT_2020-01-28 22_41_26-Windows Default Lock Screen.jpg",
+                "order": null,
+                "ext": "jpg",
+                "bytes": null,
+                "description": null,
+                "uploadable_type": "App\\Mainframe\\Modules\\Settings\\Setting",
+                "uploadable_id": 3,
+                "module_id": 21,
+                "element_id": 3,
+                "element_uuid": "e446d927-902b-4633-83d8-5f9fa0ef43cb",
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2020-01-29 03:24:49",
+                "updated_at": "2020-01-29 03:24:49",
+                "deleted_at": null,
+                "deleted_by": null,
+                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/I04HKZaT_2020-01-28 22_41_26-Windows Default Lock Screen.jpg",
+                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/I04HKZaT_2020-01-28 22_41_26-Windows Default Lock Screen.jpg"
+            },
+            {
+                "id": 16,
+                "uuid": "f1ec6684-bdbf-47e5-9780-ab4eb640ca8e",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "2020-01-28 22_41_26-Windows Default Lock Screen.jpg",
+                "type": null,
+                "path": "\/\/files\/\/\/Vpk8vBIx_2020-01-28 22_41_26-Windows Default Lock Screen.jpg",
+                "order": null,
+                "ext": "jpg",
+                "bytes": null,
+                "description": null,
+                "uploadable_type": "App\\Mainframe\\Modules\\Settings\\Setting",
+                "uploadable_id": 3,
+                "module_id": 21,
+                "element_id": 3,
+                "element_uuid": "e446d927-902b-4633-83d8-5f9fa0ef43cb",
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2020-01-29 03:27:48",
+                "updated_at": "2020-01-29 03:27:48",
+                "deleted_at": null,
+                "deleted_by": null,
+                "url": "\/\/files\/\/\/Vpk8vBIx_2020-01-28 22_41_26-Windows Default Lock Screen.jpg",
+                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/\/files\/\/\/Vpk8vBIx_2020-01-28 22_41_26-Windows Default Lock Screen.jpg"
+            },
+            {
+                "id": 17,
+                "uuid": "46208386-92dc-40ae-b24a-20d3caabf7ce",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "2020-01-28 22_41_52-Windows Default Lock Screen.jpg",
+                "type": null,
+                "path": "\/\/files\/\/\/\/GJ6XPKBh_2020-01-28 22_41_52-Windows Default Lock Screen.jpg",
+                "order": null,
+                "ext": "jpg",
+                "bytes": null,
+                "description": null,
+                "uploadable_type": "App\\Mainframe\\Modules\\Settings\\Setting",
+                "uploadable_id": 3,
+                "module_id": 21,
+                "element_id": 3,
+                "element_uuid": "e446d927-902b-4633-83d8-5f9fa0ef43cb",
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2020-01-29 03:32:56",
+                "updated_at": "2020-01-29 03:32:56",
+                "deleted_at": null,
+                "deleted_by": null,
+                "url": "\/\/files\/\/\/\/GJ6XPKBh_2020-01-28 22_41_52-Windows Default Lock Screen.jpg",
+                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/\/files\/\/\/\/GJ6XPKBh_2020-01-28 22_41_52-Windows Default Lock Screen.jpg"
+            },
+            {
+                "id": 18,
+                "uuid": "d0a4a78a-b676-4cab-8468-2bb9a9316cd3",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "2020-01-28 22_41_26-Windows Default Lock Screen.jpg",
+                "type": null,
+                "path": "\/files\/mlBgovYB_2020-01-28 22_41_26-Windows Default Lock Screen.jpg",
+                "order": null,
+                "ext": "jpg",
+                "bytes": null,
+                "description": null,
+                "uploadable_type": "App\\Mainframe\\Modules\\Settings\\Setting",
+                "uploadable_id": 3,
+                "module_id": 21,
+                "element_id": 3,
+                "element_uuid": "e446d927-902b-4633-83d8-5f9fa0ef43cb",
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2020-01-29 03:33:31",
+                "updated_at": "2020-01-29 03:33:31",
+                "deleted_at": null,
+                "deleted_by": null,
+                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/mlBgovYB_2020-01-28 22_41_26-Windows Default Lock Screen.jpg",
+                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/mlBgovYB_2020-01-28 22_41_26-Windows Default Lock Screen.jpg"
+            },
+            {
+                "id": 25,
+                "uuid": "0380d47e-3ae2-41b8-b114-d4ee956a9e28",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "step1.png",
+                "type": null,
+                "path": "\/files\/RITGPq3I_step1.png",
+                "order": null,
+                "ext": "png",
+                "bytes": null,
+                "description": null,
+                "uploadable_type": "App\\Mainframe\\Modules\\Samples\\LoremIpsums\\LoremIpsum",
+                "uploadable_id": 2,
+                "module_id": 50,
+                "element_id": 2,
+                "element_uuid": "175da4d1-e448-4e27-a642-4da5179ec5c6",
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2020-02-25 10:48:00",
+                "updated_at": "2020-07-13 07:40:37",
+                "deleted_at": null,
+                "deleted_by": null,
+                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/RITGPq3I_step1.png",
+                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/RITGPq3I_step1.png"
+            },
+            {
+                "id": 27,
+                "uuid": "b146bd8d-ff7e-49f8-9399-ade8149aefcf",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "step1.png",
+                "type": null,
+                "path": "\/files\/DDdJ2BFI_step1.png",
+                "order": null,
+                "ext": "png",
+                "bytes": null,
+                "description": null,
+                "uploadable_type": "App\\Mainframe\\Modules\\Samples\\LoremIpsums\\LoremIpsum",
+                "uploadable_id": 2,
+                "module_id": 50,
+                "element_id": 2,
+                "element_uuid": "175da4d1-e448-4e27-a642-4da5179ec5c6",
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2020-02-25 11:13:27",
+                "updated_at": "2020-07-13 07:40:37",
+                "deleted_at": null,
+                "deleted_by": null,
+                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/DDdJ2BFI_step1.png",
+                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/DDdJ2BFI_step1.png"
+            },
+            {
+                "id": 28,
+                "uuid": "ad98dda0-ceb0-4c83-8eef-9eb7c540db5f",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "step3.png",
+                "type": null,
+                "path": "\/files\/ypfo2WWq_step3.png",
+                "order": null,
+                "ext": "png",
+                "bytes": null,
+                "description": null,
+                "uploadable_type": "App\\Mainframe\\Modules\\Samples\\LoremIpsums\\LoremIpsum",
+                "uploadable_id": 2,
+                "module_id": 50,
+                "element_id": 2,
+                "element_uuid": "175da4d1-e448-4e27-a642-4da5179ec5c6",
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2020-02-25 11:14:04",
+                "updated_at": "2020-07-13 07:40:37",
+                "deleted_at": null,
+                "deleted_by": null,
+                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/ypfo2WWq_step3.png",
+                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/ypfo2WWq_step3.png"
+            },
+            {
+                "id": 29,
+                "uuid": "e846f237-d483-4dca-8220-071564112367",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "step1.png",
+                "type": null,
+                "path": "\/files\/y22h5RN2_step1.png",
+                "order": null,
+                "ext": "png",
+                "bytes": null,
+                "description": null,
+                "uploadable_type": "App\\Mainframe\\Modules\\Samples\\LoremIpsums\\LoremIpsum",
+                "uploadable_id": 2,
+                "module_id": 50,
+                "element_id": 2,
+                "element_uuid": "175da4d1-e448-4e27-a642-4da5179ec5c6",
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2020-02-25 11:31:10",
+                "updated_at": "2020-07-13 07:40:37",
+                "deleted_at": null,
+                "deleted_by": null,
+                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/y22h5RN2_step1.png",
+                "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/y22h5RN2_step1.png"
+            }
+        ]
+    },
+    "redirect": "http:\/\/localhost\/api\/1.0\/uploads"
 }
 ```
 
@@ -30297,11 +20872,11 @@ fetch(url, {
 ```
 
 
-> Example response (429):
+> Example response (500):
 
 ```json
 {
-    "message": "Too Many Attempts."
+    "message": "Server Error"
 }
 ```
 
@@ -30437,11 +21012,109 @@ fetch(url, {
 ```
 
 
-> Example response (429):
+> Example response (200):
 
 ```json
 {
-    "message": "Too Many Attempts."
+    "code": 200,
+    "status": "success",
+    "message": "Request Processed",
+    "data": {
+        "current_page": 1,
+        "first_page_url": "http:\/\/localhost\/api\/1.0\/settings\/list\/json?page=1",
+        "from": 1,
+        "last_page": 1,
+        "last_page_url": "http:\/\/localhost\/api\/1.0\/settings\/list\/json?page=1",
+        "next_page_url": null,
+        "path": "http:\/\/localhost\/api\/1.0\/settings\/list\/json",
+        "per_page": 20,
+        "prev_page_url": null,
+        "to": 5,
+        "total": 5,
+        "items": [
+            {
+                "id": 1,
+                "uuid": "6e9d6b57-966d-4b1e-aa77-fc937d9118b6",
+                "name": "app-name",
+                "title": "App Name",
+                "type": "string",
+                "description": "Mainframe Rapid Development Framework",
+                "value": "Mainframe",
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2018-12-24 20:25:41",
+                "updated_at": "2020-01-29 02:45:23",
+                "deleted_at": null,
+                "deleted_by": null
+            },
+            {
+                "id": 2,
+                "uuid": "2dfc744e-752b-49ef-baee-048fa2fa4969",
+                "name": "ios-app-version",
+                "title": "iOS App Version",
+                "type": "string",
+                "description": "Buddy Ramp",
+                "value": "1.1.c.u",
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2018-12-24 20:26:42",
+                "updated_at": "2020-06-26 07:09:28",
+                "deleted_at": null,
+                "deleted_by": null
+            },
+            {
+                "id": 3,
+                "uuid": "e446d927-902b-4633-83d8-5f9fa0ef43cb",
+                "name": "android-app-version",
+                "title": "Android App Version",
+                "type": "string",
+                "description": "Latest Android app version. This is matched with the users app version to prompt app update.",
+                "value": "1.24",
+                "is_active": 0,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2018-12-24 20:27:46",
+                "updated_at": "2019-04-11 09:16:28",
+                "deleted_at": null,
+                "deleted_by": null
+            },
+            {
+                "id": 4,
+                "uuid": "279fb65c-30c2-4727-b3e6-fc18a3476bf7",
+                "name": "mobile-portrait-help-steps",
+                "title": "Mobile Portrait Help Steps",
+                "type": "file",
+                "description": "Mobile Portrait Helps slides for screen size.",
+                "value": null,
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2019-03-19 10:02:46",
+                "updated_at": "2019-03-20 09:21:39",
+                "deleted_at": null,
+                "deleted_by": null
+            },
+            {
+                "id": 5,
+                "uuid": "f8e2ab99-e6ef-46d5-ae98-edee783b8f56",
+                "name": "mobile-landscape-help-steps",
+                "title": "Mobile Landscape Help Steps",
+                "type": "file",
+                "description": "Mobile landscape Helps slides for screen size.",
+                "value": "test lorem",
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2019-03-19 10:15:44",
+                "updated_at": "2020-05-22 06:44:05",
+                "deleted_at": null,
+                "deleted_by": 1
+            }
+        ]
+    },
+    "redirect": "http:\/\/localhost\/api\/1.0\/settings\/list\/json"
 }
 ```
 
@@ -30486,12 +21159,10 @@ fetch(url, {
 ```
 
 
-> Example response (429):
+> Example response (200):
 
 ```json
-{
-    "message": "Too Many Attempts."
-}
+null
 ```
 
 ### HTTP Request
@@ -30535,11 +21206,28 @@ fetch(url, {
 ```
 
 
-> Example response (429):
+> Example response (200):
 
 ```json
 {
-    "message": "Too Many Attempts."
+    "code": 200,
+    "status": "success",
+    "message": "Request Processed",
+    "data": {
+        "current_page": 1,
+        "first_page_url": "http:\/\/localhost\/api\/1.0\/settings\/1\/uploads?page=1",
+        "from": null,
+        "last_page": 1,
+        "last_page_url": "http:\/\/localhost\/api\/1.0\/settings\/1\/uploads?page=1",
+        "next_page_url": null,
+        "path": "http:\/\/localhost\/api\/1.0\/settings\/1\/uploads",
+        "per_page": 20,
+        "prev_page_url": null,
+        "to": null,
+        "total": 0,
+        "items": []
+    },
+    "redirect": "http:\/\/localhost\/api\/1.0\/settings\/1\/uploads"
 }
 ```
 
@@ -30591,55 +21279,6 @@ fetch(url, {
 
 <!-- END_c1a84ee50ec403b4e03b5bdd0c91f2b7 -->
 
-<!-- START_56e393744f629df6db9228afe466c7db -->
-## Get all the comments of an element
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/1.0/settings/1/comments" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/settings/1/comments"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (429):
-
-```json
-{
-    "message": "Too Many Attempts."
-}
-```
-
-### HTTP Request
-`GET api/1.0/settings/{id}/comments`
-
-
-<!-- END_56e393744f629df6db9228afe466c7db -->
-
 <!-- START_ff8a7a253c42a88dca5cd859b16fcd38 -->
 ## Index/List page to show grid
 
@@ -30675,11 +21314,109 @@ fetch(url, {
 ```
 
 
-> Example response (429):
+> Example response (200):
 
 ```json
 {
-    "message": "Too Many Attempts."
+    "code": 200,
+    "status": "success",
+    "message": "Request Processed",
+    "data": {
+        "current_page": 1,
+        "first_page_url": "http:\/\/localhost\/api\/1.0\/settings?page=1",
+        "from": 1,
+        "last_page": 1,
+        "last_page_url": "http:\/\/localhost\/api\/1.0\/settings?page=1",
+        "next_page_url": null,
+        "path": "http:\/\/localhost\/api\/1.0\/settings",
+        "per_page": 20,
+        "prev_page_url": null,
+        "to": 5,
+        "total": 5,
+        "items": [
+            {
+                "id": 1,
+                "uuid": "6e9d6b57-966d-4b1e-aa77-fc937d9118b6",
+                "name": "app-name",
+                "title": "App Name",
+                "type": "string",
+                "description": "Mainframe Rapid Development Framework",
+                "value": "Mainframe",
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2018-12-24 20:25:41",
+                "updated_at": "2020-01-29 02:45:23",
+                "deleted_at": null,
+                "deleted_by": null
+            },
+            {
+                "id": 2,
+                "uuid": "2dfc744e-752b-49ef-baee-048fa2fa4969",
+                "name": "ios-app-version",
+                "title": "iOS App Version",
+                "type": "string",
+                "description": "Buddy Ramp",
+                "value": "1.1.c.u",
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2018-12-24 20:26:42",
+                "updated_at": "2020-06-26 07:09:28",
+                "deleted_at": null,
+                "deleted_by": null
+            },
+            {
+                "id": 3,
+                "uuid": "e446d927-902b-4633-83d8-5f9fa0ef43cb",
+                "name": "android-app-version",
+                "title": "Android App Version",
+                "type": "string",
+                "description": "Latest Android app version. This is matched with the users app version to prompt app update.",
+                "value": "1.24",
+                "is_active": 0,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2018-12-24 20:27:46",
+                "updated_at": "2019-04-11 09:16:28",
+                "deleted_at": null,
+                "deleted_by": null
+            },
+            {
+                "id": 4,
+                "uuid": "279fb65c-30c2-4727-b3e6-fc18a3476bf7",
+                "name": "mobile-portrait-help-steps",
+                "title": "Mobile Portrait Help Steps",
+                "type": "file",
+                "description": "Mobile Portrait Helps slides for screen size.",
+                "value": null,
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2019-03-19 10:02:46",
+                "updated_at": "2019-03-20 09:21:39",
+                "deleted_at": null,
+                "deleted_by": null
+            },
+            {
+                "id": 5,
+                "uuid": "f8e2ab99-e6ef-46d5-ae98-edee783b8f56",
+                "name": "mobile-landscape-help-steps",
+                "title": "Mobile Landscape Help Steps",
+                "type": "file",
+                "description": "Mobile landscape Helps slides for screen size.",
+                "value": "test lorem",
+                "is_active": 1,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2019-03-19 10:15:44",
+                "updated_at": "2020-05-22 06:44:05",
+                "deleted_at": null,
+                "deleted_by": 1
+            }
+        ]
+    },
+    "redirect": "http:\/\/localhost\/api\/1.0\/settings"
 }
 ```
 
@@ -30766,11 +21503,11 @@ fetch(url, {
 ```
 
 
-> Example response (429):
+> Example response (500):
 
 ```json
 {
-    "message": "Too Many Attempts."
+    "message": "Server Error"
 }
 ```
 
@@ -30906,11 +21643,28 @@ fetch(url, {
 ```
 
 
-> Example response (429):
+> Example response (200):
 
 ```json
 {
-    "message": "Too Many Attempts."
+    "code": 200,
+    "status": "success",
+    "message": "Request Processed",
+    "data": {
+        "current_page": 1,
+        "first_page_url": "http:\/\/localhost\/api\/1.0\/reports\/list\/json?page=1",
+        "from": null,
+        "last_page": 1,
+        "last_page_url": "http:\/\/localhost\/api\/1.0\/reports\/list\/json?page=1",
+        "next_page_url": null,
+        "path": "http:\/\/localhost\/api\/1.0\/reports\/list\/json",
+        "per_page": 20,
+        "prev_page_url": null,
+        "to": null,
+        "total": 0,
+        "items": []
+    },
+    "redirect": "http:\/\/localhost\/api\/1.0\/reports\/list\/json"
 }
 ```
 
@@ -30955,12 +21709,10 @@ fetch(url, {
 ```
 
 
-> Example response (429):
+> Example response (200):
 
 ```json
-{
-    "message": "Too Many Attempts."
-}
+null
 ```
 
 ### HTTP Request
@@ -31004,11 +21756,28 @@ fetch(url, {
 ```
 
 
-> Example response (429):
+> Example response (200):
 
 ```json
 {
-    "message": "Too Many Attempts."
+    "code": 200,
+    "status": "success",
+    "message": "Request Processed",
+    "data": {
+        "current_page": 1,
+        "first_page_url": "http:\/\/localhost\/api\/1.0\/reports\/1\/uploads?page=1",
+        "from": null,
+        "last_page": 1,
+        "last_page_url": "http:\/\/localhost\/api\/1.0\/reports\/1\/uploads?page=1",
+        "next_page_url": null,
+        "path": "http:\/\/localhost\/api\/1.0\/reports\/1\/uploads",
+        "per_page": 20,
+        "prev_page_url": null,
+        "to": null,
+        "total": 0,
+        "items": []
+    },
+    "redirect": "http:\/\/localhost\/api\/1.0\/reports\/1\/uploads"
 }
 ```
 
@@ -31060,55 +21829,6 @@ fetch(url, {
 
 <!-- END_4298a9a3541e9912ff07e6206cf6d09c -->
 
-<!-- START_b57d4dc311a72dccdfa568990c8c1df1 -->
-## Get all the comments of an element
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/1.0/reports/1/comments" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/reports/1/comments"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (429):
-
-```json
-{
-    "message": "Too Many Attempts."
-}
-```
-
-### HTTP Request
-`GET api/1.0/reports/{id}/comments`
-
-
-<!-- END_b57d4dc311a72dccdfa568990c8c1df1 -->
-
 <!-- START_5a0b5b630089e753ac99b0b129cdb0a6 -->
 ## Index/List page to show grid
 
@@ -31144,11 +21864,28 @@ fetch(url, {
 ```
 
 
-> Example response (429):
+> Example response (200):
 
 ```json
 {
-    "message": "Too Many Attempts."
+    "code": 200,
+    "status": "success",
+    "message": "Request Processed",
+    "data": {
+        "current_page": 1,
+        "first_page_url": "http:\/\/localhost\/api\/1.0\/reports?page=1",
+        "from": null,
+        "last_page": 1,
+        "last_page_url": "http:\/\/localhost\/api\/1.0\/reports?page=1",
+        "next_page_url": null,
+        "path": "http:\/\/localhost\/api\/1.0\/reports",
+        "per_page": 20,
+        "prev_page_url": null,
+        "to": null,
+        "total": 0,
+        "items": []
+    },
+    "redirect": "http:\/\/localhost\/api\/1.0\/reports"
 }
 ```
 
@@ -31235,11 +21972,11 @@ fetch(url, {
 ```
 
 
-> Example response (429):
+> Example response (404):
 
 ```json
 {
-    "message": "Too Many Attempts."
+    "message": "Not found"
 }
 ```
 
@@ -31375,11 +22112,119 @@ fetch(url, {
 ```
 
 
-> Example response (429):
+> Example response (200):
 
 ```json
 {
-    "message": "Too Many Attempts."
+    "code": 200,
+    "status": "success",
+    "message": "Request Processed",
+    "data": {
+        "current_page": 1,
+        "first_page_url": "http:\/\/localhost\/api\/1.0\/lorem-ipsums\/list\/json?page=1",
+        "from": 1,
+        "last_page": 1,
+        "last_page_url": "http:\/\/localhost\/api\/1.0\/lorem-ipsums\/list\/json?page=1",
+        "next_page_url": null,
+        "path": "http:\/\/localhost\/api\/1.0\/lorem-ipsums\/list\/json",
+        "per_page": 20,
+        "prev_page_url": null,
+        "to": 3,
+        "total": 3,
+        "items": [
+            {
+                "id": 1,
+                "uuid": "2c9e9057-6095-4a48-aa9e-181e96172cb1",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "Test Input",
+                "hidden": null,
+                "textarea": "Prior to proceeding with the enforcement of new rules and regulations , it was good if authorities concerned would have been taken of such possible unruly anarchies of the transport workers . asdfasdf sdfgsdfg sdfg asdfdf",
+                "textarea_ckeditor": "sdfgssdfgsdfgdfsg",
+                "tags": "Roads",
+                "text": null,
+                "select_array": null,
+                "select_array_multiple": [
+                    "0",
+                    "2"
+                ],
+                "dolor_sit_id": 1,
+                "dolor_sit_ids": [
+                    "3",
+                    "1"
+                ],
+                "parent_id": 1,
+                "checkbox": 0,
+                "is_active": 1,
+                "created_by": 5,
+                "updated_by": 5,
+                "created_at": "2019-11-20 16:01:06",
+                "updated_at": "2020-01-21 12:15:07",
+                "deleted_at": null,
+                "deleted_by": null
+            },
+            {
+                "id": 2,
+                "uuid": "175da4d1-e448-4e27-a642-4da5179ec5c6",
+                "project_id": 1,
+                "tenant_id": 1,
+                "name": "ainw bNW",
+                "hidden": null,
+                "textarea": "asdfasdf adfsdf",
+                "textarea_ckeditor": "asdfasdfsdf asdfasdf",
+                "tags": "Country,takes,lorem",
+                "text": null,
+                "select_array": "1",
+                "select_array_multiple": [
+                    "0",
+                    "1"
+                ],
+                "dolor_sit_id": 1,
+                "dolor_sit_ids": [
+                    "1"
+                ],
+                "parent_id": 2,
+                "checkbox": 0,
+                "is_active": 1,
+                "created_by": 5,
+                "updated_by": 5,
+                "created_at": "2019-11-20 16:01:06",
+                "updated_at": "2020-07-13 07:40:37",
+                "deleted_at": null,
+                "deleted_by": null
+            },
+            {
+                "id": 1610,
+                "uuid": "6558b780-0911-4fc9-872c-e4977e175cc7",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "test",
+                "hidden": null,
+                "textarea": null,
+                "textarea_ckeditor": null,
+                "tags": null,
+                "text": null,
+                "select_array": "2",
+                "select_array_multiple": null,
+                "dolor_sit_id": null,
+                "dolor_sit_ids": [
+                    "3",
+                    "2",
+                    "1"
+                ],
+                "parent_id": null,
+                "checkbox": 0,
+                "is_active": 0,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2020-07-13 09:01:21",
+                "updated_at": "2020-10-05 09:01:42",
+                "deleted_at": null,
+                "deleted_by": null
+            }
+        ]
+    },
+    "redirect": "http:\/\/localhost\/api\/1.0\/lorem-ipsums\/list\/json"
 }
 ```
 
@@ -31424,12 +22269,10 @@ fetch(url, {
 ```
 
 
-> Example response (429):
+> Example response (200):
 
 ```json
-{
-    "message": "Too Many Attempts."
-}
+null
 ```
 
 ### HTTP Request
@@ -31473,11 +22316,28 @@ fetch(url, {
 ```
 
 
-> Example response (429):
+> Example response (200):
 
 ```json
 {
-    "message": "Too Many Attempts."
+    "code": 200,
+    "status": "success",
+    "message": "Request Processed",
+    "data": {
+        "current_page": 1,
+        "first_page_url": "http:\/\/localhost\/api\/1.0\/lorem-ipsums\/1\/uploads?page=1",
+        "from": null,
+        "last_page": 1,
+        "last_page_url": "http:\/\/localhost\/api\/1.0\/lorem-ipsums\/1\/uploads?page=1",
+        "next_page_url": null,
+        "path": "http:\/\/localhost\/api\/1.0\/lorem-ipsums\/1\/uploads",
+        "per_page": 20,
+        "prev_page_url": null,
+        "to": null,
+        "total": 0,
+        "items": []
+    },
+    "redirect": "http:\/\/localhost\/api\/1.0\/lorem-ipsums\/1\/uploads"
 }
 ```
 
@@ -31529,55 +22389,6 @@ fetch(url, {
 
 <!-- END_9750e8fb6278cf50836c35b5701e373c -->
 
-<!-- START_db88caf016d794cd9eebf725104d4b15 -->
-## Get all the comments of an element
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/1.0/lorem-ipsums/1/comments" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/lorem-ipsums/1/comments"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (429):
-
-```json
-{
-    "message": "Too Many Attempts."
-}
-```
-
-### HTTP Request
-`GET api/1.0/lorem-ipsums/{id}/comments`
-
-
-<!-- END_db88caf016d794cd9eebf725104d4b15 -->
-
 <!-- START_828789c1167f478e15504d914913a313 -->
 ## Index/List page to show grid
 
@@ -31613,11 +22424,119 @@ fetch(url, {
 ```
 
 
-> Example response (429):
+> Example response (200):
 
 ```json
 {
-    "message": "Too Many Attempts."
+    "code": 200,
+    "status": "success",
+    "message": "Request Processed",
+    "data": {
+        "current_page": 1,
+        "first_page_url": "http:\/\/localhost\/api\/1.0\/lorem-ipsums?page=1",
+        "from": 1,
+        "last_page": 1,
+        "last_page_url": "http:\/\/localhost\/api\/1.0\/lorem-ipsums?page=1",
+        "next_page_url": null,
+        "path": "http:\/\/localhost\/api\/1.0\/lorem-ipsums",
+        "per_page": 20,
+        "prev_page_url": null,
+        "to": 3,
+        "total": 3,
+        "items": [
+            {
+                "id": 1,
+                "uuid": "2c9e9057-6095-4a48-aa9e-181e96172cb1",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "Test Input",
+                "hidden": null,
+                "textarea": "Prior to proceeding with the enforcement of new rules and regulations , it was good if authorities concerned would have been taken of such possible unruly anarchies of the transport workers . asdfasdf sdfgsdfg sdfg asdfdf",
+                "textarea_ckeditor": "sdfgssdfgsdfgdfsg",
+                "tags": "Roads",
+                "text": null,
+                "select_array": null,
+                "select_array_multiple": [
+                    "0",
+                    "2"
+                ],
+                "dolor_sit_id": 1,
+                "dolor_sit_ids": [
+                    "3",
+                    "1"
+                ],
+                "parent_id": 1,
+                "checkbox": 0,
+                "is_active": 1,
+                "created_by": 5,
+                "updated_by": 5,
+                "created_at": "2019-11-20 16:01:06",
+                "updated_at": "2020-01-21 12:15:07",
+                "deleted_at": null,
+                "deleted_by": null
+            },
+            {
+                "id": 2,
+                "uuid": "175da4d1-e448-4e27-a642-4da5179ec5c6",
+                "project_id": 1,
+                "tenant_id": 1,
+                "name": "ainw bNW",
+                "hidden": null,
+                "textarea": "asdfasdf adfsdf",
+                "textarea_ckeditor": "asdfasdfsdf asdfasdf",
+                "tags": "Country,takes,lorem",
+                "text": null,
+                "select_array": "1",
+                "select_array_multiple": [
+                    "0",
+                    "1"
+                ],
+                "dolor_sit_id": 1,
+                "dolor_sit_ids": [
+                    "1"
+                ],
+                "parent_id": 2,
+                "checkbox": 0,
+                "is_active": 1,
+                "created_by": 5,
+                "updated_by": 5,
+                "created_at": "2019-11-20 16:01:06",
+                "updated_at": "2020-07-13 07:40:37",
+                "deleted_at": null,
+                "deleted_by": null
+            },
+            {
+                "id": 1610,
+                "uuid": "6558b780-0911-4fc9-872c-e4977e175cc7",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "test",
+                "hidden": null,
+                "textarea": null,
+                "textarea_ckeditor": null,
+                "tags": null,
+                "text": null,
+                "select_array": "2",
+                "select_array_multiple": null,
+                "dolor_sit_id": null,
+                "dolor_sit_ids": [
+                    "3",
+                    "2",
+                    "1"
+                ],
+                "parent_id": null,
+                "checkbox": 0,
+                "is_active": 0,
+                "created_by": 1,
+                "updated_by": 1,
+                "created_at": "2020-07-13 09:01:21",
+                "updated_at": "2020-10-05 09:01:42",
+                "deleted_at": null,
+                "deleted_by": null
+            }
+        ]
+    },
+    "redirect": "http:\/\/localhost\/api\/1.0\/lorem-ipsums"
 }
 ```
 
@@ -31704,11 +22623,11 @@ fetch(url, {
 ```
 
 
-> Example response (429):
+> Example response (500):
 
 ```json
 {
-    "message": "Too Many Attempts."
+    "message": "Server Error"
 }
 ```
 
@@ -31844,11 +22763,71 @@ fetch(url, {
 ```
 
 
-> Example response (429):
+> Example response (200):
 
 ```json
 {
-    "message": "Too Many Attempts."
+    "code": 200,
+    "status": "success",
+    "message": "Request Processed",
+    "data": {
+        "current_page": 1,
+        "first_page_url": "http:\/\/localhost\/api\/1.0\/dolor-sits\/list\/json?page=1",
+        "from": 1,
+        "last_page": 1,
+        "last_page_url": "http:\/\/localhost\/api\/1.0\/dolor-sits\/list\/json?page=1",
+        "next_page_url": null,
+        "path": "http:\/\/localhost\/api\/1.0\/dolor-sits\/list\/json",
+        "per_page": 20,
+        "prev_page_url": null,
+        "to": 3,
+        "total": 3,
+        "items": [
+            {
+                "id": 1,
+                "uuid": "7be17d1c-1bd9-4620-876a-f3ca5a05717e",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "Super wings",
+                "is_active": 1,
+                "created_by": 5,
+                "updated_by": 5,
+                "created_at": "2019-11-20 14:56:35",
+                "updated_at": "2019-11-20 14:56:35",
+                "deleted_at": null,
+                "deleted_by": null
+            },
+            {
+                "id": 2,
+                "uuid": "7be17d1c-1bd9-4620-876a-f3ca5a05717f",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "Paw Petrol",
+                "is_active": 1,
+                "created_by": 5,
+                "updated_by": 5,
+                "created_at": "2019-11-20 14:56:35",
+                "updated_at": "2019-11-20 14:56:35",
+                "deleted_at": null,
+                "deleted_by": null
+            },
+            {
+                "id": 3,
+                "uuid": "7be17d1c-1bd9-4620-876a-f3ca5a05717g",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "Captain Planet",
+                "is_active": 1,
+                "created_by": 5,
+                "updated_by": 5,
+                "created_at": "2019-11-20 14:56:35",
+                "updated_at": "2020-01-06 09:25:49",
+                "deleted_at": null,
+                "deleted_by": null
+            }
+        ]
+    },
+    "redirect": "http:\/\/localhost\/api\/1.0\/dolor-sits\/list\/json"
 }
 ```
 
@@ -31893,12 +22872,10 @@ fetch(url, {
 ```
 
 
-> Example response (429):
+> Example response (200):
 
 ```json
-{
-    "message": "Too Many Attempts."
-}
+null
 ```
 
 ### HTTP Request
@@ -31942,11 +22919,28 @@ fetch(url, {
 ```
 
 
-> Example response (429):
+> Example response (200):
 
 ```json
 {
-    "message": "Too Many Attempts."
+    "code": 200,
+    "status": "success",
+    "message": "Request Processed",
+    "data": {
+        "current_page": 1,
+        "first_page_url": "http:\/\/localhost\/api\/1.0\/dolor-sits\/1\/uploads?page=1",
+        "from": null,
+        "last_page": 1,
+        "last_page_url": "http:\/\/localhost\/api\/1.0\/dolor-sits\/1\/uploads?page=1",
+        "next_page_url": null,
+        "path": "http:\/\/localhost\/api\/1.0\/dolor-sits\/1\/uploads",
+        "per_page": 20,
+        "prev_page_url": null,
+        "to": null,
+        "total": 0,
+        "items": []
+    },
+    "redirect": "http:\/\/localhost\/api\/1.0\/dolor-sits\/1\/uploads"
 }
 ```
 
@@ -31998,55 +22992,6 @@ fetch(url, {
 
 <!-- END_337fbd77c6ffac081cee3ab1b8680565 -->
 
-<!-- START_9e1bfc766826c7417e41a8a62756039a -->
-## Get all the comments of an element
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/1.0/dolor-sits/1/comments" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/dolor-sits/1/comments"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (429):
-
-```json
-{
-    "message": "Too Many Attempts."
-}
-```
-
-### HTTP Request
-`GET api/1.0/dolor-sits/{id}/comments`
-
-
-<!-- END_9e1bfc766826c7417e41a8a62756039a -->
-
 <!-- START_dade498a96fc580819797ea30bd5f114 -->
 ## Index/List page to show grid
 
@@ -32082,11 +23027,71 @@ fetch(url, {
 ```
 
 
-> Example response (429):
+> Example response (200):
 
 ```json
 {
-    "message": "Too Many Attempts."
+    "code": 200,
+    "status": "success",
+    "message": "Request Processed",
+    "data": {
+        "current_page": 1,
+        "first_page_url": "http:\/\/localhost\/api\/1.0\/dolor-sits?page=1",
+        "from": 1,
+        "last_page": 1,
+        "last_page_url": "http:\/\/localhost\/api\/1.0\/dolor-sits?page=1",
+        "next_page_url": null,
+        "path": "http:\/\/localhost\/api\/1.0\/dolor-sits",
+        "per_page": 20,
+        "prev_page_url": null,
+        "to": 3,
+        "total": 3,
+        "items": [
+            {
+                "id": 1,
+                "uuid": "7be17d1c-1bd9-4620-876a-f3ca5a05717e",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "Super wings",
+                "is_active": 1,
+                "created_by": 5,
+                "updated_by": 5,
+                "created_at": "2019-11-20 14:56:35",
+                "updated_at": "2019-11-20 14:56:35",
+                "deleted_at": null,
+                "deleted_by": null
+            },
+            {
+                "id": 2,
+                "uuid": "7be17d1c-1bd9-4620-876a-f3ca5a05717f",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "Paw Petrol",
+                "is_active": 1,
+                "created_by": 5,
+                "updated_by": 5,
+                "created_at": "2019-11-20 14:56:35",
+                "updated_at": "2019-11-20 14:56:35",
+                "deleted_at": null,
+                "deleted_by": null
+            },
+            {
+                "id": 3,
+                "uuid": "7be17d1c-1bd9-4620-876a-f3ca5a05717g",
+                "project_id": null,
+                "tenant_id": null,
+                "name": "Captain Planet",
+                "is_active": 1,
+                "created_by": 5,
+                "updated_by": 5,
+                "created_at": "2019-11-20 14:56:35",
+                "updated_at": "2020-01-06 09:25:49",
+                "deleted_at": null,
+                "deleted_by": null
+            }
+        ]
+    },
+    "redirect": "http:\/\/localhost\/api\/1.0\/dolor-sits"
 }
 ```
 
@@ -32173,11 +23178,11 @@ fetch(url, {
 ```
 
 
-> Example response (429):
+> Example response (500):
 
 ```json
 {
-    "message": "Too Many Attempts."
+    "message": "Server Error"
 }
 ```
 
@@ -32313,11 +23318,28 @@ fetch(url, {
 ```
 
 
-> Example response (429):
+> Example response (200):
 
 ```json
 {
-    "message": "Too Many Attempts."
+    "code": 200,
+    "status": "success",
+    "message": "Request Processed",
+    "data": {
+        "current_page": 1,
+        "first_page_url": "http:\/\/localhost\/api\/1.0\/subscriptions\/list\/json?page=1",
+        "from": null,
+        "last_page": 1,
+        "last_page_url": "http:\/\/localhost\/api\/1.0\/subscriptions\/list\/json?page=1",
+        "next_page_url": null,
+        "path": "http:\/\/localhost\/api\/1.0\/subscriptions\/list\/json",
+        "per_page": 20,
+        "prev_page_url": null,
+        "to": null,
+        "total": 0,
+        "items": []
+    },
+    "redirect": "http:\/\/localhost\/api\/1.0\/subscriptions\/list\/json"
 }
 ```
 
@@ -32362,12 +23384,10 @@ fetch(url, {
 ```
 
 
-> Example response (429):
+> Example response (200):
 
 ```json
-{
-    "message": "Too Many Attempts."
-}
+null
 ```
 
 ### HTTP Request
@@ -32411,11 +23431,28 @@ fetch(url, {
 ```
 
 
-> Example response (429):
+> Example response (200):
 
 ```json
 {
-    "message": "Too Many Attempts."
+    "code": 200,
+    "status": "success",
+    "message": "Request Processed",
+    "data": {
+        "current_page": 1,
+        "first_page_url": "http:\/\/localhost\/api\/1.0\/subscriptions\/1\/uploads?page=1",
+        "from": null,
+        "last_page": 1,
+        "last_page_url": "http:\/\/localhost\/api\/1.0\/subscriptions\/1\/uploads?page=1",
+        "next_page_url": null,
+        "path": "http:\/\/localhost\/api\/1.0\/subscriptions\/1\/uploads",
+        "per_page": 20,
+        "prev_page_url": null,
+        "to": null,
+        "total": 0,
+        "items": []
+    },
+    "redirect": "http:\/\/localhost\/api\/1.0\/subscriptions\/1\/uploads"
 }
 ```
 
@@ -32467,55 +23504,6 @@ fetch(url, {
 
 <!-- END_994ddd7f77245708a38200becff4dbe3 -->
 
-<!-- START_dc49675694f6f3ae22772feed2696f74 -->
-## Get all the comments of an element
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/1.0/subscriptions/1/comments" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/subscriptions/1/comments"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (429):
-
-```json
-{
-    "message": "Too Many Attempts."
-}
-```
-
-### HTTP Request
-`GET api/1.0/subscriptions/{id}/comments`
-
-
-<!-- END_dc49675694f6f3ae22772feed2696f74 -->
-
 <!-- START_f01d1c290dd9bc43d0283a4483484d39 -->
 ## Index/List page to show grid
 
@@ -32551,11 +23539,28 @@ fetch(url, {
 ```
 
 
-> Example response (429):
+> Example response (200):
 
 ```json
 {
-    "message": "Too Many Attempts."
+    "code": 200,
+    "status": "success",
+    "message": "Request Processed",
+    "data": {
+        "current_page": 1,
+        "first_page_url": "http:\/\/localhost\/api\/1.0\/subscriptions?page=1",
+        "from": null,
+        "last_page": 1,
+        "last_page_url": "http:\/\/localhost\/api\/1.0\/subscriptions?page=1",
+        "next_page_url": null,
+        "path": "http:\/\/localhost\/api\/1.0\/subscriptions",
+        "per_page": 20,
+        "prev_page_url": null,
+        "to": null,
+        "total": 0,
+        "items": []
+    },
+    "redirect": "http:\/\/localhost\/api\/1.0\/subscriptions"
 }
 ```
 
@@ -32642,11 +23647,11 @@ fetch(url, {
 ```
 
 
-> Example response (429):
+> Example response (404):
 
 ```json
 {
-    "message": "Too Many Attempts."
+    "message": "Not found"
 }
 ```
 
@@ -32782,11 +23787,28 @@ fetch(url, {
 ```
 
 
-> Example response (429):
+> Example response (200):
 
 ```json
 {
-    "message": "Too Many Attempts."
+    "code": 200,
+    "status": "success",
+    "message": "Request Processed",
+    "data": {
+        "current_page": 1,
+        "first_page_url": "http:\/\/localhost\/api\/1.0\/packages\/list\/json?page=1",
+        "from": null,
+        "last_page": 1,
+        "last_page_url": "http:\/\/localhost\/api\/1.0\/packages\/list\/json?page=1",
+        "next_page_url": null,
+        "path": "http:\/\/localhost\/api\/1.0\/packages\/list\/json",
+        "per_page": 20,
+        "prev_page_url": null,
+        "to": null,
+        "total": 0,
+        "items": []
+    },
+    "redirect": "http:\/\/localhost\/api\/1.0\/packages\/list\/json"
 }
 ```
 
@@ -32831,12 +23853,10 @@ fetch(url, {
 ```
 
 
-> Example response (429):
+> Example response (200):
 
 ```json
-{
-    "message": "Too Many Attempts."
-}
+null
 ```
 
 ### HTTP Request
@@ -32880,11 +23900,28 @@ fetch(url, {
 ```
 
 
-> Example response (429):
+> Example response (200):
 
 ```json
 {
-    "message": "Too Many Attempts."
+    "code": 200,
+    "status": "success",
+    "message": "Request Processed",
+    "data": {
+        "current_page": 1,
+        "first_page_url": "http:\/\/localhost\/api\/1.0\/packages\/1\/uploads?page=1",
+        "from": null,
+        "last_page": 1,
+        "last_page_url": "http:\/\/localhost\/api\/1.0\/packages\/1\/uploads?page=1",
+        "next_page_url": null,
+        "path": "http:\/\/localhost\/api\/1.0\/packages\/1\/uploads",
+        "per_page": 20,
+        "prev_page_url": null,
+        "to": null,
+        "total": 0,
+        "items": []
+    },
+    "redirect": "http:\/\/localhost\/api\/1.0\/packages\/1\/uploads"
 }
 ```
 
@@ -32936,55 +23973,6 @@ fetch(url, {
 
 <!-- END_703750953b15b89c74a8c5b821677362 -->
 
-<!-- START_d8f3e56b1aab3ead99eaa914772d01af -->
-## Get all the comments of an element
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/1.0/packages/1/comments" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/packages/1/comments"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (429):
-
-```json
-{
-    "message": "Too Many Attempts."
-}
-```
-
-### HTTP Request
-`GET api/1.0/packages/{id}/comments`
-
-
-<!-- END_d8f3e56b1aab3ead99eaa914772d01af -->
-
 <!-- START_416fce805fde3049712d2cec2a95a5cf -->
 ## Index/List page to show grid
 
@@ -33020,11 +24008,28 @@ fetch(url, {
 ```
 
 
-> Example response (429):
+> Example response (200):
 
 ```json
 {
-    "message": "Too Many Attempts."
+    "code": 200,
+    "status": "success",
+    "message": "Request Processed",
+    "data": {
+        "current_page": 1,
+        "first_page_url": "http:\/\/localhost\/api\/1.0\/packages?page=1",
+        "from": null,
+        "last_page": 1,
+        "last_page_url": "http:\/\/localhost\/api\/1.0\/packages?page=1",
+        "next_page_url": null,
+        "path": "http:\/\/localhost\/api\/1.0\/packages",
+        "per_page": 20,
+        "prev_page_url": null,
+        "to": null,
+        "total": 0,
+        "items": []
+    },
+    "redirect": "http:\/\/localhost\/api\/1.0\/packages"
 }
 ```
 
@@ -33111,11 +24116,11 @@ fetch(url, {
 ```
 
 
-> Example response (429):
+> Example response (404):
 
 ```json
 {
-    "message": "Too Many Attempts."
+    "message": "Not found"
 }
 ```
 
@@ -33404,55 +24409,6 @@ fetch(url, {
 
 
 <!-- END_e0b600c95443a9b41b709953657a08d8 -->
-
-<!-- START_45553d04d7dd8ca9091c6dbb23aa084b -->
-## Get all the comments of an element
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/1.0/countries/1/comments" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/countries/1/comments"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (429):
-
-```json
-{
-    "message": "Too Many Attempts."
-}
-```
-
-### HTTP Request
-`GET api/1.0/countries/{id}/comments`
-
-
-<!-- END_45553d04d7dd8ca9091c6dbb23aa084b -->
 
 <!-- START_8d1da7c9c664bb449e9598f5c005ff35 -->
 ## Index/List page to show grid
@@ -33874,55 +24830,6 @@ fetch(url, {
 
 <!-- END_6c05dc7a19df6f5c12dc376585c738e0 -->
 
-<!-- START_f577c0a444c7b37d2c03fd3fb8303edd -->
-## Get all the comments of an element
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/1.0/notifications/1/comments" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/notifications/1/comments"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (429):
-
-```json
-{
-    "message": "Too Many Attempts."
-}
-```
-
-### HTTP Request
-`GET api/1.0/notifications/{id}/comments`
-
-
-<!-- END_f577c0a444c7b37d2c03fd3fb8303edd -->
-
 <!-- START_64be862e056d566ff15091dfed8d52a9 -->
 ## Index/List page to show grid
 
@@ -34342,55 +25249,6 @@ fetch(url, {
 
 
 <!-- END_08002ff9ec16a094173a54a32ce4bfc8 -->
-
-<!-- START_2f1f721d8631806c22327ca3dfecea27 -->
-## Get all the comments of an element
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/1.0/projects/1/comments" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/projects/1/comments"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (429):
-
-```json
-{
-    "message": "Too Many Attempts."
-}
-```
-
-### HTTP Request
-`GET api/1.0/projects/{id}/comments`
-
-
-<!-- END_2f1f721d8631806c22327ca3dfecea27 -->
 
 <!-- START_f6989b34d3f1a54e31c298794eff8f02 -->
 ## Index/List page to show grid
@@ -34812,55 +25670,6 @@ fetch(url, {
 
 <!-- END_4cabc1268a0d852559f2ad3dcfbe989b -->
 
-<!-- START_5a65b66046bead998569cce324783f8e -->
-## Get all the comments of an element
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/1.0/comments/1/comments" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/comments/1/comments"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (429):
-
-```json
-{
-    "message": "Too Many Attempts."
-}
-```
-
-### HTTP Request
-`GET api/1.0/comments/{id}/comments`
-
-
-<!-- END_5a65b66046bead998569cce324783f8e -->
-
 <!-- START_41edaace5e42c41885474c6cd130d70b -->
 ## Index/List page to show grid
 
@@ -35280,55 +26089,6 @@ fetch(url, {
 
 
 <!-- END_9aa5f5674313697071559fa4ccc78a07 -->
-
-<!-- START_06fdc4c0ee0cbf8ad68b42c481b608b1 -->
-## Get all the comments of an element
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/1.0/changes/1/comments" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/changes/1/comments"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (429):
-
-```json
-{
-    "message": "Too Many Attempts."
-}
-```
-
-### HTTP Request
-`GET api/1.0/changes/{id}/comments`
-
-
-<!-- END_06fdc4c0ee0cbf8ad68b42c481b608b1 -->
 
 <!-- START_6d85c3255c75a2fe2fb556fbb3e059d2 -->
 ## Index/List page to show grid
