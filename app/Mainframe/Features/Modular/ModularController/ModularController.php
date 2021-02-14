@@ -69,7 +69,7 @@ class ModularController extends BaseController
     }
 
     /**
-     * Index/List page to show grid
+     * Index/List
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\JsonResponse|\Illuminate\View\View
      */
@@ -116,7 +116,7 @@ class ModularController extends BaseController
     }
 
     /**
-     * Shows an element create form.
+     * Show create form.
      *
      * @return \Illuminate\Contracts\View\View|\Illuminate\Http\JsonResponse|\View
      * @throws \Exception
@@ -139,7 +139,7 @@ class ModularController extends BaseController
     }
 
     /**
-     * Edit
+     * Edit form
      *
      * @param $id
      * @return \Illuminate\Contracts\View\View|\Illuminate\Http\JsonResponse
@@ -229,7 +229,7 @@ class ModularController extends BaseController
     }
 
     /**
-     * Restore a soft-deleted.
+     * Restore a soft-deleted item
      *
      * @param  null  $id
      * @return void
@@ -240,7 +240,7 @@ class ModularController extends BaseController
     }
 
     /**
-     * Returns a collection of objects as Json for an API call
+     * List
      *
      * @return \Illuminate\Http\JsonResponse
      */
