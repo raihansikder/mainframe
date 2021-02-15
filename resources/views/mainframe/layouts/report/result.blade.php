@@ -4,13 +4,14 @@
  * @var \Illuminate\Database\Query\Builder $dataSource
  * @var \Illuminate\Pagination\LengthAwarePaginator $result
  * @var int $total Total number of rows returned
- * @var string $path
  * @var \App\Mainframe\Features\Report\ReportViewProcessor $view
+ * @var string $path
  */
 ?>
 
 @section('css')
     @parent
+    <!--suppress CssUnusedSymbol -->
     <style>
         .content {
             padding-top: 0
@@ -22,9 +23,7 @@
 
 @section('content')
     @include($path.'.includes.filters')
-
     @if(Request::get('submit')==='Run' && isset($result))
-
         Total {{$total}} items found.
         <div class="clearfix"></div>
         <div class="table-responsive">

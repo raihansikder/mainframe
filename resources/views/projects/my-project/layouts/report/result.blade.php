@@ -8,7 +8,6 @@
  * @var \App\Projects\MyProject\Features\Report\ReportViewProcessor $view
  */
 ?>
-
 @section('css')
     @parent
     <style>
@@ -43,7 +42,7 @@
                             @foreach ($selectedColumns as $col)
                                 <td>
                                     @if(isset($row->$col))
-                                        {!! $view->transformRow($col, $row, $row->$col, $module->name ) !!}
+                                        {!! $view->customCell($col, $row, $row->$col, $module->name ) !!}
                                     @endif
                                 </td>
                             @endforeach

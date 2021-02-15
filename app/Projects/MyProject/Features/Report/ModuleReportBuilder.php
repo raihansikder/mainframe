@@ -2,9 +2,7 @@
 
 namespace App\Projects\MyProject\Features\Report;
 
-use App\Mainframe\Features\Report\ModuleReportBuilder as MfModuleReportBuilder;
-
-class ModuleReportBuilder extends MfModuleReportBuilder
+class ModuleReportBuilder extends ReportBuilder
 {
 
     /**
@@ -16,7 +14,6 @@ class ModuleReportBuilder extends MfModuleReportBuilder
         if (! user()->isSuperUser()) {
             request()->merge(['is_active' => 1,]);
         }
-
     }
 
 }

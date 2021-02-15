@@ -1,9 +1,10 @@
 <?php
 /**
- * @var $data_source   string Table/DB view name (i.e. v_users, users)
- * @var $results       \Illuminate\Pagination\LengthAwarePaginator
- * @var $total         integer Total number of rows returned
- * @var $base_dir      string
+ * @var \Illuminate\Database\Query\Builder $dataSource
+ * @var \Illuminate\Pagination\LengthAwarePaginator $result
+ * @var int $total Total number of rows returned
+ * @var \App\Mainframe\Features\Report\ReportViewProcessor $view
+ * @var string $path
  */
 ?>
 @include($path.'.includes.init-functions')
@@ -15,7 +16,7 @@
 </head>
 <body lang=EN-US>
 <div style="width: 150px;float: left; font-size: 14px">
-    <input id="btnPrint" type="button" value="Print this page" onclick="printpage()"/>
+    <input id="btnPrint" type="button" value="Print this page" onclick="printPage()"/>
 </div>
 @section('content')
     @if(Request::get('submit')==='Run' && isset($result))
@@ -38,7 +39,7 @@
                             @foreach ($selectedColumns as $col)
                                 <td>
                                     @if(isset($row->$col))
-                                        {!! transformRow($col, $row, $row->$col, $module->name ) !!}
+                                        {!! $view->customCell($col, $row, $row->$col, $module->name ) !!}
                                     @endif
                                 </td>
                             @endforeach
@@ -54,7 +55,7 @@
 </body>
 {{-- JS --}}
 <script type="text/javascript">
-    function printpage() {
+    function printPage() {
         var printButton = document.getElementById("btnPrint");
         printButton.style.visibility = 'hidden';
         window.print();
