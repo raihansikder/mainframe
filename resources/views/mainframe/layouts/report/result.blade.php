@@ -40,10 +40,10 @@
                     <tbody>
                     @foreach ($result as $row)
                         <tr>
-                            @foreach ($selectedColumns as $col)
+                            @foreach ($selectedColumns as $column)
                                 <td>
-                                    @if(isset($row->$col))
-                                        {!! $view->transformRow($col, $row, $row->$col, $module->name ) !!}
+                                    @if(isset($row->$column))
+                                        {!! $view->cell($column, $row,  route($module->name.'.edit',$row->id) ) !!}
                                     @endif
                                 </td>
                             @endforeach
