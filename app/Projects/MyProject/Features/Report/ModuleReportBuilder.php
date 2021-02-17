@@ -2,7 +2,9 @@
 
 namespace App\Projects\MyProject\Features\Report;
 
-class ModuleReportBuilder extends ReportBuilder
+use App\Mainframe\Features\Report\ModuleReportBuilder as MfModuleReportBuilder;
+
+class ModuleReportBuilder extends MfModuleReportBuilder
 {
 
     /**

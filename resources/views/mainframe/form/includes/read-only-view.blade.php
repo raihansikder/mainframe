@@ -10,5 +10,5 @@
         {{ Form::hidden($input->name.'[]', $value)}}
     @endforeach
 @else
-    {{ Form::hidden($input->name, $input->value())}}
+    {{ Form::hidden($input->name, $input->value(),$input->params)}}
 @endif
