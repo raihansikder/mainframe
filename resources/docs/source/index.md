@@ -30,7 +30,7 @@ APIs for managing comments
 
 ```bash
 curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/1.0/comments" \
+    -G "{API_ROOT}/api/1.0/comments" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -39,7 +39,7 @@ curl -X GET \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/comments"
+    "{API_ROOT}/api/1.0/comments"
 );
 
 let headers = {
@@ -202,7 +202,7 @@ fetch(url, {
 
 ```bash
 curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/1.0/comments/1/uploads" \
+    -G "{API_ROOT}/api/1.0/comments/1/uploads" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -211,7 +211,7 @@ curl -X GET \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/comments/1/uploads"
+    "{API_ROOT}/api/1.0/comments/1/uploads"
 );
 
 let headers = {
@@ -268,7 +268,7 @@ fetch(url, {
 
 ```bash
 curl -X POST \
-    "http://localhost:8081/mainframe/public/api/1.0/comments/1/uploads" \
+    "{API_ROOT}/api/1.0/comments/1/uploads" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -277,7 +277,7 @@ curl -X POST \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/comments/1/uploads"
+    "{API_ROOT}/api/1.0/comments/1/uploads"
 );
 
 let headers = {
@@ -310,7 +310,7 @@ fetch(url, {
 
 ```bash
 curl -X POST \
-    "http://localhost:8081/mainframe/public/api/1.0/comments" \
+    "{API_ROOT}/api/1.0/comments" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -319,7 +319,7 @@ curl -X POST \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/comments"
+    "{API_ROOT}/api/1.0/comments"
 );
 
 let headers = {
@@ -352,7 +352,7 @@ fetch(url, {
 
 ```bash
 curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/1.0/comments/1" \
+    -G "{API_ROOT}/api/1.0/comments/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -361,7 +361,7 @@ curl -X GET \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/comments/1"
+    "{API_ROOT}/api/1.0/comments/1"
 );
 
 let headers = {
@@ -380,35 +380,11 @@ fetch(url, {
 ```
 
 
-> Example response (200):
+> Example response (500):
 
 ```json
 {
-    "code": 200,
-    "status": "success",
-    "message": "Request Processed",
-    "data": {
-        "id": 1,
-        "uuid": "118b4820-557b-4b6d-b645-b2827251831f",
-        "project_id": null,
-        "tenant_id": null,
-        "name": null,
-        "type": null,
-        "body": "lore ipsum dolor sit amet",
-        "commentable_type": "App\\Mainframe\\Modules\\Samples\\LoremIpsums\\LoremIpsum",
-        "commentable_id": 2,
-        "module_id": 50,
-        "element_id": 2,
-        "element_uuid": "175da4d1-e448-4e27-a642-4da5179ec5c6",
-        "is_active": 1,
-        "created_by": 1,
-        "updated_by": 1,
-        "created_at": "2020-02-25 09:20:10",
-        "updated_at": "2020-02-25 09:20:10",
-        "deleted_at": null,
-        "deleted_by": null
-    },
-    "redirect": "http:\/\/localhost:8081\/mainframe\/public\/comments\/1\/edit"
+    "message": "Server Error"
 }
 ```
 
@@ -430,7 +406,7 @@ Parameter | Status | Description
 
 ```bash
 curl -X PUT \
-    "http://localhost:8081/mainframe/public/api/1.0/comments/1" \
+    "{API_ROOT}/api/1.0/comments/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -439,7 +415,7 @@ curl -X PUT \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/comments/1"
+    "{API_ROOT}/api/1.0/comments/1"
 );
 
 let headers = {
@@ -474,7 +450,7 @@ fetch(url, {
 
 ```bash
 curl -X DELETE \
-    "http://localhost:8081/mainframe/public/api/1.0/comments/1" \
+    "{API_ROOT}/api/1.0/comments/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -483,7 +459,7 @@ curl -X DELETE \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/comments/1"
+    "{API_ROOT}/api/1.0/comments/1"
 );
 
 let headers = {
@@ -520,7 +496,7 @@ APIs for managing countries
 
 ```bash
 curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/1.0/countries" \
+    -G "{API_ROOT}/api/1.0/countries" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -529,7 +505,7 @@ curl -X GET \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/countries"
+    "{API_ROOT}/api/1.0/countries"
 );
 
 let headers = {
@@ -1107,7 +1083,7 @@ fetch(url, {
 
 ```bash
 curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/1.0/countries/1/uploads" \
+    -G "{API_ROOT}/api/1.0/countries/1/uploads" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -1116,7 +1092,7 @@ curl -X GET \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/countries/1/uploads"
+    "{API_ROOT}/api/1.0/countries/1/uploads"
 );
 
 let headers = {
@@ -1173,7 +1149,7 @@ fetch(url, {
 
 ```bash
 curl -X POST \
-    "http://localhost:8081/mainframe/public/api/1.0/countries/1/uploads" \
+    "{API_ROOT}/api/1.0/countries/1/uploads" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -1182,7 +1158,7 @@ curl -X POST \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/countries/1/uploads"
+    "{API_ROOT}/api/1.0/countries/1/uploads"
 );
 
 let headers = {
@@ -1215,7 +1191,7 @@ fetch(url, {
 
 ```bash
 curl -X POST \
-    "http://localhost:8081/mainframe/public/api/1.0/countries" \
+    "{API_ROOT}/api/1.0/countries" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -1224,7 +1200,7 @@ curl -X POST \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/countries"
+    "{API_ROOT}/api/1.0/countries"
 );
 
 let headers = {
@@ -1257,7 +1233,7 @@ fetch(url, {
 
 ```bash
 curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/1.0/countries/1" \
+    -G "{API_ROOT}/api/1.0/countries/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -1266,7 +1242,7 @@ curl -X GET \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/countries/1"
+    "{API_ROOT}/api/1.0/countries/1"
 );
 
 let headers = {
@@ -1285,40 +1261,11 @@ fetch(url, {
 ```
 
 
-> Example response (200):
+> Example response (500):
 
 ```json
 {
-    "code": 200,
-    "status": "success",
-    "message": "Request Processed",
-    "data": {
-        "id": 1,
-        "uuid": null,
-        "name": "Benin",
-        "code": "9999",
-        "country_id": "24",
-        "iso2": "BJ",
-        "country_short_name": "Benin",
-        "country_long_name": "Republic of Benin",
-        "iso3": "BEN",
-        "numcode": "204",
-        "un_member": "yes",
-        "calling_code": "229",
-        "cctld": ".bj",
-        "is_active": 1,
-        "created_by": null,
-        "updated_by": null,
-        "created_at": null,
-        "updated_at": null,
-        "deleted_at": null,
-        "deleted_by": null,
-        "currency": "USD",
-        "currency_symbol": "$",
-        "currency_override": "USD",
-        "currency_override_symbol": "$"
-    },
-    "redirect": "http:\/\/localhost:8081\/mainframe\/public\/countries\/1\/edit"
+    "message": "Server Error"
 }
 ```
 
@@ -1340,7 +1287,7 @@ Parameter | Status | Description
 
 ```bash
 curl -X PUT \
-    "http://localhost:8081/mainframe/public/api/1.0/countries/1" \
+    "{API_ROOT}/api/1.0/countries/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -1349,7 +1296,7 @@ curl -X PUT \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/countries/1"
+    "{API_ROOT}/api/1.0/countries/1"
 );
 
 let headers = {
@@ -1384,7 +1331,7 @@ fetch(url, {
 
 ```bash
 curl -X DELETE \
-    "http://localhost:8081/mainframe/public/api/1.0/countries/1" \
+    "{API_ROOT}/api/1.0/countries/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -1393,7 +1340,7 @@ curl -X DELETE \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/countries/1"
+    "{API_ROOT}/api/1.0/countries/1"
 );
 
 let headers = {
@@ -1429,7 +1376,7 @@ fetch(url, {
 
 ```bash
 curl -X POST \
-    "http://localhost:8081/mainframe/public/api/1.0/register/" \
+    "{API_ROOT}/api/1.0/register/" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -1438,7 +1385,7 @@ curl -X POST \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/register/"
+    "{API_ROOT}/api/1.0/register/"
 );
 
 let headers = {
@@ -1471,7 +1418,7 @@ fetch(url, {
 
 ```bash
 curl -X POST \
-    "http://localhost:8081/mainframe/public/api/1.0/login" \
+    "{API_ROOT}/api/1.0/login" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -1480,7 +1427,7 @@ curl -X POST \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/login"
+    "{API_ROOT}/api/1.0/login"
 );
 
 let headers = {
@@ -1513,7 +1460,7 @@ fetch(url, {
 
 ```bash
 curl -X POST \
-    "http://localhost:8081/mainframe/public/api/1.0/password/email" \
+    "{API_ROOT}/api/1.0/password/email" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -1522,7 +1469,7 @@ curl -X POST \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/password/email"
+    "{API_ROOT}/api/1.0/password/email"
 );
 
 let headers = {
@@ -1555,7 +1502,7 @@ fetch(url, {
 
 ```bash
 curl -X POST \
-    "http://localhost:8081/mainframe/public/api/1.0/logout" \
+    "{API_ROOT}/api/1.0/logout" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -1564,7 +1511,7 @@ curl -X POST \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/logout"
+    "{API_ROOT}/api/1.0/logout"
 );
 
 let headers = {
@@ -1598,7 +1545,7 @@ fetch(url, {
 
 ```bash
 curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/1.0/user" \
+    -G "{API_ROOT}/api/1.0/user" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -1607,7 +1554,7 @@ curl -X GET \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/user"
+    "{API_ROOT}/api/1.0/user"
 );
 
 let headers = {
@@ -1672,7 +1619,7 @@ fetch(url, {
 
 ```bash
 curl -X PATCH \
-    "http://localhost:8081/mainframe/public/api/1.0/user" \
+    "{API_ROOT}/api/1.0/user" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -1681,7 +1628,7 @@ curl -X PATCH \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/user"
+    "{API_ROOT}/api/1.0/user"
 );
 
 let headers = {
@@ -1715,7 +1662,7 @@ fetch(url, {
 
 ```bash
 curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/1.0/user/profile" \
+    -G "{API_ROOT}/api/1.0/user/profile" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -1724,7 +1671,7 @@ curl -X GET \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/user/profile"
+    "{API_ROOT}/api/1.0/user/profile"
 );
 
 let headers = {
@@ -1789,7 +1736,7 @@ fetch(url, {
 
 ```bash
 curl -X POST \
-    "http://localhost:8081/mainframe/public/api/1.0/user/profile-pic/store" \
+    "{API_ROOT}/api/1.0/user/profile-pic/store" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -1798,7 +1745,7 @@ curl -X POST \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/user/profile-pic/store"
+    "{API_ROOT}/api/1.0/user/profile-pic/store"
 );
 
 let headers = {
@@ -1832,7 +1779,7 @@ fetch(url, {
 
 ```bash
 curl -X DELETE \
-    "http://localhost:8081/mainframe/public/api/1.0/user/profile-pic/delete" \
+    "{API_ROOT}/api/1.0/user/profile-pic/delete" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -1841,7 +1788,7 @@ curl -X DELETE \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/user/profile-pic/delete"
+    "{API_ROOT}/api/1.0/user/profile-pic/delete"
 );
 
 let headers = {
@@ -1875,7 +1822,7 @@ fetch(url, {
 
 ```bash
 curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/1.0/user" \
+    -G "{API_ROOT}/api/1.0/user" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Authorization: Bearer {token}" \
@@ -1885,7 +1832,7 @@ curl -X GET \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/user"
+    "{API_ROOT}/api/1.0/user"
 );
 
 let headers = {
@@ -1920,7 +1867,7 @@ fetch(url, {
 
 ```bash
 curl -X PATCH \
-    "http://localhost:8081/mainframe/public/api/1.0/user" \
+    "{API_ROOT}/api/1.0/user" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Authorization: Bearer {token}" \
@@ -1930,7 +1877,7 @@ curl -X PATCH \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/user"
+    "{API_ROOT}/api/1.0/user"
 );
 
 let headers = {
@@ -1965,7 +1912,7 @@ fetch(url, {
 
 ```bash
 curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/1.0/user/profile" \
+    -G "{API_ROOT}/api/1.0/user/profile" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Authorization: Bearer {token}" \
@@ -1975,7 +1922,7 @@ curl -X GET \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/user/profile"
+    "{API_ROOT}/api/1.0/user/profile"
 );
 
 let headers = {
@@ -2010,7 +1957,7 @@ fetch(url, {
 
 ```bash
 curl -X POST \
-    "http://localhost:8081/mainframe/public/api/1.0/user/profile-pic/store" \
+    "{API_ROOT}/api/1.0/user/profile-pic/store" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Authorization: Bearer {token}" \
@@ -2020,7 +1967,7 @@ curl -X POST \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/user/profile-pic/store"
+    "{API_ROOT}/api/1.0/user/profile-pic/store"
 );
 
 let headers = {
@@ -2055,7 +2002,7 @@ fetch(url, {
 
 ```bash
 curl -X DELETE \
-    "http://localhost:8081/mainframe/public/api/1.0/user/profile-pic/delete" \
+    "{API_ROOT}/api/1.0/user/profile-pic/delete" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Authorization: Bearer {token}" \
@@ -2065,7 +2012,7 @@ curl -X DELETE \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/user/profile-pic/delete"
+    "{API_ROOT}/api/1.0/user/profile-pic/delete"
 );
 
 let headers = {
@@ -2103,7 +2050,7 @@ APIs for managing groups
 
 ```bash
 curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/1.0/groups" \
+    -G "{API_ROOT}/api/1.0/groups" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -2112,7 +2059,7 @@ curl -X GET \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/groups"
+    "{API_ROOT}/api/1.0/groups"
 );
 
 let headers = {
@@ -2265,7 +2212,7 @@ fetch(url, {
 
 ```bash
 curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/1.0/groups/1/uploads" \
+    -G "{API_ROOT}/api/1.0/groups/1/uploads" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -2274,7 +2221,7 @@ curl -X GET \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/groups/1/uploads"
+    "{API_ROOT}/api/1.0/groups/1/uploads"
 );
 
 let headers = {
@@ -2331,7 +2278,7 @@ fetch(url, {
 
 ```bash
 curl -X POST \
-    "http://localhost:8081/mainframe/public/api/1.0/groups/1/uploads" \
+    "{API_ROOT}/api/1.0/groups/1/uploads" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -2340,7 +2287,7 @@ curl -X POST \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/groups/1/uploads"
+    "{API_ROOT}/api/1.0/groups/1/uploads"
 );
 
 let headers = {
@@ -2373,7 +2320,7 @@ fetch(url, {
 
 ```bash
 curl -X POST \
-    "http://localhost:8081/mainframe/public/api/1.0/groups" \
+    "{API_ROOT}/api/1.0/groups" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -2382,7 +2329,7 @@ curl -X POST \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/groups"
+    "{API_ROOT}/api/1.0/groups"
 );
 
 let headers = {
@@ -2415,7 +2362,7 @@ fetch(url, {
 
 ```bash
 curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/1.0/groups/1" \
+    -G "{API_ROOT}/api/1.0/groups/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -2424,7 +2371,7 @@ curl -X GET \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/groups/1"
+    "{API_ROOT}/api/1.0/groups/1"
 );
 
 let headers = {
@@ -2443,32 +2390,11 @@ fetch(url, {
 ```
 
 
-> Example response (200):
+> Example response (500):
 
 ```json
 {
-    "code": 200,
-    "status": "success",
-    "message": "Request Processed",
-    "data": {
-        "id": 1,
-        "uuid": "d48c591a-e6b2-4f7b-9458-0693362e55a6",
-        "project_id": null,
-        "tenant_id": null,
-        "name": "superuser",
-        "title": "Superuser",
-        "permissions": {
-            "superuser": 1
-        },
-        "is_active": 1,
-        "created_by": 1,
-        "updated_by": 1,
-        "created_at": "2018-12-10 06:50:18",
-        "updated_at": "2019-11-13 15:51:18",
-        "deleted_at": null,
-        "deleted_by": null
-    },
-    "redirect": "http:\/\/localhost:8081\/mainframe\/public\/groups\/1\/edit"
+    "message": "Server Error"
 }
 ```
 
@@ -2490,7 +2416,7 @@ Parameter | Status | Description
 
 ```bash
 curl -X PUT \
-    "http://localhost:8081/mainframe/public/api/1.0/groups/1" \
+    "{API_ROOT}/api/1.0/groups/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -2499,7 +2425,7 @@ curl -X PUT \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/groups/1"
+    "{API_ROOT}/api/1.0/groups/1"
 );
 
 let headers = {
@@ -2534,7 +2460,7 @@ fetch(url, {
 
 ```bash
 curl -X DELETE \
-    "http://localhost:8081/mainframe/public/api/1.0/groups/1" \
+    "{API_ROOT}/api/1.0/groups/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -2543,7 +2469,7 @@ curl -X DELETE \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/groups/1"
+    "{API_ROOT}/api/1.0/groups/1"
 );
 
 let headers = {
@@ -2580,7 +2506,7 @@ APIs for managing module-groups
 
 ```bash
 curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/1.0/module-groups" \
+    -G "{API_ROOT}/api/1.0/module-groups" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -2589,7 +2515,7 @@ curl -X GET \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/module-groups"
+    "{API_ROOT}/api/1.0/module-groups"
 );
 
 let headers = {
@@ -2693,7 +2619,7 @@ fetch(url, {
 
 ```bash
 curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/1.0/module-groups/1/uploads" \
+    -G "{API_ROOT}/api/1.0/module-groups/1/uploads" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -2702,7 +2628,7 @@ curl -X GET \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/module-groups/1/uploads"
+    "{API_ROOT}/api/1.0/module-groups/1/uploads"
 );
 
 let headers = {
@@ -2759,7 +2685,7 @@ fetch(url, {
 
 ```bash
 curl -X POST \
-    "http://localhost:8081/mainframe/public/api/1.0/module-groups/1/uploads" \
+    "{API_ROOT}/api/1.0/module-groups/1/uploads" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -2768,7 +2694,7 @@ curl -X POST \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/module-groups/1/uploads"
+    "{API_ROOT}/api/1.0/module-groups/1/uploads"
 );
 
 let headers = {
@@ -2801,7 +2727,7 @@ fetch(url, {
 
 ```bash
 curl -X POST \
-    "http://localhost:8081/mainframe/public/api/1.0/module-groups" \
+    "{API_ROOT}/api/1.0/module-groups" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -2810,7 +2736,7 @@ curl -X POST \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/module-groups"
+    "{API_ROOT}/api/1.0/module-groups"
 );
 
 let headers = {
@@ -2843,7 +2769,7 @@ fetch(url, {
 
 ```bash
 curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/1.0/module-groups/1" \
+    -G "{API_ROOT}/api/1.0/module-groups/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -2852,7 +2778,7 @@ curl -X GET \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/module-groups/1"
+    "{API_ROOT}/api/1.0/module-groups/1"
 );
 
 let headers = {
@@ -2871,37 +2797,11 @@ fetch(url, {
 ```
 
 
-> Example response (200):
+> Example response (500):
 
 ```json
 {
-    "code": 200,
-    "status": "success",
-    "message": "Request Processed",
-    "data": {
-        "id": 1,
-        "uuid": "770e22e8-e572-44a3-9a9a-be7fb1964ae5",
-        "name": "app-settings",
-        "title": "Settings",
-        "description": "Manage configuration",
-        "route_path": "app-settings",
-        "route_name": "app-settings",
-        "parent_id": 0,
-        "level": 0,
-        "order": 0,
-        "default_route": "app-configs.index",
-        "color_css": "aqua",
-        "icon_css": "fa fa-gears",
-        "is_visible": 1,
-        "is_active": 1,
-        "created_by": 1,
-        "updated_by": 1,
-        "created_at": "2018-12-10 06:47:46",
-        "updated_at": "2019-10-28 14:07:42",
-        "deleted_at": null,
-        "deleted_by": null
-    },
-    "redirect": "http:\/\/localhost:8081\/mainframe\/public\/module-groups\/1\/edit"
+    "message": "Server Error"
 }
 ```
 
@@ -2923,7 +2823,7 @@ Parameter | Status | Description
 
 ```bash
 curl -X PUT \
-    "http://localhost:8081/mainframe/public/api/1.0/module-groups/1" \
+    "{API_ROOT}/api/1.0/module-groups/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -2932,7 +2832,7 @@ curl -X PUT \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/module-groups/1"
+    "{API_ROOT}/api/1.0/module-groups/1"
 );
 
 let headers = {
@@ -2967,7 +2867,7 @@ fetch(url, {
 
 ```bash
 curl -X DELETE \
-    "http://localhost:8081/mainframe/public/api/1.0/module-groups/1" \
+    "{API_ROOT}/api/1.0/module-groups/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -2976,7 +2876,7 @@ curl -X DELETE \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/module-groups/1"
+    "{API_ROOT}/api/1.0/module-groups/1"
 );
 
 let headers = {
@@ -3013,7 +2913,7 @@ APIs for managing modules
 
 ```bash
 curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/1.0/modules" \
+    -G "{API_ROOT}/api/1.0/modules" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -3022,7 +2922,7 @@ curl -X GET \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/modules"
+    "{API_ROOT}/api/1.0/modules"
 );
 
 let headers = {
@@ -3658,7 +3558,7 @@ fetch(url, {
 
 ```bash
 curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/1.0/modules/1/uploads" \
+    -G "{API_ROOT}/api/1.0/modules/1/uploads" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -3667,7 +3567,7 @@ curl -X GET \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/modules/1/uploads"
+    "{API_ROOT}/api/1.0/modules/1/uploads"
 );
 
 let headers = {
@@ -3724,7 +3624,7 @@ fetch(url, {
 
 ```bash
 curl -X POST \
-    "http://localhost:8081/mainframe/public/api/1.0/modules/1/uploads" \
+    "{API_ROOT}/api/1.0/modules/1/uploads" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -3733,7 +3633,7 @@ curl -X POST \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/modules/1/uploads"
+    "{API_ROOT}/api/1.0/modules/1/uploads"
 );
 
 let headers = {
@@ -3766,7 +3666,7 @@ fetch(url, {
 
 ```bash
 curl -X POST \
-    "http://localhost:8081/mainframe/public/api/1.0/modules" \
+    "{API_ROOT}/api/1.0/modules" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -3775,7 +3675,7 @@ curl -X POST \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/modules"
+    "{API_ROOT}/api/1.0/modules"
 );
 
 let headers = {
@@ -3808,7 +3708,7 @@ fetch(url, {
 
 ```bash
 curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/1.0/modules/1" \
+    -G "{API_ROOT}/api/1.0/modules/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -3817,7 +3717,7 @@ curl -X GET \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/modules/1"
+    "{API_ROOT}/api/1.0/modules/1"
 );
 
 let headers = {
@@ -3836,48 +3736,11 @@ fetch(url, {
 ```
 
 
-> Example response (200):
+> Example response (500):
 
 ```json
 {
-    "code": 200,
-    "status": "success",
-    "message": "Request Processed",
-    "data": {
-        "id": 1,
-        "uuid": "ca56b8a2-368a-4f84-8336-e9850c406e2d",
-        "name": "modules",
-        "project_id": null,
-        "tenant_id": null,
-        "title": "Module",
-        "description": "Manage modules",
-        "module_table": "modules",
-        "route_path": "modules",
-        "route_name": "modules",
-        "class_directory": "app\/Mainframe\/Modules\/Modules",
-        "namespace": "\\App\\Mainframe\\Modules\\Modules",
-        "model": "\\App\\Mainframe\\Modules\\Modules\\Module",
-        "policy": "\\App\\Mainframe\\Modules\\Modules\\ModulePolicy",
-        "processor": "\\App\\Mainframe\\Modules\\Modules\\ModuleProcessor",
-        "controller": "\\App\\Mainframe\\Modules\\Modules\\ModuleController",
-        "view_directory": "mainframe.modules.modules",
-        "parent_id": 0,
-        "module_group_id": 1,
-        "level": 0,
-        "order": 0,
-        "default_route": "modules.index",
-        "color_css": "aqua",
-        "icon_css": "fa fa-puzzle-piece",
-        "is_visible": 1,
-        "is_active": 1,
-        "created_by": 1,
-        "updated_by": 1,
-        "created_at": "2018-12-10 06:47:46",
-        "updated_at": "2020-01-23 06:53:54",
-        "deleted_at": null,
-        "deleted_by": null
-    },
-    "redirect": "http:\/\/localhost:8081\/mainframe\/public\/modules\/1\/edit"
+    "message": "Server Error"
 }
 ```
 
@@ -3899,7 +3762,7 @@ Parameter | Status | Description
 
 ```bash
 curl -X PUT \
-    "http://localhost:8081/mainframe/public/api/1.0/modules/1" \
+    "{API_ROOT}/api/1.0/modules/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -3908,7 +3771,7 @@ curl -X PUT \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/modules/1"
+    "{API_ROOT}/api/1.0/modules/1"
 );
 
 let headers = {
@@ -3943,7 +3806,7 @@ fetch(url, {
 
 ```bash
 curl -X DELETE \
-    "http://localhost:8081/mainframe/public/api/1.0/modules/1" \
+    "{API_ROOT}/api/1.0/modules/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -3952,7 +3815,7 @@ curl -X DELETE \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/modules/1"
+    "{API_ROOT}/api/1.0/modules/1"
 );
 
 let headers = {
@@ -3989,7 +3852,7 @@ APIs for managing notifications
 
 ```bash
 curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/1.0/notifications" \
+    -G "{API_ROOT}/api/1.0/notifications" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -3998,7 +3861,7 @@ curl -X GET \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/notifications"
+    "{API_ROOT}/api/1.0/notifications"
 );
 
 let headers = {
@@ -4055,7 +3918,7 @@ fetch(url, {
 
 ```bash
 curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/1.0/notifications/1/uploads" \
+    -G "{API_ROOT}/api/1.0/notifications/1/uploads" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -4064,7 +3927,7 @@ curl -X GET \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/notifications/1/uploads"
+    "{API_ROOT}/api/1.0/notifications/1/uploads"
 );
 
 let headers = {
@@ -4121,7 +3984,7 @@ fetch(url, {
 
 ```bash
 curl -X POST \
-    "http://localhost:8081/mainframe/public/api/1.0/notifications/1/uploads" \
+    "{API_ROOT}/api/1.0/notifications/1/uploads" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -4130,7 +3993,7 @@ curl -X POST \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/notifications/1/uploads"
+    "{API_ROOT}/api/1.0/notifications/1/uploads"
 );
 
 let headers = {
@@ -4163,7 +4026,7 @@ fetch(url, {
 
 ```bash
 curl -X POST \
-    "http://localhost:8081/mainframe/public/api/1.0/notifications" \
+    "{API_ROOT}/api/1.0/notifications" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -4172,7 +4035,7 @@ curl -X POST \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/notifications"
+    "{API_ROOT}/api/1.0/notifications"
 );
 
 let headers = {
@@ -4205,7 +4068,7 @@ fetch(url, {
 
 ```bash
 curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/1.0/notifications/1" \
+    -G "{API_ROOT}/api/1.0/notifications/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -4214,7 +4077,7 @@ curl -X GET \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/notifications/1"
+    "{API_ROOT}/api/1.0/notifications/1"
 );
 
 let headers = {
@@ -4259,7 +4122,7 @@ Parameter | Status | Description
 
 ```bash
 curl -X PUT \
-    "http://localhost:8081/mainframe/public/api/1.0/notifications/1" \
+    "{API_ROOT}/api/1.0/notifications/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -4268,7 +4131,7 @@ curl -X PUT \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/notifications/1"
+    "{API_ROOT}/api/1.0/notifications/1"
 );
 
 let headers = {
@@ -4303,7 +4166,7 @@ fetch(url, {
 
 ```bash
 curl -X DELETE \
-    "http://localhost:8081/mainframe/public/api/1.0/notifications/1" \
+    "{API_ROOT}/api/1.0/notifications/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -4312,7 +4175,7 @@ curl -X DELETE \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/notifications/1"
+    "{API_ROOT}/api/1.0/notifications/1"
 );
 
 let headers = {
@@ -4348,7 +4211,7 @@ APIs for managing packages
 
 ```bash
 curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/1.0/packages" \
+    -G "{API_ROOT}/api/1.0/packages" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -4357,7 +4220,7 @@ curl -X GET \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/packages"
+    "{API_ROOT}/api/1.0/packages"
 );
 
 let headers = {
@@ -4414,7 +4277,7 @@ fetch(url, {
 
 ```bash
 curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/1.0/packages/1/uploads" \
+    -G "{API_ROOT}/api/1.0/packages/1/uploads" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -4423,7 +4286,7 @@ curl -X GET \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/packages/1/uploads"
+    "{API_ROOT}/api/1.0/packages/1/uploads"
 );
 
 let headers = {
@@ -4480,7 +4343,7 @@ fetch(url, {
 
 ```bash
 curl -X POST \
-    "http://localhost:8081/mainframe/public/api/1.0/packages/1/uploads" \
+    "{API_ROOT}/api/1.0/packages/1/uploads" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -4489,7 +4352,7 @@ curl -X POST \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/packages/1/uploads"
+    "{API_ROOT}/api/1.0/packages/1/uploads"
 );
 
 let headers = {
@@ -4522,7 +4385,7 @@ fetch(url, {
 
 ```bash
 curl -X POST \
-    "http://localhost:8081/mainframe/public/api/1.0/packages" \
+    "{API_ROOT}/api/1.0/packages" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -4531,7 +4394,7 @@ curl -X POST \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/packages"
+    "{API_ROOT}/api/1.0/packages"
 );
 
 let headers = {
@@ -4564,7 +4427,7 @@ fetch(url, {
 
 ```bash
 curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/1.0/packages/1" \
+    -G "{API_ROOT}/api/1.0/packages/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -4573,7 +4436,7 @@ curl -X GET \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/packages/1"
+    "{API_ROOT}/api/1.0/packages/1"
 );
 
 let headers = {
@@ -4618,7 +4481,7 @@ Parameter | Status | Description
 
 ```bash
 curl -X PUT \
-    "http://localhost:8081/mainframe/public/api/1.0/packages/1" \
+    "{API_ROOT}/api/1.0/packages/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -4627,7 +4490,7 @@ curl -X PUT \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/packages/1"
+    "{API_ROOT}/api/1.0/packages/1"
 );
 
 let headers = {
@@ -4662,7 +4525,7 @@ fetch(url, {
 
 ```bash
 curl -X DELETE \
-    "http://localhost:8081/mainframe/public/api/1.0/packages/1" \
+    "{API_ROOT}/api/1.0/packages/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -4671,7 +4534,7 @@ curl -X DELETE \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/packages/1"
+    "{API_ROOT}/api/1.0/packages/1"
 );
 
 let headers = {
@@ -4707,7 +4570,7 @@ APIs for managing projects
 
 ```bash
 curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/1.0/projects" \
+    -G "{API_ROOT}/api/1.0/projects" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -4716,7 +4579,7 @@ curl -X GET \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/projects"
+    "{API_ROOT}/api/1.0/projects"
 );
 
 let headers = {
@@ -4812,7 +4675,7 @@ fetch(url, {
 
 ```bash
 curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/1.0/projects/1/uploads" \
+    -G "{API_ROOT}/api/1.0/projects/1/uploads" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -4821,7 +4684,7 @@ curl -X GET \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/projects/1/uploads"
+    "{API_ROOT}/api/1.0/projects/1/uploads"
 );
 
 let headers = {
@@ -4878,7 +4741,7 @@ fetch(url, {
 
 ```bash
 curl -X POST \
-    "http://localhost:8081/mainframe/public/api/1.0/projects/1/uploads" \
+    "{API_ROOT}/api/1.0/projects/1/uploads" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -4887,7 +4750,7 @@ curl -X POST \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/projects/1/uploads"
+    "{API_ROOT}/api/1.0/projects/1/uploads"
 );
 
 let headers = {
@@ -4920,7 +4783,7 @@ fetch(url, {
 
 ```bash
 curl -X POST \
-    "http://localhost:8081/mainframe/public/api/1.0/projects" \
+    "{API_ROOT}/api/1.0/projects" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -4929,7 +4792,7 @@ curl -X POST \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/projects"
+    "{API_ROOT}/api/1.0/projects"
 );
 
 let headers = {
@@ -4962,7 +4825,7 @@ fetch(url, {
 
 ```bash
 curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/1.0/projects/1" \
+    -G "{API_ROOT}/api/1.0/projects/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -4971,7 +4834,7 @@ curl -X GET \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/projects/1"
+    "{API_ROOT}/api/1.0/projects/1"
 );
 
 let headers = {
@@ -4990,33 +4853,11 @@ fetch(url, {
 ```
 
 
-> Example response (200):
+> Example response (500):
 
 ```json
 {
-    "code": 200,
-    "status": "success",
-    "message": "Request Processed",
-    "data": {
-        "id": 1,
-        "uuid": "b632635d-877b-461e-8f3f-97256567eea7",
-        "code": "artp",
-        "name": "ArtemisPod",
-        "description": null,
-        "configuration": null,
-        "route_group": "artp",
-        "class_directory": "app\/Projects\/ArtemisPod",
-        "namespace": "\\App\\ArtemisPod",
-        "view_directory": "mainframe.projects.artemis-pod",
-        "is_active": 1,
-        "created_by": 5,
-        "updated_by": 5,
-        "created_at": "2019-12-28 14:13:40",
-        "updated_at": "2019-12-28 14:13:40",
-        "deleted_at": null,
-        "deleted_by": null
-    },
-    "redirect": "http:\/\/localhost:8081\/mainframe\/public\/projects\/1\/edit"
+    "message": "Server Error"
 }
 ```
 
@@ -5038,7 +4879,7 @@ Parameter | Status | Description
 
 ```bash
 curl -X PUT \
-    "http://localhost:8081/mainframe/public/api/1.0/projects/1" \
+    "{API_ROOT}/api/1.0/projects/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -5047,7 +4888,7 @@ curl -X PUT \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/projects/1"
+    "{API_ROOT}/api/1.0/projects/1"
 );
 
 let headers = {
@@ -5082,7 +4923,7 @@ fetch(url, {
 
 ```bash
 curl -X DELETE \
-    "http://localhost:8081/mainframe/public/api/1.0/projects/1" \
+    "{API_ROOT}/api/1.0/projects/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -5091,7 +4932,7 @@ curl -X DELETE \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/projects/1"
+    "{API_ROOT}/api/1.0/projects/1"
 );
 
 let headers = {
@@ -5127,7 +4968,7 @@ APIs for managing reports
 
 ```bash
 curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/1.0/reports" \
+    -G "{API_ROOT}/api/1.0/reports" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -5136,7 +4977,7 @@ curl -X GET \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/reports"
+    "{API_ROOT}/api/1.0/reports"
 );
 
 let headers = {
@@ -5193,7 +5034,7 @@ fetch(url, {
 
 ```bash
 curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/1.0/reports/1/uploads" \
+    -G "{API_ROOT}/api/1.0/reports/1/uploads" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -5202,7 +5043,7 @@ curl -X GET \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/reports/1/uploads"
+    "{API_ROOT}/api/1.0/reports/1/uploads"
 );
 
 let headers = {
@@ -5259,7 +5100,7 @@ fetch(url, {
 
 ```bash
 curl -X POST \
-    "http://localhost:8081/mainframe/public/api/1.0/reports/1/uploads" \
+    "{API_ROOT}/api/1.0/reports/1/uploads" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -5268,7 +5109,7 @@ curl -X POST \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/reports/1/uploads"
+    "{API_ROOT}/api/1.0/reports/1/uploads"
 );
 
 let headers = {
@@ -5301,7 +5142,7 @@ fetch(url, {
 
 ```bash
 curl -X POST \
-    "http://localhost:8081/mainframe/public/api/1.0/reports" \
+    "{API_ROOT}/api/1.0/reports" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -5310,7 +5151,7 @@ curl -X POST \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/reports"
+    "{API_ROOT}/api/1.0/reports"
 );
 
 let headers = {
@@ -5343,7 +5184,7 @@ fetch(url, {
 
 ```bash
 curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/1.0/reports/1" \
+    -G "{API_ROOT}/api/1.0/reports/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -5352,7 +5193,7 @@ curl -X GET \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/reports/1"
+    "{API_ROOT}/api/1.0/reports/1"
 );
 
 let headers = {
@@ -5397,7 +5238,7 @@ Parameter | Status | Description
 
 ```bash
 curl -X PUT \
-    "http://localhost:8081/mainframe/public/api/1.0/reports/1" \
+    "{API_ROOT}/api/1.0/reports/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -5406,7 +5247,7 @@ curl -X PUT \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/reports/1"
+    "{API_ROOT}/api/1.0/reports/1"
 );
 
 let headers = {
@@ -5441,7 +5282,7 @@ fetch(url, {
 
 ```bash
 curl -X DELETE \
-    "http://localhost:8081/mainframe/public/api/1.0/reports/1" \
+    "{API_ROOT}/api/1.0/reports/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -5450,7 +5291,7 @@ curl -X DELETE \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/reports/1"
+    "{API_ROOT}/api/1.0/reports/1"
 );
 
 let headers = {
@@ -5486,7 +5327,7 @@ APIs for managing settings
 
 ```bash
 curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/1.0/settings" \
+    -G "{API_ROOT}/api/1.0/settings" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -5495,7 +5336,7 @@ curl -X GET \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/settings"
+    "{API_ROOT}/api/1.0/settings"
 );
 
 let headers = {
@@ -5578,7 +5419,7 @@ fetch(url, {
                 "created_by": 1,
                 "updated_by": 1,
                 "created_at": "2018-12-24 20:27:46",
-                "updated_at": "2019-04-11 09:16:28",
+                "updated_at": "2021-02-18 17:40:28",
                 "deleted_at": null,
                 "deleted_by": null
             },
@@ -5633,7 +5474,7 @@ fetch(url, {
 
 ```bash
 curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/1.0/settings/1/uploads" \
+    -G "{API_ROOT}/api/1.0/settings/1/uploads" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -5642,7 +5483,7 @@ curl -X GET \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/settings/1/uploads"
+    "{API_ROOT}/api/1.0/settings/1/uploads"
 );
 
 let headers = {
@@ -5699,7 +5540,7 @@ fetch(url, {
 
 ```bash
 curl -X POST \
-    "http://localhost:8081/mainframe/public/api/1.0/settings/1/uploads" \
+    "{API_ROOT}/api/1.0/settings/1/uploads" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -5708,7 +5549,7 @@ curl -X POST \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/settings/1/uploads"
+    "{API_ROOT}/api/1.0/settings/1/uploads"
 );
 
 let headers = {
@@ -5741,7 +5582,7 @@ fetch(url, {
 
 ```bash
 curl -X POST \
-    "http://localhost:8081/mainframe/public/api/1.0/settings" \
+    "{API_ROOT}/api/1.0/settings" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -5750,7 +5591,7 @@ curl -X POST \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/settings"
+    "{API_ROOT}/api/1.0/settings"
 );
 
 let headers = {
@@ -5783,7 +5624,7 @@ fetch(url, {
 
 ```bash
 curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/1.0/settings/1" \
+    -G "{API_ROOT}/api/1.0/settings/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -5792,7 +5633,7 @@ curl -X GET \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/settings/1"
+    "{API_ROOT}/api/1.0/settings/1"
 );
 
 let headers = {
@@ -5811,30 +5652,11 @@ fetch(url, {
 ```
 
 
-> Example response (200):
+> Example response (500):
 
 ```json
 {
-    "code": 200,
-    "status": "success",
-    "message": "Request Processed",
-    "data": {
-        "id": 1,
-        "uuid": "6e9d6b57-966d-4b1e-aa77-fc937d9118b6",
-        "name": "app-name",
-        "title": "App Name",
-        "type": "string",
-        "description": "Mainframe Rapid Development Framework",
-        "value": "Mainframe",
-        "is_active": 1,
-        "created_by": 1,
-        "updated_by": 1,
-        "created_at": "2018-12-24 20:25:41",
-        "updated_at": "2020-01-29 02:45:23",
-        "deleted_at": null,
-        "deleted_by": null
-    },
-    "redirect": "http:\/\/localhost:8081\/mainframe\/public\/settings\/1\/edit"
+    "message": "Server Error"
 }
 ```
 
@@ -5856,7 +5678,7 @@ Parameter | Status | Description
 
 ```bash
 curl -X PUT \
-    "http://localhost:8081/mainframe/public/api/1.0/settings/1" \
+    "{API_ROOT}/api/1.0/settings/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -5865,7 +5687,7 @@ curl -X PUT \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/settings/1"
+    "{API_ROOT}/api/1.0/settings/1"
 );
 
 let headers = {
@@ -5900,7 +5722,7 @@ fetch(url, {
 
 ```bash
 curl -X DELETE \
-    "http://localhost:8081/mainframe/public/api/1.0/settings/1" \
+    "{API_ROOT}/api/1.0/settings/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -5909,7 +5731,7 @@ curl -X DELETE \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/settings/1"
+    "{API_ROOT}/api/1.0/settings/1"
 );
 
 let headers = {
@@ -5942,7 +5764,7 @@ fetch(url, {
 
 ```bash
 curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/1.0/setting/1" \
+    -G "{API_ROOT}/api/1.0/setting/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -5951,7 +5773,7 @@ curl -X GET \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/setting/1"
+    "{API_ROOT}/api/1.0/setting/1"
 );
 
 let headers = {
@@ -6018,7 +5840,7 @@ APIs for managing subscriptions
 
 ```bash
 curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/1.0/subscriptions" \
+    -G "{API_ROOT}/api/1.0/subscriptions" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -6027,7 +5849,7 @@ curl -X GET \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/subscriptions"
+    "{API_ROOT}/api/1.0/subscriptions"
 );
 
 let headers = {
@@ -6084,7 +5906,7 @@ fetch(url, {
 
 ```bash
 curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/1.0/subscriptions/1/uploads" \
+    -G "{API_ROOT}/api/1.0/subscriptions/1/uploads" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -6093,7 +5915,7 @@ curl -X GET \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/subscriptions/1/uploads"
+    "{API_ROOT}/api/1.0/subscriptions/1/uploads"
 );
 
 let headers = {
@@ -6150,7 +5972,7 @@ fetch(url, {
 
 ```bash
 curl -X POST \
-    "http://localhost:8081/mainframe/public/api/1.0/subscriptions/1/uploads" \
+    "{API_ROOT}/api/1.0/subscriptions/1/uploads" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -6159,7 +5981,7 @@ curl -X POST \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/subscriptions/1/uploads"
+    "{API_ROOT}/api/1.0/subscriptions/1/uploads"
 );
 
 let headers = {
@@ -6192,7 +6014,7 @@ fetch(url, {
 
 ```bash
 curl -X POST \
-    "http://localhost:8081/mainframe/public/api/1.0/subscriptions" \
+    "{API_ROOT}/api/1.0/subscriptions" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -6201,7 +6023,7 @@ curl -X POST \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/subscriptions"
+    "{API_ROOT}/api/1.0/subscriptions"
 );
 
 let headers = {
@@ -6234,7 +6056,7 @@ fetch(url, {
 
 ```bash
 curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/1.0/subscriptions/1" \
+    -G "{API_ROOT}/api/1.0/subscriptions/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -6243,7 +6065,7 @@ curl -X GET \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/subscriptions/1"
+    "{API_ROOT}/api/1.0/subscriptions/1"
 );
 
 let headers = {
@@ -6288,7 +6110,7 @@ Parameter | Status | Description
 
 ```bash
 curl -X PUT \
-    "http://localhost:8081/mainframe/public/api/1.0/subscriptions/1" \
+    "{API_ROOT}/api/1.0/subscriptions/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -6297,7 +6119,7 @@ curl -X PUT \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/subscriptions/1"
+    "{API_ROOT}/api/1.0/subscriptions/1"
 );
 
 let headers = {
@@ -6332,7 +6154,7 @@ fetch(url, {
 
 ```bash
 curl -X DELETE \
-    "http://localhost:8081/mainframe/public/api/1.0/subscriptions/1" \
+    "{API_ROOT}/api/1.0/subscriptions/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -6341,7 +6163,7 @@ curl -X DELETE \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/subscriptions/1"
+    "{API_ROOT}/api/1.0/subscriptions/1"
 );
 
 let headers = {
@@ -6377,7 +6199,7 @@ APIs for managing tenants
 
 ```bash
 curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/1.0/tenants" \
+    -G "{API_ROOT}/api/1.0/tenants" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -6386,7 +6208,7 @@ curl -X GET \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/tenants"
+    "{API_ROOT}/api/1.0/tenants"
 );
 
 let headers = {
@@ -6482,7 +6304,7 @@ fetch(url, {
 
 ```bash
 curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/1.0/tenants/1/uploads" \
+    -G "{API_ROOT}/api/1.0/tenants/1/uploads" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -6491,7 +6313,7 @@ curl -X GET \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/tenants/1/uploads"
+    "{API_ROOT}/api/1.0/tenants/1/uploads"
 );
 
 let headers = {
@@ -6548,7 +6370,7 @@ fetch(url, {
 
 ```bash
 curl -X POST \
-    "http://localhost:8081/mainframe/public/api/1.0/tenants/1/uploads" \
+    "{API_ROOT}/api/1.0/tenants/1/uploads" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -6557,7 +6379,7 @@ curl -X POST \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/tenants/1/uploads"
+    "{API_ROOT}/api/1.0/tenants/1/uploads"
 );
 
 let headers = {
@@ -6590,7 +6412,7 @@ fetch(url, {
 
 ```bash
 curl -X POST \
-    "http://localhost:8081/mainframe/public/api/1.0/tenants" \
+    "{API_ROOT}/api/1.0/tenants" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -6599,7 +6421,7 @@ curl -X POST \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/tenants"
+    "{API_ROOT}/api/1.0/tenants"
 );
 
 let headers = {
@@ -6632,7 +6454,7 @@ fetch(url, {
 
 ```bash
 curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/1.0/tenants/1" \
+    -G "{API_ROOT}/api/1.0/tenants/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -6641,7 +6463,7 @@ curl -X GET \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/tenants/1"
+    "{API_ROOT}/api/1.0/tenants/1"
 );
 
 let headers = {
@@ -6660,33 +6482,11 @@ fetch(url, {
 ```
 
 
-> Example response (200):
+> Example response (500):
 
 ```json
 {
-    "code": 200,
-    "status": "success",
-    "message": "Request Processed",
-    "data": {
-        "id": 1,
-        "uuid": "ceba2dba-bfad-4045-a36f-ce0572f77679",
-        "project_id": 1,
-        "name": "ArtemisPod-default",
-        "code": "artp",
-        "user_id": null,
-        "route_group": "artp",
-        "class_directory": "app\/Projects\/ArtemisPod",
-        "namespace": "\\App\\ArtemisPod",
-        "view_directory": "mainframe.projects.artemis-pod",
-        "is_active": 1,
-        "created_by": 5,
-        "updated_by": 5,
-        "created_at": "2019-12-19 13:31:02",
-        "updated_at": "2019-12-19 13:31:02",
-        "deleted_at": null,
-        "deleted_by": null
-    },
-    "redirect": "http:\/\/localhost:8081\/mainframe\/public\/tenants\/1\/edit"
+    "message": "Server Error"
 }
 ```
 
@@ -6708,7 +6508,7 @@ Parameter | Status | Description
 
 ```bash
 curl -X PUT \
-    "http://localhost:8081/mainframe/public/api/1.0/tenants/1" \
+    "{API_ROOT}/api/1.0/tenants/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -6717,7 +6517,7 @@ curl -X PUT \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/tenants/1"
+    "{API_ROOT}/api/1.0/tenants/1"
 );
 
 let headers = {
@@ -6752,7 +6552,7 @@ fetch(url, {
 
 ```bash
 curl -X DELETE \
-    "http://localhost:8081/mainframe/public/api/1.0/tenants/1" \
+    "{API_ROOT}/api/1.0/tenants/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -6761,7 +6561,7 @@ curl -X DELETE \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/tenants/1"
+    "{API_ROOT}/api/1.0/tenants/1"
 );
 
 let headers = {
@@ -6797,7 +6597,7 @@ APIs for managing uploads
 
 ```bash
 curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/1.0/uploads" \
+    -G "{API_ROOT}/api/1.0/uploads" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -6806,7 +6606,7 @@ curl -X GET \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/uploads"
+    "{API_ROOT}/api/1.0/uploads"
 );
 
 let headers = {
@@ -6869,7 +6669,7 @@ fetch(url, {
                 "updated_at": "2019-10-31 13:03:35",
                 "deleted_at": null,
                 "deleted_by": null,
-                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/7km7BL7t_2019-10-31 15_41_04-Start.jpg",
+                "url": "{API_ROOT}\/files\/7km7BL7t_2019-10-31 15_41_04-Start.jpg",
                 "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/7km7BL7t_2019-10-31 15_41_04-Start.jpg"
             },
             {
@@ -6896,7 +6696,7 @@ fetch(url, {
                 "updated_at": "2019-11-20 11:03:13",
                 "deleted_at": null,
                 "deleted_by": null,
-                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/9ZpEl7dT_2019-10-31 15_41_04-Start.jpg",
+                "url": "{API_ROOT}\/files\/9ZpEl7dT_2019-10-31 15_41_04-Start.jpg",
                 "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/9ZpEl7dT_2019-10-31 15_41_04-Start.jpg"
             },
             {
@@ -6923,7 +6723,7 @@ fetch(url, {
                 "updated_at": "2019-11-22 09:28:42",
                 "deleted_at": null,
                 "deleted_by": null,
-                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/vYaQdT0Z_2019-10-31 15_41_04-Start.jpg",
+                "url": "{API_ROOT}\/files\/vYaQdT0Z_2019-10-31 15_41_04-Start.jpg",
                 "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/vYaQdT0Z_2019-10-31 15_41_04-Start.jpg"
             },
             {
@@ -6950,7 +6750,7 @@ fetch(url, {
                 "updated_at": "2019-12-19 07:54:40",
                 "deleted_at": null,
                 "deleted_by": null,
-                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/UohSKFJT_2019-11-27 10_10_58-Cortana.jpg",
+                "url": "{API_ROOT}\/files\/UohSKFJT_2019-11-27 10_10_58-Cortana.jpg",
                 "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/UohSKFJT_2019-11-27 10_10_58-Cortana.jpg"
             },
             {
@@ -6977,7 +6777,7 @@ fetch(url, {
                 "updated_at": "2020-01-05 17:40:40",
                 "deleted_at": null,
                 "deleted_by": null,
-                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/hsQtWhy1_raihan-round.png",
+                "url": "{API_ROOT}\/files\/hsQtWhy1_raihan-round.png",
                 "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/hsQtWhy1_raihan-round.png"
             },
             {
@@ -7004,7 +6804,7 @@ fetch(url, {
                 "updated_at": "2020-01-05 17:41:57",
                 "deleted_at": null,
                 "deleted_by": null,
-                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/ocJxKCvK_raihan-round.png",
+                "url": "{API_ROOT}\/files\/ocJxKCvK_raihan-round.png",
                 "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/ocJxKCvK_raihan-round.png"
             },
             {
@@ -7031,7 +6831,7 @@ fetch(url, {
                 "updated_at": "2020-01-05 18:51:19",
                 "deleted_at": null,
                 "deleted_by": null,
-                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/RdniZdHy_raihan-round.png",
+                "url": "{API_ROOT}\/files\/RdniZdHy_raihan-round.png",
                 "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/RdniZdHy_raihan-round.png"
             },
             {
@@ -7058,7 +6858,7 @@ fetch(url, {
                 "updated_at": "2020-01-05 18:52:15",
                 "deleted_at": null,
                 "deleted_by": null,
-                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/GShmXTCO_raihan-round.png",
+                "url": "{API_ROOT}\/files\/GShmXTCO_raihan-round.png",
                 "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/GShmXTCO_raihan-round.png"
             },
             {
@@ -7085,7 +6885,7 @@ fetch(url, {
                 "updated_at": "2020-01-06 04:44:42",
                 "deleted_at": null,
                 "deleted_by": null,
-                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/sSCXBzSS_raihan-round.png",
+                "url": "{API_ROOT}\/files\/sSCXBzSS_raihan-round.png",
                 "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/sSCXBzSS_raihan-round.png"
             },
             {
@@ -7112,7 +6912,7 @@ fetch(url, {
                 "updated_at": "2020-01-06 04:44:42",
                 "deleted_at": null,
                 "deleted_by": null,
-                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/ITeOd51R_raihan-round.png",
+                "url": "{API_ROOT}\/files\/ITeOd51R_raihan-round.png",
                 "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/ITeOd51R_raihan-round.png"
             },
             {
@@ -7139,7 +6939,7 @@ fetch(url, {
                 "updated_at": "2020-01-06 04:44:42",
                 "deleted_at": null,
                 "deleted_by": null,
-                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/WLcA82gK_retro-wallpaper-49.jpg",
+                "url": "{API_ROOT}\/files\/WLcA82gK_retro-wallpaper-49.jpg",
                 "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/WLcA82gK_retro-wallpaper-49.jpg"
             },
             {
@@ -7166,7 +6966,7 @@ fetch(url, {
                 "updated_at": "2020-01-06 04:44:42",
                 "deleted_at": null,
                 "deleted_by": null,
-                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/MLJ54xuL_temp.txt",
+                "url": "{API_ROOT}\/files\/MLJ54xuL_temp.txt",
                 "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/MLJ54xuL_temp.txt"
             },
             {
@@ -7190,10 +6990,10 @@ fetch(url, {
                 "created_by": 1,
                 "updated_by": 1,
                 "created_at": "2020-01-29 03:24:49",
-                "updated_at": "2020-01-29 03:24:49",
+                "updated_at": "2021-02-18 17:40:28",
                 "deleted_at": null,
                 "deleted_by": null,
-                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/I04HKZaT_2020-01-28 22_41_26-Windows Default Lock Screen.jpg",
+                "url": "{API_ROOT}\/files\/I04HKZaT_2020-01-28 22_41_26-Windows Default Lock Screen.jpg",
                 "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/I04HKZaT_2020-01-28 22_41_26-Windows Default Lock Screen.jpg"
             },
             {
@@ -7217,7 +7017,7 @@ fetch(url, {
                 "created_by": 1,
                 "updated_by": 1,
                 "created_at": "2020-01-29 03:27:48",
-                "updated_at": "2020-01-29 03:27:48",
+                "updated_at": "2021-02-18 17:40:28",
                 "deleted_at": null,
                 "deleted_by": null,
                 "url": "\/\/files\/\/\/Vpk8vBIx_2020-01-28 22_41_26-Windows Default Lock Screen.jpg",
@@ -7244,7 +7044,7 @@ fetch(url, {
                 "created_by": 1,
                 "updated_by": 1,
                 "created_at": "2020-01-29 03:32:56",
-                "updated_at": "2020-01-29 03:32:56",
+                "updated_at": "2021-02-18 17:40:28",
                 "deleted_at": null,
                 "deleted_by": null,
                 "url": "\/\/files\/\/\/\/GJ6XPKBh_2020-01-28 22_41_52-Windows Default Lock Screen.jpg",
@@ -7271,10 +7071,10 @@ fetch(url, {
                 "created_by": 1,
                 "updated_by": 1,
                 "created_at": "2020-01-29 03:33:31",
-                "updated_at": "2020-01-29 03:33:31",
+                "updated_at": "2021-02-18 17:40:28",
                 "deleted_at": null,
                 "deleted_by": null,
-                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/mlBgovYB_2020-01-28 22_41_26-Windows Default Lock Screen.jpg",
+                "url": "{API_ROOT}\/files\/mlBgovYB_2020-01-28 22_41_26-Windows Default Lock Screen.jpg",
                 "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/mlBgovYB_2020-01-28 22_41_26-Windows Default Lock Screen.jpg"
             },
             {
@@ -7301,7 +7101,7 @@ fetch(url, {
                 "updated_at": "2020-07-13 07:40:37",
                 "deleted_at": null,
                 "deleted_by": null,
-                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/RITGPq3I_step1.png",
+                "url": "{API_ROOT}\/files\/RITGPq3I_step1.png",
                 "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/RITGPq3I_step1.png"
             },
             {
@@ -7328,7 +7128,7 @@ fetch(url, {
                 "updated_at": "2020-07-13 07:40:37",
                 "deleted_at": null,
                 "deleted_by": null,
-                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/DDdJ2BFI_step1.png",
+                "url": "{API_ROOT}\/files\/DDdJ2BFI_step1.png",
                 "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/DDdJ2BFI_step1.png"
             },
             {
@@ -7355,7 +7155,7 @@ fetch(url, {
                 "updated_at": "2020-07-13 07:40:37",
                 "deleted_at": null,
                 "deleted_by": null,
-                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/ypfo2WWq_step3.png",
+                "url": "{API_ROOT}\/files\/ypfo2WWq_step3.png",
                 "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/ypfo2WWq_step3.png"
             },
             {
@@ -7382,7 +7182,7 @@ fetch(url, {
                 "updated_at": "2020-07-13 07:40:37",
                 "deleted_at": null,
                 "deleted_by": null,
-                "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/y22h5RN2_step1.png",
+                "url": "{API_ROOT}\/files\/y22h5RN2_step1.png",
                 "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/y22h5RN2_step1.png"
             }
         ]
@@ -7404,7 +7204,7 @@ fetch(url, {
 
 ```bash
 curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/1.0/uploads/1/uploads" \
+    -G "{API_ROOT}/api/1.0/uploads/1/uploads" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -7413,7 +7213,7 @@ curl -X GET \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/uploads/1/uploads"
+    "{API_ROOT}/api/1.0/uploads/1/uploads"
 );
 
 let headers = {
@@ -7470,7 +7270,7 @@ fetch(url, {
 
 ```bash
 curl -X POST \
-    "http://localhost:8081/mainframe/public/api/1.0/uploads/1/uploads" \
+    "{API_ROOT}/api/1.0/uploads/1/uploads" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -7479,7 +7279,7 @@ curl -X POST \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/uploads/1/uploads"
+    "{API_ROOT}/api/1.0/uploads/1/uploads"
 );
 
 let headers = {
@@ -7511,7 +7311,7 @@ fetch(url, {
 
 ```bash
 curl -X POST \
-    "http://localhost:8081/mainframe/public/api/1.0/uploads" \
+    "{API_ROOT}/api/1.0/uploads" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -7520,7 +7320,7 @@ curl -X POST \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/uploads"
+    "{API_ROOT}/api/1.0/uploads"
 );
 
 let headers = {
@@ -7553,7 +7353,7 @@ fetch(url, {
 
 ```bash
 curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/1.0/uploads/1" \
+    -G "{API_ROOT}/api/1.0/uploads/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -7562,7 +7362,7 @@ curl -X GET \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/uploads/1"
+    "{API_ROOT}/api/1.0/uploads/1"
 );
 
 let headers = {
@@ -7581,41 +7381,11 @@ fetch(url, {
 ```
 
 
-> Example response (200):
+> Example response (500):
 
 ```json
 {
-    "code": 200,
-    "status": "success",
-    "message": "Request Processed",
-    "data": {
-        "id": 1,
-        "uuid": "821b341e-1eb7-412c-a9ae-0dcfda244275",
-        "project_id": null,
-        "tenant_id": null,
-        "name": "2019-10-31 15_41_04-Start.jpg",
-        "type": null,
-        "path": "\/files\/7km7BL7t_2019-10-31 15_41_04-Start.jpg",
-        "order": null,
-        "ext": "jpg",
-        "bytes": null,
-        "description": null,
-        "uploadable_type": null,
-        "uploadable_id": null,
-        "module_id": 21,
-        "element_id": null,
-        "element_uuid": null,
-        "is_active": 1,
-        "created_by": 5,
-        "updated_by": 5,
-        "created_at": "2019-10-31 13:03:35",
-        "updated_at": "2019-10-31 13:03:35",
-        "deleted_at": null,
-        "deleted_by": null,
-        "url": "http:\/\/localhost:8081\/mainframe\/public\/files\/7km7BL7t_2019-10-31 15_41_04-Start.jpg",
-        "dir": "E:\\MAMP\\htdocs\\mainframe\\public\/files\/7km7BL7t_2019-10-31 15_41_04-Start.jpg"
-    },
-    "redirect": "http:\/\/localhost:8081\/mainframe\/public\/uploads\/1\/edit"
+    "message": "Server Error"
 }
 ```
 
@@ -7637,7 +7407,7 @@ Parameter | Status | Description
 
 ```bash
 curl -X PUT \
-    "http://localhost:8081/mainframe/public/api/1.0/uploads/1" \
+    "{API_ROOT}/api/1.0/uploads/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -7646,7 +7416,7 @@ curl -X PUT \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/uploads/1"
+    "{API_ROOT}/api/1.0/uploads/1"
 );
 
 let headers = {
@@ -7681,7 +7451,7 @@ fetch(url, {
 
 ```bash
 curl -X DELETE \
-    "http://localhost:8081/mainframe/public/api/1.0/uploads/1" \
+    "{API_ROOT}/api/1.0/uploads/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -7690,7 +7460,7 @@ curl -X DELETE \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/uploads/1"
+    "{API_ROOT}/api/1.0/uploads/1"
 );
 
 let headers = {
@@ -7726,7 +7496,7 @@ APIs for managing users
 
 ```bash
 curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/1.0/users" \
+    -G "{API_ROOT}/api/1.0/users" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -7735,7 +7505,7 @@ curl -X GET \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/users"
+    "{API_ROOT}/api/1.0/users"
 );
 
 let headers = {
@@ -7772,7 +7542,7 @@ fetch(url, {
         "per_page": 20,
         "prev_page_url": null,
         "to": 20,
-        "total": 44,
+        "total": 52,
         "items": [
             {
                 "id": 1,
@@ -7789,7 +7559,7 @@ fetch(url, {
                 "created_by": 1,
                 "updated_by": 1,
                 "created_at": "2018-09-10 15:30:06",
-                "updated_at": "2021-02-18 13:06:52",
+                "updated_at": "2021-02-18 18:28:33",
                 "deleted_at": null,
                 "deleted_by": null,
                 "name_initial": null,
@@ -7808,7 +7578,7 @@ fetch(url, {
                 "phone": null,
                 "mobile": null,
                 "first_login_at": "2020-02-08 10:55:44",
-                "last_login_at": "2021-02-15 07:37:13",
+                "last_login_at": "2021-02-18 17:39:32",
                 "auth_token": "UMZ9oxfJ7gL0OtbBUIe\/odaOr1jEFDq1",
                 "email_verified_at": "2019-01-22 19:27:07",
                 "email_verification_code": null,
@@ -7838,7 +7608,7 @@ fetch(url, {
                 "created_by": 1,
                 "updated_by": 1,
                 "created_at": "2018-12-24 05:48:25",
-                "updated_at": "2021-02-18 13:06:52",
+                "updated_at": "2021-02-18 18:28:33",
                 "deleted_at": null,
                 "deleted_by": null,
                 "name_initial": null,
@@ -8773,7 +8543,7 @@ fetch(url, {
 
 ```bash
 curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/1.0/users/1/uploads" \
+    -G "{API_ROOT}/api/1.0/users/1/uploads" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -8782,7 +8552,7 @@ curl -X GET \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/users/1/uploads"
+    "{API_ROOT}/api/1.0/users/1/uploads"
 );
 
 let headers = {
@@ -8839,7 +8609,7 @@ fetch(url, {
 
 ```bash
 curl -X POST \
-    "http://localhost:8081/mainframe/public/api/1.0/users/1/uploads" \
+    "{API_ROOT}/api/1.0/users/1/uploads" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -8848,7 +8618,7 @@ curl -X POST \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/users/1/uploads"
+    "{API_ROOT}/api/1.0/users/1/uploads"
 );
 
 let headers = {
@@ -8881,7 +8651,7 @@ fetch(url, {
 
 ```bash
 curl -X POST \
-    "http://localhost:8081/mainframe/public/api/1.0/users" \
+    "{API_ROOT}/api/1.0/users" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -8890,7 +8660,7 @@ curl -X POST \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/users"
+    "{API_ROOT}/api/1.0/users"
 );
 
 let headers = {
@@ -8923,7 +8693,7 @@ fetch(url, {
 
 ```bash
 curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/1.0/users/1" \
+    -G "{API_ROOT}/api/1.0/users/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -8932,7 +8702,7 @@ curl -X GET \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/users/1"
+    "{API_ROOT}/api/1.0/users/1"
 );
 
 let headers = {
@@ -8951,63 +8721,11 @@ fetch(url, {
 ```
 
 
-> Example response (200):
+> Example response (500):
 
 ```json
 {
-    "code": 200,
-    "status": "success",
-    "message": "Request Processed",
-    "data": {
-        "id": 1,
-        "uuid": "3ef9b174-6c7c-41fd-b68e-18d003fb9481",
-        "project_id": null,
-        "tenant_id": null,
-        "name": "Super admin",
-        "email": "su@mainframe",
-        "api_token": null,
-        "api_token_generated_at": null,
-        "is_tenant_editable": 1,
-        "permissions": [],
-        "is_active": 1,
-        "created_by": 1,
-        "updated_by": 1,
-        "created_at": "2018-09-10 15:30:06",
-        "updated_at": "2021-02-18 13:06:52",
-        "deleted_at": null,
-        "deleted_by": null,
-        "name_initial": null,
-        "first_name": "Prime",
-        "last_name": "Superuser",
-        "full_name": "Prime Superuser",
-        "gender": null,
-        "device_token": null,
-        "address1": null,
-        "address2": null,
-        "city": null,
-        "county": null,
-        "country_id": 187,
-        "country_name": "UK (United Kingdom)",
-        "zip_code": null,
-        "phone": null,
-        "mobile": null,
-        "first_login_at": "2020-02-08 10:55:44",
-        "last_login_at": "2021-02-15 07:37:13",
-        "auth_token": "UMZ9oxfJ7gL0OtbBUIe\/odaOr1jEFDq1",
-        "email_verified_at": "2019-01-22 19:27:07",
-        "email_verification_code": null,
-        "currency": "GBP",
-        "social_account_id": null,
-        "social_account_type": null,
-        "dob": null,
-        "group_ids": [
-            "1"
-        ],
-        "is_test": 0,
-        "profile_pic": null,
-        "uploads": []
-    },
-    "redirect": "http:\/\/localhost:8081\/mainframe\/public\/users\/1\/edit"
+    "message": "Server Error"
 }
 ```
 
@@ -9029,7 +8747,7 @@ Parameter | Status | Description
 
 ```bash
 curl -X PUT \
-    "http://localhost:8081/mainframe/public/api/1.0/users/1" \
+    "{API_ROOT}/api/1.0/users/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -9038,7 +8756,7 @@ curl -X PUT \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/users/1"
+    "{API_ROOT}/api/1.0/users/1"
 );
 
 let headers = {
@@ -9073,7 +8791,7 @@ fetch(url, {
 
 ```bash
 curl -X DELETE \
-    "http://localhost:8081/mainframe/public/api/1.0/users/1" \
+    "{API_ROOT}/api/1.0/users/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
@@ -9082,7 +8800,7 @@ curl -X DELETE \
 
 ```javascript
 const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/users/1"
+    "{API_ROOT}/api/1.0/users/1"
 );
 
 let headers = {

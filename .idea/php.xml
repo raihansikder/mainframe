@@ -141,6 +141,7 @@
       <path value="$PROJECT_DIR$/vendor/mpociot/documentarian" />
       <path value="$PROJECT_DIR$/vendor/mpociot/reflection-docblock" />
       <path value="$PROJECT_DIR$/vendor/mpociot/laravel-apidoc-generator" />
+      <path value="$PROJECT_DIR$/vendor/garygreen/pretty-routes" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />

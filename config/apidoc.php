@@ -7,7 +7,7 @@ return [
      * - "laravel" will generate the documentation as a Blade view,
      * so you can add routing and authentication.
      */
-    'type' => 'static',
+    'type' => 'laravel',
 
     /*
      * Static output folder: HTML documentation and assets will be generated in this folder.
@@ -53,7 +53,7 @@ return [
      * The base URL to be used in examples and the Postman collection.
      * By default, this will be the value of config('app.url').
      */
-    'base_url' => null,
+    'base_url' => '{API_ROOT}',
 
     /*
      * Generate a Postman collection in addition to HTML docs.
