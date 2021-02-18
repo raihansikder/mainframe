@@ -1305,6 +1305,521 @@ fetch(url, {
 <h3>HTTP Request</h3>
 <p><code>DELETE api/1.0/countries/{country}</code></p>
 <!-- END_bd3e5345baae5ac5ab6741f893eac5c2 -->
+<h1>General</h1>
+<!-- START_c64d6b993f3d8633d566da423913ee94 -->
+<h2>Handle a registration request for the application.</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST \
+    "http://localhost:8081/mainframe/public/api/1.0/register/" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
+    -H "client-id: 2"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8081/mainframe/public/api/1.0/register/"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
+    "client-id": "2",
+};
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/1.0/register/{groupName?}</code></p>
+<!-- END_c64d6b993f3d8633d566da423913ee94 -->
+<!-- START_150cd6db1645ea9e24e2bb8444f338e0 -->
+<h2>Handle a login request to the application.</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST \
+    "http://localhost:8081/mainframe/public/api/1.0/login" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
+    -H "client-id: 2"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8081/mainframe/public/api/1.0/login"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
+    "client-id": "2",
+};
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/1.0/login</code></p>
+<!-- END_150cd6db1645ea9e24e2bb8444f338e0 -->
+<!-- START_022da5741b8d31bb39fa527794aeb6eb -->
+<h2>Send a reset link to the given user.</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST \
+    "http://localhost:8081/mainframe/public/api/1.0/password/email" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
+    -H "client-id: 2"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8081/mainframe/public/api/1.0/password/email"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
+    "client-id": "2",
+};
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/1.0/password/email</code></p>
+<!-- END_022da5741b8d31bb39fa527794aeb6eb -->
+<!-- START_af60d5b394c9587e648dfca2ecce1cc8 -->
+<h2>Log the user out of the application.</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST \
+    "http://localhost:8081/mainframe/public/api/1.0/logout" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
+    -H "client-id: 2"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8081/mainframe/public/api/1.0/logout"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
+    "client-id": "2",
+};
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/1.0/logout</code></p>
+<!-- END_af60d5b394c9587e648dfca2ecce1cc8 -->
+<!-- START_64b21e03e9ba5a802048cae62c23f59e -->
+<h2>Get user profile</h2>
+<p><br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small></p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET \
+    -G "http://localhost:8081/mainframe/public/api/1.0/user" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
+    -H "client-id: 2"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8081/mainframe/public/api/1.0/user"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
+    "client-id": "2",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "code": 401,
+    "status": "fail",
+    "message": "Authentication failed (Bearer)",
+    "data": {
+        "id": 1,
+        "uuid": "118b4820-557b-4b6d-b645-b2827251831f",
+        "project_id": null,
+        "tenant_id": null,
+        "name": null,
+        "type": null,
+        "body": "lore ipsum dolor sit amet",
+        "commentable_type": "App\\Mainframe\\Modules\\Samples\\LoremIpsums\\LoremIpsum",
+        "commentable_id": 2,
+        "module_id": 50,
+        "element_id": 2,
+        "element_uuid": "175da4d1-e448-4e27-a642-4da5179ec5c6",
+        "is_active": 1,
+        "created_by": 1,
+        "updated_by": 1,
+        "created_at": "2020-02-25 09:20:10",
+        "updated_at": "2020-02-25 09:20:10",
+        "deleted_at": null,
+        "deleted_by": null
+    },
+    "redirect": "http:\/\/localhost\/api\/1.0\/user"
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET api/1.0/user</code></p>
+<!-- END_64b21e03e9ba5a802048cae62c23f59e -->
+<!-- START_3dc037299c426390a31781c20f4b5328 -->
+<h2>Update user information</h2>
+<p><br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small></p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X PATCH \
+    "http://localhost:8081/mainframe/public/api/1.0/user" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
+    -H "client-id: 2"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8081/mainframe/public/api/1.0/user"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
+    "client-id": "2",
+};
+
+fetch(url, {
+    method: "PATCH",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>PATCH api/1.0/user</code></p>
+<!-- END_3dc037299c426390a31781c20f4b5328 -->
+<!-- START_a96c1e80d580bd2b32d035d28bb4464d -->
+<h2>Get user profile</h2>
+<p><br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small></p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET \
+    -G "http://localhost:8081/mainframe/public/api/1.0/user/profile" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
+    -H "client-id: 2"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8081/mainframe/public/api/1.0/user/profile"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
+    "client-id": "2",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "code": 401,
+    "status": "fail",
+    "message": "Authentication failed (Bearer)",
+    "data": {
+        "id": 1,
+        "uuid": "118b4820-557b-4b6d-b645-b2827251831f",
+        "project_id": null,
+        "tenant_id": null,
+        "name": null,
+        "type": null,
+        "body": "lore ipsum dolor sit amet",
+        "commentable_type": "App\\Mainframe\\Modules\\Samples\\LoremIpsums\\LoremIpsum",
+        "commentable_id": 2,
+        "module_id": 50,
+        "element_id": 2,
+        "element_uuid": "175da4d1-e448-4e27-a642-4da5179ec5c6",
+        "is_active": 1,
+        "created_by": 1,
+        "updated_by": 1,
+        "created_at": "2020-02-25 09:20:10",
+        "updated_at": "2020-02-25 09:20:10",
+        "deleted_at": null,
+        "deleted_by": null
+    },
+    "redirect": "http:\/\/localhost\/api\/1.0\/user\/profile"
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET api/1.0/user/profile</code></p>
+<!-- END_a96c1e80d580bd2b32d035d28bb4464d -->
+<!-- START_2ec9c1b4153759255c1201829c4d1170 -->
+<h2>Store user profile pic</h2>
+<p><br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small></p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST \
+    "http://localhost:8081/mainframe/public/api/1.0/user/profile-pic/store" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
+    -H "client-id: 2"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8081/mainframe/public/api/1.0/user/profile-pic/store"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
+    "client-id": "2",
+};
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/1.0/user/profile-pic/store</code></p>
+<!-- END_2ec9c1b4153759255c1201829c4d1170 -->
+<!-- START_d4a7573daa0ddda2573693a6d5e6adbf -->
+<h2>Delete user profile pic</h2>
+<p><br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small></p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X DELETE \
+    "http://localhost:8081/mainframe/public/api/1.0/user/profile-pic/delete" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
+    -H "client-id: 2"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8081/mainframe/public/api/1.0/user/profile-pic/delete"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
+    "client-id": "2",
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>DELETE api/1.0/user/profile-pic/delete</code></p>
+<!-- END_d4a7573daa0ddda2573693a6d5e6adbf -->
+<!-- START_64b21e03e9ba5a802048cae62c23f59e -->
+<h2>Get user profile</h2>
+<p><br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small></p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET \
+    -G "http://localhost:8081/mainframe/public/api/1.0/user" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "Authorization: Bearer {token}" \
+    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
+    -H "client-id: 2"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8081/mainframe/public/api/1.0/user"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Authorization": "Bearer {token}",
+    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
+    "client-id": "2",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET api/1.0/user</code></p>
+<!-- END_64b21e03e9ba5a802048cae62c23f59e -->
+<!-- START_3dc037299c426390a31781c20f4b5328 -->
+<h2>Update user information</h2>
+<p><br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small></p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X PATCH \
+    "http://localhost:8081/mainframe/public/api/1.0/user" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "Authorization: Bearer {token}" \
+    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
+    -H "client-id: 2"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8081/mainframe/public/api/1.0/user"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Authorization": "Bearer {token}",
+    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
+    "client-id": "2",
+};
+
+fetch(url, {
+    method: "PATCH",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>PATCH api/1.0/user</code></p>
+<!-- END_3dc037299c426390a31781c20f4b5328 -->
+<!-- START_a96c1e80d580bd2b32d035d28bb4464d -->
+<h2>Get user profile</h2>
+<p><br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small></p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET \
+    -G "http://localhost:8081/mainframe/public/api/1.0/user/profile" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "Authorization: Bearer {token}" \
+    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
+    -H "client-id: 2"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8081/mainframe/public/api/1.0/user/profile"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Authorization": "Bearer {token}",
+    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
+    "client-id": "2",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET api/1.0/user/profile</code></p>
+<!-- END_a96c1e80d580bd2b32d035d28bb4464d -->
+<!-- START_2ec9c1b4153759255c1201829c4d1170 -->
+<h2>Store user profile pic</h2>
+<p><br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small></p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST \
+    "http://localhost:8081/mainframe/public/api/1.0/user/profile-pic/store" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "Authorization: Bearer {token}" \
+    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
+    -H "client-id: 2"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8081/mainframe/public/api/1.0/user/profile-pic/store"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Authorization": "Bearer {token}",
+    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
+    "client-id": "2",
+};
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/1.0/user/profile-pic/store</code></p>
+<!-- END_2ec9c1b4153759255c1201829c4d1170 -->
+<!-- START_d4a7573daa0ddda2573693a6d5e6adbf -->
+<h2>Delete user profile pic</h2>
+<p><br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small></p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X DELETE \
+    "http://localhost:8081/mainframe/public/api/1.0/user/profile-pic/delete" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "Authorization: Bearer {token}" \
+    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
+    -H "client-id: 2"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8081/mainframe/public/api/1.0/user/profile-pic/delete"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Authorization": "Bearer {token}",
+    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
+    "client-id": "2",
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>DELETE api/1.0/user/profile-pic/delete</code></p>
+<!-- END_d4a7573daa0ddda2573693a6d5e6adbf -->
 <h1>Groups</h1>
 <p>APIs for managing groups</p>
 <!-- START_56f82dc0f79f0bac4e81fbec8015aa70 -->
@@ -4585,7 +5100,7 @@ fetch(url, {
 <p><code>DELETE api/1.0/settings/{setting}</code></p>
 <!-- END_cfa8b753d221b7d6a70d4691d2ca0a1c -->
 <!-- START_21f5cfe7136ec865d701a276e042e269 -->
-<h2>Get the setting value from name(key)</h2>
+<h2>Get setting by name(key)</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -7466,346 +7981,6 @@ fetch(url, {
 <h3>HTTP Request</h3>
 <p><code>DELETE api/1.0/users/{user}</code></p>
 <!-- END_6494a7c388d9e30504e5de8fb30516fb -->
-<h1>general</h1>
-<!-- START_c64d6b993f3d8633d566da423913ee94 -->
-<h2>Handle a registration request for the application.</h2>
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre><code class="language-bash">curl -X POST \
-    "http://localhost:8081/mainframe/public/api/1.0/register/" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"</code></pre>
-<pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/register/"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "POST",
-    headers: headers,
-})
-    .then(response =&gt; response.json())
-    .then(json =&gt; console.log(json));</code></pre>
-<h3>HTTP Request</h3>
-<p><code>POST api/1.0/register/{groupName?}</code></p>
-<!-- END_c64d6b993f3d8633d566da423913ee94 -->
-<!-- START_150cd6db1645ea9e24e2bb8444f338e0 -->
-<h2>Handle a login request to the application.</h2>
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre><code class="language-bash">curl -X POST \
-    "http://localhost:8081/mainframe/public/api/1.0/login" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"</code></pre>
-<pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/login"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "POST",
-    headers: headers,
-})
-    .then(response =&gt; response.json())
-    .then(json =&gt; console.log(json));</code></pre>
-<h3>HTTP Request</h3>
-<p><code>POST api/1.0/login</code></p>
-<!-- END_150cd6db1645ea9e24e2bb8444f338e0 -->
-<!-- START_022da5741b8d31bb39fa527794aeb6eb -->
-<h2>Send a reset link to the given user.</h2>
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre><code class="language-bash">curl -X POST \
-    "http://localhost:8081/mainframe/public/api/1.0/password/email" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"</code></pre>
-<pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/password/email"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "POST",
-    headers: headers,
-})
-    .then(response =&gt; response.json())
-    .then(json =&gt; console.log(json));</code></pre>
-<h3>HTTP Request</h3>
-<p><code>POST api/1.0/password/email</code></p>
-<!-- END_022da5741b8d31bb39fa527794aeb6eb -->
-<!-- START_af60d5b394c9587e648dfca2ecce1cc8 -->
-<h2>Log the user out of the application.</h2>
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre><code class="language-bash">curl -X POST \
-    "http://localhost:8081/mainframe/public/api/1.0/logout" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"</code></pre>
-<pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/logout"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "POST",
-    headers: headers,
-})
-    .then(response =&gt; response.json())
-    .then(json =&gt; console.log(json));</code></pre>
-<h3>HTTP Request</h3>
-<p><code>POST api/1.0/logout</code></p>
-<!-- END_af60d5b394c9587e648dfca2ecce1cc8 -->
-<!-- START_64b21e03e9ba5a802048cae62c23f59e -->
-<h2>Get user profile</h2>
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre><code class="language-bash">curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/1.0/user" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"</code></pre>
-<pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/user"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response =&gt; response.json())
-    .then(json =&gt; console.log(json));</code></pre>
-<blockquote>
-<p>Example response (200):</p>
-</blockquote>
-<pre><code class="language-json">{
-    "code": 401,
-    "status": "fail",
-    "message": "Authentication failed (Bearer)",
-    "data": {
-        "id": 1,
-        "uuid": "118b4820-557b-4b6d-b645-b2827251831f",
-        "project_id": null,
-        "tenant_id": null,
-        "name": null,
-        "type": null,
-        "body": "lore ipsum dolor sit amet",
-        "commentable_type": "App\\Mainframe\\Modules\\Samples\\LoremIpsums\\LoremIpsum",
-        "commentable_id": 2,
-        "module_id": 50,
-        "element_id": 2,
-        "element_uuid": "175da4d1-e448-4e27-a642-4da5179ec5c6",
-        "is_active": 1,
-        "created_by": 1,
-        "updated_by": 1,
-        "created_at": "2020-02-25 09:20:10",
-        "updated_at": "2020-02-25 09:20:10",
-        "deleted_at": null,
-        "deleted_by": null
-    },
-    "redirect": "http:\/\/localhost\/api\/1.0\/user"
-}</code></pre>
-<h3>HTTP Request</h3>
-<p><code>GET api/1.0/user</code></p>
-<!-- END_64b21e03e9ba5a802048cae62c23f59e -->
-<!-- START_3dc037299c426390a31781c20f4b5328 -->
-<h2>Update user information</h2>
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre><code class="language-bash">curl -X PATCH \
-    "http://localhost:8081/mainframe/public/api/1.0/user" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"</code></pre>
-<pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/user"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "PATCH",
-    headers: headers,
-})
-    .then(response =&gt; response.json())
-    .then(json =&gt; console.log(json));</code></pre>
-<h3>HTTP Request</h3>
-<p><code>PATCH api/1.0/user</code></p>
-<!-- END_3dc037299c426390a31781c20f4b5328 -->
-<!-- START_a96c1e80d580bd2b32d035d28bb4464d -->
-<h2>Get user profile</h2>
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre><code class="language-bash">curl -X GET \
-    -G "http://localhost:8081/mainframe/public/api/1.0/user/profile" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"</code></pre>
-<pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/user/profile"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response =&gt; response.json())
-    .then(json =&gt; console.log(json));</code></pre>
-<blockquote>
-<p>Example response (200):</p>
-</blockquote>
-<pre><code class="language-json">{
-    "code": 401,
-    "status": "fail",
-    "message": "Authentication failed (Bearer)",
-    "data": {
-        "id": 1,
-        "uuid": "118b4820-557b-4b6d-b645-b2827251831f",
-        "project_id": null,
-        "tenant_id": null,
-        "name": null,
-        "type": null,
-        "body": "lore ipsum dolor sit amet",
-        "commentable_type": "App\\Mainframe\\Modules\\Samples\\LoremIpsums\\LoremIpsum",
-        "commentable_id": 2,
-        "module_id": 50,
-        "element_id": 2,
-        "element_uuid": "175da4d1-e448-4e27-a642-4da5179ec5c6",
-        "is_active": 1,
-        "created_by": 1,
-        "updated_by": 1,
-        "created_at": "2020-02-25 09:20:10",
-        "updated_at": "2020-02-25 09:20:10",
-        "deleted_at": null,
-        "deleted_by": null
-    },
-    "redirect": "http:\/\/localhost\/api\/1.0\/user\/profile"
-}</code></pre>
-<h3>HTTP Request</h3>
-<p><code>GET api/1.0/user/profile</code></p>
-<!-- END_a96c1e80d580bd2b32d035d28bb4464d -->
-<!-- START_2ec9c1b4153759255c1201829c4d1170 -->
-<h2>Store user profile pic</h2>
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre><code class="language-bash">curl -X POST \
-    "http://localhost:8081/mainframe/public/api/1.0/user/profile-pic/store" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"</code></pre>
-<pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/user/profile-pic/store"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "POST",
-    headers: headers,
-})
-    .then(response =&gt; response.json())
-    .then(json =&gt; console.log(json));</code></pre>
-<h3>HTTP Request</h3>
-<p><code>POST api/1.0/user/profile-pic/store</code></p>
-<!-- END_2ec9c1b4153759255c1201829c4d1170 -->
-<!-- START_d4a7573daa0ddda2573693a6d5e6adbf -->
-<h2>Delete user profile pic</h2>
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre><code class="language-bash">curl -X DELETE \
-    "http://localhost:8081/mainframe/public/api/1.0/user/profile-pic/delete" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json" \
-    -H "X-Auth-Token: 7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0" \
-    -H "client-id: 2"</code></pre>
-<pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8081/mainframe/public/api/1.0/user/profile-pic/delete"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-    "X-Auth-Token": "7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0",
-    "client-id": "2",
-};
-
-fetch(url, {
-    method: "DELETE",
-    headers: headers,
-})
-    .then(response =&gt; response.json())
-    .then(json =&gt; console.log(json));</code></pre>
-<h3>HTTP Request</h3>
-<p><code>DELETE api/1.0/user/profile-pic/delete</code></p>
-<!-- END_d4a7573daa0ddda2573693a6d5e6adbf -->
       </div>
       <div class="dark-box">
                         <div class="lang-selector">

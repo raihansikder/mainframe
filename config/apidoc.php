@@ -12,7 +12,7 @@ return [
     /*
      * Static output folder: HTML documentation and assets will be generated in this folder.
      */
-   'output_folder' => 'public/docs',
+    'output_folder' => 'public/docs',
 
     /*
      * Settings for `laravel` type output.
@@ -128,7 +128,7 @@ return [
              * Note that the route must be referenced by name here (wildcards are supported).
              */
             'include' => [
-                // 'users.index', 'healthcheck*'
+                // 'users.index', 'health-check*'
             ],
 
             /*
@@ -138,10 +138,8 @@ return [
              */
             'exclude' => [
                 // 'users.create', 'admin.*'
-                '*.list','*.changes.*','*.report','*lorem-ipsums*','*dolor-sits*'
-
+                '*.list', '*.changes.*', '*.report', '*lorem-ipsums*', '*dolor-sits*',
             ],
-
             /*
              * Specify rules to be applied to all the routes in this group when generating documentation
              */
@@ -157,7 +155,6 @@ return [
                     'X-Auth-Token' => '7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0',
                     'client-id' => '2',
                 ],
-
                 /*
                  * If no @response or @transformer declarations are found for the route,
                  * we'll try to get a sample response by attempting an API call.
@@ -169,7 +166,6 @@ return [
                      * List the methods here or use '*' to mean all methods. Leave empty to disable API calls.
                      */
                     'methods' => ['GET'],
-
                     /*
                      * Laravel config variables which should be set for the API call.
                      * This is a good place to ensure that notifications, emails
@@ -181,27 +177,45 @@ return [
                         'app.debug' => false,
                         // 'service.key' => 'value',
                     ],
-
                     /*
                      * Cookies which should be sent with the API call.
                      */
                     'cookies' => [
                         // 'name' => 'value'
                     ],
-
                     /*
                      * Query parameters which should be sent with the API call.
                      */
                     'queryParams' => [
                         // 'key' => 'value',
                     ],
-
                     /*
                      * Body parameters which should be sent with the API call.
                      */
                     'bodyParams' => [
                         // 'key' => 'value',
                     ],
+                ],
+            ],
+        ],
+        [
+            'match' => [
+                'domains' => ['*'],
+                'prefixes' => [
+                    'api/1.0/user*',
+                ],
+            ],
+            'exclude' => [
+                '*users.*',
+            ],
+            'apply' => [
+                'headers' => [
+                    'Content-Type' => 'application/json',
+                    'Accept' => 'application/json',
+                    'Authorization' => 'Bearer {token}',
+                    // 'Api-Version' => 'v2',
+                    'X-Auth-Token' => '7c0f2f2802ffab09ec139275d595caaa91c6b2d2dc1340e40bdde1afb83b3ec0',
+                    'client-id' => '2',
                 ],
             ],
         ],

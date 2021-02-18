@@ -5,6 +5,10 @@ namespace App\Mainframe\Modules\SuperHeroes;
 use App\Mainframe\Features\Modular\ModularController\ModularController;
 use App\Mainframe\Features\Report\ModuleList;
 
+/**
+ * @group  SuperHero
+ * APIs for managing super-heroes
+ */
 class SuperHeroController extends ModularController
 {
     /*
@@ -19,9 +23,9 @@ class SuperHeroController extends ModularController
     | Existing Controller functions
     |--------------------------------------------------------------------------
     | Override the following list of functions to customize the behavior of the controller
-    |
     */
     /**
+     * SuperHero Datatable
      * @return SuperHeroDatatable
      */
     public function datatable()
@@ -30,6 +34,7 @@ class SuperHeroController extends ModularController
     }
 
     /**
+     * List SuperHero
      * Returns a collection of objects as Json for an API call
      *
      * @return \Illuminate\Http\JsonResponse
@@ -39,11 +44,6 @@ class SuperHeroController extends ModularController
         return (new ModuleList($this->module))->json();
     }
 
-    /**
-     * Show and render report
-     *
-     * @return bool|\Illuminate\Contracts\View\Factory|\Illuminate\Http\JsonResponse|\Illuminate\Support\Collection|\Illuminate\View\View|mixed
-     */
     // public function report() { }
     // public function transformInputRequests() { }
     // public function storeRequestValidator() { }
@@ -62,7 +62,6 @@ class SuperHeroController extends ModularController
     | Custom Controller functions
     |--------------------------------------------------------------------------
     | Write down additional controller functions that might be required for your project to handle bu
-    |
     */
 
 }

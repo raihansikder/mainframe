@@ -11,12 +11,10 @@ use App\Mainframe\Features\Modular\ModularController\ModularController;
  */
 class UserController extends ModularController
 {
-
     /*
     |--------------------------------------------------------------------------
     | Module definitions
     |--------------------------------------------------------------------------
-    |
     */
     protected $moduleName = 'users';
 

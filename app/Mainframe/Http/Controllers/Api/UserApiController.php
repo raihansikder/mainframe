@@ -9,6 +9,9 @@ use App\Mainframe\Modules\Modules\Module;
 use App\Mainframe\Modules\Uploads\UploadController;
 use App\Mainframe\Modules\Users\UserController;
 
+/**
+ * @header Bearer
+ */
 class UserApiController extends ApiController
 {
 
@@ -36,7 +39,6 @@ class UserApiController extends ApiController
      * Get user profile
      *
      * @return mixed
-     * @group Settings
      */
 
     public function profile()

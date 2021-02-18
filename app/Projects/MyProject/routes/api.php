@@ -39,8 +39,8 @@ Route::prefix($version)->middleware($middlewares)->group(function () use ($modul
             Route::get($path.'/{id}/uploads', $controller.'@uploads')->name($namePrefix.".{$moduleName}.uploads");
             Route::post($path.'/{id}/uploads', $controller.'@attachUpload')->name($namePrefix.".{$moduleName}.attach-upload");
 
-            // Route::get($path.'/{id}/comments', $controller.'@comments');
-            // Route::post($path.'/{id}/comments', $controller.'@attachComments');
+            // Route::get($path.'/{id}/comments', $controller.'@comments')->name($namePrefix.".{$moduleName}.comments");
+            // Route::post($path.'/{id}/comments', $controller.'@attachComments')->name($namePrefix.".{$moduleName}.attach-comment");
 
             Route::apiResource($path, $controller)->names([
                 'index'   => "{$namePrefix}.{$moduleName}.index",

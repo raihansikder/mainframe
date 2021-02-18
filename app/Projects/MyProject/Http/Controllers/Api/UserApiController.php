@@ -5,6 +5,9 @@ namespace App\Projects\MyProject\Http\Controllers\Api;
 use App\Mainframe\Http\Controllers\Api\UserApiController as MfUserApiController;
 use App\Projects\MyProject\Modules\Users\UserController;
 
+/**
+ * @authenticated
+ */
 class UserApiController extends ApiController
 {
 
@@ -34,6 +37,7 @@ class UserApiController extends ApiController
      * Get user profile
      *
      * @return mixed
+     * @header X-Api-Version v1
      */
     public function showUser()
     {
@@ -73,7 +77,5 @@ class UserApiController extends ApiController
     {
         return app(MfUserApiController::class)->profilePicDestroy();
     }
-
-
 
 }
