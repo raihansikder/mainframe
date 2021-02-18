@@ -1,5 +1,4 @@
 @extends('projects.{project-name}.layouts.module.form.template')
-{{--@extends('mainframe.layouts.module.form.template')--}}
 <?php
 /**
  * @var \App\Mainframe\Modules\Modules\Module $module
@@ -13,7 +12,6 @@
  * @var \App\Mainframe\Modules\SuperHeroes\SuperHero $superHero
  * @var \App\Mainframe\Modules\SuperHeroes\SuperHeroViewProcessor $view
  */
-
 $superHero = $element;
 ?>
 
@@ -25,11 +23,10 @@ $superHero = $element;
             {{ Form::model($element, $formConfig)}}
         @endif
 
-        {{-- ******** Form inputs: starts *********** --}}
-        {{-- **************************************** --}}
+        {{---------------|  Form input start |-----------------------}}
         @include('form.text',['var'=>['name'=>'name','label'=>'Name']])
         @include('form.is-active')
-        {{--  ******** Form inputs: ends ************ --}}
+        {{---------------|  Form input start |-----------------------}}
 
         @include('form.action-buttons')
         {{ Form::close() }}
@@ -38,7 +35,10 @@ $superHero = $element;
 
 @section('content-bottom')
     @parent
-    {{-- <div class="col-md-6 no-padding-l"><h5>File upload</h5><small>Upload one or more files</small>@include('mainframe.layouts.module.form.includes.features.uploads.uploads',['var'=>['limit'=>99]])</div>--}}
+    {{--<div class="col-md-6 no-padding-l">
+        <h5>File upload</h5><small>Upload one or more files</small>
+        @include('mainframe.layouts.module.form.includes.features.uploads.uploads',['var'=>['limit'=>99]])
+    </div>--}}
 @endsection
 
 @section('js')

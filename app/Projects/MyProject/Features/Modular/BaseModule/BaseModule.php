@@ -27,12 +27,5 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule as MfBaseModule;
 class BaseModule extends MfBaseModule
 {
 
-    /**
-     * Attributes to exclude from the Audit.
-     *
-     * @var array
-     */
-    protected $auditExclude = [
-        'updated_at',
-    ];
+
 }

@@ -20,27 +20,7 @@ class ModuleDatatable extends Datatable
     }
 
     /**
-     * Define Query for generating results for grid
-     *
-     * @return \Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder|mixed
-     */
-    public function query()
-    {
-        $query = $this->source()->select($this->selects());
-
-        // Inject tenant context.
-        if (user()->ofTenant() && $this->module->tenantEnabled()) {
-            $query->where($this->module->tableName().'.tenant_id', user()->tenant_id);
-        }
-
-        // Exclude deleted rows
-        $query = $query->whereNull($this->table.'.deleted_at');
-
-        return $this->filter($query);
-    }
-
-    /**
-     * Modify datatable values
+     * Modify datatable row values
      *
      * @return mixed
      * @var $dt \Yajra\DataTables\DataTableAbstract
@@ -58,7 +38,7 @@ class ModuleDatatable extends Datatable
         }
 
         if ($this->hasColumn('is_active')) {
-            $dt = $dt->editColumn('is_active', '@if($is_active)  Yes @else <span class="text-red">No</span> @endif');
+            $dt = $dt->editColumn('is_active', '@if($is_active) Yes @else <span class="text-red">No</span> @endif');
         }
 
         if ($this->hasColumn('updated_at')) {

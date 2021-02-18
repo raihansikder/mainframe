@@ -3,14 +3,14 @@
 namespace App\Mainframe\Features\Modular\BaseModule;
 
 use App\Mainframe\Features\Core\Traits\Validable;
+use App\Mainframe\Features\Modular\BaseModule\Traits\ModularTrait;
+use App\Mainframe\Features\Multitenant\GlobalScope\AddTenant;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Query\Builder;
+use OwenIt\Auditing\Contracts\Auditable;
 use OwenIt\Auditing\Models\Audit;
 use Watson\Rememberable\Rememberable;
-use Illuminate\Database\Query\Builder;
-use Illuminate\Database\Eloquent\Model;
-use OwenIt\Auditing\Contracts\Auditable;
-use Illuminate\Database\Eloquent\SoftDeletes;
-use App\Mainframe\Features\Multitenant\GlobalScope\AddTenant;
-use App\Mainframe\Features\Modular\BaseModule\Traits\ModularTrait;
 
 /**
  * Class BaseModule
@@ -64,60 +64,53 @@ class BaseModule extends Model implements Auditable
         \OwenIt\Auditing\Auditable, // 3rd party audit log
         ModularTrait,               // Mainframe modular features.
         Validable                   // Allow validation
-
-        // Processable,
-        // EventsTrait,
-        // RelatedUsersTrait,
-        // TenantContextTrait,
-        // UpdaterTrait,
-        // Uploadable,
-        // Commentable,
-        // ModelAutoFill
         ;
 
     /*
     |--------------------------------------------------------------------------
     | Module definitions
     |--------------------------------------------------------------------------
-    |
     */
     protected $moduleName;
 
+    /**
+     * Enable tenant context
+     * @var bool
+     */
     protected $tenantEnabled = false;
 
+    /**
+     * Date fields
+     * @var string[]
+     */
     protected $dates = ['created_at', 'updated_at', 'deleted_at'];
+
+    /**
+     * Attributes to exclude from the Audit.
+     *
+     * @var array
+     */
+    protected $auditExclude = [
+        'updated_at',
+    ];
 
     /*
     |--------------------------------------------------------------------------
     | Boot method and model events.
     |--------------------------------------------------------------------------
-    |
-    | Register the observer in the boot method. You can also make use of
-    | model events like saving, creating, updating etc to further
-    | manipulate the model
     */
     public static function boot()
     {
         parent::boot();
 
-        /*
-        |--------------------------------------------------------------------------
-        | Skip audit log store if no change
-        |--------------------------------------------------------------------------
-        |
-        */
+        // Skip audit log if there is no change
         Audit::creating(function (Audit $model) {
             if (empty($model->old_values) && empty($model->new_values)) {
                 return false;
             }
         });
 
-        /*
-        |--------------------------------------------------------------------------
-        | Add tenant scope to model if current user() belongs to a tenant
-        |--------------------------------------------------------------------------
-        |
-        */
+        // Add tenant scope to model if current user() belongs to a tenant
         if (user()->ofTenant()) {
             static::addGlobalScope(new AddTenant);
         }

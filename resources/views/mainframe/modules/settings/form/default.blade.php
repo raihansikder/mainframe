@@ -4,12 +4,13 @@
 use App\Mainframe\Modules\Settings\Setting;
 /**
  * @var Setting $element
- * @var string $formState create|edit
+ * @var string $formState
  * @var Setting $formState
  * @var array $formConfig
- * @var string $uuid Only available for create
+ * @var string $uuid
  * @var bool $editable
  * @var \App\Mainframe\Modules\Modules\Module $module
+ * @var \App\Mainframe\Modules\Settings\SettingViewProcessor $view
  */
 
 $types = Setting::$types;

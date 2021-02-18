@@ -2,12 +2,8 @@
 
 namespace App\Mainframe\Features\Modular\BaseModule;
 
-use App\Mainframe\Modules\Uploads\Upload;
-use DB;
-
 class BaseModuleObserver
 {
-
     /**
      * @param $element \App\Mainframe\Features\Modular\BaseModule\BaseModule
      * @return void|bool
@@ -21,25 +17,33 @@ class BaseModuleObserver
      * @param $element \App\Mainframe\Features\Modular\BaseModule\
      * @return void|bool
      */
-    public function creating($element) { }
+    public function creating($element)
+    {
+    }
 
     /**
      * @param $element \App\Mainframe\Features\Modular\BaseModule\BaseModule
      * @return void|bool
      */
-    public function created($element) { }
+    public function created($element)
+    {
+    }
 
     /**
      * @param $element \App\Mainframe\Features\Modular\BaseModule\BaseModule
      * @return void|bool
      */
-    public function updating($element) { }
+    public function updating($element)
+    {
+    }
 
     /**
      * @param $element \App\Mainframe\Features\Modular\BaseModule\BaseModule
      * @return void|bool
      */
-    public function updated($element) { }
+    public function updated($element)
+    {
+    }
 
     /**
      * @param $element \App\Mainframe\Features\Modular\BaseModule\BaseModule
@@ -55,7 +59,9 @@ class BaseModuleObserver
      * @param $element \App\Mainframe\Features\Modular\BaseModule\BaseModule
      * @return void|bool
      */
-    public function deleting($element) { }
+    public function deleting($element)
+    {
+    }
 
     /**
      * Handle the base module "deleted" event.
@@ -74,7 +80,9 @@ class BaseModuleObserver
      * @param  $element
      * @return void
      */
-    public function restored($element) { }
+    public function restored($element)
+    {
+    }
 
     /**
      * Handle the base module "force deleted" event.
@@ -82,5 +90,7 @@ class BaseModuleObserver
      * @param  $element
      * @return void
      */
-    public function forceDeleted($element) { }
+    public function forceDeleted($element)
+    {
+    }
 }

@@ -33,5 +33,4 @@ class ModuleReportBuilder extends ReportBuilder
 
         return $this->model;
     }
-
 }

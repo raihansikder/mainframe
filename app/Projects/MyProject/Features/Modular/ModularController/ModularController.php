@@ -5,12 +5,7 @@ namespace App\Projects\MyProject\Features\Modular\ModularController;
 use App\Mainframe\Features\Modular\ModularController\ModularController as MfModularController;
 use App\Projects\MyProject\Features\Report\ModuleList;
 use App\Projects\MyProject\Features\Report\ModuleReportBuilder;
-/**
- * @group Module Apis
- * @authenticated
- *
- * APIs for managing different modules
- */
+
 class ModularController extends MfModularController
 {
     /**
@@ -45,9 +40,9 @@ class ModularController extends MfModularController
     public function viewProcessor()
     {
         $classPaths = [
-            $this->module->modelClassPath().'ViewProcessor', // Check in App\Mainframe\Modules
-            'App\Projects\MyProject\Modules\\'.$this->module->modelClassNamePlural().'\\'.$this->module->modelClassName().'ViewProcessor',
-            'App\Projects\MyProject\Features\Modular\BaseModule\BaseModuleViewProcessor',
+            $this->module->modelClassPath().'ViewProcessor', // Check in same folder
+            $this->module->namespace.'\\'.$this->module->modelClassName().'ViewProcessor',// Check in module directory
+            '\App\Projects\MyProject\Features\Modular\BaseModule\BaseModuleViewProcessor', // Default
         ];
 
         foreach ($classPaths as $classPath) {

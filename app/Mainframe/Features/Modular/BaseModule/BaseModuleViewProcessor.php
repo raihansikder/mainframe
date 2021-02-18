@@ -32,7 +32,6 @@ class BaseModuleViewProcessor extends ViewProcessor
 
     }
 
-
     /*
     |--------------------------------------------------------------------------
     | Blade template locations
