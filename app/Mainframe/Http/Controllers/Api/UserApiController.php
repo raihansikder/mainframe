@@ -6,8 +6,8 @@
 namespace App\Mainframe\Http\Controllers\Api;
 
 use App\Mainframe\Modules\Modules\Module;
-use App\Mainframe\Modules\Users\UserController;
 use App\Mainframe\Modules\Uploads\UploadController;
+use App\Mainframe\Modules\Users\UserController;
 
 class UserApiController extends ApiController
 {
@@ -36,6 +36,7 @@ class UserApiController extends ApiController
      * Get user profile
      *
      * @return mixed
+     * @group Settings
      */
 
     public function profile()

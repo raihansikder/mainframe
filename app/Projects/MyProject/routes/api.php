@@ -1,5 +1,4 @@
-<?php
-
+<?php /** @noinspection DuplicatedCode */
 use App\Mainframe\Helpers\Mf;
 
 /*
@@ -11,60 +10,64 @@ use App\Mainframe\Helpers\Mf;
 | like showing index page, create/edit form, handle delete etc.
 |
 */
-
 $modules = Mf::modules();
 
 # Path root/api/1.0
-Route::prefix('1.0')->middleware(['request.json', 'x-auth-token'])->group(function () use ($modules) {
+$version = '1.0';
+$namePrefix = 'api.'.$version;
+$middlewares = ['request.json', 'x-auth-token'];
+
+Route::prefix($version)->middleware($middlewares)->group(function () use ($modules, $namePrefix) {
 
     // Auth apis
-    Route::post('register/{groupName?}', 'Auth\RegisterController@register');
-    Route::post('login', 'Auth\LoginController@login');
-    Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
-    Route::post('logout', 'Auth\LoginController@logout');
+    Route::post('register/{groupName?}', 'Auth\RegisterController@register')->name($namePrefix.".register");
+    Route::post('login', 'Auth\LoginController@login')->name($namePrefix.".login");
+    Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name($namePrefix.".reset-password");
+    Route::post('logout', 'Auth\LoginController@logout')->name($namePrefix.".logout");
 
     // Module RESTful apis
-    Route::prefix('')->group(function () use ($modules) {
+    Route::prefix('')->group(function () use ($modules, $namePrefix) {
         foreach ($modules as $module) {
 
             $path = $module->route_path;
             $controller = $module->controller;
             $moduleName = $module->name;
 
-            Route::get($path.'/list/json', $controller.'@listJson');
-            Route::get($path.'/report', $controller.'@report');
+            Route::get($path.'', $controller.'@listJson')->name($namePrefix.".{$moduleName}.list");
+            Route::get($path.'/report', $controller.'@report')->name($namePrefix.".{$moduleName}.report");
 
-            Route::get($path.'/{id}/uploads', $controller.'@uploads');
-            Route::post($path.'/{id}/uploads', $controller.'@attachUpload');
+            Route::get($path.'/{id}/uploads', $controller.'@uploads')->name($namePrefix.".{$moduleName}.uploads");
+            Route::post($path.'/{id}/uploads', $controller.'@attachUpload')->name($namePrefix.".{$moduleName}.attach-upload");
 
             // Route::get($path.'/{id}/comments', $controller.'@comments');
             // Route::post($path.'/{id}/comments', $controller.'@attachComments');
 
             Route::apiResource($path, $controller)->names([
-                'index' => "api.{$moduleName}.index",
-                'store' => "api.{$moduleName}.store",
-                'show' => "api.{$moduleName}.show",
-                'update' => "api.{$moduleName}.update",
-                'destroy' => "api.{$moduleName}.destroy",
+                'index'   => "{$namePrefix}.{$moduleName}.index",
+                'store'   => "{$namePrefix}.{$moduleName}.store",
+                'show'    => "{$namePrefix}.{$moduleName}.show",
+                'update'  => "{$namePrefix}.{$moduleName}.update",
+                'destroy' => "{$namePrefix}.{$moduleName}.destroy",
             ]);
         }
     });
 
     // Settings
-    Route::get('setting/{name}', 'Api\ApiController@getSetting');
+    Route::get('setting/{name}', 'Api\ApiController@getSetting')->name("{$namePrefix}.setting");
 
     # APIs that must have bearer token
-    Route::middleware(['bearer-token'])->group(function () {
+    Route::middleware(['bearer-token'])->group(function () use ($modules, $namePrefix) {
 
         # Path root/api/1.0/user
-        Route::prefix('user')->group(function () {
+        Route::prefix('user')->group(function () use ($modules, $namePrefix) {
+
+            $namePrefix .= '.user'; // api.1.0.user
             // Profile
-            Route::get('/', 'Api\UserApiController@showUser');
-            Route::patch('/', 'Api\UserApiController@updateUser');
-            Route::get('profile', 'Api\UserApiController@profile');
-            Route::post('profile-pic/store', 'Api\UserApiController@profilePicStore');
-            Route::delete('profile-pic/delete', 'Api\UserApiController@profilePicDestroy');
+            Route::get('/', 'Api\UserApiController@showUser')->name("{$namePrefix}.show");
+            Route::patch('/', 'Api\UserApiController@updateUser')->name("{$namePrefix}.update");
+            Route::get('profile', 'Api\UserApiController@showUser')->name("{$namePrefix}.profile");
+            Route::post('profile-pic/store', 'Api\UserApiController@profilePicStore')->name("{$namePrefix}.store.profile-pic");
+            Route::delete('profile-pic/delete', 'Api\UserApiController@profilePicDestroy')->name("{$namePrefix}.delete.profile-pic");
         });
     });
-
 });

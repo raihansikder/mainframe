@@ -5,7 +5,10 @@ namespace App\Mainframe\Modules\Users;
 use Hash;
 use Validator;
 use App\Mainframe\Features\Modular\ModularController\ModularController;
-
+/**
+ * @group  Users
+ * APIs for managing users
+ */
 class UserController extends ModularController
 {
 

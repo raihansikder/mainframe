@@ -4,6 +4,11 @@ namespace App\Mainframe\Modules\Comments;
 
 use App\Mainframe\Features\Modular\ModularController\ModularController;
 
+/**
+ * @group  Comments
+ *
+ * APIs for managing comments
+ */
 class CommentController extends ModularController
 {
 

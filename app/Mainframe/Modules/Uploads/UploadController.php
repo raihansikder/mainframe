@@ -7,7 +7,10 @@ use Response;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Mainframe\Features\Modular\ModularController\ModularController;
-
+/**
+ * @group  Uploads
+ * APIs for managing uploads
+ */
 class UploadController extends ModularController
 {
 

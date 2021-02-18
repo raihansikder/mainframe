@@ -2,6 +2,10 @@
 
 namespace App\Projects\MyProject\Modules\Uploads;
 
+/**
+ * @group  Uploads
+ * APIs for managing uploads
+ */
 class UploadController extends \App\Mainframe\Modules\Uploads\UploadController
 {
 

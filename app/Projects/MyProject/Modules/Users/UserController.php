@@ -4,6 +4,10 @@ namespace App\Projects\MyProject\Modules\Users;
 
 use App\Projects\MyProject\Features\Report\ModuleReportBuilder;
 
+/**
+ * @group  Users
+ * APIs for managing users
+ */
 class UserController extends \App\Mainframe\Modules\Users\UserController
 {
     /*

@@ -57,7 +57,7 @@ class SelectModel extends SelectArray
             ->toArray();
 
         // $options[0] = null; // Zero fill empty selection
-        $options[null] = '-';  // Null fill empty selection
+        // $options[null] = '-';  // Null fill empty selection
 
         return Arr::sort($options);
     }

@@ -4,6 +4,10 @@ namespace App\Mainframe\Modules\Settings;
 
 use App\Mainframe\Features\Modular\ModularController\ModularController;
 
+/**
+ * @group  Settings
+ * APIs for managing settings
+ */
 class SettingController extends ModularController
 {
 

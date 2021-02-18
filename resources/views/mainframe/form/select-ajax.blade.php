@@ -39,22 +39,21 @@ $input = new \App\Mainframe\Features\Form\Select\SelectAjax($var);
         @include('mainframe.form.includes.label')
 
         {{-- input --}}
-        @if($input->isEditable)
-            <div class="clearfix"></div>
-            <div class="col-md-10 no-padding">
-                {{ Form::text($input->name, $input->value(), $input->params) }}
-                <input name="preload" type="hidden" value="{{$input->preload}}"/>
-            </div>
+        <div class="clearfix"></div>
+        <div class="col-md-10 no-padding">
+            {{ Form::text($input->name, $input->value(), $input->params) }}
+            <input name="preload" type="hidden" value="{{$input->preload}}"/>
+        </div>
 
-            {{--clear button--}}
+        {{--clear button--}}
+        @if($input->isEditable)
             <div class="col-md-2 no-padding">
                 <a id="clear_{{$input->name}}" class="btn  bg-white selectClearBtn"
                    data-target="{{$input->uid}}"
                    href="#">Clear</a>
             </div>
-        @else
-            @include('mainframe.form.includes.read-only-view')
         @endif
+
         <div class="clearfix"></div>
 
         {{-- Error --}}

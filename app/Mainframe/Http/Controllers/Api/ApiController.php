@@ -5,6 +5,7 @@ namespace App\Mainframe\Http\Controllers\Api;
 use App\Mainframe\Modules\Settings\Setting;
 use App\Mainframe\Http\Controllers\BaseController;
 
+
 class ApiController extends BaseController
 {
 
@@ -40,11 +41,14 @@ class ApiController extends BaseController
 
     }
 
+
     /**
-     * Get the setting value from name(key)
+     * Get setting by name(key)
      *
      * @param $name
      * @return \Illuminate\Http\JsonResponse
+     *
+     * @group Settings
      */
     public function getSetting($name)
     {

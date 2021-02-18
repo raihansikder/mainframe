@@ -44,7 +44,7 @@ Route::get('logout', 'Auth\LoginController@logout')->name('get.logout');
 */
 
 // Tenant Registration Routes...
-Route::get('reseller/register', 'Auth\RegisterResellerController@showRegistrationForm')->name('register.reseller');
-Route::post('reseller/register', 'Auth\RegisterResellerController@register');
+// Route::get('reseller/register', 'Auth\RegisterResellerController@showRegistrationForm')->name('register.reseller');
+// Route::post('reseller/register', 'Auth\RegisterResellerController@register');
 
 

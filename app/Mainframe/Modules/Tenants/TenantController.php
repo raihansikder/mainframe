@@ -3,7 +3,10 @@
 namespace App\Mainframe\Modules\Tenants;
 
 use App\Mainframe\Features\Modular\ModularController\ModularController;
-
+/**
+ * @group  Tenants
+ * APIs for managing tenants
+ */
 class TenantController extends ModularController
 {
 

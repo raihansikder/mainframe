@@ -5,7 +5,12 @@ namespace App\Projects\MyProject\Features\Modular\ModularController;
 use App\Mainframe\Features\Modular\ModularController\ModularController as MfModularController;
 use App\Projects\MyProject\Features\Report\ModuleList;
 use App\Projects\MyProject\Features\Report\ModuleReportBuilder;
-
+/**
+ * @group Module Apis
+ * @authenticated
+ *
+ * APIs for managing different modules
+ */
 class ModularController extends MfModularController
 {
     /**

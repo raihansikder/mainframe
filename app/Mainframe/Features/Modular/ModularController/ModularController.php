@@ -18,7 +18,10 @@ use Illuminate\Http\Request;
 use View;
 
 /**
- * Class ModuleBaseController
+ * @group  Module Apis
+ * @authenticated
+ *
+ * APIs for managing different modules
  */
 class ModularController extends BaseController
 {

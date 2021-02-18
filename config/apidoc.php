@@ -65,7 +65,7 @@ return [
         /*
          * Specify whether the Postman collection should be generated.
          */
-        'enabled' => true,
+        'enabled' => false,
 
         /*
          * The name for the exported Postman collection. Default: config('app.name')." API"
@@ -109,8 +109,8 @@ return [
                  * Match only routes whose paths match this pattern (use * as a wildcard to match any characters).
                  */
                 'prefixes' => [
-                    '*',
-                    // 'users/*',
+                    // '*',
+                    'api/1.0/*',
                 ],
 
                 /*
@@ -138,6 +138,8 @@ return [
              */
             'exclude' => [
                 // 'users.create', 'admin.*'
+                '*.list','*.changes.*','*.report','*lorem-ipsums*','*dolor-sits*'
+
             ],
 
             /*
@@ -245,7 +247,7 @@ return [
     /*
      * Name for the group of routes which do not have a @group set.
      */
-    'default_group' => 'general',
+    'default_group' => 'General',
 
     /*
      * Example requests for each endpoint will be shown in each of these languages.

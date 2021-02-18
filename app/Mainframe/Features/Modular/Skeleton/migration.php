@@ -2,8 +2,8 @@
 /** @noinspection DuplicatedCode */
 
 use App\Mainframe\Modules\Modules\Module;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Str;
 
 class CreateSuperHeroesTable extends Migration
@@ -60,6 +60,7 @@ class CreateSuperHeroesTable extends Migration
             $module->controller = '{controller}';
             $module->view_directory = '{view_directory}';
             $module->is_visible = 1;
+            $module->is_active = 1;
             $module->created_by = 1;
 
             $module->save();

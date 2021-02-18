@@ -4,6 +4,10 @@ namespace App\Mainframe\Modules\Subscriptions;
 
 use App\Mainframe\Features\Modular\ModularController\ModularController;
 
+/**
+ * @group  Subscriptions
+ * APIs for managing subscriptions
+ */
 class SubscriptionController extends ModularController
 {
 

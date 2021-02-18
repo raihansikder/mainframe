@@ -4,6 +4,11 @@ namespace App\Mainframe\Modules\ModuleGroups;
 
 use App\Mainframe\Features\Modular\ModularController\ModularController;
 
+/**
+ * @group  Module-groups
+ *
+ * APIs for managing module-groups
+ */
 class ModuleGroupController extends ModularController
 {
 

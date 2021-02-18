@@ -4,6 +4,11 @@ namespace App\Mainframe\Modules\Countries;
 
 use App\Mainframe\Features\Modular\ModularController\ModularController;
 
+/**
+ * @group  Countries
+ *
+ * APIs for managing countries
+ */
 class CountryController extends ModularController
 {
 

@@ -4,6 +4,10 @@ namespace App\Mainframe\Modules\Samples\LoremIpsums;
 
 use App\Mainframe\Features\Modular\ModularController\ModularController;
 
+/**
+ * @group  Lorem-ipsums
+ * APIs for managing lorem-ipsums
+ */
 class LoremIpsumController extends ModularController
 {
 

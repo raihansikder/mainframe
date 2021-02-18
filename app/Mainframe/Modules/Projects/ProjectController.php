@@ -4,6 +4,10 @@ namespace App\Mainframe\Modules\Projects;
 
 use App\Mainframe\Features\Modular\ModularController\ModularController;
 
+/**
+ * @group  Projects
+ * APIs for managing projects
+ */
 class ProjectController extends ModularController
 {
 

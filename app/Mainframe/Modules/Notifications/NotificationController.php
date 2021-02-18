@@ -4,6 +4,11 @@ namespace App\Mainframe\Modules\Notifications;
 
 use App\Mainframe\Features\Modular\ModularController\ModularController;
 
+/**
+ * @group  Notifications
+ *
+ * APIs for managing notifications
+ */
 class NotificationController extends ModularController
 {
     /*

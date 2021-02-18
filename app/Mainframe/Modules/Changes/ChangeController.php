@@ -4,7 +4,11 @@ namespace App\Mainframe\Modules\Changes;
 
 use App\Mainframe\Features\Modular\ModularController\ModularController;
 use App\Mainframe\Features\Report\ModuleList;
-
+/**
+ * @group  Changes
+ *
+ * APIs for managing changes
+ */
 class ChangeController extends ModularController
 {
     /*

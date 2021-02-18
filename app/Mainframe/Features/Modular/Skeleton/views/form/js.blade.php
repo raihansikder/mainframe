@@ -47,7 +47,7 @@
     @if($element->isUpdating())
     // Todo: write codes here.
     // Redirection after saving
-    $('#{{$module->name}}-redirect-success').val('#'); //  # Stops redirection after save
+    // $('#{{$module->name}}-redirect-success').val('#'); //  # Stops redirection
     @endif
     /*
     |--------------------------------------------------------------------------
