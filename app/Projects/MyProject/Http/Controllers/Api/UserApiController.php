@@ -17,11 +17,8 @@ class UserApiController extends ApiController
     public function __construct()
     {
         parent::__construct();
-
         $this->middleware('bearer-token'); // This is an additional safe guarding.
-
     }
-
 
     /*
     |--------------------------------------------------------------------------
@@ -37,7 +34,6 @@ class UserApiController extends ApiController
      * Get user profile
      *
      * @return mixed
-     * @header X-Api-Version v1
      */
     public function showUser()
     {
