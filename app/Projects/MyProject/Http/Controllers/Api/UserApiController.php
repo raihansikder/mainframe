@@ -11,7 +11,7 @@ use App\Projects\MyProject\Modules\Users\UserController;
 class UserApiController extends ApiController
 {
 
-    /** @var \App\User|null|mixed */
+    /** @var \App\User */
     protected $user;
 
     public function __construct()
