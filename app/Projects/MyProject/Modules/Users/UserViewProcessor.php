@@ -10,7 +10,7 @@ class UserViewProcessor extends BaseModuleViewProcessor
     /**
      * @var Module $module
      * @var \Illuminate\Database\Eloquent\Builder $model test
-     * @var \App\User $element
+     * @var \App\Projects\MyProject\Modules\Users\User $element
      * @var bool $editable
      * @var array $immutables
      * @var string $type i.e. View type create, edit, index etc.
@@ -18,11 +18,12 @@ class UserViewProcessor extends BaseModuleViewProcessor
      */
 
     /**
-     * @var \App\Mainframe\Modules\SuperHeroes\SuperHero
+     * @var \App\Projects\MyProject\Modules\Users\User
      */
     public $element;
 
     // public function formPath($state = 'create') { return parent::formPath($state) }
     // public function gridPath()
     // ... See parent class for available functions
+
 }

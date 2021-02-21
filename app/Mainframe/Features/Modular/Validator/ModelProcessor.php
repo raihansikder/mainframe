@@ -65,7 +65,6 @@ class ModelProcessor
     /**
      * MainframeModelValidator constructor.
      *
-     *
      * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule  $element
      */
     public function __construct($element)
@@ -729,7 +728,6 @@ class ModelProcessor
      */
     public function saving($element)
     {
-
         // echo 'In Processor saving(). ';
 
         return $this;

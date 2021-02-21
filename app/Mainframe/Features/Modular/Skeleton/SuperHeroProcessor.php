@@ -19,32 +19,26 @@ class SuperHeroProcessor extends ModelProcessor
     // public $transitions;
     // public $trackedFields;
 
-    /* Further customize immutables and allowed value transitions*/
-    // public function getImmutables(){return $this->immutables; }
-    // public function getTransitions(){return $this->transitions; }
-
     /*
     |--------------------------------------------------------------------------
     | Validation
     |--------------------------------------------------------------------------
     */
-
     /**
-     * Pre-fill model before running rule based validations for save(create/update)
+     * Pre-fill model before running rule based validations
      *
-     * @param  SuperHero $element
+     * @param  SuperHero  $element
      * @return $this
      */
     public function fill($element)
     {
-        $element->populate();
-
+        // $element->populate(); // Todo: Populate before validation
         return $this;
     }
 
     /**
-     * @param  SuperHero $element
-     * @param  array $merge
+     * @param  SuperHero  $element
+     * @param  array  $merge
      * @return array
      */
     public static function rules($element, $merge = [])
@@ -69,7 +63,7 @@ class SuperHeroProcessor extends ModelProcessor
     */
 
     /**
-     * @param SuperHero $element
+     * @param  SuperHero  $element
      * @return $this
      */
     public function saving($element)
@@ -86,5 +80,29 @@ class SuperHeroProcessor extends ModelProcessor
     // public function saved($element) { return $this; }
     // public function deleting($element) { return $this; }
     // public function deleted($element) { return $this; }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Functions for deriving immutables & allowed transitions
+    |--------------------------------------------------------------------------
+    */
+    /* Further customize immutables and allowed value transitions*/
+    // public function getImmutables(){return $this->immutables; }
+    // public function getTransitions(){return $this->transitions; }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Other helper functions
+    |--------------------------------------------------------------------------
+    */
+    // Todo: Other helper functions
+
+    /*
+    |--------------------------------------------------------------------------
+    | Validation helper functions
+    |--------------------------------------------------------------------------
+    */
+
+    // Todo: Functions for validation
 
 }

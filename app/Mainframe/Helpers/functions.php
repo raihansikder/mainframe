@@ -1,8 +1,8 @@
 <?php
 
+use App\Mainframe\Features\Responder\Response;
 use App\Mainframe\Helpers\Mf;
 use Illuminate\Support\MessageBag;
-use App\User;
 
 /**
  * returns sentry object of currently logged in user
@@ -44,7 +44,6 @@ function modules()
 {
     return Mf::modules();
 }
-
 
 /**
  * create uuid
@@ -109,21 +108,31 @@ function querySignature($query)
 /**
  * This function pushes an error string to 'error' array of session.
  *
- * @param  string  $str
+ * @param  string  $message
  * @param  bool  $ret
  * @param  bool  $setMsg
  * @return bool
  */
-function setError($str = '', $setMsg = true, $ret = false)
+function setError($message = '', $setMsg = true, $ret = false)
 {
-    if ($setMsg && strlen($str)) {
-        if (! in_array($str, Session::get('error', []))) {
-            Session::push('error', $str);
+    if ($setMsg && strlen($message)) {
+        if (! in_array($message, Session::get('error', []))) {
+            Session::push('error', $message);
         }
-        resolve(MessageBag::class)->add('message', $str);
+        resolve(MessageBag::class)->add('message', $message);
     }
 
     return $ret;
+}
+
+/**
+ * Resolve singleton messageBag
+ *
+ * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Support\MessageBag|mixed
+ */
+function messageBag()
+{
+    return resolve(MessageBag::class);
 }
 
 

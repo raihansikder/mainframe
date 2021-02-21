@@ -39,7 +39,7 @@ class ModuleReportBuilder extends ReportBuilder
     public function transformRequest()
     {
         # Hide inactive items for non-admins
-        if (! user()->isSuperUser()) {
+        if (! $this->user->isSuperUser()) {
             request()->merge(['is_active' => 1,]);
         }
     }

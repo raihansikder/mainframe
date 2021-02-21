@@ -2,11 +2,11 @@
 
 namespace App\Mainframe\Features\Report\Traits;
 
-use DB;
-use Cache;
-use App\Mainframe\Helpers\Mf;
-use Illuminate\Database\Query\Builder;
 use App\Mainframe\Helpers\Convert;
+use App\Mainframe\Helpers\Mf;
+use Cache;
+use DB;
+use Illuminate\Database\Query\Builder;
 
 /** @mixin \App\Mainframe\Features\Report\ReportBuilder $this */
 trait Query
@@ -18,7 +18,6 @@ trait Query
      */
     public function resultQuery()
     {
-        /** @var Builder $query */
         $query = $this->queryDataSource();
         if (count($this->querySelectColumns())) {
             $query = $query->select($this->querySelectColumns());

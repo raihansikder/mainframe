@@ -1,7 +1,9 @@
 <?php
 namespace App\Projects\MyProject\Features\Datatable;
 
-class Datatable extends \App\Mainframe\Features\Datatable\Datatable
+use App\Mainframe\Features\Datatable\Datatable as MfDatatable;
+
+class Datatable extends MfDatatable
 {
 
 }

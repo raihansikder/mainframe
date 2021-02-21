@@ -157,7 +157,7 @@ class Tenant extends BaseModule
     | model events like saving, creating, updating etc to further
     | manipulate the model
     */
-    public static function boot()
+    protected static function boot()
     {
         parent::boot();
         self::observe(TenantObserver::class);

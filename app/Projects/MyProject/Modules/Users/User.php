@@ -2,7 +2,6 @@
 
 namespace App\Projects\MyProject\Modules\Users;
 
-use App\Mainframe\Modules\Countries\Country;
 use App\Mainframe\Modules\Users\User as MfUser;
 use App\Projects\MyProject\Notifications\Auth\ResetPassword;
 use App\Projects\MyProject\Notifications\Auth\VerifyEmail;
@@ -131,8 +130,9 @@ use App\Projects\MyProject\Notifications\Auth\VerifyEmail;
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Changes\Change[] $changes
  * @property-read int|null $changes_count
  */
-class User extends MfUser
+class User extends MfUser // Note: Can not extend project BaseModule for this special case, since it extends Authenticable
 {
+    // User model is exceptional as it extends Authenticatable
     use UserHelper;
 
     protected $moduleName = 'users';
@@ -222,9 +222,7 @@ class User extends MfUser
      */
     public function sendPasswordResetNotification($token)
     {
-        // Project specific class
         $this->notifyNow(new ResetPassword($token));
-
     }
 
     /**
@@ -232,7 +230,6 @@ class User extends MfUser
      */
     public function sendEmailVerificationNotification()
     {
-        // Project specific class
         $this->notifyNow(new VerifyEmail());
     }
     /*
@@ -268,9 +265,12 @@ class User extends MfUser
      */
     public function getTypeAttribute()
     {
-
         if ($this->isA('admin')) {
             return 'admin';
+        }
+
+        if ($this->isA('user')) {
+            return 'user';
         }
 
         return '-';
@@ -281,12 +281,5 @@ class User extends MfUser
     | Relations
     |--------------------------------------------------------------------------
     */
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function country()
-    {
-        return $this->belongsTo(Country::class);
-    }
 
 }

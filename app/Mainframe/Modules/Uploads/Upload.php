@@ -3,7 +3,7 @@
 namespace App\Mainframe\Modules\Uploads;
 
 use App\Mainframe\Features\Modular\BaseModule\BaseModule;
-use App\Mainframe\Modules\Modules\Module;
+use App\Mainframe\Modules\Uploads\Traits\UploadTrait;
 
 /**
  * App\Mainframe\Modules\Uploads\Upload
@@ -80,22 +80,17 @@ use App\Mainframe\Modules\Modules\Module;
  */
 class Upload extends BaseModule
 {
-    use UploadHelper;
+    use UploadTrait;
 
-    /*
-    |--------------------------------------------------------------------------
-    | Module definitions
-    |--------------------------------------------------------------------------
-    |
-    */
+    public const TYPE_PROFILE_PIC = 'Profile Picture';
+    public const TYPE_LOGO        = 'Logo';
+
     protected $moduleName = 'uploads';
     protected $table      = 'uploads';
     /*
     |--------------------------------------------------------------------------
-    | Fillable attributes
+    | Properties
     |--------------------------------------------------------------------------
-    |
-    | These attributes can be mass assigned
     */
     protected $fillable = [
         'uuid',
@@ -114,75 +109,27 @@ class Upload extends BaseModule
         'is_active',
     ];
 
-    /*
-    |--------------------------------------------------------------------------
-    | Guarded attributes
-    |--------------------------------------------------------------------------
-    |
-    | The attributes can not be mass assigned.
-    */
     // protected $guarded = [];
-
-    /*
-    |--------------------------------------------------------------------------
-    | Type cast dates
-    |--------------------------------------------------------------------------
-    |
-    | Type cast attributes as date. This allows to create a Carbon object.
-    | Of the dates
-   */
-    // protected $dates = [];
-
-    /*
-    |--------------------------------------------------------------------------
-    | Type cast attributes
-    |--------------------------------------------------------------------------
-    |
-    | Type cast attributes (helpful for JSON)
-    */
+    // protected $dates = ['created_at', 'updated_at', 'deleted_at'];
     // protected $casts = [];
-
-    /*
-    |--------------------------------------------------------------------------
-    | Automatic eager load
-    |--------------------------------------------------------------------------
-    |
-    | Auto load these relations whenever the model is retrieved.
-    */
     // protected $with = [];
-
-    /*
-    |--------------------------------------------------------------------------
-    | Append new attributes to the model
-    |--------------------------------------------------------------------------
-    |
-    | If you want to append a new attribute that doesn't exists in the table
-    | you should first create and accessor getNewFieldAttribute and then
-    | add the attribute name in the array
-    */
     protected $appends = ['url', 'dir'];
 
     /*
     |--------------------------------------------------------------------------
     | Options
     |--------------------------------------------------------------------------
-    |
-    | Your model can have one or more public static variables that stores
-    | The possible options for some field. Variable name should be
-    |
     */
-    public static $types = ['profile-pic'];
+    public static $types = [
+        self::TYPE_PROFILE_PIC,
+    ];
 
     /*
     |--------------------------------------------------------------------------
     | Boot method and model events.
     |--------------------------------------------------------------------------
-    |
-    | Register the observer in the boot method. You can also make use of
-    | model events like saving, creating, updating etc to further
-    | manipulate the model
     */
-    public static function boot()
+    protected static function boot()
     {
         parent::boot();
         self::observe(UploadObserver::class);
@@ -191,157 +138,11 @@ class Upload extends BaseModule
             $element->fillModuleAndElementData();
             $element->fillExtension();
         });
+
         static::saved(function (Upload $element) {
             if ($element->type == 'profile-pic') {
                 $element->deletePreviousOfSameType();
             }
         });
-    }
-
-    /**
-     * Fill data to relate this upload with another module element.
-     *
-     * @return $this
-     */
-    public function fillModuleAndElementData()
-    {
-
-        $module = $this->linkedModule;
-        $element = null;
-
-        if ($module) {
-            /** @var \App\Mainframe\Features\Modular\BaseModule\BaseModule $model */
-            $model = $module->model;
-            $this->uploadable_type = trim($module->model, '\\');
-        }
-
-        if ($module && isset($this->element_id)) {
-            $element = $model::remember(timer('very-long'))
-                ->find($this->element_id);
-        }
-
-        if ($element) {
-            $this->uploadable_id = $element->id;
-            $this->element_uuid = $element->uuid;
-        }
-
-        return $this;
-
-    }
-
-    /**
-     * Fill extension
-     *
-     * @return $this
-     */
-    public function fillExtension()
-    {
-        $this->ext = extFrmPath($this->path); // Store file extension separately
-
-        return $this;
-    }
-
-
-
-    /*
-    |--------------------------------------------------------------------------
-    | Query scopes + Dynamic scopes
-    |--------------------------------------------------------------------------
-    |
-    | Scopes allow you to easily re-use query logic in your models. To define
-    | a scope, simply prefix a model method with scope:
-    */
-    //public function scopePopular($query) { return $query->where('votes', '>', 100); }
-    //public function scopeWomen($query) { return $query->whereGender('W'); }
-    /*
-    Usage: $users = User::popular()->women()->orderBy('created_at')->get();
-    */
-
-    //public function scopeOfType($query, $type) { return $query->whereType($type); }
-    /*
-    Usage:  $users = User::ofType('member')->get();
-    */
-
-    /*
-    |--------------------------------------------------------------------------
-    | Accessors
-    |--------------------------------------------------------------------------
-    |
-    | Eloquent provides a convenient way to transform your model attributes when
-    | getting or setting them. Get a transformed value of an attribute
-    */
-    // public function getFirstNameAttribute($value) { return ucfirst($value); }
-
-    /*
-    |--------------------------------------------------------------------------
-    | Mutators
-    |--------------------------------------------------------------------------
-    |
-    | Eloquent provides a convenient way to transform your model attributes when
-    | getting or setting them. Get a transformed value of an attribute
-    */
-    // public function setFirstNameAttribute($value) { $this->attributes['first_name'] = strtolower($value); }
-
-    /*
-    |--------------------------------------------------------------------------
-    | Attributes
-    |--------------------------------------------------------------------------
-    |
-    | If you want to add extra fields(that doesn't exist in database) to you model
-    | you can use the getSomeAttribute() feature of eloquent.
-    */
-    public function getUrlAttribute() { return asset($this->path); }
-
-    public function getDirAttribute() { return public_path().$this->path; }
-
-    /*
-    |--------------------------------------------------------------------------
-    | Relations
-    |--------------------------------------------------------------------------
-    |
-    | Write model relations (belongsTo,hasMany etc) at the bottom the file
-    */
-    /**
-     * Get the owning commentable model.
-     */
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\MorphTo
-     */
-    public function uploadable() { return $this->morphTo(); }
-
-    /**
-     * @return \App\Mainframe\Features\Modular\BaseModule\BaseModule|mixed
-     */
-    public function linkedModule()
-    {
-        return $this->belongsTo(Module::class, 'module_id')
-            ->remember(timer('long'));
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    // public function creator() { return $this->belongsTo(\App\User::class, 'created_by'); }
-
-    /*
-   |--------------------------------------------------------------------------
-   | Todo: Helper functions
-   |--------------------------------------------------------------------------
-   | Todo: Write Helper functions in the UploadHelper trait.
-   */
-
-    /**
-     * Deletes the previously uploaded file of the same type.
-     * This function is useful for uploading profile pic
-     * where there latest pic will discard the last one.
-     */
-    public function deletePreviousOfSameType()
-    {
-        if (isset($this->uploadable)) {
-            $this->uploadable->uploads()
-                ->where('type', $this->type)
-                ->where('id', '!=', $this->id)
-                ->delete();
-        }
     }
 }

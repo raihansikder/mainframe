@@ -7,17 +7,17 @@ trait SuperHeroProcessorHelper
 {
     /*
     |--------------------------------------------------------------------------
-    | Functions for deriving immutables
+    | Functions for deriving immutables & allowed transitions
     |--------------------------------------------------------------------------
-    |
     */
-    // Todo: Functions for deriving immutables
+    /* Further customize immutables and allowed value transitions*/
+    // public function getImmutables(){return $this->immutables; }
+    // public function getTransitions(){return $this->transitions; }
 
     /*
     |--------------------------------------------------------------------------
     | Other helper functions
     |--------------------------------------------------------------------------
-    |
     */
     // Todo: Other helper functions
 
@@ -25,7 +25,6 @@ trait SuperHeroProcessorHelper
     |--------------------------------------------------------------------------
     | Validation helper functions
     |--------------------------------------------------------------------------
-    |
     */
 
     // Todo: Functions for validation

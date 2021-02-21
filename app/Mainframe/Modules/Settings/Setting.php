@@ -2,8 +2,9 @@
 
 namespace App\Mainframe\Modules\Settings;
 
-use Illuminate\Database\Eloquent\Builder;
 use App\Mainframe\Features\Modular\BaseModule\BaseModule;
+use App\Mainframe\Modules\Settings\Traits\SettingTrait;
+use Illuminate\Database\Eloquent\Builder;
 
 /**
  * Class Setting
@@ -58,14 +59,12 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule;
  */
 class Setting extends BaseModule
 {
-    use SettingHelper;
+    use SettingTrait;
 
-    protected $moduleName    = 'settings';
-    protected $table         = 'settings';
-
+    protected $moduleName = 'settings';
+    protected $table      = 'settings';
 
     // protected $forceDeleting = false;
-
     /*
     |--------------------------------------------------------------------------
     | Properties
@@ -90,31 +89,18 @@ class Setting extends BaseModule
     |--------------------------------------------------------------------------
     | Options
     |--------------------------------------------------------------------------
-    |
-    | Your model can have one or more public static variables that stores
-    | The possible options for some field. Variable name should be
-    |
     */
     /**
      * @var array Options for setting type
      */
-    public static $types = [
-        'boolean' => 'Boolean',
-        'string' => 'String',
-        'array' => 'Array',
-        'file' => 'File',
-    ];
+    // public static $types = [];
 
     /*
     |--------------------------------------------------------------------------
     | Boot method and model events.
     |--------------------------------------------------------------------------
-    |
-    | Register the observer in the boot method. You can also make use of
-    | model events like saving, creating, updating etc to further
-    | manipulate the model
     */
-    public static function boot()
+    protected static function boot()
     {
         parent::boot();
         self::observe(SettingObserver::class);
@@ -137,68 +123,5 @@ class Setting extends BaseModule
         // static::deleted(function (Setting $element) { });
     }
 
-
-    /*
-    |--------------------------------------------------------------------------
-    | Query scopes + Dynamic scopes
-    |--------------------------------------------------------------------------
-    |
-    | Scopes allow you to easily re-use query logic in your models. To define
-    | a scope, simply prefix a model method with scope:
-    */
-    //public function scopePopular($query) { return $query->where('votes', '>', 100); }
-    //public function scopeWomen($query) { return $query->whereGender('W'); }
-    /*
-    Usage: $users = User::popular()->women()->orderBy('created_at')->get();
-    */
-
-    //public function scopeOfType($query, $type) { return $query->whereType($type); }
-    /*
-    Usage:  $users = User::ofType('member')->get();
-    */
-
-    /*
-    |--------------------------------------------------------------------------
-    | Accessors
-    |--------------------------------------------------------------------------
-    |
-    | Eloquent provides a convenient way to transform your model attributes when
-    | getting or setting them. Get a transformed value of an attribute
-    */
-    // public function getFirstNameAttribute($value) { return ucfirst($value); }
-
-    /*
-    |--------------------------------------------------------------------------
-    | Mutators
-    |--------------------------------------------------------------------------
-    |
-    | Eloquent provides a convenient way to transform your model attributes when
-    | getting or setting them. Get a transformed value of an attribute
-    */
-    // public function setFirstNameAttribute($value) { $this->attributes['first_name'] = strtolower($value); }
-
-    /*
-    |--------------------------------------------------------------------------
-    | Relations
-    |--------------------------------------------------------------------------
-    |
-    | Write model relations (belongsTo,hasMany etc) at the bottom the file
-    */
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    // public function updater() { return $this->belongsTo(\App\User::class, 'updated_by'); }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    // public function creator() { return $this->belongsTo(\App\User::class, 'created_by'); }
-
-    /*
-   |--------------------------------------------------------------------------
-   | Todo: Helper functions
-   |--------------------------------------------------------------------------
-   | Todo: Write Helper functions in the SettingHelper trait.
-   */
-
+    // Note: Put the functions in trait for project portability.
 }

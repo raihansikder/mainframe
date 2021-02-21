@@ -614,7 +614,7 @@ trait ModularTrait
      */
     public function autoFillTenant()
     {
-        if (user()->ofTenant() && $this->hasTenantContext()) {
+        if (user()->ofTenant() && $this->isTenantCompatible()) {
             $this->tenant_id = $this->tenant_id ?: user()->tenant_id;
             $this->project_id = $this->project_id ?: $this->tenant->project_id;
         }
@@ -678,10 +678,10 @@ trait ModularTrait
      * Fill data and set calculated data in fields for saving the module
      * This can depend of supporting fillFunct, setFunct,calculateFunct
      */
-    public function populate()
-    {
-        return $this;
-    }
+    // public function populate()
+    // {
+    //     return $this;
+    // }
 
     /*
     |--------------------------------------------------------------------------

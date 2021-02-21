@@ -1,4 +1,5 @@
-<?php /** @noinspection ALL */
+<?php
+/** @noinspection ALL */
 
 namespace App\Mainframe\Features\Resolvers;
 
@@ -12,7 +13,7 @@ class PolicyResolver
     /**
      * This function is used in app/Providers/AuthServiceProvider.php
      *
-     * @param $modelClass '\App\Mainframe\Modules\Foo\Bar'
+     * @param $modelClass  '\App\Mainframe\Modules\Foo\Bar'
      * @return string
      */
     public static function resolve($modelClass)

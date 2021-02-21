@@ -2,14 +2,19 @@
 
 namespace App\Projects\MyProject\Modules\Users;
 
+use App\Mainframe\Modules\Users\Traits\UserControllerTrait;
+use App\Projects\MyProject\Features\Modular\ModularController\ModularController;
+use App\Projects\MyProject\Features\Report\ModuleList;
 use App\Projects\MyProject\Features\Report\ModuleReportBuilder;
 
 /**
  * @group  Users
  * APIs for managing users
  */
-class UserController extends \App\Mainframe\Modules\Users\UserController
+class UserController extends ModularController
 {
+    use UserControllerTrait;
+
     /*
     |--------------------------------------------------------------------------
     | Module definitions
@@ -37,34 +42,24 @@ class UserController extends \App\Mainframe\Modules\Users\UserController
      *
      * @return bool|\Illuminate\Contracts\View\Factory|\Illuminate\Http\JsonResponse|\Illuminate\Support\Collection|\Illuminate\View\View|mixed
      */
-    public function report()
-    {
-        if (! user()->can('view-report', $this->model)) {
-            return $this->permissionDenied();
-        }
-
-        return (new ModuleReportBuilder($this->module))->output();
-    }
+    // public function report(){if (! user()->can('view-report', $this->model)) {return $this->permissionDenied();}return (new ModuleReportBuilder($this->module))->output();}
 
     /**
      * Returns a collection of objects as Json for an API call
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function listJson()
-    {
-        return (new UserList($this->module))->json();
-    }
+    // public function listJson() { return (new ModuleList($this->module))->json(); }
 
     /**
      * Get the view processor instance
      *
      * @return mixed|null
      */
-    public function viewProcessor()
-    {
-        return new UserViewProcessor();
-    }
+    // public function viewProcessor()
+    // {
+    //     return new UserViewProcessor();
+    // }
 
     /**
      * Show and render report

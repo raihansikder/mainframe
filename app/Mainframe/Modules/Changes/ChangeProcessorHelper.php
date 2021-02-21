@@ -5,44 +5,13 @@ namespace App\Mainframe\Modules\Changes;
 /** @mixin ChangeProcessor $this */
 trait ChangeProcessorHelper
 {
-
     /*
     |--------------------------------------------------------------------------
-    | Functions for deriving immutables
+    |                              Keep empty!
     |--------------------------------------------------------------------------
     |
-    */
-
-    // Todo: Functions for deriving immutables
-
-    /*
-    |--------------------------------------------------------------------------
-    | Other helper functions
-    |--------------------------------------------------------------------------
+    | For default mainframe module Keep this empty. Write codes in Trait so
+    | that the logic can be added in project modules that extends this
     |
     */
-
-    // Todo: Other helper functions
-
-    /*
-    |--------------------------------------------------------------------------
-    | Validation helper functions
-    |--------------------------------------------------------------------------
-    |
-    */
-
-    // Todo: Functions for validation
-    /**
-     * @return $this
-     */
-    public function validateName()  // Todo: Remove this sample code
-    {
-        $element = $this->element; // Short hand variable.
-
-        if ($element->name == 'Joker') {
-            $this->error('Name can not be Joker', 'name');
-        }
-
-        return $this;
-    }
 }

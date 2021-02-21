@@ -1,6 +1,4 @@
 <?php
-/** @noinspection PhpUnusedParameterInspection */
-/** @noinspection PhpInconsistentReturnPointsInspection */
 
 namespace App\Mainframe\Features\Modular\BaseModule;
 
@@ -20,11 +18,40 @@ class BaseModulePolicy
     }
 
     /**
+     * Get module name of the policy
+     *
+     * @return string
+     */
+    public function getModuleName()
+    {
+        return Str::plural(str_replace('-policies', '', Module::nameFromClass($this)));
+    }
+
+    /**
+     * @param  string  $moduleName
+     * @return BaseModulePolicy
+     */
+    public function setModuleName(string $moduleName)
+    {
+        $this->moduleName = $moduleName;
+
+        return $this;
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Policy functions
+    |--------------------------------------------------------------------------
+    */
+
+    /**
+     * Before
      * Runs before any of the other checks.
      *
      * @param  \App\User  $user
      * @param $ability
      * @return bool
+     * @noinspection PhpUnusedParameterInspection
      */
     public function before($user, $ability)
     {
@@ -35,6 +62,7 @@ class BaseModulePolicy
     }
 
     /**
+     * view-any
      * Determine whether the user can view any items.
      *
      * @param  \App\User  $user
@@ -51,6 +79,7 @@ class BaseModulePolicy
     }
 
     /**
+     * view
      * Determine whether the user can view the item.
      *
      * @param  \App\User  $user
@@ -75,6 +104,7 @@ class BaseModulePolicy
     }
 
     /**
+     * create
      * Determine whether the user can create items.
      *
      * @param  \App\User  $user
@@ -99,6 +129,7 @@ class BaseModulePolicy
     }
 
     /**
+     * update
      * Determine whether the user can update the item.
      *
      * @param  \App\User  $user
@@ -123,6 +154,7 @@ class BaseModulePolicy
     }
 
     /**
+     * delete
      * Determine whether the user can delete the item.
      *
      * @param  \App\User  $user
@@ -151,6 +183,7 @@ class BaseModulePolicy
     }
 
     /**
+     * restore
      * Determine whether the user can restore the item.
      *
      * @param  \App\User  $user
@@ -175,6 +208,7 @@ class BaseModulePolicy
     }
 
     /**
+     * force-delete
      * Determine whether the user can permanently delete the item.
      *
      * @param  \App\User  $user
@@ -195,6 +229,7 @@ class BaseModulePolicy
     }
 
     /**
+     * view-change-log
      * Determine whether the user can view change log of the item
      * In the code you can use both camelCase and kebab-case function name.
      *
@@ -216,6 +251,7 @@ class BaseModulePolicy
     }
 
     /**
+     * view-report
      * Determine whether the user can view change log of the item
      * In the code you can use both camelCase and kebab-case function name.
      *
@@ -237,6 +273,7 @@ class BaseModulePolicy
     }
 
     /**
+     * api
      * Check if user can access Api
      *
      * @param  \App\User  $user
@@ -249,16 +286,6 @@ class BaseModulePolicy
         }
 
         return true;
-    }
-
-    /**
-     * Get module name of the policy
-     *
-     * @return string
-     */
-    public function getModuleName()
-    {
-        return Str::plural(str_replace('-policies', '', Module::nameFromClass($this)));
     }
 
 }

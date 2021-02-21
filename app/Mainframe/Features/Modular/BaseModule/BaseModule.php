@@ -4,7 +4,7 @@ namespace App\Mainframe\Features\Modular\BaseModule;
 
 use App\Mainframe\Features\Core\Traits\Validable;
 use App\Mainframe\Features\Modular\BaseModule\Traits\ModularTrait;
-use App\Mainframe\Features\Multitenant\GlobalScope\AddTenant;
+use App\Mainframe\Features\Multitenant\GlobalScope\CheckTenantScope;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Query\Builder;
@@ -55,9 +55,8 @@ class BaseModule extends Model implements Auditable
 {
     /*
     |--------------------------------------------------------------------------
-    | Include mainframe module traits
+    | Include Mainframe module traits
     |--------------------------------------------------------------------------
-    |
     */
     use SoftDeletes,                // Laravel default trait to enable soft delete
         Rememberable,               // Third party plugin to cache model query
@@ -75,12 +74,14 @@ class BaseModule extends Model implements Auditable
 
     /**
      * Enable tenant context
+     *
      * @var bool
      */
     protected $tenantEnabled = false;
 
     /**
      * Date fields
+     *
      * @var string[]
      */
     protected $dates = ['created_at', 'updated_at', 'deleted_at'];
@@ -90,16 +91,14 @@ class BaseModule extends Model implements Auditable
      *
      * @var array
      */
-    protected $auditExclude = [
-        'updated_at',
-    ];
+    protected $auditExclude = ['updated_at',];
 
     /*
     |--------------------------------------------------------------------------
     | Boot method and model events.
     |--------------------------------------------------------------------------
     */
-    public static function boot()
+    protected static function boot()
     {
         parent::boot();
 
@@ -112,8 +111,7 @@ class BaseModule extends Model implements Auditable
 
         // Add tenant scope to model if current user() belongs to a tenant
         if (user()->ofTenant()) {
-            static::addGlobalScope(new AddTenant);
+            static::addGlobalScope(new CheckTenantScope);
         }
     }
-
 }

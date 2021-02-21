@@ -2,16 +2,13 @@
 
 namespace App\Mainframe\Modules\Users;
 
-use App\Group;
+use App\Mainframe\Features\Core\Traits\Validable;
 use App\Mainframe\Features\Modular\BaseModule\Traits\ModularTrait;
-use App\Mainframe\Modules\Users\Traits\UserGroupable;
-use App\Mainframe\Notifications\Auth\ResetPassword;
-use App\Mainframe\Notifications\Auth\VerifyEmail;
+use App\Mainframe\Modules\Users\Traits\UserTrait;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use InvalidArgumentException;
 use OwenIt\Auditing\Contracts\Auditable;
 use Watson\Rememberable\Rememberable;
 
@@ -140,11 +137,11 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
     use SoftDeletes,
         Rememberable,
         \OwenIt\Auditing\Auditable,
-        ModularTrait;
+        ModularTrait,
+        Validable,
+        Notifiable;
 
-    use Notifiable;
-
-    use UserHelper, UserGroupable;
+    use UserTrait, UserHelper;
 
     /*
     |--------------------------------------------------------------------------
@@ -157,26 +154,16 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
      */
     public const PASSWORD_VALIDATION_RULE = 'required|confirmed|min:6|regex:/[a-zA-Z]/|regex:/[0-9]/';
 
+    /*
+    |--------------------------------------------------------------------------
+    | Properties
+    |--------------------------------------------------------------------------
+    */
     protected $moduleName = 'users';
     protected $table      = 'users';
 
-    protected $tenantEnabled = false;
-    /*
-    |--------------------------------------------------------------------------
-    | Guarded attributes
-    |--------------------------------------------------------------------------
-    |
-    | The attributes can not be mass assigned.
-    */
-    // protected $guarded = [];
+    protected $tenantEnabled = true;
 
-    /*
-    |--------------------------------------------------------------------------
-    | Fillable attributes
-    |--------------------------------------------------------------------------
-    |
-    | These attributes can be mass assigned
-    */
     protected $fillable = [
         'uuid',
         'name',
@@ -215,58 +202,13 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
         'group_ids',
         'is_test',
     ];
-
-    /*
-    |--------------------------------------------------------------------------
-    | Type cast dates
-    |--------------------------------------------------------------------------
-    |
-    | Type cast attributes as date. This allows to create a Carbon object.
-    | Of the dates
-   */
-    protected $hidden = ['password', 'remember_token',];
-
-    /*
-    |--------------------------------------------------------------------------
-    | Type cast attributes
-    |--------------------------------------------------------------------------
-    |
-    | Type cast attributes (helpful for JSON)
-    */
-    protected $dates = ['created_at', 'updated_at', 'deleted_at', 'first_login_at', 'last_login_at',];
-
-    /*
-    |--------------------------------------------------------------------------
-    | Automatic eager load
-    |--------------------------------------------------------------------------
-    |
-    | Auto load these relations whenever the model is retrieved.
-    */
-    protected $casts = [
+    protected $hidden   = ['password', 'remember_token',];
+    protected $dates    = ['created_at', 'updated_at', 'deleted_at', 'first_login_at', 'last_login_at',];
+    protected $casts    = [
         'group_ids' => 'array',
     ];
-
-    /*
-    |--------------------------------------------------------------------------
-    | Append new attributes to the model
-    |--------------------------------------------------------------------------
-    |
-    | If you want to append a new attribute that doesn't exists in the table
-    | you should first create and accessor getNewFieldAttribute and then
-    | add the attribute name in the array
-    */
-    protected $appends = ['profile_pic'];
-
-    /*
-    |--------------------------------------------------------------------------
-    | Options
-    |--------------------------------------------------------------------------
-    |
-    | Your model can have one or more public static variables that stores
-    | The possible options for some field. Variable name should be
-    |
-    */
-    // protected $with = ['groups'];
+    // protected $with = [];
+    protected $appends = ['type','profile_pic'];
 
     /**
      * Allowed permissions values.
@@ -281,14 +223,16 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
 
     /*
     |--------------------------------------------------------------------------
+    | Option values
+    |--------------------------------------------------------------------------
+    */
+    // public static $types = [];
+
+    /*
+    |--------------------------------------------------------------------------
     | Boot method and model events.
     |--------------------------------------------------------------------------
-    |
-    | Register the observer in the boot method. You can also make use of
-    | model events like saving, creating, updating etc to further
-    | manipulate the model
     */
-
     public static function boot()
     {
         parent::boot();
@@ -297,146 +241,14 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
         static::saved(function (User $element) {
             $element->groups()->sync($element->group_ids);
         });
-    }
-
-    /*
-    |--------------------------------------------------------------------------
-    | Query scopes + Dynamic scopes
-    |--------------------------------------------------------------------------
-    |
-    | Scopes allow you to easily re-use query logic in your models. To define
-    | a scope, simply prefix a model method with scope:
-    */
-    //public function scopePopular($query) { return $query->where('votes', '>', 100); }
-    //public function scopeWomen($query) { return $query->whereGender('W'); }
-    /*
-    Usage: $users = User::popular()->women()->orderBy('created_at')->get();
-    */
-
-    //public function scopeOfType($query, $type) { return $query->whereType($type); }
-    /*
-    Usage:  $users = User::ofType('member')->get();
-    */
-
-    /*
-    |--------------------------------------------------------------------------
-    | Accessors
-    |--------------------------------------------------------------------------
-    |
-    | Eloquent provides a convenient way to transform your model attributes when
-    | getting or setting them. Get a transformed value of an attribute
-    */
-    // public function getFirstNameAttribute($value) { return ucfirst($value); }
-
-    /**
-     * Accessor for profile_pic
-     *
-     * @return null|string
-     */
-    public function getProfilePicAttribute()
-    {
-        if ($upload = $this->uploads->where('type', 'profile-pic')->first()) {
-            return $upload->url;
-        }
-
-        return null;
-    }
-
-    /*
-    |--------------------------------------------------------------------------
-    | Mutators
-    |--------------------------------------------------------------------------
-    |
-    | Eloquent provides a convenient way to transform your model attributes when
-    | getting or setting them. Get a transformed value of an attribute
-    */
-    // public function setFirstNameAttribute($value) { $this->attributes['first_name'] = strtolower($value); }
-
-    /*
-    |--------------------------------------------------------------------------
-    | Relations
-    |--------------------------------------------------------------------------
-    |
-    | Write model relations (belongsTo,hasMany etc) at the bottom the file
-    */
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
-    public function groups() { return $this->belongsToMany(Group::class, 'user_group'); }
-
-    /*
-    |--------------------------------------------------------------------------
-    | Helper functions
-    |--------------------------------------------------------------------------
-    |
-    */
-
-    /**
-     * Mutator for taking permissions.
-     *
-     * @param  array  $permissions
-     * @return string
-     */
-    public function setPermissionsAttribute(array $permissions)
-    {
-        // Merge permissions
-        $permissions = array_merge($this->permissions, $permissions);
-
-        // Loop through and adjust permissions as needed
-        foreach ($permissions as $permission => &$value) {
-            // Lets make sure there is a valid permission value
-            if (! in_array($value = (int) $value, $this->allowedPermissionsValues)) {
-                throw new InvalidArgumentException("Invalid value [$value] for permission [$permission] given.");
-            }
-
-            // If the value is 0, delete it
-            if ($value === 0) {
-                unset($permissions[$permission]);
-            }
-        }
-
-        $this->attributes['permissions'] = (! empty($permissions)) ? json_encode($permissions) : '';
-    }
-
-    /**
-     * Mutator for giving permissions.
-     *
-     * @param  mixed  $permissions
-     * @return array  $_permissions
-     */
-    public function getPermissionsAttribute($permissions)
-    {
-        if (! $permissions) {
-            return [];
-        }
-
-        if (is_array($permissions)) {
-            return $permissions;
-        }
-
-        if (! $_permissions = json_decode($permissions, true)) {
-            throw new InvalidArgumentException("Cannot JSON decode permissions [$permissions].");
-        }
-
-        return $_permissions;
-    }
-
-    /**
-     * Send reset password link
-     *
-     * @param  string  $token
-     */
-    public function sendPasswordResetNotification($token)
-    {
-        $this->notifyNow(new ResetPassword($token));
-    }
-
-    /**
-     * Send email verification link.
-     */
-    public function sendEmailVerificationNotification()
-    {
-        $this->notifyNow(new VerifyEmail());
+        // static::saving(function (User $element) { });
+        // static::creating(function (User $element) { });
+        // static::updating(function (User $element) { });
+        // static::created(function (User $element) { });
+        // static::updated(function (User $element) { });
+        // static::saved(function (User $element) { });
+        // static::deleting(function (User $element) { });
+        // static::deleted(function (User $element) { });
     }
 
 }

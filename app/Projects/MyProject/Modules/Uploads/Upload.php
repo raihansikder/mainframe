@@ -100,99 +100,45 @@ class Upload extends \App\Mainframe\Modules\Uploads\Upload
 {
     use UploadHelper;
 
-    /*
-    |--------------------------------------------------------------------------
-    | Module definitions
-    |--------------------------------------------------------------------------
-    |
-    */
     protected $moduleName = 'uploads';
     protected $table = 'uploads';
 
     /*
     |--------------------------------------------------------------------------
-    | Fillable attributes
+    | Properties
     |--------------------------------------------------------------------------
-    |
-    | These attributes can be mass assigned
     */
-    // protected $fillable = [
-    //     'uuid',
-    //     'name',
-    //     'is_active',
-    // ];
+    protected $fillable = [
+        'uuid',
+        'name',
+        'is_active',
+    ];
 
-    /*
-    |--------------------------------------------------------------------------
-    | Guarded attributes
-    |--------------------------------------------------------------------------
-    |
-    | The attributes can not be mass assigned.
-    */
     // protected $guarded = [];
-
-    /*
-    |--------------------------------------------------------------------------
-    | Type cast dates
-    |--------------------------------------------------------------------------
-    |
-    | Type cast attributes as date. This allows to create a Carbon object.
-    | Of the dates
-   */
-    // protected $dates = [];
-
-    /*
-    |--------------------------------------------------------------------------
-    | Type cast attributes
-    |--------------------------------------------------------------------------
-    |
-    | Type cast attributes (helpful for JSON)
-    */
+    // protected $dates = ['created_at', 'updated_at', 'deleted_at'];
     // protected $casts = [];
-
-    /*
-    |--------------------------------------------------------------------------
-    | Automatic eager load
-    |--------------------------------------------------------------------------
-    |
-    | Auto load these relations whenever the model is retrieved.
-    */
     // protected $with = [];
-
-    /*
-    |--------------------------------------------------------------------------
-    | Append new attributes to the model
-    |--------------------------------------------------------------------------
-    |
-    | If you want to append a new attribute that doesn't exists in the table
-    | you should first create and accessor getNewFieldAttribute and then
-    | add the attribute name in the array
-    */
     // protected $appends = [];
 
     /*
     |--------------------------------------------------------------------------
-    | Options
+    | Option values
     |--------------------------------------------------------------------------
-    |
-    | Your model can have one or more public static variables that stores
-    | The possible options for some field. Variable name should be
-    |
     */
-    public static $types = ['profile-pic', 'product-photo', 'logo', 'balance-sheet', 'certificate-of-incorporation', 'VAT-registration-certificate', 'company-letter-headed-paper','uploaded-order','mph-agreement','reseller-agreement','realwear-nda','external-agreement'];
+    public static $types = [
+        self::TYPE_PROFILE_PIC,
+        self::TYPE_LOGO,
+    ];
 
     /*
     |--------------------------------------------------------------------------
     | Boot method and model events.
     |--------------------------------------------------------------------------
-    |
-    | Register the observer in the boot method. You can also make use of
-    | model events like saving, creating, updating etc to further
-    | manipulate the model
     */
-    public static function boot() {
+    protected static function boot() {
         parent::boot();
         self::observe(UploadObserver::class);
+
         static::saved(function (Upload $element) {
             if (in_array($element->type, ['profile-pic', 'logo'])) {
                 $element->deletePreviousOfSameType();

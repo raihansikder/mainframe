@@ -47,7 +47,7 @@ class BaseController extends Controller
     }
 
     /**
-     * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModuleViewProcessor  $view
+     * @param  ViewProcessor  $view
      * @return BaseController
      */
     public function setView($view)

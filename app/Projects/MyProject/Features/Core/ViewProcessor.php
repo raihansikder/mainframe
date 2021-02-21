@@ -2,9 +2,9 @@
 
 namespace App\Projects\MyProject\Features\Core;
 
-use App\Mainframe\Features\Core\ViewProcessor as MfViewProcessorAlias;
+use App\Mainframe\Features\Core\ViewProcessor as MfViewProcessor;
 
-class ViewProcessor extends MfViewProcessorAlias
+class ViewProcessor extends MfViewProcessor
 {
 
 }

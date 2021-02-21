@@ -1,9 +1,8 @@
-<?php /** @noinspection ALL */
+<?php
 
 namespace App\Mainframe\Features\Core\Traits;
 
 use App\Mainframe\Features\Responder\Response;
-use URL;
 
 /** @mixin  \App\Mainframe\Http\Controllers\BaseController $this */
 trait SendResponse
@@ -12,10 +11,20 @@ trait SendResponse
     public $response;
 
     /** @var string */
-    protected $redirectTo;
+    protected $redirectTo; // Note: This is set as 'protected' to avoid conflict with some laravel classes
 
     /**
-     * @param  \Illuminate\Validation\Validator|null  $validator
+     * @param  \App\Mainframe\Features\Responder\Response  $response
+     * @return SendResponse
+     */
+    public function setResponse($response)
+    {
+        $this->response = $response;
+
+        return $this;
+    }
+
+    /**
      * @return mixed|Response
      */
     public function response()
@@ -34,7 +43,7 @@ trait SendResponse
     /**
      * Set redirection url
      *
-     * @param  null  $to
+     * @param $message
      * @return \App\Mainframe\Features\Responder\Response|mixed
      */
     public function setMessage($message)
@@ -55,7 +64,6 @@ trait SendResponse
         $this->redirectTo = $to;
 
         return resolve(Response::class)->setRedirectTo($to);
-
     }
 
     /**
@@ -73,7 +81,7 @@ trait SendResponse
             return $this->redirectTo;
         }
 
-        return request()->headers->get('referer') ?: URL::full();
+        return request()->headers->get('referer') ?: \URL::full();
     }
 
     /**
@@ -122,7 +130,7 @@ trait SendResponse
      */
     public function view($viewPath, $viewVars = [])
     {
-        return $this->response()->view($viewPath, $viewVars = []);
+        return $this->response()->view($viewPath, $viewVars);
     }
 
     /**
@@ -232,12 +240,11 @@ trait SendResponse
      * Set response as fail
      *
      * @param  string  $message
-     * @param  int  $code
      * @return \App\Mainframe\Features\Responder\Response|mixed
      */
-    public function failValidation($message = 'Validation failed', $code = Response::HTTP_UNPROCESSABLE_ENTITY)
+    public function failValidation($message = 'Validation failed')
     {
-        return $this->response()->failValidation($message, $code);
+        return $this->response()->failValidation($message);
     }
 
     /**

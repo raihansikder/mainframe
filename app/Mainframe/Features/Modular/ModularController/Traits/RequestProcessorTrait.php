@@ -8,7 +8,7 @@ use Illuminate\Support\Str;
 /**
  * @mixin ModularController
  */
-trait ModelProcessorHelper
+trait RequestProcessorTrait
 {
     /**
      * Transform request inputs
@@ -33,7 +33,6 @@ trait ModelProcessorHelper
      */
     public function fill()
     {
-
         $this->element->fill($this->transformRequest());
 
         return $this;
@@ -97,7 +96,7 @@ trait ModelProcessorHelper
     /**
      * Validate and update
      *
-     * @return \App\Mainframe\Features\Modular\ModularController\Traits\ModelProcessorHelper
+     * @return \App\Mainframe\Features\Modular\ModularController\Traits\RequestProcessorTrait
      */
     public function attemptUpdate()
     {
@@ -146,7 +145,7 @@ trait ModelProcessorHelper
     /**
      * Validate and delete
      *
-     * @return \App\Mainframe\Features\Modular\ModularController\Traits\ModelProcessorHelper
+     * @return \App\Mainframe\Features\Modular\ModularController\Traits\RequestProcessorTrait
      * @throws \Exception
      */
     public function attemptDestroy()

@@ -6,25 +6,25 @@
 namespace App\Mainframe\Modules\SuperHeroes;
 
 use App\Mainframe\Features\Datatable\ModuleDatatable;
+use DB;
 
 class SuperHeroDatatable extends ModuleDatatable
 {
 
     public $rawColumns = ['id', 'name', 'is_active'];
 
-    /**
-     * Define Query for generating results for grid
-     *
-     * @return \Illuminate\Database\Query\Builder|static
-     */
+    // /**
+    //  * Define Query Source
+    //  *
+    //  * @return \Illuminate\Database\Query\Builder|static
+    //  */
     // public function source()
     // {
-    //     return DB::table($this->table)
-    //         ->leftJoin('users as updater', 'updater.id', $this->table.'.updated_by');
+    //     return DB::table($this->table)->leftJoin('users as updater', 'updater.id', $this->table.'.updated_by');
     // }
 
     /**
-     * Define grid SELECT statement and HTML column name.
+     * Select columns, alias and corresponding HTML title
      *
      * @return array
      */
@@ -35,24 +35,24 @@ class SuperHeroDatatable extends ModuleDatatable
             [$this->table.'.name', 'name', 'Name'],
             ['updater.name', 'user_name', 'Updater'],
             [$this->table.'.updated_at', 'updated_at', 'Updated at'],
-            [$this->table.'.is_active', 'is_active', 'Active']
+            [$this->table.'.is_active', 'is_active', 'Active'],
         ];
     }
 
-    /**
-     * Apply filter on query.
-     *
-     * @param $query \Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder|mixed
-     * @return \Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder|mixed
-     */
-    public function filter($query)
-    {
-        // if (request('id')) { // Todo: Sample code
-        //     $query->where('id', request('id'));
-        // }
-
-        return $query;
-    }
+    // /**
+    //  * Apply filter on query.
+    //  *
+    //  * @param $query \Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder|mixed
+    //  * @return \Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder|mixed
+    //  */
+    // public function filter($query)
+    // {
+    //     // if (request('id')) { // Todo: Sample code
+    //     //     $query->where('id', request('id'));
+    //     // }
+    //
+    //     return $query;
+    // }
 
     /**
      * Modify datatable values

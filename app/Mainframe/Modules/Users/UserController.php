@@ -2,15 +2,17 @@
 
 namespace App\Mainframe\Modules\Users;
 
-use Hash;
-use Validator;
 use App\Mainframe\Features\Modular\ModularController\ModularController;
+use App\Mainframe\Modules\Users\Traits\UserControllerTrait;
+
 /**
  * @group  Users
  * APIs for managing users
  */
 class UserController extends ModularController
 {
+    use UserControllerTrait;
+
     /*
     |--------------------------------------------------------------------------
     | Module definitions
@@ -21,50 +23,33 @@ class UserController extends ModularController
     /**
      * @return UserDatatable
      */
-    public function datatable()
-    {
-        return new UserDatatable($this->module);
-    }
+    // public function datatable() { return new UserDatatable($this->module); }
 
     /**
-     * Prepare the model, First transform the input and then fill
+     * List SuperHero
+     * Returns a collection of objects as Json for an API call
      *
-     * @return mixed|\App\Mainframe\Features\Modular\BaseModule\BaseModule
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function fill()
-    {
-        $inputs = request()->except('password');
+    // public function listJson() { return (new ModuleList($this->module))->json(); }
 
-        if (request('password')) {
-            $inputs['password'] = Hash::make(request('password'));
-        }
+    // public function report() { }
+    // public function transformInputRequests() { }
+    // public function storeRequestValidator() { }
+    // public function updateRequestValidator() { }
+    // public function saveRequestValidator() { }
+    // public function attemptStore() { }
+    // public function attemptUpdate() { }
+    // public function attemptDestroy() { }
+    // public function stored() { }
+    // public function updated() { }
+    // public function saved() { }
+    // public function deleted() { }
 
-        return $this->element->fill($inputs);
-    }
-
-    /**
-     * @return \Illuminate\Validation\Validator
-     */
-    public function storeRequestValidator()
-    {
-        $rules = ['password' => User::PASSWORD_VALIDATION_RULE,];
-        $message = ['password.regex' => 'The password field should be mix of letters and numbers.',];
-
-        $this->validator = Validator::make(request()->all(), $rules, $message);
-
-        return $this->validator;
-    }
-
-    /**
-     * @return \Illuminate\Validation\Validator
-     */
-    public function updateRequestValidator()
-    {
-        if (request('password')) {
-            return $this->storeRequestValidator();
-        }
-
-        return $this->validator();
-    }
-
+    /*
+    |--------------------------------------------------------------------------
+    | Custom Controller functions
+    |--------------------------------------------------------------------------
+    | Write down additional controller functions that might be required for your project to handle bu
+    */
 }

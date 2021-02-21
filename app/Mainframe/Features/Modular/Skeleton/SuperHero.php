@@ -31,7 +31,6 @@ class SuperHero extends BaseModule
 
     protected $moduleName = 'super-heroes';
     protected $table      = 'super_heroes';
-
     /*
     |--------------------------------------------------------------------------
     | Properties
@@ -51,7 +50,7 @@ class SuperHero extends BaseModule
 
     /*
     |--------------------------------------------------------------------------
-    | Options
+    | Option values
     |--------------------------------------------------------------------------
     */
     // public static $types = [];
@@ -61,10 +60,11 @@ class SuperHero extends BaseModule
     | Boot method and model events.
     |--------------------------------------------------------------------------
     */
-    public static function boot()
+    protected static function boot()
     {
         parent::boot();
         self::observe(SuperHeroObserver::class);
+
         // static::saving(function (SuperHero $element) { });
         // static::creating(function (SuperHero $element) { });
         // static::updating(function (SuperHero $element) { });

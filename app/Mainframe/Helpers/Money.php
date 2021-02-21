@@ -4,8 +4,12 @@ namespace App\Mainframe\Helpers;
 
 use App\Mainframe\Modules\Countries\Country;
 
+// use App\Projects\MyProject\Modules\ConversionRates\ConversionRate;
+
 class Money
 {
+    public static $currencies = ['GBP', 'USD', 'EUR'];
+
     /**
      * Get currency symbol from currency name
      *
@@ -69,5 +73,47 @@ class Money
 
         return $number;
     }
+
+    // /**
+    //  * Note: Enable this ConversionRate module is available
+    //  * Converts money from one currency to another.
+    //  *
+    //  * @param  float  $amount
+    //  * @param  string  $from
+    //  * @param  string  $to
+    //  * @param  null  $datetime
+    //  * @return string|float
+    //  */
+    // public static function convert($amount = 0.0, $from = 'USD', $to = 'USD', $datetime = null)
+    // {
+    //
+    //     $currencies = self::$currencies;
+    //
+    //     if (! isset($from, $to)) {
+    //         return null;
+    //     }
+    //
+    //     if (! in_array($from, $currencies) || ! in_array($to, $currencies)) {
+    //         return null;
+    //     }
+    //
+    //     if ($from == $to) {
+    //         return \App\Projects\MyProject\Helpers\Money::format($amount);
+    //         //return number_format($amount);
+    //     }
+    //     /**
+    //      * Convert if currency is not same.
+    //      **********************************/
+    //     $rate = Conversionrate::recent($datetime);
+    //
+    //     $field = \Str::lower('rate_'.$from.'_'.$to); // generate string 'rate_usd_eur'
+    //
+    //     if (isset($rate->$field)) {
+    //
+    //         return Money::format($amount * $rate->$field);
+    //     }
+    //
+    //     return null;
+    // }
 
 }

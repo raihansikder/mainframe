@@ -34,6 +34,17 @@ trait Validable
     }
 
     /**
+     * @param $messageBag
+     * @return $this
+     */
+    public function setMessageBag($messageBag)
+    {
+        $this->messageBag = $messageBag;
+
+        return $this;
+    }
+
+    /**
      * Retrieve the singleton messageBag
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Support\MessageBag|mixed
@@ -43,17 +54,6 @@ trait Validable
         $this->messageBag = resolve(MessageBag::class);
 
         return $this->messageBag;
-    }
-
-    /**
-     * @param $messageBag
-     * @return $this
-     */
-    public function setMessageBag($messageBag)
-    {
-        $this->messageBag = $messageBag;
-
-        return $this;
     }
 
     /**

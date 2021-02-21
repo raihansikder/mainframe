@@ -146,7 +146,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property-read \App\Mainframe\Modules\Comments\Comment $latestComment
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Changes\Change[] $changes
  */
-class User extends \App\Mainframe\Modules\Users\User
+class User extends \App\Projects\MyProject\Modules\Users\User
 {
 
 }

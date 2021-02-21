@@ -9,9 +9,9 @@ trait SuperHeroHelper
     |--------------------------------------------------------------------------
     | Autofill and functions to calculated field updates
     |--------------------------------------------------------------------------
-    |
     */
     /**
+     * Populate model
      * Fill data and set calculated data in fields for saving the module
      * This can depend of supporting fillFunct, setFunct,calculateFunct
      * return $this
@@ -39,29 +39,15 @@ trait SuperHeroHelper
     |--------------------------------------------------------------------------
     | Non-static helper functions
     |--------------------------------------------------------------------------
-    |
     */
-
-    // Write code here
+    // Todo: Write non-static helper functions here
 
     /*
     |--------------------------------------------------------------------------
     | Static helper functions
     |--------------------------------------------------------------------------
-    |
     */
-
-    // Write code here
-
-    /*
-    |--------------------------------------------------------------------------
-    | View helper functions
-    |--------------------------------------------------------------------------
-    | Functions that are used in views to shorted the length of logic inside
-    | view blades. This are known as view shorthand functions.
-    */
-
-    // Write code here
+    // Todo: static helper functions
 
     /*
     |--------------------------------------------------------------------------

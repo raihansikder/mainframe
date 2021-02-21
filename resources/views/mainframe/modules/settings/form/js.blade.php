@@ -22,7 +22,6 @@
     | JS to run only during update
     |--------------------------------------------------------------------------
     */
-
     $('input[name=redirect_success]').val('#'); // Stop redirection after save
     @endif
     /*

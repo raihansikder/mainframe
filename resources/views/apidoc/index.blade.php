@@ -2749,17 +2749,17 @@ fetch(url, {
                 "project_id": null,
                 "tenant_id": null,
                 "title": "Setting",
-                "description": "Manage settings",
+                "description": "Manage setting",
                 "module_table": "settings",
                 "route_path": "settings",
                 "route_name": "settings",
-                "class_directory": "app\/Mainframe\/Modules\/Settings",
-                "namespace": "\\App\\Mainframe\\Modules\\Settings",
-                "model": "\\App\\Mainframe\\Modules\\Settings\\Setting",
-                "policy": "\\App\\Mainframe\\Modules\\Settings\\SettingPolicy",
-                "processor": "\\App\\Mainframe\\Modules\\Settings\\SettingProcessor",
-                "controller": "\\App\\Mainframe\\Modules\\Settings\\SettingController",
-                "view_directory": "mainframe.modules.settings",
+                "class_directory": "app\/Projects\/MyProject\/Modules\/Settings",
+                "namespace": "\\App\\Projects\\MyProject\\Modules\\Settings",
+                "model": "\\App\\Projects\\MyProject\\Modules\\Settings\\Setting",
+                "policy": "\\App\\Projects\\MyProject\\Modules\\Settings\\SettingPolicy",
+                "processor": "\\App\\Projects\\MyProject\\Modules\\Settings\\SettingProcessor",
+                "controller": "\\App\\Projects\\MyProject\\Modules\\Settings\\SettingController",
+                "view_directory": "projects.my-project.modules.settings",
                 "parent_id": 0,
                 "module_group_id": 1,
                 "level": 0,
@@ -2772,7 +2772,7 @@ fetch(url, {
                 "created_by": 1,
                 "updated_by": 1,
                 "created_at": "2018-12-24 19:56:38",
-                "updated_at": "2020-01-23 06:53:54",
+                "updated_at": "2021-02-20 07:54:51",
                 "deleted_at": null,
                 "deleted_by": null
             },
@@ -4551,7 +4551,7 @@ fetch(url, {
 <h3>HTTP Request</h3>
 <p><code>DELETE api/1.0/reports/{report}</code></p>
 <!-- END_40f64173bb7c3b3e2d395c2c32357b2c -->
-<h1>Settings</h1>
+<h1>Setting</h1>
 <p>APIs for managing settings</p>
 <!-- START_ff8a7a253c42a88dca5cd859b16fcd38 -->
 <h2>Index/List</h2>
@@ -4598,8 +4598,8 @@ fetch(url, {
         "path": "http:\/\/localhost\/api\/1.0\/settings",
         "per_page": 20,
         "prev_page_url": null,
-        "to": 5,
-        "total": 5,
+        "to": 4,
+        "total": 4,
         "items": [
             {
                 "id": 1,
@@ -4613,7 +4613,7 @@ fetch(url, {
                 "created_by": 1,
                 "updated_by": 1,
                 "created_at": "2018-12-24 20:25:41",
-                "updated_at": "2020-01-29 02:45:23",
+                "updated_at": "2021-02-21 05:47:01",
                 "deleted_at": null,
                 "deleted_by": null
             },
@@ -4653,7 +4653,7 @@ fetch(url, {
                 "id": 4,
                 "uuid": "279fb65c-30c2-4727-b3e6-fc18a3476bf7",
                 "name": "mobile-portrait-help-steps",
-                "title": "Mobile Portrait Help Steps",
+                "title": "Mobile Portrait Help Steps sadf",
                 "type": "file",
                 "description": "Mobile Portrait Helps slides for screen size.",
                 "value": null,
@@ -4661,25 +4661,9 @@ fetch(url, {
                 "created_by": 1,
                 "updated_by": 1,
                 "created_at": "2019-03-19 10:02:46",
-                "updated_at": "2019-03-20 09:21:39",
+                "updated_at": "2021-02-20 09:06:33",
                 "deleted_at": null,
                 "deleted_by": null
-            },
-            {
-                "id": 5,
-                "uuid": "f8e2ab99-e6ef-46d5-ae98-edee783b8f56",
-                "name": "mobile-landscape-help-steps",
-                "title": "Mobile Landscape Help Steps",
-                "type": "file",
-                "description": "Mobile landscape Helps slides for screen size.",
-                "value": "test lorem",
-                "is_active": 1,
-                "created_by": 1,
-                "updated_by": 1,
-                "created_at": "2019-03-19 10:15:44",
-                "updated_at": "2020-05-22 06:44:05",
-                "deleted_at": null,
-                "deleted_by": 1
             }
         ]
     },
@@ -4921,6 +4905,7 @@ fetch(url, {
 <h3>HTTP Request</h3>
 <p><code>DELETE api/1.0/settings/{setting}</code></p>
 <!-- END_cfa8b753d221b7d6a70d4691d2ca0a1c -->
+<h1>Settings</h1>
 <!-- START_21f5cfe7136ec865d701a276e042e269 -->
 <h2>Get setting by name(key)</h2>
 <blockquote>
@@ -5647,7 +5632,7 @@ fetch(url, {
         "per_page": 20,
         "prev_page_url": null,
         "to": 20,
-        "total": 38,
+        "total": 40,
         "items": [
             {
                 "id": 1,
@@ -6470,14 +6455,14 @@ fetch(url, {
         "current_page": 1,
         "first_page_url": "http:\/\/localhost\/api\/1.0\/users?page=1",
         "from": 1,
-        "last_page": 3,
-        "last_page_url": "http:\/\/localhost\/api\/1.0\/users?page=3",
+        "last_page": 8,
+        "last_page_url": "http:\/\/localhost\/api\/1.0\/users?page=8",
         "next_page_url": "http:\/\/localhost\/api\/1.0\/users?page=2",
         "path": "http:\/\/localhost\/api\/1.0\/users",
         "per_page": 20,
         "prev_page_url": null,
         "to": 20,
-        "total": 52,
+        "total": 158,
         "items": [
             {
                 "id": 1,
@@ -6486,15 +6471,15 @@ fetch(url, {
                 "tenant_id": null,
                 "name": "Super admin",
                 "email": "su@mainframe",
-                "api_token": null,
-                "api_token_generated_at": null,
+                "api_token": "GGs2iK5sujPyEfSrUIB0JR3dXPRy4goTw4ylkpeGATfzFO1JQwWZwUTzWU1DauhT",
+                "api_token_generated_at": "2021-02-19 20:38:22",
                 "is_tenant_editable": 1,
                 "permissions": [],
                 "is_active": 1,
                 "created_by": 1,
                 "updated_by": 1,
                 "created_at": "2018-09-10 15:30:06",
-                "updated_at": "2021-02-18 18:28:33",
+                "updated_at": "2021-02-21 06:50:16",
                 "deleted_at": null,
                 "deleted_by": null,
                 "name_initial": null,
@@ -6513,7 +6498,7 @@ fetch(url, {
                 "phone": null,
                 "mobile": null,
                 "first_login_at": "2020-02-08 10:55:44",
-                "last_login_at": "2021-02-18 17:39:32",
+                "last_login_at": "2021-02-21 04:35:36",
                 "auth_token": "UMZ9oxfJ7gL0OtbBUIe\/odaOr1jEFDq1",
                 "email_verified_at": "2019-01-22 19:27:07",
                 "email_verification_code": null,
@@ -6525,7 +6510,32 @@ fetch(url, {
                     "1"
                 ],
                 "is_test": 0,
+                "type": "-",
                 "profile_pic": null,
+                "groups": [
+                    {
+                        "id": 1,
+                        "uuid": "d48c591a-e6b2-4f7b-9458-0693362e55a6",
+                        "project_id": null,
+                        "tenant_id": null,
+                        "name": "superuser",
+                        "title": "Superuser",
+                        "permissions": {
+                            "superuser": 1
+                        },
+                        "is_active": 1,
+                        "created_by": 1,
+                        "updated_by": 1,
+                        "created_at": "2018-12-10 06:50:18",
+                        "updated_at": "2019-11-13 15:51:18",
+                        "deleted_at": null,
+                        "deleted_by": null,
+                        "pivot": {
+                            "user_id": 1,
+                            "group_id": 1
+                        }
+                    }
+                ],
                 "uploads": []
             },
             {
@@ -6543,7 +6553,7 @@ fetch(url, {
                 "created_by": 1,
                 "updated_by": 1,
                 "created_at": "2018-12-24 05:48:25",
-                "updated_at": "2021-02-18 18:28:33",
+                "updated_at": "2021-02-21 06:50:16",
                 "deleted_at": null,
                 "deleted_by": null,
                 "name_initial": null,
@@ -6574,7 +6584,34 @@ fetch(url, {
                     "2"
                 ],
                 "is_test": 0,
+                "type": "-",
                 "profile_pic": null,
+                "groups": [
+                    {
+                        "id": 2,
+                        "uuid": "9c085751-ea3a-44e4-a858-e008894dc1f3",
+                        "project_id": null,
+                        "tenant_id": null,
+                        "name": "api",
+                        "title": "API",
+                        "permissions": {
+                            "apis": 1,
+                            "superuser": 1,
+                            "make-api-call": 1
+                        },
+                        "is_active": 1,
+                        "created_by": 1,
+                        "updated_by": 1,
+                        "created_at": "2018-12-10 16:10:53",
+                        "updated_at": "2020-02-25 11:48:05",
+                        "deleted_at": null,
+                        "deleted_by": null,
+                        "pivot": {
+                            "user_id": 2,
+                            "group_id": 2
+                        }
+                    }
+                ],
                 "uploads": []
             },
             {
@@ -6623,7 +6660,9 @@ fetch(url, {
                     "25"
                 ],
                 "is_test": 0,
+                "type": "-",
                 "profile_pic": null,
+                "groups": [],
                 "uploads": []
             },
             {
@@ -6672,7 +6711,39 @@ fetch(url, {
                     "26"
                 ],
                 "is_test": null,
+                "type": "user",
                 "profile_pic": null,
+                "groups": [
+                    {
+                        "id": 26,
+                        "uuid": "03682753-1654-46f1-ad9d-7a7f78794a3d",
+                        "project_id": null,
+                        "tenant_id": null,
+                        "name": "user",
+                        "title": "User",
+                        "permissions": {
+                            "uploads": 1,
+                            "uploads-view-any": 1,
+                            "uploads-view": 1,
+                            "uploads-create": 1,
+                            "uploads-update": 1,
+                            "uploads-delete": 1,
+                            "uploads-view-change-log": 1,
+                            "uploads-view-report": 1
+                        },
+                        "is_active": 1,
+                        "created_by": 1,
+                        "updated_by": 1,
+                        "created_at": "2020-01-18 11:42:51",
+                        "updated_at": "2021-01-29 07:35:17",
+                        "deleted_at": null,
+                        "deleted_by": null,
+                        "pivot": {
+                            "user_id": 5055,
+                            "group_id": 26
+                        }
+                    }
+                ],
                 "uploads": []
             },
             {
@@ -6721,7 +6792,39 @@ fetch(url, {
                     "26"
                 ],
                 "is_test": null,
+                "type": "user",
                 "profile_pic": null,
+                "groups": [
+                    {
+                        "id": 26,
+                        "uuid": "03682753-1654-46f1-ad9d-7a7f78794a3d",
+                        "project_id": null,
+                        "tenant_id": null,
+                        "name": "user",
+                        "title": "User",
+                        "permissions": {
+                            "uploads": 1,
+                            "uploads-view-any": 1,
+                            "uploads-view": 1,
+                            "uploads-create": 1,
+                            "uploads-update": 1,
+                            "uploads-delete": 1,
+                            "uploads-view-change-log": 1,
+                            "uploads-view-report": 1
+                        },
+                        "is_active": 1,
+                        "created_by": 1,
+                        "updated_by": 1,
+                        "created_at": "2020-01-18 11:42:51",
+                        "updated_at": "2021-01-29 07:35:17",
+                        "deleted_at": null,
+                        "deleted_by": null,
+                        "pivot": {
+                            "user_id": 5058,
+                            "group_id": 26
+                        }
+                    }
+                ],
                 "uploads": []
             },
             {
@@ -6770,7 +6873,39 @@ fetch(url, {
                     "26"
                 ],
                 "is_test": null,
+                "type": "user",
                 "profile_pic": null,
+                "groups": [
+                    {
+                        "id": 26,
+                        "uuid": "03682753-1654-46f1-ad9d-7a7f78794a3d",
+                        "project_id": null,
+                        "tenant_id": null,
+                        "name": "user",
+                        "title": "User",
+                        "permissions": {
+                            "uploads": 1,
+                            "uploads-view-any": 1,
+                            "uploads-view": 1,
+                            "uploads-create": 1,
+                            "uploads-update": 1,
+                            "uploads-delete": 1,
+                            "uploads-view-change-log": 1,
+                            "uploads-view-report": 1
+                        },
+                        "is_active": 1,
+                        "created_by": 1,
+                        "updated_by": 1,
+                        "created_at": "2020-01-18 11:42:51",
+                        "updated_at": "2021-01-29 07:35:17",
+                        "deleted_at": null,
+                        "deleted_by": null,
+                        "pivot": {
+                            "user_id": 5061,
+                            "group_id": 26
+                        }
+                    }
+                ],
                 "uploads": []
             },
             {
@@ -6819,7 +6954,39 @@ fetch(url, {
                     "26"
                 ],
                 "is_test": null,
+                "type": "user",
                 "profile_pic": null,
+                "groups": [
+                    {
+                        "id": 26,
+                        "uuid": "03682753-1654-46f1-ad9d-7a7f78794a3d",
+                        "project_id": null,
+                        "tenant_id": null,
+                        "name": "user",
+                        "title": "User",
+                        "permissions": {
+                            "uploads": 1,
+                            "uploads-view-any": 1,
+                            "uploads-view": 1,
+                            "uploads-create": 1,
+                            "uploads-update": 1,
+                            "uploads-delete": 1,
+                            "uploads-view-change-log": 1,
+                            "uploads-view-report": 1
+                        },
+                        "is_active": 1,
+                        "created_by": 1,
+                        "updated_by": 1,
+                        "created_at": "2020-01-18 11:42:51",
+                        "updated_at": "2021-01-29 07:35:17",
+                        "deleted_at": null,
+                        "deleted_by": null,
+                        "pivot": {
+                            "user_id": 5064,
+                            "group_id": 26
+                        }
+                    }
+                ],
                 "uploads": []
             },
             {
@@ -6868,7 +7035,39 @@ fetch(url, {
                     "26"
                 ],
                 "is_test": null,
+                "type": "user",
                 "profile_pic": null,
+                "groups": [
+                    {
+                        "id": 26,
+                        "uuid": "03682753-1654-46f1-ad9d-7a7f78794a3d",
+                        "project_id": null,
+                        "tenant_id": null,
+                        "name": "user",
+                        "title": "User",
+                        "permissions": {
+                            "uploads": 1,
+                            "uploads-view-any": 1,
+                            "uploads-view": 1,
+                            "uploads-create": 1,
+                            "uploads-update": 1,
+                            "uploads-delete": 1,
+                            "uploads-view-change-log": 1,
+                            "uploads-view-report": 1
+                        },
+                        "is_active": 1,
+                        "created_by": 1,
+                        "updated_by": 1,
+                        "created_at": "2020-01-18 11:42:51",
+                        "updated_at": "2021-01-29 07:35:17",
+                        "deleted_at": null,
+                        "deleted_by": null,
+                        "pivot": {
+                            "user_id": 5068,
+                            "group_id": 26
+                        }
+                    }
+                ],
                 "uploads": []
             },
             {
@@ -6917,7 +7116,39 @@ fetch(url, {
                     "26"
                 ],
                 "is_test": null,
+                "type": "user",
                 "profile_pic": null,
+                "groups": [
+                    {
+                        "id": 26,
+                        "uuid": "03682753-1654-46f1-ad9d-7a7f78794a3d",
+                        "project_id": null,
+                        "tenant_id": null,
+                        "name": "user",
+                        "title": "User",
+                        "permissions": {
+                            "uploads": 1,
+                            "uploads-view-any": 1,
+                            "uploads-view": 1,
+                            "uploads-create": 1,
+                            "uploads-update": 1,
+                            "uploads-delete": 1,
+                            "uploads-view-change-log": 1,
+                            "uploads-view-report": 1
+                        },
+                        "is_active": 1,
+                        "created_by": 1,
+                        "updated_by": 1,
+                        "created_at": "2020-01-18 11:42:51",
+                        "updated_at": "2021-01-29 07:35:17",
+                        "deleted_at": null,
+                        "deleted_by": null,
+                        "pivot": {
+                            "user_id": 5072,
+                            "group_id": 26
+                        }
+                    }
+                ],
                 "uploads": []
             },
             {
@@ -6966,7 +7197,39 @@ fetch(url, {
                     "26"
                 ],
                 "is_test": null,
+                "type": "user",
                 "profile_pic": null,
+                "groups": [
+                    {
+                        "id": 26,
+                        "uuid": "03682753-1654-46f1-ad9d-7a7f78794a3d",
+                        "project_id": null,
+                        "tenant_id": null,
+                        "name": "user",
+                        "title": "User",
+                        "permissions": {
+                            "uploads": 1,
+                            "uploads-view-any": 1,
+                            "uploads-view": 1,
+                            "uploads-create": 1,
+                            "uploads-update": 1,
+                            "uploads-delete": 1,
+                            "uploads-view-change-log": 1,
+                            "uploads-view-report": 1
+                        },
+                        "is_active": 1,
+                        "created_by": 1,
+                        "updated_by": 1,
+                        "created_at": "2020-01-18 11:42:51",
+                        "updated_at": "2021-01-29 07:35:17",
+                        "deleted_at": null,
+                        "deleted_by": null,
+                        "pivot": {
+                            "user_id": 5076,
+                            "group_id": 26
+                        }
+                    }
+                ],
                 "uploads": []
             },
             {
@@ -7015,7 +7278,39 @@ fetch(url, {
                     "26"
                 ],
                 "is_test": null,
+                "type": "user",
                 "profile_pic": null,
+                "groups": [
+                    {
+                        "id": 26,
+                        "uuid": "03682753-1654-46f1-ad9d-7a7f78794a3d",
+                        "project_id": null,
+                        "tenant_id": null,
+                        "name": "user",
+                        "title": "User",
+                        "permissions": {
+                            "uploads": 1,
+                            "uploads-view-any": 1,
+                            "uploads-view": 1,
+                            "uploads-create": 1,
+                            "uploads-update": 1,
+                            "uploads-delete": 1,
+                            "uploads-view-change-log": 1,
+                            "uploads-view-report": 1
+                        },
+                        "is_active": 1,
+                        "created_by": 1,
+                        "updated_by": 1,
+                        "created_at": "2020-01-18 11:42:51",
+                        "updated_at": "2021-01-29 07:35:17",
+                        "deleted_at": null,
+                        "deleted_by": null,
+                        "pivot": {
+                            "user_id": 5080,
+                            "group_id": 26
+                        }
+                    }
+                ],
                 "uploads": []
             },
             {
@@ -7064,7 +7359,39 @@ fetch(url, {
                     "26"
                 ],
                 "is_test": null,
+                "type": "user",
                 "profile_pic": null,
+                "groups": [
+                    {
+                        "id": 26,
+                        "uuid": "03682753-1654-46f1-ad9d-7a7f78794a3d",
+                        "project_id": null,
+                        "tenant_id": null,
+                        "name": "user",
+                        "title": "User",
+                        "permissions": {
+                            "uploads": 1,
+                            "uploads-view-any": 1,
+                            "uploads-view": 1,
+                            "uploads-create": 1,
+                            "uploads-update": 1,
+                            "uploads-delete": 1,
+                            "uploads-view-change-log": 1,
+                            "uploads-view-report": 1
+                        },
+                        "is_active": 1,
+                        "created_by": 1,
+                        "updated_by": 1,
+                        "created_at": "2020-01-18 11:42:51",
+                        "updated_at": "2021-01-29 07:35:17",
+                        "deleted_at": null,
+                        "deleted_by": null,
+                        "pivot": {
+                            "user_id": 5084,
+                            "group_id": 26
+                        }
+                    }
+                ],
                 "uploads": []
             },
             {
@@ -7113,7 +7440,39 @@ fetch(url, {
                     "26"
                 ],
                 "is_test": null,
+                "type": "user",
                 "profile_pic": null,
+                "groups": [
+                    {
+                        "id": 26,
+                        "uuid": "03682753-1654-46f1-ad9d-7a7f78794a3d",
+                        "project_id": null,
+                        "tenant_id": null,
+                        "name": "user",
+                        "title": "User",
+                        "permissions": {
+                            "uploads": 1,
+                            "uploads-view-any": 1,
+                            "uploads-view": 1,
+                            "uploads-create": 1,
+                            "uploads-update": 1,
+                            "uploads-delete": 1,
+                            "uploads-view-change-log": 1,
+                            "uploads-view-report": 1
+                        },
+                        "is_active": 1,
+                        "created_by": 1,
+                        "updated_by": 1,
+                        "created_at": "2020-01-18 11:42:51",
+                        "updated_at": "2021-01-29 07:35:17",
+                        "deleted_at": null,
+                        "deleted_by": null,
+                        "pivot": {
+                            "user_id": 5088,
+                            "group_id": 26
+                        }
+                    }
+                ],
                 "uploads": []
             },
             {
@@ -7162,7 +7521,39 @@ fetch(url, {
                     "26"
                 ],
                 "is_test": null,
+                "type": "user",
                 "profile_pic": null,
+                "groups": [
+                    {
+                        "id": 26,
+                        "uuid": "03682753-1654-46f1-ad9d-7a7f78794a3d",
+                        "project_id": null,
+                        "tenant_id": null,
+                        "name": "user",
+                        "title": "User",
+                        "permissions": {
+                            "uploads": 1,
+                            "uploads-view-any": 1,
+                            "uploads-view": 1,
+                            "uploads-create": 1,
+                            "uploads-update": 1,
+                            "uploads-delete": 1,
+                            "uploads-view-change-log": 1,
+                            "uploads-view-report": 1
+                        },
+                        "is_active": 1,
+                        "created_by": 1,
+                        "updated_by": 1,
+                        "created_at": "2020-01-18 11:42:51",
+                        "updated_at": "2021-01-29 07:35:17",
+                        "deleted_at": null,
+                        "deleted_by": null,
+                        "pivot": {
+                            "user_id": 5092,
+                            "group_id": 26
+                        }
+                    }
+                ],
                 "uploads": []
             },
             {
@@ -7211,7 +7602,39 @@ fetch(url, {
                     "26"
                 ],
                 "is_test": null,
+                "type": "user",
                 "profile_pic": null,
+                "groups": [
+                    {
+                        "id": 26,
+                        "uuid": "03682753-1654-46f1-ad9d-7a7f78794a3d",
+                        "project_id": null,
+                        "tenant_id": null,
+                        "name": "user",
+                        "title": "User",
+                        "permissions": {
+                            "uploads": 1,
+                            "uploads-view-any": 1,
+                            "uploads-view": 1,
+                            "uploads-create": 1,
+                            "uploads-update": 1,
+                            "uploads-delete": 1,
+                            "uploads-view-change-log": 1,
+                            "uploads-view-report": 1
+                        },
+                        "is_active": 1,
+                        "created_by": 1,
+                        "updated_by": 1,
+                        "created_at": "2020-01-18 11:42:51",
+                        "updated_at": "2021-01-29 07:35:17",
+                        "deleted_at": null,
+                        "deleted_by": null,
+                        "pivot": {
+                            "user_id": 5096,
+                            "group_id": 26
+                        }
+                    }
+                ],
                 "uploads": []
             },
             {
@@ -7260,7 +7683,39 @@ fetch(url, {
                     "26"
                 ],
                 "is_test": null,
+                "type": "user",
                 "profile_pic": null,
+                "groups": [
+                    {
+                        "id": 26,
+                        "uuid": "03682753-1654-46f1-ad9d-7a7f78794a3d",
+                        "project_id": null,
+                        "tenant_id": null,
+                        "name": "user",
+                        "title": "User",
+                        "permissions": {
+                            "uploads": 1,
+                            "uploads-view-any": 1,
+                            "uploads-view": 1,
+                            "uploads-create": 1,
+                            "uploads-update": 1,
+                            "uploads-delete": 1,
+                            "uploads-view-change-log": 1,
+                            "uploads-view-report": 1
+                        },
+                        "is_active": 1,
+                        "created_by": 1,
+                        "updated_by": 1,
+                        "created_at": "2020-01-18 11:42:51",
+                        "updated_at": "2021-01-29 07:35:17",
+                        "deleted_at": null,
+                        "deleted_by": null,
+                        "pivot": {
+                            "user_id": 5100,
+                            "group_id": 26
+                        }
+                    }
+                ],
                 "uploads": []
             },
             {
@@ -7309,7 +7764,39 @@ fetch(url, {
                     "26"
                 ],
                 "is_test": null,
+                "type": "user",
                 "profile_pic": null,
+                "groups": [
+                    {
+                        "id": 26,
+                        "uuid": "03682753-1654-46f1-ad9d-7a7f78794a3d",
+                        "project_id": null,
+                        "tenant_id": null,
+                        "name": "user",
+                        "title": "User",
+                        "permissions": {
+                            "uploads": 1,
+                            "uploads-view-any": 1,
+                            "uploads-view": 1,
+                            "uploads-create": 1,
+                            "uploads-update": 1,
+                            "uploads-delete": 1,
+                            "uploads-view-change-log": 1,
+                            "uploads-view-report": 1
+                        },
+                        "is_active": 1,
+                        "created_by": 1,
+                        "updated_by": 1,
+                        "created_at": "2020-01-18 11:42:51",
+                        "updated_at": "2021-01-29 07:35:17",
+                        "deleted_at": null,
+                        "deleted_by": null,
+                        "pivot": {
+                            "user_id": 5104,
+                            "group_id": 26
+                        }
+                    }
+                ],
                 "uploads": []
             },
             {
@@ -7358,7 +7845,39 @@ fetch(url, {
                     "26"
                 ],
                 "is_test": null,
+                "type": "user",
                 "profile_pic": null,
+                "groups": [
+                    {
+                        "id": 26,
+                        "uuid": "03682753-1654-46f1-ad9d-7a7f78794a3d",
+                        "project_id": null,
+                        "tenant_id": null,
+                        "name": "user",
+                        "title": "User",
+                        "permissions": {
+                            "uploads": 1,
+                            "uploads-view-any": 1,
+                            "uploads-view": 1,
+                            "uploads-create": 1,
+                            "uploads-update": 1,
+                            "uploads-delete": 1,
+                            "uploads-view-change-log": 1,
+                            "uploads-view-report": 1
+                        },
+                        "is_active": 1,
+                        "created_by": 1,
+                        "updated_by": 1,
+                        "created_at": "2020-01-18 11:42:51",
+                        "updated_at": "2021-01-29 07:35:17",
+                        "deleted_at": null,
+                        "deleted_by": null,
+                        "pivot": {
+                            "user_id": 5108,
+                            "group_id": 26
+                        }
+                    }
+                ],
                 "uploads": []
             },
             {
@@ -7407,7 +7926,39 @@ fetch(url, {
                     "26"
                 ],
                 "is_test": null,
+                "type": "user",
                 "profile_pic": null,
+                "groups": [
+                    {
+                        "id": 26,
+                        "uuid": "03682753-1654-46f1-ad9d-7a7f78794a3d",
+                        "project_id": null,
+                        "tenant_id": null,
+                        "name": "user",
+                        "title": "User",
+                        "permissions": {
+                            "uploads": 1,
+                            "uploads-view-any": 1,
+                            "uploads-view": 1,
+                            "uploads-create": 1,
+                            "uploads-update": 1,
+                            "uploads-delete": 1,
+                            "uploads-view-change-log": 1,
+                            "uploads-view-report": 1
+                        },
+                        "is_active": 1,
+                        "created_by": 1,
+                        "updated_by": 1,
+                        "created_at": "2020-01-18 11:42:51",
+                        "updated_at": "2021-01-29 07:35:17",
+                        "deleted_at": null,
+                        "deleted_by": null,
+                        "pivot": {
+                            "user_id": 5112,
+                            "group_id": 26
+                        }
+                    }
+                ],
                 "uploads": []
             },
             {
@@ -7456,7 +8007,39 @@ fetch(url, {
                     "26"
                 ],
                 "is_test": null,
+                "type": "user",
                 "profile_pic": null,
+                "groups": [
+                    {
+                        "id": 26,
+                        "uuid": "03682753-1654-46f1-ad9d-7a7f78794a3d",
+                        "project_id": null,
+                        "tenant_id": null,
+                        "name": "user",
+                        "title": "User",
+                        "permissions": {
+                            "uploads": 1,
+                            "uploads-view-any": 1,
+                            "uploads-view": 1,
+                            "uploads-create": 1,
+                            "uploads-update": 1,
+                            "uploads-delete": 1,
+                            "uploads-view-change-log": 1,
+                            "uploads-view-report": 1
+                        },
+                        "is_active": 1,
+                        "created_by": 1,
+                        "updated_by": 1,
+                        "created_at": "2020-01-18 11:42:51",
+                        "updated_at": "2021-01-29 07:35:17",
+                        "deleted_at": null,
+                        "deleted_by": null,
+                        "pivot": {
+                            "user_id": 5116,
+                            "group_id": 26
+                        }
+                    }
+                ],
                 "uploads": []
             }
         ]
