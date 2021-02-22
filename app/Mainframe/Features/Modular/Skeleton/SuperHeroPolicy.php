@@ -1,5 +1,4 @@
 <?php
-/** @noinspection PhpInconsistentReturnPointsInspection */
 
 namespace App\Mainframe\Modules\SuperHeroes;
 

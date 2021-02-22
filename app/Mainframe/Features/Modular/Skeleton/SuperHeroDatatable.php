@@ -1,7 +1,4 @@
 <?php
-/** @noinspection UnknownInspectionInspection */
-/** @noinspection DuplicatedCode */
-/** @noinspection SenselessMethodDuplicationInspection */
 
 namespace App\Mainframe\Modules\SuperHeroes;
 
