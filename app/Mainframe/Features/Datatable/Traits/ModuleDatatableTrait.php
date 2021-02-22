@@ -65,7 +65,7 @@ trait ModuleDatatableTrait
     public function ajaxUrl()
     {
         if ($this->ajaxUrl) {
-            return;
+            return $this->ajaxUrl;
         }
 
         $this->ajaxUrl = route($this->module->name.'.datatable-json').'?'.parse_url(\URL::full(), PHP_URL_QUERY);

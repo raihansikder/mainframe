@@ -8,8 +8,8 @@
 $titles = $view->datatable->titles();
 $columnsJson = $view->datatable->columnsJson();
 $ajaxUrl = $view->datatable->ajaxUrl();
-?>
 
+?>
 <div class="">
     <table id="{{$module->name}}Grid" class="table module-grid  dataTable" style="width: 100%">
         <thead class="bg-gray-light">
