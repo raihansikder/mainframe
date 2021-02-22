@@ -9,7 +9,9 @@ use App\Mainframe\Features\Datatable\ModuleDatatable;
 
 class SuperHeroDatatable extends ModuleDatatable
 {
+    // Note: Pull in necessary traits
 
+    /** @var string[] HTML rendering enabled for columns */
     public $rawColumns = ['id', 'name', 'is_active'];
 
     // /**

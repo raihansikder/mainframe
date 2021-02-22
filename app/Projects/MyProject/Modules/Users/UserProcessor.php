@@ -73,8 +73,6 @@ class UserProcessor extends ModelProcessor
    |--------------------------------------------------------------------------
    | Execute validation on module events
    |--------------------------------------------------------------------------
-   |
-   | Check validations on saving, creating, updating, deleting and restoring
    */
 
     /**

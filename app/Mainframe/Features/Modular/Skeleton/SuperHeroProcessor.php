@@ -6,6 +6,7 @@ use App\Mainframe\Features\Modular\Validator\ModelProcessor;
 
 class SuperHeroProcessor extends ModelProcessor
 {
+    // Note: Pull in necessary traits
     use SuperHeroProcessorHelper;
 
     /*
@@ -68,7 +69,8 @@ class SuperHeroProcessor extends ModelProcessor
      */
     public function saving($element)
     {
-        $this->checkName(); // Todo: Remove this sample code
+        // Code : Validation
+        // Code : Data-fill
 
         return $this;
     }
@@ -86,9 +88,6 @@ class SuperHeroProcessor extends ModelProcessor
     | Functions for deriving immutables & allowed transitions
     |--------------------------------------------------------------------------
     */
-    /* Further customize immutables and allowed value transitions*/
-    // public function getImmutables(){return $this->immutables; }
-    // public function getTransitions(){return $this->transitions; }
 
     /*
     |--------------------------------------------------------------------------

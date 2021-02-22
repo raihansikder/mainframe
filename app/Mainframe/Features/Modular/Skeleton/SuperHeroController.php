@@ -11,6 +11,8 @@ use App\Mainframe\Features\Report\ModuleList;
  */
 class SuperHeroController extends ModularController
 {
+    // Note: Pull in necessary traits
+
     /*
     |--------------------------------------------------------------------------
     | Module definitions

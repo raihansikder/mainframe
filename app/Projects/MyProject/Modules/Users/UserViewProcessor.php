@@ -9,7 +9,7 @@ class UserViewProcessor extends BaseModuleViewProcessor
     /**
      * @var \App\Mainframe\Modules\Modules\Module $module
      * @var \Illuminate\Database\Eloquent\Builder $model test
-     * @var \App\Projects\MyProject\Modules\Users\User $element
+     * @var User $element
      * @var bool $editable
      * @var array $immutables
      * @var string $type i.e. View type create, edit, index etc.

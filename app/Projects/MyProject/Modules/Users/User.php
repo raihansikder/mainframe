@@ -226,6 +226,7 @@ class User extends MfUser // Note: Can not extend project BaseModule for this sp
      */
     public function sendPasswordResetNotification($token)
     {
+        // Note: Utilize project asset instead of Mainframe default
         $this->notifyNow(new ResetPassword($token));
     }
 
@@ -234,6 +235,7 @@ class User extends MfUser // Note: Can not extend project BaseModule for this sp
      */
     public function sendEmailVerificationNotification()
     {
+        // Note: Utilize project asset instead of Mainframe default
         $this->notifyNow(new VerifyEmail());
     }
     /*

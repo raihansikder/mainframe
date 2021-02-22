@@ -66,7 +66,7 @@ class ModularController extends BaseController
      */
     public function report()
     {
-        if (! user()->can('view-report', $this->model)) {
+        if (!user()->can('view-report', $this->model)) {
             return $this->permissionDenied();
         }
 
@@ -96,7 +96,7 @@ class ModularController extends BaseController
         $classPaths = [
             $this->module->modelClassPath().'ViewProcessor', // Check in same folder
             $this->module->namespace.'\\'.$this->module->modelClassName().'ViewProcessor',// Check in module directory
-            '\App\Projects\MyProject\Features\Modular\BaseModule\BaseModuleViewProcessor', // Default
+            '\App\Projects\MyProject\Features\Modular\BaseModule\BaseModuleViewProcessor', // // Note: Utilize project asset instead of Mainframe default
         ];
 
         foreach ($classPaths as $classPath) {

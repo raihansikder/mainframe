@@ -25,6 +25,34 @@ use App\Projects\MyProject\Features\Modular\BaseModule\BaseModule;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Settings\Setting query()
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Changes\Change[] $changes
  * @property-read int|null $changes_count
+ * @property int $id
+ * @property string|null $uuid
+ * @property string|null $name
+ * @property string|null $title
+ * @property string|null $type
+ * @property string|null $description
+ * @property string|null $value
+ * @property int|null $is_active
+ * @property int|null $created_by
+ * @property int|null $updated_by
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @property int|null $deleted_by
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Settings\Setting whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Settings\Setting whereCreatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Settings\Setting whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Settings\Setting whereDeletedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Settings\Setting whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Settings\Setting whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Settings\Setting whereIsActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Settings\Setting whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Settings\Setting whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Settings\Setting whereType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Settings\Setting whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Settings\Setting whereUpdatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Settings\Setting whereUuid($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Settings\Setting whereValue($value)
  */
 class Setting extends BaseModule
 {

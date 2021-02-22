@@ -3,7 +3,7 @@
  * For documentation and global variables on how form.blade views please refer to
  * parent template \app\views\spyr\modules\groups\form.blade.php
  *
- * Variables used in this view file.
+ * Variables
  * @var $moduleName      string 'uploads'
  * @var $currentModule              Module
  * @var $upload           Upload Object that is being edited

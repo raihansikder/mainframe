@@ -3,7 +3,7 @@
  * For documentation and global variables on how form.blade views please refer to
  * parent template \app\views\spyr\modules\groups\form.blade.php
  *
- * Variables used in this view file.
+ * Variables
  * @var $moduleName           string 'reports'
  * @var $currentModule                   \App\Mainframe\Modules\Modules\Module
  * @var $report                \App\Report Object that is being edited

@@ -27,6 +27,8 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule;
  */
 class SuperHero extends BaseModule
 {
+    // Note: Pull in necessary traits
+
     use SuperHeroHelper;
 
     protected $moduleName = 'super-heroes';

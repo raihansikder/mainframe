@@ -1,6 +1,6 @@
 <?php
 /**
- * Variables used in this view file.
+ * Variables
  * @var \App\Mainframe\Modules\Modules\Module $module
  * @var array $columns
  * @var \App\Mainframe\Features\Core\ViewProcessor $view

@@ -31,26 +31,26 @@ trait UserDatatableTrait
      */
     public function modify($dt)
     {
+        $dt = parent::modify($dt);
         // Set columns for HTML output.
-        $dt = $dt->rawColumns(['id', 'email', 'is_active']);
+        $dt->rawColumns(['id', 'email', 'is_active']);
 
         // Next modify each column content
-        /*  @var $dt \Yajra\DataTables\DataTableAbstract */
-        $dt = $dt->editColumn('email', '<a href="{{ route(\''.$this->module->name.'.edit\', $id) }}">{{$email}}</a>');
-        $dt = $dt->editColumn('id', '<a href="{{ route(\''.$this->module->name.'.edit\', $id) }}">{{$id}}</a>');
-        $dt = $dt->editColumn('is_active', '@if($is_active)  Yes @else <span class="text-red">No</span> @endif');
+        if ($this->hasColumn('email')) {
+            $dt->editColumn('email', '<a href="{{ route(\''.$this->module->name.'.edit\', $id) }}">{{$email}}</a>');
+        }
 
         // Show group name
-        $dt = $dt->editColumn('group_ids', function ($row) {
+        if ($this->hasColumn('email')) {
+            $dt->editColumn('group_ids', function ($row) {
+                $groupNames = Group::whereIn('id', json_decode($row->group_ids))
+                    ->remember(timer('very-long'))
+                    ->pluck('title')
+                    ->toArray();
 
-            $groupNames = Group::whereIn('id', json_decode($row->group_ids))
-                ->remember(timer('very-long'))
-                ->pluck('title')
-                ->toArray();
-
-            return implode(',', $groupNames);
-
-        });
+                return implode(',', $groupNames);
+            });
+        }
 
         return $dt;
     }

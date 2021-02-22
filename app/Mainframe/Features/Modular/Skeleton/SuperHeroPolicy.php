@@ -7,6 +7,8 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModulePolicy;
 
 class SuperHeroPolicy extends BaseModulePolicy
 {
+    // Note: Pull in necessary traits
+
     /**
      * view-any
      * @param  \App\User  $user

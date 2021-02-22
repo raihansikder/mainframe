@@ -130,6 +130,8 @@ use Watson\Rememberable\Rememberable;
  * @method static \Illuminate\Database\Query\Builder|\App\Mainframe\Modules\Users\User withTrashed()
  * @method static \Illuminate\Database\Query\Builder|\App\Mainframe\Modules\Users\User withoutTrashed()
  * @mixin \Eloquent
+ * @property-read \App\Mainframe\Modules\Countries\Country|null $country
+ * @property-read string $type
  */
 class User extends Authenticatable implements MustVerifyEmail, Auditable
 {

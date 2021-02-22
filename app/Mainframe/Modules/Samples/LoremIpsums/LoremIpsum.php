@@ -72,6 +72,7 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule;
  * @property-read \App\Mainframe\Modules\Comments\Comment $latestComment
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Changes\Change[] $changes
  * @property-read int|null $changes_count
+ * @property int|null $deleted_by
  */
 class LoremIpsum extends BaseModule
 {

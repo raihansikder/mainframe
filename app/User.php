@@ -145,6 +145,8 @@ use Illuminate\Database\Eloquent\Builder;
  * @property-read null|string $profile_pic
  * @property-read \App\Mainframe\Modules\Comments\Comment $latestComment
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Changes\Change[] $changes
+ * @property-read \App\Mainframe\Modules\Countries\Country|null $country
+ * @property-read string $type
  */
 class User extends \App\Projects\MyProject\Modules\Users\User
 {

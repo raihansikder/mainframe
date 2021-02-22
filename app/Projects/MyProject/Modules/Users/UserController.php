@@ -4,8 +4,6 @@ namespace App\Projects\MyProject\Modules\Users;
 
 use App\Mainframe\Modules\Users\Traits\UserControllerTrait;
 use App\Projects\MyProject\Features\Modular\ModularController\ModularController;
-use App\Projects\MyProject\Features\Report\ModuleList;
-use App\Projects\MyProject\Features\Report\ModuleReportBuilder;
 
 /**
  * @group  Users

@@ -6,6 +6,7 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModuleObserver;
 
 class SuperHeroObserver extends BaseModuleObserver
 {
+    // Note: Pull in necessary traits
 
     /**
      * @param  SuperHero  $element

@@ -14,16 +14,33 @@ class Datatable
     /** @var \Yajra\DataTables\DataTableAbstract */
     public $dt;
 
-    /** @var array */
+    /**
+     * List of columns that is allowed for search/sort.
+     *
+     * @var array
+     */
     public $whiteList = [];
 
-    /** @var array */
+    /**
+     * List of columns that is not allowed for search/sort.
+     *
+     * @var array
+     */
     public $blackList = [];
 
-    /** @var array */
+    /**
+     * Set columns that should not be escaped. (HTML)
+     * Optionally merge the defaults from config.
+     *
+     * @var string[]
+     */
     public $rawColumns = ['id', 'name', 'is_active'];
 
-    /** @var */
+    /**
+     * Data source URL
+     *
+     * @var string
+     */
     public $ajaxUrl;
 
     /**
