@@ -2,12 +2,12 @@
 
 namespace App\Mainframe\Features\Report;
 
+use App\Mainframe\Features\Report\Traits\ModuleReportBuilderTrait;
 use App\Mainframe\Modules\Modules\Module;
 
 class ModuleReportBuilder extends ReportBuilder
 {
-    public $module;
-    public $model;
+    use ModuleReportBuilderTrait;
 
     public function __construct(Module $module, $dataSource = null, $path = null, $cache = null)
     {
@@ -19,18 +19,5 @@ class ModuleReportBuilder extends ReportBuilder
         parent::__construct($this->dataSource, $path, $cache);
     }
 
-    /**
-     * Query select table
-     *
-     * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Query\Builder
-     */
-    public function queryDataSource()
-    {
 
-        if (request('with')) {
-            return $this->model->with(explode(',', request('with')));
-        }
-
-        return $this->model;
-    }
 }

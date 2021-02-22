@@ -6,7 +6,6 @@
 namespace App\Mainframe\Modules\SuperHeroes;
 
 use App\Mainframe\Features\Datatable\ModuleDatatable;
-use DB;
 
 class SuperHeroDatatable extends ModuleDatatable
 {

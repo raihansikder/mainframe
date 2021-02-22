@@ -132,7 +132,6 @@ use App\Projects\MyProject\Notifications\Auth\VerifyEmail;
  */
 class User extends MfUser // Note: Can not extend project BaseModule for this special case, since it extends Authenticable
 {
-    // User model is exceptional as it extends Authenticatable
     use UserHelper;
 
     protected $moduleName = 'users';
@@ -200,7 +199,7 @@ class User extends MfUser // Note: Can not extend project BaseModule for this sp
     |--------------------------------------------------------------------------
     */
 
-    public static function boot()
+    protected static function boot()
     {
         parent::boot();
         self::observe(UserObserver::class);
@@ -215,6 +214,11 @@ class User extends MfUser // Note: Can not extend project BaseModule for this sp
         // static::deleted(function (User $element) { });
     }
 
+    /*
+    |--------------------------------------------------------------------------
+    | Functions
+    |--------------------------------------------------------------------------
+    */
     /**
      * Send reset password link
      *

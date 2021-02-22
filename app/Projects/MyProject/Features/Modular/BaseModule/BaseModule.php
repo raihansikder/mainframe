@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Projects\MyProject\Features\Modular\BaseModule;
 
 use App\Mainframe\Features\Modular\BaseModule\BaseModule as MfBaseModule;
@@ -26,6 +27,5 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule as MfBaseModule;
  */
 class BaseModule extends MfBaseModule
 {
-
 
 }

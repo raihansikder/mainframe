@@ -25,6 +25,7 @@ trait UserProcessorTrait
     public function fill($element)
     {
         $element->populate();
+        $this->fillApiTokenGeneratedAt();
 
         return $this;
     }

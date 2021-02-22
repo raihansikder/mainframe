@@ -29,6 +29,7 @@ trait ModularControllerTrait
         }
 
         $this->view->setType('index')->setDatatable($this->datatable());
+        $this->view->addVars(['columns'=> $this->datatable()->columns()]);
 
         return $this->view($this->view->gridPath());
     }

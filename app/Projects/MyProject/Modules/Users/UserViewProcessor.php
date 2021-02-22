@@ -2,13 +2,12 @@
 
 namespace App\Projects\MyProject\Modules\Users;
 
-use App\Mainframe\Modules\Modules\Module;
 use App\Projects\MyProject\Features\Modular\BaseModule\BaseModuleViewProcessor;
 
 class UserViewProcessor extends BaseModuleViewProcessor
 {
     /**
-     * @var Module $module
+     * @var \App\Mainframe\Modules\Modules\Module $module
      * @var \Illuminate\Database\Eloquent\Builder $model test
      * @var \App\Projects\MyProject\Modules\Users\User $element
      * @var bool $editable
@@ -18,7 +17,7 @@ class UserViewProcessor extends BaseModuleViewProcessor
      */
 
     /**
-     * @var \App\Projects\MyProject\Modules\Users\User
+     * @var User
      */
     public $element;
 

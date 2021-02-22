@@ -2,15 +2,14 @@
 
 namespace App\Projects\MyProject\Features\Modular\ModularController;
 
-use App\Mainframe\Features\Modular\ModularController\Traits\RequestProcessorTrait;
 use App\Mainframe\Features\Modular\ModularController\Traits\ModularControllerTrait;
+use App\Mainframe\Features\Modular\ModularController\Traits\RequestProcessorTrait;
 use App\Mainframe\Features\Modular\ModularController\Traits\RequestValidator;
 use App\Mainframe\Features\Modular\ModularController\Traits\Resolvable;
 use App\Mainframe\Modules\Modules\Module;
 use App\Projects\MyProject\Features\Report\ModuleList;
 use App\Projects\MyProject\Features\Report\ModuleReportBuilder;
 use App\Projects\MyProject\Http\Controllers\BaseController;
-use View;
 
 class ModularController extends BaseController
 {
@@ -53,7 +52,7 @@ class ModularController extends BaseController
         $this->view = $this->viewProcessor()->setModule($this->module)->setModel($this->model);
 
         // Share these variables in  all views
-        View::share([
+        \View::share([
             'module' => $this->module,
             'model' => $this->model,
             'view' => $this->view,
@@ -65,15 +64,15 @@ class ModularController extends BaseController
      *
      * @return bool|\Illuminate\Contracts\View\Factory|\Illuminate\Http\JsonResponse|\Illuminate\Support\Collection|\Illuminate\View\View|mixed
      */
-    // public function report()
-    // {
-    //
-    //     if (! user()->can('view-report', $this->model)) {
-    //         return $this->permissionDenied();
-    //     }
-    //
-    //     return (new ModuleReportBuilder($this->module))->output();
-    // }
+    public function report()
+    {
+        if (! user()->can('view-report', $this->model)) {
+            return $this->permissionDenied();
+        }
+
+        // Note: Utilize project asset instead of Mainframe default
+        return (new ModuleReportBuilder($this->module))->output();
+    }
 
     /**
      * Returns a collection of objects as Json for an API call
@@ -82,6 +81,7 @@ class ModularController extends BaseController
      */
     public function listJson()
     {
+        // Note: Utilize project asset instead of Mainframe default
         return (new ModuleList($this->module))->json();
     }
 
@@ -92,6 +92,7 @@ class ModularController extends BaseController
      */
     public function viewProcessor()
     {
+        // Note: Utilize project asset instead of Mainframe default
         $classPaths = [
             $this->module->modelClassPath().'ViewProcessor', // Check in same folder
             $this->module->namespace.'\\'.$this->module->modelClassName().'ViewProcessor',// Check in module directory

@@ -654,7 +654,10 @@ trait ModularTrait
      */
     public function editUrl()
     {
-        return route($this->module()->name.'.edit', $this->id);
+        if($this->isCreated()) {
+            return route($this->module()->route_name.'.edit',$this->id);
+        }
+        return null;
     }
 
     /**

@@ -133,7 +133,6 @@ use Watson\Rememberable\Rememberable;
  */
 class User extends Authenticatable implements MustVerifyEmail, Auditable
 {
-
     use SoftDeletes,
         Rememberable,
         \OwenIt\Auditing\Auditable,
@@ -153,6 +152,8 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
      * Constants
      */
     public const PASSWORD_VALIDATION_RULE = 'required|confirmed|min:6|regex:/[a-zA-Z]/|regex:/[0-9]/';
+
+    public const GROUP_SUPERADMIN = 1;
 
     /*
     |--------------------------------------------------------------------------
@@ -208,7 +209,7 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
         'group_ids' => 'array',
     ];
     // protected $with = [];
-    protected $appends = ['type','profile_pic'];
+    protected $appends = ['type', 'profile_pic'];
 
     /**
      * Allowed permissions values.
@@ -233,7 +234,7 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
     | Boot method and model events.
     |--------------------------------------------------------------------------
     */
-    public static function boot()
+    protected static function boot()
     {
         parent::boot();
         self::observe(UserObserver::class);

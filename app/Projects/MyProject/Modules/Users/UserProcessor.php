@@ -3,7 +3,6 @@
 namespace App\Projects\MyProject\Modules\Users;
 
 use App\Mainframe\Modules\Users\Traits\UserProcessorTrait;
-use App\Mainframe\Modules\Users\UserProcessor as MfUserProcessor;
 use App\Projects\MyProject\Features\Modular\Validator\ModelProcessor;
 
 class UserProcessor extends ModelProcessor
@@ -15,7 +14,7 @@ class UserProcessor extends ModelProcessor
     | Define properties and variables
     |--------------------------------------------------------------------------
     */
-    /** @var \App\Projects\MyProject\Modules\Users\User */
+    /** @var User */
     public $element;
 
     public $immutables = ['email'];
@@ -100,6 +99,5 @@ class UserProcessor extends ModelProcessor
     // public function saved($element) { return $this; }
     // public function deleting($element) { return $this; }
     // public function deleted($element) { return $this; }
-
 
 }

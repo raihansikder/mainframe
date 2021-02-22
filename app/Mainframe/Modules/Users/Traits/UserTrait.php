@@ -567,6 +567,18 @@ trait UserTrait
     | Static helper functions
     |--------------------------------------------------------------------------
     */
+
+    /**
+     * Get a list of admin user email. These will be used when some event
+     * takes place in the system and admins should be notified.
+     *
+     * @return \Illuminate\Config\Repository|mixed
+     */
+    public static function adminEmails()
+    {
+        return config('projects.my-project.config.default_email_recipients');
+    }
+
     /**
      * Find user based on bearer token(auth_token)
      *
