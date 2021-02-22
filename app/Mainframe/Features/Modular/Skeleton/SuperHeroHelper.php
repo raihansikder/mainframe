@@ -2,7 +2,6 @@
 
 namespace App\Mainframe\Modules\SuperHeroes;
 
-/** @mixin SuperHero $this */
 trait SuperHeroHelper
 {
     /*
@@ -23,12 +22,12 @@ trait SuperHeroHelper
         return $this;
     }
 
-    /**
-     * Set address
-     * Todo: Remove this sample code
-     *
-     * @return $this
-     */
+    // /**
+    //  * Set address
+    //  * Todo: Remove this sample code
+    //  *
+    //  * @return $this
+    //  */
     // public function setAddress()
     // {
     //     $this->field = 'val';
