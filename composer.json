@@ -23,6 +23,7 @@
         "owen-it/laravel-auditing": "^9.3",
         "phpoffice/phpspreadsheet": "^1.9",
         "predis/predis": "^1.1",
+        "pusher/pusher-php-server": "~4.0",
         "ramsey/uuid": "^3.8",
         "watson/rememberable": "^3.1",
         "webpatser/laravel-uuid": "^3.0",

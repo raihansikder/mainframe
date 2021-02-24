@@ -143,6 +143,8 @@
       <path value="$PROJECT_DIR$/vendor/mpociot/laravel-apidoc-generator" />
       <path value="$PROJECT_DIR$/vendor/garygreen/pretty-routes" />
       <path value="$PROJECT_DIR$/vendor/predis/predis" />
+      <path value="$PROJECT_DIR$/vendor/paragonie/sodium_compat" />
+      <path value="$PROJECT_DIR$/vendor/pusher/pusher-php-server" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />
