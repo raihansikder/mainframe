@@ -52,7 +52,7 @@ class ModuleRestFeatureTest extends SuperadminTestCase
     /**
      * Setup the class. This works like constructor.
      */
-    public function setUp(): void
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -161,6 +161,7 @@ class ModuleRestFeatureTest extends SuperadminTestCase
             ->get("/{$this->module->name}/{$this->element()->id}")
             ->assertStatus(200)
             ->assertSee($this->newElementName); // A test name
+
     }
 
     /**

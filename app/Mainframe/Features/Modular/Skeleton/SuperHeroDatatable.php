@@ -12,7 +12,7 @@ class SuperHeroDatatable extends ModuleDatatable
     public $rawColumns = ['id', 'name', 'is_active'];
 
     // /**
-    //  * Define Query Source
+    //  * Note: Define Query Source
     //  *
     //  * @return \Illuminate\Database\Query\Builder|static
     //  */
@@ -38,14 +38,14 @@ class SuperHeroDatatable extends ModuleDatatable
     }
 
     // /**
-    //  * Apply filter on query.
+    //  * Note: Apply filter on query.
     //  *
     //  * @param $query \Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder|mixed
     //  * @return \Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder|mixed
     //  */
     // public function filter($query)
     // {
-    //     // if (request('id')) { // Todo: Sample code
+    //     // if (request('id')) { // Example code
     //     //     $query->where('id', request('id'));
     //     // }
     //
@@ -53,7 +53,7 @@ class SuperHeroDatatable extends ModuleDatatable
     // }
 
     /**
-     * Modify datatable values
+     * Note: Modify datatable values
      *
      * @return mixed
      * @var $dt \Yajra\DataTables\DataTableAbstract

@@ -31,7 +31,7 @@ trait SuperHeroProcessorHelper
     /**
      * @return $this
      */
-    public function checkName()  // Todo: Remove this sample code
+    public function checkName()  // Example code
     {
         $element = $this->element; // Short hand variable.
 

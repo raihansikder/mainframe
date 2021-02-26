@@ -17,6 +17,12 @@ class SelectAjax extends SelectModel
         $this->containerClass = $this->var['container_class'] ?? $this->var['div'] ?? 'col-md-6';
         $this->params['class'] .= ' ajax ';
         $this->url = $this->var['url'] ?? $this->url();
+
+        // Make the field readonly instead of disable
+        if (!$this->isEditable) {
+            unset($this->params['disabled']);
+            $this->params['readonly'] = 'readonly';
+        }
     }
 
     /**

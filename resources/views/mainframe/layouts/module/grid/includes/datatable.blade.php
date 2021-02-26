@@ -28,7 +28,7 @@ $ajaxUrl = $view->datatable->ajaxUrl();
     @parent
     <script type="text/javascript">
         var table = $('.module-grid').dataTable({
-            ajax: "{{$ajaxUrl}}",
+            ajax: "{!! $ajaxUrl !!}",
             columns: [ {!! $columnsJson !!} ],
             processing: true,
             serverSide: true,

@@ -49,7 +49,7 @@ class SettingDatatable extends ModuleDatatable
     //  */
     // public function filter($query)
     // {
-    //     // if (request('id')) { // Todo: Sample code
+    //     // if (request('id')) { // Example code
     //     //     $query->where('id', request('id'));
     //     // }
     //

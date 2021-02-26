@@ -20,7 +20,7 @@ class ModuleRestFeatureJsonTest extends ModuleRestFeatureTest
     /**
      * Setup the class. This works like constructor.
      */
-    public function setUp(): void
+    protected function setUp(): void
     {
         parent::setUp();
 

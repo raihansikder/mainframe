@@ -56,14 +56,14 @@ trait ChangeTrait
      */
     public function populate()
     {
-        // Todo: Remove this sample code
+        // Example code
         // $this->fillAddress()->setAmounts();
         return $this;
     }
 
     /**
      * Set address
-     * Todo: Remove this sample code
+     * Example code
      *
      * @return $this
      */

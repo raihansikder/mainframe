@@ -19,9 +19,6 @@ class ModuleDatatable extends Datatable
     {
         $this->module = $module;
         parent::__construct($this->module->module_table);
-        $this->ajaxUrl = route($this->module->name.'.datatable-json');
     }
-
-
 
 }
