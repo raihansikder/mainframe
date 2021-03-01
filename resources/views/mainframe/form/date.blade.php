@@ -66,16 +66,16 @@ $input->format = config('mainframe.config.date_format'); // Format to show in th
 
                 var formattedDate = $(this).val();                      // '01-04-2020'
                 var dateParts = formattedDate.split('-');               // ['01','04','2020']
-                var date = dateParts[0];                                // '01'
+                var day = dateParts[0];                                // '01'
                 var month = dateParts[1];                               // '04'
                 var year = dateParts[2];                                // '2020'
 
                 // Generate valid format for database store
-                var validDate = year + '-' + month + '-' + date;
+                var validDate = null;
 
-                // Clear out invalid date
-                if (validDate.length < 10) {
-                    validDate = null;
+                // console.log(year.length + " " + month.length + " " + day.length);
+                if (year.length == 4 && month.length == 2 && day.length == 2) {
+                    validDate = year + '-' + month + '-' + day;
                 }
 
                 $('#{{$input->uid}}  #{{$input->params['id']}}').val(validDate);
