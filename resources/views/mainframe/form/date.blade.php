@@ -62,20 +62,26 @@ $input->format = config('mainframe.config.date_format'); // Format to show in th
                     autoclose: true,
                     clearBtn: true
                 }
-            ).on('changeDate', function (ev) {
+            ).on('clearDate', function (ev) {
 
-                var formattedDate = $(this).val();                      // '01-04-2020'
-                var dateParts = formattedDate.split('-');               // ['01','04','2020']
-                var day = dateParts[0];                                // '01'
-                var month = dateParts[1];                               // '04'
-                var year = dateParts[2];                                // '2020'
+                $('#{{$input->uid}}  #{{$input->params['id']}}').val(null);
 
-                // Generate valid format for database store
+            }).on('changeDate', function (ev) {
+
                 var validDate = null;
+                var formattedDate = $(this).val();       // '01-04-2020'
 
-                // console.log(year.length + " " + month.length + " " + day.length);
-                if (year.length == 4 && month.length == 2 && day.length == 2) {
-                    validDate = year + '-' + month + '-' + day;
+                if (formattedDate.length) {
+
+                    var dateParts = formattedDate.split('-');           // ['01','04','2020']
+                    var day = dateParts[0];             // '01'
+                    var month = dateParts[1];           // '04'
+                    var year = dateParts[2];            // '2020'
+                    // console.log(year.length + " " + month.length + " " + day.length);
+
+                    if (year.length == 4 && month.length == 2 && day.length == 2) {
+                        validDate = year + '-' + month + '-' + day;
+                    }
                 }
 
                 $('#{{$input->uid}}  #{{$input->params['id']}}').val(validDate);
