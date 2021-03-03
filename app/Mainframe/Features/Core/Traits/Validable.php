@@ -257,4 +257,13 @@ trait Validable
         return $this->getMessages('errors') ? true : false;
     }
 
+    /**
+     * Get errors as flat string
+     * @return string
+     */
+    public function getErrorsAsSting()
+    {
+        return implode(' #', \Arr::flatten($this->getErrors()));
+    }
+
 }
