@@ -190,7 +190,8 @@ class ModelProcessor
     {
         foreach ($this->getImmutables() as $field) {
             if ($this->element->fieldHasChanged($field)) {
-                $this->fieldError($field, 'Value of '.$field.' can not be changed at this stage.');
+                // $this->fieldError($field, 'Value of '.$field.' can not be changed at this stage.');
+                $this->fieldError($field, 'Value of '.$field.' can not be changed [ '.$this->original($field).' -> '.$this->element->$field.' ] at this stage.');
             }
         }
 
@@ -396,6 +397,53 @@ class ModelProcessor
         }
 
         return [$from];
+    }
+
+    /**
+     * Check if a number of existing relations exists in database.
+     * @param  array  $relations
+     * @return $this
+     */
+    public function checkExistingRelations($relations = [])
+    {
+
+        foreach ($relations as $relation) {
+            $this->checkExistingRelation($relation);
+        }
+
+        return $this;
+
+    }
+
+    /**
+     * Check if individual relation exists in database.
+     * @param $relation
+     * @param  int  $limit
+     * @param  null  $msg
+     * @return $this
+     */
+    public function checkExistingRelation($relation, $limit = 10, $msg = null)
+    {
+
+        $msg = $msg ?? ' related '.str_replace('_', ' ', Str::snake($relation)).' found';
+
+        $element = $this->element;
+        $existingCount = $element->$relation()->count();
+        if (!$existingCount) {
+            return $this;
+        }
+
+        $sampleIds = $element->$relation()->limit($limit)->pluck('id')->toArray();
+
+        $fullMsg = $existingCount.$msg.'. Id '.implode(', ', $sampleIds);
+
+        if ($existingCount > $limit) {
+            $fullMsg .= ' ... and more.';
+        }
+
+        $this->error($fullMsg);
+
+        return $this;
     }
 
     /**
