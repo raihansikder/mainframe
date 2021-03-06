@@ -371,6 +371,13 @@ div.form-control {
     background-color: #ffffff;
 }
 
+.login-page  input {
+    font-size: 18px;
+}
+
+.login-box-body button.login{
+    font-size: 18px;
+}
 /* manage border*/
 .select2-drop, .select2-drop.select2-drop-above,
 .select2-container.select2-drop-above .select2-choice,

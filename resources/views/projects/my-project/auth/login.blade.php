@@ -35,7 +35,7 @@
 
             <div class="form-group row mb-0">
                 <div class="col-md-12 offset-md-4">
-                    <button type="submit" class="btn btn-success btn-block lb-bg">
+                    <button type="submit" class="btn btn-success btn-block lb-bg login">
                         {{ __('Login') }}
                     </button>
                     <div class="col-md-12 text-center" style="margin: 15px 0">

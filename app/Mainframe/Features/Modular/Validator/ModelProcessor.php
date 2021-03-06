@@ -427,13 +427,13 @@ class ModelProcessor
 
         $msg = $msg ?? ' related '.str_replace('_', ' ', Str::snake($relation)).' found';
 
-        $element = $this->element;
-        $existingCount = $element->$relation()->count();
+        $relation = $this->element->$relation();
+        $existingCount = $relation->count();
         if (!$existingCount) {
             return $this;
         }
 
-        $sampleIds = $element->$relation()->limit($limit)->pluck('id')->toArray();
+        $sampleIds = $relation->limit($limit)->pluck('id')->toArray();
 
         $fullMsg = $existingCount.$msg.'. Id '.implode(', ', $sampleIds);
 
