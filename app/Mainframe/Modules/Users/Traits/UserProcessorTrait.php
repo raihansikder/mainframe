@@ -5,6 +5,7 @@
 
 namespace App\Mainframe\Modules\Users\Traits;
 
+use App\Mainframe\Modules\Countries\Country;
 use App\Mainframe\Modules\Users\UserProcessor;
 use Carbon\Carbon;
 use Illuminate\Validation\Rule;
@@ -76,10 +77,13 @@ trait UserProcessorTrait
      */
     public function saving($element)
     {
+
         $this->userMustHaveOneGroup()
             ->userCanNotHaveMultipleGroup()
             ->restrictFieldsBasedOnUserGroups()
             ->userCanNotAssignIrrelevantGroup();
+
+        $this->fillCountryBasedOnCountryCode();
 
         return $this;
     }
@@ -93,9 +97,35 @@ trait UserProcessorTrait
 
     /*
     |--------------------------------------------------------------------------
-    | Validation helper functions
+    | Functions
     |--------------------------------------------------------------------------
+    |
     */
+    /**
+     * Some times an App or Api will pass a iso2 country code. i.e. GB, US. This needs
+     *  to be checked against existing country DB and
+     *
+     * @return $this
+     */
+    public function fillCountryBasedOnCountryCode()
+    {
+        if (!request('country_code')) {
+            return $this;
+        }
+
+        $country = Country::where('iso2', request('country_code'))->remember(timer('very-long'))->first();
+
+        if (!$country) {
+            $this->error("Country code ".request('country_code')." is not valid");
+
+            return $this;
+        }
+
+        $this->element->country_id = $country->id;
+
+        return $this;
+    }
+
     /**
      * Fill api_token_generated_at
      */
@@ -108,6 +138,12 @@ trait UserProcessorTrait
 
         return $this;
     }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Validation helper functions
+    |--------------------------------------------------------------------------
+    */
 
     /**
      * @return $this
