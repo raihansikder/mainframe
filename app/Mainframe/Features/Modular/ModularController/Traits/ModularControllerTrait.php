@@ -128,7 +128,7 @@ trait ModularControllerTrait
         //     $this->response()->validator->errors()->add('Error', $e->getMessage());
         // }
 
-        return $this->load($this->element->toArray())->send();
+        return $this->load($this->element->refresh()->toArray())->send();
     }
 
     /**
@@ -146,9 +146,13 @@ trait ModularControllerTrait
             return $this->notFound();
         }
 
+        if (user()->cannot('update', $this->element)) {
+            return $this->permissionDenied();
+        }
+
         $this->attemptUpdate();
 
-        return $this->load($this->element)->send();
+        return $this->load($this->element->refresh())->send();
     }
 
     /**

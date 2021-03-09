@@ -336,7 +336,7 @@ class Response
             $data['redirect'] = $this->redirectTo;
         }
 
-        return \Response::json($data, $this->code);
+        return \Response::json($data); // Note : Should send 200 OK always.  422 Can not be handled by browser.
     }
 
     /**
@@ -427,6 +427,11 @@ class Response
         $message = $message ?: $this->message ?: 'Permission denied';
         $code = $code ?: Response::HTTP_FORBIDDEN;
 
+        if ($this->expectsJson()) {
+            // return response()->json(['message' => $message], 404);
+            return $this->fail($message, $code)->json();
+        }
+
         return abort($code, $message);
     }
 
@@ -441,6 +446,10 @@ class Response
     {
         $message = $message ?: $this->message ?: 'Not found';
         $code = $code ?: Response::HTTP_NOT_FOUND;
+
+        if ($this->expectsJson()) {
+            return $this->fail($message, $code)->json();
+        }
 
         return abort($code, $message);
     }
