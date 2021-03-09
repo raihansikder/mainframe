@@ -172,23 +172,23 @@ class Group extends BaseModule
         parent::boot();
         self::observe(GroupObserver::class);
         static::saving(function (Group $element) {
-            $permissions = [];
-            // revoke existing group permissions
-            $existing_permissions = $element->getPermissions();
-            if (count($existing_permissions)) {
-                foreach ($existing_permissions as $k => $v) {
-                    $permissions[$k] = 0;
-                }
-            }
-
-            // include new group permissions from form input
-            if (Request::has('permission') && is_array(Request::get('permission'))) {
-                foreach (Request::get('permission') as $k) {
-                    $permissions[$k] = 1;
-                }
-            }
-
-            $element->permissions = $permissions;
+            // $permissions = [];
+            // // revoke existing group permissions
+            // $existing_permissions = $element->getPermissions();
+            // if (count($existing_permissions)) {
+            //     foreach ($existing_permissions as $k => $v) {
+            //         $permissions[$k] = 0;
+            //     }
+            // }
+            //
+            // // include new group permissions from form input
+            // if (Request::has('permission') && is_array(Request::get('permission'))) {
+            //     foreach (Request::get('permission') as $k) {
+            //         $permissions[$k] = 1;
+            //     }
+            // }
+            //
+            // $element->permissions = $permissions;
         });
     }
 

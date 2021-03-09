@@ -46,8 +46,21 @@ class GroupProcessor extends ModelProcessor
      */
     public function saving($element)
     {
-        parent::saving($element);
-        $this->groupNameShouldNotbeJoker();
+        $permissions = [];
+        // revoke existing group permissions
+        $existing_permissions = $element->getPermissions();
+        if (count($existing_permissions)) {
+            foreach ($existing_permissions as $k => $v) {
+                $permissions[$k] = 0;
+            }
+        }
+
+        // include new group permissions from form input
+        foreach (request('permission', []) as $k) {
+            $permissions[$k] = 1;
+        }
+
+        $element->permissions = array_merge($element->permissions, $permissions);
 
         return $this;
     }

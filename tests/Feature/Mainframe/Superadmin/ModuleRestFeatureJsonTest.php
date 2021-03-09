@@ -77,11 +77,12 @@ class ModuleRestFeatureJsonTest extends ModuleRestFeatureTest
      */
     public function testSuperAdminCreateEntryValidation()
     {
-        $this->post("/{$this->module->name}?ret=json",
+        $response = $this->post("/{$this->module->name}?ret=json",
             [
                 'name' => $this->newElementName,
-            ])
-            ->assertStatus(200)
+            ]);
+
+        $response->assertStatus(422)
             ->assertJson([
                 'code' => Response::HTTP_UNPROCESSABLE_ENTITY,
                 'status' => 'fail',

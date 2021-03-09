@@ -8,7 +8,7 @@ trait GroupHelper
     /**
      * Get group by name
      * @param $name
-     * @return mixed
+     * @return \App\Group
      */
     public static function byName($name)
     {

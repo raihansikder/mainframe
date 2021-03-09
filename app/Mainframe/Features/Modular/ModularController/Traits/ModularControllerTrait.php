@@ -323,4 +323,26 @@ trait ModularControllerTrait
 
         return app(CommentController::class)->store(request());
     }
+
+    /**
+     * Get all middlewares
+     *
+     * @return array
+     */
+    public function getAllMiddleWares()
+    {
+        $routeMiddlewares = request()->route()->middleware();
+        $controllerMiddlewares = \Arr::pluck($this->getMiddleware(), 'middleware');
+
+        return array_merge($routeMiddlewares, $controllerMiddlewares);
+    }
+
+    /**
+     * Check if the call is a API call
+     * @return bool
+     */
+    public function isApiCall()
+    {
+        return in_array('api',$this->getAllMiddleWares());
+    }
 }

@@ -318,7 +318,7 @@ class Response
         }
 
         // Load validation errors
-        if (! $this->isValid()) {
+        if (!$this->isValid()) {
             $data['validation_errors'] = $this->validator()->messages()->toArray();
         }
 
@@ -336,7 +336,7 @@ class Response
             $data['redirect'] = $this->redirectTo;
         }
 
-        return \Response::json($data);
+        return \Response::json($data, $this->code);
     }
 
     /**
@@ -395,7 +395,7 @@ class Response
      */
     public function dispatch()
     {
-        if (! $this->isValid()) {
+        if (!$this->isValid()) {
             $this->failValidation();
         }
 
@@ -544,7 +544,7 @@ class Response
     {
         return $this->status == 'success'
             && $this->isValid()
-            && ! $this->hasMessages('errors');
+            && !$this->hasMessages('errors');
     }
 
     /**
@@ -554,7 +554,7 @@ class Response
      */
     public function isFail()
     {
-        return ! $this->isSuccess();
+        return !$this->isSuccess();
     }
 
     /**
