@@ -57,11 +57,8 @@ function enableValidation(form_name, successHandlerFunction = false) {
             showFieldValidationPrompts(ret.responseJSON, false); // Show validation alert on each field
             loadMsg(ret.responseJSON); //
             $('#msgModal').modal('show');
-
-
         }).always(function (ret, textStatus, errorThrown) {
             btn.html(btnText).removeClass('disabled'); // Re-enable the save button
-
         });
 
     });
