@@ -4,14 +4,18 @@
 function enableValidation(form_name, handler = false) {
 
     // 1. Disable submit button action.
+
+
     var form_selector = 'form[name=' + form_name + '] ';
     var btnId = $(form_selector + ' button[type=submit]').attr('id');
+    
+
     // 1.1 Change the type from submit to button so that user cannot submit form but still click the button
     $(form_selector + ' button[id=' + btnId + ']').attr('type', 'button');
     $(form_selector + ' input[name=ret]').val('json'); // 2. enable json return type
 
     // 3. instantiate validationEngine with some options
-    $(form_selector).validationEngine({prettySelect: true, promptPosition: "topLeft", scroll: true});
+    $(form_selector).validationEngine({prettySelect: true, promptPosition: "topLeft", scroll: true,});
 
     // 4. Run validation on submit button click. If all frontend validations are ok then only ajax validation will execute
     $(form_selector + ' button[id=' + btnId + ']').click(function () {
@@ -27,46 +31,59 @@ function enableValidation(form_name, handler = false) {
         /*****************************************/
         // On Save button click run the AJAX
         /*****************************************/
-        if ($(form_selector).validationEngine('validate')) {
-            $.ajax({
-                datatype: 'json',
-                method: "POST",
-                url: $('form[name=' + form_name + ']').attr('action'),
-                data: $('form[name=' + form_name + ']').serialize()
-            }).done(function (ret) {
-                ret = parseJson(ret); // Convert the response into a valid json object.
-                /*****************************************/
-                // Reflect validation result
-                /*****************************************/
-                if (ret.status === 'fail') { // Show validation error messages on fail.
-                    showValidationAlert(ret, false); // Show validation alert on each field
-                } else if (ret.status === 'success') { // On success hide all validation error messages.
-                    $('form[name=' + form_name + ']').validationEngine('hideAll');
-                }
-
-                /*****************************************/
-                // Log session_success, session_error etc messages in modal and show
-                /*****************************************/
-                loadMsg(ret); //
-                $('#msgModal').modal('show');
-
-                /*****************************************/
-                // Redirection
-                /*****************************************/
-                if (ret.status === 'success') {
-                    if (handler) {
-                        handler(ret);
-                    } else if (ret.hasOwnProperty('redirect') && (ret.redirect !== null && ret.redirect.length > 0)) {
-                        window.location.replace(ret.redirect);
-                    }
-                }
-
-                // Re-enable the save button
-                $(form_selector + ' button[id=' + btnId + ']').html(btnText).removeClass('disabled');
-            });
-        } else {
+        if (form.validationEngine('validate') == false) {
             $(this).html(btnText).removeClass('disabled');
+            return; // Note: exits validation logic here.
         }
+
+        $.ajax({
+            datatype: 'json',
+            method: "POST",
+            url: $('form[name=' + form_name + ']').attr('action'),
+            data: $('form[name=' + form_name + ']').serialize()
+        }).done(function (ret) {
+
+            ret = parseJson(ret); // Convert the response into a valid json object.
+            /*****************************************/
+            // Reflect validation result
+            /*****************************************/
+            if (ret.status === 'fail') { // Show validation error messages on fail.
+                showFieldValidationPrompts(ret, false); // Show validation alert on each field
+            } else if (ret.status === 'success') { // On success hide all validation error messages.
+                $('form[name=' + form_name + ']').validationEngine('hideAll');
+            }
+
+            /*****************************************/
+            // Log session_success, session_error etc messages in modal and show
+            /*****************************************/
+            loadMsg(ret); //
+            $('#msgModal').modal('show');
+
+            /*****************************************/
+            // Redirection
+            /*****************************************/
+            if (ret.status === 'success') {
+                if (handler) {
+                    handler(ret);
+                } else if (ret.hasOwnProperty('redirect') && (ret.redirect !== null && ret.redirect.length > 0)) {
+                    window.location.replace(ret.redirect);
+                }
+            }
+
+            // Re-enable the save button
+
+        }).error(function (ret, textStatus, errorThrown) { // Gracefully handle 422, 400 error responses
+
+            showFieldValidationPrompts(ret.responseJSON, false); // Show validation alert on each field
+            loadMsg(ret.responseJSON); //
+            $('#msgModal').modal('show');
+            $(form_selector + ' button[id=' + btnId + ']').html(btnText).removeClass('disabled');
+            console.log('error');
+        }).always(function (ret, textStatus, errorThrown) {
+            $(form_selector + ' button[id=' + btnId + ']').html(btnText).removeClass('disabled');
+            console.log('always');
+        });
+
     });
 }
 
@@ -76,7 +93,7 @@ function enableValidation(form_name, handler = false) {
  * @param ret
  * @param showAlert
  */
-function showValidationAlert(ret, showAlert) {
+function showFieldValidationPrompts(ret, showAlert) {
     var str = '';
     if (ret.hasOwnProperty('validation_errors')) {
         $.each(ret.validation_errors, function (k, v) {

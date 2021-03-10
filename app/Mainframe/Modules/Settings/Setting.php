@@ -106,10 +106,11 @@ class Setting extends BaseModule
         self::observe(SettingObserver::class);
 
         static::saving(function (Setting $element) {
-            // $element->error('message1');
-            // $element->error('message2','key1');
-            // $element->error('message3');
-            // return false;
+
+            $element->error('message1');
+            $element->error('message2','key1');
+            $element->error('message3');
+            return false;
             // $element->messageBag()->add('messages', 'message2');
             // $element->messageBag()->add('messages', 'message3');
             // $element->messageBag()->add('messages', 'message4');
