@@ -1,87 +1,67 @@
 /**
  *   Function enables the js to run front-end validation.
  */
-function enableValidation(form_name, handler = false) {
+function enableValidation(form_name, successHandlerFunction = false) {
 
-    // 1. Disable submit button action.
+    var form = $('form[name=' + form_name + '] ');
+    var btn = form.find(' button[type=submit]');
 
+    // Change the button type from submit to button and inject ret=json input
+    btn.attr('type', 'button');
+    form.find('input[name=ret]').val('json');
 
-    var form_selector = 'form[name=' + form_name + '] ';
-    var btnId = $(form_selector + ' button[type=submit]').attr('id');
-    
+    // Instantiate validationEngine
+    form.validationEngine({prettySelect: true, promptPosition: "topLeft", scroll: true,});
 
-    // 1.1 Change the type from submit to button so that user cannot submit form but still click the button
-    $(form_selector + ' button[id=' + btnId + ']').attr('type', 'button');
-    $(form_selector + ' input[name=ret]').val('json'); // 2. enable json return type
-
-    // 3. instantiate validationEngine with some options
-    $(form_selector).validationEngine({prettySelect: true, promptPosition: "topLeft", scroll: true,});
-
-    // 4. Run validation on submit button click. If all frontend validations are ok then only ajax validation will execute
-    $(form_selector + ' button[id=' + btnId + ']').click(function () {
-        /********************************************************************************/
-        // Show all fields when CTA/Save button is clicked. And show the 'Working..' text.
-        /********************************************************************************/
-        $('.collapse').collapse('show'); // When save button is clicked show all collapsed accordions .
-        var btnText = $(this).html();
-        $(this).html('Working...');
-        $(this).addClass('disabled'); // change button text during ajax call
+    // Run validation on submit button click.
+    btn.click(function () {
+        $('.collapse').collapse('show'); // Un-collapse all accordion .
+        var btnText = $(this).html();    // Preserve initial button
+        $(this).html('Working...').addClass('disabled');
         /********************************************************************************/
 
-        /*****************************************/
-        // On Save button click run the AJAX
-        /*****************************************/
+        // Check front-end validations first
         if (form.validationEngine('validate') == false) {
             $(this).html(btnText).removeClass('disabled');
             return; // Note: exits validation logic here.
         }
 
+        // If all frontend validations are ok then only ajax validation will execute
+        form.validationEngine('hideAll');
         $.ajax({
             datatype: 'json',
             method: "POST",
-            url: $('form[name=' + form_name + ']').attr('action'),
-            data: $('form[name=' + form_name + ']').serialize()
+            url: form.attr('action'),
+            data: form.serialize()
         }).done(function (ret) {
 
-            ret = parseJson(ret); // Convert the response into a valid json object.
-            /*****************************************/
+            ret = parseJson(ret); // Just in case of exception
             // Reflect validation result
-            /*****************************************/
             if (ret.status === 'fail') { // Show validation error messages on fail.
                 showFieldValidationPrompts(ret, false); // Show validation alert on each field
-            } else if (ret.status === 'success') { // On success hide all validation error messages.
-                $('form[name=' + form_name + ']').validationEngine('hideAll');
             }
 
-            /*****************************************/
-            // Log session_success, session_error etc messages in modal and show
-            /*****************************************/
-            loadMsg(ret); //
+            // Load messages in modal and show.
+            loadMsg(ret);
             $('#msgModal').modal('show');
 
-            /*****************************************/
-            // Redirection
-            /*****************************************/
-            if (ret.status === 'success') {
-                if (handler) {
-                    handler(ret);
+            // Handle success. Redirect or pass to successHandlerFunction.
+            if (ret.status == 'success') {
+                if (successHandlerFunction) {
+                    successHandlerFunction(ret);
                 } else if (ret.hasOwnProperty('redirect') && (ret.redirect !== null && ret.redirect.length > 0)) {
                     window.location.replace(ret.redirect);
                 }
             }
-
-            // Re-enable the save button
-
         }).error(function (ret, textStatus, errorThrown) { // Gracefully handle 422, 400 error responses
-
             showFieldValidationPrompts(ret.responseJSON, false); // Show validation alert on each field
             loadMsg(ret.responseJSON); //
             $('#msgModal').modal('show');
-            $(form_selector + ' button[id=' + btnId + ']').html(btnText).removeClass('disabled');
-            console.log('error');
+
+
         }).always(function (ret, textStatus, errorThrown) {
-            $(form_selector + ' button[id=' + btnId + ']').html(btnText).removeClass('disabled');
-            console.log('always');
+            btn.html(btnText).removeClass('disabled'); // Re-enable the save button
+
         });
 
     });
@@ -118,10 +98,10 @@ function loadMsg(ret) {
     var hasSuccess = false;
     var hasMessage = false;
 
-    if (ret.status === 'fail') {
+    if (ret.status == 'fail') {
         hasError = true;
         $('div#msgError').append('<h4 class="text-red">Error - ' + ret.message + '</h4>');
-    } else if (ret.status === 'success') {
+    } else if (ret.status == 'success') {
         hasSuccess = true;
         // $('div#msgSuccess').append('<h4>Success</h4>');
         $('div#msgSuccess').append('<h4 class="text-green">Success - ' + ret.message + '</h4>');

@@ -336,7 +336,7 @@ class Response
             $data['redirect'] = $this->redirectTo;
         }
 
-        return \Response::json($data,$this->code); // Note : Should send 200 OK always.  422 Can not be handled by browser.
+        return \Response::json($data); // Note : Should send 200 OK always.  422 Can not be handled by browser.
     }
 
     /**
