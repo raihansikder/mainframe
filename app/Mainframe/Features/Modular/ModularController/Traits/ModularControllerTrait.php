@@ -100,7 +100,7 @@ trait ModularControllerTrait
         // Set view processor attributes
         $this->view->setType('edit')
             ->setElement($this->element)
-            ->setImmutable($this->element->processor()->getImmutables());
+            ->setImmutables($this->element->processor()->getImmutables());
 
         return $this->view($this->view->formPath('edit'))
             ->with($this->view->viewVarsEdit());
