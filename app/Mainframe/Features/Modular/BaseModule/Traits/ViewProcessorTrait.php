@@ -54,6 +54,13 @@ trait ViewProcessorTrait
     {
         $this->element = $element;
 
+        $this->setModule($element->module())
+            ->setModel($element->newInstance());
+
+        if ($this->isEditing()) {
+            $this->addImmutables($element->processor()->getImmutables());
+        }
+
         return $this;
     }
 
@@ -69,7 +76,7 @@ trait ViewProcessorTrait
     }
 
     /**
-     * @param  \Illuminate\Database\Eloquent\Builder  $model
+     * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule  $model
      * @return $this
      */
     public function setModel($model)
@@ -94,11 +101,21 @@ trait ViewProcessorTrait
      * @param $immutables
      * @return $this
      */
-    public function setImmutable($immutables)
+    public function setImmutables($immutables)
     {
         $this->immutables = $immutables;
 
         return $this;
+    }
+
+    /**
+     * @param $immutables
+     * @return $this
+     * @deprecated  use setImmutables
+     */
+    public function setImmutable($immutables)
+    {
+        return $this->setImmutables($immutables);
     }
 
     /**
@@ -364,7 +381,7 @@ trait ViewProcessorTrait
      */
     public function showTenantSelector()
     {
-        if (! $this->module->tenantEnabled()) {
+        if (!$this->module->tenantEnabled()) {
             return false;
         }
 
