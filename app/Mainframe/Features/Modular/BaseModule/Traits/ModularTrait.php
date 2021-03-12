@@ -647,6 +647,25 @@ trait ModularTrait
     |--------------------------------------------------------------------------
     |
     */
+    public function viewProcessor()
+    {
+        $modelClassPath = $this->module()->modelClassPath();
+        $classPaths = [
+            // Note: Check in same folder
+            $modelClassPath.'View',
+            $modelClassPath.'ViewProcessor',
+        ];
+
+        foreach ($classPaths as $classPath) {
+            if (class_exists($classPath)) {
+                return (new $classPath);
+            }
+        }
+
+        return null;
+
+    }
+
     /**
      * Edit link
      *
