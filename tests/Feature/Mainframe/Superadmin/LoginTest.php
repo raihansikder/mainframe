@@ -32,6 +32,7 @@ class LoginTest extends SuperadminTestCase
      */
     public function testLogout()
     {
+        $this->withExceptionHandling();
         $this->followingRedirects()->get('/logout')
             ->assertStatus(200)
             ->assertSee('Login');

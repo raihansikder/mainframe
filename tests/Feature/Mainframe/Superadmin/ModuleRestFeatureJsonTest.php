@@ -7,15 +7,6 @@ use App\Mainframe\Features\Responder\Response;
 
 class ModuleRestFeatureJsonTest extends ModuleRestFeatureTest
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Test REST features of a module : lorem-ipsum
-    |--------------------------------------------------------------------------
-    |
-    | Mainframe is shipped with a test module called lorem-ipsums. This test
-    | ensures that all the REST functions are working perfectly.
-    |
-    */
 
     /**
      * Setup the class. This works like constructor.

@@ -8,6 +8,8 @@ use Faker\Factory;
 class RegisterApiTest extends ApiTestCase
 {
 
+    public $response;
+
     /**
      * @return void
      */
@@ -17,7 +19,7 @@ class RegisterApiTest extends ApiTestCase
         $groupId = Group::byName('user')->id;
         $firstName = 'pu-'.$faker->firstName;
 
-        $this->response->post('api/1.0/register',
+        $this->post('api/1.0/register',
             [
                 'first_name' => $firstName,
                 'last_name' => $faker->lastName,
@@ -28,7 +30,7 @@ class RegisterApiTest extends ApiTestCase
             ])
             ->assertStatus(200)
             ->assertJsonStructure([
-                'code', 'status', 'message'
+                'code', 'status', 'message',
             ])
             ->assertJson([
                 'code' => 200,
@@ -47,6 +49,12 @@ class RegisterApiTest extends ApiTestCase
 
         $this->assertDatabaseMissing('users', ['first_name' => $firstName]);
         $this->assertDatabaseMissing('user_group', ['user_id' => $user->id]);
+
+        $this->seeEmailWasSent()     // At least one email sent successfully
+        ->seeEmailCountEquals(1) // Email count = 1
+        ->seeEmailTo($user->email)
+            ->seeEmailSubjectContains('Verify Email Address');
+
     }
 
     /**
@@ -59,7 +67,7 @@ class RegisterApiTest extends ApiTestCase
         $groupId = Group::byName('user')->id;
         $firstName = 'pu-'.$faker->firstName;
 
-        $this->response->post('api/1.0/register/user',
+        $this->post('api/1.0/register/user',
             [
                 'first_name' => $firstName,
                 'last_name' => $faker->lastName,
@@ -70,7 +78,7 @@ class RegisterApiTest extends ApiTestCase
             ])
             ->assertStatus(200)
             ->assertJsonStructure([
-                'code', 'status', 'message'
+                'code', 'status', 'message',
             ])
             ->assertJson([
                 'code' => 200,
@@ -101,7 +109,7 @@ class RegisterApiTest extends ApiTestCase
         $groupId = Group::byName('user')->id;
         $firstName = 'pu-'.$faker->firstName;
 
-        $this->response->post('api/1.0/register/test-group',
+        $this->post('api/1.0/register/test-group',
             [
                 'first_name' => $firstName,
                 'last_name' => $faker->lastName,
@@ -112,7 +120,7 @@ class RegisterApiTest extends ApiTestCase
             ])
             ->assertStatus(200)
             ->assertJsonStructure([
-                'code', 'status', 'message'
+                'code', 'status', 'message',
             ])
             ->assertJson([
                 'code' => 200,

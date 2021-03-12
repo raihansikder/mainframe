@@ -2,53 +2,21 @@
 
 namespace Tests;
 
-use App\User;
+use Faker\Factory;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 
 abstract class TestCase extends BaseTestCase
 {
-    use CreatesApplication;
+    use CreatesApplication, MailTracking, TestHelperTrait;
 
-    /*
-    |--------------------------------------------------------------------------
-    | Helpers
-    |--------------------------------------------------------------------------
-    |
-    */
-    /**
-     * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model|User|object
-     */
-    public function latestUser()
-    {
-        return User::latest()->first();
-    }
+    /** @var \Faker\Generator */
+    public $faker;
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model|User|object
-     */
-    public function lastUpdatedUser()
+    protected function setUp(): void
     {
-        return User::orderBy('updated_at', 'DESC')->first();
-    }
-
-    /**
-     * Get the 'date'=>... from a response
-     *
-     * @param $response
-     * @return mixed|null
-     */
-    public function payload($response)
-    {
-        return json_decode($response->getContent(), true)['data'] ?? null;
-    }
-
-    /**
-     * Get auth_token of latest user
-     * @return \Illuminate\Database\Eloquent\HigherOrderBuilderProxy|mixed|string|null
-     */
-    public function getBearerToken()
-    {
-        return $this->latestUser()->auth_token;
+        parent::setUp();
+        $this->withoutExceptionHandling();
+        $this->faker = Factory::create();
     }
 
 }
