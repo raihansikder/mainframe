@@ -11,9 +11,18 @@ trait Resolvable
      */
     public function viewProcessor()
     {
+
         $classPaths = [
-            $this->module->modelClassPath().'ViewProcessor', // Check in same folder
-            $this->module->namespace.'\\'.$this->module->modelClassName().'ViewProcessor',// Check in module directory
+            // Note: Check in same folder
+            $this->module->modelClassPath().'View',
+            $this->module->modelClassPath().'ViewProcessor',
+
+            // Check in module directory
+            $this->module->namespace.'\\'.$this->module->modelClassName().'View',
+            $this->module->namespace.'\\'.$this->module->modelClassName().'ViewProcessor',
+
+            // Check in module directory
+            'App\Mainframe\Features\Modular\BaseModule\BaseModuleView',
             'App\Mainframe\Features\Modular\BaseModule\BaseModuleViewProcessor',
         ];
 
