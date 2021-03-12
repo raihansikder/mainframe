@@ -22,22 +22,22 @@ class SelectModelMultiple extends SelectModel
 
     }
 
-    /**
-     * Generate options
-     *
-     * @return array
-     */
-    public function options()
-    {
-        $options = parent::options();
-
-        // Remove the first(empty) option. Not meaningful for multi-select
-        $collection = collect($options);
-        $firstKey = $collection->keys()->first();
-        $collection->forget($firstKey);
-
-        return $collection->toArray();
-    }
+    // /**
+    //  * Generate options
+    //  *
+    //  * @return array
+    //  */
+    // public function options()
+    // {
+    //     $options = parent::options();
+    //
+    //     // Remove the first(empty) option. Not meaningful for multi-select
+    //     $collection = collect($options);
+    //     $firstKey = $collection->keys()->first();
+    //     $collection->forget($firstKey);
+    //
+    //     return $collection->toArray();
+    // }
 
     /**
      * Value for multi-select
