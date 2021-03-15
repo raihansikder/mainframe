@@ -47,7 +47,8 @@ $scriptPaths = [
     'mainframe/js/validation.js',
     'mainframe/js/after-loader.js',
     'mainframe/js/custom.js',
-    // Additional project specific js.
+    // WARNING: Do not put project specific JS here. Instead include them at the end of
+    // project template. i.e. resources/views/projects/mph-market/layouts/default/template.blade.php
 ];
 ?>
 
