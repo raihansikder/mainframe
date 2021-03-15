@@ -48,7 +48,7 @@ $scriptPaths = [
     'mainframe/js/after-loader.js',
     'mainframe/js/custom.js',
     // WARNING: Do not put project specific JS here. Instead include them at the end of
-    // project template. i.e. resources/views/projects/mph-market/layouts/default/template.blade.php
+    // project template. i.e. resources/views/projects/my-project/layouts/default/template.blade.php
 ];
 ?>
 
