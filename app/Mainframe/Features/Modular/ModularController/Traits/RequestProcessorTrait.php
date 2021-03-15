@@ -63,7 +63,7 @@ trait RequestProcessorTrait
     public function attemptStore()
     {
         // Before going to processor and model run an initial validation in controller.
-        if (! $this->validateStoreRequest()) {
+        if (!$this->validateStoreRequest()) {
             return $this;
         }
 
@@ -78,6 +78,7 @@ trait RequestProcessorTrait
         }
 
         $this->success('The '.Str::singular($this->module->title).' has been saved');
+        $this->element = $processor->element->refresh();
 
         $this->stored();
         $this->saved();
@@ -102,8 +103,7 @@ trait RequestProcessorTrait
     {
 
         // Before going to processor and model run an initial validation in controller.
-        if (! $this->validateUpdateRequest()) {
-
+        if (!$this->validateUpdateRequest()) {
             return $this;
         }
 
@@ -119,6 +119,7 @@ trait RequestProcessorTrait
 
         // Set response flag and message.
         $this->success('The '.Str::singular($this->module->title).' has been updated');
+        $this->element = $processor->element->refresh();
 
         $this->updated();
         $this->saved();
@@ -151,7 +152,7 @@ trait RequestProcessorTrait
     public function attemptDestroy()
     {
         // Before going to processor and model run an initial validation in controller.
-        if (! $this->validateDeleteRequest()) {
+        if (!$this->validateDeleteRequest()) {
 
             return $this;
         }
@@ -168,6 +169,7 @@ trait RequestProcessorTrait
 
         // Set response flag and message.
         $this->success('The '.Str::singular($this->module->title).' is deleted');
+        $this->element = $processor->element;
 
         // Execute controller stored() function for any post save operation in controller.
         $this->deleted();

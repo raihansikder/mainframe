@@ -13,3 +13,4 @@ npm-debug.log
 yarn-error.log
 phpunit.xml
 .DS_store
+/_gsdata_

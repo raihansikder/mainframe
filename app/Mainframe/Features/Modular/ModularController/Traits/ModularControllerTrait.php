@@ -128,7 +128,7 @@ trait ModularControllerTrait
         //     $this->response()->validator->errors()->add('Error', $e->getMessage());
         // }
 
-        return $this->load($this->element->refresh()->toArray())->send();
+        return $this->load($this->element)->send();
     }
 
     /**
@@ -152,7 +152,7 @@ trait ModularControllerTrait
 
         $this->attemptUpdate();
 
-        return $this->load($this->element->refresh())->send();
+        return $this->load($this->element)->send();
     }
 
     /**

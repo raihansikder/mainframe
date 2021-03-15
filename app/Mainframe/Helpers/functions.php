@@ -1,6 +1,5 @@
 <?php
 
-use App\Mainframe\Features\Responder\Response;
 use App\Mainframe\Helpers\Mf;
 use Illuminate\Support\MessageBag;
 
@@ -105,6 +104,32 @@ function querySignature($query)
     return md5($query->toSql().json_encode($query->getBindings()));
 }
 
+function error($message = '', $setMsg = true, $ret = false)
+{
+    $key = 'errors';
+    if ($setMsg && strlen($message)) {
+        if (!in_array($message, Session::get($key, []))) {
+            Session::push($key, $message);
+        }
+        resolve(MessageBag::class)->add($key, $message);
+    }
+
+    return $ret;
+}
+
+function message($message = '', $setMsg = true, $ret = false)
+{
+    $key = 'messages';
+    if ($setMsg && strlen($message)) {
+        if (!in_array($message, Session::get($key, []))) {
+            Session::push($key, $message);
+        }
+        resolve(MessageBag::class)->add($key, $message);
+    }
+
+    return $ret;
+}
+
 /**
  * This function pushes an error string to 'error' array of session.
  *
@@ -112,17 +137,11 @@ function querySignature($query)
  * @param  bool  $ret
  * @param  bool  $setMsg
  * @return bool
+ * @deprecated use error()
  */
 function setError($message = '', $setMsg = true, $ret = false)
 {
-    if ($setMsg && strlen($message)) {
-        if (! in_array($message, Session::get('error', []))) {
-            Session::push('error', $message);
-        }
-        resolve(MessageBag::class)->add('message', $message);
-    }
-
-    return $ret;
+    return error($message = '', $setMsg = true, $ret = false);
 }
 
 /**
@@ -134,5 +153,3 @@ function messageBag()
 {
     return resolve(MessageBag::class);
 }
-
-
