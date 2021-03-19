@@ -191,7 +191,10 @@ class ModelProcessor
         foreach ($this->getImmutables() as $field) {
             if ($this->element->fieldHasChanged($field)) {
                 // $this->fieldError($field, 'Value of '.$field.' can not be changed at this stage.');
-                $this->fieldError($field, 'Value of '.$field.' can not be changed [ '.$this->original($field).' -> '.$this->element->$field.' ] at this stage.');
+                $original = $this->original($field);
+                $updated = $this->element->$field;
+                $this->fieldError($field,
+                    "Value of {$field} can not be changed {$original} > {$updated} at this stage [{$this->module->title}#{$this->element->id}]");
             }
         }
 
@@ -212,7 +215,7 @@ class ModelProcessor
 
                 $change = $this->element->transition($field);
 
-                if ($change && ! $this->transitionIsAllowed($field, $change['old'], $change['new'])) {
+                if ($change && !$this->transitionIsAllowed($field, $change['old'], $change['new'])) {
                     $this->fieldError($field, $field.' - can not be updated from '.$change['old'].' to '.$change['new']);
                 }
             }
@@ -293,11 +296,11 @@ class ModelProcessor
      */
     public function hasTransition($field, $from, $to)
     {
-        if (! is_array($from)) {
+        if (!is_array($from)) {
             $from = [$from];
         }
 
-        if (! is_array($to)) {
+        if (!is_array($to)) {
             $to = [$to];
         }
 
@@ -318,7 +321,7 @@ class ModelProcessor
     public function hasTransitionFrom($field, $from)
     {
 
-        if (! is_array($from)) {
+        if (!is_array($from)) {
             $from = [$from];
         }
 
@@ -339,7 +342,7 @@ class ModelProcessor
     public function hasTransitionTo($field, $to)
     {
 
-        if (! is_array($to)) {
+        if (!is_array($to)) {
             $to = [$to];
         }
 
@@ -362,17 +365,17 @@ class ModelProcessor
     {
         $allTransitions = $this->getTransitions();
 
-        if (! isset($allTransitions[$field])) {
+        if (!isset($allTransitions[$field])) {
             return true;
         }
 
-        if (! isset($allTransitions[$field][$from])) {
+        if (!isset($allTransitions[$field][$from])) {
             return true;
         }
 
         $transitions = $allTransitions[$field][$from];
 
-        if (! is_array($transitions)) {
+        if (!is_array($transitions)) {
             $transitions = [$transitions];
         }
 
@@ -401,6 +404,7 @@ class ModelProcessor
 
     /**
      * Check if a number of existing relations exists in database.
+     *
      * @param  array  $relations
      * @return $this
      */
@@ -417,6 +421,7 @@ class ModelProcessor
 
     /**
      * Check if individual relation exists in database.
+     *
      * @param $relation
      * @param  int  $limit
      * @param  null  $msg
@@ -516,7 +521,7 @@ class ModelProcessor
 
         $this->fill($element)->validate();
 
-        if (! $this->isValid()) {
+        if (!$this->isValid()) {
             return $this;
         }
 
@@ -558,14 +563,14 @@ class ModelProcessor
         // Run validation, call saving, then call creating/updating
         $this->forSave();
 
-        if (! $this->isValid()) {
+        if (!$this->isValid()) {
             $this->sendToMessageBag();
 
             return $this;
         }
 
         // If validation passes then attempt model save.
-        if (! $this->element->save()) {
+        if (!$this->element->save()) {
             $this->error('Error: Can not be saved for some reason.');
 
             return $this;
@@ -722,7 +727,7 @@ class ModelProcessor
 
         $this->forDelete();
 
-        if (! $this->isValid()) {
+        if (!$this->isValid()) {
             $this->sendToMessageBag();
 
             return $this;
@@ -730,7 +735,7 @@ class ModelProcessor
         }
         $this->element->saveQuietly(); // Set deleted by field
 
-        if (! $this->element->delete()) {
+        if (!$this->element->delete()) {
             $this->error('Error: Can not be deleted for some reason.');
 
             return $this;
