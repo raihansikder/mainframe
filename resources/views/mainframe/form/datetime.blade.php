@@ -47,8 +47,6 @@ $input->format = config('mainframe.config.datetime_format'); // Format to show i
             @include('mainframe.form.includes.read-only-view')
         @endif
 
-        {{ Form::hidden($input->name, $input->value(),$input->params) }}
-
         {{-- Error --}}
         @include('mainframe.form.includes.show-error')
     </div>
