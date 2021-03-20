@@ -41,11 +41,10 @@ $input->format = config('mainframe.config.date_format'); // Format to show in th
         {{-- input --}}
         @if($input->isEditable)
             {{ Form::text('formatted_'.$input->name, $input->formatted(), array_merge($input->params,['id'=> $input->params['id'].'_formatted'])) }}
+            {{ Form::hidden($input->name, $input->value(),$input->params) }}
         @else
             @include('mainframe.form.includes.read-only-view')
         @endif
-
-        {{ Form::hidden($input->name, $input->value(),$input->params) }}
 
         {{-- Error --}}
         @include('mainframe.form.includes.show-error')

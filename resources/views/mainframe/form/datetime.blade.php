@@ -43,6 +43,7 @@ $input->format = config('mainframe.config.datetime_format'); // Format to show i
 
         @if($input->isEditable)
             {{ Form::text('formatted_'.$input->name, $input->formatted(), array_merge($input->params,['id'=> $input->params['id'].'_formatted'])) }}
+            {{ Form::hidden($input->name, $input->value(),$input->params) }}
         @else
             @include('mainframe.form.includes.read-only-view')
         @endif
