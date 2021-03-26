@@ -3,8 +3,10 @@
 namespace App\Mainframe\Modules\Uploads\Traits;
 
 use App\Mainframe\Modules\Uploads\Upload;
+use App\Mainframe\Modules\Uploads\UploadController;
 use Illuminate\Http\Request;
 
+/** @mixin UploadController $this */
 trait UploadControllerTrait
 {
     /** @var null|array|bool|\Illuminate\Http\UploadedFile|\Illuminate\Http\UploadedFile[] */
@@ -40,7 +42,7 @@ trait UploadControllerTrait
 
         $this->attemptStore();
 
-        return $this->setRedirectTo()->load($this->element)->send();
+        return $this->load($this->element)->send();
     }
 
     /**
