@@ -3,6 +3,7 @@
 namespace App\Mainframe\Modules\Tenants;
 
 use App\Mainframe\Features\Modular\BaseModule\BaseModule;
+use App\Mainframe\Modules\Tenants\Traits\TenantTrait;
 
 /**
  * App\Mainframe\Modules\Tenants\Tenant
@@ -63,7 +64,8 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule;
  */
 class Tenant extends BaseModule
 {
-    use TenantHelper;
+    use TenantTrait;
+
 
     /*
     |--------------------------------------------------------------------------

@@ -3,14 +3,15 @@
 namespace App\Mainframe\Modules\Countries;
 
 use App\Mainframe\Features\Modular\ModularController\ModularController;
+use App\Mainframe\Modules\Countries\Traits\CountryControllerTrait;
 
 /**
  * @group  Countries
- *
  * APIs for managing countries
  */
 class CountryController extends ModularController
 {
+    use CountryControllerTrait;
 
     /*
     |--------------------------------------------------------------------------
@@ -20,11 +21,5 @@ class CountryController extends ModularController
     */
     protected $moduleName = 'countries';
 
-    /**
-     * @return CountryDatatable
-     */
-    public function datatable()
-    {
-        return new CountryDatatable($this->module);
-    }
+
 }

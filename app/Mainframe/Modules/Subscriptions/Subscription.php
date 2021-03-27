@@ -3,6 +3,7 @@
 namespace App\Mainframe\Modules\Subscriptions;
 
 use App\Mainframe\Features\Modular\BaseModule\BaseModule;
+use App\Mainframe\Modules\Subscriptions\Traits\SubscriptionTrait;
 
 /**
  * App\Mainframe\Modules\Subscriptions\Subscription
@@ -59,7 +60,7 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule;
  */
 class Subscription extends BaseModule
 {
-    use SubscriptionHelper;
+    use SubscriptionTrait;
     /*
     |--------------------------------------------------------------------------
     | Module definitions

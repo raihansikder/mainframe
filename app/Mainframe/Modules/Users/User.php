@@ -132,6 +132,8 @@ use Watson\Rememberable\Rememberable;
  * @mixin \Eloquent
  * @property-read \App\Mainframe\Modules\Countries\Country|null $country
  * @property-read string $type
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\InAppNotifications\InAppNotification[] $inAppNotifications
+ * @property-read int|null $in_app_notifications_count
  */
 class User extends Authenticatable implements MustVerifyEmail, Auditable
 {
@@ -142,7 +144,7 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
         Validable,
         Notifiable;
 
-    use UserTrait, UserHelper;
+    use UserTrait;
 
     /*
     |--------------------------------------------------------------------------

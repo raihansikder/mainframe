@@ -129,6 +129,8 @@ use App\Projects\MyProject\Notifications\Auth\VerifyEmail;
  * @property-read \App\Mainframe\Modules\Comments\Comment $latestComment
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Changes\Change[] $changes
  * @property-read int|null $changes_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\InAppNotifications\InAppNotification[] $inAppNotifications
+ * @property-read int|null $in_app_notifications_count
  */
 class User extends MfUser // Note: Can not extend project BaseModule for this special case, since it extends Authenticable
 {

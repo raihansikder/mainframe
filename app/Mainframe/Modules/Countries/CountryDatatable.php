@@ -5,12 +5,14 @@
 
 namespace App\Mainframe\Modules\Countries;
 
+use App\Mainframe\Modules\Countries\Traits\CountryDatatableTrait;
 use DB;
 use App\Mainframe\Features\Datatable\ModuleDatatable;
 
 class CountryDatatable extends ModuleDatatable
 {
 
+    use CountryDatatableTrait;
 
     /**
      * Define grid SELECT statement and HTML column name.
@@ -24,7 +26,7 @@ class CountryDatatable extends ModuleDatatable
             [$this->table.".name", 'name', 'Name'],
             ['updater.name', 'user_name', 'Updater'],
             [$this->table.".updated_at", 'updated_at', 'Updated at'],
-            [$this->table.".is_active", 'is_active', 'Active']
+            [$this->table.".is_active", 'is_active', 'Active'],
         ];
     }
 
@@ -38,7 +40,6 @@ class CountryDatatable extends ModuleDatatable
     //     return DB::table($this->table)
     //         ->leftJoin('users as updater', $this->table.'.updated_by', 'updater.id');
     // }
-
 
     // /**
     //  * Define Query for generating results for grid

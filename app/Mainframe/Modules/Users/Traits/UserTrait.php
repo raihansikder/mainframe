@@ -4,6 +4,7 @@ namespace App\Mainframe\Modules\Users\Traits;
 
 use App\Group;
 use App\Mainframe\Modules\Countries\Country;
+use App\Mainframe\Modules\InAppNotifications\InAppNotification;
 use App\Mainframe\Modules\Users\User;
 use App\Mainframe\Notifications\Auth\ResetPassword;
 use App\Mainframe\Notifications\Auth\VerifyEmail;
@@ -73,7 +74,7 @@ trait UserTrait
         // Loop through and adjust permissions as needed
         foreach ($permissions as $permission => &$value) {
             // Lets make sure there is a valid permission value
-            if (! in_array($value = (int) $value, $this->allowedPermissionsValues)) {
+            if (!in_array($value = (int) $value, $this->allowedPermissionsValues)) {
                 throw new InvalidArgumentException("Invalid value [$value] for permission [$permission] given.");
             }
 
@@ -83,7 +84,7 @@ trait UserTrait
             }
         }
 
-        $this->attributes['permissions'] = (! empty($permissions)) ? json_encode($permissions) : '';
+        $this->attributes['permissions'] = (!empty($permissions)) ? json_encode($permissions) : '';
     }
 
     /**
@@ -94,7 +95,7 @@ trait UserTrait
      */
     public function getPermissionsAttribute($permissions)
     {
-        if (! $permissions) {
+        if (!$permissions) {
             return [];
         }
 
@@ -102,7 +103,7 @@ trait UserTrait
             return $permissions;
         }
 
-        if (! $_permissions = json_decode($permissions, true)) {
+        if (!$_permissions = json_decode($permissions, true)) {
             throw new InvalidArgumentException("Cannot JSON decode permissions [$permissions].");
         }
 
@@ -123,6 +124,8 @@ trait UserTrait
     public function groups() { return $this->belongsToMany(Group::class, 'user_group'); }
 
     public function country() { return $this->belongsTo(Country::class); }
+
+    public function inAppNotifications() { return $this->morphMany(InAppNotification::class, 'notifiable'); }
 
     /*
     |--------------------------------------------------------------------------
@@ -162,7 +165,7 @@ trait UserTrait
     public function resolveName()
     {
         $name = $this->name_initial." ".$this->first_name." ".$this->last_name;
-        if (! strlen(trim($name))) {
+        if (!strlen(trim($name))) {
             $name = $this->full_name;
         }
 
@@ -227,7 +230,7 @@ trait UserTrait
     {
         $this->updateLoginTimestamps();
 
-        if ($this->authTokenHasExpired() || ! $this->auth_token) {
+        if ($this->authTokenHasExpired() || !$this->auth_token) {
             $this->updateAuthToken();
         }
 
@@ -255,7 +258,7 @@ trait UserTrait
         $this->last_login_at = now();
         $updates = ['last_login_at' => now()];
 
-        if (! $this->first_login_at) {
+        if (!$this->first_login_at) {
             $this->first_login_at = now();
             $updates['first_login_at'] = now();
         }
@@ -379,7 +382,7 @@ trait UserTrait
     public function inAllGroupIds($group_ids = [])
     {
         foreach ($group_ids as $group_id) {
-            if (! $this->inGroupId($group_id)) {
+            if (!$this->inGroupId($group_id)) {
                 return false;
             }
         }
@@ -547,7 +550,7 @@ trait UserTrait
             }
         }
 
-        return ! ($all === false);
+        return !($all === false);
     }
 
     /**
@@ -678,6 +681,28 @@ trait UserTrait
     public function sendEmailVerificationNotification()
     {
         $this->notifyNow(new VerifyEmail());
+    }
+
+    /**
+     * Test user notification
+     */
+    public function createTestInAppNotification()
+    {
+        $title = 'Test notification';
+        $notification = new InAppNotification([
+            'module_id' => $this->module()->id,
+            'element_id' => $this->id,
+            'user_id' => $this->id,
+            'name' => $title,
+            'subtitle' => $title,
+            'type' => 'generic',
+            'data' => json_encode([
+                'user_id' => $this->id,
+                'type' => 'News alert',
+            ]),
+        ]);
+
+        $notification->process()->save();
     }
 
 }

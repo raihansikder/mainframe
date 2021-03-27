@@ -7,15 +7,19 @@ use App\Mainframe\Modules\Changes\Traits\ChangeProcessorTrait;
 
 class ChangeProcessor extends ModelProcessor
 {
-    use ChangeProcessorTrait, ChangeProcessorHelper;
+    use ChangeProcessorTrait;
+
+    /** @var Change */
+    public $element;
 
     /*
     |--------------------------------------------------------------------------
-    | Define properties and variables
+    | Note : Keep this empty! Write codes in Trait.
     |--------------------------------------------------------------------------
+    |
+    | For default mainframe modules keep this empty. Write codes in Trait so
+    | that the logic is portable and can be included  in new project modules
+    |
     */
-    /** @var Change */
-    public $element;
-    // public $immutables
-    // public $transitions
+
 }

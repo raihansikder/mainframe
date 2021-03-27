@@ -3,6 +3,7 @@
 namespace App\Mainframe\Modules\ModuleGroups;
 
 use App\Mainframe\Features\Modular\BaseModule\BaseModule;
+use App\Mainframe\Modules\ModuleGroups\Traits\ModuleGroupTrait;
 
 /**
  * App\Mainframe\Modules\ModuleGroups\ModuleGroup
@@ -71,7 +72,7 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule;
  */
 class ModuleGroup extends BaseModule
 {
-    use ModuleGroupHelper;
+    use ModuleGroupTrait;
 
     /*
     |--------------------------------------------------------------------------
@@ -168,12 +169,12 @@ class ModuleGroup extends BaseModule
         parent::boot();
         self::observe(ModuleGroupObserver::class);
         static::saving(function (ModuleGroup $element) {
-            $element->parent_id = (! $element->parent_id) ? 0 : $element->parent_id;
-            $element->level = (! $element->level) ? 0 : $element->level;
-            $element->order = (! $element->order) ? 0 : $element->order;
-            $element->default_route = (! $element->default_route) ? $element->name.'.index' : $element->default_route;
-            $element->color_css = (! $element->color_css) ? 'aqua' : $element->color_css;
-            $element->icon_css = (! $element->icon_css) ? 'fa fa-plus' : $element->icon_css;
+            $element->parent_id = (!$element->parent_id) ? 0 : $element->parent_id;
+            $element->level = (!$element->level) ? 0 : $element->level;
+            $element->order = (!$element->order) ? 0 : $element->order;
+            $element->default_route = (!$element->default_route) ? $element->name.'.index' : $element->default_route;
+            $element->color_css = (!$element->color_css) ? 'aqua' : $element->color_css;
+            $element->icon_css = (!$element->icon_css) ? 'fa fa-plus' : $element->icon_css;
         });
     }
 

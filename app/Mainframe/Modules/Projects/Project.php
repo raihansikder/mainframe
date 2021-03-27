@@ -3,6 +3,7 @@
 namespace App\Mainframe\Modules\Projects;
 
 use App\Mainframe\Features\Modular\BaseModule\BaseModule;
+use App\Mainframe\Modules\Projects\Traits\ProjectTrait;
 
 /**
  * App\Mainframe\Modules\Projects\Project
@@ -63,7 +64,7 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule;
  */
 class Project extends BaseModule
 {
-    use ProjectHelper;
+    use ProjectTrait;
 
     /*
     |--------------------------------------------------------------------------

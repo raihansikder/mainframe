@@ -72,7 +72,7 @@ use App\Mainframe\Modules\Changes\Traits\ChangeTrait;
  */
 class Change extends BaseModule
 {
-    use ChangeTrait, ChangeHelper;
+    use ChangeTrait;
 
     protected $moduleName = 'changes';
     protected $table      = 'changes';

@@ -3,6 +3,7 @@
 namespace App\Mainframe\Modules\Notifications;
 
 use App\Mainframe\Features\Modular\ModularController\ModularController;
+use App\Mainframe\Modules\Notifications\Traits\NotificationControllerTrait;
 
 /**
  * @group  Notifications
@@ -11,6 +12,7 @@ use App\Mainframe\Features\Modular\ModularController\ModularController;
  */
 class NotificationController extends ModularController
 {
+    use NotificationControllerTrait;
     /*
     |--------------------------------------------------------------------------
     | Module definitions
@@ -19,11 +21,5 @@ class NotificationController extends ModularController
     */
     protected $moduleName = 'notifications';
 
-    /**
-     * @return NotificationDatatable
-     */
-    public function datatable()
-    {
-        return new NotificationDatatable($this->module);
-    }
+
 }

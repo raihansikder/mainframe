@@ -2,9 +2,12 @@
 
 namespace App\Mainframe\Modules\Changes\Traits;
 
+use App\Mainframe\Modules\Changes\ChangeDatatable;
+
+/** @mixin ChangeDatatable $this */
 trait ChangeDatatableTrait
 {
-// /**
+    // /**
     //  * Define Query Source
     //  *
     //  * @return \Illuminate\Database\Query\Builder|static
@@ -46,12 +49,12 @@ trait ChangeDatatableTrait
     //     return $query;
     // }
 
-    /**
-     * Modify datatable values
-     *
-     * @return mixed
-     * @var $dt \Yajra\DataTables\DataTableAbstract
-     */
+    // /**
+    //  * Modify datatable values
+    //  *
+    //  * @return mixed
+    //  * @var $dt \Yajra\DataTables\DataTableAbstract
+    //  */
     // public function modify($dt)
     // {
     //     $dt = parent::modify($dt);

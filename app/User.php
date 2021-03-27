@@ -147,6 +147,8 @@ use Illuminate\Database\Eloquent\Builder;
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Changes\Change[] $changes
  * @property-read \App\Mainframe\Modules\Countries\Country|null $country
  * @property-read string $type
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\InAppNotifications\InAppNotification[] $inAppNotifications
+ * @property-read int|null $in_app_notifications_count
  */
 class User extends \App\Projects\MyProject\Modules\Users\User
 {

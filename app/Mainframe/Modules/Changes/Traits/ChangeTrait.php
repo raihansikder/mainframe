@@ -2,7 +2,6 @@
 
 namespace App\Mainframe\Modules\Changes\Traits;
 
-use App\Mainframe\Modules\Changes\ChangeHelper;
 use App\Mainframe\Modules\Modules\Module;
 
 /** @mixin \App\Mainframe\Modules\Changes\Change $this */
@@ -56,22 +55,9 @@ trait ChangeTrait
      */
     public function populate()
     {
-        // Example code
-        // $this->fillAddress()->setAmounts();
+        // Example code  // $this->fillAddress()->setAmounts();
         return $this;
     }
-
-    /**
-     * Set address
-     * Example code
-     *
-     * @return $this
-     */
-    // public function setAddress()
-    // {
-    //     $this->field = 'val';
-    //     return $this;
-    // }
 
     /*
     |--------------------------------------------------------------------------
@@ -86,7 +72,6 @@ trait ChangeTrait
     |--------------------------------------------------------------------------
     */
     // Todo: static helper functions
-
 
     /*
     |--------------------------------------------------------------------------
@@ -109,13 +94,6 @@ trait ChangeTrait
     |--------------------------------------------------------------------------
     | Notifications
     |--------------------------------------------------------------------------
-    |
     */
-    // /**
-    //  * Notify admins when quote is accepted
-    //  */
-    // public function sendSomeNotification()
-    // {
-    //     Notification::send($users, new NotificationClass($this));
-    // }
+
 }

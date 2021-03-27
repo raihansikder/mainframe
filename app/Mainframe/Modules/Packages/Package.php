@@ -3,6 +3,7 @@
 namespace App\Mainframe\Modules\Packages;
 
 use App\Mainframe\Features\Modular\BaseModule\BaseModule;
+use App\Mainframe\Modules\Packages\Traits\PackageTrait;
 
 /**
  * App\Mainframe\Modules\Packages\Package
@@ -59,7 +60,7 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule;
  */
 class Package extends BaseModule
 {
-    use PackageHelper;
+    use PackageTrait;
     /*
     |--------------------------------------------------------------------------
     | Module definitions

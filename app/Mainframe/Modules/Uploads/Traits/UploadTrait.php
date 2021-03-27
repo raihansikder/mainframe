@@ -88,7 +88,7 @@ trait UploadTrait
         $ext = strtolower($this->ext); // get full lower case extension
         $icon_path = 'mainframe/images/file_type_icons/'.$ext.'.png';
 
-        if (! \File::exists($icon_path)) {
+        if (!\File::exists($icon_path)) {
             $icon_path = 'mainframe/images/file_type_icons/noimage.png';
         }
 
@@ -149,7 +149,6 @@ trait UploadTrait
         }
 
         return $this;
-
     }
 
     /*

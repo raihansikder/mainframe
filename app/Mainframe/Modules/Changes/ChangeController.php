@@ -13,11 +13,16 @@ class ChangeController extends ModularController
 {
     use ChangeControllerTrait;
 
+    protected $moduleName = 'changes';
+
     /*
     |--------------------------------------------------------------------------
-    | Module definitions
+    | Note : Keep this empty! Write codes in Trait.
     |--------------------------------------------------------------------------
+    |
+    | For default mainframe modules keep this empty. Write codes in Trait so
+    | that the logic is portable and can be included  in new project modules
+    |
     */
-    protected $moduleName = 'changes';
 
 }

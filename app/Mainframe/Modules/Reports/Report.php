@@ -3,6 +3,7 @@
 namespace App\Mainframe\Modules\Reports;
 
 use App\Mainframe\Features\Modular\BaseModule\BaseModule;
+use App\Mainframe\Modules\Reports\Traits\ReportTrait;
 
 /**
  * App\Mainframe\Modules\Reports\Report
@@ -71,7 +72,7 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule;
  */
 class Report extends BaseModule
 {
-    use ReportHelper;
+    use ReportTrait;
 
     /*
     |--------------------------------------------------------------------------

@@ -3,6 +3,7 @@
 namespace App\Mainframe\Modules\Notifications;
 
 use App\Mainframe\Features\Modular\BaseModule\BaseModule;
+use App\Mainframe\Modules\Notifications\Traits\NotificationTrait;
 
 /**
  * App\Mainframe\Modules\Notifications\Notification
@@ -67,7 +68,7 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule;
  */
 class Notification extends BaseModule
 {
-    use NotificationHelper;
+    use NotificationTrait;
 
     /*
     |--------------------------------------------------------------------------

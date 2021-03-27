@@ -3,8 +3,10 @@
 namespace App\Mainframe\Modules\Changes\Traits;
 
 use App\Mainframe\Features\Report\ModuleList;
+use App\Mainframe\Modules\Changes\ChangeController;
 use App\Mainframe\Modules\Changes\ChangeDatatable;
 
+/** @mixin ChangeController $this */
 trait ChangeControllerTrait
 {
     /*
@@ -27,10 +29,10 @@ trait ChangeControllerTrait
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    // public function listJson()
-    // {
-    //     return (new ModuleList($this->module))->json();
-    // }
+    public function listJson()
+    {
+        return (new ModuleList($this->module))->json();
+    }
 
     /**
      * Show and render report

@@ -3,6 +3,7 @@
 namespace App\Mainframe\Modules\Packages;
 
 use App\Mainframe\Features\Modular\ModularController\ModularController;
+use App\Mainframe\Modules\Packages\Traits\PackageControllerTrait;
 
 /**
  * @group  Packages
@@ -10,6 +11,7 @@ use App\Mainframe\Features\Modular\ModularController\ModularController;
  */
 class PackageController extends ModularController
 {
+    use PackageControllerTrait;
 
     /*
     |--------------------------------------------------------------------------
@@ -19,11 +21,5 @@ class PackageController extends ModularController
     */
     protected $moduleName = 'packages';
 
-    /**
-     * @return PackageDatatable
-     */
-    public function datatable()
-    {
-        return new PackageDatatable($this->module);
-    }
+
 }

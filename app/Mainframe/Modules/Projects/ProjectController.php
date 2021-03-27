@@ -3,6 +3,7 @@
 namespace App\Mainframe\Modules\Projects;
 
 use App\Mainframe\Features\Modular\ModularController\ModularController;
+use App\Mainframe\Modules\Projects\Traits\ProjectControllerTrait;
 
 /**
  * @group  Projects
@@ -10,6 +11,7 @@ use App\Mainframe\Features\Modular\ModularController\ModularController;
  */
 class ProjectController extends ModularController
 {
+    use ProjectControllerTrait;
 
     /*
     |--------------------------------------------------------------------------
@@ -19,11 +21,4 @@ class ProjectController extends ModularController
     */
     protected $moduleName = 'projects';
 
-    /**
-     * @return ProjectDatatable
-     */
-    public function datatable()
-    {
-        return new ProjectDatatable($this->module);
-    }
 }

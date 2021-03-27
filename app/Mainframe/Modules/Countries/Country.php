@@ -3,6 +3,7 @@
 namespace App\Mainframe\Modules\Countries;
 
 use App\Mainframe\Features\Modular\BaseModule\BaseModule;
+use App\Mainframe\Modules\Countries\Traits\CountryTrait;
 
 /**
  * App\Mainframe\Modules\Countries\Country
@@ -77,7 +78,7 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule;
  */
 class Country extends BaseModule
 {
-    use CountryHelper;
+    use CountryTrait;
 
     /*
     |--------------------------------------------------------------------------

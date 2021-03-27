@@ -12,4 +12,14 @@ class UploadProcessor extends ModelProcessor
     /** @var \App\Mainframe\Modules\Uploads\Upload */
     public $element;
 
+    /*
+    |--------------------------------------------------------------------------
+    | Note : Keep this empty! Write codes in Trait.
+    |--------------------------------------------------------------------------
+    |
+    | For default mainframe modules keep this empty. Write codes in Trait so
+    | that the logic is portable and can be included  in new project modules
+    |
+    */
+
 }
