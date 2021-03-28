@@ -8,17 +8,11 @@ class DataBlockController extends BaseController
 {
     use DataBlockTrait;
 
-    public $dir = '\App\Mainframe\Features\DataBlocks\\';
-
     /**
-     * Create a new controller instance.
+     * Directory where DataBlock classes are stored
      *
-     * @return void
+     * @var string
      */
-    public function __construct()
-    {
-        parent::__construct();
-        $this->middleware('auth');
-    }
+    public $dir = '\App\Mainframe\Features\DataBlocks\\';
 
 }
