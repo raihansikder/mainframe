@@ -14,7 +14,7 @@
 Route::get('/', 'HomeController@index')->name('home')->middleware(['verified']);
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    // Write project specific routes
+    Route::get('data/{block}', 'DataBlockController@show')->name('data-block.show');
 });
 
 /*

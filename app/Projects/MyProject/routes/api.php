@@ -26,6 +26,9 @@ Route::prefix($version)->middleware($middlewares)->group(function () use ($modul
     Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name($namePrefix.".reset-password");
     Route::post('logout', 'Auth\LoginController@logout')->name($namePrefix.".logout");
 
+    // DataBlock
+    Route::get('data/{block}', 'DataBlockController@show')->name($namePrefix.'.data-block.show');
+
     // Module RESTful apis
     Route::prefix('')->group(function () use ($modules, $namePrefix) {
         foreach ($modules as $module) {

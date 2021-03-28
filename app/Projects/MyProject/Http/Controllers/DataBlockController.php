@@ -1,0 +1,15 @@
+<?php
+
+namespace App\Projects\MyProject\Http\Controllers;
+
+use App\Mainframe\Features\Core\Traits\DataBlockTrait;
+
+
+class DataBlockController extends BaseController
+{
+
+    use DataBlockTrait;
+
+    public $dir = '\App\Projects\MyProject\Features\DataBlocks\\';
+
+}

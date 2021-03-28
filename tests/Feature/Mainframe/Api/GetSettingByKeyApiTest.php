@@ -27,4 +27,25 @@ class GetSettingByKeyApiTest extends ApiTestCase
             ]);
     }
 
+    /**
+     * @return void
+     */
+    public function test_get_data_block_by_key()
+    {
+
+        $key = 'total-users';
+        $response = $this->get("api/1.0/data/{$key}");
+
+        // $response->dump();
+
+        $response->assertStatus(200)
+            ->assertJson([
+                'code' => 200,
+                'status' => 'success',
+
+            ])->assertJsonStructure([
+                'code', 'status', 'message', 'data',
+            ]);
+    }
+
 }

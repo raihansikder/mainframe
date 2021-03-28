@@ -2,6 +2,7 @@
 
 namespace App\Projects\MyProject\Http\Controllers;
 
+use App\Projects\MyProject\Features\DataBlocks\TotalUsers;
 use App\Projects\MyProject\Http\Controllers\BaseController;
 
 class HomeController extends BaseController
@@ -25,10 +26,12 @@ class HomeController extends BaseController
      */
     public function index()
     {
+        $totalUserData = (new TotalUsers)->data();
 
-            return view('projects.my-project.dashboards.admin');
+        return view('projects.my-project.dashboards.admin')->with([
+            'totalUserData' =>$totalUserData
+        ]);
     }
-
 
 
 }

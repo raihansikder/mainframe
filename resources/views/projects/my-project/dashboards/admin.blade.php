@@ -1,4 +1,6 @@
 @extends('projects.my-project.layouts.default.template')
+
+
 @section('head-title')
     Admin Dashboard
 @endsection
