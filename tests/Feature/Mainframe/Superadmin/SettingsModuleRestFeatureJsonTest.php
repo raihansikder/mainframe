@@ -8,8 +8,25 @@ use App\Mainframe\Modules\Settings\Setting;
 use Faker\Factory;
 use Faker\Generator;
 
-class SettingsModuleRestFeatureJsonTest extends SettingsModuleRestFeatureTest
+class SettingsModuleRestFeatureJsonTest extends SuperadminTestCase
 {
+
+    /**
+     * The module name that is being tested
+     *
+     * @var string
+     */
+    public $moduleName = 'settings';
+
+    /**
+     * @var \App\Mainframe\Modules\Modules\Module
+     */
+    public $module;
+    /**
+     * A sample element/entry that is used for testing.
+     *
+     * @var Setting
+     */
 
     /**
      * Setup the class. This works like constructor.
@@ -17,13 +34,12 @@ class SettingsModuleRestFeatureJsonTest extends SettingsModuleRestFeatureTest
     protected function setUp(): void
     {
         parent::setUp();
-
+        /** @noinspection PhpUndefinedMethodInspection */
+        $this->module = Module::where('name', $this->moduleName)->remember(timer('long'))->first();
     }
 
     /**
      * Superadmin can create a new element.
-     *
-     * @return void
      */
     public function test_user_can_not_store_invalid_element()
     {
@@ -47,8 +63,6 @@ class SettingsModuleRestFeatureJsonTest extends SettingsModuleRestFeatureTest
 
     /**
      * Superadmin can create a new element.
-     *
-     * @return void
      */
     public function test_user_can_store_valid_element()
     {
@@ -74,8 +88,6 @@ class SettingsModuleRestFeatureJsonTest extends SettingsModuleRestFeatureTest
 
     /**
      * Superadmin can create a new lorem-ipsum by passing validations.
-     *
-     * @return void
      */
     public function test_user_can_not_store_element_of_same_name()
     {
@@ -106,8 +118,6 @@ class SettingsModuleRestFeatureJsonTest extends SettingsModuleRestFeatureTest
 
     /**
      * Superadmin can view list of lorem-ipsums
-     *
-     * @return void
      */
     public function test_user_can_view_list()
     {
@@ -120,8 +130,6 @@ class SettingsModuleRestFeatureJsonTest extends SettingsModuleRestFeatureTest
 
     /**
      * Superadmin can view list of lorem-ipsums
-     *
-     * @return void
      */
     public function test_user_can_view_element()
     {
@@ -134,8 +142,6 @@ class SettingsModuleRestFeatureJsonTest extends SettingsModuleRestFeatureTest
 
     /**
      * Superadmin can update an element
-     *
-     * @return void
      */
     public function test_user_can_update_element()
     {
@@ -160,11 +166,14 @@ class SettingsModuleRestFeatureJsonTest extends SettingsModuleRestFeatureTest
 
     /**
      * Superadmin can delete an element
-     *
-     * @return void
      */
     public function test_user_can_delete_element()
     {
+        // Note: The element got deleted earlier so had to add a delay for deletion so that
+        //  other tests can run and then the delete is executed.
+        // $this->markTestSkipped('Skipped because it executes and makes the element inaccessible');
+        // sleep(1);
+        // ------------------------------------------------------------------------------------------
         $latest = $this->latest(Setting::class);
 
         // delete with redirect=success to index route.

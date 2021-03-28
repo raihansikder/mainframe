@@ -2,6 +2,7 @@
 
 namespace Tests;
 
+use Illuminate\Support\Arr;
 use Swift_Message;
 
 /**
@@ -79,7 +80,7 @@ trait MailTracking
         $recipients = \Arr::wrap($recipients);
 
         foreach ($recipients as $recipient) {
-            $this->assertArrayHasKey($recipient, $this->getEmail($message)->getTo(), "No email was sent to $recipient");
+            $this->assertArrayHasKey($recipient, $this->getEmail($message)->getTo(), "No email was sent to {$recipient}");
         }
 
         return $this;

@@ -148,10 +148,10 @@ class SettingsModuleRestFeatureTest extends SuperadminTestCase
     {
         $latest = $this->latest(Setting::class);
 
-        // dd($latest->id);
         $this->get("/{$this->module->name}/{$latest->id}/edit")
             ->assertStatus(200)
             ->assertSee($latest->name);
+
     }
 
     /**
@@ -171,6 +171,7 @@ class SettingsModuleRestFeatureTest extends SuperadminTestCase
             ->assertStatus(200)
             ->assertSee('Success')
             ->assertSee($newValue);
+
     }
 
     /**
@@ -180,6 +181,12 @@ class SettingsModuleRestFeatureTest extends SuperadminTestCase
      */
     public function test_user_can_delete_element()
     {
+        // Note: The element got deleted earlier so had to add a delay for deletion so that
+        //  other tests can run and then the delete is executed.
+        // $this->markTestSkipped('Skipped because it executes and makes the element inaccessible');
+        // sleep(1);
+        // ------------------------------------------------------------------------------------------
+
         $latest = $this->latest(Setting::class);
 
         // delete with redirect=success to index route.

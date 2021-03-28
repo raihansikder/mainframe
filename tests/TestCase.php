@@ -19,6 +19,7 @@ abstract class TestCase extends BaseTestCase
         parent::setUp();
         $this->withoutExceptionHandling();
         $this->faker = Factory::create();
+        // usleep(100000);
     }
 
 }
