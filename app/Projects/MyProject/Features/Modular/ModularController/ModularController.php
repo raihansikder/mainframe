@@ -7,6 +7,7 @@ use App\Mainframe\Features\Modular\ModularController\Traits\RequestProcessorTrai
 use App\Mainframe\Features\Modular\ModularController\Traits\RequestValidator;
 use App\Mainframe\Features\Modular\ModularController\Traits\Resolvable;
 use App\Mainframe\Modules\Modules\Module;
+use App\Projects\MyProject\Features\Modular\BaseModule\BaseModuleViewProcessor;
 use App\Projects\MyProject\Features\Report\ModuleList;
 use App\Projects\MyProject\Features\Report\ModuleReportBuilder;
 use App\Projects\MyProject\Http\Controllers\BaseController;
@@ -88,7 +89,7 @@ class ModularController extends BaseController
     /**
      * Get the view processor instance
      *
-     * @return mixed|null
+     * @return BaseModuleViewProcessor|null
      */
     public function viewProcessor()
     {

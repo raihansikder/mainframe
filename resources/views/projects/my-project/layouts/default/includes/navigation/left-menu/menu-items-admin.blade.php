@@ -6,7 +6,7 @@ use App\Mainframe\Modules\ModuleGroups\ModuleGroup;
     @if(user())
         <li><a href="{{route("home")}}"><i class="fa fa-desktop"></i><span>Dashboard</span></a></li>
         <?php View::renderMenuTree(ModuleGroup::tree(), $currentModuleName, $breadcrumbs); ?>
-        <li><a href="https://resourcehub.mphgroup.uk/"><i class="fa fa-book"></i> <span>Resource Hub</span></a></li>
+        <li><a href="#"><i class="fa fa-question-circle"></i> <span>Help Desk</span></a></li>
         {{--<li class="header">LABELS</li>--}}
         {{--<li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>--}}
         {{--<li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>--}}

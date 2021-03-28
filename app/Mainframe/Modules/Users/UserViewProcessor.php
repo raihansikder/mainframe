@@ -2,9 +2,10 @@
 
 namespace App\Mainframe\Modules\Users;
 
+use App\Mainframe\Features\Modular\BaseModule\BaseModuleViewProcessor;
 use App\Mainframe\Modules\Users\Traits\UserViewProcessorTrait;
 
-class UserViewProcessor
+class UserViewProcessor extends BaseModuleViewProcessor
 {
     use UserViewProcessorTrait;
 
