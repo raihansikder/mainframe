@@ -65,6 +65,8 @@ use App\Mainframe\Modules\Comments\Traits\CommentTrait;
  * @mixin \Eloquent
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Changes\Change[] $changes
  * @property-read int|null $changes_count
+ * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $commentable
+ * @property-read \App\Mainframe\Modules\Modules\Module|null $linkedModule
  */
 class Comment extends BaseModule
 {
