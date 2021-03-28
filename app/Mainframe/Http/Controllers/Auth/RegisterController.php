@@ -45,10 +45,13 @@ class RegisterController extends BaseController
     protected $groupsAllowedForRegistration = [
         'tenant-admin',
         'user',
-        'test-group',
     ];
 
-    /** @var string */
+    /**
+     * If not group is specified then user will be registered to this default group;
+     *
+     * @var string
+     */
     protected $defaultGroupName = 'user';
 
     /** @var string */
@@ -80,7 +83,7 @@ class RegisterController extends BaseController
         }
 
         // If not group defined in url then register in default 'user' group.
-        if (! $this->group) {
+        if (!$this->group) {
             $this->group = Group::byName($this->defaultGroupName);
         }
 
@@ -94,7 +97,7 @@ class RegisterController extends BaseController
     public function showRegistrationForm()
     {
 
-        if (! $this->groupAllowed()) {
+        if (!$this->groupAllowed()) {
             return $this->permissionDenied('Group not allowed for registration');
         }
 
@@ -111,14 +114,14 @@ class RegisterController extends BaseController
     public function register(Request $request)
     {
 
-        if (! $this->groupAllowed()) {
+        if (!$this->groupAllowed()) {
             return $this->permissionDenied();
         }
 
         $this->attemptRegistration();
 
         $this->redirectTo = route('login');
-        if (! $this->user) { // Redirect to register page if failed
+        if (!$this->user) { // Redirect to register page if failed
             $this->redirectTo = route('register', $this->group->name);
         }
 
@@ -136,9 +139,9 @@ class RegisterController extends BaseController
         // Validate
         $validator = Validator::make(request()->all(), [
             'first_name' => 'required',
-            'last_name'  => 'required',
-            'email'      => 'required|email|unique:users,email',
-            'password'   => User::PASSWORD_VALIDATION_RULE,
+            'last_name' => 'required',
+            'email' => 'required|email|unique:users,email',
+            'password' => User::PASSWORD_VALIDATION_RULE,
         ]);
 
         if ($validator->fails()) {
@@ -149,7 +152,7 @@ class RegisterController extends BaseController
 
         // Create user
         $this->user = $this->createUser();
-        if (! $this->user) {
+        if (!$this->user) {
             $this->fail('Registration was not successful');
 
             return $this;
@@ -170,14 +173,14 @@ class RegisterController extends BaseController
     protected function createUser()
     {
         return User::create([
-            'tenant_id'  => request('tenant_id'),
+            'tenant_id' => request('tenant_id'),
             'first_name' => request('first_name'),
-            'last_name'  => request('last_name'),
-            'name'       => request('first_name').' '.request('last_name'),
-            'email'      => request('email'),
-            'password'   => Hash::make(request('password')),
-            'group_ids'  => [(string) $this->group->id],
-            'is_active'  => 1,
+            'last_name' => request('last_name'),
+            'name' => request('first_name').' '.request('last_name'),
+            'email' => request('email'),
+            'password' => Hash::make(request('password')),
+            'group_ids' => [(string) $this->group->id],
+            'is_active' => 1,
         ]);
     }
 
@@ -201,7 +204,7 @@ class RegisterController extends BaseController
      */
     public function groupAllowed()
     {
-        if (! in_array($this->group->name, $this->groupsAllowedForRegistration)) {
+        if (!in_array($this->group->name, $this->groupsAllowedForRegistration)) {
 
             return false;
         }

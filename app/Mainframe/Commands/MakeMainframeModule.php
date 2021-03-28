@@ -103,15 +103,15 @@ class MakeMainframeModule extends Command
         $destination = $this->classDirectory().'/'.$this->modelClassName();
 
         $maps = [
-            $sourceRoot.'SuperHero.php'                => $destination.'.php',
-            $sourceRoot.'SuperHeroController.php'      => $destination.'Controller.php',
-            $sourceRoot.'SuperHeroDatatable.php'       => $destination.'Datatable.php',
-            $sourceRoot.'SuperHeroHelper.php'          => $destination.'Helper.php',
-            $sourceRoot.'SuperHeroObserver.php'        => $destination.'Observer.php',
-            $sourceRoot.'SuperHeroPolicy.php'          => $destination.'Policy.php',
-            $sourceRoot.'SuperHeroProcessor.php'       => $destination.'Processor.php',
+            $sourceRoot.'SuperHero.php' => $destination.'.php',
+            $sourceRoot.'SuperHeroController.php' => $destination.'Controller.php',
+            $sourceRoot.'SuperHeroDatatable.php' => $destination.'Datatable.php',
+            $sourceRoot.'SuperHeroHelper.php' => $destination.'Helper.php',
+            $sourceRoot.'SuperHeroObserver.php' => $destination.'Observer.php',
+            $sourceRoot.'SuperHeroPolicy.php' => $destination.'Policy.php',
+            $sourceRoot.'SuperHeroProcessor.php' => $destination.'Processor.php',
             $sourceRoot.'SuperHeroProcessorHelper.php' => $destination.'ProcessorHelper.php',
-            $sourceRoot.'SuperHeroViewProcessor.php'   => $destination.'ViewProcessor.php',
+            $sourceRoot.'SuperHeroViewProcessor.php' => $destination.'ViewProcessor.php',
         ];
 
         File::makeDirectory($this->classDirectory(), 755, true);
@@ -134,7 +134,7 @@ class MakeMainframeModule extends Command
 
         $maps = [
             $sourceRoot.'/form/default.blade.php' => $destinationRoot.'/form/default.blade.php',
-            $sourceRoot.'/form/js.blade.php'      => $destinationRoot.'/form/js.blade.php',
+            $sourceRoot.'/form/js.blade.php' => $destinationRoot.'/form/js.blade.php',
             $sourceRoot.'/grid/default.blade.php' => $destinationRoot.'/grid/default.blade.php',
 
         ];
@@ -156,28 +156,32 @@ class MakeMainframeModule extends Command
         // replace maps
         $replaces = [
             'App\Mainframe\Modules\SuperHeroes' => trim($this->namespace(), '\\'),
-            'mainframe.modules.super-heroes'    => $this->viewDirectory(),
-            'super_heroes'                      => $this->moduleTable(),
-            'super-heroes'                      => $this->routePath(),
-            'SuperHeroes'                       => Str::plural($this->modelClassName()),
-            'SuperHero'                         => $this->modelClassName(),
-            'superHeroes'                       => lcfirst(Str::plural($this->modelClassName())),
-            'superHero'                         => lcfirst($this->modelClassName()),
-            '{table}'                           => $this->moduleTable(),
-            '{module_name}'                     => $this->moduleName(),
-            '{route_path}'                      => $this->routePath(),
-            '{route_name}'                      => $this->routeName(),
-            '{class_directory}'                 => $this->classDirectory(),
-            '{namespace}'                       => $this->namespace(),
-            '{model}'                           => $this->model,
-            '{policy}'                          => $this->policy(),
-            '{processor}'                       => $this->processor(),
-            '{controller}'                      => $this->controller(),
-            '{view_directory}'                  => $this->viewDirectory(),
-            'App\Mainframe\Features'            => 'App\Projects\\'.$this->project().'\Features',
-            '{project-name}'                    => $this->projectViewDirName(),
-
+            'mainframe.modules.super-heroes' => $this->viewDirectory(),
+            'super_heroes' => $this->moduleTable(),
+            'super-heroes' => $this->routePath(),
+            'SuperHeroes' => Str::plural($this->modelClassName()),
+            'SuperHero' => $this->modelClassName(),
+            'superHeroes' => lcfirst(Str::plural($this->modelClassName())),
+            'superHero' => lcfirst($this->modelClassName()),
+            '{table}' => $this->moduleTable(),
+            '{module_name}' => $this->moduleName(),
+            '{route_path}' => $this->routePath(),
+            '{route_name}' => $this->routeName(),
+            '{class_directory}' => $this->classDirectory(),
+            '{namespace}' => $this->namespace(),
+            '{model}' => $this->model,
+            '{policy}' => $this->policy(),
+            '{processor}' => $this->processor(),
+            '{controller}' => $this->controller(),
+            '{view_directory}' => $this->viewDirectory(),
         ];
+
+        if (strlen($this->project())) {
+            $replaces = array_merge($replaces, [
+                'App\Mainframe\Features' => 'App\Projects\\'.$this->project().'\Features',
+                '{project-name}' => $this->projectViewDirName(),
+            ]);
+        }
 
         // run replace across the template code
         foreach ($replaces as $k => $v) {

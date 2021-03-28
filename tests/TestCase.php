@@ -12,6 +12,8 @@ abstract class TestCase extends BaseTestCase
     /** @var \Faker\Generator */
     public $faker;
 
+    public $password = 'activation1';
+
     protected function setUp(): void
     {
         parent::setUp();

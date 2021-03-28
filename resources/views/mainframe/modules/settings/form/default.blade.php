@@ -46,7 +46,7 @@ $types = Setting::$types;
         <div class="col-md-6 no-padding">
             @include('form.textarea',['var'=>['name'=>'value','label'=>'Value(For array type put JSON)','div'=>'col-md-12']])
             <div class="col-md-12 no-padding-l">
-                @dump($element->getValue())
+                {{$element->getValue()}}
             </div>
         </div>
 

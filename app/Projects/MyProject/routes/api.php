@@ -1,4 +1,5 @@
 <?php /** @noinspection DuplicatedCode */
+
 use App\Mainframe\Helpers\Mf;
 
 /*
@@ -43,10 +44,10 @@ Route::prefix($version)->middleware($middlewares)->group(function () use ($modul
             // Route::post($path.'/{id}/comments', $controller.'@attachComments')->name($namePrefix.".{$moduleName}.attach-comment");
 
             Route::apiResource($path, $controller)->names([
-                'index'   => "{$namePrefix}.{$moduleName}.index",
-                'store'   => "{$namePrefix}.{$moduleName}.store",
-                'show'    => "{$namePrefix}.{$moduleName}.show",
-                'update'  => "{$namePrefix}.{$moduleName}.update",
+                'index' => "{$namePrefix}.{$moduleName}.index",
+                'store' => "{$namePrefix}.{$moduleName}.store",
+                'show' => "{$namePrefix}.{$moduleName}.show",
+                'update' => "{$namePrefix}.{$moduleName}.update",
                 'destroy' => "{$namePrefix}.{$moduleName}.destroy",
             ]);
         }
@@ -62,12 +63,14 @@ Route::prefix($version)->middleware($middlewares)->group(function () use ($modul
         Route::prefix('user')->group(function () use ($modules, $namePrefix) {
 
             $namePrefix .= '.user'; // api.1.0.user
-            // Profile
+            // Section: Profile
             Route::get('/', 'Api\UserApiController@showUser')->name("{$namePrefix}.show");
             Route::patch('/', 'Api\UserApiController@updateUser')->name("{$namePrefix}.update");
             Route::get('profile', 'Api\UserApiController@showUser')->name("{$namePrefix}.profile");
-            Route::post('profile-pic/store', 'Api\UserApiController@profilePicStore')->name("{$namePrefix}.store.profile-pic");
-            Route::delete('profile-pic/delete', 'Api\UserApiController@profilePicDestroy')->name("{$namePrefix}.delete.profile-pic");
+
+            // Section:  pic
+            Route::post('profile-pic', 'Api\UserApiController@profilePicStore')->name("{$namePrefix}.store.profile-pic");
+            Route::delete('profile-pic', 'Api\UserApiController@profilePicDestroy')->name("{$namePrefix}.delete.profile-pic");
         });
     });
 });

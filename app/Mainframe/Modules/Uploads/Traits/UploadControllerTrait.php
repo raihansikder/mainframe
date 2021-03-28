@@ -18,17 +18,17 @@ trait UploadControllerTrait
      */
     public function store(Request $request)
     {
-        if (! user()->can('create', $this->model)) {
+        if (!user()->can('create', $this->model)) {
             return $this->permissionDenied();
         }
 
         $this->element = $this->model; // Create an empty model to be stored.
 
-        if (! $this->file = $this->getFile()) {
+        if (!$this->file = $this->getFile()) {
             return $this->fail('No file in http request');
         }
 
-        if (! $path = $this->attemptUpload()) {
+        if (!$path = $this->attemptUpload()) {
             return $this->fail('Can not move file to destination from tmp');
         }
 
@@ -42,6 +42,12 @@ trait UploadControllerTrait
 
         $this->attemptStore();
 
+        if ($this->isValid()) {
+            $this->element->unsetRelations();
+        } else {
+            $this->element = null;
+        }
+
         return $this->load($this->element)->send();
     }
 
@@ -54,7 +60,7 @@ trait UploadControllerTrait
     {
         $fileRequestField = request()->get('file_field', 'file');
 
-        if (! request()->hasFile($fileRequestField)) {
+        if (!request()->hasFile($fileRequestField)) {
             return false;
         }
 

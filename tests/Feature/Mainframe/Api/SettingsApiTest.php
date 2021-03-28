@@ -8,17 +8,18 @@ class SettingsApiTest extends ApiTestCase
     /**
      * @return void
      */
-    public function testGetSetting()
+    public function test_get_setting_by_key()
     {
 
-        $this->get('api/1.0/setting/app-name')
+        $key = 'app-name';
+        $this->get("api/1.0/setting/{$key}")
             ->assertStatus(200)
             ->assertJson([
                 'code' => 200,
                 'status' => 'success',
 
             ])->assertJsonStructure([
-                'code', 'status', 'message', 'data'
+                'code', 'status', 'message', 'data',
             ]);
     }
 

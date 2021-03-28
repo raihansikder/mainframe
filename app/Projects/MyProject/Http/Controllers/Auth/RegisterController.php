@@ -18,7 +18,11 @@ class RegisterController extends MfRegisterController
      */
     protected $redirectTo = RouteServiceProvider::HOME;
 
-    /** @var string */
+    /**
+     * If not group is specified then user will be registered to this default group;
+     *
+     * @var string
+     */
     protected $defaultGroupName = 'user';
 
     /** @var array */
@@ -39,10 +43,10 @@ class RegisterController extends MfRegisterController
         // Validate
         $validator = Validator::make(request()->all(), [
             'first_name' => 'required',
-            'last_name'  => 'required',
-            'email'      => 'required|email|unique:users,email',
+            'last_name' => 'required',
+            'email' => 'required|email|unique:users,email',
             //'mobile'     => 'required|numeric|unique:users,mobile',
-            'password'   => User::PASSWORD_VALIDATION_RULE,
+            'password' => User::PASSWORD_VALIDATION_RULE,
         ]);
 
         if ($validator->fails()) {
@@ -53,7 +57,7 @@ class RegisterController extends MfRegisterController
 
         // Create user
         $this->user = $this->createUser();
-        if (! $this->user) {
+        if (!$this->user) {
             $this->fail('User creation failed');
 
             return $this;
@@ -74,15 +78,15 @@ class RegisterController extends MfRegisterController
     protected function createUser()
     {
         return User::create([
-            'tenant_id'  => request('tenant_id'),
+            'tenant_id' => request('tenant_id'),
             'first_name' => request('first_name'),
-            'last_name'  => request('last_name'),
-            'name'       => request('first_name').' '.request('last_name'),
-            'email'      => request('email'),
-            'mobile'     => request('mobile'),
-            'password'   => Hash::make(request('password')),
-            'group_ids'  => [(string) $this->group->id],
-            'is_active'  => 1,
+            'last_name' => request('last_name'),
+            'name' => request('first_name').' '.request('last_name'),
+            'email' => request('email'),
+            'mobile' => request('mobile'),
+            'password' => Hash::make(request('password')),
+            'group_ids' => [(string) $this->group->id],
+            'is_active' => 1,
         ]);
     }
 

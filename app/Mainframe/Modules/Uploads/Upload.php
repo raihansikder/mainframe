@@ -114,6 +114,7 @@ class Upload extends BaseModule
     // protected $casts = [];
     // protected $with = [];
     protected $appends = ['url', 'dir'];
+    protected $hidden = ['linked_module'];
 
     /*
     |--------------------------------------------------------------------------

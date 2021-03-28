@@ -31,15 +31,14 @@ class CreateInAppNotificationsTable extends Migration
             $table->unsignedInteger('module_id')->nullable()->default(null);
             $table->unsignedInteger('element_id')->nullable()->default(null);
             $table->unsignedInteger('user_id')->nullable()->default(null)->comment('Recipient user id');
-            $table->string('type', 100)->nullable()->default('Generic|Popup');
+            $table->string('type', 100)->nullable()->default('Generic')->comment('Generic|Popup');
             $table->string('event', 100)->nullable()->default(null)->comment('Name of the event i.e. "appointment.created"');
             $table->text('subtitle')->nullable()->default(null)->comment('Subtitle the notification');
             $table->text('body')->nullable()->default(null)->comment('Main body of the notification');
             $table->text('images')->nullable()->default(null)->comment('JSON array of image URLs');
             $table->text('data')->nullable()->default(null)->comment('Additional JSON payload');
             $table->unsignedInteger('order')->nullable()->default(9999)->comment('Can be useful for sequencing if needed');
-            $table->tinyInteger('is_visible')->nullable()->default(1)
-                ->comment('Flag to indicate whether this entry should be visible in the user notification list');
+            $table->tinyInteger('is_visible')->nullable()->default(1)->comment('Flag to indicate whether this entry should be visible in the user notification list');
             $table->unsignedInteger('announcement_id')->nullable()->default(null)->comment('Announcement id from which it is generated');
             $table->tinyInteger('accepts_response')->nullable()->default(0)->comment('Flag to indicate whether user can respond to this notification');
             $table->text('response_options')->nullable()->default(null)->comment('JSON to show response options');

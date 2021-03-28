@@ -1,6 +1,9 @@
-<?php 
+<?php
 
 namespace App\Projects\MyProject\Modules\Uploads;
+
+use App\Mainframe\Modules\Uploads\Traits\UploadTrait;
+use App\Projects\MyProject\Features\Modular\BaseModule\BaseModule;
 
 /**
  * App\Projects\MyProject\Modules\Uploads\Upload
@@ -96,12 +99,15 @@ namespace App\Projects\MyProject\Modules\Uploads;
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Changes\Change[] $changes
  * @property-read int|null $changes_count
  */
-class Upload extends \App\Mainframe\Modules\Uploads\Upload
+class Upload extends BaseModule
 {
-    use UploadHelper;
+    use UploadTrait, UploadHelper;
+
+    public const TYPE_PROFILE_PIC = 'Profile Picture';
+    public const TYPE_LOGO        = 'Logo';
 
     protected $moduleName = 'uploads';
-    protected $table = 'uploads';
+    protected $table      = 'uploads';
 
     /*
     |--------------------------------------------------------------------------
@@ -111,6 +117,17 @@ class Upload extends \App\Mainframe\Modules\Uploads\Upload
     protected $fillable = [
         'uuid',
         'name',
+        'type',
+        'path',
+        'order',
+        'ext',
+        'bytes',
+        'description',
+        'module_id',
+        'element_id',
+        'element_uuid',
+        'uploadable_id',
+        'uploadable_type',
         'is_active',
     ];
 
@@ -118,7 +135,8 @@ class Upload extends \App\Mainframe\Modules\Uploads\Upload
     // protected $dates = ['created_at', 'updated_at', 'deleted_at'];
     // protected $casts = [];
     // protected $with = [];
-    // protected $appends = [];
+    protected $appends = ['url', 'dir'];
+    protected $hidden  = ['linked_module'];
 
     /*
     |--------------------------------------------------------------------------
@@ -135,9 +153,15 @@ class Upload extends \App\Mainframe\Modules\Uploads\Upload
     | Boot method and model events.
     |--------------------------------------------------------------------------
     */
-    protected static function boot() {
+    protected static function boot()
+    {
         parent::boot();
         self::observe(UploadObserver::class);
+
+        static::saving(function (Upload $element) {
+            $element->fillModuleAndElementData();
+            $element->fillExtension();
+        });
 
         static::saved(function (Upload $element) {
             if (in_array($element->type, ['profile-pic', 'logo'])) {

@@ -6,8 +6,6 @@ use App\User;
 
 abstract class ApiTestCase extends TestCase
 {
-    /** @var \Tests\TestCase */
-    public $response;
 
     protected function setUp(): void
     {

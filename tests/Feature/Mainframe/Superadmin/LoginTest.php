@@ -8,7 +8,7 @@ class LoginTest extends SuperadminTestCase
     /**
      * @return void
      */
-    public function testRedirectedToDashboardFromLogin()
+    public function test_redirect_to_dashboard_from_login_url()
     {
         $this->followingRedirects()->get('/login')
             ->assertStatus(200)
@@ -16,10 +16,9 @@ class LoginTest extends SuperadminTestCase
     }
 
     /**
-     *
      * @return void
      */
-    public function testShowDashboard()
+    public function test_show_dashboard()
     {
         $this->get('/')
             ->assertStatus(200)
@@ -27,10 +26,9 @@ class LoginTest extends SuperadminTestCase
     }
 
     /**
-     *
      * @return void
      */
-    public function testLogout()
+    public function test_logout()
     {
         $this->withExceptionHandling();
         $this->followingRedirects()->get('/logout')
