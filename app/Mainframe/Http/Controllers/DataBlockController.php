@@ -1,10 +1,8 @@
 <?php
 
-
 namespace App\Mainframe\Http\Controllers;
 
-use App\Mainframe\Features\Core\Traits\DataBlockTrait;
-use Str;
+use App\Mainframe\Features\DataBlocks\DataBlockTrait;
 
 class DataBlockController extends BaseController
 {
@@ -22,6 +20,5 @@ class DataBlockController extends BaseController
         parent::__construct();
         $this->middleware('auth');
     }
-
 
 }

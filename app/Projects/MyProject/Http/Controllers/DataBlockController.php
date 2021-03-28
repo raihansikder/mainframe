@@ -2,8 +2,7 @@
 
 namespace App\Projects\MyProject\Http\Controllers;
 
-use App\Mainframe\Features\Core\Traits\DataBlockTrait;
-
+use App\Mainframe\Features\DataBlocks\DataBlockTrait;
 
 class DataBlockController extends BaseController
 {

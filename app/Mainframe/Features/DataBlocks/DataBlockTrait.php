@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Mainframe\Features\Core\Traits;
+namespace App\Mainframe\Features\DataBlocks;
 
 use App\Mainframe\Http\Controllers\DataBlockController;
 use Str;
