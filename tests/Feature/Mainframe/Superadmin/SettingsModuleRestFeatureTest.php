@@ -116,11 +116,11 @@ class SettingsModuleRestFeatureTest extends SuperadminTestCase
 
         $this->get('/'.$this->module->name)
             ->assertStatus(200)
-            ->assertSee($this->module->title); // A test name
+            ->assertSee($this->module->title);
 
         $this->get('/'.$this->module->name.'/datatable/json')
             ->assertStatus(200)
-            ->assertSee($latest->name); // A test name
+            ->assertSee($latest->name);
     }
 
     /**
@@ -135,7 +135,7 @@ class SettingsModuleRestFeatureTest extends SuperadminTestCase
         $this->followingRedirects()
             ->get("/{$this->module->name}/{$latest->id}")
             ->assertStatus(200)
-            ->assertSee($latest->name); // A test name
+            ->assertSee($latest->name);
 
     }
 
@@ -148,9 +148,10 @@ class SettingsModuleRestFeatureTest extends SuperadminTestCase
     {
         $latest = $this->latest(Setting::class);
 
+        // dd($latest->id);
         $this->get("/{$this->module->name}/{$latest->id}/edit")
             ->assertStatus(200)
-            ->assertSee($latest->name); // A test name
+            ->assertSee($latest->name);
     }
 
     /**
@@ -169,7 +170,7 @@ class SettingsModuleRestFeatureTest extends SuperadminTestCase
             ])
             ->assertStatus(200)
             ->assertSee('Success')
-            ->assertSee($newValue); // A test name
+            ->assertSee($newValue);
     }
 
     /**

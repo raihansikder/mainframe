@@ -15,7 +15,7 @@ class RegisterApiTest extends ApiTestCase
             [
                 'first_name' => $firstName,
                 'last_name' => $this->faker->lastName,
-                'email' => '1'.$this->faker->email,
+                'email' => $this->faker->email,
                 'password' => 'activation1',
                 'password_confirmation' => 'activation1',
                 // 'group_ids' => [$groupId], // Note: If no group is specified then by default 'user' group will be selected

@@ -129,7 +129,7 @@ class SettingsModuleRestFeatureJsonTest extends SettingsModuleRestFeatureTest
 
         $this->get("/{$this->module->name}/{$latest->id}?ret=json")
             ->assertStatus(200)
-            ->assertSee($latest->name); // A test name
+            ->assertSee($latest->name);
     }
 
     /**
