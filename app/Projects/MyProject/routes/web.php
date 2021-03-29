@@ -55,7 +55,7 @@ Route::middleware(['auth', 'verified'])->group(function () use ($modules, $modul
     Route::post('update-file', '\App\Mainframe\Modules\Uploads\UploadController@updateExistingUpload')->name('uploads.update-file'); // Update uploaded file
     Route::get('download/{uuid}', '\App\Mainframe\Modules\Uploads\UploadController@download')->name('download'); // Download
     Route::get('data/{block}', 'DataBlockController@show')->name('data-block.show'); // Data-block
-    // Route::get('report/{report}', 'ReportController@show')->name('report.show');
+    Route::get('report/{report}', 'ReportController@show')->name('report.show');
 
     /*---------------------------------
     | Project specific routs

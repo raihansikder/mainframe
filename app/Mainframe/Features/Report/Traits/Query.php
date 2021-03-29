@@ -6,6 +6,7 @@ use App\Mainframe\Helpers\Convert;
 use App\Mainframe\Helpers\Mf;
 use Cache;
 use DB;
+use Exception;
 use Illuminate\Database\Query\Builder;
 
 /** @mixin \App\Mainframe\Features\Report\ReportBuilder $this */
@@ -23,7 +24,6 @@ trait Query
             $query = $query->select($this->querySelectColumns());
         }
         $query = $this->filter($query);
-
         // Inject tenant context.
         if ($this->user->ofTenant() && $this->hasTenantContext()) {
             $query->where('tenant_id', $this->user->tenant_id);
@@ -51,17 +51,21 @@ trait Query
     public function result()
     {
 
-        if ($this->result) {
+        try {
+            if ($this->result) {
+                return $this->result;
+            }
+
+            $key = Mf::httpRequestSignature(($this->resultQuery()->toSql()));
+
+            $this->result = Cache::remember($key, $this->cache, function () {
+                return $this->resultQuery()->paginate($this->rowsPerPage());
+            });
+
             return $this->result;
+        }catch (Exception $e){
+            $this->fail($e->getMessage());
         }
-
-        $key = Mf::httpRequestSignature(($this->resultQuery()->toSql()));
-
-        $this->result = Cache::remember($key, $this->cache, function () {
-            return $this->resultQuery()->paginate($this->rowsPerPage());
-        });
-
-        return $this->result;
 
     }
 
@@ -161,7 +165,7 @@ trait Query
     public function includeDefaultSelectedColumns($keys = [])
     {
         foreach ($this->defaultSelectedColumns() as $col) {
-            if (! in_array($col, $keys) && in_array($col, $this->dataSourceColumns())) {
+            if (!in_array($col, $keys) && in_array($col, $this->dataSourceColumns())) {
                 $keys[] = $col;
             }
         }
@@ -178,7 +182,7 @@ trait Query
      */
     public function defaultSelectedColumns()
     {
-        return ['id'];
+        return ['id', 'name'];
     }
 
     /**
@@ -191,7 +195,7 @@ trait Query
     {
         $temp = [];
         foreach ($keys as $key) {
-            if (! in_array($key, $this->ghostColumnOptions())) {
+            if (!in_array($key, $this->ghostColumnOptions())) {
                 $temp[] = $key;
             }
         }

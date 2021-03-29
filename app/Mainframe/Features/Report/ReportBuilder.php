@@ -7,7 +7,6 @@ use App\Mainframe\Features\Report\Traits\Filterable;
 use App\Mainframe\Features\Report\Traits\Output;
 use App\Mainframe\Features\Report\Traits\Query;
 use App\Mainframe\Http\Controllers\BaseController;
-use DB;
 use Illuminate\Database\Query\Builder;
 
 class ReportBuilder extends BaseController
@@ -128,141 +127,22 @@ class ReportBuilder extends BaseController
         $this->dataSource = $dataSource ?: $this->dataSource;
         $this->path = $path ?: $this->path;
         $this->cache = $cache ?: $this->cache;
-
-        $this->user = user();
     }
 
-    /**
-     * Query to initially select table or a model.
-     *
-     * @return \Illuminate\Database\Query\Builder|string|\Illuminate\Database\Eloquent\Model
-     */
-    public function queryDataSource()
-    {
-        // Source is a table
-        if (is_string($this->dataSource)) {
-            return DB::table($this->dataSource);
-        }
-
-        // Source is a model/collection
-        return $this->dataSource;
-    }
-
-    /**
-     * Some filters needs to escaped from default handling and used for custom query
-     * generation.
-     *
-     * @return array
-     */
-    public function defaultFilterEscapeFields()
-    {
-        return [];
-    }
-
-    /**
-     * Custom query for escaped filter fields.
-     *
-     * @param $query \Illuminate\Database\Query\Builder
-     * @param $field
-     * @param $val
-     * @return mixed
-     */
-    public function customFilterOnEscapedFields($query, $field, $val)
-    {
-        // if($field == 'some_name'){
-        //     $query = $query->where($field,strtok($val));
-        // }
-        return $query;
-    }
-
-    /**
-     * Show this in a selection option in the front-end. Apart from the actual
-     * columns in the data source(table, view) you can also put some new
-     * columns (ghost columns) om the list and based on the selection
-     * by user you can show desired values for those ghost columns.
-     *
-     * @return array
-     */
-    public function columnOptions()
-    {
-        return array_merge($this->dataSourceColumns(), $this->ghostColumnOptions());
-    }
-
-    /**
-     * Some times we need to pass column names that do not exists in the model/table.
-     * This should not be considered in query building. Rather we want this to be
-     * post processed in mutation function.
-     *
-     * @return array
-     */
-    public function ghostColumnOptions()
-    {
-        return [];
-    }
-
-    /**
-     * Columns that should be always included in the select column query.
-     * Usually this is id field. This is useful to generate a url
-     * to the linked element.
-     *
-     * @return array
-     */
-    public function defaultSelectedColumns()
-    {
-        return ['id', 'name'];
-    }
-
+    // public function queryDataSource() { }
+    // public function defaultFilterEscapeFields() { }
+    // public function customFilterOnEscapedFields($query, $field, $val) { }
+    // public function columnOptions() { }
+    // public function ghostColumnOptions() { }
+    // public function defaultSelectedColumns() { }
 
     /*
     |--------------------------------------------------------------------------
     | Group by Configurations
     |--------------------------------------------------------------------------
-    |
-    | Functions to tweak 'Group By' handling.
-    |
     */
-    /**
-     * Adds the custom COUNT/SUM column in SQL SELECT.
-     *
-     * @param  array  $keys
-     * @return array
-     */
-    public function queryAddColumnForGroupBy($keys = [])
-    {
-        if ($this->hasGroupBy()) {
-            $keys[] = DB::raw('count(*) as total');
-        }
-
-        return $keys;
-    }
-
-    /**
-     * Due to existence of a group by clause some additional column
-     * needs to be shown. This function returns the array of those additional columns.
-     *
-     * @return array
-     */
-    public function additionalSelectedColumnsDueToGroupBy()
-    {
-        // considering COUNT(*) as total exists in the query builder. However this
-        // doesn't always have to be total. For example it can be sum if there
-        // query has SUM(*) as sum
-        return ['total'];
-        //$merge[] = 'sum';
-    }
-
-    /**
-     * Due to existence of a group by clause some additional alias columns are required
-     * this array maps with the additionalSelectedColumnsDueToGroupBy.
-     * `@return array
-     */
-    public function additionalAliasColumnsDueToGroupBy()
-    {
-        // considering COUNT(*) as total exists in the query builder. However this
-        // doesn't always have to be total. For example it can be sum if there
-        // query has SUM(*) as sum
-        return ['Total'];
-        //$merge[] = 'sum';
-    }
+    // public function queryAddColumnForGroupBy($keys = []) { }
+    // public function additionalSelectedColumnsDueToGroupBy() { }
+    // public function additionalAliasColumnsDueToGroupBy() { }
 
 }

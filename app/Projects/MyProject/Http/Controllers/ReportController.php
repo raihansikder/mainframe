@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Mainframe\Http\Controllers;
+namespace App\Projects\MyProject\Http\Controllers;
 
 use App\Mainframe\Features\Report\Traits\ReportControllerTrait;
 
@@ -13,6 +13,5 @@ class ReportController extends BaseController
      *
      * @var string
      */
-    public $dir = '\App\Mainframe\Http\Reports\\';
-
+    public $dir = '\App\Projects\MyProject\Http\Reports\\';
 }
