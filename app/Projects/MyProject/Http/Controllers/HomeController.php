@@ -2,7 +2,8 @@
 
 namespace App\Projects\MyProject\Http\Controllers;
 
-use App\Projects\MyProject\Features\DataBlocks\SampleDataBlock;
+
+use App\Projects\MyProject\Http\DataBlocks\SampleDataBlock;
 
 class HomeController extends BaseController
 {
@@ -25,10 +26,12 @@ class HomeController extends BaseController
      */
     public function index()
     {
-        $this->view('projects.my-project.dashboards.admin');
+        $this->view('mainframe.dashboards.default.index');
         $sampleData = (new SampleDataBlock)->data();
 
-        return $this->response()->setViewVars(['sampleData' => $sampleData])->send();
+        return $this->response()
+            ->setViewVars(['sampleData' => $sampleData])
+            ->send();
     }
 
 }

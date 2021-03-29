@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Projects\MyProject\Features\DataBlocks;
+namespace App\Mainframe\Http\DataBlock;
+
+use App\Mainframe\Features\DataBlocks\DataBlock;
 
 class SampleDataBlock extends DataBlock
 {
