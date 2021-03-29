@@ -8,14 +8,13 @@ class Cache extends \Illuminate\Support\Facades\Cache
 {
 
     /**
-     *
-     * @param  string $key
+     * @param  string  $key
      * @return \Illuminate\Config\Repository|int|mixed
      */
     public static function time($key = 'none')
     {
         if (config('mainframe.config.query_cache') == true && request('no_cache') != 'true') {
-            return config('mainframe.cache-time.'.$key);
+            return config('mainframe.cache-time.'.$key, 0);
         }
 
         return -1;
@@ -46,8 +45,8 @@ class Cache extends \Illuminate\Support\Facades\Cache
     /**
      * Caches a raw SQL query for given minutes.
      *
-     * @param  string $sql Raw SQL statement
-     * @param  int $seconds Minutes to cache
+     * @param  string  $sql  Raw SQL statement
+     * @param  int  $seconds  Minutes to cache
      * @return array|mixed Array of objects as query result
      */
     public static function rawQuery($sql, $seconds = 0)
