@@ -1,6 +1,4 @@
 <?php
-/** @noinspection PhpIncludeInspection */
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,13 +10,8 @@
 |
 */
 
-Route::get('/', 'HomeController@index')->name('home')->middleware(['verified']);
+// Route::get('/', 'HomeController@index')->name('home')->middleware(['verified']);
 
-Route::get('test', '\App\Mainframe\Http\Controllers\TestController@test')->name('test')->middleware(['verified', 'password.confirm']);
-//
-// Route::get('mail', function () {
-//     $user = \App\User::find(2625);
-//
-//     return (new \App\Mainframe\Notifications\Auth\ResetPassword())
-//         ->toMail($user);
-// });
+// Note: This is the default Laravel web routes file. If you are working with
+//  mainframe, your project should have a separate dedicated web routes
+//  file. Use that one instead

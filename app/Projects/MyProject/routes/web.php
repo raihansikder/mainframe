@@ -2,14 +2,14 @@
 
 use App\Mainframe\Helpers\Mf;
 
-$modules = Mf::modules();
-$moduleGroups = Mf::moduleGroups();
 /*
 |--------------------------------------------------------------------------
 | Project web routes
 |--------------------------------------------------------------------------
 */
 
+$modules = Mf::modules();
+$moduleGroups = Mf::moduleGroups();
 Route::middleware(['auth', 'verified'])->group(function () use ($modules, $moduleGroups) {
 
     Route::get('/', 'HomeController@index')->name('home');

@@ -7,11 +7,11 @@ use App\Mainframe\Helpers\Mf;
 | Project API routes
 |--------------------------------------------------------------------------
 */
+
 $modules = Mf::modules();
 
-# Path root/api/1.0
-$version = '1.0';
-$namePrefix = 'api.'.$version;
+$version = '1.0'; // Path to create url : root/api/1.0
+$namePrefix = 'api.'.$version; // Common name prefix
 $middlewares = ['request.json', 'x-auth-token'];
 
 Route::prefix($version)->middleware($middlewares)->group(function () use ($modules, $namePrefix) {
@@ -40,9 +40,6 @@ Route::prefix($version)->middleware($middlewares)->group(function () use ($modul
             Route::get($path.'/{id}/uploads', $controller.'@uploads')->name($namePrefix.".{$moduleName}.uploads");
             Route::post($path.'/{id}/uploads', $controller.'@attachUpload')->name($namePrefix.".{$moduleName}.attach-upload");
 
-            // Route::get($path.'/{id}/comments', $controller.'@comments')->name($namePrefix.".{$moduleName}.comments");
-            // Route::post($path.'/{id}/comments', $controller.'@attachComments')->name($namePrefix.".{$moduleName}.attach-comment");
-
             Route::apiResource($path, $controller)->names([
                 'index' => "{$namePrefix}.{$moduleName}.index",
                 'store' => "{$namePrefix}.{$moduleName}.store",
@@ -56,21 +53,18 @@ Route::prefix($version)->middleware($middlewares)->group(function () use ($modul
     /*-----------------------------------------
     | Misc
     |-----------------------------------------*/
-    // Setting - Get a setting from key
     Route::get('setting/{name}', 'Api\ApiController@getSetting')->name("{$namePrefix}.setting");
-    // DataBlock - Get a data-block from key
     Route::get('data/{block}', 'DataBlockController@show')->name($namePrefix.'.data-block.show');
-    Route::get('report/{report}', 'ReportController@show')->name('report.show');
+    Route::get('report/{report}', 'ReportController@show')->name($namePrefix.'.report.show');
 
     /*-----------------------------------------
     | User API (Requires bearer token)
     |-----------------------------------------*/
     Route::middleware(['bearer-token'])->group(function () use ($modules, $namePrefix) {
 
-        // Dashboard data
         Route::get('/', 'HomeController@index')->name('home')->middleware(['verified'])->name($namePrefix.'.home');
 
-        // APIs with 'use' prefix  (http://root/api/1.0/user/...)
+        // APIs with 'user' prefix
         Route::prefix('user')->group(function () use ($modules, $namePrefix) {
 
             $namePrefix .= '.user'; // api.1.0.user
@@ -80,7 +74,7 @@ Route::prefix($version)->middleware($middlewares)->group(function () use ($modul
             Route::patch('/', 'Api\UserApiController@updateUser')->name("{$namePrefix}.update");
             Route::get('profile', 'Api\UserApiController@showUser')->name("{$namePrefix}.profile");
 
-            // Section:  pic
+            // Section:  Profile Pic
             Route::post('profile-pic', 'Api\UserApiController@profilePicStore')->name("{$namePrefix}.store.profile-pic");
             Route::delete('profile-pic', 'Api\UserApiController@profilePicDestroy')->name("{$namePrefix}.delete.profile-pic");
         });

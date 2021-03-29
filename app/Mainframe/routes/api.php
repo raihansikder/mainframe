@@ -82,8 +82,18 @@ Route::prefix("core/{$version}")->middleware($middlewares)->group(function () us
             Route::get('profile', 'Api\UserApiController@showUser')->name("{$namePrefix}.profile");
 
             // Section: Profile-pic
-            Route::post('profile-pic/store', 'Api\UserApiController@profilePicStore')->name("{$namePrefix}.store.profile-pic");
-            Route::delete('profile-pic/delete', 'Api\UserApiController@profilePicDestroy')->name("{$namePrefix}.delete.profile-pic");
+            Route::post('profile-pic', 'Api\UserApiController@profilePicStore')->name("{$namePrefix}.profile-pic.store");
+            Route::delete('profile-pic', 'Api\UserApiController@profilePicDestroy')->name("{$namePrefix}.profile-pic.delete");
+
+            // Section: In-app-notifications
+            Route::get('in-app-notifications', 'Api\UserApiController@inAppNotifications')->name("{$namePrefix}.in-app-notifications.index");
+            Route::patch('in-app-notifications/{id}', 'Api\UserApiController@inAppNotificationUpdate')->name("{$namePrefix}.in-app-notifications.update");
+            Route::patch('in-app-notifications/{id}/read', 'Api\UserApiController@inAppNotificationRead')->name("{$namePrefix}.in-app-notifications.read");
+            Route::post('in-app-notifications/read-all', 'Api\UserApiController@inAppNotificationsReadAll')
+                ->name("{$namePrefix}.in-app-notifications.read-all");
+            Route::delete('in-app-notifications/{id}', 'Api\UserApiController@inAppNotificationDelete')->name("{$namePrefix}.in-app-notifications.delete");
+            Route::post('in-app-notifications/delete-all', 'Api\UserApiController@inAppNotificationsDeleteAll')
+                ->name("{$namePrefix}.in-app-notifications.delete-all");
         });
     });
 });

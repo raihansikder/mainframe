@@ -2,13 +2,13 @@
 
 namespace App\Projects\MyProject\Http\Controllers\Api;
 
-use App\Mainframe\Http\Controllers\Api\ApiController as MfApiController;
-use App\Projects\MyProject\Modules\Quotes\Quote;
-use App\Projects\MyProject\Modules\Orders\Order;
-use App\Projects\MyProject\Modules\Users\User;
+use App\Mainframe\Http\Controllers\Api\Traits\ApiControllerTrait;
+use App\Projects\MyProject\Http\Controllers\BaseController;
 
-class ApiController extends MfApiController
+class ApiController extends BaseController
 {
+    use ApiControllerTrait;
+
     public function __construct()
     {
         parent::__construct();

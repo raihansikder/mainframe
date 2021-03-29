@@ -26,7 +26,7 @@ class HomeController extends BaseController
      */
     public function index()
     {
-        $this->view('mainframe.dashboards.default.index');
+        $this->view('projects.my-project.dashboards.admin');
         $sampleData = (new SampleDataBlock)->data();
 
         return $this->response()
