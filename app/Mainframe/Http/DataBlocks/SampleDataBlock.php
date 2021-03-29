@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Mainframe\Http\DataBlock;
+namespace App\Mainframe\Http\DataBlocks;
 
 use App\Mainframe\Features\DataBlocks\DataBlock;
 
