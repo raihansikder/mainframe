@@ -105,6 +105,26 @@ class RegisterApiTest extends ApiTestCase
         $this->assertEquals('UPDATED', $this->newlyRegisteredUser()->first_name);
     }
 
+    public function test_user_can_see_data_for_dashboard()
+    {
+        $user = $this->newlyRegisteredUser(); // Get this newly created user from database
+
+        $this->be($user);
+
+        $this->get('api/1.0')
+            ->assertStatus(200)
+            ->assertJson([
+                'data' => [
+                    'sample_data' => [
+                        'books' => [
+                            'purchased' => 10,
+                            'read' => 7,
+                        ],
+                    ],
+                ],
+            ]);
+    }
+
     // public function test_user_can_update_his_profile_pic()
     // {
     //     // Todo : Need to test upload file

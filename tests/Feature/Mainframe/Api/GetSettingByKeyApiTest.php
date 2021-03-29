@@ -33,7 +33,7 @@ class GetSettingByKeyApiTest extends ApiTestCase
     public function test_get_data_block_by_key()
     {
 
-        $key = 'total-users';
+        $key = 'sample-data-block';
         $response = $this->get("api/1.0/data/{$key}");
 
         // $response->dump();

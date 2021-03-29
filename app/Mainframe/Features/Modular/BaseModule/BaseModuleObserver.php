@@ -5,7 +5,7 @@ namespace App\Mainframe\Features\Modular\BaseModule;
 class BaseModuleObserver
 {
     /**
-     * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule  $element
+     * @param  BaseModule  $element
      * @return void|bool
      */
     public function saving($element)
@@ -14,31 +14,38 @@ class BaseModuleObserver
     }
 
     /**
-     * @param  \App\Mainframe\Features\Modular\BaseModule\  $element
+     * @param    $element
      * @return void|bool
      */
     // public function creating($element) { }
 
     /**
-     * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule  $element
+     * @param  BaseModule  $element
      * @return void|bool
      */
     // public function created($element) { }
 
     /**
-     * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule  $element
+     * @param  BaseModule  $element
      * @return void|bool
      */
-    // public function updating($element) { }
+    public function updating($element)
+    {
+        if (!$element->isEditable()) {
+            error('Element is not editable');
+
+            return false;
+        }
+    }
 
     /**
-     * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule  $element
+     * @param  BaseModule  $element
      * @return void|bool
      */
     // public function updated($element) { }
 
     /**
-     * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule  $element
+     * @param  BaseModule  $element
      * @return void|bool
      */
     public function saved($element)
@@ -48,15 +55,22 @@ class BaseModuleObserver
     }
 
     /**
-     * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule  $element
+     * @param  BaseModule  $element
      * @return void|bool
      */
-    // public function deleting($element) { }
+    public function deleting($element)
+    {
+        if (!$element->isDeletable()) {
+            error('Element is not deletable');
+
+            return false;
+        }
+    }
 
     /**
      * Handle the base module "deleted" event.
      *
-     * @param  $element \App\Mainframe\Features\Modular\BaseModule\BaseModule
+     * @param  BaseModule  $element
      * @return void
      */
     // public function deleted($element)

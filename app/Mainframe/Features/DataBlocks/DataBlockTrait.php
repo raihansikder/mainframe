@@ -13,11 +13,18 @@ trait DataBlockTrait
     public $data;
 
     /**
+     * Cache Time in seconds
+     *
+     * @var int
+     */
+    public $cache = -1; // Default 1 second
+
+    /**
      * Process the result
      */
     public function process()
     {
-        $this->data = 'test';
+        $this->data = 'Put your value';
     }
 
     /**
@@ -27,9 +34,12 @@ trait DataBlockTrait
      */
     public function data()
     {
-        $this->process();
+        return \Cache::remember(get_class($this), $this->cache, function () {
+            $this->process();
 
-        return $this->data;
+            return $this->data;
+        });
+
     }
 
 }

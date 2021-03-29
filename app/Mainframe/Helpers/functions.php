@@ -109,7 +109,7 @@ function error($message = '', $setMsg = true, $ret = false)
     $key = 'errors';
     if ($setMsg && strlen($message)) {
         if (!in_array($message, Session::get($key, []))) {
-            Session::push($key, $message);
+            // Session::push($key, $message);
         }
         resolve(MessageBag::class)->add($key, $message);
     }
@@ -122,7 +122,7 @@ function message($message = '', $setMsg = true, $ret = false)
     $key = 'messages';
     if ($setMsg && strlen($message)) {
         if (!in_array($message, Session::get($key, []))) {
-            Session::push($key, $message);
+            // Session::push($key, $message);
         }
         resolve(MessageBag::class)->add($key, $message);
     }

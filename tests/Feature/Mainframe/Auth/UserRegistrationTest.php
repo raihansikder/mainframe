@@ -137,6 +137,22 @@ class UserRegistrationTest extends TestCase
             ->assertSee('Dashboard');
     }
 
+    public function test_user_can_access_data_block_variable()
+    {
+        $user = $this->newlyRegisteredUser(); // Get this newly created user from database
+
+        $this->be($user);
+        $this->followingRedirects()
+            ->get('/')
+            ->assertStatus(200)
+            ->assertViewHas('sampleData',[
+                'books' => [
+                    'purchased' => 10,
+                    'read' => 7,
+                ],
+            ]);
+    }
+
     /*
     |--------------------------------------------------------------------------
     | Helpers

@@ -23,17 +23,7 @@ trait SettingHelper
         return $this;
     }
 
-    /**
-     * Set address
-     * Example code
-     *
-     * @return $this
-     */
-    // public function setAddress()
-    // {
-    //     $this->field = 'val';
-    //     return $this;
-    // }
+
 
     /*
     |--------------------------------------------------------------------------

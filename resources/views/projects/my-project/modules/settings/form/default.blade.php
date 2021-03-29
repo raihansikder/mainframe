@@ -46,7 +46,7 @@ $types = Setting::$types;
         <div class="col-md-6 no-padding">
             @include('form.textarea',['var'=>['name'=>'value','label'=>'Value(For array type put JSON)','div'=>'col-md-12']])
             <div class="col-md-12 no-padding-l">
-                {{$element->getValue()}}
+                {{ var_dump($element->getValue()) }}
             </div>
         </div>
 
@@ -54,25 +54,24 @@ $types = Setting::$types;
             Sample JSON for configuring invoice
         </label>
         <pre>
+{
+    "invoices": [
         {
-            "invoices": [
-                {
-                    "event": "order.status.accepted",
-                    "percentage": 50,
-                    "due_after_days": 10
-                },
-                {
-                    "event": "order.status.completed",
-                    "percentage": 50,
-                    "due_after_days": 30
-                }
-            ]
+            "event": "order.status.accepted",
+            "percentage": 50,
+            "due_after_days": 10
+        },
+        {
+            "event": "order.status.completed",
+            "percentage": 50,
+            "due_after_days": 30
         }
+    ]
+}
         </pre>
 
         @include('form.textarea',['var'=>['name'=>'description','label'=>'Description', 'params'=>['class'=>'ckeditor']]])
         @include('form.is-active',['var'=>['hidden'=>true]])
-        {{--  @include('form.checkbox',['var'=>['name'=>'is_active','label'=>'Active test','hidden'=>true]])--}}
         {{-- Form inputs: ends --}}
 
         @include('form.action-buttons')

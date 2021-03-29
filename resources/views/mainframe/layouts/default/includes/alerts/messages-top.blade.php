@@ -9,7 +9,6 @@
  */
 
 $response = $response ?? session('response');
-
 $messageBag = $response['messageBag'] ?? null;
 
 // dd($messageBag);
@@ -21,10 +20,9 @@ if (isset($response['status']) && $response['status'] == 'success') {
     $textCss = "text-green";
 }
 
-
 $showAlerts = false;
 if ((isset($response['status'], $response['message']))
-    || $errors->any()
+    || ($errors instanceof \Illuminate\Support\MessageBag && $errors->any())
     || ($messageBag && $messageBag->count())) {
     $showAlerts = true;
 

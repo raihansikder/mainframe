@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Projects\MyProject\Http\Controllers;
+namespace App\Mainframe\Http\Controllers;
 
-use App\Projects\MyProject\Features\DataBlocks\SampleDataBlock;
+use App\Mainframe\Features\DataBlocks\SampleDataBlock;
 
 class HomeController extends BaseController
 {
-
     /**
      * Create a new controller instance.
      *
@@ -25,10 +24,10 @@ class HomeController extends BaseController
      */
     public function index()
     {
-        $this->view('projects.my-project.dashboards.admin');
-        $sampleData = (new SampleDataBlock)->data();
+        $totalUserData = (new SampleDataBlock)->data();
 
-        return $this->response()->setViewVars(['sampleData' => $sampleData])->send();
+        return view('projects.my-project.dashboards.admin')->with([
+            'totalUserData' => $totalUserData,
+        ]);
     }
-
 }
