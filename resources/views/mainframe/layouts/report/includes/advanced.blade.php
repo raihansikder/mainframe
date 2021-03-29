@@ -17,22 +17,22 @@
 
 <div class="clearfix"></div>
 {{--<div class="col-md-12">--}}
-{{--<h5>Generated SQL query</h5>--}}
-{{--<div class="alert-block">--}}
-{{--<pre class="small">@if(isset($sql)){{$sql}}@endif</pre>--}}
-{{--</div>--}}
-{{--<h5>API URL--}}
-{{--<small>(X-Auth-token based authentication)</small>--}}
-{{--</h5>--}}
-{{--<div class="alert-block">--}}
-{{--<a target="_blank" href="{{genericReportApiUrl()}}">{{genericReportApiUrl()}}</a>--}}
-{{--</div>--}}
-{{--<h5>API URL--}}
-{{--<small>(Reports for any authenticated users)</small>--}}
-{{--</h5>--}}
-{{--<div class="alert-block">--}}
-{{--<a target="_blank" href="{{genericReportJsonUrl()}}">{{genericReportJsonUrl()}}</a>--}}
-{{--</div>--}}
+{{--    <h5>Generated SQL query</h5>--}}
+{{--    <div class="alert-block">--}}
+{{--        <pre class="small">@if(isset($sql)){{$sql}}@endif</pre>--}}
+{{--    </div>--}}
+{{--    <h5>API URL--}}
+{{--        <small>(X-Auth-token based authentication)</small>--}}
+{{--    </h5>--}}
+{{--    <div class="alert-block">--}}
+{{--        <a target="_blank" href="{{genericReportApiUrl()}}">{{genericReportApiUrl()}}</a>--}}
+{{--    </div>--}}
+{{--    <h5>API URL--}}
+{{--        <small>(Reports for any authenticated users)</small>--}}
+{{--    </h5>--}}
+{{--    <div class="alert-block">--}}
+{{--        <a target="_blank" href="{{genericReportJsonUrl()}}">{{genericReportJsonUrl()}}</a>--}}
+{{--    </div>--}}
 {{--</div>--}}
 {{--<div class="clearfix"></div>--}}
 
@@ -40,7 +40,6 @@
 @section('js')
     @parent
     <script type="text/javascript">
-
 
         $("textarea[name=columns_csv]").select2({
             tags: [{!!   "'". implode("','",$columnOptions). "'" !!}],

@@ -23,18 +23,12 @@ Route::middleware(['auth', 'verified'])->group(function () use ($modules, $modul
         $controller = $module->controller;
         $moduleName = $module->name;
 
-        // Restore
-        Route::get($path.'/{id}/restore', $controller.'@restore')->name($moduleName.'.restore');
-        // Json response route for data-table
-        Route::get($path.'/datatable/json', $controller.'@datatableJson')->name($moduleName.'.datatable-json');
-        // List/Array of objects
-        Route::get($path.'/list/json', $controller.'@listJson')->name($moduleName.'.list-json');
-        // Report
-        Route::get($path.'/report', $controller.'@report')->name($moduleName.'.report');
-        // Audits (change-log)
-        Route::get($path.'/{id}/changes', $controller.'@changes')->name($moduleName.'.changes');
-        // Uploads
-        Route::get($path.'/{id}/uploads', $controller.'@uploads')->name($moduleName.'.uploads.index');
+        Route::get($path.'/{id}/restore', $controller.'@restore')->name($moduleName.'.restore'); // Restore
+        Route::get($path.'/datatable/json', $controller.'@datatableJson')->name($moduleName.'.datatable-json'); // Json response route for data-table
+        Route::get($path.'/list/json', $controller.'@listJson')->name($moduleName.'.list-json'); // List/Array of objects
+        Route::get($path.'/report', $controller.'@report')->name($moduleName.'.report'); // Report
+        Route::get($path.'/{id}/changes', $controller.'@changes')->name($moduleName.'.changes'); // Audits (change-log)
+        Route::get($path.'/{id}/uploads', $controller.'@uploads')->name($moduleName.'.uploads.index'); // Uploads
         Route::post($path.'/{id}/uploads', $controller.'@attachUpload')->name($moduleName.'.uploads.store');
 
         /* * Route to add comment file a particular element */
@@ -52,19 +46,16 @@ Route::middleware(['auth', 'verified'])->group(function () use ($modules, $modul
             'destroy' => "{$module->name}.destroy",
         ]);
     }
-
     // Module-group index routes
     foreach ($moduleGroups as $moduleGroup) {
         $path = $moduleGroup->route_path;
         Route::get('module-groups/index/'.$path, '\App\Mainframe\Modules\ModuleGroups\ModuleGroupController@home')->name($moduleGroup->route_name.'.index');
     }
 
-    // Update uploaded file
-    Route::post('update-file', '\App\Mainframe\Modules\Uploads\UploadController@updateExistingUpload')->name('uploads.update-file');
-    // Download
-    Route::get('download/{uuid}', '\App\Mainframe\Modules\Uploads\UploadController@download')->name('download');
-    // Data-block
-    Route::get('data/{block}', 'DataBlockController@show')->name('data-block.show');
+    Route::post('update-file', '\App\Mainframe\Modules\Uploads\UploadController@updateExistingUpload')->name('uploads.update-file'); // Update uploaded file
+    Route::get('download/{uuid}', '\App\Mainframe\Modules\Uploads\UploadController@download')->name('download'); // Download
+    Route::get('data/{block}', 'DataBlockController@show')->name('data-block.show'); // Data-block
+    // Route::get('report/{report}', 'ReportController@show')->name('report.show');
 
     /*---------------------------------
     | Project specific routs

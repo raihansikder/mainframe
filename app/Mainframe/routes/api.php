@@ -61,6 +61,7 @@ Route::prefix("core/{$version}")->middleware($middlewares)->group(function () us
     Route::get('setting/{name}', 'Api\ApiController@getSetting')->name("{$namePrefix}.setting");
     // DataBlock - Get a data-block from key
     Route::get('data/{block}', 'DataBlockController@show')->name($namePrefix.'.data-block.show');
+    Route::get('report/{report}', 'ReportController@show')->name('report.show');
 
     /*-----------------------------------------
     | User API (Requires bearer token)
@@ -68,7 +69,7 @@ Route::prefix("core/{$version}")->middleware($middlewares)->group(function () us
     Route::middleware(['bearer-token'])->group(function () use ($modules, $namePrefix) {
 
         // Dashboard data
-        Route::get('/', 'HomeController@index')->name('home')->middleware(['verified']);
+        Route::get('/', 'HomeController@index')->name('home')->middleware(['verified'])->name($namePrefix.'.home');
 
         // APIs with 'use' prefix  (http://root/api/1.0/user/...)
         Route::prefix('user')->group(function () use ($modules, $namePrefix) {

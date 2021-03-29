@@ -184,7 +184,6 @@ return [
         App\Mainframe\Providers\AppServiceProvider::class,
         /*************************************************/
         App\Projects\MyProject\Providers\AppServiceProvider::class,
-
     ],
 
     /*

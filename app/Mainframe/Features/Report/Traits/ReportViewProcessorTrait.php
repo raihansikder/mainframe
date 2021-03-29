@@ -2,8 +2,21 @@
 
 namespace App\Mainframe\Features\Report\Traits;
 
+use App\Mainframe\Modules\Reports\Report;
+use URL;
+
 trait ReportViewProcessorTrait
 {
+    public function filterPath()
+    {
+        return $this->report->filterPath ?? $this->report->path.'.includes.filters';
+    }
+
+    public function initFunctionsPath()
+    {
+        return $this->report->initFunctionsPath ?? $this->report->path.'.includes.init-functions';
+    }
+
     /**
      * Transforms the values of a cell. This is useful for creating links, changing colors etc.
      *
@@ -65,6 +78,10 @@ trait ReportViewProcessorTrait
 
         $newValue = $row->$column;
 
+        if (!$route) {
+            $route = $this->elementViewUrl($row);
+        }
+
         // Add link
         if (in_array($column, ['id', 'name']) && $route) {
             $newValue = "<a href='{$route}'>".$row->$column."</a>";
@@ -72,4 +89,40 @@ trait ReportViewProcessorTrait
 
         return $newValue;
     }
+
+    public function elementViewUrl($row)
+    {
+        if (!isset($this->report->module)) {
+            return null;
+        }
+
+        if (!isset($row->id)) {
+            return null;
+        }
+
+        return route($this->report->module->name.'.show', $row->id);
+    }
+
+    public function excelDownloadUrl()
+    {
+        return URL::full()."&ret=excel";
+    }
+
+    public function printUrl()
+    {
+        return URL::full()."&ret=print";
+    }
+
+    public function saveUrl()
+    {
+        return route('reports.create')
+            .'?title='.request('report_name')
+            .'&parameters='.urlencode(str_replace(route('home'), '', URL::full()));
+    }
+
+    public function showSaveReportBtn()
+    {
+        return $this->user->can('create', Report::class);
+    }
+
 }

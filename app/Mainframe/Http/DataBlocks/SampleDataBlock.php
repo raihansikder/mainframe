@@ -25,17 +25,15 @@ class SampleDataBlock extends DataBlock
      */
     public function process()
     {
-
         // Todo: Prepare and load data
-
         $this->data = [
-            'books' => [
-                'purchased' => 10,
-                'read' => 7,
+            'user' => [
+                'orders' => 8,
+                'quotes' => 7,
+                'invoices' => 5,
             ],
         ];
     }
 
     // Write Additional helper for data calculation if needed.
-
 }

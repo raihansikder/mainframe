@@ -19,10 +19,10 @@
     </style>
 @endsection
 
-@include($path.'.includes.init-functions')
+@include($view->initFunctionsPath())
 
 @section('content')
-    @include($path.'.includes.filters')
+    @include($view->filterPath())
     @if(Request::get('submit')==='Run' && isset($result))
         Total {{$total}} items found.
         <div class="clearfix"></div>
@@ -42,7 +42,7 @@
                             @foreach ($selectedColumns as $column)
                                 <td>
                                     @if(isset($row->$column))
-                                        {!! $view->cell($column, $row,  route($module->name.'.edit',$row->id) ) !!}
+                                        {!! $view->cell($column, $row) !!}
                                     @endif
                                 </td>
                             @endforeach
