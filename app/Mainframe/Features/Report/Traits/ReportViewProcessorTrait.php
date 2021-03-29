@@ -38,7 +38,7 @@ trait ReportViewProcessorTrait
      */
     public function customCell($column, $row, $value, $moduleName = null)
     {
-        // linked to facility details page
+
         $newValue = $value;
 
         if (in_array($column, ['id', 'name'])

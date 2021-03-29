@@ -25,5 +25,4 @@ class ReportViewProcessor extends ViewProcessor
     }
 
 
-
 }
