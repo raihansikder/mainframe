@@ -2,12 +2,12 @@
 
 namespace App\Projects\MyProject\Http\Controllers;
 
-use App\Mainframe\Features\DataBlocks\DataBlockTrait;
+use App\Mainframe\Features\DataBlocks\DataBlockControllerTrait;
 
 class DataBlockController extends BaseController
 {
 
-    use DataBlockTrait;
+    use DataBlockControllerTrait;
 
     /**
      * Directory where DataBlock classes are stored

@@ -26,9 +26,6 @@ Route::prefix($version)->middleware($middlewares)->group(function () use ($modul
     Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name($namePrefix.".reset-password");
     Route::post('logout', 'Auth\LoginController@logout')->name($namePrefix.".logout");
 
-    // DataBlock
-    Route::get('data/{block}', 'DataBlockController@show')->name($namePrefix.'.data-block.show');
-
     // Module RESTful apis
     Route::prefix('')->group(function () use ($modules, $namePrefix) {
         foreach ($modules as $module) {
@@ -59,8 +56,13 @@ Route::prefix($version)->middleware($middlewares)->group(function () use ($modul
     // Settings
     Route::get('setting/{name}', 'Api\ApiController@getSetting')->name("{$namePrefix}.setting");
 
+    // DataBlock
+    Route::get('data/{block}', 'DataBlockController@show')->name($namePrefix.'.data-block.show');
+
     # APIs that must have bearer token
     Route::middleware(['bearer-token'])->group(function () use ($modules, $namePrefix) {
+
+        Route::get('/', 'HomeController@index')->name('home')->middleware(['verified']);
 
         # Path root/api/1.0/user
         Route::prefix('user')->group(function () use ($modules, $namePrefix) {

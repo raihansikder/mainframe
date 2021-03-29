@@ -613,3 +613,23 @@ function createLetterRange($length)
 
     return $range;
 }
+
+/**
+ * Change array keys to snake case
+ *
+ * @param $array
+ * @return array
+ */
+function snakeCaseKeys($array)
+{
+    $arr = [];
+    foreach ($array as $key => $value) {
+        $key = snake_case($key);
+        if (is_array($value)) {
+            $value = snakeCaseKeys($value);
+        }
+        $arr[$key] = $value;
+    }
+
+    return $arr;
+}

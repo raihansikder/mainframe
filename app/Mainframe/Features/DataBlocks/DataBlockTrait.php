@@ -1,37 +1,35 @@
 <?php
 
-
 namespace App\Mainframe\Features\DataBlocks;
 
-use App\Mainframe\Http\Controllers\DataBlockController;
-use Str;
-
-/** @mixin DataBlockController $this */
 trait DataBlockTrait
 {
 
     /**
-     * Show the application dashboard.
+     * Load the result
      *
-     * @param string $name
-     * @return \Illuminate\Http\JsonResponse
+     * @var mixed
      */
-    public function show($name)
+    public $data;
+
+    /**
+     * Process the result
+     */
+    public function process()
     {
-        $class = $this->resolveClass($name);
-
-        if (!class_exists($class)) {
-            return $this->fail("Class {$class} not found")->json();
-        }
-
-        $payload = (new $class)->data();
-        return $this->load($payload)->json();
-
+        $this->data = 'test';
     }
 
-    public function resolveClass($name)
+    /**
+     * Get the final result
+     *
+     * @return mixed
+     */
+    public function data()
     {
-        return  $this->dir.Str::ucfirst(Str::camel($name));
+        $this->process();
+
+        return $this->data;
     }
 
 }

@@ -44,10 +44,10 @@ Route::prefix("core/{$version}")->middleware($middlewares)->group(function () us
             Route::post($path.'/{id}/comments', $controller.'@attachComments')->name($namePrefix.".{$moduleName}.attach-comment");
 
             Route::apiResource($path, $controller)->names([
-                'index'   => "{$namePrefix}.{$moduleName}.index",
-                'store'   => "{$namePrefix}.{$moduleName}.store",
-                'show'    => "{$namePrefix}.{$moduleName}.show",
-                'update'  => "{$namePrefix}.{$moduleName}.update",
+                'index' => "{$namePrefix}.{$moduleName}.index",
+                'store' => "{$namePrefix}.{$moduleName}.store",
+                'show' => "{$namePrefix}.{$moduleName}.show",
+                'update' => "{$namePrefix}.{$moduleName}.update",
                 'destroy' => "{$namePrefix}.{$moduleName}.destroy",
             ]);
         }
@@ -56,8 +56,14 @@ Route::prefix("core/{$version}")->middleware($middlewares)->group(function () us
     // Settings
     Route::get('setting/{name}', 'Api\ApiController@getSetting')->name("{$namePrefix}.setting");
 
+    // DataBlock
+    Route::get('data/{block}', 'DataBlockController@show')->name($namePrefix.'.data-block.show');
+
     # APIs that must have bearer token
     Route::middleware(['bearer-token'])->group(function () use ($modules, $namePrefix) {
+
+        # Dashboard APIs
+        Route::get('/', 'HomeController@index')->name('home')->middleware(['verified']);
 
         # Path root/api/1.0/user
         Route::prefix('user')->group(function () use ($modules, $namePrefix) {

@@ -2,7 +2,6 @@
 
 namespace App\Projects\MyProject\Features\DataBlocks;
 
-use App\Mainframe\Features\DataBlocks\DataBlock;
 use App\User;
 
 class TotalUsers extends DataBlock

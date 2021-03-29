@@ -238,6 +238,7 @@ class Response
     public function setViewVars($viewVars)
     {
         $this->viewVars = $viewVars;
+        $this->setPayload($viewVars);
 
         return $this;
     }
@@ -261,8 +262,13 @@ class Response
      */
     public function view($viewPath = null, $viewVars = null)
     {
-        $this->viewPath = $viewPath ?: $this->viewPath;
-        $this->viewVars = $viewVars ?: $this->viewPath;
+        if ($viewPath) {
+            $this->setViewPath($viewPath);
+        }
+
+        if ($viewVars) {
+            $this->setViewVars($viewVars);
+        }
 
         $view = view($this->viewPath)->with($this->defaultViewVars())->with($this->viewVars);
 
@@ -298,12 +304,7 @@ class Response
             ->withErrors($this->validator);
     }
 
-    /**
-     * Json
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function json()
+    public function prepareResponse()
     {
         // Load Generic response
         $data = [
@@ -336,6 +337,18 @@ class Response
             $data['redirect'] = $this->redirectTo;
         }
 
+        return $data;
+    }
+
+    /**
+     * Json
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function json()
+    {
+        $data = snakeCaseKeys($this->prepareResponse()); // Change array keys to snake case.
+
         return \Response::json($data); // Note : Should send 200 OK always.  422 Can not be handled by browser.
     }
 
@@ -350,12 +363,13 @@ class Response
     {
         $this->fail($message, $code);
 
-        if ($this->viewPath) {
-            return $this->view();
-        }
-
+        // Higher precedence than view,redirect
         if ($this->expectsJson()) {
             return $this->json();
+        }
+
+        if ($this->viewPath) {
+            return $this->view();
         }
 
         if ($this->redirectTo) {
@@ -376,12 +390,13 @@ class Response
     {
         $this->success($message, $code);
 
-        if ($this->viewPath) {
-            return $this->view();
-        }
-
+        // Higher precedence than view,redirect
         if ($this->expectsJson()) {
             return $this->json();
+        }
+
+        if ($this->viewPath) {
+            return $this->view();
         }
 
         return $this->redirect();
