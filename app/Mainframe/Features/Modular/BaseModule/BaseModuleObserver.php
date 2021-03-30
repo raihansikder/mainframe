@@ -31,11 +31,10 @@ class BaseModuleObserver
      */
     public function updating($element)
     {
-        if (!$element->isEditable()) {
-            error('Element is not editable');
-
-            return false;
-        }
+        // if (!$element->isEditable()) {  // Note: Conflict with business logic
+        //     error('Element is not editable');
+        //     return false;
+        // }
     }
 
     /**
