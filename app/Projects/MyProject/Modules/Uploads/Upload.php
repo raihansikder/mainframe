@@ -162,85 +162,51 @@ class Upload extends BaseModule
             $element->fillModuleAndElementData();
             $element->fillExtension();
         });
-
+        // static::creating(function (Upload $element) { });
+        // static::updating(function (Upload $element) { });
+        // static::created(function (Upload $element) { });
+        // static::updated(function (Upload $element) { });
         static::saved(function (Upload $element) {
             if (in_array($element->type, ['profile-pic', 'logo'])) {
                 $element->deletePreviousOfSameType();
             }
         });
+        // static::deleting(function (Upload $element) { });
+        // static::deleted(function (Upload $element) { });
     }
 
     /*
     |--------------------------------------------------------------------------
-    | Query scopes + Dynamic scopes
+    | Section: Query scopes + Dynamic scopes
     |--------------------------------------------------------------------------
-    |
-    | Scopes allow you to easily re-use query logic in your models. To define
-    | a scope, simply prefix a model method with scope:
-    */
-    //public function scopePopular($query) { return $query->where('votes', '>', 100); }
-    //public function scopeWomen($query) { return $query->whereGender('W'); }
-    /*
-    Usage: $users = User::popular()->women()->orderBy('created_at')->get();
-    */
-
-    //public function scopeOfType($query, $type) { return $query->whereType($type); }
-    /*
-    Usage:  $users = User::ofType('member')->get();
     */
 
     /*
     |--------------------------------------------------------------------------
-    | Accessors
+    | Section: Accessors
     |--------------------------------------------------------------------------
-    |
-    | Eloquent provides a convenient way to transform your model attributes when
-    | getting or setting them. Get a transformed value of an attribute
     */
     // public function getFirstNameAttribute($value) { return ucfirst($value); }
 
     /*
     |--------------------------------------------------------------------------
-    | Mutators
+    | Section: Mutators
     |--------------------------------------------------------------------------
-    |
-    | Eloquent provides a convenient way to transform your model attributes when
-    | getting or setting them. Get a transformed value of an attribute
     */
     // public function setFirstNameAttribute($value) { $this->attributes['first_name'] = strtolower($value); }
 
     /*
     |--------------------------------------------------------------------------
-    | Attributes
+    | Section: Attributes
     |--------------------------------------------------------------------------
-    |
-    | If you want to add extra fields(that doesn't exist in database) to you model
-    | you can use the getSomeAttribute() feature of eloquent.
     */
     // public function getUrlAttribute(){return asset($this->path); }
 
     /*
     |--------------------------------------------------------------------------
-    | Relations
+    | Section: Relations
     |--------------------------------------------------------------------------
-    |
-    | Write model relations (belongsTo,hasMany etc) at the bottom the file
     */
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
     // public function updater() { return $this->belongsTo(\App\User::class, 'updated_by'); }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    // public function creator() { return $this->belongsTo(\App\User::class, 'created_by'); }
-
-    /*
-   |--------------------------------------------------------------------------
-   | Todo: Helper functions
-   |--------------------------------------------------------------------------
-   | Todo: Write Helper functions in the UploadHelper trait.
-   */
 
 }

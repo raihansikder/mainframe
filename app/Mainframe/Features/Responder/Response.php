@@ -347,7 +347,8 @@ class Response
      */
     public function json()
     {
-        $data = snakeCaseKeys($this->prepareResponse()); // Change array keys to snake case.
+        $data = $this->prepareResponse();
+        $data = snakeCaseKeys($data); // Change array keys to snake case.
 
         return \Response::json($data); // Note : Should send 200 OK always.  422 Can not be handled by browser.
     }
