@@ -16,12 +16,7 @@ trait UserHelper
      * Populate model
      * return $this
      */
-    public function populate()
-    {
-        parent::populate();
 
-        return $this;
-    }
 
     /*
     |--------------------------------------------------------------------------

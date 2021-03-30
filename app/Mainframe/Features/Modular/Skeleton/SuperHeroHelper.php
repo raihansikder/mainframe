@@ -6,7 +6,7 @@ trait SuperHeroHelper
 {
     /*
     |--------------------------------------------------------------------------
-    | Autofill and functions to calculated field updates
+    | Section: Autofill and functions to calculated field updates
     |--------------------------------------------------------------------------
     */
     /**
@@ -36,21 +36,21 @@ trait SuperHeroHelper
 
     /*
     |--------------------------------------------------------------------------
-    | Non-static helper functions
+    | Section: Non-static helper functions
     |--------------------------------------------------------------------------
     */
     // Todo: Write non-static helper functions here
 
     /*
     |--------------------------------------------------------------------------
-    | Static helper functions
+    | Section: Static helper functions
     |--------------------------------------------------------------------------
     */
     // Todo: static helper functions
 
     /*
     |--------------------------------------------------------------------------
-    | Ability to create, edit, delete or restore
+    | Section: Ability to create, edit, delete or restore
     |--------------------------------------------------------------------------
     |
     | An element can be editable or non-editable based on it's internal status
@@ -67,7 +67,7 @@ trait SuperHeroHelper
 
     /*
     |--------------------------------------------------------------------------
-    | Notifications
+    | Section: Notifications
     |--------------------------------------------------------------------------
     |
     */

@@ -146,18 +146,11 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
 
     use UserTrait;
 
-    /*
-    |--------------------------------------------------------------------------
-    | Module definitions
-    |--------------------------------------------------------------------------
-    |
-    */
     /**
      * Constants
      */
     public const PASSWORD_VALIDATION_RULE = 'required|confirmed|min:6|regex:/[a-zA-Z]/|regex:/[0-9]/';
-
-    public const GROUP_SUPERADMIN = 1;
+    public const GROUP_SUPERADMIN         = 1;
 
     /*
     |--------------------------------------------------------------------------
@@ -207,11 +200,10 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
         'group_ids',
         'is_test',
     ];
-    protected $hidden   = ['password', 'remember_token',];
-    protected $dates    = ['created_at', 'updated_at', 'deleted_at', 'first_login_at', 'last_login_at',];
-    protected $casts    = [
-        'group_ids' => 'array',
-    ];
+
+    protected $hidden = ['password', 'remember_token',];
+    protected $dates  = ['created_at', 'updated_at', 'deleted_at', 'first_login_at', 'last_login_at',];
+    protected $casts  = ['group_ids' => 'array',];
     // protected $with = [];
     protected $appends = ['type', 'profile_pic'];
 
@@ -243,15 +235,14 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
         parent::boot();
         self::observe(UserObserver::class);
 
-        static::saved(function (User $element) {
-            $element->groups()->sync($element->group_ids);
-        });
         // static::saving(function (User $element) { });
         // static::creating(function (User $element) { });
         // static::updating(function (User $element) { });
         // static::created(function (User $element) { });
         // static::updated(function (User $element) { });
-        // static::saved(function (User $element) { });
+        static::saved(function (User $element) {
+            $element->groups()->sync($element->group_ids);
+        });
         // static::deleting(function (User $element) { });
         // static::deleted(function (User $element) { });
     }

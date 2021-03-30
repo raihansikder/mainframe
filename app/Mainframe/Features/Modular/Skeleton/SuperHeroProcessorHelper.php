@@ -29,16 +29,18 @@ trait SuperHeroProcessorHelper
 
     // Todo: Functions for validation
     /**
+     * Example code
+     *
      * @return $this
      */
-    public function checkName()  // Example code
+    public function checkName()
     {
         $element = $this->element; // Short hand variable.
 
-        if ($element->name == 'Joker') {
-            $this->error('Name can not be Joker', 'name');
+        if ($element->name == 'Joker') { // Validate
+            $this->error('Name can not be Joker', 'name'); // Raise error
         }
 
-        return $this;
+        return $this; // Return the same object for validation method chaining
     }
 }

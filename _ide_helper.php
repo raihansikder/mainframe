@@ -15927,28 +15927,22 @@
      
 }
 
-    namespace App { 
+    namespace App\Projects\MyProject\Modules\Users { 
             /**
-     * App\User
+     * App\Projects\MyProject\Modules\Users\User
      *
      * @property int $id
      * @property string|null $uuid
+     * @property int|null $project_id
      * @property int|null $tenant_id
      * @property string|null $name
      * @property string $email
      * @property string $password
      * @property string|null $remember_token
-     * @property int $email_confirmed
-     * @property string|null $email_confirmed_at
-     * @property string|null $email_confirmation_code
-     * @property string|null $access_token
-     * @property string|null $access_token_generated_at
-     * @property string|null $api_token
+     * @property string|null $api_token X-Auth-Token
      * @property string|null $api_token_generated_at
-     * @property int $tenant_editable
+     * @property int $is_tenant_editable
      * @property array $permissions
-     * @property string|null $group_ids_csv
-     * @property string|null $group_titles_csv
      * @property int|null $is_active
      * @property int|null $created_by
      * @property int|null $updated_by
@@ -15973,106 +15967,89 @@
      * @property string|null $mobile
      * @property \Illuminate\Support\Carbon|null $first_login_at
      * @property \Illuminate\Support\Carbon|null $last_login_at
-     * @property string|null $auth_token
+     * @property string|null $auth_token Bearer token
      * @property string|null $email_verified_at
-     * @property string|null $last_active_time
-     * @property string|null $last_login_time
-     * @property string|null $last_logout_time
-     * @property string|null $partner_uuid
+     * @property string|null $email_verification_code
      * @property string|null $currency
      * @property string|null $social_account_id
      * @property string|null $social_account_type
      * @property string|null $dob
-     * @property string|null $group_ids
+     * @property array|null $group_ids
      * @property int|null $is_test
+     * @property-read \Illuminate\Database\Eloquent\Collection|\OwenIt\Auditing\Models\Audit[] $audits
+     * @property-read int|null $audits_count
+     * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Changes\Change[] $changes
      * @property-read int|null $changes_count
+     * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Comments\Comment[] $comments
+     * @property-read int|null $comments_count
+     * @property-read \App\Mainframe\Modules\Countries\Country|null $country
      * @property-read \App\User|null $creator
+     * @property-read null|string $profile_pic
+     * @property-read string $type
      * @property-read \Illuminate\Database\Eloquent\Collection|\App\Group[] $groups
      * @property-read int|null $groups_count
-     * @property-read \App\Mainframe\Modules\Uploads\Upload $latestUpload
+     * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\InAppNotifications\InAppNotification[] $inAppNotifications
+     * @property-read int|null $in_app_notifications_count
+     * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
+     * @property-read int|null $notifications_count
+     * @property-read \App\Mainframe\Modules\Projects\Project|null $project
+     * @property-read \App\Mainframe\Modules\Tenants\Tenant|null $tenant
      * @property-read \App\User|null $updater
      * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Uploads\Upload[] $uploads
      * @property-read int|null $uploads_count
-     * @method static Builder|User newModelQuery()
-     * @method static Builder|User newQuery()
-     * @method static Builder|User query()
-     * @method static Builder|User whereAccessToken($value)
-     * @method static Builder|User whereAccessTokenGeneratedAt($value)
-     * @method static Builder|User whereAddress1($value)
-     * @method static Builder|User whereAddress2($value)
-     * @method static Builder|User whereApiToken($value)
-     * @method static Builder|User whereApiTokenGeneratedAt($value)
-     * @method static Builder|User whereAuthToken($value)
-     * @method static Builder|User whereCity($value)
-     * @method static Builder|User whereCountryId($value)
-     * @method static Builder|User whereCountryName($value)
-     * @method static Builder|User whereCounty($value)
-     * @method static Builder|User whereCreatedAt($value)
-     * @method static Builder|User whereCreatedBy($value)
-     * @method static Builder|User whereCurrency($value)
-     * @method static Builder|User whereDeletedAt($value)
-     * @method static Builder|User whereDeletedBy($value)
-     * @method static Builder|User whereDeviceToken($value)
-     * @method static Builder|User whereDob($value)
-     * @method static Builder|User whereEmail($value)
-     * @method static Builder|User whereEmailConfirmationCode($value)
-     * @method static Builder|User whereEmailConfirmed($value)
-     * @method static Builder|User whereEmailConfirmedAt($value)
-     * @method static Builder|User whereEmailVerifiedAt($value)
-     * @method static Builder|User whereFirstLoginAt($value)
-     * @method static Builder|User whereFirstName($value)
-     * @method static Builder|User whereFullName($value)
-     * @method static Builder|User whereGender($value)
-     * @method static Builder|User whereGroupIds($value)
-     * @method static Builder|User whereGroupIdsCsv($value)
-     * @method static Builder|User whereGroupTitlesCsv($value)
-     * @method static Builder|User whereId($value)
-     * @method static Builder|User whereIsActive($value)
-     * @method static Builder|User whereIsTest($value)
-     * @method static Builder|User whereLastActiveTime($value)
-     * @method static Builder|User whereLastLoginAt($value)
-     * @method static Builder|User whereLastLoginTime($value)
-     * @method static Builder|User whereLastLogoutTime($value)
-     * @method static Builder|User whereLastName($value)
-     * @method static Builder|User whereMobile($value)
-     * @method static Builder|User whereName($value)
-     * @method static Builder|User whereNameInitial($value)
-     * @method static Builder|User wherePartnerUuid($value)
-     * @method static Builder|User wherePassword($value)
-     * @method static Builder|User wherePermissions($value)
-     * @method static Builder|User wherePhone($value)
-     * @method static Builder|User whereRememberToken($value)
-     * @method static Builder|User whereSocialAccountId($value)
-     * @method static Builder|User whereSocialAccountType($value)
-     * @method static Builder|User whereTenantEditable($value)
-     * @method static Builder|User whereTenantId($value)
-     * @method static Builder|User whereUpdatedAt($value)
-     * @method static Builder|User whereUpdatedBy($value)
-     * @method static Builder|User whereUuid($value)
-     * @method static Builder|User whereZipCode($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|User active()
+     * @method static \Illuminate\Database\Eloquent\Builder|User newModelQuery()
+     * @method static \Illuminate\Database\Eloquent\Builder|User newQuery()
+     * @method static \Illuminate\Database\Query\Builder|User onlyTrashed()
+     * @method static \Illuminate\Database\Eloquent\Builder|User query()
+     * @method static \Illuminate\Database\Eloquent\Builder|User whereAddress1($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|User whereAddress2($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|User whereApiToken($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|User whereApiTokenGeneratedAt($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|User whereAuthToken($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|User whereCity($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|User whereCountryId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|User whereCountryName($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|User whereCounty($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|User whereCreatedAt($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|User whereCreatedBy($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|User whereCurrency($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|User whereDeletedAt($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|User whereDeletedBy($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|User whereDeviceToken($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|User whereDob($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|User whereEmail($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|User whereEmailVerificationCode($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|User whereEmailVerifiedAt($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|User whereFirstLoginAt($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|User whereFirstName($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|User whereFullName($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|User whereGender($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|User whereGroupIds($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|User whereId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|User whereIsActive($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|User whereIsTenantEditable($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|User whereIsTest($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|User whereLastLoginAt($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|User whereLastName($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|User whereMobile($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|User whereName($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|User whereNameInitial($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|User wherePassword($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|User wherePermissions($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|User wherePhone($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|User whereProjectId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|User whereRememberToken($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|User whereSocialAccountId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|User whereSocialAccountType($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|User whereTenantId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedBy($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|User whereUuid($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|User whereZipCode($value)
+     * @method static \Illuminate\Database\Query\Builder|User withTrashed()
+     * @method static \Illuminate\Database\Query\Builder|User withoutTrashed()
      * @mixin \Eloquent
-     * @property int $is_tenant_editable
-     * @property string|null $email_verification_code
-     * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
-     * @property-read int|null $notifications_count
-     * @method static \Illuminate\Database\Eloquent\Builder|\App\User active()
-     * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereEmailVerificationCode($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereIsTenantEditable($value)
-     * @property int|null $project_id
-     * @property-read \App\Mainframe\Modules\Projects\Project $project
-     * @property-read \App\Mainframe\Modules\Tenants\Tenant|null $tenant
-     * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereProjectId($value)
-     * @property-read \Illuminate\Database\Eloquent\Collection|\OwenIt\Auditing\Models\Audit[] $audits
-     * @property-read int|null $audits_count
-     * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Comments\Comment[] $comments
-     * @property-read int|null $comments_count
-     * @property-read null|string $profile_pic
-     * @property-read \App\Mainframe\Modules\Comments\Comment $latestComment
-     * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Changes\Change[] $changes
-     * @property-read \App\Mainframe\Modules\Countries\Country|null $country
-     * @property-read string $type
-     * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\InAppNotifications\InAppNotification[] $inAppNotifications
-     * @property-read int|null $in_app_notifications_count
      */ 
         class User {
          
@@ -16080,81 +16057,158 @@
      
 }
 
-    namespace App\Mainframe\Modules\Uploads { 
+    namespace App\Projects\MyProject\Modules\Uploads { 
             /**
-     * App\Mainframe\Modules\Uploads\Upload
+     * App\Projects\MyProject\Modules\Uploads\Upload
      *
-     * @property int $id TRIAL
-     * @property string|null $uuid TRIAL
-     * @property int|null $tenant_id TRIAL
-     * @property string|null $name TRIAL
-     * @property string|null $type TRIAL
-     * @property string|null $path TRIAL
-     * @property int|null $order TRIAL
-     * @property string|null $ext TRIAL
-     * @property int|null $bytes TRIAL
-     * @property string|null $description TRIAL
-     * @property int|null $module_id TRIAL
-     * @property int|null $element_id TRIAL
-     * @property string|null $element_uuid TRIAL
-     * @property int|null $is_active TRIAL
-     * @property int|null $created_by TRIAL
-     * @property int|null $updated_by TRIAL
-     * @property \Illuminate\Support\Carbon|null $created_at TRIAL
-     * @property \Illuminate\Support\Carbon|null $updated_at TRIAL
-     * @property \Illuminate\Support\Carbon|null $deleted_at TRIAL
-     * @property int|null $deleted_by TRIAL
-     * @property-read int|null $changes_count
+     * @property int $id
+     * @property string|null $uuid
+     * @property int|null $project_id
+     * @property int|null $tenant_id
+     * @property string|null $name
+     * @property string|null $type
+     * @property string|null $path
+     * @property int|null $order
+     * @property string|null $ext
+     * @property int|null $bytes
+     * @property string|null $description
+     * @property string|null $uploadable_type
+     * @property int|null $uploadable_id
+     * @property int|null $module_id
+     * @property int|null $element_id
+     * @property string|null $element_uuid
+     * @property int|null $is_active
+     * @property int|null $created_by
+     * @property int|null $updated_by
+     * @property \Illuminate\Support\Carbon|null $created_at
+     * @property \Illuminate\Support\Carbon|null $updated_at
+     * @property \Illuminate\Support\Carbon|null $deleted_at
+     * @property int|null $deleted_by
+     * @property-read \Illuminate\Database\Eloquent\Collection|\OwenIt\Auditing\Models\Audit[] $audits
+     * @property-read int|null $audits_count
+     * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Comments\Comment[] $comments
+     * @property-read int|null $comments_count
      * @property-read \App\User|null $creator
+     * @property-read mixed $dir
+     * @property-read mixed $url
+     * @property-read \App\Mainframe\Modules\Comments\Comment $latestComment
      * @property-read \App\Mainframe\Modules\Uploads\Upload $latestUpload
+     * @property-read \App\Mainframe\Modules\Projects\Project|null $project
+     * @property-read \App\Mainframe\Modules\Tenants\Tenant|null $tenant
      * @property-read \App\User|null $updater
+     * @property-read \App\Projects\MyProject\Modules\Uploads\Upload|null $uploadable
      * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Uploads\Upload[] $uploads
      * @property-read int|null $uploads_count
      * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Features\Modular\BaseModule\BaseModule active()
-     * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Uploads\Upload newModelQuery()
-     * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Uploads\Upload newQuery()
-     * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Uploads\Upload query()
-     * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Uploads\Upload whereBytes($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Uploads\Upload whereCreatedAt($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Uploads\Upload whereCreatedBy($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Uploads\Upload whereDeletedAt($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Uploads\Upload whereDeletedBy($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Uploads\Upload whereDescription($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Uploads\Upload whereElementId($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Uploads\Upload whereElementUuid($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Uploads\Upload whereExt($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Uploads\Upload whereId($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Uploads\Upload whereIsActive($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Uploads\Upload whereModuleId($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Uploads\Upload whereName($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Uploads\Upload whereOrder($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Uploads\Upload wherePath($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Uploads\Upload whereTenantId($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Uploads\Upload whereType($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Uploads\Upload whereUpdatedAt($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Uploads\Upload whereUpdatedBy($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Uploads\Upload whereUuid($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Uploads\Upload newModelQuery()
+     * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Uploads\Upload newQuery()
+     * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Uploads\Upload query()
+     * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Uploads\Upload
+     *     whereBytes($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Uploads\Upload
+     *     whereCreatedAt($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Uploads\Upload
+     *     whereCreatedBy($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Uploads\Upload
+     *     whereDeletedAt($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Uploads\Upload
+     *     whereDeletedBy($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Uploads\Upload
+     *     whereDescription($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Uploads\Upload
+     *     whereElementId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Uploads\Upload
+     *     whereElementUuid($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Uploads\Upload whereExt($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Uploads\Upload whereId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Uploads\Upload
+     *     whereIsActive($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Uploads\Upload
+     *     whereModuleId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Uploads\Upload
+     *     whereName($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Uploads\Upload
+     *     whereOrder($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Uploads\Upload
+     *     wherePath($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Uploads\Upload
+     *     whereProjectId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Uploads\Upload
+     *     whereTenantId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Uploads\Upload
+     *     whereType($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Uploads\Upload
+     *     whereUpdatedAt($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Uploads\Upload
+     *     whereUpdatedBy($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Uploads\Upload
+     *     whereUploadableId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Uploads\Upload
+     *     whereUploadableType($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Uploads\Upload
+     *     whereUuid($value)
      * @mixin \Eloquent
-     * @property string|null $uploadable_type
-     * @property int|null $uploadable_id
-     * @property-read mixed $dir
-     * @property-read mixed $url
-     * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Uploads\Upload whereUploadableId($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Uploads\Upload whereUploadableType($value)
-     * @property int|null $project_id
-     * @property-read \App\Mainframe\Modules\Projects\Project $project
-     * @property-read \App\Mainframe\Modules\Tenants\Tenant|null $tenant
-     * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Uploads\Upload whereProjectId($value)
-     * @property-read \Illuminate\Database\Eloquent\Collection|\OwenIt\Auditing\Models\Audit[] $audits
-     * @property-read int|null $audits_count
-     * @property-read \App\Mainframe\Modules\Uploads\Upload|null $uploadable
-     * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Comments\Comment[] $comments
-     * @property-read int|null $comments_count
-     * @property-read \App\Mainframe\Modules\Comments\Comment $latestComment
      * @property-read \App\Mainframe\Modules\Modules\Module|null $linkedModule
      * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Changes\Change[] $changes
+     * @property-read int|null $changes_count
      */ 
         class Upload {
+         
+    }
+     
+}
+
+    namespace App\Projects\MyProject\Modules\Settings { 
+            /**
+     * App\Projects\MyProject\Modules\Settings\Setting
+     *
+     * @property-read \Illuminate\Database\Eloquent\Collection|\OwenIt\Auditing\Models\Audit[] $audits
+     * @property-read int|null $audits_count
+     * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Comments\Comment[] $comments
+     * @property-read int|null $comments_count
+     * @property-read \App\User $creator
+     * @property-read \App\Mainframe\Modules\Projects\Project $project
+     * @property-read \App\Mainframe\Modules\Tenants\Tenant $tenant
+     * @property-read \App\User $updater
+     * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Uploads\Upload[] $uploads
+     * @property-read int|null $uploads_count
+     * @mixin \Eloquent
+     * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Features\Modular\BaseModule\BaseModule active()
+     * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Settings\Setting newModelQuery()
+     * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Settings\Setting newQuery()
+     * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Settings\Setting query()
+     * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Changes\Change[] $changes
+     * @property-read int|null $changes_count
+     * @property int $id
+     * @property string|null $uuid
+     * @property string|null $name
+     * @property string|null $title
+     * @property string|null $type
+     * @property string|null $description
+     * @property string|null $value
+     * @property int|null $is_active
+     * @property int|null $created_by
+     * @property int|null $updated_by
+     * @property \Illuminate\Support\Carbon|null $created_at
+     * @property \Illuminate\Support\Carbon|null $updated_at
+     * @property \Illuminate\Support\Carbon|null $deleted_at
+     * @property int|null $deleted_by
+     * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Settings\Setting whereCreatedAt($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Settings\Setting whereCreatedBy($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Settings\Setting whereDeletedAt($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Settings\Setting whereDeletedBy($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Settings\Setting whereDescription($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Settings\Setting whereId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Settings\Setting whereIsActive($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Settings\Setting whereName($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Settings\Setting whereTitle($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Settings\Setting whereType($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Settings\Setting whereUpdatedAt($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Settings\Setting whereUpdatedBy($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Settings\Setting whereUuid($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Settings\Setting whereValue($value)
+     */ 
+        class Setting {
          
     }
      
@@ -19608,8 +19662,9 @@ namespace  {
             class Html extends \Collective\Html\HtmlFacade {}
             class SSH extends \Collective\Remote\RemoteFacade {}
             class PDF extends \Barryvdh\DomPDF\Facade {}
-            class User extends \App\User {}
-            class Upload extends \App\Mainframe\Modules\Uploads\Upload {}
+            class User extends \App\Projects\MyProject\Modules\Users\User {}
+            class Upload extends \App\Projects\MyProject\Modules\Uploads\Upload {}
+            class Setting extends \App\Projects\MyProject\Modules\Settings\Setting {}
             class Flare extends \Facade\Ignition\Facades\Flare {}
             class Socialite extends \Laravel\Socialite\Facades\Socialite {}
             class QrCode extends \SimpleSoftwareIO\QrCode\Facades\QrCode {}

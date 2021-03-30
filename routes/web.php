@@ -15,3 +15,7 @@
 // Note: This is the default Laravel web routes file. If you are working with
 //  mainframe, your project should have a separate dedicated web routes
 //  file. Use that one instead
+
+Route::get('test', function () {
+    User::find(1); //Test Alias
+})->name('test')->middleware(['superuser']);

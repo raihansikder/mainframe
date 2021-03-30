@@ -27,7 +27,7 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule;
  */
 class SuperHero extends BaseModule
 {
-    // Note: Pull in necessary traits
+    // Note: Pull in necessary traits from relevant mainframe class
 
     use SuperHeroHelper;
 
@@ -79,34 +79,34 @@ class SuperHero extends BaseModule
 
     /*
     |--------------------------------------------------------------------------
-    | Query scopes + Dynamic scopes
+    | Section: Query scopes + Dynamic scopes
     |--------------------------------------------------------------------------
     */
 
     /*
     |--------------------------------------------------------------------------
-    | Accessors
+    | Section: Accessors
     |--------------------------------------------------------------------------
     */
     // public function getFirstNameAttribute($value) { return ucfirst($value); }
 
     /*
     |--------------------------------------------------------------------------
-    | Mutators
+    | Section: Mutators
     |--------------------------------------------------------------------------
     */
     // public function setFirstNameAttribute($value) { $this->attributes['first_name'] = strtolower($value); }
 
     /*
     |--------------------------------------------------------------------------
-    | Attributes
+    | Section: Attributes
     |--------------------------------------------------------------------------
     */
     // public function getUrlAttribute(){return asset($this->path); }
 
     /*
     |--------------------------------------------------------------------------
-    | Relations
+    | Section: Relations
     |--------------------------------------------------------------------------
     */
     // public function updater() { return $this->belongsTo(\App\User::class, 'updated_by'); }

@@ -2,9 +2,17 @@
 
 namespace App\Projects\MyProject\Modules\Users;
 
-use App\Mainframe\Modules\Users\User as MfUser;
+use App\Mainframe\Features\Core\Traits\Validable;
+use App\Mainframe\Features\Modular\BaseModule\Traits\ModularTrait;
+use App\Mainframe\Modules\Users\Traits\UserTrait;
 use App\Projects\MyProject\Notifications\Auth\ResetPassword;
 use App\Projects\MyProject\Notifications\Auth\VerifyEmail;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use OwenIt\Auditing\Contracts\Auditable;
+use Watson\Rememberable\Rememberable;
 
 /**
  * App\Projects\MyProject\Modules\Users\User
@@ -54,17 +62,20 @@ use App\Projects\MyProject\Notifications\Auth\VerifyEmail;
  * @property string|null $dob
  * @property array|null $group_ids
  * @property int|null $is_test
- * @property int|null $vendor_id
- * @property int|null $reseller_id
  * @property-read \Illuminate\Database\Eloquent\Collection|\OwenIt\Auditing\Models\Audit[] $audits
  * @property-read int|null $audits_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Changes\Change[] $changes
+ * @property-read int|null $changes_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Comments\Comment[] $comments
+ * @property-read int|null $comments_count
  * @property-read \App\Mainframe\Modules\Countries\Country|null $country
  * @property-read \App\User|null $creator
  * @property-read null|string $profile_pic
  * @property-read string $type
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Group[] $groups
  * @property-read int|null $groups_count
- * @property-read \App\Mainframe\Modules\Uploads\Upload $latestUpload
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\InAppNotifications\InAppNotification[] $inAppNotifications
+ * @property-read int|null $in_app_notifications_count
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property-read int|null $notifications_count
  * @property-read \App\Mainframe\Modules\Projects\Project|null $project
@@ -72,77 +83,88 @@ use App\Projects\MyProject\Notifications\Auth\VerifyEmail;
  * @property-read \App\User|null $updater
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Uploads\Upload[] $uploads
  * @property-read int|null $uploads_count
- * @method static \Illuminate\Database\Eloquent\Builder|MfUser active()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Users\User newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Users\User newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Users\User query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Users\User whereAddress1($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Users\User whereAddress2($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Users\User whereApiToken($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Users\User whereApiTokenGeneratedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Users\User whereAuthToken($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Users\User whereCity($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Users\User whereCountryId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Users\User whereCountryName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Users\User whereCounty($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Users\User whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Users\User whereCreatedBy($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Users\User whereCurrency($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Users\User whereDeletedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Users\User whereDeletedBy($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Users\User whereDeviceToken($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Users\User whereDob($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Users\User whereEmail($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Users\User whereEmailVerificationCode($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Users\User whereEmailVerifiedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Users\User whereFirstLoginAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Users\User whereFirstName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Users\User whereFullName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Users\User whereGender($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Users\User whereGroupIds($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Users\User whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Users\User whereIsActive($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Users\User whereIsTenantEditable($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Users\User whereIsTest($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Users\User whereLastLoginAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Users\User whereLastName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Users\User whereMobile($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Users\User whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Users\User whereNameInitial($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Users\User wherePassword($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Users\User wherePermissions($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Users\User wherePhone($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Users\User whereProjectId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Users\User whereRememberToken($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Users\User whereResellerId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Users\User whereSocialAccountId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Users\User whereSocialAccountType($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Users\User whereTenantId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Users\User whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Users\User whereUpdatedBy($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Users\User whereUuid($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Users\User whereVendorId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Users\User whereZipCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User active()
+ * @method static \Illuminate\Database\Eloquent\Builder|User newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|User newQuery()
+ * @method static \Illuminate\Database\Query\Builder|User onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|User query()
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereAddress1($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereAddress2($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereApiToken($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereApiTokenGeneratedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereAuthToken($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereCity($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereCountryId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereCountryName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereCounty($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereCreatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereCurrency($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereDeletedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereDeviceToken($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereDob($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereEmailVerificationCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereEmailVerifiedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereFirstLoginAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereFirstName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereFullName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereGender($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereGroupIds($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereIsActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereIsTenantEditable($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereIsTest($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereLastLoginAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereLastName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereMobile($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereNameInitial($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User wherePassword($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User wherePermissions($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User wherePhone($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereProjectId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereRememberToken($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereSocialAccountId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereSocialAccountType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereTenantId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereUuid($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereZipCode($value)
+ * @method static \Illuminate\Database\Query\Builder|User withTrashed()
+ * @method static \Illuminate\Database\Query\Builder|User withoutTrashed()
  * @mixin \Eloquent
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Comments\Comment[] $comments
- * @property-read int|null $comments_count
- * @property-read \App\Mainframe\Modules\Comments\Comment $latestComment
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Changes\Change[] $changes
- * @property-read int|null $changes_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\InAppNotifications\InAppNotification[] $inAppNotifications
- * @property-read int|null $in_app_notifications_count
  */
-class User extends MfUser // Note: Can not extend project BaseModule for this special case, since it extends Authenticable
+class User extends Authenticatable implements MustVerifyEmail, Auditable
 {
+    use SoftDeletes,
+        Rememberable,
+        \OwenIt\Auditing\Auditable,
+        ModularTrait,
+        Validable,
+        Notifiable;
+
+    use UserTrait;
     use UserHelper;
 
-    protected $moduleName = 'users';
-    protected $table      = 'users';
+    /**
+     * Constants
+     */
+    public const PASSWORD_VALIDATION_RULE = 'required|confirmed|min:6|regex:/[a-zA-Z]/|regex:/[0-9]/';
+    public const GROUP_SUPERADMIN = 1;
+
     /*
     |--------------------------------------------------------------------------
     | Properties
     |--------------------------------------------------------------------------
     */
+    protected $moduleName = 'users';
+    protected $table      = 'users';
+
+    protected $tenantEnabled = true;
+
     protected $fillable = [
         'uuid',
         'name',
@@ -182,11 +204,22 @@ class User extends MfUser // Note: Can not extend project BaseModule for this sp
         'is_test',
     ];
 
-    // protected $guarded = [];
-    // protected $dates = ['created_at', 'updated_at', 'deleted_at'];
-    // protected $casts = [];
+    protected $hidden = ['password', 'remember_token',];
+    protected $dates  = ['created_at', 'updated_at', 'deleted_at', 'first_login_at', 'last_login_at',];
+    protected $casts  = ['group_ids' => 'array',];
     // protected $with = [];
     protected $appends = ['type', 'profile_pic'];
+
+    /**
+     * Allowed permissions values.
+     * Possible options:
+     *   -1 => Deny (adds to array, but denies regardless of user's group).
+     *    0 => Remove.
+     *    1 => Add.
+     *
+     * @var array
+     */
+    protected $allowedPermissionsValues = [-1, 0, 1];
 
     /*
     |--------------------------------------------------------------------------
@@ -211,7 +244,9 @@ class User extends MfUser // Note: Can not extend project BaseModule for this sp
         // static::updating(function (User $element) { });
         // static::created(function (User $element) { });
         // static::updated(function (User $element) { });
-        // static::saved(function (User $element) { });
+        static::saved(function (User $element) {
+            $element->groups()->sync($element->group_ids);
+        });
         // static::deleting(function (User $element) { });
         // static::deleted(function (User $element) { });
     }
@@ -287,6 +322,12 @@ class User extends MfUser // Note: Can not extend project BaseModule for this sp
     /*
     |--------------------------------------------------------------------------
     | Relations
+    |--------------------------------------------------------------------------
+    */
+
+    /*
+    |--------------------------------------------------------------------------
+    | Functions
     |--------------------------------------------------------------------------
     */
 

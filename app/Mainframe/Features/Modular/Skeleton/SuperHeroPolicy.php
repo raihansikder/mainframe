@@ -6,7 +6,7 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModulePolicy;
 
 class SuperHeroPolicy extends BaseModulePolicy
 {
-    // Note: Pull in necessary traits
+    // Note: Pull in necessary traits from relevant mainframe class
 
     /**
      * view-any
