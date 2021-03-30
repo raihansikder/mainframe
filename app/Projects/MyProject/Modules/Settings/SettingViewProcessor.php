@@ -19,7 +19,7 @@ class SettingViewProcessor extends BaseModuleViewProcessor
      */
 
     /**
-     * @var \App\Projects\MyProject\Modules\Settings\Setting
+     * @var Setting
      */
     public $element;
 
