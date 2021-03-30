@@ -2,7 +2,7 @@
 
 namespace App\Projects\MyProject\Modules\Uploads;
 
-/** @mixin \App\Projects\MyProject\Modules\Uploads\Upload $this */
+/** @mixin Upload $this */
 trait UploadHelper
 {
 

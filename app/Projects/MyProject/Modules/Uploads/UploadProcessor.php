@@ -17,7 +17,7 @@ class UploadProcessor extends \App\Mainframe\Modules\Uploads\UploadProcessor
     /**
      * Fill the model with values
      *
-     * @param  \App\Projects\MyProject\Modules\Uploads\Upload  $upload
+     * @param  Upload  $upload
      * @return $this
      */
     // public function fill($upload)
@@ -40,7 +40,7 @@ class UploadProcessor extends \App\Mainframe\Modules\Uploads\UploadProcessor
     /**
      * Validation rules.
      *
-     * @param  \App\Projects\MyProject\Modules\Uploads\Upload  $upload
+     * @param  Upload  $upload
      * @param  array  $merge
      * @return array
      */

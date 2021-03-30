@@ -43,56 +43,56 @@ use App\Projects\MyProject\Features\Modular\BaseModule\BaseModule;
  * @property-read \App\Mainframe\Modules\Projects\Project|null $project
  * @property-read \App\Mainframe\Modules\Tenants\Tenant|null $tenant
  * @property-read \App\User|null $updater
- * @property-read \App\Projects\MyProject\Modules\Uploads\Upload|null $uploadable
+ * @property-read Upload|null $uploadable
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Uploads\Upload[] $uploads
  * @property-read int|null $uploads_count
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Features\Modular\BaseModule\BaseModule active()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Uploads\Upload newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Uploads\Upload newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Uploads\Upload query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Uploads\Upload
+ * @method static \Illuminate\Database\Eloquent\Builder|Upload newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Upload newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Upload query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Upload
  *     whereBytes($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Uploads\Upload
+ * @method static \Illuminate\Database\Eloquent\Builder|Upload
  *     whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Uploads\Upload
+ * @method static \Illuminate\Database\Eloquent\Builder|Upload
  *     whereCreatedBy($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Uploads\Upload
+ * @method static \Illuminate\Database\Eloquent\Builder|Upload
  *     whereDeletedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Uploads\Upload
+ * @method static \Illuminate\Database\Eloquent\Builder|Upload
  *     whereDeletedBy($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Uploads\Upload
+ * @method static \Illuminate\Database\Eloquent\Builder|Upload
  *     whereDescription($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Uploads\Upload
+ * @method static \Illuminate\Database\Eloquent\Builder|Upload
  *     whereElementId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Uploads\Upload
+ * @method static \Illuminate\Database\Eloquent\Builder|Upload
  *     whereElementUuid($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Uploads\Upload whereExt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Uploads\Upload whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Uploads\Upload
+ * @method static \Illuminate\Database\Eloquent\Builder|Upload whereExt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Upload whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Upload
  *     whereIsActive($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Uploads\Upload
+ * @method static \Illuminate\Database\Eloquent\Builder|Upload
  *     whereModuleId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Uploads\Upload
+ * @method static \Illuminate\Database\Eloquent\Builder|Upload
  *     whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Uploads\Upload
+ * @method static \Illuminate\Database\Eloquent\Builder|Upload
  *     whereOrder($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Uploads\Upload
+ * @method static \Illuminate\Database\Eloquent\Builder|Upload
  *     wherePath($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Uploads\Upload
+ * @method static \Illuminate\Database\Eloquent\Builder|Upload
  *     whereProjectId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Uploads\Upload
+ * @method static \Illuminate\Database\Eloquent\Builder|Upload
  *     whereTenantId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Uploads\Upload
+ * @method static \Illuminate\Database\Eloquent\Builder|Upload
  *     whereType($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Uploads\Upload
+ * @method static \Illuminate\Database\Eloquent\Builder|Upload
  *     whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Uploads\Upload
+ * @method static \Illuminate\Database\Eloquent\Builder|Upload
  *     whereUpdatedBy($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Uploads\Upload
+ * @method static \Illuminate\Database\Eloquent\Builder|Upload
  *     whereUploadableId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Uploads\Upload
+ * @method static \Illuminate\Database\Eloquent\Builder|Upload
  *     whereUploadableType($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Modules\Uploads\Upload
+ * @method static \Illuminate\Database\Eloquent\Builder|Upload
  *     whereUuid($value)
  * @mixin \Eloquent
  * @property-read \App\Mainframe\Modules\Modules\Module|null $linkedModule
