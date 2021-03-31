@@ -170,6 +170,13 @@ class Response
     /** @var array */
     public $viewVars = [];
 
+    /**
+     * Convert json array response keys to a specific case.
+     *
+     * @var string|bool
+     */
+    public $convertJsonKeys = 'SNAKE_CASE';
+
     /*
     |--------------------------------------------------------------------------
     | Output functions
@@ -341,6 +348,32 @@ class Response
     }
 
     /**
+     * Convert an array keys to snake_case
+     *
+     * @param $array
+     * @return array
+     */
+    public function snakeCaseKeys($array)
+    {
+        return snakeCaseKeys($array);
+    }
+
+    /**
+     * Convert the json payload. Change structure, key naming convetion etc.
+     *
+     * @param $data
+     * @return array
+     */
+    public function convert($data)
+    {
+        if ($this->convertJsonKeys == 'SNAKE_CASE') {
+            return $this->snakeCaseKeys($data);
+        }
+
+        return $data;
+    }
+
+    /**
      * Json
      *
      * @return \Illuminate\Http\JsonResponse
@@ -348,7 +381,7 @@ class Response
     public function json()
     {
         $data = $this->prepareResponse();
-        $data = snakeCaseKeys($data); // Change array keys to snake case.
+        $data = $this->convert($data); // Change array keys to snake case.
 
         return \Response::json($data); // Note : Should send 200 OK always.  422 Can not be handled by browser.
     }
