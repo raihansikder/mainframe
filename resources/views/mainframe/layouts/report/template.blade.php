@@ -1,4 +1,4 @@
-@extends('mainframe.layouts.default.template')
+@extends($view->defaultTemplate())
 {{-- Master view file for report --}}
 
 @section('head')

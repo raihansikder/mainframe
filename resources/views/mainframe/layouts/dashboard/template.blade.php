@@ -1,1 +1,1 @@
-@extends('mainframe.layouts.default.template')
+@extends($view->defaultTemplate())

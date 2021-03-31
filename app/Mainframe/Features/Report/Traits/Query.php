@@ -63,7 +63,7 @@ trait Query
             });
 
             return $this->result;
-        }catch (Exception $e){
+        } catch (Exception $e) {
             $this->fail($e->getMessage());
         }
 

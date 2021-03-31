@@ -176,6 +176,31 @@ trait ViewProcessorTrait
     |--------------------------------------------------------------------------
     |
     */
+
+    public function defaultTemplate()
+    {
+
+        $project = projectResources().'.layouts.default.template';
+
+        if (view()->exists($project)) {
+            return $project;
+        }
+
+        return 'mainframe.layouts.default.template';
+    }
+
+    public function leftMenu()
+    {
+
+        $project = projectResources().'.layouts.default.includes.navigation.left-menu.menu-items';
+
+        if (view()->exists($project)) {
+            return $project;
+        }
+
+        return 'mainframe.layouts.default.includes.navigation.left-menu.menu-items';
+    }
+
     /**
      * Resolve the view blade for the module form
      *
@@ -205,6 +230,12 @@ trait ViewProcessorTrait
      */
     public function changesPath()
     {
+        $project = projectResources().'.layouts.module.changes.index';
+
+        if (view()->exists($project)) {
+            return $project;
+        }
+
         return 'mainframe.layouts.module.changes.index';
     }
 

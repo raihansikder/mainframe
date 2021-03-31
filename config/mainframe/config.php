@@ -15,6 +15,7 @@ return [
     */
 
     'name' => env('APP_NAME', 'Mainframe'),
+    'project' => env('PROJECT', 'MyProject'),
 
     /*
     |--------------------------------------------------------------------------
@@ -37,7 +38,7 @@ return [
     |
     */
 
-    'date_format'     => env('DATE_FORMAT', 'd-m-Y'),
+    'date_format' => env('DATE_FORMAT', 'd-m-Y'),
     'datetime_format' => env('DATETIME_FORMAT', 'd-m-Y H:i:s'),
 
     /*
@@ -78,7 +79,7 @@ return [
         'css' => [
             'projects/my-project/css/my-project.css',
         ],
-        'js'  => [
+        'js' => [
             'projects/my-project/js/my-project.js',
         ],
     ],

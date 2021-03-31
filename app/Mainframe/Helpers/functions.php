@@ -4,6 +4,108 @@ use App\Mainframe\Helpers\Mf;
 use Illuminate\Support\MessageBag;
 
 /**
+ * Mainframe configs
+ *
+ * @param $key
+ * @return \Illuminate\Config\Repository|\Illuminate\Contracts\Foundation\Application|mixed
+ */
+function mf_config($key)
+{
+    return Mf::config($key);
+}
+
+/**
+ * Project config
+ *
+ * @param $key
+ * @return \Illuminate\Config\Repository|\Illuminate\Contracts\Foundation\Application|mixed
+ */
+function project_config($key)
+{
+    return Mf::projectConfig($key);
+}
+
+/**
+ * Mainframe classes root namespace
+ *
+ * @return string
+ */
+function mfNamespace()
+{
+    return Mf::namespace();
+}
+
+/**
+ * Mainframe resource root
+ *
+ * @return string
+ */
+function mfResources()
+{
+    return Mf::resources();
+}
+
+/**
+ * Mainframe public root directory
+ *
+ * @return string
+ */
+function mfPublic()
+{
+    return Mf::public();
+}
+
+/**
+ * Get project name. This is a CamelCase name of the project
+ *
+ * @return \Illuminate\Config\Repository|\Illuminate\Contracts\Foundation\Application|mixed
+ */
+function project()
+{
+    return Mf::project();
+}
+
+/**
+ * Kebab case key of the project name
+ *
+ * @return string
+ */
+function projectKey()
+{
+    return Mf::projectKey();
+}
+
+/**
+ * Project root name space
+ *
+ * @return string
+ */
+function projectNamespace()
+{
+    return Mf::projectNamespace();
+}
+
+/**
+ * Project resource root
+ *
+ * @return string
+ */
+function projectResources()
+{
+    return Mf::projectResources();
+}
+
+/**
+ * Project public root directory
+ *
+ * @return string
+ */
+function projectPublic()
+{
+    return Mf::projectPublic();
+}
+
+/**
  * returns sentry object of currently logged in user
  *
  * @param  bool|null  $id

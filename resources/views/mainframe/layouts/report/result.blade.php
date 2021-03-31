@@ -27,6 +27,7 @@
         Total {{$total}} items found.
         <div class="clearfix"></div>
         <div class="table-responsive">
+
             @if(count($result))
                 <table class="table table-condensed" id="report-table">
                     <thead>

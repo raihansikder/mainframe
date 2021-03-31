@@ -10,6 +10,8 @@
 |
 */
 
+// dd(App\Mainframe\Modules\Users\User::find(1)->email);
+
 // Route::get('/', 'HomeController@index')->name('home')->middleware(['verified']);
 
 // Note: This is the default Laravel web routes file. If you are working with
