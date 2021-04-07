@@ -28,7 +28,7 @@ trait SettingTrait
      */
     public static function read($name)
     {
-        /** @var \App\Mainframe\Modules\Settings\Setting $setting */
+        /** @var Setting $setting */
 
         if ($setting = Setting::where('name', $name)->remember(timer('long'))->first()) {
             return $setting->getValue();
@@ -70,4 +70,5 @@ trait SettingTrait
 
         return $val;
     }
+
 }

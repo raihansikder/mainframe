@@ -4,6 +4,7 @@ namespace App\Projects\MyProject\Modules\Settings;
 
 use App\Mainframe\Modules\Settings\Traits\SettingTrait;
 use App\Projects\MyProject\Features\Modular\BaseModule\BaseModule;
+use App\Projects\MyProject\Modules\Users\User;
 
 /**
  * App\Projects\MyProject\Modules\Settings\Setting

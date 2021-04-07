@@ -56,7 +56,7 @@ trait Query
                 return $this->result;
             }
 
-            $key = Mf::httpRequestSignature(($this->resultQuery()->toSql()));
+            $key = 'report-'.__CLASS__.'-'.Mf::httpRequestSignature(($this->resultQuery()->toSql()));
 
             $this->result = Cache::remember($key, $this->cache, function () {
                 return $this->resultQuery()->paginate($this->rowsPerPage());

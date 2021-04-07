@@ -34,7 +34,7 @@ class ReportBuilder extends BaseController
     |
     */
     /** @var  string Directory location of the report blade templates */
-    public $path = 'mainframe.layouts.report';
+    public $path = 'projects.my-project.layouts.report';
 
     /*
     |--------------------------------------------------------------------------

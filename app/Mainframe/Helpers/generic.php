@@ -11,7 +11,7 @@
  * Converts a one dimensional array to a key-value paired array with same key and value
  * this is useful to generate options for select.
  *
- * @param  array $array
+ * @param  array  $array
  * @return array
  */
 function kv($array = [])
@@ -69,7 +69,7 @@ function keyAsArray($array = [])
 /**
  * echos array in a more readable manner
  *
- * @param  array $my_array
+ * @param  array  $my_array
  * @return string $my_array
  */
 function echoArray($my_array)
@@ -115,19 +115,19 @@ function arrayToObject($array)
 /**
  * Generate random characters
  *
- * @param  int $length
+ * @param  int  $length
  * @return string
  * @throws \Exception
  */
 function randomString($length = 8)
 {
-    $str        = '';
+    $str = '';
     $characters = array_merge(range('A', 'Z'), range('a', 'z'), range('0', '9'));
     //$characters = array_merge(range('A', 'Z'), range('0', '9'));
     $max = count($characters) - 1;
     for ($i = 0; $i < $length; $i++) {
         $rand = random_int(0, $max);
-        $str  .= $characters[$rand];
+        $str .= $characters[$rand];
     }
 
     return $str;
@@ -221,7 +221,7 @@ function removeUtf8Bom($text)
  *
  * @param       $array
  * @param       $search
- * @param  array $keys
+ * @param  array  $keys
  * @return array
  */
 function deepSearchArray($array, $search, $keys = [])
@@ -300,8 +300,8 @@ function decimal($number, $decimalPlaces = 2)
 
 /**
  * @param        $str
- * @param  int $count
- * @param  string $char
+ * @param  int  $count
+ * @param  string  $char
  * @return string
  */
 function pad($str, $count = 6, $char = '0')
@@ -407,33 +407,33 @@ function commaWrap($str)
 /**
  * Converts bytes into human readable file size.
  *
- * @param  string $bytes
+ * @param  string  $bytes
  * @return string human readable file size (2,87 ??)
  * @author Mogilev Arseny
  */
 function convertFileSize($bytes)
 {
-    $result  = 'undefined';
-    $bytes   = floatval($bytes);
+    $result = 'undefined';
+    $bytes = floatval($bytes);
     $arBytes = [
         0 => [
-            "UNIT"  => "TB",
+            "UNIT" => "TB",
             "VALUE" => pow(1024, 4),
         ],
         1 => [
-            "UNIT"  => "GB",
+            "UNIT" => "GB",
             "VALUE" => pow(1024, 3),
         ],
         2 => [
-            "UNIT"  => "MB",
+            "UNIT" => "MB",
             "VALUE" => pow(1024, 2),
         ],
         3 => [
-            "UNIT"  => "KB",
+            "UNIT" => "KB",
             "VALUE" => 1024,
         ],
         4 => [
-            "UNIT"  => "B",
+            "UNIT" => "B",
             "VALUE" => 1,
         ],
     ];
@@ -452,7 +452,7 @@ function convertFileSize($bytes)
 /**
  * check if an extension is an image extension
  *
- * @param  string $ext
+ * @param  string  $ext
  * @return bool
  */
 function isImageExtension($ext = '')
@@ -469,15 +469,15 @@ function isImageExtension($ext = '')
 /**
  * Checks if all of the needls are available in array
  *
- * @param  array $needles
- * @param  array $haystack
+ * @param  array  $needles
+ * @param  array  $haystack
  * @return bool
  */
 function allInArray(array $needles, array $haystack)
 {
     if (count($needles) && count($haystack)) {
         foreach ($needles as $needle) {
-            if (! in_array($needle, $haystack)) {
+            if (!in_array($needle, $haystack)) {
                 return false;
             }
         }
@@ -491,8 +491,8 @@ function allInArray(array $needles, array $haystack)
 /**
  * Checks if at least one of the needles is available in array
  *
- * @param  array $needles
- * @param  array $haystack
+ * @param  array  $needles
+ * @param  array  $haystack
  * @return bool
  */
 function oneInArray(array $needles, array $haystack)
@@ -511,20 +511,20 @@ function oneInArray(array $needles, array $haystack)
 /**
  * Checks if non of the needles are in array
  *
- * @param  array $needles
- * @param  array $haystack
+ * @param  array  $needles
+ * @param  array  $haystack
  * @return bool
  */
 function noneInArray(array $needles, array $haystack)
 {
-    return ! oneInArray($needles, $haystack);
+    return !oneInArray($needles, $haystack);
 }
 
 /**
  * Function to do multiple find replaces in a string.
  *
- * @param  string $str
- * @param  array $replaces
+ * @param  string  $str
+ * @param  array  $replaces
  * @return mixed|string
  */
 function multipleStrReplace($str = '', $replaces = [])
@@ -539,7 +539,7 @@ function multipleStrReplace($str = '', $replaces = [])
 /**
  * Remove empty values and arrays values from an array.
  *
- * @param  array $array
+ * @param  array  $array
  * @return array
  */
 function removeEmptyVals($array = [])
@@ -547,7 +547,7 @@ function removeEmptyVals($array = [])
     $temp = [];
     if (is_array($array) && count($array)) {                    // handle if input is an array1
         foreach ($array as $a) {
-            if (! is_array($a) && strlen(trim($a))) {
+            if (!is_array($a) && strlen(trim($a))) {
                 $temp[] = $a;
             }
         }
@@ -559,7 +559,7 @@ function removeEmptyVals($array = [])
 /**
  * Alias function for removeEmptyVals()
  *
- * @param  array $array
+ * @param  array  $array
  * @return array
  */
 function cleanArray($array = [])
@@ -594,12 +594,12 @@ function arrayForWhereIn($val)
 /**
  * create a letter range with arbitrary length
  *
- * @param  int $length
+ * @param  int  $length
  * @return array
  */
 function createLetterRange($length)
 {
-    $range   = [];
+    $range = [];
     $letters = range('A', 'Z');
     for ($i = 0; $i < $length; $i++) {
         $position = $i * 26;
@@ -632,4 +632,40 @@ function snakeCaseKeys($array)
     }
 
     return $arr;
+}
+
+/**
+ * Get percentage
+ *
+ * @param $number
+ * @param $percent
+ * @return float|int
+ */
+function percent($number, $percent)
+{
+    return $number * ($percent / 100);
+}
+
+/**
+ * Add a percentage to a number
+ *
+ * @param $number
+ * @param $percent
+ * @return float|int
+ */
+function addPercent($number, $percent)
+{
+    return $number + percent($number, $percent);
+}
+
+/**
+ * Add a percentage to a number
+ *
+ * @param $number
+ * @param $percent
+ * @return float|int
+ */
+function subtractPercent($number, $percent)
+{
+    return $number - percent($number, $percent);
 }
