@@ -14,95 +14,6 @@ use PhpOffice\PhpSpreadsheet\Writer\Exception;
 /** @mixin \App\Mainframe\Features\Report\ReportBuilder $this */
 trait Output
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Data Source
-    |--------------------------------------------------------------------------
-    |
-    | Source of data. This can be a string that represents a table or SQL view
-    | Or, this can be a model name.
-    |
-    */
-    /** @var  \Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Model DB Table/View names */
-    public $dataSource;
-
-    /*
-    |--------------------------------------------------------------------------
-    | Base Directory for view/blade
-    |--------------------------------------------------------------------------
-    |
-    | All view files of a report is stored under a single directory.
-    |
-    */
-    /** @var  string Directory location of the report blade templates */
-    public $path = 'projects.mph-market.layouts.report';
-
-    /*
-    |--------------------------------------------------------------------------
-    | Query cache time
-    |--------------------------------------------------------------------------
-    |
-    | How long the report result is cached
-    |
-    */
-    /** @var int Cache time */
-    public $cache = 1;
-
-    /*
-    |--------------------------------------------------------------------------
-    | Query for getting report result
-    |--------------------------------------------------------------------------
-    |
-    | How long the report result is cached
-    |
-    */
-    /** @var  Builder */
-    public $query;
-
-    /*
-    |--------------------------------------------------------------------------
-    | results
-    |--------------------------------------------------------------------------
-    |
-    | How long the report result is cached
-    |
-    */
-    /** @var  \Illuminate\Support\Collection Report result */
-    public $result;
-
-    /*
-    |--------------------------------------------------------------------------
-    | full text fields
-    |--------------------------------------------------------------------------
-    |
-    | Uses SQL Like % %
-    |
-    */
-    /** @var array */
-    public $fullTextFields = ['name', 'name_ext'];
-
-    /*
-    |--------------------------------------------------------------------------
-    | Common key based search fields
-    |--------------------------------------------------------------------------
-    |
-    | Uses SQL Like % %
-    |
-    */
-    /** @var array */
-    public $searchFields = ['name', 'name_ext'];
-
-    /*
-    |--------------------------------------------------------------------------
-    | Output file name
-    |--------------------------------------------------------------------------
-    |
-    | How long the report result is cached
-    |
-    */
-    /** @var string */
-    public $fileName;
-
 
     /**
      * Show report blank or filled with data if 'Run'
@@ -111,6 +22,10 @@ trait Output
      */
     public function output()
     {
+        if (isset($this->autoRun) && $this->autoRun == true) {
+            request()->merge(['submit' => 'Run']);
+        }
+
         if (request('submit') != 'Run') {
             return $this->html($type = 'blank');
         }

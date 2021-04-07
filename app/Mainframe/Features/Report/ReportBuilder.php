@@ -14,101 +14,33 @@ class ReportBuilder extends BaseController
 
     use Filterable, Columns, Query, Output;
 
-    /*
-    |--------------------------------------------------------------------------
-    | Data Source
-    |--------------------------------------------------------------------------
-    |
-    | Source of data. This can be a string that represents a table or SQL view
-    | Or, this can be a model name.
-    |
-    */
     /** @var  \Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Model DB Table/View names */
     public $dataSource;
 
-    /*
-    |--------------------------------------------------------------------------
-    | Base Directory for view/blade
-    |--------------------------------------------------------------------------
-    |
-    | All view files of a report is stored under a single directory.
-    |
-    */
     /** @var  string Directory location of the report blade templates */
     public $path = 'mainframe.layouts.report';
 
-    /*
-    |--------------------------------------------------------------------------
-    | Query cache time
-    |--------------------------------------------------------------------------
-    |
-    | How long the report result is cached
-    |
-    */
     /** @var int Cache time */
     public $cache = 1;
 
-    /*
-    |--------------------------------------------------------------------------
-    | Query for getting report result
-    |--------------------------------------------------------------------------
-    |
-    | How long the report result is cached
-    |
-    */
     /** @var  Builder */
     public $query;
 
-    /*
-    |--------------------------------------------------------------------------
-    | results
-    |--------------------------------------------------------------------------
-    |
-    | How long the report result is cached
-    |
-    */
     /** @var  \Illuminate\Support\Collection Report result */
     public $result;
 
-    /*
-    |--------------------------------------------------------------------------
-    | full text fields
-    |--------------------------------------------------------------------------
-    |
-    | Uses SQL Like % %
-    |
-    */
     /** @var array */
     public $fullTextFields = ['name', 'name_ext'];
 
-    /*
-    |--------------------------------------------------------------------------
-    | Common key based search fields
-    |--------------------------------------------------------------------------
-    |
-    | Uses SQL Like % %
-    |
-    */
     /** @var array */
     public $searchFields = ['name', 'name_ext'];
 
-    /*
-    |--------------------------------------------------------------------------
-    | Output file name
-    |--------------------------------------------------------------------------
-    |
-    | How long the report result is cached
-    |
-    */
     /** @var string */
     public $fileName;
 
-    /*
-    |--------------------------------------------------------------------------
-    | User executing the report
-    |--------------------------------------------------------------------------
-    |
-    */
+    /** @var bool */
+    public $autoRun = false;
+
     /** @var \App\User */
     public $user;
 

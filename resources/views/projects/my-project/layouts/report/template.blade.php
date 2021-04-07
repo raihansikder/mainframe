@@ -7,6 +7,9 @@
         .nav-tabs-custom > .tab-content {
             padding: 0;
         }
+        .content {
+            padding-top: 0
+        }
     </style>
 @endsection
 

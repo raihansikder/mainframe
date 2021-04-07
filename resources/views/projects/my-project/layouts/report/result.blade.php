@@ -8,25 +8,16 @@
  * @var \App\Projects\MyProject\Features\Report\ReportViewProcessor $view
  */
 ?>
-@section('css')
-    @parent
-    <style>
-        .content {
-            padding-top: 0
-        }
-    </style>
-@endsection
 
-@include($path.'.includes.init-functions')
+@include($view->initFunctionsPath())
 
 @section('content')
-    @include($path.'.includes.filters')
-
+    @include($view->filterPath())
     @if(Request::get('submit')==='Run' && isset($result))
-
         Total {{$total}} items found.
         <div class="clearfix"></div>
         <div class="table-responsive">
+
             @if(count($result))
                 <table class="table table-condensed" id="report-table">
                     <thead>
@@ -39,10 +30,10 @@
                     <tbody>
                     @foreach ($result as $row)
                         <tr>
-                            @foreach ($selectedColumns as $col)
+                            @foreach ($selectedColumns as $column)
                                 <td>
-                                    @if(isset($row->$col))
-                                        {!! $view->customCell($col, $row, $row->$col, $module->name ) !!}
+                                    @if(isset($row->$column))
+                                        {!! $view->cell($column, $row) !!}
                                     @endif
                                 </td>
                             @endforeach

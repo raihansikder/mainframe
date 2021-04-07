@@ -8,17 +8,6 @@
  * @var string $path
  */
 ?>
-
-@section('css')
-    @parent
-    <!--suppress CssUnusedSymbol -->
-    <style>
-        .content {
-            padding-top: 0
-        }
-    </style>
-@endsection
-
 @include($view->initFunctionsPath())
 
 @section('content')
