@@ -3,6 +3,7 @@
 namespace App\Mainframe\Features\Report\Traits;
 
 use App\Mainframe\Features\Report\ReportViewProcessor;
+use App\Mainframe\Helpers\Convert;
 use View;
 use PhpOffice\PhpSpreadsheet\Writer\Csv;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
@@ -23,7 +24,7 @@ trait Output
             return $this->html($type = 'blank');
         }
 
-        if (! $this->isValid()) {
+        if (!$this->isValid()) {
             return $this->responseInvalid();
         }
 
@@ -80,7 +81,7 @@ trait Output
     {
         $path = $this->path.'.result-print';
 
-        if (! View::exists($path)) {
+        if (!View::exists($path)) {
             $path = 'mainframe.layouts.report.result-print';
         }
 
@@ -150,8 +151,8 @@ trait Output
     {
 
         $vars = [
-            'path'          => $this->path,
-            'dataSource'    => $this->dataSource,
+            'path' => $this->path,
+            'dataSource' => $this->dataSource,
             'columnOptions' => $this->columnOptions(),
         ];
 
@@ -159,9 +160,9 @@ trait Output
         if ($type !== 'blank') {
             $vars = array_merge($vars, [
                 'selectedColumns' => $this->mutateSelectedColumns(),
-                'aliasColumns'    => $this->mutateAliasColumns(),
-                'total'           => $this->total(),
-                'result'          => $this->mutateResult(),
+                'aliasColumns' => $this->mutateAliasColumns(),
+                'total' => $this->total(),
+                'result' => $this->mutateResult(),
             ]);
         }
 
@@ -172,6 +173,10 @@ trait Output
         if ($type == 'print') {
             $path = $this->resultPrintPath();
         }
+        request()->merge([
+            'columns_csv' => Convert::arrayToCsv($this->selectedColumns()),
+            'alias_columns_csv' => Convert::arrayToCsv($this->aliasColumns()),
+        ]);
 
         return $this->view($path)->with($vars);
     }

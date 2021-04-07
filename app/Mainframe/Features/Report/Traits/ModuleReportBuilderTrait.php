@@ -16,7 +16,7 @@ trait ModuleReportBuilderTrait
     public function transformRequest()
     {
         # Hide inactive items for non-admins
-        if (! $this->user->isSuperUser()) {
+        if (!$this->user->isSuperUser()) {
             request()->merge(['is_active' => 1,]);
         }
     }
@@ -33,6 +33,25 @@ trait ModuleReportBuilderTrait
             return $this->model->with(explode(',', request('with')));
         }
 
+        // Source is a table
+        if (is_string($this->dataSource)) {
+            return \DB::table($this->dataSource);
+        }
+
+        if ($this->dataSource) {
+            return $this->dataSource;
+        }
+
         return $this->model;
+    }
+
+    /**
+     * @param $module
+     */
+    public function setModule($module)
+    {
+        $this->module = $module;
+        $this->model = $this->module->modelInstance();
+        $this->dataSource = $this->model;
     }
 }

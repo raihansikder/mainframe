@@ -32,6 +32,7 @@ trait Query
         $query = $this->groupBy($query);
         $query = $this->orderBy($query);
 
+        // dd($query->toSql());
         return $query;
     }
 
@@ -165,7 +166,8 @@ trait Query
     public function includeDefaultSelectedColumns($keys = [])
     {
         foreach ($this->defaultSelectedColumns() as $col) {
-            if (!in_array($col, $keys) && in_array($col, $this->dataSourceColumns())) {
+            // if (!in_array($col, $keys) && in_array($col, $this->dataSourceColumns())) {
+            if (!in_array($col, $keys)) {
                 $keys[] = $col;
             }
         }

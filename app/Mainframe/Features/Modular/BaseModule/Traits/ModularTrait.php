@@ -216,11 +216,11 @@ trait ModularTrait
      */
     public function hasTransition($field, $from, $to)
     {
-        if (! is_array($from)) {
+        if (!is_array($from)) {
             $from = [$from];
         }
 
-        if (! is_array($to)) {
+        if (!is_array($to)) {
             $to = [$to];
         }
 
@@ -241,7 +241,7 @@ trait ModularTrait
     public function hasTransitionFrom($field, $from)
     {
 
-        if (! is_array($from)) {
+        if (!is_array($from)) {
             $from = [$from];
         }
 
@@ -262,7 +262,7 @@ trait ModularTrait
     public function hasTransitionTo($field, $to)
     {
 
-        if (! is_array($to)) {
+        if (!is_array($to)) {
             $to = [$to];
         }
 
@@ -444,7 +444,7 @@ trait ModularTrait
      */
     public function isCreating()
     {
-        return ! $this->isUpdating();
+        return !$this->isUpdating();
     }
 
     /**
@@ -673,9 +673,10 @@ trait ModularTrait
      */
     public function editUrl()
     {
-        if($this->isCreated()) {
-            return route($this->module()->route_name.'.edit',$this->id);
+        if ($this->isCreated()) {
+            return route($this->module()->route_name.'.edit', $this->id);
         }
+
         return null;
     }
 

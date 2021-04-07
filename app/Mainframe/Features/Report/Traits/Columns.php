@@ -52,6 +52,9 @@ trait Columns
         if (is_string($this->dataSource)) {
             return Mf::tableColumns($this->dataSource);
         }
+        if (isset($this->model)) {
+            return $this->model->tableColumns();
+        }
 
         return [];
     }
