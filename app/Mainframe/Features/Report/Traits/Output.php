@@ -22,13 +22,6 @@ trait Output
      */
     public function output()
     {
-        if (isset($this->autoRun) && $this->autoRun == true) {
-            request()->merge(['submit' => 'Run']);
-        }
-
-        if (request('submit') != 'Run') {
-            return $this->html($type = 'blank');
-        }
 
         if (!$this->isValid()) {
             return $this->responseInvalid();
@@ -50,7 +43,23 @@ trait Output
             return $this->html($type = 'print');
         }
 
+        if (request('submit') != 'Run') {
+            return $this->html($type = 'blank');
+        }
+
         return $this->html();
+    }
+
+    /**
+     * Run even if no submit=Run in URL
+     *
+     * @return $this
+     */
+    public function enableAutoRun()
+    {
+        request()->merge(['submit' => 'Run']);
+
+        return $this;
     }
 
     /**
