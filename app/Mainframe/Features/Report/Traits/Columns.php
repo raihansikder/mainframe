@@ -84,6 +84,17 @@ trait Columns
     }
 
     /**
+     * Check if selected columns have a key
+     *
+     * @param $column
+     * @return bool
+     */
+    public function selectedColumnsHas($column)
+    {
+        return in_array($column, $this->selectedColumns());
+    }
+
+    /**
      * Change selectedColumns array before passing to the view file.
      * For complex group by you may need additional columns
      *
