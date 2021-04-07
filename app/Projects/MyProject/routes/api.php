@@ -55,7 +55,7 @@ Route::prefix($version)->middleware($middlewares)->group(function () use ($modul
     |-----------------------------------------*/
     Route::get('setting/{name}', 'Api\ApiController@getSetting')->name("{$namePrefix}.setting");
     Route::get('data/{block}', 'DataBlockController@show')->name($namePrefix.'.data-block.show');
-    Route::get('reports/{report}', 'ReportController@show')->name($namePrefix.'.report.show');
+    Route::get('report/{report}', 'ReportController@show')->name($namePrefix.'.report.show');
 
     /*-----------------------------------------
     | User API (Requires bearer token)
