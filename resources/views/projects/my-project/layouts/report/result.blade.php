@@ -20,10 +20,10 @@
 
             @if(count($result))
                 <table class="table table-condensed" id="report-table">
-                    <thead>
+                    <thead class="bg-gray-light">
                     <tr>
-                        @foreach ($aliasColumns as $column)
-                            <th>{{$column}}</th>
+                        @foreach ($aliasColumns as $alias)
+                            <th>{!! $view->column($loop->index) !!}</th>
                         @endforeach
                     </tr>
                     </thead>

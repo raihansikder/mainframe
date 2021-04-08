@@ -13,6 +13,7 @@ $saveUrl = route('reports.create')
 ?>
 <div class="btn-group pull-left ">
     {{--  Submit button  --}}
+
     <button type="submit" name="submit" class="btn btn-success" value="Run" id="run-report">Run Report</button>
 
     @if(request('submit'))
@@ -34,6 +35,8 @@ $saveUrl = route('reports.create')
             <a href="{{$saveUrl}}" target="_blank" class="btn btn-default">
                 <i class="fa fa-save" title="Save Report"></i></a>
         @endif
+
+        <a class="btn btn-default" href="{{url()->current()}}">Reset</a>
 
     @endif
 </div>

@@ -2,10 +2,14 @@
 
 namespace App\Mainframe\Features\Report\Traits;
 
-use App\Mainframe\Modules\Reports\Report;
 use App\Mainframe\Features\Report\ReportBuilder;
+use App\Mainframe\Features\Report\ReportViewProcessor;
+use App\Mainframe\Helpers\Convert;
+use App\Mainframe\Modules\Reports\Report;
+use Illuminate\Support\Str;
 use URL;
 
+/** @mixin ReportViewProcessor $this */
 trait ReportViewProcessorTrait
 {
 
@@ -122,7 +126,7 @@ trait ReportViewProcessorTrait
      */
     public function elementViewUrl($row)
     {
-        if (!isset($this->report->module)) {
+        if (!$this->report->module) {
             return null;
         }
 
@@ -173,6 +177,67 @@ trait ReportViewProcessorTrait
     public function showSaveReportBtn()
     {
         return $this->user->can('create', Report::class);
+    }
+
+    /**
+     * @param $index
+     * @return string
+     */
+    public function column($index)
+    {
+        $report = $this->report;
+
+        $alias = $report->aliasColumns()[$index];
+        $column = $report->selectedColumns()[$index];
+
+        $orderBy = request('order_by');
+        $linkCss = '';
+
+        if ($orderBy) {
+
+            if (Str::startsWith($orderBy, $column.' ASC')) {
+                $orderBy = str_replace($column.' ASC', $column.' DESC', $orderBy);
+                $icon = $this->sortAscIcon();
+                $linkCss = 'btn btn-xs bg-red';
+            } elseif (Str::startsWith($orderBy, $column.' DESC')) {
+                $orderBy = str_replace($column.' DESC', $column.' ASC', $orderBy);
+                $icon = $this->sortDescIcon();
+                $linkCss = 'btn btn-xs bg-red';
+            } else {
+                // $orderBy .= ','.$column.' DESC'; // For multiple sorting
+                $orderBy = $column.' ASC';
+                $icon = $this->sortDefaultIcon();
+            }
+        } else {
+            $orderBy = $column.' ASC';
+            $icon = $this->sortDefaultIcon();
+        }
+
+        $requests = request()->all();
+        $requests['order_by'] = $orderBy;
+        $url = $this->buildUrl($requests);
+
+        return $alias." <a class='{$linkCss}' href='{$url}'>{$icon}</a>";
+    }
+
+    public function sortAscIcon()
+    {
+        return "<i class='glyphicon glyphicon-sort-by-attributes'></i>";
+    }
+
+    public function sortDescIcon()
+    {
+        return "<i class='glyphicon glyphicon-sort-by-attributes-alt'></i>";
+    }
+
+    public function sortDefaultIcon()
+    {
+        return "<i class='glyphicon glyphicon-sort'></i>";
+    }
+
+    public function buildUrl($params)
+    {
+        return URL::current().'?'.http_build_query($params);
     }
 
 }

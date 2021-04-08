@@ -2,6 +2,8 @@
 
 namespace App\Mainframe\Features\Report\Traits;
 
+use App\Mainframe\Helpers\Convert;
+
 trait ModuleReportBuilderTrait
 {
     /** @var \App\Mainframe\Modules\Modules\Module */
@@ -54,4 +56,31 @@ trait ModuleReportBuilderTrait
         $this->model = $this->module->modelInstance();
         $this->dataSource = $this->model;
     }
+
+    /**
+     * Default select id column to link to module details page
+     *
+     * @return string[]
+     */
+    public function defaultSelectedColumns()
+    {
+        return ['id'];
+    }
+
+    /**
+     * By default show a limited number of columns in module report
+     *
+     * @return array|string[]
+     */
+    public function selectedColumns()
+    {
+        if (request('columns_csv')) {
+            return Convert::csvToArray(request('columns_csv'));
+        }
+
+        return [
+            'id', 'name', 'created_at', 'updated_at',
+        ];
+    }
+
 }

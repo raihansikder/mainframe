@@ -149,7 +149,7 @@ trait Columns
 
         // If alias count is more than selection then trim
         if (count($keys) > count($this->selectedColumns())) {
-            $keys = array_slice($keys, count($this->selectedColumns()));
+            $keys = array_slice($keys, 0, count($this->selectedColumns()));
         }
 
         return $keys;
