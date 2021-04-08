@@ -39,6 +39,7 @@ $scriptPaths = [
     // 'mainframe/templates/admin/plugins/bootstrap-slider/bootstrap-slider.js',
     'mainframe/js/vue.min.js',
     'mainframe/js/axios.min.js',
+    'mainframe/js/minlodash.js',
     // // 'mainframe/js/plugins/date/date.js',
     /**
      * Additional JS added by mainframe.
