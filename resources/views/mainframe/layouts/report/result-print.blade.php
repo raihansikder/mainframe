@@ -7,7 +7,8 @@
  * @var string $path
  */
 ?>
-@include($path.'.includes.init-functions')
+@include($view->initFunctionsPath())
+
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-US">
 <head>
     <title>Report</title>
@@ -19,6 +20,7 @@
     <input id="btnPrint" type="button" value="Print this page" onclick="printPage()"/>
 </div>
 <div style="clear: both"></div>
+
 @section('content')
     @if(request('submit')=='Run' && isset($result))
 

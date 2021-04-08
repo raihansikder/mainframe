@@ -189,6 +189,10 @@ trait ReportViewProcessorTrait
             $route = $this->elementViewUrl($row);
         }
 
+        if (!in_array($this->report->outputType(), ['html'])) {
+            return $newValue;
+        }
+
         // Add link
         if (in_array($column, ['id', 'name']) && $route) {
             $newValue = "<a href='{$route}'>".$row->$column."</a>";

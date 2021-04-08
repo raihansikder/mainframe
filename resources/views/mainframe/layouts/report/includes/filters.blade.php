@@ -44,7 +44,4 @@
 
 @section('js')
     @parent
-    <script>
-        $('select#status').select2();
-    </script>
 @endsection

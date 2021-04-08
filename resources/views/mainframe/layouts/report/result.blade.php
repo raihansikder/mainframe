@@ -16,6 +16,7 @@
     @include($view->filterPath())
 
     @if(request('submit')=='Run' && isset($result))
+
         Total {{$total}} items found.
         <div class="clearfix"></div>
         <div class="table-responsive">

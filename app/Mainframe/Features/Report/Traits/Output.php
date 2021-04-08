@@ -334,7 +334,7 @@ trait Output
             return 'json';
         }
 
-        return request('ret');
+        return request('ret') ?? 'html';
     }
 
     /**
