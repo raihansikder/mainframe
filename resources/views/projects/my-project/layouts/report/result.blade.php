@@ -1,4 +1,4 @@
-@extends('projects.my-project.layouts.report.template')
+@include('mainframe.layouts.report.result')
 <?php
 /**
  * @var \Illuminate\Database\Query\Builder $dataSource
@@ -8,45 +8,3 @@
  * @var \App\Projects\MyProject\Features\Report\ReportViewProcessor $view
  */
 ?>
-
-@include($view->initFunctionsPath())
-
-@section('content')
-    @include($view->filterPath())
-    @if(Request::get('submit')==='Run' && isset($result))
-        Total {{$total}} items found.
-        <div class="clearfix"></div>
-        <div class="table-responsive">
-
-            @if(count($result))
-                <table class="table table-condensed" id="report-table">
-                    <thead class="bg-gray-light">
-                    <tr>
-                        @foreach ($aliasColumns as $alias)
-                            <th>{!! $view->column($loop->index) !!}</th>
-                        @endforeach
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @foreach ($result as $row)
-                        <tr>
-                            @foreach ($selectedColumns as $column)
-                                <td>
-                                    @if(isset($row->$column))
-                                        {!! $view->cell($column, $row) !!}
-                                    @endif
-                                </td>
-                            @endforeach
-                        </tr>
-                    @endforeach
-                    </tbody>
-                </table>
-                {{ $result->setPath(URL::full())->links() ?? '' }}
-            @endif
-        </div>
-    @endif
-@endsection
-
-@section('js')
-    @parent
-@endsection

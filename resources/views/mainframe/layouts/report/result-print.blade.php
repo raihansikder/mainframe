@@ -20,7 +20,7 @@
 </div>
 <div style="clear: both"></div>
 @section('content')
-    @if(Request::get('submit')==='Run' && isset($result))
+    @if(request('submit')=='Run' && isset($result))
 
         Total {{$total}} items found.
         <div class="clearfix"></div>

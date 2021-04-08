@@ -27,6 +27,8 @@
                 <i class="fa fa-save" title="Save Report"></i></a>
         @endif
 
+        <a class="btn btn-default" href="{{url()->current()}}">Reset</a>
+
     @endif
 </div>
 

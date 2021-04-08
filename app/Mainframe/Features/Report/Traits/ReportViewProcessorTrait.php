@@ -2,9 +2,7 @@
 
 namespace App\Mainframe\Features\Report\Traits;
 
-use App\Mainframe\Features\Report\ReportBuilder;
 use App\Mainframe\Features\Report\ReportViewProcessor;
-use App\Mainframe\Helpers\Convert;
 use App\Mainframe\Modules\Reports\Report;
 use Illuminate\Support\Str;
 use URL;
@@ -27,7 +25,24 @@ trait ReportViewProcessorTrait
      */
     public function filterPath()
     {
-        return $this->report->filterPath ?? $this->report->path.'.includes.filters';
+
+        if (isset($this->report->filterPath)) {
+            return $this->report->filterPath;
+        }
+
+        $paths = [
+            $this->report->path.'.filters',
+            $this->report->path.'.includes.filters',
+            projectResources().'.layouts.report.includes.filter',
+        ];
+
+        foreach ($paths as $path) {
+            if (view()->exists($path)) {
+                return $path;
+            }
+        }
+
+        return 'mainframe.layouts.report.includes.filter';
     }
 
     /**
@@ -37,7 +52,75 @@ trait ReportViewProcessorTrait
      */
     public function initFunctionsPath()
     {
-        return $this->report->initFunctionsPath ?? $this->report->path.'.includes.init-functions';
+        if (isset($this->report->initFunctionsPath)) {
+            return $this->report->initFunctionsPath;
+        }
+
+        $paths = [
+            $this->report->path.'.init-functions',
+            $this->report->path.'.includes.init-functions',
+            projectResources().'.layouts.report.includes.init-functions',
+        ];
+
+        foreach ($paths as $path) {
+            if (view()->exists($path)) {
+                return $path;
+            }
+        }
+
+        return 'mainframe.layouts.report.includes.init-functions';
+    }
+
+    /**
+     * Path for functions blade
+     *
+     * @return string
+     */
+    public function ctaPath()
+    {
+        if (isset($this->report->ctaPath)) {
+            return $this->report->ctaPath;
+        }
+
+        $paths = [
+            $this->report->path.'.cta',
+            $this->report->path.'.includes.cta',
+            projectResources().'.layouts.report.includes.cta',
+        ];
+
+        foreach ($paths as $path) {
+            if (view()->exists($path)) {
+                return $path;
+            }
+        }
+
+        return 'mainframe.layouts.report.includes.cta';
+    }
+
+    /**
+     * Path for functions blade
+     *
+     * @return string
+     */
+    public function advancedFilterPath()
+    {
+        if (isset($this->report->ctaPath)) {
+            return $this->report->ctaPath;
+        }
+
+        $paths = [
+            $this->report->path.'.advanced',
+            $this->report->path.'.includes.advanced',
+            projectResources().'.layouts.report.includes.advanced',
+        ];
+
+        foreach ($paths as $path) {
+            if (view()->exists($path)) {
+                return $path;
+            }
+        }
+
+        return 'mainframe.layouts.report.includes.advanced';
     }
 
     /**
@@ -144,7 +227,10 @@ trait ReportViewProcessorTrait
      */
     public function excelDownloadUrl()
     {
-        return URL::full()."&ret=excel";
+        $requests = request()->all();
+        $requests['ret'] = 'excel';
+
+        return $this->buildUrl($requests);
     }
 
     /**
@@ -154,7 +240,10 @@ trait ReportViewProcessorTrait
      */
     public function printUrl()
     {
-        return URL::full()."&ret=print";
+        $requests = request()->all();
+        $requests['ret'] = 'print';
+
+        return $this->buildUrl($requests);
     }
 
     /**
@@ -164,9 +253,13 @@ trait ReportViewProcessorTrait
      */
     public function saveUrl()
     {
-        return route('reports.create')
-            .'?title='.request('report_name')
-            .'&parameters='.urlencode(str_replace(route('home'), '', URL::full()));
+        $url = route('reports.create');
+        $params = [
+            'title' => request('report_name'),
+            'parameters' => urlencode(str_replace(route('home'), '', URL::full())),
+        ];
+
+        return $url.'?'.http_build_query($params);
     }
 
     /**

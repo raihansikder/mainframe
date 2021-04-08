@@ -87,7 +87,23 @@ trait Output
      */
     public function resultViewPath()
     {
-        return $this->path.'.result';
+        if (isset($this->resultViewPath)) {
+            return $this->resultViewPath;
+        }
+
+        $paths = [
+            $this->path.'.result',
+            projectResources().'.layouts.report.result',
+        ];
+
+        foreach ($paths as $path) {
+            if (view()->exists($path)) {
+                return $path;
+            }
+        }
+
+        return 'mainframe.layouts.report.result';
+
     }
 
     /**
@@ -97,13 +113,24 @@ trait Output
      */
     public function resultPrintPath()
     {
-        $path = $this->path.'.result-print';
 
-        if (!View::exists($path)) {
-            $path = 'mainframe.layouts.report.result-print';
+        if (isset($this->resultViewPath)) {
+            return $this->resultViewPath;
         }
 
-        return $path;
+        $paths = [
+            $this->path.'.result-print',
+            projectResources().'.layouts.report.result-print',
+        ];
+
+        foreach ($paths as $path) {
+            if (view()->exists($path)) {
+                return $path;
+            }
+        }
+
+        return 'mainframe.layouts.report.result-print';
+
     }
 
     /**

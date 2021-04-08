@@ -11,8 +11,11 @@
 @include($view->initFunctionsPath())
 
 @section('content')
+
+    {{-- Report top section with filter, CTA, column selections--}}
     @include($view->filterPath())
-    @if(Request::get('submit')==='Run' && isset($result))
+
+    @if(request('submit')=='Run' && isset($result))
         Total {{$total}} items found.
         <div class="clearfix"></div>
         <div class="table-responsive">
@@ -21,8 +24,8 @@
                 <table class="table table-condensed" id="report-table">
                     <thead>
                     <tr>
-                        @foreach ($aliasColumns as $column)
-                            <th>{{$column}}</th>
+                        @foreach ($aliasColumns as $alias)
+                            <th>{!! $view->column($loop->index) !!}</th>
                         @endforeach
                     </tr>
                     </thead>
