@@ -12,7 +12,7 @@ use Illuminate\Database\Query\Builder;
 class ReportBuilder extends BaseController
 {
 
-    use Filterable, Columns, Query, Output;
+    use Output, Query,  Filterable, Columns;
 
     /** @var  \Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Model DB Table/View names */
     public $dataSource;
@@ -38,11 +38,8 @@ class ReportBuilder extends BaseController
     /** @var string */
     public $fileName;
 
-    /** @var bool */
-    public $autoRun = false;
-
-    /** @var \App\User */
-    public $user;
+    // /** @var \App\User */
+    // public $user;
 
     /**
      * ReportBuilder constructor.

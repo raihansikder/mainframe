@@ -24,7 +24,7 @@ class SuperHeroViewProcessor extends BaseModuleViewProcessor
     // Note: See parent class for available functions
     /*
     |--------------------------------------------------------------------------
-    | Blade template locations
+    | Section: Blade template locations
     |--------------------------------------------------------------------------
     */
     // public function formPath($state = 'create') { }
@@ -33,7 +33,7 @@ class SuperHeroViewProcessor extends BaseModuleViewProcessor
 
     /*
     |--------------------------------------------------------------------------
-    | View Variables
+    | Section: View Variables
     |--------------------------------------------------------------------------
     */
     // public function varsCreate() { }
@@ -43,12 +43,18 @@ class SuperHeroViewProcessor extends BaseModuleViewProcessor
 
     /*
     |--------------------------------------------------------------------------
-    | Condition functions to show a section in view
+    | Section: Condition functions to show a section in view
     |--------------------------------------------------------------------------
     */
     // public function showFormCreateBtn() { }
     // public function showFormListBtn() { }
     // public function showReportLink() { }
     // public function showTenantSelector() { }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Section: Report related view helpers
+    |--------------------------------------------------------------------------
+    */
 
 }

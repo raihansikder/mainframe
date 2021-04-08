@@ -3,11 +3,13 @@
 namespace App\Mainframe\Features\Core;
 
 use App\Mainframe\Features\Modular\BaseModule\Traits\ViewProcessorTrait;
+use App\Mainframe\Features\Report\ReportBuilder;
+use App\Mainframe\Features\Report\Traits\ReportViewProcessorTrait;
 use App\Mainframe\Modules\Modules\Module;
 
 class ViewProcessor
 {
-    use ViewProcessorTrait;
+    use ViewProcessorTrait, ReportViewProcessorTrait;
 
     /** @var \App\User|null */
     public $user;
@@ -46,6 +48,14 @@ class ViewProcessor
 
     /** @var \App\Mainframe\Features\Datatable\Datatable */
     public $datatable;
+
+    /** @var ReportBuilder|mixed */
+    public $report;
+
+    /**
+     * @param  ReportBuilder|mixed  $report
+     * @return $this
+     */
 
     /**
      * MainframeBaseController constructor.

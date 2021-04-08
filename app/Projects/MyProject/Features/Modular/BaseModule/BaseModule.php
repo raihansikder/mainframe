@@ -2,7 +2,7 @@
 
 namespace App\Projects\MyProject\Features\Modular\BaseModule;
 
-use App\Mainframe\Features\Modular\BaseModule\BaseModule as MfBaseModule;
+use App\Mainframe\Features\Modular\BaseModule\BaseModule as MainframeBaseModule;
 
 /**
  * App\Projects\MyProject\Features\Modular\BaseModule\BaseModule
@@ -17,7 +17,7 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule as MfBaseModule;
  * @property-read \App\User $updater
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Uploads\Upload[] $uploads
  * @property-read int|null $uploads_count
- * @method static \Illuminate\Database\Eloquent\Builder|MfBaseModule active()
+ * @method static \Illuminate\Database\Eloquent\Builder|MainframeBaseModule active()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Features\Modular\BaseModule\BaseModule newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Features\Modular\BaseModule\BaseModule newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Projects\MyProject\Features\Modular\BaseModule\BaseModule query()
@@ -25,7 +25,7 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule as MfBaseModule;
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Changes\Change[] $changes
  * @property-read int|null $changes_count
  */
-class BaseModule extends MfBaseModule
+class BaseModule extends MainframeBaseModule
 {
 
 }

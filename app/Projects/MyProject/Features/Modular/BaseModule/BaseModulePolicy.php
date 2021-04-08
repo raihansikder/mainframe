@@ -5,9 +5,9 @@
 
 namespace App\Projects\MyProject\Features\Modular\BaseModule;
 
-use App\Mainframe\Features\Modular\BaseModule\BaseModulePolicy as MfBaseModulePolicy;
+use App\Mainframe\Features\Modular\BaseModule\BaseModulePolicy as MainframeBaseModulePolicy;
 
-class BaseModulePolicy extends MfBaseModulePolicy
+class BaseModulePolicy extends MainframeBaseModulePolicy
 {
     /**
      * Runs before any of the other checks.

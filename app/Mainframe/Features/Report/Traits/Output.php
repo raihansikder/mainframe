@@ -14,7 +14,6 @@ use PhpOffice\PhpSpreadsheet\Writer\Exception;
 /** @mixin \App\Mainframe\Features\Report\ReportBuilder $this */
 trait Output
 {
-
     /**
      * Show report blank or filled with data if 'Run'
      *
@@ -22,7 +21,6 @@ trait Output
      */
     public function output()
     {
-
         if (!$this->isValid()) {
             return $this->responseInvalid();
         }
@@ -42,6 +40,11 @@ trait Output
         if ($this->outputType() == 'print') {
             return $this->html($type = 'print');
         }
+
+        request()->merge([
+            'columns_csv' => Convert::arrayToCsv($this->selectedColumns()),
+            'alias_columns_csv' => Convert::arrayToCsv($this->aliasColumns()),
+        ]);
 
         if (request('submit') != 'Run') {
             return $this->html($type = 'blank');
@@ -156,15 +159,8 @@ trait Output
         return $this->excel($csv = true);
     }
 
-    /**
-     * Output as HTML
-     *
-     * @param  null  $type  blank|print|null
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function html($type = null)
+    public function viewVars($type = null)
     {
-
         $vars = [
             'path' => $this->path,
             'dataSource' => $this->dataSource,
@@ -184,16 +180,42 @@ trait Output
         $this->view = $this->viewProcessor();
         $vars['view'] = $this->view;
 
-        $path = $this->resultViewPath();
-        if ($type == 'print') {
-            $path = $this->resultPrintPath();
-        }
-        request()->merge([
-            'columns_csv' => Convert::arrayToCsv($this->selectedColumns()),
-            'alias_columns_csv' => Convert::arrayToCsv($this->aliasColumns()),
-        ]);
+        return array_merge($vars, $this->customViewVars());
+    }
 
-        return $this->view($path)->with($vars);
+    /**
+     * Additional view variables to pass to view blade
+     *
+     * @return array
+     */
+    public function customViewVars()
+    {
+        // $var = ['variable'=>'value'];
+        // return $var;
+
+        return [];
+    }
+
+    public function viewPath($type)
+    {
+        if ($type == 'print') {
+            return $this->resultPrintPath();
+        }
+
+        return $this->resultViewPath();
+
+    }
+
+    /**
+     * Output as HTML
+     *
+     * @param  null  $type  blank|print|null
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function html($type = null)
+    {
+        return $this->view($this->viewPath($type))
+            ->with($this->viewVars($type));
     }
 
     /**

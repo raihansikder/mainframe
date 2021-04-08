@@ -22,8 +22,8 @@
                 <table class="table table-condensed" id="report-table">
                     <thead>
                     <tr>
-                        @foreach ($aliasColumns as $col)
-                            <th>{{$col}}</th>
+                        @foreach ($aliasColumns as $column)
+                            <th>{{$column}}</th>
                         @endforeach
                     </tr>
                     </thead>

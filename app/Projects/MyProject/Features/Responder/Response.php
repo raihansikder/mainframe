@@ -2,9 +2,9 @@
 
 namespace App\Projects\MyProject\Features\Responder;
 
-use App\Mainframe\Features\Responder\Response as MfResponse;
+use App\Mainframe\Features\Responder\Response as MainframeResponse;
 
-class Response extends MfResponse
+class Response extends MainframeResponse
 {
 
 }

@@ -1,9 +1,9 @@
 <?php
 namespace App\Projects\MyProject\Features\Modular\BaseModule;
 
-use App\Mainframe\Features\Modular\BaseModule\BaseModuleObserver as MfBaseModuleObserver;
+use App\Mainframe\Features\Modular\BaseModule\BaseModuleObserver as MainframeBaseModuleObserver;
 
-class BaseModuleObserver extends MfBaseModuleObserver
+class BaseModuleObserver extends MainframeBaseModuleObserver
 {
 
 }

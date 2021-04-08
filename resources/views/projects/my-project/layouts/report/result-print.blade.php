@@ -18,6 +18,7 @@
 <div style="width: 150px;float: left; font-size: 14px">
     <input id="btnPrint" type="button" value="Print this page" onclick="printPage()"/>
 </div>
+<div style="clear: both"></div>
 @section('content')
     @if(Request::get('submit')==='Run' && isset($result))
 
@@ -28,18 +29,18 @@
                 <table class="table table-condensed" id="report-table">
                     <thead>
                     <tr>
-                        @foreach ($aliasColumns as $col)
-                            <th>{{$col}}</th>
+                        @foreach ($aliasColumns as $column)
+                            <th>{{$column}}</th>
                         @endforeach
                     </tr>
                     </thead>
                     <tbody>
                     @foreach ($result as $row)
                         <tr>
-                            @foreach ($selectedColumns as $col)
+                            @foreach ($selectedColumns as $column)
                                 <td>
-                                    @if(isset($row->$col))
-                                        {!! $view->customCell($col, $row, $row->$col, $module->name ) !!}
+                                    @if(isset($row->$column))
+                                        {!! $view->cell($column, $row) !!}
                                     @endif
                                 </td>
                             @endforeach

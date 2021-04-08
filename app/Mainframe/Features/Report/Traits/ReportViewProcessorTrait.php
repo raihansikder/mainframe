@@ -3,15 +3,34 @@
 namespace App\Mainframe\Features\Report\Traits;
 
 use App\Mainframe\Modules\Reports\Report;
+use App\Mainframe\Features\Report\ReportBuilder;
 use URL;
 
 trait ReportViewProcessorTrait
 {
+
+    public function setReport($report)
+    {
+        $this->report = $report;
+
+        return $this;
+    }
+
+    /**
+     * Path for filter blade
+     *
+     * @return string
+     */
     public function filterPath()
     {
         return $this->report->filterPath ?? $this->report->path.'.includes.filters';
     }
 
+    /**
+     * Path for functions blade
+     *
+     * @return string
+     */
     public function initFunctionsPath()
     {
         return $this->report->initFunctionsPath ?? $this->report->path.'.includes.init-functions';
@@ -25,6 +44,7 @@ trait ReportViewProcessorTrait
      * @param  string  $value
      * @param  string|null  $moduleName
      * @return string|null
+     * @deprecated use cell()
      */
     public function transformRow($column, $row, $value, $moduleName = null)
     {
@@ -87,9 +107,19 @@ trait ReportViewProcessorTrait
             $newValue = "<a href='{$route}'>".$row->$column."</a>";
         }
 
+        /*---------------------------------
+        | Additional logic
+        |---------------------------------*/
+
         return $newValue;
     }
 
+    /**
+     * Link to module element
+     *
+     * @param $row
+     * @return string|null
+     */
     public function elementViewUrl($row)
     {
         if (!isset($this->report->module)) {
@@ -103,16 +133,31 @@ trait ReportViewProcessorTrait
         return route($this->report->module->name.'.show', $row->id);
     }
 
+    /**
+     * Excel download URL
+     *
+     * @return string
+     */
     public function excelDownloadUrl()
     {
         return URL::full()."&ret=excel";
     }
 
+    /**
+     * Report print URL
+     *
+     * @return string
+     */
     public function printUrl()
     {
         return URL::full()."&ret=print";
     }
 
+    /**
+     * Save report URL
+     *
+     * @return string
+     */
     public function saveUrl()
     {
         return route('reports.create')
@@ -120,6 +165,11 @@ trait ReportViewProcessorTrait
             .'&parameters='.urlencode(str_replace(route('home'), '', URL::full()));
     }
 
+    /**
+     * Save permission
+     *
+     * @return mixed
+     */
     public function showSaveReportBtn()
     {
         return $this->user->can('create', Report::class);
