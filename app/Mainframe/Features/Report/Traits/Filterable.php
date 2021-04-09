@@ -348,7 +348,6 @@ trait Filterable
      */
     public function columnIsFullText($column)
     {
-
         return in_array($column, $this->getFullTextFields());
     }
 

@@ -12,7 +12,7 @@ use Illuminate\Database\Query\Builder;
 class ReportBuilder extends BaseController
 {
 
-    use Output, Query,  Filterable, Columns;
+    use Output, Query, Filterable, Columns;
 
     /** @var  \Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Model DB Table/View names */
     public $dataSource;
@@ -36,7 +36,13 @@ class ReportBuilder extends BaseController
     public $searchFields = ['name', 'name_ext'];
 
     /** @var string */
-    public $fileName;
+    public $downloadFileName;
+
+    /** @var string */
+    public $filterPath;
+
+    /** @var string */
+    public $initFunctionsPath;
 
     // /** @var \App\User */
     // public $user;

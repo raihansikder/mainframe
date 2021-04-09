@@ -20,9 +20,11 @@ trait Query
     public function resultQuery()
     {
         $query = $this->queryDataSource();
+
         if (count($this->querySelectColumns())) {
-            $query = $query->select($this->querySelectColumns());
+            $query->select($this->querySelectColumns());
         }
+
         $query = $this->filter($query);
         // Inject tenant context.
         if ($this->user->ofTenant() && $this->hasTenantContext()) {
