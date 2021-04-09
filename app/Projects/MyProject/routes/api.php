@@ -62,7 +62,7 @@ Route::prefix($version)->middleware($middlewares)->group(function () use ($modul
     |-----------------------------------------*/
     Route::middleware(['bearer-token'])->group(function () use ($modules, $namePrefix) {
 
-        Route::get('/', 'HomeController@index')->name('home')->middleware(['verified'])->name($namePrefix.'.home');
+        Route::get('/', 'HomeController@index')->middleware(['verified'])->name($namePrefix.'.home');
 
         // APIs with 'user' prefix
         Route::prefix('user')->group(function () use ($modules, $namePrefix) {
