@@ -24,12 +24,24 @@ trait ReportControllerTrait
         /** @var ReportBuilder $report */
         $report = new $class;
 
+        if($this->permissionKeyExists($name)){
+            if(!$this->user->can($name)){
+                return $this->permissionDenied();
+            }
+        }
+
         return $report->output();
+
     }
 
     public function resolveClass($name)
     {
         return $this->dir.Str::ucfirst(Str::camel($name));
+    }
+
+    public function permissionKeyExists($name)
+    {
+        return config('mainframe.permissions.custom.reports.'.$name);
     }
 
 }

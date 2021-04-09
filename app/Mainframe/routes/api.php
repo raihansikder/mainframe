@@ -61,7 +61,7 @@ Route::prefix("core/{$version}")->middleware($middlewares)->group(function () us
     Route::get('setting/{name}', 'Api\ApiController@getSetting')->name("{$namePrefix}.setting");
     // DataBlock - Get a data-block from key
     Route::get('data/{block}', 'DataBlockController@show')->name($namePrefix.'.data-block.show');
-    Route::get('report/{report}', 'ReportController@show')->name('report.show');
+    Route::get('report/{report}', 'ReportController@show')->name('report');
 
     /*-----------------------------------------
     | User API (Requires bearer token)
