@@ -1,13 +1,15 @@
 <?php
 /**
- * @var \Illuminate\Database\Query\Builder $dataSource
+ * @var \App\Mainframe\Features\Report\ReportBuilder $report
+ * @var \App\Mainframe\Features\Report\ReportViewProcessor $view
+ * @var array $columnOptions
+ * @var array $selectedColumns
+ * @var array $aliasColumns
  * @var \Illuminate\Pagination\LengthAwarePaginator $result
  * @var int $total Total number of rows returned
- * @var \App\Mainframe\Features\Report\ReportViewProcessor $view
- * @var string $path
  */
 ?>
-@include($view->initFunctionsPath())
+@include($report->initFunctionsPath())
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-US">
 <head>
@@ -16,9 +18,7 @@
     <meta charset="UTF-8"/>
 </head>
 <body lang=EN-US>
-<div style="width: 150px;float: left; font-size: 14px">
-    <input id="btnPrint" type="button" value="Print this page" onclick="printPage()"/>
-</div>
+@include('mainframe.layouts.default.includes.print-btn')
 <div style="clear: both"></div>
 
 @section('content')
@@ -42,7 +42,7 @@
                             @foreach ($selectedColumns as $column)
                                 <td>
                                     @if(isset($row->$column))
-                                        {!! $view->cell($column, $row) !!}
+                                        {!! $report->cell($column, $row) !!}
                                     @endif
                                 </td>
                             @endforeach
@@ -57,12 +57,4 @@
 @show
 </body>
 {{-- JS --}}
-<script type="text/javascript">
-    function printPage() {
-        var printButton = document.getElementById("btnPrint");
-        printButton.style.visibility = 'hidden';
-        window.print();
-        printButton.style.visibility = 'visible';
-    }
-</script>
 </html>

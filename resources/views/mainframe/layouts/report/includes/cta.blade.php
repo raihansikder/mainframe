@@ -1,7 +1,11 @@
 <?php
 /**
- * @var \App\Mainframe\Modules\Modules\Module $module
+ * @var \App\Mainframe\Features\Report\ReportBuilder $report
+ * @var \Illuminate\Database\Query\Builder $dataSource
+ * @var \Illuminate\Pagination\LengthAwarePaginator $result
+ * @var int $total Total number of rows returned
  * @var \App\Mainframe\Features\Report\ReportViewProcessor $view
+ * @var string $path
  */
 ?>
 <div class="btn-group pull-left ">

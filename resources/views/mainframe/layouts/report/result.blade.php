@@ -1,19 +1,21 @@
 @extends('mainframe.layouts.report.template')
 <?php
 /**
- * @var \Illuminate\Database\Query\Builder $dataSource
+ * @var \App\Mainframe\Features\Report\ReportBuilder $report
+ * @var \App\Mainframe\Features\Report\ReportViewProcessor $view
+ * @var array $columnOptions
+ * @var array $selectedColumns
+ * @var array $aliasColumns
  * @var \Illuminate\Pagination\LengthAwarePaginator $result
  * @var int $total Total number of rows returned
- * @var \App\Mainframe\Features\Report\ReportViewProcessor $view
- * @var string $path
  */
 ?>
-@include($view->initFunctionsPath())
+@include($report->initFunctionsPath())
 
 @section('content')
 
     {{-- Report top section with filter, CTA, column selections--}}
-    @include($view->filterPath())
+    @include($report->filterPath())
 
     @if(request('submit')=='Run' && isset($result))
 
@@ -26,7 +28,7 @@
                     <thead>
                     <tr>
                         @foreach ($aliasColumns as $alias)
-                            <th>{!! $view->column($loop->index) !!}</th>
+                            <th>{!! $report->columnTitle($loop->index) !!}</th>
                         @endforeach
                     </tr>
                     </thead>
@@ -36,7 +38,7 @@
                             @foreach ($selectedColumns as $column)
                                 <td>
                                     @if(isset($row->$column))
-                                        {!! $view->cell($column, $row) !!}
+                                        {!! $report->cell($column, $row) !!}
                                     @endif
                                 </td>
                             @endforeach

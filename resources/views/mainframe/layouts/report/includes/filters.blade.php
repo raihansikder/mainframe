@@ -1,5 +1,10 @@
 <?php
-/** @var \App\Mainframe\Features\Report\ReportViewProcessor $view */
+/**
+ * @var \App\Mainframe\Features\Report\ReportBuilder $report
+ * @var \Illuminate\Pagination\LengthAwarePaginator $result
+ * @var int $total Total number of rows returned
+ * @var \App\Mainframe\Features\Report\ReportViewProcessor $view
+ */
 ?>
 @section('css')
     @parent

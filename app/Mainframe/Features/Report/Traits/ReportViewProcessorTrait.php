@@ -25,24 +25,7 @@ trait ReportViewProcessorTrait
      */
     public function filterPath()
     {
-
-        if (isset($this->report->filterPath)) {
-            return $this->report->filterPath;
-        }
-
-        $paths = [
-            $this->report->path.'.filters',
-            $this->report->path.'.includes.filters',
-            projectResources().'.layouts.report.includes.filter',
-        ];
-
-        foreach ($paths as $path) {
-            if (view()->exists($path)) {
-                return $path;
-            }
-        }
-
-        return 'mainframe.layouts.report.includes.filter';
+        return $this->report->filterPath();
     }
 
     /**
@@ -52,23 +35,7 @@ trait ReportViewProcessorTrait
      */
     public function initFunctionsPath()
     {
-        if (isset($this->report->initFunctionsPath)) {
-            return $this->report->initFunctionsPath;
-        }
-
-        $paths = [
-            $this->report->path.'.init-functions',
-            $this->report->path.'.includes.init-functions',
-            projectResources().'.layouts.report.includes.init-functions',
-        ];
-
-        foreach ($paths as $path) {
-            if (view()->exists($path)) {
-                return $path;
-            }
-        }
-
-        return 'mainframe.layouts.report.includes.init-functions';
+        return $this->report->initFunctionsPath();
     }
 
     /**
@@ -78,23 +45,7 @@ trait ReportViewProcessorTrait
      */
     public function ctaPath()
     {
-        if (isset($this->report->ctaPath)) {
-            return $this->report->ctaPath;
-        }
-
-        $paths = [
-            $this->report->path.'.cta',
-            $this->report->path.'.includes.cta',
-            projectResources().'.layouts.report.includes.cta',
-        ];
-
-        foreach ($paths as $path) {
-            if (view()->exists($path)) {
-                return $path;
-            }
-        }
-
-        return 'mainframe.layouts.report.includes.cta';
+        return $this->report->ctaPath();
     }
 
     /**
@@ -104,69 +55,7 @@ trait ReportViewProcessorTrait
      */
     public function advancedFilterPath()
     {
-        if (isset($this->report->ctaPath)) {
-            return $this->report->ctaPath;
-        }
-
-        $paths = [
-            $this->report->path.'.advanced',
-            $this->report->path.'.includes.advanced',
-            projectResources().'.layouts.report.includes.advanced',
-        ];
-
-        foreach ($paths as $path) {
-            if (view()->exists($path)) {
-                return $path;
-            }
-        }
-
-        return 'mainframe.layouts.report.includes.advanced';
-    }
-
-    /**
-     * Transforms the values of a cell. This is useful for creating links, changing colors etc.
-     *
-     * @param  string  $column
-     * @param  \Illuminate\Database\Eloquent\Model|object|array  $row
-     * @param  string  $value
-     * @param  string|null  $moduleName
-     * @return string|null
-     * @deprecated use cell()
-     */
-    public function transformRow($column, $row, $value, $moduleName = null)
-    {
-        // linked to facility details page
-        $newValue = $value;
-
-        if (in_array($column, ['id', 'name'])) {
-            if (isset($row->id) && $moduleName) {
-                $newValue = "<a href='".route($moduleName.'.edit', $row->id)."'>".$value."</a>";
-            }
-        }
-
-        return $newValue;
-    }
-
-    /**
-     * Change the value of a cell
-     *
-     * @param  string  $column
-     * @param  \Illuminate\Database\Eloquent\Model|object|array  $row
-     * @param  string  $value
-     * @param  string|null  $moduleName
-     * @return string
-     */
-    public function customCell($column, $row, $value, $moduleName = null)
-    {
-
-        $newValue = $value;
-
-        if (in_array($column, ['id', 'name'])
-            && isset($row->id) && $moduleName) {
-            $newValue = "<a href='".route($moduleName.'.edit', $row->id)."'>".$value."</a>";
-        }
-
-        return $newValue;
+        return $this->report->advancedFilterPath();
     }
 
     /**
@@ -179,30 +68,7 @@ trait ReportViewProcessorTrait
      */
     public function cell($column, $row, $route = null)
     {
-        if (!isset($row->$column)) {
-            return null;
-        }
-
-        $newValue = $row->$column;
-
-        if (!$route) {
-            $route = $this->elementViewUrl($row);
-        }
-
-        if (!in_array($this->report->outputType(), ['html'])) {
-            return $newValue;
-        }
-
-        // Add link
-        if (in_array($column, ['id', 'name']) && $route) {
-            $newValue = "<a href='{$route}'>".$row->$column."</a>";
-        }
-
-        /*---------------------------------
-        | Additional logic
-        |---------------------------------*/
-
-        return $newValue;
+        return $this->report->cell($column, $row, $route);
     }
 
     /**
@@ -213,15 +79,7 @@ trait ReportViewProcessorTrait
      */
     public function elementViewUrl($row)
     {
-        if (!$this->report->module) {
-            return null;
-        }
-
-        if (!isset($row->id)) {
-            return null;
-        }
-
-        return route($this->report->module->name.'.show', $row->id);
+        return $this->report->elementViewUrl($row);
     }
 
     /**
@@ -231,10 +89,7 @@ trait ReportViewProcessorTrait
      */
     public function excelDownloadUrl()
     {
-        $requests = request()->all();
-        $requests['ret'] = 'excel';
-
-        return $this->buildUrl($requests);
+        return $this->report->excelDownloadUrl();
     }
 
     /**
@@ -244,10 +99,7 @@ trait ReportViewProcessorTrait
      */
     public function printUrl()
     {
-        $requests = request()->all();
-        $requests['ret'] = 'print';
-
-        return $this->buildUrl($requests);
+        return $this->report->printUrl();
     }
 
     /**
@@ -257,13 +109,7 @@ trait ReportViewProcessorTrait
      */
     public function saveUrl()
     {
-        $url = route('reports.create');
-        $params = [
-            'title' => request('report_name'),
-            'parameters' => urlencode(str_replace(route('home'), '', URL::full())),
-        ];
-
-        return $url.'?'.http_build_query($params);
+        return $this->report->saveUrl();
     }
 
     /**
@@ -280,61 +126,33 @@ trait ReportViewProcessorTrait
      * @param $index
      * @return string
      */
-    public function column($index)
+    public function columnTitle($index)
     {
-        $report = $this->report;
-
-        $alias = $report->aliasColumns()[$index];
-        $column = $report->selectedColumns()[$index];
-
-        $orderBy = request('order_by');
-        $linkCss = '';
-
-        if ($orderBy) {
-
-            if (Str::startsWith($orderBy, $column.' ASC')) {
-                $orderBy = str_replace($column.' ASC', $column.' DESC', $orderBy);
-                $icon = $this->sortAscIcon();
-                $linkCss = 'btn btn-xs bg-red';
-            } elseif (Str::startsWith($orderBy, $column.' DESC')) {
-                $orderBy = str_replace($column.' DESC', $column.' ASC', $orderBy);
-                $icon = $this->sortDescIcon();
-                $linkCss = 'btn btn-xs bg-red';
-            } else {
-                // $orderBy .= ','.$column.' DESC'; // For multiple sorting
-                $orderBy = $column.' ASC';
-                $icon = $this->sortDefaultIcon();
-            }
-        } else {
-            $orderBy = $column.' ASC';
-            $icon = $this->sortDefaultIcon();
-        }
-
-        $requests = request()->all();
-        $requests['order_by'] = $orderBy;
-        $url = $this->buildUrl($requests);
-
-        return $alias." <a class='{$linkCss}' href='{$url}'>{$icon}</a>";
+        return $this->report->columnTitle($index);
     }
 
     public function sortAscIcon()
     {
-        return "<i class='glyphicon glyphicon-sort-by-attributes'></i>";
+        return $this->report->sortAscIcon();
+
     }
 
     public function sortDescIcon()
     {
-        return "<i class='glyphicon glyphicon-sort-by-attributes-alt'></i>";
+        return $this->report->sortDescIcon();
+
     }
 
     public function sortDefaultIcon()
     {
-        return "<i class='glyphicon glyphicon-sort'></i>";
+        return $this->report->sortDefaultIcon();
+
     }
 
     public function buildUrl($params)
     {
-        return URL::current().'?'.http_build_query($params);
+        return $this->report->buildUrl($params);
+
     }
 
 }

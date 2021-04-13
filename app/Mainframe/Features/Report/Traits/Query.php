@@ -130,10 +130,18 @@ trait Query
     /**
      * Query to initially select table or a model.
      *
-     * @return \Illuminate\Database\Query\Builder|string|\Illuminate\Database\Eloquent\Model
+     * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model|Builder
      */
     public function queryDataSource()
     {
+        if ($this->model) {
+            if (request('with')) {
+                return $this->model->with(explode(',', request('with')));
+            }
+
+            return $this->model;
+        }
+
         // Source is a table
         if (is_string($this->dataSource)) {
             return DB::table($this->dataSource);

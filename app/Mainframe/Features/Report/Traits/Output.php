@@ -4,8 +4,7 @@ namespace App\Mainframe\Features\Report\Traits;
 
 use App\Mainframe\Features\Report\ReportViewProcessor;
 use App\Mainframe\Helpers\Convert;
-use Illuminate\Database\Query\Builder;
-use View;
+use App\Mainframe\Modules\Reports\Report;
 use PhpOffice\PhpSpreadsheet\Writer\Csv;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
@@ -189,9 +188,9 @@ trait Output
     public function viewVars($type = null)
     {
         $vars = [
-            'path' => $this->path,
-            'dataSource' => $this->dataSource,
+            'report' => $this,
             'columnOptions' => $this->columnOptions(),
+            'view' => $this->view,
         ];
 
         // Report prior to running
@@ -203,10 +202,6 @@ trait Output
                 'result' => $this->mutateResult(),
             ]);
         }
-
-        $this->view = $this->viewProcessor();
-        $vars['view'] = $this->view;
-
         return array_merge($vars, $this->customViewVars());
     }
 
@@ -363,4 +358,319 @@ trait Output
 
         return $view;
     }
+
+    /*---------------------------------
+    | View/rendering related functions
+    |---------------------------------*/
+
+    /**
+     * Path for filter blade
+     *
+     * @return string
+     */
+    public function filterPath()
+    {
+
+        if (isset($this->filterPath)) {
+            return $this->filterPath;
+        }
+
+        $paths = [
+            $this->path.'.filters',
+            $this->path.'.includes.filters',
+            projectResources().'.layouts.report.includes.filter',
+        ];
+
+        foreach ($paths as $path) {
+            if (view()->exists($path)) {
+                return $path;
+            }
+        }
+
+        return 'mainframe.layouts.report.includes.filter';
+    }
+
+    /**
+     * Path for functions blade
+     *
+     * @return string
+     */
+    public function initFunctionsPath()
+    {
+        if (isset($this->initFunctionsPath)) {
+            return $this->initFunctionsPath;
+        }
+
+        $paths = [
+            $this->path.'.init-functions',
+            $this->path.'.includes.init-functions',
+            projectResources().'.layouts.report.includes.init-functions',
+        ];
+
+        foreach ($paths as $path) {
+            if (view()->exists($path)) {
+                return $path;
+            }
+        }
+
+        return 'mainframe.layouts.report.includes.init-functions';
+    }
+
+    /**
+     * Path for functions blade
+     *
+     * @return string
+     */
+    public function ctaPath()
+    {
+        if (isset($this->ctaPath)) {
+            return $this->ctaPath;
+        }
+
+        $paths = [
+            $this->path.'.cta',
+            $this->path.'.includes.cta',
+            projectResources().'.layouts.report.includes.cta',
+        ];
+
+        foreach ($paths as $path) {
+            if (view()->exists($path)) {
+                return $path;
+            }
+        }
+
+        return 'mainframe.layouts.report.includes.cta';
+    }
+
+    /**
+     * Path for functions blade
+     *
+     * @return string
+     */
+    public function advancedFilterPath()
+    {
+        if (isset($this->ctaPath)) {
+            return $this->ctaPath;
+        }
+
+        $paths = [
+            $this->path.'.advanced',
+            $this->path.'.includes.advanced',
+            projectResources().'.layouts.report.includes.advanced',
+        ];
+
+        foreach ($paths as $path) {
+            if (view()->exists($path)) {
+                return $path;
+            }
+        }
+
+        return 'mainframe.layouts.report.includes.advanced';
+    }
+
+    /**
+     * Transforms the values of a cell. This is useful for creating links, changing colors etc.
+     *
+     * @param  string  $column
+     * @param  \Illuminate\Database\Eloquent\Model|object|array  $row
+     * @param  string  $value
+     * @param  string|null  $moduleName
+     * @return string|null
+     * @deprecated use cell()
+     */
+    public function transformRow($column, $row, $value, $moduleName = null)
+    {
+        // linked to facility details page
+        $newValue = $value;
+
+        if (in_array($column, ['id', 'name'])) {
+            if (isset($row->id) && $moduleName) {
+                $newValue = "<a href='".route($moduleName.'.edit', $row->id)."'>".$value."</a>";
+            }
+        }
+
+        return $newValue;
+    }
+
+    /**
+     * Transforms the values of a cell. This is useful for creating links, changing colors etc.
+     *
+     * @param  string  $column
+     * @param  \Illuminate\Database\Eloquent\Model|object|array  $row
+     * @param  string  $route
+     * @return string
+     */
+    public function cell($column, $row, $route = null)
+    {
+        if (!isset($row->$column)) {
+            return null;
+        }
+
+        if (is_array($row->$column)) {
+            return json_encode($row->$column);
+        }
+
+        // Add link
+        if (in_array($column, ['id', 'name'])) {
+            return $this->linkCell($column, $row, $route);
+        }
+
+        /*---------------------------------
+        | Additional logic
+        |---------------------------------*/
+
+        return $row->$column;
+    }
+
+    public function linkCell($column, $row, $route = null)
+    {
+        if (!in_array($this->outputType(), ['html'])) {
+            return $row->$column;
+        }
+
+        if (!$route) {
+            $route = $this->elementViewUrl($row);
+        }
+
+        // Add link
+        if ($route) {
+            return "<a href='{$route}'>".$row->$column."</a>";
+        }
+
+        return $row->$column;
+
+    }
+
+    /**
+     * Link to module element
+     *
+     * @param $row
+     * @return string|null
+     */
+    public function elementViewUrl($row)
+    {
+        if (!$this->module) {
+            return null;
+        }
+
+        if (!isset($row->id)) {
+            return null;
+        }
+
+        return route($this->module->name.'.show', $row->id);
+    }
+
+    /**
+     * Excel download URL
+     *
+     * @return string
+     */
+    public function excelDownloadUrl()
+    {
+        $requests = request()->all();
+        $requests['ret'] = 'excel';
+
+        return $this->buildUrl($requests);
+    }
+
+    /**
+     * Report print URL
+     *
+     * @return string
+     */
+    public function printUrl()
+    {
+        $requests = request()->all();
+        $requests['ret'] = 'print';
+
+        return $this->buildUrl($requests);
+    }
+
+    /**
+     * Save report URL
+     *
+     * @return string
+     */
+    public function saveUrl()
+    {
+        $url = route('reports.create');
+        $params = [
+            'title' => request('report_name'),
+            'parameters' => urlencode(str_replace(route('home'), '', \URL::full())),
+        ];
+
+        return $url.'?'.http_build_query($params);
+    }
+
+    /**
+     * Save permission
+     *
+     * @return mixed
+     */
+    public function showSaveReportBtn()
+    {
+        return $this->user->can('create', Report::class);
+    }
+
+    /**
+     * @param $index
+     * @return string
+     */
+    public function columnTitle($index)
+    {
+        $report = $this;
+
+        $alias = $report->aliasColumns()[$index];
+        $column = $report->selectedColumns()[$index];
+
+        $orderBy = request('order_by');
+        $linkCss = '';
+
+        if ($orderBy) {
+
+            if (\Str::startsWith($orderBy, $column.' ASC')) {
+                $orderBy = str_replace($column.' ASC', $column.' DESC', $orderBy);
+                $icon = $this->sortAscIcon();
+                $linkCss = 'btn btn-xs bg-red';
+            } elseif (\Str::startsWith($orderBy, $column.' DESC')) {
+                $orderBy = str_replace($column.' DESC', $column.' ASC', $orderBy);
+                $icon = $this->sortDescIcon();
+                $linkCss = 'btn btn-xs bg-red';
+            } else {
+                // $orderBy .= ','.$column.' DESC'; // For multiple sorting
+                $orderBy = $column.' ASC';
+                $icon = $this->sortDefaultIcon();
+            }
+        } else {
+            $orderBy = $column.' ASC';
+            $icon = $this->sortDefaultIcon();
+        }
+
+        $requests = request()->all();
+        $requests['order_by'] = $orderBy;
+        $url = $this->buildUrl($requests);
+
+        return $alias." <a class='{$linkCss}' href='{$url}'>{$icon}</a>";
+    }
+
+    public function sortAscIcon()
+    {
+        return "<i class='glyphicon glyphicon-sort-by-attributes'></i>";
+    }
+
+    public function sortDescIcon()
+    {
+        return "<i class='glyphicon glyphicon-sort-by-attributes-alt'></i>";
+    }
+
+    public function sortDefaultIcon()
+    {
+        return "<i class='glyphicon glyphicon-sort'></i>";
+    }
+
+    public function buildUrl($params)
+    {
+        return \URL::current().'?'.http_build_query($params);
+    }
+
 }

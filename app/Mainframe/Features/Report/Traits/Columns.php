@@ -156,6 +156,23 @@ trait Columns
     }
 
     /**
+     * Change alias for specific columns
+     * @param $map
+     * @param $array
+     * @return mixed
+     */
+    public function setAliasForColumns($map, $array)
+    {
+        foreach ($map as $column => $alias) {
+            if ($pos = array_search($column, $this->selectedColumns())) {
+                $array[$pos] = $alias;
+            }
+        }
+
+        return $array;
+    }
+
+    /**
      * Change alias column array for output
      *
      * @return array

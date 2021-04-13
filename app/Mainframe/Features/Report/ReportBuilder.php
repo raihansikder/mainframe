@@ -44,6 +44,12 @@ class ReportBuilder extends BaseController
     /** @var string */
     public $initFunctionsPath;
 
+    /** @var \App\Mainframe\Modules\Modules\Module */
+    public $module;
+
+    /** @var \App\Mainframe\Features\Modular\BaseModule\BaseModule */
+    public $model;
+
     // /** @var \App\User */
     // public $user;
 
@@ -62,6 +68,7 @@ class ReportBuilder extends BaseController
         $this->dataSource = $dataSource ?: $this->dataSource;
         $this->path = $path ?: $this->path;
         $this->cache = $cache ?: $this->cache;
+        $this->view = $this->viewProcessor();
     }
 
     // public function queryDataSource() { }

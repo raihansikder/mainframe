@@ -2,15 +2,13 @@
 
 namespace App\Mainframe\Features\Report\Traits;
 
+use App\Mainframe\Features\Report\ReportBuilder;
 use App\Mainframe\Helpers\Convert;
+use Illuminate\Database\Query\Builder;
 
+/** @mixin ReportBuilder $this */
 trait ModuleReportBuilderTrait
 {
-    /** @var \App\Mainframe\Modules\Modules\Module */
-    public $module;
-
-    /** @var \App\Mainframe\Features\Modular\BaseModule\BaseModule|mixed */
-    public $model;
 
     /**
      * Transform request inputs
@@ -24,27 +22,20 @@ trait ModuleReportBuilderTrait
     }
 
     /**
-     * Query select table
+     * Query to initially select table or a model.
      *
-     * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Query\Builder
+     * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model|Builder
      */
     public function queryDataSource()
     {
-
-        if (request('with')) {
-            return $this->model->with(explode(',', request('with')));
-        }
 
         // Source is a table
         if (is_string($this->dataSource)) {
             return \DB::table($this->dataSource);
         }
 
-        if ($this->dataSource) {
-            return $this->dataSource;
-        }
+        return $this->dataSource;
 
-        return $this->model;
     }
 
     /**
@@ -55,6 +46,10 @@ trait ModuleReportBuilderTrait
         $this->module = $module;
         $this->model = $this->module->modelInstance();
         $this->dataSource = $this->model;
+
+        if (request('with')) {
+            $this->dataSource->with(explode(',', request('with')));
+        }
     }
 
     /**
@@ -78,9 +73,9 @@ trait ModuleReportBuilderTrait
             return Convert::csvToArray(request('columns_csv'));
         }
 
-        return [
-            'id', 'name', 'created_at', 'updated_at',
-        ];
+        // return $this->model->tableColumns();
+
+        return ['id', 'name', 'created_at', 'updated_at',];
     }
 
 }

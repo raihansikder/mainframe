@@ -309,6 +309,7 @@ function pad($str, $count = 6, $char = '0')
     return str_pad($str, $count, $char, STR_PAD_LEFT);
 }
 
+
 /**
  * Checks if an input is CSV
  *
@@ -326,6 +327,7 @@ function isCsv($input)
 
     return false;
 }
+
 
 /**
  * cleans a string and returns as csv

@@ -11,10 +11,7 @@ class ModuleReportBuilder extends ReportBuilder
 
     public function __construct(Module $module, $dataSource = null, $path = null, $cache = null)
     {
-        $this->module = $module;
-        $this->model = $this->module->modelInstance();
-        $this->dataSource = $dataSource ?: $this->module->module_table;
-
+        $this->setModule($module);
         $this->enableAutoRun();
 
         parent::__construct($this->dataSource, $path, $cache);
