@@ -188,9 +188,10 @@ trait Output
     public function viewVars($type = null)
     {
         $vars = [
+            'path' => $this->path, // Older implementation
             'report' => $this,
             'columnOptions' => $this->columnOptions(),
-            'view' => $this->view,
+            'view' => $this->viewProcessor(),
         ];
 
         // Report prior to running

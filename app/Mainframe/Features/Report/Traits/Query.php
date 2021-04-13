@@ -158,11 +158,56 @@ trait Query
      */
     public function querySelectColumns()
     {
-
         $keys = $this->selectedColumns();                    // Manually selected columns, Default all if none selected.
         $keys = $this->includeDefaultSelectedColumns($keys); // Default selected columns behind the scene
         $keys = $this->excludeSelectedGhostColumns($keys);   // Exclude any column name that does not actually exists
         $keys = $this->queryAddColumnForGroupBy($keys);
+        $keys = $this->queryAddFieldsForRelations($keys);
+
+        return $keys;
+    }
+
+    /**
+     * Get the required relationships as array
+     *
+     * @return array|false|string[]
+     */
+    public function queryRelations()
+    {
+        $relations = [];
+        if (request('with')) {
+            $relations = explode(',', request('with'));
+        }
+
+        return $relations;
+    }
+
+    /**
+     * Map relationships with fields that needs to be available in select columns
+     *
+     * @return string[]
+     */
+    public function relationFieldMap()
+    {
+        return [
+            'creator' => 'created_by',
+            'updater' => 'updated_by',
+        ];
+    }
+
+    /**
+     * Add additional field to make the model relationship work
+     *
+     * @param  array  $keys
+     * @return array
+     */
+    public function queryAddFieldsForRelations($keys = [])
+    {
+        foreach ($this->relationFieldMap() as $relationship => $col) {
+            if (!in_array($col, $keys)) {
+                $keys[] = $col;
+            }
+        }
 
         return $keys;
     }

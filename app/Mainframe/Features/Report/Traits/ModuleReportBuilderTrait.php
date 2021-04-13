@@ -45,11 +45,7 @@ trait ModuleReportBuilderTrait
     {
         $this->module = $module;
         $this->model = $this->module->modelInstance();
-        $this->dataSource = $this->model;
-
-        if (request('with')) {
-            $this->dataSource->with(explode(',', request('with')));
-        }
+        $this->dataSource = $this->model->with($this->queryRelations());
     }
 
     /**
@@ -59,7 +55,7 @@ trait ModuleReportBuilderTrait
      */
     public function defaultSelectedColumns()
     {
-        return ['id'];
+        return $this->model->tableColumns();
     }
 
     /**
@@ -72,8 +68,6 @@ trait ModuleReportBuilderTrait
         if (request('columns_csv')) {
             return Convert::csvToArray(request('columns_csv'));
         }
-
-        // return $this->model->tableColumns();
 
         return ['id', 'name', 'created_at', 'updated_at',];
     }

@@ -68,7 +68,6 @@ class ReportBuilder extends BaseController
         $this->dataSource = $dataSource ?: $this->dataSource;
         $this->path = $path ?: $this->path;
         $this->cache = $cache ?: $this->cache;
-        $this->view = $this->viewProcessor();
     }
 
     // public function queryDataSource() { }
