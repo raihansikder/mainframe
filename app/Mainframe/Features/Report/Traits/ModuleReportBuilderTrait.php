@@ -55,6 +55,7 @@ trait ModuleReportBuilderTrait
      */
     public function defaultColumns()
     {
+        // return ['id'];
         return $this->model->tableColumns();
     }
 

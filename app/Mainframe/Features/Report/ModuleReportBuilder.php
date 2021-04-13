@@ -4,6 +4,7 @@ namespace App\Mainframe\Features\Report;
 
 use App\Mainframe\Features\Report\Traits\ModuleReportBuilderTrait;
 use App\Mainframe\Modules\Modules\Module;
+use App\Mainframe\Modules\Users\User;
 
 class ModuleReportBuilder extends ReportBuilder
 {
