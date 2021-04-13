@@ -133,7 +133,7 @@ class ReportBuilder extends BaseController
     // public function customFilterOnEscapedFields($query, $field, $val) { }
     // public function columnOptions() { }
     // public function ghostColumnOptions() { }
-    // public function defaultSelectedColumns() { }
+    // public function defaultColumns() { }
 
     /*
     |--------------------------------------------------------------------------

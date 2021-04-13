@@ -159,7 +159,7 @@ trait Query
     public function querySelectColumns()
     {
         $keys = $this->selectedColumns();                    // Manually selected columns, Default all if none selected.
-        $keys = $this->includeDefaultSelectedColumns($keys); // Default selected columns behind the scene
+        $keys = $this->includeDefaultColumns($keys); // Default selected columns behind the scene
         $keys = $this->excludeSelectedGhostColumns($keys);   // Exclude any column name that does not actually exists
         $keys = $this->queryAddColumnForGroupBy($keys);
         $keys = $this->queryAddFieldsForRelations($keys);
@@ -218,9 +218,11 @@ trait Query
      * @param  array  $keys
      * @return array
      */
-    public function includeDefaultSelectedColumns($keys = [])
+    public function includeDefaultColumns($keys = [])
     {
-        foreach ($this->defaultSelectedColumns() as $col) {
+        $defaultColumns = array_merge($this->defaultColumns(), $this->defaultSelectedColumns());
+
+        foreach ($defaultColumns as $col) {
             // if (!in_array($col, $keys) && in_array($col, $this->dataSourceColumns())) {
             if (!in_array($col, $keys)) {
                 $keys[] = $col;
@@ -237,9 +239,22 @@ trait Query
      *
      * @return array
      */
-    public function defaultSelectedColumns()
+    public function defaultColumns()
     {
         return ['id', 'name'];
+    }
+
+    /**
+     * Columns that should be always included in the select column query.
+     * Usually this is id field. This is useful to generate a url
+     * to the linked element.
+     *
+     * @return array
+     * @deprecated Use defaultColumns() instead
+     */
+    public function defaultSelectedColumns()
+    {
+        return [];
     }
 
     /**

@@ -53,7 +53,7 @@ trait ModuleReportBuilderTrait
      *
      * @return string[]
      */
-    public function defaultSelectedColumns()
+    public function defaultColumns()
     {
         return $this->model->tableColumns();
     }
