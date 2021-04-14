@@ -3,11 +3,49 @@
 namespace App\Mainframe\Features\Modular\BaseModule\Traits;
 
 use App\Mainframe\Features\Core\ViewProcessor;
+use App\Mainframe\Features\Report\ReportBuilder;
+use App\Mainframe\Modules\Modules\Module;
 use Str;
 
 /** @mixin ViewProcessor $this */
 trait ViewProcessorTrait
 {
+
+    /** @var \App\User|null */
+    public $user;
+
+    /**
+     * Variables shared in view blade
+     *
+     * @var array
+     */
+    public $vars;
+
+    /**
+     * Type of view create, edit, index
+     *
+     * @var string
+     */
+    public $type;
+
+    /** @var Module */
+    public $module;
+
+    /** @var \Illuminate\Database\Eloquent\Builder */
+    public $model;
+
+    /** @var \App\Mainframe\Features\Modular\BaseModule\BaseModule */
+    public $element;
+
+    /** @var bool */
+    public $editable;
+
+    /** @var array */
+    public $immutables;
+
+    /** @var \App\Mainframe\Features\Datatable\Datatable */
+    public $datatable;
+
     /**
      * @param  string  $type
      * @return $this
@@ -25,14 +63,14 @@ trait ViewProcessorTrait
      */
     public function addVars($vars)
     {
-        $this->vars = array_merge($this->vars, $vars);
+        $this->vars = array_merge($this->getVars(), $vars);
 
         return $this;
     }
 
     public function getVars()
     {
-        return $this->vars;
+        return $this->vars ?? [];
     }
 
     /**
@@ -52,6 +90,10 @@ trait ViewProcessorTrait
      */
     public function setElement($element)
     {
+        if (!$element) {
+            return $this;
+        }
+
         $this->element = $element;
 
         $this->setModule($element->module())
@@ -87,7 +129,7 @@ trait ViewProcessorTrait
     }
 
     /**
-     * @param $editable
+     * @param  bool  $editable
      * @return $this
      */
     public function setEditable($editable)
@@ -101,7 +143,7 @@ trait ViewProcessorTrait
      * @param $immutables
      * @return $this
      */
-    public function setImmutables($immutables)
+    public function setImmutables($immutables = [])
     {
         $this->immutables = $immutables;
 
@@ -113,21 +155,9 @@ trait ViewProcessorTrait
      * @return $this
      * @deprecated  use setImmutables
      */
-    public function setImmutable($immutables)
+    public function setImmutable($immutables = [])
     {
         return $this->setImmutables($immutables);
-    }
-
-    /**
-     * @param  array  $dtColumns
-     * @return $this
-     */
-    public function setDtColumns($dtColumns)
-    {
-        $this->dtColumns = $dtColumns;
-        $this->vars = array_merge($this->vars, ['columns' => $dtColumns]);
-
-        return $this;
     }
 
     /**
@@ -137,19 +167,17 @@ trait ViewProcessorTrait
     public function setDatatable($datatable)
     {
         $this->datatable = $datatable;
-        $this->setDtColumns($datatable->columns());
 
-        // $this->vars = array_merge($this->vars, ['columns' => $datatable->columns()]);
         return $this;
     }
 
     /**
-     * @param $immutables
+     * @param  array  $immutables
      * @return $this
      */
-    public function addImmutables($immutables)
+    public function addImmutables($immutables = [])
     {
-        $this->immutables = array_merge($this->immutables, $immutables);
+        $this->immutables = array_merge($this->getImmutables(), $immutables);
 
         return $this;
     }
@@ -177,6 +205,11 @@ trait ViewProcessorTrait
     |
     */
 
+    /**
+     * Blade path for default template
+     *
+     * @return string
+     */
     public function defaultTemplate()
     {
 
@@ -189,6 +222,11 @@ trait ViewProcessorTrait
         return 'mainframe.layouts.default.template';
     }
 
+    /**
+     * Blade path for left menu
+     *
+     * @return string
+     */
     public function leftMenu()
     {
 
@@ -218,6 +256,8 @@ trait ViewProcessorTrait
     }
 
     /**
+     * Blade template for grid
+     *
      * @return string
      */
     public function gridPath()
@@ -226,6 +266,8 @@ trait ViewProcessorTrait
     }
 
     /**
+     * Blade template for change log
+     *
      * @return string
      */
     public function changesPath()
@@ -303,7 +345,7 @@ trait ViewProcessorTrait
      */
     public function getImmutables()
     {
-        return $this->immutables;
+        return $this->immutables ?? [];
     }
 
     /**
@@ -332,42 +374,6 @@ trait ViewProcessorTrait
     |--------------------------------------------------------------------------
     |
     */
-    /**
-     * Datatable column titles
-     *
-     * @return array
-     */
-    public function dataTableTitles()
-    {
-        return collect($this->dtColumns)->map(function ($item, $key) {
-            // Take 3rd index. Check datatable class select()
-            return $item[2];
-        })->all();
-    }
-
-    /**
-     * Json column definition for datatable
-     *
-     * @return mixed
-     */
-    public function datatableColumnsJson()
-    {
-        return collect($this->dtColumns)->reduce(function ($carry, $item) {
-            return $carry."{ data: '".$item[1]."', name: '".$item[0]."' },";
-        });
-    }
-
-    /**
-     * Datatable ajax route
-     *
-     * @return string
-     */
-    public function datatableAjaxRoute()
-    {
-        $route = route($this->module->name.'.datatable-json');
-
-        return $route.'?'.parse_url(\URL::full(), PHP_URL_QUERY);
-    }
 
     /*
     |--------------------------------------------------------------------------

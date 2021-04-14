@@ -1,4 +1,4 @@
-<?php /** @noinspection PhpUnhandledExceptionInspection */
+<?php
 
 namespace App\Mainframe\Commands;
 
@@ -37,7 +37,6 @@ class MakeMainframeModule extends Command
      */
     public function handle()
     {
-
         $this->namespace = $this->argument('namespace');
         $this->model = $this->model();
 

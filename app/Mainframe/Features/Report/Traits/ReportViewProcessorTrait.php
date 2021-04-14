@@ -2,14 +2,16 @@
 
 namespace App\Mainframe\Features\Report\Traits;
 
+use App\Mainframe\Features\Report\ReportBuilder;
 use App\Mainframe\Features\Report\ReportViewProcessor;
 use App\Mainframe\Modules\Reports\Report;
-use Illuminate\Support\Str;
-use URL;
 
 /** @mixin ReportViewProcessor $this */
 trait ReportViewProcessorTrait
 {
+
+    /** @var ReportBuilder|mixed */
+    public $report;
 
     public function setReport($report)
     {
@@ -17,6 +19,28 @@ trait ReportViewProcessorTrait
 
         return $this;
     }
+
+    /**
+     * Save permission
+     *
+     * @return mixed
+     */
+    public function showSaveReportBtn()
+    {
+        return $this->user->can('create', Report::class);
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Proxy function
+    |--------------------------------------------------------------------------
+    |
+    | These functions already exists in the report. However, there can be
+    | cases where the same report is rendered using different view
+    | processors. In that case these function can be overriden
+    | and used.
+    |
+    */
 
     /**
      * Path for filter blade
@@ -113,16 +137,8 @@ trait ReportViewProcessorTrait
     }
 
     /**
-     * Save permission
+     * Table column titles
      *
-     * @return mixed
-     */
-    public function showSaveReportBtn()
-    {
-        return $this->user->can('create', Report::class);
-    }
-
-    /**
      * @param $index
      * @return string
      */
@@ -131,25 +147,46 @@ trait ReportViewProcessorTrait
         return $this->report->columnTitle($index);
     }
 
+    /**
+     * Sort icon Asc
+     *
+     * @return string
+     */
     public function sortAscIcon()
     {
         return $this->report->sortAscIcon();
 
     }
 
+    /**
+     * Sort icon Desc
+     *
+     * @return string
+     */
     public function sortDescIcon()
     {
         return $this->report->sortDescIcon();
 
     }
 
+    /**
+     * Default sort icon
+     *
+     * @return string
+     */
     public function sortDefaultIcon()
     {
         return $this->report->sortDefaultIcon();
 
     }
 
-    public function buildUrl($params)
+    /**
+     * Construct the full report url from request params
+     *
+     * @param array $params
+     * @return string
+     */
+    public function buildUrl($params = [])
     {
         return $this->report->buildUrl($params);
 

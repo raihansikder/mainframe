@@ -1,15 +1,9 @@
-<?php /** @noinspection PhpUnused */
+<?php
 
 namespace App\Mainframe\Features\Core\Traits;
 
 use Illuminate\Support\MessageBag;
 use Validator;
-
-/**
- * Trait Validable
- *
- * @package App\Mainframe\Features\Modular\BaseController\Traits
- */
 
 /** @mixin  \App\Mainframe\Http\Controllers\BaseController $this */
 trait Validable
@@ -74,8 +68,8 @@ trait Validable
     /**
      * Add an error message to a key-value pair
      *
-     * @param null $message
-     * @param null $key
+     * @param  null  $message
+     * @param  null  $key
      * @return \App\Mainframe\Features\Core\Traits\Validable
      */
     public function error($message, $key = null)
@@ -89,8 +83,8 @@ trait Validable
     /**
      * Add a field specific error message
      *
-     * @param null $key
-     * @param null $message
+     * @param  null  $key
+     * @param  null  $message
      * @return $this
      */
     public function fieldError($key, $message = null)
@@ -120,7 +114,7 @@ trait Validable
      */
     public function isValid()
     {
-        return ! $this->isInvalid();
+        return !$this->isInvalid();
     }
 
     /**
@@ -159,7 +153,7 @@ trait Validable
     /**
      * Add/Merge all the  errors from a validator instance
      *
-     * @param \Illuminate\Validation\Validator $validator
+     * @param  \Illuminate\Validation\Validator  $validator
      * @return $this
      */
     public function addValidatorErrors($validator)
@@ -216,7 +210,7 @@ trait Validable
      */
     public function getMessages($key)
     {
-        if (! $this->messageBag()->count()) {
+        if (!$this->messageBag()->count()) {
             return null;
         }
 
@@ -259,6 +253,7 @@ trait Validable
 
     /**
      * Get errors as flat string
+     *
      * @return string
      */
     public function getErrorsAsSting()

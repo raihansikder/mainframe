@@ -203,6 +203,7 @@ trait Output
                 'result' => $this->mutateResult(),
             ]);
         }
+
         return array_merge($vars, $this->customViewVars());
     }
 
@@ -654,22 +655,43 @@ trait Output
         return $alias." <a class='{$linkCss}' href='{$url}'>{$icon}</a>";
     }
 
+    /**
+     * Sort icon Asc
+     *
+     * @return string
+     */
     public function sortAscIcon()
     {
         return "<i class='glyphicon glyphicon-sort-by-attributes'></i>";
     }
 
+    /**
+     * Sort icon Desc
+     *
+     * @return string
+     */
     public function sortDescIcon()
     {
         return "<i class='glyphicon glyphicon-sort-by-attributes-alt'></i>";
     }
 
+    /**
+     * Default sort icon
+     *
+     * @return string
+     */
     public function sortDefaultIcon()
     {
         return "<i class='glyphicon glyphicon-sort'></i>";
     }
 
-    public function buildUrl($params)
+    /**
+     * Construct the full report url from request params
+     *
+     * @param  array  $params
+     * @return string
+     */
+    public function buildUrl($params = [])
     {
         return \URL::current().'?'.http_build_query($params);
     }
