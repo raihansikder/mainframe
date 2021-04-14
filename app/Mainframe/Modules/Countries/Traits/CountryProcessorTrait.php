@@ -2,7 +2,7 @@
 
 namespace App\Mainframe\Modules\Countries\Traits;
 
-use App\Mainframe\Modules\Countries\Country;
+use App\Country;
 use App\Mainframe\Modules\Countries\CountryProcessor;
 
 /** @mixin CountryProcessor $this */
@@ -21,7 +21,7 @@ trait CountryProcessorTrait
     /**
      * Fill the model with values
      *
-     * @param  \App\Mainframe\Modules\Countries\Country  $country
+     * @param  \App\Country  $country
      * @return $this
      */
     public function fill($country)
@@ -44,7 +44,7 @@ trait CountryProcessorTrait
     /**
      * Validation rules.
      *
-     * @param  \App\Mainframe\Modules\Countries\Country  $country
+     * @param  \App\Country  $country
      * @param  array  $merge
      * @return array
      */

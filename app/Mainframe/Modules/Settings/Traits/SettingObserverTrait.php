@@ -5,7 +5,7 @@ namespace App\Mainframe\Modules\Settings\Traits;
 trait SettingObserverTrait
 {
     /**
-     * @param  \App\Mainframe\Modules\Settings\Setting  $element
+     * @param  \App\Setting  $element
      * @return void|bool
      */
     // public function saving($element) { }

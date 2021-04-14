@@ -2,7 +2,7 @@
 
 namespace App\Mainframe\Helpers;
 
-use App\Mainframe\Modules\Countries\Country;
+use App\Country;
 
 // use App\Projects\MyProject\Modules\ConversionRates\ConversionRate;
 

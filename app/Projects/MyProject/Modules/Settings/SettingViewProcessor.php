@@ -3,7 +3,7 @@
 namespace App\Projects\MyProject\Modules\Settings;
 
 use App\Projects\MyProject\Features\Modular\BaseModule\BaseModuleViewProcessor;
-use App\Mainframe\Modules\Modules\Module;
+use App\Module;
 
 class SettingViewProcessor extends BaseModuleViewProcessor
 {

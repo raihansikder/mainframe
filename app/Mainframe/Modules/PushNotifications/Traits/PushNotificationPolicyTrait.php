@@ -2,7 +2,7 @@
 
 namespace App\Mainframe\Modules\PushNotifications\Traits;
 
-use App\Mainframe\Modules\PushNotifications\PushNotification;
+use App\PushNotification;
 
 trait PushNotificationPolicyTrait
 {

@@ -2,7 +2,7 @@
 
 namespace App\Mainframe\Modules\Changes\Traits;
 
-use App\Mainframe\Modules\Modules\Module;
+use App\Module;
 
 /** @mixin \App\Mainframe\Modules\Changes\Change $this */
 trait ChangeTrait

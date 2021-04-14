@@ -15,7 +15,7 @@ trait SettingPolicyTrait
      * view
      *
      * @param  \App\User  $user
-     * @param  \App\Mainframe\Modules\Settings\Setting  $element
+     * @param  \App\Setting  $element
      * @return mixed
      */
     // public function view($user, $element) {if (! parent::view($user, $element)) {return false;} return true;}

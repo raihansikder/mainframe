@@ -7,7 +7,7 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModuleViewProcessor;
 class SuperHeroViewProcessor extends BaseModuleViewProcessor
 {
     /**
-     * @var \App\Mainframe\Modules\Modules\Module $module
+     * @var \App\Module $module
      * @var \Illuminate\Database\Eloquent\Builder $model
      * @var SuperHero $element
      * @var bool $editable

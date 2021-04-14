@@ -5,7 +5,7 @@ namespace App\Mainframe\Features\Core;
 use App\Mainframe\Features\Modular\BaseModule\Traits\ViewProcessorTrait;
 use App\Mainframe\Features\Report\ReportBuilder;
 use App\Mainframe\Features\Report\Traits\ReportViewProcessorTrait;
-use App\Mainframe\Modules\Modules\Module;
+use App\Module;
 
 class ViewProcessor
 {

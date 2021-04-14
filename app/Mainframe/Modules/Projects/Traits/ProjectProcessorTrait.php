@@ -20,7 +20,7 @@ trait ProjectProcessorTrait
     /**
      * Fill the model with values
      *
-     * @param  \App\Mainframe\Modules\Projects\Project  $project
+     * @param  \App\Project  $project
      * @return $this
      */
     public function fill($project)
@@ -43,7 +43,7 @@ trait ProjectProcessorTrait
     /**
      * Validation rules.
      *
-     * @param  \App\Mainframe\Modules\Projects\Project  $project
+     * @param  \App\Project  $project
      * @param  array  $merge
      * @return array
      */
@@ -81,7 +81,7 @@ trait ProjectProcessorTrait
     /**
      * Run validations for saving. This should be common for both creating and updating.
      *
-     * @param $project \App\Mainframe\Modules\Projects\Project
+     * @param $project \App\Project
      * @return $this
      */
     public function saving($project)
@@ -93,7 +93,7 @@ trait ProjectProcessorTrait
     // /**
     //  * Creating validation
     //  *
-    //  * @param $project \App\Mainframe\Modules\Projects\Project
+    //  * @param $project \App\Project
     //  * @return \App\Mainframe\Features\Modular\Validator\ModelValidator|\App\Mainframe\Modules\Settings\SettingValidator
     //  */
     // public function creating($project)
@@ -104,7 +104,7 @@ trait ProjectProcessorTrait
     // /**
     //  * Updating validation
     //  *
-    //  * @param $project \App\Mainframe\Modules\Projects\Project
+    //  * @param $project \App\Project
     //  * @return \App\Mainframe\Features\Modular\Validator\ModelValidator|\App\Mainframe\Modules\Settings\SettingValidator
     //  */
     // public function updating($project)
@@ -115,7 +115,7 @@ trait ProjectProcessorTrait
     // /**
     //  *  Deleting validation
     //  *
-    //  * @param $project \App\Mainframe\Modules\Projects\Project
+    //  * @param $project \App\Project
     //  * @return \App\Mainframe\Features\Modular\Validator\ModelValidator|\App\Mainframe\Modules\Settings\SettingValidator
     //  */
     // public function deleting($project)
@@ -126,7 +126,7 @@ trait ProjectProcessorTrait
     // /**
     //  * Restoring validation
     //  *
-    //  * @param $project \App\Mainframe\Modules\Projects\Project
+    //  * @param $project \App\Project
     //  * @return \App\Mainframe\Features\Modular\Validator\ModelValidator|\App\Mainframe\Modules\Settings\SettingValidator
     //  */
     // public function restoring($project)

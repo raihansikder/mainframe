@@ -4,7 +4,7 @@ namespace App\Mainframe\Features\Report\Traits;
 
 use App\Mainframe\Features\Report\ReportViewProcessor;
 use App\Mainframe\Helpers\Convert;
-use App\Mainframe\Modules\Reports\Report;
+use App\Report;
 use PhpOffice\PhpSpreadsheet\Writer\Csv;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;

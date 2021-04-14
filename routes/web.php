@@ -19,5 +19,5 @@
 //  file. Use that one instead
 
 Route::get('test', function () {
-    User::find(1); //Test Alias
+    // User::find(1)->isAdmin(); //Test Alias
 })->name('test')->middleware(['superuser']);

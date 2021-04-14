@@ -2,7 +2,7 @@
 
 namespace App\Mainframe\Modules\Settings\Traits;
 
-use App\Mainframe\Modules\Settings\Setting;
+use App\Setting;
 
 trait SettingTrait
 {

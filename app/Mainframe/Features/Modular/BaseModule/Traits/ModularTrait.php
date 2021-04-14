@@ -5,10 +5,10 @@ namespace App\Mainframe\Features\Modular\BaseModule\Traits;
 use App\Change;
 use App\Comment;
 use App\Mainframe\Helpers\Mf;
-use App\Mainframe\Modules\Modules\Module;
-use App\Mainframe\Modules\Projects\Project;
-use App\Mainframe\Modules\Tenants\Tenant;
-use App\Mainframe\Modules\Uploads\Upload;
+use App\Module;
+use App\Project;
+use App\Tenant;
+use App\Upload;
 use App\User;
 use DB;
 
@@ -43,8 +43,7 @@ trait ModularTrait
      */
     public function module()
     {
-        return Module::where('name', $this->moduleName)
-            ->remember(timer('very-long'))->first();
+        return Module::byName($this->moduleName);
     }
 
     /**
@@ -563,13 +562,10 @@ trait ModularTrait
         return $this;
     }
 
-    /**
-     * Get a list of uploads under an element.
-     */
     public function uploads()
     {
         return $this->hasMany(Upload::class, 'element_id')->where('module_id', $this->module()->id);
-        // return $this->morphMany('App\Mainframe\Modules\Uploads\Upload', 'uploadable'); // Note: Do not use morphMany because our class name can change
+        // return $this->morphMany('App\Upload', 'uploadable'); // Note: Do not use morphMany because our class name can change
     }
 
     /*
@@ -583,10 +579,10 @@ trait ModularTrait
      *
      * @return mixed
      */
-    public function comments()
-    {
-        return $this->hasMany(Comment::class, 'element_id')->where('module_id', $this->module()->id);
-    }
+    // public function comments()
+    // {
+    //     return $this->hasMany(Comment::class, 'element_id')->where('module_id', $this->module()->id);
+    // }
 
     /*
     |--------------------------------------------------------------------------

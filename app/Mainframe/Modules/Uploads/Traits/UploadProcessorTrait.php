@@ -2,7 +2,7 @@
 
 namespace App\Mainframe\Modules\Uploads\Traits;
 
-use App\Mainframe\Modules\Uploads\Upload;
+use App\Upload;
 
 trait UploadProcessorTrait
 {
@@ -18,7 +18,7 @@ trait UploadProcessorTrait
      * case of id-name pair id will be filled by mass assignment
      * but the name needs to be auto filled in this method.
      *
-     * @param $upload \App\Mainframe\Modules\Uploads\Upload|mixed
+     * @param $upload \App\Upload|mixed
      * @return $this
      */
     public function fill($upload)

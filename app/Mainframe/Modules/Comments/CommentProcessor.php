@@ -3,7 +3,7 @@
 namespace App\Mainframe\Modules\Comments;
 
 use App\Mainframe\Modules\Comments\Traits\CommentProcessorTrait;
-use App\Mainframe\Modules\Modules\Module;
+use App\Module;
 use App\Mainframe\Features\Modular\Validator\ModelProcessor;
 
 class CommentProcessor extends ModelProcessor

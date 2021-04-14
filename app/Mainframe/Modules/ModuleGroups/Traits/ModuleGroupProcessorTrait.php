@@ -45,7 +45,7 @@ trait ModuleGroupProcessorTrait
     /**
      * Run validations for saving. This should be common for both creating and updating.
      *
-     * @param $element \App\Mainframe\Modules\ModuleGroups\ModuleGroup
+     * @param $element \App\ModuleGroup
      * @return $this
      */
     public function saving($element)

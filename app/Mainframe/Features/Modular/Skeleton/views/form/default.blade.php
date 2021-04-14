@@ -1,7 +1,7 @@
 @extends('projects.{project-name}.layouts.module.form.template')
 <?php
 /**
- * @var \App\Mainframe\Modules\Modules\Module $module
+ * @var \App\Module $module
  * @var \App\User $user
  * @var string $formState create|edit
  * @var array $formConfig

@@ -2,7 +2,7 @@
 
 namespace App\Mainframe\Modules\Uploads\Traits;
 
-use App\Mainframe\Modules\Uploads\Upload;
+use App\Upload;
 use App\Mainframe\Modules\Uploads\UploadController;
 use Illuminate\Http\Request;
 

@@ -2,7 +2,7 @@
 
 namespace App\Mainframe\Modules\Modules\Traits;
 
-use App\Mainframe\Modules\Modules\Module;
+use App\Module;
 use App\Mainframe\Modules\Modules\ModuleDatatable;
 
 /** @mixin Module $this */

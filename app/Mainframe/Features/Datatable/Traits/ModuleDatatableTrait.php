@@ -4,7 +4,7 @@ namespace App\Mainframe\Features\Datatable\Traits;
 
 trait ModuleDatatableTrait
 {
-    /** @var \App\Mainframe\Modules\Modules\Module */
+    /** @var \App\Module */
     public $module;
 
     /**

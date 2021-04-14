@@ -44,7 +44,7 @@ class ReportBuilder extends BaseController
     /** @var string */
     public $initFunctionsPath;
 
-    /** @var \App\Mainframe\Modules\Modules\Module */
+    /** @var \App\Module */
     public $module;
 
     /** @var \App\Mainframe\Features\Modular\BaseModule\BaseModule */

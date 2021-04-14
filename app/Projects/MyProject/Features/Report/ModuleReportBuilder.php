@@ -3,7 +3,7 @@
 namespace App\Projects\MyProject\Features\Report;
 
 use App\Mainframe\Features\Report\Traits\ModuleReportBuilderTrait;
-use App\Mainframe\Modules\Modules\Module;
+use App\Module;
 
 class ModuleReportBuilder extends ReportBuilder
 {

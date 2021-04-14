@@ -2,7 +2,7 @@
 
 namespace App\Mainframe\Modules\Settings\Traits;
 
-use App\Mainframe\Modules\Settings\Setting;
+use App\Setting;
 
 trait SettingProcessorTrait
 {
@@ -19,7 +19,7 @@ trait SettingProcessorTrait
     /**
      * Fill the model with values
      *
-     * @param  \App\Mainframe\Modules\Settings\Setting  $setting
+     * @param  \App\Setting  $setting
      * @return $this
      */
     public function fill($setting)
@@ -40,7 +40,7 @@ trait SettingProcessorTrait
     /**
      * Validation rules. For regular expression validation use array instead of pipe
      *
-     * @param  \App\Mainframe\Modules\Settings\Setting  $setting
+     * @param  \App\Setting  $setting
      * @param  array  $merge
      * @return array
      */
@@ -68,7 +68,7 @@ trait SettingProcessorTrait
     /**
      * Run validations for saving. This should be common for both creating and updating.
      *
-     * @param $setting \App\Mainframe\Modules\Settings\Setting
+     * @param $setting \App\Setting
      * @return $this
      */
     public function saving($setting)

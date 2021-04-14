@@ -6,7 +6,7 @@
 namespace App\Mainframe\Features\Modular\Validator;
 
 use App\Mainframe\Features\Core\Traits\Validable;
-use App\Mainframe\Modules\Modules\Module;
+use App\Module;
 use App\User;
 use Illuminate\Support\Str;
 use Validator;

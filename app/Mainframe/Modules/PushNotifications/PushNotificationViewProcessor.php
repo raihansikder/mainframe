@@ -10,7 +10,7 @@ class PushNotificationViewProcessor extends BaseModuleViewProcessor
     use PushNotificationViewProcessorTrait;
 
     /**
-     * @var \App\Mainframe\Modules\Modules\Module $module
+     * @var \App\Module $module
      * @var \Illuminate\Database\Eloquent\Builder $model
      * @var PushNotification $element
      * @var bool $editable

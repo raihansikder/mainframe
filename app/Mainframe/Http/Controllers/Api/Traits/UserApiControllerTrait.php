@@ -4,7 +4,7 @@ namespace App\Mainframe\Http\Controllers\Api\Traits;
 
 use App\Mainframe\Http\Controllers\Api\UserApiController;
 use App\Mainframe\Modules\InAppNotifications\InAppNotificationController;
-use App\Mainframe\Modules\Modules\Module;
+use App\Module;
 use App\Mainframe\Modules\Uploads\UploadController;
 use App\Mainframe\Modules\Users\UserController;
 

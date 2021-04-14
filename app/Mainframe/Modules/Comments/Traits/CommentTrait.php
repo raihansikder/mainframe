@@ -2,7 +2,7 @@
 
 namespace App\Mainframe\Modules\Comments\Traits;
 
-use App\Mainframe\Modules\Modules\Module;
+use App\Module;
 
 trait CommentTrait
 {

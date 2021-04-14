@@ -2,7 +2,7 @@
 
 namespace App\Mainframe\Modules\InAppNotifications\Traits;
 
-use App\Mainframe\Modules\InAppNotifications\InAppNotification;
+use App\InAppNotification;
 
 trait InAppNotificationObserverTrait
 {

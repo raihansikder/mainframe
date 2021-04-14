@@ -2,8 +2,6 @@
 
 namespace App\Projects\MyProject\Http\Reports;
 
-use App\Mainframe\Features\Report\Traits\ModuleReportBuilderTrait;
-use App\Mainframe\Modules\Modules\Module;
 use App\Projects\MyProject\Features\Report\ReportBuilder;
 use App\User;
 

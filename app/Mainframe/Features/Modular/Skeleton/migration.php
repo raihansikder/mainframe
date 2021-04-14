@@ -1,7 +1,7 @@
 <?php
 /** @noinspection DuplicatedCode */
 
-use App\Mainframe\Modules\Modules\Module;
+use App\Module;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Str;

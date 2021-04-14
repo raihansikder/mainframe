@@ -10,7 +10,7 @@ class ChangeViewProcessor extends BaseModuleViewProcessor
     use ChangeViewProcessorTrait;
 
     /**
-     * @var \App\Mainframe\Modules\Modules\Module $module
+     * @var \App\Module $module
      * @var \Illuminate\Database\Eloquent\Builder $model
      * @var Change $element
      * @var bool $editable

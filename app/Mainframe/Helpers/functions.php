@@ -139,7 +139,7 @@ function apiCaller()
 /**
  * Get a cached version of active modules.
  *
- * @return \App\Mainframe\Modules\Modules\Module[]|mixed
+ * @return \App\Module[]|mixed
  */
 function modules()
 {
@@ -170,7 +170,7 @@ function uuid()
  */
 function setting($name)
 {
-    return \App\Mainframe\Modules\Settings\Setting::read($name);
+    return \App\Setting::read($name);
 }
 
 /**

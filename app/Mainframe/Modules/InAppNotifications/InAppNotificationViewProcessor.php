@@ -10,7 +10,7 @@ class InAppNotificationViewProcessor extends BaseModuleViewProcessor
     use InAppNotificationViewProcessorTrait;
 
     /**
-     * @var \App\Mainframe\Modules\Modules\Module $module
+     * @var \App\Module $module
      * @var \Illuminate\Database\Eloquent\Builder $model
      * @var InAppNotification $element
      * @var bool $editable

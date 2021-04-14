@@ -5,7 +5,7 @@ namespace App\Mainframe\Modules\Uploads\Traits;
 trait UploadObserverTrait
 {
     /**
-     * @param  \App\Mainframe\Modules\Uploads\Upload  $element
+     * @param  \App\Upload  $element
      * @return void|bool
      */
     // public function saving($element) { }

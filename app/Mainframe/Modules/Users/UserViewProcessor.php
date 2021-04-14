@@ -10,7 +10,7 @@ class UserViewProcessor extends BaseModuleViewProcessor
     use UserViewProcessorTrait;
 
     /**
-     * @var \App\Mainframe\Modules\Modules\Module $module
+     * @var \App\Module $module
      * @var \Illuminate\Database\Eloquent\Builder $model
      * @var User $element
      * @var bool $editable

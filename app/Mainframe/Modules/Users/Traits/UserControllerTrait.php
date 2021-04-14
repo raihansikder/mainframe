@@ -2,7 +2,7 @@
 
 namespace App\Mainframe\Modules\Users\Traits;
 
-use App\Mainframe\Modules\Users\User;
+use App\User;
 use Hash;
 use Validator;
 

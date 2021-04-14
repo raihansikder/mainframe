@@ -2,7 +2,7 @@
 
 namespace App\Mainframe\Http\Controllers\Api\Traits;
 
-use App\Mainframe\Modules\Settings\Setting;
+use App\Setting;
 
 trait ApiControllerTrait
 {

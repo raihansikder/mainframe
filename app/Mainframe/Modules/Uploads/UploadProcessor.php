@@ -9,7 +9,7 @@ class UploadProcessor extends ModelProcessor
 {
     use UploadProcessorTrait;
 
-    /** @var \App\Mainframe\Modules\Uploads\Upload */
+    /** @var \App\Upload */
     public $element;
 
     /*

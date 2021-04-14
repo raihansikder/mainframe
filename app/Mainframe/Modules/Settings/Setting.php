@@ -25,9 +25,9 @@ use Illuminate\Database\Eloquent\Builder;
  * @property int|null $deleted_by TRIAL
  * @property-read int|null $changes_count
  * @property-read \App\User|null $creator
- * @property-read \App\Mainframe\Modules\Uploads\Upload $latestUpload
+ * @property-read \App\Upload $latestUpload
  * @property-read \App\User|null $updater
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Uploads\Upload[] $uploads
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Upload[] $uploads
  * @property-read int|null $uploads_count
  * @method static Builder|Setting newModelQuery()
  * @method static Builder|Setting newQuery()
@@ -48,13 +48,13 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static Builder|Setting whereValue($value)
  * @mixin \Eloquent
  * @method static Builder|BaseModule active()
- * @property-read \App\Mainframe\Modules\Projects\Project $project
- * @property-read \App\Mainframe\Modules\Tenants\Tenant $tenant
+ * @property-read \App\Project $project
+ * @property-read \App\Tenant $tenant
  * @property-read \Illuminate\Database\Eloquent\Collection|\OwenIt\Auditing\Models\Audit[] $audits
  * @property-read int|null $audits_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Comments\Comment[] $comments
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Comment[] $comments
  * @property-read int|null $comments_count
- * @property-read \App\Mainframe\Modules\Comments\Comment $latestComment
+ * @property-read \App\Comment $latestComment
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Changes\Change[] $changes
  */
 class Setting extends BaseModule

@@ -4,7 +4,7 @@ namespace App\Mainframe\Features\Modular\BaseModule\Traits;
 
 use App\Mainframe\Features\Core\ViewProcessor;
 use App\Mainframe\Features\Report\ReportBuilder;
-use App\Mainframe\Modules\Modules\Module;
+use App\Module;
 use Str;
 
 /** @mixin ViewProcessor $this */
@@ -107,7 +107,7 @@ trait ViewProcessorTrait
     }
 
     /**
-     * @param  \App\Mainframe\Modules\Modules\Module  $module
+     * @param  \App\Module  $module
      * @return $this
      */
     public function setModule($module)

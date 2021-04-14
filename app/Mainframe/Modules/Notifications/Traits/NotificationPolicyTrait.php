@@ -2,7 +2,7 @@
 
 namespace App\Mainframe\Modules\Notifications\Traits;
 
-use App\Mainframe\Modules\Notifications\Notification;
+use App\Notification;
 
 trait NotificationPolicyTrait
 {

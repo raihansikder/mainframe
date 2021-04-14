@@ -5,59 +5,6 @@ namespace App\Mainframe\Modules\Packages;
 use App\Mainframe\Features\Modular\BaseModule\BaseModule;
 use App\Mainframe\Modules\Packages\Traits\PackageTrait;
 
-/**
- * App\Mainframe\Modules\Packages\Package
- *
- * @property int $id
- * @property string|null $uuid
- * @property string|null $name
- * @property string|null $details
- * @property float|null $monthly_price
- * @property float|null $yearly_price
- * @property string|null $modules
- * @property string|null $limits
- * @property int|null $is_active
- * @property int|null $created_by
- * @property int|null $updated_by
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property \Illuminate\Support\Carbon|null $deleted_at
- * @property int|null $deleted_by
- * @property-read int|null $changes_count
- * @property-read \App\User|null $creator
- * @property-read \App\Mainframe\Modules\Uploads\Upload $latestUpload
- * @property-read \App\User|null $updater
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Uploads\Upload[] $uploads
- * @property-read int|null $uploads_count
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Features\Modular\BaseModule\BaseModule active()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Packages\Package newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Packages\Package newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Packages\Package query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Packages\Package whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Packages\Package whereCreatedBy($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Packages\Package whereDeletedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Packages\Package whereDeletedBy($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Packages\Package whereDetails($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Packages\Package whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Packages\Package whereIsActive($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Packages\Package whereLimits($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Packages\Package whereModules($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Packages\Package whereMonthlyPrice($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Packages\Package whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Packages\Package whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Packages\Package whereUpdatedBy($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Packages\Package whereUuid($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Packages\Package whereYearlyPrice($value)
- * @mixin \Eloquent
- * @property-read \App\Mainframe\Modules\Projects\Project $project
- * @property-read \App\Mainframe\Modules\Tenants\Tenant $tenant
- * @property-read \Illuminate\Database\Eloquent\Collection|\OwenIt\Auditing\Models\Audit[] $audits
- * @property-read int|null $audits_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Comments\Comment[] $comments
- * @property-read int|null $comments_count
- * @property-read \App\Mainframe\Modules\Comments\Comment $latestComment
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Changes\Change[] $changes
- */
 class Package extends BaseModule
 {
     use PackageTrait;

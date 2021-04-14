@@ -4,7 +4,7 @@ namespace App\Mainframe\Features\Report\Traits;
 
 use App\Mainframe\Features\Report\ReportBuilder;
 use App\Mainframe\Features\Report\ReportViewProcessor;
-use App\Mainframe\Modules\Reports\Report;
+use App\Report;
 
 /** @mixin ReportViewProcessor $this */
 trait ReportViewProcessorTrait

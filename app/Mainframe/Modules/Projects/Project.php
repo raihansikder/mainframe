@@ -5,63 +5,6 @@ namespace App\Mainframe\Modules\Projects;
 use App\Mainframe\Features\Modular\BaseModule\BaseModule;
 use App\Mainframe\Modules\Projects\Traits\ProjectTrait;
 
-/**
- * App\Mainframe\Modules\Projects\Project
- *
- * @property int $id
- * @property string|null $uuid
- * @property string|null $code
- * @property string|null $name
- * @property string|null $description
- * @property string|null $configuration JSON configuration for a project
- * @property int|null $is_active
- * @property int|null $created_by
- * @property int|null $updated_by
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property \Illuminate\Support\Carbon|null $deleted_at
- * @property int|null $deleted_by
- * @property-read \Illuminate\Database\Eloquent\Collection|\OwenIt\Auditing\Models\Audit[] $audits
- * @property-read int|null $audits_count
- * @property-read \App\User|null $creator
- * @property-read \App\Mainframe\Modules\Uploads\Upload $latestUpload
- * @property-read \App\Mainframe\Modules\Projects\Project $project
- * @property-read \App\Mainframe\Modules\Tenants\Tenant $tenant
- * @property-read \App\User|null $updater
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Uploads\Upload[] $uploads
- * @property-read int|null $uploads_count
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Features\Modular\BaseModule\BaseModule active()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Projects\Project newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Projects\Project newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Projects\Project query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Projects\Project whereCode($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Projects\Project whereConfiguration($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Projects\Project whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Projects\Project whereCreatedBy($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Projects\Project whereDeletedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Projects\Project whereDeletedBy($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Projects\Project whereDescription($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Projects\Project whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Projects\Project whereIsActive($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Projects\Project whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Projects\Project whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Projects\Project whereUpdatedBy($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Projects\Project whereUuid($value)
- * @mixin \Eloquent
- * @property string|null $route_group
- * @property string|null $class_directory
- * @property string|null $namespace
- * @property string|null $view_directory
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Projects\Project whereClassDirectory($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Projects\Project whereNamespace($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Projects\Project whereRouteGroup($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Projects\Project whereViewDirectory($value)
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Comments\Comment[] $comments
- * @property-read int|null $comments_count
- * @property-read \App\Mainframe\Modules\Comments\Comment $latestComment
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Changes\Change[] $changes
- * @property-read int|null $changes_count
- */
 class Project extends BaseModule
 {
     use ProjectTrait;

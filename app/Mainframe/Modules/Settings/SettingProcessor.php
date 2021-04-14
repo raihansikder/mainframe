@@ -5,7 +5,7 @@ namespace App\Mainframe\Modules\Settings;
 use App\Mainframe\Features\Modular\Validator\ModelProcessor;
 use App\Mainframe\Modules\Settings\Traits\SettingProcessorTrait;
 
-/** @mixin \App\Mainframe\Modules\Settings\Setting $this->element */
+/** @mixin \App\Setting $this->element */
 class SettingProcessor extends ModelProcessor
 {
 

@@ -3,8 +3,8 @@
 namespace App\Mainframe\Modules\PushNotifications\Traits;
 
 use App\Mainframe\Jobs\JobSendPushNotifications;
-use App\Mainframe\Modules\InAppNotifications\InAppNotification;
-use App\Mainframe\Modules\PushNotifications\PushNotification;
+use App\InAppNotification;
+use App\PushNotification;
 use App\User;
 
 /** @mixin PushNotification $this */

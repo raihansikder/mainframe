@@ -2,8 +2,8 @@
 
 namespace App\Mainframe\Modules\ModuleGroups\Traits;
 
-use App\Mainframe\Modules\ModuleGroups\ModuleGroup;
-use App\Mainframe\Modules\Modules\Module;
+use App\ModuleGroup;
+use App\Module;
 
 trait ModuleGroupTrait
 {
@@ -39,7 +39,7 @@ trait ModuleGroupTrait
      */
     public static function tree()
     {
-        /** @var \App\Mainframe\Modules\ModuleGroups\ModuleGroup[] $moduleGroups */
+        /** @var \App\ModuleGroup[] $moduleGroups */
         $moduleGroups = ModuleGroup::ofParentId(0);
         $list = [];
         foreach ($moduleGroups as $moduleGroup) {
@@ -70,7 +70,7 @@ trait ModuleGroupTrait
 
         $moduleGroups = ModuleGroup::ofParentId($this->id);
         if (count($moduleGroups)) {
-            /** @var \App\Mainframe\Modules\ModuleGroups\ModuleGroup $moduleGroups */
+            /** @var \App\ModuleGroup $moduleGroups */
             foreach ($moduleGroups as $moduleGroup) {
                 if (count($moduleGroup->children())) {
                     $list[] = ['type' => 'module_group', 'item' => $moduleGroup, 'children' => $moduleGroup->children()];

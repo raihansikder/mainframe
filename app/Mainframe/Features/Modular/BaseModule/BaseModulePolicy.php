@@ -2,7 +2,7 @@
 
 namespace App\Mainframe\Features\Modular\BaseModule;
 
-use App\Mainframe\Modules\Modules\Module;
+use App\Module;
 use Illuminate\Auth\Access\HandlesAuthorization;
 use Illuminate\Support\Str;
 

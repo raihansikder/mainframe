@@ -4,7 +4,7 @@
 namespace App\Mainframe\Features\Resolvers;
 
 use App\Mainframe\Features\Modular\BaseModule\BaseModulePolicy;
-use App\Mainframe\Modules\Modules\Module;
+use App\Module;
 use Str;
 
 class PolicyResolver

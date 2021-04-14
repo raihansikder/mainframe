@@ -3,8 +3,8 @@
 namespace App\Mainframe\Modules\Uploads\Traits;
 
 use App\Mainframe\Features\Modular\BaseModule\BaseModule;
-use App\Mainframe\Modules\Modules\Module;
-use App\Mainframe\Modules\Uploads\Upload;
+use App\Module;
+use App\Upload;
 
 trait UploadTrait
 {

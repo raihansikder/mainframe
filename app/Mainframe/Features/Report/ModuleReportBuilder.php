@@ -3,8 +3,8 @@
 namespace App\Mainframe\Features\Report;
 
 use App\Mainframe\Features\Report\Traits\ModuleReportBuilderTrait;
-use App\Mainframe\Modules\Modules\Module;
-use App\Mainframe\Modules\Users\User;
+use App\Module;
+use App\User;
 
 class ModuleReportBuilder extends ReportBuilder
 {

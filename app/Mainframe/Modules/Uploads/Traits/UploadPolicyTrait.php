@@ -15,7 +15,7 @@ trait UploadPolicyTrait
      * view
      *
      * @param  \App\User  $user
-     * @param  \App\Mainframe\Modules\Uploads\Upload  $element
+     * @param  \App\Upload  $element
      * @return mixed
      */
     // public function view($user, $element) {if (! parent::view($user, $element)) {return false;} return true;}

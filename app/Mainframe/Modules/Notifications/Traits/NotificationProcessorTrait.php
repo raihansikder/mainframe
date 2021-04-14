@@ -2,7 +2,7 @@
 
 namespace App\Mainframe\Modules\Notifications\Traits;
 
-use App\Mainframe\Modules\Notifications\Notification;
+use App\Notification;
 
 trait NotificationProcessorTrait
 {
@@ -10,7 +10,7 @@ trait NotificationProcessorTrait
     /**
      * Fill the model with values
      *
-     * @param  \App\Mainframe\Modules\Notifications\Notification  $notification
+     * @param  \App\Notification  $notification
      * @return $this
      */
     public function fill($notification)
@@ -33,7 +33,7 @@ trait NotificationProcessorTrait
     /**
      * Validation rules.
      *
-     * @param  \App\Mainframe\Modules\Notifications\Notification  $notification
+     * @param  \App\Notification  $notification
      * @param  array  $merge
      * @return array
      */

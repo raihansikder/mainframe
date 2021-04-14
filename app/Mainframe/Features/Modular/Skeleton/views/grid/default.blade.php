@@ -2,7 +2,7 @@
 
 <?php
 /**
- * @var \App\Mainframe\Modules\Modules\Module $module
+ * @var \App\Module $module
  * @var \App\User $user
  * @var string $formState create|edit
  * @var array $formConfig

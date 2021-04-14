@@ -2,8 +2,8 @@
 
 namespace App\Mainframe\Modules\Modules\Traits;
 
-use App\Mainframe\Modules\ModuleGroups\ModuleGroup;
-use App\Mainframe\Modules\Modules\Module;
+use App\ModuleGroup;
+use App\Module;
 
 /** @mixin Module $this */
 trait ModuleTrait
@@ -19,7 +19,7 @@ trait ModuleTrait
 
     /**
      * @param $name
-     * @return mixed|\App\Mainframe\Modules\Modules\Module
+     * @return mixed|\App\Module
      */
     public static function byName($name)
     {

@@ -5,7 +5,7 @@ namespace App\Mainframe\Modules\Users\Traits;
 trait UserObserverTrait
 {
     /**
-     * @param  \App\Mainframe\Modules\Users\User  $element
+     * @param  \App\User  $element
      * @return void|bool
      */
     // public function saving($element) { }

@@ -5,7 +5,7 @@
 
 namespace App\Mainframe\Modules\Users\Traits;
 
-use App\Mainframe\Modules\Countries\Country;
+use App\Country;
 use App\Mainframe\Modules\Users\UserProcessor;
 use Carbon\Carbon;
 use Illuminate\Validation\Rule;
@@ -34,7 +34,7 @@ trait UserProcessorTrait
     /**
      * Validation rules. For regular expression validation use array instead of pipe
      *
-     * @param  \App\Mainframe\Modules\Users\User  $element
+     * @param  \App\User  $element
      * @param  array  $merge
      * @return array
      */

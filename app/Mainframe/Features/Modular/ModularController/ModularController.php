@@ -7,7 +7,7 @@ use App\Mainframe\Features\Modular\ModularController\Traits\ModularControllerTra
 use App\Mainframe\Features\Modular\ModularController\Traits\RequestValidator;
 use App\Mainframe\Features\Modular\ModularController\Traits\Resolvable;
 use App\Mainframe\Http\Controllers\BaseController;
-use App\Mainframe\Modules\Modules\Module;
+use App\Module;
 use View;
 
 /**

@@ -3,7 +3,7 @@
 namespace App\Mainframe\Http\Controllers\Api;
 
 use App\Mainframe\Http\Controllers\Api\Traits\ApiControllerTrait;
-use App\Mainframe\Modules\Settings\Setting;
+use App\Setting;
 use App\Mainframe\Http\Controllers\BaseController;
 
 class ApiController extends BaseController

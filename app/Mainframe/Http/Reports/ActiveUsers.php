@@ -4,7 +4,7 @@ namespace App\Mainframe\Http\Reports;
 
 use App\Mainframe\Features\Report\ReportBuilder;
 use App\Mainframe\Features\Report\Traits\ModuleReportBuilderTrait;
-use App\Mainframe\Modules\Modules\Module;
+use App\Module;
 
 class ActiveUsers extends ReportBuilder
 {

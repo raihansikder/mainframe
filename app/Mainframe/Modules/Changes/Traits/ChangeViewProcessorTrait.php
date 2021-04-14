@@ -7,7 +7,7 @@ use App\Mainframe\Modules\Changes\Change;
 trait ChangeViewProcessorTrait
 {
     /**
-     * @var \App\Mainframe\Modules\Modules\Module $module
+     * @var \App\Module $module
      * @var \Illuminate\Database\Eloquent\Builder $model
      * @var Change $element
      * @var bool $editable

@@ -68,7 +68,7 @@ class View extends \Illuminate\View\View
     /**
      * Returns an array with module/module_group name as key
      *
-     * @param  \App\Mainframe\Modules\Modules\Module|null $module
+     * @param  \App\Module|null $module
      * @return array
      */
     public static function breadcrumb($module = null)

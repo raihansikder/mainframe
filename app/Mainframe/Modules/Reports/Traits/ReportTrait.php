@@ -2,8 +2,8 @@
 
 namespace App\Mainframe\Modules\Reports\Traits;
 
-use App\Mainframe\Modules\Modules\Module;
-use App\Mainframe\Modules\Reports\Report;
+use App\Module;
+use App\Report;
 
 trait ReportTrait
 {

@@ -7,7 +7,7 @@ use Validator;
 use App\Group;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use App\Mainframe\Modules\Tenants\Tenant;
+use App\Tenant;
 
 class RegisterTenantController extends RegisterController
 {
@@ -101,7 +101,7 @@ class RegisterTenantController extends RegisterController
     /**
      * Create a tenant
      *
-     * @return \App\Mainframe\Modules\Tenants\Tenant
+     * @return \App\Tenant
      */
     public function createTenant()
     {

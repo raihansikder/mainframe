@@ -3,9 +3,9 @@
 namespace App\Mainframe\Modules\Users\Traits;
 
 use App\Group;
-use App\Mainframe\Modules\Countries\Country;
-use App\Mainframe\Modules\InAppNotifications\InAppNotification;
-use App\Mainframe\Modules\Users\User;
+use App\Country;
+use App\InAppNotification;
+use App\User;
 use App\Mainframe\Notifications\Auth\ResetPassword;
 use App\Mainframe\Notifications\Auth\VerifyEmail;
 use Carbon\Carbon;

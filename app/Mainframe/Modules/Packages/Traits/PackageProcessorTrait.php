@@ -2,7 +2,7 @@
 
 namespace App\Mainframe\Modules\Packages\Traits;
 
-use App\Mainframe\Modules\Packages\Package;
+use App\Package;
 use App\Mainframe\Modules\Packages\PackageProcessor;
 
 trait PackageProcessorTrait
@@ -21,7 +21,7 @@ trait PackageProcessorTrait
     /**
      * Fill the model with values
      *
-     * @param  \App\Mainframe\Modules\Packages\Package  $package
+     * @param  \App\Package  $package
      * @return $this
      */
     public function fill($package)
@@ -44,7 +44,7 @@ trait PackageProcessorTrait
     /**
      * Validation rules.
      *
-     * @param  \App\Mainframe\Modules\Packages\Package  $package
+     * @param  \App\Package  $package
      * @param  array  $merge
      * @return array
      */

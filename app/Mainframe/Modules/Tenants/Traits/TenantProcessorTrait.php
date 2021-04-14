@@ -21,7 +21,7 @@ trait TenantProcessorTrait
     /**
      * Fill the model with values
      *
-     * @param  \App\Mainframe\Modules\Tenants\Tenant  $tenant
+     * @param  \App\Tenant  $tenant
      * @return $this
      */
     public function fill($tenant)
@@ -40,7 +40,7 @@ trait TenantProcessorTrait
     /**
      * Validation rules.
      *
-     * @param  \App\Mainframe\Modules\Tenants\Tenant  $tenant
+     * @param  \App\Tenant  $tenant
      * @param  array  $merge
      * @return array
      */

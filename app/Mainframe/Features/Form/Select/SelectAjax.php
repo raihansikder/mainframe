@@ -2,7 +2,7 @@
 
 namespace App\Mainframe\Features\Form\Select;
 
-use App\Mainframe\Modules\Modules\Module;
+use App\Module;
 
 class SelectAjax extends SelectModel
 {

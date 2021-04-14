@@ -2,7 +2,7 @@
 
 namespace App\Mainframe\Jobs;
 
-use App\Mainframe\Modules\PushNotifications\PushNotification;
+use App\PushNotification;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;

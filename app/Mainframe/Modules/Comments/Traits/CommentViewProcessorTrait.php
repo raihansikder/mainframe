@@ -2,14 +2,14 @@
 
 namespace App\Mainframe\Modules\Comments\Traits;
 
-use App\Mainframe\Modules\Comments\Comment;
+use App\Comment;
 use App\Mainframe\Modules\Comments\CommentProcessor;
 
 /** @mixin CommentProcessor $this */
 trait CommentViewProcessorTrait
 {
     /**
-     * @var \App\Mainframe\Modules\Modules\Module $module
+     * @var \App\Module $module
      * @var \Illuminate\Database\Eloquent\Builder $model
      * @var Comment $element
      * @var bool $editable

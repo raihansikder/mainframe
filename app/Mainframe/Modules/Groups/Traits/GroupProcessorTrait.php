@@ -40,7 +40,7 @@ trait GroupProcessorTrait
     /**
      * Run validations for saving. This should be common for both creating and updating.
      *
-     * @param $element \App\Mainframe\Modules\Groups\Group
+     * @param $element \App\Group
      * @return $this
      */
     public function saving($element)

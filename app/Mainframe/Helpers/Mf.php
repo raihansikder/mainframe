@@ -7,8 +7,8 @@ use Cache;
 use Hash;
 use Schema;
 use App\User;
-use App\Mainframe\Modules\Modules\Module;
-use App\Mainframe\Modules\ModuleGroups\ModuleGroup;
+use App\Module;
+use App\ModuleGroup;
 
 /**
  * Class Mf

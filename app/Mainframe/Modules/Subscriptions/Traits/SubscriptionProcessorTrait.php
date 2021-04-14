@@ -2,7 +2,7 @@
 
 namespace App\Mainframe\Modules\Subscriptions\Traits;
 
-use App\Mainframe\Modules\Subscriptions\Subscription;
+use App\Subscription;
 use App\Mainframe\Modules\Subscriptions\SubscriptionProcessor;
 
 /** @mixin SubscriptionProcessor $this */
@@ -21,7 +21,7 @@ trait SubscriptionProcessorTrait
     /**
      * Fill the model with values
      *
-     * @param  \App\Mainframe\Modules\Subscriptions\Subscription  $subscription
+     * @param  \App\Subscription  $subscription
      * @return $this
      */
     public function fill($subscription)
@@ -40,7 +40,7 @@ trait SubscriptionProcessorTrait
     /**
      * Validation rules.
      *
-     * @param  \App\Mainframe\Modules\Subscriptions\Subscription  $subscription
+     * @param  \App\Subscription  $subscription
      * @param  array  $merge
      * @return array
      */
