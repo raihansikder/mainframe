@@ -9,8 +9,6 @@ class ModuleDatatable extends Datatable
 
     use ModuleDatatableTrait;
 
-    /** @var \App\Mainframe\Modules\Modules\Module */
-    public $module;
 
     /**
      * @param $module

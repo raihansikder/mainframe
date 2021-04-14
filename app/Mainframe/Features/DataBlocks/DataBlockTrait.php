@@ -17,7 +17,7 @@ trait DataBlockTrait
      *
      * @var int
      */
-    public $cache = -1; // Default 1 second
+    public $cache = -1; // Default -1 second
 
     /**
      * Process the result

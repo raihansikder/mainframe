@@ -247,12 +247,28 @@ return [
         /*-------------------------------------------------------------------------
         | Section: Alias Mainframe module classes. A good place to override Mainframe class reference
         |-------------------------------------------------------------------------*/
-        'Setting' => App\Projects\MyProject\Modules\Settings\Setting::class,
-        'Upload' => App\Projects\MyProject\Modules\Uploads\Upload::class,
-        'User' => App\Projects\MyProject\Modules\Users\User::class,
+        'App\Change' => App\Mainframe\Modules\Changes\Change::class,
+        'App\Comment' => App\Mainframe\Modules\Comments\Comment::class,
+        'App\Country' => App\Mainframe\Modules\Countries\Country::class,
+        'App\Group' => App\Mainframe\Modules\Groups\Group::class,
+        'App\InAppNotification' => App\Mainframe\Modules\InAppNotifications\InAppNotification::class,
+        'App\ModuleGroup' => App\Mainframe\Modules\ModuleGroups\ModuleGroup::class,
+        'App\Module' => App\Mainframe\Modules\Modules\Module::class,
+        'App\Notification' => App\Mainframe\Modules\Notifications\Notification::class,
+        'App\Package' => App\Mainframe\Modules\Packages\Package::class,
+        'App\Project' => App\Mainframe\Modules\Projects\Project::class,
+        'App\PushNotification' => App\Mainframe\Modules\PushNotifications\PushNotification::class,
+        'App\Report' => App\Mainframe\Modules\Reports\Report::class,
+        'App\Setting' => App\Projects\MyProject\Modules\Settings\Setting::class,
+        'App\Subscription' => App\Mainframe\Modules\Subscriptions\Subscription::class,
+        'App\Tenant' => App\Mainframe\Modules\Tenants\Tenant::class,
+        'App\Upload' => App\Projects\MyProject\Modules\Uploads\Upload::class,
+        'App\User' => App\Projects\MyProject\Modules\Users\User::class,
+
         /*-------------------------------------------------------------------------
         | Section: Alias project module classes.
         |-------------------------------------------------------------------------*/
+        'SuperHeroes' => App\Mainframe\Modules\SuperHeroes\SuperHero::class,
     ],
 
 ];

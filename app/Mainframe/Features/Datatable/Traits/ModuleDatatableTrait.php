@@ -4,6 +4,9 @@ namespace App\Mainframe\Features\Datatable\Traits;
 
 trait ModuleDatatableTrait
 {
+    /** @var \App\Mainframe\Modules\Modules\Module */
+    public $module;
+
     /**
      * Select columns, alias and corresponding HTML title
      *
