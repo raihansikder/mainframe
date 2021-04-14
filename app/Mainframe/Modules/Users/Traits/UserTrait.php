@@ -125,7 +125,10 @@ trait UserTrait
 
     public function country() { return $this->belongsTo(Country::class); }
 
-    public function inAppNotifications() { return $this->morphMany(InAppNotification::class, 'notifiable'); }
+    public function inAppNotifications() {
+        return $this->hasMany(InAppNotification::class, 'element_id')->where('module_id', $this->module()->id);
+        // return $this->morphMany(InAppNotification::class, 'notifiable'); // Note: Do not use morphMany
+    }
 
     /*
     |--------------------------------------------------------------------------

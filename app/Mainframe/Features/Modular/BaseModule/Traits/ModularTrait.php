@@ -2,6 +2,8 @@
 
 namespace App\Mainframe\Features\Modular\BaseModule\Traits;
 
+use App\Change;
+use App\Comment;
 use App\Mainframe\Helpers\Mf;
 use App\Mainframe\Modules\Modules\Module;
 use App\Mainframe\Modules\Projects\Project;
@@ -22,6 +24,10 @@ trait ModularTrait
     | Scopes allow you to easily re-use query logic in your models. To define
     | a scope, simply prefix a model method with scope:
     */
+    /**
+     * @param $query
+     * @return mixed
+     */
     public function scopeActive($query) { return $query->where('is_active', 1); }
 
     /*
@@ -295,12 +301,11 @@ trait ModularTrait
     */
     /**
      * Get all tracked changes of element.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
      */
     public function changes()
     {
-        return $this->morphMany('App\Mainframe\Modules\Changes\Change', 'changeable');
+        return $this->hasMany(Change::class, 'element_id')->where('module_id', $this->module()->id);
+        // return $this->morphMany('App\Mainframe\Modules\Changes\Change', 'changeable'); Note: Do not use morphMany
     }
 
     /**
@@ -560,15 +565,11 @@ trait ModularTrait
 
     /**
      * Get a list of uploads under an element.
-     *
-     * @return mixed
      */
     public function uploads()
     {
-        // return $this->hasMany(Upload::class, 'element_id')
-        //     ->where('module_id', $this->module()->id)
-        //     ->orderBy('order', 'ASC')->orderBy('created_at', 'DESC');
-        return $this->morphMany('App\Mainframe\Modules\Uploads\Upload', 'uploadable');
+        return $this->hasMany(Upload::class, 'element_id')->where('module_id', $this->module()->id);
+        // return $this->morphMany('App\Mainframe\Modules\Uploads\Upload', 'uploadable'); // Note: Do not use morphMany because our class name can change
     }
 
     /*
@@ -584,7 +585,7 @@ trait ModularTrait
      */
     public function comments()
     {
-        return $this->morphMany('App\Mainframe\Modules\Comments\Comment', 'commentable');
+        return $this->hasMany(Comment::class, 'element_id')->where('module_id', $this->module()->id);
     }
 
     /*
