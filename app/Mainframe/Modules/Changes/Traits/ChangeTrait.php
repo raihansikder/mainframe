@@ -41,8 +41,6 @@ trait ChangeTrait
     */
     public function changeable() { return $this->morphTo(); }
 
-    public function linkedModule() { return $this->belongsTo(Module::class, 'module_id')->remember(timer('long')); }
-
     /*
     |--------------------------------------------------------------------------
     | Autofill and functions to calculated field updates

@@ -3,7 +3,6 @@
 namespace App\Mainframe\Features\Modular\BaseModule\Traits;
 
 use App\Change;
-use App\Comment;
 use App\Mainframe\Helpers\Mf;
 use App\Module;
 use App\Project;
@@ -548,6 +547,13 @@ trait ModularTrait
     |--------------------------------------------------------------------------
     |
     */
+    /**
+     * @return \App\Mainframe\Features\Modular\BaseModule\BaseModule|mixed
+     */
+    public function linkedModule()
+    {
+        return $this->belongsTo(Module::class, 'module_id')->remember(timer('long'));
+    }
 
     /**
      * Link existing uploads with this element
@@ -633,6 +639,39 @@ trait ModularTrait
         if (isset($this->id) && $this->deleted_by == null) {
             DB::table($this->getTable())->where('id', $this->id)
                 ->update(['deleted_by' => $by, 'deleted_at' => $at]);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Fill data to relate this upload with another module element.
+     *
+     * @param  string  $fieldPrefix  i.e.uploadable
+     * @return $this
+     */
+    public function fillModuleAndElement($fieldPrefix)
+    {
+        $module = $this->linkedModule;
+        $element = null;
+
+        $idField = $fieldPrefix.'_id';
+        $typeField = $fieldPrefix.'_type';
+
+        /** @var \App\Mainframe\Features\Modular\BaseModule\BaseModule $model */
+        if ($module) {
+            $model = $module->model;
+            $this->$typeField = trim($module->model, '\\');
+        }
+
+        if ($module && isset($this->element_id)) {
+            $element = $model::remember(timer('very-long'))
+                ->find($this->element_id);
+        }
+
+        if ($element) {
+            $this->$idField = $element->id;
+            $this->element_uuid = $element->uuid;
         }
 
         return $this;

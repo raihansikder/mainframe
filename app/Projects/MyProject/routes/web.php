@@ -37,13 +37,13 @@ Route::middleware(['auth', 'verified'])->group(function () use ($modules, $modul
 
         /* * Resourceful route that creates all REST routs. */
         Route::resource($path, $controller)->names([
-            'index' => "{$module->name}.index",
-            'create' => "{$module->name}.create",
-            'store' => "{$module->name}.store",
-            'show' => "{$module->name}.show",
-            'edit' => "{$module->name}.edit",
-            'update' => "{$module->name}.update",
-            'destroy' => "{$module->name}.destroy",
+            'index' => "{$moduleName}.index",
+            'create' => "{$moduleName}.create",
+            'store' => "{$moduleName}.store",
+            'show' => "{$moduleName}.show",
+            'edit' => "{$moduleName}.edit",
+            'update' => "{$moduleName}.update",
+            'destroy' => "{$moduleName}.destroy",
         ]);
     }
     // Module-group index routes
@@ -55,7 +55,7 @@ Route::middleware(['auth', 'verified'])->group(function () use ($modules, $modul
     Route::post('update-file', '\App\Mainframe\Modules\Uploads\UploadController@updateExistingUpload')->name('uploads.update-file'); // Update uploaded file
     Route::get('download/{uuid}', '\App\Mainframe\Modules\Uploads\UploadController@download')->name('download'); // Download
     Route::get('data/{block}', 'DataBlockController@show')->name('data-block.show'); // Data-block
-    Route::get('report/{report}', 'ReportController@show')->name('report');
+    Route::get('report/{report}', 'ReportController@show')->name('report'); // Report
 
     /*---------------------------------
     | Project specific routs

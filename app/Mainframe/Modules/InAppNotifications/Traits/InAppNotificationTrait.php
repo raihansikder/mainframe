@@ -52,37 +52,6 @@ trait InAppNotificationTrait
         return $this;
     }
 
-    /**
-     * Fill data to relate this upload with another module element.
-     *
-     * @return $this
-     */
-    public function fillModuleAndElementData()
-    {
-
-        $module = $this->linkedModule()->exists() ? $this->linkedModule : null;
-        $element = null;
-
-        if ($module) {
-            /** @var \App\Mainframe\Features\Modular\BaseModule\BaseModule $model */
-            $model = $module->model;
-            $this->notifiable_type = trim($module->model, '\\');
-        }
-
-        if ($module && isset($this->element_id)) {
-            $element = $model::remember(timer('very-long'))
-                ->find($this->element_id);
-        }
-
-        if ($element) {
-            $this->notifiable_id = $element->id;
-            //$this->element_uuid = $element->uuid;
-        }
-
-        return $this;
-
-    }
-
     /*
     |--------------------------------------------------------------------------
     | Static helper functions

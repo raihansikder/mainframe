@@ -65,7 +65,7 @@ class Upload extends BaseModule
         self::observe(UploadObserver::class);
 
         static::saving(function (Upload $element) {
-            $element->fillModuleAndElementData();
+            $element->fillModuleAndElement();
             $element->fillExtension();
         });
         // static::creating(function (Upload $element) { });

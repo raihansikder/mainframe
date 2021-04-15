@@ -1,9 +1,8 @@
-<?php /** @noinspection DuplicatedCode */
+<?php
 
 namespace App\Mainframe\Modules\Modules;
 
 use App\Mainframe\Modules\Modules\Traits\ModuleTrait;
-use Illuminate\Database\Eloquent\Builder;
 use App\Mainframe\Features\Modular\BaseModule\BaseModule;
 
 class Module extends BaseModule

@@ -7,7 +7,6 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule;
 class SuperHero extends BaseModule
 {
     // Note: Pull in necessary traits from relevant mainframe class
-
     use SuperHeroHelper;
 
     protected $moduleName = 'super-heroes';
@@ -70,8 +69,7 @@ class SuperHero extends BaseModule
     // public function getFirstNameAttribute($value) { return ucfirst($value); }
 
     /*
-    |-------------------------------------------------------------------------
-    -
+    |--------------------------------------------------------------------------
     | Section: Mutators
     |--------------------------------------------------------------------------
     */

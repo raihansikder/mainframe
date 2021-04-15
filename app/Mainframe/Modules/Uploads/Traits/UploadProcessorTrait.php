@@ -44,4 +44,34 @@ trait UploadProcessorTrait
         return array_merge($rules, $merge);
     }
 
+    /*
+    |--------------------------------------------------------------------------
+    | Execute calculations, validations and actions on different events
+    |--------------------------------------------------------------------------
+    */
+    /**
+     * @param  Upload  $element
+     * @return $this
+     */
+    public function saving($element)
+    {
+        $element->fillModuleAndElement('uploadable');
+        $element->fillExtension();
+
+        return $this;
+    }
+
+    /**
+     * @param  Upload  $element
+     * @return $this
+     */
+    public function saved($element)
+    {
+        if ($element->type == 'profile-pic') {
+            $element->deletePreviousOfSameType();
+        }
+
+        return $this;
+    }
+
 }

@@ -14,19 +14,8 @@ class CommentController extends ModularController
 {
 
     use CommentControllerTrait;
-    /*
-    |--------------------------------------------------------------------------
-    | Module definitions
-    |--------------------------------------------------------------------------
-    |
-    */
+
     protected $moduleName = 'comments';
 
-    /**
-     * @return CommentDatatable
-     */
-    public function datatable()
-    {
-        return new CommentDatatable($this->module);
-    }
+
 }

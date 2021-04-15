@@ -19,5 +19,5 @@
 //  file. Use that one instead
 
 Route::get('test', function () {
-    // User::find(1)->isAdmin(); //Test Alias
+    dd(\App\Upload::find(4)->uploadable); //Test Alias
 })->name('test')->middleware(['superuser']);

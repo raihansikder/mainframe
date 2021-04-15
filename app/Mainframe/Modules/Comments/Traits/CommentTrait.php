@@ -44,13 +44,6 @@ trait CommentTrait
      */
     public function commentable() { return $this->morphTo(); }
 
-    /**
-     * @return \App\Mainframe\Features\Modular\BaseModule\BaseModule|mixed
-     */
-    public function linkedModule()
-    {
-        return $this->belongsTo(Module::class, 'module_id')->remember(timer('long'));
-    }
     /*
     |--------------------------------------------------------------------------
     | Autofill and functions to calculated field updates

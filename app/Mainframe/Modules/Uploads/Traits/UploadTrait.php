@@ -3,7 +3,6 @@
 namespace App\Mainframe\Modules\Uploads\Traits;
 
 use App\Mainframe\Features\Modular\BaseModule\BaseModule;
-use App\Module;
 use App\Upload;
 
 trait UploadTrait
@@ -122,81 +121,30 @@ trait UploadTrait
         return $this;
     }
 
-    /**
-     * Fill data to relate this upload with another module element.
-     *
-     * @return $this
-     */
-    public function fillModuleAndElementData()
-    {
-        $module = $this->linkedModule;
-        $element = null;
-
-        /** @var \App\Mainframe\Features\Modular\BaseModule\BaseModule $model */
-        if ($module) {
-            $model = $module->model;
-            $this->uploadable_type = trim($module->model, '\\');
-        }
-
-        if ($module && isset($this->element_id)) {
-            $element = $model::remember(timer('very-long'))
-                ->find($this->element_id);
-        }
-
-        if ($element) {
-            $this->uploadable_id = $element->id;
-            $this->element_uuid = $element->uuid;
-        }
-
-        return $this;
-    }
-
     /*
     |--------------------------------------------------------------------------
-    | Query scopes + Dynamic scopes
+    | Section: Query scopes + Dynamic scopes
     |--------------------------------------------------------------------------
-    |
-    | Scopes allow you to easily re-use query logic in your models. To define
-    | a scope, simply prefix a model method with scope:
-    */
-    //public function scopePopular($query) { return $query->where('votes', '>', 100); }
-    //public function scopeWomen($query) { return $query->whereGender('W'); }
-    /*
-    Usage: $users = User::popular()->women()->orderBy('created_at')->get();
-    */
-
-    //public function scopeOfType($query, $type) { return $query->whereType($type); }
-    /*
-    Usage:  $users = User::ofType('member')->get();
     */
 
     /*
     |--------------------------------------------------------------------------
-    | Accessors
+    | Section: Accessors
     |--------------------------------------------------------------------------
-    |
-    | Eloquent provides a convenient way to transform your model attributes when
-    | getting or setting them. Get a transformed value of an attribute
     */
     // public function getFirstNameAttribute($value) { return ucfirst($value); }
 
     /*
     |--------------------------------------------------------------------------
-    | Mutators
+    | Section: Mutators
     |--------------------------------------------------------------------------
-    |
-    | Eloquent provides a convenient way to transform your model attributes when
-    | getting or setting them. Get a transformed value of an attribute
     */
     // public function setFirstNameAttribute($value) { $this->attributes['first_name'] = strtolower($value); }
 
     /*
     |--------------------------------------------------------------------------
-    | Attributes
+    | Section: Attributes
     |--------------------------------------------------------------------------
-    |
-    | If you want to add extra fields(that doesn't exist in database) to you model
-    | you can use the getSomeAttribute() feature of eloquent.
     */
     public function getUrlAttribute() { return asset($this->path); }
 
@@ -204,31 +152,10 @@ trait UploadTrait
 
     /*
     |--------------------------------------------------------------------------
-    | Relations
+    | Section: Relations
     |--------------------------------------------------------------------------
-    |
-    | Write model relations (belongsTo,hasMany etc) at the bottom the file
     */
-    /**
-     * Get the owning commentable model.
-     */
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\MorphTo
-     */
     public function uploadable() { return $this->morphTo(); }
-
-    /**
-     * @return \App\Mainframe\Features\Modular\BaseModule\BaseModule|mixed
-     */
-    public function linkedModule()
-    {
-        return $this->belongsTo(Module::class, 'module_id')->remember(timer('long'));
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    // public function creator() { return $this->belongsTo(\App\User::class, 'created_by'); }
 
     /*
     |--------------------------------------------------------------------------

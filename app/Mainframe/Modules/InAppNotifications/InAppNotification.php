@@ -68,10 +68,7 @@ class InAppNotification extends BaseModule
         parent::boot();
         self::observe(InAppNotificationObserver::class);
 
-        static::saving(function (InAppNotification $element) {
-            $element->fillModuleAndElementData();
-            // $element->populate();
-        });
+        // static::saving(function (InAppNotification $element) { });
         // static::creating(function (InAppNotification $element) { });
         // static::updating(function (InAppNotification $element) { });
         // static::created(function (InAppNotification $element) { });

@@ -2,7 +2,7 @@
 
 namespace App\Mainframe\Modules\Changes\Traits;
 
-use App\Mainframe\Modules\Changes\Change;
+use App\Change;
 use App\Mainframe\Modules\Changes\ChangeObserver;
 
 /** @mixin ChangeObserver $this */

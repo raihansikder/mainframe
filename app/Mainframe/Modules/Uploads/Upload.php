@@ -41,7 +41,7 @@ class Upload extends BaseModule
     // protected $casts = [];
     // protected $with = [];
     protected $appends = ['url', 'dir'];
-    protected $hidden = ['linked_module'];
+    protected $hidden  = ['linked_module'];
 
     /*
     |--------------------------------------------------------------------------
@@ -50,6 +50,8 @@ class Upload extends BaseModule
     */
     public static $types = [
         self::TYPE_PROFILE_PIC,
+        self::TYPE_LOGO,
+        // Todo: add more types
     ];
 
     /*
@@ -62,15 +64,13 @@ class Upload extends BaseModule
         parent::boot();
         self::observe(UploadObserver::class);
 
-        static::saving(function (Upload $element) {
-            $element->fillModuleAndElementData();
-            $element->fillExtension();
-        });
-
-        static::saved(function (Upload $element) {
-            if ($element->type == 'profile-pic') {
-                $element->deletePreviousOfSameType();
-            }
-        });
+        // static::saving(function (Upload $element) { });
+        // static::creating(function (Upload $element) { });
+        // static::updating(function (Upload $element) { });
+        // static::created(function (Upload $element) { });
+        // static::updated(function (Upload $element) { });
+        // static::saved(function (Upload $element) { });
+        // static::deleting(function (Upload $element) { });
+        // static::deleted(function (Upload $element) { });
     }
 }
