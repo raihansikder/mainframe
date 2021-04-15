@@ -277,17 +277,51 @@ class ModelProcessor
     /**
      * Check if a field has change
      *
-     * @param $field
+     * @param $fields
      * @return bool
      */
-    public function fieldHasChanged($field)
+    public function fieldHasChanged($fields)
     {
-        if ($this->element->isUpdating()) {
-            return isset($this->original[$field], $this->element->$field)
-                && $this->original[$field] != $this->element->$field;
+        if (!is_array($fields)) {
+            $fields = [$fields];
+        }
+
+        foreach ($fields as $field) {
+            if ($this->element->isUpdating()) {
+                return isset($this->original[$field], $this->element->$field)
+                    && $this->original[$field] != $this->element->$field;
+            }
         }
 
         return false;
+    }
+
+    /**
+     * Check if any of the fields have changed.
+     *
+     * @param  array  $fields
+     * @return bool
+     */
+    public function anyFieldHasChanged($fields = [])
+    {
+        return $this->fieldHasChanged($fields);
+    }
+
+    /**
+     * Check if all the fields have changed
+     *
+     * @param  array  $fields
+     * @return bool
+     */
+    public function allFieldsHavChanged($fields = [])
+    {
+        foreach ($fields as $field) {
+            if (!$this->fieldHasChanged($field)) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     /**
