@@ -652,7 +652,7 @@ trait ModularTrait
      */
     public function fillModuleAndElement($fieldPrefix)
     {
-        $module = $this->linkedModule;
+        $module = $this->linkedModule ?? null;
         $element = null;
 
         $idField = $fieldPrefix.'_id';

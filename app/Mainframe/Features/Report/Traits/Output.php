@@ -195,7 +195,7 @@ trait Output
         ];
 
         // Report prior to running
-        if ($type !== 'blank') {
+        if ($type != 'blank') {
             $vars = array_merge($vars, [
                 'selectedColumns' => $this->mutateSelectedColumns(),
                 'aliasColumns' => $this->mutateAliasColumns(),
@@ -238,8 +238,12 @@ trait Output
      */
     public function html($type = null)
     {
-        return $this->view($this->viewPath($type))
-            ->with($this->viewVars($type));
+
+        $vars = $this->viewVars($type);
+        $path = $this->viewPath($type);
+
+        return $this->response()->view($path, $vars);
+
     }
 
     /**
