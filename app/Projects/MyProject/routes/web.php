@@ -1,6 +1,10 @@
-<?php /** @noinspection DuplicatedCode */
+<?php
 
 use App\Mainframe\Helpers\Mf;
+use App\Mainframe\Modules\ModuleGroups\ModuleGroupController;
+use App\Projects\MyProject\Http\Controllers\DataBlockController;
+use App\Projects\MyProject\Http\Controllers\ReportController;
+use App\Projects\MyProject\Modules\Uploads\UploadController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,13 +53,13 @@ Route::middleware(['auth', 'verified'])->group(function () use ($modules, $modul
     // Module-group index routes
     foreach ($moduleGroups as $moduleGroup) {
         $path = $moduleGroup->route_path;
-        Route::get('module-groups/index/'.$path, '\App\Mainframe\Modules\ModuleGroups\ModuleGroupController@home')->name($moduleGroup->route_name.'.index');
+        Route::get('module-groups/index/'.$path, [ModuleGroupController::class, 'home'])->name($moduleGroup->route_name.'.index');
     }
 
-    Route::post('update-file', '\App\Mainframe\Modules\Uploads\UploadController@updateExistingUpload')->name('uploads.update-file'); // Update uploaded file
-    Route::get('download/{uuid}', '\App\Mainframe\Modules\Uploads\UploadController@download')->name('download'); // Download
-    Route::get('data/{block}', 'DataBlockController@show')->name('data-block.show'); // Data-block
-    Route::get('report/{report}', 'ReportController@show')->name('report'); // Report
+    Route::post('update-file', [UploadController::class, 'updateExistingUpload'])->name('uploads.update-file'); // Update uploaded file
+    Route::get('download/{uuid}', [UploadController::class, 'download'])->name('download'); // Download
+    Route::get('data/{block}', [DataBlockController::class, 'show'])->name('data-block.show'); // Data-block
+    Route::get('report/{report}', [ReportController::class, 'show'])->name('report'); // Report
 
     /*---------------------------------
     | Project specific routs
