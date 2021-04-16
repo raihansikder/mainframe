@@ -44,7 +44,7 @@ class CreateRootModels extends MakeMainframeModule
      */
     public function createClasses()
     {
-        $modules = Module::active()->get();
+        $modules = Module::whereIsActive(1)->get();
         foreach ($modules as $module) {
             /** @var Module $module */
             $extends = $module->model;

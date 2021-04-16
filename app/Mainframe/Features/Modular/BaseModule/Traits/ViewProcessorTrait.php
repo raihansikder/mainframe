@@ -3,15 +3,11 @@
 namespace App\Mainframe\Features\Modular\BaseModule\Traits;
 
 use App\Mainframe\Features\Core\ViewProcessor;
-use App\Mainframe\Features\Report\ReportBuilder;
-use App\Module;
 use Str;
 
 /** @mixin ViewProcessor $this */
 trait ViewProcessorTrait
 {
-
-
 
     /**
      * @param  string  $type
@@ -332,6 +328,10 @@ trait ViewProcessorTrait
      */
     public function formTitle()
     {
+        if (Str::endsWith(\Route::getCurrentRoute()->getName(), '.index')) {
+            return Str::plural($this->module->title);
+        }
+
         return Str::singular($this->module->title);
     }
 

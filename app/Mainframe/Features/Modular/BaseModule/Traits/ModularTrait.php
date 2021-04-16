@@ -10,6 +10,7 @@ use App\Tenant;
 use App\Upload;
 use App\User;
 use DB;
+use Illuminate\Database\Eloquent\Builder;
 
 /** @mixin \App\Mainframe\Features\Modular\BaseModule\BaseModule $this */
 trait ModularTrait
@@ -25,7 +26,7 @@ trait ModularTrait
     */
     /**
      * @param $query
-     * @return mixed
+     * @return Builder
      */
     public function scopeActive($query) { return $query->where('is_active', 1); }
 
@@ -337,7 +338,7 @@ trait ModularTrait
      * Get a change from a tracked field.
      *
      * @param $field
-     * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Relations\MorphMany
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function track($field)
     {
@@ -552,6 +553,7 @@ trait ModularTrait
      */
     public function linkedModule()
     {
+        /** @noinspection PhpUndefinedMethodInspection */
         return $this->belongsTo(Module::class, 'module_id')->remember(timer('long'));
     }
 
@@ -671,6 +673,7 @@ trait ModularTrait
 
         if ($element) {
             $this->$idField = $element->id;
+            /** @noinspection PhpUndefinedFieldInspection */
             $this->element_uuid = $element->uuid;
         }
 

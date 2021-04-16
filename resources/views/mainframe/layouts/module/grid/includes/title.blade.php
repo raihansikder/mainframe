@@ -14,7 +14,7 @@
 
 
 @if($view->show('report-link'))
-    <a href="{{\App\Mainframe\Modules\Reports\Report::defaultForModule($module->id)}}"
+    <a href="{{\App\Report::defaultForModule($module->id)}}"
        class="pull-right module-list-btn {{$module->name.'-module-list-btn'}}"
        title="View advanced report with filters, excel export etc."
        data-toggle="tooltip"

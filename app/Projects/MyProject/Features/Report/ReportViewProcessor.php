@@ -2,15 +2,10 @@
 
 namespace App\Projects\MyProject\Features\Report;
 
-use App\Mainframe\Features\Report\Traits\ReportViewProcessorTrait;
 use App\Projects\MyProject\Features\Core\ViewProcessor;
 
 class ReportViewProcessor extends ViewProcessor
 {
-    use ReportViewProcessorTrait;
-
-    /** @var \App\Mainframe\Features\Report\ReportBuilder */
-    public $report;
 
     /**
      * ReportViewProcessor constructor.
@@ -22,6 +17,5 @@ class ReportViewProcessor extends ViewProcessor
         parent::__construct();
         $this->report = $reportBuilder;
     }
-
 
 }

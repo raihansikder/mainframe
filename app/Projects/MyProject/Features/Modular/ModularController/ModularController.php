@@ -86,26 +86,5 @@ class ModularController extends BaseController
         return (new ModuleList($this->module))->json();
     }
 
-    /**
-     * Get the view processor instance
-     *
-     * @return BaseModuleViewProcessor|null
-     */
-    public function viewProcessor()
-    {
-        // Note: Utilize project asset instead of Mainframe default
-        $classPaths = [
-            $this->module->modelClassPath().'ViewProcessor', // Check in same folder
-            $this->module->namespace.'\\'.$this->module->modelClassName().'ViewProcessor',// Check in module directory
-            '\App\Projects\MyProject\Features\Modular\BaseModule\BaseModuleViewProcessor', // // Note: Utilize project asset instead of Mainframe default
-        ];
 
-        foreach ($classPaths as $classPath) {
-            if (class_exists($classPath)) {
-                return (new $classPath);
-            }
-        }
-
-        return null;
-    }
 }

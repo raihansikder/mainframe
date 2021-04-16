@@ -13,6 +13,7 @@ class AppServiceProvider extends ServiceProvider
     protected $commands = [
         \App\Mainframe\Commands\MakeMainframeModule::Class,
         \App\Mainframe\Commands\CreateRootModels::Class,
+        \App\Mainframe\Commands\CleanDeletedUploads::Class,
     ];
 
     protected $providers = [

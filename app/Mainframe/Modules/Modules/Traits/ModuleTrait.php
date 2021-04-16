@@ -14,7 +14,7 @@ trait ModuleTrait
      */
     public static function getActiveList()
     {
-        return Module::active()->remember(timer('long'))->get();
+        return Module::whereIsActive(1)->remember(timer('long'))->get();
     }
 
     /**

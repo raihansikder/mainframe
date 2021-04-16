@@ -2,14 +2,14 @@
 
 namespace App\Projects\MyProject\Http\Controllers;
 
-use App\Mainframe\Http\Controllers\BaseController as MfBaseController;
+use App\Mainframe\Http\Controllers\BaseController as MainframeBaseController;
 use App\Projects\MyProject\Features\Core\ViewProcessor;
 use View;
 
 /**
  * Class MainframeBaseController
  */
-class BaseController extends MfBaseController
+class BaseController extends MainframeBaseController
 {
 
     /**

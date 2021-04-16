@@ -1,4 +1,4 @@
-<?php /** @noinspection DuplicatedCode */
+<?php
 
 use App\Mainframe\Helpers\Mf;
 

@@ -2,8 +2,8 @@
 
 namespace App\Mainframe\Modules\ModuleGroups\Traits;
 
-use App\ModuleGroup;
 use App\Module;
+use App\ModuleGroup;
 
 trait ModuleGroupTrait
 {
@@ -15,7 +15,7 @@ trait ModuleGroupTrait
      */
     public static function getActiveList()
     {
-        return ModuleGroup::active()->remember(timer('long'))->get();
+        return ModuleGroup::whereIsActive(1)->remember(timer('long'))->get();
     }
 
     /**
@@ -26,10 +26,8 @@ trait ModuleGroupTrait
      */
     public static function ofParentId($id = 0)
     {
-        return ModuleGroup::active()->where('parent_id', $id)
-            ->orderBy('order')
-            ->orderBy('title')
-            ->remember(timer('long'))->get();
+        return ModuleGroup::whereParentId($id)->whereIsVisible(1)->whereIsActive(1)
+            ->orderBy('order')->orderBy('title')->remember(timer('long'))->get();
     }
 
     /**
