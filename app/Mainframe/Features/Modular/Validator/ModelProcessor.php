@@ -286,10 +286,18 @@ class ModelProcessor
             $fields = [$fields];
         }
 
+        if (!$this->element->isUpdating()) {
+            return false;
+        }
+
         foreach ($fields as $field) {
-            if ($this->element->isUpdating()) {
-                return isset($this->original[$field], $this->element->$field)
-                    && $this->original[$field] != $this->element->$field;
+
+            // if(!isset($this->original[$field], $this->element->$field)){
+            //     return false;
+            // }
+
+            if ($this->original[$field] != $this->element->$field) {
+                return true;
             }
         }
 
