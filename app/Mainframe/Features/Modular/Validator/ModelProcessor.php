@@ -259,7 +259,7 @@ class ModelProcessor
     {
         // Previous $this->element->fieldHasChanged($field)
         if ($this->fieldHasChanged($field)) {
-            return ['field' => $field, 'old' => $this->original[$field], 'new' => $this->element->$field];
+            return ['field' => $field, 'old' => $this->original($field), 'new' => $this->element->$field];
         }
 
         return null;
@@ -292,11 +292,11 @@ class ModelProcessor
 
         foreach ($fields as $field) {
 
-            // if(!isset($this->original[$field], $this->element->$field)){
+            // if(!isset($this->original($field), $this->element->$field)){
             //     return false;
             // }
 
-            if ($this->original[$field] != $this->element->$field) {
+            if ($this->original($field) != $this->element->$field) {
                 return true;
             }
         }
@@ -437,7 +437,7 @@ class ModelProcessor
      */
     public function allowedTransitionsOf($field, $from = null)
     {
-        $from = $from ?: $this->original[$field];
+        $from = $from ?: $this->original($field);
         $allTransitions = $this->getTransitions();
 
         if (isset($allTransitions[$field][$from])) {
