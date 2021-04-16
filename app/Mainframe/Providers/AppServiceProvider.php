@@ -12,6 +12,7 @@ class AppServiceProvider extends ServiceProvider
 {
     protected $commands = [
         \App\Mainframe\Commands\MakeMainframeModule::Class,
+        \App\Mainframe\Commands\CreateRootModels::Class,
     ];
 
     protected $providers = [
