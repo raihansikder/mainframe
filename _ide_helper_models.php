@@ -78,6 +78,68 @@ namespace App{
 
 namespace App{
 /**
+ * App\Comment
+ *
+ * @property int $id
+ * @property string|null $uuid
+ * @property int|null $project_id
+ * @property int|null $tenant_id
+ * @property string|null $name
+ * @property string|null $type
+ * @property string|null $body
+ * @property string|null $commentable_type
+ * @property int|null $commentable_id
+ * @property int|null $module_id
+ * @property int|null $element_id
+ * @property string|null $element_uuid
+ * @property int|null $is_active
+ * @property int|null $created_by
+ * @property int|null $updated_by
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @property int|null $deleted_by
+ * @property-read \Illuminate\Database\Eloquent\Collection|\OwenIt\Auditing\Models\Audit[] $audits
+ * @property-read int|null $audits_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Change[] $changes
+ * @property-read int|null $changes_count
+ * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $commentable
+ * @property-read \App\User|null $creator
+ * @property-read \App\Module|null $linkedModule
+ * @property-read \App\Project|null $project
+ * @property-read \App\Tenant|null $tenant
+ * @property-read \App\User|null $updater
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Upload[] $uploads
+ * @property-read int|null $uploads_count
+ * @method static \Illuminate\Database\Eloquent\Builder|BaseModule active()
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment whereBody($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment whereCommentableId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment whereCommentableType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment whereCreatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment whereDeletedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment whereElementId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment whereElementUuid($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment whereIsActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment whereModuleId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment whereProjectId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment whereTenantId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment whereType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment whereUpdatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment whereUuid($value)
+ */
+	class Comment extends \Eloquent {}
+}
+
+namespace App{
+/**
  * App\Country
  *
  * @property int $id
@@ -109,6 +171,7 @@ namespace App{
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Change[] $changes
  * @property-read int|null $changes_count
  * @property-read \App\User|null $creator
+ * @property-read \App\Module $linkedModule
  * @property-read \App\Project $project
  * @property-read \App\Tenant $tenant
  * @property-read \App\User|null $updater
@@ -169,6 +232,7 @@ namespace App{
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Change[] $changes
  * @property-read int|null $changes_count
  * @property-read \App\User|null $creator
+ * @property-read \App\Module $linkedModule
  * @property-read \App\Project|null $project
  * @property-read \App\Tenant|null $tenant
  * @property-read \App\User|null $updater
@@ -328,6 +392,7 @@ namespace App\Mainframe\Features\Modular\BaseModule{
  * @mixin \Eloquent
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Changes\Change[] $changes
  * @property-read int|null $changes_count
+ * @property-read \App\Module $linkedModule
  */
 	class BaseModule extends \Eloquent implements \OwenIt\Auditing\Contracts\Auditable {}
 }
@@ -531,6 +596,7 @@ namespace App\Mainframe\Modules\Countries{
  * @property-read int|null $comments_count
  * @property-read \App\Comment $latestComment
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Changes\Change[] $changes
+ * @property-read \App\Module $linkedModule
  */
 	class Country extends \Eloquent {}
 }
@@ -558,6 +624,7 @@ namespace App\Mainframe\Modules\Groups{
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Change[] $changes
  * @property-read int|null $changes_count
  * @property-read \App\User|null $creator
+ * @property-read \App\Module $linkedModule
  * @property-read \App\Project|null $project
  * @property-read \App\Tenant|null $tenant
  * @property-read \App\User|null $updater
@@ -708,6 +775,7 @@ namespace App\Mainframe\Modules\ModuleGroups{
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Change[] $changes
  * @property-read int|null $changes_count
  * @property-read \App\User|null $creator
+ * @property-read \App\Module $linkedModule
  * @property-read \App\Project $project
  * @property-read \App\Tenant $tenant
  * @property-read \App\User|null $updater
@@ -783,6 +851,7 @@ namespace App\Mainframe\Modules\Modules{
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Change[] $changes
  * @property-read int|null $changes_count
  * @property-read \App\User|null $creator
+ * @property-read \App\Module $linkedModule
  * @property-read \App\Project|null $project
  * @property-read \App\Tenant|null $tenant
  * @property-read \App\User|null $updater
@@ -856,6 +925,7 @@ namespace App\Mainframe\Modules\Notifications{
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Change[] $changes
  * @property-read int|null $changes_count
  * @property-read \App\User|null $creator
+ * @property-read \App\Module|null $linkedModule
  * @property-read \App\Project|null $project
  * @property-read \App\Tenant|null $tenant
  * @property-read \App\User|null $updater
@@ -912,6 +982,7 @@ namespace App\Mainframe\Modules\Packages{
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Change[] $changes
  * @property-read int|null $changes_count
  * @property-read \App\User|null $creator
+ * @property-read \App\Module $linkedModule
  * @property-read \App\Project $project
  * @property-read \App\Tenant $tenant
  * @property-read \App\User|null $updater
@@ -966,6 +1037,7 @@ namespace App\Mainframe\Modules\Projects{
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Change[] $changes
  * @property-read int|null $changes_count
  * @property-read \App\User|null $creator
+ * @property-read \App\Module $linkedModule
  * @property-read \App\Project $project
  * @property-read \App\Tenant $tenant
  * @property-read \App\User|null $updater
@@ -1032,6 +1104,7 @@ namespace App\Mainframe\Modules\PushNotifications{
  * @property-read mixed $api_response_json
  * @property-read mixed $data_json
  * @property-read \App\InAppNotification|null $inAppNotification
+ * @property-read \App\Module $linkedModule
  * @property-read \App\Project|null $project
  * @property-read \App\Tenant|null $tenant
  * @property-read \App\User|null $updater
@@ -1100,6 +1173,7 @@ namespace App\Mainframe\Modules\Reports{
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Change[] $changes
  * @property-read int|null $changes_count
  * @property-read \App\User|null $creator
+ * @property-read \App\Module|null $linkedModule
  * @property-read \App\Project|null $project
  * @property-read \App\Tenant|null $tenant
  * @property-read \App\User|null $updater
@@ -1185,6 +1259,7 @@ namespace App\Mainframe\Modules\Settings{
  * @property-read int|null $comments_count
  * @property-read \App\Comment $latestComment
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Changes\Change[] $changes
+ * @property-read \App\Module $linkedModule
  */
 	class Setting extends \Eloquent {}
 }
@@ -1213,6 +1288,7 @@ namespace App\Mainframe\Modules\Subscriptions{
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Change[] $changes
  * @property-read int|null $changes_count
  * @property-read \App\User|null $creator
+ * @property-read \App\Module $linkedModule
  * @property-read \App\Project|null $project
  * @property-read \App\Tenant|null $tenant
  * @property-read \App\User|null $updater
@@ -1267,6 +1343,7 @@ namespace App\Mainframe\Modules\Tenants{
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Change[] $changes
  * @property-read int|null $changes_count
  * @property-read \App\User|null $creator
+ * @property-read \App\Module $linkedModule
  * @property-read \App\Project|null $project
  * @property-read \App\Tenant $tenant
  * @property-read \App\User|null $updater
@@ -1430,6 +1507,7 @@ namespace App\Mainframe\Modules\Users{
  * @property-read int|null $groups_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\InAppNotification[] $inAppNotifications
  * @property-read int|null $in_app_notifications_count
+ * @property-read \App\Module $linkedModule
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property-read int|null $notifications_count
  * @property-read \App\Project|null $project
@@ -1534,6 +1612,7 @@ namespace App{
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Change[] $changes
  * @property-read int|null $changes_count
  * @property-read \App\User|null $creator
+ * @property-read Module $linkedModule
  * @property-read \App\Project|null $project
  * @property-read \App\Tenant|null $tenant
  * @property-read \App\User|null $updater
@@ -1609,6 +1688,7 @@ namespace App{
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Change[] $changes
  * @property-read int|null $changes_count
  * @property-read \App\User|null $creator
+ * @property-read \App\Module $linkedModule
  * @property-read \App\Project $project
  * @property-read \App\Tenant $tenant
  * @property-read \App\User|null $updater
@@ -1671,6 +1751,7 @@ namespace App{
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Change[] $changes
  * @property-read int|null $changes_count
  * @property-read \App\User|null $creator
+ * @property-read \App\Module|null $linkedModule
  * @property-read \App\Project|null $project
  * @property-read \App\Tenant|null $tenant
  * @property-read \App\User|null $updater
@@ -1727,6 +1808,7 @@ namespace App{
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Change[] $changes
  * @property-read int|null $changes_count
  * @property-read \App\User|null $creator
+ * @property-read \App\Module $linkedModule
  * @property-read \App\Project $project
  * @property-read \App\Tenant $tenant
  * @property-read \App\User|null $updater
@@ -1781,6 +1863,7 @@ namespace App{
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Change[] $changes
  * @property-read int|null $changes_count
  * @property-read \App\User|null $creator
+ * @property-read \App\Module $linkedModule
  * @property-read Project $project
  * @property-read \App\Tenant $tenant
  * @property-read \App\User|null $updater
@@ -1820,6 +1903,7 @@ namespace App\Projects\MyProject\Features\Modular\BaseModule{
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Change[] $changes
  * @property-read int|null $changes_count
  * @property-read \App\User $creator
+ * @property-read \App\Module $linkedModule
  * @property-read \App\Project $project
  * @property-read \App\Tenant $tenant
  * @property-read \App\User $updater
@@ -1856,6 +1940,7 @@ namespace App\Projects\MyProject\Modules\Settings{
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Change[] $changes
  * @property-read int|null $changes_count
  * @property-read \App\User|null $creator
+ * @property-read \App\Module $linkedModule
  * @property-read \App\Project $project
  * @property-read \App\Tenant $tenant
  * @property-read \App\User|null $updater
@@ -2016,6 +2101,7 @@ namespace App\Projects\MyProject\Modules\Users{
  * @property-read int|null $groups_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\InAppNotification[] $inAppNotifications
  * @property-read int|null $in_app_notifications_count
+ * @property-read \App\Module $linkedModule
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property-read int|null $notifications_count
  * @property-read \App\Project|null $project
@@ -2115,6 +2201,7 @@ namespace App{
  * @property-read mixed $api_response_json
  * @property-read mixed $data_json
  * @property-read \App\InAppNotification|null $inAppNotification
+ * @property-read \App\Module $linkedModule
  * @property-read \App\Project|null $project
  * @property-read \App\Tenant|null $tenant
  * @property-read \App\User|null $updater
@@ -2183,6 +2270,7 @@ namespace App{
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Change[] $changes
  * @property-read int|null $changes_count
  * @property-read \App\User|null $creator
+ * @property-read \App\Module|null $linkedModule
  * @property-read \App\Project|null $project
  * @property-read \App\Tenant|null $tenant
  * @property-read \App\User|null $updater
@@ -2240,6 +2328,7 @@ namespace App{
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Change[] $changes
  * @property-read int|null $changes_count
  * @property-read \App\User|null $creator
+ * @property-read \App\Module $linkedModule
  * @property-read \App\Project $project
  * @property-read \App\Tenant $tenant
  * @property-read \App\User|null $updater
@@ -2291,6 +2380,7 @@ namespace App{
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Change[] $changes
  * @property-read int|null $changes_count
  * @property-read \App\User|null $creator
+ * @property-read \App\Module $linkedModule
  * @property-read \App\Project|null $project
  * @property-read \App\Tenant|null $tenant
  * @property-read \App\User|null $updater
@@ -2345,6 +2435,7 @@ namespace App{
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Change[] $changes
  * @property-read int|null $changes_count
  * @property-read \App\User|null $creator
+ * @property-read \App\Module $linkedModule
  * @property-read \App\Project|null $project
  * @property-read Tenant $tenant
  * @property-read \App\User|null $updater
@@ -2508,6 +2599,7 @@ namespace App{
  * @property-read int|null $groups_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\InAppNotification[] $inAppNotifications
  * @property-read int|null $in_app_notifications_count
+ * @property-read \App\Module $linkedModule
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property-read int|null $notifications_count
  * @property-read \App\Project|null $project

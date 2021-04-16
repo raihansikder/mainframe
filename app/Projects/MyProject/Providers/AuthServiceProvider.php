@@ -3,7 +3,7 @@
 namespace App\Projects\MyProject\Providers;
 
 use Gate;
-use App\Projects\MyProject\Modules\Users\User;
+use App\User;
 use App\Mainframe\Features\Resolvers\PolicyResolver;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 

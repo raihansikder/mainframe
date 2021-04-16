@@ -6,7 +6,6 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use App\Projects\MyProject\Modules\Invoices\Invoice;
 
 class EmailToAdmin extends Mailable implements ShouldQueue
 {
@@ -15,16 +14,16 @@ class EmailToAdmin extends Mailable implements ShouldQueue
     /**
      * The invoice instance.
      *
-     * @var Invoice
+     * @var mixed
      */
     protected $invoice;
 
     /**
      * Create a new message instance.
      *
-     * @return void
+     * @param $invoice
      */
-    public function __construct(Invoice $invoice) {
+    public function __construct($invoice) {
         $this->invoice = $invoice;
     }
 

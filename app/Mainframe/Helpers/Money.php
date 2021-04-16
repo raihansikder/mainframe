@@ -4,8 +4,6 @@ namespace App\Mainframe\Helpers;
 
 use App\Country;
 
-// use App\Projects\MyProject\Modules\ConversionRates\ConversionRate;
-
 class Money
 {
     public static $currencies = ['GBP', 'USD', 'EUR'];

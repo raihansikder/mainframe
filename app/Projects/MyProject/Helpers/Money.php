@@ -4,9 +4,6 @@ namespace App\Projects\MyProject\Helpers;
 
 use App\Mainframe\Helpers\Money as MfMoney;
 
-// use App\Projects\MyProject\Modules\ConversionRates\ConversionRate;
-use Illuminate\Support\Str;
-
 class Money extends MfMoney
 {
 

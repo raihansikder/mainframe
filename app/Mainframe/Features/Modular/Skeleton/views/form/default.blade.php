@@ -8,8 +8,8 @@
  * @var string $uuid Only available for create
  * @var bool $editable
  * @var array $immutables
- * @var \App\Mainframe\Modules\SuperHeroes\SuperHero $element
- * @var \App\Mainframe\Modules\SuperHeroes\SuperHero $superHero
+ * @var \App\SuperHero $element
+ * @var \App\SuperHero $superHero
  * @var \App\Mainframe\Modules\SuperHeroes\SuperHeroViewProcessor $view
  */
 $superHero = $element;

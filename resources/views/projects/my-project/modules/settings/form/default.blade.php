@@ -8,13 +8,12 @@
  * @var string $uuid Only available for create
  * @var bool $editable
  * @var array $immutables
- * @var \App\Projects\MyProject\Modules\Settings\Setting $element
- * @var \App\Projects\MyProject\Modules\Settings\Setting $setting
+ * @var \App\Setting $element
+ * @var \App\Setting $setting
  * @var \App\Projects\MyProject\Modules\Settings\SettingViewProcessor $view
  */
-use App\Projects\MyProject\Modules\Settings\Setting;
 $setting = $element;
-$types = Setting::$types;
+$types = \App\Setting::$types;
 ?>
 
 @section('content')

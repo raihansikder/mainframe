@@ -2,7 +2,7 @@
 
 namespace App\Projects\MyProject\Jobs;
 
-use App\Projects\MyProject\Modules\Users\User;
+use App\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -18,7 +18,7 @@ class TestJob implements ShouldQueue
     /**
      * Create a new job instance.
      *
-     * @param  \App\Projects\MyProject\Modules\Users\User  $user
+     * @param  \App\User  $user
      */
     public function __construct(User $user)
     {
