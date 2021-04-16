@@ -2,9 +2,7 @@
 
 namespace App;
 
-use App\Projects\MyProject\Features\Modular\BaseModule\BaseModule;
-
-class Setting extends Mainframe\Modules\Settings\Setting
+class Setting extends \App\Projects\MyProject\Modules\Settings\Setting
 {
 
 }

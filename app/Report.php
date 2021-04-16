@@ -2,7 +2,7 @@
 
 namespace App;
 
-class Report extends Mainframe\Modules\Reports\Report
+class Report extends \App\Mainframe\Modules\Reports\Report
 {
 
 }

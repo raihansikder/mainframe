@@ -25,7 +25,6 @@ class CreateRootModels extends MakeMainframeModule
      */
     protected $description = 'Create models in App directory root';
 
-
     /**
      * Execute the console command.
      *
@@ -48,17 +47,16 @@ class CreateRootModels extends MakeMainframeModule
         $modules = Module::active()->get();
         foreach ($modules as $module) {
             /** @var Module $module */
-            $extends = trim($module->model,'\\');
+            $extends = $module->model;
 
-            $content ="<?php
+            $content = "<?php
 
 namespace App;
 
-class Report extends {$extends}
+class {$module->modelClassName()} extends {$extends}
 {
 
 }";
-
 
             $path = 'app/'.$module->modelClassName().'.php';
             if (File::exists($path)) {

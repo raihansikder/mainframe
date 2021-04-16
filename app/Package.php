@@ -2,9 +2,7 @@
 
 namespace App;
 
-use App\Projects\MyProject\Features\Modular\BaseModule\BaseModule;
-
-class Package extends Mainframe\Modules\Packages\Package
+class Package extends \App\Mainframe\Modules\Packages\Package
 {
 
 }

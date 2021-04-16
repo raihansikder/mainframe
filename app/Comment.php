@@ -2,7 +2,7 @@
 
 namespace App;
 
-class Comment extends \App\Mainframe\Features\Form\Comment
+class Comment extends \App\Mainframe\Modules\Comments\Comment
 {
 
 }
