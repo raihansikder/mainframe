@@ -63,7 +63,7 @@ class {$module->modelClassName()} extends {$extends}
             //     $this->info('File exists ... '.$path);
             // }
             if (File::put($path, $content)) {
-                $this->info('Model recreated ... '.$path);
+                $this->info('Model recreated ... '.$path.' extends '.$extends);
             }
         }
     }
