@@ -1,9 +1,14 @@
 <?php
 
-$name = ($element->name) ? " - ".optional($element)->name : optional($element)->name;
+/**
+ * @var \App\Mainframe\Features\Modular\BaseModule\BaseModuleViewProcessor $view
+ * @var \App\Module $module
+ * @var \App\Mainframe\Features\Modular\BaseModule\BaseModule $element
+ */
 
+$name = ($element->name) ? " - ".optional($element)->name : optional($element)->name;
 $moduleState = null;
-if ($module->id == 86 && $element->isArchived()) {
+if (!$element->is_active) {
     $moduleState = "Archived";
 }
 ?>
