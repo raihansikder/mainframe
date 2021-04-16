@@ -66,6 +66,7 @@ class CreateSuperHeroesTable extends Migration
         $module->save();
 
         Artisan::call('cache:clear');
+        Artisan::call('mainframe:create-root-mod');
     }
 
     /**

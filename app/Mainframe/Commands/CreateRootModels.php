@@ -59,11 +59,11 @@ class {$module->modelClassName()} extends {$extends}
 }";
 
             $path = 'app/'.$module->modelClassName().'.php';
-            if (File::exists($path)) {
-                $this->info('File exists ... '.$path);
-            }
+            // if (File::exists($path)) {
+            //     $this->info('File exists ... '.$path);
+            // }
             if (File::put($path, $content)) {
-                $this->info('File created ... '.$path);
+                $this->info('Model recreated ... '.$path);
             }
         }
     }
