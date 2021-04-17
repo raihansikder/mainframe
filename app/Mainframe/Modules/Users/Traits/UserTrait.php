@@ -5,6 +5,7 @@ namespace App\Mainframe\Modules\Users\Traits;
 use App\Group;
 use App\Country;
 use App\InAppNotification;
+use App\Spread;
 use App\User;
 use App\Mainframe\Notifications\Auth\ResetPassword;
 use App\Mainframe\Notifications\Auth\VerifyEmail;
@@ -130,6 +131,10 @@ trait UserTrait
         // return $this->morphMany(InAppNotification::class, 'notifiable'); // Note: Do not use morphMany
     }
 
+    public function operatingGroups()
+    {
+        return $this->spreadModels('groups');
+    }
     /*
     |--------------------------------------------------------------------------
     | Helper functions

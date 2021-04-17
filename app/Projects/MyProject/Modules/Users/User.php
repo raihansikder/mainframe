@@ -2,6 +2,7 @@
 
 namespace App\Projects\MyProject\Modules\Users;
 
+use App\Group;
 use App\Mainframe\Features\Core\Traits\Validable;
 use App\Mainframe\Features\Modular\BaseModule\Traits\ModularTrait;
 use App\Mainframe\Modules\Users\Traits\UserTrait;
@@ -97,6 +98,15 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
      * @var array
      */
     protected $allowedPermissionsValues = [-1, 0, 1];
+
+    // protected $spreadAttributes = [
+    //     'group_ids' => Group::class,
+    // ];
+
+    // protected $tagAttributes = [
+    //     'first_name',
+    //     'group_ids',
+    // ];
 
     /*
     |--------------------------------------------------------------------------

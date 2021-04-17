@@ -340,11 +340,11 @@ axios.Cancel = __webpack_require__(/*! ./cancel/Cancel */ "./node_modules/axios/
 axios.CancelToken = __webpack_require__(/*! ./cancel/CancelToken */ "./node_modules/axios/lib/cancel/CancelToken.js");
 axios.isCancel = __webpack_require__(/*! ./cancel/isCancel */ "./node_modules/axios/lib/cancel/isCancel.js");
 
-// Expose all/spread
+// Expose all/spreadKeys
 axios.all = function all(promises) {
   return Promise.all(promises);
 };
-axios.spread = __webpack_require__(/*! ./helpers/spread */ "./node_modules/axios/lib/helpers/spread.js");
+axios.spread = __webpack_require__(/*! ./helpers/spreadKeys */ "./node_modules/axios/lib/helpers/spread.js");
 
 module.exports = axios;
 
@@ -1506,7 +1506,7 @@ module.exports = function parseHeaders(headers) {
 
 /***/ "./node_modules/axios/lib/helpers/spread.js":
 /*!**************************************************!*\
-  !*** ./node_modules/axios/lib/helpers/spread.js ***!
+  !*** ./node_modules/axios/lib/helpers/spreadKeys.js ***!
   \**************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -1525,10 +1525,10 @@ module.exports = function parseHeaders(headers) {
  *  f.apply(null, args);
  *  ```
  *
- * With `spread` this example can be re-written.
+ * With `spreadKeys` this example can be re-written.
  *
  *  ```js
- *  spread(function(x, y, z) {})([1, 2, 3]);
+ *  spreadKeys(function(x, y, z) {})([1, 2, 3]);
  *  ```
  *
  * @param {Function} callback
@@ -18839,7 +18839,7 @@ return jQuery;
      * `pickBy`, `plant`, `property`, `propertyOf`, `pull`, `pullAll`, `pullAllBy`,
      * `pullAllWith`, `pullAt`, `push`, `range`, `rangeRight`, `rearg`, `reject`,
      * `remove`, `rest`, `reverse`, `sampleSize`, `set`, `setWith`, `shuffle`,
-     * `slice`, `sort`, `sortBy`, `splice`, `spread`, `tail`, `take`, `takeRight`,
+     * `slice`, `sort`, `sortBy`, `splice`, `spreadKeys`, `tail`, `take`, `takeRight`,
      * `takeRightWhile`, `takeWhile`, `tap`, `throttle`, `thru`, `toArray`,
      * `toPairs`, `toPairsIn`, `toPath`, `toPlainObject`, `transform`, `unary`,
      * `union`, `unionBy`, `unionWith`, `uniq`, `uniqBy`, `uniqWith`, `unset`,
@@ -28087,18 +28087,18 @@ return jQuery;
      * [`Function#apply`](http://www.ecma-international.org/ecma-262/7.0/#sec-function.prototype.apply).
      *
      * **Note:** This method is based on the
-     * [spread operator](https://mdn.io/spread_operator).
+     * [spreadKeys operator](https://mdn.io/spread_operator).
      *
      * @static
      * @memberOf _
      * @since 3.2.0
      * @category Function
-     * @param {Function} func The function to spread arguments over.
-     * @param {number} [start=0] The start position of the spread.
+     * @param {Function} func The function to spreadKeys arguments over.
+     * @param {number} [start=0] The start position of the spreadKeys.
      * @returns {Function} Returns the new function.
      * @example
      *
-     * var say = _.spread(function(who, what) {
+     * var say = _.spreadKeys(function(who, what) {
      *   return who + ' says ' + what;
      * });
      *
@@ -28110,7 +28110,7 @@ return jQuery;
      *   Promise.resolve(36)
      * ]);
      *
-     * numbers.then(_.spread(function(x, y) {
+     * numbers.then(_.spreadKeys(function(x, y) {
      *   return x + y;
      * }));
      * // => a Promise of 76

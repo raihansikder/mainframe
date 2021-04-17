@@ -6,6 +6,7 @@ use App\Change;
 use App\Mainframe\Helpers\Mf;
 use App\Module;
 use App\Project;
+use App\Spread;
 use App\Tenant;
 use App\Upload;
 use App\User;
@@ -574,6 +575,124 @@ trait ModularTrait
     {
         return $this->hasMany(Upload::class, 'element_id')->where('module_id', $this->module()->id);
         // return $this->morphMany('App\Upload', 'uploadable'); // Note: Do not use morphMany because our class name can change
+    }
+
+    /**
+     * Relationship
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
+     */
+    public function spreads()
+    {
+        // return $this->hasMany(Spread::class, 'element_id')->where('module_id', $this->module()->id)
+        return $this->morphMany(Spread::class, 'spreadable'); // Note: Do not use morphMany because our class name can change
+    }
+
+    /**
+     * Spread the values in database
+     */
+    public function syncSpreadKeys()
+    {
+        if (!isset($this->spreadAttributes)) {
+            return;
+        }
+
+        foreach ($this->spreadAttributes as $field => $relatedTo) {
+
+            $ids = toArray($this->$field);
+
+            if (empty($ids)) {
+                $this->spreads()->where('key', $field)->forceDelete();
+                continue;
+            }
+
+            $this->spreads()->where('key', $field)->whereNotIn('related_id', $ids)->forceDelete();
+
+            $existingIds = $this->spreads()->where('key', $field)->pluck('related_id');
+            $newIds = collect($ids)->diff($existingIds)->all();
+
+            $name = $this->getTable();
+
+            foreach ($newIds as $relatedId) {
+
+                $spread = [
+                    'name' => $name,
+                    'key' => $field,
+                    'module_id' => $this->module()->id,
+                    'element_id' => $this->id,
+                    'element_uuid' => $this->uuid,
+                    'relates_to' => $relatedTo,
+                    'related_id' => $relatedId,
+                ];
+
+                $this->spreads()->create($spread);
+            }
+
+        }
+
+        return $this;
+    }
+
+    /**
+     * Spread the values in database
+     */
+    public function syncSpreadTags()
+    {
+        if (!isset($this->tagAttributes)) {
+            return;
+        }
+
+        foreach ($this->tagAttributes as $field) {
+
+            $tags = cleanArray(toArray($this->$field));
+
+            if (empty($tags)) {
+                $this->spreads()->where('key', $field)->forceDelete();
+                continue;
+            }
+
+            $this->spreads()->where('key', $field)->whereNotIn('tag', $tags)->forceDelete();
+
+            $existingTags = $this->spreads()->where('key', $field)->pluck('tag');
+            $newTags = collect($tags)->diff($existingTags)->all();
+
+            $name = $this->getTable();
+
+            foreach ($newTags as $tag) {
+
+                $spread = [
+                    'name' => $name,
+                    'key' => $field,
+                    'module_id' => $this->module()->id,
+                    'element_id' => $this->id,
+                    'element_uuid' => $this->uuid,
+                    'tag' => $tag,
+                ];
+
+                $this->spreads()->create($spread);
+            }
+
+        }
+
+        return $this;
+    }
+
+    public function spreadModels($slug)
+    {
+
+        $key = str_singular($slug).'_ids';
+
+        if (isset($this->spreadAttributes[$key])) {
+            $class = $this->spreadAttributes[$key];
+        }
+
+        return $this->belongsToMany($class, 'spreads', 'spreadable_id', 'related_id')->where('key', $key);
+
+    }
+
+    public function spreadTags($field)
+    {
+        return $this->morphMany(Spread::class, 'spreadable')->where('key', $field);
     }
 
     /*

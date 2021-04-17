@@ -93,6 +93,14 @@ class BaseModule extends Model implements Auditable
      */
     protected $auditExclude = ['updated_at',];
 
+    // protected $spreadAttributes = [
+    //     'group_ids' => Group::class,
+    // ];
+    //
+    // protected $tagAttributes = [
+    //     'first_name',
+    //     'group_ids',
+    // ];
     /*
     |--------------------------------------------------------------------------
     | Boot method and model events.

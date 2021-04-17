@@ -144,6 +144,29 @@ function generateCode()
     return randomString(8);
 }
 
+function toArray($input)
+{
+    if (is_array($input)) {
+        return $input;
+    }
+
+    if (is_string($input) && isJson($input)) {
+        return json_decode($input);
+    }
+
+    if (is_string($input) && isCsv($input)) {
+        return csvToArray($input);
+    }
+
+
+    return [$input];
+}
+
+function isJson($input)
+{
+    return is_string($input) && is_array(json_decode($input, true)) && (json_last_error() == JSON_ERROR_NONE);
+}
+
 /**
  * function to check if json is valid
  * http://stackoverflow.com/questions/6041741/fastest-way-to-check-if-a-string-is-json-in-php
@@ -309,7 +332,6 @@ function pad($str, $count = 6, $char = '0')
     return str_pad($str, $count, $char, STR_PAD_LEFT);
 }
 
-
 /**
  * Checks if an input is CSV
  *
@@ -327,7 +349,6 @@ function isCsv($input)
 
     return false;
 }
-
 
 /**
  * cleans a string and returns as csv
@@ -550,10 +571,17 @@ function removeEmptyVals($array = [])
     if (is_array($array) && count($array)) {                    // handle if input is an array1
         foreach ($array as $a) {
             if (!is_array($a) && strlen(trim($a))) {
-                $temp[] = $a;
+                $temp[] = trim($a);
             }
         }
     }
+
+    // Todo: Better implementation
+    // $tags = collect($tags)->map(function($tag){
+    //     return trim($tag);
+    // })->reject(function ($name) {
+    //     return empty($name);
+    // });
 
     return $temp;
 }
