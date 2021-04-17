@@ -337,6 +337,12 @@ class Response
                 $data[$key] = array_unique(Arr::flatten($items)); // One dimensional array of errors.
             }
         }
+
+        // Show validation errors in errors array
+        if (isset($data['validation_errors'])) {
+            $data['errors'] = $data['errors'] ?? [];
+            $data['errors'] = array_unique(array_merge($data['errors'], Arr::flatten($data['validation_errors'])));
+        }
         /*-------------------------------*/
 
         // Add redirect to

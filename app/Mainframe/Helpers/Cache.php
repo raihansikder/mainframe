@@ -13,11 +13,13 @@ class Cache extends \Illuminate\Support\Facades\Cache
      */
     public static function time($key = 'none')
     {
-        if (config('mainframe.config.query_cache') == true && request('no_cache') != 'true') {
-            return config('mainframe.cache-time.'.$key, 0);
+
+        if (config('mainframe.config.query_cache') == false || request('no_cache') == 'true') {
+            return 0;
         }
 
-        return -1;
+        return config('mainframe.cache-time.'.$key, 0);
+
     }
 
     /**

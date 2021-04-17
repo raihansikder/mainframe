@@ -6,6 +6,7 @@
 namespace App\Mainframe\Modules\Users\Traits;
 
 use App\Country;
+use App\Setting;
 use App\Mainframe\Modules\Users\UserProcessor;
 use Carbon\Carbon;
 use Illuminate\Validation\Rule;
@@ -25,6 +26,7 @@ trait UserProcessorTrait
      */
     public function fill($element)
     {
+
         $element->populate();
         $this->fillApiTokenGeneratedAt();
 
@@ -84,6 +86,7 @@ trait UserProcessorTrait
             ->userCanNotAssignIrrelevantGroup();
 
         $this->fillCountryBasedOnCountryCode();
+
 
         return $this;
     }

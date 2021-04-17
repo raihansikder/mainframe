@@ -20,7 +20,7 @@ trait ModularControllerTrait
      */
     public function index()
     {
-        if (! user()->can('view-any', $this->model)) {
+        if (!$this->user->can('view-any', $this->model)) {
             return $this->permissionDenied();
         }
 
@@ -29,7 +29,7 @@ trait ModularControllerTrait
         }
 
         $this->view->setType('index')->setDatatable($this->datatable());
-        $this->view->addVars(['columns'=> $this->datatable()->columns()]);
+        $this->view->addVars(['columns' => $this->datatable()->columns()]);
 
         return $this->view($this->view->gridPath());
     }
@@ -45,11 +45,11 @@ trait ModularControllerTrait
     {
         $relations = request('with') ? explode(',', request('with')) : [];
 
-        if (! $this->element = $this->model->with($relations)->find($id)) {
+        if (!$this->element = $this->model->with($relations)->find($id)) {
             return $this->notFound();
         }
 
-        if (! user()->can('view', $this->element)) {
+        if (!$this->user->can('view', $this->element)) {
             return $this->permissionDenied();
         }
 
@@ -70,7 +70,7 @@ trait ModularControllerTrait
         $this->element = $this->model->fill(request()->all());
         $this->element->uuid = $uuid;
 
-        if (! user()->can('create', $this->element)) {
+        if (!$this->user->can('create', $this->element)) {
             return $this->permissionDenied();
         }
 
@@ -89,11 +89,11 @@ trait ModularControllerTrait
      */
     public function edit($id)
     {
-        if (! $this->element = $this->model->find($id)) {
+        if (!$this->element = $this->model->find($id)) {
             return $this->notFound();
         }
 
-        if (! user()->can('view', $this->element)) {
+        if (!$this->user->can('view', $this->element)) {
             return $this->permissionDenied();
         }
 
@@ -115,7 +115,7 @@ trait ModularControllerTrait
      */
     public function store(Request $request)
     {
-        if (! user()->can('create', $this->model)) {
+        if (!$this->user->can('create', $this->model)) {
             return $this->permissionDenied();
         }
 
@@ -142,11 +142,11 @@ trait ModularControllerTrait
     public function update(Request $request, $id)
     {
 
-        if (! $this->element = $this->model->find($id)) {
+        if (!$this->element = $this->model->find($id)) {
             return $this->notFound();
         }
 
-        if (user()->cannot('update', $this->element)) {
+        if ($this->user->cannot('update', $this->element)) {
             return $this->permissionDenied();
         }
 
@@ -164,11 +164,11 @@ trait ModularControllerTrait
      */
     public function destroy($id)
     {
-        if (! $this->element = $this->model->find($id)) {
+        if (!$this->element = $this->model->find($id)) {
             return $this->notFound();
         }
 
-        if (user()->cannot('delete', $this->element)) {
+        if ($this->user->cannot('delete', $this->element)) {
             return $this->permissionDenied();
         }
 
@@ -206,7 +206,7 @@ trait ModularControllerTrait
      */
     public function report()
     {
-        if (! user()->can('view-report', $this->model)) {
+        if (!$this->user->can('view-report', $this->model)) {
             return $this->permissionDenied();
         }
 
@@ -276,11 +276,11 @@ trait ModularControllerTrait
     public function changes($id)
     {
 
-        if (! $this->element = $this->model->find($id)) {
+        if (!$this->element = $this->model->find($id)) {
             return $this->notFound();
         }
 
-        if (! user()->can('view', $this->element)) {
+        if (!$this->user->can('view', $this->element)) {
             return $this->permissionDenied();
         }
 
@@ -343,10 +343,11 @@ trait ModularControllerTrait
 
     /**
      * Check if the call is a API call
+     *
      * @return bool
      */
     public function isApiCall()
     {
-        return in_array('api',$this->getAllMiddleWares());
+        return in_array('api', $this->getAllMiddleWares());
     }
 }

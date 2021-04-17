@@ -169,8 +169,10 @@ trait UserTrait
     {
         $name = $this->name_initial." ".$this->first_name." ".$this->last_name;
         if (!strlen(trim($name))) {
-            $name = $this->full_name;
+            $name = trim($this->full_name);
         }
+
+        // $this->full_name = $this->full_name ?? $name;
 
         return $name;
     }

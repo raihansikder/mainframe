@@ -21,13 +21,13 @@ trait RequestValidator
     public function validateStoreRequest()
     {
         if ($this->storeRequestValidator()->fails()) {
-            $this->setValidator($this->storeRequestValidator());
+            $this->mergeValidatorErrors($this->storeRequestValidator());
 
             return false;
         }
 
         if ($this->saveRequestValidator()->fails()) {
-            $this->setValidator($this->saveRequestValidator());
+            $this->mergeValidatorErrors($this->saveRequestValidator());
 
             return false;
         }
@@ -45,14 +45,20 @@ trait RequestValidator
      */
     public function validateUpdateRequest()
     {
+
         if ($this->updateRequestValidator()->fails()) {
-            $this->setValidator($this->updateRequestValidator());
+
+
+            $this->mergeValidatorErrors($this->updateRequestValidator());
 
             return false;
         }
 
+
+
         if ($this->saveRequestValidator()->fails()) {
-            $this->setValidator($this->saveRequestValidator());
+
+            $this->mergeValidatorErrors($this->saveRequestValidator());
 
             return false;
         }
@@ -71,7 +77,7 @@ trait RequestValidator
     public function validateDeleteRequest()
     {
         if ($this->deleteRequestValidator()->fails()) {
-            $this->setValidator($this->deleteRequestValidator());
+            $this->mergeValidatorErrors($this->deleteRequestValidator());
 
             return false;
         }
@@ -96,11 +102,11 @@ trait RequestValidator
             //'password.regex' => "The password field should be mix of letters and numbers.",
         ];
 
-        $this->validator = Validator::make(request()->all(), $rules, $message);
+        $validator = Validator::make(request()->all(), $rules, $message);
 
         //$this->fieldError('name','Error Lorem Ipsum'); // Sample error message.
 
-        return $this->validator;
+        return $validator;
     }
 
     /**
@@ -119,11 +125,11 @@ trait RequestValidator
             //'password.regex' => "The password field should be mix of letters and numbers.",
         ];
 
-        $this->validator = Validator::make(request()->all(), $rules, $message);
+        $validator = Validator::make(request()->all(), $rules, $message);
 
         //$this->fieldError('name','Error Lorem Ipsum'); // Sample error message.
 
-        return $this->validator;
+        return $validator;
     }
 
     /**
@@ -144,11 +150,11 @@ trait RequestValidator
             //'password.regex' => "The password field should be mix of letters and numbers.",
         ];
 
-        $this->validator = Validator::make(request()->all(), $rules, $message);
+        $validator = Validator::make(request()->all(), $rules, $message);
 
         //$this->fieldError('name','Error Lorem Ipsum'); // Sample error message.
 
-        return $this->validator;
+        return $validator;
     }
 
     /**

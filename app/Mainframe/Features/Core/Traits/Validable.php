@@ -2,6 +2,7 @@
 
 namespace App\Mainframe\Features\Core\Traits;
 
+use App\Mainframe\Features\Modular\BaseModule\BaseModule;
 use Illuminate\Support\MessageBag;
 use Validator;
 
@@ -260,5 +261,17 @@ trait Validable
     {
         return implode(' #', \Arr::flatten($this->getErrors()));
     }
+
+    /**
+     * @param  \Illuminate\Validation\Validator  $validator
+     * @return $this
+     */
+    public function mergeValidatorErrors($validator)
+    {
+        $this->validator()->messages()->merge($validator->messages());
+
+        return $this;
+    }
+
 
 }

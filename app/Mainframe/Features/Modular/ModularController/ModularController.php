@@ -34,16 +34,7 @@ class ModularController extends BaseController
      */
     protected $module;
 
-    /**
-     * @var \Illuminate\Database\Eloquent\Builder
-     */
-    protected $model;
 
-    /** @var \App\Mainframe\Features\Modular\BaseModule\BaseModule */
-    protected $element;
-
-    /** @var \App\Mainframe\Features\Modular\Validator\ModelProcessor */
-    protected $processor;
 
     /**
      * ModularController constructor.

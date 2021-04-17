@@ -22,7 +22,9 @@ trait UserControllerTrait
             $inputs['password'] = Hash::make(request('password'));
         }
 
-        return $this->element->fill($inputs);
+        $this->element->fill($inputs);
+
+        return $this;
     }
 
     /**
@@ -37,9 +39,8 @@ trait UserControllerTrait
             'password.regex' => 'The password field should be mix of letters and numbers.',
         ];
 
-        $this->validator = Validator::make(request()->all(), $rules, $message);
+        return Validator::make(request()->all(), $rules, $message);
 
-        return $this->validator;
     }
 
     /**

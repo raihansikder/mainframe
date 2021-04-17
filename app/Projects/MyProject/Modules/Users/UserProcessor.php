@@ -91,7 +91,9 @@ class UserProcessor extends ModelProcessor
     //     return $this;
     // }
     // public function creating($element) { return $this; }
-    // public function updating($element) { return $this; }
+    public function updating($element) {
+        return $this;
+    }
     // public function created($element) { return $this; }
     // public function updated($element) { return $this; }
     // public function saved($element) { return $this; }

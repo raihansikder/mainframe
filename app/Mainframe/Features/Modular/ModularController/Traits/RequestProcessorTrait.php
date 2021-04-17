@@ -68,17 +68,11 @@ trait RequestProcessorTrait
         }
 
         // If request is valid then only call processor which also calls model save.
-        $processor = $this->fill()->processor()->save();
-
-        // Return error if save fails due to validation errors
-        if ($processor->isInvalid()) {
-            $this->setValidator($processor->validator);
-
+        if ($this->fill()->save()) {
             return $this;
         }
 
         $this->success('The '.Str::singular($this->module->title).' has been saved');
-        $this->element = $processor->element->refresh();
 
         $this->stored();
         $this->saved();
@@ -108,19 +102,12 @@ trait RequestProcessorTrait
         }
 
         // If request is valid then only call processor which also calls model save.
-        $processor = $this->fill()->processor()->save();
-
-        // Return error if save fails due to validation errors
-        if ($processor->isInvalid()) {
-            $this->setValidator($processor->validator);
-
+        if (!$this->fill()->save()) {
             return $this;
         }
 
-        // Set response flag and message.
+        // All good! proceed.
         $this->success('The '.Str::singular($this->module->title).' has been updated');
-        $this->element = $processor->element->refresh();
-
         $this->updated();
         $this->saved();
 
@@ -153,25 +140,16 @@ trait RequestProcessorTrait
     {
         // Before going to processor and model run an initial validation in controller.
         if (!$this->validateDeleteRequest()) {
-
             return $this;
         }
 
-        // If request is valid then only call processor which also calls model delete.
-        $processor = $this->fill()->processor()->delete();
-
-        // Return error if save fails due to validation errors
-        if ($processor->isInvalid()) {
-            $this->setValidator($processor->validator);
-
+        // If request is valid then only call processor which also calls model save.
+        if (!$this->fill()->delete()) {
             return $this;
         }
 
         // Set response flag and message.
         $this->success('The '.Str::singular($this->module->title).' is deleted');
-        $this->element = $processor->element;
-
-        // Execute controller stored() function for any post save operation in controller.
         $this->deleted();
 
         return $this;

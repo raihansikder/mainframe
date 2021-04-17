@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Mainframe\Features\Core\Traits\SendResponse;
 use App\Mainframe\Features\Core\Traits\Validable;
 use App\Mainframe\Features\Core\ViewProcessor;
+use App\Mainframe\Features\Modular\BaseModule\BaseModule;
+use Illuminate\Database\Eloquent\Model;
 use View;
 
 /**
@@ -20,6 +22,17 @@ class BaseController extends Controller
 
     /** @var \App\Mainframe\Features\Modular\BaseModule\BaseModuleViewProcessor */
     protected $view;
+
+    /**
+     * @var Model
+     */
+    protected $model;
+
+    /** @var \App\Mainframe\Features\Modular\BaseModule\BaseModule */
+    protected $element;
+
+    /** @var \App\Mainframe\Features\Modular\Validator\ModelProcessor */
+    protected $processor;
 
     /**
      * MainframeBaseController constructor.
@@ -55,6 +68,84 @@ class BaseController extends Controller
         $this->view = $view;
 
         return $this;
+    }
+
+    /**
+     * @param  BaseModule  $element
+     * @return Validable
+     */
+    public function processAndSave($element)
+    {
+        $processor = $element->process()->save();
+        if ($processor->isInvalid()) {
+            $this->mergeValidatorErrors($processor->validator);
+        }
+
+        return $this;
+
+    }
+
+    /**
+     * @param  BaseModule  $element
+     * @return \App\Mainframe\Features\Modular\Validator\ModelProcessor|mixed
+     */
+    public function process($element = null)
+    {
+        if (!$element && isset($this->element)) {
+            $element = $this->element;
+        }
+
+        $this->processor = $element->processor();
+
+        return $this;
+    }
+
+    /**
+     * @param  null  $element
+     * @return BaseModule|bool
+     */
+    public function save($element = null)
+    {
+
+        $this->process($element);
+
+        if(!$this->processor){
+            return false;
+        }
+
+        $this->processor->save();
+
+        if ($this->processor->isInvalid()) {
+            $this->mergeValidatorErrors($this->processor->validator);
+
+            return false;
+        }
+
+        return $this->processor->element;
+    }
+
+    /**
+     * @param  null  $element
+     * @return BaseModule|bool
+     * @throws \Exception
+     */
+    public function delete($element = null)
+    {
+
+        $this->process($element);
+
+        if(!$this->processor){
+            return false;
+        }
+
+        $this->processor->delete();
+        if ($this->processor->isInvalid()) {
+            $this->mergeValidatorErrors($this->processor->validator);
+
+            return false;
+        }
+
+        return $this->processor->element;
     }
 
 }
