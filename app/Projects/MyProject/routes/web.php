@@ -3,6 +3,7 @@
 use App\Mainframe\Helpers\Mf;
 use App\Mainframe\Modules\ModuleGroups\ModuleGroupController;
 use App\Projects\MyProject\Http\Controllers\DataBlockController;
+use App\Projects\MyProject\Http\Controllers\DynamicContentController;
 use App\Projects\MyProject\Http\Controllers\ReportController;
 use App\Projects\MyProject\Modules\Uploads\UploadController;
 
@@ -60,6 +61,7 @@ Route::middleware(['auth', 'verified'])->group(function () use ($modules, $modul
     Route::get('download/{uuid}', [UploadController::class, 'download'])->name('download'); // Download
     Route::get('data/{block}', [DataBlockController::class, 'show'])->name('data-block.show'); // Data-block
     Route::get('report/{report}', [ReportController::class, 'show'])->name('report'); // Report
+    Route::get('content/{content}', [DynamicContentController::class, 'show'])->name('content'); // Dynamic contents
 
     /*---------------------------------
     | Project specific routs

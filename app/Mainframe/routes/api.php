@@ -62,6 +62,7 @@ Route::prefix("core/{$version}")->middleware($middlewares)->group(function () us
     // DataBlock - Get a data-block from key
     Route::get('data/{block}', 'DataBlockController@show')->name($namePrefix.'.data-block.show');
     Route::get('report/{report}', 'ReportController@show')->name('report');
+    Route::get('content/{content}', 'DynamicContentController@show')->name('content');
 
     /*-----------------------------------------
     | User API (Requires bearer token)

@@ -15,8 +15,8 @@
 
 @section('content')
 
-{{--    @dump($element->spreadModels('groups')->get()->toArray())--}}
-{{--    @dump($element->spreadTags('first_name')->pluck('tag')->toArray())--}}
+        @dump($element->sGroups()->get()->toArray())
+        @dump($element->sTags()->pluck('tag')->toArray())
     <div class="col-md-12 col-lg-10 no-padding">
 
         @if(($formState == 'create'))

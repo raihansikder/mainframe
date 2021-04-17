@@ -86,6 +86,8 @@ class BaseModule extends Model implements Auditable
      */
     protected $dates = ['created_at', 'updated_at', 'deleted_at'];
 
+    protected $hidden = ['project_id', 'tenant_id', 'deleted_by', 'deleted_at'];
+
     /**
      * Attributes to exclude from the Audit.
      *
@@ -93,14 +95,26 @@ class BaseModule extends Model implements Auditable
      */
     protected $auditExclude = ['updated_at',];
 
-    // protected $spreadAttributes = [
-    //     'group_ids' => Group::class,
-    // ];
-    //
-    // protected $tagAttributes = [
-    //     'first_name',
-    //     'group_ids',
-    // ];
+    /**
+     * Define the spread attribute mapping that link to a another model.
+     * Note: Table field must follow *_model_ids, i.e. visited_country_ids, active_group_ids
+     *
+     * @var array
+     */
+    protected $spreadAttributes = [
+        // 'group_ids' => Group::class,
+    ];
+
+    /**
+     * Define the tag attributes of the model that will be saved in spreads table.
+     *
+     * @var array
+     */
+    protected $tagAttributes = [
+        // 'first_name',
+        // 'group_ids',
+    ];
+
     /*
     |--------------------------------------------------------------------------
     | Boot method and model events.

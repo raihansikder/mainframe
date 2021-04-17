@@ -82,7 +82,7 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
         'is_test',
     ];
 
-    protected $hidden = ['password', 'remember_token',];
+    protected $hidden = ['password', 'remember_token'];
     protected $dates  = ['created_at', 'updated_at', 'deleted_at', 'first_login_at', 'last_login_at',];
     protected $casts  = ['group_ids' => 'array',];
     // protected $with = [];
@@ -99,14 +99,14 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
      */
     protected $allowedPermissionsValues = [-1, 0, 1];
 
-    // protected $spreadAttributes = [
-    //     'group_ids' => Group::class,
-    // ];
+    protected $spreadAttributes = [
+        'group_ids' => Group::class,
+    ];
 
-    // protected $tagAttributes = [
-    //     'first_name',
-    //     'group_ids',
-    // ];
+    protected $tagAttributes = [
+        'first_name',
+        'group_ids',
+    ];
 
     /*
     |--------------------------------------------------------------------------
@@ -211,6 +211,16 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
     | Relations
     |--------------------------------------------------------------------------
     */
+
+    public function sGroups()
+    {
+     return $this->spreadModels('groups');
+    }
+
+    public function sTags()
+    {
+        return $this->spreadTags('first_name');
+    }
 
     /*
     |--------------------------------------------------------------------------

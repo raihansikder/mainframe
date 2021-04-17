@@ -18,7 +18,7 @@ class SampleDataBlock extends DataBlock
      *
      * @var int
      */
-    public $cache = 1;
+    public $cache = 6;
 
     /**
      * Process the result

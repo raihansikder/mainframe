@@ -571,6 +571,9 @@ trait ModularTrait
         return $this;
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function uploads()
     {
         return $this->hasMany(Upload::class, 'element_id')->where('module_id', $this->module()->id);
@@ -580,16 +583,16 @@ trait ModularTrait
     /**
      * Relationship
      *
-     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function spreads()
     {
-        // return $this->hasMany(Spread::class, 'element_id')->where('module_id', $this->module()->id)
-        return $this->morphMany(Spread::class, 'spreadable'); // Note: Do not use morphMany because our class name can change
+        return $this->hasMany(Spread::class, 'element_id')->where('module_id', $this->module()->id);
+        // return $this->morphMany(Spread::class, 'spreadable'); // Note: Do not use morphMany because our class name can change
     }
 
     /**
-     * Spread the values in database
+     * Store values in the database for key related to another model
      */
     public function syncSpreadKeys()
     {
@@ -634,7 +637,7 @@ trait ModularTrait
     }
 
     /**
-     * Spread the values in database
+     * Store values in the database for key related to another model
      */
     public function syncSpreadTags()
     {
@@ -681,10 +684,7 @@ trait ModularTrait
     {
 
         $key = str_singular($slug).'_ids';
-
-        if (isset($this->spreadAttributes[$key])) {
-            $class = $this->spreadAttributes[$key];
-        }
+        $class = $this->spreadAttributes[$key];
 
         return $this->belongsToMany($class, 'spreads', 'spreadable_id', 'related_id')->where('key', $key);
 
