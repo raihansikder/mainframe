@@ -66,7 +66,7 @@ trait ContentTrait
      */
     public function part($name = null)
     {
-        if (!$name) {
+        if (!$name || $name == 'body') {
             return $this->body;
         }
 
@@ -79,6 +79,16 @@ trait ContentTrait
         }
 
         return null;
+    }
+
+    /**
+     * Get content by key
+     * @param $key
+     * @return Content|\Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model|object|null
+     */
+    public static function byKey($key)
+    {
+        return Content::where('key', $key)->where('is_active', 1)->first();
     }
 
 }

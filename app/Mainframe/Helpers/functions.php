@@ -243,7 +243,7 @@ function message($message = '', $setMsg = true, $ret = false)
  */
 function setError($message = '', $setMsg = true, $ret = false)
 {
-    return error($message = '', $setMsg = true, $ret = false);
+    return error($message, $setMsg, $ret);
 }
 
 /**
@@ -254,4 +254,16 @@ function setError($message = '', $setMsg = true, $ret = false)
 function messageBag()
 {
     return resolve(MessageBag::class);
+}
+
+/**
+ * Get content
+ *
+ * @param $key
+ * @param  string  $part
+ * @return mixed|null
+ */
+function content($key, $part = 'body')
+{
+    return Mf::content($key, $part);
 }

@@ -22,8 +22,11 @@ use App\Projects\MyProject\DynamicContents\SampleContent;
 
 Route::get('test', function () {
 
-    $contents = (new SampleContent());
-    dd($contents->get('footer'));
-
-    dd(\App\Upload::find(4)->uploadable); //Test Alias
+    dd(\App\Content::byKey('sample-content')->part('title'));
+    //
+    // dd(content('sample-content','footer'));
+    // $contents = (new SampleContent());
+    // dd($contents->get('footer'));
+    //
+    // dd(\App\Upload::find(4)->uploadable); //Test Alias
 })->name('test')->middleware(['superuser']);

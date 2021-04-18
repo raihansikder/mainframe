@@ -2,13 +2,14 @@
 
 namespace App\Mainframe\Helpers;
 
+use App\Content;
+use App\Module;
+use App\ModuleGroup;
+use App\User;
 use Auth;
 use Cache;
 use Hash;
 use Schema;
-use App\User;
-use App\Module;
-use App\ModuleGroup;
 
 /**
  * Class Mf
@@ -259,6 +260,23 @@ class Mf
     public static function tableHasTenant($table)
     {
         return Mf::tableHasColumn($table, 'tenant_id');
+    }
+
+    /**
+     * Get content
+     *
+     * @param $key
+     * @param  string  $part
+     * @return mixed|null
+     */
+    public static function content($key, $part = 'body')
+    {
+        $content = Content::where('key', $key)->where('is_active', 1)->first();
+        if ($content) {
+            return $content->part($part);
+        }
+
+        return null;
     }
 
 }
