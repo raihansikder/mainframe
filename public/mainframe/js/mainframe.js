@@ -13,6 +13,53 @@ var editor_config_basic = {
     autoParagraph: false // stop from automatically adding <p></p> tag
 };
 
+var editor_config_extended = {
+    // readOnly: true, // make editor readonly
+    // Define the toolbar groups as it is a more accessible solution.
+    toolbarGroups: [
+        {"name": "basicstyles", "groups": ["basicstyles"]},
+        {"name": "links", "groups": ["links"]},
+        {"name": "paragraph", "groups": ["list", "blocks"]},
+        {"name": "document", "groups": ["mode"]},
+        {"name": "insert", "groups": ["insert"]},
+        {"name": "styles", "groups": ["styles"]},
+        //{"name": "about", "groups": ["about"]}
+    ],
+    // Remove the redundant buttons from toolbar groups defined above.
+    removeButtons: 'Underline,Strike,Subscript,Superscript,Anchor,Styles,Specialchar',
+    // width
+    //width: 730,
+    // extra plugins
+    //extraPlugins: 'autogrow',
+    //autoGrow_onStartup: true,
+    //autoGrow_minHeight: 250,
+    //autoGrow_maxHeight: 600
+    autoParagraph: false // stop from automatically adding <p></p> tag
+};
+var editor_config_minimal = {
+    // readOnly: true, // make editor readonly
+    // Define the toolbar groups as it is a more accessible solution.
+    toolbarGroups: [
+        {"name": "basicstyles", "groups": ["basicstyles"]},
+        {"name": "links", "groups": ["links"]},
+        {"name": "paragraph", "groups": ["list", "blocks"]},
+        //{"name": "document", "groups": ["mode"]},
+        {"name": "insert", "groups": ["insert"]},
+        {"name": "styles", "groups": ["styles"]},
+        //{"name": "about", "groups": ["about"]}
+    ],
+    // Remove the redundant buttons from toolbar groups defined above.
+    removeButtons: 'Underline,Strike,Subscript,Superscript,Anchor,Styles,Specialchar,Image,Flash,Smiley,HorizontalRule,SpecialChar,Format,Font,Iframe,PageBreak',
+    // width
+    //width: 730,
+    // extra plugins
+    //extraPlugins: 'autogrow',
+    //autoGrow_onStartup: true,
+    //autoGrow_minHeight: 250,
+    //autoGrow_maxHeight: 600
+    autoParagraph: false // stop from automatically adding <p></p> tag
+};
+
 /**
  * Instantiates a text area so that it it compatible with ajax based form submission
  * This function checks for any change in the editor and when changes is found

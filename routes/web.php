@@ -18,6 +18,12 @@
 //  mainframe, your project should have a separate dedicated web routes
 //  file. Use that one instead
 
+use App\Projects\MyProject\DynamicContents\SampleContent;
+
 Route::get('test', function () {
+
+    $contents = (new SampleContent());
+    dd($contents->get('footer'));
+
     dd(\App\Upload::find(4)->uploadable); //Test Alias
 })->name('test')->middleware(['superuser']);

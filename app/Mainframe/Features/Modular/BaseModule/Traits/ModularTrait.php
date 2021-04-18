@@ -583,12 +583,12 @@ trait ModularTrait
     /**
      * Relationship
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
      */
     public function spreads()
     {
-        return $this->hasMany(Spread::class, 'element_id')->where('module_id', $this->module()->id);
-        // return $this->morphMany(Spread::class, 'spreadable'); // Note: Do not use morphMany because our class name can change
+        // return $this->hasMany(Spread::class, 'element_id')->where('module_id', $this->module()->id);
+        return $this->morphMany(Spread::class, 'spreadable'); // Note: Keep it!!
     }
 
     /**
@@ -692,7 +692,13 @@ trait ModularTrait
 
     public function spreadTags($field)
     {
-        return $this->morphMany(Spread::class, 'spreadable')->where('key', $field);
+        return $this->hasMany(Spread::class, 'element_id')->where('module_id', $this->module()->id)->where('key', $field);
+        // return $this->morphMany(Spread::class, 'spreadable')->where('key', $field);
+    }
+
+    public function getSpreadTags($field)
+    {
+        return $this->spreadTags($field)->pluck('tag')->toArray();
     }
 
     /*

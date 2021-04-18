@@ -51,7 +51,7 @@ class BaseModuleObserver
     {
         $element->linkUploads();
         $element->trackFieldChanges();
-        $element->syncSpreadKeys();;
+        $element->syncSpreadKeys();
         $element->syncSpreadTags();
     }
 

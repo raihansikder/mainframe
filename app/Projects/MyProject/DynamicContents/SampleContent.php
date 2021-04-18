@@ -8,30 +8,47 @@ use Faker\Factory;
 class SampleContent extends DynamicContent
 {
 
-    /**
-     * View blade location
-     *
-     * @var string
-     */
-    public $view = 'mainframe.contents.dummy';
+    // public $view = 'mainframe.contents.dummy';
+    // public $text;
+    // public $key;
 
-    public $someObject;
-
-    public function __construct($someObject = null)
-    {
-        $this->someObject = $someObject; // Todo: Load
-    }
+    // public $order;
+    //
+    // public function __construct($order = null)
+    // {
+    //     $this->order = $order; // Todo: Load
+    // }
 
     public function replace()
     {
-
-        $faker = Factory::create();
-
         return [
-            '{TITLE}' => $this->key(),
-            '{BODY}' => $faker->paragraph,
-            '{FOOTER}' => $faker->paragraph,
+            '{SALUTATION}' => $this->key(),
+            '{INTRO}' => 'Some static content',
+            '{SUBTITLE_START}' => $this->subtitleStart(),
+            '{FOOTER}' => $this->footer(),
         ];
+    }
+
+    /*---------------------------------
+    | Replace content generators
+    |---------------------------------*/
+
+    /**
+     * @return string
+     */
+    public function subtitleStart()
+    {
+        if (user()->isAdmin()) {
+            return "Hi Admin";
+        }
+    }
+
+    /**
+     * @return string
+     */
+    public function footer()
+    {
+        return Factory::create()->paragraph;
     }
 
 }

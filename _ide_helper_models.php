@@ -43,6 +43,8 @@ namespace App{
  * @property-read \App\User|null $creator
  * @property-read \App\Module|null $linkedModule
  * @property-read \App\Project|null $project
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Spread[] $spreads
+ * @property-read int|null $spreads_count
  * @property-read \App\Tenant|null $tenant
  * @property-read \App\User|null $updater
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Upload[] $uploads
@@ -107,6 +109,8 @@ namespace App{
  * @property-read \App\User|null $creator
  * @property-read \App\Module|null $linkedModule
  * @property-read \App\Project|null $project
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Spread[] $spreads
+ * @property-read int|null $spreads_count
  * @property-read \App\Tenant|null $tenant
  * @property-read \App\User|null $updater
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Upload[] $uploads
@@ -136,6 +140,68 @@ namespace App{
  * @method static \Illuminate\Database\Eloquent\Builder|Comment whereUuid($value)
  */
 	class Comment extends \Eloquent {}
+}
+
+namespace App{
+/**
+ * App\Content
+ *
+ * @property int $id
+ * @property string|null $uuid
+ * @property int|null $project_id
+ * @property int|null $tenant_id
+ * @property string|null $name
+ * @property string|null $key
+ * @property string|null $title
+ * @property string|null $body
+ * @property string|null $parts JSON structure for additional dynamic parts
+ * @property string|null $help_text Hint for how/where this is used
+ * @property string|null $tags tags/spreadable
+ * @property int|null $is_active
+ * @property int|null $created_by
+ * @property int|null $updated_by
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @property int|null $deleted_by
+ * @property-read \Illuminate\Database\Eloquent\Collection|\OwenIt\Auditing\Models\Audit[] $audits
+ * @property-read int|null $audits_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Change[] $changes
+ * @property-read int|null $changes_count
+ * @property-read \App\User|null $creator
+ * @property-read mixed $parts_array
+ * @property-read \App\Module $linkedModule
+ * @property-read \App\Project|null $project
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Spread[] $spreads
+ * @property-read int|null $spreads_count
+ * @property-read \App\Tenant|null $tenant
+ * @property-read \App\User|null $updater
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Upload[] $uploads
+ * @property-read int|null $uploads_count
+ * @method static \Illuminate\Database\Eloquent\Builder|BaseModule active()
+ * @method static \Illuminate\Database\Eloquent\Builder|Content newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Content newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Content query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Content whereBody($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Content whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Content whereCreatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Content whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Content whereDeletedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Content whereHelpText($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Content whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Content whereIsActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Content whereKey($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Content whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Content whereParts($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Content whereProjectId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Content whereTags($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Content whereTenantId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Content whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Content whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Content whereUpdatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Content whereUuid($value)
+ */
+	class Content extends \Eloquent {}
 }
 
 namespace App{
@@ -173,6 +239,8 @@ namespace App{
  * @property-read \App\User|null $creator
  * @property-read \App\Module $linkedModule
  * @property-read \App\Project $project
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Spread[] $spreads
+ * @property-read int|null $spreads_count
  * @property-read \App\Tenant $tenant
  * @property-read \App\User|null $updater
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Upload[] $uploads
@@ -234,6 +302,8 @@ namespace App{
  * @property-read \App\User|null $creator
  * @property-read \App\Module $linkedModule
  * @property-read \App\Project|null $project
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Spread[] $spreads
+ * @property-read int|null $spreads_count
  * @property-read \App\Tenant|null $tenant
  * @property-read \App\User|null $updater
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Upload[] $uploads
@@ -309,6 +379,8 @@ namespace App{
  * @property-read \App\Module|null $linkedModule
  * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $notifiable
  * @property-read \App\Project|null $project
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Spread[] $spreads
+ * @property-read int|null $spreads_count
  * @property-read \App\Tenant|null $tenant
  * @property-read \App\User|null $updater
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Upload[] $uploads
@@ -393,6 +465,8 @@ namespace App\Mainframe\Features\Modular\BaseModule{
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Changes\Change[] $changes
  * @property-read int|null $changes_count
  * @property-read \App\Module $linkedModule
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Spread[] $spreads
+ * @property-read int|null $spreads_count
  */
 	class BaseModule extends \Eloquent implements \OwenIt\Auditing\Contracts\Auditable {}
 }
@@ -430,6 +504,8 @@ namespace App\Mainframe\Modules\Changes{
  * @property-read \App\User|null $creator
  * @property-read \App\Module|null $linkedModule
  * @property-read \App\Project|null $project
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Spread[] $spreads
+ * @property-read int|null $spreads_count
  * @property-read \App\Tenant|null $tenant
  * @property-read \App\User|null $updater
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Upload[] $uploads
@@ -494,6 +570,8 @@ namespace App\Mainframe\Modules\Comments{
  * @property-read \App\User|null $creator
  * @property-read \App\Module|null $linkedModule
  * @property-read \App\Project|null $project
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Spread[] $spreads
+ * @property-read int|null $spreads_count
  * @property-read \App\Tenant|null $tenant
  * @property-read \App\User|null $updater
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Upload[] $uploads
@@ -523,6 +601,68 @@ namespace App\Mainframe\Modules\Comments{
  * @method static \Illuminate\Database\Eloquent\Builder|Comment whereUuid($value)
  */
 	class Comment extends \Eloquent {}
+}
+
+namespace App\Mainframe\Modules\Contents{
+/**
+ * App\Mainframe\Modules\Contents\Content
+ *
+ * @property int $id
+ * @property string|null $uuid
+ * @property int|null $project_id
+ * @property int|null $tenant_id
+ * @property string|null $name
+ * @property string|null $key
+ * @property string|null $title
+ * @property string|null $body
+ * @property string|null $parts JSON structure for additional dynamic parts
+ * @property string|null $help_text Hint for how/where this is used
+ * @property string|null $tags tags/spreadable
+ * @property int|null $is_active
+ * @property int|null $created_by
+ * @property int|null $updated_by
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @property int|null $deleted_by
+ * @property-read \Illuminate\Database\Eloquent\Collection|\OwenIt\Auditing\Models\Audit[] $audits
+ * @property-read int|null $audits_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Change[] $changes
+ * @property-read int|null $changes_count
+ * @property-read \App\User|null $creator
+ * @property-read mixed $parts_array
+ * @property-read \App\Module $linkedModule
+ * @property-read \App\Project|null $project
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Spread[] $spreads
+ * @property-read int|null $spreads_count
+ * @property-read \App\Tenant|null $tenant
+ * @property-read \App\User|null $updater
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Upload[] $uploads
+ * @property-read int|null $uploads_count
+ * @method static \Illuminate\Database\Eloquent\Builder|BaseModule active()
+ * @method static \Illuminate\Database\Eloquent\Builder|Content newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Content newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Content query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Content whereBody($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Content whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Content whereCreatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Content whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Content whereDeletedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Content whereHelpText($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Content whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Content whereIsActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Content whereKey($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Content whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Content whereParts($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Content whereProjectId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Content whereTags($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Content whereTenantId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Content whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Content whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Content whereUpdatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Content whereUuid($value)
+ */
+	class Content extends \Eloquent {}
 }
 
 namespace App\Mainframe\Modules\Countries{
@@ -597,6 +737,8 @@ namespace App\Mainframe\Modules\Countries{
  * @property-read \App\Comment $latestComment
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Changes\Change[] $changes
  * @property-read \App\Module $linkedModule
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Spread[] $spreads
+ * @property-read int|null $spreads_count
  */
 	class Country extends \Eloquent {}
 }
@@ -626,6 +768,8 @@ namespace App\Mainframe\Modules\Groups{
  * @property-read \App\User|null $creator
  * @property-read \App\Module $linkedModule
  * @property-read \App\Project|null $project
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Spread[] $spreads
+ * @property-read int|null $spreads_count
  * @property-read \App\Tenant|null $tenant
  * @property-read \App\User|null $updater
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Upload[] $uploads
@@ -701,6 +845,8 @@ namespace App\Mainframe\Modules\InAppNotifications{
  * @property-read \App\Module|null $linkedModule
  * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $notifiable
  * @property-read \App\Project|null $project
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Spread[] $spreads
+ * @property-read int|null $spreads_count
  * @property-read \App\Tenant|null $tenant
  * @property-read \App\User|null $updater
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Upload[] $uploads
@@ -777,6 +923,8 @@ namespace App\Mainframe\Modules\ModuleGroups{
  * @property-read \App\User|null $creator
  * @property-read \App\Module $linkedModule
  * @property-read \App\Project $project
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Spread[] $spreads
+ * @property-read int|null $spreads_count
  * @property-read \App\Tenant $tenant
  * @property-read \App\User|null $updater
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Upload[] $uploads
@@ -853,6 +1001,8 @@ namespace App\Mainframe\Modules\Modules{
  * @property-read \App\User|null $creator
  * @property-read \App\Module $linkedModule
  * @property-read \App\Project|null $project
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Spread[] $spreads
+ * @property-read int|null $spreads_count
  * @property-read \App\Tenant|null $tenant
  * @property-read \App\User|null $updater
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Upload[] $uploads
@@ -927,6 +1077,8 @@ namespace App\Mainframe\Modules\Notifications{
  * @property-read \App\User|null $creator
  * @property-read \App\Module|null $linkedModule
  * @property-read \App\Project|null $project
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Spread[] $spreads
+ * @property-read int|null $spreads_count
  * @property-read \App\Tenant|null $tenant
  * @property-read \App\User|null $updater
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Upload[] $uploads
@@ -984,6 +1136,8 @@ namespace App\Mainframe\Modules\Packages{
  * @property-read \App\User|null $creator
  * @property-read \App\Module $linkedModule
  * @property-read \App\Project $project
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Spread[] $spreads
+ * @property-read int|null $spreads_count
  * @property-read \App\Tenant $tenant
  * @property-read \App\User|null $updater
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Upload[] $uploads
@@ -1039,6 +1193,8 @@ namespace App\Mainframe\Modules\Projects{
  * @property-read \App\User|null $creator
  * @property-read \App\Module $linkedModule
  * @property-read \App\Project $project
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Spread[] $spreads
+ * @property-read int|null $spreads_count
  * @property-read \App\Tenant $tenant
  * @property-read \App\User|null $updater
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Upload[] $uploads
@@ -1106,6 +1262,8 @@ namespace App\Mainframe\Modules\PushNotifications{
  * @property-read \App\InAppNotification|null $inAppNotification
  * @property-read \App\Module $linkedModule
  * @property-read \App\Project|null $project
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Spread[] $spreads
+ * @property-read int|null $spreads_count
  * @property-read \App\Tenant|null $tenant
  * @property-read \App\User|null $updater
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Upload[] $uploads
@@ -1175,6 +1333,8 @@ namespace App\Mainframe\Modules\Reports{
  * @property-read \App\User|null $creator
  * @property-read \App\Module|null $linkedModule
  * @property-read \App\Project|null $project
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Spread[] $spreads
+ * @property-read int|null $spreads_count
  * @property-read \App\Tenant|null $tenant
  * @property-read \App\User|null $updater
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Upload[] $uploads
@@ -1260,8 +1420,78 @@ namespace App\Mainframe\Modules\Settings{
  * @property-read \App\Comment $latestComment
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Changes\Change[] $changes
  * @property-read \App\Module $linkedModule
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Spread[] $spreads
+ * @property-read int|null $spreads_count
  */
 	class Setting extends \Eloquent {}
+}
+
+namespace App\Mainframe\Modules\Spreads{
+/**
+ * App\Mainframe\Modules\Spreads\Spread
+ *
+ * @property int $id
+ * @property string|null $uuid
+ * @property int|null $project_id
+ * @property int|null $tenant_id
+ * @property string|null $name
+ * @property string|null $spreadable_type
+ * @property int|null $spreadable_id
+ * @property int|null $module_id
+ * @property int|null $element_id
+ * @property string|null $element_uuid
+ * @property string|null $key Field name
+ * @property string|null $tag Tag name
+ * @property string|null $relates_to The second model
+ * @property int|null $related_id
+ * @property int|null $is_active
+ * @property int|null $created_by
+ * @property int|null $updated_by
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @property int|null $deleted_by
+ * @property-read \Illuminate\Database\Eloquent\Collection|\OwenIt\Auditing\Models\Audit[] $audits
+ * @property-read int|null $audits_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Change[] $changes
+ * @property-read int|null $changes_count
+ * @property-read \App\User|null $creator
+ * @property-read \App\Module|null $linkedModule
+ * @property-read \App\Project|null $project
+ * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $spreadable
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Spread[] $spreads
+ * @property-read int|null $spreads_count
+ * @property-read \App\Tenant|null $tenant
+ * @property-read \App\User|null $updater
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Upload[] $uploads
+ * @property-read int|null $uploads_count
+ * @method static \Illuminate\Database\Eloquent\Builder|BaseModule active()
+ * @method static \Illuminate\Database\Eloquent\Builder|Spread newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Spread newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Spread query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Spread whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Spread whereCreatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Spread whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Spread whereDeletedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Spread whereElementId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Spread whereElementUuid($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Spread whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Spread whereIsActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Spread whereKey($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Spread whereModuleId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Spread whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Spread whereProjectId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Spread whereRelatedId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Spread whereRelatesTo($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Spread whereSpreadableId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Spread whereSpreadableType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Spread whereTag($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Spread whereTenantId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Spread whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Spread whereUpdatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Spread whereUuid($value)
+ */
+	class Spread extends \Eloquent {}
 }
 
 namespace App\Mainframe\Modules\Subscriptions{
@@ -1290,6 +1520,8 @@ namespace App\Mainframe\Modules\Subscriptions{
  * @property-read \App\User|null $creator
  * @property-read \App\Module $linkedModule
  * @property-read \App\Project|null $project
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Spread[] $spreads
+ * @property-read int|null $spreads_count
  * @property-read \App\Tenant|null $tenant
  * @property-read \App\User|null $updater
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Upload[] $uploads
@@ -1345,6 +1577,8 @@ namespace App\Mainframe\Modules\Tenants{
  * @property-read \App\User|null $creator
  * @property-read \App\Module $linkedModule
  * @property-read \App\Project|null $project
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Spread[] $spreads
+ * @property-read int|null $spreads_count
  * @property-read \App\Tenant $tenant
  * @property-read \App\User|null $updater
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Upload[] $uploads
@@ -1410,6 +1644,8 @@ namespace App\Mainframe\Modules\Uploads{
  * @property-read mixed $url
  * @property-read \App\Module|null $linkedModule
  * @property-read \App\Project|null $project
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Spread[] $spreads
+ * @property-read int|null $spreads_count
  * @property-read \App\Tenant|null $tenant
  * @property-read \App\User|null $updater
  * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $uploadable
@@ -1511,6 +1747,8 @@ namespace App\Mainframe\Modules\Users{
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property-read int|null $notifications_count
  * @property-read \App\Project|null $project
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Spread[] $spreads
+ * @property-read int|null $spreads_count
  * @property-read \App\Tenant|null $tenant
  * @property-read \App\User|null $updater
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Upload[] $uploads
@@ -1614,6 +1852,8 @@ namespace App{
  * @property-read \App\User|null $creator
  * @property-read Module $linkedModule
  * @property-read \App\Project|null $project
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Spread[] $spreads
+ * @property-read int|null $spreads_count
  * @property-read \App\Tenant|null $tenant
  * @property-read \App\User|null $updater
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Upload[] $uploads
@@ -1690,6 +1930,8 @@ namespace App{
  * @property-read \App\User|null $creator
  * @property-read \App\Module $linkedModule
  * @property-read \App\Project $project
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Spread[] $spreads
+ * @property-read int|null $spreads_count
  * @property-read \App\Tenant $tenant
  * @property-read \App\User|null $updater
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Upload[] $uploads
@@ -1753,6 +1995,8 @@ namespace App{
  * @property-read \App\User|null $creator
  * @property-read \App\Module|null $linkedModule
  * @property-read \App\Project|null $project
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Spread[] $spreads
+ * @property-read int|null $spreads_count
  * @property-read \App\Tenant|null $tenant
  * @property-read \App\User|null $updater
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Upload[] $uploads
@@ -1810,6 +2054,8 @@ namespace App{
  * @property-read \App\User|null $creator
  * @property-read \App\Module $linkedModule
  * @property-read \App\Project $project
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Spread[] $spreads
+ * @property-read int|null $spreads_count
  * @property-read \App\Tenant $tenant
  * @property-read \App\User|null $updater
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Upload[] $uploads
@@ -1865,6 +2111,8 @@ namespace App{
  * @property-read \App\User|null $creator
  * @property-read \App\Module $linkedModule
  * @property-read Project $project
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Spread[] $spreads
+ * @property-read int|null $spreads_count
  * @property-read \App\Tenant $tenant
  * @property-read \App\User|null $updater
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Upload[] $uploads
@@ -1905,6 +2153,8 @@ namespace App\Projects\MyProject\Features\Modular\BaseModule{
  * @property-read \App\User $creator
  * @property-read \App\Module $linkedModule
  * @property-read \App\Project $project
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Spread[] $spreads
+ * @property-read int|null $spreads_count
  * @property-read \App\Tenant $tenant
  * @property-read \App\User $updater
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Upload[] $uploads
@@ -1942,6 +2192,8 @@ namespace App\Projects\MyProject\Modules\Settings{
  * @property-read \App\User|null $creator
  * @property-read \App\Module $linkedModule
  * @property-read \App\Project $project
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Spread[] $spreads
+ * @property-read int|null $spreads_count
  * @property-read \App\Tenant $tenant
  * @property-read \App\User|null $updater
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Upload[] $uploads
@@ -2004,6 +2256,8 @@ namespace App\Projects\MyProject\Modules\Uploads{
  * @property-read mixed $url
  * @property-read \App\Module|null $linkedModule
  * @property-read \App\Project|null $project
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Spread[] $spreads
+ * @property-read int|null $spreads_count
  * @property-read \App\Tenant|null $tenant
  * @property-read \App\User|null $updater
  * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $uploadable
@@ -2105,6 +2359,8 @@ namespace App\Projects\MyProject\Modules\Users{
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property-read int|null $notifications_count
  * @property-read \App\Project|null $project
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Spread[] $spreads
+ * @property-read int|null $spreads_count
  * @property-read \App\Tenant|null $tenant
  * @property-read \App\User|null $updater
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Upload[] $uploads
@@ -2203,6 +2459,8 @@ namespace App{
  * @property-read \App\InAppNotification|null $inAppNotification
  * @property-read \App\Module $linkedModule
  * @property-read \App\Project|null $project
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Spread[] $spreads
+ * @property-read int|null $spreads_count
  * @property-read \App\Tenant|null $tenant
  * @property-read \App\User|null $updater
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Upload[] $uploads
@@ -2272,6 +2530,8 @@ namespace App{
  * @property-read \App\User|null $creator
  * @property-read \App\Module|null $linkedModule
  * @property-read \App\Project|null $project
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Spread[] $spreads
+ * @property-read int|null $spreads_count
  * @property-read \App\Tenant|null $tenant
  * @property-read \App\User|null $updater
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Upload[] $uploads
@@ -2330,6 +2590,8 @@ namespace App{
  * @property-read \App\User|null $creator
  * @property-read \App\Module $linkedModule
  * @property-read \App\Project $project
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Spread[] $spreads
+ * @property-read int|null $spreads_count
  * @property-read \App\Tenant $tenant
  * @property-read \App\User|null $updater
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Upload[] $uploads
@@ -2358,6 +2620,74 @@ namespace App{
 
 namespace App{
 /**
+ * App\Spread
+ *
+ * @property int $id
+ * @property string|null $uuid
+ * @property int|null $project_id
+ * @property int|null $tenant_id
+ * @property string|null $name
+ * @property string|null $spreadable_type
+ * @property int|null $spreadable_id
+ * @property int|null $module_id
+ * @property int|null $element_id
+ * @property string|null $element_uuid
+ * @property string|null $key Field name
+ * @property string|null $tag Tag name
+ * @property string|null $relates_to The second model
+ * @property int|null $related_id
+ * @property int|null $is_active
+ * @property int|null $created_by
+ * @property int|null $updated_by
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @property int|null $deleted_by
+ * @property-read \Illuminate\Database\Eloquent\Collection|\OwenIt\Auditing\Models\Audit[] $audits
+ * @property-read int|null $audits_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Change[] $changes
+ * @property-read int|null $changes_count
+ * @property-read \App\User|null $creator
+ * @property-read \App\Module|null $linkedModule
+ * @property-read \App\Project|null $project
+ * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $spreadable
+ * @property-read \Illuminate\Database\Eloquent\Collection|Spread[] $spreads
+ * @property-read int|null $spreads_count
+ * @property-read \App\Tenant|null $tenant
+ * @property-read \App\User|null $updater
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Upload[] $uploads
+ * @property-read int|null $uploads_count
+ * @method static \Illuminate\Database\Eloquent\Builder|BaseModule active()
+ * @method static \Illuminate\Database\Eloquent\Builder|Spread newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Spread newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Spread query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Spread whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Spread whereCreatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Spread whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Spread whereDeletedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Spread whereElementId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Spread whereElementUuid($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Spread whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Spread whereIsActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Spread whereKey($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Spread whereModuleId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Spread whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Spread whereProjectId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Spread whereRelatedId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Spread whereRelatesTo($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Spread whereSpreadableId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Spread whereSpreadableType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Spread whereTag($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Spread whereTenantId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Spread whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Spread whereUpdatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Spread whereUuid($value)
+ */
+	class Spread extends \Eloquent {}
+}
+
+namespace App{
+/**
  * App\Subscription
  *
  * @property int $id
@@ -2382,6 +2712,8 @@ namespace App{
  * @property-read \App\User|null $creator
  * @property-read \App\Module $linkedModule
  * @property-read \App\Project|null $project
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Spread[] $spreads
+ * @property-read int|null $spreads_count
  * @property-read \App\Tenant|null $tenant
  * @property-read \App\User|null $updater
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Upload[] $uploads
@@ -2437,6 +2769,8 @@ namespace App{
  * @property-read \App\User|null $creator
  * @property-read \App\Module $linkedModule
  * @property-read \App\Project|null $project
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Spread[] $spreads
+ * @property-read int|null $spreads_count
  * @property-read Tenant $tenant
  * @property-read \App\User|null $updater
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Upload[] $uploads
@@ -2502,6 +2836,8 @@ namespace App{
  * @property-read mixed $url
  * @property-read \App\Module|null $linkedModule
  * @property-read \App\Project|null $project
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Spread[] $spreads
+ * @property-read int|null $spreads_count
  * @property-read \App\Tenant|null $tenant
  * @property-read \App\User|null $updater
  * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $uploadable
@@ -2603,6 +2939,8 @@ namespace App{
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property-read int|null $notifications_count
  * @property-read \App\Project|null $project
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Spread[] $spreads
+ * @property-read int|null $spreads_count
  * @property-read \App\Tenant|null $tenant
  * @property-read User|null $updater
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Upload[] $uploads
