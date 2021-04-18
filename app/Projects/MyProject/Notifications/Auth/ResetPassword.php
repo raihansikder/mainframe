@@ -23,8 +23,16 @@ class ResetPassword extends \Illuminate\Auth\Notifications\ResetPassword impleme
             return call_user_func(static::$toMailCallback, $notifiable, $this->token);
         }
 
+        /*---------------------------------
+        | Example : Using Dynamic content
+        |---------------------------------*/
+
+        // return (new MailMessage)->view('mainframe.emails.blank',
+        //     ['content' => (new SampleContent())->get()]
+        // )->subject(__('Reset Password Notification'));
+
         return (new MailMessage)->view('projects.my-project.emails.auth.reset-password', [
-                'url' => url(config('app.url').route('password.reset', ['token' => $this->token, 'email' => $notifiable->getEmailForPasswordReset()], false))
+                'url' => url(config('app.url').route('password.reset', ['token' => $this->token, 'email' => $notifiable->getEmailForPasswordReset()], false)),
             ]
         )->subject(__('Reset Password Notification'));
     }

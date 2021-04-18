@@ -30,9 +30,6 @@ class SampleContent extends DynamicContent
         ];
     }
 
-    public function output()
-    {
 
-    }
 
 }

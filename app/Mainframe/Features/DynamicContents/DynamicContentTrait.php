@@ -80,4 +80,13 @@ trait DynamicContentTrait
         return kebab_case(array_pop($path));
     }
 
+    /**
+     * @return mixed|string
+     * @throws \Throwable
+     */
+    public function get()
+    {
+        return $this->process();
+    }
+
 }

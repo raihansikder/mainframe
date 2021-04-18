@@ -1,7 +1,7 @@
 @extends('projects.my-project.layouts.email.template')
 
 @section('title')
-    <a href="{{$url}}" style="color:#000; text-decoration:none;">MPH | Email Verification</a>
+    <a href="{{$url}}" style="color:#000; text-decoration:none;">Email Verification</a>
 @endsection
 
 @section('content')
@@ -13,7 +13,7 @@
     Please <a href="{{$url}}">click here</a> to verify your email id.
 
     <br/><br/>
-    <strong>MPH Group </strong>
+    <strong>Thank you</strong>
 
 
 @endsection

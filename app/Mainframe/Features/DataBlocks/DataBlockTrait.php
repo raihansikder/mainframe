@@ -31,6 +31,7 @@ trait DataBlockTrait
      * Get the final result
      *
      * @return mixed
+     * @deprecated use get()
      */
     public function data()
     {
@@ -40,6 +41,14 @@ trait DataBlockTrait
             return $this->data;
         });
 
+    }
+
+    /**
+     * @return mixed
+     */
+    public function get()
+    {
+        return $this->data();
     }
 
 }

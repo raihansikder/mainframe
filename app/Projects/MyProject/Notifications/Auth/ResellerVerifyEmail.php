@@ -25,7 +25,7 @@ class ResellerVerifyEmail extends \Illuminate\Auth\Notifications\VerifyEmail imp
 
         return (new MailMessage)->view('projects.my-project.emails.auth.reseller-email-verification',
             ['user' => $notifiable, 'url' => $url]
-        )->subject(__('MPH | Become a Partner'));
+        )->subject(__('Become a Partner'));
     }
 
     /**

@@ -318,8 +318,8 @@
             <table class="content" width="600" cellpadding="0" cellspacing="0">
                 <tr>
                     <td class="body" width="100%" cellpadding="0" cellspacing="0" style="padding:10px; padding-top:15px; text-align:left">
-                        <!--<img width="300" src="http://demo.yantrait.co.uk/mphstaging/public/projects/my-project/images/mph-email-logo.png" />-->
-                        <img width="300" border="0" src="{{asset('projects/my-project/images/mph-email-logo.png')}}" alt="MPH Marketplace"/></td>
+                        <!--<img width="300" src="http://demo.yantrait.co.uk/mphstaging/public/projects/my-project/images/logo.png" />-->
+                        <img width="300" border="0" src="{{asset('projects/my-project/images/logo.png')}}" alt="{{config('app.name')}}"/></td>
                 </tr>
                 <tr>
                     <td class="body" width="100%" cellpadding="0" cellspacing="0"><h2 class="title"> @section('title')

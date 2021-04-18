@@ -49,7 +49,7 @@ class VendorRegistered extends Notification implements ShouldQueue
     {
         return (new MailMessage)
             ->view('projects.my-project.emails.register.vendor-registered', ['user' => $this->user])
-            ->subject(__(' MPH | A new Vendor Request'))
+            ->subject(__('A new Vendor Request'))
             ->cc(config('projects.my-project.config.default_email_recipients'));
     }
 

@@ -49,7 +49,7 @@ class ResellerRegistered extends Notification implements ShouldQueue
     {
         return (new MailMessage)
             ->view('projects.my-project.emails.register.reseller-registered', ['user' => $this->user])
-            ->subject(__('MPH | A new Partner Request'))
+            ->subject(__('A new Partner Request'))
             ->cc(config('projects.my-project.config.default_email_recipients'));
     }
 

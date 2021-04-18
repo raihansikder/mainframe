@@ -23,8 +23,8 @@
                 <tr>
                     <td width="50%" align="left" style="vertical-align: middle">
                         {{--<img class="image img-responsive"--}}
-                        {{--src="{{asset('projects/my-project/images/mphlogo.png')}}" alt=""/>--}}
-                        <h2 style="padding-left: 10px">MPH GROUP</h2>
+                        {{--src="{{asset('projects/my-project/images/logo.png')}}" alt=""/>--}}
+                        <h2 style="padding-left: 10px">{{config('app.name')}}</h2>
                     </td>
                     <td width="50%" align="right" style="vertical-align: middle">
                         @section('header')

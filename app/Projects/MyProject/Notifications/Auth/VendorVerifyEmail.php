@@ -26,7 +26,7 @@ class VendorVerifyEmail extends \Illuminate\Auth\Notifications\VerifyEmail imple
 
         return (new MailMessage)->view('projects.my-project.emails.auth.vendor-email-verification',
             ['user' => $notifiable, 'url' => $url]
-        )->subject(__('MPH | Email Verification'));
+        )->subject(__('Email Verification'));
     }
 
     /**
