@@ -3,25 +3,20 @@
 namespace App\Mainframe\Modules\Spreads;
 
 use App\Mainframe\Features\Modular\BaseModule\BaseModuleObserver;
+use App\Mainframe\Modules\Spreads\Traits\SpreadObserverTrait;
 
 class SpreadObserver extends BaseModuleObserver
 {
-    // Note: Pull in necessary traits from relevant mainframe class
+    use SpreadObserverTrait;
 
-    // /**
-    //  * @param  Spread  $element
-    //  * @return void|bool
-    //  */
-    // public function saving($element) { }
-
-    // public function creating($element) { }
-    // public function created($element) { }
-    // public function updating($element) { }
-    // public function updated($element) { }
-    // public function saved($element) { }
-    // public function deleting($element) { }
-    // public function deleted($element) { }
-    // public function restored($element) { }
-    // public function forceDeleted($element) { }
+    /*
+    |--------------------------------------------------------------------------
+    | Note : Keep this empty! Write codes in Trait.
+    |--------------------------------------------------------------------------
+    |
+    | For default mainframe modules keep this empty. Write codes in Trait so
+    | that the logic is portable and can be included  in new project modules
+    |
+    */
 
 }

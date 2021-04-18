@@ -1,8 +1,9 @@
-<?php
+<?php /** @noinspection PhpUndefinedClassInspection */
 
 namespace App\Mainframe\Modules\SuperHeroes;
 
 use App\Mainframe\Features\Modular\BaseModule\BaseModuleViewProcessor;
+use App\SuperHero;
 
 class SuperHeroViewProcessor extends BaseModuleViewProcessor
 {

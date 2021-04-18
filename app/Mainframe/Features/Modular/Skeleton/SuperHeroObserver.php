@@ -3,13 +3,14 @@
 namespace App\Mainframe\Modules\SuperHeroes;
 
 use App\Mainframe\Features\Modular\BaseModule\BaseModuleObserver;
+use App\SuperHero;
 
 class SuperHeroObserver extends BaseModuleObserver
 {
     // Note: Pull in necessary traits from relevant mainframe class
 
     // /**
-    //  * @param  SuperHero  $element
+    //  * @param  App\SuperHero  $element
     //  * @return void|bool
     //  */
     // public function saving($element) { }

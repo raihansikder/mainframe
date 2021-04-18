@@ -3,72 +3,20 @@
 namespace App\Mainframe\Modules\Spreads;
 
 use App\Mainframe\Features\Datatable\ModuleDatatable;
+use App\Mainframe\Modules\Spreads\Traits\SpreadDatatableTrait;
 
 class SpreadDatatable extends ModuleDatatable
 {
-    // Note: Pull in necessary traits
+    use SpreadDatatableTrait;
 
-    /** @var string[] HTML rendering enabled for columns */
-    public $rawColumns = ['id', 'name', 'is_active'];
-
-    // /**
-    //  * Note: Define Query Source
-    //  *
-    //  * @return \Illuminate\Database\Query\Builder|static
-    //  */
-    // public function source()
-    // {
-    //     return DB::table($this->table)->leftJoin('users as updater', 'updater.id', $this->table.'.updated_by');
-    // }
-
-    /**
-     * Select columns, alias and corresponding HTML title
-     *
-     * @return array
-     */
-    public function columns()
-    {
-        return [
-            [$this->table.'.id', 'id', 'ID'],
-            [$this->table.'.name', 'name', 'Name'],
-            ['updater.name', 'user_name', 'Updater'],
-            [$this->table.'.updated_at', 'updated_at', 'Updated at'],
-            [$this->table.'.is_active', 'is_active', 'Active'],
-        ];
-    }
-
-    // /**
-    //  * Note: Apply filter on query.
-    //  *
-    //  * @param $query \Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder|mixed
-    //  * @return \Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder|mixed
-    //  */
-    // public function filter($query)
-    // {
-    //     // if (request('id')) { // Example code
-    //     //     $query->where('id', request('id'));
-    //     // }
-    //
-    //     return $query;
-    // }
-
-    /**
-     * Note: Modify datatable values
-     *
-     * @return mixed
-     * @var $dt \Yajra\DataTables\DataTableAbstract
-     */
-    // public function modify($dt)
-    // {
-    //     $dt = parent::modify($dt);
-    //
-    //     if ($this->hasColumn('column_name')) {
-    //         $dt->editColumn('column_name', function ($row) {
-    //             return $row->column_name.'updated';
-    //         });
-    //     }
-    //
-    //     return $dt;
-    // }
+    /*
+    |--------------------------------------------------------------------------
+    | Note : Keep this empty! Write codes in Trait.
+    |--------------------------------------------------------------------------
+    |
+    | For default mainframe modules keep this empty. Write codes in Trait so
+    | that the logic is portable and can be included  in new project modules
+    |
+    */
 
 }

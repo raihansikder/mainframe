@@ -7,7 +7,6 @@ use App\Mainframe\Modules\Spreads\Traits\SpreadTrait;
 
 class Spread extends BaseModule
 {
-    // Note: Pull in necessary traits from relevant mainframe class
     use SpreadTrait;
 
     protected $moduleName = 'spreads';

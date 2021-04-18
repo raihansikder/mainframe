@@ -3,6 +3,7 @@
 namespace App\Mainframe\Modules\SuperHeroes;
 
 use App\Mainframe\Features\Modular\BaseModule\BaseModulePolicy;
+use App\SuperHero;
 
 class SuperHeroPolicy extends BaseModulePolicy
 {
@@ -19,7 +20,7 @@ class SuperHeroPolicy extends BaseModulePolicy
      * view
      *
      * @param  \App\User  $user
-     * @param  SuperHero  $element
+     * @param  \App\SuperHero  $element
      * @return mixed
      */
     // public function view($user, $element) {if (! parent::view($user, $element)) {return false;} return true;}

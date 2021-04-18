@@ -1,8 +1,9 @@
-<?php
+<?php /** @noinspection PhpUndefinedClassInspection */
 
 namespace App\Mainframe\Modules\SuperHeroes;
 
 use App\Mainframe\Features\Modular\Validator\ModelProcessor;
+use App\SuperHero;
 
 class SuperHeroProcessor extends ModelProcessor
 {

@@ -43,18 +43,18 @@ trait SpreadTrait
     | Section: Autofill and functions to calculated field updates
     |--------------------------------------------------------------------------
     */
-    /**
-     * Populate model
-     * Fill data and set calculated data in fields for saving the module
-     * This can depend of supporting fillFunct, setFunct,calculateFunct
-     * return $this
-     */
-    public function populate()
-    {
-        // Example code
-        // $this->fillAddress()->setAmounts();
-        return $this;
-    }
+    // /**
+    //  * Populate model
+    //  * Fill data and set calculated data in fields for saving the module
+    //  * This can depend of supporting fillFunct, setFunct,calculateFunct
+    //  * return $this
+    //  */
+    // public function populate()
+    // {
+    //     // Example code
+    //     // $this->fillAddress()->setAmounts();
+    //     return $this;
+    // }
 
     // /**
     //  * Set address
