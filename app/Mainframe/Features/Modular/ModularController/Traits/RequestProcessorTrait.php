@@ -68,7 +68,7 @@ trait RequestProcessorTrait
         }
 
         // If request is valid then only call processor which also calls model save.
-        if ($this->fill()->save()) {
+        if (!$this->fill()->save()) {
             return $this;
         }
 

@@ -89,4 +89,20 @@ class SuperHero extends BaseModule
     */
     // public function updater() { return $this->belongsTo(\App\User::class, 'updated_by'); }
 
+    /*
+    |--------------------------------------------------------------------------
+    | Section: Helpers
+    |--------------------------------------------------------------------------
+    */
+    /**
+     * Alias method to get the processor
+     *
+     * @return SuperHeroProcessor
+     * @noinspection SenselessProxyMethodInspection
+     */
+    public function processor()
+    {
+        return parent::processor();
+    }
+
 }
