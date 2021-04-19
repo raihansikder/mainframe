@@ -204,7 +204,7 @@ trait Query
     public function queryAddFieldsForRelations($keys = [])
     {
         foreach ($this->relationFieldMap() as $relationship => $col) {
-            if (!in_array($col, $keys)) {
+            if (!in_array($col, $keys) && in_array($col,$this->queryRelations())) {
                 $keys[] = $col;
             }
         }
@@ -220,7 +220,7 @@ trait Query
      */
     public function includeDefaultColumns($keys = [])
     {
-        $defaultColumns = array_merge($this->defaultColumns(), $this->defaultSelectedColumns());
+        $defaultColumns = array_merge($this->defaultColumns(), $this->defaultColumns());
 
         foreach ($defaultColumns as $col) {
             // if (!in_array($col, $keys) && in_array($col, $this->dataSourceColumns())) {
@@ -241,7 +241,8 @@ trait Query
      */
     public function defaultColumns()
     {
-        return ['id', 'name'];
+        // return ['id', 'name'];
+        return [];
     }
 
     /**

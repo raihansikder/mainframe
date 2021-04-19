@@ -5,10 +5,11 @@ namespace App\Mainframe\Features\Report\Traits;
 use App\Mainframe\Features\Report\ReportViewProcessor;
 use App\Mainframe\Helpers\Convert;
 use App\Report;
-use PhpOffice\PhpSpreadsheet\Writer\Csv;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
-use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use PhpOffice\PhpSpreadsheet\Writer\Csv;
 use PhpOffice\PhpSpreadsheet\Writer\Exception;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use Str;
 
 /** @mixin \App\Mainframe\Features\Report\ReportBuilder $this */
 trait Output
@@ -499,6 +500,25 @@ trait Output
     }
 
     /**
+     * Extracts the 'column' name part form 'table.column'
+     *
+     * @param $column
+     * @return string
+     */
+    public function extractColumn($column)
+    {
+        if (Str::contains($column, ' as ')) {
+            return trim(Str::after($column, ' as '));
+        }
+
+        if (Str::contains($column, '.')) {
+            return Str::after($column, '.');
+        }
+
+        return $column;
+    }
+
+    /**
      * Transforms the values of a cell. This is useful for creating links, changing colors etc.
      *
      * @param  string  $column
@@ -508,6 +528,8 @@ trait Output
      */
     public function cell($column, $row, $route = null)
     {
+        $column = $this->extractColumn($column);
+
         if (!isset($row->$column)) {
             return null;
         }
@@ -633,7 +655,6 @@ trait Output
         $linkCss = '';
 
         if ($orderBy) {
-
             if (\Str::startsWith($orderBy, $column.' ASC')) {
                 $orderBy = str_replace($column.' ASC', $column.' DESC', $orderBy);
                 $icon = $this->sortAscIcon();

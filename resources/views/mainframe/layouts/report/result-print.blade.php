@@ -41,9 +41,7 @@
                         <tr>
                             @foreach ($selectedColumns as $column)
                                 <td>
-                                    @if(isset($row->$column))
-                                        {!! $report->cell($column, $row) !!}
-                                    @endif
+                                    {!! $report->cell($column, $row) !!}
                                 </td>
                             @endforeach
                         </tr>
