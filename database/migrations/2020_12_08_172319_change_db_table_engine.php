@@ -15,17 +15,15 @@ class ChangeDbTableEngine extends Migration
     {
 
         $items = Schema::getAllTables();
-        $tables = [];
 
         foreach ($items as $item) {
             $dbName = config('database.connections.mysql.database');
             $field = 'Tables_in_'.$dbName;
-            $tables[] = $item->$field;
-        }
+            $table = $item->$field;
 
-        foreach ($tables as $table) {
             DB::statement('ALTER TABLE ' . $table . ' ENGINE = InnoDB');
         }
+
     }
 
     /**

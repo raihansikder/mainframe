@@ -14,6 +14,10 @@ class CreatePushNotificationsTable extends Migration
      */
     public function up()
     {
+        // Note: Skip if the table exists
+        if (Schema::hasTable('push_notifications')) {
+            return;
+        }
         /*
          * Create schema
          */

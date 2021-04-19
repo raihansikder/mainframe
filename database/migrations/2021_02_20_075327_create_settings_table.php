@@ -13,6 +13,10 @@ class CreateSettingsTable extends Migration
     public function up()
     {
 
+        // Note: Skip if the table exists
+        if (Schema::hasTable('settings')) {
+            return;
+        }
         /*
          * Insert into modules table
          */

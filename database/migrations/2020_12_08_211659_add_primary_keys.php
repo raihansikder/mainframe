@@ -13,18 +13,27 @@ class AddPrimaryKeys extends Migration
      */
     public function up()
     {
-        Schema::table('password_resets', function (Blueprint $table) {
-            $table->bigIncrements('id')->first();
-        });
-        Schema::table('user_group', function (Blueprint $table) {
-            $table->bigIncrements('id')->first();
-        });
-        Schema::table('telescope_monitoring', function (Blueprint $table) {
-            $table->bigIncrements('id')->first();
-        });
-        Schema::table('telescope_entries_tags', function (Blueprint $table) {
-            $table->bigIncrements('id')->first();
-        });
+
+        if (!Schema::hasColumn('password_resets', 'id')) {
+            Schema::table('password_resets', function (Blueprint $table) {
+                $table->bigIncrements('id')->first();
+            });
+        }
+        if (!Schema::hasColumn('user_group', 'id')) {
+            Schema::table('user_group', function (Blueprint $table) {
+                $table->bigIncrements('id')->first();
+            });
+        }
+        if (!Schema::hasColumn('telescope_monitoring', 'id')) {
+            Schema::table('telescope_monitoring', function (Blueprint $table) {
+                $table->bigIncrements('id')->first();
+            });
+        }
+        if (!Schema::hasColumn('telescope_entries_tags', 'id')) {
+            Schema::table('telescope_entries_tags', function (Blueprint $table) {
+                $table->bigIncrements('id')->first();
+            });
+        }
     }
 
     /**

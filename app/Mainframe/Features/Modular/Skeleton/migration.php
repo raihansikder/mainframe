@@ -15,9 +15,15 @@ class CreateSuperHeroesTable extends Migration
      */
     public function up()
     {
-        /*
-         * Create schema
-         */
+
+        // Note: Skip if the table exists
+        if (Schema::hasTable('{table}')) {
+            return;
+        }
+
+        /*---------------------------------
+        | Create the table
+        |---------------------------------*/
         Schema::create('{table}', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('uuid', 64)->nullable()->default(null);
@@ -39,9 +45,9 @@ class CreateSuperHeroesTable extends Migration
             $table->unsignedInteger('deleted_by')->nullable()->default(null);
         });
 
-        /*
-         * Insert into modules table
-         */
+        /*---------------------------------
+        | Update modules table
+        |---------------------------------*/
         $name = '{module_name}';
 
         $module = Module::firstOrNew(['name' => $name]);

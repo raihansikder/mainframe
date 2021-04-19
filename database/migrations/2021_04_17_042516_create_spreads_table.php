@@ -15,6 +15,10 @@ class CreateSpreadsTable extends Migration
      */
     public function up()
     {
+        // Note: Skip if the table exists
+        if (Schema::hasTable('spreads')) {
+            return;
+        }
         /*
          * Create schema
          */

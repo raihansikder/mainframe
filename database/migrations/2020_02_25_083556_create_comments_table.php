@@ -16,6 +16,10 @@ class CreateCommentsTable extends Migration
      */
     public function up()
     {
+        // Note: Skip if the table exists
+        if (Schema::hasTable('comments')) {
+            return;
+        }
         /*
          * Create schema
          */

@@ -15,6 +15,10 @@ class CreateInAppNotificationsTable extends Migration
      */
     public function up()
     {
+        // Note: Skip if the table exists
+        if (Schema::hasTable('in_app_notifications')) {
+            return;
+        }
         /*
          * Create schema
          */

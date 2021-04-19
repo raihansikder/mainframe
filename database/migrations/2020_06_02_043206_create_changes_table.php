@@ -15,6 +15,10 @@ class CreateChangesTable extends Migration
      */
     public function up()
     {
+        // Note: Skip if the table exists
+        if (Schema::hasTable('changes')) {
+            return;
+        }
         /*
          * Create schema
          */
