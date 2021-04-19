@@ -56,6 +56,9 @@ use Illuminate\Database\Eloquent\Builder;
  * @property-read int|null $comments_count
  * @property-read \App\Comment $latestComment
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Changes\Change[] $changes
+ * @property-read \App\Module $linkedModule
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Spread[] $spreads
+ * @property-read int|null $spreads_count
  */
 class Setting extends BaseModule
 {

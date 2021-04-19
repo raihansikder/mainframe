@@ -50,6 +50,9 @@ use Watson\Rememberable\Rememberable;
  * @mixin \Eloquent
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Changes\Change[] $changes
  * @property-read int|null $changes_count
+ * @property-read \App\Module $linkedModule
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Spread[] $spreads
+ * @property-read int|null $spreads_count
  */
 class BaseModule extends Model implements Auditable
 {
