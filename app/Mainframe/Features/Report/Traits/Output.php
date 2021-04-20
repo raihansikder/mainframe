@@ -649,7 +649,7 @@ trait Output
         $report = $this;
 
         $alias = $report->aliasColumns()[$index];
-        $column = $report->selectedColumns()[$index];
+        $column = $this->extractColumn($report->selectedColumns()[$index]);
 
         $orderBy = request('order_by');
         $linkCss = '';
