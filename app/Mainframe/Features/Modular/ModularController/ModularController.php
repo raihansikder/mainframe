@@ -34,8 +34,6 @@ class ModularController extends BaseController
      */
     protected $module;
 
-
-
     /**
      * ModularController constructor.
      */
@@ -47,7 +45,8 @@ class ModularController extends BaseController
         // Load
         $this->module = Module::byName($this->moduleName);
         $this->model = $this->module->modelInstance();
-        $this->view = $this->viewProcessor()->setModule($this->module)->setModel($this->model);
+        // $this->view = $this->viewProcessor()->setModule($this->module)->setModel($this->model);
+        $this->view = $this->model->viewProcessor();
 
         // Share these variables in  all views
         View::share([

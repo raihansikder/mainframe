@@ -22,7 +22,7 @@ use App\Projects\MyProject\DynamicContents\SampleContent;
 
 Route::get('test', function () {
 
-    dd(\App\Content::byKey('sample-content')->part('title'));
+    // dd(\App\Content::byKey('sample-content')->part('title'));
     //
     // dd(content('sample-content','footer'));
     // $contents = (new SampleContent());

@@ -3,6 +3,8 @@
 namespace App\Mainframe\Features\Modular\BaseModule\Traits;
 
 use App\Change;
+use App\Mainframe\Features\Core\ViewProcessor;
+use App\Mainframe\Features\Modular\BaseModule\BaseModule;
 use App\Mainframe\Helpers\Mf;
 use App\Module;
 use App\Project;
@@ -811,18 +813,43 @@ trait ModularTrait
     |--------------------------------------------------------------------------
     |
     */
+
+    /**
+     * Get an instance of the view processor
+     *
+     * @return mixed|null
+     */
     public function viewProcessor()
     {
-        $modelClassPath = $this->module()->modelClassPath();
+        $module = $this->module();
+        $modelClassPath = $module->modelClassPath();
+
         $classPaths = [
-            // Note: Check in same folder
+
+            // Step 1: Check in same folder
             $modelClassPath.'View',
             $modelClassPath.'ViewProcessor',
+
+            // Step 2: Check in module directory
+            $module->namespace.'\\'.$module->modelClassName().'View',
+            $module->namespace.'\\'.$module->modelClassName().'ViewProcessor',
+
+            // Step 3: Check project default
+            '\App\Projects\\'.config('mainframe.config.project').'\Features\Modular\BaseModule\BaseModuleView',
+            '\App\Projects\\'.config('mainframe.config.project').'\Features\Modular\BaseModule\BaseModuleViewProcessor',
+
+            // Step 4: Fallback to mainframe
+            'App\Mainframe\Features\Modular\BaseModule\BaseModuleView',
+            'App\Mainframe\Features\Modular\BaseModule\BaseModuleViewProcessor',
         ];
 
         foreach ($classPaths as $classPath) {
             if (class_exists($classPath)) {
-                return (new $classPath);
+                /** @var ViewProcessor $view */
+                $view = new $classPath;
+
+                /** @var BaseModule $this */
+                return $view->setModel($this)->setModule($module);
             }
         }
 

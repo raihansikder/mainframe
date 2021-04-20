@@ -30,16 +30,22 @@ trait Columns
         return array_merge($this->dataSourceColumns(), $this->ghostColumnOptions());
     }
 
+    public function ghostColumns()
+    {
+        return [];
+    }
+
     /**
      * Some times we need to pass column names that do not exists in the model/table.
      * This should not be considered in query building. Rather we want this to be
      * post processed in mutation function.
      *
      * @return array
+     * @deprecated  use ghostColumns() instead
      */
     public function ghostColumnOptions()
     {
-        return [];
+        return $this->ghostColumns();
     }
 
     /**
@@ -83,7 +89,6 @@ trait Columns
         return $this->dataSourceColumns();
     }
 
-
     /**
      * Check if selected columns have a key
      *
@@ -93,6 +98,17 @@ trait Columns
     public function selectedColumnsHas($column)
     {
         return in_array($column, $this->selectedColumns());
+    }
+
+    public function selectedColumnsHasAny($columns)
+    {
+        foreach ($columns as $column) {
+            if ($this->selectedColumnsHas($column)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     /**
@@ -126,6 +142,8 @@ trait Columns
     |
     */
 
+
+
     /**
      * This function returns an array of Titles/Column aliases that are mapped with
      * each $selectedColumns. This usually comes from the inputs as CSV.
@@ -158,6 +176,7 @@ trait Columns
 
     /**
      * Change alias for specific columns
+     *
      * @param $map
      * @param $array
      * @return mixed
@@ -174,7 +193,7 @@ trait Columns
     }
 
     /**
-     * Change alias column array for output
+     * Change alias column array for output. Add additional columns when needed.
      *
      * @return array
      */

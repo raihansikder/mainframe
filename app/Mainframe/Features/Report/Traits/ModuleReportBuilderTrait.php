@@ -23,23 +23,6 @@ trait ModuleReportBuilderTrait
     }
 
     /**
-     * Query to initially select table or a model.
-     *
-     * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model|Builder
-     */
-    public function queryDataSource()
-    {
-
-        // Source is a table
-        if (is_string($this->dataSource)) {
-            return \DB::table($this->dataSource);
-        }
-
-        return $this->dataSource;
-
-    }
-
-    /**
      * @param $module
      */
     public function setModule($module)
@@ -50,7 +33,11 @@ trait ModuleReportBuilderTrait
 
         $this->module = $module;
         $this->model = $this->module->modelInstance();
-        $this->dataSource = $this->model->with($this->queryRelations());
+    }
+
+    public function viewProcessor()
+    {
+        return $this->model->viewProcessor();
     }
 
     /**

@@ -19,6 +19,7 @@ trait Query
      */
     public function resultQuery()
     {
+
         $query = $this->queryDataSource();
 
         if (count($this->querySelectColumns())) {
@@ -136,7 +137,7 @@ trait Query
     {
         if ($this->model) {
             if (request('with')) {
-                return $this->model->with(explode(',', request('with')));
+                return $this->model->with($this->queryRelations());
             }
 
             return $this->model;
@@ -204,7 +205,7 @@ trait Query
     public function queryAddFieldsForRelations($keys = [])
     {
         foreach ($this->relationFieldMap() as $relationship => $col) {
-            if (!in_array($col, $keys) && in_array($col,$this->queryRelations())) {
+            if (!in_array($col, $keys) && in_array($col, $this->queryRelations())) {
                 $keys[] = $col;
             }
         }

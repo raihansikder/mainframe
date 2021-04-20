@@ -6,13 +6,14 @@ trait Resolvable
 {
     /**
      * Get the view processor instance
-     *
+     * Todo: This is no longer used. Instead $model->viewProcessor();
      * @return mixed|null
      */
     public function viewProcessor()
     {
 
         $classPaths = [
+
             // Note: Check in same folder
             $this->module->modelClassPath().'View',
             $this->module->modelClassPath().'ViewProcessor',

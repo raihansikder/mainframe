@@ -37,7 +37,7 @@ trait ReportViewProcessorTrait
     |
     | These functions already exists in the report. However, there can be
     | cases where the same report is rendered using different view
-    | processors. In that case these function can be overriden
+    | processors. In that case these function can be overridden
     | and used.
     |
     */

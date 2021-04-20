@@ -22,6 +22,7 @@ class SampleContent extends DynamicContent
     public function replace()
     {
         return [
+            '{TITLE}' => 'Replaced title',
             '{SALUTATION}' => $this->key(),
             '{INTRO}' => 'Some static content',
             '{SUBTITLE_START}' => $this->subtitleStart(),

@@ -16,18 +16,18 @@
     @if(request('submit'))
 
         {{--  Exel export button  --}}
-        <a href="{!! $view->excelDownloadUrl() !!}"
+        <a href="{!! $report->excelDownloadUrl() !!}"
            target="_blank" class="btn btn-default" type="button"
            title="Export to Excel"><i class="fa fa-file-excel-o" title="Export to Excel"></i></a>
 
         {{--  Print button  --}}
-        <a href="{!! $view->printUrl() !!}"
+        <a href="{!! $report->printUrl() !!}"
            target="_blank" class="btn btn-default">
             <i class="fa fa-print" title="Print"></i></a>
 
         {{--  Save Report button  --}}
         @if($view->showSaveReportBtn())
-            <a href="{!! $view->saveUrl() !!}" target="_blank" class="btn btn-default">
+            <a href="{!! $report->saveUrl() !!}" target="_blank" class="btn btn-default">
                 <i class="fa fa-save" title="Save Report"></i></a>
         @endif
 

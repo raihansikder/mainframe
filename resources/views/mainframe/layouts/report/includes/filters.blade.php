@@ -22,7 +22,8 @@
             <li class="active"><a href="#tab_minimize" data-toggle="tab"><i class="fa fa-minus"></i></a></li>
             <li><a href="#tab_basic" data-toggle="tab">Filters</a></li>
             <li><a href="#tab_advanced" data-toggle="tab">Fields</a></li>
-            <li class="pull-right">@include($view->ctaPath())</li>
+
+            <li class="pull-right">@include($report->ctaPath())</li>
         </ul>
 
         <div class="tab-content">
@@ -39,7 +40,7 @@
             </div>
 
             <div class="tab-pane" id="tab_advanced">
-                @include($view->advancedFilterPath())
+                @include($report->advancedFilterPath())
             </div>
 
         </div>
