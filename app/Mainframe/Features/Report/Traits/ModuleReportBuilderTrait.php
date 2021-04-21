@@ -37,7 +37,7 @@ trait ModuleReportBuilderTrait
 
     public function viewProcessor()
     {
-        return $this->model->viewProcessor();
+        return $this->model->viewProcessor()->setReport($this);
     }
 
     /**

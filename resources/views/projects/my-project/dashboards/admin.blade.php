@@ -18,6 +18,11 @@
     use App\Projects\MyProject\DynamicContents\SampleContent;
     $sampleContent = (new SampleContent())->get('body');
 
+    $str = '\App\Mainframe\Modules\Modules\Module';
+    // echo \Illuminate\Support\Arr::last(explode('\\',$str));
+
+            $user = \App\Module::byName('users')->modelInstance();
+
     ?>
 
     <div class="clearfix"></div>

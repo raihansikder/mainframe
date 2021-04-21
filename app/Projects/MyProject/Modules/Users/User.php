@@ -224,7 +224,7 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
     protected $allowedPermissionsValues = [-1, 0, 1];
 
     protected $spreadAttributes = [
-        // 'group_ids' => Group::class,
+        'group_ids' => Group::class,
     ];
 
     protected $tagAttributes = [

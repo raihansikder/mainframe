@@ -215,7 +215,7 @@ trait ModuleTrait
     public function modelClassPath()
     {
         $paths = [
-            $this->model,                       // 1. Check for DB value
+            $this->model,                          // 1. Check for DB value
             //'\App\\'.$this->modelClassName(),    // 2. Check in Laravel App\ // Risky
             // $this->moduleNameSpace().'\\'.$this->modelClassName(), // Check in App\Mainframe\Modules
         ];
@@ -236,9 +236,17 @@ trait ModuleTrait
      */
     public function modelInstance()
     {
-        $classPath = $this->modelClassPath();
+
+        $classPath = $this->rootModelClassPath();
+
+        // $classPath = $this->modelClassPath(); // Note: Now points to \App\Model.
 
         return (new $classPath);
+    }
+
+    public function rootModelClassPath()
+    {
+        return '\App\\'.\Illuminate\Support\Arr::last(explode('\\', $this->model));
     }
 
     /**

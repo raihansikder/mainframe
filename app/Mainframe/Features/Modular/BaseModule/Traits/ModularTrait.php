@@ -6,6 +6,7 @@ use App\Change;
 use App\Mainframe\Features\Core\ViewProcessor;
 use App\Mainframe\Features\Modular\BaseModule\BaseModule;
 use App\Mainframe\Helpers\Mf;
+use App\Mainframe\Modules\Modules\ModuleViewProcessor;
 use App\Module;
 use App\Project;
 use App\Spread;
@@ -817,7 +818,7 @@ trait ModularTrait
     /**
      * Get an instance of the view processor
      *
-     * @return mixed|null
+     * @return ModuleViewProcessor
      */
     public function viewProcessor()
     {
