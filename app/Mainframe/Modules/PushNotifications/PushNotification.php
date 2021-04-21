@@ -22,7 +22,8 @@ use App\Mainframe\Modules\PushNotifications\Traits\PushNotificationTrait;
  * @property string|null $body Main body of the notification
  * @property string|null $data Additional JSON payload
  * @property string|null $api_response Full JSON response from the sender service
- * @property string|null $multicast_id Set from FCM response of send attempt. The existence of multicast_id indicates that attempt was successfully made. Fill from api_response
+ * @property string|null $multicast_id Set from FCM response of send attempt. The existence of multicast_id indicates that attempt was successfully made. Fill
+ *     from api_response
  * @property int|null $success_count Fill from api_response
  * @property int|null $failure_count Fill from api_response
  * @property int|null $is_active
@@ -134,11 +135,15 @@ class PushNotification extends BaseModule
         self::observe(PushNotificationObserver::class);
 
         // static::saving(function (PushNotification $element) { });
-        // static::creating(function (PushNotification $element) { });
+        static::creating(function (PushNotification $element) {
+            $element->fillModuleAndElement('notifiable'); // Fill polymorphic fields
+        });
         // static::updating(function (PushNotification $element) { });
         // static::created(function (PushNotification $element) { });
         // static::updated(function (PushNotification $element) { });
-        // static::saved(function (PushNotification $element) { });
+        static::saved(function (PushNotification $element) {
+            $element->send();
+        });
         // static::deleting(function (PushNotification $element) { });
         // static::deleted(function (PushNotification $element) { });
     }

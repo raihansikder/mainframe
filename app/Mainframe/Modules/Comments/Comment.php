@@ -116,14 +116,16 @@ class Comment extends BaseModule
         parent::boot();
         self::observe(CommentObserver::class);
 
-        // static::saving(function (SuperHero $element) { });
-        // static::creating(function (SuperHero $element) { });
-        // static::updating(function (SuperHero $element) { });
-        // static::created(function (SuperHero $element) { });
-        // static::updated(function (SuperHero $element) { });
-        // static::saved(function (SuperHero $element) { });
-        // static::deleting(function (SuperHero $element) { });
-        // static::deleted(function (SuperHero $element) { });
+        // static::saving(function (Comment $element) { });
+        static::creating(function (Comment $element) {
+            $element->fillModuleAndElement('commentable'); // Fill polymorphic fields
+        });
+        // static::updating(function (Comment $element) { });
+        // static::created(function (Comment $element) { });
+        // static::updated(function (Comment $element) { });
+        // static::saved(function (Comment $element) { });
+        // static::deleting(function (Comment $element) { });
+        // static::deleted(function (Comment $element) { });
     }
 
 }

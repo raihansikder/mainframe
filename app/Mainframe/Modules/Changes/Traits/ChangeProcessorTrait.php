@@ -24,12 +24,12 @@ trait ChangeProcessorTrait
      * @param  Change  $element
      * @return $this
      */
-    public function fill($element)
-    {
-        $element->populate();
-
-        return $this;
-    }
+    // public function fill($element)
+    // {
+    //     $element->populate();
+    //
+    //     return $this;
+    // }
 
     /**
      * @param  Change  $element

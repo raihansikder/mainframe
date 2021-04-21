@@ -51,11 +51,11 @@ trait ChangeTrait
      * This can depend of supporting fillFunct, setFunct,calculateFunct
      * return $this
      */
-    public function populate()
-    {
-        // Example code  // $this->fillAddress()->setAmounts();
-        return $this;
-    }
+    // public function populate()
+    // {
+    //     // Example code  // $this->fillAddress()->setAmounts();
+    //     return $this;
+    // }
 
     /*
     |--------------------------------------------------------------------------

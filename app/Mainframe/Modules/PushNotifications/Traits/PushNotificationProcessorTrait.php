@@ -20,7 +20,7 @@ trait PushNotificationProcessorTrait
      */
     public function fill($element)
     {
-        $element->populate();
+        $element->setDeviceToken();
 
         return $this;
     }
@@ -52,32 +52,12 @@ trait PushNotificationProcessorTrait
     |--------------------------------------------------------------------------
     */
 
-    /**
-     * @param  PushNotification  $element
-     * @return $this
-     */
-    public function saving($element)
-    {
-        // Code : Validation
-        // Code : Data-fill
-
-        return $this;
-    }
-
+    // public function saving($element) { return $this; }
     // public function creating($element) { return $this; }
     // public function updating($element) { return $this; }
     // public function created($element) { return $this; }
     // public function updated($element) { return $this; }
-    /**
-     * @param  PushNotification  $element
-     * @return $this
-     */
-    public function saved($element)
-    {
-        $element->send();
-
-        return $this;
-    }
+    // public function saved($element) { return $this; }
     // public function deleting($element) { return $this; }
     // public function deleted($element) { return $this; }
 

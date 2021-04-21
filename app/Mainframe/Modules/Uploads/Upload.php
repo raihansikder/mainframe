@@ -85,11 +85,13 @@ class Upload extends BaseModule
 
     protected $moduleName = 'uploads';
     protected $table      = 'uploads';
+
     /*
     |--------------------------------------------------------------------------
     | Properties
     |--------------------------------------------------------------------------
     */
+
     protected $fillable = [
         'uuid',
         'name',
@@ -136,11 +138,19 @@ class Upload extends BaseModule
         self::observe(UploadObserver::class);
 
         // static::saving(function (Upload $element) { });
-        // static::creating(function (Upload $element) { });
+
+        static::creating(function (Upload $element) {
+            $element->fillModuleAndElement('uploadable'); // Fill polymorphic fields
+            $element->fillExtension();
+        });
         // static::updating(function (Upload $element) { });
         // static::created(function (Upload $element) { });
         // static::updated(function (Upload $element) { });
-        // static::saved(function (Upload $element) { });
+        static::saved(function (Upload $element) {
+            if (in_array($element->type, ['profile-pic', 'logo'])) {
+                $element->deletePreviousOfSameType();
+            }
+        });
         // static::deleting(function (Upload $element) { });
         // static::deleted(function (Upload $element) { });
     }

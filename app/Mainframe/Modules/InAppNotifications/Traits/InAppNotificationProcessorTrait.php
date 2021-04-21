@@ -21,7 +21,7 @@ trait InAppNotificationProcessorTrait
      */
     public function fill($element)
     {
-        $element->populate(); // Todo: Populate before validation
+        $element->setDefaults(); // Todo: Populate before validation
 
         return $this;
     }
@@ -55,14 +55,7 @@ trait InAppNotificationProcessorTrait
      * @param  InAppNotification  $element
      * @return $this
      */
-    public function saving($element)
-    {
-        // Code : Validation
-        // Code : Data-fill
-
-        return $this;
-    }
-
+    // public function saving($element) { return $this; }
     // public function creating($element) { return $this; }
     // public function updating($element) { return $this; }
     // public function created($element) { return $this; }

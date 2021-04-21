@@ -39,7 +39,6 @@ trait PushNotificationTrait
 
     public function getApiResponseJsonAttribute() { return json_decode($this->api_response); }
 
-
     /*
     |--------------------------------------------------------------------------
     | Relations
@@ -49,7 +48,7 @@ trait PushNotificationTrait
 
     public function inAppNotification() { return $this->belongsTo(InAppNotification::class); }
 
-
+    public function notifiable() { return $this->morphTo(); }
     /*
     |--------------------------------------------------------------------------
     | Autofill and functions to calculated field updates
@@ -61,11 +60,11 @@ trait PushNotificationTrait
      * This can depend of supporting fillFunct, setFunct,calculateFunct
      * return $this
      */
-    public function populate()
-    {
-        $this->setDeviceToken();
-        return $this;
-    }
+    // public function populate()
+    // {
+    //     $this->setDeviceToken();
+    //     return $this;
+    // }
 
     /**
      * Set Device Token
@@ -82,7 +81,7 @@ trait PushNotificationTrait
         //     $this->device_token = $user->device_token;
         // }
 
-        if($this->user->device_token){
+        if ($this->user->device_token) {
             $this->device_token = $this->user->device_token;
         }
 

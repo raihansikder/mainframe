@@ -159,7 +159,9 @@ class InAppNotification extends BaseModule
         self::observe(InAppNotificationObserver::class);
 
         // static::saving(function (InAppNotification $element) { });
-        // static::creating(function (InAppNotification $element) { });
+        static::creating(function (InAppNotification $element) {
+            $element->fillModuleAndElement('notifiable'); // Fill polymorphic fields
+        });
         // static::updating(function (InAppNotification $element) { });
         // static::created(function (InAppNotification $element) { });
         // static::updated(function (InAppNotification $element) { });

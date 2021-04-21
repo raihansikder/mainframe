@@ -11,7 +11,7 @@ trait ViewProcessorTrait
 
     /**
      * @param  string  $type
-     * @return $this
+     * @return ViewProcessor|mixed|$this
      */
     public function setType($type)
     {
@@ -22,7 +22,7 @@ trait ViewProcessorTrait
 
     /**
      * @param $vars
-     * @return $this
+     * @return ViewProcessor|mixed|$this
      */
     public function addVars($vars)
     {
@@ -38,7 +38,7 @@ trait ViewProcessorTrait
 
     /**
      * @param $vars
-     * @return $this
+     * @return ViewProcessor|mixed|$this
      */
     public function setVars($vars)
     {
@@ -49,7 +49,7 @@ trait ViewProcessorTrait
 
     /**
      * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule  $element
-     * @return $this
+     * @return ViewProcessor|mixed|$this
      */
     public function setElement($element)
     {
@@ -71,7 +71,7 @@ trait ViewProcessorTrait
 
     /**
      * @param  \App\Module  $module
-     * @return $this
+     * @return ViewProcessor|mixed|$this
      */
     public function setModule($module)
     {
@@ -82,7 +82,7 @@ trait ViewProcessorTrait
 
     /**
      * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule  $model
-     * @return $this
+     * @return ViewProcessor|mixed|$this
      */
     public function setModel($model)
     {
@@ -93,7 +93,7 @@ trait ViewProcessorTrait
 
     /**
      * @param  bool  $editable
-     * @return $this
+     * @return ViewProcessor|mixed|$this
      */
     public function setEditable($editable)
     {
@@ -104,7 +104,7 @@ trait ViewProcessorTrait
 
     /**
      * @param $immutables
-     * @return $this
+     * @return ViewProcessor|mixed|$this
      */
     public function setImmutables($immutables = [])
     {
@@ -115,7 +115,7 @@ trait ViewProcessorTrait
 
     /**
      * @param $immutables
-     * @return $this
+     * @return ViewProcessor|mixed|$this
      * @deprecated  use setImmutables
      */
     public function setImmutable($immutables = [])
@@ -125,7 +125,7 @@ trait ViewProcessorTrait
 
     /**
      * @param  \App\Mainframe\Features\Datatable\Datatable  $datatable
-     * @return $this
+     * @return ViewProcessor|mixed|$this
      */
     public function setDatatable($datatable)
     {
@@ -136,7 +136,7 @@ trait ViewProcessorTrait
 
     /**
      * @param  array  $immutables
-     * @return $this
+     * @return ViewProcessor|mixed|$this
      */
     public function addImmutables($immutables = [])
     {

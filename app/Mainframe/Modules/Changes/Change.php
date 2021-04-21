@@ -120,7 +120,9 @@ class Change extends BaseModule
         parent::boot();
         self::observe(ChangeObserver::class);
         // static::saving(function (Change $element) { });
-        // static::creating(function (Change $element) { });
+        static::creating(function (Change $element) {
+            $element->fillModuleAndElement('changeable'); // Fill polymorphic fields
+        });
         // static::updating(function (Change $element) { });
         // static::created(function (Change $element) { });
         // static::updated(function (Change $element) { });

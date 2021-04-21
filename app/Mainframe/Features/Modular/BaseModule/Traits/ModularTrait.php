@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpUndefinedMethodInspection */
 
 namespace App\Mainframe\Features\Modular\BaseModule\Traits;
 
@@ -41,7 +41,7 @@ trait ModularTrait
     |
     */
     /**
-     * Get the module object of element
+     * Get the module of element
      *
      * @return Module
      */
@@ -116,27 +116,10 @@ trait ModularTrait
     }
 
 
-    /**
-     * Cast an attribute to a native PHP type.
-     *
-     * @param  string  $key
-     * @param  mixed  $value
-     * @return mixed
-     */
-    // protected function castAttribute($key, $value)
-    // {
-    //     if ($this->getCastType($key) === 'array' && $value === [null]) {
-    //         return [];
-    //     }
-    //
-    //     return parent::castAttribute($key, $value);
-    // }
-
     /*
     |--------------------------------------------------------------------------
     | Changes and value transitions
     |--------------------------------------------------------------------------
-    |
     */
 
     /**
@@ -145,13 +128,13 @@ trait ModularTrait
      *
      * @return mixed
      */
-    public function lastChanges()
+    public function latestChanges()
     {
         return $this->audits()->latest()->first()->getModified();
     }
 
     /**
-     * Check if value has changed
+     * Check if the value of a field has changed
      *
      * @param $field
      * @return bool
@@ -218,9 +201,9 @@ trait ModularTrait
     /**
      * Check if a certain transition took place.
      *
-     * @param $field
-     * @param $from
-     * @param $to
+     * @param  string  $field
+     * @param  string|array  $from
+     * @param  string|array  $to
      * @return bool
      */
     public function hasTransition($field, $from, $to)
@@ -243,8 +226,8 @@ trait ModularTrait
     /**
      * Check if a certain transition took place.
      *
-     * @param $field
-     * @param $from
+     * @param  string  $field
+     * @param  string|array  $from
      * @return bool
      */
     public function hasTransitionFrom($field, $from)
@@ -264,8 +247,8 @@ trait ModularTrait
     /**
      * Check if a certain transition took place.
      *
-     * @param $field
-     * @param $to
+     * @param  string  $field
+     * @param  array  $to
      * @return bool
      */
     public function hasTransitionTo($field, $to)
@@ -302,14 +285,6 @@ trait ModularTrait
     |--------------------------------------------------------------------------
     |
     */
-    /**
-     * Get all tracked changes of element.
-     */
-    public function changes()
-    {
-        return $this->hasMany(Change::class, 'element_id')->where('module_id', $this->module()->id);
-        // return $this->morphMany('App\Mainframe\Modules\Changes\Change', 'changeable'); Note: Do not use morphMany
-    }
 
     /**
      * Store tracked changes in changes table
@@ -357,26 +332,6 @@ trait ModularTrait
     */
 
     /**
-     * Get the user who has created the element
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function creator()
-    {
-        return $this->belongsTo(User::class, 'created_by');
-    }
-
-    /**
-     * Get the user who has last updated the element
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function updater()
-    {
-        return $this->belongsTo(User::class, 'updated_by');
-    }
-
-    /**
      * Returns array of user ids including creator and updater user ids.
      * This can be overridden in different modules as per business.
      *
@@ -402,7 +357,6 @@ trait ModularTrait
     |--------------------------------------------------------------------------
     | Tenants & Project related functions
     |--------------------------------------------------------------------------
-    |
     */
 
     /**
@@ -429,15 +383,7 @@ trait ModularTrait
         return true;
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function tenant() { return $this->belongsTo(Tenant::class); }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function project() { return $this->belongsTo(Project::class); }
 
     /*
     |--------------------------------------------------------------------------
@@ -552,14 +498,6 @@ trait ModularTrait
     |--------------------------------------------------------------------------
     |
     */
-    /**
-     * @return \App\Mainframe\Features\Modular\BaseModule\BaseModule|mixed
-     */
-    public function linkedModule()
-    {
-        /** @noinspection PhpUndefinedMethodInspection */
-        return $this->belongsTo(Module::class, 'module_id')->remember(timer('long'));
-    }
 
     /**
      * Link existing uploads with this element
@@ -572,26 +510,6 @@ trait ModularTrait
         Upload::linkTemporaryUploads($this);
 
         return $this;
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function uploads()
-    {
-        return $this->hasMany(Upload::class, 'element_id')->where('module_id', $this->module()->id);
-        // return $this->morphMany('App\Upload', 'uploadable'); // Note: Do not use morphMany because our class name can change
-    }
-
-    /**
-     * Relationship
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
-     */
-    public function spreads()
-    {
-        // return $this->hasMany(Spread::class, 'element_id')->where('module_id', $this->module()->id);
-        return $this->morphMany(Spread::class, 'spreadable'); // Note: Keep it!!
     }
 
     /**
@@ -683,49 +601,11 @@ trait ModularTrait
         return $this;
     }
 
-    public function spreadModels($slug)
-    {
-
-        $key = str_singular($slug).'_ids';
-        $class = $this->spreadAttributes[$key];
-
-        return $this->belongsToMany($class, 'spreads', 'spreadable_id', 'related_id')->where('key', $key);
-
-    }
-
-    public function spreadTags($field)
-    {
-        return $this->hasMany(Spread::class, 'element_id')->where('module_id', $this->module()->id)->where('key', $field);
-        // return $this->morphMany(Spread::class, 'spreadable')->where('key', $field);
-    }
-
     public function getSpreadTags($field)
     {
         return $this->spreadTags($field)->pluck('tag')->toArray();
     }
 
-    /*
-    |--------------------------------------------------------------------------
-    | Commentable
-    |--------------------------------------------------------------------------
-    |
-    */
-    /**
-     * Get a list of uploads under an element.
-     *
-     * @return mixed
-     */
-    // public function comments()
-    // {
-    //     return $this->hasMany(Comment::class, 'element_id')->where('module_id', $this->module()->id);
-    // }
-
-    /*
-    |--------------------------------------------------------------------------
-    | Autofill
-    |--------------------------------------------------------------------------
-    |
-    */
     /**
      * Auto fill some of the generic model fields.
      */
@@ -782,20 +662,21 @@ trait ModularTrait
      */
     public function fillModuleAndElement($fieldPrefix)
     {
-        $module = $this->linkedModule ?? null;
+        $linkedModule = $this->linkedModule ?? null;
         $element = null;
 
         $idField = $fieldPrefix.'_id';
         $typeField = $fieldPrefix.'_type';
 
-        /** @var \App\Mainframe\Features\Modular\BaseModule\BaseModule $model */
-        if ($module) {
-            $model = $module->model;
-            $this->$typeField = trim($module->model, '\\');
+        /** @var \App\Mainframe\Features\Modular\BaseModule\BaseModule $linkedModel */
+        if ($linkedModule) {
+            $linkedModel = $linkedModule->model;
+            // $this->$typeField = trim($module->model, '\\');
+            $this->$typeField = $linkedModule->rootModelClassPath();
         }
 
-        if ($module && isset($this->element_id)) {
-            $element = $model::remember(timer('very-long'))
+        if ($linkedModule && isset($this->element_id)) {
+            $element = $linkedModel::remember(timer('very-long'))
                 ->find($this->element_id);
         }
 
@@ -807,13 +688,6 @@ trait ModularTrait
 
         return $this;
     }
-
-    /*
-    |--------------------------------------------------------------------------
-    | URLs and links
-    |--------------------------------------------------------------------------
-    |
-    */
 
     /**
      * Get an instance of the view processor
@@ -883,20 +757,7 @@ trait ModularTrait
         return "<a href='".$this->editUrl()."'>{$this->$field}</a>";
     }
 
-    /*
-    |--------------------------------------------------------------------------
-    | Framework functions to override based on business requirements
-    |--------------------------------------------------------------------------
-    |
-    */
-    /**
-     * Fill data and set calculated data in fields for saving the module
-     * This can depend of supporting fillFunct, setFunct,calculateFunct
-     */
-    // public function populate()
-    // {
-    //     return $this;
-    // }
+
 
     /*
     |--------------------------------------------------------------------------
@@ -959,4 +820,65 @@ trait ModularTrait
         return true;
     }
 
+    /*
+    |--------------------------------------------------------------------------
+    | Relations
+    |--------------------------------------------------------------------------
+    |
+    */
+
+    public function tenant() { return $this->belongsTo(Tenant::class); }
+
+    public function project() { return $this->belongsTo(Project::class); }
+
+    public function creator() { return $this->belongsTo(User::class, 'created_by'); }
+
+    public function updater() { return $this->belongsTo(User::class, 'updated_by'); }
+
+    public function linkedModule()
+    {
+        return $this->belongsTo(Module::class, 'module_id')->remember(timer('long'));
+    }
+
+    public function changes()
+    {
+        return $this->hasMany(Change::class, 'element_id')
+            ->where('module_id', $this->module()->id);
+        // return $this->morphMany('App\Mainframe\Modules\Changes\Change', 'changeable'); Note: Do not use morphMany
+    }
+
+    public function uploads()
+    {
+        return $this->hasMany(Upload::class, 'element_id')
+            ->where('module_id', $this->module()->id);
+    }
+
+    public function spreads()
+    {
+        return $this->morphMany(Spread::class, 'spreadable'); // Note: Keep morphMany!!
+    }
+
+    public function spreadModels($slug)
+    {
+
+        $key = str_singular($slug).'_ids';
+        $class = $this->spreadAttributes[$key];
+
+        return $this->belongsToMany($class, 'spreads', 'spreadable_id', 'related_id')
+            ->where('key', $key);
+
+    }
+
+    public function spreadTags($field)
+    {
+        return $this->hasMany(Spread::class, 'element_id')
+            ->where('module_id', $this->module()->id)
+            ->where('key', $field);
+        // return $this->morphMany(Spread::class, 'spreadable')->where('key', $field);
+    }
+
+    // public function comments()
+    // {
+    //     return $this->hasMany(Comment::class, 'element_id')->where('module_id', $this->module()->id);
+    // }
 }

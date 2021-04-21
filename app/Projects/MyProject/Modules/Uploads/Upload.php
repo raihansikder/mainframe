@@ -91,6 +91,7 @@ class Upload extends BaseModule
     | Properties
     |--------------------------------------------------------------------------
     */
+
     protected $fillable = [
         'uuid',
         'name',
@@ -135,11 +136,12 @@ class Upload extends BaseModule
         parent::boot();
         self::observe(UploadObserver::class);
 
-        static::saving(function (Upload $element) {
-            $element->fillModuleAndElement();
+        // static::saving(function (Upload $element) { });
+
+        static::creating(function (Upload $element) {
+            $element->fillModuleAndElement('uploadable'); // Fill polymorphic fields
             $element->fillExtension();
         });
-        // static::creating(function (Upload $element) { });
         // static::updating(function (Upload $element) { });
         // static::created(function (Upload $element) { });
         // static::updated(function (Upload $element) { });

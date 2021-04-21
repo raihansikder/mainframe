@@ -19,8 +19,16 @@ trait InAppNotificationTrait
      * This can depend of supporting fillFunct, setFunct,calculateFunct
      * return $this
      */
-    public function populate()
+    // public function populate()
+    // {
+    //     $this->setDefaults();
+    //
+    //     return $this;
+    // }
+
+    public function setDefaults()
     {
+
         $this->type = $this->type ?? 'generic';
         $this->is_visible = $this->is_visible ?? 1;
         $this->accepts_response = $this->accepts_response ?? 0;
@@ -28,6 +36,7 @@ trait InAppNotificationTrait
         $this->data = $this->data ?? json_encode(['user_id' => $this->id, 'type' => $this->id,]);
         $this->is_active = $this->is_active ?? 1;
         $this->order = $this->order ?? 9999;
+
         $this->setRespondedAt();
 
         return $this;
@@ -133,5 +142,4 @@ trait InAppNotificationTrait
      */
     public function notifiable() { return $this->morphTo(); }
 
-    public function linkedModule() { return $this->belongsTo(Module::class, 'module_id')->remember(timer('long')); }
 }
