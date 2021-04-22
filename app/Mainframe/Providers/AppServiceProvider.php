@@ -2,11 +2,11 @@
 
 namespace App\Mainframe\Providers;
 
+use App\Mainframe\Features\Responder\Response;
 use App\Mainframe\Macros\QueryBuilderMacros;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\MessageBag;
 use Illuminate\Support\ServiceProvider;
-use App\Mainframe\Features\Responder\Response;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -14,6 +14,7 @@ class AppServiceProvider extends ServiceProvider
         \App\Mainframe\Commands\MakeMainframeModule::Class,
         \App\Mainframe\Commands\CreateRootModels::Class,
         \App\Mainframe\Commands\CleanDeletedUploads::Class,
+        \App\Mainframe\Commands\FixPolymorphicType::class,
     ];
 
     protected $providers = [

@@ -655,35 +655,53 @@ trait ModularTrait
     }
 
     /**
-     * Fill data to relate this upload with another module element.
+     * Fill polymorphic fields.
+     * Note: This function should be used in polymorphic model's boot::creating() method.
      *
      * @param  string  $fieldPrefix  i.e.uploadable
      * @return $this
      */
     public function fillModuleAndElement($fieldPrefix)
     {
-        $linkedModule = $this->linkedModule ?? null;
-        $element = null;
 
-        $idField = $fieldPrefix.'_id';
-        $typeField = $fieldPrefix.'_type';
+        // Define polymorphic field names
+        $idField = $fieldPrefix.'_id';  // uploadable_id
+        $typeField = $fieldPrefix.'_type'; // uploadable_type
 
-        /** @var \App\Mainframe\Features\Modular\BaseModule\BaseModule $linkedModel */
-        if ($linkedModule) {
-            $linkedModel = $linkedModule->model;
-            // $this->$typeField = trim($module->model, '\\');
-            $this->$typeField = $linkedModule->rootModelClassPath();
-        }
+        /*---------------------------------------------------------------------------------
+        | Case 1. uploadable_type, uploadable_id available from default laravel poly-morph
+        | Fill : module_id, element_id, element_uuid
+        |---------------------------------------------------------------------------------*/
+        if (isset($this->$typeField, $this->$idField)) {
+            $this->$typeField = 'App\\'.class_basename($this->$typeField); // Change to root model \App\Upload
+            $this->element_id = $this->$idField;
 
-        if ($linkedModule && isset($this->element_id)) {
-            $element = $linkedModel::remember(timer('very-long'))
+            $linkedModule = Module::byClass($this->$typeField);
+            $this->module_id = $linkedModule->id;
+
+            $linkedElement = $linkedModule->modelInstance()->remember(timer('very-long'))
                 ->find($this->element_id);
+            $this->element_uuid = optional($linkedElement)->uuid;
+
+            return $this;
+
         }
 
-        if ($element) {
-            $this->$idField = $element->id;
-            /** @noinspection PhpUndefinedFieldInspection */
-            $this->element_uuid = $element->uuid;
+        /*-----------------------------------------------------------------
+        | Case 2. module_id, element_id is available from MF implementation
+        | Fill : uploadable_type, uploadable_name, element_uuid
+        |-----------------------------------------------------------------*/
+        if (isset($this->module_id, $this->element_id)) {
+
+            $linkedModule = $this->linkedModule; // linked based on module_id (i.e. users module)
+            $linkedElement = $linkedModule->modelInstance()->remember(timer('very-long'))
+                ->find($this->element_id);
+
+            $this->$typeField = trim($linkedModule->rootModelClassPath(), '\\');
+            $this->$idField = optional($linkedElement)->id;
+            $this->element_uuid = optional($linkedElement)->uuid;
+
+            return $this;
         }
 
         return $this;
@@ -837,7 +855,7 @@ trait ModularTrait
 
     public function linkedModule()
     {
-        return $this->belongsTo(Module::class, 'module_id')->remember(timer('long'));
+        return $this->belongsTo(Module::class, 'module_id')->remember(timer('very-long'));
     }
 
     public function changes()
@@ -849,8 +867,8 @@ trait ModularTrait
 
     public function uploads()
     {
-        return $this->hasMany(Upload::class, 'element_id')
-            ->where('module_id', $this->module()->id);
+        // return $this->morphMany(Upload::class,'uploadable');
+        return $this->hasMany(Upload::class, 'element_id')->where('module_id', $this->module()->id);
     }
 
     public function spreads()

@@ -2,8 +2,9 @@
 
 namespace App\Mainframe\Modules\Modules\Traits;
 
-use App\ModuleGroup;
 use App\Module;
+use App\ModuleGroup;
+use Illuminate\Support\Arr;
 
 /** @mixin Module $this */
 trait ModuleTrait
@@ -26,6 +27,15 @@ trait ModuleTrait
         return Module::remember(timer('long'))
             ->where('name', $name)
             ->first();
+    }
+
+    /**
+     * @param $class
+     * @return Module|mixed
+     */
+    public static function byClass($class)
+    {
+        return Module::byName(Module::nameFromClass($class));
     }
 
     public static function fromController($classPath) // Todo: where is this used?
@@ -134,7 +144,7 @@ trait ModuleTrait
     public static function fromTable($table)
     {
         return Module::where('module_table', $table)
-            ->remember(timer('long'))
+            ->remember(timer('very-long'))
             ->first();
     }
 
@@ -246,7 +256,14 @@ trait ModuleTrait
 
     public function rootModelClassPath()
     {
-        return '\App\\'.\Illuminate\Support\Arr::last(explode('\\', $this->model));
+        return '\App\\'.class_basename($this->model);
+    }
+
+    public static function rootClass($class)
+    {
+        $module = new Module(['model' => $class]);
+
+        return $module->rootModelClassPath();
     }
 
     /**

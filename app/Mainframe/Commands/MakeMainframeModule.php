@@ -192,7 +192,7 @@ class MakeMainframeModule extends Command
 
     public function model()
     {
-        $modelClass = Str::singular(Arr::last(explode('\\', $this->namespace)));
+        $modelClass = Str::singular(class_basename($this->namespace));
 
         return $this->namespace.'\\'.$modelClass;
     }
@@ -263,7 +263,7 @@ class MakeMainframeModule extends Command
 
     private function modelClassName()
     {
-        return Arr::last(explode('\\', $this->model));
+        return class_basename($this->model);
     }
 
 }

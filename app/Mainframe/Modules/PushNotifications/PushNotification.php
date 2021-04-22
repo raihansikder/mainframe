@@ -79,6 +79,7 @@ use App\Mainframe\Modules\PushNotifications\Traits\PushNotificationTrait;
  * @method static \Illuminate\Database\Eloquent\Builder|PushNotification whereUserId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|PushNotification whereUuid($value)
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $notifiable
  */
 class PushNotification extends BaseModule
 {

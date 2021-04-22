@@ -61,6 +61,7 @@ namespace App;
  * @method static \Illuminate\Database\Eloquent\Builder|Notification whereUpdatedBy($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Notification whereUuid($value)
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $notifiable
  */
 class Notification extends \App\Mainframe\Modules\Notifications\Notification
 {
