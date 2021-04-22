@@ -21,6 +21,17 @@ class FixPolymorphicType extends MakeMainframeModule
      */
     protected $description = 'This command links existing polymorphic model to a root model i.e. App\User instead of App\\Projects\\...\\User';
 
+    protected $polymorphicTableFields = [
+        'audits' => 'auditable_type',
+        'changes' => 'changeable_type',
+        'comments' => 'commentable_type',
+        'in_app_notifications' => 'notifiable_type',
+        'notifications' => 'notifiable_type',
+        // 'push_notifications' => 'notifiable_type',
+        'uploads' => 'uploadable_type',
+        'spreads' => 'spreadable_type',
+    ];
+
     /**
      * Execute the console command.
      *
@@ -29,19 +40,9 @@ class FixPolymorphicType extends MakeMainframeModule
     public function handle()
     {
 
-        $polymorphicTableFields = [
-            'audits' => 'auditable_type',
-            'changes' => 'changeable_type',
-            'comments' => 'commentable_type',
-            'in_app_notifications' => 'notifiable_type',
-            'notifications' => 'notifiable_type',
-            // 'push_notifications' => 'notifiable_type',
-            'uploads' => 'uploadable_type',
-            'spreads' => 'spreadable_type',
-        ];
         $modules = Module::all();
 
-        foreach ($polymorphicTableFields as $table => $field) {
+        foreach ($this->polymorphicTableFields as $table => $field) {
             $this->info("Fixing $table.$field ...");
             foreach ($modules as $module) {
                 \DB::table($table)->where(function (Builder $q) use ($field, $module) {
