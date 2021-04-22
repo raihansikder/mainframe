@@ -2,9 +2,9 @@
 
 namespace App\Mainframe\Features\Report\Traits;
 
-use Str;
-use App\Mainframe\Helpers\Mf;
 use App\Mainframe\Helpers\Convert;
+use App\Mainframe\Helpers\Mf;
+use Str;
 
 /** @mixin \App\Mainframe\Features\Report\ReportBuilder $this */
 trait Columns
@@ -119,17 +119,32 @@ trait Columns
      */
     public function mutateSelectedColumns()
     {
-        $selectedColumns = $this->selectedColumns();
+        $columns = $this->selectedColumns();
+        $columns = $this->removeDotFromColumns($columns);
+
         /*
          * ------------------------------
          *  Change the values of
          *------------------------------
          */
         if ($this->groupByFields()) {
-            return array_merge($selectedColumns, $this->additionalSelectedColumnsDueToGroupBy());
+            return array_merge($columns, $this->additionalSelectedColumnsDueToGroupBy());
         }
 
-        return $selectedColumns;
+        return $columns;
+    }
+
+    /**
+     * Remove dot from column name
+     *
+     * @param $columns
+     * @return array
+     */
+    public function removeDotFromColumns($columns)
+    {
+        return collect($columns)->map(function ($item, $key) {
+            return \Str::after($item, '.');
+        })->toArray();
     }
 
     /*
@@ -141,8 +156,6 @@ trait Columns
     | for using readable headers for raw table column names.
     |
     */
-
-
 
     /**
      * This function returns an array of Titles/Column aliases that are mapped with
@@ -171,6 +184,8 @@ trait Columns
             $keys = array_slice($keys, 0, count($this->selectedColumns()));
         }
 
+        $keys = $this->removeDotFromColumns($keys);
+
         return $keys;
     }
 
@@ -183,8 +198,9 @@ trait Columns
      */
     public function setAliasForColumns($map, $array)
     {
+        $columns = $this->removeDotFromColumns($this->selectedColumns());
         foreach ($map as $column => $alias) {
-            if ($pos = array_search($column, $this->selectedColumns())) {
+            if ($pos = array_search($column, $columns)) {
                 $array[$pos] = $alias;
             }
         }

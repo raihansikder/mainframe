@@ -205,7 +205,7 @@ class Mf
             $signature .= user()->uuid;
         }
 
-        return Hash::make($signature);
+        return base64_encode($signature);
     }
 
     /*

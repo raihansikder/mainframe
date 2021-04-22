@@ -50,8 +50,8 @@ class ReportBuilder extends BaseController
     /** @var \App\Mainframe\Features\Modular\BaseModule\BaseModule */
     public $model;
 
-    // /** @var \App\User */
-    // public $user;
+    /** @var \App\User */
+    public $user;
 
     /**
      * ReportBuilder constructor.

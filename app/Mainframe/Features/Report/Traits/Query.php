@@ -12,6 +12,8 @@ use Illuminate\Database\Query\Builder;
 /** @mixin \App\Mainframe\Features\Report\ReportBuilder $this */
 trait Query
 {
+    public $total;
+
     /**
      * Build query to get the data.
      *
@@ -20,7 +22,7 @@ trait Query
     public function resultQuery()
     {
 
-        $query = $this->queryDataSource();
+        $query = clone $this->queryDataSource();
 
         if (count($this->querySelectColumns())) {
             $query->select($this->querySelectColumns());
@@ -60,9 +62,9 @@ trait Query
                 return $this->result;
             }
 
-            $key = 'report-'.__CLASS__.'-'.Mf::httpRequestSignature(($this->resultQuery()->toSql()));
+            $key = base64_encode('report-'.__CLASS__).'-'.Mf::httpRequestSignature(($this->resultQuery()->toSql()));
 
-            $this->result = Cache::remember($key, $this->cache, function () {
+            $this->result = Cache::remember($key, $this->cache = 1, function () {
                 return $this->resultQuery()->paginate($this->rowsPerPage());
             });
 
@@ -95,11 +97,22 @@ trait Query
      */
     public function total()
     {
-        $key = Mf::httpRequestSignature(($this->totalQuery()->toSql()));
 
-        return Cache::remember($key, $this->cache, function () {
-            return $this->totalQuery()->count();
-        });
+        try {
+            if ($this->total) {
+                return $this->total;
+            }
+
+            $key = base64_encode('report-'.__CLASS__).'-total-'.Mf::httpRequestSignature(($this->resultQuery()->toSql()));
+
+            $this->total = Cache::remember($key, $this->cache, function () {
+                return $this->totalQuery()->count();
+            });
+
+            return $this->total;
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+        }
 
     }
 
@@ -110,7 +123,7 @@ trait Query
      */
     public function totalQuery()
     {
-        $query = $this->queryDataSource();
+        $query = clone $this->queryDataSource();
         $query = $this->filter($query);
 
         return $query;
