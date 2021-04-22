@@ -18,9 +18,10 @@ class PolicyResolver
      */
     public static function resolve($modelClass)
     {
-        $module = Module::where('model', '\\'.$modelClass)
-            ->remember(timer('very-long'))
-            ->first();
+        $module = Module::byClass(class_basename($modelClass));
+        // $module = Module::where('model', '\\'.$modelClass)
+        //     ->remember(timer('very-long'))
+        //     ->first();
 
         $modulePolicy = $module ? $module->policy : 'NoFile';
 
