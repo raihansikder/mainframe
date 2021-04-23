@@ -200,7 +200,7 @@ trait Output
             $vars = array_merge($vars, [
                 'selectedColumns' => $this->mutateSelectedColumns(),
                 'aliasColumns' => $this->mutateAliasColumns(),
-                'total' => $this->total(),
+                'total' => $this->result()->total(),
                 'result' => $this->mutateResult(),
             ]);
         }
