@@ -148,14 +148,6 @@ trait Query
      */
     public function queryDataSource()
     {
-        if ($this->model) {
-            if (request('with')) {
-                return $this->model->with($this->queryRelations());
-            }
-
-            return $this->model;
-        }
-
         // Source is a table
         if (is_string($this->dataSource)) {
             return DB::table($this->dataSource);

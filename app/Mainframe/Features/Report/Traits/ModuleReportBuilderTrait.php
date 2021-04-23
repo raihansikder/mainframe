@@ -5,7 +5,6 @@ namespace App\Mainframe\Features\Report\Traits;
 use App\Mainframe\Features\Report\ReportBuilder;
 use App\Mainframe\Helpers\Convert;
 use App\Module;
-use Illuminate\Database\Query\Builder;
 
 /** @mixin ReportBuilder $this */
 trait ModuleReportBuilderTrait
@@ -33,6 +32,12 @@ trait ModuleReportBuilderTrait
 
         $this->module = $module;
         $this->model = $this->module->modelInstance();
+
+        $this->dataSource = $this->model;
+        if (request('with')) {
+            $this->dataSource = $this->model->with($this->queryRelations());
+        }
+
     }
 
     public function viewProcessor()
