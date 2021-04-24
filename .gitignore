@@ -14,3 +14,4 @@ yarn-error.log
 phpunit.xml
 .DS_store
 /_gsdata_
+/database/migrations/_gsdata_
