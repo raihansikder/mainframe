@@ -27,17 +27,15 @@ return [
     */
 
     'default_email_recipients' => [
-        //'raihan@yantrait.com',
-        //'kuldeep@yantrait.com',
-        //'rifatshara@gmail.com',
-        //'sanjidhabib@gmail.com'
         'su@mainframe',
     ],
 
     /*
     |--------------------------------------------------------------------------
-    | Different email sender
+    | Section : Project specific custom config
     |--------------------------------------------------------------------------
     */
+
+    'artist_shop_enabled' => false,
 
 ];

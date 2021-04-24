@@ -34,17 +34,24 @@ class BaseController extends Controller
     /** @var \App\Mainframe\Features\Modular\Validator\ModelProcessor */
     protected $processor;
 
+    /** @var \App\Tenant */
+    protected $tenant;
+
     /**
      * MainframeBaseController constructor.
      */
     public function __construct()
     {
+        $this->middleware('tenant');
+
         $this->user = user();
         $this->view = new ViewProcessor();
+        $this->tenant = $this->user->tenant; // For multi-tenancy
 
         View::share([
             'user' => $this->user,
             'view' => $this->view,
+            'tenant' => $this->tenant,
         ]);
     }
 
@@ -109,7 +116,7 @@ class BaseController extends Controller
 
         $this->process($element);
 
-        if(!$this->processor){
+        if (!$this->processor) {
             return false;
         }
 
@@ -134,7 +141,7 @@ class BaseController extends Controller
 
         $this->process($element);
 
-        if(!$this->processor){
+        if (!$this->processor) {
             return false;
         }
 

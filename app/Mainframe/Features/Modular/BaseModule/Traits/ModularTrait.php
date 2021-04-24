@@ -374,9 +374,12 @@ trait ModularTrait
     public function isTenantCompatible($user = null)
     {
         $user = $user ?: user();
-        if ($this->hasTenantContext()
-            && $user->ofTenant()
-            && ($this->tenant_id != $user->tenant_id)) {
+
+        if (!$this->hasTenantContext()) {
+            return true;
+        }
+
+        if ($this->tenant_id != $user->tenant_id) {
             return false;
         }
 
@@ -612,7 +615,7 @@ trait ModularTrait
     public function autoFill()
     {
 
-        $this->autoFillTenant();         // Inject tenant context.
+        // $this->autoFillTenant();         // Alert: Not needed inject from 'tenant' middleware
 
         $this->uuid = $this->uuid ?? uuid();
         $this->created_by = $this->created_by ?? user()->id;
@@ -627,9 +630,9 @@ trait ModularTrait
      */
     public function autoFillTenant()
     {
-        if (user()->ofTenant() && $this->isTenantCompatible()) {
+        if (user()->ofTenant() && $this->hasTenantContext() && $this->isTenantCompatible()) {
             $this->tenant_id = $this->tenant_id ?: user()->tenant_id;
-            $this->project_id = $this->project_id ?: $this->tenant->project_id;
+            // $this->project_id = $this->project_id ?: $this->tenant->project_id; // Excluded project_id injection because settings table had no project_id
         }
     }
 

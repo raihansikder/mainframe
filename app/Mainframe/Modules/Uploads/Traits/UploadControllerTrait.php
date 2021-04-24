@@ -2,8 +2,8 @@
 
 namespace App\Mainframe\Modules\Uploads\Traits;
 
-use App\Upload;
 use App\Mainframe\Modules\Uploads\UploadController;
+use App\Upload;
 use Illuminate\Http\Request;
 
 /** @mixin UploadController $this */
@@ -115,7 +115,12 @@ trait UploadControllerTrait
      */
     public function uploadDirectory()
     {
-        $path = config('mainframe.config.upload_root');
+        // public/files/
+
+        $tenant = '/';
+
+
+        $path = config('mainframe.config.upload_root').'/'.date('Y').'/'.date('m').'/'.date('d');
 
         return $path;
     }

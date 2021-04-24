@@ -6,7 +6,7 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule;
 use Illuminate\Support\MessageBag;
 use Validator;
 
-/** @mixin  \App\Mainframe\Http\Controllers\BaseController $this */
+
 trait Validable
 {
     /** @var \Illuminate\Validation\Validator */

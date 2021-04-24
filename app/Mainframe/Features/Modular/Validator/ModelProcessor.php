@@ -42,6 +42,13 @@ class ModelProcessor
     public $original;
 
     /**
+     * Old element filled with old values
+     *
+     * @var \App\Mainframe\Features\Modular\BaseModule\BaseModule
+     */
+    public $oldElement;
+
+    /**
      * Fields that can not be changed once created.
      *
      * @var array
@@ -73,6 +80,9 @@ class ModelProcessor
     public function __construct($element)
     {
         $this->user = user();
+        if ($element->isUpdating()) {
+            $this->oldElement = (clone $element)->refresh();
+        }
         $this->element = $element;
         $this->original = $element->getOriginal();
         $this->module = $element->module();

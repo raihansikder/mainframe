@@ -10,6 +10,7 @@
  * @var array $immutables
  * @var \App\SuperHero $element
  * @var \App\SuperHero $superHero
+ * @var \App\Tenant $tenant
  * @var \App\Mainframe\Modules\SuperHeroes\SuperHeroViewProcessor $view
  */
 $superHero = $element;
