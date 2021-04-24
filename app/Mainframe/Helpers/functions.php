@@ -4,7 +4,7 @@ use App\Mainframe\Helpers\Mf;
 use Illuminate\Support\MessageBag;
 
 /**
- * Mainframe configs
+ * Get mainframe config from config/mainframe/config.php
  *
  * @param $key
  * @return \Illuminate\Config\Repository|\Illuminate\Contracts\Foundation\Application|mixed

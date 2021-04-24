@@ -51,6 +51,11 @@ $scriptPaths = [
     // WARNING: Do not put project specific JS here. Instead include them at the end of
     // project template. i.e. resources/views/projects/my-project/layouts/default/template.blade.php
 ];
+
+/*--------------------------------------
+| Section: Load js from mainframe config
+|--------------------------------------*/
+$scriptPaths = array_merge($scriptPaths, mf_config('load.js'));
 ?>
 
 @foreach($scriptPaths as $path)
