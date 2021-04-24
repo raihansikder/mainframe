@@ -190,6 +190,30 @@ trait ModularControllerTrait
     }
 
     /**
+     * Clone an element
+     *
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Illuminate\View\View|void
+     */
+    public function clone($id)
+    {
+        if (!$this->user->can('create', $this->model)) {
+            return $this->permissionDenied();
+        }
+
+        $this->element = $this->model->find($id)->replicate();
+        $this->element->uuid = uuid();
+        $this->attemptStore();
+
+        if (!$this->isValid()) {
+            $this->redirectTo = route($this->moduleName.'.create');
+            request()->merge($this->element->toArray());
+        }
+
+        return $this->load($this->element)->send();
+    }
+
+    /**
      * List
      *
      * @return \Illuminate\Http\JsonResponse

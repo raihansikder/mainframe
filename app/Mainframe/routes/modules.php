@@ -16,19 +16,14 @@ Route::middleware(['auth', 'verified'])->group(function () use ($modules, $modul
         $controller = $module->controller;
         $moduleName = $module->name;
 
-        // Restore
         Route::get($path.'/{id}/restore', $controller.'@restore')->name($moduleName.'.restore');
-        // Json response route for data-table
         Route::get($path.'/datatable/json', $controller.'@datatableJson')->name($moduleName.'.datatable-json');
-        // List/Array of objects
         Route::get($path.'/list/json', $controller.'@listJson')->name($moduleName.'.list-json');
-        // Report
         Route::get($path.'/report', $controller.'@report')->name($moduleName.'.report');
-        // Audits (change-log)
         Route::get($path.'/{id}/changes', $controller.'@changes')->name($moduleName.'.changes');
-        // Uploads
         Route::get($path.'/{id}/uploads', $controller.'@uploads')->name($moduleName.'.uploads.index');
         Route::post($path.'/{id}/uploads', $controller.'@attachUpload')->name($moduleName.'.uploads.store');
+        Route::post($path.'/{id}/clone', $controller.'@clone')->name($moduleName.'.clone');
 
         /* * Route to add comment file a particular element */
         // Route::get($path.'/{id}/comments', $controller.'@comments')->name($moduleName.'.comments.index');

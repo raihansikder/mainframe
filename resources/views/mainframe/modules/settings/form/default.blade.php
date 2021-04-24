@@ -17,6 +17,15 @@ $types = Setting::$types;
 
 ?>
 
+@section('content-top')
+    @if($element->isCreated())
+        <form method="post" action="{{route($module->name.'.clone',$element->id)}}">
+            @csrf
+            <button class="btn btn-default" type="submit"><i class="fa fa-copy"></i> Clone</button>
+        </form>
+    @endif
+@endsection
+
 @section('content')
     <div class="col-md-12 col-lg-10 no-padding">
 
