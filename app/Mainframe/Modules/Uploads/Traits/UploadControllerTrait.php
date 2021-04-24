@@ -23,18 +23,19 @@ trait UploadControllerTrait
         }
 
         if (!$this->file = $this->getFile()) {
-            return $this->fail('No file in http request');
+            return $this->fail('No file in http request')->send();
         }
 
         $this->element = $this->model; // Create an empty model to be stored.
         $this->fill();
         $this->element->fillModuleAndElement('uploadable');
+        $this->element->name = $this->file->getClientOriginalName();
+        $this->element->bytes = $this->file->getSize();
 
         if (!$path = $this->attemptUpload()) {
-            return $this->fail('Can not move file to destination from tmp');
+            return $this->fail('Can not move file to destination from tmp')->send();
         }
 
-        $this->element->name = $this->file->getClientOriginalName();
         $this->element->path = $path;
 
         // if($dimensions = $this->getImageDimension($file)){
@@ -177,5 +178,22 @@ trait UploadControllerTrait
         }
 
         return $this->notFound();
+    }
+
+    /**
+     * Check if file is image
+     *
+     * @return bool
+     */
+    public function fileIsImage()
+    {
+        // $allowedMimeTypes = ['image/jpeg','image/gif','image/png','image/bmp','image/svg+xml'];
+
+        if (\Str::contains($this->file->getMimeType(),'image/')) {
+            return true;
+        }
+
+        return false;
+
     }
 }

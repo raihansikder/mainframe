@@ -16,7 +16,6 @@ body, html, .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6,
 
 }
 
-
 .main-header .logo, .logo, .logo-mini, .logo-lg, .h1, h1, .h2, h2 {
     font-family: 'Montserrat', 'Roboto', 'Arial', sans-serif;
 !important;
@@ -38,7 +37,6 @@ code {
 .h4, h4 {
     font-size: 16px;
 }
-
 
 .sidebar-menu {
     margin-top: 10px;
@@ -345,7 +343,6 @@ div.form-control {
     color: #333;
 }
 
-
 .login-logo, .register-logo {
     font-family: 'Montserrat', sans-serif;
     padding-top: 20px;
@@ -357,12 +354,10 @@ div.form-control {
     background-color: white;
 }
 
-
 .btn {
     transition: all ease-in-out .25s;
     border: 0;
 }
-
 
 .login-page {
     background-image: url('../images/login-bg1.jpg');
@@ -371,11 +366,11 @@ div.form-control {
     background-color: #ffffff;
 }
 
-.login-page  input {
+.login-page input {
     font-size: 18px;
 }
 
-.login-box-body button.login{
+.login-box-body button.login {
     font-size: 18px;
 }
 /* manage border*/
@@ -426,7 +421,6 @@ label {
 }
 
 /* Make module CTA block semi-transparent*/
-
 
 /* Small font size in dashboard box*/
 .small-box h3 {
@@ -516,11 +510,19 @@ a i {
     color: #3c8dbc;
 }
 
-.align-with-input{
+.align-with-input {
 
 }
 
-.select2-container .select2-choice .select2-arrow{
+.select2-container .select2-choice .select2-arrow {
     background-image: none;
     background: transparent;
+}
+
+.callout {
+    border-radius: 3px;
+    margin: 0 0 20px 0;
+    padding: 15px 30px 15px 15px;
+    /*border-left: 5px solid #eee; */
+    border-left: 0;
 }
