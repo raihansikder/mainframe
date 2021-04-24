@@ -22,11 +22,13 @@ trait UploadControllerTrait
             return $this->permissionDenied();
         }
 
-        $this->element = $this->model; // Create an empty model to be stored.
-
         if (!$this->file = $this->getFile()) {
             return $this->fail('No file in http request');
         }
+
+        $this->element = $this->model; // Create an empty model to be stored.
+        $this->fill();
+        $this->element->fillModuleAndElement('uploadable');
 
         if (!$path = $this->attemptUpload()) {
             return $this->fail('Can not move file to destination from tmp');
@@ -76,6 +78,7 @@ trait UploadControllerTrait
      */
     public function attemptUpload()
     {
+
         return $this->attemptLocalUpload();
         // return $this->attemptAwsUpload();
 
@@ -115,12 +118,16 @@ trait UploadControllerTrait
      */
     public function uploadDirectory()
     {
-        // public/files/
+        // public/files/{tenant_id}/2021/12/25
+        $dir = date('Y').'/'.date('m').'/'.date('d');
 
-        $tenant = '/';
+        if ($uploadable = optional($this->element->uploadable)->tenant_id) {
+            $dir = $uploadable->tenant_id."/{$dir}";
+        } elseif ($this->tenant) {
+            $dir = $this->tenant->id."/{$dir}";
+        }
 
-
-        $path = config('mainframe.config.upload_root').'/'.date('Y').'/'.date('m').'/'.date('d');
+        $path = config('mainframe.config.upload_root')."/{$dir}";
 
         return $path;
     }
