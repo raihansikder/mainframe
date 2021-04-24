@@ -519,3 +519,8 @@ a i {
 .align-with-input{
 
 }
+
+.select2-container .select2-choice .select2-arrow{
+    background-image: none;
+    background: transparent;
+}
