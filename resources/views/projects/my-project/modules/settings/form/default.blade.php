@@ -17,12 +17,7 @@ $types = \App\Setting::$types;
 ?>
 
 @section('content-top')
-    @if($element->isCreated())
-        <form method="post" action="{{route($module->name.'.clone',$element->id)}}">
-            @csrf
-            <button class="btn btn-default" type="submit"><i class="fa fa-copy"></i> Clone</button>
-        </form>
-    @endif
+    @include('mainframe.layouts.default.includes.navigation.clone')
 @endsection
 
 @section('content')
