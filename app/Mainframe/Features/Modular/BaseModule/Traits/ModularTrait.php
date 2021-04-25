@@ -542,6 +542,9 @@ trait ModularTrait
 
             foreach ($newIds as $relatedId) {
 
+                if (!$relatedId) {
+                    continue;
+                }
                 $spread = [
                     'name' => $name,
                     'key' => $field,

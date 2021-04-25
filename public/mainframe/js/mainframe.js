@@ -236,17 +236,17 @@ function initUploader(id, url) {
         showStatusAfterSuccess: true,
         autoSubmit: true,
         dragDrop: true,
-        dragdropWidth: '70%',
+        dragdropWidth: '100%',
         //maxFileSize: 8,
         //maxFileCount: 1,
         //acceptFiles: "audio/*",
         multiple: true,
-        statusBarWidth: '70%',
+        statusBarWidth: '100%',
         uploadButtonClass: 'btn btn-default btn-sm btn-flat',
         returnType: 'json',
         showPreview: true,
         showDone: true,
-        doneStr: '100% complete',
+        doneStr: 'Done',
         // dynamicFormData: function () {                   // old implementation
         //     return {
         //         "ret": "json",
@@ -264,6 +264,9 @@ function initUploader(id, url) {
             loadMsg(parseJson(ret));
             $('#msgModal').modal('show');
             //console.log(ret);
+            if(ret.status == 'fail'){
+               $('div.ajax-file-upload-green').hide();
+            }
             // var path = ret.message.path;
         },
         //onError: function (files, status, errMsg) {};

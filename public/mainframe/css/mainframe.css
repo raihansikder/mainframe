@@ -485,6 +485,10 @@ pre.sf-dump, pre.sf-dump .sf-dump-default {
     font-weight: normal;
     color: inherit;
 }
+.callout a {
+     color: #3c8dbc;
+    text-decoration: underline;
+}
 
 .modal-header {
     border-bottom: 0;
@@ -525,4 +529,13 @@ a i {
     padding: 15px 30px 15px 15px;
     /*border-left: 5px solid #eee; */
     border-left: 0;
+}
+.ajax-file-upload-statusbar {
+    border: 0px solid lightgray;
+    width: 420px;
+    margin: 0;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    padding: 0;
 }

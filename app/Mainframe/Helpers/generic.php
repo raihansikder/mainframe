@@ -158,8 +158,7 @@ function toArray($input)
         return csvToArray($input);
     }
 
-
-    return [$input];
+    return $input ? [$input] : null;
 }
 
 function isJson($input)
