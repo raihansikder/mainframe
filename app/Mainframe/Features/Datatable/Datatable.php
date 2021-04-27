@@ -3,6 +3,7 @@
 namespace App\Mainframe\Features\Datatable;
 
 use App\Mainframe\Features\Datatable\Traits\DatatableTrait;
+use App\Module;
 
 class Datatable
 {
@@ -10,6 +11,9 @@ class Datatable
 
     /** @var string */
     public $table;
+
+    /** @var Module */
+    public $module;
 
     /** @var \Yajra\DataTables\DataTableAbstract */
     public $dt;
@@ -56,6 +60,50 @@ class Datatable
     public function __construct($table = null)
     {
         $this->table = $table ?: $this->table;
+    }
+
+    /**
+     * @param  \App\Module  $module
+     * @return $this
+     */
+    public function setModule($module)
+    {
+        $this->module = $module;
+        $this->table = $this->module->tableName();
+
+        return $this;
+    }
+
+    /**
+     * @param  string  $table
+     * @return $this
+     */
+    public function setTable(string $table)
+    {
+        $this->table = $table;
+
+        return $this;
+    }
+
+    /**
+     * @param  string  $ajaxUrl
+     * @return $this
+     */
+    public function setAjaxUrl(string $ajaxUrl)
+    {
+        $this->ajaxUrl = $ajaxUrl;
+
+        return $this;
+    }
+
+    public function ajaxUrl()
+    {
+        if ($this->ajaxUrl) {
+            return $this->ajaxUrl;
+        }
+
+        // Get custom data table URL
+        return route('datatable.json', classKey($this));
     }
 
 }

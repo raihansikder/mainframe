@@ -61,7 +61,7 @@ return [
         'web' => [
             'app/Mainframe/routes/auth.php',
             'app/Mainframe/routes/modules.php',
-            // 'app/Mainframe/routes/web.php',
+            'app/Mainframe/routes/web.php',
         ],
         'api' => [
             // 'app/Mainframe/routes/api.php',

@@ -5,13 +5,15 @@
  * @var array $columns
  * @var \App\Mainframe\Features\Core\ViewProcessor $view
  */
-$titles = $view->datatable->titles();
-$columnsJson = $view->datatable->columnsJson();
-$ajaxUrl = $view->datatable->ajaxUrl();
+$datatable = $datatable ?? $view->datatable;
+$titles = $datatable->titles();
+$columnsJson = $datatable->columnsJson();
+$ajaxUrl = $datatable->ajaxUrl();
+
 
 ?>
 <div class="">
-    <table id="{{$module->name}}Grid" class="table module-grid  dataTable" style="width: 100%">
+    <table id="{{$datatable->identifier()}}Grid" class="table module-grid  dataTable" style="width: 100%">
         <thead class="bg-gray-light">
         <tr>
             @foreach($titles as $title)

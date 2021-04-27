@@ -1,22 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;1,400&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap');
+/*@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap');*/
 
 body, html, .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6,
 .content-header h4,
 .main-header, input, textarea {
+    /*font-family: 'Roboto', 'Arial', sans-serif;*/
+    /*font-family: 'Montserrat','Poppins','Karla', 'Roboto', 'Arial', sans-serif;*/
     font-family: 'Karla', 'Roboto', 'Arial', sans-serif;
-    /*font-family: 'Poppins','Karla', 'Roboto', 'Arial', sans-serif;*/
-    /*font-family: 'Open Sans', sans-serif;*/
+    /*font-family: 'Open Sans', sans-serif;;*/
 !important;
-    color: #666;
+    color: #222222;
     font-weight: normal;
 }
 
 body {
     font-size: 13px;
 }
-
 
 .login-page {
     /*background-image: url('../images/header2.jpg');*/
@@ -32,7 +32,6 @@ body {
 
 .round {
     border-radius: 25px;
-
 }
 
 .sidebar-menu .treeview-menu {
@@ -51,7 +50,7 @@ body {
 }
 
 table.dataTable th {
-    background-color: #001c3c;
+    background-color: #bebfc1;
     color: #fff;
     font-weight: 600
 }
@@ -97,7 +96,7 @@ table.dataTable thead .sorting::after {
     border-color: #35b5ff;
 }
 
-.login-page{
+.login-page {
     background-image: url(../images/login-bg-1.jpg);
     background-repeat: no-repeat;
     background-size: 100%;
@@ -547,7 +546,16 @@ body.projects-mph-market-dashboards-vendor .content {
     padding: 10px 10px 10px 10px;
 }
 
-.select2-container .select2-choice .select2-arrow{
+.select2-container .select2-choice .select2-arrow {
     background-image: none;
     background: transparent;
+}
+.info-box {
+    display: block;
+    min-height: 90px;
+    /* background: #fff; */
+    width: 100%;
+    box-shadow: 0 4px 13px rgb(0 0 0 / 10%);
+    border-radius: 2px;
+    margin-bottom: 15px;
 }

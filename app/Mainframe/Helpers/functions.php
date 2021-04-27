@@ -267,3 +267,69 @@ function content($key, $part = 'body')
 {
     return Mf::content($key, $part);
 }
+
+/**
+ * Get Kebab-case key based on class name
+ *
+ * @param  stdClass|string  $class
+ * @return string my-class-name
+ */
+function classKey($class)
+{
+
+    if (is_string($class)) {
+        return str_slug(\Str::kebab(className($class)));
+    }
+
+    return str_slug(\Str::kebab(class_basename($class)));
+}
+
+function classFromKey($key)
+{
+    return \Str::ucfirst(\Str::camel($key));
+}
+
+/**
+ * variableCase form class
+ *
+ * @param  stdClass|string  $class
+ * @return string myClassName
+ */
+function classVar($class)
+{
+    if (is_string($class)) {
+        return lcfirst(className($class));
+    }
+
+    return lcfirst(class_basename($class));
+}
+
+/**
+ * Snake case key of class
+ *
+ * @param  stdClass|string  $class
+ * @return string my_class_name
+ */
+function classSnakeKey($class)
+{
+    if (is_string($class)) {
+        return snake_case(className($class));
+    }
+
+    return snake_case(class_basename($class));
+}
+
+/**
+ * @param  stdClass|string  $class
+ * @return mixed|string
+ */
+function className($class)
+{
+    if (is_string($class)) {
+        $pieces = explode('\\', $class);
+
+        return array_pop($pieces);
+    }
+
+    return class_basename($class);
+}

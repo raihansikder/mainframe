@@ -4,9 +4,6 @@ namespace App\Mainframe\Features\Datatable\Traits;
 
 trait ModuleDatatableTrait
 {
-    /** @var \App\Module */
-    public $module;
-
     /**
      * Select columns, alias and corresponding HTML title
      *
@@ -51,6 +48,7 @@ trait ModuleDatatableTrait
      */
     public function modify($dt)
     {
+        // dd($dt->toArray());
         if ($this->hasColumn('name')) {
             // $dt = $dt->editColumn('name', '<a href="{{ route(\''.$this->module->name.'.edit\', $id) }}">{{$name}}</a>');
             $dt = $dt->editColumn('name', function ($row) {
@@ -90,4 +88,5 @@ trait ModuleDatatableTrait
 
         return $this->ajaxUrl;
     }
+
 }

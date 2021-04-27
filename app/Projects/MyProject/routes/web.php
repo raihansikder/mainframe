@@ -62,6 +62,7 @@ Route::middleware(['auth', 'verified'])->group(function () use ($modules, $modul
     Route::get('data/{block}', [DataBlockController::class, 'show'])->name('data-block.show'); // Data-block
     Route::get('report/{report}', [ReportController::class, 'show'])->name('report'); // Report
 
+
     /*---------------------------------
     | Project specific routs
     |---------------------------------*/

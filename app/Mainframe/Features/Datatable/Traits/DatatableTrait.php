@@ -2,6 +2,9 @@
 
 namespace App\Mainframe\Features\Datatable\Traits;
 
+use App\Mainframe\Features\Datatable\Datatable;
+
+/** @mixin Datatable */
 trait DatatableTrait
 {
     /**
@@ -182,6 +185,26 @@ trait DatatableTrait
 
         // Note: Use full URL to generate filtered search result
         return $url.'?'.parse_url(\URL::full(), PHP_URL_QUERY);
+    }
+
+    /**
+     * Datatable unique identifier
+     *
+     * @return string|null
+     */
+    public function identifier()
+    {
+
+        if ($this->module) {
+            return $this->module->name;
+        }
+
+        if ($this->table) {
+            return $this->table;
+        }
+
+        return class_basename($this);
+
     }
 
 }

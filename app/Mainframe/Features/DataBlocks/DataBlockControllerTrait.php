@@ -19,7 +19,6 @@ trait DataBlockControllerTrait
     public function show($name)
     {
         $class = $this->resolveClass($name);
-
         if (!class_exists($class)) {
             return $this->fail("Class {$class} not found")->json();
         }
@@ -33,5 +32,7 @@ trait DataBlockControllerTrait
     {
         return  $this->dir.Str::ucfirst(Str::camel($name));
     }
+
+
 
 }
