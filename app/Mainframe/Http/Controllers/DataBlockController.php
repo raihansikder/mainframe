@@ -13,6 +13,6 @@ class DataBlockController extends BaseController
      *
      * @var string
      */
-    public $dir = '\App\Mainframe\Http\DataBlocks\\';
+    public $path = '\App\Mainframe\Http\DataBlocks';
 
 }

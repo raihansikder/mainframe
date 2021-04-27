@@ -3,6 +3,7 @@
 use App\Mainframe\Helpers\Mf;
 use App\Mainframe\Modules\ModuleGroups\ModuleGroupController;
 use App\Projects\MyProject\Http\Controllers\DataBlockController;
+use App\Projects\MyProject\Http\Controllers\DatatableController;
 use App\Projects\MyProject\Http\Controllers\DynamicContentController;
 use App\Projects\MyProject\Http\Controllers\ReportController;
 use App\Projects\MyProject\Modules\Uploads\UploadController;
@@ -59,9 +60,9 @@ Route::middleware(['auth', 'verified'])->group(function () use ($modules, $modul
 
     Route::post('update-file', [UploadController::class, 'updateExistingUpload'])->name('uploads.update-file'); // Update uploaded file
     Route::get('download/{uuid}', [UploadController::class, 'download'])->name('download'); // Download
-    Route::get('data/{block}', [DataBlockController::class, 'show'])->name('data-block.show'); // Data-block
-    Route::get('report/{report}', [ReportController::class, 'show'])->name('report'); // Report
-
+    Route::get('data/{key}', [DataBlockController::class, 'show'])->name('data-block.show'); // Data-block
+    Route::get('report/{key}', [ReportController::class, 'show'])->name('report'); // Report
+    Route::get('datatable/{key}', [DatatableController::class, 'show'])->name('datatable.json');
 
     /*---------------------------------
     | Project specific routs

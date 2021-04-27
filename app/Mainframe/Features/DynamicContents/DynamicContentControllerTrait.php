@@ -2,6 +2,12 @@
 
 namespace App\Mainframe\Features\DynamicContents;
 
+/**
+ * Todo : Unused
+ * Trait DynamicContentControllerTrait
+ *
+ * @package App\Mainframe\Features\DynamicContents
+ */
 trait DynamicContentControllerTrait
 {
 

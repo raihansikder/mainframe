@@ -11,25 +11,51 @@ trait DatatableControllerTrait
     /**
      * Show the application dashboard.
      *
-     * @param  string  $name
+     * @param  string  $key
      * @return \Illuminate\Http\JsonResponse
      */
-    public function show($name)
+    public function show($key)
     {
-        $class = $this->resolveClass($name);
+        $class = $this->resolveClass($key);
         if (!class_exists($class)) {
             return $this->fail("Class {$class} not found")->json();
         }
 
         /** @var Datatable $datatable */
         $datatable = new $class;
-        $datatable->setAjaxUrl(route('datatable.json', $name));
+        $datatable->setAjaxUrl(route('datatable.json', $key));
 
         return $datatable->json();
     }
 
-    public function resolveClass($name)
+    /**
+     * Resolve class to execute the request
+     *
+     * @param $key
+     * @return string
+     */
+    public function resolveClass($key)
     {
-        return rtrim($this->dir, "\\")."\\".classFromKey($name);
+        $class = classFromKey($key);
+
+        // $path defined in controller
+        if (isset($this->path)) {
+            $path = rtrim($this->path, "\\")."\\".$class;
+            if (class_exists($path)) {
+                return $path;
+            }
+        }
+
+        // A project is setup
+        if (project()) {
+            $path = '\App\Projects\\'.project().'\Http\Datatables\\'.$class;
+            if (class_exists($path)) {
+                return $path;
+            }
+
+        }
+
+        // Default Mainframe location
+        return '\App\Mainframe\Http\Datatables\\'.$class;
     }
 }

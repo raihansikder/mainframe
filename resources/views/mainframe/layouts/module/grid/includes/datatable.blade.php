@@ -1,6 +1,7 @@
 <?php
 /**
  * Variables
+ * @var \App\Mainframe\Features\Datatable\Datatable $datatable
  * @var \App\Mainframe\Modules\Modules\Module $module
  * @var array $columns
  * @var \App\Mainframe\Features\Core\ViewProcessor $view
@@ -9,7 +10,6 @@ $datatable = $datatable ?? $view->datatable;
 $titles = $datatable->titles();
 $columnsJson = $datatable->columnsJson();
 $ajaxUrl = $datatable->ajaxUrl();
-
 
 ?>
 <div class="">

@@ -13,5 +13,5 @@ class ReportController extends BaseController
      *
      * @var string
      */
-    public $dir = '\App\Projects\MyProject\Http\Reports\\';
+    public $path = '\App\Projects\MyProject\Http\Reports';
 }

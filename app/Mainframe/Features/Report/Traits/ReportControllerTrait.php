@@ -9,12 +9,12 @@ trait ReportControllerTrait
     /**
      * Show the application dashboard.
      *
-     * @param  string  $name
+     * @param  string  $key
      * @return \Illuminate\Http\JsonResponse
      */
-    public function show($name)
+    public function show($key)
     {
-        $class = $this->resolveClass($name);
+        $class = $this->resolveClass($key);
 
         if (!class_exists($class)) {
             return $this->fail("Class {$class} not found")->json();
@@ -23,8 +23,8 @@ trait ReportControllerTrait
         /** @var ReportBuilder $report */
         $report = new $class;
 
-        if ($this->permissionKeyExists($name)) {
-            if (!$this->user->can($name)) {
+        if ($this->permissionKeyExists($key)) {
+            if (!$this->user->can($key)) {
                 return $this->permissionDenied();
             }
         }
@@ -33,14 +33,46 @@ trait ReportControllerTrait
 
     }
 
-    public function resolveClass($name)
+    /**
+     * Resolve class to execute the request
+     *
+     * @param $key
+     * @return string
+     */
+    public function resolveClass($key)
     {
-        return rtrim($this->dir, "\\")."\\".classFromKey($name);
+        $class = classFromKey($key);
+
+        // $path defined in controller
+        if (isset($this->path)) {
+            $path = rtrim($this->path, "\\")."\\".$class;
+            if (class_exists($path)) {
+                return $path;
+            }
+        }
+
+        // A project is setup
+        if (project()) {
+            $path = '\App\Projects\\'.project().'\Http\Reports\\'.$class;
+            if (class_exists($path)) {
+                return $path;
+            }
+
+        }
+
+        // Default Mainframe location
+        return '\App\Mainframe\Http\Reports\\'.$class;
     }
 
-    public function permissionKeyExists($name)
+    /**
+     * Check permission
+     *
+     * @param $key
+     * @return \Illuminate\Config\Repository|\Illuminate\Contracts\Foundation\Application|mixed
+     */
+    public function permissionKeyExists($key)
     {
-        return config('mainframe.permissions.custom.reports.'.$name);
+        return config('mainframe.permissions.custom.reports.'.$key);
     }
 
 }
