@@ -17,7 +17,7 @@
 
 
 
-    use App\Projects\MyProject\Contents\SampleContent;
+    use App\Projects\MyProject\Contents\SampleContent;use App\Projects\MyProject\Datatables\SampleDatatable;
     $sampleContent = (new SampleContent())->get('body');
 
     $str = '\App\Mainframe\Modules\Modules\Module';
@@ -56,22 +56,23 @@
     <div class="clearfix"></div>
 
     <?php
-    $datatable = new \App\Mainframe\Datatables\SampleDatatable();
+    $datatable = new SampleDatatable();
 
-    echo classKey($datatable). "<br>";
-    echo classKey('MyClass'). "<br>";
-    echo classKey('\MyClass'). "<br>";
-    echo classKey('\Some\Path\MyClass'). "<br>";
 
-    echo classVar($datatable). "<br>";
-    echo classVar('MyClass'). "<br>";
-    echo classVar('\MyClass'). "<br>";
-    echo classVar('\Some\Path\MyClass'). "<br>";
-
-    echo classSnakeKey($datatable). "<br>";
-    echo classSnakeKey('MyClass'). "<br>";
-    echo classSnakeKey('\MyClass'). "<br>";
-    echo classSnakeKey('\Some\Path\MyClass'). "<br>";
+    // echo classKey($datatable). "<br>";
+    // echo classKey('MyClass'). "<br>";
+    // echo classKey('\MyClass'). "<br>";
+    // echo classKey('\Some\Path\MyClass'). "<br>";
+    //
+    // echo classVar($datatable). "<br>";
+    // echo classVar('MyClass'). "<br>";
+    // echo classVar('\MyClass'). "<br>";
+    // echo classVar('\Some\Path\MyClass'). "<br>";
+    //
+    // echo classSnakeKey($datatable). "<br>";
+    // echo classSnakeKey('MyClass'). "<br>";
+    // echo classSnakeKey('\MyClass'). "<br>";
+    // echo classSnakeKey('\Some\Path\MyClass'). "<br>";
 
     ?>
     @include('mainframe.layouts.module.grid.includes.datatable',compact($datatable))

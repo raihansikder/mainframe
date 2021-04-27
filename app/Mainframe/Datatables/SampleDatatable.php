@@ -15,7 +15,6 @@ class SampleDatatable extends Datatable
     {
         parent::__construct();
         $this->setModule(Module::byName('users'));
-        // $this->setTable('users');
     }
 
     /**
