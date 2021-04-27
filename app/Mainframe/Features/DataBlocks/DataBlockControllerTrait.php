@@ -30,7 +30,7 @@ trait DataBlockControllerTrait
 
     public function resolveClass($name)
     {
-        return  $this->dir.Str::ucfirst(Str::camel($name));
+        return rtrim($this->dir, "\\")."\\".classFromKey($name);
     }
 
 

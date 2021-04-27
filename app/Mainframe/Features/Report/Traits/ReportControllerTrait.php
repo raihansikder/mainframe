@@ -3,7 +3,6 @@
 namespace App\Mainframe\Features\Report\Traits;
 
 use App\Mainframe\Features\Report\ReportBuilder;
-use Str;
 
 trait ReportControllerTrait
 {
@@ -24,8 +23,8 @@ trait ReportControllerTrait
         /** @var ReportBuilder $report */
         $report = new $class;
 
-        if($this->permissionKeyExists($name)){
-            if(!$this->user->can($name)){
+        if ($this->permissionKeyExists($name)) {
+            if (!$this->user->can($name)) {
                 return $this->permissionDenied();
             }
         }
@@ -36,7 +35,7 @@ trait ReportControllerTrait
 
     public function resolveClass($name)
     {
-        return $this->dir.Str::ucfirst(Str::camel($name));
+        return rtrim($this->dir, "\\")."\\".classFromKey($name);
     }
 
     public function permissionKeyExists($name)
