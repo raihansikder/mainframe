@@ -316,8 +316,18 @@ div.form-control {
     border: 1px solid #e3e3e3;
 }
 
+.select2-container-multi .select2-choices {
+    background-image: none;
+    border: 0;
+}
+
+.select2-container-multi .select2-choices .select2-search-choice{
+    background-image: none;
+}
+
 #tab_advanced .select2-container-multi .select2-choices .select2-search-choice {
     width: 100%;
+
 }
 
 .main-header {
@@ -486,7 +496,7 @@ pre.sf-dump, pre.sf-dump .sf-dump-default {
     color: inherit;
 }
 .callout a {
-     color: #3c8dbc;
+    color: #3c8dbc;
     text-decoration: underline;
 }
 

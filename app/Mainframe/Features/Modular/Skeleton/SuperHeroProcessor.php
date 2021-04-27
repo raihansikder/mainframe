@@ -70,8 +70,16 @@ class SuperHeroProcessor extends ModelProcessor
      */
     public function saving($element)
     {
-        // Code : Validation
-        // Code : Data-fill
+        // Todo: First validate
+        // --------------------
+        // $this->checkSomething();
+
+        // Todo: Then do further processing
+        // ----------------------------------
+        // if($this->isValid()){
+        //     $element->fillSomeData();
+        //
+        // }
 
         return $this;
     }
