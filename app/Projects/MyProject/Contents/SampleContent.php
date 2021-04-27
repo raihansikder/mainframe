@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Projects\MyProject\DynamicContents;
+namespace App\Projects\MyProject\Contents;
 
-use App\Mainframe\Features\DynamicContents\DynamicContent;
+use App\Mainframe\Features\Content\DynamicContent;
 use Faker\Factory;
 
 class SampleContent extends DynamicContent

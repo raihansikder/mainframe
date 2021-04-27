@@ -13,6 +13,6 @@ class ReportController extends BaseController
      *
      * @var string
      */
-    public $path = '\App\Mainframe\Http\Reports';
+    public $path = '\App\Mainframe\Reports';
 
 }

@@ -14,6 +14,6 @@ class DataBlockController extends BaseController
      *
      * @var string
      */
-    public $path = '\App\Projects\MyProject\Http\DataBlocks';
+    public $path = '\App\Projects\MyProject\DataBlocks';
 
 }

@@ -13,6 +13,6 @@ class DatatableController extends BaseController
      *
      * @var string
      */
-    public $path = '\App\Projects\MyProject\Http\Datatables';
+    public $path = '\App\Projects\MyProject\Datatables';
 
 }

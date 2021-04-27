@@ -81,12 +81,12 @@ trait ModuleDatatableTrait
     public function ajaxUrl()
     {
         if ($this->ajaxUrl) {
-            return $this->ajaxUrl;
+            $url = $this->ajaxUrl;
+        } else {
+            $url = route($this->module->name.'.datatable-json');
         }
 
-        $this->ajaxUrl = route($this->module->name.'.datatable-json').'?'.parse_url(\URL::full(), PHP_URL_QUERY);
-
-        return $this->ajaxUrl;
+        return $url.'?'.parse_url(\URL::full(), PHP_URL_QUERY);
     }
 
 }

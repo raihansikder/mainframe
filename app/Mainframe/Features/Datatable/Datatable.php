@@ -63,11 +63,15 @@ class Datatable
     }
 
     /**
-     * @param  \App\Module  $module
+     * @param  \App\Module|string  $module
      * @return $this
      */
     public function setModule($module)
     {
+        if (is_string($module)) {
+            $module = Module::byName($module);
+        }
+
         $this->module = $module;
         $this->table = $this->module->tableName();
 
@@ -96,14 +100,21 @@ class Datatable
         return $this;
     }
 
+    /**
+     * Ajax URL for json source
+     *
+     * @return string
+     */
     public function ajaxUrl()
     {
         if ($this->ajaxUrl) {
-            return $this->ajaxUrl;
+            $url = $this->ajaxUrl;
+        } else {
+            $url = route('datatable.json', classKey($this));
         }
 
         // Get custom data table URL
-        return route('datatable.json', classKey($this));
+        return $url.'?'.parse_url(\URL::full(), PHP_URL_QUERY);
     }
 
 }

@@ -3,7 +3,7 @@
 namespace App\Projects\MyProject\Http\Controllers;
 
 
-use App\Projects\MyProject\Http\DataBlocks\SampleDataBlock;
+use App\Projects\MyProject\DataBlocks\SampleDataBlock;
 
 class HomeController extends BaseController
 {

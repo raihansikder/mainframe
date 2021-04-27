@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Mainframe\DynamicContents;
+namespace App\Mainframe\Contents;
 
-use App\Mainframe\Features\DynamicContents\DynamicContent;
+use App\Mainframe\Features\Content\DynamicContent;
 
 class SampleContent extends DynamicContent
 {

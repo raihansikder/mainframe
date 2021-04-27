@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Mainframe\Http\Reports;
+namespace App\Mainframe\Reports;
 
 use App\Mainframe\Features\Report\ReportBuilder;
 use App\Mainframe\Features\Report\Traits\ModuleReportBuilderTrait;

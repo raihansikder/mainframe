@@ -48,7 +48,7 @@ trait DatatableControllerTrait
 
         // A project is setup
         if (project()) {
-            $path = '\App\Projects\\'.project().'\Http\Datatables\\'.$class;
+            $path = '\App\Projects\\'.project().'\Datatables\\'.$class;
             if (class_exists($path)) {
                 return $path;
             }
@@ -56,6 +56,6 @@ trait DatatableControllerTrait
         }
 
         // Default Mainframe location
-        return '\App\Mainframe\Http\Datatables\\'.$class;
+        return '\App\Mainframe\Datatables\\'.$class;
     }
 }

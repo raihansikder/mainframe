@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Projects\MyProject\Http\Reports;
+namespace App\Projects\MyProject\Reports;
 
 use App\Projects\MyProject\Features\Report\ReportBuilder;
 use App\User;

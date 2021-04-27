@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Mainframe\Http\Datatables;
+namespace App\Projects\MyProject\Datatables;
 
 use App\Mainframe\Features\Datatable\Datatable;
 use App\Module;

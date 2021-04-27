@@ -47,7 +47,7 @@ trait DataBlockControllerTrait
 
         // A project is setup
         if (project()) {
-            $path = '\App\Projects\\'.project().'\Http\DataBlocks\\'.$class;
+            $path = '\App\Projects\\'.project().'\DataBlocks\\'.$class;
             if (class_exists($path)) {
                 return $path;
             }
@@ -55,7 +55,7 @@ trait DataBlockControllerTrait
         }
 
         // Default Mainframe location
-        return '\App\Mainframe\Http\DataBlocks\\'.$class;
+        return '\App\Mainframe\DataBlocks\\'.$class;
     }
 
 }

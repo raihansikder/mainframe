@@ -13,6 +13,6 @@ class DatatableController extends BaseController
      *
      * @var string
      */
-    public $path = '\App\Mainframe\Http\Datatables';
+    public $path = '\App\Mainframe\Datatables';
 
 }

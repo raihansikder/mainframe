@@ -8,13 +8,16 @@ class ModuleDatatable extends Datatable
 {
     use ModuleDatatableTrait;
 
+    /** @var \App\Module */
+    public $module;
+
     /**
      * @param $module
      */
-    public function __construct($module)
+    public function __construct($module = null)
     {
-        $this->module = $module;
-        parent::__construct($this->module->module_table);
+        parent::__construct();
+        $this->setModule($module);
     }
 
 }

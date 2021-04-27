@@ -192,7 +192,7 @@ trait Filterable
      */
     public function keySearch($query)
     {
-        $key = request('key');
+        $key = request('search_key');
 
         if (! $key) {
             return $query;

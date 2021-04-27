@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Projects\MyProject\Http\DataBlocks;
+namespace App\Projects\MyProject\DataBlocks;
 
 use App\Projects\MyProject\Features\DataBlocks\DataBlock;
 

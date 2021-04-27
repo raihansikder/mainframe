@@ -17,7 +17,7 @@
 
 
 
-    use App\Projects\MyProject\DynamicContents\SampleContent;
+    use App\Projects\MyProject\Contents\SampleContent;
     $sampleContent = (new SampleContent())->get('body');
 
     $str = '\App\Mainframe\Modules\Modules\Module';
@@ -56,7 +56,7 @@
     <div class="clearfix"></div>
 
     <?php
-    $datatable = new \App\Mainframe\Http\Datatables\SampleDatatable();
+    $datatable = new \App\Mainframe\Datatables\SampleDatatable();
 
     echo classKey($datatable). "<br>";
     echo classKey('MyClass'). "<br>";

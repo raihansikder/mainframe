@@ -4,7 +4,6 @@ use App\Mainframe\Helpers\Mf;
 use App\Mainframe\Modules\ModuleGroups\ModuleGroupController;
 use App\Projects\MyProject\Http\Controllers\DataBlockController;
 use App\Projects\MyProject\Http\Controllers\DatatableController;
-use App\Projects\MyProject\Http\Controllers\DynamicContentController;
 use App\Projects\MyProject\Http\Controllers\ReportController;
 use App\Projects\MyProject\Modules\Uploads\UploadController;
 
@@ -62,7 +61,7 @@ Route::middleware(['auth', 'verified'])->group(function () use ($modules, $modul
     Route::get('download/{uuid}', [UploadController::class, 'download'])->name('download'); // Download
     Route::get('data/{key}', [DataBlockController::class, 'show'])->name('data-block.show'); // Data-block
     Route::get('report/{key}', [ReportController::class, 'show'])->name('report'); // Report
-    Route::get('datatable/{key}', [DatatableController::class, 'show'])->name('datatable.json');
+    Route::get('datatable/{key}', [DatatableController::class, 'show'])->name('datatable.json'); // Datatable
 
     /*---------------------------------
     | Project specific routs

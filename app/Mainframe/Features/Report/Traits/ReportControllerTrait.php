@@ -53,7 +53,7 @@ trait ReportControllerTrait
 
         // A project is setup
         if (project()) {
-            $path = '\App\Projects\\'.project().'\Http\Reports\\'.$class;
+            $path = '\App\Projects\\'.project().'\Reports\\'.$class;
             if (class_exists($path)) {
                 return $path;
             }
@@ -61,7 +61,7 @@ trait ReportControllerTrait
         }
 
         // Default Mainframe location
-        return '\App\Mainframe\Http\Reports\\'.$class;
+        return '\App\Mainframe\Reports\\'.$class;
     }
 
     /**

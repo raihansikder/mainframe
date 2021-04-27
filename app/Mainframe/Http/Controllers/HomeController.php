@@ -2,7 +2,7 @@
 
 namespace App\Mainframe\Http\Controllers;
 
-use App\Mainframe\Http\DataBlocks\SampleDataBlock;
+use App\Mainframe\DataBlocks\SampleDataBlock;
 
 class HomeController extends BaseController
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Mainframe\Features\DynamicContents;
+namespace App\Mainframe\Features\Content;
 
 class DynamicContent
 {
