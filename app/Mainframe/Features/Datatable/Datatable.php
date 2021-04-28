@@ -68,11 +68,12 @@ class Datatable
      */
     public function setModule($module)
     {
-        if(!$module){
-            return false;
-        }
         if (is_string($module)) {
             $module = Module::byName($module);
+        }
+
+        if (!$module) {
+            return false;
         }
 
         $this->module = $module;

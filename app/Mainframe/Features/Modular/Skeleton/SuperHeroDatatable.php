@@ -8,6 +8,8 @@ class SuperHeroDatatable extends ModuleDatatable
 {
     // Note: Pull in necessary traits
 
+    public $moduleName = 'super-heroes';
+
     /** @var string[] HTML rendering enabled for columns */
     public $rawColumns = ['id', 'name', 'is_active'];
 

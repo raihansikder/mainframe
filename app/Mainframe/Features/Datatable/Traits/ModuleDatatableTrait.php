@@ -2,6 +2,10 @@
 
 namespace App\Mainframe\Features\Datatable\Traits;
 
+use App\Module;
+use App\Mainframe\Features\Datatable\ModuleDatatable;
+
+/** @mixin ModuleDatatable */
 trait ModuleDatatableTrait
 {
     /**
@@ -87,6 +91,31 @@ trait ModuleDatatableTrait
         }
 
         return $url.'?'.parse_url(\URL::full(), PHP_URL_QUERY);
+    }
+
+    /**
+     * @param  \App\Module|string  $module
+     * @return ModuleDatatableTrait|bool
+     */
+    public function setModule($module)
+    {
+
+        if ($module) {
+            return parent::setModule($module);
+        }
+
+        if (isset($this->moduleName)) {
+            $module = Module::byName($this->moduleName);
+        }
+
+        if (!$module) {
+            return false;
+        }
+
+        $this->module = $module;
+        $this->table = $this->module->tableName();
+
+        return $this;
     }
 
 }
