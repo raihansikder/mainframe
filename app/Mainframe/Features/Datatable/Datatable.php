@@ -64,10 +64,13 @@ class Datatable
 
     /**
      * @param  \App\Module|string  $module
-     * @return $this
+     * @return Datatable|bool
      */
     public function setModule($module)
     {
+        if(!$module){
+            return false;
+        }
         if (is_string($module)) {
             $module = Module::byName($module);
         }

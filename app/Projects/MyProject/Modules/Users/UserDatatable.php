@@ -11,11 +11,6 @@ class UserDatatable extends ModuleDatatable
 
     public $rawColumns = ['id', 'name', 'is_active'];
 
-    public function __construct()
-    {
-        parent::__construct('users');
-    }
-
     // /**
     //  * Define Query Source
     //  *

@@ -11,11 +11,6 @@ class SuperHeroDatatable extends ModuleDatatable
     /** @var string[] HTML rendering enabled for columns */
     public $rawColumns = ['id', 'name', 'is_active'];
 
-    public function __construct()
-    {
-        parent::__construct('super-heroes');
-    }
-
     /*---------------------------------
     | Section : Define query tables/model
     |---------------------------------*/
