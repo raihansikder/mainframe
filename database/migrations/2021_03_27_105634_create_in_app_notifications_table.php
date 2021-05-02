@@ -34,6 +34,7 @@ class CreateInAppNotificationsTable extends Migration
             $table->unsignedInteger('notifiable_id')->nullable()->default(null);
             $table->unsignedInteger('module_id')->nullable()->default(null);
             $table->unsignedInteger('element_id')->nullable()->default(null);
+            $table->string('element_uuid', 64)->nullable()->default(null);
             $table->unsignedInteger('user_id')->nullable()->default(null)->comment('Recipient user id');
             $table->string('type', 100)->nullable()->default('Generic')->comment('Generic|Popup');
             $table->string('event', 100)->nullable()->default(null)->comment('Name of the event i.e. "appointment.created"');
