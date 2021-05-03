@@ -2,13 +2,12 @@
 
 namespace App\Mainframe\Modules\Users\Traits;
 
-use App\Group;
 use App\Country;
+use App\Group;
 use App\InAppNotification;
-use App\Spread;
-use App\User;
 use App\Mainframe\Notifications\Auth\ResetPassword;
 use App\Mainframe\Notifications\Auth\VerifyEmail;
+use App\User;
 use Carbon\Carbon;
 use InvalidArgumentException;
 use Str;
@@ -126,7 +125,8 @@ trait UserTrait
 
     public function country() { return $this->belongsTo(Country::class); }
 
-    public function inAppNotifications() {
+    public function inAppNotifications()
+    {
         return $this->hasMany(InAppNotification::class, 'element_id')->where('module_id', $this->module()->id);
         // return $this->morphMany(InAppNotification::class, 'notifiable'); // Note: Do not use morphMany
     }
@@ -332,17 +332,48 @@ trait UserTrait
         return $this->inGroup($name);
     }
 
+    public function isInGroup($name)
+    {
+        if ($group = Group::byName($name)) {
+            return $this->groups->contains('id', $group->id);
+        }
+
+        return false;
+    }
+
     /**
      * Check if user belongs to a group.
      *
      * @param  string  $name
      * @return bool
+     * @deprecated use isInGroup()
      */
-    public function inGroup($name = '')
+    public function inGroup($name)
     {
-        if ($group = Group::byName($name)) {
-            return $this->groups->contains('id', $group->id);
+        return $this->isInGroup($name);
+    }
+
+    public function inAnyGroup($names = [])
+    {
+        foreach ($names as $name) {
+            if ($this->isInGroup($name)) {
+                return true;
+            }
         }
+
+        return false;
+    }
+
+    public function inAllGroups($names = [])
+    {
+        foreach ($names as $name) {
+            if (!$this->isInGroup($name)) {
+                return false;
+            }
+        }
+
+        return true;
+
     }
 
     /**

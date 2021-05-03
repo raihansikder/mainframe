@@ -511,8 +511,14 @@ class ModelProcessor
      * Get a list of un-mutable fields
      *
      * @return array
+     * @depricated use immutables()
      */
     public function getImmutables()
+    {
+        return $this->immutables();
+    }
+
+    public function immutables()
     {
         return $this->immutables;
     }
