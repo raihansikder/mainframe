@@ -137,7 +137,7 @@ class PushNotification extends BaseModule
 
         // static::saving(function (PushNotification $element) { });
         static::creating(function (PushNotification $element) {
-            $element->fillModuleAndElement('notifiable'); // Fill polymorphic fields
+            // $element->fillModuleAndElement('notifiable'); // Fill polymorphic fields
         });
         // static::updating(function (PushNotification $element) { });
         // static::created(function (PushNotification $element) { });

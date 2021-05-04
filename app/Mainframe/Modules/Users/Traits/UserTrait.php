@@ -302,7 +302,7 @@ trait UserTrait
     }
 
     /**
-     * Check if user belongs to a tenant
+     * Check if user belongs to a tenant. If yes, then return tenant id
      *
      * @return bool|int|null
      */
@@ -310,6 +310,10 @@ trait UserTrait
     {
         return $this->tenant_id ?: false;
     }
+
+    /*-----------------------------------------
+    | Section: user group related functions
+    |-----------------------------------------*/
 
     /**
      * Check if user is guest
@@ -332,17 +336,24 @@ trait UserTrait
         return $this->inGroup($name);
     }
 
+    /**
+     * Check if user belongs to the group
+     *
+     * @param  string  $name  group name
+     * @return bool
+     */
     public function isInGroup($name)
     {
         if ($group = Group::byName($name)) {
-            return $this->groups->contains('id', $group->id);
+            return $this->groups()->remember(timer('short'))->get()->contains('id', $group->id);
+            // return $this->groups->contains('id', $group->id); // Without cache
         }
 
         return false;
     }
 
     /**
-     * Check if user belongs to a group.
+     * Check if user belongs to the group.
      *
      * @param  string  $name
      * @return bool
@@ -353,8 +364,15 @@ trait UserTrait
         return $this->isInGroup($name);
     }
 
+    /**
+     * Check if user belongs to any of the groups
+     *
+     * @param  array  $names
+     * @return bool
+     */
     public function inAnyGroup($names = [])
     {
+        $names = \Arr::wrap($names);
         foreach ($names as $name) {
             if ($this->isInGroup($name)) {
                 return true;
@@ -364,8 +382,15 @@ trait UserTrait
         return false;
     }
 
+    /**
+     * Check if the user belongs to all of the given groups
+     *
+     * @param  array  $names
+     * @return bool
+     */
     public function inAllGroups($names = [])
     {
+        $names = \Arr::wrap($names);
         foreach ($names as $name) {
             if (!$this->isInGroup($name)) {
                 return false;
@@ -377,7 +402,7 @@ trait UserTrait
     }
 
     /**
-     * Checks if user belongs to a certain groupId
+     * Checks if user belongs to the groupId
      *
      * @param $group_id
      * @return bool
@@ -452,6 +477,11 @@ trait UserTrait
     {
         return $this->hasPermission('api') || $this->inGroupId(Group::api()->id);
     }
+
+
+    /*--------------------------------------
+    | Section: Permission related functions
+    |-------------------------------------*/
 
     /**
      * Returns an array of merged permissions for each
@@ -620,7 +650,7 @@ trait UserTrait
      */
     public static function adminEmails()
     {
-        return config('projects.my-project.config.default_email_recipients');
+        return config('projects.'.projectKey().'.config.default_email_recipients');
     }
 
     /**

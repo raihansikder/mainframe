@@ -121,12 +121,11 @@ trait ModularControllerTrait
 
         $this->element = $this->model; // Create an empty model to be stored.
 
-        $this->attemptStore();
-        // try {
-        //     $this->attemptStore();
-        // } catch (\Exception $e) {
-        //     $this->response()->validator->errors()->add('Error', $e->getMessage());
-        // }
+        try {
+            $this->attemptStore();
+        } catch (\Exception $e) {
+            $this->error($e->getMessage());
+        }
 
         return $this->load($this->element)->send();
     }
@@ -150,7 +149,11 @@ trait ModularControllerTrait
             return $this->permissionDenied();
         }
 
-        $this->attemptUpdate();
+        try {
+            $this->attemptUpdate();
+        } catch (\Exception $e) {
+            $this->error($e->getMessage());
+        }
 
         return $this->load($this->element)->send();
     }
@@ -172,7 +175,11 @@ trait ModularControllerTrait
             return $this->permissionDenied();
         }
 
-        $this->attemptDestroy();
+        try {
+            $this->attemptDestroy();
+        } catch (\Exception $e) {
+            $this->error($e->getMessage());
+        }
 
         return $this->load($this->element)->send();
     }

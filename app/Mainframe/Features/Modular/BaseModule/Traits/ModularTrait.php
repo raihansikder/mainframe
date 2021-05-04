@@ -248,7 +248,7 @@ trait ModularTrait
      * Check if a certain transition took place.
      *
      * @param  string  $field
-     * @param  array  $to
+     * @param  array|string  $to
      * @return bool
      */
     public function hasTransitionTo($field, $to)

@@ -520,7 +520,7 @@ class ModelProcessor
 
     public function immutables()
     {
-        return $this->immutables;
+        return array_unique($this->immutables);
     }
 
     /**
@@ -795,13 +795,14 @@ class ModelProcessor
             return $this;
 
         }
-        $this->element->saveQuietly(); // Set deleted by field
 
         if (!$this->element->delete()) {
             $this->error('Error: Can not be deleted for some reason.');
 
             return $this;
         }
+
+        $this->element->saveQuietly(); // Set deleted by field
 
         $this->deleted($this->element);
 

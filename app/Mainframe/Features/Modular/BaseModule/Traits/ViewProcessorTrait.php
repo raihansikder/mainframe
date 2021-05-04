@@ -140,7 +140,7 @@ trait ViewProcessorTrait
      */
     public function addImmutables($immutables = [])
     {
-        $this->immutables = array_merge($this->getImmutables(), $immutables);
+        $this->immutables = array_unique(array_merge($this->getImmutables(), $immutables));
 
         return $this;
     }
