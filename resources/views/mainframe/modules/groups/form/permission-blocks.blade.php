@@ -62,7 +62,7 @@ function renderTree($tree)
 
         {{-- Module view, create, edit permissions--}}
         <li class="module-permissions">
-            {!!  renderTree(\App\Mainframe\Modules\ModuleGroups\ModuleGroup::tree()) !!}
+            {!!  renderTree(\App\ModuleGroup::tree()) !!}
         </li>
 
         {{--Additional permission options defined in config/mainframe/permissions--}}

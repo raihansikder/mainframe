@@ -2,9 +2,9 @@
 
 namespace Tests\Feature\Mainframe\Superadmin;
 
-use App\Mainframe\Modules\Modules\Module;
+use App\Module;
 use App\Mainframe\Features\Responder\Response;
-use App\Mainframe\Modules\Settings\Setting;
+use App\Setting;
 use Faker\Factory;
 use Faker\Generator;
 

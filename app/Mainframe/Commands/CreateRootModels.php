@@ -2,7 +2,7 @@
 
 namespace App\Mainframe\Commands;
 
-use App\Mainframe\Modules\Modules\Module;
+use App\Module;
 use File;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;

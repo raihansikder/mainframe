@@ -1,6 +1,6 @@
 <?php
 use App\Mainframe\Helpers\View;
-use App\Mainframe\Modules\ModuleGroups\ModuleGroup;
+use App\ModuleGroup;
 ?>
 <ul class="sidebar-menu">
     @if(user())

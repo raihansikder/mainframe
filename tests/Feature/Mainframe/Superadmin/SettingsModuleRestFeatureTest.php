@@ -2,8 +2,8 @@
 
 namespace Tests\Feature\Mainframe\Superadmin;
 
-use App\Mainframe\Modules\Settings\Setting;
-use App\Mainframe\Modules\Modules\Module;
+use App\Setting;
+use App\Module;
 
 class SettingsModuleRestFeatureTest extends SuperadminTestCase
 {

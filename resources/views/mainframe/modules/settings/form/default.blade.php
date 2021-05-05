@@ -1,7 +1,7 @@
 @extends('mainframe.layouts.module.form.template')
 
 <?php
-use App\Mainframe\Modules\Settings\Setting;
+use App\Setting;
 /**
  * @var Setting $element
  * @var string $formState
