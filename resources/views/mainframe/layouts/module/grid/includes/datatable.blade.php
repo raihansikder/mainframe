@@ -13,7 +13,7 @@ $ajaxUrl = $datatable->ajaxUrl();
 
 ?>
 <div class="">
-    <table id="{{$datatable->identifier()}}Grid" class="table module-grid  dataTable" style="width: 100%">
+    <table id="{{$datatable->identifier()}}Grid" class="table module-grid table-condensed  dataTable" style="width: 100%">
         <thead class="bg-gray-light">
         <tr>
             @foreach($titles as $title)

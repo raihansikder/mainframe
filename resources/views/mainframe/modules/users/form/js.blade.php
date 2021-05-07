@@ -41,6 +41,7 @@
     // Todo: write codes here.
     // Redirection after saving
     $('#{{$module->name}}-redirect-success').val('#'); //  # Stops redirection after save
+    $("select[name=group_ids]").addClass('validate[required]');
     @endif
     /*
     |--------------------------------------------------------------------------

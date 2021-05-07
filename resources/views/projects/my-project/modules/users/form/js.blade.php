@@ -46,6 +46,7 @@
      */
     function addValidationRules() {
         $("input[name=name]").addClass('validate[required]');
+        $("select[name=group_ids]").addClass('validate[required]');
     }
 
     /**

@@ -1,4 +1,5 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;1,400&display=swap');
 /*@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap');*/
 
 body, html, .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6,
@@ -13,6 +14,9 @@ body, html, .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6,
     font-weight: normal;
 }
 
+.main-header .logo, .logo, .logo-mini, .logo-lg, .login-logo, .register-logo, .h1, h1, .h2, h2,  .h3, h3, .h4, h4 {
+    font-family: 'Poppins', 'Karla', 'Roboto', 'Arial', sans-serif;
+}
 body {
     font-size: 13px;
 }
@@ -121,14 +125,9 @@ table.dataTable thead .sorting::after {
     background-color: #000;
     border-color: #000;
 }
-.main-header .logo, .logo, .logo-mini, .logo-lg {
-/*    font-family: 'Quicksand', sans-serif;*/
-/*!important;*/
-    font-weight: 600;
-}
 
 .login-logo, .register-logo {
-    /*font-family: 'Quicksand', sans-serif;*/
+    font-family: 'Poppins', 'Quicksand', sans-serif;
     padding-top: 20px;
     margin-bottom: 5px;
     font-weight: 100;
@@ -137,7 +136,7 @@ table.dataTable thead .sorting::after {
 .login-logo {
     color: #000;
     font-weight: 600;
-    padding: 30px;
+    padding: 15px;
 }
 
 .login-page .login-box-body a {
@@ -153,7 +152,18 @@ table.dataTable thead .sorting::after {
     color: #000;
 }
 
+.main-header .logo, .logo, .logo-mini, .logo-lg {
+    font-family: 'Poppins', sans-serif;
+!important;
+    font-weight: 600;
+}
 
+.main-header {
+    /*background-image: none;*/
+    /*background-color: black;*/
+    background: rgb(63, 94, 251);
+    background: linear-gradient(90deg, rgba(63, 94, 251, 1) 0%, rgba(252, 70, 107, 1) 100%);
+}
 
 .mb-0 {
     margin-bottom: 0px !important;
@@ -167,14 +177,26 @@ table.dataTable thead .sorting::after {
     font-size: 1em;
     color: #333;
     font-weight: 600;
+    /*text-transform: uppercase;*/
 }
+.panel-default {
 
+}
 .panel-default > .panel-heading {
     color: #fff;
-    background-color: #001c3c;
-    border-color: #001c3c;
+    border-color: #666666;
+    /*background: rgb(63,94,251);*/
+    /*background: linear-gradient(90deg, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);*/
+
+}
+.panel-title a {
+    display: block;
+    font-family: 'Poppins', serif;
 }
 
+.panel-default > .panel-heading > * {
+    color: #222222;
+}
 div.form-group span.readonly {
     padding-left: 10px;
 }
@@ -558,4 +580,7 @@ body.projects-mph-market-dashboards-vendor .content {
     box-shadow: 0 4px 13px rgb(0 0 0 / 10%);
     border-radius: 2px;
     margin-bottom: 15px;
+}
+.login-box-body .callout {
+    text-align: center;
 }

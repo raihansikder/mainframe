@@ -60,7 +60,7 @@
                 <div class="panel-heading">
                     <h5 class="panel-title">
                         <a data-toggle="collapse" href="#other_info">
-                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Token
+                            <span class="fa fa-plus" aria-hidden="true"></span> &nbsp; &nbsp; Token
                         </a>
                     </h5>
                 </div>

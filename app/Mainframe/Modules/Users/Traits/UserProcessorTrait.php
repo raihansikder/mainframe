@@ -25,7 +25,7 @@ trait UserProcessorTrait
      */
     public function fill($element)
     {
-
+        $element->group_ids = array_wrap($element->group_ids);
         $element->populate();
         $this->fillApiTokenGeneratedAt();
 
@@ -165,7 +165,7 @@ trait UserProcessorTrait
     public function userMustHaveOneGroup()
     {
         $user = $this->element;
-        if ($user->group_ids === null || $user->group_ids[0] === null) {
+        if (!count($user->group_ids) || !isset($user->group_ids)) {
             $this->fieldError('group_ids', "User must have one group selected");
         }
 

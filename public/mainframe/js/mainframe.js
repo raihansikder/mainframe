@@ -89,7 +89,6 @@ jQuery.fn.outerHTML = function (s) {
 };
 
 
-
 /**
  * Get selected values as array from a multi-select select
  * @param selector
@@ -160,7 +159,6 @@ function parseJson(val) {
 }
 
 
-
 // noinspection JSUnusedGlobalSymbols
 /**
  * Disable all input
@@ -172,7 +170,16 @@ function makeAllInputReadonly() {
     $("select").prop("disabled", true);
 }
 
-
+/**
+ * Hide empty select options
+ */
+function hideEmptySelectOptions() {
+    $('select option')
+        .filter(function () {
+            return !this.value || $.trim(this.value).length == 0 || $.trim(this.text).length == 0;
+        })
+        .remove();
+}
 
 
 /**
@@ -264,8 +271,8 @@ function initUploader(id, url) {
             loadMsg(parseJson(ret));
             $('#msgModal').modal('show');
             //console.log(ret);
-            if(ret.status == 'fail'){
-               $('div.ajax-file-upload-green').hide();
+            if (ret.status == 'fail') {
+                $('div.ajax-file-upload-green').hide();
             }
             // var path = ret.message.path;
         },

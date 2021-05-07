@@ -124,7 +124,7 @@ trait ModularControllerTrait
         try {
             $this->attemptStore();
         } catch (\Exception $e) {
-            $this->error($e->getMessage());
+            $this->error($e->getFile().'. Line'.$e->getLine(). " - " .$e->getMessage());
         }
 
         return $this->load($this->element)->send();
@@ -152,7 +152,7 @@ trait ModularControllerTrait
         try {
             $this->attemptUpdate();
         } catch (\Exception $e) {
-            $this->error($e->getMessage());
+            $this->error($e->getFile().'. Line#'.$e->getLine(). " - " .$e->getMessage());
         }
 
         return $this->load($this->element)->send();
@@ -178,7 +178,7 @@ trait ModularControllerTrait
         try {
             $this->attemptDestroy();
         } catch (\Exception $e) {
-            $this->error($e->getMessage());
+            $this->error($e->getFile().'. Line'.$e->getLine(). " - " .$e->getMessage());
         }
 
         return $this->load($this->element)->send();
