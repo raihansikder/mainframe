@@ -107,6 +107,8 @@ class InAppNotification extends BaseModule
     |--------------------------------------------------------------------------
     */
     protected $fillable = [
+        'project_id',
+        'tenant_id',
         'uuid',
         'notifiable_type',
         'notifiable_id',

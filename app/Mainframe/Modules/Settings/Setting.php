@@ -74,6 +74,8 @@ class Setting extends BaseModule
     |--------------------------------------------------------------------------
     */
     protected $fillable = [
+        'project_id',
+        'tenant_id',
         'uuid',
         'name',
         'title',

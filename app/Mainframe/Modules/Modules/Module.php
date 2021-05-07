@@ -112,6 +112,8 @@ class Module extends BaseModule
     | These attributes can be mass assigned
     */
     protected $fillable = [
+        'project_id',
+        'tenant_id',
         'uuid',
         'name',
         'project_id',

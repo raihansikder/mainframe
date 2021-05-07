@@ -100,6 +100,8 @@ class Country extends BaseModule
     | These attributes can be mass assigned
     */
     protected $fillable = [
+        'project_id',
+        'tenant_id',
         'uuid',
         'name',
         'is_active',

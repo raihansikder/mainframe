@@ -82,6 +82,8 @@ class Spread extends BaseModule
     |--------------------------------------------------------------------------
     */
     protected $fillable = [
+        'project_id',
+        'tenant_id',
         'uuid',
         'name',
         'spreadable_type',

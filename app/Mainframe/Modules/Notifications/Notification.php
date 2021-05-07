@@ -85,6 +85,8 @@ class Notification extends BaseModule
    |--------------------------------------------------------------------------
    */
     protected $fillable = [
+        'project_id',
+        'tenant_id',
         'name',
         'type',
         'notifiable_type',

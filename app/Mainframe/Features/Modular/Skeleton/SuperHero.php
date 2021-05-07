@@ -17,6 +17,8 @@ class SuperHero extends BaseModule
     |--------------------------------------------------------------------------
     */
     protected $fillable = [
+        'project_id',
+        'tenant_id',
         'uuid',
         'name',
         'is_active',
