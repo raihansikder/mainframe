@@ -40,6 +40,11 @@ trait UserTrait
         return null;
     }
 
+    public function getGroupAttribute()
+    {
+        return $this->groups()->first();
+    }
+
     /**
      * User type attribute
      *

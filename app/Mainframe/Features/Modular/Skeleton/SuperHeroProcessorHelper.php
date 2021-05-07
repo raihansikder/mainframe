@@ -11,8 +11,8 @@ trait SuperHeroProcessorHelper
     |--------------------------------------------------------------------------
     */
     /* Further customize immutables and allowed value transitions*/
-    // public function getImmutables(){return $this->immutables; }
-    // public function getTransitions(){return $this->transitions; }
+    // public function immutables(){return $this->immutables; }
+    // public function transitions(){return $this->transitions; }
 
     /*
     |--------------------------------------------------------------------------

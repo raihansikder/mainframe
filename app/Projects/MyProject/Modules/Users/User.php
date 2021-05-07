@@ -168,6 +168,8 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
     protected $tenantEnabled = true;
 
     protected $fillable = [
+        'project_id',
+        'tenant_id',
         'uuid',
         'name',
         'email',

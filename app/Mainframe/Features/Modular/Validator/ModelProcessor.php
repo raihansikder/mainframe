@@ -518,19 +518,35 @@ class ModelProcessor
         return $this->immutables();
     }
 
+    /**
+     * Define the immutables in an array and return.
+     *
+     * @return array
+     */
     public function immutables()
     {
         return array_unique($this->immutables);
     }
 
     /**
-     * Get a list of un-mutable fields
+     * Define the allowed transitions in array and return
      *
      * @return array
      */
-    public function getTransitions()
+    public function transitions()
     {
         return $this->transitions;
+    }
+
+    /**
+     * Get a list of un-mutable fields
+     *
+     * @return array
+     * @deprecated user transitions
+     */
+    public function getTransitions()
+    {
+        return $this->transitions();
     }
 
     public function getTrackedFields()
