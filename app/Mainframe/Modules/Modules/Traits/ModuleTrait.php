@@ -4,7 +4,6 @@ namespace App\Mainframe\Modules\Modules\Traits;
 
 use App\Module;
 use App\ModuleGroup;
-use Illuminate\Support\Arr;
 
 /** @mixin Module $this */
 trait ModuleTrait
@@ -121,6 +120,16 @@ trait ModuleTrait
             ->get();
     }
 
+    public static function modelNameFromTable($table)
+    {
+        return ucfirst(str_singular(camel_case($table)));
+    }
+
+    public static function rootModelNameFromTable($table)
+    {
+        return "\\App\\".Module::modelNameFromTable($table);
+    }
+
     /**
      * super-heroes -> super_heroes
      *
@@ -141,6 +150,10 @@ trait ModuleTrait
         return str_replace('_', '-', $table);
     }
 
+    /**
+     * @param $table
+     * @return \App\Module|null
+     */
     public static function fromTable($table)
     {
         return Module::where('module_table', $table)

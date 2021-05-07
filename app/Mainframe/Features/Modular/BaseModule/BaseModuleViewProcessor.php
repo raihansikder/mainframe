@@ -7,4 +7,5 @@ use App\Mainframe\Features\Core\ViewProcessor;
 class BaseModuleViewProcessor extends ViewProcessor
 {
 
+
 }

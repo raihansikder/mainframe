@@ -19,4 +19,15 @@ class Tags extends TextArea
         return implode("','", $this->tags);
     }
 
+    public function value()
+    {
+        $value = parent::value();
+
+        if ($value == '[]') {
+            return null;
+        }
+
+        return $value;
+    }
+
 }

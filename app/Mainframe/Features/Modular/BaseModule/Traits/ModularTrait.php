@@ -884,8 +884,10 @@ trait ModularTrait
 
     public function spreadModels($slug)
     {
-
-        $key = str_singular($slug).'_ids';
+        $key = $slug;
+        if (!\Str::endsWith($slug, '_ids')) {
+            $key = str_singular($slug).'_ids';
+        }
         $class = $this->spreadAttributes[$key];
 
         return $this->belongsToMany($class, 'spreads', 'spreadable_id', 'related_id')

@@ -48,7 +48,6 @@ $scriptPaths = [
     'mainframe/js/validation.js',
     'mainframe/js/after-loader.js',
     'mainframe/js/custom.js',
-    'https://unpkg.com/ionicons@5.4.0/dist/ionicons.js', // Ionic icons
     // WARNING: Do not put project specific JS here. Instead include them at the end of
     // project template. i.e. resources/views/projects/my-project/layouts/default/template.blade.php
 ];

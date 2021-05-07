@@ -6,13 +6,17 @@ use App\Mainframe\Modules\Groups\GroupProcessor;
 
 trait GroupProcessorTrait
 {
+    public function immutables()
+    {
+        return ['name'];
+    }
     /*
-       |--------------------------------------------------------------------------
-       | Rules.
-       |--------------------------------------------------------------------------
-       |
-       | Write the laravel validation rules
-       */
+    |--------------------------------------------------------------------------
+    | Rules.
+    |--------------------------------------------------------------------------
+    |
+    | Write the laravel validation rules
+    */
     /**
      * Validation rules. For regular expression validation use array instead of pipe
      *

@@ -18,6 +18,12 @@
  *      $var['name']            ?? Str::random(8);
  *      $var['params']          ?? [];  // These are the html attributes like css, id etc for the field.
  *      $var['editable']        ?? true;
+ *      name_field
+ *      value_field
+ *      table
+ *      query
+ *      show_inactive
+ *      cache
  *
  * @var \Illuminate\Support\ViewErrorBag $errors
  * @var \App\Mainframe\Features\Modular\BaseModule\BaseModule $element

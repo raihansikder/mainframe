@@ -3,7 +3,7 @@
 namespace App\Mainframe\Features\Form\Select;
 
 use App\Mainframe\Helpers\Mf;
-use DB;
+use App\Module;
 use Illuminate\Support\Arr;
 
 class SelectModel extends SelectArray
@@ -11,6 +11,7 @@ class SelectModel extends SelectArray
     public $nameField;
     public $valueField;
     public $table;
+    public $model;
     public $query;
     public $showInactive;
     public $cache;
@@ -18,8 +19,8 @@ class SelectModel extends SelectArray
     /**
      * SelectModel constructor.
      *
-     * @param array $var
-     * @param null $element
+     * @param  array  $var
+     * @param  null  $element
      */
     public function __construct($var = [], $element = null)
     {
@@ -29,11 +30,35 @@ class SelectModel extends SelectArray
         $this->valueField = $this->var['value_field'] ?? 'id';
 
         $this->table = $this->var['table'] ?? null; // Must have table
-        $this->query = $this->var['query'] ?? DB::table($this->table);
+        $this->model = $this->var['model'] ?? null; // Must have table
+        $this->query = $this->var['query'] ?? $this->getQuery(); // DB::table($this->table);
         $this->showInactive = $this->var['show_inactive'] ?? false;
         $this->cache = $this->var['cache'] ?? timer('none');
 
         $this->options = $this->options();
+    }
+
+    public function getQuery()
+    {
+        if (isset($this->var['model'])) {
+            $model = $this->var['model'];
+            if (is_string($model)) {
+                return (new $model)::query();
+            }
+
+            return $model;
+        }
+
+        if (isset($this->var['table'])) {
+            $table = $this->var['table'];
+            // $model = '\\App\\'.ucfirst(str_singular(camel_case($table)));
+            // if (is_string($model)) {
+            //     return (new $model)::query();
+            // }
+            // return $model;
+
+            return Module::fromTable($table)->modelInstance();
+        }
     }
 
     /**
@@ -44,7 +69,7 @@ class SelectModel extends SelectArray
     public function options()
     {
         $query = $this->query->whereNull('deleted_at');
-        if (! $this->showInactive) {
+        if (!$this->showInactive) {
             $query->where('is_active', 1);
         }
 

@@ -46,8 +46,7 @@ class SuperHeroProcessor extends ModelProcessor
     public static function rules($element, $merge = [])
     {
         $rules = [
-            'name' => 'required|between:1,255|'.
-                'unique:super_heroes,name,'.($element->id ?? 'null').',id,deleted_at,NULL',
+            'name' => 'required|between:1,100|'.'unique:super_heroes,name,'.($element->id ?? 'null').',id,deleted_at,NULL',
             'is_active' => 'in:1,0',
         ];
 

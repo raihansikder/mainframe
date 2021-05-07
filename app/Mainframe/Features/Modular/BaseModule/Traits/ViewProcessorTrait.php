@@ -140,7 +140,7 @@ trait ViewProcessorTrait
      */
     public function addImmutables($immutables = [])
     {
-        $this->immutables = array_unique(array_merge($this->getImmutables(), $immutables));
+        $this->immutables = array_unique(array_merge($this->immutables, $immutables));
 
         return $this;
     }
@@ -305,12 +305,32 @@ trait ViewProcessorTrait
      * Originally the immutables are passed in view processor from module processor.
      *
      * @return array
+     * @deprecated user immutables();
      */
     public function getImmutables()
     {
-        return $this->immutables ?? [];
+        return $this->immutables();
     }
 
+    /**
+     * Immutables
+     * Get the array of immutable field names.
+     * Originally the immutables are passed in view processor from module processor.
+     *
+     * @return array
+     */
+    public function immutables()
+    {
+        return array_unique($this->immutables);
+    }
+
+    /**
+     * @return bool
+     */
+    public function isCreating()
+    {
+        return isset($this->element) && $this->element->isCreating();
+    }
     /**
      * Check if the element is being edited
      *
@@ -398,6 +418,20 @@ trait ViewProcessorTrait
         }
 
         return false;
+    }
+
+    /**
+     * Show clone button in module form
+     *
+     * @return bool
+     */
+    public function showCloneBtn()
+    {
+        $cloneable = [
+            'settings',
+        ];
+
+        return in_array($this->module->name, $cloneable);
     }
 
 }

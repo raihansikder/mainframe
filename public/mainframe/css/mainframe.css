@@ -1,3 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Karla:400,700|Montserrat:300,400,500,600,700,800|Roboto:400,500,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,400;0,600;1,400&display=swap');
+
 /***********************************************************************
 * Global font settings
 ************************************************************************/
@@ -16,10 +21,43 @@ body, html, .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6,
 
 }
 
-.main-header .logo, .logo, .logo-mini, .logo-lg, .h1, h1, .h2, h2 {
-    font-family: 'Montserrat', 'Roboto', 'Arial', sans-serif;
-!important;
+.main-header .logo, .logo, .logo-mini, .logo-lg, .login-logo, .register-logo, .h1, h1, .h2, h2 {
+    font-family: 'Poppins', 'Roboto', 'Arial', sans-serif;
     font-weight: 100;
+    /*background: rgb(63,94,251);*/
+    /*background: linear-gradient(90deg, rgba(63,94,251,1) 37%, rgba(252,70,107,1) 55%);*/
+    /*-webkit-background-clip: text;*/
+    /*-webkit-text-fill-color: transparent;*/
+}
+
+.login-logo, .register-logo {
+    padding-top: 20px;
+    margin-bottom: 5px;
+    font-weight: 100;
+}
+
+.login-box, .login-box-body, .register-box-body {
+    background-color: white;
+}
+
+.btn {
+    transition: all ease-in-out .25s;
+    border: 0;
+}
+
+.login-page {
+    background-image: url('../images/login-bg1.jpg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-color: #ffffff;
+}
+
+.login-page input {
+    font-size: 18px;
+}
+
+.login-box-body button.login {
+    font-size: 18px;
 }
 
 code {
@@ -308,26 +346,19 @@ div.form-control {
 }
 
 .select2-container-multi .select2-choices .select2-search-choice {
-    line-height: 13px;
-    border: 0;
-}
-
-.select2-container-multi .select2-choices {
-    border: 1px solid #e3e3e3;
-}
-
-.select2-container-multi .select2-choices {
+    line-height: 16px;
     background-image: none;
     border: 0;
 }
 
-.select2-container-multi .select2-choices .select2-search-choice{
+.select2-container-multi .select2-choices {
+    padding-top: 3px;
     background-image: none;
+    border: 0;
 }
 
 #tab_advanced .select2-container-multi .select2-choices .select2-search-choice {
     width: 100%;
-
 }
 
 .main-header {
@@ -336,6 +367,7 @@ div.form-control {
 
 .skin-blue-light .treeview-menu > li > a {
     color: #444444;
+    font-size: inherit;
 }
 
 .logo, .skin-blue-light .main-header .navbar, .navbar > a, .navbar a:hover {
@@ -353,36 +385,6 @@ div.form-control {
     color: #333;
 }
 
-.login-logo, .register-logo {
-    font-family: 'Montserrat', sans-serif;
-    padding-top: 20px;
-    margin-bottom: 5px;
-    font-weight: 100;
-}
-
-.login-box, .login-box-body, .register-box-body {
-    background-color: white;
-}
-
-.btn {
-    transition: all ease-in-out .25s;
-    border: 0;
-}
-
-.login-page {
-    background-image: url('../images/login-bg1.jpg');
-    background-repeat: no-repeat;
-    background-size: 100%;
-    background-color: #ffffff;
-}
-
-.login-page input {
-    font-size: 18px;
-}
-
-.login-box-body button.login {
-    font-size: 18px;
-}
 /* manage border*/
 .select2-drop, .select2-drop.select2-drop-above,
 .select2-container.select2-drop-above .select2-choice,
@@ -500,6 +502,14 @@ pre.sf-dump, pre.sf-dump .sf-dump-default {
     text-decoration: underline;
 }
 
+.callout {
+    border-radius: 3px;
+    margin: 0 0 20px 0;
+    padding: 15px 30px 15px 15px;
+    /*border-left: 5px solid #eee; */
+    border-left: 0;
+}
+
 .modal-header {
     border-bottom: 0;
 }
@@ -533,13 +543,7 @@ a i {
     background: transparent;
 }
 
-.callout {
-    border-radius: 3px;
-    margin: 0 0 20px 0;
-    padding: 15px 30px 15px 15px;
-    /*border-left: 5px solid #eee; */
-    border-left: 0;
-}
+
 .ajax-file-upload-statusbar {
     border: 0px solid lightgray;
     width: 420px;
