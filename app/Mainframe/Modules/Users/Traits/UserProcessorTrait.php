@@ -165,7 +165,7 @@ trait UserProcessorTrait
     public function userMustHaveOneGroup()
     {
         $user = $this->element;
-        if (!count($user->group_ids) || !isset($user->group_ids)) {
+        if (!is_array($user->group_ids) || !count($user->group_ids)) {
             $this->fieldError('group_ids', "User must have one group selected");
         }
 

@@ -155,7 +155,7 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
      * Constants
      */
     public const PASSWORD_VALIDATION_RULE = 'required|confirmed|min:6|regex:/[a-zA-Z]/|regex:/[0-9]/';
-    public const GROUP_SUPERADMIN         = 1;
+    public const SUPERADMIN_GROUP_ID         = 1;
 
     /*
     |--------------------------------------------------------------------------
