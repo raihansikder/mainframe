@@ -2,23 +2,28 @@
 
 namespace App\Mainframe\Http\Controllers\Auth;
 
-use App\User;
-use Validator;
 use App\Group;
+use App\Tenant;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use App\Tenant;
+use Validator;
 
 class RegisterTenantController extends RegisterController
 {
 
     /** @var Tenant */
     public $tenant;
-    /** @var User */
-    public $user;
 
     /** @var string */
     protected $form = 'mainframe.auth.register-tenant';
+
+    /**
+     * If not group is specified then user will be registered to this default group;
+     *
+     * @var string
+     */
+    protected $defaultGroupName = 'tenant-admin';
 
     /**
      * Show the application registration form.
@@ -41,14 +46,12 @@ class RegisterTenantController extends RegisterController
 
         $this->attemptRegistration();
 
-        request()->merge(['redirect_success' => route('login')]);
-        $this->response()->redirectTo = $this->resolveRedirectTo();
-
-        if ($this->expectsJson()) {
-            return $this->load()->json();
+        $this->redirectTo = route('login');
+        if (!$this->user) { // Redirect to register page if failed
+            $this->redirectTo = route('register.tenant');
         }
 
-        return $this->redirect();
+        return $this->load($this->user)->dispatch();
 
     }
 
@@ -69,14 +72,14 @@ class RegisterTenantController extends RegisterController
         ]);
 
         if ($validator->fails()) {
-            $this->response()->setValidator($validator)->failValidation();
+            $this->setValidator($validator);
 
             return $this;
         }
 
         // Validation success. Now create tenant
         $this->tenant = $this->createTenant();
-        if (! $this->tenant) {
+        if (!$this->tenant) {
             $this->fail('Tenant creation failed');
 
             return $this;
@@ -84,7 +87,7 @@ class RegisterTenantController extends RegisterController
 
         // Create user
         $this->user = $this->createUser();
-        if (! $this->user) {
+        if (!$this->user) {
             $this->fail('User creation failed');
             Tenant::where('id', $this->tenant->id)->forceDelete();
 
@@ -93,6 +96,8 @@ class RegisterTenantController extends RegisterController
 
         $this->success('Verify your email and log in.');
         $this->registered(request(), $this->user);
+
+        // $this->user->update(['tenant_id' => $this->tenant->id]);
 
         return $this;
 
@@ -118,13 +123,15 @@ class RegisterTenantController extends RegisterController
     protected function createUser()
     {
         return User::create([
-            'tenant_id' => $this->tenant->id,
             'first_name' => request('first_name'),
             'last_name' => request('last_name'),
             'name' => request('first_name').' '.request('last_name'),
             'email' => request('email'),
             'password' => Hash::make(request('password')),
             'group_ids' => [(string) Group::tenantAdmin()->id],
+            'is_active' => 1,
+            'tenant_id' => $this->tenant->id,
+            'gender'=>'Male',
         ]);
     }
 
