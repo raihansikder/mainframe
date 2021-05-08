@@ -42,7 +42,9 @@ Route::get('logout', 'Auth\LoginController@logout')->name('get.logout');
 |--------------------------------------------------------------------------
 |
 */
-
+// Tenant Registration Routes...
+Route::get('register-tenant', 'Auth\RegisterTenantController@showRegistrationForm')->name('register.tenant');
+Route::post('register-tenant', 'Auth\RegisterTenantController@register');
 // Tenant Registration Routes...
 // Route::get('reseller/register', 'Auth\RegisterResellerController@showRegistrationForm')->name('register.reseller');
 // Route::post('reseller/register', 'Auth\RegisterResellerController@register');
