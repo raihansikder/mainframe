@@ -68,13 +68,7 @@ table.dataTable td {
     color: #000;
 }
 
-table.dataTable td a {
-    color: #125799;
-}
 
-table.dataTable td a:hover {
-    text-decoration: underline;
-}
 
 table.dataTable thead .sorting::after, table.dataTable thead .sorting_asc::after, table.dataTable thead .sorting_desc::after {
     opacity: 1;
@@ -87,11 +81,11 @@ table.dataTable thead .sorting::after {
 }
 
 .content-header a {
-    color: #35b5ff;
+    color: #fc466b;
 }
 
 .pagination > li > a, .pagination > li > span {
-    padding: 0px 8px;
+    padding: 0 8px;
 }
 
 .pagination > .active > a, .pagination > .active > a:focus, .pagination > .active > a:hover, .pagination > .active > span, .pagination > .active > span:focus, .pagination > .active > span:hover {

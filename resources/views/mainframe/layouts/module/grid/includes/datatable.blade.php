@@ -34,6 +34,7 @@ $ajaxUrl = $datatable->ajaxUrl();
             columns: [ {!! $columnsJson !!} ],
             processing: true,
             serverSide: true,
+            pageLength: {{$datatable->pageLength()}},
             "order": [[0, 'desc']]
         }).fnSetFilteringDelay(2000);
     </script>

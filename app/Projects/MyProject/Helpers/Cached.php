@@ -14,14 +14,4 @@ class Cached extends \App\Mainframe\Helpers\Cached
      * @return mixed
      * @throws \Exception
      */
-    public function loggedUserGroupName($seconds = null)
-    {
-        // $seconds = $seconds ?? timer('long');
-        return \Cache::remember(kebab_case(__FUNCTION__), $seconds, function () {
-            return ucfirst(user()->group->title);
-        });
-    }
-
-
-
 }

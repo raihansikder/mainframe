@@ -47,6 +47,8 @@ class Datatable
      */
     public $ajaxUrl;
 
+    public $pageLength = 50;
+
     /**
      * Constructor for this class is very important as it boots up necessary features of
      * a module. First of all, it load module related meta information, then based
@@ -119,6 +121,16 @@ class Datatable
 
         // Get custom data table URL
         return $url.'?'.parse_url(\URL::full(), PHP_URL_QUERY);
+    }
+
+    /**
+     * Datatable page length
+     *
+     * @return int
+     */
+    public function pageLength()
+    {
+        return $this->pageLength ?? 50;
     }
 
 }

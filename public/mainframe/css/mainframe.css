@@ -30,6 +30,17 @@ body, html, .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6,
     /*-webkit-text-fill-color: transparent;*/
 }
 
+a, a:hover {
+    color: #001fbd;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+.skin-blue-light .main-header .logo:hover{
+    text-decoration: none;
+}
+
 .login-logo, .register-logo {
     padding-top: 20px;
     margin-bottom: 5px;
@@ -135,6 +146,10 @@ table, tr, th, td, thead, tbody {
 /* reduced margin for module titles to align with breadcrumb*/
 .content-header h2 {
     margin-top: 0;
+}
+
+.content-header a {
+    color: #fc466b;
 }
 
 /* datatable */
@@ -364,7 +379,7 @@ div.form-control {
     width: 100%;
 }
 
-.select2-search-choice-close{
+.select2-search-choice-close {
     width: 17px;
 }
 
@@ -552,7 +567,6 @@ a i {
     background-image: none;
     background: transparent;
 }
-
 
 .ajax-file-upload-statusbar {
     border: 0px solid lightgray;

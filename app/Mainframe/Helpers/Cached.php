@@ -20,7 +20,9 @@ class Cached extends Cacher
     {
         $seconds = $seconds ?? timer('long');
 
-        return \Cache::remember($this->key(__FUNCTION__), $seconds, function () {
+        $key = $this->key(__FUNCTION__).user()->id; // Create unique key for user
+
+        return \Cache::remember($key, $seconds, function () {
             return ucfirst(user()->group->title);
         });
     }

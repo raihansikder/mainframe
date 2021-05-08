@@ -7,13 +7,15 @@ namespace App\Projects\MyProject\Modules\Settings;
 
 use App\Mainframe\Modules\Settings\Traits\SettingDatatableTrait;
 use App\Projects\MyProject\Features\Datatable\ModuleDatatable;
-use DB;
 
 class SettingDatatable extends ModuleDatatable
 {
 
     use SettingDatatableTrait;
+
     // public $rawColumns = ['id', 'name', 'is_active'];
+
+    public $pageLength = 25;
 
     // /**
     //  * Define Query Source

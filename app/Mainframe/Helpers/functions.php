@@ -117,6 +117,17 @@ function user($id = null)
 }
 
 /**
+ * Alias function for user
+ *
+ * @param  null  $id
+ * @return \App\User|\Illuminate\Contracts\Auth\Authenticatable
+ */
+function logged($id = null)
+{
+    return user($id);
+}
+
+/**
  * Get bearer user
  *
  * @return \Illuminate\Contracts\Auth\Authenticatable
@@ -174,20 +185,21 @@ function setting($name)
 }
 
 /**
- * @param $key kebab-case-key-name
+ * @param $key  kebab-case-key-name
  * @param  null  $seconds
  * @return mixed
  */
-function cached($key, $seconds = null){
+function cached($key, $seconds = null)
+{
 
     $cached = new Cached();
     $cached->key = $key;
     $function = lcfirst(camel_case($key)); //camelCaseFunction
 
-
-    if(isset($seconds) && $seconds <1){
+    if (isset($seconds) && $seconds < 1) {
         Cache::forget($key);
     }
+
     return $cached->$function($seconds);
 }
 

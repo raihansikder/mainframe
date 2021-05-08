@@ -1,9 +1,9 @@
+<!DOCTYPE html>
 <?php
 /**
  * @var \App\Mainframe\Features\Core\ViewProcessor $view
  */
 ?>
-        <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
@@ -24,19 +24,17 @@
 
 <div id="root" class="wrapper">
     <header class="main-header">
-        <!-- Logo -->
         <a href="{{route('home')}}" class="logo">
-            {{--            <span class="logo-mini"><img style="width: 65%" src="{{asset("letsbab/images/mini-logo.png")}}" alt="{{setting('app-name')}}"/></span>--}}
-            {{--            <span class="lb-font logo-lg"><img style="width: 50%" src="{{asset("letsbab/images/letsbab-logo-white.png")}}"--}}
-            {{--                                               alt="{{setting('app-name')}}"/></span>--}}
 
-            {{--<!-- mini logo for sidebar mini 50x50 pixels -->--}}
-            {{--<img style="height: 60%" src="{{asset("letsbab/images/logo.png")}}" alt="{{setting('app-name')}}"--}}
-            {{--title="{{setting('app-name')}}"/>--}}
-            {{--<span class="logo-mini">{{setting('app-name')}}</span>--}}
-            {{--<!-- logo for regular state and mobile devices -->--}}
-            {{--<span class="logo-lg">{{setting('app-name')}}</span>--}}
-            {{ setting('app-name') }}
+            <span class="logo-mini">
+                {{-- <img style="width: 80%" src="{{asset("projects/vscript/images/logo-mini.png")}}" alt="{{setting('app-name')}}"/>--}}
+                 <span class="logo-lg">{{substr(setting('app-name'),0,1)}}</span>
+            </span>
+            <span class="logo-lg">
+                 {{-- <img style="width: 50%" src="{{asset("projects/vscript/images/logo-large.png")}}" alt="{{setting('app-name')}}"/>--}}
+                 <span class="logo-lg">{{setting('app-name')}}</span>
+             </span>
+            <span class="logo-lg">{{setting('app-name')}}</span>
         </a>
 
         <nav class="navbar navbar-static-top">
