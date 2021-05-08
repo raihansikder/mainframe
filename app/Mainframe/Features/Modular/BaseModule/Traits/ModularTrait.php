@@ -907,4 +907,35 @@ trait ModularTrait
     // {
     //     return $this->hasMany(Comment::class, 'element_id')->where('module_id', $this->module()->id);
     // }
+
+    /**
+     * For multi-tenancy add a sequence number.
+     *
+     * @return int|mixed|void|null
+     */
+    public function putTenantSerial()
+    {
+        if (!$this->tenant_id) {
+            return;
+        }
+        if ($this->tenant_sl) {
+            return;
+        }
+
+        $last = DB::table($this->getTable())
+            ->where('id', '!=', $this->id)
+            ->where('tenant_id', $this->tenant_id)
+            ->latest()->first(['tenant_sl']);
+
+        $sl = 1;
+        if ($last && $last->tenant_sl) {
+            $sl += $last->tenant_sl;
+        }
+
+        $count = DB::table($this->getTable())->where('id', $this->id)
+            ->update(['tenant_sl' => $sl]);
+
+        return $count ? $sl : null;
+
+    }
 }
