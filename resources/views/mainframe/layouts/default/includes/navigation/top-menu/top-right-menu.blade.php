@@ -1,7 +1,7 @@
 @if(user())
     <li class="dropdown user user-menu">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <span class="hidden-xs">{{user()->email}}</span>
+            <span class="hidden-xs">{{user()->email}}</span> <span class="badge bg-black"> {{cached('logged-user-group-name')}}</span>
         </a>
         <ul class="dropdown-menu">
             <li class="user-footer">

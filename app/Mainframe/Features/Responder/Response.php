@@ -568,7 +568,7 @@ class Response
      */
     public function failValidation($message = null)
     {
-        $this->message = $message ?: $this->message ?: 'Validation failed';
+        $this->message = $message ?: $this->message ?: '';
         $this->code = Response::HTTP_UNPROCESSABLE_ENTITY;
         $this->fail();
 

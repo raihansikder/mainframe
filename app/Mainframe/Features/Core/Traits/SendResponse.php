@@ -242,7 +242,7 @@ trait SendResponse
      * @param  string  $message
      * @return \App\Mainframe\Features\Responder\Response|mixed
      */
-    public function failValidation($message = 'Validation failed')
+    public function failValidation($message = '')
     {
         return $this->response()->failValidation($message);
     }

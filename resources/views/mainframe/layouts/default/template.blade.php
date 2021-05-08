@@ -10,7 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>
         @section('head-title')
-            {{setting('app-name')}} | {{isset($module) ? $module->title: ''}}  {{isset($element) ? $element->id : ''}}
+            {{config('app.name')}} | {{isset($module) ? $module->title: ''}}  {{isset($element) ? $element->id : ''}}
         @show
     </title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -27,14 +27,14 @@
         <a href="{{route('home')}}" class="logo">
 
             <span class="logo-mini">
-                {{-- <img style="width: 80%" src="{{asset("projects/vscript/images/logo-mini.png")}}" alt="{{setting('app-name')}}"/>--}}
-                 <span class="logo-lg">{{substr(setting('app-name'),0,1)}}</span>
+                {{-- <img style="width: 80%" src="{{asset("projects/vscript/images/logo-mini.png")}}" alt="{{config('app.name')}}"/>--}}
+                 <span class="logo-lg">{{substr(config('app.name'),0,1)}}</span>
             </span>
             <span class="logo-lg">
-                 {{-- <img style="width: 50%" src="{{asset("projects/vscript/images/logo-large.png")}}" alt="{{setting('app-name')}}"/>--}}
-                 <span class="logo-lg">{{setting('app-name')}}</span>
+                 {{-- <img style="width: 50%" src="{{asset("projects/vscript/images/logo-large.png")}}" alt="{{config('app.name')}}"/>--}}
+                 <span class="logo-lg">{{config('app.name')}}</span>
              </span>
-            <span class="logo-lg">{{setting('app-name')}}</span>
+            <span class="logo-lg">{{config('app.name')}}</span>
         </a>
 
         <nav class="navbar navbar-static-top">
