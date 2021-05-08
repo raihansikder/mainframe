@@ -9,7 +9,7 @@ $moduleGroups = Mf::moduleGroups();
 | Common routes for all modules
 |--------------------------------------------------------------------------
 */
-Route::middleware(['auth', 'verified'])->group(function () use ($modules, $moduleGroups) {
+Route::middleware(['auth', 'verified', 'tenant'])->group(function () use ($modules, $moduleGroups) {
 
     foreach ($modules as $module) {
         $path = $module->route_path;

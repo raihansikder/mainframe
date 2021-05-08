@@ -7,15 +7,11 @@ use App\Projects\MyProject\Http\Controllers\DatatableController;
 use App\Projects\MyProject\Http\Controllers\ReportController;
 use App\Projects\MyProject\Modules\Uploads\UploadController;
 
-/*
-|--------------------------------------------------------------------------
-| Project web routes
-|--------------------------------------------------------------------------
-*/
-
 $modules = Mf::modules();
 $moduleGroups = Mf::moduleGroups();
-Route::middleware(['auth', 'verified'])->group(function () use ($modules, $moduleGroups) {
+$middlewares = ['auth', 'verified', 'tenant'];
+
+Route::middleware($middlewares)->group(function () use ($modules, $moduleGroups) {
 
     Route::get('/', 'HomeController@index')->name('home');
 

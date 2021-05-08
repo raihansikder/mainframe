@@ -131,7 +131,6 @@ class RegisterTenantController extends RegisterController
             'group_ids' => [(string) Group::tenantAdmin()->id],
             'is_active' => 1,
             'tenant_id' => $this->tenant->id,
-            'gender'=>'Male',
         ]);
     }
 

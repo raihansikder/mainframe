@@ -12,7 +12,7 @@ $modules = Mf::modules();
 # Path root/api/1.0/core
 $version = '1.0';
 $namePrefix = 'api.'.$version.'.core';
-$middlewares = ['request.json', 'x-auth-token'];
+$middlewares = ['request.json', 'x-auth-token','tenant'];
 
 // Note: 'core' is added to the prefix to isolate mainframe native APIs
 Route::prefix("core/{$version}")->middleware($middlewares)->group(function () use ($modules, $namePrefix) {

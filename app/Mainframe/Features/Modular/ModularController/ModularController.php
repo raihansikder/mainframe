@@ -41,7 +41,6 @@ class ModularController extends BaseController
     {
         parent::__construct();
 
-        $this->middleware('tenant');
         // Load
         $this->module = Module::byName($this->moduleName);
         $this->model = $this->module->modelInstance();

@@ -42,8 +42,6 @@ class BaseController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('tenant');
-
         $this->user = user();
         $this->view = new ViewProcessor();
         $this->tenant = $this->user->tenant; // For multi-tenancy

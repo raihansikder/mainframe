@@ -12,7 +12,7 @@ $modules = Mf::modules();
 
 $version = '1.0'; // Path to create url : root/api/1.0
 $namePrefix = 'api.'.$version; // Common name prefix
-$middlewares = ['request.json', 'x-auth-token'];
+$middlewares = ['request.json', 'x-auth-token','tenant'];
 
 Route::prefix($version)->middleware($middlewares)->group(function () use ($modules, $namePrefix) {
 

@@ -16,7 +16,6 @@ class ApiController extends BaseController
     {
         parent::__construct();
 
-        $this->middleware('tenant'); // Commonly check tenant context for all API call
         $this->user->refresh(); // Useful for bearer because token may get updated.
         $this->injectUserIdentityInRequest();
 
