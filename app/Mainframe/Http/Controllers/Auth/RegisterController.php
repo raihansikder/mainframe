@@ -145,7 +145,7 @@ class RegisterController extends BaseController
         ]);
 
         if ($validator->fails()) {
-            $this->setValidator($validator);
+            $this->mergeValidatorErrors($validator);
 
             return $this;
         }
