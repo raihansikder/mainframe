@@ -64,7 +64,7 @@ return [
             'app/Mainframe/routes/web.php',
         ],
         'api' => [
-            // 'app/Mainframe/routes/api.php',
+            'app/Mainframe/routes/api.php',
         ],
     ],
 
