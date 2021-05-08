@@ -2,13 +2,13 @@
 
 namespace App\Projects\MyProject\Http\Controllers\Auth;
 
-use App\Mainframe\Http\Controllers\Auth\RegisterController as MfRegisterController;
+use App\Mainframe\Http\Controllers\Auth\RegisterController as MainframeRegisterController;
+use App\Mainframe\Providers\RouteServiceProvider;
 use App\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use App\Mainframe\Providers\RouteServiceProvider;
 
-class RegisterController extends MfRegisterController
+class RegisterController extends MainframeRegisterController
 {
 
     /**
