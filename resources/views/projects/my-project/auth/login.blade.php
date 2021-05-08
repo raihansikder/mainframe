@@ -45,13 +45,10 @@
                     </div>
                     <div class="clearfix"></div>
                     <a class="btn btn-default btn-block" target="_blank"
-                       {{--href="{{route('register.vendor')}}">{{ __('Vendor Registration') }}--}}
-                       href="https://mphgroup.uk/become-a-vendor">{{ __('Vendor Registration') }}
+
+                       href="{{route('register.tenant')}}">{{ __('Registration Business') }}
                     </a>
-                    <a class="btn btn-default btn-block" target="_blank"
-                       {{--href="{{route('register.reseller')}}">{{ __('Partner Registration') }}--}}
-                       href="https://mphgroup.uk/become-a-partner">{{ __('Partner Registration') }}
-                    </a>
+
                 </div>
             </div>
         </form>
