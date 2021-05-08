@@ -20,23 +20,24 @@
 
 Route::get('test', function () {
 
-    // dd(\App\Content::byKey('sample-content')->part('title'));
-    //
-    // dd(content('sample-content','footer'));
-    // $contents = (new SampleContent());
-    // dd($contents->get('footer'));
-    //
-    // dd(\App\Upload::find(4)->uploadable); //Test Alias
+   // return cached('logged-user-group-name');
+    $storage = \Cache::getStore(); // will return instance of FileStore
+    $filesystem = $storage->getFilesystem(); // will return instance of Filesystem
+    $dir = (\Cache::getDirectory());
+    $keys = [];
+    foreach ($filesystem->allFiles($dir) as $file1) {
 
-    // $user = \App\Projects\MyProject\Modules\Users\User::find(999);
-    // $user->uploads()->create([
-    //     'module_id' => 4,
-    //     'path' => '/files/w9FWgtaR_istockphoto-1070106162-612x612.jpg',
-    // ]);
+        if (is_dir($file1->getPath())) {
 
-    \App\Projects\MyProject\Modules\Uploads\Upload::find(18)->update([
-        'module_id' => 4,
-        'path' => 'Update'.randomString(),
-    ]);
+            foreach ($filesystem->allFiles($file1->getPath()) as $file2) {
+                $keys = array_merge($keys, [$file2->getRealpath() => unserialize(substr(\File::get($file2->getRealpath()), 10))]);
+            }
+        }
+        else {
 
-})->name('test')->middleware(['superuser']);
+        }
+    }
+    printArray($keys);
+   return Cached::value('logged-user-group-name');
+
+})->name('test');

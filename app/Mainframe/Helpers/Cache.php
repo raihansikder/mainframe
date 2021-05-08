@@ -4,6 +4,12 @@ namespace App\Mainframe\Helpers;
 
 use DB;
 
+/**
+ * // Todo: this is part of old implementation and needs to be removed.
+ * Class Cache
+ *
+ * @package App\Mainframe\Helpers
+ */
 class Cache extends \Illuminate\Support\Facades\Cache
 {
 
