@@ -37,7 +37,7 @@ a:hover {
     text-decoration: underline;
 }
 
-.skin-blue-light .main-header .logo:hover{
+.skin-blue-light .main-header .logo:hover {
     text-decoration: none;
 }
 
@@ -576,4 +576,22 @@ a i {
     -webkit-border-radius: 4px;
     border-radius: 4px;
     padding: 0;
+}
+
+.text-smart-blue {
+    color: rgb(63, 94, 251);
+}
+
+.text-smart-red {
+    color: rgb(252, 70, 107);
+}
+
+.bg-smart-blue {
+    background-color: rgb(63, 94, 251);
+    color: white;
+}
+
+.bg-smart-red {
+    background-color: rgb(252, 70, 107);
+    color: white;
 }

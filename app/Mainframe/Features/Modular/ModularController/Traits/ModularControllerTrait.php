@@ -215,6 +215,8 @@ trait ModularControllerTrait
         if (!$this->isValid()) {
             $this->redirectTo = route($this->moduleName.'.create');
             request()->merge($this->element->toArray());
+        }else{
+            $this->redirectTo = $this->element->editUrl();
         }
 
         return $this->load($this->element)->send();
