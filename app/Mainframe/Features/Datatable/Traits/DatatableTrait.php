@@ -41,12 +41,26 @@ trait DatatableTrait
      */
     public function selects()
     {
-        $cols = [];
-        foreach ($this->columns() as $col) {
-            $cols[] = $col[0].' as '.$col[1]; // user.name as name
+        $columns = $this->columns();
+
+        // Note: Modify the $columns as you need.
+
+        return $this->selectQueryString($columns);
+    }
+
+    /**
+     * Create a sql query string
+     * @param $columns
+     * @return array
+     */
+    public function selectQueryString($columns)
+    {
+        $selects = [];
+        foreach ($columns as $col) {
+            $selects[] = $col[0].' as '.$col[1]; // user.name as name
         }
 
-        return $cols;
+        return $selects;
     }
 
     /**

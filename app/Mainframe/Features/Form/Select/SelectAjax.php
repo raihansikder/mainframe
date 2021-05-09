@@ -31,7 +31,7 @@ class SelectAjax extends SelectModel
     public function preload()
     {
         if ($this->value()) {
-            $item = \DB::table($this->table)
+            $item = $this->getQuery()
                 ->select([$this->valueField, $this->nameField])
                 ->where($this->valueField, $this->value())
                 ->first();

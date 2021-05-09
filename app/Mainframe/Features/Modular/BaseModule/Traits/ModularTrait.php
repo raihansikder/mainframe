@@ -932,10 +932,10 @@ trait ModularTrait
             $sl += $last->tenant_sl;
         }
 
-        $count = DB::table($this->getTable())->where('id', $this->id)
-            ->update(['tenant_sl' => $sl]);
+        $this->tenant_sl = $sl;
+        $this->saveQuietly();
 
-        return $count ? $sl : null;
+        return $sl;
 
     }
 }
