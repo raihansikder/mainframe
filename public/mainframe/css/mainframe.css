@@ -164,7 +164,7 @@ table.dataTable thead > tr > th {
 
 /* make textarea same size of ckeditor */
 textarea {
-    height: 271px;
+    height: 100px;
 }
 
 /* made label font weight bold*/
@@ -474,7 +474,7 @@ label {
 textarea.form-control {
     border: 1px #cce3f6 solid;
     padding: 5px;
-    height: 166px;
+    height: 100px;
 }
 
 /* Reduce space from accordion panel bottom*/

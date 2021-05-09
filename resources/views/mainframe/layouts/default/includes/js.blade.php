@@ -40,6 +40,7 @@ $scriptPaths = [
     'mainframe/js/vue.min.js',
     'mainframe/js/axios.min.js',
     'mainframe/js/lodash.js',
+    'mainframe/plugins/autosize/autosize.min.js',
     // // 'mainframe/js/plugins/date/date.js',
     /**
      * Additional JS added by mainframe.

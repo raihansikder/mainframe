@@ -102,4 +102,7 @@ $types = Setting::$types;
 @section('js')
     @parent
     @include('mainframe.modules.settings.form.js')
+    <script>
+        autosize(document.querySelectorAll('textarea'));
+    </script>
 @endsection

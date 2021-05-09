@@ -2,7 +2,7 @@
 
 namespace App\Mainframe\Features\Form\Select;
 
-use App\Mainframe\Helpers\Mf;
+use App\Mainframe\Features\Modular\BaseModule\BaseModule;
 use App\Module;
 use Illuminate\Support\Arr;
 
@@ -11,6 +11,8 @@ class SelectModel extends SelectArray
     public $nameField;
     public $valueField;
     public $table;
+
+    /** @var BaseModule|null */
     public $model;
     public $query;
     public $showInactive;
@@ -31,6 +33,8 @@ class SelectModel extends SelectArray
 
         $this->table = $this->var['table'] ?? null; // Must have table
         $this->model = $this->var['model'] ?? null; // Must have table
+        $this->setModel();
+
         $this->query = $this->var['query'] ?? $this->getQuery(); // DB::table($this->table);
         $this->showInactive = $this->var['show_inactive'] ?? false;
         $this->cache = $this->var['cache'] ?? timer('none');
@@ -38,27 +42,28 @@ class SelectModel extends SelectArray
         $this->options = $this->options();
     }
 
-    public function getQuery()
+    public function setModel()
     {
         if (isset($this->var['model'])) {
             $model = $this->var['model'];
             if (is_string($model)) {
-                return (new $model)::query();
+                $model = new $model;
             }
-
-            return $model;
+            $this->model = $model;
         }
 
         if (isset($this->var['table'])) {
             $table = $this->var['table'];
-            // $model = '\\App\\'.ucfirst(str_singular(camel_case($table)));
-            // if (is_string($model)) {
-            //     return (new $model)::query();
-            // }
-            // return $model;
 
-            return Module::fromTable($table)->modelInstance();
+            $this->model = Module::fromTable($table)->modelInstance();
         }
+
+        return $this;
+    }
+
+    public function getQuery()
+    {
+        return $this->model;
     }
 
     /**
@@ -94,7 +99,7 @@ class SelectModel extends SelectArray
      */
     public function inTenantContext()
     {
-        return (user()->ofTenant() && Mf::tableHasTenant($this->table));
+        return user()->ofTenant() && isset($this->model) && $this->model->hasTenantContext();
     }
 
     /**

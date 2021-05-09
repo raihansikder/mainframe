@@ -132,3 +132,8 @@ $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
 
 // init mainframe checkbox with checked_val and unchecked_val
 initCheckbox();
+
+/*---------------------------------
+| Auto resize all text area
+|---------------------------------*/
+autosize(document.querySelectorAll('textarea'));
