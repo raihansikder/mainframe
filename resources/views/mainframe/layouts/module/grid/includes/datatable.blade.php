@@ -13,7 +13,7 @@ $ajaxUrl = $datatable->ajaxUrl();
 $datatableName = $datatable->name();
 ?>
 <div class="">
-    <table id="{{$datatableName}}Grid" class="table module-grid table-condensed {{$datatableName}} dataTable" style="width: 100%">
+    <table id="{{$datatableName}}" class="table module-grid table-condensed {{$datatableName}} dataTable" style="width: 100%">
         <thead class="bg-gray-light">
         <tr>
             @foreach($titles as $title)
@@ -29,13 +29,14 @@ $datatableName = $datatable->name();
 @section('js')
     @parent
     <script type="text/javascript">
-        var {{$datatableName}} = $('#{{$datatableName}}Grid').dataTable({
+        var {{$datatableName}} = $('#{{$datatableName}}').DataTable({
             ajax: "{!! $ajaxUrl !!}",
             columns: [ {!! $columnsJson !!} ],
             processing: true,
             serverSide: true,
             pageLength: {{$datatable->pageLength()}},
-            "order": [[0, 'desc']]
-        }).fnSetFilteringDelay(2000);
+            "order": [[0, 'desc']],
+            searchDelay: 2000
+        });
     </script>
 @endsection
