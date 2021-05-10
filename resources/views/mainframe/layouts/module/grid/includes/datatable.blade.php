@@ -10,10 +10,10 @@ $datatable = $datatable ?? $view->datatable;
 $titles = $datatable->titles();
 $columnsJson = $datatable->columnsJson();
 $ajaxUrl = $datatable->ajaxUrl();
-
+$datatableName = $datatable->name();
 ?>
 <div class="">
-    <table id="{{$datatable->identifier()}}Grid" class="table module-grid table-condensed  dataTable" style="width: 100%">
+    <table id="{{$datatableName}}Grid" class="table module-grid table-condensed {{$datatableName}} dataTable" style="width: 100%">
         <thead class="bg-gray-light">
         <tr>
             @foreach($titles as $title)
@@ -29,7 +29,7 @@ $ajaxUrl = $datatable->ajaxUrl();
 @section('js')
     @parent
     <script type="text/javascript">
-        var table = $('.module-grid').dataTable({
+        var {{$datatableName}} = $('#{{$datatableName}}Grid').dataTable({
             ajax: "{!! $ajaxUrl !!}",
             columns: [ {!! $columnsJson !!} ],
             processing: true,

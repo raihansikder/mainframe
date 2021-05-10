@@ -50,6 +50,7 @@ trait DatatableTrait
 
     /**
      * Create a sql query string
+     *
      * @param $columns
      * @return array
      */
@@ -210,15 +211,24 @@ trait DatatableTrait
     {
 
         if ($this->module) {
-            return $this->module->name;
+            return camel_case($this->module->name.'Dt');
         }
 
         if ($this->table) {
-            return $this->table;
+            return camel_case($this->table.'Dt');
         }
 
-        return class_basename($this);
+        return camel_case(class_basename($this).'Dt');
 
+    }
+
+    /**
+     * The name should be CamelCase
+     * @return string
+     */
+    public function name()
+    {
+        return camel_case($this->identifier());
     }
 
 }

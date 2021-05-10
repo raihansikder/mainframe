@@ -472,7 +472,7 @@ label {
 
 /* Show full border for text-area*/
 textarea.form-control {
-    border: 1px #cce3f6 solid;
+    border: 1px #f0f0f0 solid;
     padding: 5px;
     height: 100px;
 }
@@ -586,12 +586,22 @@ a i {
     color: rgb(252, 70, 107);
 }
 
-.bg-smart-blue {
+.bg-smart-blue, .bg-smart-blue:hover {
     background-color: rgb(63, 94, 251);
     color: white;
 }
 
-.bg-smart-red {
+.bg-smart-red, .bg-smart-red:hover {
     background-color: rgb(252, 70, 107);
     color: white;
+}
+
+[v-cloak] { display: none; }
+
+.left-bar-red {
+    border-left: 5px solid red
+}
+
+.left-smart-red {
+    border-left: rgb(252, 70, 107);
 }
