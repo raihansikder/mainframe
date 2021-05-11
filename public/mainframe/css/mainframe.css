@@ -605,3 +605,8 @@ a i {
 .left-smart-red {
     border-left: rgb(252, 70, 107);
 }
+
+
+.login-page .btn.btn-success, .btn.btn-primary{
+    background-color: rgb(63, 94, 251);
+}

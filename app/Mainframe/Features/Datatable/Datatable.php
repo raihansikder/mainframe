@@ -10,6 +10,9 @@ class Datatable
     use DatatableTrait;
 
     /** @var string */
+    public $name;
+
+    /** @var string */
     public $table;
 
     /** @var Module */

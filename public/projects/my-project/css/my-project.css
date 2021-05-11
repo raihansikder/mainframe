@@ -99,10 +99,6 @@ table.dataTable thead .sorting::after {
     background-size: 100%;
     background-color: #ffffff;
 }
-.login-page .btn.btn-success, .btn.btn-primary {
-    background-color: #ff3333;
-    border-color: #ff3333;
-}
 
 .login-page .btn.btn-success:hover, .btn.btn-primary:hover {
     background-color: #000;

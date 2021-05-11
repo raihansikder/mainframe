@@ -108,14 +108,7 @@ trait DatatableTrait
         return $dt;
     }
 
-    /**
-     * Returns datatable json for the module index page
-     * A route is automatically created for all modules to access this controller function
-     *
-     * @return \Illuminate\Http\JsonResponse
-     * @var \Yajra\DataTables\DataTables $dt
-     */
-    public function json()
+    public function process()
     {
         $dt = datatables($this->query());
 
@@ -129,6 +122,20 @@ trait DatatableTrait
         if (count($this->blackList)) {
             $dt->blacklist($this->blackList);
         }
+
+        return $dt;
+    }
+
+    /**
+     * Returns datatable json for the module index page
+     * A route is automatically created for all modules to access this controller function
+     *
+     * @return \Illuminate\Http\JsonResponse
+     * @var \Yajra\DataTables\DataTables $dt
+     */
+    public function json()
+    {
+        $dt = $this->process();
 
         return $this->modify($dt)->toJson();
     }
@@ -224,10 +231,15 @@ trait DatatableTrait
 
     /**
      * The name should be CamelCase
+     *
      * @return string
      */
     public function name()
     {
+        if ($this->name) {
+            return camel_case($this->name);
+        }
+
         return camel_case($this->identifier());
     }
 
