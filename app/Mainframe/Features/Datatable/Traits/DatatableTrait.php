@@ -110,7 +110,7 @@ trait DatatableTrait
 
     public function process()
     {
-        $dt = datatables($this->query());
+        $dt = datatables($this->query()->take($this->pageLength()));
 
         // HTML Output
         $dt->rawColumns($this->rawColumns);
