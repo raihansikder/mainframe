@@ -25,12 +25,19 @@ $datatableName = $datatable->name();
     </table>
 </div>
 
-{{-- Section: JS --}}
+{{--
+Section: Data table JS
+   We are using and older version of datatable here that instantiates
+   using 'dataTable'. The newer version can be initialized using
+   'Datatable' (Capital D). The newer version should be used for
+   custom datatables.
+   For this olderversion we are using fnSetFilteringDelay(2000) for
+   the inital search delay.
+--}}
 @section('js')
     @parent
     <script type="text/javascript">
         var {{$datatableName}} =
-        {{-- $('#{{$datatableName}}').dataTable({--}}
         $('#{{$datatableName}}').dataTable({
             ajax: "{!! $ajaxUrl !!}",
             columns: [ {!! $columnsJson !!} ],
@@ -38,7 +45,6 @@ $datatableName = $datatable->name();
             serverSide: true,
             pageLength: {{$datatable->pageLength()}},
             "order": [[0, 'desc']],
-            searchDelay: 2000
         }).fnSetFilteringDelay(2000);
     </script>
 @endsection
