@@ -38,7 +38,7 @@ $input = new \App\Mainframe\Features\Form\Text\Tags($var);
 
         {{-- input --}}
         @if($input->isEditable)
-            {{ Form::textarea($input->name, $input->value(), $input->params) }}
+            {{ Form::text($input->name, $input->value(), $input->params) }}
         @else
             @include('mainframe.form.includes.read-only-view')
         @endif
@@ -53,21 +53,14 @@ $input = new \App\Mainframe\Features\Form\Text\Tags($var);
 @section('js')
     @parent
     {{-- Instantiate the ckeditor if the class 'ckeditor' is added in textarea--}}
-
     @if(!$input->isHidden)
         <script>
-            $("textarea[name={{$input->name}}]").select2({
+            $("input[name={{$input->name}}]").select2({
                 tags: ['{!!$input->tags()!!}'],
                 tokenSeparators: ['{!! $input->separator !!}']
             });
         </script>
     @endif
-    .
-
-
-
-
-
 @endsection
 
 {{-- Unset the local variable used in this view. --}}
