@@ -625,6 +625,7 @@ trait ModularTrait
         $this->created_at = $this->created_at ?? now();
         $this->updated_by = $this->updated_by ?? user()->id;
         $this->updated_at = now();
+        $this->autoFillTenant();
     }
 
     /**
@@ -633,7 +634,7 @@ trait ModularTrait
      */
     public function autoFillTenant()
     {
-        if (user()->ofTenant() && $this->hasTenantContext() && $this->isTenantCompatible()) {
+        if ($this->hasTenantContext()) {
             $this->tenant_id = $this->tenant_id ?: user()->tenant_id;
             // $this->project_id = $this->project_id ?: $this->tenant->project_id; // Excluded project_id injection because settings table had no project_id
         }

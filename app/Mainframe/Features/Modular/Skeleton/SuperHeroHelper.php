@@ -2,6 +2,7 @@
 
 namespace App\Mainframe\Modules\SuperHeroes;
 
+/** @mixin SuperHero */
 trait SuperHeroHelper
 {
     /*
