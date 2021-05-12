@@ -128,6 +128,11 @@ class Upload extends BaseModule
         self::TYPE_LOGO,
     ];
 
+    public static $typesWithSingleImage = [
+        self::TYPE_PROFILE_PIC,
+        self::TYPE_LOGO,
+    ];
+
     /*
     |--------------------------------------------------------------------------
     | Boot method and model events.
@@ -148,7 +153,7 @@ class Upload extends BaseModule
         // static::created(function (Upload $element) { });
         // static::updated(function (Upload $element) { });
         static::saved(function (Upload $element) {
-            if (in_array($element->type, ['profile-pic', 'logo'])) {
+            if (in_array($element->type, Upload::$typesWithSingleImage)) {
                 $element->deletePreviousOfSameType();
             }
         });

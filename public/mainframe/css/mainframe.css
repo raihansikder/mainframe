@@ -591,6 +591,9 @@ a i {
     color: white;
 }
 
+.bg-white {
+    background-color: white;
+}
 .bg-smart-red, .bg-smart-red:hover {
     background-color: rgb(252, 70, 107);
     color: white;
@@ -608,6 +611,6 @@ a i {
     padding-left: 10px;
 }
 
-.login-page .btn.btn-success, .btn.btn-primary{
+.login-page .btn.btn-success, .btn.btn-primary {
     background-color: rgb(63, 94, 251);
 }

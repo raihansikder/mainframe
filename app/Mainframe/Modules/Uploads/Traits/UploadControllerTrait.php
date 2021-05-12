@@ -122,7 +122,7 @@ trait UploadControllerTrait
         // public/files/{tenant_id}/2021/12/25
         $dir = date('Y').'/'.date('m').'/'.date('d');
 
-        if ($uploadable = optional($this->element->uploadable)->tenant_id) {
+        if ($uploadable = $this->element->uploadable) {
             $dir = $uploadable->tenant_id."/{$dir}";
         } elseif ($this->tenant) {
             $dir = $this->tenant->id."/{$dir}";

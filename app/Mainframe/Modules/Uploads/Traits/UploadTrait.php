@@ -176,6 +176,7 @@ trait UploadTrait
                 ->where('type', $this->type)
                 ->where('id', '!=', $this->id)
                 ->delete();
+
         }
     }
 }
