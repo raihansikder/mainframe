@@ -97,5 +97,6 @@ $types = \App\Setting::$types;
     @include('projects.my-project.modules.settings.form.js')
     <script>
         autosize(document.querySelectorAll('textarea'));
+        // showAlert('test');
     </script>
 @endsection

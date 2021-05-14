@@ -11,7 +11,7 @@ function enableValidation(form_name, successHandlerFunction = false) {
     form.find('input[name=ret]').val('json');
 
     // Instantiate validationEngine
-    form.validationEngine({prettySelect: true, promptPosition: "topLeft", scroll: true,});
+    form.validationEngine({prettySelect: true, promptPosition: "topLeft", scroll: true});
 
     // Run validation on submit button click.
     btn.click(function () {
@@ -33,30 +33,29 @@ function enableValidation(form_name, successHandlerFunction = false) {
             method: "POST",
             url: form.attr('action'),
             data: form.serialize()
-        }).done(function (ret) {
+        }).done(function (response) {
 
-            ret = parseJson(ret); // Just in case of exception
+            response = parseJson(response); // Just in case of exception
             // Reflect validation result
-            if (ret.status === 'fail') { // Show validation error messages on fail.
-                showFieldValidationPrompts(ret, false); // Show validation alert on each field
+            if (response.status === 'fail') { // Show validation error messages on fail.
+                showFieldValidationPrompts(response, false); // Show validation alert on each field
             }
 
             // Load messages in modal and show.
-            loadMsg(ret);
+            loadMsg(response);
             $('#msgModal').modal('show');
 
             // Handle success. Redirect or pass to successHandlerFunction.
-            if (ret.status == 'success') {
+            if (response.status == 'success') {
                 if (successHandlerFunction) {
-                    successHandlerFunction(ret);
-                } else if (ret.hasOwnProperty('redirect') && (ret.redirect !== null && ret.redirect.length > 0)) {
-                    window.location.replace(ret.redirect);
+                    successHandlerFunction(response);
+                } else if (response.hasOwnProperty('redirect') && (response.redirect !== null && response.redirect.length > 0)) {
+                    window.location.replace(response.redirect);
                 }
             }
-        }).error(function (ret, textStatus, errorThrown) { // Gracefully handle 422, 400 error responses
-            showFieldValidationPrompts(ret.responseJSON, false); // Show validation alert on each field
-            loadMsg(ret.responseJSON); //
-            $('#msgModal').modal('show');
+        }).error(function (response, textStatus, errorThrown) { // Gracefully handle 422, 400 error responses
+            console.log(response.responseJSON.message);
+            showAlert(response.responseJSON.message); //
         }).always(function (ret, textStatus, errorThrown) {
             btn.html(btnText).removeClass('disabled'); // Re-enable the save button
         });
@@ -67,13 +66,13 @@ function enableValidation(form_name, successHandlerFunction = false) {
 /**
  * show validation red boxes against each field
  * Fields are targeted based on ID. So they should have the id field that is same as the name field
- * @param ret
+ * @param response
  * @param showAlert
  */
-function showFieldValidationPrompts(ret, showAlert) {
+function showFieldValidationPrompts(response, showAlert) {
     var str = '';
-    if (ret.hasOwnProperty('validation_errors')) {
-        $.each(ret.validation_errors, function (k, v) {
+    if (response.hasOwnProperty('validation_errors')) {
+        $.each(response.validation_errors, function (k, v) {
             str += "\n" + k + ": " + v;
             // $("#label_" + k).validationEngine('showPrompt', v, 'error');
             $("*[id=" + k + "]").validationEngine('showPrompt', v, 'error');
@@ -81,40 +80,55 @@ function showFieldValidationPrompts(ret, showAlert) {
         });
     }
     if (showAlert) {
-        alert(ret.status + " - " + ret.message + "\n" + str);
+        alert(response.status + " - " + response.message + "\n" + str);
     }
 }
 
 /**
  * Show the modal based on standard response
  * @param response
+ * @param timeout milliseconds
  */
-function showMessageModal(response) {
-    loadMsg(response);
+function showResponseModal(response, timeout = null) {
+    loadResponseInModal(response);
     $('#msgModal').modal('show');
+
+    if (timeout) {
+        setTimeout(() => {
+            $('#msgModal').modal('hide');
+        }, timeout);
+    }
+}
+
+/**
+ * Alias function
+ * @param response
+ */
+function loadResponseInModal(response) {
+    return loadMsg(response);
 }
 
 /*
- *  loadMsg clears and loads all new error, message and success note in the  modal that shows just after ajax submit.
+ *  Clears and loads all new error, message and success
+ *  note in the  modal that shows just after ajax submit.
  */
-function loadMsg(ret) {
+function loadMsg(response) {
     $('.ajaxMsg').empty().hide(); // first hide all blocks
 
     var hasError = false;
     var hasSuccess = false;
     var hasMessage = false;
 
-    if (ret.status == 'fail') {
+    if (response.status == 'fail') {
         hasError = true;
-        $('div#msgError').append('<h4 class="text-red">Error - ' + ret.message + '</h4>');
-    } else if (ret.status == 'success') {
+        $('div#msgError').append('<h4 class="text-red">Error - ' + response.message + '</h4>');
+    } else if (response.status == 'success') {
         hasSuccess = true;
-        // $('div#msgSuccess').append('<h4>Success</h4>');
-        $('div#msgSuccess').append('<h4 class="text-green">Success - ' + ret.message + '</h4>');
+        $('div#msgSuccess').append('<h4 class="text-green">Success - ' + response.message + '</h4>');
     }
 
-    if (ret.hasOwnProperty('errors')) {
-        $.each(ret.errors, function (k, v) {
+    if (response.hasOwnProperty('errors')) {
+        $.each(response.errors, function (k, v) {
             if (v.length) {
                 hasError = true;
                 $('div#msgError').append(v + '<br/>');
@@ -122,55 +136,30 @@ function loadMsg(ret) {
         });
     }
 
-    // Get both validation and business error messages from session and append in error msg div
-    // if (ret.hasOwnProperty('validation_errors')) {
-    //     $.each(ret.validation_errors, function (k, v) {
-    //         if (v.length) {
-    //             hasError = true;
-    //             $('div#msgError').append(k + ': ' + v + '<br/>');
-    //         }
-    //     });
-    // }
-
-    // Get success messages from session and append in success msg div
-    // if (ret.hasOwnProperty('session_success')) {
-    //     $.each(ret.session_success, function (k, v) {
-    //         if (v.length) {
-    //             hasSuccess = true;
-    //             $('div#msgSuccess').append(v + '<br/>');
-    //         }
-    //     });
-    // }
-
-
-    // Get success messages from session and append in success msg div
-    // $('div#msgMessage').append('<h4>Message</h4>');
-
-    if (ret.hasOwnProperty('messages')) {
-        $.each(ret.messages, function (k, v) {
+    if (response.hasOwnProperty('messages')) {
+        $.each(response.messages, function (k, v) {
             if (v.length) {
                 hasMessage = true;
                 $('div#msgMessage').append(v + '<br/>');
             }
         });
     }
-    if (ret.hasOwnProperty('warnings')) {
-        $.each(ret.warnings, function (k, v) {
+    if (response.hasOwnProperty('warnings')) {
+        $.each(response.warnings, function (k, v) {
             if (v.length) {
                 hasMessage = true;
                 $('div#msgMessage').append(v + '<br/>');
             }
         });
     }
-    if (ret.hasOwnProperty('debug')) {
-        $.each(ret.debug, function (k, v) {
+    if (response.hasOwnProperty('debug')) {
+        $.each(response.debug, function (k, v) {
             if (v.length) {
                 hasMessage = true;
                 $('div#msgMessage').append(v + '<br/>');
             }
         });
     }
-
 
     //$('div#msgSuccess, div#msgError,div#msgMessage').show();
     if (hasError) $('div#msgError').show()
@@ -180,10 +169,17 @@ function loadMsg(ret) {
 
 /**
  * Show message in modal. Thi is helpful to notify users
- * @param msg
+ * @param  msg string
+ * @param timeout int milliseconds
  */
-function showAlert(msg) {
+function showAlert(msg, timeout = null) {
     $('.ajaxMsg').empty().hide(); // first hide all blocks
     $('div#msgMessage').append(msg).show();
     $('#msgModal').modal('show');
+
+    if (timeout) {
+        setTimeout(() => {
+            $('#msgModal').modal('hide');
+        }, timeout);
+    }
 }
