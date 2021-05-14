@@ -45,9 +45,7 @@ trait UploadControllerTrait
 
         $this->attemptStore();
 
-        if ($this->isValid()) {
-            $this->element->unsetRelations();
-        } else {
+        if (!$this->isValid()) {
             $this->element = null;
         }
 

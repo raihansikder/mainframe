@@ -85,6 +85,15 @@ function showFieldValidationPrompts(ret, showAlert) {
     }
 }
 
+/**
+ * Show the modal based on standard response
+ * @param response
+ */
+function showMessageModal(response) {
+    loadMsg(response);
+    $('#msgModal').modal('show');
+}
+
 /*
  *  loadMsg clears and loads all new error, message and success note in the  modal that shows just after ajax submit.
  */

@@ -5,6 +5,7 @@ namespace App\Mainframe\Modules\Uploads\Traits;
 use App\Mainframe\Features\Modular\BaseModule\BaseModule;
 use App\Upload;
 
+/** @mixin Upload */
 trait UploadTrait
 {
     /**
@@ -121,6 +122,73 @@ trait UploadTrait
         return $this;
     }
 
+    public function fileName()
+    {
+        return basename($this->path);
+    }
+
+    public function fileNameWithoutExt()
+    {
+        return basename($this->path, '.'.$this->ext);
+    }
+
+    public function directory()
+    {
+        $path_parts = pathinfo($this->path);
+
+        return $path_parts['dirname'] ?? null;
+    }
+
+    public function relativePath()
+    {
+        return trim($this->path, '/\\');
+    }
+
+    /**
+     * Rename with full name and extension
+     *
+     * @param  string  $newNameWithExt  some-file.mp3
+     * @return bool
+     */
+    public function rename($newNameWithExt)
+    {
+        $newPath = $this->directory().\Str::start($newNameWithExt, '/');
+        \File::move(trim($this->path, '/\\'), trim($newPath, '/\\'));
+
+        return $this->update(['path' => $newPath]);
+    }
+
+    /**
+     * Rename only name part
+     *
+     * @param  string  $newName  some-file-name-without-ext
+     * @return bool
+     */
+    public function renameName($newName)
+    {
+        $newNameWithExt = $newName.\Str::start($this->ext, '.'); // Add extension
+
+        return $this->rename($newNameWithExt);
+
+    }
+
+    /**
+     * Copy to
+     *
+     * @param $to
+     * @return bool
+     */
+    public function copy($to)
+    {
+        $to = trim($to, '/\\');
+
+        $path_parts = pathinfo($to);
+        $toDirectory = $path_parts['dirname'];
+
+        \File::makeDirectory(public_path().'/'.$toDirectory, 0777, true, true);
+
+        return \File::copy(trim($this->path, '/\\'), $to);
+    }
     /*
     |--------------------------------------------------------------------------
     | Section: Query scopes + Dynamic scopes

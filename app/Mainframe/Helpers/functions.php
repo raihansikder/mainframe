@@ -158,6 +158,15 @@ function modules()
 }
 
 /**
+ * Short hand function ot get module
+ * @param $name
+ * @return \App\Module|mixed
+ */
+function module($name){
+    return \App\Module::byName($name);
+}
+
+/**
  * create uuid
  *
  * @return string|bool

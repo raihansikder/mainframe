@@ -68,7 +68,12 @@ var editor_config_minimal = {
  * @param id
  * @param config
  */
-function initEditor(id, config) {
+function initEditor(id, config = null) {
+
+    if(!config){
+        config = editor_config_basic;
+    }
+
     if ($('textarea#' + id).length) {
         CKEDITOR.replace(id, config);
         // update textarea as soon as something is updated in CKEditor
@@ -77,6 +82,12 @@ function initEditor(id, config) {
         });
     }
 }
+
+function reInitEditor(id, config = null) {
+    CKEDITOR.instances[id].destroy();
+    initEditor(id, config)
+}
+
 
 
 /**
