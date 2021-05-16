@@ -19,6 +19,8 @@ class SuperHeroController extends ModularController
     |--------------------------------------------------------------------------
     */
     protected $moduleName = 'super-heroes';
+    /** @var SuperHero */
+    protected $element;
 
     /*
     |--------------------------------------------------------------------------
@@ -28,6 +30,7 @@ class SuperHeroController extends ModularController
     */
     /**
      * SuperHero Datatable
+     *
      * @return SuperHeroDatatable
      */
     public function datatable()
