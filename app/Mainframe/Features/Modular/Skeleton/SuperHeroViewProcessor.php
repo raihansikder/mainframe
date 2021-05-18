@@ -23,7 +23,7 @@ class SuperHeroViewProcessor extends BaseModuleViewProcessor
     public $element;
 
     // Note: See parent class for available functions
-    // public function immutables() { $this->addImmutables(['your_field']); return $this->immutable; }
+    // public function immutables() { $this->addImmutables(['your_field']); return $this->immutables; }
 
     /*
     |--------------------------------------------------------------------------

@@ -47,16 +47,16 @@ $input = new \App\Mainframe\Features\Form\Checkbox\Checkbox($var);
         //     $var[] = 'disabled';
         // }
         ?>
-        {{ Form::checkbox("checkbox_".$input->name, $input->value(),$input->checkedVal,$input->params) }}
+        {{ Form::checkbox("checkbox_".$input->name, $input->value(),$input->checkedVal,$input->paramsForCheckbox()) }}
 
         {{-- label --}}
         @include('mainframe.form.includes.label')
 
-        {{ Form::hidden($input->name, $input->value(), ['class'=>$input->params['id']]) }}
+        {{ Form::hidden($input->name, $input->value(), $input->paramsForHiddenInput()) }}
 
         {{-- Error --}}
         @include('mainframe.form.includes.show-error')
 
     </div>
 @endif
-<?php unset($input,$var) ?>
+<?php unset($input, $var) ?>

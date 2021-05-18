@@ -12,16 +12,16 @@ class Checkbox extends Input
     /**
      * Checkbox constructor.
      *
-     * @param array $var
-     * @param null $element
+     * @param  array  $var
+     * @param  null  $element
      */
     public function __construct($var = [], $element = null)
     {
         parent::__construct($var, $element);
 
-        $this->type            = 'checkbox';
-        $this->checkedVal      = $this->var['checked_val'] ?? 1;
-        $this->uncheckedVal    = $this->var['unchecked_val'] ?? 0;
+        $this->type = 'checkbox';
+        $this->checkedVal = $this->var['checked_val'] ?? 1;
+        $this->uncheckedVal = $this->var['unchecked_val'] ?? 0;
 
         // Force add form-control class
         $this->params['class'] = $this->var['class'] ?? '';
@@ -34,17 +34,8 @@ class Checkbox extends Input
         }
 
         // Add Id in class
-        $this->params['class'] .= ' spyr-checkbox ';
 
-
-        $this->params = array_merge($this->params,[
-            'data-checkbox-name' => $this->name,
-            'data-checkbox-id'   => $this->id,
-            'data-checked-val'   => $this->checkedVal,
-            'data-unchecked-val' => $this->uncheckedVal
-        ]);
-
-        if (! $this->isEditable) {
+        if (!$this->isEditable) {
             $this->params[] = 'disabled';
         }
     }
@@ -53,11 +44,40 @@ class Checkbox extends Input
     {
         $value = parent::value();
 
-        if (! $value) {
+        if (!$value) {
             return $this->uncheckedVal;
         }
 
         return $value;
+    }
+
+    public function paramsForCheckbox()
+    {
+        $params = $this->params;
+
+        $params['class'] .= ' spyr-checkbox ';
+
+        $params = array_merge($params, [
+            'data-checkbox-name' => $this->name,
+            'data-checkbox-id' => $this->id,
+            'data-checked-val' => $this->checkedVal,
+            'data-unchecked-val' => $this->uncheckedVal,
+        ]);
+        unset($params['v-model']);
+
+        return $params;
+    }
+
+    public function paramsForHiddenInput()
+    {
+        $params = [];
+        $params['class'] = $this->params['id'];
+        if (isset($this->params['v-model'])) {
+            $params['v-model'] = $this->params['v-model'];
+        }
+
+        return $params;
+
     }
 
 }

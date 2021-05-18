@@ -40,7 +40,10 @@ $input = new \App\Mainframe\Features\Form\Select\SelectAjax($var);
 
         {{-- input --}}
         <div class="clearfix"></div>
-        <div class="col-md-10 no-padding">
+        @php
+            $span = $input->isEditable ? '10' : '12'
+        @endphp
+        <div class="col-md-{{$span}} no-padding">
             {{ Form::text($input->name, $input->value(), $input->params) }}
             <input name="preload" type="hidden" value="{{$input->preload}}"/>
         </div>

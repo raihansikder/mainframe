@@ -141,6 +141,7 @@ table, tr, th, td, thead, tbody {
 /* padding of form element*/
 .form-group {
     padding-left: 0;
+    margin-bottom: 10px;
 }
 
 /* reduced margin for module titles to align with breadcrumb*/
