@@ -54,8 +54,9 @@ class SelectModel extends SelectArray
 
         if (isset($this->var['table'])) {
             $table = $this->var['table'];
-
-            $this->model = Module::fromTable($table)->modelInstance();
+            if ($module = Module::fromTable($table)) {
+                $this->model = $module->modelInstance();
+            }
         }
 
         return $this;
