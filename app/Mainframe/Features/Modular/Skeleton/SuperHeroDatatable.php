@@ -40,6 +40,21 @@ class SuperHeroDatatable extends ModuleDatatable
     }
 
     /*---------------------------------
+    | Section: SQL Select query
+    |---------------------------------*/
+    // /**
+    //  * Construct SELECT statement (field1 AS f1, field2 as f2...)
+    //  *
+    //  * @return array
+    //  */
+    // public function selects()
+    // {
+    //     $columns = $this->columns();
+    //     // Note: Modify the $columns as you need.
+    //     return $this->selectQueryString($columns);
+    // }
+
+    /*---------------------------------
     | Section: Filters
     |---------------------------------*/
     // public function filter($query)
