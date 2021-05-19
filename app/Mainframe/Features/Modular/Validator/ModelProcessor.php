@@ -812,13 +812,13 @@ class ModelProcessor
 
         }
 
+        $this->element->saveQuietly(); // Set deleted by field
+
         if (!$this->element->delete()) {
             $this->error('Error: Can not be deleted for some reason.');
 
             return $this;
         }
-
-        $this->element->saveQuietly(); // Set deleted by field
 
         $this->deleted($this->element);
 
