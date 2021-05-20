@@ -6,7 +6,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Str;
 
-class CreateInAppNotificationsTable extends Migration
+class CreateInAppNotificationsTableMf extends Migration
 {
     /**
      * Run the migrations.

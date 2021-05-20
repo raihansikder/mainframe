@@ -315,7 +315,7 @@ div.form-control {
     background-image: none;
     border: 0;
     height: 33px;
-    padding: 6px 0 6px 0
+    padding: 2px 0 6px 0
 }
 
 .select2-container {
@@ -436,7 +436,7 @@ select, .form-control {
 input:read-only, .form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control,
 .select2-container.select2-container-disabled .select2-choice {
     background-color: #fbfbfb;
-    border-color: #f0f0f0;
+    border:inherit;
     padding-left: 10px;
 
 }
