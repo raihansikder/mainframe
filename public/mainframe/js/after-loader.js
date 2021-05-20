@@ -116,8 +116,7 @@ $('.datatable-min-no-pagination').dataTable({
 | Activate select2 for all <select>
 | Not a good idea to activate select
 */
-// $('select').select2(); // Causes issue with vue
-
+$('.select2').select2(); // Causes issue with vue
 
 /*
 |--------------------------------------------------------------------------
