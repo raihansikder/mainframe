@@ -72,8 +72,8 @@ trait RequestProcessorTrait
             return $this;
         }
 
+        $this->element->refresh();
         $this->success('The '.Str::singular($this->module->title).' has been saved');
-
         $this->stored();
         $this->saved();
 
@@ -107,6 +107,7 @@ trait RequestProcessorTrait
         }
 
         // All good! proceed.
+        $this->element->refresh();
         $this->success('The '.Str::singular($this->module->title).' has been updated');
         $this->updated();
         $this->saved();
