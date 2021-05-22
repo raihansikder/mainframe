@@ -161,6 +161,7 @@ table.dataTable {
 
 table.dataTable thead > tr > th {
     font-weight: normal;
+    font-size: 12px;
 }
 
 /* make textarea same size of ckeditor */
