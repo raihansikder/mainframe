@@ -42,6 +42,7 @@ $scriptPaths = [
     'mainframe/js/lodash.js',
     'mainframe/js/voca.min.js',
     'mainframe/plugins/autosize/autosize.min.js',
+    'mainframe/js/mark.js(jquery.mark.min.js),datatables.mark.js',
     // // 'mainframe/js/plugins/date/date.js',
     /**
      * Additional JS added by mainframe.

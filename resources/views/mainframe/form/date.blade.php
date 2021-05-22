@@ -52,10 +52,9 @@ $input->format = config('mainframe.config.date_format'); // Format to show in th
 @endif
 
 @section('js')
-    @parent
     @if(!$input->isHidden)
         <script>
-            $('#{{$input->uid}} #{{$input->params['id'].'_formatted'}}').datepicker(
+            var datepicker_{{$input->params['id']}} = $('#{{$input->uid}} #{{$input->params['id'].'_formatted'}}').datepicker(
                 {
                     format: 'dd-mm-yyyy',
                     autoclose: true,
@@ -88,6 +87,7 @@ $input->format = config('mainframe.config.date_format'); // Format to show in th
             });
         </script>
     @endif
+    @parent
 @stop
 
 <?php unset($input) ?>

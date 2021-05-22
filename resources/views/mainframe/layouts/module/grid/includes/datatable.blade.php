@@ -38,13 +38,16 @@ Section: Data table JS
     @parent
     <script type="text/javascript">
         var {{$datatableName}} =
-        $('#{{$datatableName}}').dataTable({
+        $('#{{$datatableName}}').DataTable({
             ajax: "{!! $ajaxUrl !!}",
             columns: [ {!! $columnsJson !!} ],
             processing: true,
             serverSide: true,
+            searchDelay: 2000,
+            minLength : 3,
             pageLength: {{$datatable->pageLength()}},
             "order": [[0, 'desc']],
-        }).fnSetFilteringDelay(2000);
+            mark: true
+        });
     </script>
 @endsection

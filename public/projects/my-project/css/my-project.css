@@ -14,7 +14,7 @@ body, html, .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6,
     font-weight: normal;
 }
 
-.main-header .logo, .logo, .logo-mini, .logo-lg, .login-logo, .register-logo, .h1, h1, .h2, h2,  .h3, h3, .h4, h4 {
+.main-header .logo, .logo, .logo-mini, .logo-lg, .login-logo, .register-logo, .h1, h1, .h2, h2, .h3, h3, .h4, h4 {
     font-family: 'Poppins', 'Karla', 'Roboto', 'Arial', sans-serif;
 }
 body {
@@ -59,16 +59,14 @@ table.dataTable th {
 }
 
 table.dataTable {
-    margin-top: 15px !important;
+    margin-top: 5px !important;
 }
 
 table.dataTable td {
-    background-color: #f5f5f6;
+    /*background-color: #f5f5f6;*/
     border-color: #fff;
     color: #000;
 }
-
-
 
 table.dataTable thead .sorting::after, table.dataTable thead .sorting_asc::after, table.dataTable thead .sorting_desc::after {
     opacity: 1;
@@ -87,7 +85,6 @@ table.dataTable thead .sorting::after {
 .pagination > li > a, .pagination > li > span {
     padding: 0 8px;
 }
-
 
 .login-page {
     background-image: url(../images/login-bg-1.jpg);
@@ -217,10 +214,6 @@ h3 {
     background-color: #001c3c;
     color: #fff;
     font-weight: 600
-}
-
-.content-header h2 {
-    margin-bottom: 30px;
 }
 
 .btn-group.pull-right .dropdown-menu {

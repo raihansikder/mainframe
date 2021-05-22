@@ -163,7 +163,6 @@ table.dataTable thead > tr > th {
     font-weight: normal;
 }
 
-
 /* make textarea same size of ckeditor */
 textarea {
     height: 100px;
@@ -436,7 +435,7 @@ select, .form-control {
 input:read-only, .form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control,
 .select2-container.select2-container-disabled .select2-choice {
     background-color: #fbfbfb;
-    border:inherit;
+    border: inherit;
     padding-left: 10px;
 
 }
@@ -615,4 +614,10 @@ a i {
 
 .login-page .btn.btn-success, .btn.btn-primary {
     background-color: rgb(63, 94, 251);
+}
+
+.mark, mark {
+    padding: 0;
+    background-color: yellow;
+    border-radius: 5px;
 }
