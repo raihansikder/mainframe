@@ -252,7 +252,7 @@ class ModularController extends BaseController
      * Restore a soft-deleted.
      *
      * @param  null $id
-     * @return \App\Mainframe\Features\Modular\ModularController\ModularController
+     * @return void
      */
     public function restore($id = null)
     {
