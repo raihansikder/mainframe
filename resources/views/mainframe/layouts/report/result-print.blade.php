@@ -1,12 +1,16 @@
 <?php
 /**
- * @var $data_source   string Table/DB view name (i.e. v_users, users)
- * @var $results       \Illuminate\Pagination\LengthAwarePaginator
- * @var $total         integer Total number of rows returned
- * @var $base_dir      string
+ * @var \App\Mainframe\Features\Report\ReportBuilder $report
+ * @var \App\Mainframe\Features\Report\ReportViewProcessor $view
+ * @var array $columnOptions
+ * @var array $selectedColumns
+ * @var array $aliasColumns
+ * @var \Illuminate\Pagination\LengthAwarePaginator $result
+ * @var int $total Total number of rows returned
  */
 ?>
-@include($path.'.includes.init-functions')
+@include($report->initFunctionsPath())
+
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-US">
 <head>
     <title>Report</title>
@@ -14,11 +18,11 @@
     <meta charset="UTF-8"/>
 </head>
 <body lang=EN-US>
-<div style="width: 150px;float: left; font-size: 14px">
-    <input id="btnPrint" type="button" value="Print this page" onclick="printpage()"/>
-</div>
+@include('mainframe.layouts.default.includes.print-btn')
+<div style="clear: both"></div>
+
 @section('content')
-    @if(Request::get('submit')==='Run' && isset($result))
+    @if(request('submit')=='Run' && isset($result))
 
         Total {{$total}} items found.
         <div class="clearfix"></div>
@@ -27,19 +31,17 @@
                 <table class="table table-condensed" id="report-table">
                     <thead>
                     <tr>
-                        @foreach ($aliasColumns as $col)
-                            <th>{{$col}}</th>
+                        @foreach ($aliasColumns as $column)
+                            <th>{{$column}}</th>
                         @endforeach
                     </tr>
                     </thead>
                     <tbody>
                     @foreach ($result as $row)
                         <tr>
-                            @foreach ($selectedColumns as $col)
+                            @foreach ($selectedColumns as $column)
                                 <td>
-                                    @if(isset($row->$col))
-                                        {!! transformRow($col, $row, $row->$col, $module->name ) !!}
-                                    @endif
+                                    {!! $report->cell($column, $row) !!}
                                 </td>
                             @endforeach
                         </tr>
@@ -53,12 +55,4 @@
 @show
 </body>
 {{-- JS --}}
-<script type="text/javascript">
-    function printpage() {
-        var printButton = document.getElementById("btnPrint");
-        printButton.style.visibility = 'hidden';
-        window.print();
-        printButton.style.visibility = 'visible';
-    }
-</script>
 </html>

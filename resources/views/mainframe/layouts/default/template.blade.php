@@ -1,14 +1,21 @@
 <!DOCTYPE html>
+<?php
+/**
+ * @var \App\Mainframe\Features\Core\ViewProcessor $view
+ */
+?>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>
         @section('head-title')
-            {{setting('app-name')}}
+            {{config('app.name')}} | {{isset($module) ? $module->title: ''}}  {{isset($element) ? $element->id : ''}}
         @show
     </title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <script type="module" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule="" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>
     @section('head')
     @show
     @include('mainframe.layouts.default.includes.css')
@@ -17,19 +24,17 @@
 
 <div id="root" class="wrapper">
     <header class="main-header">
-        <!-- Logo -->
         <a href="{{route('home')}}" class="logo">
-            {{--            <span class="logo-mini"><img style="width: 65%" src="{{asset("letsbab/images/mini-logo.png")}}" alt="{{setting('app-name')}}"/></span>--}}
-            {{--            <span class="lb-font logo-lg"><img style="width: 50%" src="{{asset("letsbab/images/letsbab-logo-white.png")}}"--}}
-            {{--                                               alt="{{setting('app-name')}}"/></span>--}}
 
-            {{--<!-- mini logo for sidebar mini 50x50 pixels -->--}}
-            {{--<img style="height: 60%" src="{{asset("letsbab/images/logo.png")}}" alt="{{setting('app-name')}}"--}}
-            {{--title="{{setting('app-name')}}"/>--}}
-            {{--<span class="logo-mini">{{setting('app-name')}}</span>--}}
-            {{--<!-- logo for regular state and mobile devices -->--}}
-            {{--<span class="logo-lg">{{setting('app-name')}}</span>--}}
-            {{ setting('app-name') }}
+            <span class="logo-mini">
+                {{-- <img style="width: 80%" src="{{asset("projects/vscript/images/logo-mini.png")}}" alt="{{config('app.name')}}"/>--}}
+                 <span class="logo-lg">{{substr(config('app.name'),0,1)}}</span>
+            </span>
+            <span class="logo-lg">
+                 {{-- <img style="width: 50%" src="{{asset("projects/vscript/images/logo-large.png")}}" alt="{{config('app.name')}}"/>--}}
+                 <span class="logo-lg">{{config('app.name')}}</span>
+             </span>
+            <span class="logo-lg">{{config('app.name')}}</span>
         </a>
 
         <nav class="navbar navbar-static-top">

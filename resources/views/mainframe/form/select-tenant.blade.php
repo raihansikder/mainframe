@@ -1,10 +1,10 @@
-@if(tenantUser())
-    <input name="tenantId" type="hidden" value="{{userTenantId()}}"/>
+@if(user()->ofTenant())
+    <input name="tenant_id" type="hidden" value="{{user()->tenant_id}}"/>
 @else
     <?php
     $var = [
-        'name' => 'tenantId',
-        'label' => 'Partner',
+        'name' => 'tenant_id',
+        'label' => 'Tenant',
         'query' => DB::table('tenants')
     ];
     ?>

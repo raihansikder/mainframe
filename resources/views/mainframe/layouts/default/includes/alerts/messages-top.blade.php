@@ -1,56 +1,62 @@
 <?php
 /**
- * @version  1.1
- *
+ * @var \Illuminate\Support\ViewErrorBag $errors
+ * @var \Illuminate\Support\MessageBag $messageBag
  */
-
-/** @var \Illuminate\Support\ViewErrorBag $errors */
-/** @var MessageBag $messageBag */
-
-use Illuminate\Support\MessageBag;
 
 /**
- * These vars are passed from \App\Mainframe\Features\Responder\Response::redirect
- * and \App\Mainframe\Features\Responder\Response::with
- * See \App\Mainframe\Features\Responder\Response::viewVars
+ * These vars are passed from \App\Mainframe\Features\Responder\Response::defaultViewVars
  */
-$responseStatus = $responseStatus ?? session('responseStatus');
-$responseMessage = $responseMessage ?? session('responseMessage');
 
-/*
- * todo: https://activationltd.atlassian.net/browse/MF-32
- * need to show messageBag values
- */
-$messageBag = session('messageBag');
-// if ($messageBag) {
-//     myprint_r($messageBag->toArray());
-// }
-/*********************************/
+$response = $response ?? session('response');
+$messageBag = $response['messageBag'] ?? null;
+
+// dd($messageBag);
 
 $css = "callout-danger";
 $textCss = "text-red";
-if ($responseStatus == 'success') {
+if (isset($response['status']) && $response['status'] == 'success') {
     $css = "callout-success";
     $textCss = "text-green";
 }
 
-?>
+$showAlerts = false;
+if ((isset($response['status'], $response['message']))
+    || ($errors instanceof \Illuminate\Support\MessageBag && $errors->any())
+    || ($messageBag && $messageBag->count())) {
+    $showAlerts = true;
 
-@if($responseStatus || $responseMessage || $errors->any())
+    $keys = ['errors', 'messages', 'warnings', 'debug'];
+
+    $alerts = [];
+    if (isset($messageBag)) {
+        foreach ($keys as $key) {
+            if ($messages = $messageBag->messages()[$key] ?? []) {
+                /** @noinspection SlowArrayOperationsInLoopInspection */
+                $alerts = array_merge($alerts, $messages);
+            }
+        }
+    }
+    $alerts = collect(Arr::flatten($alerts))->unique()->toArray();
+}
+
+
+?>
+@if($showAlerts)
     <div class="message-container">
         <div class="callout ajaxMsg errorDiv" id="errorDiv">
-            @if($responseStatus)
+            @if(isset($response['status']))
                 <h4 class="{{$textCss}}">
-                    {{ ucfirst($responseStatus) }}
-                </h4> {{ $responseMessage }}
+                    {{ ucfirst($response['status']) }}
+                </h4>
+                {{ $response['message'] ?? '' }}
             @endif
+            <div class="clearfix"></div>
 
-            @if ($errors->any())
+            @if(count($alerts))
+                {!! implode('<br/>',$alerts) !!}<br/>
+            @elseif ($errors->any())
                 {!! implode('<br/>', $errors->all()) !!}
-            @endif
-
-            @if($messageBag && $messageBag->count())
-                {!! implode('<br/>', $messageBag->messages()) !!}
             @endif
         </div>
     </div>

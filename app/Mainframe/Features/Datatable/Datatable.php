@@ -1,17 +1,56 @@
 <?php
-/** @noinspection UnknownInspectionInspection */
-
-/** @noinspection DuplicatedCode */
 
 namespace App\Mainframe\Features\Datatable;
 
-use DB;
+use App\Mainframe\Features\Datatable\Traits\DatatableTrait;
+use App\Module;
 
 class Datatable
 {
+    use DatatableTrait;
+
+    /** @var string */
+    public $name;
 
     /** @var string */
     public $table;
+
+    /** @var Module */
+    public $module;
+
+    /** @var \Yajra\DataTables\DataTableAbstract */
+    public $dt;
+
+    /**
+     * List of columns that is allowed for search/sort.
+     *
+     * @var array
+     */
+    public $whiteList = [];
+
+    /**
+     * List of columns that is not allowed for search/sort.
+     *
+     * @var array
+     */
+    public $blackList = [];
+
+    /**
+     * Set columns that should not be escaped. (HTML)
+     * Optionally merge the defaults from config.
+     *
+     * @var string[]
+     */
+    public $rawColumns = ['id', 'name', 'is_active'];
+
+    /**
+     * Data source URL
+     *
+     * @var string
+     */
+    public $ajaxUrl;
+
+    public $pageLength = 50;
 
     /**
      * Constructor for this class is very important as it boots up necessary features of
@@ -23,106 +62,78 @@ class Datatable
      *
      * @param $table
      */
-    public function __construct($table)
+    public function __construct($table = null)
+    {
+        $this->table = $table ?: $this->table;
+    }
+
+    /**
+     * @param  \App\Module|string  $module
+     * @return Datatable|bool
+     */
+    public function setModule($module)
+    {
+        if (is_string($module)) {
+            $module = Module::byName($module);
+        }
+
+        if (!$module) {
+            return false;
+        }
+
+        $this->module = $module;
+        $this->table = $this->module->tableName();
+
+        return $this;
+    }
+
+    /**
+     * @param  string  $table
+     * @return $this
+     */
+    public function setTable(string $table)
     {
         $this->table = $table;
+
+        return $this;
     }
 
     /**
-     * Define Query for generating results for grid
-     *
-     * @return \Illuminate\Database\Query\Builder|static
+     * @param  string  $ajaxUrl
+     * @return $this
      */
-    public function source()
+    public function setAjaxUrl(string $ajaxUrl)
     {
-        return DB::table($this->table)
-            ->leftJoin('users as updater', $this->table.'.updated_by', 'updater.id');
+        $this->ajaxUrl = $ajaxUrl;
+
+        return $this;
     }
 
     /**
-     * Define grid SELECT statement and HTML column name.
+     * Ajax URL for json source
      *
-     * @return array
+     * @return string
      */
-    public function columns()
+    public function ajaxUrl()
     {
-        return [
-            [$this->table.".id", 'id', 'ID'],
-            [$this->table.".name", 'name', 'Name'],
-            ['updater.name', 'user_name', 'Updater'],
-            [$this->table.".updated_at", 'updated_at', 'Updated at'],
-            [$this->table.".is_active", 'is_active', 'Active']
-        ];
-    }
-
-    /**
-     * Construct SELECT statement (field1 AS f1, field2 as f2...)
-     *
-     * @return array
-     */
-    public function selects()
-    {
-        $cols = [];
-        foreach ($this->columns() as $col) {
-            $cols[] = $col[0].' as '.$col[1];
+        if ($this->ajaxUrl) {
+            $url = $this->ajaxUrl;
+        } else {
+            $url = route('datatable.json', classKey($this));
         }
 
-        return $cols;
+        // Get custom data table URL
+        return $url.'?'.parse_url(\URL::full(), PHP_URL_QUERY);
     }
 
     /**
-     * Define Query for generating results for grid
+     * Datatable page length
      *
-     * @return $this|mixed
+     * @return int
      */
-    public function query()
+    public function pageLength()
     {
-        $query = $this->source()->select($this->selects());
-
-        // Inject tenant context.
-        // If the query source is a DB::table() you have to inject tenant context manually.
-        // Else, if the source is a model then tenant_id checking is injected automatically.
-        if (user()->ofTenant() && \Schema::hasColumn($this->table, 'tenant_id')) {
-            $query->where('tenant_id', user()->tenant_id);
-        }
-
-        // Exclude deleted rows
-        $query = $query->whereNull($this->table.'.deleted_at'); // Skip deleted rows
-
-        return $query;
-    }
-
-    /**
-     * Modify datatable values
-     *
-     * @return mixed
-     * @var $dt \Yajra\DataTables\DataTableAbstract
-     */
-    public function modify($dt)
-    {
-        // Set columns for HTML output.
-        $dt = $dt->rawColumns(['id', 'name', 'is_active']);
-
-        // // Next modify each column content
-        // /*  @var $dt \Yajra\DataTables\DataTableAbstract */
-        // $dt = $dt->editColumn('name', '<a href="{{ route(\''.$this->moduleName.'.edit\', $id) }}">{{$name}}</a>');
-        // $dt = $dt->editColumn('id', '<a href="{{ route(\''.$this->moduleName.'.edit\', $id) }}">{{$id}}</a>');
-        // $dt = $dt->editColumn('is_active', '@if($is_active)  Yes @else <span class="text-red">No</span> @endif');
-
-        return $dt;
-    }
-
-    /**
-     * Returns datatable json for the module index page
-     * A route is automatically created for all modules to access this controller function
-     *
-     * @return \Illuminate\Http\JsonResponse
-     * @var \Yajra\DataTables\DataTables $dt
-     */
-    public function json()
-    {
-        /** @var \Yajra\DataTables\DataTableAbstract $dt */
-        return ($this->modify(datatables($this->query())))->toJson();
+        return $this->pageLength ?? 50;
     }
 
 }

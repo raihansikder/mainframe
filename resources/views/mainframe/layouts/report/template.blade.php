@@ -1,4 +1,4 @@
-@extends('mainframe.layouts.default.template')
+@extends($view->defaultTemplate())
 {{-- Master view file for report --}}
 
 @section('head')
@@ -6,6 +6,9 @@
     <style>
         .nav-tabs-custom > .tab-content {
             padding: 0;
+        }
+        .content {
+            padding-top: 0
         }
     </style>
 @endsection

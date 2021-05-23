@@ -45,10 +45,13 @@ class RegisterController extends BaseController
     protected $groupsAllowedForRegistration = [
         'tenant-admin',
         'user',
-        'test-group',
     ];
 
-    /** @var string */
+    /**
+     * If not group is specified then user will be registered to this default group;
+     *
+     * @var string
+     */
     protected $defaultGroupName = 'user';
 
     /** @var string */
@@ -63,8 +66,8 @@ class RegisterController extends BaseController
     {
         parent::__construct();
         $this->middleware('guest');
-
         $this->resolveGroup();
+        $this->user = null; // Set current user as null
 
     }
 
@@ -80,7 +83,7 @@ class RegisterController extends BaseController
         }
 
         // If not group defined in url then register in default 'user' group.
-        if (! $this->group) {
+        if (!$this->group) {
             $this->group = Group::byName($this->defaultGroupName);
         }
 
@@ -94,7 +97,7 @@ class RegisterController extends BaseController
     public function showRegistrationForm()
     {
 
-        if (! $this->groupAllowed()) {
+        if (!$this->groupAllowed()) {
             return $this->permissionDenied('Group not allowed for registration');
         }
 
@@ -111,20 +114,18 @@ class RegisterController extends BaseController
     public function register(Request $request)
     {
 
-        if (! $this->groupAllowed()) {
+        if (!$this->groupAllowed()) {
             return $this->permissionDenied();
         }
 
         $this->attemptRegistration();
 
-        request()->merge(['redirect_success' => route('login')]);
-        $this->response()->redirectTo = $this->resolveRedirectTo();
-
-        if ($this->expectsJson()) {
-            return $this->load($this->user)->json();
+        $this->redirectTo = route('login');
+        if (!$this->user) { // Redirect to register page if failed
+            $this->redirectTo = route('register', $this->group->name);
         }
 
-        return $this->redirect();
+        return $this->load($this->user)->dispatch();
 
     }
 
@@ -144,15 +145,15 @@ class RegisterController extends BaseController
         ]);
 
         if ($validator->fails()) {
-            $this->response($validator)->failValidation();
+            $this->mergeValidatorErrors($validator);
 
             return $this;
         }
 
         // Create user
         $this->user = $this->createUser();
-        if (! $this->user) {
-            $this->fail('User creation failed');
+        if (!$this->user) {
+            $this->fail('Registration was not successful');
 
             return $this;
         }
@@ -184,7 +185,7 @@ class RegisterController extends BaseController
     }
 
     /**
-     * The user has been registered.
+     * The user has been successfully registered.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  User  $user
@@ -203,11 +204,12 @@ class RegisterController extends BaseController
      */
     public function groupAllowed()
     {
-        if (! in_array($this->group->name, $this->groupsAllowedForRegistration)) {
+        if (!in_array($this->group->name, $this->groupsAllowedForRegistration)) {
 
             return false;
         }
 
         return true;
     }
+
 }

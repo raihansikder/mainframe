@@ -1,60 +1,60 @@
 <?php
 /**
- * @var \App\Mainframe\Modules\Superheroes\SuperHero $module
+ * @var \App\Module $module
  * @var \App\User $user
- * @var \App\User $element
  * @var string $formState create|edit
  * @var array $formConfig
  * @var string $uuid Only available for create
  * @var bool $editable
+ * @var array $immutables
+ * @var \App\SuperHero $element
+ * @var \App\SuperHero $superHero
+ * @var \App\Mainframe\Modules\SuperHeroes\SuperHeroViewProcessor $view
  */
 ?>
 <script>
     /*
     |--------------------------------------------------------------------------
-    | Common JS to run for both create and update
+    | Common - creating and updating
     |--------------------------------------------------------------------------
-    |
-    | Write the functions on this top section of the file so that they
-    | can be called by the codes after it.
     */
-    /**
-     * Assigns validation rules during saving (both creating and updating)
-     */
-    addValidationRules(); // Assign validation classes/rules
+    // $('select').select2(); // Make all select2
 
-    // enableValidation('{{$module->name}}'); // Enable Ajax based form validation.
+    // Redirection after delete
+    @if($element->some_id)
+    $('.delete-cta button[name=genericDeleteBtn]').attr('data-redirect_success', '{!! route('some-module.edit',$element->some_id) !!}')
+    @endif
 
+    // Validation
+    addValidationRules();
+    enableValidation('{{$module->name}}');
+
+    /*
+    |--------------------------------------------------------------------------
+    | creating
+    |--------------------------------------------------------------------------
+    */
     @if($element->isCreating())
+    // Todo: write codes here.
+    @endif
+
     /*
     |--------------------------------------------------------------------------
-    | JS to run only during creation
+    | updating
     |--------------------------------------------------------------------------
-    |
-    |
-    | Some JS may only be required to be executed while creating a
-    | model. Write such JS here
     */
-    @elseif($element->isUpdating())
-    /*
-    |--------------------------------------------------------------------------
-    | JS to run only during update
-    |--------------------------------------------------------------------------
-    |
-    | Some JS may only be required to be executed while updating an
-    | existing model. Write such JS here
-    */
+    @if($element->isUpdating())
+    // Todo: write codes here.
+    // Redirection after saving
+    // $('#{{$module->name}}-redirect-success').val('#'); //  # Stops redirection
     @endif
     /*
     |--------------------------------------------------------------------------
     | List of functions
     |--------------------------------------------------------------------------
-    |
-    | Write the functions on this top section of the file so that they
-    | can be called by the codes after it.
     */
     /**
-     * Assigns validation rules during saving (both creating and updating)
+     * Add CSS for validation rules
      */
     function addValidationRules() {
         $("input[name=name]").addClass('validate[required]');

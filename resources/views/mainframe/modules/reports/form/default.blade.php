@@ -11,7 +11,7 @@
 
         {{--    Form inputs: starts    --}}
         {{--   --------------------    --}}
-        @include('form.text',['var'=>['name'=>'name','label'=>'Name','container_class'=>'col-sm-3']])
+        @include('form.text',['var'=>['name'=>'name','label'=>'Name','div'=>'col-sm-3']])
         @include('form.is-active')
         {{--    Form inputs: ends    --}}
 

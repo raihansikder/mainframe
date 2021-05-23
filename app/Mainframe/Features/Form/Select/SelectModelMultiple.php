@@ -11,27 +11,44 @@ class SelectModelMultiple extends SelectModel
     /**
      * SelectModelMultiple constructor.
      *
-     * @param  array  $conf
+     * @param  array  $var
      * @param  null  $element
      */
-    public function __construct($conf = [], $element = null)
+    public function __construct($var = [], $element = null)
     {
-        parent::__construct($conf, $element);
+        parent::__construct($var, $element);
         $this->params['multiple'] = 'multiple';
         $this->dataParent = $this->name.'_data_parent';
 
     }
 
-    /**
-     * Generate options
-     *
-     * @return array
-     */
-    public function options()
-    {
-        $options = parent::options();
+    // /**
+    //  * Generate options
+    //  *
+    //  * @return array
+    //  */
+    // public function options()
+    // {
+    //     $options = parent::options();
+    //
+    //     // Remove the first(empty) option. Not meaningful for multi-select
+    //     $collection = collect($options);
+    //     $firstKey = $collection->keys()->first();
+    //     $collection->forget($firstKey);
+    //
+    //     return $collection->toArray();
+    // }
 
-        return Arr::except($options, [0]); // Remove the null/0 option
+    /**
+     * Value for multi-select
+     *
+     * @return array|\Illuminate\Http\Request|string|null
+     */
+    public function value()
+    {
+        $value = parent::value();
+
+        return $value ?? [];
     }
 
 }

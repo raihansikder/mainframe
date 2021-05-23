@@ -1,11 +1,17 @@
-<?php /** @noinspection PhpUndefinedMethodInspection */
+<?php
 
 namespace App\Mainframe\Modules\Projects;
 
 use App\Mainframe\Features\Modular\ModularController\ModularController;
+use App\Mainframe\Modules\Projects\Traits\ProjectControllerTrait;
 
+/**
+ * @group  Projects
+ * APIs for managing projects
+ */
 class ProjectController extends ModularController
 {
+    use ProjectControllerTrait;
 
     /*
     |--------------------------------------------------------------------------
@@ -15,11 +21,4 @@ class ProjectController extends ModularController
     */
     protected $moduleName = 'projects';
 
-    /**
-     * @return ProjectDatatable
-     */
-    public function datatable()
-    {
-        return new ProjectDatatable($this->module);
-    }
 }

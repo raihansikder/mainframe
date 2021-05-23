@@ -11,7 +11,7 @@
 
         {{--    Form inputs: starts    --}}
         {{--   --------------------    --}}
-        @include('form.text',['var'=>['name'=>'name','label'=>'Name (table name)','editable'=>false]])
+        @include('form.text',['var'=>['name'=>'name','label'=>'Name (table name)', 'editable'=>false]])
         @include('form.text',['var'=>['name'=>'title','label'=>'Title']])
         {{--        @include('form.select.select-model',['var'=>['name'=>'parent_id','label'=>'Parent module', 'table'=>'modules']])--}}
         @include('form.select-ajax',['var'=>['label' => 'Parent', 'name' => 'parent_id', 'table' => 'modules']])
@@ -22,7 +22,7 @@
         @include('form.text',['var'=>['name'=>'icon_css','label'=>'Icon CSS class']])
         @include('form.text',['var'=>['name'=>'default_route','label'=>'Default route name','editable'=>false]])
         <div class="clearfix"></div>
-        @include('form.textarea',['var'=>['name'=>'description','params'=>['class'=>''],'label'=>'Description', 'container_class'=>'col-sm-6']])
+        @include('form.textarea',['var'=>['name'=>'description','params'=>['class'=>''],'label'=>'Description', 'div'=>'col-sm-6']])
         <div class="clearfix"></div>
         @include('form.is-active')
         {{--    Form inputs: ends    --}}

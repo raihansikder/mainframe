@@ -1,3 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Karla:400,700|Montserrat:300,400,500,600,700,800|Roboto:400,500,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,400;0,600;1,400&display=swap');
+
 /***********************************************************************
 * Global font settings
 ************************************************************************/
@@ -16,11 +21,54 @@ body, html, .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6,
 
 }
 
-
-.main-header .logo, .logo, .logo-mini, .logo-lg, .h1, h1, .h2, h2 {
-    font-family: 'Montserrat', 'Roboto', 'Arial', sans-serif;
-!important;
+.main-header .logo, .logo, .logo-mini, .logo-lg, .login-logo, .register-logo, .h1, h1, .h2, h2 {
+    font-family: 'Poppins', 'Roboto', 'Arial', sans-serif;
     font-weight: 100;
+    /*background: rgb(63,94,251);*/
+    /*background: linear-gradient(90deg, rgba(63,94,251,1) 37%, rgba(252,70,107,1) 55%);*/
+    /*-webkit-background-clip: text;*/
+    /*-webkit-text-fill-color: transparent;*/
+}
+
+a, a:hover {
+    color: #001fbd;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+.skin-blue-light .main-header .logo:hover {
+    text-decoration: none;
+}
+
+.login-logo, .register-logo {
+    padding-top: 20px;
+    margin-bottom: 5px;
+    font-weight: 100;
+}
+
+.login-box, .login-box-body, .register-box-body {
+    background-color: white;
+}
+
+.btn {
+    transition: all ease-in-out .25s;
+    border: 0;
+}
+
+.login-page {
+    background-image: url('../images/login-bg1.jpg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-color: #ffffff;
+}
+
+.login-page input {
+    font-size: 18px;
+}
+
+.login-box-body button.login {
+    font-size: 18px;
 }
 
 code {
@@ -38,7 +86,6 @@ code {
 .h4, h4 {
     font-size: 16px;
 }
-
 
 .sidebar-menu {
     margin-top: 10px;
@@ -83,7 +130,7 @@ table, tr, th, td, thead, tbody {
     background-color: #FFFFFF;
     bottom: 0;
     padding: 10px 0 10px 0;
-    z-index: 100000;
+    z-index: 999;
     border-top: dotted gainsboro 1px;
 }
 
@@ -94,11 +141,16 @@ table, tr, th, td, thead, tbody {
 /* padding of form element*/
 .form-group {
     padding-left: 0;
+    margin-bottom: 10px;
 }
 
 /* reduced margin for module titles to align with breadcrumb*/
 .content-header h2 {
     margin-top: 0;
+}
+
+.content-header a {
+    color: #fc466b;
 }
 
 /* datatable */
@@ -109,11 +161,12 @@ table.dataTable {
 
 table.dataTable thead > tr > th {
     font-weight: normal;
+    font-size: 12px;
 }
 
 /* make textarea same size of ckeditor */
 textarea {
-    height: 271px;
+    height: 100px;
 }
 
 /* made label font weight bold*/
@@ -139,7 +192,7 @@ label {
 /* add padding at the bottom of the app-frame so that CTA does not overlap with page econtent*/
 .content {
     padding-top: 0;
-    padding-bottom: 50px;
+    padding-bottom: 150px;
     min-height: 600px;
     background-color: #FFFFFF;
 !important;
@@ -222,6 +275,15 @@ div.form-group span.readonly {
     background-color: #fbfbfb;
 }
 
+div.form-control {
+    height: auto;
+    background-color: #fbfbfb;
+}
+
+.readonly {
+    background-color: #fbfbfb;
+}
+
 .navbar-nav > .user-menu > .dropdown-menu {
     padding: 0;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -253,7 +315,7 @@ div.form-group span.readonly {
     background-image: none;
     border: 0;
     height: 33px;
-    padding: 6px 0 6px 0
+    padding: 2px 0 6px 0
 }
 
 .select2-container {
@@ -301,16 +363,26 @@ div.form-group span.readonly {
 }
 
 .select2-container-multi .select2-choices .select2-search-choice {
-    line-height: 13px;
+    padding: 4px 10px 4px 24px;
+    margin: 3px 5px 3px 0;
+    line-height: 16px;
+    background-image: none;
     border: 0;
+    background-color: #f5f5f5;
 }
 
 .select2-container-multi .select2-choices {
-    border: 1px solid #e3e3e3;
+    padding-top: 3px;
+    background-image: none;
+    border: 0;
 }
 
 #tab_advanced .select2-container-multi .select2-choices .select2-search-choice {
     width: 100%;
+}
+
+.select2-search-choice-close {
+    width: 17px;
 }
 
 .main-header {
@@ -319,6 +391,7 @@ div.form-group span.readonly {
 
 .skin-blue-light .treeview-menu > li > a {
     color: #444444;
+    font-size: inherit;
 }
 
 .logo, .skin-blue-light .main-header .navbar, .navbar > a, .navbar a:hover {
@@ -334,32 +407,6 @@ div.form-group span.readonly {
 .skin-blue-light .sidebar-menu > li > a {
     font-weight: normal;
     color: #333;
-}
-
-
-.login-logo, .register-logo {
-    font-family: 'Montserrat', sans-serif;
-    padding-top: 20px;
-    margin-bottom: 5px;
-    font-weight: 100;
-}
-
-.login-box, .login-box-body, .register-box-body {
-    background-color: white;
-}
-
-
-.btn {
-    transition: all ease-in-out .25s;
-    border: 0;
-}
-
-
-.login-page {
-    background-image: url('../images/login-bg1.jpg');
-    background-repeat: no-repeat;
-    background-size: 100%;
-    background-color: #ffffff;
 }
 
 /* manage border*/
@@ -386,6 +433,14 @@ select, .form-control {
 
 }
 
+input:read-only, .form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control,
+.select2-container.select2-container-disabled .select2-choice {
+    background-color: #fbfbfb;
+    border: inherit;
+    padding-left: 10px;
+
+}
+
 label {
     margin-bottom: 0;
 }
@@ -402,10 +457,6 @@ label {
 }
 
 /* Make module CTA block semi-transparent*/
-.cta-block {
-    -webkit-mask-image: -webkit-gradient(linear, left 20%,
-    left top, from(rgba(0, 0, 0, 1)), to(rgba(0, 0, 0, 0)));
-}
 
 /* Small font size in dashboard box*/
 .small-box h3 {
@@ -417,12 +468,15 @@ label {
     font-size: 14px;
     font-weight: bold;
 }
+.panel-title a {
+    display: block;
+}
 
 /* Show full border for text-area*/
 textarea.form-control {
-    border: 1px #cce3f6 solid;
+    border: 1px #f0f0f0 solid;
     padding: 5px;
-    height: 172px;
+    height: 100px;
 }
 
 /* Reduce space from accordion panel bottom*/
@@ -455,7 +509,7 @@ pre.sf-dump, pre.sf-dump .sf-dump-default {
 }
 
 .modal-open .modal {
-    z-index: 1000000;
+    z-index: 9999;
 }
 
 .pagination {
@@ -470,15 +524,101 @@ pre.sf-dump, pre.sf-dump .sf-dump-default {
     font-weight: normal;
     color: inherit;
 }
+.callout a {
+    color: #3c8dbc;
+    text-decoration: underline;
+}
+
+.callout {
+    border-radius: 3px;
+    margin: 0 0 20px 0;
+    padding: 15px 30px 15px 15px;
+    /*border-left: 5px solid #eee; */
+    border-left: 0;
+}
 
 .modal-header {
     border-bottom: 0;
+}
+
+.modal-footer {
+    border-top: 0;
 }
 
 a i {
     color: inherit;
 }
 
-.form-group.has-error .help-block {
-    font-size: .9em;
+.border-dashed {
+    border: 1px gainsboro dashed;
+}
+
+.border-dotted {
+    border: 2px gainsboro dotted;
+}
+
+.errorDiv a {
+    color: #3c8dbc;
+}
+
+.align-with-input {
+
+}
+
+.select2-container .select2-choice .select2-arrow {
+    background-image: none;
+    background: transparent;
+}
+
+.ajax-file-upload-statusbar {
+    border: 0px solid lightgray;
+    width: 420px;
+    margin: 0;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    padding: 0;
+}
+
+.text-smart-blue {
+    color: rgb(63, 94, 251);
+}
+
+.text-smart-red {
+    color: rgb(252, 70, 107);
+}
+
+.bg-smart-blue, .bg-smart-blue:hover {
+    background-color: rgb(63, 94, 251);
+    color: white;
+}
+
+.bg-white {
+    background-color: white;
+}
+.bg-smart-red, .bg-smart-red:hover {
+    background-color: rgb(252, 70, 107);
+    color: white;
+}
+
+[v-cloak] { display: none; }
+
+.left-bar-red {
+    border-left: 5px solid red;
+    padding-left: 10px;
+}
+
+.left-bar-smart-red {
+    border-left: rgb(252, 70, 107);
+    padding-left: 10px;
+}
+
+.login-page .btn.btn-success, .btn.btn-primary {
+    background-color: rgb(63, 94, 251);
+}
+
+.mark, mark {
+    padding: 0;
+    background-color: yellow;
+    border-radius: 5px;
 }

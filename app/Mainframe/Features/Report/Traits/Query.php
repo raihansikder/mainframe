@@ -2,15 +2,18 @@
 
 namespace App\Mainframe\Features\Report\Traits;
 
-use DB;
-use Cache;
-use App\Mainframe\Helpers\Mf;
-use Illuminate\Database\Query\Builder;
 use App\Mainframe\Helpers\Convert;
+use App\Mainframe\Helpers\Mf;
+use Cache;
+use DB;
+use Exception;
+use Illuminate\Database\Query\Builder;
 
 /** @mixin \App\Mainframe\Features\Report\ReportBuilder $this */
 trait Query
 {
+    public $total;
+
     /**
      * Build query to get the data.
      *
@@ -18,26 +21,29 @@ trait Query
      */
     public function resultQuery()
     {
-        /** @var Builder $query */
-        $query = $this->queryDataSource();
-        if (count($this->querySelectColumns())) {
-            $query = $query->select($this->querySelectColumns());
-        }
-        $query = $this->filter($query);
 
+        $query = clone $this->queryDataSource();
+
+        if (count($this->querySelectColumns())) {
+            $query->select($this->querySelectColumns());
+        }
+
+        $query = $this->filter($query);
         // Inject tenant context.
-        if(user()->ofTenant() && $this->hasTenantContext()){
-            $query->where('tenant_id',user()->tenant_id);
+        if ($this->user->ofTenant() && $this->hasTenantContext()) {
+            $query->where('tenant_id', $this->user->tenant_id);
         }
 
         $query = $this->groupBy($query);
         $query = $this->orderBy($query);
 
+        // dd($query->toSql());
         return $query;
     }
 
     /**
      * Check if data source has tenant field
+     *
      * @return bool
      */
     public function hasTenantContext()
@@ -51,11 +57,21 @@ trait Query
     public function result()
     {
 
-        $key = Mf::httpRequestSignature(($this->resultQuery()->toSql()));
+        try {
+            if ($this->result) {
+                return $this->result;
+            }
 
-        return Cache::remember($key, $this->cache, function () {
-            return $this->resultQuery()->paginate($this->rowsPerPage());
-        });
+            $key = base64_encode('report-'.__CLASS__).'-'.Mf::httpRequestSignature(($this->resultQuery()->toSql()));
+
+            $this->result = Cache::remember($key, $this->cache = 1, function () {
+                return $this->resultQuery()->paginate($this->rowsPerPage());
+            });
+
+            return $this->result;
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+        }
 
     }
 
@@ -81,11 +97,22 @@ trait Query
      */
     public function total()
     {
-        $key = Mf::httpRequestSignature(($this->totalQuery()->toSql()));
 
-        return Cache::remember($key, $this->cache, function () {
-            return $this->totalQuery()->count();
-        });
+        try {
+            if ($this->total) {
+                return $this->total;
+            }
+
+            $key = base64_encode('report-'.__CLASS__).'-total-'.Mf::httpRequestSignature(($this->resultQuery()->toSql()));
+
+            $this->total = Cache::remember($key, $this->cache, function () {
+                return $this->totalQuery()->count();
+            });
+
+            return $this->total;
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+        }
 
     }
 
@@ -96,7 +123,7 @@ trait Query
      */
     public function totalQuery()
     {
-        $query = $this->queryDataSource();
+        $query = clone $this->queryDataSource();
         $query = $this->filter($query);
 
         return $query;
@@ -117,7 +144,7 @@ trait Query
     /**
      * Query to initially select table or a model.
      *
-     * @return \Illuminate\Database\Query\Builder|string|\Illuminate\Database\Eloquent\Model
+     * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model|Builder
      */
     public function queryDataSource()
     {
@@ -137,11 +164,56 @@ trait Query
      */
     public function querySelectColumns()
     {
-
         $keys = $this->selectedColumns();                    // Manually selected columns, Default all if none selected.
-        $keys = $this->includeDefaultSelectedColumns($keys); // Default selected columns behind the scene
+        $keys = $this->includeDefaultColumns($keys); // Default selected columns behind the scene
         $keys = $this->excludeSelectedGhostColumns($keys);   // Exclude any column name that does not actually exists
         $keys = $this->queryAddColumnForGroupBy($keys);
+        $keys = $this->queryAddFieldsForRelations($keys);
+
+        return $keys;
+    }
+
+    /**
+     * Get the required relationships as array
+     *
+     * @return array|false|string[]
+     */
+    public function queryRelations()
+    {
+        $relations = [];
+        if (request('with')) {
+            $relations = explode(',', request('with'));
+        }
+
+        return $relations;
+    }
+
+    /**
+     * Map relationships with fields that needs to be available in select columns
+     *
+     * @return string[]
+     */
+    public function relationFieldMap()
+    {
+        return [
+            'creator' => 'created_by',
+            'updater' => 'updated_by',
+        ];
+    }
+
+    /**
+     * Add additional field to make the model relationship work
+     *
+     * @param  array  $keys
+     * @return array
+     */
+    public function queryAddFieldsForRelations($keys = [])
+    {
+        foreach ($this->relationFieldMap() as $relationship => $col) {
+            if (!in_array($col, $keys) && in_array($col, $this->queryRelations())) {
+                $keys[] = $col;
+            }
+        }
 
         return $keys;
     }
@@ -152,10 +224,13 @@ trait Query
      * @param  array  $keys
      * @return array
      */
-    public function includeDefaultSelectedColumns($keys = [])
+    public function includeDefaultColumns($keys = [])
     {
-        foreach ($this->defaultSelectedColumns() as $col) {
-            if (! in_array($col, $keys) && in_array($col, $this->dataSourceColumns())) {
+        $defaultColumns = array_merge($this->defaultColumns(), $this->defaultColumns());
+
+        foreach ($defaultColumns as $col) {
+            // if (!in_array($col, $keys) && in_array($col, $this->dataSourceColumns())) {
+            if (!in_array($col, $keys)) {
                 $keys[] = $col;
             }
         }
@@ -170,9 +245,23 @@ trait Query
      *
      * @return array
      */
+    public function defaultColumns()
+    {
+        // return ['id', 'name'];
+        return [];
+    }
+
+    /**
+     * Columns that should be always included in the select column query.
+     * Usually this is id field. This is useful to generate a url
+     * to the linked element.
+     *
+     * @return array
+     * @deprecated Use defaultColumns() instead
+     */
     public function defaultSelectedColumns()
     {
-        return ['id'];
+        return [];
     }
 
     /**
@@ -185,7 +274,7 @@ trait Query
     {
         $temp = [];
         foreach ($keys as $key) {
-            if (! in_array($key, $this->ghostColumnOptions())) {
+            if (!in_array($key, $this->ghostColumnOptions())) {
                 $temp[] = $key;
             }
         }
@@ -291,7 +380,7 @@ trait Query
      */
     public function expectsAllData()
     {
-        if (in_array($this->output(), ['excel', 'print'])) {
+        if (in_array($this->outputType(), ['excel', 'print'])) {
             return true;
         }
         if (request('force_all_data') == 'yes') {
@@ -303,6 +392,7 @@ trait Query
 
     /**
      * Cache key generator
+     *
      * @return string
      */
     public function signature()

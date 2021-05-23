@@ -3,7 +3,7 @@
  * For documentation and global variables on how form.blade views please refer to
  * parent template \app\views\spyr\modules\groups\form.blade.php
  *
- * Variables used in this view file.
+ * Variables
  * @var $moduleName           string 'users'
  * @var $currentModule                   Module
  * @var $user                  User Object that is being edited
@@ -37,27 +37,27 @@
 
 
 <div class="clearfix"></div>
-@include('form.input-text',['var'=>['name'=>'email','label'=>'Email', 'container_class'=>'col-sm-3']])
+@include('form.input-text',['var'=>['name'=>'email','label'=>'Email', 'div'=>'col-sm-3']])
 
 {{-- show password only for editable--}}
 @if($editable)
     <div class="clearfix"></div>
     <h4>Reset password</h4>
-    @include('form.input-text',['var'=>['name'=>'password','type'=>'password','label'=>'New password', 'container_class'=>'col-sm-3','value'=>'']])
-    @include('form.input-text',['var'=>['name'=>'password_confirmation','type'=>'password','label'=>'Confirm new password', 'container_class'=>'col-sm-3']])
+    @include('form.input-text',['var'=>['name'=>'password','type'=>'password','label'=>'New password', 'div'=>'col-sm-3','value'=>'']])
+    @include('form.input-text',['var'=>['name'=>'password_confirmation','type'=>'password','label'=>'Confirm new password', 'div'=>'col-sm-3']])
 @endif
 
-{{--@include('form.input-text',['var'=>['name'=>'name','label'=>'User name(login name)', 'container_class'=>'col-sm-3']])--}}
+{{--@include('form.input-text',['var'=>['name'=>'name','label'=>'User name(login name)', 'div'=>'col-sm-3']])--}}
 
 <div class="clearfix"></div>
 @if(user()->isSuperUser() || user()->isLBAdminUser())
-    @include('form.select-array',['var'=>['name'=>'email_confirmed','label'=>'Email confirmed', 'options'=>['1'=>'Yes','0'=>'No'],'container_class'=>'col-sm-3']])
-    @include('form.input-text',['var'=>['name'=>'email_verified_at','label'=>'Email verified at', 'container_class'=>'col-sm-3','editable'=>false]])
-    @include('form.select-array',['var'=>['name'=>'is_active','label'=>'Active', 'options'=>['1'=>'Yes','0'=>'No'],'container_class'=>'col-sm-3']])
+    @include('form.select-array',['var'=>['name'=>'email_confirmed','label'=>'Email confirmed', 'options'=>['1'=>'Yes','0'=>'No'],'div'=>'col-sm-3']])
+    @include('form.input-text',['var'=>['name'=>'email_verified_at','label'=>'Email verified at', 'div'=>'col-sm-3','editable'=>false]])
+    @include('form.select-array',['var'=>['name'=>'is_active','label'=>'Active', 'options'=>['1'=>'Yes','0'=>'No'],'div'=>'col-sm-3']])
     <div class="clearfix"></div>
-    @include('form.input-text',['var'=>['name'=>'last_active_time','label'=>'Last active time', 'container_class'=>'col-sm-3','editable'=>false]])
-    @include('form.input-text',['var'=>['name'=>'last_login_time','label'=>'Last login time', 'container_class'=>'col-sm-3','editable'=>false]])
-    @include('form.input-text',['var'=>['name'=>'last_logout_time','label'=>'Last logout time', 'container_class'=>'col-sm-3','editable'=>false]])
+    @include('form.input-text',['var'=>['name'=>'last_active_time','label'=>'Last active time', 'div'=>'col-sm-3','editable'=>false]])
+    @include('form.input-text',['var'=>['name'=>'last_login_time','label'=>'Last login time', 'div'=>'col-sm-3','editable'=>false]])
+    @include('form.input-text',['var'=>['name'=>'last_logout_time','label'=>'Last logout time', 'div'=>'col-sm-3','editable'=>false]])
     <div class="clearfix"></div>
     <?php
     $var = [
@@ -73,10 +73,10 @@
     @include('form.select-model', compact('var'))
 
     <div id="partner" class="opt_2 opt_3 opt_4 opt_8">
-        @include('form.select-model',['var'=>['name'=>'partner_id','label'=>'Partner(Brand)', 'table'=>'partners', 'container_class'=>'col-sm-3']])
+        @include('form.select-model',['var'=>['name'=>'partner_id','label'=>'Partner(Brand)', 'table'=>'partners', 'div'=>'col-sm-3']])
     </div>
     <div id="charity" class="opt_5 opt_6 opt_7">
-        @include('form.select-model',['var'=>['name'=>'charity_id','label'=>'Charity', 'table'=>'charities', 'container_class'=>'col-sm-3']])
+        @include('form.select-model',['var'=>['name'=>'charity_id','label'=>'Charity', 'table'=>'charities', 'div'=>'col-sm-3']])
     </div>
 @endif
 
@@ -93,27 +93,27 @@
         <div id="contact" class="panel-collapse collapse" style="margin:15px 0;">
             <div class="col-md-12">
                 {{--first_name--}}
-                @include('form.input-text',['var'=>['name'=>'first_name','label'=>'First name', 'container_class'=>'col-sm-3']])
+                @include('form.input-text',['var'=>['name'=>'first_name','label'=>'First name', 'div'=>'col-sm-3']])
                 {{--last_name--}}
-                @include('form.input-text',['var'=>['name'=>'last_name','label'=>'Last name', 'container_class'=>'col-sm-3']])
+                @include('form.input-text',['var'=>['name'=>'last_name','label'=>'Surname', 'div'=>'col-sm-3']])
                 {{--full_name--}}
-                @include('form.input-text',['var'=>['name'=>'full_name','label'=>'Full name', 'container_class'=>'col-sm-6']])
+                @include('form.input-text',['var'=>['name'=>'full_name','label'=>'Full name', 'div'=>'col-sm-6']])
                 {{--address1--}}
-                @include('form.input-text',['var'=>['name'=>'address1','label'=>'Address-1', 'container_class'=>'col-sm-6']])
+                @include('form.input-text',['var'=>['name'=>'address1','label'=>'Address-1', 'div'=>'col-sm-6']])
                 {{--address2--}}
-                @include('form.input-text',['var'=>['name'=>'address2','label'=>'Address-2', 'container_class'=>'col-sm-6']])
+                @include('form.input-text',['var'=>['name'=>'address2','label'=>'Address-2', 'div'=>'col-sm-6']])
                 {{--city--}}
-                @include('form.input-text',['var'=>['name'=>'city','label'=>'City', 'container_class'=>'col-sm-3']])
+                @include('form.input-text',['var'=>['name'=>'city','label'=>'City', 'div'=>'col-sm-3']])
                 {{--county--}}
-                @include('form.input-text',['var'=>['name'=>'county','label'=>'County', 'container_class'=>'col-sm-3']])
+                @include('form.input-text',['var'=>['name'=>'county','label'=>'County', 'div'=>'col-sm-3']])
                 {{--country_id--}}
-                @include('form.select-model',['var'=>['name'=>'country_id','label'=>'Country','table'=>'countries', 'container_class'=>'col-sm-3']])
+                @include('form.select-model',['var'=>['name'=>'country_id','label'=>'Country','table'=>'countries', 'div'=>'col-sm-3']])
                 {{--zip_code--}}
-                @include('form.input-text',['var'=>['name'=>'zip_code','label'=>'ZIP code', 'container_class'=>'col-sm-3']])
+                @include('form.input-text',['var'=>['name'=>'zip_code','label'=>'Postcode / ZIP Code', 'div'=>'col-sm-3']])
                 {{--phone--}}
-                @include('form.input-text',['var'=>['name'=>'phone','label'=>'Phone', 'container_class'=>'col-sm-3']])
+                @include('form.input-text',['var'=>['name'=>'phone','label'=>'Phone', 'div'=>'col-sm-3']])
                 {{--mobile--}}
-                @include('form.input-text',['var'=>['name'=>'mobile','label'=>'Mobile', 'container_class'=>'col-sm-3']])
+                @include('form.input-text',['var'=>['name'=>'mobile','label'=>'Mobile', 'div'=>'col-sm-3']])
             </div>
             <div class="clearfix"></div>
         </div>
@@ -137,43 +137,43 @@
                 </div>
                 <div id="banking" class="panel-collapse collapse" style="margin:15px 0;">
                     <div class="col-md-12">
-                        @include('form.select-array',['var'=>['name'=>'transfer_method','label'=>'Transfer method', 'options'=>kv(array_merge([""=>'-'],\App\Invoice::$transfer_methods)), 'container_class'=>'col-sm-3']])
+                        @include('form.select-array',['var'=>['name'=>'transfer_method','label'=>'Transfer method', 'options'=>kv(array_merge([""=>'-'],\App\Invoice::$transfer_methods)), 'div'=>'col-sm-3']])
                         {{--payment_settings--}}
-                        {{--@include('form.textarea',['var'=>['name'=>'payment_settings','label'=>'Payment settings (JSON)', 'container_class'=>'col-sm-6']])--}}
+                        {{--@include('form.textarea',['var'=>['name'=>'payment_settings','label'=>'Payment settings (JSON)', 'div'=>'col-sm-6']])--}}
                         {{--account_holder_name--}}
-                        @include('form.input-text',['var'=>['name'=>'account_holder_name','label'=>'Account holder name', 'container_class'=>'col-sm-3']])
+                        @include('form.input-text',['var'=>['name'=>'account_holder_name','label'=>'Account holder name', 'div'=>'col-sm-3']])
                         {{--account_number--}}
-                        @include('form.input-text',['var'=>['name'=>'account_number','label'=>'Bank account no.', 'container_class'=>'col-sm-3']])
+                        @include('form.input-text',['var'=>['name'=>'account_number','label'=>'Bank account no.', 'div'=>'col-sm-3']])
                         {{--account_type--}}
-                        @include('form.input-text',['var'=>['name'=>'account_type','label'=>'Account type', 'container_class'=>'col-sm-3']])
+                        @include('form.input-text',['var'=>['name'=>'account_type','label'=>'Account type', 'div'=>'col-sm-3']])
                         <div class="clearfix"></div>
                         {{--account_country--}}
-                        @include('form.select-model',['var'=>['name'=>'account_country','label'=>'Country','table'=>'countries', 'name_field'=>'name', 'value_field'=>'iso2','container_class'=>'col-sm-3','editable'=>false]])
+                        @include('form.select-model',['var'=>['name'=>'account_country','label'=>'Country','table'=>'countries', 'name_field'=>'name', 'value_field'=>'iso2','div'=>'col-sm-3','editable'=>false]])
                         {{--currency--}}
-                        @include('form.input-text',['var'=>['name'=>'currency','label'=>'currency', 'container_class'=>'col-sm-3','editable'=>false]])
+                        @include('form.input-text',['var'=>['name'=>'currency','label'=>'currency', 'div'=>'col-sm-3','editable'=>false]])
                         <div class="clearfix"></div>
                         {{--account_city--}}
-                        @include('form.input-text',['var'=>['name'=>'account_city','label'=>'City', 'container_class'=>'col-sm-3']])
+                        @include('form.input-text',['var'=>['name'=>'account_city','label'=>'City', 'div'=>'col-sm-3']])
                         {{--account_state--}}
-                        @include('form.input-text',['var'=>['name'=>'account_state','label'=>'State', 'container_class'=>'col-sm-3']])
+                        @include('form.input-text',['var'=>['name'=>'account_state','label'=>'State', 'div'=>'col-sm-3']])
                         {{--account_post_code--}}
-                        @include('form.input-text',['var'=>['name'=>'account_post_code','label'=>'Post code', 'container_class'=>'col-sm-3']])
+                        @include('form.input-text',['var'=>['name'=>'account_post_code','label'=>'Post code', 'div'=>'col-sm-3']])
                         {{--account_first_line--}}
-                        @include('form.input-text',['var'=>['name'=>'account_first_line','label'=>'Account first line', 'container_class'=>'col-sm-3']])
+                        @include('form.input-text',['var'=>['name'=>'account_first_line','label'=>'Account first line', 'div'=>'col-sm-3']])
                         {{--sort_code--}}
-                        @include('form.input-text',['var'=>['name'=>'sort_code','label'=>'Sort code', 'container_class'=>'col-sm-3']])
+                        @include('form.input-text',['var'=>['name'=>'sort_code','label'=>'Sort code', 'div'=>'col-sm-3']])
                         {{--abartn--}}
-                        @include('form.input-text',['var'=>['name'=>'abartn','label'=>'ABARTN', 'container_class'=>'col-sm-3']])
+                        @include('form.input-text',['var'=>['name'=>'abartn','label'=>'ABARTN', 'div'=>'col-sm-3']])
                         {{--iban--}}
-                        @include('form.input-text',['var'=>['name'=>'iban','label'=>'IBAN', 'container_class'=>'col-sm-3']])
+                        @include('form.input-text',['var'=>['name'=>'iban','label'=>'IBAN', 'div'=>'col-sm-3']])
                         {{--swift--}}
-                        @include('form.input-text',['var'=>['name'=>'swift','label'=>'SWIFT', 'container_class'=>'col-sm-3']])
+                        @include('form.input-text',['var'=>['name'=>'swift','label'=>'SWIFT', 'div'=>'col-sm-3']])
                         {{--paypal--}}
-                        @include('form.input-text',['var'=>['name'=>'paypal_email','label'=>'Paypal Email', 'container_class'=>'col-sm-6']])
+                        @include('form.input-text',['var'=>['name'=>'paypal_email','label'=>'Paypal Email', 'div'=>'col-sm-6']])
                         <div class="clearfix"></div>
                         <div class="col-md-6 no-padding-l">
                             {{--transferwise_account_id--}}
-                            @include('form.input-text',['var'=>['name'=>'transferwise_account_id','label'=>'Transferwise Id', 'container_class'=>'col-sm-3','editable'=>false]])
+                            @include('form.input-text',['var'=>['name'=>'transferwise_account_id','label'=>'Transferwise Id', 'div'=>'col-sm-3','editable'=>false]])
 
                             @if(user()->isSuperUser())
                                 <a href="{{route('create-user-transferwise-account',$user->id)}}">
@@ -202,11 +202,11 @@
                 <div id="activity" class="panel-collapse collapse" style="margin:15px 0;">
                     <div class="col-md-12">
                         {{--first_login_at--}}
-                        @include('form.input-text',['var'=>['name'=>'first_login_at','label'=>'First login at', 'container_class'=>'col-sm-3']])
+                        @include('form.input-text',['var'=>['name'=>'first_login_at','label'=>'First login at', 'div'=>'col-sm-3']])
                         {{--last_login_at--}}
-                        @include('form.input-text',['var'=>['name'=>'last_login_at','label'=>'Last login at', 'container_class'=>'col-sm-3']])
+                        @include('form.input-text',['var'=>['name'=>'last_login_at','label'=>'Last login at', 'div'=>'col-sm-3']])
                         {{--share_code--}}
-                        @include('form.input-text',['var'=>['name'=>'share_code','label'=>'Share code', 'container_class'=>'col-sm-6']])
+                        @include('form.input-text',['var'=>['name'=>'share_code','label'=>'Share code', 'div'=>'col-sm-6']])
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -214,7 +214,7 @@
         </div>
 
 
-        @include('form.select-array',['var'=>['name'=>'gift_aid_checked','label'=>'Share gift aid', 'options'=>['1'=>'Yes',''=>'No'],'container_class'=>'col-sm-3']])
+        @include('form.select-array',['var'=>['name'=>'gift_aid_checked','label'=>'Share gift aid', 'options'=>['1'=>'Yes',''=>'No'],'div'=>'col-sm-3']])
     @endif
 @endif
 
@@ -250,22 +250,22 @@
                             </div>
                         </div>
                     </div>
-                    @include('form.input-text',['var'=>['name'=>'auth_token','label'=>'Auth token', 'container_class'=>'col-sm-6']])
+                    @include('form.input-text',['var'=>['name'=>'auth_token','label'=>'Auth token', 'div'=>'col-sm-6']])
                     {{--device_name--}}
-                    @include('form.input-text',['var'=>['name'=>'device_name','label'=>'Device name', 'container_class'=>'col-sm-3']])
+                    @include('form.input-text',['var'=>['name'=>'device_name','label'=>'Device name', 'div'=>'col-sm-3']])
                     {{--current_app_version--}}
-                    @include('form.input-text',['var'=>['name'=>'current_app_version','label'=>'App version', 'container_class'=>'col-sm-3']])
+                    @include('form.input-text',['var'=>['name'=>'current_app_version','label'=>'App version', 'div'=>'col-sm-3']])
                     {{--rating_by_user_to_iOS_version --}}
-                    @include('form.input-text',['var'=>['name'=>'ios_rating','label'=>'iOS Rating', 'container_class'=>'col-sm-3']])
+                    @include('form.input-text',['var'=>['name'=>'ios_rating','label'=>'iOS Rating', 'div'=>'col-sm-3']])
                     {{--rating_by_user_to_android_version --}}
-                    @include('form.input-text',['var'=>['name'=>'android_rating','label'=>'Android Rating', 'container_class'=>'col-sm-3']])
+                    @include('form.input-text',['var'=>['name'=>'android_rating','label'=>'Android Rating', 'div'=>'col-sm-3']])
                 </div>
                 <div class="clearfix"></div>
             </div>
         </div>
     </div>
 
-    @include('form.select-array',['var'=>['name'=>'is_test','label'=>'Is test', 'options'=>['0'=>'No','1'=>'Yes',],'container_class'=>'col-sm-3']])
+    @include('form.select-array',['var'=>['name'=>'is_test','label'=>'Is test', 'options'=>['0'=>'No','1'=>'Yes',],'div'=>'col-sm-3']])
 @endif
 
 

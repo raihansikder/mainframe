@@ -2,21 +2,26 @@
 
 namespace App\Mainframe\Providers;
 
+use App\Mainframe\Features\Responder\Response;
+use App\Mainframe\Macros\QueryBuilderMacros;
+use Illuminate\Database\Query\Builder;
 use Illuminate\Support\MessageBag;
 use Illuminate\Support\ServiceProvider;
-use App\Mainframe\Features\Responder\Response;
 
 class AppServiceProvider extends ServiceProvider
 {
     protected $commands = [
         \App\Mainframe\Commands\MakeMainframeModule::Class,
+        \App\Mainframe\Commands\CreateRootModels::Class,
+        \App\Mainframe\Commands\CleanDeletedUploads::Class,
+        \App\Mainframe\Commands\FixPolymorphicType::class,
     ];
 
     protected $providers = [
         \App\Mainframe\Providers\AuthServiceProvider::class,
         \App\Mainframe\Providers\EventServiceProvider::class,
         \App\Mainframe\Providers\RouteServiceProvider::class,
-        \OwenIt\Auditing\AuditingServiceProvider::class
+        \OwenIt\Auditing\AuditingServiceProvider::class,
     ];
 
     protected $helpers = [
@@ -41,10 +46,20 @@ class AppServiceProvider extends ServiceProvider
      * Bootstrap services.
      *
      * @return void
+     * @throws \ReflectionException
      */
     public function boot()
     {
-        //
+
+        // Builder::macro('searchIn', function ($attributes, $needle) {
+        //     return $this->where(function (Builder $query) use ($attributes, $needle) {
+        //         foreach (array_wrap($attributes) as $attribute) {
+        //             $query->orWhere($attribute, 'LIKE', "%{$needle}%");
+        //         }
+        //     });
+        // });
+
+        Builder::mixin(new QueryBuilderMacros());
     }
 
     /**

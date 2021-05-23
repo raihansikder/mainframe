@@ -1,11 +1,18 @@
-<?php /** @noinspection PhpUndefinedMethodInspection */
+<?php
 
 namespace App\Mainframe\Modules\Subscriptions;
 
 use App\Mainframe\Features\Modular\ModularController\ModularController;
+use App\Mainframe\Modules\Subscriptions\Traits\SubscriptionControllerTrait;
 
+/**
+ * @group  Subscriptions
+ * APIs for managing subscriptions
+ */
 class SubscriptionController extends ModularController
 {
+    use SubscriptionControllerTrait;
+
 
     /*
      |--------------------------------------------------------------------------
@@ -15,11 +22,4 @@ class SubscriptionController extends ModularController
      */
     protected $moduleName = 'subscriptions';
 
-    /**
-     * @return SubscriptionDatatable
-     */
-    public function datatable()
-    {
-        return new SubscriptionDatatable($this->module);
-    }
 }

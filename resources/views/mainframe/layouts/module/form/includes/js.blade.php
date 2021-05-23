@@ -16,9 +16,9 @@ $redirectFailUrl = URL::full();
 <script type="text/javascript">
 
     $('form[name={{$module->name}}] input[name=redirect_success]')
-        .val('{{$redirectSuccessUrl}}');
+        .val('{!! $redirectSuccessUrl !!}');
 
     $('form[name={{$module->name}}] input[name=redirect_fail]')
-        .val('{{$redirectFailUrl}}');
+        .val('{!! $redirectFailUrl !!}');
 
 </script>

@@ -55,12 +55,13 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function gateCustomPermissions()
     {
+
         $customPermissions = config('mainframe.permissions.custom');
 
         foreach ($customPermissions as $category => $permissions) {
             foreach ($permissions as $key => $label) {
                 Gate::define($key, function (User $user) use ($key) {
-                    return $user->hasPermission($key);
+                    return $user->hasAccess($key);
                 });
             }
         }

@@ -1,4 +1,4 @@
-@extends('mainframe.layouts.default.template')
+@extends($view->defaultTemplate())
 
 @section('content')
 <div class="container">

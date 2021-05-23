@@ -1,11 +1,8 @@
-<?php /** @noinspection PhpUnusedParameterInspection */
-/** @noinspection PhpInconsistentReturnPointsInspection */
-
-/** @noinspection PhpUnused */
+<?php
 
 namespace App\Mainframe\Features\Modular\BaseModule;
 
-use App\Mainframe\Modules\Modules\Module;
+use App\Module;
 use Illuminate\Auth\Access\HandlesAuthorization;
 use Illuminate\Support\Str;
 
@@ -21,11 +18,40 @@ class BaseModulePolicy
     }
 
     /**
+     * Get module name of the policy
+     *
+     * @return string
+     */
+    public function getModuleName()
+    {
+        return Str::plural(str_replace('-policies', '', Module::nameFromClass($this)));
+    }
+
+    /**
+     * @param  string  $moduleName
+     * @return BaseModulePolicy
+     */
+    public function setModuleName(string $moduleName)
+    {
+        $this->moduleName = $moduleName;
+
+        return $this;
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Policy functions
+    |--------------------------------------------------------------------------
+    */
+
+    /**
+     * Before
      * Runs before any of the other checks.
      *
-     * @param \App\User $user
+     * @param  \App\User  $user
      * @param $ability
      * @return bool
+     * @noinspection PhpUnusedParameterInspection
      */
     public function before($user, $ability)
     {
@@ -36,9 +62,10 @@ class BaseModulePolicy
     }
 
     /**
+     * view-any
      * Determine whether the user can view any items.
      *
-     * @param  \App\User $user
+     * @param  \App\User  $user
      * @return mixed
      */
     public function viewAny($user)
@@ -52,10 +79,11 @@ class BaseModulePolicy
     }
 
     /**
+     * view
      * Determine whether the user can view the item.
      *
-     * @param  \App\User $user
-     * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule|mixed $element
+     * @param  \App\User  $user
+     * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule|mixed  $element
      * @return mixed
      */
     public function view($user, $element)
@@ -68,14 +96,19 @@ class BaseModulePolicy
             return false;
         }
 
+        if (! $element->isTenantCompatible($user)) {
+            return false;
+        }
+
         return true;
     }
 
     /**
+     * create
      * Determine whether the user can create items.
      *
-     * @param  \App\User $user
-     * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule|mixed $element
+     * @param  \App\User  $user
+     * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule|mixed  $element
      * @return mixed
      */
     public function create($user, $element = null)
@@ -88,14 +121,19 @@ class BaseModulePolicy
             return false;
         }
 
+        if ($element && isset($element->tenant_id) && ! $element->isTenantCompatible($user)) {
+            return false;
+        }
+
         return true;
     }
 
     /**
+     * update
      * Determine whether the user can update the item.
      *
-     * @param  \App\User $user
-     * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule|mixed $element
+     * @param  \App\User  $user
+     * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule|mixed  $element
      * @return mixed
      */
     public function update($user, $element)
@@ -108,14 +146,19 @@ class BaseModulePolicy
             return false;
         }
 
+        if (! $element->isTenantCompatible($user)) {
+            return false;
+        }
+
         return true;
     }
 
     /**
+     * delete
      * Determine whether the user can delete the item.
      *
-     * @param  \App\User $user
-     * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule|mixed $element
+     * @param  \App\User  $user
+     * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule|mixed  $element
      * @return mixed
      */
     public function delete($user, $element)
@@ -132,14 +175,19 @@ class BaseModulePolicy
             return false;
         }
 
+        if (! $element->isTenantCompatible($user)) {
+            return false;
+        }
+
         return true;
     }
 
     /**
+     * restore
      * Determine whether the user can restore the item.
      *
-     * @param  \App\User $user
-     * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule|mixed $element
+     * @param  \App\User  $user
+     * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule|mixed  $element
      * @return mixed
      */
     public function restore($user, $element)
@@ -152,14 +200,19 @@ class BaseModulePolicy
             return false;
         }
 
+        if (! $element->isTenantCompatible($user)) {
+            return false;
+        }
+
         return true;
     }
 
     /**
+     * force-delete
      * Determine whether the user can permanently delete the item.
      *
-     * @param  \App\User $user
-     * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule|mixed $element
+     * @param  \App\User  $user
+     * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule|mixed  $element
      * @return mixed
      */
     public function forceDelete($user, $element)
@@ -168,15 +221,20 @@ class BaseModulePolicy
             return false;
         }
 
+        if (! $element->isTenantCompatible($user)) {
+            return false;
+        }
+
         return true;
     }
 
     /**
+     * view-change-log
      * Determine whether the user can view change log of the item
      * In the code you can use both camelCase and kebab-case function name.
      *
-     * @param  \App\User $user
-     * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule|mixed $element
+     * @param  \App\User  $user
+     * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule|mixed  $element
      * @return bool
      */
     public function viewChangeLog($user, $element)
@@ -185,15 +243,20 @@ class BaseModulePolicy
             return false;
         }
 
+        if (! $element->isTenantCompatible($user)) {
+            return false;
+        }
+
         return true;
     }
 
     /**
+     * view-report
      * Determine whether the user can view change log of the item
      * In the code you can use both camelCase and kebab-case function name.
      *
-     * @param  \App\User $user
-     * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule|mixed $element
+     * @param  \App\User  $user
+     * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule|mixed  $element
      * @return bool
      */
     public function viewReport($user, $element)
@@ -202,13 +265,18 @@ class BaseModulePolicy
             return false;
         }
 
+        if (! $element->isTenantCompatible($user)) {
+            return false;
+        }
+
         return true;
     }
 
     /**
+     * api
      * Check if user can access Api
      *
-     * @param  \App\User $user
+     * @param  \App\User  $user
      * @return mixed
      */
     public function api($user)
@@ -218,16 +286,6 @@ class BaseModulePolicy
         }
 
         return true;
-    }
-
-    /**
-     * Get module name of the policy
-     *
-     * @return string
-     */
-    public function getModuleName()
-    {
-        return Str::plural(str_replace('-policies', '', Module::nameFromClass($this)));
     }
 
 }

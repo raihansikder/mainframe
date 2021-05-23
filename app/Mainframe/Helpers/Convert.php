@@ -14,4 +14,15 @@ class Convert
     {
         return Sanitize::array(explode(',', Sanitize::csv($csv)));
     }
+
+    /**
+     * Convert CSV to array.
+     *
+     * @param  array  $array
+     * @return string
+     */
+    public static function arrayToCsv($array)
+    {
+        return implode(',', Sanitize::array($array));
+    }
 }

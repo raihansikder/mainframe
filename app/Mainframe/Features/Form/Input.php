@@ -6,46 +6,60 @@ use Illuminate\Support\Str;
 
 class Input extends Form
 {
-    public $conf;
+    public $var;
     public $containerClass;
     public $label;
     public $labelClass;
     public $type;
     public $name;
+    public $id;
     public $value;
     public $oldInput;
     public $params;
     public $isEditable;
+    public $isHidden;
 
     /**
      * Input constructor.
      *
-     * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule $element
-     * @param  array $conf
+     * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule  $element
+     * @param  array  $var
      */
-    public function __construct($conf = [], $element = null)
+    public function __construct($var = [], $element = null)
     {
-        parent::__construct($element);
+        parent::__construct($var, $element);
 
-        $this->conf = $conf;
-
-        $this->containerClass = $conf['container_class'] ?? 'col-md-3';
-        $this->label = $conf['label'] ?? null;
-        $this->labelClass = $conf['label_class'] ?? null;
-        $this->type = $conf['type'] ?? null;
-        $this->value = $conf['value'] ?? null;
+        $this->containerClass = $this->var['container_class'] ?? $this->var['div'] ?? 'col-md-3';
+        $this->label = $this->var['label'] ?? null;
+        $this->labelClass = $this->var['label_class'] ?? null;
+        $this->type = $this->var['type'] ?? null;
+        $this->value = $this->var['value'] ?? null;
         $this->oldInput = $this->old();
-        $this->name = $conf['name'] ?? Str::random(8);
-        $this->params = $conf['params'] ?? [];
+        $this->name = $this->var['name'] ?? Str::random(8);
+        $this->params = $this->var['params'] ?? [];
 
-        $this->isEditable = $this->getEditable();
-
-        // Force add form-control class
-        $this->params['class'] = $this->params['class'] ?? '';
-        $this->params['class'] .= ' form-control ';
+        $this->isEditable = $this->var['editable'] ?? true; // $this->getEditable();
+        $this->isHidden = $this->var['hidden'] ?? false;
 
         // Force add form-control class
-        $this->params['id'] = $this->params['id'] ?? $this->name;
+        $this->params['id'] = $this->var['id']
+            ?? $this->params['id']
+            ?? $this->nameToId();
+        $this->id = $this->params['id'];
+
+        // Force add form-control class
+        $this->params['class'] = $this->var['class'] ?? $this->params['class'] ?? '';
+
+        $this->params['class'] .= ' form-control '
+            .$this->nameWithoutArrayLiteral().' ';
+
+        // Add id in the class too
+        if ($this->nameWithoutArrayLiteral() != $this->params['id']) {
+            $this->params['class'] .= $this->params['id'];
+        }
+
+        // Place-holder
+        $this->params['placeholder'] = $this->var['placeholder'] ?? $this->params['placeholder'] ?? '';
     }
 
     /**
@@ -89,15 +103,16 @@ class Input extends Form
     }
 
     /**
-     * Determine if the field is editable
+     * logically determine if the field is editable
+     * todo: unused
      *
      * @return bool|mixed
      */
-    public function getEditable()
+    public function determineEditability()
     {
 
-        if (isset($this->conf['editable'])) {
-            return $this->conf['editable'];
+        if (isset($this->var['editable'])) {
+            return $this->var['editable'];
         }
 
         return true;
@@ -127,6 +142,44 @@ class Input extends Form
     public function print()
     {
         return $this->value();
+    }
+
+    /**
+     * Class of the main div
+     *
+     * @return string
+     */
+    public function containerClasses()
+    {
+        return 'form-group'.' '.$this->containerClass
+            .' '.$this->errors->first($this->name, 'has-error')
+            .' '.$this->uid;
+    }
+
+    /**
+     * Convert name to id
+     *
+     * @return string
+     */
+    public function nameToId()
+    {
+        // change name[i][j] to ID name_i_j
+        $id = $this->name;
+        $id = str_replace(['[', ']', '__'], '_', $id);
+
+        $id = trim($id, '_');
+
+        // for name[] change the ID to name_XXXXXX
+        if ($id.'[]' == $this->name) {
+            $id .= '_'.$this->uid;
+        }
+
+        return $id;
+    }
+
+    public function nameWithoutArrayLiteral()
+    {
+        return explode('[', $this->name)[0];
     }
 
 }

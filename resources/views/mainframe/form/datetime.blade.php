@@ -10,7 +10,7 @@
 |
 */
 /**
- *      $var['container_class'] ?? 'col-md-3';
+ *      $var['div'] ?? 'col-md-3';
  *      $var['label']           ?? null;
  *      $var['label_class']     ?? null;
  *      $var['type']            ?? null;
@@ -18,62 +18,76 @@
  *      $var['name']            ?? Str::random(8);
  *      $var['params']          ?? [];  // These are the html attributes like css, id etc for the field.
  *      $var['editable']        ?? true;
- */
-
-/**
- * @var array $var
- * @var \App\Mainframe\Modules\Modules\Module $module
- * @var \App\User $user
+ *
+ * @var \Illuminate\Support\ViewErrorBag $errors
  * @var \App\Mainframe\Features\Modular\BaseModule\BaseModule $element
- * @var string $formState create|edit
+ * @var bool $editable
+ * @var array $immutables
  */
 
-use App\Mainframe\Features\Form\Text\Datetime;
 
-// Check edibility
-if (! isset($var['editable']) && isset($editable)) {
-    $var['editable'] = $editable;
+$var = \App\Mainframe\Features\Form\Form::setUpVar($var, $errors ?? null, $element ?? null, $editable ?? null, $immutables ?? null);
+$input = new App\Mainframe\Features\Form\Text\Datetime($var);
 
-    // Check immutability
-    if ($editable && isset($immutables)) {
-        $var['editable'] = ! in_array($var['name'], $immutables);
-    }
-}
-
-$input = new Datetime($var, $element ?? null);
+$input->format = config('mainframe.config.datetime_format'); // Format to show in the datepicker
 ?>
-<div class="form-group {{$input->containerClass}} {{$errors->first($input->name, ' has-error')}} {{$input->uid}}">
+@if($input->isHidden)
+    {{ Form::hidden($input->name, $input->value()) }}
+@else
+    <div class="{{$input->containerClasses()}}" id="{{$input->uid}}">
 
-    @if($input->label)
-        <label id="label_{{$input->name}}"
-               class="control-label {{$input->labelClass}}"
-               for="{{$input->name}}">
-            {!! $input->label !!}
-        </label>
-    @endif
+        {{-- label --}}
+        @include('mainframe.form.includes.label')
 
-    @if($input->isEditable)
-        {{ Form::text($input->name, $input->value(), $input->params) }}
-    @else
-        <span class="{{$input->params['class']}} readonly">
-            {{ $input->print() }}
-            {{--{{ Form::hidden($input->name, $input->value()) }}--}}
-        </span>
-    @endif
+        {{-- input --}}
 
-    {!! $errors->first($input->name, '<span class="help-block">:message</span>') !!}
-</div>
+        @if($input->isEditable)
+            {{ Form::text('formatted_'.$input->name, $input->formatted(), array_merge($input->params,['id'=> $input->params['id'].'_formatted'])) }}
+            {{ Form::hidden($input->name, $input->value(),$input->params) }}
+        @else
+            @include('mainframe.form.includes.read-only-view')
+        @endif
+
+        {{-- Error --}}
+        @include('mainframe.form.includes.show-error')
+    </div>
+@endif
 
 @section('js')
     @parent
-    <script>
-        $('#{{$input->params['id']}}').datetimepicker(
-            {
-                sideBySide: true,
-                format: 'YYYY-MM-DD HH:mm:ss' // https://momentjs.com/docs/#/displaying/format/
-            }
-        );
-    </script>
+    @if(!$input->isHidden)
+        <script>
+            $('#{{$input->uid}} #{{$input->params['id'].'_formatted'}}').datetimepicker(
+                {
+                    sideBySide: true,
+                    format: 'DD-MM-YYYY HH:mm:ss' // https://momentjs.com/docs/#/displaying/format/
+                }
+            ).on('dp.change', function (e) {
+
+                var formattedDateTime = $(this).val();                      // '01-04-2020 02:01:11'
+                var formattedDateTimeParts = formattedDateTime.split(' ');  // ['01-04-2020', '02:01:11']
+
+                var datePart = formattedDateTimeParts[0];               // '01-04-2020'
+                var timePart = formattedDateTimeParts[1];               // '02:01:11'
+
+                var dateParts = datePart.split('-');                    // ['01','04','2020']
+                var date = dateParts[0];                                // '01'
+                var month = dateParts[1];                               // '04'
+                var year = dateParts[2];                                // '2020'
+
+                // Generate valid format for database store
+                var datetime = year + '-' + month + '-' + date + ' ' + timePart;
+                var validDatetime = moment(datetime).format('YYYY-MM-DD HH:mm:ss');
+
+                // Clear out invalid date-time
+                if (validDatetime.length < 19) {
+                    validDatetime = null;
+                }
+
+                $('#{{$input->uid}} #{{$input->params['id']}}').val(validDatetime);
+            });
+        </script>
+    @endif
 @stop
 
 <?php unset($input) ?>

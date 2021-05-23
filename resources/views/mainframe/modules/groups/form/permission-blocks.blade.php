@@ -1,10 +1,9 @@
 <?php
-$customPermissionItems = config('mainframe.permissions.custom');
 /**
  * Renders a multi-dimensional array of permissions in hierarchical order for assigning permission
  * The $tree can be generated from ModuleGroup::tree()
  *
- * @param array $tree  : ModuleGroup::tree()
+ * @param  array  $tree  : ModuleGroup::tree()
  * @return string
  */
 function renderTree($tree)
@@ -61,12 +60,10 @@ function renderTree($tree)
             </label>
         </li>
 
-
         {{-- Module view, create, edit permissions--}}
         <li class="module-permissions">
-            {!!  renderTree(\App\Mainframe\Modules\ModuleGroups\ModuleGroup::tree()) !!}
+            {!!  renderTree(\App\ModuleGroup::tree()) !!}
         </li>
-
 
         {{--Additional permission options defined in config/mainframe/permissions--}}
         <?php
@@ -117,9 +114,7 @@ function renderTree($tree)
                     $.ajax({
                         datatype: 'json',
                         method: "GET",
-                        @if(isset($element->id))
                         url: '{{route('groups.show',$element->id)}}?ret=json',
-                        @endif
                         // data: $('form[name=' + form_name + ']').serialize()
                     }).done(function (ret) {
                         ret = parseJson(ret);

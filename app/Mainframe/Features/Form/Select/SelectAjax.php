@@ -2,21 +2,27 @@
 
 namespace App\Mainframe\Features\Form\Select;
 
-use App\Mainframe\Modules\Modules\Module;
+use App\Module;
 
 class SelectAjax extends SelectModel
 {
     public $url;
     public $preload;
 
-    public function __construct($conf = [], $element = null)
+    public function __construct($var = [], $element = null)
     {
-        parent::__construct($conf, $element);
+        parent::__construct($var, $element);
 
-        $this->preload = $conf['preload'] ?? $this->preload();
-        $this->containerClass = $conf['container_class'] ?? 'col-md-6';
+        $this->preload = $this->var['preload'] ?? $this->preload();
+        $this->containerClass = $this->var['container_class'] ?? $this->var['div'] ?? 'col-md-6';
         $this->params['class'] .= ' ajax ';
-        $this->url = $conf['url'] ?? $this->url();
+        $this->url = $this->var['url'] ?? $this->url();
+
+        // Make the field readonly instead of disable
+        if (!$this->isEditable) {
+            unset($this->params['disabled']);
+            $this->params['readonly'] = 'readonly';
+        }
     }
 
     /**
@@ -25,7 +31,7 @@ class SelectAjax extends SelectModel
     public function preload()
     {
         if ($this->value()) {
-            $item = \DB::table($this->table)
+            $item = $this->getQuery()
                 ->select([$this->valueField, $this->nameField])
                 ->where($this->valueField, $this->value())
                 ->first();

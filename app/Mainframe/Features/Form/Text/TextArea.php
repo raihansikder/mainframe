@@ -8,11 +8,11 @@ class TextArea extends Input
 {
     public $editorConfig;
 
-    public function __construct($conf = [], $element = null)
+    public function __construct($var = [], $element = null)
     {
-        parent::__construct($conf, $element);
+        parent::__construct($var, $element);
 
-        $this->containerClass = $conf['container_class'] ?? 'col-md-6';
-        $this->editorConfig = $conf['editorConfig'] ?? 'editor_config_basic';
+        $this->containerClass = $this->var['container_class'] ?? $this->var['div'] ?? 'col-md-6';
+        $this->editorConfig = $var['editorConfig'] ?? 'editor_config_basic';
     }
 }

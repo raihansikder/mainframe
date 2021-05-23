@@ -2,38 +2,24 @@
 
 namespace App\Mainframe\Features\Datatable;
 
+use App\Mainframe\Features\Datatable\Traits\ModuleDatatableTrait;
+
 class ModuleDatatable extends Datatable
 {
 
-    /** @var \App\Mainframe\Modules\Modules\Module */
+    use ModuleDatatableTrait;
+
+
+    /** @var \App\Module */
     public $module;
 
     /**
      * @param $module
      */
-    public function __construct($module)
+    public function __construct($module = null)
     {
-        $this->module = $module;
-        parent::__construct($this->module->module_table);
+        parent::__construct();
+        $this->setModule($module);
     }
 
-    /**
-     * Modify datatable values
-     *
-     * @return mixed
-     * @var $dt \Yajra\DataTables\DataTableAbstract
-     */
-    public function modify($dt)
-    {
-        // Set columns for HTML output.
-        $dt = $dt->rawColumns(['id', 'name', 'is_active']);
-
-        // Next modify each column content
-        /*  @var $dt \Yajra\DataTables\DataTableAbstract */
-        $dt = $dt->editColumn('name', '<a href="{{ route(\''.$this->module->name.'.edit\', $id) }}">{{$name}}</a>');
-        $dt = $dt->editColumn('id', '<a href="{{ route(\''.$this->module->name.'.edit\', $id) }}">{{$id}}</a>');
-        $dt = $dt->editColumn('is_active', '@if($is_active)  Yes @else <span class="text-red">No</span> @endif');
-
-        return $dt;
-    }
 }

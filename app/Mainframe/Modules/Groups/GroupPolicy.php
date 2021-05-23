@@ -1,76 +1,11 @@
 <?php
 
-/** @noinspection PhpInconsistentReturnPointsInspection */
-
-/** @noinspection PhpUnused */
-
 namespace App\Mainframe\Modules\Groups;
 
-use App\User;
+use App\Mainframe\Modules\Groups\Traits\GroupPolicyTrait;
 use App\Mainframe\Features\Modular\BaseModule\BaseModulePolicy;
 
 class GroupPolicy extends BaseModulePolicy
 {
-
-    /**
-     * Determine whether the user can view any groups.
-     *
-     * @param  \App\User  $user
-     * @return mixed
-     */
-    public function viewAny($user) { }
-
-    /**
-     * Determine whether the user can view the group.
-     *
-     * @param  \App\User  $user
-     * @param  Group  $group
-     * @return mixed
-     */
-    // public function view($user, $group) { }
-
-    /**
-     * Determine whether the user can create groups.
-     *
-     * @param  \App\User  $user
-     * @return mixed
-     */
-    // public function create($user) { }
-
-    /**
-     * Determine whether the user can update the group.
-     *
-     * @param  \App\User  $user
-     * @param  Group  $group
-     * @return mixed
-     */
-    // public function update($user, $group) { }
-
-    /**
-     * Determine whether the user can delete the group.
-     *
-     * @param  \App\User  $user
-     * @param  Group  $group
-     * @return mixed
-     */
-    // public function delete($user, $group) { }
-
-    /**
-     * Determine whether the user can restore the group.
-     *
-     * @param  \App\User  $user
-     * @param  Group  $group
-     * @return mixed
-     */
-    // public function restore($user, $group) { }
-
-    /**
-     * Determine whether the user can permanently delete the group.
-     *
-     * @param  \App\User  $user
-     * @param  Group  $group
-     * @return mixed
-     */
-    // public function forceDelete($user, $group) { }
-
+    use GroupPolicyTrait;
 }

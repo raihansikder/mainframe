@@ -2,38 +2,23 @@
 
 namespace App\Mainframe\Http\Controllers\Api;
 
-use Auth;
-use App\Mainframe\Modules\Settings\Setting;
+use App\Mainframe\Http\Controllers\Api\Traits\ApiControllerTrait;
+use App\Setting;
 use App\Mainframe\Http\Controllers\BaseController;
 
 class ApiController extends BaseController
 {
+    use ApiControllerTrait;
 
     protected $user;
 
     public function __construct()
     {
-
         parent::__construct();
-        $this->middleware('x-auth-token'); // This is an additional safe guarding.
-        $this->user = Auth::guard('x-auth')->user();
 
-    }
+        $this->user->refresh(); // Useful for bearer because token may get updated.
+        $this->injectUserIdentityInRequest();
 
-    /**
-     * Get the setting value from name(key)
-     *
-     * @param $name
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function getSetting($name)
-    {
-
-        if ($val = Setting::read($name)) {
-            return $this->load($val)->json();
-        }
-
-        return $this->fail()->json();
     }
 
 }

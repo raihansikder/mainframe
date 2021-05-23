@@ -9,6 +9,10 @@ use App\Mainframe\Helpers\Sanitize;
 /** @mixin \App\Mainframe\Features\Report\ReportBuilder $this */
 trait Filterable
 {
+    /**
+     * Transform request inputs
+     */
+    public function transformRequest() { }
 
     /**
      * @param $query   \Illuminate\Database\Query\Builder
@@ -16,18 +20,19 @@ trait Filterable
      */
     public function filter($query)
     {
-        /** @var array $escape_fields */
-        $escape_fields = $this->defaultFilterEscapeFields(); // Default filter logic will not apply on these
+        $escapeFields = $this->defaultFilterEscapeFields(); // Default filter logic will not apply on these
 
         $requests = request()->all();
 
         foreach ($requests as $field => $val) {
-            if (in_array($field, $escape_fields)) {
+            if (in_array($field, $escapeFields)) {
                 $query = $this->customFilterOnEscapedFields($query, $field, $val);
             } else {
                 $query = $this->defaultFilter($query, $field, $val);
             }
         }
+
+        $query = $this->keySearch($query);
 
         // Apply raw SQL clause input from front-end.
         if ($this->additionalFilterConditions()) {
@@ -109,16 +114,18 @@ trait Filterable
      */
     public function queryForExitingFields($query, $field, $val)
     {
-        // Input is array
+        // Handle array input: ?key[]=1,key[]=2
         if ($this->paramIsArray($val)) {
             return $this->queryForArrayParam($query, $field, $val);
         }
 
+        // Handle csv input: ?key=1,2,3
         if ($this->paramIsCsv($val)) { // Input is CSV
             return $this->queryForCsvParam($query, $field, $val);
         }
 
-        if ($this->paramIsString($val) && strlen(trim($val))) { // Input is string
+        // Handle int/string input: ?key=1 or request()->merge(['key'=>1]);
+        if ((is_int($val) || $this->paramIsString($val)) && strlen(trim($val))) { // Input is string
             return $this->queryForStringParam($query, $field, $val);
         }
 
@@ -178,6 +185,45 @@ trait Filterable
     }
 
     /**
+     * Key based search
+     *
+     * @param  \Illuminate\Database\Query\Builder  $query
+     * @return mixed
+     */
+    public function keySearch($query)
+    {
+        $key = request('search_key');
+
+        if (! $key) {
+            return $query;
+        }
+
+        # Key based search
+        $query->where(function ($query) use ($key) {
+            foreach ($this->searchFields as $field) {
+                /** @var \Illuminate\Database\Query\Builder $query */
+                // $query->where('name', 'LIKE', "{$key}%");
+
+                if (! $this->fieldExists($field)) {
+                    continue;
+                }
+                if ($key == 'null') {
+                    $query->orWhereNull($field);
+                } elseif ($this->columnIsFullText($field)) { // Substring search. Good for name, email etc.
+                    $query->orWhere($field, 'LIKE', "%{$key}%");
+                } else {
+                    $query->orWhere($field, $key);
+                }
+
+            }
+
+        });
+
+        return $query;
+
+    }
+
+    /**
      * Default query builder from input.
      *
      * @param $query \Illuminate\Database\Query\Builder
@@ -187,6 +233,10 @@ trait Filterable
      */
     public function queryForFromRange($query, $field, $val)
     {
+        if (! is_string($val)) {
+            return $query;
+        }
+
         if ($this->isFromRange($field) && strlen($val)) {
             return $query->where($this->getActualDateField($field), '>=', $val);
         }
@@ -204,6 +254,10 @@ trait Filterable
      */
     public function queryForToRange($query, $field, $val)
     {
+        if (! is_string($val)) {
+            return $query;
+        }
+
         if ($this->isToRange($field) && strlen($val)) {
             return $query->where($this->getActualDateField($field), '<=', $val);
         }
@@ -226,6 +280,12 @@ trait Filterable
         return false;
     }
 
+    /**
+     * Possibly the field contains json data
+     *
+     * @param $field
+     * @return bool
+     */
     public function possibleJsonField($field)
     {
         if (Str::contains($field, ['_ids', '_json'])) {
@@ -254,6 +314,10 @@ trait Filterable
      */
     public function paramIsCsv($input)
     {
+        if (! is_string($input)) {
+            return false;
+        }
+
         if (strlen($input) && strpos($input, ',') !== false) {
             return strlen(Sanitize::csv($input));
         }
@@ -269,6 +333,10 @@ trait Filterable
      */
     public function paramIsString($input)
     {
+        if (! is_string($input)) {
+            return false;
+        }
+
         return trim(strlen($input));
     }
 
@@ -280,9 +348,17 @@ trait Filterable
      */
     public function columnIsFullText($column)
     {
-        $full_text_columns = ['name'];
+        return in_array($column, $this->getFullTextFields());
+    }
 
-        return in_array($column, $full_text_columns);
+    /**
+     * Get an array for full text search. These fields will be SQL LIKE
+     *
+     * @return array
+     */
+    public function getFullTextFields()
+    {
+        return $this->fullTextFields;
     }
 
     /**
@@ -339,8 +415,13 @@ trait Filterable
     public function getActualDateField($field)
     {
         $replaces = [
-            '_from', '_start', '_starts',
-            '_to', '_till', '_end', '_ends'
+            '_from',
+            '_start',
+            '_starts',
+            '_to',
+            '_till',
+            '_end',
+            '_ends',
         ];
 
         $actual = $field;

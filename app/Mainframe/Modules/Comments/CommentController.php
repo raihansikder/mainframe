@@ -1,25 +1,21 @@
-<?php /** @noinspection PhpUndefinedMethodInspection */
+<?php
 
 namespace App\Mainframe\Modules\Comments;
 
 use App\Mainframe\Features\Modular\ModularController\ModularController;
+use App\Mainframe\Modules\Comments\Traits\CommentControllerTrait;
 
+/**
+ * @group  Comments
+ *
+ * APIs for managing comments
+ */
 class CommentController extends ModularController
 {
 
-    /*
-    |--------------------------------------------------------------------------
-    | Module definitions
-    |--------------------------------------------------------------------------
-    |
-    */
+    use CommentControllerTrait;
+
     protected $moduleName = 'comments';
 
-    /**
-     * @return CommentDatatable
-     */
-    public function datatable()
-    {
-        return new CommentDatatable($this->module);
-    }
+
 }

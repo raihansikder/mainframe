@@ -8,12 +8,12 @@
 
         {{ Form::open(['route' => 'register.tenant','class'=>"tenant-registration-form", 'name'=>'tenant_registration_form']) }}
 
-        @include('form.text',['var'=>['name'=>'tenant_name','label'=>'Business Name', 'container_class'=>'col-sm-12']])
-        @include('form.text',['var'=>['name'=>'first_name','label'=>'Contact first Name', 'container_class'=>'col-sm-12']])
-        @include('form.text',['var'=>['name'=>'last_name','label'=>'Contact last Name', 'container_class'=>'col-sm-12']])
-        @include('form.text',['var'=>['name'=>'email','label'=>'Email Address', 'container_class'=>'col-sm-12']])
-        @include('form.text',['var'=>['name'=>'password','type'=>'password','label'=>'Password','value'=>'', 'container_class'=>'col-sm-12']])
-        @include('form.text',['var'=>['name'=>'password_confirmation','type'=>'password','label'=>'Confirm Password', 'container_class'=>'col-sm-12']])
+        @include('form.text',['var'=>['name'=>'tenant_name','label'=>'Business Name', 'div'=>'col-sm-12']])
+        @include('form.text',['var'=>['name'=>'first_name','label'=>'Contact first Name', 'div'=>'col-sm-12']])
+        @include('form.text',['var'=>['name'=>'last_name','label'=>'Contact last Name', 'div'=>'col-sm-12']])
+        @include('form.text',['var'=>['name'=>'email','label'=>'Email Address', 'div'=>'col-sm-12']])
+        @include('form.text',['var'=>['name'=>'password','type'=>'password','label'=>'Password','value'=>'', 'div'=>'col-sm-12']])
+        @include('form.text',['var'=>['name'=>'password_confirmation','type'=>'password','label'=>'Confirm Password', 'div'=>'col-sm-12']])
 
         <div class="form-group row mb-0">
             <div class="col-md-12">

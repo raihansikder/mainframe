@@ -2,12 +2,14 @@
 
 namespace App\Mainframe\Helpers;
 
+use App\Content;
+use App\Module;
+use App\ModuleGroup;
+use App\User;
 use Auth;
 use Cache;
+use Hash;
 use Schema;
-use App\User;
-use App\Mainframe\Modules\Modules\Module;
-use App\Mainframe\Modules\ModuleGroups\ModuleGroup;
 
 /**
  * Class Mf
@@ -27,7 +29,112 @@ class Mf
     */
 
     /**
-     * @param  null $id
+     * Mainframe classes root namespace
+     *
+     * @return string
+     */
+    public static function namespace()
+    {
+        return 'App\Mainframe';
+    }
+
+    /**
+     * Mainframe resource root
+     *
+     * @return string
+     */
+    public static function resources()
+    {
+        return 'mainframe';
+    }
+
+    /**
+     * Mainframe public root directory
+     *
+     * @return string
+     */
+    public static function public()
+    {
+        return 'mainframe';
+    }
+
+    /**
+     * Get mainframe config from config/mainframe/config.php
+     *
+     * @param $key
+     * @return \Illuminate\Config\Repository|\Illuminate\Contracts\Foundation\Application|mixed
+     */
+    public static function config($key)
+    {
+        return config('mainframe.config.'.$key);
+    }
+
+    /**
+     * Get project name. This is a CamelCase name of the project
+     *
+     * @return \Illuminate\Config\Repository|\Illuminate\Contracts\Foundation\Application|mixed
+     */
+    public static function project()
+    {
+        return config('mainframe.config.project');
+    }
+
+    /**
+     * Kebab case key of the project name
+     *
+     * @return string
+     */
+    public static function projectKey()
+    {
+        return \Str::kebab(self::project());
+    }
+
+    /**
+     * Project root name space
+     *
+     * @return string
+     */
+    public static function projectNamespace()
+    {
+        return 'App\Projects\\'.self::project();
+    }
+
+    /**
+     * Project resource root
+     *
+     * @return string
+     */
+    public static function projectResources()
+    {
+        return 'projects.'.self::projectKey();
+    }
+
+    /**
+     * Project public root directory
+     *
+     * @return string
+     */
+    public static function projectPublic()
+    {
+        return 'projects/'.self::projectKey();
+    }
+
+    /**
+     * Project config
+     *
+     * @param $key
+     * @return \Illuminate\Config\Repository|\Illuminate\Contracts\Foundation\Application|mixed
+     */
+    public static function projectConfig($key)
+    {
+        return config('projects.'.self::projectKey().'.config.'.$key);
+    }
+
+    /**
+     * Common function to get current user.
+     * Do not change this function.
+     *
+     * @param  null  $id
      * @return null|\App\User|\Illuminate\Database\Eloquent\Model|\Illuminate\Database\Query\Builder|mixed
      */
     public static function user($id = null)
@@ -88,7 +195,7 @@ class Mf
      * Create a unique signature/key for a HTTP request made
      * Usually used for caching.
      *
-     * @param  String $append Raw Query string
+     * @param  String  $append  Raw Query string
      * @return string
      */
     public static function httpRequestSignature($append = null)
@@ -98,7 +205,7 @@ class Mf
             $signature .= user()->uuid;
         }
 
-        return md5($signature);
+        return base64_encode($signature);
     }
 
     /*
@@ -116,7 +223,7 @@ class Mf
      * Get columns of a table.
      *
      * @param $table
-     * @param  null $cache
+     * @param  null  $cache
      * @return array
      */
     public static function tableColumns($table, $cache = null)
@@ -134,7 +241,7 @@ class Mf
      *
      * @param $table
      * @param $column
-     * @param  null $cache
+     * @param  null  $cache
      * @return bool
      */
     public static function tableHasColumn($table, $column, $cache = null)
@@ -153,6 +260,23 @@ class Mf
     public static function tableHasTenant($table)
     {
         return Mf::tableHasColumn($table, 'tenant_id');
+    }
+
+    /**
+     * Get content
+     *
+     * @param $key
+     * @param  string  $part
+     * @return mixed|null
+     */
+    public static function content($key, $part = 'body')
+    {
+        $content = Content::where('key', $key)->where('is_active', 1)->first();
+        if ($content) {
+            return $content->part($part);
+        }
+
+        return null;
     }
 
 }

@@ -2,32 +2,34 @@
 
 namespace App\Mainframe\Modules\SuperHeroes;
 
-/** @mixin \App\Mainframe\Modules\SuperHeroes\SuperHero $this */
+/** @mixin SuperHero */
 trait SuperHeroHelper
 {
     /*
     |--------------------------------------------------------------------------
-    | Autofill and functions to calculated field updates
+    | Section: Autofill and functions to calculated field updates
     |--------------------------------------------------------------------------
-    |
     */
     /**
+     * Populate model
      * Fill data and set calculated data in fields for saving the module
      * This can depend of supporting fillFunct, setFunct,calculateFunct
+     * return $this
      */
     public function populate()
     {
-        // Sample
+        // Example code
         // $this->fillAddress()->setAmounts();
         return $this;
     }
 
-    /**
-     * Fill address
-     *
-     * @return $this
-     */
-    // public function fillAddress()
+    // /**
+    //  * Set address
+    //  * Example code
+    //  *
+    //  * @return $this
+    //  */
+    // public function setAddress()
     // {
     //     $this->field = 'val';
     //     return $this;
@@ -35,25 +37,21 @@ trait SuperHeroHelper
 
     /*
     |--------------------------------------------------------------------------
-    | Non-static helper functions
+    | Section: Non-static helper functions
     |--------------------------------------------------------------------------
-    |
     */
-
-    // Write code here
+    // Todo: Write non-static helper functions here
 
     /*
     |--------------------------------------------------------------------------
-    | Static helper functions
+    | Section: Static helper functions
     |--------------------------------------------------------------------------
-    |
     */
-
-    // Write code here
+    // Todo: static helper functions
 
     /*
     |--------------------------------------------------------------------------
-    | Ability to create, edit, delete or restore
+    | Section: Ability to create, edit, delete or restore
     |--------------------------------------------------------------------------
     |
     | An element can be editable or non-editable based on it's internal status
@@ -64,11 +62,22 @@ trait SuperHeroHelper
     */
 
     // public function isViewable() { return true; }
-
     // public function isCreatable() { return true; }
+    // public function isEditable() { return true; }
+    // public function isDeletable() { return true; }
 
-    // public function isEditable(){return true; }
-
-    // public function isDeletable(){return true; }
+    /*
+    |--------------------------------------------------------------------------
+    | Section: Notifications
+    |--------------------------------------------------------------------------
+    |
+    */
+    // /**
+    //  * Notify admins when quote is accepted
+    //  */
+    // public function sendSomeNotification()
+    // {
+    //     Notification::send($users, new NotificationClass($this));
+    // }
 
 }

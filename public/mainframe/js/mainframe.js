@@ -1,6 +1,8 @@
-/****************************************************************************************
- * CKEditor configuration variable that is commonly called for all CKEditor instances
- ****************************************************************************************/
+// noinspection JSUnusedGlobalSymbols
+/**
+ * Ckeditor config
+ * @type json
+ */
 var editor_config_basic = {
     toolbarGroups: [
         {"name": "basicstyles", "groups": ["basicstyles"]}
@@ -11,15 +13,67 @@ var editor_config_basic = {
     autoParagraph: false // stop from automatically adding <p></p> tag
 };
 
+var editor_config_extended = {
+    // readOnly: true, // make editor readonly
+    // Define the toolbar groups as it is a more accessible solution.
+    toolbarGroups: [
+        {"name": "basicstyles", "groups": ["basicstyles"]},
+        {"name": "links", "groups": ["links"]},
+        {"name": "paragraph", "groups": ["list", "blocks"]},
+        {"name": "document", "groups": ["mode"]},
+        {"name": "insert", "groups": ["insert"]},
+        {"name": "styles", "groups": ["styles"]},
+        //{"name": "about", "groups": ["about"]}
+    ],
+    // Remove the redundant buttons from toolbar groups defined above.
+    removeButtons: 'Underline,Strike,Subscript,Superscript,Anchor,Styles,Specialchar',
+    // width
+    //width: 730,
+    // extra plugins
+    //extraPlugins: 'autogrow',
+    //autoGrow_onStartup: true,
+    //autoGrow_minHeight: 250,
+    //autoGrow_maxHeight: 600
+    autoParagraph: false // stop from automatically adding <p></p> tag
+};
+var editor_config_minimal = {
+    // readOnly: true, // make editor readonly
+    // Define the toolbar groups as it is a more accessible solution.
+    toolbarGroups: [
+        {"name": "basicstyles", "groups": ["basicstyles"]},
+        {"name": "links", "groups": ["links"]},
+        {"name": "paragraph", "groups": ["list", "blocks"]},
+        //{"name": "document", "groups": ["mode"]},
+        {"name": "insert", "groups": ["insert"]},
+        {"name": "styles", "groups": ["styles"]},
+        //{"name": "about", "groups": ["about"]}
+    ],
+    // Remove the redundant buttons from toolbar groups defined above.
+    removeButtons: 'Underline,Strike,Subscript,Superscript,Anchor,Styles,Specialchar,Image,Flash,Smiley,HorizontalRule,SpecialChar,Format,Font,Iframe,PageBreak',
+    // width
+    //width: 730,
+    // extra plugins
+    //extraPlugins: 'autogrow',
+    //autoGrow_onStartup: true,
+    //autoGrow_minHeight: 250,
+    //autoGrow_maxHeight: 600
+    autoParagraph: false // stop from automatically adding <p></p> tag
+};
+
 /**
- * This function instantiates a text area so that it it compatible with ajax based form submission
- * This function checks for any change in the editor and when changes is found it updates
- * the hidden input with the changed value in the editor
+ * Instantiates a text area so that it it compatible with ajax based form submission
+ * This function checks for any change in the editor and when changes is found
+ * it updates the hidden input with the changed value in the editor
  *
  * @param id
  * @param config
  */
-function initEditor(id, config) {
+function initEditor(id, config = null) {
+
+    if(!config){
+        config = editor_config_basic;
+    }
+
     if ($('textarea#' + id).length) {
         CKEDITOR.replace(id, config);
         // update textarea as soon as something is updated in CKEditor
@@ -29,37 +83,22 @@ function initEditor(id, config) {
     }
 }
 
-/****************************************************************************************/
-/*
- *   This function binds a link with a popup action. If a link has class .popup then it will open up
- *   in a pop up window of the configuration defined below.
- * */
-$('.popup').click(function () {
+function reInitEditor(id, config = null) {
+    CKEDITOR.instances[id].destroy();
+    initEditor(id, config)
+}
 
-    var height = 600;
-    var width = 800;
-    var NWin = window.open($(this).prop('href'), '', 'scrollbars=1,height=' + height + ',width=' + width);
-    if (window.focus) {
-        NWin.focus();
-    }
-    return false;
-});
 
-// jquery function to get outerHTML
+
+/**
+ * jquery function to get outerHTML
+ * @param s
+ * @returns {*}
+ */
 jQuery.fn.outerHTML = function (s) {
     return s ? this.before(s).remove() : jQuery("<p>").append(this.eq(0).clone()).html();
 };
 
-// for tooltip popover
-$('[data-toggle="popover"]').popover();
-
-$('.datepicker').datepicker(
-    {
-        format: 'yyyy-mm-dd',
-        autoclose: true,
-        clearBtn: true
-    }
-);
 
 /**
  * Get selected values as array from a multi-select select
@@ -74,15 +113,27 @@ function getMultiSelectAsArray(selector) {
     return arr;
 }
 
-/****************************************************************************************
- *   Make delete button responsive to context. Click on delete button loads a modal
- *   and a form with relevant values required for delete. These values include
- *   the route that will trigger the delete. Also determines the redirect
- *   path on successful delete and delete failure.
- ****************************************************************************************/
+// noinspection JSUnusedGlobalSymbols
+/**
+ * Get selected values as array from an array
+ * @param selector
+ * @returns {Array}
+ */
+function getInputAsArray(selector) {
+    var arr = [];
+    $(selector).each(function (i, input) {
+        arr[i] = $(input).val();
+    });
+    return arr;
+}
+
 
 /**
- *   Function to prepare the for that will POST to delete route.
+ * Function to prepare the for that will POST to delete route.
+ * Make delete button responsive to context. Click on delete button loads a modal
+ * and a form with relevant values required for delete. These values include
+ * the route that will trigger the delete. Also determines the redirect
+ * path on successful delete and delete failure.
  */
 function initGenericDeleteBtn() {
 
@@ -102,16 +153,8 @@ function initGenericDeleteBtn() {
     });
 }
 
-// call the funtion
-initGenericDeleteBtn();
-/********************** delete end *******************************/
 
-// enable slim scroll for all HTML element with class 'slim scroll'
-$('.slimscroll').slimScroll({
-    alwaysVisible: true
-});
-
-/******************************************************************
+/**
  * Checks if returns json is valid json
  * @param val
  * @returns {*}
@@ -126,55 +169,32 @@ function parseJson(val) {
     return val;
 }
 
-$('.datatable-min').dataTable({
-    "bPagination": false,
-    "bFilter": false,
-    //"bPaginate": false,
-    "bLengthChange": false,
-    "bInfo": false,
-    "bPageLength": 10,
-    "aaSorting": [[0, "desc"]]
-});
-
-$('.datatable-min-no-pagination').dataTable({
-    "bPagination": false,
-    "bFilter": false,
-    "bPaginate": false,
-    "bLengthChange": false,
-    "bInfo": false,
-    "bPageLength": 10,
-    "aaSorting": [[0, "desc"]]
-});
-
-// make all select selct2
-$('select').select2();
 
 // noinspection JSUnusedGlobalSymbols
 /**
- * disable all input
+ * Disable all input
  */
 function makeAllInputReadonly() {
     $('input, textarea, select').attr('readonly', 'readonly'); // make everything readonly
     $('button[name=genericDeleteBtn]').hide(); // hide delete buttons
     $('option:not(:selected)').attr('disabled', true).remove(); // remove all options that are not selected
     $("select").prop("disabled", true);
-
 }
 
-// hide messages/notifications
-setTimeout(function () {
-    $('div#showMsg').fadeOut('slow');
-}, 3500);
+/**
+ * Hide empty select options
+ */
+function hideEmptySelectOptions() {
+    $('select option')
+        .filter(function () {
+            return !this.value || $.trim(this.value).length == 0 || $.trim(this.text).length == 0;
+        })
+        .remove();
+}
 
-
-//iCheck for checkbox and radio inputs
-$('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
-    checkboxClass: 'icheckbox_minimal-blue',
-    radioClass: 'iradio_minimal-blue'
-});
 
 /**
- * function is called in app/views/spyr/form/input-checkbox.blade.php
+ * Function is called in app/views/spyr/form/input-checkbox.blade.php
  * a checkbox and associative hidden input field is instantiated
  * based on existing value of the hidden input box.
  */
@@ -182,43 +202,39 @@ function initCheckbox() {
 
     /**
      * Go through each checkbox input field and if checkbox value is
-     * equal to checked_val mark as checked(ticket). Otherwise
+     * equal to checked_val mark as checked(ticked). Otherwise
      * uncheck.the checkbox.
      */
     $('.spyr-checkbox').each(function () {
 
         var checkbox = $(this);
         var checked_val = checkbox.attr('data-checked-val');
-        var unchecked_val = checkbox.attr('data-unchecked-val');
-        var name = checkbox.attr('data-checkbox-name');
 
         if (checkbox.val() == checked_val) {
             checkbox.prop('checked', true);
-            $('input[name=' + name + ']').val(checked_val);
         } else {
             checkbox.prop('checked', false);
-            checkbox.val(unchecked_val);
-            $('input[name=' + name + ']').val(unchecked_val);
         }
+        checkbox.trigger('change')
     });
 
     $('.spyr-checkbox').change(function () {
         var checkbox = $(this);
         var checked_val = checkbox.attr('data-checked-val');
         var unchecked_val = checkbox.attr('data-unchecked-val');
-        var name = $(this).attr('data-checkbox-name');
+        var id = $(this).attr('data-checkbox-id');
 
         if (checkbox.is(':checked')) {
-            $('input[name=' + name + ']').val(checked_val);
+            $('input[class=' + id + ']').val(checked_val);
             checkbox.val(checked_val);
         } else {
-            $('input[name=' + name + ']').val(unchecked_val);
+            $('input[class=' + id + ']').val(unchecked_val);
             checkbox.val(unchecked_val);
         }
     });
 }
 
-initCheckbox(); // Run while page load
+
 /**************************************************************************/
 
 /**
@@ -238,17 +254,17 @@ function initUploader(id, url) {
         showStatusAfterSuccess: true,
         autoSubmit: true,
         dragDrop: true,
-        dragdropWidth: '70%',
+        dragdropWidth: '100%',
         //maxFileSize: 8,
         //maxFileCount: 1,
         //acceptFiles: "audio/*",
         multiple: true,
-        statusBarWidth: '70%',
+        statusBarWidth: '100%',
         uploadButtonClass: 'btn btn-default btn-sm btn-flat',
         returnType: 'json',
         showPreview: true,
         showDone: true,
-        doneStr: '100% complete',
+        doneStr: 'Done',
         // dynamicFormData: function () {                   // old implementation
         //     return {
         //         "ret": "json",
@@ -266,10 +282,14 @@ function initUploader(id, url) {
             loadMsg(parseJson(ret));
             $('#msgModal').modal('show');
             //console.log(ret);
+            if (ret.status == 'fail') {
+                $('div.ajax-file-upload-green').hide();
+            }
             // var path = ret.message.path;
         },
-        onError: function (files, status, errMsg) {
-            $("#status").html("<span style='color: red;'>Something Wrong." + errMsg + "</span>");
+        //onError: function (files, status, errMsg) {};
+        onError: function () {
+            $("#status").html("<span style='color: green;'>Something Wrong</span>");
         }
     });
 }

@@ -46,5 +46,8 @@ return [
         'apis' => [
             'make-api-call' => 'API calls using Authentication token(X-Auth-Token)',
         ],
+        'report' => [
+            'report-name' => 'Run this report',
+        ],
     ],
 ];

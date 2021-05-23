@@ -1,108 +1,129 @@
 <?php
-use App\Mainframe\Features\Form\Select\SelectAjax;
 
-$rand = \Illuminate\Support\Str::random(8);
+/*
+|--------------------------------------------------------------------------
+| Vars
+|--------------------------------------------------------------------------
+|
+| This view partial can be included with a config variable $var.
+| $var is an array and can have following keys.
+| if a $var is not set the default value will be use.
+|
+*/
+/**
+ *      $var['div'] ?? 'col-md-3';
+ *      $var['label']           ?? null;
+ *      $var['label_class']     ?? null;
+ *      $var['type']            ?? null;
+ *      $var['value']           ?? null;
+ *      $var['name']            ?? Str::random(8);
+ *      $var['params']          ?? [];  // These are the html attributes like css, id etc for the field.
+ *      $var['editable']        ?? true;
+ *
+ * @var \Illuminate\Support\ViewErrorBag $errors
+ * @var \App\Mainframe\Features\Modular\BaseModule\BaseModule $element
+ * @var bool $editable
+ * @var array $immutables
+ */
 
-// Check edibility
-if (! isset($var['editable']) && isset($editable)) {
-    $var['editable'] = $editable;
 
-    // Check immutability
-    if ($editable && isset($immutables)) {
-        $var['editable'] = ! in_array($var['name'], $immutables);
-    }
-}
-
-$input = new SelectAjax($var, $element ?? null);
+$var = \App\Mainframe\Features\Form\Form::setUpVar($var, $errors ?? null, $element ?? null, $editable ?? null, $immutables ?? null);
+$input = new \App\Mainframe\Features\Form\Select\SelectAjax($var);
 ?>
+@if($input->isHidden)
+    {{ Form::hidden($input->name, $input->value()) }}
+@else
+    <div class="{{$input->containerClasses()}}" id="{{$input->uid}}">
 
-<div id="{{$rand}}"
-     class="form-group {{$input->containerClass}} {{$errors->first($input->name, ' has-error')}} {{$input->uid}}">
+        {{-- label --}}
+        @include('mainframe.form.includes.label')
 
-    @if($input->label)
-        <label id="label_{{$input->name}}"
-               class="control-label {{$input->labelClass}}"
-               for="{{$input->name}}">
-            {!! $input->label !!}
-        </label>
-    @endif
-
-    @if($input->isEditable)
+        {{-- input --}}
         <div class="clearfix"></div>
-        <div class="col-md-9 no-padding">
+        @php
+            $span = $input->isEditable ? '10' : '12'
+        @endphp
+        <div class="col-md-{{$span}} no-padding">
             {{ Form::text($input->name, $input->value(), $input->params) }}
             <input name="preload" type="hidden" value="{{$input->preload}}"/>
         </div>
-        <div class="col-md-3 no-padding">
-            <a id="clear_{{$input->name}}" class="btn  bg-white selectClearBtn"
-               href="#">Clear</a>
-        </div>
-    @else
-        <span class="{{$input->params['class']}} readonly">
-            {{$input->print()}}
-        </span>
-    @endif
-    <div class="clearfix"></div>
-    {!! $errors->first($var['name'], '<span class="help-block">:message</span>') !!}
-</div>
+
+        {{--clear button--}}
+        @if($input->isEditable)
+            <div class="col-md-2 no-padding">
+                <a id="clear_{{$input->name}}" class="btn  bg-white selectClearBtn"
+                   data-target="{{$input->uid}}"
+                   href="#">Clear</a>
+            </div>
+        @endif
+
+        <div class="clearfix"></div>
+
+        {{-- Error --}}
+        @include('mainframe.form.includes.show-error')
+    </div>
+@endif
 
 
 @section('js')
     @parent
+    @if(!$input->isHidden)
 
-    <script type="text/javascript">
+        <script type="text/javascript">
 
-        var divId = '{{$rand}}';
-        var url = '{{$input->url}}';
-        var inputName = '{{$input->name}}';
+            var divId = '{{$input->uid}}';
+            var url = '{!! $input->url !!}';
+            var inputName = '{{$input->name}}';
 
-        initAjaxSelect(divId, url, inputName);
+            initAjaxSelect(divId, url, inputName);
 
-        // clear button
-        $("#" + divId + " .selectClearBtn").click(function () {
-            $("#" + divId + " input.ajax").select2("val", "");
-        });
-
-        /**
-         * Function to instantiate the ajax based selector.
-         * @param divId
-         * @param url
-         * @param inputName
-         */
-        function initAjaxSelect(divId, url, inputName) {
-
-            var select2 = $("#" + divId + " input.ajax").select2({
-                minimumInputLength: 2,
-                initSelection: function (element, callback) {
-                    var id = element.val();
-                    var text = $("#" + divId + ' input[name=preload]').val();
-                    var data = {id: id, text: text};
-                    callback(data);
-                },
-                ajax: {
-                    dataType: "json",
-                    url: url,
-                    quietMillis: 1000,
-                    data: function (term, page) {
-                        return {'{{$input->nameField}}': term};
-                    },
-                    results: function (response) {
-                        return {
-                            results: $.map(response.data.items, function (item) {
-                                return {
-                                    text: item.{{$input->nameField}},
-                                    id: item.id
-                                }
-                            })
-                        };
-                    }
-                }
-            }).on("change", function () {
-                // callSomeFunction();
+            // clear button
+            $("#" + divId + " .selectClearBtn").click(function () {
+                divId = $(this).data('target');
+                $("#" + divId + " input.ajax").select2("val", "");
             });
-        }
 
-    </script>
+            /**
+             * Function to instantiate the ajax based selector.
+             * @param divId
+             * @param url
+             * @param inputName
+             */
+            function initAjaxSelect(divId, url, inputName) {
+
+                var select2 = $("#" + divId + " input.ajax").select2({
+                    minimumInputLength: 2,
+                    initSelection: function (element, callback) {
+                        var id = element.val();
+                        var text = $("#" + divId + ' input[name=preload]').val();
+                        var data = {id: id, text: text};
+                        callback(data);
+                    },
+                    ajax: {
+                        dataType: "json",
+                        url: url,
+                        quietMillis: 1000,
+                        data: function (term, page) {
+                            return {'{{$input->nameField}}': term};
+                        },
+                        results: function (response) {
+                            return {
+                                results: $.map(response.data.items, function (item) {
+                                    return {
+                                        text: item.{{$input->nameField}},
+                                        id: item.id
+                                    }
+                                })
+                            };
+                        }
+                    }
+                }).on("change", function () {
+                    // callSomeFunction();
+                });
+            }
+
+        </script>
+    @endif
 @endsection
 
 <?php unset($input) ?>

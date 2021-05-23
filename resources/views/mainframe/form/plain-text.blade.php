@@ -1,25 +1,17 @@
 <?php
 /** @var \App\Mainframe\Features\Modular\BaseModule\BaseModule $element */
-use App\Mainframe\Features\Form\Text\PlainText;
 
-// Check edibility
-if (! isset($var['editable']) && isset($editable)) {
-    $var['editable'] = $editable;
-}
-$var['type'] = $var['type'] ?? 'text';
-$input = new PlainText($var, $element ?? null);
+$var = \App\Mainframe\Features\Form\Form::setUpVar($var, $errors ?? null, $element ?? null, $editable ?? null, $immutables ?? null);
+$input = new \App\Mainframe\Features\Form\Text\PlainText($var);
 
 ?>
 
-<div class="form-group {{$input->containerClass}} {{$input->uid}}">
-    @if($input->label)
-        <label id="label_{{$input->name}}"
-               class="control-label {{$input->labelClass}}"
-               for="{{$input->name}}">
-            {!! $input->label !!}
-        </label>
-    @endif
+<div class="{{$input->containerClasses()}}" id="{{$input->uid}}">
 
+    {{-- label --}}
+    @include('mainframe.form.includes.label')
+
+    {{-- value --}}
     <span class="{{$input->params['class']}} readonly">
         {{$input->print()}}
     </span>

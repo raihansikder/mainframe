@@ -21,7 +21,13 @@ trait RequestValidator
     public function validateStoreRequest()
     {
         if ($this->storeRequestValidator()->fails()) {
-            $this->response($this->storeRequestValidator())->failValidation();
+            $this->mergeValidatorErrors($this->storeRequestValidator());
+
+            return false;
+        }
+
+        if ($this->saveRequestValidator()->fails()) {
+            $this->mergeValidatorErrors($this->saveRequestValidator());
 
             return false;
         }
@@ -39,8 +45,20 @@ trait RequestValidator
      */
     public function validateUpdateRequest()
     {
+
         if ($this->updateRequestValidator()->fails()) {
-            $this->response($this->updateRequestValidator())->failValidation();
+
+
+            $this->mergeValidatorErrors($this->updateRequestValidator());
+
+            return false;
+        }
+
+
+
+        if ($this->saveRequestValidator()->fails()) {
+
+            $this->mergeValidatorErrors($this->saveRequestValidator());
 
             return false;
         }
@@ -59,7 +77,7 @@ trait RequestValidator
     public function validateDeleteRequest()
     {
         if ($this->deleteRequestValidator()->fails()) {
-            $this->response($this->deleteRequestValidator())->failValidation();
+            $this->mergeValidatorErrors($this->deleteRequestValidator());
 
             return false;
         }
@@ -77,18 +95,18 @@ trait RequestValidator
     public function storeRequestValidator()
     {
         $rules = [
-            //'name' => 'required',
+            // 'lorem' => 'required',
         ];
 
         $message = [
             //'password.regex' => "The password field should be mix of letters and numbers.",
         ];
 
-        $this->validator = Validator::make(request()->all(), $rules, $message);
+        $validator = Validator::make(request()->all(), $rules, $message);
 
         //$this->fieldError('name','Error Lorem Ipsum'); // Sample error message.
 
-        return $this->validator;
+        return $validator;
     }
 
     /**
@@ -99,7 +117,44 @@ trait RequestValidator
      */
     public function updateRequestValidator()
     {
-        return $this->storeRequestValidator();
+        $rules = [
+            //'name' => 'required',
+        ];
+
+        $message = [
+            //'password.regex' => "The password field should be mix of letters and numbers.",
+        ];
+
+        $validator = Validator::make(request()->all(), $rules, $message);
+
+        //$this->fieldError('name','Error Lorem Ipsum'); // Sample error message.
+
+        return $validator;
+    }
+
+    /**
+     * Laravel rule based validator that is called during save or update.
+     * This is a common place to write validation rules that apply
+     * for both create and update.
+     * This only validates the request.
+     *
+     * @return \Illuminate\Validation\Validator
+     */
+    public function saveRequestValidator()
+    {
+        $rules = [
+            //'name' => 'required',
+        ];
+
+        $message = [
+            //'password.regex' => "The password field should be mix of letters and numbers.",
+        ];
+
+        $validator = Validator::make(request()->all(), $rules, $message);
+
+        //$this->fieldError('name','Error Lorem Ipsum'); // Sample error message.
+
+        return $validator;
     }
 
     /**

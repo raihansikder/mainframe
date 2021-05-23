@@ -2,6 +2,8 @@
 
 namespace App\Mainframe\Features\Form;
 
+use Illuminate\Support\Str;
+
 class Comment extends Form
 {
     /** @var string */
@@ -27,19 +29,18 @@ class Comment extends Form
      * Input constructor.
      *
      * @param  \App\Mainframe\Features\Modular\BaseModule\BaseModule  $element
-     * @param  array  $conf
+     * @param  array  $var
      */
-    public function __construct($conf = [], $element = null)
+    public function __construct($var = [], $element = null)
     {
-        parent::__construct($element);
+        parent::__construct($var,$element);
 
-
-        $this->containerClass = $conf['container_class'] ?? '';
+        $this->containerClass = $this->var['container_class'] ??  $this->var['div'] ?? '';
 
         $this->elementUuid = $element->uuid;
 
         if($element){
-            $this->commentableType = $conf['commentable_type'] ?? get_class($element);
+            $this->commentableType = $this->var['commentable_type'] ?? get_class($element);
         }
 
         if ($element && $element->isUpdating()) {
@@ -47,16 +48,16 @@ class Comment extends Form
             $this->tenantId = $element->tenant_id ?? null;
         }
 
-        $this->moduleId = $conf['module_id'] ?? $element->module()->id;
+        $this->moduleId = $this->var['module_id'] ?? $element->module()->id;
 
 
-        $this->elementId = $conf['element_id'] ?? $this->elementId;
-        $this->elementUuid = $conf['element_uuid'] ?? $this->elementUuid;
-        $this->tenantId = $conf['tenant_id'] ?? $this->tenantId;
+        $this->elementId = $this->var['element_id'] ?? $this->elementId;
+        $this->elementUuid = $this->var['element_uuid'] ?? $this->elementUuid;
+        $this->tenantId = $this->var['tenant_id'] ?? $this->tenantId;
 
-        $this->type = $conf['type'] ?? null;
-        $this->limit = $conf['limit'] ?? 999;
-        $this->commentBoxId = $conf['comment_box_id'] ?? 'commentBox'.\Str::random(8);
+        $this->type = $this->var['type'] ?? null;
+        $this->limit = $this->var['limit'] ?? 999;
+        $this->commentBoxId = $this->var['comment_box_id'] ?? 'commentBox'.Str::random(8);
 
     }
 }
