@@ -1,4 +1,8 @@
-@extends('mainframe.layouts.default.template')
+<?php
+/** @var \App\Mainframe\Features\Core\ViewProcessor $view */
+?>
+
+@extends($view->defaultTemplate())
 
 @section('sidebar-left')
     @include('mainframe.layouts.default.includes.navigation.left-menu.menu-items')

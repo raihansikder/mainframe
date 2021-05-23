@@ -52,6 +52,6 @@ class VerificationController extends BaseController
     {
         return $request->user()->hasVerifiedEmail()
             ? redirect($this->redirectPath())
-            : view($this->view);
+            : view('mainframe.auth.verify');
     }
 }

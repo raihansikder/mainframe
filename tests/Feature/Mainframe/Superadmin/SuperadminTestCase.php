@@ -7,14 +7,15 @@ use App\User;
 
 class SuperadminTestCase extends TestCase
 {
-    public $superadmin;
+    public $user;
 
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->superadmin = User::find(1);
-        $this->be($this->superadmin); // Impersonate as the currently created admin user
+        $this->withoutExceptionHandling();
+        $this->user = User::remember(timer('long'))->find(env('SUPERADMIN_USER_ID'));
+        $this->be($this->user); // Impersonate as the currently created admin user
     }
 
 }

@@ -1,9 +1,8 @@
-<?php /** @noinspection ALL */
+<?php
 
 namespace App\Mainframe\Features\Core\Traits;
 
 use App\Mainframe\Features\Responder\Response;
-use URL;
 
 /** @mixin  \App\Mainframe\Http\Controllers\BaseController $this */
 trait SendResponse
@@ -11,21 +10,60 @@ trait SendResponse
     /** * @var \App\Mainframe\Features\Responder\Response */
     public $response;
 
-    protected $redirectTo;
+    /** @var string */
+    protected $redirectTo; // Note: This is set as 'protected' to avoid conflict with some laravel classes
 
     /**
-     * @param  \Illuminate\Validation\Validator|null $validator
+     * @param  \App\Mainframe\Features\Responder\Response  $response
+     * @return SendResponse
+     */
+    public function setResponse($response)
+    {
+        $this->response = $response;
+
+        return $this;
+    }
+
+    /**
      * @return mixed|Response
      */
-    public function response($validator = null)
+    public function response()
     {
         /** @var Response $response */
         $this->response = resolve(Response::class);
-        if ($validator) {
-            $this->response->validator = $validator;
-        }
 
-        return $this->response;
+        return $this->prepareResponse();
+    }
+
+    public function prepareResponse()
+    {
+        return $this->setRedirectTo()->setValidator($this->validator ?? null);
+    }
+
+    /**
+     * Set redirection url
+     *
+     * @param $message
+     * @return \App\Mainframe\Features\Responder\Response|mixed
+     */
+    public function setMessage($message)
+    {
+        return $this->response()->setMessage($message);
+    }
+
+    /**
+     * Set redirection url
+     *
+     * @param  null  $to
+     * @return \App\Mainframe\Features\Responder\Response|mixed
+     */
+    public function setRedirectTo($to = null)
+    {
+        $to = $to ?: $this->resolveRedirectTo();
+
+        $this->redirectTo = $to;
+
+        return resolve(Response::class)->setRedirectTo($to);
     }
 
     /**
@@ -35,8 +73,7 @@ trait SendResponse
      */
     public function resolveRedirectTo()
     {
-        $to = $this->redirectToBasedOnRequestParam();
-        if ($to) {
+        if ($to = $this->redirectToBasedOnRequestParam()) {
             return $to;
         }
 
@@ -44,11 +81,10 @@ trait SendResponse
             return $this->redirectTo;
         }
 
-        return URL::full();
+        return request()->headers->get('referer') ?: \URL::full();
     }
 
     /**
-     *
      * @return array|\Illuminate\Http\Request|string|null
      */
     public function redirectToBasedOnRequestParam()
@@ -56,7 +92,11 @@ trait SendResponse
         $successTo = request('redirect_success');
         $failTo = request('redirect_fail');
 
-        if ($successTo && $this->response()->isSuccess()) {
+        if (isset($this->validator)) {
+            $this->response->setValidator($this->validator);
+        }
+
+        if ($successTo && resolve(Response::class)->isSuccess()) {
 
             if (isset($this->element, $this->module) && $successTo == '#new') {
                 return route($this->module->name.".edit", $this->element->id);
@@ -65,23 +105,11 @@ trait SendResponse
             return $successTo;
         }
 
-        if ($failTo && $this->response()->isFail()) {
+        if ($failTo && resolve(Response::class)->isFail()) {
             return $failTo;
         }
 
         return null;
-    }
-
-    /**
-     * Set redirection url
-     *
-     * @return $this
-     */
-    public function setRedirectTo()
-    {
-        $this->response()->redirectTo = $this->resolveRedirectTo();
-
-        return $this;
     }
 
     /*
@@ -96,19 +124,19 @@ trait SendResponse
     /**
      * Render view
      *
-     * @param $path
-     * @param array $vars
+     * @param $viewPath
+     * @param  array  $viewVars
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function view($path, $vars = [])
+    public function view($viewPath, $viewVars = [])
     {
-        return $this->response()->view($path, $vars = []);
+        return $this->response()->view($viewPath, $viewVars);
     }
 
     /**
      * Redirect
      *
-     * @param  string $to
+     * @param  string  $to
      * @return \Illuminate\Http\RedirectResponse
      */
     public function redirect($to = null)
@@ -129,8 +157,8 @@ trait SendResponse
     /**
      * Json or abort
      *
-     * @param  string $message
-     * @param  int $code
+     * @param  string  $message
+     * @param  int  $code
      * @return \Illuminate\Http\JsonResponse|void
      */
     public function failed($message = 'Failed', $code = Response::HTTP_BAD_REQUEST)
@@ -141,8 +169,8 @@ trait SendResponse
     /**
      * Json or succeeded
      *
-     * @param  string $message
-     * @param  int $code
+     * @param  string  $message
+     * @param  int  $code
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Illuminate\View\View|void
      */
     public function succeeded($message = null, $code = Response::HTTP_OK)
@@ -163,8 +191,8 @@ trait SendResponse
     /**
      * Abort on permission denial
      *
-     * @param  string $message
-     * @param  int $code
+     * @param  string  $message
+     * @param  int  $code
      * @return \Illuminate\Http\JsonResponse|void
      */
     public function permissionDenied($message = 'Permission denied', $code = Response::HTTP_FORBIDDEN)
@@ -175,8 +203,8 @@ trait SendResponse
     /**
      * Abort on resource not found
      *
-     * @param  string $message
-     * @param  int $code
+     * @param  string  $message
+     * @param  int  $code
      * @return \Illuminate\Http\JsonResponse|void
      */
     public function notFound($message = 'Not found', $code = Response::HTTP_NOT_FOUND)
@@ -187,8 +215,8 @@ trait SendResponse
     /**
      * Build a success response.
      *
-     * @param  null $message
-     * @param  int $code
+     * @param  null  $message
+     * @param  int  $code
      * @return \App\Mainframe\Features\Responder\Response|mixed
      */
     public function success($message = null, $code = Response::HTTP_OK)
@@ -199,8 +227,8 @@ trait SendResponse
     /**
      * Build a fail response.
      *
-     * @param  null $message
-     * @param  int $code
+     * @param  null  $message
+     * @param  int  $code
      * @return \App\Mainframe\Features\Responder\Response|mixed
      */
     public function fail($message = null, $code = Response::HTTP_UNPROCESSABLE_ENTITY)
@@ -211,19 +239,18 @@ trait SendResponse
     /**
      * Set response as fail
      *
-     * @param  string $message
-     * @param  int $code
+     * @param  string  $message
      * @return \App\Mainframe\Features\Responder\Response|mixed
      */
-    public function failValidation($message = 'Validation failed', $code = Response::HTTP_UNPROCESSABLE_ENTITY)
+    public function failValidation($message = '')
     {
-        return $this->response()->failValidation($message, $code);
+        return $this->response()->failValidation($message);
     }
 
     /**
      * Load a payload to be sent with the response
      *
-     * @param  null $payload
+     * @param  null  $payload
      * @return \App\Mainframe\Features\Responder\Response|mixed
      */
     public function load($payload = null)
@@ -232,7 +259,7 @@ trait SendResponse
     }
 
     /**
-     * @param  null $redirectTo
+     * @param  null  $redirectTo
      * @return \App\Mainframe\Features\Responder\Response|mixed
      */
     public function to($redirectTo = null)
@@ -269,17 +296,6 @@ trait SendResponse
     public function expectsJson()
     {
         return $this->response()->expectsJson();
-    }
-
-    /**
-     * Additional values to be passed to view through view composer or redirect.
-     * In redirect the value has to be accessed via session.
-     *
-     * @return array
-     */
-    public function defaultViewVars()
-    {
-        return $this->response()->defaultViewVars();
     }
 
 }

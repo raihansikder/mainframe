@@ -1,0 +1,16 @@
+2021-05-23 12:23:29: -- Analysis Started by User Command
+2021-05-23 12:23:29: Changes: 11, Conflicts: 0, CopyTime: 0, FixState: 0, Errors: 0, All: 3043
+2021-05-23 12:23:29: Left to Right: Copy File: 11 
+2021-05-23 12:23:29: == Sync Started by User Command
+2021-05-23 12:23:29: Create Folder E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Modular/Rememberable
+2021-05-23 12:23:29: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/Cacher/Cacher.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Cacher/Cacher.php' (992)
+2021-05-23 12:23:29: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/Content/DynamicContentTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Content/DynamicContentTrait.php' (4,107)
+2021-05-23 12:23:29: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/Datatable/Traits/DatatableTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Datatable/Traits/DatatableTrait.php' (6,013)
+2021-05-23 12:23:29: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/Modular/Rememberable/Rememberable.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Modular/Rememberable/Rememberable.php' (1,030)
+2021-05-23 12:23:29: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/Responder/Response.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Responder/Response.php' (22,132)
+2021-05-23 12:23:30: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Helpers/functions.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Helpers/functions.php' (6,702)
+2021-05-23 12:23:30: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Helpers/generic.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Helpers/generic.php' (15,204)
+2021-05-23 12:23:30: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Helpers/Mf.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Helpers/Mf.php' (6,725)
+2021-05-23 12:23:30: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Modules/Traits/ModuleTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Modules/Traits/ModuleTrait.php' (8,946)
+2021-05-23 12:23:30: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/js/lodash.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/lodash.js' (557,625)
+2021-05-23 12:23:30: == Sync Complete. Time: 00:00:01, Speed: 0.00/s, OK: 11, Errors: 0

@@ -1,5 +1,6 @@
 <?php
-use App\Mainframe\Helpers\View;use App\Mainframe\Modules\ModuleGroups\ModuleGroup;
+use App\Mainframe\Helpers\View;
+use App\ModuleGroup;
 
 $currentModuleName = isset($module) ? $module->name : '';
 $breadcrumbs = isset($module) ? View::breadcrumb($module) : [];

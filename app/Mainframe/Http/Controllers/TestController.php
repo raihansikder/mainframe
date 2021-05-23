@@ -4,7 +4,7 @@ namespace App\Mainframe\Http\Controllers;
 
 use Illuminate\Support\Str;
 use App\User;
-use App\Mainframe\Modules\Modules\Module;
+use App\Module;
 
 class TestController extends BaseController
 {

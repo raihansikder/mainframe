@@ -7,10 +7,10 @@ use App\Mainframe\Features\Form\Input;
 class InputHidden extends Input
 {
 
-    public function __construct($conf = [], $element = null)
+    public function __construct($var = [], $element = null)
     {
-        parent::__construct($conf, $element);
+        parent::__construct($var, $element);
         $this->type = 'hidden';
-        $this->containerClass = $conf['container_class'] ?? '';
+        $this->containerClass = $this->var['container_class'] ?? $this->var['div'] ?? '';
     }
 }

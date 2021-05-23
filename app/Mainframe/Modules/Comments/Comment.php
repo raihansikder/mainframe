@@ -1,8 +1,9 @@
-<?php /** @noinspection PhpUndefinedMethodInspection */
+<?php
 
 namespace App\Mainframe\Modules\Comments;
 
 use App\Mainframe\Features\Modular\BaseModule\BaseModule;
+use App\Mainframe\Modules\Comments\Traits\CommentTrait;
 
 /**
  * App\Mainframe\Modules\Comments\Comment
@@ -28,51 +29,47 @@ use App\Mainframe\Features\Modular\BaseModule\BaseModule;
  * @property int|null $deleted_by
  * @property-read \Illuminate\Database\Eloquent\Collection|\OwenIt\Auditing\Models\Audit[] $audits
  * @property-read int|null $audits_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Comments\Comment[] $comments
- * @property-read int|null $comments_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Change[] $changes
+ * @property-read int|null $changes_count
+ * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $commentable
  * @property-read \App\User|null $creator
- * @property-read \App\Mainframe\Modules\Comments\Comment $latestComment
- * @property-read \App\Mainframe\Modules\Uploads\Upload $latestUpload
- * @property-read \App\Mainframe\Modules\Projects\Project|null $project
- * @property-read \App\Mainframe\Modules\Tenants\Tenant|null $tenant
+ * @property-read \App\Module|null $linkedModule
+ * @property-read \App\Project|null $project
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Spread[] $spreads
+ * @property-read int|null $spreads_count
+ * @property-read \App\Tenant|null $tenant
  * @property-read \App\User|null $updater
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Uploads\Upload[] $uploads
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Upload[] $uploads
  * @property-read int|null $uploads_count
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Features\Modular\BaseModule\BaseModule active()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Comments\Comment newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Comments\Comment newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Comments\Comment query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Comments\Comment whereBody($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Comments\Comment whereCommentableId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Comments\Comment whereCommentableType($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Comments\Comment whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Comments\Comment whereCreatedBy($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Comments\Comment whereDeletedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Comments\Comment whereDeletedBy($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Comments\Comment whereElementId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Comments\Comment whereElementUuid($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Comments\Comment whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Comments\Comment whereIsActive($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Comments\Comment whereModuleId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Comments\Comment whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Comments\Comment whereProjectId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Comments\Comment whereTenantId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Comments\Comment whereType($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Comments\Comment whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Comments\Comment whereUpdatedBy($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Comments\Comment whereUuid($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BaseModule active()
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment whereBody($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment whereCommentableId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment whereCommentableType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment whereCreatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment whereDeletedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment whereElementId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment whereElementUuid($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment whereIsActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment whereModuleId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment whereProjectId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment whereTenantId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment whereType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment whereUpdatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment whereUuid($value)
  * @mixin \Eloquent
  */
 class Comment extends BaseModule
 {
-    use CommentHelper;
+    use CommentTrait;
 
-    /*
-    |--------------------------------------------------------------------------
-    | Module definitions
-    |--------------------------------------------------------------------------
-    |
-    */
     protected $moduleName = 'comments';
     protected $table      = 'comments';
 
@@ -84,6 +81,8 @@ class Comment extends BaseModule
     | These attributes can be mass assigned
     */
     protected $fillable = [
+        'project_id',
+        'tenant_id',
         'uuid',
         'name',
         'type',
@@ -96,153 +95,39 @@ class Comment extends BaseModule
         'is_active',
     ];
 
-    /*
-    |--------------------------------------------------------------------------
-    | Guarded attributes
-    |--------------------------------------------------------------------------
-    |
-    | The attributes can not be mass assigned.
-    */
     // protected $guarded = [];
-
-    /*
-    |--------------------------------------------------------------------------
-    | Type cast dates
-    |--------------------------------------------------------------------------
-    |
-    | Type cast attributes as date. This allows to create a Carbon object.
-    | Of the dates
-   */
-    // protected $dates = [];
-
-    /*
-    |--------------------------------------------------------------------------
-    | Type cast attributes
-    |--------------------------------------------------------------------------
-    |
-    | Type cast attributes (helpful for JSON)
-    */
+    // protected $dates = ['created_at', 'updated_at', 'deleted_at'];
     // protected $casts = [];
-
-    /*
-    |--------------------------------------------------------------------------
-    | Automatic eager load
-    |--------------------------------------------------------------------------
-    |
-    | Auto load these relations whenever the model is retrieved.
-    */
     // protected $with = [];
-
-    /*
-    |--------------------------------------------------------------------------
-    | Append new attributes to the model
-    |--------------------------------------------------------------------------
-    |
-    | If you want to append a new attribute that doesn't exists in the table
-    | you should first create and accessor getNewFieldAttribute and then
-    | add the attribute name in the array
-    */
     // protected $appends = [];
 
     /*
     |--------------------------------------------------------------------------
-    | Options
+    | Option values
     |--------------------------------------------------------------------------
-    |
-    | Your model can have one or more public static variables that stores
-    | The possible options for some field. Variable name should be
-    |
     */
     // public static $types = [];
-    // public static $statuses = [];
 
     /*
     |--------------------------------------------------------------------------
     | Boot method and model events.
     |--------------------------------------------------------------------------
-    |
-    | Register the observer in the boot method. You can also make use of
-    | model events like saving, creating, updating etc to further
-    | manipulate the model
     */
-    public static function boot()
+    protected static function boot()
     {
         parent::boot();
         self::observe(CommentObserver::class);
+
+        // static::saving(function (Comment $element) { });
+        static::creating(function (Comment $element) {
+            $element->fillModuleAndElement('commentable'); // Fill polymorphic fields
+        });
+        // static::updating(function (Comment $element) { });
+        // static::created(function (Comment $element) { });
+        // static::updated(function (Comment $element) { });
         // static::saved(function (Comment $element) { });
+        // static::deleting(function (Comment $element) { });
+        // static::deleted(function (Comment $element) { });
     }
-
-    /*
-    |--------------------------------------------------------------------------
-    | Query scopes + Dynamic scopes
-    |--------------------------------------------------------------------------
-    |
-    | Scopes allow you to easily re-use query logic in your models. To define
-    | a scope, simply prefix a model method with scope:
-    */
-    //public function scopePopular($query) { return $query->where('votes', '>', 100); }
-    //public function scopeWomen($query) { return $query->whereGender('W'); }
-    /*
-    Usage: $users = User::popular()->women()->orderBy('created_at')->get();
-    */
-
-    //public function scopeOfType($query, $type) { return $query->whereType($type); }
-    /*
-    Usage:  $users = User::ofType('member')->get();
-    */
-
-    /*
-    |--------------------------------------------------------------------------
-    | Accessors
-    |--------------------------------------------------------------------------
-    |
-    | Eloquent provides a convenient way to transform your model attributes when
-    | getting or setting them. Get a transformed value of an attribute
-    */
-    // public function getFirstNameAttribute($value) { return ucfirst($value); }
-
-    /*
-    |--------------------------------------------------------------------------
-    | Mutators
-    |--------------------------------------------------------------------------
-    |
-    | Eloquent provides a convenient way to transform your model attributes when
-    | getting or setting them. Get a transformed value of an attribute
-    */
-    // public function setFirstNameAttribute($value) { $this->attributes['first_name'] = strtolower($value); }
-
-    /*
-    |--------------------------------------------------------------------------
-    | Attributes
-    |--------------------------------------------------------------------------
-    |
-    | If you want to add extra fields(that doesn't exist in database) to you model
-    | you can use the getSomeAttribute() feature of eloquent.
-    */
-    // public function getUrlAttribute(){return asset($this->path); }
-
-    /*
-    |--------------------------------------------------------------------------
-    | Relations
-    |--------------------------------------------------------------------------
-    |
-    | Write model relations (belongsTo,hasMany etc) at the bottom the file
-    */
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    // public function updater() { return $this->belongsTo(\App\User::class, 'updated_by'); }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    // public function creator() { return $this->belongsTo(\App\User::class, 'created_by'); }
-
-    /*
-   |--------------------------------------------------------------------------
-   | Todo: Helper functions
-   |--------------------------------------------------------------------------
-   | Todo: Write Helper functions in the CommentHelper trait.
-   */
 
 }

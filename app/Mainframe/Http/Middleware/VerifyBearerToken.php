@@ -22,7 +22,7 @@ class VerifyBearerToken
         Auth::logout(); // Force to discard any user state.
 
         if (! $user = Auth::guard('bearer')->user()) {
-            return $this->failed('Authentication failed', 401);
+            return $this->failed('Authentication failed (Bearer)', 401);
         }
 
 
@@ -32,7 +32,9 @@ class VerifyBearerToken
         }
 
         // Onetime login for Api
-        // \Auth::onceUsingId($user->id);
+        if($user->id) {
+            \Auth::onceUsingId($user->id);
+        }
 
         return $next($request);
     }

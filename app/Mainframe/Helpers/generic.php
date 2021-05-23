@@ -7,11 +7,6 @@
  * @email  : raihan.act@gmail.com
  */
 
-
-
-
-
-
 /**
  * Converts a one dimensional array to a key-value paired array with same key and value
  * this is useful to generate options for select.
@@ -30,8 +25,6 @@ function kv($array = [])
 
     return $temp;
 }
-
-
 
 /**
  * returns extension from path
@@ -82,7 +75,7 @@ function keyAsArray($array = [])
 function echoArray($my_array)
 {
     if (is_array($my_array)) {
-        echo "<table cellspacing=0 cellpadding=3 width=100% class='table table-condensed'>";
+        echo "<table cellspacing=0 cellpadding=3 width=100% class='table table-condensed table-array-dump'>";
         echo '<tr><td colspan=2 style="background-color:#333333;"><strong><span style="color: white; "></span></strong></td></tr>';
         foreach ($my_array as $k => $v) {
             echo '<tr><td  style="width:40px;background-color:#F0F0F0;">';
@@ -95,6 +88,17 @@ function echoArray($my_array)
         return;
     }
     echo $my_array;
+}
+
+/**
+ * Shorthand function for echoArray
+ *
+ * @param $arr
+ * @return string
+ */
+function printArray($arr)
+{
+    return echoArray($arr);
 }
 
 /**
@@ -138,6 +142,28 @@ function randomString($length = 8)
 function generateCode()
 {
     return randomString(8);
+}
+
+function toArray($input)
+{
+    if (is_array($input)) {
+        return $input;
+    }
+
+    if (is_string($input) && isJson($input)) {
+        return json_decode($input);
+    }
+
+    if (is_string($input) && isCsv($input)) {
+        return csvToArray($input);
+    }
+
+    return $input ? [$input] : null;
+}
+
+function isJson($input)
+{
+    return is_string($input) && is_array(json_decode($input, true)) && (json_last_error() == JSON_ERROR_NONE);
 }
 
 /**
@@ -247,7 +273,6 @@ function deepSearchArray($array, $search, $keys = [])
 //     return date('Y-m-d');
 // }
 
-
 /**
  * returns current date time
  *
@@ -325,6 +350,18 @@ function isCsv($input)
 }
 
 /**
+ * remove special characters from string
+ * @param $string
+ * @return mixed
+ */
+function clean($string)
+{
+    $string = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.
+
+    return preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars.
+}
+
+/**
  * cleans a string and returns as csv
  *
  * @param $csv
@@ -348,7 +385,6 @@ function csvToArray($csv)
 {
     return cleanArray(explode(',', cleanCsv($csv)));
 }
-
 
 /**
  * Converts an One-dimensional array into CSV.
@@ -475,7 +511,7 @@ function allInArray(array $needles, array $haystack)
 {
     if (count($needles) && count($haystack)) {
         foreach ($needles as $needle) {
-            if (! in_array($needle, $haystack)) {
+            if (!in_array($needle, $haystack)) {
                 return false;
             }
         }
@@ -515,7 +551,7 @@ function oneInArray(array $needles, array $haystack)
  */
 function noneInArray(array $needles, array $haystack)
 {
-    return ! oneInArray($needles, $haystack);
+    return !oneInArray($needles, $haystack);
 }
 
 /**
@@ -545,11 +581,18 @@ function removeEmptyVals($array = [])
     $temp = [];
     if (is_array($array) && count($array)) {                    // handle if input is an array1
         foreach ($array as $a) {
-            if (! is_array($a) && strlen(trim($a))) {
-                $temp[] = $a;
+            if (!is_array($a) && strlen(trim($a))) {
+                $temp[] = trim($a);
             }
         }
     }
+
+    // Todo: Better implementation
+    // $tags = collect($tags)->map(function($tag){
+    //     return trim($tag);
+    // })->reject(function ($name) {
+    //     return empty($name);
+    // });
 
     return $temp;
 }
@@ -610,4 +653,60 @@ function createLetterRange($length)
     }
 
     return $range;
+}
+
+/**
+ * Change array keys to snake case
+ *
+ * @param $array
+ * @return array
+ */
+function snakeCaseKeys($array)
+{
+    $arr = [];
+    foreach ($array as $key => $value) {
+        $key = \Str::snake($key);
+        if (is_array($value)) {
+            $value = snakeCaseKeys($value);
+        }
+        $arr[$key] = $value;
+    }
+
+    return $arr;
+}
+
+/**
+ * Get percentage
+ *
+ * @param $number
+ * @param $percent
+ * @return float|int
+ */
+function percent($number, $percent)
+{
+    return $number * ($percent / 100);
+}
+
+/**
+ * Add a percentage to a number
+ *
+ * @param $number
+ * @param $percent
+ * @return float|int
+ */
+function addPercent($number, $percent)
+{
+    return $number + percent($number, $percent);
+}
+
+/**
+ * Add a percentage to a number
+ *
+ * @param $number
+ * @param $percent
+ * @return float|int
+ */
+function subtractPercent($number, $percent)
+{
+    return $number - percent($number, $percent);
 }

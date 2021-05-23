@@ -1,182 +1,115 @@
-<?php
+<?php /** @noinspection PhpUndefinedClassInspection */
 
 namespace App\Mainframe\Modules\SuperHeroes;
 
 use App\Mainframe\Features\Modular\Validator\ModelProcessor;
+use App\SuperHero;
 
 class SuperHeroProcessor extends ModelProcessor
 {
-    /** @var \App\Mainframe\Modules\SuperHeroes\SuperHero */
-    public $element;
+    // Note: Pull in necessary traits
+    use SuperHeroProcessorHelper;
+
     /*
     |--------------------------------------------------------------------------
-    | Fill model .
+    | Define properties and variables
     |--------------------------------------------------------------------------
-    |
-    | Sometimes you need to automatically fill some fields of a model based
-    | on known logic. For example: if you can take first_name and last_name
-    | of an user and auto fill full_name.
     */
+    /** @var SuperHero */
+    public $element;
+    // public $immutables;
+    // public $transitions;
+    // public $trackedFields;
 
+    /*
+    |--------------------------------------------------------------------------
+    | Validation
+    |--------------------------------------------------------------------------
+    */
     /**
-     * Fill the model with values
+     * Pre-fill model before running rule based validations
      *
-     * @param  \App\Mainframe\Modules\SuperHeroes\SuperHero $superHero
+     * @param  SuperHero  $element
      * @return $this
      */
-    public function fill($superHero)
+    public function fill($element)
     {
-        $superHero->populate();
-
+        // $element->populate(); // Todo: Populate before validation
         return $this;
     }
 
-    /*
-    |--------------------------------------------------------------------------
-    | Rules.
-    |--------------------------------------------------------------------------
-    |
-    | Write the laravel validation rules
-    */
-
     /**
-     * Validation rules.
-     *
-     * @param  \App\Mainframe\Modules\SuperHeroes\SuperHero $superHero
-     * @param  array $merge
+     * @param  SuperHero  $element
+     * @param  array  $merge
      * @return array
      */
-    public static function rules($superHero, $merge = [])
+    public static function rules($element, $merge = [])
     {
         $rules = [
-            'name' => 'required|between:1,255|unique:super_heroes,name,'.(isset($superHero->id) ? (string) $superHero->id : 'null').',id,deleted_at,NULL',
+            'name' => 'required|between:1,100|'.'unique:super_heroes,name,'.($element->id ?? 'null').',id,deleted_at,NULL',
             'is_active' => 'in:1,0',
         ];
 
         return array_merge($rules, $merge);
     }
 
-    /**
-     * Custom error messages.
-     *
-     * @param  array $merge
-     * @return array
-     */
-    // public static function customErrorMessages($merge = [])
-    // {
-    //     $messages = [];
-    //
-    //     return array_merge($messages, $merge);
-    // }
+    /* Further customize error messages and attribute names by overriding */
+    // public function customErrorMessages($merge = [])
+    // public static function customAttributes($merge = [])
 
     /*
     |--------------------------------------------------------------------------
-    | Execute validation on module events
+    | Execute calculations, validations and actions on different events
     |--------------------------------------------------------------------------
-    |
-    | Check validations on saving, creating, updating, deleting and restoring
     */
 
     /**
-     * Run validations for saving. This should be common for both creating and updating.
-     *
-     * @param SuperHero $superHero
+     * @param  SuperHero  $element
      * @return $this
      */
-    public function saving($superHero)
+    public function saving($element)
     {
-        /*
-        |--------------------------------------------------------------------------
-        | Call validation functions one by one.
-        |--------------------------------------------------------------------------
-        |
-        | A list of functions that will be called sequentially to validate the model
-        */
-        $this->validateName();
+        // Todo: First validate
+        // --------------------
+        // $this->checkSomething();
+
+        // Todo: Then do further processing
+        // ----------------------------------
+        // if($this->isValid()){
+        //     $element->fillSomeData();
+        //
+        // }
 
         return $this;
     }
 
-    /**
-     * Creating validation
-     *
-     * @param SuperHero $superHero
-     * @return $this
-     */
-    // public function creating($superHero) { return $this; }
+    // public function creating($element) { return $this; }
+    // public function updating($element) { return $this; }
+    // public function created($element) { return $this; }
+    // public function updated($element) { return $this; }
+    // public function saved($element) { return $this; }
+    // public function deleting($element) { return $this; }
+    // public function deleted($element) { return $this; }
 
-    /**
-     * Updating validation
-     *
-     * @param SuperHero $superHero
-     * @return $this
-     */
-    // public function updating($superHero) { return $this; }
+    /*
+    |--------------------------------------------------------------------------
+    | Functions for deriving immutables & allowed transitions
+    |--------------------------------------------------------------------------
+    */
 
-    /**
-     * Do something after creation
-     *
-     * @param SuperHero $superHero
-     * @return $this
-     */
-    // public function created($superHero) { return $this; }
-
-    /**
-     * Do something after update
-     *
-     * @param SuperHero $superHero
-     * @return $this
-     */
-    // public function updated($superHero) { return $this; }
-
-    /**
-     * Do something after saved(common for updated and created)
-     *
-     * @param SuperHero $superHero
-     * @return $this
-     */
-    // public function saved($superHero) { return $this; }
-
-    /**
-     *  Deleting validation
-     *
-     * @param SuperHero $superHero
-     * @return $this
-     */
-    // public function deleting($superHero) { return $this; }
-
-    /**
-     *  Deleting validation
-     *
-     * @param SuperHero $superHero
-     * @return $this
-     */
-    // public function deleted($superHero) { return $this; }
+    /*
+    |--------------------------------------------------------------------------
+    | Other helper functions
+    |--------------------------------------------------------------------------
+    */
+    // Todo: Other helper functions
 
     /*
     |--------------------------------------------------------------------------
     | Validation helper functions
     |--------------------------------------------------------------------------
-    |
-    | All validation must be checked through some function. All validation
-    | functions are listed below.
     */
 
-    /**
-     * Validate the name. Name should not be 'Joker'
-     *
-     * @return $this
-     */
-    public function validateName()
-    {
-        $superHero = $this->element;
+    // Todo: Functions for validation
 
-        if ($superHero->name == 'Joker') {
-            $this->error('Name can not be Joker', 'name');
-            // Same as
-            $this->fieldError('name', 'Name can not be Joker');
-        }
-
-        return $this;
-    }
 }

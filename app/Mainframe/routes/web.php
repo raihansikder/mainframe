@@ -2,11 +2,18 @@
 
 /*
 |--------------------------------------------------------------------------
-| Web Routes
+| Mainframe web routes
 |--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
 */
+Route::middleware(['auth', 'verified', 'tenant'])->group(function () {
+    Route::get('/', 'HomeController@index')->name('home');
+    Route::get('data/{key}', 'DataBlockController@show')->name('data-block.show');
+    Route::get('report/{key}', 'ReportController@show')->name('report');
+    Route::get('datatable/{key}', 'DatatableController@show')->name('datatable.json');
+});
+/*
+|--------------------------------------------------------------------------
+| Public routes
+|--------------------------------------------------------------------------
+*/
+

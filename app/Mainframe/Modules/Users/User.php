@@ -1,19 +1,16 @@
-<?php /** @noinspection PhpUndefinedMethodInspection */
+<?php
 
 namespace App\Mainframe\Modules\Users;
 
-use App\Group;
+use App\Mainframe\Features\Core\Traits\Validable;
 use App\Mainframe\Features\Modular\BaseModule\Traits\ModularTrait;
-use App\Mainframe\Features\Modular\Rememberable\Rememberable;
-use App\Mainframe\Modules\Users\Traits\UserGroupable;
-use App\Mainframe\Notifications\Auth\ResetPassword;
-use App\Mainframe\Notifications\Auth\VerifyEmail;
+use App\Mainframe\Modules\Users\Traits\UserTrait;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use InvalidArgumentException;
 use OwenIt\Auditing\Contracts\Auditable;
+use Watson\Rememberable\Rememberable;
 
 /**
  * App\Mainframe\Modules\Users\User
@@ -65,119 +62,129 @@ use OwenIt\Auditing\Contracts\Auditable;
  * @property int|null $is_test
  * @property-read \Illuminate\Database\Eloquent\Collection|\OwenIt\Auditing\Models\Audit[] $audits
  * @property-read int|null $audits_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Change[] $changes
+ * @property-read int|null $changes_count
+ * @property-read \App\Country|null $country
  * @property-read \App\User|null $creator
+ * @property-read null|string $profile_pic
+ * @property-read string $type
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Group[] $groups
  * @property-read int|null $groups_count
- * @property-read \App\Mainframe\Modules\Uploads\Upload $latestUpload
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\InAppNotification[] $inAppNotifications
+ * @property-read int|null $in_app_notifications_count
+ * @property-read \App\Module $linkedModule
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property-read int|null $notifications_count
- * @property-read \App\Mainframe\Modules\Projects\Project|null $project
- * @property-read \App\Mainframe\Modules\Tenants\Tenant|null $tenant
+ * @property-read \App\Project|null $project
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Spread[] $spreads
+ * @property-read int|null $spreads_count
+ * @property-read \App\Tenant|null $tenant
  * @property-read \App\User|null $updater
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Uploads\Upload[] $uploads
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Upload[] $uploads
  * @property-read int|null $uploads_count
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User active()
- * @method static bool|null forceDelete()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User newQuery()
- * @method static \Illuminate\Database\Query\Builder|\App\Mainframe\Modules\Users\User onlyTrashed()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User query()
- * @method static bool|null restore()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereAddress1($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereAddress2($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereApiToken($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereApiTokenGeneratedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereAuthToken($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereCity($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereCountryId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereCountryName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereCounty($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereCreatedBy($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereCurrency($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereDeletedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereDeletedBy($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereDeviceToken($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereDob($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereEmail($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereEmailVerificationCode($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereEmailVerifiedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereFirstLoginAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereFirstName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereFullName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereGender($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereGroupIds($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereIsActive($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereIsTenantEditable($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereIsTest($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereLastLoginAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereLastName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereMobile($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereNameInitial($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User wherePassword($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User wherePermissions($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User wherePhone($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereProjectId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereRememberToken($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereSocialAccountId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereSocialAccountType($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereTenantId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereUpdatedBy($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereUuid($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Mainframe\Modules\Users\User whereZipCode($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Mainframe\Modules\Users\User withTrashed()
- * @method static \Illuminate\Database\Query\Builder|\App\Mainframe\Modules\Users\User withoutTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|User active()
+ * @method static \Illuminate\Database\Eloquent\Builder|User newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|User newQuery()
+ * @method static \Illuminate\Database\Query\Builder|User onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|User query()
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereAddress1($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereAddress2($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereApiToken($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereApiTokenGeneratedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereAuthToken($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereCity($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereCountryId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereCountryName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereCounty($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereCreatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereCurrency($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereDeletedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereDeviceToken($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereDob($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereEmailVerificationCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereEmailVerifiedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereFirstLoginAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereFirstName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereFullName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereGender($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereGroupIds($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereIsActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereIsTenantEditable($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereIsTest($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereLastLoginAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereLastName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereMobile($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereNameInitial($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User wherePassword($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User wherePermissions($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User wherePhone($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereProjectId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereRememberToken($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereSocialAccountId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereSocialAccountType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereTenantId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereUuid($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereZipCode($value)
+ * @method static \Illuminate\Database\Query\Builder|User withTrashed()
+ * @method static \Illuminate\Database\Query\Builder|User withoutTrashed()
  * @mixin \Eloquent
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Mainframe\Modules\Comments\Comment[] $comments
- * @property-read int|null $comments_count
- * @property-read null|string $profile_pic
- * @property-read \App\Mainframe\Modules\Comments\Comment $latestComment
  */
 class User extends Authenticatable implements MustVerifyEmail, Auditable
 {
     use SoftDeletes,
         Rememberable,
         \OwenIt\Auditing\Auditable,
-        ModularTrait;
+        ModularTrait,
+        Validable,
+        Notifiable;
 
-    use Notifiable;
+    use UserTrait;
 
-    use UserHelper, UserGroupable;
-
-    /*
-    |--------------------------------------------------------------------------
-    | Module definitions
-    |--------------------------------------------------------------------------
-    |
-    */
     /**
      * Constants
      */
     public const PASSWORD_VALIDATION_RULE = 'required|confirmed|min:6|regex:/[a-zA-Z]/|regex:/[0-9]/';
+    public const SUPERADMIN_GROUP_ID      = 1;
+    public const API_GROUP_ID             = 2;
+    public const TENANT_ADMIN_GROUP_ID    = 3;
+    public const PROJECT_ADMIN_GROUP_ID   = 4;
+    public const USER_GROUP_ID            = 26;
+    public const TENANT_USER_GROUP_ID     = 27;
+    public const CUSTOMER_ADMIN_GROUP_ID  = 28;
+    public const CUSTOMER_USER_GROUP_ID   = 29;
 
+    public const SUPERADMIN_GROUP     = 'superuser';
+    public const API_GROUP            = 'api';
+    public const TENANT_ADMIN_GROUP   = 'tenant-admin';
+    public const PROJECT_ADMIN_GROUP  = 'project-admin';
+    public const USER_GROUP           = 'user';
+    public const TENANT_USER_GROUP    = 'tenant-user';
+    public const CUSTOMER_ADMIN_GROUP = 'customer-admin';
+    public const CUSTOMER_USER_GROUP  = 'customer-user';
+
+    public const GENDER_MALE   = 'Male';
+    public const GENDER_FEMALE = 'Female';
+
+    /*
+    |--------------------------------------------------------------------------
+    | Properties
+    |--------------------------------------------------------------------------
+    */
     protected $moduleName = 'users';
     protected $table      = 'users';
 
-    /*
-    |--------------------------------------------------------------------------
-    | Guarded attributes
-    |--------------------------------------------------------------------------
-    |
-    | The attributes can not be mass assigned.
-    */
-    // protected $guarded = [];
+    protected $tenantEnabled = true;
 
-    /*
-    |--------------------------------------------------------------------------
-    | Fillable attributes
-    |--------------------------------------------------------------------------
-    |
-    | These attributes can be mass assigned
-    */
     protected $fillable = [
+        'project_id',
+        'tenant_id',
         'uuid',
         'name',
         'email',
@@ -216,57 +223,11 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
         'is_test',
     ];
 
-    /*
-    |--------------------------------------------------------------------------
-    | Type cast dates
-    |--------------------------------------------------------------------------
-    |
-    | Type cast attributes as date. This allows to create a Carbon object.
-    | Of the dates
-   */
     protected $hidden = ['password', 'remember_token',];
-
-    /*
-    |--------------------------------------------------------------------------
-    | Type cast attributes
-    |--------------------------------------------------------------------------
-    |
-    | Type cast attributes (helpful for JSON)
-    */
-    protected $dates = ['created_at', 'updated_at', 'deleted_at', 'first_login_at', 'last_login_at',];
-
-    /*
-    |--------------------------------------------------------------------------
-    | Automatic eager load
-    |--------------------------------------------------------------------------
-    |
-    | Auto load these relations whenever the model is retrieved.
-    */
-    protected $casts = [
-        'group_ids' => 'array',
-    ];
-
-    /*
-    |--------------------------------------------------------------------------
-    | Append new attributes to the model
-    |--------------------------------------------------------------------------
-    |
-    | If you want to append a new attribute that doesn't exists in the table
-    | you should first create and accessor getNewFieldAttribute and then
-    | add the attribute name in the array
-    */
-    protected $appends = ['profile_pic'];
-
-    /*
-    |--------------------------------------------------------------------------
-    | Options
-    |--------------------------------------------------------------------------
-    |
-    | Your model can have one or more public static variables that stores
-    | The possible options for some field. Variable name should be
-    |
-    */
-    // protected $with = ['groups'];
+    protected $dates  = ['created_at', 'updated_at', 'deleted_at', 'first_login_at', 'last_login_at',];
+    protected $casts  = ['group_ids' => 'array',];
+    // protected $with = [];
+    protected $appends = ['type', 'profile_pic'];
 
     /**
      * Allowed permissions values.
@@ -281,162 +242,31 @@ class User extends Authenticatable implements MustVerifyEmail, Auditable
 
     /*
     |--------------------------------------------------------------------------
+    | Option values
+    |--------------------------------------------------------------------------
+    */
+    // public static $types = [];
+
+    /*
+    |--------------------------------------------------------------------------
     | Boot method and model events.
     |--------------------------------------------------------------------------
-    |
-    | Register the observer in the boot method. You can also make use of
-    | model events like saving, creating, updating etc to further
-    | manipulate the model
     */
-
-    public static function boot()
+    protected static function boot()
     {
         parent::boot();
         self::observe(UserObserver::class);
 
+        // static::saving(function (User $element) { });
+        // static::creating(function (User $element) { });
+        // static::updating(function (User $element) { });
+        // static::created(function (User $element) { });
+        // static::updated(function (User $element) { });
         static::saved(function (User $element) {
-            $element->groups()->sync(array_filter($element->group_ids));
+            $element->groups()->sync($element->group_ids);
         });
-    }
-
-    /*
-    |--------------------------------------------------------------------------
-    | Query scopes + Dynamic scopes
-    |--------------------------------------------------------------------------
-    |
-    | Scopes allow you to easily re-use query logic in your models. To define
-    | a scope, simply prefix a model method with scope:
-    */
-    //public function scopePopular($query) { return $query->where('votes', '>', 100); }
-    //public function scopeWomen($query) { return $query->whereGender('W'); }
-    /*
-    Usage: $users = User::popular()->women()->orderBy('created_at')->get();
-    */
-
-    //public function scopeOfType($query, $type) { return $query->whereType($type); }
-    /*
-    Usage:  $users = User::ofType('member')->get();
-    */
-
-    /*
-    |--------------------------------------------------------------------------
-    | Accessors
-    |--------------------------------------------------------------------------
-    |
-    | Eloquent provides a convenient way to transform your model attributes when
-    | getting or setting them. Get a transformed value of an attribute
-    */
-    // public function getFirstNameAttribute($value) { return ucfirst($value); }
-
-    /**
-     * Accessor for profile_pic
-     *
-     * @return null|string
-     */
-    public function getProfilePicAttribute()
-    {
-        if ($upload = $this->uploads->where('type', 'profile-pic')->first()) {
-            return $upload->url;
-        }
-
-        return null;
-    }
-
-    /*
-    |--------------------------------------------------------------------------
-    | Mutators
-    |--------------------------------------------------------------------------
-    |
-    | Eloquent provides a convenient way to transform your model attributes when
-    | getting or setting them. Get a transformed value of an attribute
-    */
-    // public function setFirstNameAttribute($value) { $this->attributes['first_name'] = strtolower($value); }
-
-    /*
-    |--------------------------------------------------------------------------
-    | Relations
-    |--------------------------------------------------------------------------
-    |
-    | Write model relations (belongsTo,hasMany etc) at the bottom the file
-    */
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
-    public function groups() { return $this->belongsToMany(Group::class, 'user_group'); }
-
-    /*
-    |--------------------------------------------------------------------------
-    | Helper functions
-    |--------------------------------------------------------------------------
-    |
-    */
-
-    /**
-     * Mutator for taking permissions.
-     *
-     * @param  array $permissions
-     * @return string
-     */
-    public function setPermissionsAttribute(array $permissions)
-    {
-        // Merge permissions
-        $permissions = array_merge($this->permissions, $permissions);
-
-        // Loop through and adjust permissions as needed
-        foreach ($permissions as $permission => &$value) {
-            // Lets make sure there is a valid permission value
-            if (! in_array($value = (int) $value, $this->allowedPermissionsValues)) {
-                throw new InvalidArgumentException("Invalid value [$value] for permission [$permission] given.");
-            }
-
-            // If the value is 0, delete it
-            if ($value === 0) {
-                unset($permissions[$permission]);
-            }
-        }
-
-        $this->attributes['permissions'] = (! empty($permissions)) ? json_encode($permissions) : '';
-    }
-
-    /**
-     * Mutator for giving permissions.
-     *
-     * @param  mixed $permissions
-     * @return array  $_permissions
-     */
-    public function getPermissionsAttribute($permissions)
-    {
-        if (! $permissions) {
-            return [];
-        }
-
-        if (is_array($permissions)) {
-            return $permissions;
-        }
-
-        if (! $_permissions = json_decode($permissions, true)) {
-            throw new InvalidArgumentException("Cannot JSON decode permissions [$permissions].");
-        }
-
-        return $_permissions;
-    }
-
-    /**
-     * Send reset password link
-     *
-     * @param  string $token
-     */
-    public function sendPasswordResetNotification($token)
-    {
-        $this->notifyNow(new ResetPassword($token));
-    }
-
-    /**
-     * Send email verification link.
-     */
-    public function sendEmailVerificationNotification()
-    {
-        $this->notifyNow(new VerifyEmail());
+        // static::deleting(function (User $element) { });
+        // static::deleted(function (User $element) { });
     }
 
 }

@@ -1,83 +1,95 @@
 <?php
-/** @noinspection UnknownInspectionInspection */
-/** @noinspection DuplicatedCode */
-/** @noinspection SenselessMethodDuplicationInspection */
 
 namespace App\Mainframe\Modules\SuperHeroes;
 
-use DB;
 use App\Mainframe\Features\Datatable\ModuleDatatable;
 
 class SuperHeroDatatable extends ModuleDatatable
 {
+    // Note: Pull in necessary traits
 
+    public $moduleName = 'super-heroes';
 
+    /** @var string[] HTML rendering enabled for columns */
+    public $rawColumns = ['id', 'name', 'is_active'];
+
+    /*---------------------------------
+    | Section : Define query tables/model
+    |---------------------------------*/
+    // public function source()
+    // {
+    //     return DB::table($this->table)->leftJoin('users as updater', 'updater.id', $this->table.'.updated_by');
+    // }
+
+    /*---------------------------------
+    | Section : Define columns
+    |---------------------------------*/
     /**
-     * Define grid SELECT statement and HTML column name.
-     *
      * @return array
      */
     public function columns()
     {
         return [
-            [$this->table.".id", 'id', 'ID'],
-            [$this->table.".name", 'name', 'Name'],
+            // [TABLE_FIELD, SQL_TABLE_FIELD_AS, HTML_GRID_TITLE],
+            [$this->table.'.id', 'id', 'ID'],
+            [$this->table.'.name', 'name', 'Name'],
             ['updater.name', 'user_name', 'Updater'],
-            [$this->table.".updated_at", 'updated_at', 'Updated at'],
-            [$this->table.".is_active", 'is_active', 'Active']
+            [$this->table.'.updated_at', 'updated_at', 'Updated at'],
+            [$this->table.'.is_active', 'is_active', 'Active'],
         ];
     }
 
-    /**
-     * Define Query for generating results for grid
-     *
-     * @return \Illuminate\Database\Query\Builder|static
-     */
-    // public function source()
+    /*---------------------------------
+    | Section: SQL Select query
+    |---------------------------------*/
+    // /**
+    //  * Construct SELECT statement (field1 AS f1, field2 as f2...)
+    //  *
+    //  * @return array
+    //  */
+    // public function selects()
     // {
-    //     return DB::table($this->table)
-    //         ->leftJoin('users as updater', $this->table.'.updated_by', 'updater.id');
+    //     $columns = $this->columns();
+    //     // Note: Modify the $columns as you need.
+    //     return $this->selectQueryString($columns);
     // }
 
-
-    // /**
-    //  * Define Query for generating results for grid
-    //  *
-    //  * @return $this|mixed
-    //  */
-    // public function query()
+    /*---------------------------------
+    | Section: Filters
+    |---------------------------------*/
+    // public function filter($query)
     // {
-    //     $query = $this->source()->select($this->selects());
-    //
-    //     // Inject tenant context in grid query
-    //     if ($tenant_id = inTenantContext($this->table)) {
-    //         $query = injectTenantIdInModelQuery($this->table, $query);
-    //     }
-    //
-    //     // Exclude deleted rows
-    //     $query = $query->whereNull($this->table.'.deleted_at'); // Skip deleted rows
+    //     // if (request('id')) { // Example code
+    //     //     $query->where('id', request('id'));
+    //     // }
     //
     //     return $query;
     // }
 
-    // /**
-    //  * Modify datatable values
-    //  *
-    //  * @return mixed
-    //  * @var $dt \Yajra\DataTables\DataTableAbstract
-    //  */
+    /*---------------------------------
+    | Section : Modify row-columns
+    |---------------------------------*/
     // public function modify($dt)
     // {
-    //     // Set columns for HTML output.
-    //     $dt = $dt->rawColumns(['id', 'name', 'is_active']);
+    //     $dt = parent::modify($dt);
+    //     $dt->rawColumns(['id', 'email', 'is_active']); // Dynamically set HTML columns
     //
-    //     // Next modify each column content
-    //     /*  @var $dt \Yajra\DataTables\DataTableAbstract */
-    //     $dt = $dt->editColumn('name', '<a href="{{ route(\''.$this->module->name.'.edit\', $id) }}">{{$name}}</a>');
-    //     $dt = $dt->editColumn('id', '<a href="{{ route(\''.$this->module->name.'.edit\', $id) }}">{{$id}}</a>');
-    //     $dt = $dt->editColumn('is_active', '@if($is_active)  Yes @else <span class="text-red">No</span> @endif');
+    //     if ($this->hasColumn('column_name')) {
+    //         $dt->editColumn('column_name', function ($row) { return $row->column_name.'updated'; });
+    //     }
     //
     //     return $dt;
     // }
 
+    /*---------------------------------
+    | Section : Additional methods
+    |---------------------------------*/
+    // public function selects()
+    // public function query()
+    // public function json()
+    // public function hasColumn()
+    // public function titles()
+    // public function columnsJson()
+    // public function ajaxUrl()
+    // public function identifier()
 }

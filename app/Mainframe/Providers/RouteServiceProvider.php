@@ -13,6 +13,7 @@ class RouteServiceProvider extends ServiceProvider
      * @var string
      */
     public const HOME = '/';
+
     /**
      * This namespace is applied to your controller routes.
      * In addition, it is set as the URL generator's root namespace.
@@ -98,7 +99,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function webRoutes()
     {
-        return array_merge($this->webRoutes, config('mainframe.config.routes.web',[]));
+        return array_merge($this->webRoutes, config('mainframe.config.routes.web', []));
     }
 
     /**
@@ -108,6 +109,6 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function apiRoutes()
     {
-        return array_merge($this->apiRoutes, config('mainframe.config.routes.api',[]));
+        return array_merge($this->apiRoutes, config('mainframe.config.routes.api', []));
     }
 }

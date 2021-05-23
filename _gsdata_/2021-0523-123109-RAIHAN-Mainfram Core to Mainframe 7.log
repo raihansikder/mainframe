@@ -1,0 +1,8 @@
+2021-05-23 12:31:09: -- Analysis Started by User Command
+2021-05-23 12:31:09: Changes: 3, Conflicts: 0, CopyTime: 0, FixState: 0, Errors: 0, All: 3043
+2021-05-23 12:31:09: Left to Right: Copy File: 3 
+2021-05-23 12:31:09: == Sync Started by User Command
+2021-05-23 12:31:09: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/Modular/BaseModule/Traits/ModularTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Modular/BaseModule/Traits/ModularTrait.php' (25,854)
+2021-05-23 12:31:09: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Helpers/functions.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Helpers/functions.php' (6,706)
+2021-05-23 12:31:09: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Modules/Traits/ModuleTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Modules/Traits/ModuleTrait.php' (8,948)
+2021-05-23 12:31:09: == Sync Complete. Time: 00:00:00, Speed: 0.00/s, OK: 3, Errors: 0

@@ -1,83 +1,84 @@
-<?php /** @noinspection PhpUnused */
-
-/** @noinspection AccessModifierPresentedInspection */
+<?php
 
 namespace App\Mainframe\Features\Responder;
 
-use Illuminate\Support\MessageBag;
 use App\Mainframe\Features\Core\Traits\Validable;
-use App\Mainframe\Features\Core\Traits\HasMessageBag;
+use Illuminate\Support\Arr;
 
 class Response
 {
 
-    use Validable, HasMessageBag;
+    use Validable;
 
-    /* All HTTP codes
-     * https://gist.github.com/jeffochoa/a162fc4381d69a2d862dafa61cda0798
+    /* All HTTP codes */
+    public const HTTP_CONTINUE                                                  = 100;
+    public const HTTP_SWITCHING_PROTOCOLS                                       = 101;
+    public const HTTP_PROCESSING                                                = 102; // RFC2518
+    public const HTTP_OK                                                        = 200;
+    public const HTTP_CREATED                                                   = 201;
+    public const HTTP_ACCEPTED                                                  = 202;
+    public const HTTP_NON_AUTHORITATIVE_INFORMATION                             = 203;
+    public const HTTP_NO_CONTENT                                                = 204;
+    public const HTTP_RESET_CONTENT                                             = 205;
+    public const HTTP_PARTIAL_CONTENT                                           = 206;
+    public const HTTP_MULTI_STATUS                                              = 207; // RFC4918
+    public const HTTP_ALREADY_REPORTED                                          = 208; // RFC5842
+    public const HTTP_IM_USED                                                   = 226; // RFC3229
+    public const HTTP_MULTIPLE_CHOICES                                          = 300;
+    public const HTTP_MOVED_PERMANENTLY                                         = 301;
+    public const HTTP_FOUND                                                     = 302;
+    public const HTTP_SEE_OTHER                                                 = 303;
+    public const HTTP_NOT_MODIFIED                                              = 304;
+    public const HTTP_USE_PROXY                                                 = 305;
+    public const HTTP_RESERVED                                                  = 306;
+    public const HTTP_TEMPORARY_REDIRECT                                        = 307;
+    public const HTTP_PERMANENTLY_REDIRECT                                      = 308; // RFC7238
+    public const HTTP_BAD_REQUEST                                               = 400;
+    public const HTTP_UNAUTHORIZED                                              = 401;
+    public const HTTP_PAYMENT_REQUIRED                                          = 402;
+    public const HTTP_FORBIDDEN                                                 = 403;
+    public const HTTP_NOT_FOUND                                                 = 404;
+    public const HTTP_METHOD_NOT_ALLOWED                                        = 405;
+    public const HTTP_NOT_ACCEPTABLE                                            = 406;
+    public const HTTP_PROXY_AUTHENTICATION_REQUIRED                             = 407;
+    public const HTTP_REQUEST_TIMEOUT                                           = 408;
+    public const HTTP_CONFLICT                                                  = 409;
+    public const HTTP_GONE                                                      = 410;
+    public const HTTP_LENGTH_REQUIRED                                           = 411;
+    public const HTTP_PRECONDITION_FAILED                                       = 412;
+    public const HTTP_REQUEST_ENTITY_TOO_LARGE                                  = 413;
+    public const HTTP_REQUEST_URI_TOO_LONG                                      = 414;
+    public const HTTP_UNSUPPORTED_MEDIA_TYPE                                    = 415;
+    public const HTTP_REQUESTED_RANGE_NOT_SATISFIABLE                           = 416;
+    public const HTTP_EXPECTATION_FAILED                                        = 417;
+    public const HTTP_I_AM_A_TEAPOT                                             = 418; // RFC2324
+    public const HTTP_MISDIRECTED_REQUEST                                       = 421; // RFC7540
+    public const HTTP_UNPROCESSABLE_ENTITY                                      = 422; // RFC4918
+    public const HTTP_LOCKED                                                    = 423; // RFC4918
+    public const HTTP_FAILED_DEPENDENCY                                         = 424; // RFC4918
+    public const HTTP_RESERVED_FOR_WEBDAV_ADVANCED_COLLECTIONS_EXPIRED_PROPOSAL = 425; // RFC2817
+    public const HTTP_UPGRADE_REQUIRED                                          = 426; // RFC2817
+    public const HTTP_PRECONDITION_REQUIRED                                     = 428; // RFC6585
+    public const HTTP_TOO_MANY_REQUESTS                                         = 429; // RFC6585
+    public const HTTP_REQUEST_HEADER_FIELDS_TOO_LARGE                           = 431; // RFC6585
+    public const HTTP_UNAVAILABLE_FOR_LEGAL_REASONS                             = 451;
+    public const HTTP_INTERNAL_SERVER_ERROR                                     = 500;
+    public const HTTP_NOT_IMPLEMENTED                                           = 501;
+    public const HTTP_BAD_GATEWAY                                               = 502;
+    public const HTTP_SERVICE_UNAVAILABLE                                       = 503;
+    public const HTTP_GATEWAY_TIMEOUT                                           = 504;
+    public const HTTP_VERSION_NOT_SUPPORTED                                     = 505;
+    public const HTTP_VARIANT_ALSO_NEGOTIATES_EXPERIMENTAL                      = 506; // RFC2295
+    public const HTTP_INSUFFICIENT_STORAGE                                      = 507; // RFC4918
+    public const HTTP_LOOP_DETECTED                                             = 508; // RFC5842
+    public const HTTP_NOT_EXTENDED                                              = 510; // RFC2774
+    public const HTTP_NETWORK_AUTHENTICATION_REQUIRED                           = 511; // RFC6585
+
+    /**
+     * Status text
+     *
+     * @var string[]
      */
-    const HTTP_CONTINUE                                                  = 100;
-    const HTTP_SWITCHING_PROTOCOLS                                       = 101;
-    const HTTP_PROCESSING                                                = 102; // RFC2518
-    const HTTP_OK                                                        = 200;
-    const HTTP_CREATED                                                   = 201;
-    const HTTP_ACCEPTED                                                  = 202;
-    const HTTP_NON_AUTHORITATIVE_INFORMATION                             = 203;
-    const HTTP_NO_CONTENT                                                = 204;
-    const HTTP_RESET_CONTENT                                             = 205;
-    const HTTP_PARTIAL_CONTENT                                           = 206;
-    const HTTP_MULTI_STATUS                                              = 207; // RFC4918
-    const HTTP_ALREADY_REPORTED                                          = 208; // RFC5842
-    const HTTP_IM_USED                                                   = 226; // RFC3229
-    const HTTP_MULTIPLE_CHOICES                                          = 300;
-    const HTTP_MOVED_PERMANENTLY                                         = 301;
-    const HTTP_FOUND                                                     = 302;
-    const HTTP_SEE_OTHER                                                 = 303;
-    const HTTP_NOT_MODIFIED                                              = 304;
-    const HTTP_USE_PROXY                                                 = 305;
-    const HTTP_RESERVED                                                  = 306;
-    const HTTP_TEMPORARY_REDIRECT                                        = 307;
-    const HTTP_PERMANENTLY_REDIRECT                                      = 308; // RFC7238
-    const HTTP_BAD_REQUEST                                               = 400;
-    const HTTP_UNAUTHORIZED                                              = 401;
-    const HTTP_PAYMENT_REQUIRED                                          = 402;
-    const HTTP_FORBIDDEN                                                 = 403;
-    const HTTP_NOT_FOUND                                                 = 404;
-    const HTTP_METHOD_NOT_ALLOWED                                        = 405;
-    const HTTP_NOT_ACCEPTABLE                                            = 406;
-    const HTTP_PROXY_AUTHENTICATION_REQUIRED                             = 407;
-    const HTTP_REQUEST_TIMEOUT                                           = 408;
-    const HTTP_CONFLICT                                                  = 409;
-    const HTTP_GONE                                                      = 410;
-    const HTTP_LENGTH_REQUIRED                                           = 411;
-    const HTTP_PRECONDITION_FAILED                                       = 412;
-    const HTTP_REQUEST_ENTITY_TOO_LARGE                                  = 413;
-    const HTTP_REQUEST_URI_TOO_LONG                                      = 414;
-    const HTTP_UNSUPPORTED_MEDIA_TYPE                                    = 415;
-    const HTTP_REQUESTED_RANGE_NOT_SATISFIABLE                           = 416;
-    const HTTP_EXPECTATION_FAILED                                        = 417;
-    const HTTP_I_AM_A_TEAPOT                                             = 418; // RFC2324
-    const HTTP_MISDIRECTED_REQUEST                                       = 421; // RFC7540
-    const HTTP_UNPROCESSABLE_ENTITY                                      = 422; // RFC4918
-    const HTTP_LOCKED                                                    = 423; // RFC4918
-    const HTTP_FAILED_DEPENDENCY                                         = 424; // RFC4918
-    const HTTP_RESERVED_FOR_WEBDAV_ADVANCED_COLLECTIONS_EXPIRED_PROPOSAL = 425; // RFC2817
-    const HTTP_UPGRADE_REQUIRED                                          = 426; // RFC2817
-    const HTTP_PRECONDITION_REQUIRED                                     = 428; // RFC6585
-    const HTTP_TOO_MANY_REQUESTS                                         = 429; // RFC6585
-    const HTTP_REQUEST_HEADER_FIELDS_TOO_LARGE                           = 431; // RFC6585
-    const HTTP_UNAVAILABLE_FOR_LEGAL_REASONS                             = 451;
-    const HTTP_INTERNAL_SERVER_ERROR                                     = 500;
-    const HTTP_NOT_IMPLEMENTED                                           = 501;
-    const HTTP_BAD_GATEWAY                                               = 502;
-    const HTTP_SERVICE_UNAVAILABLE                                       = 503;
-    const HTTP_GATEWAY_TIMEOUT                                           = 504;
-    const HTTP_VERSION_NOT_SUPPORTED                                     = 505;
-    const HTTP_VARIANT_ALSO_NEGOTIATES_EXPERIMENTAL                      = 506; // RFC2295
-    const HTTP_INSUFFICIENT_STORAGE                                      = 507; // RFC4918
-    const HTTP_LOOP_DETECTED                                             = 508; // RFC5842
-    const HTTP_NOT_EXTENDED                                              = 510; // RFC2774
-    const HTTP_NETWORK_AUTHENTICATION_REQUIRED                           = 511; // RFC6585
     public static $statusTexts = [
         100 => 'Continue',
         101 => 'Switching Protocols',
@@ -142,11 +143,17 @@ class Response
         511 => 'Network Authentication Required',                             // RFC6585
     ];
 
+    /** @var \Illuminate\Validation\Validator */
+    // public $validator;
+    //
+    // /** @var MessageBag */
+    // public $messageBag;
+
     /** @var int Success/Error codes 200.400 etc */
     public $code = Response::HTTP_OK;
 
     /** @var string success|fail */
-    public $status;
+    public $status = 'success';
 
     /** @var string Single line of message */
     public $message;
@@ -158,10 +165,25 @@ class Response
     public $redirectTo;
 
     /** @var \Illuminate\View\View|\Illuminate\Contracts\View\Factory */
-    public $view;
+    public $viewPath;
 
     /** @var array */
-    public $viewVars;
+    public $viewVars = [];
+
+    /**
+     * Convert json array response keys to a specific case.
+     *
+     * @var string|bool
+     */
+    public $convertJsonKeys = '\Str::snake';
+
+    public function __construct()
+    {
+        // Load messageBag errors in to validator.
+        if ($this->hasErrors()) {
+            $this->validator()->messages()->merge($this->getErrors());
+        }
+    }
 
     /*
     |--------------------------------------------------------------------------
@@ -172,16 +194,98 @@ class Response
     |
     */
 
+    public function setValidator($validator)
+    {
+        $this->validator = $validator;
+
+        return $this;
+    }
+
+    public function setMessageBag($messageBag)
+    {
+        $this->messageBag = $messageBag;
+
+        return $this;
+    }
+
+    public function setCode($code)
+    {
+        $this->code = $code;
+
+        return $this;
+    }
+
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    public function setMessage($message)
+    {
+        $this->message = $message;
+
+        return $this;
+    }
+
+    public function setPayload($payload)
+    {
+        $this->payload = $payload;
+
+        return $this;
+    }
+
+    public function setRedirectTo($redirectTo)
+    {
+        $this->redirectTo = $redirectTo;
+
+        return $this;
+    }
+
+    public function setViewPath($viewPath)
+    {
+        $this->viewPath = $viewPath;
+
+        return $this;
+    }
+
+    public function setViewVars($viewVars)
+    {
+        $this->viewVars = $viewVars;
+        $this->setPayload($viewVars);
+
+        return $this;
+    }
+
     /**
-     * View
+     * Resolve singleton response
      *
-     * @param  string  $path
-     * @param  array  $vars
+     * @return \App\Mainframe\Features\Responder\Response|\Illuminate\Contracts\Foundation\Application|mixed
+     */
+    public static function resolve()
+    {
+        return resolve(Response::class);
+    }
+
+    /**
+     * View Object
+     *
+     * @param  string  $viewPath
+     * @param  array  $viewVars
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function view($path, $vars = [])
+    public function view($viewPath = null, $viewVars = null)
     {
-        $view = view($path)->with($this->defaultViewVars())->with($vars);
+        if ($viewPath) {
+            $this->setViewPath($viewPath);
+        }
+
+        if ($viewVars) {
+            $this->setViewVars($viewVars);
+        }
+
+        $view = view($this->viewPath)->with($this->defaultViewVars())->with($this->viewVars);
 
         if ($this->validator) {
             $view->withErrors($this->validator);
@@ -200,7 +304,7 @@ class Response
     {
         if ($to) {
             $redirect = redirect($to);
-        } elseif ($this->isSuccess() && $this->redirectTo) {
+        } elseif ($this->redirectTo) {
             $redirect = redirect($this->redirectTo);
         } else {
             $redirect = redirect()->back();
@@ -215,12 +319,7 @@ class Response
             ->withErrors($this->validator);
     }
 
-    /**
-     * Json
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function json()
+    public function prepareResponse()
     {
         // Load Generic response
         $data = [
@@ -235,12 +334,22 @@ class Response
         }
 
         // Load validation errors
-        if ($this->invalid()) {
+        if (!$this->isValid()) {
             $data['validation_errors'] = $this->validator()->messages()->toArray();
         }
 
-        if ($this->messageBag()->count()) {
-            $data['messages'] = $this->messageBag()->get('messages'); // Todo: Need to share a list of messages.
+        // Load different messages
+        $keys = ['errors', 'messages', 'warnings', 'debug'];
+        foreach ($keys as $key) {
+            if ($items = $this->getMessages($key)) {
+                $data[$key] = array_unique(Arr::flatten($items)); // One dimensional array of errors.
+            }
+        }
+
+        // Show validation errors in errors array
+        if (isset($data['validation_errors'])) {
+            $data['errors'] = $data['errors'] ?? [];
+            $data['errors'] = array_unique(array_merge($data['errors'], Arr::flatten($data['validation_errors'])));
         }
         /*-------------------------------*/
 
@@ -249,7 +358,46 @@ class Response
             $data['redirect'] = $this->redirectTo;
         }
 
-        return \Response::json($data);
+        return $data;
+    }
+
+    /**
+     * Convert an array keys to \Str::snake
+     *
+     * @param $array
+     * @return array
+     */
+    public function snakeCaseKeys($array)
+    {
+        return snakeCaseKeys($array);
+    }
+
+    /**
+     * Convert the json payload. Change structure, key naming convetion etc.
+     *
+     * @param $data
+     * @return array
+     */
+    public function convert($data)
+    {
+        if ($this->convertJsonKeys == '\Str::snake') {
+            return $this->snakeCaseKeys($data);
+        }
+
+        return $data;
+    }
+
+    /**
+     * Json
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function json()
+    {
+        $data = $this->prepareResponse();
+        $data = $this->convert($data); // Change array keys to snake case.
+
+        return \Response::json($data); // Note : Should send 200 OK always.  422 Can not be handled by browser.
     }
 
     /**
@@ -257,14 +405,23 @@ class Response
      *
      * @param  string  $message
      * @param  int  $code
-     * @return \Illuminate\Http\JsonResponse|void
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Illuminate\View\View|void
      */
-    public function failed($message = 'Failed', $code = Response::HTTP_BAD_REQUEST)
+    public function failed($message = null, $code = null)
     {
         $this->fail($message, $code);
 
+        // Higher precedence than view,redirect
         if ($this->expectsJson()) {
             return $this->json();
+        }
+
+        if ($this->viewPath) {
+            return $this->view();
+        }
+
+        if ($this->redirectTo) {
+            return $this->redirect();
         }
 
         return abort($code, $message);
@@ -277,21 +434,21 @@ class Response
      * @param  int  $code
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Illuminate\View\View|void
      */
-    public function succeeded($message = null, $code = Response::HTTP_OK)
+    public function succeeded($message = null, $code = null)
     {
         $this->success($message, $code);
 
+        // Higher precedence than view,redirect
         if ($this->expectsJson()) {
-            return $this->load($this->payload)->json();
+            return $this->json();
         }
 
-        if ($this->redirectTo) {
-            return $this->redirect($this->redirectTo);
+        if ($this->viewPath) {
+            return $this->view();
         }
 
-        if ($this->view) {
-            return $this->view($this->view)->with($this->viewVars);
-        }
+        return $this->redirect();
+
     }
 
     /**
@@ -301,11 +458,15 @@ class Response
      */
     public function dispatch()
     {
-        if ($this->status == 'fail') {
+        if (!$this->isValid()) {
+            $this->failValidation();
+        }
+
+        if ($this->isFail()) {
             return $this->failed($this->message, $this->code);
         }
 
-        return $this->succeeded($this->message, $this->code);
+        return $this->succeeded($this->message);
 
     }
 
@@ -324,9 +485,17 @@ class Response
      * @param  int  $code
      * @return \Illuminate\Http\JsonResponse|void
      */
-    public function permissionDenied($message = 'Permission denied', $code = Response::HTTP_FORBIDDEN)
+    public function permissionDenied($message = null, $code = null)
     {
-        return $this->failed($message, $code);
+        $message = $message ?: $this->message ?: 'Permission denied';
+        $code = $code ?: Response::HTTP_FORBIDDEN;
+
+        if ($this->expectsJson()) {
+            // return response()->json(['message' => $message], 404);
+            return $this->fail($message, $code)->json();
+        }
+
+        return abort($code, $message);
     }
 
     /**
@@ -336,9 +505,16 @@ class Response
      * @param  int  $code
      * @return \Illuminate\Http\JsonResponse|void
      */
-    public function notFound($message = 'Not found', $code = Response::HTTP_NOT_FOUND)
+    public function notFound($message = null, $code = null)
     {
-        return $this->failed($message, $code);
+        $message = $message ?: $this->message ?: 'Not found';
+        $code = $code ?: Response::HTTP_NOT_FOUND;
+
+        if ($this->expectsJson()) {
+            return $this->fail($message, $code)->json();
+        }
+
+        return abort($code, $message);
     }
 
     /*
@@ -357,12 +533,12 @@ class Response
      * @param  int  $code
      * @return $this
      */
-    public function success($message = null, $code = Response::HTTP_OK)
+    public function success($message = null, $code = null)
     {
         if ($this->status !== 'fail') {
             $this->status = 'success';
-            $this->code = $code;
-            $this->message = $message;
+            $this->code = $code ?: Response::HTTP_OK;
+            $this->message = $message ?: $this->message;
         }
 
         return $this;
@@ -375,13 +551,11 @@ class Response
      * @param  int  $code
      * @return $this
      */
-    public function fail($message = null, $code = Response::HTTP_UNPROCESSABLE_ENTITY)
+    public function fail($message = null, $code = null)
     {
-        if ($this->status !== 'fail') {
-            $this->status = 'fail';
-            $this->code = $code;
-            $this->message = $message;
-        }
+        $this->status = 'fail';
+        $this->code = $code ?: Response::HTTP_UNPROCESSABLE_ENTITY;
+        $this->message = $message ?: $this->message;
 
         return $this;
     }
@@ -390,12 +564,13 @@ class Response
      * Set response as fail
      *
      * @param  string  $message
-     * @param  int  $code
      * @return $this
      */
-    public function failValidation($message = 'Validation failed', $code = Response::HTTP_UNPROCESSABLE_ENTITY)
+    public function failValidation($message = null)
     {
-        $this->fail($message, $code);
+        $this->message = $message ?: $this->message ?: '';
+        $this->code = Response::HTTP_UNPROCESSABLE_ENTITY;
+        $this->fail();
 
         return $this;
     }
@@ -419,9 +594,7 @@ class Response
      */
     public function to($redirectTo = null)
     {
-        $this->redirectTo = $redirectTo;
-
-        return $this;
+        return $this->setRedirectTo($redirectTo);
     }
 
 
@@ -441,8 +614,9 @@ class Response
      */
     public function isSuccess()
     {
-
-        return $this->status == 'success' && $this->valid();
+        return $this->status == 'success'
+            && $this->isValid()
+            && !$this->hasMessages('errors');
     }
 
     /**
@@ -452,7 +626,7 @@ class Response
      */
     public function isFail()
     {
-        return ! $this->isSuccess();
+        return !$this->isSuccess();
     }
 
     /**
@@ -478,9 +652,12 @@ class Response
     public function defaultViewVars()
     {
         return [
-            'responseStatus' => session('responseStatus') ?: $this->status,
-            'responseMessage' => session('responseMessage') ?: $this->message,
-            'messageBag' => session('messageBag') ?: resolve(MessageBag::class)
+            'response' => [
+                // Load from session so that when redirected the values are retained
+                'status' => session('response.status') ?? $this->status,
+                'message' => session('response.message') ?? $this->message,
+                'messageBag' => session('response.messageBag') ?? $this->messageBag(),
+            ],
         ];
     }
 }

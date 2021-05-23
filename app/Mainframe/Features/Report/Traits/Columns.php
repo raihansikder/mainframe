@@ -2,9 +2,9 @@
 
 namespace App\Mainframe\Features\Report\Traits;
 
-use Str;
-use App\Mainframe\Helpers\Mf;
 use App\Mainframe\Helpers\Convert;
+use App\Mainframe\Helpers\Mf;
+use Str;
 
 /** @mixin \App\Mainframe\Features\Report\ReportBuilder $this */
 trait Columns
@@ -30,16 +30,22 @@ trait Columns
         return array_merge($this->dataSourceColumns(), $this->ghostColumnOptions());
     }
 
+    public function ghostColumns()
+    {
+        return [];
+    }
+
     /**
      * Some times we need to pass column names that do not exists in the model/table.
      * This should not be considered in query building. Rather we want this to be
      * post processed in mutation function.
      *
      * @return array
+     * @deprecated  use ghostColumns() instead
      */
     public function ghostColumnOptions()
     {
-        return [];
+        return $this->ghostColumns();
     }
 
     /**
@@ -51,6 +57,9 @@ trait Columns
     {
         if (is_string($this->dataSource)) {
             return Mf::tableColumns($this->dataSource);
+        }
+        if (isset($this->model)) {
+            return $this->model->tableColumns();
         }
 
         return [];
@@ -81,6 +90,28 @@ trait Columns
     }
 
     /**
+     * Check if selected columns have a key
+     *
+     * @param $column
+     * @return bool
+     */
+    public function selectedColumnsHas($column)
+    {
+        return in_array($column, $this->selectedColumns());
+    }
+
+    public function selectedColumnsHasAny($columns)
+    {
+        foreach ($columns as $column) {
+            if ($this->selectedColumnsHas($column)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
      * Change selectedColumns array before passing to the view file.
      * For complex group by you may need additional columns
      *
@@ -88,17 +119,32 @@ trait Columns
      */
     public function mutateSelectedColumns()
     {
-        $selectedColumns = $this->selectedColumns();
+        $columns = $this->selectedColumns();
+        $columns = $this->removeDotFromColumns($columns);
+
         /*
          * ------------------------------
          *  Change the values of
          *------------------------------
          */
         if ($this->groupByFields()) {
-            return array_merge($selectedColumns, $this->additionalSelectedColumnsDueToGroupBy());
+            return array_merge($columns, $this->additionalSelectedColumnsDueToGroupBy());
         }
 
-        return $selectedColumns;
+        return $columns;
+    }
+
+    /**
+     * Remove dot from column name
+     *
+     * @param $columns
+     * @return array
+     */
+    public function removeDotFromColumns($columns)
+    {
+        return collect($columns)->map(function ($item, $key) {
+            return \Str::after($item, '.');
+        })->toArray();
     }
 
     /*
@@ -135,14 +181,35 @@ trait Columns
 
         // If alias count is more than selection then trim
         if (count($keys) > count($this->selectedColumns())) {
-            $keys = array_slice($keys, count($this->selectedColumns()));
+            $keys = array_slice($keys, 0, count($this->selectedColumns()));
         }
+
+        $keys = $this->removeDotFromColumns($keys);
 
         return $keys;
     }
 
     /**
-     * Change alias column array for output
+     * Change alias for specific columns
+     *
+     * @param $map
+     * @param $array
+     * @return mixed
+     */
+    public function setAliasForColumns($map, $array)
+    {
+        $columns = $this->removeDotFromColumns($this->selectedColumns());
+        foreach ($map as $column => $alias) {
+            if ($pos = array_search($column, $columns)) {
+                $array[$pos] = $alias;
+            }
+        }
+
+        return $array;
+    }
+
+    /**
+     * Change alias column array for output. Add additional columns when needed.
      *
      * @return array
      */

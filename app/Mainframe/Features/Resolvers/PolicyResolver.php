@@ -1,9 +1,10 @@
-<?php /** @noinspection ALL */
+<?php
+/** @noinspection ALL */
 
 namespace App\Mainframe\Features\Resolvers;
 
 use App\Mainframe\Features\Modular\BaseModule\BaseModulePolicy;
-use App\Mainframe\Modules\Modules\Module;
+use App\Module;
 use Str;
 
 class PolicyResolver
@@ -12,14 +13,15 @@ class PolicyResolver
     /**
      * This function is used in app/Providers/AuthServiceProvider.php
      *
-     * @param $modelClass '\App\Mainframe\Modules\Foo\Bar'
+     * @param $modelClass  '\App\Mainframe\Modules\Foo\Bar'
      * @return string
      */
     public static function resolve($modelClass)
     {
-        $module = Module::where('model', '\\'.$modelClass)
-            ->remember(timer('very-long'))
-            ->first();
+        $module = Module::byClass(class_basename($modelClass));
+        // $module = Module::where('model', '\\'.$modelClass)
+        //     ->remember(timer('very-long'))
+        //     ->first();
 
         $modulePolicy = $module ? $module->policy : 'NoFile';
 

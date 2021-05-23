@@ -4,54 +4,97 @@ use App\Mainframe\Helpers\Mf;
 
 /*
 |--------------------------------------------------------------------------
-| API routes
+| Mainframe API routes
 |--------------------------------------------------------------------------
-|
-| Mainframe modules require following set of routes for common functions
-| like showing index page, create/edit form, handle delete etc.
-|
 */
-
 $modules = Mf::modules();
 
-Route::prefix('core/1.0')->middleware(['request.json', 'x-auth-token'])->group(function () use ($modules) {
+# Path root/api/1.0/core
+$version = '1.0';
+$namePrefix = 'api.'.$version.'.core';
+$middlewares = ['request.json', 'x-auth-token','tenant'];
 
-    // Auth apis
-    Route::post('register/{groupName?}', 'Auth\RegisterController@register');
-    Route::post('login', 'Auth\LoginController@login');
-    Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
-    Route::post('logout', 'Auth\LoginController@logout');
+// Note: 'core' is added to the prefix to isolate mainframe native APIs
+Route::prefix("core/{$version}")->middleware($middlewares)->group(function () use ($modules, $namePrefix) {
 
-    // User apis that are called with bearer token.
-    Route::prefix('user')->middleware(['bearer-token'])->group(function () {
-        Route::patch('/', 'Api\UserApiController@update');
-        Route::get('profile', 'Api\UserApiController@profile');
-        Route::post('profile-pic/store', 'Api\UserApiController@profilePicStore');
-        Route::delete('profile-pic/delete', 'Api\UserApiController@profilePicDestroy');
-    });
+    /*-----------------------------------------
+    | Authentication API
+    |-----------------------------------------*/
+    Route::post('register/{groupName?}', 'Auth\RegisterController@register')->name($namePrefix.".register");
+    Route::post('login', 'Auth\LoginController@login')->name($namePrefix.".login");
+    Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name($namePrefix.".reset-password");
+    Route::post('logout', 'Auth\LoginController@logout')->name($namePrefix.".logout");
 
-    // Settings
-    Route::get('setting/{name}', 'Api\ApiController@getSetting');
-
-    // Module RESTful apis
-    Route::prefix('module')->group(function () use ($modules) {
+    /*------------------------------------------
+    | Module REST API + Helper APIs
+    |------------------------------------------*/
+    Route::prefix('')->group(function () use ($modules, $namePrefix) {
         foreach ($modules as $module) {
-            Route::get($module->route_path."/list/json", $module->controller."@listJson");
-            Route::get($module->route_path."/report", $module->controller."@report");
 
-            Route::get($module->route_path."/{id}/uploads", $module->controller."@uploads");
-            Route::post($module->route_path."/{id}/uploads", $module->controller."@storeUploads");
+            $path = $module->route_path;
+            $controller = $module->controller;
+            $moduleName = $module->name;
 
-            Route::get($module->route_path."/{id}/comments", $module->controller."@comments");
-            Route::post($module->route_path."/{id}/comments", $module->controller."@storeComments");
+            Route::get($path.'', $controller.'@listJson')->name($namePrefix.".{$moduleName}.list");
+            Route::get($path.'/report', $controller.'@report')->name($namePrefix.".{$moduleName}.report");
 
-            Route::apiResource($module->name, $module->controller)->names([
-                'index' => "core.api.{$module->name}.index",
-                'store' => "core.api.{$module->name}.store",
-                'show' => "core.api.{$module->name}.show",
-                'update' => "core.api.{$module->name}.update",
-                'destroy' => "core.api.{$module->name}.destroy",
+            Route::get($path.'/{id}/uploads', $controller.'@uploads')->name($namePrefix.".{$moduleName}.uploads");
+            Route::post($path.'/{id}/uploads', $controller.'@attachUpload')->name($namePrefix.".{$moduleName}.attach-upload");
+
+            Route::get($path.'/{id}/comments', $controller.'@comments')->name($namePrefix.".{$moduleName}.comments");
+            Route::post($path.'/{id}/comments', $controller.'@attachComments')->name($namePrefix.".{$moduleName}.attach-comment");
+
+            Route::apiResource($path, $controller)->names([
+                'index' => "{$namePrefix}.{$moduleName}.index",
+                'store' => "{$namePrefix}.{$moduleName}.store",
+                'show' => "{$namePrefix}.{$moduleName}.show",
+                'update' => "{$namePrefix}.{$moduleName}.update",
+                'destroy' => "{$namePrefix}.{$moduleName}.destroy",
             ]);
         }
+    });
+
+    /*-----------------------------------------
+    | Misc
+    |-----------------------------------------*/
+    // Setting - Get a setting from key
+    Route::get('setting/{name}', 'Api\ApiController@getSetting')->name("{$namePrefix}.setting");
+    // DataBlock - Get a data-block from key
+    Route::get('data/{block}', 'DataBlockController@show')->name($namePrefix.'.data-block.show');
+    Route::get('report/{report}', 'ReportController@show')->name('report');
+    Route::get('content/{content}', 'DynamicContentController@show')->name('content');
+
+    /*-----------------------------------------
+    | User API (Requires bearer token)
+    |-----------------------------------------*/
+    Route::middleware(['bearer-token'])->group(function () use ($modules, $namePrefix) {
+
+        // Dashboard data
+        Route::get('/', 'HomeController@index')->middleware(['verified'])->name($namePrefix.'.home');
+
+        // APIs with 'use' prefix  (http://root/api/1.0/user/...)
+        Route::prefix('user')->group(function () use ($modules, $namePrefix) {
+
+            $namePrefix .= '.user'; // 'api.1.0.user'
+
+            // Section: Profile
+            Route::get('/', 'Api\UserApiController@showUser')->name("{$namePrefix}.show");
+            Route::patch('/', 'Api\UserApiController@updateUser')->name("{$namePrefix}.update");
+            Route::get('profile', 'Api\UserApiController@showUser')->name("{$namePrefix}.profile");
+
+            // Section: Profile-pic
+            Route::post('profile-pic', 'Api\UserApiController@profilePicStore')->name("{$namePrefix}.profile-pic.store");
+            Route::delete('profile-pic', 'Api\UserApiController@profilePicDestroy')->name("{$namePrefix}.profile-pic.delete");
+
+            // Section: In-app-notifications
+            Route::get('in-app-notifications', 'Api\UserApiController@inAppNotifications')->name("{$namePrefix}.in-app-notifications.index");
+            Route::patch('in-app-notifications/{id}', 'Api\UserApiController@inAppNotificationUpdate')->name("{$namePrefix}.in-app-notifications.update");
+            Route::patch('in-app-notifications/{id}/read', 'Api\UserApiController@inAppNotificationRead')->name("{$namePrefix}.in-app-notifications.read");
+            Route::post('in-app-notifications/read-all', 'Api\UserApiController@inAppNotificationsReadAll')
+                ->name("{$namePrefix}.in-app-notifications.read-all");
+            Route::delete('in-app-notifications/{id}', 'Api\UserApiController@inAppNotificationDelete')->name("{$namePrefix}.in-app-notifications.delete");
+            Route::post('in-app-notifications/delete-all', 'Api\UserApiController@inAppNotificationsDeleteAll')
+                ->name("{$namePrefix}.in-app-notifications.delete-all");
+        });
     });
 });

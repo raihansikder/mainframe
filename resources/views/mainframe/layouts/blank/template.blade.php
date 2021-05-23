@@ -1,7 +1,7 @@
-@extends('mainframe.layouts.default.template')
+@extends($view->defaultTemplate())
 
 @section('sidebar-left')
-    @include('mainframe.layouts.default.includes.navigation.left-menu.menu-items')
+    @include($view->leftMenu())
 @endsection
 
 @section('title')

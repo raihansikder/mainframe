@@ -2,13 +2,10 @@
 
 namespace App\Mainframe\Features\Modular\BaseModule;
 
-use App\Mainframe\Modules\Uploads\Upload;
-
 class BaseModuleObserver
 {
-
     /**
-     * @param $element \App\Mainframe\Features\Modular\BaseModule\BaseModule
+     * @param  BaseModule  $element
      * @return void|bool
      */
     public function saving($element)
@@ -17,53 +14,70 @@ class BaseModuleObserver
     }
 
     /**
-     * @param $element \App\Mainframe\Features\Modular\BaseModule\
+     * @param    $element
      * @return void|bool
      */
-    public function creating($element) { }
+    // public function creating($element) { }
 
     /**
-     * @param $element \App\Mainframe\Features\Modular\BaseModule\BaseModule
+     * @param  BaseModule  $element
      * @return void|bool
      */
-    public function created($element) { }
+    // public function created($element) { }
 
     /**
-     * @param $element \App\Mainframe\Features\Modular\BaseModule\BaseModule
+     * @param  BaseModule  $element
      * @return void|bool
      */
-    public function updating($element) { }
+    public function updating($element)
+    {
+        // if (!$element->isEditable()) {  // Note: Conflict with business logic
+        //     error('Element is not editable');
+        //     return false;
+        // }
+    }
 
     /**
-     * @param $element \App\Mainframe\Features\Modular\BaseModule\BaseModule
+     * @param  BaseModule  $element
      * @return void|bool
      */
-    public function updated($element) { }
+    // public function updated($element) { }
 
     /**
-     * @param $element \App\Mainframe\Features\Modular\BaseModule\BaseModule
+     * @param  BaseModule  $element
      * @return void|bool
      */
     public function saved($element)
     {
-        Upload::linkTemporaryUploads($element);
+        $element->linkUploads();
+        $element->trackFieldChanges();
+        $element->syncSpreadKeys();
+        $element->syncSpreadTags();
     }
 
     /**
-     * @param $element \App\Mainframe\Features\Modular\BaseModule\BaseModule
+     * @param  BaseModule  $element
      * @return void|bool
      */
-    public function deleting($element) { }
+    public function deleting($element)
+    {
+        if (!$element->isDeletable()) {
+            error('Element is not deletable');
+
+            return false;
+        }
+    }
 
     /**
      * Handle the base module "deleted" event.
      *
-     * @param  $element \App\Mainframe\Features\Modular\BaseModule\BaseModule
+     * @param  BaseModule  $element
      * @return void
      */
-    public function deleted($element)
-    {
-    }
+    // public function deleted($element)
+    // {
+    //     $element->markDeleted();
+    // }
 
     /**
      * Handle the base module "restored" event.
@@ -71,9 +85,7 @@ class BaseModuleObserver
      * @param  $element
      * @return void
      */
-    public function restored($element)
-    {
-    }
+    // public function restored($element) { }
 
     /**
      * Handle the base module "force deleted" event.
@@ -81,7 +93,5 @@ class BaseModuleObserver
      * @param  $element
      * @return void
      */
-    public function forceDeleted($element)
-    {
-    }
+    // public function forceDeleted($element) { }
 }

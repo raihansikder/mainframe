@@ -2,11 +2,10 @@
 
 namespace App\Mainframe\Modules\Settings;
 
-use DB;
 use App\Mainframe\Features\Datatable\ModuleDatatable;
+use App\Mainframe\Modules\Settings\Traits\SettingDatatableTrait;
 
 class SettingDatatable extends ModuleDatatable
 {
-
-
+    use SettingDatatableTrait;
 }

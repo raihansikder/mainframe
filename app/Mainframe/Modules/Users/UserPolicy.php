@@ -1,28 +1,21 @@
 <?php
 
-/** @noinspection PhpInconsistentReturnPointsInspection */
-
-/** @noinspection PhpUnused */
-
 namespace App\Mainframe\Modules\Users;
 
 use App\Mainframe\Features\Modular\BaseModule\BaseModulePolicy;
+use App\Mainframe\Modules\Users\Traits\UserPolicyTrait;
 
 class UserPolicy extends BaseModulePolicy
 {
+    use UserPolicyTrait;
 
-    /**
-     * Check if user can access Api
-     *
-     * @param  \App\User  $user
-     * @return mixed
-     */
-    public function makeApiCall($user)
-    {
-        if (! $user->hasPermission('make-api-call')) {
-            return false;
-        }
-
-        return true;
-    }
+    /*
+    |--------------------------------------------------------------------------
+    | Note : Keep this empty! Write codes in Trait.
+    |--------------------------------------------------------------------------
+    |
+    | For default mainframe modules keep this empty. Write codes in Trait so
+    | that the logic is portable and can be included  in new project modules
+    |
+    */
 }

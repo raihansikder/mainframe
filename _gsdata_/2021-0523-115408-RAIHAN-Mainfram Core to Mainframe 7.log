@@ -1,0 +1,1016 @@
+2021-05-23 11:54:08: -- Analysis Started by User Command
+2021-05-23 11:54:08: R: State file does not exist: E:/MAMP/htdocs/mainframe7/_gsdata_/_file_state_v4._gs
+2021-05-23 11:54:08: /public/mainframe/css/print-report.css: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/images/file_type_icons/3gp.png: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/images/file_type_icons/7z.png: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/images/file_type_icons/ae.png: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/images/file_type_icons/ai.png: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/images/file_type_icons/apk.png: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/images/file_type_icons/asf.png: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/images/file_type_icons/avi.png: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/images/file_type_icons/bak.png: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/images/file_type_icons/bmp.png: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/images/file_type_icons/cdr.png: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/images/file_type_icons/css.png: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/images/file_type_icons/csv.png: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/images/file_type_icons/divx.png: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/images/file_type_icons/dll.png: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/images/file_type_icons/doc.png: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/images/file_type_icons/docx.png: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/images/file_type_icons/dw.png: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/images/file_type_icons/dwg.png: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/images/file_type_icons/eps.png: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/images/file_type_icons/exe.png: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/images/file_type_icons/flv.png: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/images/file_type_icons/fw.png: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/images/file_type_icons/gif.png: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/images/file_type_icons/gz.png: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/images/file_type_icons/html.png: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/images/file_type_icons/ico.png: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/images/file_type_icons/iso.png: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/images/file_type_icons/jar.png: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/images/file_type_icons/jpg.png: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/images/file_type_icons/js.png: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/images/file_type_icons/mov.png: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/images/file_type_icons/mp3.png: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/images/file_type_icons/mp4.png: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/images/file_type_icons/mpeg.png: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/images/file_type_icons/noimage.png: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/images/file_type_icons/pdf.png: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/images/file_type_icons/php.png: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/images/file_type_icons/png.png: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/images/file_type_icons/ppt.png: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/images/file_type_icons/ps.png: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/images/file_type_icons/psd.png: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/images/file_type_icons/rar.png: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/images/file_type_icons/svg.png: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/images/file_type_icons/swf.png: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/images/file_type_icons/sys.png: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/images/file_type_icons/tar.png: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/images/file_type_icons/tiff.png: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/images/file_type_icons/txt.png: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/images/file_type_icons/wav.png: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/images/file_type_icons/zip.png: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/images/login-bg1.jpg: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/images/noimage.png: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/images/top-strip-1.png: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/js/custom.js: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/js/jquery-ui-1.10.3.js: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/js/jquery-ui-1.10.3.min.js: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/js/jquery.js: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/js/plugins/datatables.1.10.2/jquery.dataTables.js: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/js/plugins/datatables.1.10.2/jquery.dataTables.min.js: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/js/plugins/datatables.1.10.2/jquery.dataTables.rowGrouping.js: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/js/plugins/datatables.1.10.2/jquery.js: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/js/plugins/datatables.1.9.4/dataTables.bootstrap.js: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/js/plugins/datatables.1.9.4/jquery.dataTables.js: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/js/plugins/datatables.1.9.4/jquery.dataTables.rowGrouping.js: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/plugins/croppic/assets/css/bootstrap.css: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/plugins/croppic/assets/css/croppic.css: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/plugins/croppic/assets/css/main.css: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/plugins/croppic/assets/fonts/glyphicons-halflings-regular.eot: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/plugins/croppic/assets/fonts/glyphicons-halflings-regular.svg: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/plugins/croppic/assets/fonts/glyphicons-halflings-regular.ttf: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/plugins/croppic/assets/fonts/glyphicons-halflings-regular.woff: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/plugins/croppic/assets/img/cropperIcons.bak.png: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/plugins/croppic/assets/img/cropperIcons.png: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/plugins/croppic/assets/img/downloadIcon.png: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/plugins/croppic/assets/img/headerBg.jpg: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/plugins/croppic/assets/img/jobotic.png: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/plugins/croppic/assets/img/jobotic_bubble.png: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/plugins/croppic/assets/img/logo.png: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/plugins/croppic/assets/img/night.jpg: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/plugins/croppic/assets/img/park_view.jpg: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/plugins/croppic/assets/img/placeholder.png: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/plugins/croppic/assets/img/steinlinconsulting.png: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/plugins/croppic/assets/img/studio42.png: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/plugins/croppic/assets/js/bootstrap.min.js: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/plugins/croppic/assets/js/jquery.mousewheel.min.js: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/plugins/croppic/assets/js/main.js: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/plugins/croppic/croppic.js: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/plugins/croppic/croppic.min.js: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/plugins/croppic/croppic.zip: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/plugins/croppic/img_crop_to_file.php: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/plugins/croppic/img_save_to_file.php: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/plugins/croppic/index.html: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: /public/mainframe/plugins/croppic/README.md: Warning: Older file to replace Newer file
+2021-05-23 11:54:08: Changes: 916, Conflicts: 0, CopyTime: 0, FixState: 219, Errors: 0, All: 3043
+2021-05-23 11:54:08: Left to Right: Copy File: 847 Delete File: 69 
+2021-05-23 11:54:08: == Sync Started by User Command
+2021-05-23 11:54:08: Delete File E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Core/Traits/HasMessageBag.php
+2021-05-23 11:54:08: Delete File E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Modular/BaseModule/Traits/EventIdentifiable.php
+2021-05-23 11:54:08: Delete File E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Modular/BaseModule/Traits/ModelAutoFill.php
+2021-05-23 11:54:08: Delete File E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Modular/BaseModule/Traits/Processable.php
+2021-05-23 11:54:08: Delete File E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Modular/BaseModule/Traits/RelatedUsersTrait.php
+2021-05-23 11:54:08: Delete File E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Modular/BaseModule/Traits/TenantContextTrait.php
+2021-05-23 11:54:08: Delete File E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Modular/BaseModule/Traits/UpdaterTrait.php
+2021-05-23 11:54:08: Delete File E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Modular/BaseModule/Traits/Uploadable.php
+2021-05-23 11:54:08: Delete File E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Modular/ModularController/Traits/ModelProcessorHelper.php
+2021-05-23 11:54:08: Delete File E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Modular/ModularController/Traits/RequestHandler.php
+2021-05-23 11:54:08: Delete File E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Modular/ModularController/Traits/ShowChangesTrait.php
+2021-05-23 11:54:08: Delete File E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Modular/Rememberable/Query/Builder.php
+2021-05-23 11:54:08: Delete Folder E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Modular/Rememberable/Query
+2021-05-23 11:54:08: Delete File E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Modular/Rememberable/Rememberable.php
+2021-05-23 11:54:08: Delete Folder E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Modular/Rememberable
+2021-05-23 11:54:08: Delete File E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Multitenant/GlobalScope/AddTenant.php
+2021-05-23 11:54:08: Delete File E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Comments/CommentHelper.php
+2021-05-23 11:54:08: Delete File E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Countries/CountryHelper.php
+2021-05-23 11:54:08: Delete File E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Groups/GroupHelper.php
+2021-05-23 11:54:08: Delete File E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Groups/Traits/GroupDefinitionsTrait.php
+2021-05-23 11:54:08: Delete Folder E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Messages
+2021-05-23 11:54:08: Delete File E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/ModuleGroups/ModuleGroupHelper.php
+2021-05-23 11:54:08: Delete File E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Modules/ModuleHelper.php
+2021-05-23 11:54:08: Delete File E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Notifications/NotificationHelper.php
+2021-05-23 11:54:08: Delete File E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Packages/PackageHelper.php
+2021-05-23 11:54:08: Delete File E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Projects/ProjectHelper.php
+2021-05-23 11:54:08: Delete File E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Reports/ReportHelper.php
+2021-05-23 11:54:08: Delete File E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Samples/DolorSits/DolorSit.php
+2021-05-23 11:54:08: Delete File E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Samples/DolorSits/DolorSitController.php
+2021-05-23 11:54:08: Delete File E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Samples/DolorSits/DolorSitDatatable.php
+2021-05-23 11:54:08: Delete File E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Samples/DolorSits/DolorSitHelper.php
+2021-05-23 11:54:08: Delete File E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Samples/DolorSits/DolorSitObserver.php
+2021-05-23 11:54:08: Delete File E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Samples/DolorSits/DolorSitPolicy.php
+2021-05-23 11:54:08: Delete File E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Samples/DolorSits/DolorSitProcessor.php
+2021-05-23 11:54:08: Delete Folder E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Samples/DolorSits
+2021-05-23 11:54:08: Delete File E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Samples/LoremIpsums/LoremIpsum.php
+2021-05-23 11:54:08: Delete File E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Samples/LoremIpsums/LoremIpsumController.php
+2021-05-23 11:54:08: Delete File E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Samples/LoremIpsums/LoremIpsumDatatable.php
+2021-05-23 11:54:08: Delete File E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Samples/LoremIpsums/LoremIpsumHelper.php
+2021-05-23 11:54:08: Delete File E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Samples/LoremIpsums/LoremIpsumObserver.php
+2021-05-23 11:54:08: Delete File E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Samples/LoremIpsums/LoremIpsumPolicy.php
+2021-05-23 11:54:08: Delete File E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Samples/LoremIpsums/LoremIpsumProcessor.php
+2021-05-23 11:54:08: Delete Folder E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Samples/LoremIpsums
+2021-05-23 11:54:08: Delete Folder E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Samples
+2021-05-23 11:54:08: Delete File E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Settings/SettingHelper.php
+2021-05-23 11:54:08: Delete File E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Subscriptions/SubscriptionHelper.php
+2021-05-23 11:54:08: Delete File E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Tenants/TenantHelper.php
+2021-05-23 11:54:08: Delete File E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Uploads/UploadHelper.php
+2021-05-23 11:54:08: Delete File E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Users/Traits/UserGroupable.php
+2021-05-23 11:54:08: Delete File E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Users/UserHelper.php
+2021-05-23 11:54:08: Delete File E:/MAMP/htdocs/mainframe7/public/mainframe/js/vue.js
+2021-05-23 11:54:08: Delete File E:/MAMP/htdocs/mainframe7/resources/views/mainframe/layouts/default/includes/alerts/messages-top-1.0.blade.php
+2021-05-23 11:54:08: Delete File E:/MAMP/htdocs/mainframe7/resources/views/mainframe/layouts/default/includes/alerts/messages-top-1.1.blade.php
+2021-05-23 11:54:08: Delete File E:/MAMP/htdocs/mainframe7/resources/views/mainframe/layouts/default/includes/modals/messages-1.0.blade.php
+2021-05-23 11:54:08: Delete File E:/MAMP/htdocs/mainframe7/resources/views/mainframe/layouts/default/includes/modals/messages-1.1.blade.php
+2021-05-23 11:54:08: Delete File E:/MAMP/htdocs/mainframe7/resources/views/mainframe/layouts/module/template.blade.php
+2021-05-23 11:54:08: Delete File E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/samples/dolor-sits/form/default.blade.php
+2021-05-23 11:54:08: Delete File E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/samples/dolor-sits/form/js.blade.php
+2021-05-23 11:54:08: Delete Folder E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/samples/dolor-sits/form
+2021-05-23 11:54:08: Delete File E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/samples/dolor-sits/grid/default.blade.php
+2021-05-23 11:54:08: Delete Folder E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/samples/dolor-sits/grid
+2021-05-23 11:54:08: Delete Folder E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/samples/dolor-sits
+2021-05-23 11:54:08: Delete File E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/samples/lorem-ipsums/form/default.blade.php
+2021-05-23 11:54:08: Delete File E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/samples/lorem-ipsums/form/js.blade.php
+2021-05-23 11:54:08: Delete Folder E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/samples/lorem-ipsums/form
+2021-05-23 11:54:08: Delete File E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/samples/lorem-ipsums/grid/default.blade.php
+2021-05-23 11:54:08: Delete Folder E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/samples/lorem-ipsums/grid
+2021-05-23 11:54:08: Delete Folder E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/samples/lorem-ipsums
+2021-05-23 11:54:08: Delete Folder E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/samples
+2021-05-23 11:54:08: Create Folder E:/MAMP/htdocs/mainframe7/app/Mainframe/Contents
+2021-05-23 11:54:08: Create Folder E:/MAMP/htdocs/mainframe7/app/Mainframe/DataBlocks
+2021-05-23 11:54:08: Create Folder E:/MAMP/htdocs/mainframe7/app/Mainframe/Datatables
+2021-05-23 11:54:08: Create Folder E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Audit
+2021-05-23 11:54:08: Create Folder E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Cacher
+2021-05-23 11:54:08: Create Folder E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Content
+2021-05-23 11:54:08: Create Folder E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Dashboards
+2021-05-23 11:54:08: Create Folder E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Dashboards/Superadmin
+2021-05-23 11:54:08: Create Folder E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/DataBlocks
+2021-05-23 11:54:08: Create Folder E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Datatable/Traits
+2021-05-23 11:54:08: Create Folder E:/MAMP/htdocs/mainframe7/app/Mainframe/Http/Controllers/Api/Traits
+2021-05-23 11:54:08: Create Folder E:/MAMP/htdocs/mainframe7/app/Mainframe/Macros
+2021-05-23 11:54:08: Create Folder E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Changes
+2021-05-23 11:54:08: Create Folder E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Changes/Traits
+2021-05-23 11:54:08: Create Folder E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Comments/Traits
+2021-05-23 11:54:08: Create Folder E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Contents
+2021-05-23 11:54:08: Create Folder E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Contents/Traits
+2021-05-23 11:54:08: Create Folder E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Countries/Traits
+2021-05-23 11:54:08: Create Folder E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/DataTableTests
+2021-05-23 11:54:08: Create Folder E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/InAppNotifications
+2021-05-23 11:54:08: Create Folder E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/InAppNotifications/Traits
+2021-05-23 11:54:08: Create Folder E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/ModuleGroups/Traits
+2021-05-23 11:54:08: Create Folder E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Modules/Traits
+2021-05-23 11:54:08: Create Folder E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Notifications/Traits
+2021-05-23 11:54:08: Create Folder E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Packages/Traits
+2021-05-23 11:54:08: Create Folder E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Projects/Traits
+2021-05-23 11:54:08: Create Folder E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/PushNotifications
+2021-05-23 11:54:08: Create Folder E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/PushNotifications/Traits
+2021-05-23 11:54:08: Create Folder E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Reports/Traits
+2021-05-23 11:54:08: Create Folder E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Settings/Traits
+2021-05-23 11:54:08: Create Folder E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Spreads
+2021-05-23 11:54:08: Create Folder E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Spreads/Traits
+2021-05-23 11:54:08: Create Folder E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Subscriptions/Traits
+2021-05-23 11:54:08: Create Folder E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Tenants/Traits
+2021-05-23 11:54:08: Create Folder E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Uploads/Traits
+2021-05-23 11:54:08: Create Folder E:/MAMP/htdocs/mainframe7/app/Mainframe/Reports
+2021-05-23 11:54:08: Create Folder E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date
+2021-05-23 11:54:08: Create Folder E:/MAMP/htdocs/mainframe7/public/mainframe/plugins/autosize
+2021-05-23 11:54:08: Create Folder E:/MAMP/htdocs/mainframe7/public/mainframe/plugins/autosize/dist
+2021-05-23 11:54:08: Create Folder E:/MAMP/htdocs/mainframe7/public/mainframe/plugins/autosize/example
+2021-05-23 11:54:08: Create Folder E:/MAMP/htdocs/mainframe7/public/mainframe/plugins/autosize/src
+2021-05-23 11:54:08: Create Folder E:/MAMP/htdocs/mainframe7/resources/views/mainframe/contents
+2021-05-23 11:54:08: Create Folder E:/MAMP/htdocs/mainframe7/resources/views/mainframe/form/includes
+2021-05-23 11:54:08: Create Folder E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/changes
+2021-05-23 11:54:08: Create Folder E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/changes/form
+2021-05-23 11:54:08: Create Folder E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/changes/grid
+2021-05-23 11:54:08: Create Folder E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/contents
+2021-05-23 11:54:08: Create Folder E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/contents/form
+2021-05-23 11:54:08: Create Folder E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/contents/grid
+2021-05-23 11:54:08: Create Folder E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/data-table-tests
+2021-05-23 11:54:08: Create Folder E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/data-table-tests/form
+2021-05-23 11:54:08: Create Folder E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/data-table-tests/grid
+2021-05-23 11:54:08: Create Folder E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/in-app-notifications
+2021-05-23 11:54:08: Create Folder E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/in-app-notifications/form
+2021-05-23 11:54:08: Create Folder E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/in-app-notifications/grid
+2021-05-23 11:54:08: Create Folder E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/push-notifications
+2021-05-23 11:54:08: Create Folder E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/push-notifications/form
+2021-05-23 11:54:08: Create Folder E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/push-notifications/grid
+2021-05-23 11:54:08: Create Folder E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/schedules
+2021-05-23 11:54:08: Create Folder E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/schedules/form
+2021-05-23 11:54:08: Create Folder E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/schedules/grid
+2021-05-23 11:54:08: Create Folder E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/spreads
+2021-05-23 11:54:08: Create Folder E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/spreads/form
+2021-05-23 11:54:08: Create Folder E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/spreads/grid
+2021-05-23 11:54:08: Create Folder E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/test-mod
+2021-05-23 11:54:08: Create Folder E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/test-mod/form
+2021-05-23 11:54:08: Create Folder E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/test-mod/grid
+2021-05-23 11:54:08: Create Folder E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/transitions
+2021-05-23 11:54:08: Create Folder E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/transitions/form
+2021-05-23 11:54:08: Create Folder E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/transitions/grid
+2021-05-23 11:54:08: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Commands/CleanDeletedUploads.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Commands/CleanDeletedUploads.php' (1,258)
+2021-05-23 11:54:08: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Commands/CreateRootModels.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Commands/CreateRootModels.php' (1,573)
+2021-05-23 11:54:08: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Commands/FixPolymorphicType.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Commands/FixPolymorphicType.php' (1,677)
+2021-05-23 11:54:08: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Commands/MakeMainframeModule.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Commands/MakeMainframeModule.php' (8,007)
+2021-05-23 11:54:08: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Contents/SampleContent.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Contents/SampleContent.php' (478)
+2021-05-23 11:54:08: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/DataBlocks/SampleDataBlock.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/DataBlocks/SampleDataBlock.php' (698)
+2021-05-23 11:54:08: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Datatables/SampleDatatable.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Datatables/SampleDatatable.php' (877)
+2021-05-23 11:54:08: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/Audit/Audit.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Audit/Audit.php' (434)
+2021-05-23 11:54:08: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/Cacher/Cacher.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Cacher/Cacher.php' (990)
+2021-05-23 11:54:08: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/Content/DynamicContent.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Content/DynamicContent.php' (196)
+2021-05-23 11:54:08: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/Content/DynamicContentControllerTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Content/DynamicContentControllerTrait.php' (857)
+2021-05-23 11:54:08: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/Content/DynamicContentTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Content/DynamicContentTrait.php' (4,106)
+2021-05-23 11:54:08: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/Core/Traits/SendResponse.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Core/Traits/SendResponse.php' (7,576)
+2021-05-23 11:54:08: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/Core/Traits/Validable.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Core/Traits/Validable.php' (5,707)
+2021-05-23 11:54:08: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/Core/ViewProcessor.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Core/ViewProcessor.php' (1,151)
+2021-05-23 11:54:08: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/Dashboards/Superadmin/SuperAdminDashboard.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Dashboards/Superadmin/SuperAdminDashboard.php' (182)
+2021-05-23 11:54:08: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/DataBlocks/DataBlock.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/DataBlocks/DataBlock.php' (103)
+2021-05-23 11:54:08: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/DataBlocks/DataBlockControllerTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/DataBlocks/DataBlockControllerTrait.php' (1,409)
+2021-05-23 11:54:08: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/DataBlocks/DataBlockTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/DataBlocks/DataBlockTrait.php' (849)
+2021-05-23 11:54:08: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/Datatable/Datatable.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Datatable/Datatable.php' (3,004)
+2021-05-23 11:54:08: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/Datatable/ModuleDatatable.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Datatable/ModuleDatatable.php' (469)
+2021-05-23 11:54:08: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/Datatable/Traits/CustomDatatableTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Datatable/Traits/CustomDatatableTrait.php' (563)
+2021-05-23 11:54:08: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/Datatable/Traits/DatatableControllerTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Datatable/Traits/DatatableControllerTrait.php' (1,539)
+2021-05-23 11:54:08: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/Datatable/Traits/DatatableTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Datatable/Traits/DatatableTrait.php' (6,008)
+2021-05-23 11:54:08: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/Datatable/Traits/ModuleDatatableTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Datatable/Traits/ModuleDatatableTrait.php' (3,317)
+2021-05-23 11:54:08: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/Form/Button.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Form/Button.php' (1,088)
+2021-05-23 11:54:08: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/Form/Checkbox/Checkbox.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Form/Checkbox/Checkbox.php' (2,013)
+2021-05-23 11:54:08: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/Form/Comment.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Form/Comment.php' (1,800)
+2021-05-23 11:54:08: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/Form/DeleteButton.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Form/DeleteButton.php' (793)
+2021-05-23 11:54:08: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/Form/Form.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Form/Form.php' (1,837)
+2021-05-23 11:54:08: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/Form/Input.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Form/Input.php' (4,685)
+2021-05-23 11:54:08: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/Form/Select/Select.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Form/Select/Select.php' (944)
+2021-05-23 11:54:08: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/Form/Select/SelectAjax.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Form/Select/SelectAjax.php' (1,529)
+2021-05-23 11:54:08: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/Form/Select/SelectArray.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Form/Select/SelectArray.php' (98)
+2021-05-23 11:54:08: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/Form/Select/SelectArrayMultiple.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Form/Select/SelectArrayMultiple.php' (1,518)
+2021-05-23 11:54:08: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/Form/Select/SelectModel.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Form/Select/SelectModel.php' (2,989)
+2021-05-23 11:54:08: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/Form/Select/SelectModelMultiple.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Form/Select/SelectModelMultiple.php' (1,219)
+2021-05-23 11:54:08: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/Form/Text/Date.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Form/Text/Date.php' (1,021)
+2021-05-23 11:54:08: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/Form/Text/Datetime.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Form/Text/Datetime.php' (414)
+2021-05-23 11:54:08: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/Form/Text/InputHidden.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Form/Text/InputHidden.php' (382)
+2021-05-23 11:54:08: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/Form/Text/InputText.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Form/Text/InputText.php' (593)
+2021-05-23 11:54:08: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/Form/Text/Tags.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Form/Text/Tags.php' (619)
+2021-05-23 11:54:08: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/Form/Text/TextArea.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Form/Text/TextArea.php' (461)
+2021-05-23 11:54:08: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/Form/Upload.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Form/Upload.php' (1,841)
+2021-05-23 11:54:08: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/Modular/BaseModule/BaseModule.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Modular/BaseModule/BaseModule.php' (5,509)
+2021-05-23 11:54:08: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/Modular/BaseModule/BaseModuleObserver.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Modular/BaseModule/BaseModuleObserver.php' (2,082)
+2021-05-23 11:54:08: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/Modular/BaseModule/BaseModulePolicy.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Modular/BaseModule/BaseModulePolicy.php' (7,020)
+2021-05-23 11:54:08: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/Modular/BaseModule/BaseModuleViewProcessor.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Modular/BaseModule/BaseModuleViewProcessor.php' (176)
+2021-05-23 11:54:08: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/Modular/BaseModule/Traits/ModularTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Modular/BaseModule/Traits/ModularTrait.php' (25,852)
+2021-05-23 11:54:08: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/Modular/BaseModule/Traits/ViewProcessorTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Modular/BaseModule/Traits/ViewProcessorTrait.php' (10,192)
+2021-05-23 11:54:08: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/Modular/ModularController/ModularController.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Modular/ModularController/ModularController.php' (1,526)
+2021-05-23 11:54:08: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/Modular/ModularController/Traits/ModularControllerTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Modular/ModularController/Traits/ModularControllerTrait.php' (10,683)
+2021-05-23 11:54:08: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/Modular/ModularController/Traits/RequestProcessorTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Modular/ModularController/Traits/RequestProcessorTrait.php' (4,377)
+2021-05-23 11:54:08: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/Modular/ModularController/Traits/RequestValidator.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Modular/ModularController/Traits/RequestValidator.php' (4,566)
+2021-05-23 11:54:08: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/Modular/ModularController/Traits/Resolvable.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Modular/ModularController/Traits/Resolvable.php' (1,500)
+2021-05-23 11:54:08: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/Modular/Skeleton/migration.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Modular/Skeleton/migration.php' (3,199)
+2021-05-23 11:54:08: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/Modular/Skeleton/SuperHero.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Modular/Skeleton/SuperHero.php' (3,831)
+2021-05-23 11:54:08: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/Modular/Skeleton/SuperHeroController.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Modular/Skeleton/SuperHeroController.php' (2,260)
+2021-05-23 11:54:08: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/Modular/Skeleton/SuperHeroDatatable.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Modular/Skeleton/SuperHeroDatatable.php' (2,949)
+2021-05-23 11:54:08: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/Modular/Skeleton/SuperHeroHelper.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Modular/Skeleton/SuperHeroHelper.php' (2,643)
+2021-05-23 11:54:08: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/Modular/Skeleton/SuperHeroObserver.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Modular/Skeleton/SuperHeroObserver.php' (839)
+2021-05-23 11:54:08: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/Modular/Skeleton/SuperHeroPolicy.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Modular/Skeleton/SuperHeroPolicy.php' (1,295)
+2021-05-23 11:54:08: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/Modular/Skeleton/SuperHeroProcessor.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Modular/Skeleton/SuperHeroProcessor.php' (3,656)
+2021-05-23 11:54:08: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/Modular/Skeleton/SuperHeroProcessorHelper.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Modular/Skeleton/SuperHeroProcessorHelper.php' (1,478)
+2021-05-23 11:54:08: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/Modular/Skeleton/SuperHeroViewProcessor.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Modular/Skeleton/SuperHeroViewProcessor.php' (2,162)
+2021-05-23 11:54:08: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/Modular/Skeleton/views/form/default.blade.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Modular/Skeleton/views/form/default.blade.php' (1,501)
+2021-05-23 11:54:08: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/Modular/Skeleton/views/form/js.blade.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Modular/Skeleton/views/form/js.blade.php' (1,998)
+2021-05-23 11:54:08: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/Modular/Skeleton/views/grid/default.blade.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Modular/Skeleton/views/grid/default.blade.php' (449)
+2021-05-23 11:54:08: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/Modular/Validator/ModelProcessor.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Modular/Validator/ModelProcessor.php' (22,897)
+2021-05-23 11:54:08: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/Multitenant/GlobalScope/CheckTenantScope.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Multitenant/GlobalScope/CheckTenantScope.php' (805)
+2021-05-23 11:54:08: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/Report/ModuleReportBuilder.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Report/ModuleReportBuilder.php' (494)
+2021-05-23 11:54:08: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/Report/ReportBuilder.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Report/ReportBuilder.php' (2,619)
+2021-05-23 11:54:08: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/Report/ReportViewProcessor.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Report/ReportViewProcessor.php' (587)
+2021-05-23 11:54:08: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/Report/Traits/Columns.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Report/Traits/Columns.php' (6,840)
+2021-05-23 11:54:08: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/Report/Traits/Filterable.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Report/Traits/Filterable.php' (11,191)
+2021-05-23 11:54:08: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/Report/Traits/ModuleReportBuilderTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Report/Traits/ModuleReportBuilderTrait.php' (1,671)
+2021-05-23 11:54:08: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/Report/Traits/Output.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Report/Traits/Output.php' (18,295)
+2021-05-23 11:54:08: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/Report/Traits/Query.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Report/Traits/Query.php' (10,558)
+2021-05-23 11:54:08: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/Report/Traits/ReportControllerTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Report/Traits/ReportControllerTrait.php' (1,848)
+2021-05-23 11:54:08: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/Report/Traits/ReportViewProcessorTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Report/Traits/ReportViewProcessorTrait.php' (3,916)
+2021-05-23 11:54:08: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/Resolvers/PolicyResolver.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Resolvers/PolicyResolver.php' (1,436)
+2021-05-23 11:54:08: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Features/Responder/Response.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Features/Responder/Response.php' (22,129)
+2021-05-23 11:54:08: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Helpers/Cache.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Helpers/Cache.php' (1,721)
+2021-05-23 11:54:08: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Helpers/Cached.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Helpers/Cached.php' (763)
+2021-05-23 11:54:08: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Helpers/Convert.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Helpers/Convert.php' (525)
+2021-05-23 11:54:08: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Helpers/Date.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Helpers/Date.php' (1,113)
+2021-05-23 11:54:08: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Helpers/functions.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Helpers/functions.php' (6,699)
+2021-05-23 11:54:08: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Helpers/generic.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Helpers/generic.php' (15,203)
+2021-05-23 11:54:08: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Helpers/Mf.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Helpers/Mf.php' (6,724)
+2021-05-23 11:54:08: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Helpers/Money.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Helpers/Money.php' (2,873)
+2021-05-23 11:54:08: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Helpers/View.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Helpers/View.php' (3,116)
+2021-05-23 11:54:08: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Http/Controllers/Api/ApiController.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Http/Controllers/Api/ApiController.php' (519)
+2021-05-23 11:54:08: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Http/Controllers/Api/GuestApiController.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Http/Controllers/Api/GuestApiController.php' (218)
+2021-05-23 11:54:08: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Http/Controllers/Api/Traits/ApiControllerTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Http/Controllers/Api/Traits/ApiControllerTrait.php' (883)
+2021-05-23 11:54:08: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Http/Controllers/Api/Traits/GuestApiControllerTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Http/Controllers/Api/Traits/GuestApiControllerTrait.php' (102)
+2021-05-23 11:54:08: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Http/Controllers/Api/Traits/UserApiControllerTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Http/Controllers/Api/Traits/UserApiControllerTrait.php' (4,362)
+2021-05-23 11:54:08: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Http/Controllers/Api/UserApiController.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Http/Controllers/Api/UserApiController.php' (394)
+2021-05-23 11:54:08: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Http/Controllers/Auth/LoginController.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Http/Controllers/Auth/LoginController.php' (3,295)
+2021-05-23 11:54:09: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Http/Controllers/Auth/RegisterController.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Http/Controllers/Auth/RegisterController.php' (5,793)
+2021-05-23 11:54:09: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Http/Controllers/Auth/RegisterTenantController.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Http/Controllers/Auth/RegisterTenantController.php' (3,609)
+2021-05-23 11:54:09: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Http/Controllers/Auth/VerificationController.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Http/Controllers/Auth/VerificationController.php' (1,804)
+2021-05-23 11:54:09: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Http/Controllers/BaseController.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Http/Controllers/BaseController.php' (3,495)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Http/Controllers/DataBlockController.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Http/Controllers/DataBlockController.php' (362)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Http/Controllers/DatatableController.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Http/Controllers/DatatableController.php' (368)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Http/Controllers/HomeController.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Http/Controllers/HomeController.php' (721)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Http/Controllers/ReportController.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Http/Controllers/ReportController.php' (353)
+2021-05-23 11:54:09: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Http/Controllers/TestController.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Http/Controllers/TestController.php' (738)
+2021-05-23 11:54:09: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Http/Middleware/AllowSuperuser.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Http/Middleware/AllowSuperuser.php' (494)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Http/Middleware/InjectTenant.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Http/Middleware/InjectTenant.php' (731)
+2021-05-23 11:54:09: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Http/Middleware/VerifyBearerToken.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Http/Middleware/VerifyBearerToken.php' (951)
+2021-05-23 11:54:09: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Http/Middleware/VerifyXAuthToken.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Http/Middleware/VerifyXAuthToken.php' (1,015)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Jobs/JobSendPushNotifications.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Jobs/JobSendPushNotifications.php' (3,840)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Macros/QueryBuilderMacros.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Macros/QueryBuilderMacros.php' (566)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Changes/Change.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Changes/Change.php' (5,976)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Changes/ChangeController.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Changes/ChangeController.php' (788)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Changes/ChangeDatatable.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Changes/ChangeDatatable.php' (659)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Changes/ChangeObserver.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Changes/ChangeObserver.php' (673)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Changes/ChangePolicy.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Changes/ChangePolicy.php' (665)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Changes/ChangeProcessor.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Changes/ChangeProcessor.php' (715)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Changes/ChangeViewProcessor.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Changes/ChangeViewProcessor.php' (1,167)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Changes/Traits/ChangeControllerTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Changes/Traits/ChangeControllerTrait.php' (2,045)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Changes/Traits/ChangeDatatableTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Changes/Traits/ChangeDatatableTrait.php' (1,977)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Changes/Traits/ChangeObserverTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Changes/Traits/ChangeObserverTrait.php' (754)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Changes/Traits/ChangePolicyTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Changes/Traits/ChangePolicyTrait.php' (1,186)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Changes/Traits/ChangeProcessorTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Changes/Traits/ChangeProcessorTrait.php' (2,275)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Changes/Traits/ChangeTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Changes/Traits/ChangeTrait.php' (3,525)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Changes/Traits/ChangeViewProcessorTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Changes/Traits/ChangeViewProcessorTrait.php' (1,600)
+2021-05-23 11:54:09: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Comments/Comment.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Comments/Comment.php' (5,834)
+2021-05-23 11:54:09: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Comments/CommentController.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Comments/CommentController.php' (401)
+2021-05-23 11:54:09: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Comments/CommentDatatable.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Comments/CommentDatatable.php' (675)
+2021-05-23 11:54:09: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Comments/CommentObserver.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Comments/CommentObserver.php' (676)
+2021-05-23 11:54:09: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Comments/CommentPolicy.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Comments/CommentPolicy.php' (668)
+2021-05-23 11:54:09: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Comments/CommentProcessor.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Comments/CommentProcessor.php' (687)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Comments/CommentViewProcessor.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Comments/CommentViewProcessor.php' (701)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Comments/Traits/CommentControllerTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Comments/Traits/CommentControllerTrait.php' (1,960)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Comments/Traits/CommentDatatableTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Comments/Traits/CommentDatatableTrait.php' (2,109)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Comments/Traits/CommentObserverTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Comments/Traits/CommentObserverTrait.php' (671)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Comments/Traits/CommentPolicyTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Comments/Traits/CommentPolicyTrait.php' (93)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Comments/Traits/CommentProcessorTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Comments/Traits/CommentProcessorTrait.php' (98)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Comments/Traits/CommentTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Comments/Traits/CommentTrait.php' (3,525)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Comments/Traits/CommentViewProcessorTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Comments/Traits/CommentViewProcessorTrait.php' (1,670)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Contents/Content.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Contents/Content.php' (5,592)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Contents/ContentController.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Contents/ContentController.php' (2,177)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Contents/ContentDatatable.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Contents/ContentDatatable.php' (2,080)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Contents/ContentObserver.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Contents/ContentObserver.php' (293)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Contents/ContentPolicy.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Contents/ContentPolicy.php' (283)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Contents/ContentProcessor.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Contents/ContentProcessor.php' (643)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Contents/ContentViewProcessor.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Contents/ContentViewProcessor.php' (362)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Contents/Traits/ContentControllerTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Contents/Traits/ContentControllerTrait.php' (97)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Contents/Traits/ContentDatatableTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Contents/Traits/ContentDatatableTrait.php' (96)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Contents/Traits/ContentObserverTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Contents/Traits/ContentObserverTrait.php' (95)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Contents/Traits/ContentPolicyTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Contents/Traits/ContentPolicyTrait.php' (93)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Contents/Traits/ContentProcessorTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Contents/Traits/ContentProcessorTrait.php' (4,480)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Contents/Traits/ContentTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Contents/Traits/ContentTrait.php' (2,713)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Contents/Traits/ContentViewProcessorTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Contents/Traits/ContentViewProcessorTrait.php' (100)
+2021-05-23 11:54:09: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Countries/Country.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Countries/Country.php' (11,215)
+2021-05-23 11:54:09: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Countries/CountryController.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Countries/CountryController.php' (611)
+2021-05-23 11:54:09: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Countries/CountryDatatable.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Countries/CountryDatatable.php' (2,467)
+2021-05-23 11:54:09: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Countries/CountryObserver.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Countries/CountryObserver.php' (277)
+2021-05-23 11:54:09: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Countries/CountryPolicy.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Countries/CountryPolicy.php' (269)
+2021-05-23 11:54:09: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Countries/CountryProcessor.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Countries/CountryProcessor.php' (273)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Countries/CountryViewProcessor.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Countries/CountryViewProcessor.php' (195)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Countries/Traits/CountryControllerTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Countries/Traits/CountryControllerTrait.php' (306)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Countries/Traits/CountryDatatableTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Countries/Traits/CountryDatatableTrait.php' (1,869)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Countries/Traits/CountryObserverTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Countries/Traits/CountryObserverTrait.php' (96)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Countries/Traits/CountryPolicyTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Countries/Traits/CountryPolicyTrait.php' (94)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Countries/Traits/CountryProcessorTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Countries/Traits/CountryProcessorTrait.php' (4,848)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Countries/Traits/CountryTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Countries/Traits/CountryTrait.php' (88)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Countries/Traits/CountryViewProcessorTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Countries/Traits/CountryViewProcessorTrait.php' (101)
+2021-05-23 11:54:09: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Groups/Group.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Groups/Group.php' (6,347)
+2021-05-23 11:54:09: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Groups/GroupController.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Groups/GroupController.php' (379)
+2021-05-23 11:54:09: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Groups/GroupDatatable.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Groups/GroupDatatable.php' (352)
+2021-05-23 11:54:09: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Groups/GroupObserver.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Groups/GroupObserver.php' (263)
+2021-05-23 11:54:09: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Groups/GroupPolicy.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Groups/GroupPolicy.php' (255)
+2021-05-23 11:54:09: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Groups/GroupProcessor.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Groups/GroupProcessor.php' (259)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Groups/GroupViewProcessor.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Groups/GroupViewProcessor.php' (288)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Groups/Traits/GroupControllerTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Groups/Traits/GroupControllerTrait.php' (290)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Groups/Traits/GroupDatatableTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Groups/Traits/GroupDatatableTrait.php' (1,979)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Groups/Traits/GroupObserverTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Groups/Traits/GroupObserverTrait.php' (91)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Groups/Traits/GroupPolicyTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Groups/Traits/GroupPolicyTrait.php' (89)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Groups/Traits/GroupProcessorTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Groups/Traits/GroupProcessorTrait.php' (3,516)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Groups/Traits/GroupTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Groups/Traits/GroupTrait.php' (10,453)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Groups/Traits/GroupViewProcessorTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Groups/Traits/GroupViewProcessorTrait.php' (96)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/InAppNotifications/InAppNotification.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/InAppNotifications/InAppNotification.php' (8,737)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/InAppNotifications/InAppNotificationController.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/InAppNotifications/InAppNotificationController.php' (731)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/InAppNotifications/InAppNotificationDatatable.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/InAppNotifications/InAppNotificationDatatable.php' (433)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/InAppNotifications/InAppNotificationObserver.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/InAppNotifications/InAppNotificationObserver.php' (712)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/InAppNotifications/InAppNotificationPolicy.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/InAppNotifications/InAppNotificationPolicy.php' (720)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/InAppNotifications/InAppNotificationProcessor.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/InAppNotifications/InAppNotificationProcessor.php' (843)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/InAppNotifications/InAppNotificationViewProcessor.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/InAppNotifications/InAppNotificationViewProcessor.php' (755)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/InAppNotifications/Traits/InAppNotificationControllerTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/InAppNotifications/Traits/InAppNotificationControllerTrait.php' (2,003)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/InAppNotifications/Traits/InAppNotificationDatatableTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/InAppNotifications/Traits/InAppNotificationDatatableTrait.php' (1,872)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/InAppNotifications/Traits/InAppNotificationObserverTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/InAppNotifications/Traits/InAppNotificationObserverTrait.php' (697)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/InAppNotifications/Traits/InAppNotificationPolicyTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/InAppNotifications/Traits/InAppNotificationPolicyTrait.php' (1,168)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/InAppNotifications/Traits/InAppNotificationProcessorTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/InAppNotifications/Traits/InAppNotificationProcessorTrait.php' (2,954)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/InAppNotifications/Traits/InAppNotificationTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/InAppNotifications/Traits/InAppNotificationTrait.php' (4,857)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/InAppNotifications/Traits/InAppNotificationViewProcessorTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/InAppNotifications/Traits/InAppNotificationViewProcessorTrait.php' (1,311)
+2021-05-23 11:54:09: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/ModuleGroups/ModuleGroup.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/ModuleGroups/ModuleGroup.php' (10,602)
+2021-05-23 11:54:09: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/ModuleGroups/ModuleGroupController.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/ModuleGroups/ModuleGroupController.php' (430)
+2021-05-23 11:54:09: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/ModuleGroups/ModuleGroupDatatable.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/ModuleGroups/ModuleGroupDatatable.php' (283)
+2021-05-23 11:54:09: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/ModuleGroups/ModuleGroupPolicy.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/ModuleGroups/ModuleGroupPolicy.php' (287)
+2021-05-23 11:54:09: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/ModuleGroups/ModuleGroupProcessor.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/ModuleGroups/ModuleGroupProcessor.php' (301)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/ModuleGroups/ModuleGroupViewProcessor.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/ModuleGroups/ModuleGroupViewProcessor.php' (318)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/ModuleGroups/Traits/ModuleGroupControllerTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/ModuleGroups/Traits/ModuleGroupControllerTrait.php' (467)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/ModuleGroups/Traits/ModuleGroupDatatableTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/ModuleGroups/Traits/ModuleGroupDatatableTrait.php' (104)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/ModuleGroups/Traits/ModuleGroupObserverTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/ModuleGroups/Traits/ModuleGroupObserverTrait.php' (136)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/ModuleGroups/Traits/ModuleGroupPolicyTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/ModuleGroups/Traits/ModuleGroupPolicyTrait.php' (101)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/ModuleGroups/Traits/ModuleGroupProcessorTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/ModuleGroups/Traits/ModuleGroupProcessorTrait.php' (3,505)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/ModuleGroups/Traits/ModuleGroupTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/ModuleGroups/Traits/ModuleGroupTrait.php' (3,894)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/ModuleGroups/Traits/ModuleGroupViewProcessorTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/ModuleGroups/Traits/ModuleGroupViewProcessorTrait.php' (108)
+2021-05-23 11:54:09: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Modules/Module.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Modules/Module.php' (12,563)
+2021-05-23 11:54:09: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Modules/ModuleController.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Modules/ModuleController.php' (383)
+2021-05-23 11:54:09: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Modules/ModuleDatatable.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Modules/ModuleDatatable.php' (239)
+2021-05-23 11:54:09: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Modules/ModuleObserver.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Modules/ModuleObserver.php' (268)
+2021-05-23 11:54:09: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Modules/ModulePolicy.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Modules/ModulePolicy.php' (260)
+2021-05-23 11:54:09: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Modules/ModuleProcessor.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Modules/ModuleProcessor.php' (348)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Modules/ModuleViewProcessor.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Modules/ModuleViewProcessor.php' (293)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Modules/Traits/ModuleControllerTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Modules/Traits/ModuleControllerTrait.php' (293)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Modules/Traits/ModuleDatatableTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Modules/Traits/ModuleDatatableTrait.php' (571)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Modules/Traits/ModuleObserverTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Modules/Traits/ModuleObserverTrait.php' (93)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Modules/Traits/ModulePolicyTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Modules/Traits/ModulePolicyTrait.php' (91)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Modules/Traits/ModuleProcessorTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Modules/Traits/ModuleProcessorTrait.php' (1,364)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Modules/Traits/ModuleTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Modules/Traits/ModuleTrait.php' (8,945)
+2021-05-23 11:54:09: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Modules/Traits/ModuleViewProcessorTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Modules/Traits/ModuleViewProcessorTrait.php' (98)
+2021-05-23 11:54:09: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Notifications/Notification.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Notifications/Notification.php' (7,989)
+2021-05-23 11:54:09: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Notifications/NotificationController.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Notifications/NotificationController.php' (648)
+2021-05-23 11:54:09: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Notifications/NotificationDatatable.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Notifications/NotificationDatatable.php' (298)
+2021-05-23 11:54:10: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Notifications/NotificationObserver.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Notifications/NotificationObserver.php' (298)
+2021-05-23 11:54:10: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Notifications/NotificationPolicy.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Notifications/NotificationPolicy.php' (308)
+2021-05-23 11:54:10: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Notifications/NotificationProcessor.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Notifications/NotificationProcessor.php' (292)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Notifications/NotificationViewProcessor.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Notifications/NotificationViewProcessor.php' (323)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Notifications/Traits/NotificationControllerTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Notifications/Traits/NotificationControllerTrait.php' (334)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Notifications/Traits/NotificationDatatableTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Notifications/Traits/NotificationDatatableTrait.php' (2,183)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Notifications/Traits/NotificationObserverTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Notifications/Traits/NotificationObserverTrait.php' (105)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Notifications/Traits/NotificationPolicyTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Notifications/Traits/NotificationPolicyTrait.php' (1,772)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Notifications/Traits/NotificationProcessorTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Notifications/Traits/NotificationProcessorTrait.php' (2,719)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Notifications/Traits/NotificationTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Notifications/Traits/NotificationTrait.php' (3,083)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Notifications/Traits/NotificationViewProcessorTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Notifications/Traits/NotificationViewProcessorTrait.php' (110)
+2021-05-23 11:54:10: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Packages/Package.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Packages/Package.php' (9,540)
+2021-05-23 11:54:10: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Packages/PackageController.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Packages/PackageController.php' (606)
+2021-05-23 11:54:10: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Packages/PackageDatatable.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Packages/PackageDatatable.php' (263)
+2021-05-23 11:54:10: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Packages/PackageObserver.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Packages/PackageObserver.php' (273)
+2021-05-23 11:54:10: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Packages/PackagePolicy.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Packages/PackagePolicy.php' (267)
+2021-05-23 11:54:10: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Packages/PackageProcessor.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Packages/PackageProcessor.php' (267)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Packages/PackageViewProcessor.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Packages/PackageViewProcessor.php' (298)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Packages/Traits/PackageControllerTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Packages/Traits/PackageControllerTrait.php' (302)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Packages/Traits/PackageDatatableTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Packages/Traits/PackageDatatableTrait.php' (2,205)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Packages/Traits/PackageObserverTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Packages/Traits/PackageObserverTrait.php' (95)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Packages/Traits/PackagePolicyTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Packages/Traits/PackagePolicyTrait.php' (93)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Packages/Traits/PackageProcessorTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Packages/Traits/PackageProcessorTrait.php' (4,400)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Packages/Traits/PackageTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Packages/Traits/PackageTrait.php' (87)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Packages/Traits/PackageViewProcessorTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Packages/Traits/PackageViewProcessorTrait.php' (100)
+2021-05-23 11:54:10: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Projects/Project.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Projects/Project.php' (9,932)
+2021-05-23 11:54:10: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Projects/ProjectController.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Projects/ProjectController.php' (604)
+2021-05-23 11:54:10: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Projects/ProjectDatatable.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Projects/ProjectDatatable.php' (261)
+2021-05-23 11:54:10: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Projects/ProjectObserver.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Projects/ProjectObserver.php' (273)
+2021-05-23 11:54:10: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Projects/ProjectPolicy.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Projects/ProjectPolicy.php' (267)
+2021-05-23 11:54:10: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Projects/ProjectProcessor.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Projects/ProjectProcessor.php' (269)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Projects/ProjectViewProcessor.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Projects/ProjectViewProcessor.php' (298)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Projects/Traits/ProjectControllerTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Projects/Traits/ProjectControllerTrait.php' (304)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Projects/Traits/ProjectDatatableTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Projects/Traits/ProjectDatatableTrait.php' (2,169)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Projects/Traits/ProjectObserverTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Projects/Traits/ProjectObserverTrait.php' (95)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Projects/Traits/ProjectPolicyTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Projects/Traits/ProjectPolicyTrait.php' (93)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Projects/Traits/ProjectProcessorTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Projects/Traits/ProjectProcessorTrait.php' (4,265)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Projects/Traits/ProjectTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Projects/Traits/ProjectTrait.php' (87)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Projects/Traits/ProjectViewProcessorTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Projects/Traits/ProjectViewProcessorTrait.php' (100)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/PushNotifications/PushNotification.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/PushNotifications/PushNotification.php' (7,766)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/PushNotifications/PushNotificationController.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/PushNotifications/PushNotificationController.php' (670)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/PushNotifications/PushNotificationDatatable.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/PushNotifications/PushNotificationDatatable.php' (426)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/PushNotifications/PushNotificationObserver.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/PushNotifications/PushNotificationObserver.php' (318)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/PushNotifications/PushNotificationPolicy.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/PushNotifications/PushNotificationPolicy.php' (310)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/PushNotifications/PushNotificationProcessor.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/PushNotifications/PushNotificationProcessor.php' (677)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/PushNotifications/PushNotificationViewProcessor.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/PushNotifications/PushNotificationViewProcessor.php' (746)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/PushNotifications/Traits/PushNotificationControllerTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/PushNotifications/Traits/PushNotificationControllerTrait.php' (1,865)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/PushNotifications/Traits/PushNotificationDatatableTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/PushNotifications/Traits/PushNotificationDatatableTrait.php' (1,868)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/PushNotifications/Traits/PushNotificationObserverTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/PushNotifications/Traits/PushNotificationObserverTrait.php' (709)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/PushNotifications/Traits/PushNotificationPolicyTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/PushNotifications/Traits/PushNotificationPolicyTrait.php' (1,164)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/PushNotifications/Traits/PushNotificationProcessorTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/PushNotifications/Traits/PushNotificationProcessorTrait.php' (2,807)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/PushNotifications/Traits/PushNotificationTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/PushNotifications/Traits/PushNotificationTrait.php' (4,668)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/PushNotifications/Traits/PushNotificationViewProcessorTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/PushNotifications/Traits/PushNotificationViewProcessorTrait.php' (1,258)
+2021-05-23 11:54:10: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Reports/Report.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Reports/Report.php' (10,201)
+2021-05-23 11:54:10: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Reports/ReportController.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Reports/ReportController.php' (598)
+2021-05-23 11:54:10: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Reports/ReportDatatable.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Reports/ReportDatatable.php' (256)
+2021-05-23 11:54:10: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Reports/ReportObserver.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Reports/ReportObserver.php' (270)
+2021-05-23 11:54:10: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Reports/ReportPolicy.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Reports/ReportPolicy.php' (262)
+2021-05-23 11:54:10: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Reports/ReportProcessor.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Reports/ReportProcessor.php' (260)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Reports/ReportViewProcessor.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Reports/ReportViewProcessor.php' (293)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Reports/Traits/ReportControllerTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Reports/Traits/ReportControllerTrait.php' (296)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Reports/Traits/ReportDatatableTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Reports/Traits/ReportDatatableTrait.php' (94)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Reports/Traits/ReportObserverTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Reports/Traits/ReportObserverTrait.php' (93)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Reports/Traits/ReportPolicyTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Reports/Traits/ReportPolicyTrait.php' (91)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Reports/Traits/ReportProcessorTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Reports/Traits/ReportProcessorTrait.php' (3,205)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Reports/Traits/ReportTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Reports/Traits/ReportTrait.php' (1,734)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Reports/Traits/ReportViewProcessorTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Reports/Traits/ReportViewProcessorTrait.php' (98)
+2021-05-23 11:54:10: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Settings/Setting.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Settings/Setting.php' (5,223)
+2021-05-23 11:54:10: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Settings/SettingController.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Settings/SettingController.php' (752)
+2021-05-23 11:54:10: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Settings/SettingDatatable.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Settings/SettingDatatable.php' (261)
+2021-05-23 11:54:10: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Settings/SettingObserver.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Settings/SettingObserver.php' (674)
+2021-05-23 11:54:10: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Settings/SettingPolicy.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Settings/SettingPolicy.php' (670)
+2021-05-23 11:54:10: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Settings/SettingProcessor.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Settings/SettingProcessor.php' (433)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Settings/SettingViewProcessor.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Settings/SettingViewProcessor.php' (298)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Settings/Traits/SettingControllerTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Settings/Traits/SettingControllerTrait.php' (97)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Settings/Traits/SettingDatatableTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Settings/Traits/SettingDatatableTrait.php' (96)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Settings/Traits/SettingObserverTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Settings/Traits/SettingObserverTrait.php' (642)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Settings/Traits/SettingPolicyTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Settings/Traits/SettingPolicyTrait.php' (1,113)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Settings/Traits/SettingProcessorTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Settings/Traits/SettingProcessorTrait.php' (4,967)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Settings/Traits/SettingTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Settings/Traits/SettingTrait.php' (1,853)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Settings/Traits/SettingViewProcessorTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Settings/Traits/SettingViewProcessorTrait.php' (100)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Spreads/Spread.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Spreads/Spread.php' (5,955)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Spreads/SpreadController.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Spreads/SpreadController.php' (787)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Spreads/SpreadDatatable.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Spreads/SpreadDatatable.php' (661)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Spreads/SpreadObserver.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Spreads/SpreadObserver.php' (673)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Spreads/SpreadPolicy.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Spreads/SpreadPolicy.php' (663)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Spreads/SpreadProcessor.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Spreads/SpreadProcessor.php' (715)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Spreads/SpreadViewProcessor.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Spreads/SpreadViewProcessor.php' (696)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Spreads/Traits/SpreadControllerTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Spreads/Traits/SpreadControllerTrait.php' (1,793)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Spreads/Traits/SpreadDatatableTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Spreads/Traits/SpreadDatatableTrait.php' (1,852)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Spreads/Traits/SpreadObserverTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Spreads/Traits/SpreadObserverTrait.php' (93)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Spreads/Traits/SpreadPolicyTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Spreads/Traits/SpreadPolicyTrait.php' (91)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Spreads/Traits/SpreadProcessorTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Spreads/Traits/SpreadProcessorTrait.php' (3,106)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Spreads/Traits/SpreadTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Spreads/Traits/SpreadTrait.php' (4,029)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Spreads/Traits/SpreadViewProcessorTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Spreads/Traits/SpreadViewProcessorTrait.php' (98)
+2021-05-23 11:54:10: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Subscriptions/Subscription.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Subscriptions/Subscription.php' (9,741)
+2021-05-23 11:54:10: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Subscriptions/SubscriptionController.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Subscriptions/SubscriptionController.php' (651)
+2021-05-23 11:54:10: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Subscriptions/SubscriptionDatatable.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Subscriptions/SubscriptionDatatable.php' (292)
+2021-05-23 11:54:10: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Subscriptions/SubscriptionObserver.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Subscriptions/SubscriptionObserver.php' (298)
+2021-05-23 11:54:10: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Subscriptions/SubscriptionPolicy.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Subscriptions/SubscriptionPolicy.php' (292)
+2021-05-23 11:54:10: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Subscriptions/SubscriptionProcessor.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Subscriptions/SubscriptionProcessor.php' (294)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Subscriptions/SubscriptionViewProcessor.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Subscriptions/SubscriptionViewProcessor.php' (323)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Subscriptions/Traits/SubscriptionControllerTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Subscriptions/Traits/SubscriptionControllerTrait.php' (334)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Subscriptions/Traits/SubscriptionDatatableTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Subscriptions/Traits/SubscriptionDatatableTrait.php' (2,228)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Subscriptions/Traits/SubscriptionObserverTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Subscriptions/Traits/SubscriptionObserverTrait.php' (105)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Subscriptions/Traits/SubscriptionPolicyTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Subscriptions/Traits/SubscriptionPolicyTrait.php' (103)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Subscriptions/Traits/SubscriptionProcessorTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Subscriptions/Traits/SubscriptionProcessorTrait.php' (4,517)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Subscriptions/Traits/SubscriptionTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Subscriptions/Traits/SubscriptionTrait.php' (97)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Subscriptions/Traits/SubscriptionViewProcessorTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Subscriptions/Traits/SubscriptionViewProcessorTrait.php' (110)
+2021-05-23 11:54:10: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Tenants/Tenant.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Tenants/Tenant.php' (9,814)
+2021-05-23 11:54:10: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Tenants/TenantController.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Tenants/TenantController.php' (603)
+2021-05-23 11:54:10: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Tenants/TenantDatatable.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Tenants/TenantDatatable.php' (258)
+2021-05-23 11:54:10: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Tenants/TenantObserver.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Tenants/TenantObserver.php' (268)
+2021-05-23 11:54:10: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Tenants/TenantPolicy.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Tenants/TenantPolicy.php' (262)
+2021-05-23 11:54:10: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Tenants/TenantProcessor.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Tenants/TenantProcessor.php' (264)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Tenants/TenantViewProcessor.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Tenants/TenantViewProcessor.php' (293)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Tenants/Traits/TenantControllerTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Tenants/Traits/TenantControllerTrait.php' (391)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Tenants/Traits/TenantDatatableTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Tenants/Traits/TenantDatatableTrait.php' (2,161)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Tenants/Traits/TenantObserverTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Tenants/Traits/TenantObserverTrait.php' (93)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Tenants/Traits/TenantPolicyTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Tenants/Traits/TenantPolicyTrait.php' (91)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Tenants/Traits/TenantProcessorTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Tenants/Traits/TenantProcessorTrait.php' (4,339)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Tenants/Traits/TenantTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Tenants/Traits/TenantTrait.php' (85)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Tenants/Traits/TenantViewProcessorTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Tenants/Traits/TenantViewProcessorTrait.php' (98)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Uploads/Traits/UploadControllerTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Uploads/Traits/UploadControllerTrait.php' (5,295)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Uploads/Traits/UploadDatatableTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Uploads/Traits/UploadDatatableTrait.php' (94)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Uploads/Traits/UploadObserverTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Uploads/Traits/UploadObserverTrait.php' (639)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Uploads/Traits/UploadPolicyTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Uploads/Traits/UploadPolicyTrait.php' (1,110)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Uploads/Traits/UploadProcessorTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Uploads/Traits/UploadProcessorTrait.php' (1,541)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Uploads/Traits/UploadTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Uploads/Traits/UploadTrait.php' (6,640)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Uploads/Traits/UploadViewProcessorTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Uploads/Traits/UploadViewProcessorTrait.php' (98)
+2021-05-23 11:54:10: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Uploads/Upload.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Uploads/Upload.php' (6,761)
+2021-05-23 11:54:10: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Uploads/UploadController.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Uploads/UploadController.php' (766)
+2021-05-23 11:54:10: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Uploads/UploadDatatable.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Uploads/UploadDatatable.php' (256)
+2021-05-23 11:54:10: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Uploads/UploadObserver.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Uploads/UploadObserver.php' (655)
+2021-05-23 11:54:10: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Uploads/UploadPolicy.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Uploads/UploadPolicy.php' (665)
+2021-05-23 11:54:10: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Uploads/UploadProcessor.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Uploads/UploadProcessor.php' (720)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Uploads/UploadViewProcessor.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Uploads/UploadViewProcessor.php' (293)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Users/Traits/UserControllerTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Users/Traits/UserControllerTrait.php' (1,309)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Users/Traits/UserDatatableTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Users/Traits/UserDatatableTrait.php' (1,620)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Users/Traits/UserObserverTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Users/Traits/UserObserverTrait.php' (633)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Users/Traits/UserPolicyTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Users/Traits/UserPolicyTrait.php' (677)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Users/Traits/UserProcessorTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Users/Traits/UserProcessorTrait.php' (6,281)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Users/Traits/UserTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Users/Traits/UserTrait.php' (22,792)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Users/Traits/UserViewProcessorTrait.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Users/Traits/UserViewProcessorTrait.php' (1,325)
+2021-05-23 11:54:10: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Users/User.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Users/User.php' (12,273)
+2021-05-23 11:54:10: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Users/UserController.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Users/UserController.php' (1,797)
+2021-05-23 11:54:10: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Users/UserDatatable.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Users/UserDatatable.php' (795)
+2021-05-23 11:54:10: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Users/UserObserver.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Users/UserObserver.php' (645)
+2021-05-23 11:54:10: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Users/UserPolicy.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Users/UserPolicy.php' (653)
+2021-05-23 11:54:10: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Users/UserProcessor.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Users/UserProcessor.php' (673)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Modules/Users/UserViewProcessor.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Modules/Users/UserViewProcessor.php' (1,067)
+2021-05-23 11:54:10: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Notifications/Auth/ResetPassword.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Notifications/Auth/ResetPassword.php' (1,247)
+2021-05-23 11:54:10: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Notifications/Auth/VerifyEmail.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Notifications/Auth/VerifyEmail.php' (1,161)
+2021-05-23 11:54:10: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Providers/AppServiceProvider.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Providers/AppServiceProvider.php' (2,946)
+2021-05-23 11:54:10: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Providers/AuthServiceProvider.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Providers/AuthServiceProvider.php' (2,292)
+2021-05-23 11:54:10: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/Providers/RouteServiceProvider.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Providers/RouteServiceProvider.php' (2,534)
+2021-05-23 11:54:10: Copy New 'E:/MAMP/htdocs/mainframe/app/Mainframe/Reports/ActiveUsers.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/Reports/ActiveUsers.php' (493)
+2021-05-23 11:54:10: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/routes/api.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/routes/api.php' (5,447)
+2021-05-23 11:54:10: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/routes/auth.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/routes/auth.php' (2,312)
+2021-05-23 11:54:10: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/routes/modules.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/routes/modules.php' (2,775)
+2021-05-23 11:54:10: Copy Over 'E:/MAMP/htdocs/mainframe/app/Mainframe/routes/web.php' -> 'E:/MAMP/htdocs/mainframe7/app/Mainframe/routes/web.php' (759)
+2021-05-23 11:54:10: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/css/mainframe.css' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/css/mainframe.css' (12,755)
+2021-05-23 11:54:10: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/css/print-report.css' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/css/print-report.css' (779)
+2021-05-23 11:54:11: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/images/file_type_icons/3gp.png' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/images/file_type_icons/3gp.png' (4,107)
+2021-05-23 11:54:11: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/images/file_type_icons/7z.png' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/images/file_type_icons/7z.png' (2,853)
+2021-05-23 11:54:11: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/images/file_type_icons/ae.png' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/images/file_type_icons/ae.png' (2,817)
+2021-05-23 11:54:11: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/images/file_type_icons/ai.png' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/images/file_type_icons/ai.png' (2,714)
+2021-05-23 11:54:11: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/images/file_type_icons/apk.png' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/images/file_type_icons/apk.png' (3,951)
+2021-05-23 11:54:11: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/images/file_type_icons/asf.png' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/images/file_type_icons/asf.png' (3,925)
+2021-05-23 11:54:11: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/images/file_type_icons/avi.png' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/images/file_type_icons/avi.png' (3,696)
+2021-05-23 11:54:11: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/images/file_type_icons/bak.png' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/images/file_type_icons/bak.png' (4,020)
+2021-05-23 11:54:11: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/images/file_type_icons/bmp.png' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/images/file_type_icons/bmp.png' (3,805)
+2021-05-23 11:54:11: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/images/file_type_icons/cdr.png' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/images/file_type_icons/cdr.png' (4,082)
+2021-05-23 11:54:11: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/images/file_type_icons/css.png' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/images/file_type_icons/css.png' (4,503)
+2021-05-23 11:54:11: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/images/file_type_icons/csv.png' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/images/file_type_icons/csv.png' (4,364)
+2021-05-23 11:54:11: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/images/file_type_icons/divx.png' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/images/file_type_icons/divx.png' (4,558)
+2021-05-23 11:54:11: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/images/file_type_icons/dll.png' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/images/file_type_icons/dll.png' (2,515)
+2021-05-23 11:54:11: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/images/file_type_icons/doc.png' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/images/file_type_icons/doc.png' (4,349)
+2021-05-23 11:54:11: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/images/file_type_icons/docx.png' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/images/file_type_icons/docx.png' (5,611)
+2021-05-23 11:54:11: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/images/file_type_icons/dw.png' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/images/file_type_icons/dw.png' (3,757)
+2021-05-23 11:54:11: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/images/file_type_icons/dwg.png' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/images/file_type_icons/dwg.png' (4,788)
+2021-05-23 11:54:11: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/images/file_type_icons/eps.png' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/images/file_type_icons/eps.png' (3,417)
+2021-05-23 11:54:11: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/images/file_type_icons/exe.png' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/images/file_type_icons/exe.png' (3,134)
+2021-05-23 11:54:11: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/images/file_type_icons/flv.png' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/images/file_type_icons/flv.png' (2,735)
+2021-05-23 11:54:11: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/images/file_type_icons/fw.png' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/images/file_type_icons/fw.png' (3,149)
+2021-05-23 11:54:11: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/images/file_type_icons/gif.png' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/images/file_type_icons/gif.png' (2,895)
+2021-05-23 11:54:11: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/images/file_type_icons/gz.png' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/images/file_type_icons/gz.png' (3,351)
+2021-05-23 11:54:11: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/images/file_type_icons/html.png' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/images/file_type_icons/html.png' (2,856)
+2021-05-23 11:54:11: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/images/file_type_icons/ico.png' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/images/file_type_icons/ico.png' (4,042)
+2021-05-23 11:54:11: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/images/file_type_icons/iso.png' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/images/file_type_icons/iso.png' (4,047)
+2021-05-23 11:54:11: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/images/file_type_icons/jar.png' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/images/file_type_icons/jar.png' (3,758)
+2021-05-23 11:54:11: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/images/file_type_icons/jpg.png' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/images/file_type_icons/jpg.png' (3,530)
+2021-05-23 11:54:11: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/images/file_type_icons/js.png' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/images/file_type_icons/js.png' (3,118)
+2021-05-23 11:54:11: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/images/file_type_icons/mov.png' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/images/file_type_icons/mov.png' (4,462)
+2021-05-23 11:54:11: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/images/file_type_icons/mp3.png' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/images/file_type_icons/mp3.png' (3,998)
+2021-05-23 11:54:11: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/images/file_type_icons/mp4.png' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/images/file_type_icons/mp4.png' (3,581)
+2021-05-23 11:54:11: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/images/file_type_icons/mpeg.png' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/images/file_type_icons/mpeg.png' (4,087)
+2021-05-23 11:54:11: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/images/file_type_icons/noimage.png' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/images/file_type_icons/noimage.png' (2,755)
+2021-05-23 11:54:11: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/images/file_type_icons/pdf.png' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/images/file_type_icons/pdf.png' (2,980)
+2021-05-23 11:54:11: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/images/file_type_icons/php.png' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/images/file_type_icons/php.png' (2,857)
+2021-05-23 11:54:11: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/images/file_type_icons/png.png' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/images/file_type_icons/png.png' (3,911)
+2021-05-23 11:54:11: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/images/file_type_icons/ppt.png' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/images/file_type_icons/ppt.png' (2,707)
+2021-05-23 11:54:11: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/images/file_type_icons/ps.png' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/images/file_type_icons/ps.png' (3,279)
+2021-05-23 11:54:11: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/images/file_type_icons/psd.png' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/images/file_type_icons/psd.png' (3,944)
+2021-05-23 11:54:11: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/images/file_type_icons/rar.png' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/images/file_type_icons/rar.png' (4,085)
+2021-05-23 11:54:11: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/images/file_type_icons/svg.png' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/images/file_type_icons/svg.png' (4,588)
+2021-05-23 11:54:11: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/images/file_type_icons/swf.png' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/images/file_type_icons/swf.png' (4,290)
+2021-05-23 11:54:11: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/images/file_type_icons/sys.png' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/images/file_type_icons/sys.png' (4,455)
+2021-05-23 11:54:11: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/images/file_type_icons/tar.png' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/images/file_type_icons/tar.png' (3,492)
+2021-05-23 11:54:11: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/images/file_type_icons/tiff.png' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/images/file_type_icons/tiff.png' (2,082)
+2021-05-23 11:54:11: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/images/file_type_icons/txt.png' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/images/file_type_icons/txt.png' (3,120)
+2021-05-23 11:54:11: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/images/file_type_icons/wav.png' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/images/file_type_icons/wav.png' (4,621)
+2021-05-23 11:54:11: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/images/file_type_icons/zip.png' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/images/file_type_icons/zip.png' (2,902)
+2021-05-23 11:54:11: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/images/login-bg1.jpg' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/images/login-bg1.jpg' (261,343)
+2021-05-23 11:54:11: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/images/logo.png' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/images/logo.png' (1,420)
+2021-05-23 11:54:11: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/images/noimage.png' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/images/noimage.png' (2,755)
+2021-05-23 11:54:11: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/images/top-strip-1.png' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/images/top-strip-1.png' (61,100)
+2021-05-23 11:54:11: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/after-loader.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/after-loader.js' (3,972)
+2021-05-23 11:54:11: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/js/axios.min.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/axios.min.js' (13,995)
+2021-05-23 11:54:11: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/axios.min.map' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/axios.min.map' (117,785)
+2021-05-23 11:54:11: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/js/custom.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/custom.js' (0)
+2021-05-23 11:54:11: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/gstatic-chart-loader.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/gstatic-chart-loader.js' (44,995)
+2021-05-23 11:54:11: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/html5shiv.min.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/html5shiv.min.js' (2,733)
+2021-05-23 11:54:11: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/js/jquery-ui-1.10.3.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/jquery-ui-1.10.3.js' (257,292)
+2021-05-23 11:54:11: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/js/jquery-ui-1.10.3.min.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/jquery-ui-1.10.3.min.js' (131,024)
+2021-05-23 11:54:11: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/js/jquery.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/jquery.js' (95,788)
+2021-05-23 11:54:11: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/lodash.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/lodash.js' (557,624)
+2021-05-23 11:54:11: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/js/mainframe.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/mainframe.js' (10,430)
+2021-05-23 11:54:11: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/mark.js(jquery.mark.min.js),datatables.mark.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/mark.js(jquery.mark.min.js),datatables.mark.js' (16,455)
+2021-05-23 11:54:11: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/moment.min.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/moment.min.js' (40,743)
+2021-05-23 11:54:11: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/datatables.1.10.2/jquery.dataTables.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/datatables.1.10.2/jquery.dataTables.js' (443,187)
+2021-05-23 11:54:11: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/datatables.1.10.2/jquery.dataTables.min.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/datatables.1.10.2/jquery.dataTables.min.js' (77,654)
+2021-05-23 11:54:11: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/datatables.1.10.2/jquery.dataTables.rowGrouping.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/datatables.1.10.2/jquery.dataTables.rowGrouping.js' (21,941)
+2021-05-23 11:54:11: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/datatables.1.10.2/jquery.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/datatables.1.10.2/jquery.js' (95,788)
+2021-05-23 11:54:11: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/datatables.1.9.4/dataTables.bootstrap.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/datatables.1.9.4/dataTables.bootstrap.js' (7,107)
+2021-05-23 11:54:11: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/datatables.1.9.4/jquery.dataTables.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/datatables.1.9.4/jquery.dataTables.js' (385,985)
+2021-05-23 11:54:11: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/datatables.1.9.4/jquery.dataTables.rowGrouping.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/datatables.1.9.4/jquery.dataTables.rowGrouping.js' (21,941)
+2021-05-23 11:54:11: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/core.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/core.js' (10,105)
+2021-05-23 11:54:11: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-af-ZA.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-af-ZA.js' (30,778)
+2021-05-23 11:54:11: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-ar-AE.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-ar-AE.js' (31,063)
+2021-05-23 11:54:11: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-ar-BH.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-ar-BH.js' (31,032)
+2021-05-23 11:54:11: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-ar-DZ.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-ar-DZ.js' (31,008)
+2021-05-23 11:54:11: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-ar-EG.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-ar-EG.js' (31,022)
+2021-05-23 11:54:11: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-ar-IQ.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-ar-IQ.js' (31,129)
+2021-05-23 11:54:11: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-ar-JO.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-ar-JO.js' (31,131)
+2021-05-23 11:54:11: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-ar-KW.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-ar-KW.js' (31,029)
+2021-05-23 11:54:11: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-ar-LB.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-ar-LB.js' (31,130)
+2021-05-23 11:54:11: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-ar-LY.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-ar-LY.js' (31,026)
+2021-05-23 11:54:11: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-ar-MA.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-ar-MA.js' (31,007)
+2021-05-23 11:54:11: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-ar-OM.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-ar-OM.js' (31,023)
+2021-05-23 11:54:11: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-ar-QA.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-ar-QA.js' (31,022)
+2021-05-23 11:54:11: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-ar-SA.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-ar-SA.js' (31,217)
+2021-05-23 11:54:11: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-ar-SY.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-ar-SY.js' (31,128)
+2021-05-23 11:54:11: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-ar-TN.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-ar-TN.js' (30,990)
+2021-05-23 11:54:11: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-ar-YE.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-ar-YE.js' (31,026)
+2021-05-23 11:54:11: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-az-Cyrl-AZ.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-az-Cyrl-AZ.js' (31,025)
+2021-05-23 11:54:11: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-az-Latn-AZ.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-az-Latn-AZ.js' (30,764)
+2021-05-23 11:54:11: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-be-BY.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-be-BY.js' (31,055)
+2021-05-23 11:54:11: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-bg-BG.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-bg-BG.js' (31,093)
+2021-05-23 11:54:11: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-bs-Latn-BA.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-bs-Latn-BA.js' (30,723)
+2021-05-23 11:54:11: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-ca-ES.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-ca-ES.js' (30,791)
+2021-05-23 11:54:11: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-cs-CZ.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-cs-CZ.js' (30,685)
+2021-05-23 11:54:11: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-cy-GB.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-cy-GB.js' (30,773)
+2021-05-23 11:54:11: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-da-DK.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-da-DK.js' (30,679)
+2021-05-23 11:54:11: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-de-AT.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-de-AT.js' (30,713)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-de-CH.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-de-CH.js' (30,704)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-de-DE.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-de-DE.js' (30,704)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-de-LI.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-de-LI.js' (30,712)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-de-LU.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-de-LU.js' (30,705)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-dv-MV.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-dv-MV.js' (31,193)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-el-GR.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-el-GR.js' (31,192)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-en-029.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-en-029.js' (30,778)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-en-AU.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-en-AU.js' (30,771)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-en-BZ.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-en-BZ.js' (30,771)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-en-CA.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-en-CA.js' (30,757)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-en-GB.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-en-GB.js' (30,766)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-en-IE.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-en-IE.js' (30,745)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-en-JM.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-en-JM.js' (30,776)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-en-NZ.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-en-NZ.js' (30,779)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-en-PH.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-en-PH.js' (30,795)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-en-TT.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-en-TT.js' (30,795)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-en-US.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-en-US.js' (30,783)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-en-ZA.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-en-ZA.js' (30,771)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-en-ZW.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-en-ZW.js' (30,773)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-es-AR.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-es-AR.js' (30,803)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-es-BO.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-es-BO.js' (30,799)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-es-CL.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-es-CL.js' (30,775)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-es-CO.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-es-CO.js' (30,801)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-es-CR.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-es-CR.js' (30,805)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-es-DO.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-es-DO.js' (30,824)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-es-EC.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-es-EC.js' (30,779)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-es-ES.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-es-ES.js' (30,777)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-es-GT.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-es-GT.js' (30,803)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-es-HN.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-es-HN.js' (30,801)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-es-MX.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-es-MX.js' (30,798)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-es-NI.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-es-NI.js' (30,803)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-es-PA.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-es-PA.js' (30,798)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-es-PE.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-es-PE.js' (30,794)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-es-PR.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-es-PR.js' (30,807)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-es-PY.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-es-PY.js' (30,801)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-es-SV.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-es-SV.js' (30,807)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-es-UY.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-es-UY.js' (30,799)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-es-VE.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-es-VE.js' (30,828)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-et-EE.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-et-EE.js' (30,732)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-eu-ES.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-eu-ES.js' (30,895)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-fa-IR.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-fa-IR.js' (30,783)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-fi-FI.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-fi-FI.js' (30,778)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-fo-FO.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-fo-FO.js' (30,795)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-fr-BE.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-fr-BE.js' (30,810)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-fr-CA.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-fr-CA.js' (30,802)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-fr-CH.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-fr-CH.js' (30,820)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-fr-FR.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-fr-FR.js' (30,811)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-fr-LU.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-fr-LU.js' (30,819)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-fr-MC.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-fr-MC.js' (30,843)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-gl-ES.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-gl-ES.js' (30,769)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-gu-IN.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-gu-IN.js' (31,499)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-he-IL.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-he-IL.js' (31,041)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-hi-IN.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-hi-IN.js' (31,430)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-hr-BA.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-hr-BA.js' (30,759)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-hr-HR.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-hr-HR.js' (30,765)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-hu-HU.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-hu-HU.js' (30,815)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-hy-AM.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-hy-AM.js' (31,096)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-id-ID.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-id-ID.js' (30,701)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-is-IS.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-is-IS.js' (30,915)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-it-CH.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-it-CH.js' (30,780)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-it-IT.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-it-IT.js' (30,768)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-ja-JP.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-ja-JP.js' (30,715)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-ka-GE.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-ka-GE.js' (31,499)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-kk-KZ.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-kk-KZ.js' (31,015)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-kn-IN.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-kn-IN.js' (31,538)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-ko-KR.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-ko-KR.js' (30,744)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-kok-IN.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-kok-IN.js' (31,485)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-ky-KG.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-ky-KG.js' (31,016)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-lt-LT.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-lt-LT.js' (30,845)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-lv-LV.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-lv-LV.js' (30,794)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-mi-NZ.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-mi-NZ.js' (30,858)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-mk-MK.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-mk-MK.js' (31,128)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-mn-MN.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-mn-MN.js' (31,188)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-mr-IN.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-mr-IN.js' (31,505)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-ms-BN.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-ms-BN.js' (30,688)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-ms-MY.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-ms-MY.js' (30,670)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-mt-MT.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-mt-MT.js' (30,764)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-nb-NO.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-nb-NO.js' (30,695)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-nl-BE.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-nl-BE.js' (30,700)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-nl-NL.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-nl-NL.js' (30,705)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-nn-NO.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-nn-NO.js' (30,695)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-ns-ZA.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-ns-ZA.js' (30,776)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-pa-IN.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-pa-IN.js' (31,347)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-pl-PL.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-pl-PL.js' (30,726)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-pt-BR.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-pt-BR.js' (30,800)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-pt-PT.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-pt-PT.js' (30,798)
+2021-05-23 11:54:12: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-quz-BO.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-quz-BO.js' (30,894)
+2021-05-23 11:54:13: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-quz-EC.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-quz-EC.js' (30,874)
+2021-05-23 11:54:13: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-quz-PE.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-quz-PE.js' (30,888)
+2021-05-23 11:54:13: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-ro-RO.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-ro-RO.js' (30,749)
+2021-05-23 11:54:13: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-ru-RU.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-ru-RU.js' (31,026)
+2021-05-23 11:54:13: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-sa-IN.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-sa-IN.js' (31,442)
+2021-05-23 11:54:13: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-se-FI.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-se-FI.js' (30,957)
+2021-05-23 11:54:13: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-se-NO.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-se-NO.js' (30,960)
+2021-05-23 11:54:13: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-se-SE.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-se-SE.js' (30,945)
+2021-05-23 11:54:13: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-sk-SK.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-sk-SK.js' (30,667)
+2021-05-23 11:54:13: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-sl-SI.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-sl-SI.js' (30,736)
+2021-05-23 11:54:13: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-sma-NO.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-sma-NO.js' (30,818)
+2021-05-23 11:54:13: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-sma-SE.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-sma-SE.js' (30,817)
+2021-05-23 11:54:13: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-smj-NO.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-smj-NO.js' (30,994)
+2021-05-23 11:54:13: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-smj-SE.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-smj-SE.js' (30,982)
+2021-05-23 11:54:13: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-smn-FI.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-smn-FI.js' (30,944)
+2021-05-23 11:54:13: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-sms-FI.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-sms-FI.js' (30,989)
+2021-05-23 11:54:13: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-sq-AL.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-sq-AL.js' (30,747)
+2021-05-23 11:54:13: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-sr-Cyrl-BA.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-sr-Cyrl-BA.js' (31,052)
+2021-05-23 11:54:13: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-sr-Cyrl-CS.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-sr-Cyrl-CS.js' (31,035)
+2021-05-23 11:54:13: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-sr-Latn-BA.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-sr-Latn-BA.js' (30,721)
+2021-05-23 11:54:13: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-sr-Latn-CS.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-sr-Latn-CS.js' (30,723)
+2021-05-23 11:54:13: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-sv-FI.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-sv-FI.js' (30,701)
+2021-05-23 11:54:13: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-sv-SE.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-sv-SE.js' (30,702)
+2021-05-23 11:54:13: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-sw-KE.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-sw-KE.js' (30,764)
+2021-05-23 11:54:13: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-syr-SY.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-syr-SY.js' (31,091)
+2021-05-23 11:54:13: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-ta-IN.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-ta-IN.js' (31,373)
+2021-05-23 11:54:13: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-te-IN.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-te-IN.js' (31,587)
+2021-05-23 11:54:13: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-th-TH.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-th-TH.js' (31,419)
+2021-05-23 11:54:13: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-tn-ZA.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-tn-ZA.js' (30,779)
+2021-05-23 11:54:13: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-tr-TR.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-tr-TR.js' (30,747)
+2021-05-23 11:54:13: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-tt-RU.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-tt-RU.js' (31,025)
+2021-05-23 11:54:13: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-uk-UA.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-uk-UA.js' (31,073)
+2021-05-23 11:54:13: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-ur-PK.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-ur-PK.js' (30,886)
+2021-05-23 11:54:13: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-uz-Cyrl-UZ.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-uz-Cyrl-UZ.js' (30,967)
+2021-05-23 11:54:13: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-uz-Latn-UZ.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-uz-Latn-UZ.js' (30,800)
+2021-05-23 11:54:13: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-vi-VN.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-vi-VN.js' (30,984)
+2021-05-23 11:54:13: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-xh-ZA.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-xh-ZA.js' (30,786)
+2021-05-23 11:54:13: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-zh-CN.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-zh-CN.js' (30,825)
+2021-05-23 11:54:13: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-zh-HK.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-zh-HK.js' (30,776)
+2021-05-23 11:54:13: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-zh-MO.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-zh-MO.js' (30,824)
+2021-05-23 11:54:13: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-zh-SG.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-zh-SG.js' (30,822)
+2021-05-23 11:54:13: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-zh-TW.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-zh-TW.js' (30,844)
+2021-05-23 11:54:13: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date-zu-ZA.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date-zu-ZA.js' (30,762)
+2021-05-23 11:54:13: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/date.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/date.js' (30,783)
+2021-05-23 11:54:13: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/extras.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/extras.js' (3,299)
+2021-05-23 11:54:13: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/parser.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/parser.js' (14,815)
+2021-05-23 11:54:13: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/sugarpak.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/sugarpak.js' (4,263)
+2021-05-23 11:54:13: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/plugins/date/time.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/plugins/date/time.js' (5,793)
+2021-05-23 11:54:13: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/raphael-min.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/raphael-min.js' (90,656)
+2021-05-23 11:54:13: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/respond.min.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/respond.min.js' (4,381)
+2021-05-23 11:54:13: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/js/validation.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/validation.js' (6,310)
+2021-05-23 11:54:13: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/voca.min.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/voca.min.js' (22,227)
+2021-05-23 11:54:13: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/js/vue.min.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/js/vue.min.js' (93,675)
+2021-05-23 11:54:13: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/plugins/autosize/.gitignore' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/plugins/autosize/.gitignore' (21)
+2021-05-23 11:54:13: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/plugins/autosize/autosize.min.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/plugins/autosize/autosize.min.js' (3,580)
+2021-05-23 11:54:13: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/plugins/autosize/build.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/plugins/autosize/build.js' (1,493)
+2021-05-23 11:54:13: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/plugins/autosize/changelog.md' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/plugins/autosize/changelog.md' (3,770)
+2021-05-23 11:54:13: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/plugins/autosize/dist/autosize.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/plugins/autosize/dist/autosize.js' (7,672)
+2021-05-23 11:54:13: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/plugins/autosize/dist/autosize.min.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/plugins/autosize/dist/autosize.min.js' (3,580)
+2021-05-23 11:54:13: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/plugins/autosize/example/index.html' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/plugins/autosize/example/index.html' (1,594)
+2021-05-23 11:54:13: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/plugins/autosize/LICENSE.md' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/plugins/autosize/LICENSE.md' (1,076)
+2021-05-23 11:54:13: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/plugins/autosize/package.json' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/plugins/autosize/package.json' (966)
+2021-05-23 11:54:13: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/plugins/autosize/readme.md' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/plugins/autosize/readme.md' (1,014)
+2021-05-23 11:54:13: Copy New 'E:/MAMP/htdocs/mainframe/public/mainframe/plugins/autosize/src/autosize.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/plugins/autosize/src/autosize.js' (6,699)
+2021-05-23 11:54:13: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/plugins/croppic/assets/css/bootstrap.css' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/plugins/croppic/assets/css/bootstrap.css' (129,965)
+2021-05-23 11:54:13: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/plugins/croppic/assets/css/croppic.css' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/plugins/croppic/assets/css/croppic.css' (5,648)
+2021-05-23 11:54:13: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/plugins/croppic/assets/css/main.css' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/plugins/croppic/assets/css/main.css' (6,923)
+2021-05-23 11:54:13: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/plugins/croppic/assets/fonts/glyphicons-halflings-regular.eot' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/plugins/croppic/assets/fonts/glyphicons-halflings-regular.eot' (20,290)
+2021-05-23 11:54:13: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/plugins/croppic/assets/fonts/glyphicons-halflings-regular.svg' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/plugins/croppic/assets/fonts/glyphicons-halflings-regular.svg' (63,078)
+2021-05-23 11:54:13: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/plugins/croppic/assets/fonts/glyphicons-halflings-regular.ttf' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/plugins/croppic/assets/fonts/glyphicons-halflings-regular.ttf' (41,236)
+2021-05-23 11:54:13: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/plugins/croppic/assets/fonts/glyphicons-halflings-regular.woff' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/plugins/croppic/assets/fonts/glyphicons-halflings-regular.woff' (23,292)
+2021-05-23 11:54:13: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/plugins/croppic/assets/img/cropperIcons.bak.png' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/plugins/croppic/assets/img/cropperIcons.bak.png' (4,598)
+2021-05-23 11:54:13: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/plugins/croppic/assets/img/cropperIcons.png' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/plugins/croppic/assets/img/cropperIcons.png' (2,480)
+2021-05-23 11:54:13: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/plugins/croppic/assets/img/downloadIcon.png' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/plugins/croppic/assets/img/downloadIcon.png' (13,087)
+2021-05-23 11:54:13: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/plugins/croppic/assets/img/headerBg.jpg' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/plugins/croppic/assets/img/headerBg.jpg' (422,934)
+2021-05-23 11:54:13: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/plugins/croppic/assets/img/jobotic.png' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/plugins/croppic/assets/img/jobotic.png' (5,658)
+2021-05-23 11:54:13: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/plugins/croppic/assets/img/jobotic_bubble.png' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/plugins/croppic/assets/img/jobotic_bubble.png' (2,253)
+2021-05-23 11:54:13: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/plugins/croppic/assets/img/logo.png' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/plugins/croppic/assets/img/logo.png' (6,933)
+2021-05-23 11:54:13: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/plugins/croppic/assets/img/night.jpg' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/plugins/croppic/assets/img/night.jpg' (190,122)
+2021-05-23 11:54:13: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/plugins/croppic/assets/img/park_view.jpg' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/plugins/croppic/assets/img/park_view.jpg' (55,901)
+2021-05-23 11:54:13: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/plugins/croppic/assets/img/placeholder.png' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/plugins/croppic/assets/img/placeholder.png' (5,722)
+2021-05-23 11:54:13: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/plugins/croppic/assets/img/steinlinconsulting.png' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/plugins/croppic/assets/img/steinlinconsulting.png' (3,332)
+2021-05-23 11:54:13: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/plugins/croppic/assets/img/studio42.png' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/plugins/croppic/assets/img/studio42.png' (2,306)
+2021-05-23 11:54:13: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/plugins/croppic/assets/js/bootstrap.min.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/plugins/croppic/assets/js/bootstrap.min.js' (27,828)
+2021-05-23 11:54:13: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/plugins/croppic/assets/js/jquery.mousewheel.min.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/plugins/croppic/assets/js/jquery.mousewheel.min.js' (2,784)
+2021-05-23 11:54:13: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/plugins/croppic/assets/js/main.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/plugins/croppic/assets/js/main.js' (1,226)
+2021-05-23 11:54:13: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/plugins/croppic/croppic.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/plugins/croppic/croppic.js' (22,044)
+2021-05-23 11:54:13: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/plugins/croppic/croppic.min.js' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/plugins/croppic/croppic.min.js' (13,079)
+2021-05-23 11:54:13: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/plugins/croppic/croppic.zip' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/plugins/croppic/croppic.zip' (8,813)
+2021-05-23 11:54:13: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/plugins/croppic/img_crop_to_file.php' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/plugins/croppic/img_crop_to_file.php' (3,014)
+2021-05-23 11:54:13: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/plugins/croppic/img_save_to_file.php' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/plugins/croppic/img_save_to_file.php' (1,409)
+2021-05-23 11:54:13: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/plugins/croppic/index.html' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/plugins/croppic/index.html' (21,195)
+2021-05-23 11:54:13: Copy Over 'E:/MAMP/htdocs/mainframe/public/mainframe/plugins/croppic/README.md' -> 'E:/MAMP/htdocs/mainframe7/public/mainframe/plugins/croppic/README.md' (1,253)
+2021-05-23 11:54:13: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/auth/login.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/auth/login.blade.php' (2,608)
+2021-05-23 11:54:13: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/auth/passwords/confirm.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/auth/passwords/confirm.blade.php' (1,062)
+2021-05-23 11:54:13: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/auth/passwords/email.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/auth/passwords/email.blade.php' (929)
+2021-05-23 11:54:13: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/auth/passwords/reset.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/auth/passwords/reset.blade.php' (1,023)
+2021-05-23 11:54:13: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/auth/register-tenant.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/auth/register-tenant.blade.php' (1,280)
+2021-05-23 11:54:13: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/auth/register.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/auth/register.blade.php' (1,287)
+2021-05-23 11:54:13: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/auth/verify.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/auth/verify.blade.php' (752)
+2021-05-23 11:54:13: Copy New 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/contents/dummy.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/contents/dummy.blade.php' (876)
+2021-05-23 11:54:13: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/dashboards/default/index.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/dashboards/default/index.blade.php' (223)
+2021-05-23 11:54:13: Copy New 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/emails/blank.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/emails/blank.blade.php' (18)
+2021-05-23 11:54:13: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/form/checkbox.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/form/checkbox.blade.php' (2,267)
+2021-05-23 11:54:13: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/form/comments.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/form/comments.blade.php' (77)
+2021-05-23 11:54:13: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/form/date.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/form/date.blade.php' (3,405)
+2021-05-23 11:54:13: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/form/datetime.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/form/datetime.blade.php' (3,651)
+2021-05-23 11:54:13: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/form/delete-button.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/form/delete-button.blade.php' (1,856)
+2021-05-23 11:54:13: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/form/hidden.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/form/hidden.blade.php' (1,337)
+2021-05-23 11:54:13: Copy New 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/form/includes/label.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/form/includes/label.blade.php' (204)
+2021-05-23 11:54:13: Copy New 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/form/includes/read-only-view.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/form/includes/read-only-view.blade.php' (430)
+2021-05-23 11:54:13: Copy New 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/form/includes/show-error.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/form/includes/show-error.blade.php' (82)
+2021-05-23 11:54:13: Copy New 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/form/includes/textarea-read-only-view.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/form/includes/textarea-read-only-view.blade.php' (220)
+2021-05-23 11:54:13: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/form/is-active.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/form/is-active.blade.php' (317)
+2021-05-23 11:54:13: Copy New 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/form/modal.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/form/modal.blade.php' (1,129)
+2021-05-23 11:54:13: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/form/plain-text.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/form/plain-text.blade.php' (585)
+2021-05-23 11:54:13: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/form/select-ajax.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/form/select-ajax.blade.php' (4,467)
+2021-05-23 11:54:14: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/form/select-array-multiple.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/form/select-array-multiple.blade.php' (3,079)
+2021-05-23 11:54:14: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/form/select-array.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/form/select-array.blade.php' (1,809)
+2021-05-23 11:54:14: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/form/select-model-multiple.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/form/select-model-multiple.blade.php' (3,186)
+2021-05-23 11:54:14: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/form/select-model.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/form/select-model.blade.php' (1,803)
+2021-05-23 11:54:14: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/form/select-tenant.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/form/select-tenant.blade.php' (306)
+2021-05-23 11:54:14: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/form/tags.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/form/tags.blade.php' (2,200)
+2021-05-23 11:54:14: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/form/text.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/form/text.blade.php' (1,907)
+2021-05-23 11:54:14: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/form/textarea.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/form/textarea.blade.php' (2,125)
+2021-05-23 11:54:14: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/layouts/blank/template.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/layouts/blank/template.blade.php' (260)
+2021-05-23 11:54:14: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/layouts/centered/template.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/layouts/centered/template.blade.php' (1,421)
+2021-05-23 11:54:14: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/layouts/dashboard/template.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/layouts/dashboard/template.blade.php' (34)
+2021-05-23 11:54:14: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/layouts/default/includes/alerts/messages-top.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/layouts/default/includes/alerts/messages-top.blade.php' (1,921)
+2021-05-23 11:54:14: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/layouts/default/includes/css.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/layouts/default/includes/css.blade.php' (1,840)
+2021-05-23 11:54:14: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/layouts/default/includes/js.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/layouts/default/includes/js.blade.php' (4,052)
+2021-05-23 11:54:14: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/layouts/default/includes/modals/messages.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/layouts/default/includes/modals/messages.blade.php' (947)
+2021-05-23 11:54:14: Copy New 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/layouts/default/includes/navigation/clone.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/layouts/default/includes/navigation/clone.blade.php' (278)
+2021-05-23 11:54:14: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/layouts/default/includes/navigation/left-menu/menu-items.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/layouts/default/includes/navigation/left-menu/menu-items.blade.php' (819)
+2021-05-23 11:54:14: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/layouts/default/includes/navigation/top-menu/top-right-menu.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/layouts/default/includes/navigation/top-menu/top-right-menu.blade.php' (1,243)
+2021-05-23 11:54:14: Copy New 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/layouts/default/includes/print-btn.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/layouts/default/includes/print-btn.blade.php' (424)
+2021-05-23 11:54:14: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/layouts/default/template.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/layouts/default/template.blade.php' (3,905)
+2021-05-23 11:54:14: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/layouts/email/template.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/layouts/email/template.blade.php' (8,702)
+2021-05-23 11:54:14: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/layouts/module/changes/index.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/layouts/module/changes/index.blade.php' (2,838)
+2021-05-23 11:54:14: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/layouts/module/form/includes/action-buttons.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/layouts/module/form/includes/action-buttons.blade.php' (1,992)
+2021-05-23 11:54:14: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/layouts/module/form/includes/features/comments/comments.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/layouts/module/form/includes/features/comments/comments.blade.php' (3,113)
+2021-05-23 11:54:14: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/layouts/module/form/includes/features/uploads/uploads-list-default.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/layouts/module/form/includes/features/uploads/uploads-list-default.blade.php' (2,325)
+2021-05-23 11:54:14: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/layouts/module/form/includes/features/uploads/uploads.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/layouts/module/form/includes/features/uploads/uploads.blade.php' (3,182)
+2021-05-23 11:54:14: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/layouts/module/form/includes/js.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/layouts/module/form/includes/js.blade.php' (799)
+2021-05-23 11:54:14: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/layouts/module/form/includes/title.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/layouts/module/form/includes/title.blade.php' (754)
+2021-05-23 11:54:14: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/layouts/module/form/template.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/layouts/module/form/template.blade.php' (949)
+2021-05-23 11:54:14: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/layouts/module/grid/includes/datatable.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/layouts/module/grid/includes/datatable.blade.php' (1,792)
+2021-05-23 11:54:14: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/layouts/module/grid/includes/title.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/layouts/module/grid/includes/title.blade.php' (838)
+2021-05-23 11:54:14: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/layouts/module/grid/template.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/layouts/module/grid/template.blade.php' (434)
+2021-05-23 11:54:14: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/layouts/report/includes/advanced.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/layouts/report/includes/advanced.blade.php' (3,238)
+2021-05-23 11:54:14: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/layouts/report/includes/cta.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/layouts/report/includes/cta.blade.php' (1,538)
+2021-05-23 11:54:14: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/layouts/report/includes/filters.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/layouts/report/includes/filters.blade.php' (1,889)
+2021-05-23 11:54:14: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/layouts/report/includes/init-functions.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/layouts/report/includes/init-functions.blade.php' (666)
+2021-05-23 11:54:14: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/layouts/report/result-print.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/layouts/report/result-print.blade.php' (1,948)
+2021-05-23 11:54:14: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/layouts/report/result.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/layouts/report/result.blade.php' (1,799)
+2021-05-23 11:54:14: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/layouts/report/template.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/layouts/report/template.blade.php' (515)
+2021-05-23 11:54:14: Copy New 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/modules/changes/form/default.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/changes/form/default.blade.php' (1,597)
+2021-05-23 11:54:14: Copy New 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/modules/changes/form/js.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/changes/form/js.blade.php' (2,141)
+2021-05-23 11:54:14: Copy New 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/modules/changes/grid/default.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/changes/grid/default.blade.php' (50)
+2021-05-23 11:54:14: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/modules/comments/form/default.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/comments/form/default.blade.php' (1,573)
+2021-05-23 11:54:14: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/modules/comments/form/js.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/comments/form/js.blade.php' (2,160)
+2021-05-23 11:54:14: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/modules/comments/grid/default.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/comments/grid/default.blade.php' (50)
+2021-05-23 11:54:14: Copy New 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/modules/contents/form/default.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/contents/form/default.blade.php' (4,122)
+2021-05-23 11:54:14: Copy New 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/modules/contents/form/js.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/contents/form/js.blade.php' (1,984)
+2021-05-23 11:54:14: Copy New 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/modules/contents/grid/default.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/contents/grid/default.blade.php' (424)
+2021-05-23 11:54:14: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/modules/countries/form/default.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/countries/form/default.blade.php' (1,343)
+2021-05-23 11:54:14: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/modules/groups/form/default.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/groups/form/default.blade.php' (1,050)
+2021-05-23 11:54:14: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/modules/groups/form/permission-blocks.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/groups/form/permission-blocks.blade.php' (6,287)
+2021-05-23 11:54:14: Copy New 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/modules/in-app-notifications/form/default.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/in-app-notifications/form/default.blade.php' (3,717)
+2021-05-23 11:54:14: Copy New 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/modules/in-app-notifications/form/js.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/in-app-notifications/form/js.blade.php' (2,139)
+2021-05-23 11:54:14: Copy New 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/modules/in-app-notifications/grid/default.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/in-app-notifications/grid/default.blade.php' (574)
+2021-05-23 11:54:14: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/modules/messages/form.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/messages/form.blade.php' (4,073)
+2021-05-23 11:54:14: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/modules/module-groups/form/default.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/module-groups/form/default.blade.php' (1,642)
+2021-05-23 11:54:14: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/modules/modules/form/default.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/modules/form/default.blade.php' (2,186)
+2021-05-23 11:54:14: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/modules/modules/form.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/modules/form.blade.php' (5,040)
+2021-05-23 11:54:14: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/modules/notifications/form/default.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/notifications/form/default.blade.php' (1,356)
+2021-05-23 11:54:14: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/modules/packages/form/default.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/packages/form/default.blade.php' (1,341)
+2021-05-23 11:54:14: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/modules/projects/form/default.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/projects/form/default.blade.php' (1,414)
+2021-05-23 11:54:14: Copy New 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/modules/push-notifications/form/default.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/push-notifications/form/default.blade.php' (2,857)
+2021-05-23 11:54:14: Copy New 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/modules/push-notifications/form/js.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/push-notifications/form/js.blade.php' (2,132)
+2021-05-23 11:54:14: Copy New 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/modules/push-notifications/grid/default.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/push-notifications/grid/default.blade.php' (567)
+2021-05-23 11:54:14: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/modules/reports/form/default.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/reports/form/default.blade.php' (1,069)
+2021-05-23 11:54:14: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/modules/reports/form.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/reports/form.blade.php' (5,211)
+2021-05-23 11:54:14: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/modules/reports/grid.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/reports/grid.blade.php' (1,524)
+2021-05-23 11:54:14: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/modules/settings/form/default.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/settings/form/default.blade.php' (3,563)
+2021-05-23 11:54:14: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/modules/settings/form/js.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/settings/form/js.blade.php' (1,487)
+2021-05-23 11:54:14: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/modules/settings/grid/default.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/settings/grid/default.blade.php' (50)
+2021-05-23 11:54:14: Copy New 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/modules/spreads/form/default.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/spreads/form/default.blade.php' (1,485)
+2021-05-23 11:54:14: Copy New 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/modules/spreads/form/js.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/spreads/form/js.blade.php' (1,982)
+2021-05-23 11:54:14: Copy New 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/modules/spreads/grid/default.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/spreads/grid/default.blade.php' (419)
+2021-05-23 11:54:14: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/modules/subscriptions/form/default.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/subscriptions/form/default.blade.php' (1,330)
+2021-05-23 11:54:14: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/modules/tenants/form/default.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/tenants/form/default.blade.php' (1,411)
+2021-05-23 11:54:14: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/modules/tenants/form.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/tenants/form.blade.php' (3,999)
+2021-05-23 11:54:14: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/modules/uploads/form/default.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/uploads/form/default.blade.php' (1,069)
+2021-05-23 11:54:14: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/modules/uploads/form.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/uploads/form.blade.php' (5,036)
+2021-05-23 11:54:14: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/modules/users/form/default.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/users/form/default.blade.php' (5,883)
+2021-05-23 11:54:14: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/modules/users/form/js.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/users/form/js.blade.php' (1,882)
+2021-05-23 11:54:14: Copy Over 'E:/MAMP/htdocs/mainframe/resources/views/mainframe/modules/users/form.blade.php' -> 'E:/MAMP/htdocs/mainframe7/resources/views/mainframe/modules/users/form.blade.php' (20,441)
+2021-05-23 11:54:14: == Sync Complete. Time: 00:00:06, Speed: 12.78 MB/s, OK: 1,135, Errors: 0

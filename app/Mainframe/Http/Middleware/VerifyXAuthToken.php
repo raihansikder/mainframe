@@ -1,4 +1,4 @@
-<?php /** @noinspection PhpUndefinedMethodInspection */
+<?php
 
 namespace App\Mainframe\Http\Middleware;
 
@@ -23,15 +23,17 @@ class VerifyXAuthToken
         Auth::logout(); // Force to discard any user state.
 
         if (! $user = Auth::guard('x-auth')->user()) {
-            return $this->failed('Authentication failed', 401);
+            return $this->failed('Authentication failed (X-Auth)', 401);
         }
 
         if ((! $user->can('make-api-call'))) {
             return $this->failed('Permission denied [make-api-cal]', 401);
         }
 
-        // Onetime login for Api
-        // \Auth::onceUsingId($user->id);
+        // Onetime login for Api. DO NOT use it as it is of no use for the purpsoe.
+        // if ($user->id) {
+        //     \Auth::onceUsingId($user->id);
+        // }
 
         return $next($request);
     }

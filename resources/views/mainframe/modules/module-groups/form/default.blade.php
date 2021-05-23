@@ -21,7 +21,7 @@
         @include('form.text',['var'=>['name'=>'default_route','label'=>'Default route name']])
 
         <div class="clearfix"></div>
-        @include('form.textarea',['var'=>['name'=>'description','params'=>['class'=>''],'label'=>'Description', 'container_class'=>'col-sm-6']])
+        @include('form.textarea',['var'=>['name'=>'description','params'=>['class'=>''],'label'=>'Description', 'div'=>'col-sm-6']])
 
         <div class="clearfix"></div>
         @include('form.is-active')

@@ -9,8 +9,8 @@ class View extends \Illuminate\View\View
      * Renders the left menu of the application and makes the current item active based on breadcrumb
      *
      * @param        $tree
-     * @param  string  $currentModuleName
-     * @param  array  $breadcrumbs
+     * @param  string $currentModuleName
+     * @param  array $breadcrumbs
      * @return null
      */
     public static function renderMenuTree($tree, $currentModuleName = '', $breadcrumbs = [])
@@ -19,10 +19,20 @@ class View extends \Illuminate\View\View
             return null;
         }
         foreach ($tree as $leaf) {
-            $item = $leaf['item'];
+            $item       = $leaf['item'];
+            $type       = $leaf['type'];
             $permission = $item->name.'-view-any'; //lorems-view-any
 
-            if ($item->is_visible && user()->hasAnyAccess([$item->name, $permission])) {
+            $allow = false;
+            if ($type == 'module_group' && user()->hasAccess([$item->name])) {
+                $allow = true;
+            }
+
+            if ($type == 'module' && user()->hasAccess([$permission])) {
+                $allow = true;
+            }
+
+            if ($item->is_visible && $allow) {
 
                 // 1. checks if an item has any children
                 $hasChildren = isset($leaf['children']) && count($leaf['children']);
@@ -58,7 +68,7 @@ class View extends \Illuminate\View\View
     /**
      * Returns an array with module/module_group name as key
      *
-     * @param  \App\Mainframe\Modules\Modules\Module|null  $module
+     * @param  \App\Module|null $module
      * @return array
      */
     public static function breadcrumb($module = null)
@@ -68,15 +78,14 @@ class View extends \Illuminate\View\View
             $items = $module->moduleGroupTree();
             foreach ($items as $item) {
                 $breadcrumbs[$item->name] = [
-                    'name' => $item->name,
+                    'name'  => $item->name,
                     'title' => $item->title,
                     'route' => "$item->name.index",
-                    'url' => route("$item->name.index"),
+                    'url'   => route("$item->name.index"),
                 ];
             }
         }
 
         return $breadcrumbs;
     }
-
 }

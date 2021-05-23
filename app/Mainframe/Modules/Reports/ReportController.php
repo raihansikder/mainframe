@@ -1,11 +1,17 @@
-<?php /** @noinspection PhpUndefinedMethodInspection */
+<?php
 
 namespace App\Mainframe\Modules\Reports;
 
 use App\Mainframe\Features\Modular\ModularController\ModularController;
+use App\Mainframe\Modules\Reports\Traits\ReportControllerTrait;
 
+/**
+ * @group  Reports
+ * APIs for managing reports
+ */
 class ReportController extends ModularController
 {
+    use ReportControllerTrait;
 
     /*
     |--------------------------------------------------------------------------
@@ -15,11 +21,5 @@ class ReportController extends ModularController
     */
     protected $moduleName = 'reports';
 
-    /**
-     * @return ReportDatatable
-     */
-    public function datatable()
-    {
-        return new ReportDatatable($this->module);
-    }
+
 }

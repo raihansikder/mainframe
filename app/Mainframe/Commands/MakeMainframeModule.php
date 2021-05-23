@@ -1,4 +1,4 @@
-<?php /** @noinspection PhpUnhandledExceptionInspection */
+<?php
 
 namespace App\Mainframe\Commands;
 
@@ -37,9 +37,7 @@ class MakeMainframeModule extends Command
      */
     public function handle()
     {
-
         $this->namespace = $this->argument('namespace');
-
         $this->model = $this->model();
 
         $this->info($this->model.'Creating ..');
@@ -48,7 +46,31 @@ class MakeMainframeModule extends Command
         $this->createViewFiles();
         $this->info($this->model.'... Done');
 
-        return;
+    }
+
+    /**
+     * Return project name
+     *
+     * @return mixed|string
+     */
+    public function project()
+    {
+        return $this->extractProjectNameFromNamespace();
+    }
+
+    public function projectViewDirName()
+    {
+        return Str::kebab($this->project());
+    }
+
+    /**
+     * Extract Project name
+     *
+     * @return mixed|string
+     */
+    public function extractProjectNameFromNamespace()
+    {
+        return explode('\\', Str::after($this->namespace, 'Projects\\'))[0];
     }
 
     /**
@@ -77,15 +99,18 @@ class MakeMainframeModule extends Command
     public function createClasses()
     {
         $sourceRoot = 'app/Mainframe/Features/Modular/Skeleton/';
+        $destination = $this->classDirectory().'/'.$this->modelClassName();
 
         $maps = [
-            $sourceRoot.'SuperHero.php' => $this->classDirectory().'/'.$this->modelClassName().'.php',
-            $sourceRoot.'SuperHeroController.php' => $this->classDirectory().'/'.$this->modelClassName().'Controller.php',
-            $sourceRoot.'SuperHeroDatatable.php' => $this->classDirectory().'/'.$this->modelClassName().'Datatable.php',
-            $sourceRoot.'SuperHeroHelper.php' => $this->classDirectory().'/'.$this->modelClassName().'Helper.php',
-            $sourceRoot.'SuperHeroObserver.php' => $this->classDirectory().'/'.$this->modelClassName().'Observer.php',
-            $sourceRoot.'SuperHeroPolicy.php' => $this->classDirectory().'/'.$this->modelClassName().'Policy.php',
-            $sourceRoot.'SuperHeroProcessor.php' => $this->classDirectory().'/'.$this->modelClassName().'Processor.php',
+            $sourceRoot.'SuperHero.php' => $destination.'.php',
+            $sourceRoot.'SuperHeroController.php' => $destination.'Controller.php',
+            $sourceRoot.'SuperHeroDatatable.php' => $destination.'Datatable.php',
+            $sourceRoot.'SuperHeroHelper.php' => $destination.'Helper.php',
+            $sourceRoot.'SuperHeroObserver.php' => $destination.'Observer.php',
+            $sourceRoot.'SuperHeroPolicy.php' => $destination.'Policy.php',
+            $sourceRoot.'SuperHeroProcessor.php' => $destination.'Processor.php',
+            $sourceRoot.'SuperHeroProcessorHelper.php' => $destination.'ProcessorHelper.php',
+            $sourceRoot.'SuperHeroViewProcessor.php' => $destination.'ViewProcessor.php',
         ];
 
         File::makeDirectory($this->classDirectory(), 755, true);
@@ -148,8 +173,14 @@ class MakeMainframeModule extends Command
             '{processor}' => $this->processor(),
             '{controller}' => $this->controller(),
             '{view_directory}' => $this->viewDirectory(),
-
         ];
+
+        if (strlen($this->project())) {
+            $replaces = array_merge($replaces, [
+                'App\Mainframe\Features' => 'App\Projects\\'.$this->project().'\Features',
+                '{project-name}' => $this->projectViewDirName(),
+            ]);
+        }
 
         // run replace across the template code
         foreach ($replaces as $k => $v) {
@@ -161,7 +192,7 @@ class MakeMainframeModule extends Command
 
     public function model()
     {
-        $modelClass = Str::singular(Arr::last(explode('\\', $this->namespace)));
+        $modelClass = Str::singular(class_basename($this->namespace));
 
         return $this->namespace.'\\'.$modelClass;
     }
@@ -232,7 +263,7 @@ class MakeMainframeModule extends Command
 
     private function modelClassName()
     {
-        return Arr::last(explode('\\', $this->model));
+        return class_basename($this->model);
     }
 
 }
