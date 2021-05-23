@@ -2,20 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5175d202-f036-4353-b0dd-2451d7063b0a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/admin.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/php-test-framework.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/phpunit.xml.bak" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/mainframe8.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/mainframe8.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/phpunit.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/phpunit.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Macros/QueryBuilderMacros.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Macros/QueryBuilderMacros.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Users/Traits/UserProcessorTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Users/Traits/UserProcessorTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/phpunit.xml" beforeDir="false" afterPath="$PROJECT_DIR$/phpunit.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -268,34 +255,34 @@
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="316" y="32" key="#tests/0.0.1280.800@0.0.1280.800" timestamp="1621762233822" />
-    <state width="1280" height="389" key="GridCell.Tab.0.bottom" timestamp="1621763831244">
+    <state width="1280" height="389" key="GridCell.Tab.0.bottom" timestamp="1621764092664">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1280" height="389" key="GridCell.Tab.0.bottom/0.0.1280.800@0.0.1280.800" timestamp="1621763831244" />
-    <state width="1280" height="389" key="GridCell.Tab.0.center" timestamp="1621763831242">
+    <state width="1280" height="389" key="GridCell.Tab.0.bottom/0.0.1280.800@0.0.1280.800" timestamp="1621764092664" />
+    <state width="1280" height="389" key="GridCell.Tab.0.center" timestamp="1621764092663">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1280" height="389" key="GridCell.Tab.0.center/0.0.1280.800@0.0.1280.800" timestamp="1621763831242" />
-    <state width="1280" height="389" key="GridCell.Tab.0.left" timestamp="1621763831241">
+    <state width="1280" height="389" key="GridCell.Tab.0.center/0.0.1280.800@0.0.1280.800" timestamp="1621764092663" />
+    <state width="1280" height="389" key="GridCell.Tab.0.left" timestamp="1621764092662">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1280" height="389" key="GridCell.Tab.0.left/0.0.1280.800@0.0.1280.800" timestamp="1621763831241" />
-    <state width="1280" height="389" key="GridCell.Tab.0.right" timestamp="1621763831243">
+    <state width="1280" height="389" key="GridCell.Tab.0.left/0.0.1280.800@0.0.1280.800" timestamp="1621764092662" />
+    <state width="1280" height="389" key="GridCell.Tab.0.right" timestamp="1621764092664">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1280" height="389" key="GridCell.Tab.0.right/0.0.1280.800@0.0.1280.800" timestamp="1621763831243" />
+    <state width="1280" height="389" key="GridCell.Tab.0.right/0.0.1280.800@0.0.1280.800" timestamp="1621764092664" />
     <state x="156" y="36" key="SettingsEditor" timestamp="1621763011139">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="156" y="36" key="SettingsEditor/0.0.1280.800@0.0.1280.800" timestamp="1621763011139" />
-    <state x="344" y="162" width="591" height="534" key="find.popup" timestamp="1621763831045">
+    <state x="344" y="162" width="591" height="534" key="find.popup" timestamp="1621763967822">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state x="344" y="162" width="591" height="534" key="find.popup/0.0.1280.800@0.0.1280.800" timestamp="1621763831045" />
-    <state x="370" y="167" width="670" height="631" key="search.everywhere.popup" timestamp="1621763133260">
+    <state x="344" y="162" width="591" height="534" key="find.popup/0.0.1280.800@0.0.1280.800" timestamp="1621763967822" />
+    <state x="370" y="167" width="670" height="631" key="search.everywhere.popup" timestamp="1621764068830">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state x="370" y="167" width="670" height="631" key="search.everywhere.popup/0.0.1280.800@0.0.1280.800" timestamp="1621763133260" />
+    <state x="370" y="167" width="670" height="631" key="search.everywhere.popup/0.0.1280.800@0.0.1280.800" timestamp="1621764068830" />
     <state x="1829" y="50" width="672" height="678" key="search.everywhere.popup/0.0.1366.722/1366.-130.1600.860@1366.-130.1600.860" timestamp="1621758889822" />
   </component>
 </project>
