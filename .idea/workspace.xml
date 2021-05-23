@@ -2,1091 +2,35 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5175d202-f036-4353-b0dd-2451d7063b0a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/mainframe8.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Change.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Comment.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Content.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Country.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/InAppNotification.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Commands/CleanDeletedUploads.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Commands/CreateRootModels.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Commands/FixPolymorphicType.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Contents/SampleContent.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/DataBlocks/SampleDataBlock.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Datatables/SampleDatatable.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Features/Audit/Audit.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Features/Cacher/Cacher.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Features/Content/DynamicContent.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Features/Content/DynamicContentControllerTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Features/Content/DynamicContentTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Features/Core/ViewProcessor.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Features/Dashboards/Superadmin/SuperAdminDashboard.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Features/DataBlocks/DataBlock.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Features/DataBlocks/DataBlockControllerTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Features/DataBlocks/DataBlockTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Features/Datatable/Traits/CustomDatatableTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Features/Datatable/Traits/DatatableControllerTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Features/Datatable/Traits/DatatableTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Features/Datatable/Traits/ModuleDatatableTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Features/Form/Select/Select.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Features/Modular/BaseModule/BaseModuleViewProcessor.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Features/Modular/BaseModule/Traits/ViewProcessorTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Features/Modular/ModularController/Traits/ModularControllerTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Features/Modular/ModularController/Traits/RequestProcessorTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Features/Modular/Skeleton/SuperHeroProcessorHelper.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Features/Modular/Skeleton/SuperHeroViewProcessor.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Features/Multitenant/GlobalScope/CheckTenantScope.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Features/Report/ReportViewProcessor.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Features/Report/Traits/ModuleReportBuilderTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Features/Report/Traits/ReportControllerTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Features/Report/Traits/ReportViewProcessorTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Cached.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Date.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Money.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Http/Controllers/Api/Traits/ApiControllerTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Http/Controllers/Api/Traits/GuestApiControllerTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Http/Controllers/Api/Traits/UserApiControllerTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Http/Controllers/DataBlockController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Http/Controllers/DatatableController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Http/Controllers/HomeController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Http/Controllers/ReportController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Http/Middleware/InjectTenant.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Jobs/JobSendPushNotifications.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Macros/QueryBuilderMacros.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Changes/Change.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Changes/ChangeController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Changes/ChangeDatatable.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Changes/ChangeObserver.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Changes/ChangePolicy.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Changes/ChangeProcessor.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Changes/ChangeViewProcessor.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Changes/Traits/ChangeControllerTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Changes/Traits/ChangeDatatableTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Changes/Traits/ChangeObserverTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Changes/Traits/ChangePolicyTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Changes/Traits/ChangeProcessorTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Changes/Traits/ChangeTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Changes/Traits/ChangeViewProcessorTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Comments/CommentViewProcessor.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Comments/Traits/CommentControllerTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Comments/Traits/CommentDatatableTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Comments/Traits/CommentObserverTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Comments/Traits/CommentPolicyTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Comments/Traits/CommentProcessorTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Comments/Traits/CommentTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Comments/Traits/CommentViewProcessorTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Contents/Content.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Contents/ContentController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Contents/ContentDatatable.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Contents/ContentObserver.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Contents/ContentPolicy.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Contents/ContentProcessor.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Contents/ContentViewProcessor.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Contents/Traits/ContentControllerTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Contents/Traits/ContentDatatableTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Contents/Traits/ContentObserverTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Contents/Traits/ContentPolicyTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Contents/Traits/ContentProcessorTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Contents/Traits/ContentTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Contents/Traits/ContentViewProcessorTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Countries/CountryViewProcessor.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Countries/Traits/CountryControllerTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Countries/Traits/CountryDatatableTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Countries/Traits/CountryObserverTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Countries/Traits/CountryPolicyTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Countries/Traits/CountryProcessorTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Countries/Traits/CountryTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Countries/Traits/CountryViewProcessorTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Groups/GroupViewProcessor.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Groups/Traits/GroupControllerTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Groups/Traits/GroupDatatableTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Groups/Traits/GroupObserverTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Groups/Traits/GroupPolicyTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Groups/Traits/GroupProcessorTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Groups/Traits/GroupTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Groups/Traits/GroupViewProcessorTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/InAppNotifications/InAppNotification.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/InAppNotifications/InAppNotificationController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/InAppNotifications/InAppNotificationDatatable.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/InAppNotifications/InAppNotificationObserver.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/InAppNotifications/InAppNotificationPolicy.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/InAppNotifications/InAppNotificationProcessor.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/InAppNotifications/InAppNotificationViewProcessor.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/InAppNotifications/Traits/InAppNotificationControllerTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/InAppNotifications/Traits/InAppNotificationDatatableTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/InAppNotifications/Traits/InAppNotificationObserverTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/InAppNotifications/Traits/InAppNotificationPolicyTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/InAppNotifications/Traits/InAppNotificationProcessorTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/InAppNotifications/Traits/InAppNotificationTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/InAppNotifications/Traits/InAppNotificationViewProcessorTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/ModuleGroups/ModuleGroupViewProcessor.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/ModuleGroups/Traits/ModuleGroupControllerTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/ModuleGroups/Traits/ModuleGroupDatatableTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/ModuleGroups/Traits/ModuleGroupObserverTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/ModuleGroups/Traits/ModuleGroupPolicyTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/ModuleGroups/Traits/ModuleGroupProcessorTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/ModuleGroups/Traits/ModuleGroupTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/ModuleGroups/Traits/ModuleGroupViewProcessorTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Modules/ModuleViewProcessor.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Modules/Traits/ModuleControllerTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Modules/Traits/ModuleDatatableTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Modules/Traits/ModuleObserverTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Modules/Traits/ModulePolicyTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Modules/Traits/ModuleProcessorTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Modules/Traits/ModuleTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Modules/Traits/ModuleViewProcessorTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Notifications/NotificationViewProcessor.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Notifications/Traits/NotificationControllerTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Notifications/Traits/NotificationDatatableTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Notifications/Traits/NotificationObserverTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Notifications/Traits/NotificationPolicyTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Notifications/Traits/NotificationProcessorTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Notifications/Traits/NotificationTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Notifications/Traits/NotificationViewProcessorTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Packages/PackageViewProcessor.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Packages/Traits/PackageControllerTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Packages/Traits/PackageDatatableTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Packages/Traits/PackageObserverTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Packages/Traits/PackagePolicyTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Packages/Traits/PackageProcessorTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Packages/Traits/PackageTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Packages/Traits/PackageViewProcessorTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Projects/ProjectViewProcessor.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Projects/Traits/ProjectControllerTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Projects/Traits/ProjectDatatableTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Projects/Traits/ProjectObserverTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Projects/Traits/ProjectPolicyTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Projects/Traits/ProjectProcessorTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Projects/Traits/ProjectTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Projects/Traits/ProjectViewProcessorTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/PushNotifications/PushNotification.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/PushNotifications/PushNotificationController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/PushNotifications/PushNotificationDatatable.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/PushNotifications/PushNotificationObserver.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/PushNotifications/PushNotificationPolicy.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/PushNotifications/PushNotificationProcessor.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/PushNotifications/PushNotificationViewProcessor.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/PushNotifications/Traits/PushNotificationControllerTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/PushNotifications/Traits/PushNotificationDatatableTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/PushNotifications/Traits/PushNotificationObserverTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/PushNotifications/Traits/PushNotificationPolicyTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/PushNotifications/Traits/PushNotificationProcessorTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/PushNotifications/Traits/PushNotificationTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/PushNotifications/Traits/PushNotificationViewProcessorTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Reports/ReportViewProcessor.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Reports/Traits/ReportControllerTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Reports/Traits/ReportDatatableTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Reports/Traits/ReportObserverTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Reports/Traits/ReportPolicyTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Reports/Traits/ReportProcessorTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Reports/Traits/ReportTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Reports/Traits/ReportViewProcessorTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Settings/SettingViewProcessor.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Settings/Traits/SettingControllerTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Settings/Traits/SettingDatatableTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Settings/Traits/SettingObserverTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Settings/Traits/SettingPolicyTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Settings/Traits/SettingProcessorTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Settings/Traits/SettingTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Settings/Traits/SettingViewProcessorTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Spreads/Spread.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Spreads/SpreadController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Spreads/SpreadDatatable.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Spreads/SpreadObserver.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Spreads/SpreadPolicy.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Spreads/SpreadProcessor.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Spreads/SpreadViewProcessor.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Spreads/Traits/SpreadControllerTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Spreads/Traits/SpreadDatatableTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Spreads/Traits/SpreadObserverTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Spreads/Traits/SpreadPolicyTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Spreads/Traits/SpreadProcessorTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Spreads/Traits/SpreadTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Spreads/Traits/SpreadViewProcessorTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Subscriptions/SubscriptionViewProcessor.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Subscriptions/Traits/SubscriptionControllerTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Subscriptions/Traits/SubscriptionDatatableTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Subscriptions/Traits/SubscriptionObserverTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Subscriptions/Traits/SubscriptionPolicyTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Subscriptions/Traits/SubscriptionProcessorTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Subscriptions/Traits/SubscriptionTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Subscriptions/Traits/SubscriptionViewProcessorTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Tenants/TenantViewProcessor.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Tenants/Traits/TenantControllerTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Tenants/Traits/TenantDatatableTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Tenants/Traits/TenantObserverTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Tenants/Traits/TenantPolicyTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Tenants/Traits/TenantProcessorTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Tenants/Traits/TenantTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Tenants/Traits/TenantViewProcessorTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Uploads/Traits/UploadControllerTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Uploads/Traits/UploadDatatableTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Uploads/Traits/UploadObserverTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Uploads/Traits/UploadPolicyTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Uploads/Traits/UploadProcessorTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Uploads/Traits/UploadTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Uploads/Traits/UploadViewProcessorTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Uploads/UploadViewProcessor.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Users/Traits/UserControllerTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Users/Traits/UserDatatableTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Users/Traits/UserObserverTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Users/Traits/UserPolicyTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Users/Traits/UserProcessorTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Users/Traits/UserTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Users/Traits/UserViewProcessorTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Users/UserViewProcessor.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mainframe/Reports/ActiveUsers.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Module.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/ModuleGroup.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Notification.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Package.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Project.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Commands/DoSomething.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Contents/SampleContent.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/DataBlocks/SampleDataBlock.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Datatables/SampleDatatable.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Features/Core/ViewProcessor.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Features/DataBlocks/DataBlock.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Features/Datatable/Datatable.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Features/Datatable/ModuleDatatable.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Features/Modular/BaseModule/BaseModule.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Features/Modular/BaseModule/BaseModuleObserver.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Features/Modular/BaseModule/BaseModulePolicy.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Features/Modular/BaseModule/BaseModuleViewProcessor.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Features/Modular/ModularController/ModularController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Features/Modular/Validator/ModelProcessor.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Features/Report/ModuleList.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Features/Report/ModuleReportBuilder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Features/Report/ReportBuilder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Features/Report/ReportViewProcessor.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Features/Responder/Response.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Helpers/Cached.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Helpers/Date.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Helpers/Money.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Helpers/Time.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Helpers/functions.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Http/Controllers/Api/ApiController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Http/Controllers/Api/GuestApiController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Http/Controllers/Api/UserApiController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Http/Controllers/Auth/ConfirmPasswordController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Http/Controllers/Auth/ForgotPasswordController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Http/Controllers/Auth/LoginController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Http/Controllers/Auth/RegisterTenantController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Http/Controllers/Auth/ResetPasswordController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Http/Controllers/Auth/VerificationController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Http/Controllers/BaseController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Http/Controllers/DataBlockController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Http/Controllers/DatatableController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Http/Controllers/HomeController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Http/Controllers/ReportController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Http/Controllers/TestController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Jobs/TestJob.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Listeners/Registered/Notify.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Mails/EmailToAdmin.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Modules/Settings/Setting.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Modules/Settings/SettingController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Modules/Settings/SettingDatatable.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Modules/Settings/SettingHelper.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Modules/Settings/SettingObserver.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Modules/Settings/SettingPolicy.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Modules/Settings/SettingProcessor.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Modules/Settings/SettingProcessorHelper.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Modules/Settings/SettingViewProcessor.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Modules/Uploads/Upload.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Modules/Uploads/UploadController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Modules/Uploads/UploadDatatable.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Modules/Uploads/UploadHelper.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Modules/Uploads/UploadObserver.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Modules/Uploads/UploadPolicy.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Modules/Uploads/UploadProcessor.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Modules/Users/User.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Modules/Users/UserController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Modules/Users/UserDatatable.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Modules/Users/UserHelper.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Modules/Users/UserList.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Modules/Users/UserObserver.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Modules/Users/UserPolicy.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Modules/Users/UserProcessor.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Modules/Users/UserProcessorHelper.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Modules/Users/UserViewProcessor.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Notifications/Auth/ResellerVerifyEmail.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Notifications/Auth/ResetPassword.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Notifications/Auth/VendorVerifyEmail.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Notifications/Auth/VerifyEmail.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Notifications/Register/ResellerRegistered.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Notifications/Register/VendorRegistered.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Providers/AppServiceProvider.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Providers/AuthServiceProvider.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Providers/EventServiceProvider.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Providers/RouteServiceProvider.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Reports/ActiveUsers.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/Reports/DemoReport.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/routes/api.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/routes/auth.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Projects/MyProject/routes/web.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/PushNotification.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Report.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Setting.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Spread.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Subscription.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Tenant.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Upload.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/projects/my-project/config.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/all.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/blue.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/blue@2x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/bootstrap.min.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/fonts/glyphicons-halflings-regular.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/fonts/glyphicons-halflings-regular.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/fonts/glyphicons-halflings-regular.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/fonts/glyphicons-halflings-regular.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/fonts/glyphicons-halflings-regular.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/js/all.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/js/axios.min.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/images/logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/after-loader.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/axios.min.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/gstatic-chart-loader.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/html5shiv.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/lodash.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/mark.js(jquery.mark.min.js),datatables.mark.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/moment.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/core.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-af-ZA.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-ar-AE.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-ar-BH.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-ar-DZ.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-ar-EG.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-ar-IQ.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-ar-JO.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-ar-KW.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-ar-LB.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-ar-LY.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-ar-MA.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-ar-OM.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-ar-QA.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-ar-SA.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-ar-SY.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-ar-TN.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-ar-YE.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-az-Cyrl-AZ.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-az-Latn-AZ.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-be-BY.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-bg-BG.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-bs-Latn-BA.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-ca-ES.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-cs-CZ.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-cy-GB.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-da-DK.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-de-AT.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-de-CH.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-de-DE.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-de-LI.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-de-LU.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-dv-MV.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-el-GR.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-en-029.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-en-AU.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-en-BZ.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-en-CA.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-en-GB.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-en-IE.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-en-JM.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-en-NZ.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-en-PH.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-en-TT.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-en-US.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-en-ZA.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-en-ZW.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-es-AR.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-es-BO.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-es-CL.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-es-CO.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-es-CR.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-es-DO.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-es-EC.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-es-ES.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-es-GT.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-es-HN.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-es-MX.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-es-NI.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-es-PA.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-es-PE.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-es-PR.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-es-PY.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-es-SV.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-es-UY.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-es-VE.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-et-EE.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-eu-ES.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-fa-IR.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-fi-FI.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-fo-FO.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-fr-BE.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-fr-CA.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-fr-CH.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-fr-FR.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-fr-LU.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-fr-MC.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-gl-ES.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-gu-IN.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-he-IL.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-hi-IN.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-hr-BA.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-hr-HR.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-hu-HU.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-hy-AM.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-id-ID.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-is-IS.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-it-CH.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-it-IT.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-ja-JP.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-ka-GE.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-kk-KZ.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-kn-IN.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-ko-KR.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-kok-IN.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-ky-KG.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-lt-LT.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-lv-LV.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-mi-NZ.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-mk-MK.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-mn-MN.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-mr-IN.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-ms-BN.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-ms-MY.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-mt-MT.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-nb-NO.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-nl-BE.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-nl-NL.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-nn-NO.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-ns-ZA.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-pa-IN.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-pl-PL.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-pt-BR.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-pt-PT.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-quz-BO.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-quz-EC.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-quz-PE.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-ro-RO.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-ru-RU.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-sa-IN.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-se-FI.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-se-NO.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-se-SE.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-sk-SK.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-sl-SI.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-sma-NO.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-sma-SE.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-smj-NO.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-smj-SE.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-smn-FI.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-sms-FI.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-sq-AL.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-sr-Cyrl-BA.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-sr-Cyrl-CS.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-sr-Latn-BA.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-sr-Latn-CS.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-sv-FI.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-sv-SE.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-sw-KE.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-syr-SY.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-ta-IN.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-te-IN.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-th-TH.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-tn-ZA.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-tr-TR.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-tt-RU.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-uk-UA.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-ur-PK.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-uz-Cyrl-UZ.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-uz-Latn-UZ.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-vi-VN.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-xh-ZA.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-zh-CN.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-zh-HK.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-zh-MO.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-zh-SG.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-zh-TW.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date-zu-ZA.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/date.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/extras.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/parser.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/sugarpak.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/plugins/date/time.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/raphael-min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/respond.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/voca.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/js/vue.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/plugins/autosize/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/plugins/autosize/LICENSE.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/plugins/autosize/autosize.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/plugins/autosize/build.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/plugins/autosize/changelog.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/plugins/autosize/dist/autosize.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/plugins/autosize/dist/autosize.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/plugins/autosize/example/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/plugins/autosize/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/plugins/autosize/readme.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mainframe/plugins/autosize/src/autosize.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/projects/my-project/css/my-project.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/projects/my-project/css/print-pdf.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/projects/my-project/images/header2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/projects/my-project/images/login-bg-1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/projects/my-project/images/logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/projects/my-project/images/top-strip-1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/projects/my-project/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/projects/my-project/js/my-project.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/docs/css/fonts/FontAwesome.otf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/docs/css/fonts/fontawesome-webfont.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/docs/css/fonts/fontawesome-webfont.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/docs/css/fonts/fontawesome-webfont.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/docs/css/fonts/fontawesome-webfont.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/docs/css/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/docs/images/logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/docs/images/navbar.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/docs/js/all.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/docs/source/.compare.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/docs/source/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/docs/source/assets/images/logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/docs/source/assets/images/navbar.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/docs/source/assets/js/lib/energize.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/docs/source/assets/js/lib/highlight.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/docs/source/assets/js/lib/imagesloaded.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/docs/source/assets/js/lib/jquery.highlight.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/docs/source/assets/js/lib/jquery.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/docs/source/assets/js/lib/jquery.tocify.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/docs/source/assets/js/lib/jquery_ui.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/docs/source/assets/js/lib/lunr.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/docs/source/assets/js/script.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/docs/source/assets/stylus/_icon_font.styl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/docs/source/assets/stylus/_monokai.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/docs/source/assets/stylus/_normalize.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/docs/source/assets/stylus/_variables.styl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/docs/source/assets/stylus/fonts/FontAwesome.otf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/docs/source/assets/stylus/fonts/fontawesome-webfont.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/docs/source/assets/stylus/fonts/fontawesome-webfont.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/docs/source/assets/stylus/fonts/fontawesome-webfont.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/docs/source/assets/stylus/fonts/fontawesome-webfont.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/docs/source/assets/stylus/style.styl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/docs/source/config.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/docs/source/gulpfile.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/docs/source/includes/_errors.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/docs/source/index.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/docs/source/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/backup/ar/notifications.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/backup/cs/notifications.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/backup/da/notifications.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/backup/de/notifications.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/backup/en/notifications.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/backup/es/notifications.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/backup/fa/notifications.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/backup/fi/notifications.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/backup/fr/notifications.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/backup/hi/notifications.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/backup/id/notifications.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/backup/it/notifications.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/backup/nl/notifications.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/backup/pl/notifications.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/backup/pt-BR/notifications.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/backup/ro/notifications.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/backup/ru/notifications.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/backup/tr/notifications.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/backup/uk/notifications.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/backup/zh-CN/notifications.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/backup/zh-TW/notifications.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/log-viewer/ar/general.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/log-viewer/ar/levels.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/log-viewer/bg/general.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/log-viewer/bg/levels.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/log-viewer/de/general.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/log-viewer/de/levels.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/log-viewer/en/general.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/log-viewer/en/levels.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/log-viewer/es/general.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/log-viewer/es/levels.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/log-viewer/et/general.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/log-viewer/et/levels.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/log-viewer/fa/general.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/log-viewer/fa/levels.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/log-viewer/fr/general.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/log-viewer/fr/levels.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/log-viewer/hu/general.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/log-viewer/hu/levels.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/log-viewer/hy/general.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/log-viewer/hy/levels.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/log-viewer/id/general.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/log-viewer/id/levels.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/log-viewer/it/general.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/log-viewer/it/levels.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/log-viewer/ja/general.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/log-viewer/ja/levels.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/log-viewer/ko/general.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/log-viewer/ko/levels.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/log-viewer/ms/general.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/log-viewer/ms/levels.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/log-viewer/nl/general.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/log-viewer/nl/levels.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/log-viewer/pl/general.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/log-viewer/pl/levels.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/log-viewer/pt-BR/general.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/log-viewer/pt-BR/levels.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/log-viewer/ro/general.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/log-viewer/ro/levels.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/log-viewer/ru/general.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/log-viewer/ru/levels.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/log-viewer/sv/general.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/log-viewer/sv/levels.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/log-viewer/th/general.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/log-viewer/th/levels.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/log-viewer/tr/general.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/log-viewer/tr/levels.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/log-viewer/uk/general.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/log-viewer/uk/levels.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/log-viewer/zh-TW/general.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/log-viewer/zh-TW/levels.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/log-viewer/zh/general.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/vendor/log-viewer/zh/levels.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/apidoc/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/form/modal.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/mainframe/contents/dummy.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/mainframe/emails/blank.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/mainframe/form/includes/label.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/mainframe/form/includes/read-only-view.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/mainframe/form/includes/show-error.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/mainframe/form/includes/textarea-read-only-view.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/mainframe/form/modal.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/default/includes/navigation/clone.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/default/includes/print-btn.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/changes/form/default.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/changes/form/js.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/changes/grid/default.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/contents/form/default.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/contents/form/js.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/contents/grid/default.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/in-app-notifications/form/default.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/in-app-notifications/form/js.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/in-app-notifications/grid/default.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/push-notifications/form/default.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/push-notifications/form/js.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/push-notifications/grid/default.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/spreads/form/default.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/spreads/form/js.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/spreads/grid/default.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/projects/my-project/auth/login.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/projects/my-project/auth/passwords/confirm.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/projects/my-project/auth/passwords/email.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/projects/my-project/auth/passwords/reset.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/projects/my-project/auth/register-reseller.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/projects/my-project/auth/register-tenant.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/projects/my-project/auth/register.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/projects/my-project/auth/verify.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/projects/my-project/dashboards/admin.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/projects/my-project/emails/auth/email-verification.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/projects/my-project/emails/auth/reseller-email-verification.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/projects/my-project/emails/auth/reset-password.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/projects/my-project/emails/auth/vendor-email-verification.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/projects/my-project/emails/blank.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/projects/my-project/emails/register/reseller-registered.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/projects/my-project/layouts/blank/template.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/projects/my-project/layouts/centered/template.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/projects/my-project/layouts/dashboard/template.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/projects/my-project/layouts/default/includes/analytics.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/projects/my-project/layouts/default/includes/navigation/left-menu/menu-items-admin.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/projects/my-project/layouts/default/includes/navigation/left-menu/menu-items.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/projects/my-project/layouts/default/includes/navigation/top-menu/top-right-menu.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/projects/my-project/layouts/default/template.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/projects/my-project/layouts/email/template.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/projects/my-project/layouts/module/changes/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/projects/my-project/layouts/module/form/includes/title-with-name.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/projects/my-project/layouts/module/form/template.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/projects/my-project/layouts/module/grid/template.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/projects/my-project/layouts/module/template.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/projects/my-project/layouts/pdf-print/template.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/projects/my-project/layouts/report/includes/advanced.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/projects/my-project/layouts/report/includes/cta.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/projects/my-project/layouts/report/includes/filters.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/projects/my-project/layouts/report/includes/init-functions.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/projects/my-project/layouts/report/result-print.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/projects/my-project/layouts/report/result.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/projects/my-project/layouts/report/template.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/projects/my-project/modules/settings/form/default.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/projects/my-project/modules/settings/form/js.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/projects/my-project/modules/settings/grid/default.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/projects/my-project/modules/uploads/form/default.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/projects/my-project/modules/uploads/form/js.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/projects/my-project/modules/uploads/grid/default.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/projects/my-project/modules/users/form/default.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/projects/my-project/modules/users/form/includes/basic-fields.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/projects/my-project/modules/users/form/includes/contact-fields.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/projects/my-project/modules/users/form/includes/token-fields.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/projects/my-project/modules/users/form/js.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/projects/my-project/modules/users/grid/default.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/vendor/log-viewer/bootstrap-3/_master.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/vendor/log-viewer/bootstrap-3/dashboard.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/vendor/log-viewer/bootstrap-3/logs.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/vendor/log-viewer/bootstrap-3/show.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/vendor/log-viewer/bootstrap-4/_master.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/vendor/log-viewer/bootstrap-4/dashboard.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/vendor/log-viewer/bootstrap-4/logs.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/vendor/log-viewer/bootstrap-4/show.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/ApiTestCase.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/Feature/Mainframe/Api/GetSettingByKeyApiTest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/Feature/Mainframe/Superadmin/SettingsModuleRestFeatureJsonTest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/Feature/Mainframe/Superadmin/SettingsModuleRestFeatureTest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/MailTracking.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/TestHelperTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/composerJson.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/raihan.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jsLinters/jshint.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/laravel-plugin.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/mainframe.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php-test-framework.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/phpunit.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Group.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Group.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Commands/MakeMainframeModule.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Commands/MakeMainframeModule.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Core/Traits/HasMessageBag.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Core/Traits/SendResponse.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Features/Core/Traits/SendResponse.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Core/Traits/Validable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Features/Core/Traits/Validable.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Datatable/Datatable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Features/Datatable/Datatable.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Datatable/ModuleDatatable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Features/Datatable/ModuleDatatable.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Form/Button.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Features/Form/Button.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Form/Checkbox/Checkbox.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Features/Form/Checkbox/Checkbox.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Form/Comment.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Features/Form/Comment.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Form/DeleteButton.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Features/Form/DeleteButton.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Form/Form.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Features/Form/Form.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Form/Input.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Features/Form/Input.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Form/Select/SelectAjax.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Features/Form/Select/SelectAjax.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Form/Select/SelectArray.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Features/Form/Select/SelectArray.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Form/Select/SelectArrayMultiple.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Features/Form/Select/SelectArrayMultiple.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Form/Select/SelectModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Features/Form/Select/SelectModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Form/Select/SelectModelMultiple.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Features/Form/Select/SelectModelMultiple.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Form/Text/Date.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Features/Form/Text/Date.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Form/Text/Datetime.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Features/Form/Text/Datetime.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Form/Text/InputHidden.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Features/Form/Text/InputHidden.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Form/Text/InputText.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Features/Form/Text/InputText.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Form/Text/Tags.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Features/Form/Text/Tags.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Form/Text/TextArea.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Features/Form/Text/TextArea.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Form/Upload.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Features/Form/Upload.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Modular/BaseModule/BaseModule.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Features/Modular/BaseModule/BaseModule.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Modular/BaseModule/BaseModuleObserver.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Features/Modular/BaseModule/BaseModuleObserver.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Modular/BaseModule/BaseModulePolicy.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Features/Modular/BaseModule/BaseModulePolicy.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Modular/BaseModule/Traits/EventIdentifiable.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Modular/BaseModule/Traits/ModelAutoFill.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Modular/BaseModule/Traits/ModularTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Features/Modular/BaseModule/Traits/ModularTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Modular/BaseModule/Traits/Processable.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Modular/BaseModule/Traits/RelatedUsersTrait.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Modular/BaseModule/Traits/TenantContextTrait.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Modular/BaseModule/Traits/UpdaterTrait.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Modular/BaseModule/Traits/Uploadable.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Modular/ModularController/ModularController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Features/Modular/ModularController/ModularController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Modular/ModularController/Traits/ModelProcessorHelper.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Modular/ModularController/Traits/RequestHandler.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Modular/ModularController/Traits/RequestValidator.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Features/Modular/ModularController/Traits/RequestValidator.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Modular/ModularController/Traits/Resolvable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Features/Modular/ModularController/Traits/Resolvable.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Modular/ModularController/Traits/ShowChangesTrait.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Modular/Rememberable/Query/Builder.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Modular/Skeleton/SuperHero.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Features/Modular/Skeleton/SuperHero.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Modular/Skeleton/SuperHeroController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Features/Modular/Skeleton/SuperHeroController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Modular/Skeleton/SuperHeroDatatable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Features/Modular/Skeleton/SuperHeroDatatable.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Modular/Skeleton/SuperHeroHelper.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Features/Modular/Skeleton/SuperHeroHelper.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Modular/Skeleton/SuperHeroObserver.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Features/Modular/Skeleton/SuperHeroObserver.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Modular/Skeleton/SuperHeroPolicy.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Features/Modular/Skeleton/SuperHeroPolicy.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Modular/Skeleton/SuperHeroProcessor.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Features/Modular/Skeleton/SuperHeroProcessor.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Modular/Skeleton/migration.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Features/Modular/Skeleton/migration.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Modular/Skeleton/views/form/default.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Features/Modular/Skeleton/views/form/default.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Modular/Skeleton/views/form/js.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Features/Modular/Skeleton/views/form/js.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Modular/Skeleton/views/grid/default.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Features/Modular/Skeleton/views/grid/default.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Modular/Validator/ModelProcessor.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Features/Modular/Validator/ModelProcessor.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Multitenant/GlobalScope/AddTenant.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Report/ModuleReportBuilder.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Features/Report/ModuleReportBuilder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Report/ReportBuilder.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Features/Report/ReportBuilder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Report/Traits/Columns.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Features/Report/Traits/Columns.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Report/Traits/Filterable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Features/Report/Traits/Filterable.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Report/Traits/Output.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Features/Report/Traits/Output.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Report/Traits/Query.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Features/Report/Traits/Query.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Resolvers/PolicyResolver.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Features/Resolvers/PolicyResolver.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Responder/Response.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Features/Responder/Response.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Helpers/Cache.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Cache.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Helpers/Convert.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Convert.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Helpers/Mf.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/Mf.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Helpers/View.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/View.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Helpers/functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/functions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Helpers/generic.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/generic.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Http/Controllers/Api/ApiController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Http/Controllers/Api/ApiController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Http/Controllers/Api/GuestApiController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Http/Controllers/Api/GuestApiController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Http/Controllers/Api/UserApiController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Http/Controllers/Api/UserApiController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Http/Controllers/Auth/LoginController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Http/Controllers/Auth/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Http/Controllers/Auth/RegisterTenantController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Http/Controllers/Auth/RegisterTenantController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Http/Controllers/Auth/VerificationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Http/Controllers/Auth/VerificationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Http/Controllers/BaseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Http/Controllers/BaseController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Http/Controllers/TestController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Http/Controllers/TestController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Http/Middleware/AllowSuperuser.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Http/Middleware/AllowSuperuser.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Http/Middleware/VerifyBearerToken.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Http/Middleware/VerifyBearerToken.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Http/Middleware/VerifyXAuthToken.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Http/Middleware/VerifyXAuthToken.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Comments/Comment.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Comments/Comment.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Comments/CommentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Comments/CommentController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Comments/CommentDatatable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Comments/CommentDatatable.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Comments/CommentHelper.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Comments/CommentObserver.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Comments/CommentObserver.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Comments/CommentPolicy.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Comments/CommentPolicy.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Comments/CommentProcessor.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Comments/CommentProcessor.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Countries/Country.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Countries/Country.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Countries/CountryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Countries/CountryController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Countries/CountryDatatable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Countries/CountryDatatable.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Countries/CountryHelper.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Countries/CountryObserver.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Countries/CountryObserver.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Countries/CountryPolicy.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Countries/CountryPolicy.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Countries/CountryProcessor.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Countries/CountryProcessor.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Groups/Group.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Groups/Group.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Groups/GroupController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Groups/GroupController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Groups/GroupDatatable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Groups/GroupDatatable.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Groups/GroupHelper.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Groups/GroupObserver.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Groups/GroupObserver.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Groups/GroupPolicy.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Groups/GroupPolicy.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Groups/GroupProcessor.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Groups/GroupProcessor.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Groups/Traits/GroupDefinitionsTrait.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/ModuleGroups/ModuleGroup.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/ModuleGroups/ModuleGroup.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/ModuleGroups/ModuleGroupController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/ModuleGroups/ModuleGroupController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/ModuleGroups/ModuleGroupDatatable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/ModuleGroups/ModuleGroupDatatable.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/ModuleGroups/ModuleGroupHelper.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/ModuleGroups/ModuleGroupPolicy.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/ModuleGroups/ModuleGroupPolicy.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/ModuleGroups/ModuleGroupProcessor.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/ModuleGroups/ModuleGroupProcessor.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Modules/Module.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Modules/Module.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Modules/ModuleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Modules/ModuleController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Modules/ModuleDatatable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Modules/ModuleDatatable.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Modules/ModuleHelper.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Modules/ModuleObserver.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Modules/ModuleObserver.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Modules/ModulePolicy.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Modules/ModulePolicy.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Modules/ModuleProcessor.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Modules/ModuleProcessor.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Notifications/Notification.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Notifications/Notification.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Notifications/NotificationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Notifications/NotificationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Notifications/NotificationDatatable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Notifications/NotificationDatatable.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Notifications/NotificationHelper.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Notifications/NotificationObserver.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Notifications/NotificationObserver.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Notifications/NotificationPolicy.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Notifications/NotificationPolicy.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Notifications/NotificationProcessor.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Notifications/NotificationProcessor.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Packages/Package.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Packages/Package.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Packages/PackageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Packages/PackageController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Packages/PackageDatatable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Packages/PackageDatatable.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Packages/PackageHelper.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Packages/PackageObserver.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Packages/PackageObserver.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Packages/PackagePolicy.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Packages/PackagePolicy.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Packages/PackageProcessor.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Packages/PackageProcessor.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Projects/Project.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Projects/Project.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Projects/ProjectController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Projects/ProjectController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Projects/ProjectDatatable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Projects/ProjectDatatable.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Projects/ProjectHelper.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Projects/ProjectObserver.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Projects/ProjectObserver.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Projects/ProjectPolicy.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Projects/ProjectPolicy.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Projects/ProjectProcessor.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Projects/ProjectProcessor.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Reports/Report.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Reports/Report.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Reports/ReportController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Reports/ReportController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Reports/ReportDatatable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Reports/ReportDatatable.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Reports/ReportHelper.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Reports/ReportObserver.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Reports/ReportObserver.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Reports/ReportPolicy.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Reports/ReportPolicy.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Reports/ReportProcessor.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Reports/ReportProcessor.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Samples/DolorSits/DolorSit.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Samples/DolorSits/DolorSitController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Samples/DolorSits/DolorSitDatatable.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Samples/DolorSits/DolorSitHelper.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Samples/DolorSits/DolorSitObserver.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Samples/DolorSits/DolorSitPolicy.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Samples/DolorSits/DolorSitProcessor.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Samples/LoremIpsums/LoremIpsum.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Samples/LoremIpsums/LoremIpsumController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Samples/LoremIpsums/LoremIpsumDatatable.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Samples/LoremIpsums/LoremIpsumHelper.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Samples/LoremIpsums/LoremIpsumObserver.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Samples/LoremIpsums/LoremIpsumPolicy.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Samples/LoremIpsums/LoremIpsumProcessor.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Settings/Setting.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Settings/Setting.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Settings/SettingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Settings/SettingController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Settings/SettingDatatable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Settings/SettingDatatable.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Settings/SettingHelper.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Settings/SettingObserver.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Settings/SettingObserver.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Settings/SettingPolicy.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Settings/SettingPolicy.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Settings/SettingProcessor.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Settings/SettingProcessor.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Subscriptions/Subscription.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Subscriptions/Subscription.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Subscriptions/SubscriptionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Subscriptions/SubscriptionController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Subscriptions/SubscriptionDatatable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Subscriptions/SubscriptionDatatable.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Subscriptions/SubscriptionHelper.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Subscriptions/SubscriptionObserver.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Subscriptions/SubscriptionObserver.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Subscriptions/SubscriptionPolicy.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Subscriptions/SubscriptionPolicy.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Subscriptions/SubscriptionProcessor.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Subscriptions/SubscriptionProcessor.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Tenants/Tenant.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Tenants/Tenant.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Tenants/TenantController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Tenants/TenantController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Tenants/TenantDatatable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Tenants/TenantDatatable.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Tenants/TenantHelper.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Tenants/TenantObserver.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Tenants/TenantObserver.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Tenants/TenantPolicy.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Tenants/TenantPolicy.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Tenants/TenantProcessor.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Tenants/TenantProcessor.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Uploads/Upload.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Uploads/Upload.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Uploads/UploadController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Uploads/UploadController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Uploads/UploadDatatable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Uploads/UploadDatatable.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Uploads/UploadHelper.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Uploads/UploadObserver.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Uploads/UploadObserver.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Uploads/UploadPolicy.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Uploads/UploadPolicy.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Uploads/UploadProcessor.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Uploads/UploadProcessor.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Users/Traits/UserGroupable.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Users/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Users/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Users/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Users/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Users/UserDatatable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Users/UserDatatable.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Users/UserHelper.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Users/UserObserver.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Users/UserObserver.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Users/UserPolicy.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Users/UserPolicy.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Users/UserProcessor.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Users/UserProcessor.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Providers/AppServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Providers/AuthServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Providers/AuthServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Providers/RouteServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Providers/RouteServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/routes/api.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/routes/auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/routes/auth.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/routes/modules.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/routes/modules.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/admin.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/php-test-framework.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/phpunit.xml.bak" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/mainframe8.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/mainframe8.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/phpunit.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/phpunit.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Macros/QueryBuilderMacros.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Macros/QueryBuilderMacros.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Users/Traits/UserProcessorTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Users/Traits/UserProcessorTrait.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/mainframe/cache-time.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/mainframe/cache-time.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/mainframe/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/mainframe/config.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/mainframe/permissions.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/mainframe/permissions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/phpunit.xml" beforeDir="false" afterPath="$PROJECT_DIR$/phpunit.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/mainframe/css/mainframe.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/mainframe/css/mainframe.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/mainframe/js/axios.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/mainframe/js/axios.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/mainframe/js/mainframe.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/mainframe/js/mainframe.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/mainframe/js/validation.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/mainframe/js/validation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/mainframe/js/vue.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/mainframe/templates/admin/plugins/ckeditor/contents.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/mainframe/templates/admin/plugins/ckeditor/contents.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/mainframe/templates/admin/plugins/uploadfile/uploadfile.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/mainframe/templates/admin/plugins/uploadfile/uploadfile.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/passwords/confirm.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/passwords/confirm.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/passwords/email.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/passwords/email.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/passwords/reset.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/passwords/reset.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/verify.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/verify.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/form/delete-button.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/form/delete-button.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/auth/login.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/auth/passwords/confirm.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/auth/passwords/confirm.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/auth/passwords/email.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/auth/passwords/email.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/auth/passwords/reset.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/auth/passwords/reset.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/auth/register-tenant.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/auth/register-tenant.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/auth/register.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/auth/verify.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/auth/verify.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/dashboards/default/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/dashboards/default/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/form/checkbox.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/form/checkbox.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/form/date.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/form/date.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/form/datetime.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/form/datetime.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/form/delete-button.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/form/delete-button.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/form/hidden.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/form/hidden.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/form/is-active.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/form/is-active.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/form/plain-text.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/form/plain-text.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/form/select-ajax.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/form/select-ajax.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/form/select-array-multiple.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/form/select-array-multiple.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/form/select-array.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/form/select-array.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/form/select-model-multiple.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/form/select-model-multiple.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/form/select-model.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/form/select-model.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/form/select-tenant.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/form/select-tenant.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/form/tags.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/form/tags.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/form/text.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/form/text.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/form/textarea.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/form/textarea.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/layouts/blank/template.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/blank/template.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/layouts/centered/template.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/centered/template.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/layouts/dashboard/template.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/dashboard/template.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/layouts/default/includes/alerts/messages-top-1.0.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/layouts/default/includes/alerts/messages-top-1.1.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/layouts/default/includes/alerts/messages-top.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/default/includes/alerts/messages-top.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/layouts/default/includes/css.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/default/includes/css.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/layouts/default/includes/js.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/default/includes/js.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/layouts/default/includes/modals/messages-1.0.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/layouts/default/includes/modals/messages-1.1.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/layouts/default/includes/modals/messages.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/default/includes/modals/messages.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/layouts/default/includes/navigation/left-menu/menu-items.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/default/includes/navigation/left-menu/menu-items.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/layouts/default/includes/navigation/top-menu/top-right-menu.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/default/includes/navigation/top-menu/top-right-menu.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/layouts/default/template.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/default/template.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/layouts/email/template.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/email/template.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/layouts/module/changes/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/module/changes/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/layouts/module/form/includes/action-buttons.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/module/form/includes/action-buttons.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/layouts/module/form/includes/features/comments/comments.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/module/form/includes/features/comments/comments.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/layouts/module/form/includes/features/uploads/uploads.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/module/form/includes/features/uploads/uploads.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/layouts/module/form/includes/js.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/module/form/includes/js.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/layouts/module/form/includes/title.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/module/form/includes/title.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/layouts/module/form/template.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/module/form/template.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/layouts/module/grid/includes/datatable.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/module/grid/includes/datatable.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/layouts/module/grid/includes/title.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/module/grid/includes/title.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/layouts/module/grid/template.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/module/grid/template.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/layouts/module/template.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/layouts/report/includes/advanced.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/report/includes/advanced.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/layouts/report/includes/cta.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/report/includes/cta.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/layouts/report/includes/filters.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/report/includes/filters.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/layouts/report/includes/init-functions.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/report/includes/init-functions.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/layouts/report/result-print.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/report/result-print.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/layouts/report/result.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/report/result.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/layouts/report/template.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/layouts/report/template.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/groups/form/default.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/groups/form/default.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/groups/form/permission-blocks.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/groups/form/permission-blocks.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/messages/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/messages/form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/module-groups/form/default.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/module-groups/form/default.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/modules/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/modules/form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/modules/form/default.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/modules/form/default.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/reports/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/reports/form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/reports/form/default.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/reports/form/default.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/reports/grid.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/reports/grid.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/samples/dolor-sits/form/default.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/samples/dolor-sits/form/js.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/samples/dolor-sits/grid/default.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/samples/lorem-ipsums/form/default.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/samples/lorem-ipsums/form/js.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/samples/lorem-ipsums/grid/default.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/settings/form/default.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/settings/form/default.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/settings/form/js.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/settings/form/js.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/subscriptions/form/default.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/subscriptions/form/default.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/tenants/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/tenants/form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/uploads/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/uploads/form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/uploads/form/default.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/uploads/form/default.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/users/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/users/form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/users/form/default.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/users/form/default.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainframe/modules/users/form/js.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainframe/modules/users/form/js.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/Mainframe/Api/ApiTestCase.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/Mainframe/Api/ApiTestCase.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/Mainframe/Api/RegisterApiTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/Mainframe/Api/RegisterApiTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/Mainframe/Api/SettingsApiTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/Mainframe/Auth/UserRegistrationTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/Mainframe/Auth/UserRegistrationTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/Mainframe/Superadmin/LoginTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/Mainframe/Superadmin/LoginTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/Mainframe/Superadmin/ModuleRestFeatureJsonTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/Mainframe/Superadmin/ModuleRestFeatureTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/Mainframe/Superadmin/SuperadminTestCase.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/Mainframe/Superadmin/SuperadminTestCase.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/TestCase.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/TestCase.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/bootstrap.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/bootstrap.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="PhpWorkspaceProjectConfiguration">
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 7.4.12">
     <include_path>
-      <path value="$PROJECT_DIR$/vendor/bacon/bacon-qr-code" />
       <path value="$PROJECT_DIR$/vendor/myclabs/php-enum" />
       <path value="$PROJECT_DIR$/vendor/opis/closure" />
       <path value="$PROJECT_DIR$/vendor/myclabs/deep-copy" />
@@ -1110,37 +54,26 @@
       <path value="$PROJECT_DIR$/vendor/markbaker/complex" />
       <path value="$PROJECT_DIR$/vendor/laravel/framework" />
       <path value="$PROJECT_DIR$/vendor/laravel/tinker" />
-      <path value="$PROJECT_DIR$/vendor/laravel/telescope" />
       <path value="$PROJECT_DIR$/vendor/psy/psysh" />
       <path value="$PROJECT_DIR$/vendor/voku/portable-ascii" />
-      <path value="$PROJECT_DIR$/vendor/mpociot/reflection-docblock" />
       <path value="$PROJECT_DIR$/vendor/yajra/laravel-datatables-oracle" />
-      <path value="$PROJECT_DIR$/vendor/owen-it/laravel-auditing" />
-      <path value="$PROJECT_DIR$/vendor/mpociot/documentarian" />
-      <path value="$PROJECT_DIR$/vendor/mpociot/laravel-apidoc-generator" />
-      <path value="$PROJECT_DIR$/vendor/windwalker/structure" />
-      <path value="$PROJECT_DIR$/vendor/windwalker/renderer" />
       <path value="$PROJECT_DIR$/vendor/phpunit/php-file-iterator" />
       <path value="$PROJECT_DIR$/vendor/phpunit/php-code-coverage" />
       <path value="$PROJECT_DIR$/vendor/phpunit/phpunit" />
       <path value="$PROJECT_DIR$/vendor/hamcrest/hamcrest-php" />
-      <path value="$PROJECT_DIR$/vendor/phpunit/php-token-stream" />
       <path value="$PROJECT_DIR$/vendor/phpunit/php-text-template" />
       <path value="$PROJECT_DIR$/vendor/phpunit/php-timer" />
       <path value="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet" />
       <path value="$PROJECT_DIR$/vendor/dompdf/dompdf" />
       <path value="$PROJECT_DIR$/vendor/league/mime-type-detection" />
       <path value="$PROJECT_DIR$/vendor/league/commonmark" />
-      <path value="$PROJECT_DIR$/vendor/arcanedev/log-viewer" />
       <path value="$PROJECT_DIR$/vendor/symfony/console" />
       <path value="$PROJECT_DIR$/vendor/symfony/routing" />
       <path value="$PROJECT_DIR$/vendor/symfony/mime" />
       <path value="$PROJECT_DIR$/vendor/symfony/translation-contracts" />
       <path value="$PROJECT_DIR$/vendor/league/flysystem" />
-      <path value="$PROJECT_DIR$/vendor/arcanedev/support" />
       <path value="$PROJECT_DIR$/vendor/league/oauth1-client" />
       <path value="$PROJECT_DIR$/vendor/symfony/http-kernel" />
-      <path value="$PROJECT_DIR$/vendor/simplesoftwareio/simple-qrcode" />
       <path value="$PROJECT_DIR$/vendor/symfony/http-client-contracts" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-idn" />
       <path value="$PROJECT_DIR$/vendor/symfony/css-selector" />
@@ -1151,12 +84,10 @@
       <path value="$PROJECT_DIR$/vendor/symfony/string" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php72" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php80" />
-      <path value="$PROJECT_DIR$/vendor/symfony/var-exporter" />
       <path value="$PROJECT_DIR$/vendor/symfony/translation" />
       <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher-contracts" />
       <path value="$PROJECT_DIR$/vendor/symfony/filesystem" />
       <path value="$PROJECT_DIR$/vendor/symfony/finder" />
-      <path value="$PROJECT_DIR$/vendor/symfony/yaml" />
       <path value="$PROJECT_DIR$/vendor/symfony/debug" />
       <path value="$PROJECT_DIR$/vendor/brick/math" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-normalizer" />
@@ -1164,7 +95,6 @@
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-mbstring" />
       <path value="$PROJECT_DIR$/vendor/symfony/http-foundation" />
       <path value="$PROJECT_DIR$/vendor/symfony/process" />
-      <path value="$PROJECT_DIR$/vendor/php-di/invoker" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php73" />
       <path value="$PROJECT_DIR$/vendor/symfony/service-contracts" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-iconv" />
@@ -1187,35 +117,27 @@
       <path value="$PROJECT_DIR$/vendor/sebastian/global-state" />
       <path value="$PROJECT_DIR$/vendor/sebastian/diff" />
       <path value="$PROJECT_DIR$/vendor/dragonmantank/cron-expression" />
-      <path value="$PROJECT_DIR$/vendor/moontoast/math" />
       <path value="$PROJECT_DIR$/vendor/sebastian/object-reflector" />
       <path value="$PROJECT_DIR$/vendor/sebastian/version" />
       <path value="$PROJECT_DIR$/vendor/vlucas/phpdotenv" />
       <path value="$PROJECT_DIR$/vendor/sebastian/code-unit-reverse-lookup" />
       <path value="$PROJECT_DIR$/vendor/sebastian/type" />
       <path value="$PROJECT_DIR$/vendor/predis/predis" />
-      <path value="$PROJECT_DIR$/vendor/scrivo/highlight.php" />
       <path value="$PROJECT_DIR$/vendor/nunomaduro/collision" />
       <path value="$PROJECT_DIR$/vendor/paragonie/random_compat" />
       <path value="$PROJECT_DIR$/vendor/phenx/php-svg-lib" />
       <path value="$PROJECT_DIR$/vendor/paragonie/sodium_compat" />
       <path value="$PROJECT_DIR$/vendor/phenx/php-font-lib" />
-      <path value="$PROJECT_DIR$/vendor/paragonie/constant_time_encoding" />
       <path value="$PROJECT_DIR$/vendor/justinrainbow/json-schema" />
       <path value="$PROJECT_DIR$/vendor/theseer/tokenizer" />
       <path value="$PROJECT_DIR$/vendor/barryvdh/laravel-dompdf" />
       <path value="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer" />
-      <path value="$PROJECT_DIR$/vendor/watson/rememberable" />
       <path value="$PROJECT_DIR$/vendor/monolog/monolog" />
       <path value="$PROJECT_DIR$/vendor/barryvdh/reflection-docblock" />
       <path value="$PROJECT_DIR$/vendor/laravelcollective/html" />
       <path value="$PROJECT_DIR$/vendor/barryvdh/laravel-ide-helper" />
       <path value="$PROJECT_DIR$/vendor/barryvdh/laravel-debugbar" />
-      <path value="$PROJECT_DIR$/vendor/dasprid/enum" />
       <path value="$PROJECT_DIR$/vendor/sabberworm/php-css-parser" />
-      <path value="$PROJECT_DIR$/vendor/spatie/temporary-directory" />
-      <path value="$PROJECT_DIR$/vendor/spatie/db-dumper" />
-      <path value="$PROJECT_DIR$/vendor/spatie/laravel-backup" />
       <path value="$PROJECT_DIR$/vendor/phpspec/prophecy" />
       <path value="$PROJECT_DIR$/vendor/webmozart/assert" />
       <path value="$PROJECT_DIR$/vendor/filp/whoops" />
@@ -1232,23 +154,33 @@
       <path value="$PROJECT_DIR$/vendor/phpoption/phpoption" />
       <path value="$PROJECT_DIR$/vendor/nesbot/carbon" />
       <path value="$PROJECT_DIR$/vendor/fruitcake/laravel-cors" />
-      <path value="$PROJECT_DIR$/vendor/erusev/parsedown" />
       <path value="$PROJECT_DIR$/vendor/webpatser/laravel-uuid" />
       <path value="$PROJECT_DIR$/vendor/phpdocumentor/type-resolver" />
       <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-docblock" />
       <path value="$PROJECT_DIR$/vendor/garygreen/pretty-routes" />
-      <path value="$PROJECT_DIR$/vendor/phpseclib/bcmath_compat" />
       <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-common" />
-      <path value="$PROJECT_DIR$/vendor/phpseclib/phpseclib" />
       <path value="$PROJECT_DIR$/vendor/ezyang/htmlpurifier" />
       <path value="$PROJECT_DIR$/vendor/ramsey/collection" />
       <path value="$PROJECT_DIR$/vendor/ramsey/uuid" />
-      <path value="$PROJECT_DIR$/vendor/mnapoli/front-yaml" />
       <path value="$PROJECT_DIR$/vendor/maximebf/debugbar" />
-      <path value="$PROJECT_DIR$/vendor/mnapoli/silly" />
       <path value="$PROJECT_DIR$/vendor/fzaninotto/faker" />
       <path value="$PROJECT_DIR$/vendor/maennchen/zipstream-php" />
       <path value="$PROJECT_DIR$/vendor/asm89/stack-cors" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-invoker" />
+      <path value="$PROJECT_DIR$/vendor/graham-campbell/result-type" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/complexity" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/cli-parser" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/code-unit" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/lines-of-code" />
+      <path value="$PROJECT_DIR$/vendor/owen-it/laravel-auditing" />
+      <path value="$PROJECT_DIR$/vendor/spatie/laravel-backup" />
+      <path value="$PROJECT_DIR$/vendor/spatie/temporary-directory" />
+      <path value="$PROJECT_DIR$/vendor/spatie/db-dumper" />
+      <path value="$PROJECT_DIR$/vendor/watson/rememberable" />
+      <path value="$PROJECT_DIR$/vendor/bacon/bacon-qr-code" />
+      <path value="$PROJECT_DIR$/vendor/dasprid/enum" />
+      <path value="$PROJECT_DIR$/vendor/simplesoftwareio/simple-qrcode" />
+      <path value="$PROJECT_DIR$/vendor/laravel/telescope" />
     </include_path>
   </component>
   <component name="ProjectId" id="1svgm87kLIWy5S0lEbbNjYrjLCD" />
@@ -1263,15 +195,46 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="php.test.frameworks.configurable" />
   </component>
-  <component name="RunManager">
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
+  <component name="RunManager" selected="PHPUnit.tests">
+    <configuration name="RegisterApiTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\Mainframe\Api\RegisterApiTest" configuration_file="$PROJECT_DIR$/phpunit.xml" directory="$PROJECT_DIR$/tests" file="$PROJECT_DIR$/tests/Feature/Mainframe/Api/RegisterApiTest.php" scope="Class" />
+      <method v="2" />
+    </configuration>
+    <configuration name="RegisterApiTest.test_a_guest_can_register_as_a_user" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\Mainframe\Api\RegisterApiTest" configuration_file="$PROJECT_DIR$/phpunit.xml" directory="$PROJECT_DIR$/tests" file="$PROJECT_DIR$/tests/Feature/Mainframe/Api/RegisterApiTest.php" method="test_a_guest_can_register_as_a_user" scope="Method" />
+      <method v="2" />
+    </configuration>
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner scope="XML" />
       <method v="2" />
     </configuration>
+    <configuration name="tests" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner configuration_file="$PROJECT_DIR$/phpunit.xml" directory="$PROJECT_DIR$/tests" />
+      <method v="2" />
+    </configuration>
+    <configuration name="mail.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/config/mail.php">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="PHPUnit.tests" />
+        <item itemvalue="PHP Script.mail.php" />
+        <item itemvalue="PHPUnit.RegisterApiTest.test_a_guest_can_register_as_a_user" />
+        <item itemvalue="PHPUnit.RegisterApiTest" />
+      </list>
+    </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="5175d202-f036-4353-b0dd-2451d7063b0a" name="Default Changelist" comment="" />
@@ -1293,9 +256,42 @@
       <screen x="1366" y="-130" width="1600" height="860" />
     </state>
     <state x="1976" y="192" key="#Composer/0.0.1366.722/1366.-130.1600.860@1366.-130.1600.860" timestamp="1621759128760" />
-    <state x="1829" y="50" width="672" height="678" key="search.everywhere.popup" timestamp="1621758889822">
-      <screen x="1366" y="-130" width="1600" height="860" />
+    <state x="334" y="47" key="#PHP" timestamp="1621762232806">
+      <screen x="0" y="0" width="1280" height="800" />
     </state>
+    <state x="334" y="47" key="#PHP/0.0.1280.800@0.0.1280.800" timestamp="1621762232806" />
+    <state x="316" y="32" key="#tests" timestamp="1621762233822">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="316" y="32" key="#tests/0.0.1280.800@0.0.1280.800" timestamp="1621762233822" />
+    <state width="1280" height="389" key="GridCell.Tab.0.bottom" timestamp="1621763831244">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state width="1280" height="389" key="GridCell.Tab.0.bottom/0.0.1280.800@0.0.1280.800" timestamp="1621763831244" />
+    <state width="1280" height="389" key="GridCell.Tab.0.center" timestamp="1621763831242">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state width="1280" height="389" key="GridCell.Tab.0.center/0.0.1280.800@0.0.1280.800" timestamp="1621763831242" />
+    <state width="1280" height="389" key="GridCell.Tab.0.left" timestamp="1621763831241">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state width="1280" height="389" key="GridCell.Tab.0.left/0.0.1280.800@0.0.1280.800" timestamp="1621763831241" />
+    <state width="1280" height="389" key="GridCell.Tab.0.right" timestamp="1621763831243">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state width="1280" height="389" key="GridCell.Tab.0.right/0.0.1280.800@0.0.1280.800" timestamp="1621763831243" />
+    <state x="156" y="36" key="SettingsEditor" timestamp="1621763011139">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="156" y="36" key="SettingsEditor/0.0.1280.800@0.0.1280.800" timestamp="1621763011139" />
+    <state x="344" y="162" width="591" height="534" key="find.popup" timestamp="1621763831045">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="344" y="162" width="591" height="534" key="find.popup/0.0.1280.800@0.0.1280.800" timestamp="1621763831045" />
+    <state x="370" y="167" width="670" height="631" key="search.everywhere.popup" timestamp="1621763133260">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="370" y="167" width="670" height="631" key="search.everywhere.popup/0.0.1280.800@0.0.1280.800" timestamp="1621763133260" />
     <state x="1829" y="50" width="672" height="678" key="search.everywhere.popup/0.0.1366.722/1366.-130.1600.860@1366.-130.1600.860" timestamp="1621758889822" />
   </component>
 </project>

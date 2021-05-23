@@ -25,7 +25,7 @@ trait UserProcessorTrait
      */
     public function fill($element)
     {
-        $element->group_ids = array_wrap($element->group_ids);
+        $element->group_ids = \Arr::wrap($element->group_ids);
         $element->populate();
         $this->fillApiTokenGeneratedAt();
 

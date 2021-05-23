@@ -15,7 +15,7 @@ class QueryBuilderMacros
             /** @var Builder $this */
             return $this->where(function (Builder $query) use ($attribute, $needles) {
 
-                foreach (array_wrap($needles) as $needle) {
+                foreach (\Arr::wrap($needles) as $needle) {
                     $query->orWhere($attribute, 'LIKE', "%{$needle}%");
                 }
 
