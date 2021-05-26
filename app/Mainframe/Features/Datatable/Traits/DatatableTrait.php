@@ -218,14 +218,14 @@ trait DatatableTrait
     {
 
         if ($this->module) {
-            return camel_case($this->module->name.'Dt');
+            return \Str::camel($this->module->name.'Dt');
         }
 
         if ($this->table) {
-            return camel_case($this->table.'Dt');
+            return \Str::camel($this->table.'Dt');
         }
 
-        return camel_case(class_basename($this).'Dt');
+        return \Str::camel(class_basename($this).'Dt');
 
     }
 
@@ -237,10 +237,10 @@ trait DatatableTrait
     public function name()
     {
         if ($this->name) {
-            return camel_case($this->name);
+            return \Str::camel($this->name);
         }
 
-        return camel_case($this->identifier());
+        return \Str::camel($this->identifier());
     }
 
 }

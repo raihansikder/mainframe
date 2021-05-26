@@ -665,7 +665,7 @@ function snakeCaseKeys($array)
 {
     $arr = [];
     foreach ($array as $key => $value) {
-        $key = snake_case($key);
+        $key = \Str::snake($key);
         if (is_array($value)) {
             $value = snakeCaseKeys($value);
         }

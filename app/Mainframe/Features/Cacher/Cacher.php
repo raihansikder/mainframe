@@ -33,14 +33,14 @@ class Cacher
     {
         $this->key = $str ?? $this->key ?? 'cache-key-'.randomString().now();
 
-        return kebab_case($this->key);
+        return \Str::kebab($this->key);
     }
 
     public static function value($key, $seconds = null)
     {
         $cached = new \Cached();
         $cached->key = $key;
-        $function = lcfirst(camel_case($key)); //camelCaseFunction
+        $function = lcfirst(\Str::camel($key)); //camelCaseFunction
         if (isset($seconds) && $seconds < 1) {
             \Cache::forget($key);
         }

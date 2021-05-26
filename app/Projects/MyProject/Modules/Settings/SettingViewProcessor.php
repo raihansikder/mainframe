@@ -21,6 +21,6 @@ class SettingViewProcessor extends BaseModuleViewProcessor
      * @var Setting
      */
     public $element;
-    public $immutables = ['name'];
+    // public $immutables = ['name'];
 
 }

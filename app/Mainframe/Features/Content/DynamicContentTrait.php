@@ -140,7 +140,7 @@ trait DynamicContentTrait
 
         $path = explode('\\', get_class($this));
 
-        return kebab_case(array_pop($path));
+        return \Str::kebab(array_pop($path));
     }
 
     /**

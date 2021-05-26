@@ -122,7 +122,7 @@ trait ModuleTrait
 
     public static function modelNameFromTable($table)
     {
-        return ucfirst(str_singular(camel_case($table)));
+        return ucfirst(\Str::singular(\Str::camel($table)));
     }
 
     public static function rootModelNameFromTable($table)

@@ -313,6 +313,7 @@ trait MailTracking
 
 class TestingMailEventListener implements \Swift_Events_EventListener
 {
+
     public $test;
 
     public function __construct($test)

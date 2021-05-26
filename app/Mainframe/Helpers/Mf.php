@@ -86,7 +86,7 @@ class Mf
      */
     public static function projectKey()
     {
-        return kebab_case(self::project());
+        return \Str::kebab(self::project());
     }
 
     /**

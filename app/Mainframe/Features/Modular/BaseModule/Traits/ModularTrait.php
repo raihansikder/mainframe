@@ -887,7 +887,7 @@ trait ModularTrait
     {
         $key = $slug;
         if (!\Str::endsWith($slug, '_ids')) {
-            $key = str_singular($slug).'_ids';
+            $key = \Str::singular($slug).'_ids';
         }
         $class = $this->spreadAttributes[$key];
 

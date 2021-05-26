@@ -203,7 +203,7 @@ function cached($key, $seconds = null)
 
     $cached = new Cached();
     $cached->key = $key;
-    $function = lcfirst(camel_case($key)); //camelCaseFunction
+    $function = lcfirst(\Str::camel($key)); //camelCaseFunction
 
     if (isset($seconds) && $seconds < 1) {
         Cache::forget($key);
@@ -317,10 +317,10 @@ function classKey($class)
 {
 
     if (is_string($class)) {
-        return str_slug(\Str::kebab(className($class)));
+        return \Str::slug(\Str::kebab(className($class)));
     }
 
-    return str_slug(\Str::kebab(class_basename($class)));
+    return \Str::slug(\Str::kebab(class_basename($class)));
 }
 
 function classFromKey($key)
@@ -352,10 +352,10 @@ function classVar($class)
 function classSnakeKey($class)
 {
     if (is_string($class)) {
-        return snake_case(className($class));
+        return \Str::snake(className($class));
     }
 
-    return snake_case(class_basename($class));
+    return \Str::snake(class_basename($class));
 }
 
 /**

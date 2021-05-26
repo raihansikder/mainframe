@@ -229,7 +229,7 @@ return [
      | Note, it is currently an all-or-nothing option.
      |
      */
-    'model_camel_case_properties' => false,
+    'model_\Str::camel_properties' => false,
 
     /*
     |--------------------------------------------------------------------------
