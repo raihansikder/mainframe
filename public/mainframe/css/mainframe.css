@@ -164,6 +164,12 @@ table.dataTable thead > tr > th {
     font-size: 12px;
 }
 
+table.dataTable th {
+    background-color: #bebfc1;
+    color: #fff;
+    font-weight: 600
+}
+
 /* make textarea same size of ckeditor */
 textarea {
     height: 100px;
