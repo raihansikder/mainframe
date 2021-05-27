@@ -17,7 +17,8 @@
 
 
 
-    use App\Projects\MyProject\Contents\SampleContent;use App\Projects\MyProject\Datatables\SampleDatatable;
+    use App\Projects\MyProject\Contents\SampleContent;
+    use App\Projects\MyProject\Datatables\SampleDatatable;
     $sampleContent = (new SampleContent())->get('body');
 
     $str = '\App\Mainframe\Modules\Modules\Module';

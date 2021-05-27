@@ -38,7 +38,6 @@
             width: 100% !important;
             -webkit-hyphens: auto;
             -webkit-text-size-adjust: none;
-            word-break: break-all;
             word-break: break-word;
         }
 
@@ -288,9 +287,7 @@
         .promotion {
             background-color: #FFFFFF;
             border: 2px dashed #9BA2AB;
-            margin: 0;
-            margin-bottom: 25px;
-            margin-top: 25px;
+            margin: 25px 0;
             padding: 24px;
             width: 100%;
             -premailer-cellpadding: 0;
@@ -318,7 +315,6 @@
 </head>
 <body>
 
-
 <table class="wrapper" width="100%" cellpadding="0" cellspacing="0">
     <tr>
         <td align="center">
@@ -340,7 +336,6 @@
                         </table>
                     </td>
                 </tr>
-
                 @section('footer')
                 @show
             </table>

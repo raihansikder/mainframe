@@ -1,7 +1,7 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    @include('projects.my-project.layouts.default.includes.analytics')
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <style type="text/css">
@@ -38,11 +38,13 @@
             width: 100% !important;
             -webkit-hyphens: auto;
             -webkit-text-size-adjust: none;
-            word-break: break-all;
             word-break: break-word;
         }
 
-        p, ul, ol, blockquote {
+        p,
+        ul,
+        ol,
+        blockquote {
             line-height: 1.4;
             text-align: left;
         }
@@ -112,6 +114,7 @@
         .content {
             margin: 0;
             padding: 0;
+            width: 100%;
             -premailer-cellpadding: 0;
             -premailer-cellspacing: 0;
             -premailer-width: 100%;
@@ -119,12 +122,12 @@
 
         /* Header */
 
-        .header, .title {
+        .header {
             padding: 25px 0;
             text-align: center;
         }
 
-        .header a, .title a {
+        .header a {
             color: #bbbfc3;
             font-size: 19px;
             font-weight: bold;
@@ -284,9 +287,7 @@
         .promotion {
             background-color: #FFFFFF;
             border: 2px dashed #9BA2AB;
-            margin: 0;
-            margin-bottom: 25px;
-            margin-top: 25px;
+            margin: 25px 0;
             padding: 24px;
             width: 100%;
             -premailer-cellpadding: 0;
@@ -306,35 +307,37 @@
         .center {
             text-align: center;
         }
+
     </style>
     <title></title>
     @section('head')
     @show
 </head>
 <body>
+
 <table class="wrapper" width="100%" cellpadding="0" cellspacing="0">
     <tr>
         <td align="center">
-            <table class="content" width="600" cellpadding="0" cellspacing="0">
-                <tr>
-                    <td class="body" width="100%" cellpadding="0" cellspacing="0" style="padding:10px; padding-top:15px; text-align:left">
-                        <!--<img width="300" src="http://demo.yantrait.co.uk/mphstaging/public/projects/my-project/images/logo.png" />-->
-                        <img width="300" border="0" src="{{asset('projects/my-project/images/logo.png')}}" alt="{{config('app.name')}}"/></td>
-                </tr>
-                <tr>
-                    <td class="body" width="100%" cellpadding="0" cellspacing="0"><h2 class="title"> @section('title')
-                            @show </h2></td>
-                </tr>
+            <table class="content" width="100%" cellpadding="0" cellspacing="0">
+                <h2 class="header">
+                    @section('title')
+                    @show
+                </h2>
+
                 <tr>
                     <td class="body" width="100%" cellpadding="0" cellspacing="0">
                         <table class="inner-body" align="center" width="570" cellpadding="0" cellspacing="0">
                             <tr>
-                                <td class="content-cell"> @section('content')
-                                    @show </td>
+                                <td class="content-cell">
+                                    @section('content')
+                                    @show
+                                </td>
                             </tr>
                         </table>
                     </td>
                 </tr>
+                @section('footer')
+                @show
             </table>
         </td>
     </tr>

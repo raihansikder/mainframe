@@ -628,3 +628,6 @@ a i {
     background-color: yellow;
     border-radius: 5px;
 }
+.transparent, .bg-transparent {
+    background-color: transparent;
+}

@@ -36,13 +36,13 @@ $content = $element;
         @include('form.text',['var'=>['name'=>'key','label'=>'Key <code>key-format</code>']])
         <div class="clearfix"></div>
         @include('form.text',['var'=>['name'=>'title','label'=>'Title', 'div'=>'col-md-12']])
-        @include('form.textarea',['var'=>['name'=>'body','label'=>'Body', 'div'=>'col-md-12']])
+        @include('form.textarea',['var'=>['name'=>'body','label'=>'Body', 'div'=>'col-md-12', 'class'=>'ckeditor']])
 
         @include('form.is-active')
         @include('form.tags',['var'=>['name'=>'tags','label'=>'Tags', 'div'=>'col-md-12']])
         {{---------------|  Form input start |-----------------------}}
 
-        <div id="partsBuilder" class="col-md-12" style="clear: both">
+        <div id="partsBuilder" class="col-md-12 no-padding-l" style="clear: both">
 
             <h4>Parts</h4>
             <div class="clearfix"></div>

@@ -35,7 +35,6 @@ Section: Data table JS
    the inital search delay.
 --}}
 @section('js')
-    @parent
     <script type="text/javascript">
         var {{$datatableName}} =
         $('#{{$datatableName}}').DataTable({
@@ -44,10 +43,11 @@ Section: Data table JS
             processing: true,
             serverSide: true,
             searchDelay: 2000,
-            minLength : 3,
+            minLength: 3,
             pageLength: {{$datatable->pageLength()}},
             "order": [[0, 'desc']],
             mark: true
         });
     </script>
+    @parent
 @endsection
