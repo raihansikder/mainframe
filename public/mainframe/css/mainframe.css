@@ -277,7 +277,8 @@ div.filecard .info-box-number {
 
 /* readonly spans in view partials inside forms/ */
 div.form-group span.readonly {
-    height: 34px;
+    min-height: 34px;
+    height: auto;
     background-color: #fbfbfb;
 }
 
@@ -630,4 +631,8 @@ a i {
 }
 .transparent, .bg-transparent {
     background-color: transparent;
+}
+
+.block {
+    display: block;
 }
