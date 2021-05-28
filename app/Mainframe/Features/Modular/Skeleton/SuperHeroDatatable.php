@@ -16,10 +16,11 @@ class SuperHeroDatatable extends ModuleDatatable
     /*---------------------------------
     | Section : Define query tables/model
     |---------------------------------*/
-    // public function source()
-    // {
-    //     return DB::table($this->table)->leftJoin('users as updater', 'updater.id', $this->table.'.updated_by');
-    // }
+    public function source()
+    {
+        // return \DB::table($this->table)->leftJoin('users as updater', 'updater.id', $this->table.'.updated_by'); // Old table based implementation
+        Superhero::with(['updater:id,name']); // Model based query.
+    }
 
     /*---------------------------------
     | Section : Define columns
@@ -33,7 +34,7 @@ class SuperHeroDatatable extends ModuleDatatable
             // [TABLE_FIELD, SQL_TABLE_FIELD_AS, HTML_GRID_TITLE],
             [$this->table.'.id', 'id', 'ID'],
             [$this->table.'.name', 'name', 'Name'],
-            ['updater.name', 'user_name', 'Updater'],
+            [$this->table.'.updated_by', 'updated_by', 'Updater'],
             [$this->table.'.updated_at', 'updated_at', 'Updated at'],
             [$this->table.'.is_active', 'is_active', 'Active'],
         ];
@@ -69,22 +70,21 @@ class SuperHeroDatatable extends ModuleDatatable
     /*---------------------------------
     | Section : Modify row-columns
     |---------------------------------*/
-    // public function modify($dt)
-    // {
-    //     $dt = parent::modify($dt);
-    //     $dt->rawColumns(['id', 'email', 'is_active']); // Dynamically set HTML columns
-    //
-    //     if ($this->hasColumn('column_name')) {
-    //         $dt->editColumn('column_name', function ($row) { return $row->column_name.'updated'; });
-    //     }
-    //
-    //     return $dt;
-    // }
+    public function modify($dt)
+    {
+        $dt = parent::modify($dt);
+        // $dt->rawColumns(['id', 'email', 'is_active']); // Dynamically set HTML columns
+
+        if ($this->hasColumn('updated_by')) {
+            $dt->editColumn('updated_by', function ($row) { return optional($row->updater)->name; });
+        }
+
+        return $dt;
+    }
 
     /*---------------------------------
     | Section : Additional methods
     |---------------------------------*/
-    // public function selects()
     // public function query()
     // public function json()
     // public function hasColumn()
