@@ -10,9 +10,6 @@ class SuperHeroDatatable extends ModuleDatatable
 
     public $moduleName = 'super-heroes';
 
-    /** @var string[] HTML rendering enabled for columns */
-    public $rawColumns = ['id', 'name', 'is_active'];
-
     /*---------------------------------
     | Section : Define query tables/model
     |---------------------------------*/

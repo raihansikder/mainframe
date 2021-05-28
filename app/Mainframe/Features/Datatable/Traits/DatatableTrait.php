@@ -169,6 +169,13 @@ trait DatatableTrait
         return false;
     }
 
+    public function visibleColumns()
+    {
+        return collect($this->columns())->reject(function ($item, $key) {
+            return in_array($item[1], $this->hidden());
+        })->all();
+    }
+
     /**
      * Titles extracted from the column definition
      *
@@ -177,12 +184,19 @@ trait DatatableTrait
      */
     public function titles()
     {
-        $titles = collect($this->columns())->reject(function ($item, $key) {
-            return in_array($item[1], $this->hidden());
-        })->all();
+        $titles = $this->visibleColumns();
 
         return collect($titles)->map(function ($item, $key) {
             return $item[2];             // Take 3rd index. Check datatable class select()
+        })->all();
+    }
+
+    public function columnKeys()
+    {
+        $columns = $this->visibleColumns();
+
+        return collect($columns)->map(function ($item, $key) {
+            return $item[1];             // Take 3rd index. Check datatable class select()
         })->all();
     }
 

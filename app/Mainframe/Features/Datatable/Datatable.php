@@ -40,8 +40,9 @@ class Datatable
      * Optionally merge the defaults from config.
      *
      * @var string[]
+     * @deprecated Automatically all columns are considered as raw(html) columns
      */
-    public $rawColumns = ['id', 'name', 'is_active'];
+    public $rawColumns = ['tenant_sl','id', 'name', 'is_active','action'];
 
     /**
      * Data source URL
