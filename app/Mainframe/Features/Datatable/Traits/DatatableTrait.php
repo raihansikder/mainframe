@@ -123,6 +123,8 @@ trait DatatableTrait
             $dt->blacklist($this->blackList);
         }
 
+        $dt->rawColumns($this->columnKeys());
+
         return $dt;
     }
 
