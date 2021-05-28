@@ -52,6 +52,8 @@ class Datatable
 
     public $pageLength = 50;
 
+    public $hidden;
+
     /**
      * Constructor for this class is very important as it boots up necessary features of
      * a module. First of all, it load module related meta information, then based
@@ -134,6 +136,11 @@ class Datatable
     public function pageLength()
     {
         return $this->pageLength ?? 50;
+    }
+
+    public function hidden()
+    {
+        return $this->hidden ?? [];
     }
 
 }

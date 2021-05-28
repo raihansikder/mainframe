@@ -177,9 +177,12 @@ trait DatatableTrait
      */
     public function titles()
     {
-        return collect($this->columns())->map(function ($item, $key) {
-            // Take 3rd index. Check datatable class select()
-            return $item[2];
+        $titles = collect($this->columns())->reject(function ($item, $key) {
+            return in_array($item[1], $this->hidden());
+        })->all();
+
+        return collect($titles)->map(function ($item, $key) {
+            return $item[2];             // Take 3rd index. Check datatable class select()
         })->all();
     }
 
@@ -192,7 +195,11 @@ trait DatatableTrait
     public function columnsJson()
     {
         return collect($this->columns())->reduce(function ($carry, $item) {
-            return $carry."{ data: '".$item[1]."', name: '".$item[0]."' },";
+            if (!in_array($item[1], $this->hidden())) {
+                return $carry."{ data: '".$item[1]."', name: '".$item[0]."' },";
+            }
+
+            return $carry;
         });
     }
 
