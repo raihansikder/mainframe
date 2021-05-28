@@ -66,7 +66,7 @@ $input = new \App\Mainframe\Features\Form\Select\SelectAjax($var);
 
 
 @section('js')
-    @parent
+
     @if(!$input->isHidden)
 
         <script type="text/javascript">
@@ -93,6 +93,7 @@ $input = new \App\Mainframe\Features\Form\Select\SelectAjax($var);
 
                 var select2 = $("#" + divId + " input.ajax").select2({
                     minimumInputLength: 2,
+                    allowClear: true,
                     initSelection: function (element, callback) {
                         var id = element.val();
                         var text = $("#" + divId + ' input[name=preload]').val();
@@ -124,6 +125,8 @@ $input = new \App\Mainframe\Features\Form\Select\SelectAjax($var);
 
         </script>
     @endif
+    @parent
+
 @endsection
 
 <?php unset($input) ?>

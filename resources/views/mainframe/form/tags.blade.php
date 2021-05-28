@@ -51,7 +51,7 @@ $input = new \App\Mainframe\Features\Form\Text\Tags($var);
 
 {{-- js --}}
 @section('js')
-    @parent
+
     {{-- Instantiate the ckeditor if the class 'ckeditor' is added in textarea--}}
     @if(!$input->isHidden)
         <script>
@@ -61,6 +61,9 @@ $input = new \App\Mainframe\Features\Form\Text\Tags($var);
             });
         </script>
     @endif
+
+    @parent
+
 @endsection
 
 {{-- Unset the local variable used in this view. --}}
