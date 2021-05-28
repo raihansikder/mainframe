@@ -2,8 +2,8 @@
 
 namespace App\Mainframe\Features\Datatable\Traits;
 
-use App\Module;
 use App\Mainframe\Features\Datatable\ModuleDatatable;
+use App\Module;
 
 /** @mixin ModuleDatatable */
 trait ModuleDatatableTrait
@@ -74,6 +74,12 @@ trait ModuleDatatableTrait
             });
         }
 
+        if ($this->hasColumn('updated_by')) {
+            $dt = $dt->editColumn('updated_by', function ($row) {
+                return $row->updater->name ?? $row->updated_by;
+            });
+        }
+
         return $dt;
     }
 
@@ -90,7 +96,7 @@ trait ModuleDatatableTrait
             $url = route($this->module->name.'.datatable-json');
         }
 
-        return trim($url.'?'.parse_url(\URL::full(), PHP_URL_QUERY),'?&');
+        return trim($url.'?'.parse_url(\URL::full(), PHP_URL_QUERY), '?&');
     }
 
     /**

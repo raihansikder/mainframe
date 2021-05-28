@@ -112,9 +112,6 @@ trait DatatableTrait
     {
         $dt = datatables($this->query());
 
-        // HTML Output
-        $dt->rawColumns($this->rawColumns);
-
         if (count($this->whiteList)) {
             $dt->whitelist($this->whiteList);
         }
@@ -123,7 +120,7 @@ trait DatatableTrait
             $dt->blacklist($this->blackList);
         }
 
-        $dt->rawColumns($this->columnKeys());
+        $dt->rawColumns(array_merge($this->rawColumns, $this->columnKeys()));
 
         return $dt;
     }
