@@ -90,7 +90,7 @@ trait ModuleDatatableTrait
             $url = route($this->module->name.'.datatable-json');
         }
 
-        return $url.'?'.parse_url(\URL::full(), PHP_URL_QUERY);
+        return trim($url.'?'.parse_url(\URL::full(), PHP_URL_QUERY),'?&');
     }
 
     /**
