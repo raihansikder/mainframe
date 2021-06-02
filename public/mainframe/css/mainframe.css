@@ -103,7 +103,7 @@ table, tr, th, td, thead, tbody {
     font-size: inherit
 }
 
-.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th{
+.table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
     vertical-align: middle;
 }
 
@@ -639,4 +639,8 @@ a i {
 
 .block {
     display: block;
+}
+
+.dropdown-menu button {
+    background-color: transparent;
 }
