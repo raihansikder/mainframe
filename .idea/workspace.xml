@@ -2,7 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5175d202-f036-4353-b0dd-2451d7063b0a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app/Mainframe/Helpers/functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Helpers/functions.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/composerJson.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/mainframe8.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/mainframe8.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/phpunit.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/phpunit.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,7 +22,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 7.4.12">
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 8">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/myclabs/php-enum" />
       <path value="$PROJECT_DIR$/vendor/opis/closure" />
@@ -46,7 +52,6 @@
       <path value="$PROJECT_DIR$/vendor/yajra/laravel-datatables-oracle" />
       <path value="$PROJECT_DIR$/vendor/phpunit/php-file-iterator" />
       <path value="$PROJECT_DIR$/vendor/phpunit/php-code-coverage" />
-      <path value="$PROJECT_DIR$/vendor/phpunit/phpunit" />
       <path value="$PROJECT_DIR$/vendor/hamcrest/hamcrest-php" />
       <path value="$PROJECT_DIR$/vendor/phpunit/php-text-template" />
       <path value="$PROJECT_DIR$/vendor/phpunit/php-timer" />
@@ -168,25 +173,9 @@
       <path value="$PROJECT_DIR$/vendor/dasprid/enum" />
       <path value="$PROJECT_DIR$/vendor/simplesoftwareio/simple-qrcode" />
       <path value="$PROJECT_DIR$/vendor/laravel/telescope" />
-      <path value="$PROJECT_DIR$/vendor/mpociot/reflection-docblock" />
-      <path value="$PROJECT_DIR$/vendor/mpociot/documentarian" />
-      <path value="$PROJECT_DIR$/vendor/mpociot/laravel-apidoc-generator" />
-      <path value="$PROJECT_DIR$/vendor/windwalker/structure" />
-      <path value="$PROJECT_DIR$/vendor/windwalker/renderer" />
-      <path value="$PROJECT_DIR$/vendor/phpunit/php-token-stream" />
       <path value="$PROJECT_DIR$/vendor/arcanedev/log-viewer" />
       <path value="$PROJECT_DIR$/vendor/arcanedev/support" />
-      <path value="$PROJECT_DIR$/vendor/symfony/var-exporter" />
-      <path value="$PROJECT_DIR$/vendor/symfony/yaml" />
-      <path value="$PROJECT_DIR$/vendor/php-di/invoker" />
-      <path value="$PROJECT_DIR$/vendor/moontoast/math" />
-      <path value="$PROJECT_DIR$/vendor/scrivo/highlight.php" />
-      <path value="$PROJECT_DIR$/vendor/paragonie/constant_time_encoding" />
-      <path value="$PROJECT_DIR$/vendor/erusev/parsedown" />
-      <path value="$PROJECT_DIR$/vendor/phpseclib/bcmath_compat" />
-      <path value="$PROJECT_DIR$/vendor/phpseclib/phpseclib" />
-      <path value="$PROJECT_DIR$/vendor/mnapoli/front-yaml" />
-      <path value="$PROJECT_DIR$/vendor/mnapoli/silly" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/phpunit" />
     </include_path>
   </component>
   <component name="ProjectId" id="1svgm87kLIWy5S0lEbbNjYrjLCD" />
@@ -202,9 +191,9 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/tests/bootstrap.php" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="php.test.frameworks.configurable" />
+    <property name="settings.editor.selected.configurable" value="settings.php.quality.tools" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -262,6 +251,10 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="245" y="21" key="#CLI_Interpreters" timestamp="1621999832632">
+      <screen x="0" y="0" width="1366" height="722" />
+    </state>
+    <state x="245" y="21" key="#CLI_Interpreters/0.0.1366.722/1366.-130.1600.860@0.0.1366.722" timestamp="1621999832632" />
     <state x="1976" y="192" key="#Composer" timestamp="1621759128760">
       <screen x="1366" y="-130" width="1600" height="860" />
     </state>
@@ -274,34 +267,45 @@
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="316" y="32" key="#tests/0.0.1280.800@0.0.1280.800" timestamp="1621762233822" />
-    <state width="1280" height="389" key="GridCell.Tab.0.bottom" timestamp="1621764092664">
-      <screen x="0" y="0" width="1280" height="800" />
+    <state x="445" y="121" key="FileChooserDialogImpl" timestamp="1621999874111">
+      <screen x="0" y="0" width="1366" height="722" />
+    </state>
+    <state x="445" y="121" key="FileChooserDialogImpl/0.0.1366.722/1366.-130.1600.860@0.0.1366.722" timestamp="1621999874111" />
+    <state width="1367" height="303" key="GridCell.Tab.0.bottom" timestamp="1622069462436">
+      <screen x="0" y="0" width="1366" height="722" />
     </state>
     <state width="1280" height="389" key="GridCell.Tab.0.bottom/0.0.1280.800@0.0.1280.800" timestamp="1621764092664" />
-    <state width="1280" height="389" key="GridCell.Tab.0.center" timestamp="1621764092663">
-      <screen x="0" y="0" width="1280" height="800" />
+    <state width="1367" height="303" key="GridCell.Tab.0.bottom/0.0.1366.722/1366.-130.1600.860@0.0.1366.722" timestamp="1622069462436" />
+    <state width="1367" height="303" key="GridCell.Tab.0.center" timestamp="1622069462435">
+      <screen x="0" y="0" width="1366" height="722" />
     </state>
     <state width="1280" height="389" key="GridCell.Tab.0.center/0.0.1280.800@0.0.1280.800" timestamp="1621764092663" />
-    <state width="1280" height="389" key="GridCell.Tab.0.left" timestamp="1621764092662">
-      <screen x="0" y="0" width="1280" height="800" />
+    <state width="1367" height="303" key="GridCell.Tab.0.center/0.0.1366.722/1366.-130.1600.860@0.0.1366.722" timestamp="1622069462435" />
+    <state width="1367" height="303" key="GridCell.Tab.0.left" timestamp="1622069462422">
+      <screen x="0" y="0" width="1366" height="722" />
     </state>
     <state width="1280" height="389" key="GridCell.Tab.0.left/0.0.1280.800@0.0.1280.800" timestamp="1621764092662" />
-    <state width="1280" height="389" key="GridCell.Tab.0.right" timestamp="1621764092664">
-      <screen x="0" y="0" width="1280" height="800" />
+    <state width="1367" height="303" key="GridCell.Tab.0.left/0.0.1366.722/1366.-130.1600.860@0.0.1366.722" timestamp="1622069462422" />
+    <state width="1367" height="303" key="GridCell.Tab.0.right" timestamp="1622069462435">
+      <screen x="0" y="0" width="1366" height="722" />
     </state>
     <state width="1280" height="389" key="GridCell.Tab.0.right/0.0.1280.800@0.0.1280.800" timestamp="1621764092664" />
-    <state x="156" y="36" key="SettingsEditor" timestamp="1621767068093">
-      <screen x="0" y="0" width="1280" height="800" />
+    <state width="1367" height="303" key="GridCell.Tab.0.right/0.0.1366.722/1366.-130.1600.860@0.0.1366.722" timestamp="1622069462435" />
+    <state x="166" y="11" key="SettingsEditor" timestamp="1622005597617">
+      <screen x="0" y="0" width="1366" height="722" />
     </state>
     <state x="156" y="36" key="SettingsEditor/0.0.1280.800@0.0.1280.800" timestamp="1621767068093" />
-    <state x="344" y="162" width="591" height="534" key="find.popup" timestamp="1621763967822">
-      <screen x="0" y="0" width="1280" height="800" />
+    <state x="166" y="11" key="SettingsEditor/0.0.1366.722/1366.-130.1600.860@0.0.1366.722" timestamp="1622005597617" />
+    <state x="367" y="146" width="631" height="534" key="find.popup" timestamp="1621999967812">
+      <screen x="0" y="0" width="1366" height="722" />
     </state>
     <state x="344" y="162" width="591" height="534" key="find.popup/0.0.1280.800@0.0.1280.800" timestamp="1621763967822" />
-    <state x="370" y="167" width="670" height="631" key="search.everywhere.popup" timestamp="1621764068830">
-      <screen x="0" y="0" width="1280" height="800" />
+    <state x="367" y="146" width="631" height="534" key="find.popup/0.0.1366.722/1366.-130.1600.860@0.0.1366.722" timestamp="1621999967812" />
+    <state x="395" y="151" width="716" height="570" key="search.everywhere.popup" timestamp="1622029362064">
+      <screen x="0" y="0" width="1366" height="722" />
     </state>
     <state x="370" y="167" width="670" height="631" key="search.everywhere.popup/0.0.1280.800@0.0.1280.800" timestamp="1621764068830" />
+    <state x="395" y="151" width="716" height="570" key="search.everywhere.popup/0.0.1366.722/1366.-130.1600.860@0.0.1366.722" timestamp="1622029362064" />
     <state x="1829" y="50" width="672" height="678" key="search.everywhere.popup/0.0.1366.722/1366.-130.1600.860@1366.-130.1600.860" timestamp="1621758889822" />
   </component>
 </project>
