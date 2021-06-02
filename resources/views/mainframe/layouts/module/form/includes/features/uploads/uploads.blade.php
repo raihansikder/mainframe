@@ -71,13 +71,15 @@ if ($input->moduleId && $input->elementId) {
 
 {{-- js --}}
 @section('js')
-    @parent
+
     @if($input->isEditable)
         <script>
             {{--initUploader("{{$input->uploadBoxId}}", "{{ route($module->name.'.uploads.store', $element->id)}}");--}}
             initUploader("{{$input->uploadBoxId}}", "{{ route('uploads.store')}}");
         </script>
     @endif
+
+    @parent
 @endsection
 
 <?php unset($input); ?>

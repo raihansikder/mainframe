@@ -3,10 +3,11 @@
 namespace App\Mainframe\Modules\Contents;
 
 use App\Mainframe\Features\Modular\BaseModule\BaseModuleViewProcessor;
-use App\Content;
-use App\Mainframe\Features\Modular\BaseModule\Traits\ViewProcessorTrait;
+use App\Mainframe\Modules\Contents\Traits\ContentViewProcessorTrait;
 
 class ContentViewProcessor extends BaseModuleViewProcessor
 {
-    use ViewProcessorTrait;
+    use ContentViewProcessorTrait;
+
+
 }

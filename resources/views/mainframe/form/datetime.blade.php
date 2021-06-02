@@ -54,7 +54,7 @@ $input->format = config('mainframe.config.datetime_format'); // Format to show i
 @endif
 
 @section('js')
-    @parent
+
     @if(!$input->isHidden)
         <script>
             $('#{{$input->uid}} #{{$input->params['id'].'_formatted'}}').datetimepicker(
@@ -88,6 +88,8 @@ $input->format = config('mainframe.config.datetime_format'); // Format to show i
             });
         </script>
     @endif
+
+    @parent
 @stop
 
 <?php unset($input) ?>

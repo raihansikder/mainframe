@@ -87,6 +87,7 @@ $input->format = config('mainframe.config.date_format'); // Format to show in th
             });
         </script>
     @endif
+
     @parent
 @stop
 

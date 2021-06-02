@@ -103,6 +103,10 @@ table, tr, th, td, thead, tbody {
     font-size: inherit
 }
 
+.table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+    vertical-align: middle;
+}
+
 .main-header {
     background-image: url('../images/top-strip-1.png');
     background-repeat: no-repeat;
@@ -162,6 +166,12 @@ table.dataTable {
 table.dataTable thead > tr > th {
     font-weight: normal;
     font-size: 12px;
+}
+
+table.dataTable th {
+    background-color: #bebfc1;
+    color: #fff;
+    font-weight: 600
 }
 
 /* make textarea same size of ckeditor */
@@ -271,7 +281,8 @@ div.filecard .info-box-number {
 
 /* readonly spans in view partials inside forms/ */
 div.form-group span.readonly {
-    height: 34px;
+    min-height: 34px;
+    height: auto;
     background-color: #fbfbfb;
 }
 
@@ -621,4 +632,15 @@ a i {
     padding: 0;
     background-color: yellow;
     border-radius: 5px;
+}
+.transparent, .bg-transparent {
+    background-color: transparent;
+}
+
+.block {
+    display: block;
+}
+
+.dropdown-menu button {
+    background-color: transparent;
 }

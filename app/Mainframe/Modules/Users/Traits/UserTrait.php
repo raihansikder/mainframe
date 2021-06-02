@@ -313,7 +313,7 @@ trait UserTrait
      */
     public function ofTenant()
     {
-        return $this->tenant_id ?: false;
+        return $this->tenant_id && $this->inAnyGroup(['tenant-admin', 'tenant-user']);
     }
 
     /*-----------------------------------------

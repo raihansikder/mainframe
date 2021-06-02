@@ -66,7 +66,7 @@ $input = new \App\Mainframe\Features\Form\Select\SelectArrayMultiple($var);
 @endif
 
 @section('js')
-    @parent
+
     @if(!$input->isHidden)
         <script>
             $('[data-parent={{$input->dataParent}}] select[id={{$input->params['id']}}] ').change(function () {
@@ -80,6 +80,8 @@ $input = new \App\Mainframe\Features\Form\Select\SelectArrayMultiple($var);
             });
         </script>
     @endif
+
+    @parent
 @endsection
 
 <?php unset($input); ?>

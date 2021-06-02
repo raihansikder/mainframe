@@ -14542,7 +14542,7 @@
 
     /**
      * Converts `string` to
-     * [snake case](https://en.wikipedia.org/wiki/\Str::snake).
+     * [snake case](https://en.wikipedia.org/wiki/Snake_case).
      *
      * @static
      * @memberOf _

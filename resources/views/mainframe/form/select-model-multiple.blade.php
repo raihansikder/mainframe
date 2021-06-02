@@ -73,7 +73,7 @@ $input = new \App\Mainframe\Features\Form\Select\SelectModelMultiple($var);
 @endif
 
 @section('js')
-    @parent
+
     <script>
         $('[data-parent={{$input->dataParent}}] select[id={{$input->params['id']}}] ').change(function () {
             if (!$(this).val()) {
@@ -85,6 +85,8 @@ $input = new \App\Mainframe\Features\Form\Select\SelectModelMultiple($var);
             }
         });
     </script>
+
+    @parent
 @endsection
 
 <?php unset($input); ?>

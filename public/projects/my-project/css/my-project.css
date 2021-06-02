@@ -18,7 +18,7 @@ body, html, .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6,
     font-family: 'Poppins', 'Karla', 'Roboto', 'Arial', sans-serif;
 }
 body {
-    font-size: 12px;
+    font-size: 13px;
 }
 
 .login-page {
@@ -50,12 +50,6 @@ body {
 .content-header h2 {
     font-weight: 600;
     color: #000;
-}
-
-table.dataTable th {
-    background-color: #bebfc1;
-    color: #fff;
-    font-weight: 600
 }
 
 table.dataTable {

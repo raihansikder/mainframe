@@ -40,8 +40,9 @@ class Datatable
      * Optionally merge the defaults from config.
      *
      * @var string[]
+     * @deprecated Automatically all columns are considered as raw(html) columns
      */
-    public $rawColumns = ['id', 'name', 'is_active'];
+    public $rawColumns = ['tenant_sl','id', 'name', 'is_active','action'];
 
     /**
      * Data source URL
@@ -51,6 +52,8 @@ class Datatable
     public $ajaxUrl;
 
     public $pageLength = 50;
+
+    public $hidden;
 
     /**
      * Constructor for this class is very important as it boots up necessary features of
@@ -134,6 +137,11 @@ class Datatable
     public function pageLength()
     {
         return $this->pageLength ?? 50;
+    }
+
+    public function hidden()
+    {
+        return $this->hidden ?? [];
     }
 
 }

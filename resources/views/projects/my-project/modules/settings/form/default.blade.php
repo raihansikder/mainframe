@@ -14,6 +14,7 @@
  */
 $setting = $element;
 $types = \App\Setting::$types;
+
 ?>
 
 @section('content-top')

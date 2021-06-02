@@ -112,9 +112,6 @@ trait DatatableTrait
     {
         $dt = datatables($this->query());
 
-        // HTML Output
-        $dt->rawColumns($this->rawColumns);
-
         if (count($this->whiteList)) {
             $dt->whitelist($this->whiteList);
         }
@@ -122,6 +119,8 @@ trait DatatableTrait
         if (count($this->blackList)) {
             $dt->blacklist($this->blackList);
         }
+
+        $dt->rawColumns(array_merge($this->rawColumns, $this->columnKeys()));
 
         return $dt;
     }
@@ -169,6 +168,13 @@ trait DatatableTrait
         return false;
     }
 
+    public function visibleColumns()
+    {
+        return collect($this->columns())->reject(function ($item, $key) {
+            return in_array($item[1], $this->hidden());
+        })->all();
+    }
+
     /**
      * Titles extracted from the column definition
      *
@@ -177,9 +183,19 @@ trait DatatableTrait
      */
     public function titles()
     {
-        return collect($this->columns())->map(function ($item, $key) {
-            // Take 3rd index. Check datatable class select()
-            return $item[2];
+        $titles = $this->visibleColumns();
+
+        return collect($titles)->map(function ($item, $key) {
+            return $item[2];             // Take 3rd index. Check datatable class select()
+        })->all();
+    }
+
+    public function columnKeys()
+    {
+        $columns = $this->visibleColumns();
+
+        return collect($columns)->map(function ($item, $key) {
+            return $item[1];             // Take 3rd index. Check datatable class select()
         })->all();
     }
 
@@ -192,7 +208,11 @@ trait DatatableTrait
     public function columnsJson()
     {
         return collect($this->columns())->reduce(function ($carry, $item) {
-            return $carry."{ data: '".$item[1]."', name: '".$item[0]."' },";
+            if (!in_array($item[1], $this->hidden())) {
+                return $carry."{ data: '".$item[1]."', name: '".$item[0]."' },";
+            }
+
+            return $carry;
         });
     }
 

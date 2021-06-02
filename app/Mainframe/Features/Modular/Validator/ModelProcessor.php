@@ -88,6 +88,17 @@ class ModelProcessor
         $this->module = $element->module();
     }
 
+    /**
+     * @param  array  $immutables
+     * @return ModelProcessor|mixed|$this
+     */
+    public function addImmutables($immutables = [])
+    {
+        $this->immutables = array_unique(array_merge($this->immutables, $immutables));
+
+        return $this;
+    }
+
     public function setEvent($event)
     {
         $this->event = $event;

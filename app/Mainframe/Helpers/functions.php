@@ -1,6 +1,5 @@
 <?php
 
-use App\Mainframe\Helpers\Cached;
 use App\Mainframe\Helpers\Mf;
 use Illuminate\Support\MessageBag;
 

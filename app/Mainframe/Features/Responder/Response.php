@@ -175,7 +175,7 @@ class Response
      *
      * @var string|bool
      */
-    public $convertJsonKeys = '\Str::snake';
+    public $convertJsonKeys = 'SNAKE_CASE';
 
     public function __construct()
     {
@@ -362,7 +362,7 @@ class Response
     }
 
     /**
-     * Convert an array keys to \Str::snake
+     * Convert an array keys to snake_case
      *
      * @param $array
      * @return array
@@ -380,7 +380,7 @@ class Response
      */
     public function convert($data)
     {
-        if ($this->convertJsonKeys == '\Str::snake') {
+        if ($this->convertJsonKeys == 'SNAKE_CASE') {
             return $this->snakeCaseKeys($data);
         }
 

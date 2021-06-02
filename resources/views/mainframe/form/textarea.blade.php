@@ -51,6 +51,7 @@ $input = new \App\Mainframe\Features\Form\Text\TextArea($var);
 
 {{-- js --}}
 @section('js')
+
     @parent
     {{-- Instantiate the ckeditor if the class 'ckeditor' is added in textarea--}}
     @if(strpos( $input->params['class'], 'ckeditor')  !== false)
@@ -58,6 +59,8 @@ $input = new \App\Mainframe\Features\Form\Text\TextArea($var);
             initEditor('{{ $input->params['id']}}', {{$input->editorConfig}});
         </script>
     @endif
+
+
 @endsection
 
 {{-- Unset the local variable used in this view. --}}

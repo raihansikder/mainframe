@@ -10,3 +10,7 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+/phpunit.xml
+phpunit.xml
+/_gsdata_
+/database/migrations/_gsdata_
