@@ -8,6 +8,7 @@ use App\Mainframe\Features\Core\Traits\Validable;
 use App\Mainframe\Features\Core\ViewProcessor;
 use App\Mainframe\Features\Modular\BaseModule\BaseModule;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\MessageBag;
 use View;
 
 /**
@@ -153,4 +154,16 @@ class BaseController extends Controller
         return $this->processor->element;
     }
 
+    /**
+     * Clear out existing messages.
+     *
+     * @return $this
+     */
+    public function resetMessageBag()
+    {
+        $this->messageBag = new MessageBag();
+        $this->response()->messageBag = $this->messageBag;
+
+        return $this;
+    }
 }
