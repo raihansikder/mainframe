@@ -16,7 +16,7 @@ class SuperHeroDatatable extends ModuleDatatable
     public function source()
     {
         // return \DB::table($this->table)->leftJoin('users as updater', 'updater.id', $this->table.'.updated_by'); // Old table based implementation
-        Superhero::with(['updater:id,name']); // Model based query.
+        SuperHero::with(['updater:id,name']); // Model based query.
     }
 
     /*---------------------------------
