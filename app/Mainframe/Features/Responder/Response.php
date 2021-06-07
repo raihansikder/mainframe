@@ -656,7 +656,7 @@ class Response
                 // Load from session so that when redirected the values are retained
                 'status' => session('response.status') ?? $this->status,
                 'message' => session('response.message') ?? $this->message,
-                'messageBag' => session('response.messageBag') ?? $this->messageBag(),
+                'messageBag' => session('response.messageBag') ?? $this->messageBag,
             ],
         ];
     }

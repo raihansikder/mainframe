@@ -2,13 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5175d202-f036-4353-b0dd-2451d7063b0a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/composerJson.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/mainframe8.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/mainframe8.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/phpunit.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/phpunit.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Core/Traits/Validable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Features/Core/Traits/Validable.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Modular/ModularController/Traits/RequestProcessorTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Features/Modular/ModularController/Traits/RequestProcessorTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Modular/Skeleton/migration.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Features/Modular/Skeleton/migration.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Responder/Response.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Features/Responder/Response.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/mainframe/templates/admin/plugins/iCheck/flat/blue.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/mainframe/templates/admin/plugins/iCheck/square/blue@2x.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +82,6 @@
       <path value="$PROJECT_DIR$/vendor/symfony/translation" />
       <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher-contracts" />
       <path value="$PROJECT_DIR$/vendor/symfony/filesystem" />
-      <path value="$PROJECT_DIR$/vendor/symfony/finder" />
       <path value="$PROJECT_DIR$/vendor/symfony/debug" />
       <path value="$PROJECT_DIR$/vendor/brick/math" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-normalizer" />
@@ -176,6 +178,7 @@
       <path value="$PROJECT_DIR$/vendor/arcanedev/log-viewer" />
       <path value="$PROJECT_DIR$/vendor/arcanedev/support" />
       <path value="$PROJECT_DIR$/vendor/phpunit/phpunit" />
+      <path value="$PROJECT_DIR$/vendor/symfony/finder" />
     </include_path>
   </component>
   <component name="ProjectId" id="1svgm87kLIWy5S0lEbbNjYrjLCD" />
@@ -193,7 +196,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/tests/bootstrap.php" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="settings.php.quality.tools" />
+    <property name="settings.editor.selected.configurable" value="php.test.frameworks.configurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -201,12 +204,12 @@
     </key>
   </component>
   <component name="RunManager" selected="PHPUnit.tests">
-    <configuration name="RegisterApiTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\Mainframe\Api\RegisterApiTest" configuration_file="$PROJECT_DIR$/phpunit.xml" directory="$PROJECT_DIR$/tests" file="$PROJECT_DIR$/tests/Feature/Mainframe/Api/RegisterApiTest.php" scope="Class" />
-      <method v="2" />
-    </configuration>
     <configuration name="RegisterApiTest.test_a_guest_can_register_as_a_user" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
       <TestRunner class="Tests\Feature\Mainframe\Api\RegisterApiTest" configuration_file="$PROJECT_DIR$/phpunit.xml" directory="$PROJECT_DIR$/tests" file="$PROJECT_DIR$/tests/Feature/Mainframe/Api/RegisterApiTest.php" method="test_a_guest_can_register_as_a_user" scope="Method" />
+      <method v="2" />
+    </configuration>
+    <configuration name="UserRegistrationTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\Mainframe\Auth\UserRegistrationTest" configuration_file="$PROJECT_DIR$/phpunit.xml" directory="$PROJECT_DIR$/tests" file="$PROJECT_DIR$/tests/Feature/Mainframe/Auth/UserRegistrationTest.php" scope="Class" />
       <method v="2" />
     </configuration>
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -226,10 +229,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="PHPUnit.tests" />
+        <item itemvalue="PHPUnit.UserRegistrationTest" />
         <item itemvalue="PHP Script.functions.php" />
         <item itemvalue="PHP Script.mail.php" />
         <item itemvalue="PHPUnit.RegisterApiTest.test_a_guest_can_register_as_a_user" />
-        <item itemvalue="PHPUnit.RegisterApiTest" />
       </list>
     </recent_temporary>
   </component>
@@ -271,41 +274,45 @@
       <screen x="0" y="0" width="1366" height="722" />
     </state>
     <state x="445" y="121" key="FileChooserDialogImpl/0.0.1366.722/1366.-130.1600.860@0.0.1366.722" timestamp="1621999874111" />
-    <state width="1367" height="303" key="GridCell.Tab.0.bottom" timestamp="1622069462436">
+    <state width="1367" height="303" key="GridCell.Tab.0.bottom" timestamp="1622725102391">
       <screen x="0" y="0" width="1366" height="722" />
     </state>
     <state width="1280" height="389" key="GridCell.Tab.0.bottom/0.0.1280.800@0.0.1280.800" timestamp="1621764092664" />
-    <state width="1367" height="303" key="GridCell.Tab.0.bottom/0.0.1366.722/1366.-130.1600.860@0.0.1366.722" timestamp="1622069462436" />
-    <state width="1367" height="303" key="GridCell.Tab.0.center" timestamp="1622069462435">
+    <state width="1367" height="303" key="GridCell.Tab.0.bottom/0.0.1366.722/1366.-130.1600.860@0.0.1366.722" timestamp="1622725102391" />
+    <state width="1367" height="303" key="GridCell.Tab.0.bottom/0.0.1366.722@0.0.1366.722" timestamp="1622688964508" />
+    <state width="1367" height="303" key="GridCell.Tab.0.center" timestamp="1622725102391">
       <screen x="0" y="0" width="1366" height="722" />
     </state>
     <state width="1280" height="389" key="GridCell.Tab.0.center/0.0.1280.800@0.0.1280.800" timestamp="1621764092663" />
-    <state width="1367" height="303" key="GridCell.Tab.0.center/0.0.1366.722/1366.-130.1600.860@0.0.1366.722" timestamp="1622069462435" />
-    <state width="1367" height="303" key="GridCell.Tab.0.left" timestamp="1622069462422">
+    <state width="1367" height="303" key="GridCell.Tab.0.center/0.0.1366.722/1366.-130.1600.860@0.0.1366.722" timestamp="1622725102391" />
+    <state width="1367" height="303" key="GridCell.Tab.0.center/0.0.1366.722@0.0.1366.722" timestamp="1622688964507" />
+    <state width="1367" height="303" key="GridCell.Tab.0.left" timestamp="1622725102391">
       <screen x="0" y="0" width="1366" height="722" />
     </state>
     <state width="1280" height="389" key="GridCell.Tab.0.left/0.0.1280.800@0.0.1280.800" timestamp="1621764092662" />
-    <state width="1367" height="303" key="GridCell.Tab.0.left/0.0.1366.722/1366.-130.1600.860@0.0.1366.722" timestamp="1622069462422" />
-    <state width="1367" height="303" key="GridCell.Tab.0.right" timestamp="1622069462435">
+    <state width="1367" height="303" key="GridCell.Tab.0.left/0.0.1366.722/1366.-130.1600.860@0.0.1366.722" timestamp="1622725102391" />
+    <state width="1367" height="303" key="GridCell.Tab.0.left/0.0.1366.722@0.0.1366.722" timestamp="1622688964507" />
+    <state width="1367" height="303" key="GridCell.Tab.0.right" timestamp="1622725102391">
       <screen x="0" y="0" width="1366" height="722" />
     </state>
     <state width="1280" height="389" key="GridCell.Tab.0.right/0.0.1280.800@0.0.1280.800" timestamp="1621764092664" />
-    <state width="1367" height="303" key="GridCell.Tab.0.right/0.0.1366.722/1366.-130.1600.860@0.0.1366.722" timestamp="1622069462435" />
-    <state x="166" y="11" key="SettingsEditor" timestamp="1622005597617">
+    <state width="1367" height="303" key="GridCell.Tab.0.right/0.0.1366.722/1366.-130.1600.860@0.0.1366.722" timestamp="1622725102391" />
+    <state width="1367" height="303" key="GridCell.Tab.0.right/0.0.1366.722@0.0.1366.722" timestamp="1622688964507" />
+    <state x="166" y="11" key="SettingsEditor" timestamp="1623031148269">
       <screen x="0" y="0" width="1366" height="722" />
     </state>
     <state x="156" y="36" key="SettingsEditor/0.0.1280.800@0.0.1280.800" timestamp="1621767068093" />
-    <state x="166" y="11" key="SettingsEditor/0.0.1366.722/1366.-130.1600.860@0.0.1366.722" timestamp="1622005597617" />
-    <state x="367" y="146" width="631" height="534" key="find.popup" timestamp="1621999967812">
+    <state x="166" y="11" key="SettingsEditor/0.0.1366.722/1366.-130.1600.860@0.0.1366.722" timestamp="1623031148269" />
+    <state x="367" y="146" width="631" height="534" key="find.popup" timestamp="1623030491189">
       <screen x="0" y="0" width="1366" height="722" />
     </state>
     <state x="344" y="162" width="591" height="534" key="find.popup/0.0.1280.800@0.0.1280.800" timestamp="1621763967822" />
-    <state x="367" y="146" width="631" height="534" key="find.popup/0.0.1366.722/1366.-130.1600.860@0.0.1366.722" timestamp="1621999967812" />
-    <state x="395" y="151" width="716" height="570" key="search.everywhere.popup" timestamp="1622029362064">
+    <state x="367" y="146" width="631" height="534" key="find.popup/0.0.1366.722/1366.-130.1600.860@0.0.1366.722" timestamp="1623030491189" />
+    <state x="395" y="151" width="716" height="570" key="search.everywhere.popup" timestamp="1623031137498">
       <screen x="0" y="0" width="1366" height="722" />
     </state>
     <state x="370" y="167" width="670" height="631" key="search.everywhere.popup/0.0.1280.800@0.0.1280.800" timestamp="1621764068830" />
-    <state x="395" y="151" width="716" height="570" key="search.everywhere.popup/0.0.1366.722/1366.-130.1600.860@0.0.1366.722" timestamp="1622029362064" />
+    <state x="395" y="151" width="716" height="570" key="search.everywhere.popup/0.0.1366.722/1366.-130.1600.860@0.0.1366.722" timestamp="1623031137498" />
     <state x="1829" y="50" width="672" height="678" key="search.everywhere.popup/0.0.1366.722/1366.-130.1600.860@1366.-130.1600.860" timestamp="1621758889822" />
   </component>
 </project>

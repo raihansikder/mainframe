@@ -2,10 +2,8 @@
 
 namespace App\Mainframe\Features\Core\Traits;
 
-use App\Mainframe\Features\Modular\BaseModule\BaseModule;
 use Illuminate\Support\MessageBag;
 use Validator;
-
 
 trait Validable
 {
@@ -46,6 +44,9 @@ trait Validable
      */
     public function messageBag()
     {
+        if ($this->messageBag) {
+            return $this->messageBag;
+        }
         $this->messageBag = resolve(MessageBag::class);
 
         return $this->messageBag;
@@ -272,6 +273,5 @@ trait Validable
 
         return $this;
     }
-
 
 }
