@@ -13,10 +13,13 @@ class SuperHeroDatatable extends ModuleDatatable
     /*---------------------------------
     | Section : Define query tables/model
     |---------------------------------*/
+    /**
+     * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Query\Builder
+     */
     public function source()
     {
         // return \DB::table($this->table)->leftJoin('users as updater', 'updater.id', $this->table.'.updated_by'); // Old table based implementation
-        SuperHero::with(['updater:id,name']); // Model based query.
+       return SuperHero::with(['updater:id,name']); // Model based query.
     }
 
     /*---------------------------------
