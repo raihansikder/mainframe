@@ -42,7 +42,7 @@ class Datatable
      * @var string[]
      * @deprecated Automatically all columns are considered as raw(html) columns
      */
-    public $rawColumns = ['tenant_sl','id', 'name', 'is_active','action'];
+    public $rawColumns = ['tenant_sl', 'id', 'name', 'is_active', 'action'];
 
     /**
      * Data source URL
@@ -126,7 +126,12 @@ class Datatable
         }
 
         // Get custom data table URL
-        return $url.'?'.parse_url(\URL::full(), PHP_URL_QUERY);
+        $params = parse_url(\URL::full(), PHP_URL_QUERY);
+        if (!str_contains($url, '?')) {
+            $params = '?'.$params;
+        }
+
+        return $url.$params;
     }
 
     /**
