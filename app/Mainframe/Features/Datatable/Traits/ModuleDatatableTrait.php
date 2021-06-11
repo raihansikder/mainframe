@@ -24,6 +24,12 @@ trait ModuleDatatableTrait
         ];
     }
 
+    public function source()
+    {
+        return $this->module->modelInstance()
+            ->leftJoin('users as updater', 'updater.id', $this->table.'.updated_by');
+    }
+
     /**
      * Define Query for generating results for grid
      *
