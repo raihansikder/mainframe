@@ -8,6 +8,8 @@ use App\Module;
 /** @mixin ModuleDatatable */
 trait ModuleDatatableTrait
 {
+    public $model;
+
     /**
      * Select columns, alias and corresponding HTML title
      *
@@ -26,7 +28,7 @@ trait ModuleDatatableTrait
 
     public function source()
     {
-        return $this->module->modelInstance()
+        return $this->model
             ->leftJoin('users as updater', 'updater.id', $this->table.'.updated_by');
     }
 
@@ -124,10 +126,8 @@ trait ModuleDatatableTrait
             return false;
         }
 
-        $this->module = $module;
-        $this->table = $this->module->tableName();
+        return parent::setModule($module);
 
-        return $this;
     }
 
 }

@@ -4,6 +4,7 @@ namespace App\Mainframe\Features\Datatable;
 
 use App\Mainframe\Features\Datatable\Traits\DatatableTrait;
 use App\Module;
+use Illuminate\Database\Eloquent\Model;
 
 class Datatable
 {
@@ -17,6 +18,9 @@ class Datatable
 
     /** @var Module */
     public $module;
+
+    /** @var Model */
+    public $model;
 
     /** @var \Yajra\DataTables\DataTableAbstract */
     public $dt;
@@ -86,6 +90,7 @@ class Datatable
 
         $this->module = $module;
         $this->table = $this->module->tableName();
+        $this->model = $this->module->modelInstance();
 
         return $this;
     }
