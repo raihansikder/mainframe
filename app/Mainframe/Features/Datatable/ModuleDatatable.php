@@ -1,4 +1,4 @@
-<?php /** @noinspection DuplicatedCode */
+<?php
 
 namespace App\Mainframe\Features\Datatable;
 
@@ -6,9 +6,7 @@ use App\Mainframe\Features\Datatable\Traits\ModuleDatatableTrait;
 
 class ModuleDatatable extends Datatable
 {
-
     use ModuleDatatableTrait;
-
 
     /** @var \App\Module */
     public $module;

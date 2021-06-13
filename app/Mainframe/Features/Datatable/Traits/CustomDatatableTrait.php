@@ -22,6 +22,11 @@ trait CustomDatatableTrait
         }
 
         // Get custom data table URL
-        return $url.'?'.parse_url(\URL::full(), PHP_URL_QUERY);
+        $params = parse_url(\URL::full(), PHP_URL_QUERY);
+        if (!str_contains($url, '?')) {
+            $params = '?'.$params;
+        }
+
+        return $url.$params;
     }
 }

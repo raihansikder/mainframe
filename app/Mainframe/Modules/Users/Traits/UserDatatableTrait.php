@@ -43,7 +43,7 @@ trait UserDatatableTrait
         // Show group name
         if ($this->hasColumn('email')) {
             $dt->editColumn('group_ids', function ($row) {
-                $groupNames = Group::whereIn('id', json_decode($row->group_ids))
+                $groupNames = Group::whereIn('id', $row->group_ids)
                     ->remember(timer('very-long'))
                     ->pluck('title')
                     ->toArray();

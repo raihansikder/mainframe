@@ -65,6 +65,7 @@ a:hover {
 
 .login-page input {
     font-size: 18px;
+    padding: 10px;
 }
 
 .login-box-body button.login {

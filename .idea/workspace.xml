@@ -3,6 +3,17 @@
   <component name="ChangeListManager">
     <list default="true" id="5175d202-f036-4353-b0dd-2451d7063b0a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Datatable/Datatable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Features/Datatable/Datatable.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Datatable/ModuleDatatable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Features/Datatable/ModuleDatatable.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Datatable/Traits/CustomDatatableTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Features/Datatable/Traits/CustomDatatableTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Datatable/Traits/ModuleDatatableTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Features/Datatable/Traits/ModuleDatatableTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Form/Select/SelectModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Features/Form/Select/SelectModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Features/Modular/Skeleton/SuperHeroDatatable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Features/Modular/Skeleton/SuperHeroDatatable.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/Modules/Users/Traits/UserDatatableTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/Modules/Users/Traits/UserDatatableTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mainframe/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mainframe/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Projects/MyProject/Features/Datatable/Datatable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Projects/MyProject/Features/Datatable/Datatable.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Projects/MyProject/Features/Datatable/ModuleDatatable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Projects/MyProject/Features/Datatable/ModuleDatatable.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/mainframe/css/mainframe.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/mainframe/css/mainframe.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -265,29 +276,29 @@
       <screen x="0" y="0" width="1366" height="722" />
     </state>
     <state x="445" y="121" key="FileChooserDialogImpl/0.0.1366.722/1366.-130.1600.860@0.0.1366.722" timestamp="1621999874111" />
-    <state width="1367" height="303" key="GridCell.Tab.0.bottom" timestamp="1623032605135">
+    <state width="1367" height="303" key="GridCell.Tab.0.bottom" timestamp="1623038532716">
       <screen x="0" y="0" width="1366" height="722" />
     </state>
     <state width="1280" height="389" key="GridCell.Tab.0.bottom/0.0.1280.800@0.0.1280.800" timestamp="1621764092664" />
-    <state width="1367" height="303" key="GridCell.Tab.0.bottom/0.0.1366.722/1366.-130.1600.860@0.0.1366.722" timestamp="1623032605135" />
+    <state width="1367" height="303" key="GridCell.Tab.0.bottom/0.0.1366.722/1366.-130.1600.860@0.0.1366.722" timestamp="1623038532716" />
     <state width="1367" height="303" key="GridCell.Tab.0.bottom/0.0.1366.722@0.0.1366.722" timestamp="1622688964508" />
-    <state width="1367" height="303" key="GridCell.Tab.0.center" timestamp="1623032605135">
+    <state width="1367" height="303" key="GridCell.Tab.0.center" timestamp="1623038532715">
       <screen x="0" y="0" width="1366" height="722" />
     </state>
     <state width="1280" height="389" key="GridCell.Tab.0.center/0.0.1280.800@0.0.1280.800" timestamp="1621764092663" />
-    <state width="1367" height="303" key="GridCell.Tab.0.center/0.0.1366.722/1366.-130.1600.860@0.0.1366.722" timestamp="1623032605135" />
+    <state width="1367" height="303" key="GridCell.Tab.0.center/0.0.1366.722/1366.-130.1600.860@0.0.1366.722" timestamp="1623038532715" />
     <state width="1367" height="303" key="GridCell.Tab.0.center/0.0.1366.722@0.0.1366.722" timestamp="1622688964507" />
-    <state width="1367" height="303" key="GridCell.Tab.0.left" timestamp="1623032605134">
+    <state width="1367" height="303" key="GridCell.Tab.0.left" timestamp="1623038532715">
       <screen x="0" y="0" width="1366" height="722" />
     </state>
     <state width="1280" height="389" key="GridCell.Tab.0.left/0.0.1280.800@0.0.1280.800" timestamp="1621764092662" />
-    <state width="1367" height="303" key="GridCell.Tab.0.left/0.0.1366.722/1366.-130.1600.860@0.0.1366.722" timestamp="1623032605134" />
+    <state width="1367" height="303" key="GridCell.Tab.0.left/0.0.1366.722/1366.-130.1600.860@0.0.1366.722" timestamp="1623038532715" />
     <state width="1367" height="303" key="GridCell.Tab.0.left/0.0.1366.722@0.0.1366.722" timestamp="1622688964507" />
-    <state width="1367" height="303" key="GridCell.Tab.0.right" timestamp="1623032605135">
+    <state width="1367" height="303" key="GridCell.Tab.0.right" timestamp="1623038532715">
       <screen x="0" y="0" width="1366" height="722" />
     </state>
     <state width="1280" height="389" key="GridCell.Tab.0.right/0.0.1280.800@0.0.1280.800" timestamp="1621764092664" />
-    <state width="1367" height="303" key="GridCell.Tab.0.right/0.0.1366.722/1366.-130.1600.860@0.0.1366.722" timestamp="1623032605135" />
+    <state width="1367" height="303" key="GridCell.Tab.0.right/0.0.1366.722/1366.-130.1600.860@0.0.1366.722" timestamp="1623038532715" />
     <state width="1367" height="303" key="GridCell.Tab.0.right/0.0.1366.722@0.0.1366.722" timestamp="1622688964507" />
     <state x="166" y="11" key="SettingsEditor" timestamp="1623031148269">
       <screen x="0" y="0" width="1366" height="722" />
@@ -299,11 +310,11 @@
     </state>
     <state x="344" y="162" width="591" height="534" key="find.popup/0.0.1280.800@0.0.1280.800" timestamp="1621763967822" />
     <state x="367" y="146" width="631" height="534" key="find.popup/0.0.1366.722/1366.-130.1600.860@0.0.1366.722" timestamp="1623030491189" />
-    <state x="395" y="151" width="716" height="570" key="search.everywhere.popup" timestamp="1623031137498">
+    <state x="395" y="151" width="716" height="570" key="search.everywhere.popup" timestamp="1623577906901">
       <screen x="0" y="0" width="1366" height="722" />
     </state>
     <state x="370" y="167" width="670" height="631" key="search.everywhere.popup/0.0.1280.800@0.0.1280.800" timestamp="1621764068830" />
-    <state x="395" y="151" width="716" height="570" key="search.everywhere.popup/0.0.1366.722/1366.-130.1600.860@0.0.1366.722" timestamp="1623031137498" />
+    <state x="395" y="151" width="716" height="570" key="search.everywhere.popup/0.0.1366.722/1366.-130.1600.860@0.0.1366.722" timestamp="1623577906901" />
     <state x="1829" y="50" width="672" height="678" key="search.everywhere.popup/0.0.1366.722/1366.-130.1600.860@1366.-130.1600.860" timestamp="1621758889822" />
   </component>
 </project>
