@@ -8,7 +8,6 @@ use App\Module;
 /** @mixin ModuleDatatable */
 trait ModuleDatatableTrait
 {
-    public $model;
 
     /**
      * Select columns, alias and corresponding HTML title
