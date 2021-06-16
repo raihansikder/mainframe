@@ -64,7 +64,7 @@ trait Query
 
             $key = base64_encode('report-'.__CLASS__).'-'.Mf::httpRequestSignature(($this->resultQuery()->toSql()));
 
-            $this->result = Cache::remember($key, $this->cache = 1, function () {
+            $this->result = Cache::remember($key, $this->cache, function () {
                 return $this->resultQuery()->paginate($this->rowsPerPage());
             });
 
