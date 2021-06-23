@@ -53,38 +53,11 @@ $input->format = config('mainframe.config.date_format'); // Format to show in th
 
 @section('js')
     @if(!$input->isHidden)
+        <?php
+        $selector = '#'.$input->uid.' #'.$input->params['id'];
+        ?>
         <script>
-            var datepicker_{{$input->params['id']}} = $('#{{$input->uid}} #{{$input->params['id'].'_formatted'}}').datepicker(
-                {
-                    format: 'dd-mm-yyyy',
-                    autoclose: true,
-                    clearBtn: true
-                }
-            ).on('clearDate', function (ev) {
-
-                $('#{{$input->uid}}  #{{$input->params['id']}}').val(null);
-
-            }).on('changeDate', function (ev) {
-
-                var validDate = null;
-                var formattedDate = $(this).val();       // '01-04-2020'
-
-                if (formattedDate.length) {
-
-                    var dateParts = formattedDate.split('-');           // ['01','04','2020']
-                    var day = dateParts[0];             // '01'
-                    var month = dateParts[1];           // '04'
-                    var year = dateParts[2];            // '2020'
-                    // console.log(year.length + " " + month.length + " " + day.length);
-
-                    if (year.length == 4 && month.length == 2 && day.length == 2) {
-                        validDate = year + '-' + month + '-' + day;
-                    }
-                }
-
-                $('#{{$input->uid}}  #{{$input->params['id']}}').val(validDate);
-
-            });
+            var datepicker_{{$input->params['id']}} = initDatePicker('{{$selector}}');
         </script>
     @endif
 

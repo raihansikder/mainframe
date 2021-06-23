@@ -70,7 +70,7 @@ var editor_config_minimal = {
  */
 function initEditor(id, config = null) {
 
-    if(!config){
+    if (!config) {
         config = editor_config_basic;
     }
 
@@ -87,7 +87,6 @@ function reInitEditor(id, config = null) {
     CKEDITOR.instances[id].destroy();
     initEditor(id, config)
 }
-
 
 
 /**
@@ -319,4 +318,44 @@ function hasNestedKey(obj /*, level1, level2, ... levelN*/) {
 }
 
 
+/**
+ * Init datepicker
+ * @param selector
+ * @param format
+ * @returns {jQuery|undefined}
+ */
+function initDatePicker(selector, format = 'dd-mm-yyyy') {
 
+    return $(selector + '_formatted').datepicker(
+        {
+            format: format,
+            autoclose: true,
+            clearBtn: true,
+        }
+    ).on('clearDate', function (ev) {
+
+        $('selector').val(null);
+
+    }).on('changeDate', function (ev) {
+
+        var validDate = null;
+        var formattedDate = $(this).val();       // '01-04-2020'
+
+        if (formattedDate.length) {
+
+            var dateParts = formattedDate.split('-');           // ['01','04','2020']
+            var day = dateParts[0];             // '01'
+            var month = dateParts[1];           // '04'
+            var year = dateParts[2];            // '2020'
+            // console.log(year.length + " " + month.length + " " + day.length);
+
+            if (year.length == 4 && month.length == 2 && day.length == 2) {
+                validDate = year + '-' + month + '-' + day;
+            }
+        }
+
+        $('selector').val(validDate);
+
+    }).attr('readonly', 'readonly');
+
+}
