@@ -334,7 +334,7 @@ function initDatePicker(selector, format = 'dd-mm-yyyy') {
         }
     ).on('clearDate', function (ev) {
 
-        $('selector').val(null);
+        $(selector).val(null);
 
     }).on('changeDate', function (ev) {
 
@@ -354,7 +354,7 @@ function initDatePicker(selector, format = 'dd-mm-yyyy') {
             }
         }
 
-        $('selector').val(validDate);
+        $(selector).val(validDate);
 
     }).attr('readonly', 'readonly');
 

@@ -170,7 +170,7 @@ table.dataTable thead > tr > th {
 }
 
 table.dataTable th {
-    background-color: #bebfc1;
+    background-color: #222222;
     color: #fff;
     font-weight: 600
 }
@@ -449,8 +449,7 @@ input:read-only, .form-control[disabled], .form-control[readonly], fieldset[disa
 .select2-container.select2-container-disabled .select2-choice {
     background-color: #fbfbfb;
     border: inherit;
-    padding-left: 10px;
-
+    /*padding-left: 10px;*/
 }
 
 label {
