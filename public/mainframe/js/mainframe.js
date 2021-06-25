@@ -364,8 +364,12 @@ function initBootstrapDatepicker(selector, format = 'dd-mm-yyyy') {
  * @returns {jQuery|undefined}
  */
 function initJQueryDatePicker(selector, format = 'dd-mm-yy') {
-    return $(selector).datepicker({
+    return $(selector + '_formatted').datepicker({
         dateFormat: format,
+        altFormat: "yy-mm-dd", // Standard datetime format
+        altField: selector,
+        changeMonth: true,
+        changeYear: true
     });
 }
 

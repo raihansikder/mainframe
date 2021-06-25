@@ -18,6 +18,7 @@ class Input extends Form
     public $params;
     public $isEditable;
     public $isHidden;
+    public $tooltip;
 
     /**
      * Input constructor.
@@ -37,9 +38,9 @@ class Input extends Form
         $this->oldInput = $this->old();
         $this->name = $this->var['name'] ?? Str::random(8);
         $this->params = $this->var['params'] ?? [];
-
         $this->isEditable = $this->var['editable'] ?? true; // $this->getEditable();
         $this->isHidden = $this->var['hidden'] ?? false;
+        $this->tooltip = $this->var['tooltip'] ?? null;
 
         // Force add form-control class
         $this->params['id'] = $this->var['id']
