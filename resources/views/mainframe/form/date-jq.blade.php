@@ -40,8 +40,7 @@ $input->format = config('mainframe.config.date_format'); // Format to show in th
 
         {{-- input --}}
         @if($input->isEditable)
-            {{ Form::text('formatted_'.$input->name, $input->formatted(), array_merge($input->params,['id'=> $input->params['id'].'_formatted'])) }}
-            {{ Form::hidden($input->name, $input->value(),$input->params) }}
+            {{ Form::text($input->name, $input->value(),$input->params) }}
         @else
             @include('mainframe.form.includes.read-only-view')
         @endif
@@ -57,10 +56,9 @@ $input->format = config('mainframe.config.date_format'); // Format to show in th
         $selector = '#'.$input->uid.' #'.$input->params['id'];
         ?>
         <script>
-            var datepicker_{{$input->params['id']}} = initBootstrapDatepicker('{{$selector}}');
+            var datepicker_{{$input->params['id']}} = initJQueryDatePicker('{{$selector}}');
         </script>
     @endif
-
     @parent
 @stop
 

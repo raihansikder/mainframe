@@ -41,6 +41,9 @@ return [
     'date_format' => env('DATE_FORMAT', 'd-m-Y'),
     'datetime_format' => env('DATETIME_FORMAT', 'd-m-Y H:i:s'),
 
+    'js_date_format' => env('DATE_FORMAT_JS', 'd-m-Y'),
+    'js_datetime_format' => env('DATETIME_FORMAT_JS', 'd-m-Y H:i:s'),
+
     /*
     |--------------------------------------------------------------------------
     | Query cache

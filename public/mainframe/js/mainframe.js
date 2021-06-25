@@ -36,6 +36,7 @@ var editor_config_extended = {
     //autoGrow_maxHeight: 600
     autoParagraph: false // stop from automatically adding <p></p> tag
 };
+
 var editor_config_minimal = {
     // readOnly: true, // make editor readonly
     // Define the toolbar groups as it is a more accessible solution.
@@ -152,7 +153,6 @@ function initGenericDeleteBtn() {
     });
 }
 
-
 /**
  * Checks if returns json is valid json
  * @param val
@@ -167,7 +167,6 @@ function parseJson(val) {
     }
     return val;
 }
-
 
 // noinspection JSUnusedGlobalSymbols
 /**
@@ -190,7 +189,6 @@ function hideEmptySelectOptions() {
         })
         .remove();
 }
-
 
 /**
  * Function is called in app/views/spyr/form/input-checkbox.blade.php
@@ -232,9 +230,6 @@ function initCheckbox() {
         }
     });
 }
-
-
-/**************************************************************************/
 
 /**
  * initUploader function initiates the generic uploader used commonly in modules
@@ -293,7 +288,6 @@ function initUploader(id, url) {
     });
 }
 
-
 /**
  * Function to check if a key exists in a tested json return.
  * https://stackoverflow.com/questions/2631001/javascript-test-for-existence-of-nested-object-key
@@ -317,6 +311,10 @@ function hasNestedKey(obj /*, level1, level2, ... levelN*/) {
     return true;
 }
 
+if (!$.fn.bootstrapDatepicker && $.fn.datepicker && $.fn.datepicker.noConflict) {
+    var datepicker = $.fn.datepicker.noConflict();
+    $.fn.bootstrapDatepicker = datepicker;
+}
 
 /**
  * Init datepicker
@@ -324,38 +322,50 @@ function hasNestedKey(obj /*, level1, level2, ... levelN*/) {
  * @param format
  * @returns {jQuery|undefined}
  */
-function initDatePicker(selector, format = 'dd-mm-yyyy') {
-
-    return $(selector + '_formatted').datepicker(
-        {
-            format: format,
-            autoclose: true,
-            clearBtn: true,
-        }
-    ).on('clearDate', function (ev) {
-
+function initBootstrapDatepicker(selector, format = 'dd-mm-yyyy') {
+    return $(selector + '_formatted').bootstrapDatepicker({
+        format: format,
+        autoclose: true,
+        clearBtn: true,
+    }).on('clearDate', function (ev) {
         $(selector).val(null);
-
     }).on('changeDate', function (ev) {
-
         var validDate = null;
-        var formattedDate = $(this).val();       // '01-04-2020'
+        var formattedDate = $(this).val();      // '01-04-2020'
 
         if (formattedDate.length) {
 
-            var dateParts = formattedDate.split('-');           // ['01','04','2020']
-            var day = dateParts[0];             // '01'
-            var month = dateParts[1];           // '04'
-            var year = dateParts[2];            // '2020'
-            // console.log(year.length + " " + month.length + " " + day.length);
+            var formatParts = format.split('-');   // ['01','04','2020']
+            var dateParts = formattedDate.split('-');   // ['01','04','2020']
 
+            var map = [];
+            for (var i = 0; i < formatParts.length; i++) {
+                map[formatParts[i]] = dateParts[i];
+            }
+
+            // console.log(map);
+
+            var day = map['dd'];             // '01'
+            var month = map['mm'];           // '04'
+            var year = map['yyyy'];            // '2020'
+            // console.log(year.length + " " + month.length + " " + day.length);
             if (year.length == 4 && month.length == 2 && day.length == 2) {
                 validDate = year + '-' + month + '-' + day;
             }
         }
-
         $(selector).val(validDate);
-
-    }).attr('readonly', 'readonly');
-
+    });
 }
+
+/**
+ * Init datepicker
+ * @param selector
+ * @param format
+ * @returns {jQuery|undefined}
+ */
+function initJQueryDatePicker(selector, format = 'dd-mm-yy') {
+    return $(selector).datepicker({
+        dateFormat: format,
+    });
+}
+
