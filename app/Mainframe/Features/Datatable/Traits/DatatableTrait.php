@@ -237,13 +237,13 @@ trait DatatableTrait
     public function identifier()
     {
 
-        if ($this->module) {
-            return \Str::camel($this->module->name.'Dt');
-        }
-
-        if ($this->table) {
-            return \Str::camel($this->table.'Dt');
-        }
+        // if ($this->module) {
+        //     return \Str::camel($this->module->name.'Dt');
+        // }
+        //
+        // if ($this->table) {
+        //     return \Str::camel($this->table.'Dt');
+        // }
 
         return \Str::camel(class_basename($this).'Dt');
 
