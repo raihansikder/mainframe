@@ -21,7 +21,7 @@ class Select extends Input
         $this->options = $this->var['options'] ?? [];
         // $this->options[null] = '-'; // By default laravel Form::select adds and empty selection for null
 
-        if (! $this->isEditable) {
+        if (!$this->isEditable) {
             $this->params = array_merge(['disabled' => 'disabled'], $this->params);
         }
 
@@ -35,5 +35,18 @@ class Select extends Input
     public function print()
     {
         return $this->options[$this->value()] ?? '';
+    }
+
+    /**
+     * Check if input has multiple select
+     * @return bool
+     */
+    public function isMultiple()
+    {
+        if (isset($this->params['multiple']) && $this->params['multiple'] == 'multiple') {
+            return true;
+        }
+
+        return false;
     }
 }

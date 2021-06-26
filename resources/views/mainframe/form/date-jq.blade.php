@@ -57,10 +57,9 @@ $input->format = config('mainframe.config.date_format'); // Format to show in th
         $selector = '#'.$input->uid.' #'.$input->params['id'];
         ?>
         <script>
-            var datepicker_{{$input->params['id']}} = initBootstrapDatepicker('{{$selector}}');
+            var datepicker_{{$input->params['id']}} = initJQueryDatePicker('{{$selector}}');
         </script>
     @endif
-
     @parent
 @stop
 

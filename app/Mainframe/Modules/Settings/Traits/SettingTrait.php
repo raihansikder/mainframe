@@ -18,8 +18,10 @@ trait SettingTrait
         'boolean' => 'Boolean',
         'string' => 'String',
         'array' => 'Array',
+        'csv' => 'CSV',
         'file' => 'File',
     ];
+
     /**
      * Get setting
      *
@@ -56,6 +58,9 @@ trait SettingTrait
                 break;
             case 'array':
                 $val = json_decode($this->value, true);
+                break;
+            case 'csv':
+                $val = csvToArray($this->value);
                 break;
             case 'file':
                 $files = [];
