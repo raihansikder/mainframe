@@ -82,6 +82,7 @@ class Setting extends BaseModule
         'type',
         'description',
         'value',
+        'tenant_editable',
         'is_active',
     ];
     // protected $guarded = [];
