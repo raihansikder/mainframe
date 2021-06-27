@@ -35,8 +35,8 @@
             </div>
 
             <div class="tab-pane" id="tab_basic">
-                @include('form.text',['var'=>['name'=>'created_at_from','label'=>'Created(from)', 'div'=>'col-md-3','params'=>['class'=>'datepicker'] ]])
-                @include('form.text',['var'=>['name'=>'created_at_till','label'=>'Created(till)', 'div'=>'col-md-3','params'=>['class'=>'datepicker'] ]])
+                @include('form.date',['var'=>['name'=>'created_at_from','label'=>'Created(from)', 'div'=>'col-md-3']])
+                @include('form.date',['var'=>['name'=>'created_at_till','label'=>'Created(till)', 'div'=>'col-md-3']])
             </div>
 
             <div class="tab-pane" id="tab_advanced">

@@ -56,22 +56,22 @@ trait Query
      */
     public function result()
     {
-
-        try {
-            if ($this->result) {
-                return $this->result;
-            }
-
-            $key = base64_encode('report-'.__CLASS__).'-'.Mf::httpRequestSignature(($this->resultQuery()->toSql()));
-
-            $this->result = Cache::remember($key, $this->cache, function () {
-                return $this->resultQuery()->paginate($this->rowsPerPage());
-            });
-
-            return $this->result;
-        } catch (Exception $e) {
-            $this->fail($e->getMessage());
-        }
+        return $this->resultQuery()->paginate($this->rowsPerPage());
+        // try {
+        //     if ($this->result) {
+        //         return $this->result;
+        //     }
+        //
+        //     $key = base64_encode('report-'.__CLASS__).'-'.Mf::httpRequestSignature(($this->resultQuery()->toSql()));
+        //
+        //     $this->result = Cache::remember($key, $this->cache, function () {
+        //         return $this->resultQuery()->paginate($this->rowsPerPage());
+        //     });
+        //
+        //     return $this->result;
+        // } catch (Exception $e) {
+        //     $this->fail($e->getMessage());
+        // }
 
     }
 
