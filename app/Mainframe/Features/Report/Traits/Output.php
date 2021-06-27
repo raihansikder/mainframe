@@ -647,9 +647,8 @@ trait Output
     public function columnTitle($index)
     {
         $report = $this;
-
-        $alias = $report->aliasColumns()[$index];
-        $column = $this->extractColumn($report->selectedColumns()[$index]);
+        $alias = $report->mutateAliasColumns()[$index];
+        $column = $this->extractColumn($report->mutateSelectedColumns()[$index]);
 
         $orderBy = request('order_by');
         $linkCss = '';
