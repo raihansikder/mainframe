@@ -7,6 +7,5 @@ use App\Mainframe\Modules\Reports\Traits\ReportProcessorTrait;
 
 class ReportProcessor extends ModelProcessor
 {
-use ReportProcessorTrait;
-
+    use ReportProcessorTrait;
 }

@@ -179,9 +179,7 @@ class Report extends BaseModule
     {
         parent::boot();
         self::observe(ReportObserver::class);
-        static::saving(function (Report $element) {
-            $element->name = $element->title;
-        });
+        // static::saving(function (Report $element) {});
     }
 
     /*
