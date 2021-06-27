@@ -25,6 +25,9 @@ trait Filterable
         $requests = request()->all();
 
         foreach ($requests as $field => $val) {
+            if(!$val){
+                continue;
+            }
             if (in_array($field, $escapeFields)) {
                 $query = $this->customFilterOnEscapedFields($query, $field, $val);
             } else {
