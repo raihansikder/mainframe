@@ -686,7 +686,7 @@ trait Output
      */
     public function sortAscIcon()
     {
-        return "<i class='glyphicon glyphicon-sort-by-attributes'></i>";
+        return "<i class='column-sort glyphicon glyphicon-sort-by-attributes'></i>";
     }
 
     /**
@@ -696,7 +696,7 @@ trait Output
      */
     public function sortDescIcon()
     {
-        return "<i class='glyphicon glyphicon-sort-by-attributes-alt'></i>";
+        return "<i class='column-sort glyphicon glyphicon-sort-by-attributes-alt'></i>";
     }
 
     /**
@@ -706,7 +706,7 @@ trait Output
      */
     public function sortDefaultIcon()
     {
-        return "<i class='glyphicon glyphicon-sort'></i>";
+        return "<i class='column-sort glyphicon glyphicon-sort'></i>";
     }
 
     /**
