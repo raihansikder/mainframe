@@ -43,7 +43,7 @@ trait ReportTrait
     {
         $base_url = route('home');
 
-        return $base_url.urldecode($this->parameters);
+        return $base_url.urldecode($this->parameters).'&report_name='.urlencode($this->name);
     }
 
     /**
