@@ -14,7 +14,7 @@
 
 @section('title')
     @if(request('report_name'))
-        {{request('report_name')}}
+        Report - {{request('report_name')}}
     @endif
 @endsection
 

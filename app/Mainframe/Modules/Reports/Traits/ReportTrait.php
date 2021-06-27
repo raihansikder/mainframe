@@ -4,6 +4,7 @@ namespace App\Mainframe\Modules\Reports\Traits;
 
 use App\Module;
 use App\Report;
+use Illuminate\Support\Str;
 
 trait ReportTrait
 {
@@ -41,9 +42,13 @@ trait ReportTrait
      */
     public function url()
     {
-        $base_url = route('home');
+        $url =  route('home').urldecode($this->parameters);
 
-        return $base_url.urldecode($this->parameters).'&report_name='.urlencode($this->name);
+        if(!Str::contains($url,'?')){
+            $url.='?';
+        }
+
+        return $url.'&report_name='.urlencode($this->name);
     }
 
     /**
