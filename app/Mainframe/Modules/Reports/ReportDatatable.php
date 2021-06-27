@@ -8,4 +8,7 @@ use App\Mainframe\Modules\Reports\Traits\ReportDatatableTrait;
 class ReportDatatable extends ModuleDatatable
 {
     use ReportDatatableTrait;
+
+    public $moduleName = 'reports';
+
 }

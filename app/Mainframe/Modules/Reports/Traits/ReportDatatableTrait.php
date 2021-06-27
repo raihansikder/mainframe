@@ -19,6 +19,7 @@ trait ReportDatatableTrait
             [$this->table.'.id', 'id', 'ID'],
             [$this->table.'.name', 'name', 'Name'],
             [$this->table.'.description', 'description', 'Description'],
+            [$this->table.'.parameters', 'parameters', 'Parameters'],
             [$this->table.'.updated_by', 'updated_by', 'Updater'],
             [$this->table.'.updated_at', 'updated_at', 'Updated at'],
             [$this->table.'.is_active', 'is_active', 'Active'],
@@ -28,7 +29,7 @@ trait ReportDatatableTrait
 
     public function hidden()
     {
-        return $this->hidden ?? [];
+        return $this->hidden ?? ['parameters'];
     }
 
 
@@ -42,6 +43,7 @@ trait ReportDatatableTrait
 
         if ($this->hasColumn('action')) {
             $dt->editColumn('action', function ($row) {
+
                 /** @var Report $row */
                 return "<a class='btn btn-default bg-smart-blue' href={$row->url()}>Run</a>";
             });
