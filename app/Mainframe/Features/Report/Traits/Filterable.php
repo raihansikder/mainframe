@@ -25,6 +25,9 @@ trait Filterable
         $requests = request()->all();
 
         foreach ($requests as $field => $val) {
+            if(!$val){
+                continue;
+            }
             if (in_array($field, $escapeFields)) {
                 $query = $this->customFilterOnEscapedFields($query, $field, $val);
             } else {
@@ -75,6 +78,20 @@ trait Filterable
     }
 
     /**
+     * Specific fields might have to be discarded from default query builder based on some
+     * pattern.
+     * @param $field
+     * @return bool
+     */
+    public function isEscapedField($field)
+    {
+        if(Str::startsWith($field,'formatted_')){
+            return true;
+        }
+        return false;
+    }
+
+    /**
      * Default query builder from input.
      *
      * @param $query \Illuminate\Database\Query\Builder
@@ -84,6 +101,10 @@ trait Filterable
      */
     public function defaultFilter($query, $field, $val)
     {
+        if($this->isEscapedField($field)){
+            return $query;
+        }
+
         // The input field name matches a data source field name.
         if ($this->fieldExists($field)) {
             return $this->queryForExitingFields($query, $field, $val);

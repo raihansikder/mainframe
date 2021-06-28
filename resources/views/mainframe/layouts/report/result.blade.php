@@ -12,6 +12,12 @@
 ?>
 @include($report->initFunctionsPath())
 
+@section('title')
+    @if(request('report_name'))
+        Report - {{request('report_name')}}
+    @endif
+@endsection
+
 @section('content')
 
     {{-- Report top section with filter, CTA, column selections--}}

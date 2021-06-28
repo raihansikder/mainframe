@@ -1,6 +1,4 @@
-<div style="width: 150px;float: left; font-size: 14px">
-    <input id="btnPrint" type="button" value="Print this page" onclick="printPage()"/>
-</div>
+<input id="btnPrint" type="button" value="Print this page" onclick="printPage()"/>
 
 <script type="text/javascript">
     function printPage() {

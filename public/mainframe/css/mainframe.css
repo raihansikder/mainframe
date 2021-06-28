@@ -645,3 +645,7 @@ a i {
 .dropdown-menu button {
     background-color: transparent;
 }
+
+.column-sort{
+    font-size: 8px;
+}

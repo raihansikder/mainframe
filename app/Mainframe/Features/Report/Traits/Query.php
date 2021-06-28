@@ -23,7 +23,6 @@ trait Query
     {
 
         $query = clone $this->queryDataSource();
-
         if (count($this->querySelectColumns())) {
             $query->select($this->querySelectColumns());
         }
@@ -56,22 +55,22 @@ trait Query
      */
     public function result()
     {
-
-        try {
-            if ($this->result) {
-                return $this->result;
-            }
-
-            $key = base64_encode('report-'.__CLASS__).'-'.Mf::httpRequestSignature(($this->resultQuery()->toSql()));
-
-            $this->result = Cache::remember($key, $this->cache, function () {
-                return $this->resultQuery()->paginate($this->rowsPerPage());
-            });
-
-            return $this->result;
-        } catch (Exception $e) {
-            $this->fail($e->getMessage());
-        }
+        return $this->resultQuery()->paginate($this->rowsPerPage());
+        // try {
+        //     if ($this->result) {
+        //         return $this->result;
+        //     }
+        //
+        //     $key = base64_encode('report-'.__CLASS__).'-'.Mf::httpRequestSignature(($this->resultQuery()->toSql()));
+        //
+        //     $this->result = Cache::remember($key, $this->cache, function () {
+        //         return $this->resultQuery()->paginate($this->rowsPerPage());
+        //     });
+        //
+        //     return $this->result;
+        // } catch (Exception $e) {
+        //     $this->fail($e->getMessage());
+        // }
 
     }
 
@@ -226,7 +225,8 @@ trait Query
      */
     public function includeDefaultColumns($keys = [])
     {
-        $defaultColumns = array_merge($this->defaultColumns(), $this->defaultColumns());
+        // $defaultColumns = array_merge($this->defaultColumns(), $this->defaultColumns());
+        $defaultColumns = $this->defaultColumns();
 
         foreach ($defaultColumns as $col) {
             // if (!in_array($col, $keys) && in_array($col, $this->dataSourceColumns())) {
