@@ -27,6 +27,10 @@ trait ReportViewProcessorTrait
      */
     public function showSaveReportBtn()
     {
+        if (!module('reports')->is_active) {
+            return false;
+        }
+
         return $this->user->can('create', Report::class);
     }
 
@@ -183,7 +187,7 @@ trait ReportViewProcessorTrait
     /**
      * Construct the full report url from request params
      *
-     * @param array $params
+     * @param  array  $params
      * @return string
      */
     public function buildUrl($params = [])
