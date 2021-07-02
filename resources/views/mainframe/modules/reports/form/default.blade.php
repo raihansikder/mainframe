@@ -21,7 +21,7 @@ $report = $element;
     @if($element->isCreated())
         <a href="{!! $element->url() !!}" class="btn btn-default bg-smart-blue" target="_blank">Run Report</a>
     @endif
-    <div class="clearfix"></div>
+    <div class="clearfix margin"></div>
 @endsection')
 
 @section('content')
