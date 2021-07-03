@@ -283,7 +283,7 @@ trait Query
     }
 
     /**
-     * @param $query Builder
+     * @param $query Builder|\Illuminate\Database\Eloquent\Builder
      * @return \Illuminate\Database\Query\Builder
      */
     public function orderBy($query)
@@ -345,12 +345,36 @@ trait Query
 
         foreach ($orderByArray as $k => $v) {
 
-            if($this->hasColumn($k)) {
+            if ($this->hasColumn($k)) {
                 $str .= $k.' '.$v.',';
             }
         }
 
         return trim($str, " ,");
+    }
+
+    /**
+     * Check if a field is available in order column
+     *
+     * @param $column
+     * @return bool|mixed
+     */
+    public function orderHas($column)
+    {
+        $orders = $this->orderByArray();
+
+        return $orders[$column] ?? false;
+    }
+
+    /**
+     * Get the order type ASC/DESC of the column
+     *
+     * @param $column
+     * @return bool|mixed
+     */
+    public function orderColumnDirection($column)
+    {
+        return $this->orderHas($column);
     }
 
     /**
