@@ -122,6 +122,7 @@ namespace App;
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUuid($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereZipCode($value)
  * @mixin \Eloquent
+ * @property-read mixed $group
  */
 class User extends \App\Projects\MyProject\Modules\Users\User
 {

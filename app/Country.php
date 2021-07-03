@@ -71,6 +71,10 @@ namespace App;
  * @method static \Illuminate\Database\Eloquent\Builder|Country whereUpdatedBy($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Country whereUuid($value)
  * @mixin \Eloquent
+ * @property int|null $project_id
+ * @property int|null $tenant_id
+ * @method static \Illuminate\Database\Eloquent\Builder|Country whereProjectId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Country whereTenantId($value)
  */
 class Country extends \App\Mainframe\Modules\Countries\Country
 {

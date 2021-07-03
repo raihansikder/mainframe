@@ -59,6 +59,12 @@ use Illuminate\Database\Eloquent\Builder;
  * @property-read \App\Module $linkedModule
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Spread[] $spreads
  * @property-read int|null $spreads_count
+ * @property int|null $project_id
+ * @property int|null $tenant_id
+ * @method static Builder|Setting whereProjectId($value)
+ * @method static Builder|Setting whereTenantId($value)
+ * @property int|null $tenant_editable Some settings are not allowed to be edited by tenant
+ * @method static Builder|Setting whereTenantEditable($value)
  */
 class Setting extends BaseModule
 {

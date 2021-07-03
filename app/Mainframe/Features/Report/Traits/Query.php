@@ -288,11 +288,69 @@ trait Query
      */
     public function orderBy($query)
     {
-        if (request('order_by')) {
-            $query = $query->orderByRaw(request('order_by'));
+        $orderBy = $this->sanitizedOrderByStr();
+
+        if (strlen($orderBy)) {
+            // $query = $query->orderByRaw(request('order_by'));
+            $query->orderByRaw($orderBy);
         }
 
         return $query;
+    }
+
+    /**
+     * Break the request param for order by into an array
+     *
+     * @return array
+     */
+    public function orderByArray()
+    {
+        $orderByArray = [];
+        $str = request('order_by');
+        if (!strlen(trim($str))) {
+            return $orderByArray;
+        }
+
+        $array = csvToArray($str);
+        foreach ($array as $clause) {
+            $pieces = explode(' ', $clause);
+
+            if (isset($pieces[0])) {
+                $key = trim($pieces[0]);
+                $orderByArray[$key] = 'ASC';
+
+                if (isset($pieces[1])) {
+                    $order = trim($pieces[1]);
+                    $orderByArray[$key] = $order;
+                }
+            }
+        }
+
+        return $orderByArray;
+    }
+
+    /**
+     * Sanitized orderByRaw string for
+     *
+     * @return string|null
+     */
+    public function sanitizedOrderByStr()
+    {
+        $str = null;
+        $orderByArray = $this->orderByArray();
+
+        if (!count($orderByArray)) {
+            return $str;
+        }
+
+        foreach ($orderByArray as $k => $v) {
+
+            if($this->hasColumn($k)) {
+                $str .= $k.' '.$v.',';
+            }
+        }
+
+        return trim($str, " ,");
     }
 
     /**

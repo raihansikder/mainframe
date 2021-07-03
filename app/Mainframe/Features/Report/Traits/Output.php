@@ -624,6 +624,7 @@ trait Output
         $url = route('reports.create');
         $params = [
             'title' => request('report_name'),
+            'name' => request('report_name'),
             'parameters' => urlencode(str_replace(route('home'), '', \URL::full())),
         ];
 

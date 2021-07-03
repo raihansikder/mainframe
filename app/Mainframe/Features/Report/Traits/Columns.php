@@ -6,7 +6,7 @@ use App\Mainframe\Helpers\Convert;
 use App\Mainframe\Helpers\Mf;
 use Str;
 
-/** @mixin \App\Mainframe\Features\Report\ReportBuilder $this */
+/** @mixin \App\Mainframe\Features\Report\ReportBuilder */
 trait Columns
 {
     /*
@@ -63,6 +63,17 @@ trait Columns
         }
 
         return [];
+    }
+
+    /**
+     * Check if a column is available in data-source
+     *
+     * @param $column
+     * @return bool
+     */
+    public function hasColumn($column)
+    {
+        return in_array($column, $this->dataSourceColumns());
     }
 
 

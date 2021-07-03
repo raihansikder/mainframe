@@ -290,6 +290,7 @@ div.form-group span.readonly {
 
 div.form-control {
     height: auto;
+    min-height: 34px;
     background-color: #fbfbfb;
 }
 

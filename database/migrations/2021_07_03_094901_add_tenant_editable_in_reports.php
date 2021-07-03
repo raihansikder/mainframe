@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddTenantEditableInSettingsAfterValue extends Migration
+class AddTenantEditableInReports extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class AddTenantEditableInSettingsAfterValue extends Migration
      */
     public function up()
     {
-        Schema::table('settings', function (Blueprint $table) {
-            $table->tinyInteger('tenant_editable')->nullable()->default(0)->after('value')->comment('Some settings are not allowed to be edited by tenant');
+        Schema::table('reports', function (Blueprint $table) {
+            $table->tinyInteger('is_tenant_editable')->nullable()->default(0)->after('tags')->comment('Some settings are not allowed to be edited by tenant');
         });
-
     }
 
     /**
@@ -26,8 +25,8 @@ class AddTenantEditableInSettingsAfterValue extends Migration
      */
     public function down()
     {
-        Schema::table('settings', function (Blueprint $table) {
-
+        Schema::table('reports', function (Blueprint $table) {
+            //
         });
     }
 }

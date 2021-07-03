@@ -27,7 +27,7 @@
 
         {{--  Save Report button  --}}
         @if($view->showSaveReportBtn())
-            <a href="{!! $report->saveUrl() !!}" target="_blank" class="btn btn-default">
+            <a href="{!! $report->saveUrl() !!}" target="_blank" class="btn btn-default" title="Save report to run in future">
                 <i class="fa fa-save" title="Save Report"></i></a>
         @endif
 

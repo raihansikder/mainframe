@@ -22,7 +22,7 @@ $report = $element;
         <a href="{!! $element->url() !!}" class="btn btn-default bg-smart-blue" target="_blank">Run Report</a>
     @endif
     <div class="clearfix margin"></div>
-@endsection')
+@endsection
 
 @section('content')
     <div class="col-md-12 col-lg-10 no-padding">
