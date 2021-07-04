@@ -211,7 +211,8 @@ trait Columns
     {
         $columns = $this->removeDotFromColumns($this->selectedColumns());
         foreach ($map as $column => $alias) {
-            if ($pos = array_search($column, $columns)) {
+            $pos = array_search($column, $columns);
+            if (isset($array[$pos])) {
                 $array[$pos] = $alias;
             }
         }

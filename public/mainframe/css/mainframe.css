@@ -650,3 +650,7 @@ a i {
 .column-sort{
     font-size: 8px;
 }
+
+.sort-btn{
+    white-space: normal;
+}

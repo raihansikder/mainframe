@@ -247,8 +247,8 @@ trait Query
      */
     public function defaultColumns()
     {
-        // return ['id', 'name'];
-        return [];
+        return ['id'];
+        // return [];
     }
 
     /**
