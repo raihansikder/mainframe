@@ -249,9 +249,14 @@ trait Columns
 
         $temp = [];
         foreach ($keys as $key) {
-            $temp[] = Str::title(str_replace('_', ' ', $key));
+            $temp[] = $this->aliasFor($key);
         }
 
         return $temp;
+    }
+
+    public function aliasFor($key)
+    {
+        return Str::title(str_replace('_', ' ', $key));
     }
 }

@@ -32,7 +32,8 @@ trait ModularTrait
      * @param $query
      * @return Builder
      */
-    public function scopeActive($query) { return $query->where('is_active', 1); }
+    public function scopeActive($query) { return $query->where($this->getTable().'.is_active', 1); }
+
 
     /*
     |--------------------------------------------------------------------------
