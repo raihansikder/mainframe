@@ -17,7 +17,7 @@ trait ModuleReportBuilderTrait
     {
         # Hide inactive items for non-admins
         if (!$this->user->isSuperUser()) {
-            request()->merge(['is_active' => 1,]);
+            // request()->merge(['is_active' => 1,]); // Note: creates field ambiguity if join is made
         }
     }
 
@@ -32,6 +32,7 @@ trait ModuleReportBuilderTrait
 
         $this->module = $module;
         $this->model = $this->module->modelInstance();
+        $this->table = $this->model->getTable();
 
         $this->dataSource = $this->model;
         if (request('with')) {

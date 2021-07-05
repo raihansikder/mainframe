@@ -31,6 +31,9 @@
                 <i class="fa fa-save" title="Save Report"></i></a>
         @endif
 
+        <a href="{!! $report->jsonUrl() !!}" target="_blank" class="btn btn-default" title="Json">
+            {...}</a>
+
         <a class="btn btn-default" href="{{url()->current()}}">Reset</a>
 
     @endif

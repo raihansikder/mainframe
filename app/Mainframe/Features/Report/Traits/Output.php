@@ -614,6 +614,14 @@ trait Output
         return $this->buildUrl($requests);
     }
 
+    public function jsonUrl()
+    {
+        $requests = request()->all();
+        $requests['ret'] = 'json';
+
+        return $this->buildUrl($requests);
+    }
+
     /**
      * Save report URL
      *
