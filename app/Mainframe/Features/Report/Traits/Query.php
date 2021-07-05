@@ -295,6 +295,36 @@ trait Query
             $query->orderByRaw($orderBy);
         }
 
+        $query = $this->ghostColumnOrderBy($query);
+
+        return $query;
+    }
+
+    public function ghostColumnOrders()
+    {
+        return [
+            // 'order_sl' => [
+            //     'model' => new Order, // Model
+            //     'order_by' => 'tenant_sl', // actual column name in model
+            //     'column_1' => 'orders.id', // local key
+            //     'column_2' => 'customer_jobs.order_id', // foreign key
+            // ],
+        ];
+    }
+
+    public function ghostColumnOrderBy($query)
+    {
+        $ghostColumns = $this->ghostColumnOrders();
+        foreach ($ghostColumns as $ghostColumn => $v) {
+            if ($direction = $this->orderColumnDirection($ghostColumn)) {
+                $model = $v['model'];
+                $query->orderBy(
+                    $model::select($v['order_by'])->whereColumn($v['column_1'], $v['column_2']),
+                    $direction
+                );
+            }
+        }
+
         return $query;
     }
 
