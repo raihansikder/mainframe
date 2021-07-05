@@ -17,7 +17,7 @@ trait ModuleReportBuilderTrait
     {
         # Hide inactive items for non-admins
         if (!$this->user->isSuperUser()) {
-            // request()->merge(['is_active' => 1,]); // Note: creates field ambiguity if join is made
+            request()->merge(['is_active' => 1,]); // Note: creates field ambiguity if join is made
         }
     }
 
