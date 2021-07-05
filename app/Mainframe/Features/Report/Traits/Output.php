@@ -356,6 +356,20 @@ trait Output
     }
 
     /**
+     * Change value of a single field in a result row
+     *
+     * @param $row
+     * @param $column
+     * @param  null  $val
+     */
+    public function mutate($row, $column, $val = null)
+    {
+        if ($this->selectedColumnsHas($column)) {
+            $row->$column = $val;
+        }
+    }
+
+    /**
      * @return \App\Mainframe\Features\Report\ReportViewProcessor
      * @noinspection PhpUnnecessaryLocalVariableInspection
      */
@@ -614,6 +628,14 @@ trait Output
         return $this->buildUrl($requests);
     }
 
+    public function jsonUrl()
+    {
+        $requests = request()->all();
+        $requests['ret'] = 'json';
+
+        return $this->buildUrl($requests);
+    }
+
     /**
      * Save report URL
      *
@@ -624,6 +646,7 @@ trait Output
         $url = route('reports.create');
         $params = [
             'title' => request('report_name'),
+            'name' => request('report_name'),
             'parameters' => urlencode(str_replace(route('home'), '', \URL::full())),
         ];
 
@@ -657,26 +680,28 @@ trait Output
             if (\Str::startsWith($orderBy, $column.' ASC')) {
                 $orderBy = str_replace($column.' ASC', $column.' DESC', $orderBy);
                 $icon = $this->sortAscIcon();
-                $linkCss = 'btn btn-xs bg-red';
+                $linkCss = 'btn btn-xs bg-red sort-btn';
             } elseif (\Str::startsWith($orderBy, $column.' DESC')) {
                 $orderBy = str_replace($column.' DESC', $column.' ASC', $orderBy);
                 $icon = $this->sortDescIcon();
-                $linkCss = 'btn btn-xs bg-red';
+                $linkCss = 'btn btn-xs bg-red sort-btn';
             } else {
                 // $orderBy .= ','.$column.' DESC'; // For multiple sorting
                 $orderBy = $column.' ASC';
-                $icon = $this->sortDefaultIcon();
+                // $icon = $this->sortDefaultIcon();
+                $icon = '';
             }
         } else {
             $orderBy = $column.' ASC';
-            $icon = $this->sortDefaultIcon();
+            // $icon = $this->sortDefaultIcon();
+            $icon = '';
         }
 
         $requests = request()->all();
         $requests['order_by'] = $orderBy;
         $url = $this->buildUrl($requests);
 
-        return $alias." <a class='{$linkCss}' href='{$url}'>{$icon}</a>";
+        return " <a class='{$linkCss}' href='{$url}'>$alias {$icon}</a>";
     }
 
     /**

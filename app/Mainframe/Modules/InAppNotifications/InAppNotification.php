@@ -94,6 +94,8 @@ use App\Mainframe\Modules\InAppNotifications\Traits\InAppNotificationTrait;
  * @method static \Illuminate\Database\Eloquent\Builder|InAppNotification whereUserId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|InAppNotification whereUuid($value)
  * @mixin \Eloquent
+ * @property string|null $element_uuid
+ * @method static \Illuminate\Database\Eloquent\Builder|InAppNotification whereElementUuid($value)
  */
 class InAppNotification extends BaseModule
 {

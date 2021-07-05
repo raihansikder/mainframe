@@ -17,6 +17,9 @@ class ReportBuilder extends BaseController
     /** @var  \Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Model DB Table/View names */
     public $dataSource;
 
+    /** @var string */
+    public $table;
+
     /** @var  string Directory location of the report blade templates */
     public $path = 'mainframe.layouts.report';
 
@@ -65,9 +68,19 @@ class ReportBuilder extends BaseController
         parent::__construct();
         $this->transformRequest();
 
-        $this->dataSource = $dataSource ?: $this->dataSource;
+        $this->dataSource = $this->setDataSource($dataSource);
         $this->path = $path ?: $this->path;
         $this->cache = $cache ?: $this->cache;
+    }
+
+    public function setDataSource($dataSource)
+    {
+        $this->dataSource = $dataSource ?: $this->dataSource;
+        if (is_string($this->dataSource)) {
+            $this->table = $this->dataSource;
+        }
+
+        return $this;
     }
 
     // public function queryDataSource() { }

@@ -26,7 +26,8 @@ trait ReportProcessorTrait
     public static function rules($element, $merge = [])
     {
         $rules = [
-            'name' => 'required|between:1,255|unique:modules,name,'.(isset($element->id) ? (string) $element->id : 'null').',id,deleted_at,NULL',
+            // 'name' => 'required|between:1,255|unique:modules,name,'.(isset($element->id) ? (string) $element->id : 'null').',id,deleted_at,NULL',
+            'name' => 'required|between:1,255',
             'is_active' => 'in:1,0',
         ];
 
@@ -53,6 +54,7 @@ trait ReportProcessorTrait
         // ----------------------------------
         if ($this->isValid()) {
             $element->title = $element->name;
+            $this->setTenantEditable();
         }
 
         return $this;
@@ -78,6 +80,27 @@ trait ReportProcessorTrait
     |--------------------------------------------------------------------------
     */
     // Todo: Other helper functions
+    /**
+     * Should be editable by tenant if created by a tenant user
+     *
+     * @return $this
+     */
+    public function setTenantEditable()
+    {
+        $this->element->is_tenant_editable = 0;
+        if ($this->user->ofTenant() && $this->element->hasColumn('is_tenant_editable')) {
+            $this->element->is_tenant_editable = 1;
+        }
+
+        return $this;
+    }
+
+    public function setTitle()
+    {
+        $this->element->title = $this->element->title ?? $this->element->name;
+
+        return $this;
+    }
 
     /*
     |--------------------------------------------------------------------------

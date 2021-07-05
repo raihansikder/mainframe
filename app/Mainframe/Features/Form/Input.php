@@ -92,7 +92,8 @@ class Input extends Form
             return $this->old();
         }
 
-        if ($this->old()) {
+        // Retain 0 input
+        if ($this->old() != null) {
             return $this->old();
         }
 

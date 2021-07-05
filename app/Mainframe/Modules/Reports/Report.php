@@ -68,6 +68,8 @@ use App\Mainframe\Modules\Reports\Traits\ReportTrait;
  * @method static \Illuminate\Database\Eloquent\Builder|Report whereUuid($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Report whereVersion($value)
  * @mixin \Eloquent
+ * @property int|null $is_tenant_editable Some settings are not allowed to be edited by tenant
+ * @method static \Illuminate\Database\Eloquent\Builder|Report whereIsTenantEditable($value)
  */
 class Report extends BaseModule
 {

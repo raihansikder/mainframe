@@ -6,7 +6,7 @@ use App\Mainframe\Helpers\Convert;
 use App\Mainframe\Helpers\Mf;
 use Str;
 
-/** @mixin \App\Mainframe\Features\Report\ReportBuilder $this */
+/** @mixin \App\Mainframe\Features\Report\ReportBuilder */
 trait Columns
 {
     /*
@@ -63,6 +63,17 @@ trait Columns
         }
 
         return [];
+    }
+
+    /**
+     * Check if a column is available in data-source
+     *
+     * @param $column
+     * @return bool
+     */
+    public function hasColumn($column)
+    {
+        return in_array($column, $this->dataSourceColumns());
     }
 
 
@@ -200,7 +211,8 @@ trait Columns
     {
         $columns = $this->removeDotFromColumns($this->selectedColumns());
         foreach ($map as $column => $alias) {
-            if ($pos = array_search($column, $columns)) {
+            $pos = array_search($column, $columns);
+            if (isset($array[$pos])) {
                 $array[$pos] = $alias;
             }
         }
@@ -237,9 +249,14 @@ trait Columns
 
         $temp = [];
         foreach ($keys as $key) {
-            $temp[] = Str::title(str_replace('_', ' ', $key));
+            $temp[] = $this->aliasFor($key);
         }
 
         return $temp;
+    }
+
+    public function aliasFor($key)
+    {
+        return Str::title(str_replace('_', ' ', $key));
     }
 }

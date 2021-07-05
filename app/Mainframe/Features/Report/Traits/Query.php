@@ -247,8 +247,8 @@ trait Query
      */
     public function defaultColumns()
     {
-        // return ['id', 'name'];
-        return [];
+        return ['id'];
+        // return [];
     }
 
     /**
@@ -283,16 +283,133 @@ trait Query
     }
 
     /**
-     * @param $query Builder
+     * @param $query Builder|\Illuminate\Database\Eloquent\Builder
      * @return \Illuminate\Database\Query\Builder
      */
     public function orderBy($query)
     {
-        if (request('order_by')) {
-            $query = $query->orderByRaw(request('order_by'));
+        $orderBy = $this->sanitizedOrderByStr();
+
+        if (strlen($orderBy)) {
+            // $query = $query->orderByRaw(request('order_by'));
+            $query->orderByRaw($orderBy);
+        }
+
+        $query = $this->ghostColumnOrderBy($query);
+
+        return $query;
+    }
+
+    /**
+     * Ghost column sort filed map
+     *
+     * @return array
+     */
+    public function ghostColumnOrders()
+    {
+        return [
+            // 'order_sl' => [ // ghost column
+            //     'model' => new Order, // Model
+            //     'order_by' => 'tenant_sl', // actual column name in model representing ghost column
+            //     'column_1' => 'orders.id', // primary key in model
+            //     'column_2' => 'customer_jobs.order_id', // foreign key main class
+            // ],
+        ];
+    }
+
+    public function ghostColumnOrderBy($query)
+    {
+        $ghostColumns = $this->ghostColumnOrders();
+        foreach ($ghostColumns as $ghostColumn => $v) {
+            if ($direction = $this->orderColumnDirection($ghostColumn)) {
+                $model = $v['model'];
+                $query->orderBy(
+                    $model::select($v['order_by'])->whereColumn($v['column_1'], $v['column_2']),
+                    $direction
+                );
+            }
         }
 
         return $query;
+    }
+
+    /**
+     * Break the request param for order by into an array
+     *
+     * @return array
+     */
+    public function orderByArray()
+    {
+        $orderByArray = [];
+        $str = request('order_by');
+        if (!strlen(trim($str))) {
+            return $orderByArray;
+        }
+
+        $array = csvToArray($str);
+        foreach ($array as $clause) {
+            $pieces = explode(' ', $clause);
+
+            if (isset($pieces[0])) {
+                $key = trim($pieces[0]);
+                $orderByArray[$key] = 'ASC';
+
+                if (isset($pieces[1])) {
+                    $order = trim($pieces[1]);
+                    $orderByArray[$key] = $order;
+                }
+            }
+        }
+
+        return $orderByArray;
+    }
+
+    /**
+     * Sanitized orderByRaw string for
+     *
+     * @return string|null
+     */
+    public function sanitizedOrderByStr()
+    {
+        $str = null;
+        $orderByArray = $this->orderByArray();
+
+        if (!count($orderByArray)) {
+            return $str;
+        }
+
+        foreach ($orderByArray as $k => $v) {
+
+            if ($this->hasColumn($k)) {
+                $str .= $k.' '.$v.',';
+            }
+        }
+
+        return trim($str, " ,");
+    }
+
+    /**
+     * Check if a field is available in order column
+     *
+     * @param $column
+     * @return bool|mixed
+     */
+    public function orderHas($column)
+    {
+        $orders = $this->orderByArray();
+
+        return $orders[$column] ?? false;
+    }
+
+    /**
+     * Get the order type ASC/DESC of the column
+     *
+     * @param $column
+     * @return bool|mixed
+     */
+    public function orderColumnDirection($column)
+    {
+        return $this->orderHas($column);
     }
 
     /**

@@ -32,7 +32,8 @@ trait ModularTrait
      * @param $query
      * @return Builder
      */
-    public function scopeActive($query) { return $query->where('is_active', 1); }
+    public function scopeActive($query) { return $query->where($this->getTable().'.is_active', 1); }
+
 
     /*
     |--------------------------------------------------------------------------
@@ -368,6 +369,8 @@ trait ModularTrait
     public function hasTenantContext() { return $this->hasColumn('tenant_id') && $this->tenantEnabled; }
 
     /**
+     * Check if the element is compatible with the user's tenant
+     *
      * @param  null  $user
      * @return bool
      */
@@ -379,14 +382,12 @@ trait ModularTrait
             return true;
         }
 
-        if ($this->tenant_id != $user->tenant_id) {
+        if ($user->tenant_id && ($this->tenant_id != $user->tenant_id)) {
             return false;
         }
 
         return true;
     }
-
-
 
     /*
     |--------------------------------------------------------------------------

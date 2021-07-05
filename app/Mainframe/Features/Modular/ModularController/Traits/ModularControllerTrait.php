@@ -242,7 +242,6 @@ trait ModularControllerTrait
         if (!$this->user->can('view-report', $this->model)) {
             return $this->permissionDenied();
         }
-
         return (new ModuleReportBuilder($this->module))->output();
     }
 

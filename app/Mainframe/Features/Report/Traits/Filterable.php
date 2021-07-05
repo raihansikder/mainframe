@@ -2,9 +2,9 @@
 
 namespace App\Mainframe\Features\Report\Traits;
 
-use Illuminate\Support\Str;
 use App\Mainframe\Helpers\Convert;
 use App\Mainframe\Helpers\Sanitize;
+use Illuminate\Support\Str;
 
 /** @mixin \App\Mainframe\Features\Report\ReportBuilder $this */
 trait Filterable
@@ -25,7 +25,7 @@ trait Filterable
         $requests = request()->all();
 
         foreach ($requests as $field => $val) {
-            if(!$val){
+            if ($val == null) {
                 continue;
             }
             if (in_array($field, $escapeFields)) {
@@ -36,15 +36,32 @@ trait Filterable
         }
 
         $query = $this->keySearch($query);
+        $query = $this->customFilter($query);
 
         // Apply raw SQL clause input from front-end.
         if ($this->additionalFilterConditions()) {
             $query = $query->whereRaw($this->additionalFilterConditions());
         }
 
+        $query = $this->excludeDeleted($query);
+
+        return $query;
+    }
+
+    /**
+     * @param $query
+     * @return mixed
+     */
+    public function excludeDeleted($query)
+    {
         // exclude deleted_at fields
+
+        $deleteField = 'deleted_at';
+        if ($this->table) {
+            $deleteField = $this->table.'.deleted_at';
+        }
         if (in_array('deleted_at', $this->dataSourceColumns())) {
-            $query = $query->whereNull('deleted_at');
+            $query = $query->whereNull($deleteField);
         }
 
         return $query;
@@ -58,7 +75,7 @@ trait Filterable
      */
     public function defaultFilterEscapeFields()
     {
-        return [];
+        return $this->ghostColumns();
     }
 
     /**
@@ -78,16 +95,32 @@ trait Filterable
     }
 
     /**
+     * Additional custom filter on the full query
+     *
+     * @param $query
+     * @return mixed
+     */
+    public function customFilter($query)
+    {
+
+        // Additional general filter
+        return $query;
+
+    }
+
+    /**
      * Specific fields might have to be discarded from default query builder based on some
      * pattern.
+     *
      * @param $field
      * @return bool
      */
     public function isEscapedField($field)
     {
-        if(Str::startsWith($field,'formatted_')){
+        if (Str::startsWith($field, 'formatted_')) {
             return true;
         }
+
         return false;
     }
 
@@ -101,7 +134,7 @@ trait Filterable
      */
     public function defaultFilter($query, $field, $val)
     {
-        if($this->isEscapedField($field)){
+        if ($this->isEscapedField($field)) {
             return $query;
         }
 
@@ -215,7 +248,7 @@ trait Filterable
     {
         $key = request('search_key');
 
-        if (! $key) {
+        if (!$key) {
             return $query;
         }
 
@@ -225,7 +258,7 @@ trait Filterable
                 /** @var \Illuminate\Database\Query\Builder $query */
                 // $query->where('name', 'LIKE', "{$key}%");
 
-                if (! $this->fieldExists($field)) {
+                if (!$this->fieldExists($field)) {
                     continue;
                 }
                 if ($key == 'null') {
@@ -254,7 +287,7 @@ trait Filterable
      */
     public function queryForFromRange($query, $field, $val)
     {
-        if (! is_string($val)) {
+        if (!is_string($val)) {
             return $query;
         }
 
@@ -275,7 +308,7 @@ trait Filterable
      */
     public function queryForToRange($query, $field, $val)
     {
-        if (! is_string($val)) {
+        if (!is_string($val)) {
             return $query;
         }
 
@@ -335,7 +368,7 @@ trait Filterable
      */
     public function paramIsCsv($input)
     {
-        if (! is_string($input)) {
+        if (!is_string($input)) {
             return false;
         }
 
@@ -354,7 +387,7 @@ trait Filterable
      */
     public function paramIsString($input)
     {
-        if (! is_string($input)) {
+        if (!is_string($input)) {
             return false;
         }
 

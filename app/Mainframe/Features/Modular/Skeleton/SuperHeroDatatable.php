@@ -58,6 +58,10 @@ class SuperHeroDatatable extends ModuleDatatable
     /*---------------------------------
     | Section: Filters
     |---------------------------------*/
+    // /**
+    //  * @param  \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Query\Builder|mixed  $query
+    //  * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Query\Builder|mixed
+    //  */
     // public function filter($query)
     // {
     //     // if (request('id')) { // Example code
@@ -70,17 +74,21 @@ class SuperHeroDatatable extends ModuleDatatable
     /*---------------------------------
     | Section : Modify row-columns
     |---------------------------------*/
-    public function modify($dt)
-    {
-        $dt = parent::modify($dt);
-        // $dt->rawColumns(['id', 'email', 'is_active']); // Dynamically set HTML columns
-
-        if ($this->hasColumn('updated_by')) {
-            $dt->editColumn('updated_by', function ($row) { return optional($row->updater)->name; });
-        }
-
-        return $dt;
-    }
+    // /**
+    //  * @param  \Yajra\DataTables\DataTableAbstract  $dt
+    //  * @return mixed|\Yajra\DataTables\DataTableAbstract
+    //  */
+    // public function modify($dt)
+    // {
+    //     $dt = parent::modify($dt);
+    //     // $dt->rawColumns(['id', 'email', 'is_active']); // Dynamically set HTML columns
+    //
+    //     if ($this->hasColumn('updated_by')) {
+    //         $dt->editColumn('updated_by', function ($row) { return optional($row->updater)->name; });
+    //     }
+    //
+    //     return $dt;
+    // }
 
     /*---------------------------------
     | Section : Additional methods

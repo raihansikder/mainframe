@@ -350,8 +350,7 @@ trait UserTrait
     public function isInGroup($name)
     {
         if ($group = Group::byName($name)) {
-            return $this->groups()->remember(timer('short'))->get()->contains('id', $group->id);
-            // return $this->groups->contains('id', $group->id); // Without cache
+            return $this->groups->contains('id', $group->id);
         }
 
         return false;

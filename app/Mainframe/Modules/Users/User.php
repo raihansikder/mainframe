@@ -135,6 +135,7 @@ use Watson\Rememberable\Rememberable;
  * @method static \Illuminate\Database\Query\Builder|User withTrashed()
  * @method static \Illuminate\Database\Query\Builder|User withoutTrashed()
  * @mixin \Eloquent
+ * @property-read mixed $group
  */
 class User extends Authenticatable implements MustVerifyEmail, Auditable
 {

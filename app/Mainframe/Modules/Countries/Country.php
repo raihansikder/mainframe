@@ -78,6 +78,10 @@ use App\Mainframe\Modules\Countries\Traits\CountryTrait;
  * @property-read \App\Module $linkedModule
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Spread[] $spreads
  * @property-read int|null $spreads_count
+ * @property int|null $project_id
+ * @property int|null $tenant_id
+ * @method static \Illuminate\Database\Eloquent\Builder|Country whereProjectId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Country whereTenantId($value)
  */
 class Country extends BaseModule
 {

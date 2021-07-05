@@ -53,7 +53,7 @@ $input = new \App\Mainframe\Features\Form\Text\Tags($var);
 @section('js')
 
     {{-- Instantiate the ckeditor if the class 'ckeditor' is added in textarea--}}
-    @if(!$input->isHidden)
+    @if(!$input->isHidden &&  $input->isEditable)
         <script>
             $("input[name={{$input->name}}]").select2({
                 tags: ['{!!$input->tags()!!}'],

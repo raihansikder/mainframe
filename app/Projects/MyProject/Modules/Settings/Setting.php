@@ -54,6 +54,12 @@ use App\Projects\MyProject\Features\Modular\BaseModule\BaseModule;
  * @method static \Illuminate\Database\Eloquent\Builder|Setting whereUuid($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Setting whereValue($value)
  * @mixin \Eloquent
+ * @property int|null $project_id
+ * @property int|null $tenant_id
+ * @method static \Illuminate\Database\Eloquent\Builder|Setting whereProjectId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Setting whereTenantId($value)
+ * @property int|null $tenant_editable Some settings are not allowed to be edited by tenant
+ * @method static \Illuminate\Database\Eloquent\Builder|Setting whereTenantEditable($value)
  */
 class Setting extends BaseModule
 {
