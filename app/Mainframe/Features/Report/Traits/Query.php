@@ -300,18 +300,29 @@ trait Query
         return $query;
     }
 
+    /**
+     * Ghost column sort filed map
+     *
+     * @return array
+     */
     public function ghostColumnOrders()
     {
         return [
-            // 'order_sl' => [
+            // 'order_sl' => [ // ghost column
             //     'model' => new Order, // Model
-            //     'order_by' => 'tenant_sl', // actual column name in model
-            //     'column_1' => 'orders.id', // local key
-            //     'column_2' => 'customer_jobs.order_id', // foreign key
+            //     'order_by' => 'tenant_sl', // actual column name in model representing ghost column
+            //     'column_1' => 'orders.id', // primary key in model
+            //     'column_2' => 'customer_jobs.order_id', // foreign key main class
             // ],
         ];
     }
 
+    /**
+     * Apply order by on ghost column
+     *
+     * @param $query
+     * @return mixed
+     */
     public function ghostColumnOrderBy($query)
     {
         $ghostColumns = $this->ghostColumnOrders();
