@@ -25,7 +25,7 @@ trait Filterable
         $requests = request()->all();
 
         foreach ($requests as $field => $val) {
-            if (!$val) {
+            if ($val == null) {
                 continue;
             }
             if (in_array($field, $escapeFields)) {
@@ -36,6 +36,7 @@ trait Filterable
         }
 
         $query = $this->keySearch($query);
+        $query = $this->customFilter($query);
 
         // Apply raw SQL clause input from front-end.
         if ($this->additionalFilterConditions()) {
@@ -91,6 +92,20 @@ trait Filterable
         //     $query = $query->where($field,strtok($val));
         // }
         return $query;
+    }
+
+    /**
+     * Additional custom filter on the full query
+     *
+     * @param $query
+     * @return mixed
+     */
+    public function customFilter($query)
+    {
+
+        // Additional general filter
+        return $query;
+
     }
 
     /**
