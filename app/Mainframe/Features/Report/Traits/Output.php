@@ -356,6 +356,20 @@ trait Output
     }
 
     /**
+     * Change value of a single field in a result row
+     *
+     * @param $row
+     * @param $column
+     * @param  null  $val
+     */
+    public function mutate($row, $column, $val = null)
+    {
+        if ($this->selectedColumnsHas($column)) {
+            $row->$column = $val;
+        }
+    }
+
+    /**
      * @return \App\Mainframe\Features\Report\ReportViewProcessor
      * @noinspection PhpUnnecessaryLocalVariableInspection
      */
