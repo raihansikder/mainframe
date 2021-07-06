@@ -13,20 +13,20 @@ trait CustomDatatableTrait
      *
      * @return string
      */
-    public function ajaxUrl()
-    {
-        if ($this->ajaxUrl) {
-            $url = $this->ajaxUrl;
-        } else {
-            $url = route('datatable.json', classKey($this));
-        }
-
-        // Get custom data table URL
-        $params = parse_url(\URL::full(), PHP_URL_QUERY);
-        if (!str_contains($url, '?')) {
-            $params = '?'.$params;
-        }
-
-        return $url.$params;
-    }
+    // public function ajaxUrl()
+    // {
+    //     if ($this->ajaxUrl) {
+    //         $url = $this->ajaxUrl;
+    //     } else {
+    //         $url = route('datatable.json', classKey($this));
+    //     }
+    //
+    //     // Get custom data table URL
+    //     $params = parse_url(\URL::full(), PHP_URL_QUERY);
+    //     if (!str_contains($url, '?')) {
+    //         $params = '?'.$params;
+    //     }
+    //
+    //     return $url.$params;
+    // }
 }

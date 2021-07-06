@@ -97,13 +97,11 @@ trait ModuleDatatableTrait
      */
     public function ajaxUrl()
     {
-        if ($this->ajaxUrl) {
-            $url = $this->ajaxUrl;
-        } else {
-            $url = route($this->module->name.'.datatable-json');
+        if (!$this->ajaxUrl) {
+            $this->ajaxUrl = route($this->module->name.'.datatable-json');
         }
 
-        return trim($url.'?'.parse_url(\URL::full(), PHP_URL_QUERY), '?&');
+        return urlWithParams($this->ajaxUrl, parse_url(\URL::full(), PHP_URL_QUERY));
     }
 
     /**
@@ -126,7 +124,5 @@ trait ModuleDatatableTrait
         }
 
         return parent::setModule($module);
-
     }
-
 }
