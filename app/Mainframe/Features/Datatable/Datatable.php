@@ -129,7 +129,20 @@ class Datatable
         }
 
         // Pass the current request params to datatable
-        return urlWithParams($this->ajaxUrl, parse_url(\URL::full(), PHP_URL_QUERY));
+        $this->ajaxUrl = urlWithParams($this->ajaxUrl, parse_url(\URL::full(), PHP_URL_QUERY));
+
+        return $this->ajaxUrl;
+    }
+
+    /**
+     * @param  array  $params
+     * @return string
+     */
+    public function addUrlParam($params = [])
+    {
+        $this->ajaxUrl = urlWithParams($this->ajaxUrl(), $params);
+
+        return $this->ajaxUrl;
     }
 
     /**
@@ -139,7 +152,7 @@ class Datatable
      */
     public function pageLength()
     {
-        return $this->pageLength ?? 50;
+        return $this->pageLength ?? 25;
     }
 
     public function hidden()
