@@ -68,7 +68,7 @@ class ReportBuilder extends BaseController
         parent::__construct();
         $this->transformRequest();
 
-        $this->dataSource = $this->setDataSource($dataSource);
+        $this->setDataSource($dataSource);
         $this->path = $path ?: $this->path;
         $this->cache = $cache ?: $this->cache;
     }
