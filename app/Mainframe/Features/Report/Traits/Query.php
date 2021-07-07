@@ -317,6 +317,12 @@ trait Query
         ];
     }
 
+    /**
+     * Apply order by on ghost column
+     *
+     * @param $query
+     * @return mixed
+     */
     public function ghostColumnOrderBy($query)
     {
         $ghostColumns = $this->ghostColumnOrders();

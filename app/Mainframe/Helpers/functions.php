@@ -159,10 +159,12 @@ function modules()
 
 /**
  * Short hand function ot get module
+ *
  * @param $name
  * @return \App\Module|mixed
  */
-function module($name){
+function module($name)
+{
     return \App\Module::byName($name);
 }
 
@@ -371,4 +373,16 @@ function className($class)
     }
 
     return class_basename($class);
+}
+
+/**
+ * Add params to an existing url
+ *
+ * @param $url
+ * @param  string|array|null  $params
+ * @return string
+ */
+function urlWithParams($url, $params = null)
+{
+    return Mf::link($url, $params);
 }

@@ -8,7 +8,6 @@ use App\ModuleGroup;
 use App\User;
 use Auth;
 use Cache;
-use Hash;
 use Schema;
 
 /**
@@ -277,6 +276,45 @@ class Mf
         }
 
         return null;
+    }
+
+    /**
+     * Create a URL by adding the given params to an url
+     * Ref: https://www.php.net/manual/en/function.parse-url.php
+     * https://www.php.net/manual/en/function.parse-str.php
+     *
+     * @param $url
+     * @param  null|string|array  $params
+     * @return string
+     */
+    public static function link($url, $params = null)
+    {
+
+        $url = trim($url, "&?=");
+        $base = preg_replace('/\?.*/', '', $url); //https://stackoverflow.com/questions/4270677/removing-query-string-in-php-sometimes-based-on-referrer
+
+        $oldQueryStr = parse_url($url, PHP_URL_QUERY); //
+
+        $oldParams = [];
+        if (strlen($oldQueryStr)) {
+            parse_str($oldQueryStr, $oldParams); // Assign the parameter array to $oldParams
+        }
+
+        $newParams = $params ?? [];
+        if (!is_array($params)) {
+            parse_str($params, $newParams); // Assign the parameter array to $newParams
+        }
+
+        $mergedParams = array_merge($oldParams, $newParams);
+
+        $newUrl = $base;
+        if (count($mergedParams)) {
+            $newUrl .= '?'.http_build_query($mergedParams);
+        }
+
+        // $url .= (parse_url($url, PHP_URL_QUERY) ? '&' : '?').http_build_query($mergedParams);
+
+        return trim($newUrl, "&?=");
     }
 
 }

@@ -124,19 +124,25 @@ class Datatable
      */
     public function ajaxUrl()
     {
-        if ($this->ajaxUrl) {
-            $url = $this->ajaxUrl;
-        } else {
-            $url = route('datatable.json', classKey($this));
+        if (!$this->ajaxUrl) {
+            $this->ajaxUrl = route('datatable.json', classKey($this)); // Default common route for dynamic datatables
         }
 
-        // Get custom data table URL
-        $params = parse_url(\URL::full(), PHP_URL_QUERY);
-        if (!str_contains($url, '?')) {
-            $params = '?'.$params;
-        }
+        // Pass the current request params to datatable
+        $this->ajaxUrl = urlWithParams($this->ajaxUrl, parse_url(\URL::full(), PHP_URL_QUERY));
 
-        return $url.$params;
+        return $this->ajaxUrl;
+    }
+
+    /**
+     * @param  array  $params
+     * @return string
+     */
+    public function addUrlParam($params = [])
+    {
+        $this->ajaxUrl = urlWithParams($this->ajaxUrl(), $params);
+
+        return $this->ajaxUrl;
     }
 
     /**
@@ -146,7 +152,7 @@ class Datatable
      */
     public function pageLength()
     {
-        return $this->pageLength ?? 50;
+        return $this->pageLength ?? 25;
     }
 
     public function hidden()

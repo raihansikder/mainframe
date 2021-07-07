@@ -23,6 +23,7 @@ trait ModuleReportBuilderTrait
 
     /**
      * @param $module
+     * @return ModuleReportBuilderTrait
      */
     public function setModule($module)
     {
@@ -39,6 +40,7 @@ trait ModuleReportBuilderTrait
             $this->dataSource = $this->model->with($this->queryRelations());
         }
 
+        return $this;
     }
 
     public function viewProcessor()

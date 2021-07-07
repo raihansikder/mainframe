@@ -223,10 +223,7 @@ trait DatatableTrait
      */
     public function ajaxUrl()
     {
-        $url = $this->ajaxUrl;
-
-        // Note: Use full URL to generate filtered search result
-        return $url.'?'.parse_url(\URL::full(), PHP_URL_QUERY);
+        return urlWithParams($this->ajaxUrl, parse_url(\URL::full(), PHP_URL_QUERY));
     }
 
     /**
