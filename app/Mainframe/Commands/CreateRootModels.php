@@ -4,10 +4,6 @@ namespace App\Mainframe\Commands;
 
 use App\Module;
 use File;
-use Illuminate\Support\Arr;
-use Illuminate\Support\Str;
-use Illuminate\Console\Command;
-use Illuminate\Support\Collection;
 
 class CreateRootModels extends MakeMainframeModule
 {
@@ -55,7 +51,10 @@ namespace App;
 
 class {$module->modelClassName()} extends {$extends}
 {
-
+   /*--------------------------------------
+   | Note : Empty class.
+   | Write all logic in the relevant parent
+   |---------------------------------------*/
 }";
 
             $path = 'app/'.$module->modelClassName().'.php';

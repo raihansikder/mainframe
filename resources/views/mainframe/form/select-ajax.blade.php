@@ -103,18 +103,23 @@ $input = new \App\Mainframe\Features\Form\Select\SelectAjax($var);
                     ajax: {
                         dataType: "json",
                         url: url,
-                        quietMillis: 1000,
+                        quietMillis: 500,
                         data: function (term, page) {
-                            return {'{{$input->nameField}}': term};
+                            return {
+                                '{{$input->nameField}}': term,
+                                page: page
+                            }
                         },
-                        results: function (response) {
+                        results: function (response, page) {
+                            var more = (page * 20) < response.data.total; // whether or not there are more results available
                             return {
                                 results: $.map(response.data.items, function (item) {
                                     return {
                                         text: item.{{$input->nameField}},
                                         id: item.id
                                     }
-                                })
+                                }),
+                                more: more
                             };
                         }
                     }

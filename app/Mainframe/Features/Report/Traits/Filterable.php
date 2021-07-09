@@ -4,6 +4,7 @@ namespace App\Mainframe\Features\Report\Traits;
 
 use App\Mainframe\Helpers\Convert;
 use App\Mainframe\Helpers\Sanitize;
+use Carbon\Carbon;
 use Illuminate\Support\Str;
 
 /** @mixin \App\Mainframe\Features\Report\ReportBuilder $this */
@@ -313,7 +314,13 @@ trait Filterable
         }
 
         if ($this->isToRange($field) && strlen($val)) {
-            return $query->where($this->getActualDateField($field), '<=', $val);
+            $dateTime = Carbon::parse($val);
+
+            if (strlen($val) <= 10) { // String is date 2021-06-30
+                $dateTime->endOfDay();// Consider end of day
+            }
+
+            return $query->where($this->getActualDateField($field), '<=', $dateTime);
         }
 
         return $query;
