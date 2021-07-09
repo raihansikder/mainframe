@@ -74,12 +74,18 @@ class CreateSuperHeroesTable extends Migration
         $module->save();
 
         $output = new ConsoleOutput();
+
         $output->writeLn('php artisan cache:clear');
         Artisan::call('cache:clear');
+
         $output->writeLn('php artisan route:clear');
         Artisan::call('route:clear');
+
         $output->writeLn('php artisan mainframe:create-root-models');
         Artisan::call('mainframe:create-root-models');
+
+        $output->writeLn('php artisan ide-helper:model -W');
+        Artisan::call('ide-helper:model -W');
     }
 
     /**

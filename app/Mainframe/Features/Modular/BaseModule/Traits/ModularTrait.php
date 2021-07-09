@@ -412,6 +412,16 @@ trait ModularTrait
      */
     public function isUpdating()
     {
+        return $this->isEditing();
+    }
+
+    /**
+     * Check if the model is being updated.
+     *
+     * @return bool
+     */
+    public function isEditing()
+    {
         return isset($this->id);
     }
 
