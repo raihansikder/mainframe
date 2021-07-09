@@ -50,7 +50,7 @@ class SelectAjax extends SelectModel
         if ($this->table) {
             $moduleName = Module::fromTable($this->table)->name;
 
-            return route($moduleName.'.list-json');
+            return route("{$moduleName}.list-json")."?columns_csv={$this->valueField},".$this->nameField;
         }
 
         return $this->url;
