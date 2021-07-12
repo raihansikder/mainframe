@@ -81,12 +81,15 @@ trait Query
      */
     public function rowsPerPage()
     {
+
+        $total = $this->total();
         // For groupBy query show all in one page
         if ($this->hasGroupBy() || $this->expectsAllData()) {
-            return $this->total();
+
+            return $total ?: 1;
         }
 
-        return request('rows_per_page') ?: 20;
+        return request('rows_per_page', 25);
     }
 
     /**
