@@ -218,6 +218,18 @@ class ModelProcessor
                 // $this->fieldError($field, 'Value of '.$field.' can not be changed at this stage.');
                 $original = $this->original($field);
                 $updated = $this->element->$field;
+
+                if (is_array($original)) {
+                    $original = json_encode($original);
+                }
+                if (is_array($updated)) {
+                    $updated = json_encode($updated);
+                }
+
+                if ($original == $updated) {
+                    return $this;
+                }
+
                 $this->fieldError($field,
                     "Value of {$field} can not be changed {$original} > {$updated} at this stage [{$this->module->title}#{$this->element->id}]");
             }
