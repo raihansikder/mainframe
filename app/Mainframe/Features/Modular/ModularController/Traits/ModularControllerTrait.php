@@ -69,6 +69,7 @@ trait ModularControllerTrait
         $uuid = request()->old('uuid') ?: uuid();
         $this->element = $this->model->fill(request()->all());
         $this->element->uuid = $uuid;
+        $this->element->is_active = 1; // Note: Set to active by default while creating
 
         if (!$this->user->can('create', $this->element)) {
             return $this->permissionDenied();
@@ -124,7 +125,7 @@ trait ModularControllerTrait
         try {
             $this->attemptStore();
         } catch (\Exception $e) {
-            $this->error($e->getFile().':'.$e->getLine(). " - " .$e->getMessage());
+            $this->error($e->getFile().':'.$e->getLine()." - ".$e->getMessage());
         }
 
         return $this->load($this->element)->send();
@@ -152,7 +153,7 @@ trait ModularControllerTrait
         try {
             $this->attemptUpdate();
         } catch (\Exception $e) {
-            $this->error($e->getFile().':'.$e->getLine(). " - " .$e->getMessage());
+            $this->error($e->getFile().':'.$e->getLine()." - ".$e->getMessage());
         }
 
         return $this->load($this->element)->send();
@@ -178,7 +179,7 @@ trait ModularControllerTrait
         try {
             $this->attemptDestroy();
         } catch (\Exception $e) {
-            $this->error($e->getFile().':'.$e->getLine(). " - " .$e->getMessage());
+            $this->error($e->getFile().':'.$e->getLine()." - ".$e->getMessage());
         }
 
         return $this->load($this->element)->send();
@@ -215,7 +216,7 @@ trait ModularControllerTrait
         if (!$this->isValid()) {
             $this->redirectTo = route($this->moduleName.'.create');
             request()->merge($this->element->toArray());
-        }else{
+        } else {
             $this->redirectTo = $this->element->editUrl();
         }
 
@@ -242,6 +243,7 @@ trait ModularControllerTrait
         if (!$this->user->can('view-report', $this->model)) {
             return $this->permissionDenied();
         }
+
         return (new ModuleReportBuilder($this->module))->output();
     }
 
