@@ -87,7 +87,17 @@ class SuperHeroProcessor extends ModelProcessor
     // public function updating($element) { return $this; }
     // public function created($element) { return $this; }
     // public function updated($element) { return $this; }
-    // public function saved($element) { return $this; }
+
+    /**
+     * @param  SuperHero  $element
+     * @return $this
+     */
+    public function saved($element)
+    {
+        $element->refresh(); // Get the updated model(and relations) before using.
+
+        return $this;
+    }
     // public function deleting($element) { return $this; }
     // public function deleted($element) { return $this; }
 
