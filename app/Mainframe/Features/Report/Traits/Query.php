@@ -22,21 +22,28 @@ trait Query
     public function resultQuery()
     {
 
+        # Get and instance of the data source
         $query = clone $this->queryDataSource();
+
+        # Specify column selection.
         if (count($this->querySelectColumns())) {
             $query->select($this->querySelectColumns());
         }
 
+        # Apply filters
         $query = $this->filter($query);
-        // Inject tenant context.
+
+        # Inject tenant context
         if ($this->user->ofTenant() && $this->hasTenantContext()) {
             $query->where('tenant_id', $this->user->tenant_id);
         }
 
+        # Group-by
         $query = $this->groupBy($query);
+
+        # Order-by
         $query = $this->orderBy($query);
 
-        // dd($query->toSql());
         return $query;
     }
 
