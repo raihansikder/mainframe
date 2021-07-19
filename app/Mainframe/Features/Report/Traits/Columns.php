@@ -30,6 +30,15 @@ trait Columns
         return array_merge($this->dataSourceColumns(), $this->ghostColumnOptions());
     }
 
+    /**
+     * Some times we need to pass column names that do not exists directly in the source (model/table).
+     * Such should be skipped in the query building. Value of these columns should be assigned
+     * through mutateResult() function. This is useful to include custom fields in the report
+     * User can also see these ghost columns in the column selection option in the advanced
+     * report option.
+     *
+     * @return array
+     */
     public function ghostColumns()
     {
         return [];
@@ -58,6 +67,7 @@ trait Columns
         if (is_string($this->dataSource)) {
             return Mf::tableColumns($this->dataSource);
         }
+
         if (isset($this->model)) {
             return $this->model->tableColumns();
         }
@@ -87,16 +97,21 @@ trait Columns
     */
 
     /**
-     * User selected columns
+     * Selected column.
      *
      * @return array
      */
     public function selectedColumns()
     {
+        # Check if the column names are available in request().
         if (request('columns_csv')) {
             return Convert::csvToArray(request('columns_csv'));
         }
 
+        # Default selection
+        // return ['id','name','updated_by','updated_at'];
+
+        # Include all the data-source columns
         return $this->dataSourceColumns();
     }
 
@@ -255,6 +270,12 @@ trait Columns
         return $temp;
     }
 
+    /**
+     * Get column title for a given key.
+     *
+     * @param $key
+     * @return string
+     */
     public function aliasFor($key)
     {
         return Str::title(str_replace('_', ' ', $key));
