@@ -32,6 +32,13 @@ class ReportBuilder extends BaseController
     /** @var  \Illuminate\Support\Collection Report result */
     public $result;
 
+    /**
+     * Default rows per page
+     *
+     * @var
+     */
+    public $rowsPerPage;
+
     /** @var array */
     public $fullTextFields = ['name', 'name_ext'];
 

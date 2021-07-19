@@ -85,11 +85,10 @@ trait Query
         $total = $this->total();
         // For groupBy query show all in one page
         if ($this->hasGroupBy() || $this->expectsAllData()) {
-
             return $total ?: 1;
         }
 
-        return request('rows_per_page', 25);
+        return request('rows_per_page', $this->rowsPerPage ?? 50);
     }
 
     /**

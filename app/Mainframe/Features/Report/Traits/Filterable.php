@@ -240,7 +240,7 @@ trait Filterable
     }
 
     /**
-     * Key based search
+     * Key based search in multiple columns. The columns are defined in $searchFields
      *
      * @param  \Illuminate\Database\Query\Builder  $query
      * @return mixed
